@@ -75,14 +75,44 @@ def run_simulation(
                 active_signals.append(shock)
 
         # Phase 1: Signal propagation -- each persona receives domain awareness
+        # Attention budget: personas compute awareness for all domains but only
+        # deeply evaluate their top-N (sorted by signal strength). This models
+        # finite attention -- you can't seriously adopt 32 things at once.
+        attention_budget = min(10, max(4, len(domains) // 3))
+
         for persona in personas:
             update_persona_activity(persona, round_num)
 
+            # Compute raw awareness for every domain
+            domain_awareness: list[tuple[str, float]] = []
             for domain_id in domains:
                 awareness = _compute_awareness(
                     persona, domain_id, active_signals, round_num,
                 )
-                persona_evaluates_domain(persona, domain_id, awareness)
+                domain_awareness.append((domain_id, awareness))
+
+            # Always evaluate domains persona already has traction with
+            active_domains = {
+                d_id for d_id, stage in persona["adoption_state"].items()
+                if stage not in ("unaware",)
+            }
+
+            # Sort remaining by awareness strength, pick top-N
+            domain_awareness.sort(key=lambda x: x[1], reverse=True)
+
+            evaluated = 0
+            for domain_id, awareness in domain_awareness:
+                in_budget = domain_id in active_domains or evaluated < attention_budget
+                if in_budget:
+                    persona_evaluates_domain(persona, domain_id, awareness)
+                    if domain_id not in active_domains:
+                        evaluated += 1
+                else:
+                    # Below attention budget -- only allow unaware->aware (discovery)
+                    # with heavily dampened signal
+                    current = persona["adoption_state"].get(domain_id, "unaware")
+                    if current == "unaware" and awareness > 0.5:
+                        persona_evaluates_domain(persona, domain_id, awareness * 0.3)
 
         # Phase 2: Influence propagation -- personas influence each other
         _propagate_influence(personas, domains, graph)

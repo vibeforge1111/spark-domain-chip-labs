@@ -150,7 +150,11 @@ def persona_evaluates_domain(
 
     Each stage has a progressively higher threshold multiplier, so advancing
     from "evaluating" to "adopted" is much harder than "unaware" to "aware".
-    This prevents all personas from rocketing to max adoption in a few rounds.
+
+    Key design: advance_threshold uses exponential difficulty scaling so that
+    only domains with genuinely strong, sustained signal reach adopted/advocating.
+    The risk_tolerance discount is capped so even high-risk personas still face
+    meaningful barriers at late stages.
 
     Returns new adoption stage.
     """
@@ -164,18 +168,29 @@ def persona_evaluates_domain(
     stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
     current_idx = stages.index(current) if current in stages else 0
 
-    # Each stage demands progressively more signal to advance
-    # unaware->aware is easy (0.3x), adopted->advocating is very hard (2.0x)
+    # Stage difficulty -- late stages are significantly harder but reachable
+    # for domains with strong sustained signal
     stage_difficulty = {
-        0: 0.3,   # unaware -> aware: just needs some signal
-        1: 0.6,   # aware -> interested: needs moderate signal
-        2: 0.9,   # interested -> evaluating: needs strong signal
-        3: 1.3,   # evaluating -> adopted: needs very strong, sustained signal
-        4: 1.8,   # adopted -> advocating: needs exceptional conviction
+        0: 0.2,    # unaware -> aware: easy, just some signal
+        1: 0.45,   # aware -> interested: moderate
+        2: 0.8,    # interested -> evaluating: needs real signal
+        3: 1.3,    # evaluating -> adopted: hard gate -- weaker domains stall here
+        4: 1.7,    # adopted -> advocating: strong conviction required
     }
 
-    difficulty = stage_difficulty.get(current_idx, 2.0)
-    advance_threshold = threshold * difficulty * (1.0 - risk * 0.3)
+    difficulty = stage_difficulty.get(current_idx, 2.5)
+    # Risk discount capped at 20% to prevent easy late-stage advancement
+    advance_threshold = threshold * difficulty * (1.0 - risk * 0.2)
+
+    # Attention fatigue: if persona has already adopted many domains,
+    # it's harder to adopt more (finite attention budget)
+    adopted_count = sum(
+        1 for s in persona["adoption_state"].values()
+        if s in ("adopted", "advocating")
+    )
+    if adopted_count > 5 and current_idx >= 3:
+        # Penalty grows with each additional adopted domain beyond 5
+        advance_threshold *= 1.0 + (adopted_count - 5) * 0.15
 
     if effective_signal > advance_threshold and current_idx < len(stages) - 1:
         new_stage = stages[current_idx + 1]
