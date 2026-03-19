@@ -159,13 +159,20 @@ def simulate_opportunities(
     from .mirofish.simulation import run_dual_context
     from .mirofish.calibration import calibration_report
     from .mirofish.report import generate_prediction_report
+    from .mirofish.signals import signals_from_opportunities, signals_from_graph
 
     ranked = rank_opportunities(opportunities)
     graph = build_graph_from_opportunities(ranked)
 
+    # Bridge static scores into simulation signals
+    opp_signals = signals_from_opportunities(ranked)
+    graph_signals = signals_from_graph(graph)
+    all_signals = opp_signals + graph_signals
+
     domain_ids = [opp["domain_id"] for opp in ranked]
     sim_results = run_dual_context(
-        graph, domain_ids=domain_ids, max_rounds=max_rounds, seed=seed,
+        graph, domain_ids=domain_ids, signals=all_signals,
+        max_rounds=max_rounds, seed=seed,
     )
 
     # Build calibration from simulation predictions

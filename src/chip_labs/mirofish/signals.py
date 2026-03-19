@@ -162,3 +162,148 @@ def build_scenario(
         "shocks": sorted(shocks, key=lambda s: s.get("inject_at_round", 0)),
         "shock_count": len(shocks),
     }
+
+
+# ---------------------------------------------------------------------------
+# Static score -> signal bridge
+# ---------------------------------------------------------------------------
+
+# Maps evidence_source names to signal types
+_SOURCE_TO_SIGNAL: dict[str, str] = {
+    "github": "github_trending",
+    "producthunt": "producthunt_launch",
+    "x_twitter": "viral_tweet",
+    "community": "community_request",
+    "arxiv": "github_trending",       # academic signal ~ developer signal
+    "vc_landscape": "vc_funding",
+    "spark_ecosystem": "community_request",
+}
+
+
+def signals_from_opportunities(
+    opportunities: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Convert scored domain opportunities into initial simulation signals.
+
+    Each opportunity generates signals proportional to its dimension scores,
+    routed through the evidence sources it declared. This bridges the gap
+    between static scoring and the simulation engine.
+    """
+    signals: list[dict[str, Any]] = []
+
+    for opp in opportunities:
+        domain_id = opp.get("domain_id", "")
+        scores = opp.get("scores", {})
+        sources = opp.get("evidence_sources", [])
+        composite = opp.get("composite_score", 0.0)
+
+        # 1. Community demand signal -- strongest organic driver
+        community = scores.get("community_demand", 0.0)
+        if community > 0.5:
+            signals.append(create_signal(
+                f"{domain_id}-community-demand",
+                "community_request",
+                [domain_id],
+                strength=community,
+                label=f"{opp.get('label', domain_id)} community demand",
+            ))
+
+        # 2. Market signal from each evidence source
+        for source in sources:
+            signal_type = _SOURCE_TO_SIGNAL.get(source, "community_request")
+            # Strength = composite score * source-specific boost
+            source_boost = {
+                "github": scores.get("data_availability", 0.5),
+                "producthunt": scores.get("market_size", 0.5),
+                "x_twitter": scores.get("community_demand", 0.5),
+                "community": scores.get("community_demand", 0.5),
+                "arxiv": scores.get("benchmark_feasibility", 0.5),
+                "vc_landscape": scores.get("monetization_potential", 0.5),
+                "spark_ecosystem": scores.get("spark_ecosystem_fit", 0.5),
+            }
+            strength = round(composite * source_boost.get(source, 0.5), 4)
+            if strength > 0.3:  # only meaningful signals
+                signals.append(create_signal(
+                    f"{domain_id}-{source}",
+                    signal_type,
+                    [domain_id],
+                    strength=strength,
+                    label=f"{opp.get('label', domain_id)} via {source}",
+                ))
+
+        # 3. Ecosystem fit signal -- related chips create cross-domain pull
+        related = opp.get("related_chips", [])
+        eco_fit = scores.get("spark_ecosystem_fit", 0.0)
+        if related and eco_fit > 0.6:
+            signals.append(create_signal(
+                f"{domain_id}-ecosystem-pull",
+                "competitor_chip",  # reuse as "existing chip validates domain"
+                [domain_id],
+                strength=round(eco_fit * 0.9, 4),
+                label=f"{opp.get('label', domain_id)} ecosystem pull from {', '.join(related)}",
+                metadata={"related_chips": related},
+            ))
+
+    return signals
+
+
+def signals_from_graph(graph: "Any") -> list[dict[str, Any]]:
+    """Generate cross-domain influence signals from graph relationships.
+
+    Domains connected by ENABLES or EXTENDS relationships propagate
+    awareness to each other. Domains connected by COMPETES_WITH
+    create competitive pressure signals.
+    """
+    signals: list[dict[str, Any]] = []
+    seen: set[tuple[str, str]] = set()
+
+    for edge in graph.edges:
+        src, tgt = edge["source"], edge["target"]
+        rel = edge["relationship"]
+        weight = edge.get("weight", 0.5)
+
+        # Only domain-to-domain or chip-to-domain edges matter
+        src_node = graph.nodes.get(src, {})
+        tgt_node = graph.nodes.get(tgt, {})
+
+        if rel == "EXTENDS" and tgt_node.get("type") == "technology":
+            # Existing chip validates the domain
+            pair = (src, tgt)
+            if pair not in seen:
+                seen.add(pair)
+                signals.append(create_signal(
+                    f"graph-extends-{src}-{tgt}",
+                    "competitor_chip",
+                    [src],
+                    strength=round(weight * 0.85, 4),
+                    label=f"{src} extends {tgt_node.get('label', tgt)}",
+                ))
+
+        elif rel == "ENABLES" and src_node.get("type") == "technology":
+            # Technology enables domain
+            pair = (src, tgt)
+            if pair not in seen and tgt_node.get("type") == "domain":
+                seen.add(pair)
+                signals.append(create_signal(
+                    f"graph-enables-{src}-{tgt}",
+                    "github_trending",
+                    [tgt],
+                    strength=round(weight * 0.6, 4),
+                    label=f"{src_node.get('label', src)} enables {tgt}",
+                ))
+
+        elif rel == "COMPETES_WITH":
+            # Competition creates pressure on both domains
+            for a, b in [(src, tgt), (tgt, src)]:
+                pair = (a, b, "compete")
+                if pair not in seen and graph.nodes.get(a, {}).get("type") == "domain":
+                    seen.add(pair)
+                    signals.append(create_signal(
+                        f"graph-competes-{a}-{b}",
+                        "competitor_chip",
+                        [a],
+                        strength=round(weight * 0.4, 4),
+                        label=f"Competitive pressure from {b}",
+                    ))
+
+    return signals

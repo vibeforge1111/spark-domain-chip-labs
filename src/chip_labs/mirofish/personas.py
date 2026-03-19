@@ -148,6 +148,10 @@ def persona_evaluates_domain(
 
     Adoption funnel: unaware -> aware -> interested -> evaluating -> adopted -> advocating
 
+    Each stage has a progressively higher threshold multiplier, so advancing
+    from "evaluating" to "adopted" is much harder than "unaware" to "aware".
+    This prevents all personas from rocketing to max adoption in a few rounds.
+
     Returns new adoption stage.
     """
     current = persona["adoption_state"].get(domain_id, "unaware")
@@ -160,8 +164,19 @@ def persona_evaluates_domain(
     stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
     current_idx = stages.index(current) if current in stages else 0
 
-    # Advance if signal exceeds threshold adjusted by risk tolerance
-    advance_threshold = threshold * (1.0 - risk * 0.3)
+    # Each stage demands progressively more signal to advance
+    # unaware->aware is easy (0.3x), adopted->advocating is very hard (2.0x)
+    stage_difficulty = {
+        0: 0.3,   # unaware -> aware: just needs some signal
+        1: 0.6,   # aware -> interested: needs moderate signal
+        2: 0.9,   # interested -> evaluating: needs strong signal
+        3: 1.3,   # evaluating -> adopted: needs very strong, sustained signal
+        4: 1.8,   # adopted -> advocating: needs exceptional conviction
+    }
+
+    difficulty = stage_difficulty.get(current_idx, 2.0)
+    advance_threshold = threshold * difficulty * (1.0 - risk * 0.3)
+
     if effective_signal > advance_threshold and current_idx < len(stages) - 1:
         new_stage = stages[current_idx + 1]
     else:

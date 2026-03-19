@@ -186,29 +186,45 @@ def _compute_awareness(
     signals: list[dict[str, Any]],
     current_round: int,
 ) -> float:
-    """Compute awareness score for a persona-domain pair from active signals."""
-    awareness = 0.0
+    """Compute awareness score for a persona-domain pair from active signals.
+
+    Uses probability union (diminishing returns) instead of additive sum:
+      P(aware) = 1 - product(1 - signal_i)
+    This means 10 signals at 0.5 = 0.999, but 2 signals at 0.5 = 0.75.
+    Prevents saturation when many signals target the same domain.
+    """
+    miss_probability = 1.0  # probability of NOT being reached by any signal
+
     for signal in signals:
-        if domain_id in signal.get("affects_domains", []):
-            elapsed = current_round - signal.get("inject_at_round", 0)
-            decayed = decay_signal(signal, max(0, elapsed))
+        if domain_id not in signal.get("affects_domains", []):
+            continue
 
-            # Shock effect modifier
-            effect = signal.get("effect", "neutral")
-            if effect == "negative":
-                # Negative shocks boost awareness for skeptics/regulators
-                if persona["persona_type"] in signal.get("affected_persona_types", []):
-                    decayed *= 0.5  # dampens adoption for affected types
-                else:
-                    decayed *= 0.3
-            elif effect == "positive":
-                if persona["persona_type"] in signal.get("affected_persona_types", []):
-                    decayed *= 1.3  # amplifies for targeted types
+        elapsed = current_round - signal.get("inject_at_round", 0)
+        decayed = decay_signal(signal, max(0, elapsed))
+        if decayed <= 0.0:
+            continue
 
-            awareness += decayed
+        # Shock effect modifier
+        effect = signal.get("effect", "neutral")
+        if effect == "negative":
+            if persona["persona_type"] in signal.get("affected_persona_types", []):
+                decayed *= 0.5
+            else:
+                decayed *= 0.3
+        elif effect == "positive":
+            if persona["persona_type"] in signal.get("affected_persona_types", []):
+                decayed *= 1.3
 
-    # Clamp to [0, 1]
-    return min(1.0, awareness)
+        # Persona-signal affinity: expertise match boosts signal reception
+        expertise = persona.get("expertise_domains", [])
+        if domain_id in expertise:
+            decayed = min(1.0, decayed * 1.15)
+
+        decayed = min(1.0, decayed)
+        miss_probability *= (1.0 - decayed)
+
+    awareness = 1.0 - miss_probability
+    return round(awareness, 4)
 
 
 def _propagate_influence(
