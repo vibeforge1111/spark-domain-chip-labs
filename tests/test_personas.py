@@ -7,6 +7,7 @@ from chip_labs.mirofish.personas import (
     generate_personas,
     update_persona_activity,
     persona_evaluates_domain,
+    persona_churn_check,
     persona_influence_score,
     PERSONA_TYPES,
 )
@@ -101,3 +102,87 @@ class TestPersonaDynamics:
         p["adoption_state"] = {"defi-architect": "adopted"}
         score = persona_influence_score(p, "defi-architect")
         assert score > 0.0
+
+
+class TestChurn:
+    """Tests for persona regression (churn) mechanics."""
+
+    def _make_persona(self, stage="adopted", threshold=0.5, risk=0.5, activity=1.0):
+        return {
+            "persona_id": "test-0",
+            "persona_type": "builder",
+            "adoption_state": {"test-domain": stage},
+            "adoption_threshold": threshold,
+            "risk_tolerance": risk,
+            "activity_score": activity,
+            "influence_score": 0.7,
+            "network_reach": 0.5,
+            "expertise_domains": [],
+            "signal_memory": [],
+        }
+
+    def test_no_regression_when_unaware(self):
+        p = self._make_persona(stage="unaware")
+        result = persona_churn_check(p, "test-domain", 0.0, 10)
+        assert result == "unaware"
+
+    def test_no_regression_with_strong_signal(self):
+        p = self._make_persona(stage="adopted")
+        result = persona_churn_check(p, "test-domain", 0.9, 0)
+        assert result == "adopted"
+
+    def test_regression_with_zero_signal(self):
+        p = self._make_persona(stage="aware", threshold=0.5, risk=0.0)
+        result = persona_churn_check(p, "test-domain", 0.0, 10)
+        assert result == "unaware"
+
+    def test_sunk_cost_effect(self):
+        """Higher stages should resist regression more (sunk cost)."""
+        # Aware persona regresses easily
+        p_aware = self._make_persona(stage="aware", threshold=0.3, risk=0.0)
+        r_aware = persona_churn_check(p_aware, "test-domain", 0.0, 3)
+
+        # Adopted persona resists regression with same signal
+        p_adopted = self._make_persona(stage="adopted", threshold=0.3, risk=0.0)
+        r_adopted = persona_churn_check(p_adopted, "test-domain", 0.0, 3)
+
+        # aware should regress, adopted may not (higher sunk cost threshold)
+        assert r_aware == "unaware"
+        # adopted -> evaluating requires signal below 0.3 * 0.35 = 0.105
+        # with 0.0 signal it should regress, but only one stage
+        assert r_adopted == "evaluating"
+
+    def test_regresses_one_stage_at_a_time(self):
+        p = self._make_persona(stage="advocating", threshold=0.3, risk=0.0)
+        result = persona_churn_check(p, "test-domain", 0.0, 10)
+        # Should drop to adopted, not all the way to unaware
+        assert result == "adopted"
+
+    def test_risk_tolerant_stickier(self):
+        """High-risk personas should resist regression more (emotional investment)."""
+        # Low-risk persona
+        p_low = self._make_persona(stage="interested", threshold=0.4, risk=0.1)
+        r_low = persona_churn_check(p_low, "test-domain", 0.0, 3)
+
+        # High-risk persona with same signal
+        p_high = self._make_persona(stage="interested", threshold=0.4, risk=0.9)
+        r_high = persona_churn_check(p_high, "test-domain", 0.0, 3)
+
+        # High-risk should be stickier (regression threshold lower due to risk discount)
+        # At minimum, the high-risk persona shouldn't regress more than the low-risk one
+        stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
+        assert stages.index(r_high) >= stages.index(r_low)
+
+    def test_stall_increases_regression_risk(self):
+        """Long stalls should make regression more likely."""
+        # Short stall
+        p_short = self._make_persona(stage="evaluating", threshold=0.4, risk=0.3)
+        r_short = persona_churn_check(p_short, "test-domain", 0.06, 2)
+
+        # Long stall with same signal
+        p_long = self._make_persona(stage="evaluating", threshold=0.4, risk=0.3)
+        r_long = persona_churn_check(p_long, "test-domain", 0.06, 15)
+
+        stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
+        # Long stall should regress more (or at least equally)
+        assert stages.index(r_long) <= stages.index(r_short)

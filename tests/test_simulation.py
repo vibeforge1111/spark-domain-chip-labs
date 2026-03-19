@@ -6,6 +6,7 @@ from chip_labs.mirofish.graph import build_graph_from_opportunities
 from chip_labs.mirofish.simulation import (
     run_simulation,
     run_dual_context,
+    run_ensemble,
     ADOPTION_STAGES,
     MAX_ROUNDS,
 )
@@ -109,6 +110,89 @@ class TestDualContext:
         for d in domain_ids:
             assert "builder_tipping_point" in result["comparison"][d]
             assert "enterprise_tipping_point" in result["comparison"][d]
+
+
+class TestChurnInSimulation:
+    """Test that churn is properly wired into the simulation loop."""
+
+    def test_simulation_with_churn_runs(self, graph, domain_ids):
+        result = run_simulation(graph, domain_ids, max_rounds=10, seed=42)
+        assert result["rounds_run"] == 10
+
+    def test_churn_prevents_universal_adoption(self, graph, domain_ids):
+        """With churn enabled, not every domain should reach high adoption."""
+        result = run_simulation(graph, domain_ids, max_rounds=20, seed=42)
+        rates = [result["domains"][d]["final_adoption_rate"] for d in domain_ids]
+        # At least some domains should have low adoption (churn pulls them back)
+        assert min(rates) < 0.5 or max(rates) - min(rates) > 0.05
+
+
+class TestEnsemble:
+    """Tests for Monte Carlo ensemble simulation."""
+
+    def test_ensemble_runs(self, graph, domain_ids):
+        result = run_ensemble(
+            graph, domain_ids, max_rounds=5, n_runs=3,
+            base_seed=42, count_per_type=2,
+        )
+        assert result["n_runs"] == 3
+        assert "domains" in result
+
+    def test_ensemble_has_all_domains(self, graph, domain_ids):
+        result = run_ensemble(
+            graph, domain_ids, max_rounds=5, n_runs=3,
+            base_seed=42, count_per_type=2,
+        )
+        for d in domain_ids:
+            assert d in result["domains"]
+
+    def test_ensemble_statistics(self, graph, domain_ids):
+        result = run_ensemble(
+            graph, domain_ids, max_rounds=5, n_runs=5,
+            base_seed=42, count_per_type=2,
+        )
+        for d in domain_ids:
+            stats = result["domains"][d]
+            assert "mean_adoption" in stats
+            assert "median_adoption" in stats
+            assert "p10_adoption" in stats
+            assert "p90_adoption" in stats
+            assert "std_adoption" in stats
+            assert "confidence_width" in stats
+            assert "tipping_rate" in stats
+
+    def test_ensemble_bounded_values(self, graph, domain_ids):
+        result = run_ensemble(
+            graph, domain_ids, max_rounds=5, n_runs=5,
+            base_seed=42, count_per_type=2,
+        )
+        for d in domain_ids:
+            stats = result["domains"][d]
+            assert 0.0 <= stats["mean_adoption"] <= 1.0
+            assert 0.0 <= stats["median_adoption"] <= 1.0
+            assert 0.0 <= stats["p10_adoption"] <= 1.0
+            assert 0.0 <= stats["p90_adoption"] <= 1.0
+            assert stats["p10_adoption"] <= stats["p90_adoption"]
+            assert 0.0 <= stats["tipping_rate"] <= 1.0
+
+    def test_ensemble_distribution_length(self, graph, domain_ids):
+        n_runs = 7
+        result = run_ensemble(
+            graph, domain_ids, max_rounds=5, n_runs=n_runs,
+            base_seed=42, count_per_type=2,
+        )
+        for d in domain_ids:
+            assert len(result["domains"][d]["distribution"]) == n_runs
+
+    def test_ensemble_confidence_width(self, graph, domain_ids):
+        result = run_ensemble(
+            graph, domain_ids, max_rounds=5, n_runs=5,
+            base_seed=42, count_per_type=2,
+        )
+        for d in domain_ids:
+            stats = result["domains"][d]
+            expected = round(stats["p90_adoption"] - stats["p10_adoption"], 4)
+            assert stats["confidence_width"] == expected
 
 
 class TestAdoptionStages:

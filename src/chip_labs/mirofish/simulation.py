@@ -13,6 +13,7 @@ from .graph import DomainGraph
 from .personas import (
     generate_personas, update_persona_activity,
     persona_evaluates_domain, persona_influence_score,
+    persona_churn_check,
 )
 from .signals import decay_signal
 
@@ -67,6 +68,11 @@ def run_simulation(
     active_signals: list[dict[str, Any]] = list(signals or [])
     shock_list = list(shocks or [])
 
+    # Track when each persona last advanced in each domain (for churn)
+    last_advance: dict[str, dict[str, int]] = {
+        p["persona_id"]: {} for p in personas
+    }
+
     # Run simulation rounds
     for round_num in range(max_rounds):
         # Inject shocks scheduled for this round
@@ -103,16 +109,39 @@ def run_simulation(
             evaluated = 0
             for domain_id, awareness in domain_awareness:
                 in_budget = domain_id in active_domains or evaluated < attention_budget
+                prev_stage = persona["adoption_state"].get(domain_id, "unaware")
                 if in_budget:
-                    persona_evaluates_domain(persona, domain_id, awareness)
+                    new_stage = persona_evaluates_domain(persona, domain_id, awareness)
                     if domain_id not in active_domains:
                         evaluated += 1
                 else:
                     # Below attention budget -- only allow unaware->aware (discovery)
                     # with heavily dampened signal
-                    current = persona["adoption_state"].get(domain_id, "unaware")
-                    if current == "unaware" and awareness > 0.5:
-                        persona_evaluates_domain(persona, domain_id, awareness * 0.3)
+                    if prev_stage == "unaware" and awareness > 0.5:
+                        new_stage = persona_evaluates_domain(persona, domain_id, awareness * 0.3)
+                    else:
+                        new_stage = prev_stage
+
+                # Track when persona last advanced
+                pid = persona["persona_id"]
+                if new_stage != prev_stage:
+                    last_advance[pid][domain_id] = round_num
+
+        # Phase 1b: Churn check -- personas can regress if signal fades
+        # Recompute awareness per persona (domain_awareness above was scoped
+        # to the last persona in the Phase 1 loop).
+        for persona in personas:
+            pid = persona["persona_id"]
+            for domain_id in domains:
+                current_stage = persona["adoption_state"].get(domain_id, "unaware")
+                if current_stage == "unaware":
+                    continue
+                awareness = _compute_awareness(
+                    persona, domain_id, active_signals, round_num,
+                )
+                last_adv_round = last_advance[pid].get(domain_id, 0)
+                rounds_since = round_num - last_adv_round
+                persona_churn_check(persona, domain_id, awareness, rounds_since)
 
         # Phase 2: Influence propagation -- personas influence each other
         _propagate_influence(personas, domains, graph)
@@ -353,3 +382,103 @@ def _compute_consensus(personas: list[dict[str, Any]], domain_id: str) -> float:
 def _compute_disagreement(personas: list[dict[str, Any]], domain_id: str) -> float:
     """Compute disagreement score (inverse of consensus)."""
     return round(1.0 - _compute_consensus(personas, domain_id), 4)
+
+
+# ---------------------------------------------------------------------------
+# Monte Carlo Ensemble
+# ---------------------------------------------------------------------------
+
+def run_ensemble(
+    graph: DomainGraph,
+    domain_ids: list[str] | None = None,
+    signals: list[dict[str, Any]] | None = None,
+    shocks: list[dict[str, Any]] | None = None,
+    max_rounds: int = MAX_ROUNDS,
+    n_runs: int = 50,
+    base_seed: int = 42,
+    context: str = "builder_community",
+    count_per_type: int = 125,
+) -> dict[str, Any]:
+    """Run Monte Carlo ensemble of N simulations with different seeds.
+
+    Each run uses a different seed for persona generation, producing
+    different trait variations and expertise assignments. The signals
+    and shocks remain the same across runs (they're the scenario).
+
+    Returns per-domain statistics: median, mean, p10, p90, std, plus
+    the full distribution of adoption rates across runs.
+
+    Args:
+        graph: Domain knowledge graph.
+        domain_ids: Domains to simulate.
+        signals: Signals to inject (same across all runs).
+        shocks: Shocks to inject (same across all runs).
+        max_rounds: Rounds per simulation.
+        n_runs: Number of Monte Carlo runs (default 50).
+        base_seed: Starting seed (incremented per run).
+        context: Simulation context.
+        count_per_type: Personas per type per run.
+    """
+    domains = domain_ids or [
+        n["id"] for n in graph.nodes.values() if n["type"] == "domain"
+    ]
+
+    # Collect adoption rates across runs
+    adoption_runs: dict[str, list[float]] = {d: [] for d in domains}
+    advocacy_runs: dict[str, list[float]] = {d: [] for d in domains}
+    tipping_runs: dict[str, list[int | None]] = {d: [] for d in domains}
+
+    for run_idx in range(n_runs):
+        seed = base_seed + run_idx
+        personas = generate_personas(graph, domains, count_per_type=count_per_type, seed=seed)
+
+        result = run_simulation(
+            graph, domains, personas=personas,
+            signals=signals, shocks=shocks,
+            max_rounds=max_rounds, seed=seed, context=context,
+        )
+
+        for d_id in domains:
+            d_result = result["domains"].get(d_id, {})
+            adoption_runs[d_id].append(d_result.get("final_adoption_rate", 0.0))
+            advocacy_runs[d_id].append(d_result.get("final_advocacy_rate", 0.0))
+            tipping_runs[d_id].append(d_result.get("tipping_point_round"))
+
+    # Compute statistics
+    ensemble_results: dict[str, Any] = {
+        "context": context,
+        "n_runs": n_runs,
+        "max_rounds": max_rounds,
+        "base_seed": base_seed,
+        "domains": {},
+    }
+
+    for d_id in domains:
+        rates = sorted(adoption_runs[d_id])
+        adv_rates = sorted(advocacy_runs[d_id])
+        tips = [t for t in tipping_runs[d_id] if t is not None]
+
+        n = len(rates)
+        p10_idx = max(0, int(n * 0.1))
+        p90_idx = min(n - 1, int(n * 0.9))
+        median_idx = n // 2
+
+        mean_rate = sum(rates) / n if n > 0 else 0.0
+        mean_adv = sum(adv_rates) / n if n > 0 else 0.0
+        variance = sum((r - mean_rate) ** 2 for r in rates) / n if n > 0 else 0.0
+        std = variance ** 0.5
+
+        ensemble_results["domains"][d_id] = {
+            "mean_adoption": round(mean_rate, 4),
+            "median_adoption": round(rates[median_idx], 4) if n > 0 else 0.0,
+            "p10_adoption": round(rates[p10_idx], 4) if n > 0 else 0.0,
+            "p90_adoption": round(rates[p90_idx], 4) if n > 0 else 0.0,
+            "std_adoption": round(std, 4),
+            "mean_advocacy": round(mean_adv, 4),
+            "tipping_rate": round(len(tips) / n, 4) if n > 0 else 0.0,
+            "mean_tipping_round": round(sum(tips) / len(tips), 1) if tips else None,
+            "distribution": rates,
+            "confidence_width": round(rates[p90_idx] - rates[p10_idx], 4) if n > 0 else 0.0,
+        }
+
+    return ensemble_results

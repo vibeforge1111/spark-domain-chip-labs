@@ -201,6 +201,69 @@ def persona_evaluates_domain(
     return new_stage
 
 
+def persona_churn_check(
+    persona: dict[str, Any],
+    domain_id: str,
+    awareness_score: float,
+    rounds_since_advance: int,
+) -> str:
+    """Check if a persona should regress (churn) from their current stage.
+
+    Churn happens when:
+    1. Signal has decayed significantly below what got them to this stage
+    2. They've been stalled at the same stage for too long without reinforcement
+    3. A negative shock pushes them backward
+
+    Regression is slower than advancement -- it takes sustained signal loss
+    to actually abandon something you've already committed to (sunk cost effect).
+
+    Returns the (possibly regressed) adoption stage.
+    """
+    current = persona["adoption_state"].get(domain_id, "unaware")
+    stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
+    current_idx = stages.index(current) if current in stages else 0
+
+    # Can't regress below "unaware"
+    if current_idx <= 0:
+        return current
+
+    threshold = persona["adoption_threshold"]
+    risk = persona["risk_tolerance"]
+    activity = persona["activity_score"]
+
+    effective_signal = awareness_score * activity
+
+    # Regression thresholds -- how low must signal drop to trigger regression?
+    # Higher stages have more sunk cost, so regression requires more signal loss
+    regression_threshold = {
+        1: 0.05,   # aware -> unaware: very easy to forget
+        2: 0.12,   # interested -> aware: moderate inertia
+        3: 0.20,   # evaluating -> interested: invested time, harder to abandon
+        4: 0.35,   # adopted -> evaluating: significant sunk cost
+        5: 0.50,   # advocating -> adopted: strong commitment, hard to break
+    }
+
+    # The signal level below which regression triggers
+    # Conservative personas (high threshold) are more likely to regress
+    # because they were barely over the bar to begin with
+    regress_below = threshold * regression_threshold.get(current_idx, 0.3)
+
+    # Sunk cost effect: risk-tolerant personas are stickier (invested emotionally)
+    regress_below *= (1.0 - risk * 0.25)
+
+    # Time decay: if stalled for many rounds, resistance to regression weakens
+    if rounds_since_advance > 5:
+        stall_factor = 1.0 + (rounds_since_advance - 5) * 0.08
+        regress_below *= stall_factor
+
+    if effective_signal < regress_below and current_idx > 0:
+        new_stage = stages[current_idx - 1]
+        persona["adoption_state"][domain_id] = new_stage
+        return new_stage
+
+    return current
+
+
 def persona_influence_score(persona: dict[str, Any], domain_id: str) -> float:
     """Calculate influence a persona exerts on a domain.
 

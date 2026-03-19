@@ -2,7 +2,7 @@
 
 from .graph import DomainGraph, build_graph_from_opportunities
 from .personas import generate_personas, PERSONA_TYPES
-from .simulation import run_simulation
+from .simulation import run_simulation, run_ensemble
 from .signals import (
     SIGNAL_TYPES, SHOCK_TEMPLATES, create_signal, create_shock,
     signals_from_opportunities, signals_from_graph,
