@@ -1,0 +1,154 @@
+{
+  "project_name": "spark-domain-chip-labs",
+  "project_root": ".",
+  "candidate_trials": [
+    {
+      "candidate_id": "global-baseline",
+      "candidate_summary": "Measure lab research quality floor with no focused workstream.",
+      "hypothesis": "The global baseline gives the current floor for lab research quality.",
+      "mutations": {}
+    },
+    {
+      "candidate_id": "quality-audit-full-portfolio",
+      "candidate_summary": "Run full quality rubric across all known domain chips.",
+      "hypothesis": "Full portfolio audit reveals the weakest chips and highest-priority improvements.",
+      "mutations": {
+        "research_focus": "quality_audit",
+        "benchmark_profile": "chip_quality_full"
+      }
+    },
+    {
+      "candidate_id": "methodology-evaluation-frameworks",
+      "candidate_summary": "Study evaluation framework patterns across mature chips.",
+      "hypothesis": "Extracting evaluation patterns from startup-yc and trading-crypto reveals portable scoring methodology.",
+      "mutations": {
+        "research_focus": "methodology",
+        "methodology_area": "evaluation_frameworks"
+      }
+    },
+    {
+      "candidate_id": "domain-discovery-github-trends",
+      "candidate_summary": "Scan GitHub trends for new domain chip opportunities.",
+      "hypothesis": "GitHub trending topics reveal high-demand domains without existing chips.",
+      "mutations": {
+        "research_focus": "domain_discovery",
+        "trend_source": "github"
+      }
+    },
+    {
+      "candidate_id": "transfer-patterns-startup-trading",
+      "candidate_summary": "Study what transfers between startup-yc and trading-crypto.",
+      "hypothesis": "Cross-chip transfer analysis reveals portable abstractions for the chip contract.",
+      "mutations": {
+        "research_focus": "transfer_patterns",
+        "portfolio_target": "startup-yc"
+      }
+    },
+    {
+      "candidate_id": "agi-theory-recursive-improvement",
+      "candidate_summary": "Research how domain chip specialization contributes to recursive self-improvement.",
+      "hypothesis": "Documenting the recursive improvement loop clarifies the path from specialized chips to general intelligence.",
+      "mutations": {
+        "research_focus": "agi_theory",
+        "agent_workstream": "agi_theorist"
+      }
+    }
+  ],
+  "chip": {
+    "manifest": "spark-chip.json",
+    "path": "."
+  },
+  "commands": {
+    "research": {
+      "kind": "chip-evaluate",
+      "args": [],
+      "cwd": ".",
+      "log_name": "lab-research.log"
+    }
+  },
+  "eval_metric": "lab_research_quality_score",
+  "eval_goal": "maximize",
+  "metrics": {
+    "lab_research_quality_score": {
+      "kind": "float",
+      "pattern": "^lab_research_quality_score:\\s+([0-9.]+)$"
+    },
+    "portfolio_health": {
+      "kind": "float",
+      "pattern": "^portfolio_health:\\s+([0-9.]+)$"
+    },
+    "methodology_coverage": {
+      "kind": "float",
+      "pattern": "^methodology_coverage:\\s+([0-9.]+)$"
+    },
+    "chips_evaluated": {
+      "kind": "int",
+      "pattern": "^chips_evaluated:\\s+([0-9]+)$"
+    },
+    "graduation_pipeline_count": {
+      "kind": "int",
+      "pattern": "^graduation_pipeline_count:\\s+([0-9]+)$"
+    }
+  },
+  "guardrails": {
+    "max_loop_iterations": 8,
+    "consecutive_discard_limit": 3,
+    "near_best_tolerance": 0.03,
+    "require_clean_git_for_self_edit": true,
+    "require_human_approval_for_self_edit": true,
+    "blocked_command_fragments": [
+      "shutdown",
+      "format",
+      "reg delete",
+      "Remove-Item",
+      "del /f",
+      "rm -rf"
+    ]
+  },
+  "intent": {
+    "goal": "Build the strongest domain chip research lab through recursive methodology improvement",
+    "outcome": "Discover reusable chip-building methodology, graduate new domain chips, and map the path from specialization to collective intelligence",
+    "frontier_mode": "open",
+    "resource_modes": [
+      "packets",
+      "memory",
+      "web"
+    ],
+    "success_criteria": [
+      "Graduate at least 1 new domain chip per quarter",
+      "Improve portfolio average quality score each cycle",
+      "Document cross-chip transfer patterns",
+      "Maintain zero chip contract violations in production"
+    ],
+    "search_queries": [],
+    "notes": ""
+  },
+  "memory": {
+    "backend": "local"
+  },
+  "mutable_parameters": [],
+  "mutable_targets": [
+    "src/chip_labs",
+    "docs",
+    "research",
+    "README.md",
+    "spark-chip.json"
+  ],
+  "self_edit": {
+    "git_mode": "manual",
+    "auto_push": false,
+    "branch_prefix": "self-edit/",
+    "main_branch": "main",
+    "mutable_targets": [
+      "src/chip_labs",
+      "docs",
+      "research",
+      "README.md",
+      "spark-chip.json"
+    ],
+    "prompt_preamble": "Keep the meta-chip small, deterministic, and methodology-focused. Domain-specific logic belongs in domain chips, not in the lab.",
+    "command": [],
+    "commit_message_template": "Apply self-edit proposal {proposal_id}"
+  },
+  "trainers": []
+}

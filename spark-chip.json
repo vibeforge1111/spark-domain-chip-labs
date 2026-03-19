@@ -1,0 +1,125 @@
+{
+  "schema_version": "spark-chip.v1",
+  "io_protocol": "spark-hook-io.v1",
+  "chip_name": "domain-chip-labs",
+  "domain": "chip-research",
+  "version": "0.1.0",
+  "description": "Meta-research lab for domain chip R&D, methodology improvement, portfolio quality management, and recursive self-improvement research.",
+  "capabilities": [
+    "evaluate",
+    "suggest",
+    "packets",
+    "watchtower"
+  ],
+  "commands": {
+    "evaluate": [
+      "python",
+      "-m",
+      "chip_labs.cli",
+      "evaluate"
+    ],
+    "suggest": [
+      "python",
+      "-m",
+      "chip_labs.cli",
+      "suggest"
+    ],
+    "packets": [
+      "python",
+      "-m",
+      "chip_labs.cli",
+      "packets"
+    ],
+    "watchtower": [
+      "python",
+      "-m",
+      "chip_labs.cli",
+      "watchtower"
+    ]
+  },
+  "frontier": {
+    "enabled": true,
+    "model": "claude",
+    "web_search": true,
+    "allowed_mutations": {
+      "research_focus": [
+        "domain_discovery",
+        "methodology",
+        "quality_audit",
+        "transfer_patterns",
+        "agi_theory",
+        "portfolio_health",
+        "integration_health"
+      ],
+      "portfolio_target": [
+        "startup-yc",
+        "trading-crypto",
+        "agentic-marketing",
+        "web-designer",
+        "content",
+        "pokemon-red",
+        "roblox-development",
+        "xcontent",
+        "vibe-incubator",
+        "predictive-worlds-lab"
+      ],
+      "methodology_area": [
+        "evaluation_frameworks",
+        "evidence_lanes",
+        "scoring_systems",
+        "graduation_criteria",
+        "frontier_design",
+        "source_registry",
+        "packet_quality"
+      ],
+      "benchmark_profile": [
+        "chip_quality_full",
+        "manifest_only",
+        "integration_health",
+        "collective_sync",
+        "evidence_separation"
+      ],
+      "trend_source": [
+        "github",
+        "producthunt",
+        "x_twitter",
+        "arxiv",
+        "community",
+        "spark_ecosystem",
+        "vc_landscape"
+      ],
+      "agent_workstream": [
+        "frontier_scout",
+        "methodology_researcher",
+        "chip_architect",
+        "benchmark_engineer",
+        "integration_specialist",
+        "growth_analyst",
+        "agi_theorist"
+      ]
+    },
+    "field_patterns": {
+      "research_focus": "^[a-z0-9_]+$",
+      "portfolio_target": "^[a-z0-9_-]+$",
+      "methodology_area": "^[a-z0-9_]+$",
+      "benchmark_profile": "^[a-z0-9_]+$",
+      "trend_source": "^[a-z0-9_]+$",
+      "agent_workstream": "^[a-z0-9_]+$"
+    },
+    "required_fields": [
+      "research_focus"
+    ],
+    "open_mutation_fields": [
+      "portfolio_target",
+      "trend_source"
+    ],
+    "prompt_hints": [
+      "Focus on what transfers across domains, not domain-specific details.",
+      "Prove in one chip, prove in two chips, then promote to methodology doctrine.",
+      "The lab's real-world eval is chip graduation success rate.",
+      "Prefer studying existing mature chips (startup-yc, trading-crypto) before theorizing.",
+      "Every methodology change must be benchmark-tested before promotion.",
+      "Keep the meta-chip small and deterministic. Domain logic belongs in domain chips."
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+artifacts/
+obsidian-vault/
+__pycache__/
+*.egg-info/
+.spark-swarm/
+*.pyc
+*.pyo
+dist/
+build/
+.eggs/
+*.log
+.env
+.env.local
+.env.dspy.local
