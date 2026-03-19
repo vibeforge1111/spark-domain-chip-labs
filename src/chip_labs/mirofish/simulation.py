@@ -296,6 +296,11 @@ def _propagate_influence(
     Uses geometric mean of influence scores to prevent large agent counts
     from overwhelming individual adoption thresholds. The influence
     represents "quality of adoption signal" not "quantity of adopters".
+
+    Graph topology effects:
+    - ENABLES edges propagate positive influence (domain A adoption boosts B)
+    - EXTENDS edges propagate stronger positive influence (proven ecosystem)
+    - COMPETES_WITH edges propagate negative influence (competitive displacement)
     """
     influence_map: dict[str, float] = {}
     for domain_id in domains:
@@ -326,14 +331,97 @@ def _propagate_influence(
         # Combined: adoption breadth * influence quality
         influence_map[domain_id] = round(adoption_fraction * avg_influence, 4)
 
-    # Apply aggregate influence as additional awareness
+    # Phase 2b: Graph topology propagation
+    # Influence flows along graph edges between domains
+    topology_bonus: dict[str, float] = {d: 0.0 for d in domains}
+    topology_penalty: dict[str, float] = {d: 0.0 for d in domains}
+
+    for domain_id in domains:
+        if domain_id not in graph.nodes:
+            continue
+        edges = graph.get_edges_for(domain_id)
+        for edge in edges:
+            other = edge["target"] if edge["source"] == domain_id else edge["source"]
+            if other not in influence_map:
+                continue
+
+            rel = edge.get("relationship", "")
+            weight = edge.get("weight", 0.5)
+            neighbor_influence = influence_map.get(other, 0.0)
+
+            if rel == "ENABLES":
+                # Synergistic: adoption of enabler boosts this domain
+                topology_bonus[domain_id] += neighbor_influence * weight * 0.3
+            elif rel == "EXTENDS":
+                # Proven ecosystem: stronger boost
+                topology_bonus[domain_id] += neighbor_influence * weight * 0.4
+            elif rel == "COMPETES_WITH":
+                # Competitive displacement: competitor adoption hurts this domain
+                topology_penalty[domain_id] += neighbor_influence * weight * 0.5
+
+    # Apply aggregate influence + topology as additional awareness
     for persona in personas:
         for domain_id in domains:
             current_stage = persona["adoption_state"].get(domain_id, "unaware")
             if current_stage in ("unaware", "aware", "interested"):
-                aggregate = influence_map.get(domain_id, 0.0)
+                base = influence_map.get(domain_id, 0.0)
+                bonus = topology_bonus.get(domain_id, 0.0)
+                penalty = topology_penalty.get(domain_id, 0.0)
+                aggregate = max(0.0, base + bonus - penalty)
                 if aggregate > persona["adoption_threshold"] * 0.8:
                     persona_evaluates_domain(persona, domain_id, aggregate)
+
+        # Competitive displacement: if persona adopted domain A and A
+        # COMPETES_WITH domain B, raise B's effective threshold for this
+        # persona (they already picked a winner in that space).
+        _apply_competitive_displacement(persona, domains, graph)
+
+
+def _apply_competitive_displacement(
+    persona: dict[str, Any],
+    domains: list[str],
+    graph: DomainGraph,
+) -> None:
+    """If persona adopted domain A and A COMPETES_WITH B, regress B.
+
+    Models the "I already picked a winner" effect. Once you've committed
+    to one competing domain, the rival loses mindshare. Only triggers
+    from adopted/advocating stages (real commitment, not just interest).
+
+    Displacement is gentle — drops one stage at most — because personas
+    can rationally use competing products (just less likely to champion both).
+    """
+    stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
+
+    # Collect domains this persona has strongly committed to
+    committed = {
+        d_id for d_id, stage in persona["adoption_state"].items()
+        if stage in ("adopted", "advocating")
+    }
+    if not committed:
+        return
+
+    for adopted_domain in committed:
+        if adopted_domain not in graph.nodes:
+            continue
+        edges = graph.get_edges_for(adopted_domain)
+        for edge in edges:
+            if edge.get("relationship") != "COMPETES_WITH":
+                continue
+            competitor = edge["target"] if edge["source"] == adopted_domain else edge["source"]
+            if competitor not in persona["adoption_state"]:
+                continue
+
+            comp_stage = persona["adoption_state"][competitor]
+            comp_idx = stages.index(comp_stage) if comp_stage in stages else 0
+
+            # Only displace if competitor is in early-mid funnel
+            # Don't displace already-adopted (sunk cost too high)
+            if comp_idx in (1, 2, 3):  # aware, interested, evaluating
+                weight = edge.get("weight", 0.5)
+                # Stronger competition = more displacement
+                if weight > 0.7:
+                    persona["adoption_state"][competitor] = stages[comp_idx - 1]
 
 
 def _adoption_snapshot(

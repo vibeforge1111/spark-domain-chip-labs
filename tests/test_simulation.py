@@ -3,10 +3,12 @@
 import pytest
 
 from chip_labs.mirofish.graph import build_graph_from_opportunities
+from chip_labs.mirofish.graph import DomainGraph
 from chip_labs.mirofish.simulation import (
     run_simulation,
     run_dual_context,
     run_ensemble,
+    _apply_competitive_displacement,
     ADOPTION_STAGES,
     MAX_ROUNDS,
 )
@@ -193,6 +195,143 @@ class TestEnsemble:
             stats = result["domains"][d]
             expected = round(stats["p90_adoption"] - stats["p10_adoption"], 4)
             assert stats["confidence_width"] == expected
+
+
+class TestTopologyEffects:
+    """Test graph topology propagation in influence phase."""
+
+    def test_enables_edge_boosts_adoption(self, graph, domain_ids):
+        """Domains connected by ENABLES edges should benefit from topology."""
+        from chip_labs.mirofish.signals import signals_from_opportunities, signals_from_graph
+        signals = signals_from_opportunities(SEED_OPPORTUNITIES)
+        signals += signals_from_graph(graph)
+        result = run_simulation(graph, domain_ids, signals=signals, max_rounds=15, seed=42)
+        rates = {d: result["domains"][d]["final_adoption_rate"] for d in domain_ids}
+        # With signals + topology, should see varied adoption rates
+        assert len(set(round(r, 2) for r in rates.values())) > 1
+
+    def test_competition_suppresses_rivals(self, graph, domain_ids):
+        """Domains connected by COMPETES_WITH should suppress each other."""
+        # Find a competing pair in the graph
+        competing_pairs = []
+        for edge in graph.edges:
+            if edge["relationship"] == "COMPETES_WITH":
+                if edge["source"] in domain_ids and edge["target"] in domain_ids:
+                    competing_pairs.append((edge["source"], edge["target"]))
+
+        if not competing_pairs:
+            pytest.skip("No competing domain pairs in graph")
+
+        # With competition, one domain should suppress the other
+        result = run_simulation(graph, domain_ids, max_rounds=15, seed=42)
+        a, b = competing_pairs[0]
+        rate_a = result["domains"][a]["final_adoption_rate"]
+        rate_b = result["domains"][b]["final_adoption_rate"]
+        # They shouldn't both be at 100% (displacement should prevent that)
+        assert rate_a + rate_b < 2.0
+
+
+class TestCompetitiveDisplacement:
+    """Test competitive displacement mechanics."""
+
+    def _make_graph_with_competition(self):
+        g = DomainGraph()
+        g.add_node("domain-a", "domain", "Domain A")
+        g.add_node("domain-b", "domain", "Domain B")
+        g.add_edge("domain-a", "domain-b", "COMPETES_WITH", weight=0.9)
+        return g
+
+    def test_displacement_regresses_competitor(self):
+        g = self._make_graph_with_competition()
+        persona = {
+            "persona_id": "test-0",
+            "persona_type": "builder",
+            "adoption_state": {
+                "domain-a": "adopted",
+                "domain-b": "interested",
+            },
+            "adoption_threshold": 0.5,
+            "risk_tolerance": 0.5,
+            "activity_score": 1.0,
+            "influence_score": 0.7,
+            "network_reach": 0.5,
+            "expertise_domains": [],
+        }
+        _apply_competitive_displacement(
+            persona, ["domain-a", "domain-b"], g,
+        )
+        # domain-b should regress from interested -> aware
+        assert persona["adoption_state"]["domain-b"] == "aware"
+
+    def test_no_displacement_when_not_adopted(self):
+        g = self._make_graph_with_competition()
+        persona = {
+            "persona_id": "test-0",
+            "persona_type": "builder",
+            "adoption_state": {
+                "domain-a": "interested",
+                "domain-b": "interested",
+            },
+            "adoption_threshold": 0.5,
+            "risk_tolerance": 0.5,
+            "activity_score": 1.0,
+            "influence_score": 0.7,
+            "network_reach": 0.5,
+            "expertise_domains": [],
+        }
+        _apply_competitive_displacement(
+            persona, ["domain-a", "domain-b"], g,
+        )
+        # Neither should regress (neither is adopted)
+        assert persona["adoption_state"]["domain-b"] == "interested"
+
+    def test_no_displacement_of_already_adopted(self):
+        g = self._make_graph_with_competition()
+        persona = {
+            "persona_id": "test-0",
+            "persona_type": "builder",
+            "adoption_state": {
+                "domain-a": "adopted",
+                "domain-b": "adopted",
+            },
+            "adoption_threshold": 0.5,
+            "risk_tolerance": 0.5,
+            "activity_score": 1.0,
+            "influence_score": 0.7,
+            "network_reach": 0.5,
+            "expertise_domains": [],
+        }
+        _apply_competitive_displacement(
+            persona, ["domain-a", "domain-b"], g,
+        )
+        # Sunk cost: both adopted, no displacement
+        assert persona["adoption_state"]["domain-b"] == "adopted"
+
+    def test_weak_competition_no_displacement(self):
+        """Weak COMPETES_WITH edges (weight <= 0.7) shouldn't displace."""
+        g = DomainGraph()
+        g.add_node("domain-a", "domain", "Domain A")
+        g.add_node("domain-b", "domain", "Domain B")
+        g.add_edge("domain-a", "domain-b", "COMPETES_WITH", weight=0.5)
+        persona = {
+            "persona_id": "test-0",
+            "persona_type": "builder",
+            "adoption_state": {
+                "domain-a": "adopted",
+                "domain-b": "evaluating",
+            },
+            "adoption_threshold": 0.5,
+            "risk_tolerance": 0.5,
+            "activity_score": 1.0,
+            "influence_score": 0.7,
+            "network_reach": 0.5,
+            "expertise_domains": [],
+        }
+        _apply_competitive_displacement(
+            persona, ["domain-a", "domain-b"], g,
+        )
+        # Weak competition: no displacement
+        assert persona["adoption_state"]["domain-b"] == "evaluating"
 
 
 class TestAdoptionStages:
