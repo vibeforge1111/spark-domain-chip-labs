@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiroFish Knowledge Graph - 1000-Agent Trend Prediction</title>
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0f;
+    color: #e0e0e0;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    cursor: crosshair;
+  }
+
+  /* ===== TOP NAV BAR ===== */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 48px;
+    background: linear-gradient(180deg, rgba(15,15,25,0.98) 0%, rgba(10,10,18,0.95) 100%);
+    border-bottom: 1px solid rgba(0,255,136,0.15);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  #navbar .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; font-weight: 700; color: #00ff88;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  #navbar .brand .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #00ff88;
+    box-shadow: 0 0 8px #00ff88;
+    animation: pulse-dot 2s ease infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px #00ff88; }
+    50% { opacity: 0.5; box-shadow: 0 0 16px #00ff88; }
+  }
+
+  /* Mini sparkline charts in navbar */
+  .nav-chart {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px;
+  }
+  .nav-chart-label {
+    font-size: 9px; color: rgba(255,255,255,0.4);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .nav-chart canvas {
+    border-radius: 4px;
+    background: rgba(255,255,255,0.03);
+  }
+  .nav-stats {
+    display: flex; gap: 24px; align-items: center;
+  }
+  .nav-stat {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 1px;
+  }
+  .nav-stat .value {
+    font-size: 16px; font-weight: 700; color: #00ff88;
+  }
+  .nav-stat .label {
+    font-size: 8px; color: rgba(255,255,255,0.35);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* ===== MAIN CANVAS ===== */
+  #graph-canvas {
+    position: fixed; top: 48px; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+  }
+
+  /* ===== LEFT PANEL ===== */
+  #left-panel {
+    position: fixed; top: 56px; left: 8px; bottom: 8px;
+    width: 280px;
+    background: rgba(12,12,20,0.92);
+    border: 1px solid rgba(0,255,136,0.1);
+    border-radius: 12px;
+    z-index: 50;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+  .panel-header {
+    padding: 12px 14px 8px;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: #00ff88;
+    border-bottom: 1px solid rgba(0,255,136,0.08);
+  }
+  .panel-section {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .panel-section h3 {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(255,255,255,0.35); margin-bottom: 8px;
+  }
+
+  /* ===== RIGHT PANEL ===== */
+  #right-panel {
+    position: fixed; top: 56px; right: 8px; bottom: 8px;
+    width: 300px;
+    background: rgba(12,12,20,0.92);
+    border: 1px solid rgba(0,255,136,0.1);
+    border-radius: 12px;
+    z-index: 50;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+
+  /* Activity feed */
+  #activity-feed {
+    flex: 1; overflow-y: auto; padding: 6px 12px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,255,136,0.2) transparent;
+  }
+  #activity-feed::-webkit-scrollbar { width: 4px; }
+  #activity-feed::-webkit-scrollbar-thumb { background: rgba(0,255,136,0.2); border-radius: 2px; }
+  .feed-item {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-size: 10px;
+    animation: feed-in 0.3s ease;
+  }
+  @keyframes feed-in {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .feed-time {
+    color: rgba(255,255,255,0.25); font-size: 9px;
+  }
+  .feed-event {
+    color: rgba(255,255,255,0.7); margin-top: 2px;
+  }
+  .feed-highlight { color: #00ff88; }
+  .feed-warn { color: #ff6b35; }
+  .feed-purple { color: #a855f7; }
+
+  /* Ranking list */
+  .rank-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 5px 0;
+    font-size: 10px;
+  }
+  .rank-pos {
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700;
+    background: rgba(0,255,136,0.1);
+    color: #00ff88;
+  }
+  .rank-pos.top3 { background: rgba(0,255,136,0.2); }
+  .rank-name {
+    flex: 1; color: rgba(255,255,255,0.8);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .rank-bar {
+    width: 50px; height: 4px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px; overflow: hidden;
+  }
+  .rank-bar-fill {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(90deg, #00ff88, #00cc6a);
+    transition: width 1s ease;
+  }
+  .rank-value {
+    width: 40px; text-align: right;
+    font-size: 10px; color: #00ff88; font-weight: 600;
+  }
+  .tag {
+    font-size: 8px; padding: 1px 5px; border-radius: 3px;
+    font-weight: 600;
+  }
+  .tag-production { background: rgba(0,255,136,0.15); color: #00ff88; }
+  .tag-beta { background: rgba(168,85,247,0.15); color: #a855f7; }
+  .tag-alpha { background: rgba(59,130,246,0.15); color: #3b82f6; }
+  .tag-new { background: rgba(255,107,53,0.15); color: #ff6b35; }
+
+  /* ===== MINIMAP ===== */
+  #minimap {
+    position: fixed; bottom: 16px; left: 296px;
+    width: 180px; height: 120px;
+    background: rgba(12,12,20,0.9);
+    border: 1px solid rgba(0,255,136,0.15);
+    border-radius: 8px;
+    z-index: 50;
+    overflow: hidden;
+  }
+  #minimap canvas { width: 100%; height: 100%; }
+
+  /* ===== TOOLTIP ===== */
+  #tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: rgba(8,8,16,0.95);
+    border: 1px solid rgba(0,255,136,0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 11px;
+    max-width: 320px;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  #tooltip.visible { opacity: 1; }
+  #tooltip .tt-title {
+    font-size: 13px; font-weight: 700; color: #00ff88;
+    margin-bottom: 6px;
+  }
+  #tooltip .tt-type {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(255,255,255,0.4); margin-bottom: 8px;
+  }
+  #tooltip .tt-row {
+    display: flex; justify-content: space-between;
+    padding: 2px 0; color: rgba(255,255,255,0.65);
+  }
+  #tooltip .tt-val { color: #00ff88; font-weight: 600; }
+  #tooltip canvas {
+    margin-top: 8px; border-radius: 4px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  /* ===== BOTTOM BAR ===== */
+  #bottom-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 32px;
+    background: rgba(10,10,18,0.95);
+    border-top: 1px solid rgba(0,255,136,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    z-index: 100;
+  }
+  .status-item {
+    display: flex; align-items: center; gap: 6px;
+  }
+  .status-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+  }
+  .status-dot.green { background: #00ff88; box-shadow: 0 0 4px #00ff88; }
+  .status-dot.yellow { background: #fbbf24; box-shadow: 0 0 4px #fbbf24; }
+  .status-dot.red { background: #ef4444; box-shadow: 0 0 4px #ef4444; }
+
+  /* ===== LEGEND ===== */
+  .legend-row {
+    display: flex; align-items: center; gap: 6px;
+    padding: 3px 0; font-size: 10px;
+    color: rgba(255,255,255,0.6);
+  }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-line {
+    width: 20px; height: 2px; flex-shrink: 0;
+    border-radius: 1px;
+  }
+
+  /* ===== ROUND INDICATOR ===== */
+  #round-indicator {
+    position: fixed; bottom: 44px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(12,12,20,0.9);
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 20px;
+    padding: 6px 20px;
+    font-size: 12px;
+    color: #00ff88;
+    z-index: 60;
+    display: flex; align-items: center; gap: 12px;
+    backdrop-filter: blur(8px);
+  }
+  #round-indicator .round-num {
+    font-size: 18px; font-weight: 700;
+  }
+  #round-indicator .round-label {
+    font-size: 9px; text-transform: uppercase;
+    letter-spacing: 1px; color: rgba(255,255,255,0.4);
+  }
+  .play-btn {
+    width: 24px; height: 24px;
+    border: 1px solid rgba(0,255,136,0.3);
+    border-radius: 50%;
+    background: rgba(0,255,136,0.05);
+    color: #00ff88;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    transition: all 0.2s;
+  }
+  .play-btn:hover {
+    background: rgba(0,255,136,0.15);
+    border-color: rgba(0,255,136,0.5);
+  }
+
+  /* ===== SPEED SLIDER ===== */
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 80px; height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #00ff88;
+    cursor: pointer;
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,255,136,0.15); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div id="navbar">
+  <div class="brand">
+    <div class="dot"></div>
+    <span>MiroFish</span>
+    <span style="color: rgba(255,255,255,0.3); font-weight: 400; font-size: 11px;">Knowledge Graph</span>
+  </div>
+
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <div class="nav-chart">
+      <div class="nav-chart-label">Adoption Curve</div>
+      <canvas id="nav-chart-left" width="140" height="32"></canvas>
+    </div>
+    <div class="nav-stats">
+      <div class="nav-stat">
+        <div class="value" id="stat-agents">1000</div>
+        <div class="label">Agents</div>
+      </div>
+      <div class="nav-stat">
+        <div class="value" id="stat-domains">32</div>
+        <div class="label">Domains</div>
+      </div>
+      <div class="nav-stat">
+        <div class="value" id="stat-signals">758</div>
+        <div class="label">Signals</div>
+      </div>
+      <div class="nav-stat">
+        <div class="value" id="stat-adopted">0</div>
+        <div class="label">Adopted</div>
+      </div>
+    </div>
+    <div class="nav-chart">
+      <div class="nav-chart-label">Signal Activity</div>
+      <canvas id="nav-chart-right" width="140" height="32"></canvas>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 12px; align-items: center;">
+    <div style="font-size: 10px; color: rgba(255,255,255,0.3);">
+      Scroll: zoom | Drag: pan | Click: inspect
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CANVAS -->
+<canvas id="graph-canvas"></canvas>
+
+<!-- LEFT PANEL -->
+<div id="left-panel">
+  <div class="panel-header">Domain Rankings</div>
+
+  <div class="panel-section">
+    <h3>Top Domains by Adoption</h3>
+    <div id="ranking-list"></div>
+  </div>
+
+  <div class="panel-section">
+    <h3>Persona Distribution</h3>
+    <canvas id="persona-chart" width="252" height="120"></canvas>
+  </div>
+
+  <div class="panel-section">
+    <h3>Legend</h3>
+    <div class="legend-row"><div class="legend-dot" style="background:#00ff88;"></div> Domain (Existing)</div>
+    <div class="legend-row"><div class="legend-dot" style="background:#ff6b35;"></div> Domain (Candidate)</div>
+    <div class="legend-row"><div class="legend-dot" style="background:#3b82f6;"></div> Technology</div>
+    <div class="legend-row"><div class="legend-dot" style="background:#a855f7;"></div> Platform</div>
+    <div class="legend-row"><div class="legend-dot" style="background:#fbbf24;"></div> Community</div>
+    <div class="legend-row"><div class="legend-dot" style="background:#ef4444;"></div> Regulation</div>
+    <div class="legend-row"><div class="legend-line" style="background:rgba(0,255,136,0.3);"></div> ENABLES / EXTENDS</div>
+    <div class="legend-row"><div class="legend-line" style="background:rgba(255,107,53,0.3);"></div> COMPETES_WITH</div>
+  </div>
+
+  <div class="panel-section" style="flex: 1; overflow-y: auto;">
+    <h3>Builder vs Enterprise</h3>
+    <canvas id="comparison-chart" width="252" height="160"></canvas>
+  </div>
+</div>
+
+<!-- RIGHT PANEL -->
+<div id="right-panel">
+  <div class="panel-header">Simulation Activity</div>
+
+  <div class="panel-section">
+    <h3>Adoption Curves (Selected)</h3>
+    <canvas id="adoption-chart" width="272" height="140"></canvas>
+  </div>
+
+  <div class="panel-section">
+    <h3>Shock Events</h3>
+    <div id="shock-timeline"></div>
+  </div>
+
+  <div class="panel-header" style="border-bottom: 1px solid rgba(0,255,136,0.08);">Live Feed</div>
+  <div id="activity-feed"></div>
+</div>
+
+<!-- MINIMAP -->
+<div id="minimap">
+  <canvas id="minimap-canvas"></canvas>
+</div>
+
+<!-- ROUND INDICATOR -->
+<div id="round-indicator">
+  <button class="play-btn" id="play-btn" title="Play/Pause">&#9654;</button>
+  <div>
+    <div class="round-label">Simulation Round</div>
+    <div class="round-num" id="round-num">0</div>
+  </div>
+  <div style="font-size:10px;color:rgba(255,255,255,0.3);">/ 20</div>
+  <input type="range" id="round-slider" min="0" max="20" value="0" title="Scrub rounds">
+  <div style="display:flex;flex-direction:column;align-items:center;">
+    <div style="font-size:8px;color:rgba(255,255,255,0.25);text-transform:uppercase;">Speed</div>
+    <input type="range" id="speed-slider" min="1" max="10" value="4" style="width:50px;">
+  </div>
+</div>
+
+<!-- TOOLTIP -->
+<div id="tooltip">
+  <div class="tt-title"></div>
+  <div class="tt-type"></div>
+  <div class="tt-body"></div>
+</div>
+
+<!-- BOTTOM BAR -->
+<div id="bottom-bar">
+  <div style="display:flex;gap:16px;">
+    <div class="status-item"><div class="status-dot green"></div> Simulation Active</div>
+    <div class="status-item">Nodes: <span id="status-nodes">0</span></div>
+    <div class="status-item">Edges: <span id="status-edges">0</span></div>
+  </div>
+  <div style="display:flex;gap:16px;">
+    <div class="status-item">Camera: <span id="status-camera">0,0</span></div>
+    <div class="status-item">Zoom: <span id="status-zoom">1.0x</span></div>
+    <div class="status-item" style="color:rgba(0,255,136,0.5);">MiroFish v1.0 | 1000 Agents | spark-domain-chip-labs</div>
+  </div>
+</div>
+
+<script>
+// ============================================================================
+// DATA (embedded from export)
+// ============================================================================
+let DATA = null;
+
+async function loadData() {
+  try {
+    const resp = await fetch('mirofish_data.json');
+    DATA = await resp.json();
+  } catch(e) {
+    // Fallback: try inline
+    console.error('Failed to load data:', e);
+    return;
+  }
+  init();
+}
+
+// ============================================================================
+// GRAPH ENGINE
+// ============================================================================
+
+const canvas = document.getElementById('graph-canvas');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+let camera = { x: 0, y: 0, zoom: 1 };
+let nodes = [];
+let edges = [];
+let hoveredNode = null;
+let selectedNode = null;
+let isDragging = false;
+let dragStart = { x: 0, y: 0 };
+let camStart = { x: 0, y: 0 };
+let currentRound = 0;
+let isPlaying = false;
+let playTimer = null;
+let feedItems = [];
+let frameCount = 0;
+
+// Color palette
+const COLORS = {
+  domain_existing: '#00ff88',
+  domain_candidate: '#ff6b35',
+  technology: '#3b82f6',
+  platform: '#a855f7',
+  community: '#fbbf24',
+  regulation: '#ef4444',
+  trend: '#06b6d4',
+  company: '#ec4899',
+  edge_enables: 'rgba(0,255,136,0.12)',
+  edge_competes: 'rgba(255,107,53,0.12)',
+  edge_depends: 'rgba(59,130,246,0.08)',
+  edge_default: 'rgba(255,255,255,0.04)',
+};
+
+function getNodeColor(node) {
+  if (node.type === 'domain') {
+    return node.isExisting ? COLORS.domain_existing : COLORS.domain_candidate;
+  }
+  return COLORS[node.type] || '#888';
+}
+
+function getEdgeColor(edge) {
+  if (edge.relationship === 'ENABLES' || edge.relationship === 'EXTENDS') return COLORS.edge_enables;
+  if (edge.relationship === 'COMPETES_WITH') return COLORS.edge_competes;
+  if (edge.relationship === 'DEPENDS_ON') return COLORS.edge_depends;
+  return COLORS.edge_default;
+}
+
+// ============================================================================
+// FORCE-DIRECTED LAYOUT
+// ============================================================================
+
+function initLayout() {
+  const domainData = {};
+  DATA.domains.forEach(d => { domainData[d.domain_id] = d; });
+
+  // Create nodes
+  nodes = DATA.graph_nodes.map((n, i) => {
+    const dd = domainData[n.id];
+    const isDomain = n.type === 'domain';
+    const isExisting = dd ? dd.is_existing : false;
+
+    // Size based on adoption or type
+    let radius = 8;
+    if (isDomain && dd) {
+      radius = 14 + dd.builder_adoption * 20;
+    } else if (n.type === 'technology') {
+      radius = 10;
+    } else if (n.type === 'platform') {
+      radius = 9;
+    } else {
+      radius = 7;
+    }
+
+    // Position: radial layout with domains in center
+    const angle = (i / DATA.graph_nodes.length) * Math.PI * 2;
+    let dist = 350;
+    if (isDomain) dist = 180 + Math.random() * 120;
+    else if (n.type === 'technology') dist = 350 + Math.random() * 80;
+    else dist = 420 + Math.random() * 100;
+
+    return {
+      id: n.id,
+      label: n.label,
+      type: n.type,
+      isDomain,
+      isExisting,
+      domainData: dd || null,
+      x: Math.cos(angle) * dist + (Math.random() - 0.5) * 60,
+      y: Math.sin(angle) * dist + (Math.random() - 0.5) * 60,
+      vx: 0, vy: 0,
+      radius,
+      baseRadius: radius,
+      pulsePhase: Math.random() * Math.PI * 2,
+      glowIntensity: isDomain ? 0.6 : 0.3,
+    };
+  });
+
+  // Create edges (sample for performance)
+  const nodeMap = {};
+  nodes.forEach(n => { nodeMap[n.id] = n; });
+
+  // Only include edges where both nodes exist
+  const filteredEdges = DATA.graph_edges.filter(e =>
+    nodeMap[e.source] && nodeMap[e.target]
+  );
+
+  // Sample edges for visualization (show max ~200 for readability)
+  const edgeSample = filteredEdges.length > 200
+    ? filteredEdges.filter(e => e.weight > 0.3 || e.relationship === 'ENABLES' || e.relationship === 'EXTENDS')
+    : filteredEdges;
+
+  edges = edgeSample.map(e => ({
+    source: nodeMap[e.source],
+    target: nodeMap[e.target],
+    relationship: e.relationship,
+    weight: e.weight,
+  }));
+
+  // Run force simulation for initial layout
+  for (let iter = 0; iter < 200; iter++) {
+    forceStep(0.3 * (1 - iter / 200));
+  }
+}
+
+function forceStep(alpha) {
+  const k = 120; // repulsion distance
+  const gravity = 0.01;
+
+  // Repulsion between all nodes
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j];
+      let dx = b.x - a.x;
+      let dy = b.y - a.y;
+      let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      let force = (k * k) / dist;
+      let fx = (dx / dist) * force * alpha;
+      let fy = (dy / dist) * force * alpha;
+      a.vx -= fx; a.vy -= fy;
+      b.vx += fx; b.vy += fy;
+    }
+  }
+
+  // Attraction along edges
+  edges.forEach(e => {
+    let dx = e.target.x - e.source.x;
+    let dy = e.target.y - e.source.y;
+    let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    let force = (dist - 100) * 0.005 * alpha;
+    let fx = (dx / dist) * force;
+    let fy = (dy / dist) * force;
+    e.source.vx += fx; e.source.vy += fy;
+    e.target.vx -= fx; e.target.vy -= fy;
+  });
+
+  // Gravity toward center
+  nodes.forEach(n => {
+    n.vx -= n.x * gravity * alpha;
+    n.vy -= n.y * gravity * alpha;
+    n.x += n.vx;
+    n.y += n.vy;
+    n.vx *= 0.8;
+    n.vy *= 0.8;
+  });
+}
+
+// ============================================================================
+// RENDERING
+// ============================================================================
+
+function render() {
+  frameCount++;
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight - 48;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Background gradient
+  const bgGrad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W, H) * 0.7);
+  bgGrad.addColorStop(0, 'rgba(15,15,30,1)');
+  bgGrad.addColorStop(1, 'rgba(5,5,12,1)');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Grid
+  drawGrid();
+
+  ctx.save();
+  ctx.translate(W/2 + camera.x, H/2 + camera.y);
+  ctx.scale(camera.zoom, camera.zoom);
+
+  // Draw edges
+  edges.forEach(drawEdge);
+
+  // Draw nodes (non-domain first, then domain on top)
+  const nonDomains = nodes.filter(n => !n.isDomain);
+  const domains = nodes.filter(n => n.isDomain);
+  nonDomains.forEach(n => drawNode(n));
+  domains.forEach(n => drawNode(n));
+
+  ctx.restore();
+
+  // Update UI
+  updateMinimap();
+  updateStatusBar();
+
+  requestAnimationFrame(render);
+}
+
+function drawGrid() {
+  const gridSize = 60 * camera.zoom;
+  const offsetX = (camera.x + W/2) % gridSize;
+  const offsetY = (camera.y + H/2) % gridSize;
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.015)';
+  ctx.lineWidth = 0.5;
+
+  for (let x = offsetX; x < W; x += gridSize) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, H);
+    ctx.stroke();
+  }
+  for (let y = offsetY; y < H; y += gridSize) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(W, y);
+    ctx.stroke();
+  }
+}
+
+function drawEdge(edge) {
+  const s = edge.source, t = edge.target;
+  const color = getEdgeColor(edge);
+
+  // Curved edges
+  const mx = (s.x + t.x) / 2;
+  const my = (s.y + t.y) / 2;
+  const dx = t.x - s.x;
+  const dy = t.y - s.y;
+  const offset = Math.min(30, Math.sqrt(dx*dx + dy*dy) * 0.1);
+  const cx = mx + dy * 0.08;
+  const cy = my - dx * 0.08;
+
+  ctx.beginPath();
+  ctx.moveTo(s.x, s.y);
+  ctx.quadraticCurveTo(cx, cy, t.x, t.y);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = Math.max(0.5, edge.weight * 1.5);
+  ctx.stroke();
+}
+
+function drawNode(node) {
+  const time = frameCount * 0.02;
+  const pulse = 1 + Math.sin(time + node.pulsePhase) * 0.08;
+  const r = node.radius * pulse;
+  const color = getNodeColor(node);
+  const isHovered = hoveredNode === node;
+  const isSelected = selectedNode === node;
+
+  // Adoption glow for domains
+  if (node.isDomain && node.domainData) {
+    const adoption = getAdoptionAtRound(node.domainData, currentRound);
+    const glowRadius = r * (1.5 + adoption * 2);
+    const glow = ctx.createRadialGradient(node.x, node.y, r, node.x, node.y, glowRadius);
+    glow.addColorStop(0, color.replace(')', ',0.15)').replace('rgb', 'rgba'));
+    glow.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, glowRadius, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Outer glow on hover/select
+  if (isHovered || isSelected) {
+    const glowR = r * 2.5;
+    const glow = ctx.createRadialGradient(node.x, node.y, r, node.x, node.y, glowR);
+    glow.addColorStop(0, color.replace(')', ',0.25)').replace('rgb', 'rgba').replace('#', ''));
+    glow.addColorStop(1, 'rgba(0,0,0,0)');
+
+    // For hex colors, parse them
+    ctx.fillStyle = `${color}20`;
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, glowR, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Main circle
+  ctx.beginPath();
+  ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
+  const grad = ctx.createRadialGradient(
+    node.x - r * 0.3, node.y - r * 0.3, 0,
+    node.x, node.y, r
+  );
+  grad.addColorStop(0, color);
+  grad.addColorStop(1, adjustBrightness(color, -40));
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Ring
+  ctx.strokeStyle = isHovered || isSelected ? color : adjustAlpha(color, 0.4);
+  ctx.lineWidth = isHovered || isSelected ? 2 : 1;
+  ctx.stroke();
+
+  // Adoption ring for domains
+  if (node.isDomain && node.domainData) {
+    const adoption = getAdoptionAtRound(node.domainData, currentRound);
+    if (adoption > 0) {
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, r + 4, -Math.PI/2, -Math.PI/2 + Math.PI * 2 * adoption);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+  }
+
+  // Label
+  if (camera.zoom > 0.5 || node.isDomain || isHovered) {
+    ctx.font = `${isHovered ? 'bold ' : ''}${node.isDomain ? 10 : 8}px 'JetBrains Mono', monospace`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.6)';
+    const labelY = node.y + r + 6;
+
+    // Background for label
+    const textW = ctx.measureText(node.label).width + 8;
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillRect(node.x - textW/2, labelY - 1, textW, 13);
+
+    ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.6)';
+    ctx.fillText(node.label, node.x, labelY);
+  }
+}
+
+function getAdoptionAtRound(domainData, round) {
+  if (!domainData || !domainData.builder_curve) return 0;
+  const curve = domainData.builder_curve;
+  if (round >= curve.length) return domainData.builder_adoption;
+  if (round < 0) return 0;
+  return curve[round] ? curve[round].adoption_rate : 0;
+}
+
+// ============================================================================
+// COLOR HELPERS
+// ============================================================================
+
+function hexToRgb(hex) {
+  if (hex.startsWith('rgba') || hex.startsWith('rgb')) return hex;
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if (result) {
+    return { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) };
+  }
+  return { r: 128, g: 128, b: 128 };
+}
+
+function adjustBrightness(color, amount) {
+  const rgb = hexToRgb(color);
+  if (typeof rgb === 'string') return rgb;
+  return `rgb(${Math.max(0,Math.min(255,rgb.r+amount))},${Math.max(0,Math.min(255,rgb.g+amount))},${Math.max(0,Math.min(255,rgb.b+amount))})`;
+}
+
+function adjustAlpha(color, alpha) {
+  const rgb = hexToRgb(color);
+  if (typeof rgb === 'string') return rgb;
+  return `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha})`;
+}
+
+// ============================================================================
+// INTERACTION
+// ============================================================================
+
+function screenToWorld(sx, sy) {
+  return {
+    x: (sx - W/2 - camera.x) / camera.zoom,
+    y: (sy - H/2 - camera.y) / camera.zoom,
+  };
+}
+
+function findNodeAt(wx, wy) {
+  // Check domains first (they're on top)
+  const domains = nodes.filter(n => n.isDomain);
+  const others = nodes.filter(n => !n.isDomain);
+  for (const n of [...domains.reverse(), ...others.reverse()]) {
+    const dx = n.x - wx, dy = n.y - wy;
+    if (dx*dx + dy*dy < (n.radius + 4) * (n.radius + 4)) return n;
+  }
+  return null;
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  dragStart = { x: e.clientX, y: e.clientY };
+  camStart = { x: camera.x, y: camera.y };
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    camera.x = camStart.x + (e.clientX - dragStart.x);
+    camera.y = camStart.y + (e.clientY - dragStart.y);
+    return;
+  }
+
+  const world = screenToWorld(e.clientX, e.clientY - 48);
+  hoveredNode = findNodeAt(world.x, world.y);
+
+  if (hoveredNode) {
+    canvas.style.cursor = 'pointer';
+    showTooltip(e.clientX, e.clientY, hoveredNode);
+  } else {
+    canvas.style.cursor = 'crosshair';
+    hideTooltip();
+  }
+});
+
+canvas.addEventListener('mouseup', (e) => {
+  if (isDragging) {
+    const moved = Math.abs(e.clientX - dragStart.x) + Math.abs(e.clientY - dragStart.y);
+    if (moved < 5) {
+      // Click - select node
+      const world = screenToWorld(e.clientX, e.clientY - 48);
+      const clicked = findNodeAt(world.x, world.y);
+      selectedNode = clicked === selectedNode ? null : clicked;
+      if (selectedNode && selectedNode.isDomain) {
+        updateAdoptionChart(selectedNode);
+      }
+    }
+  }
+  isDragging = false;
+});
+
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
+  const newZoom = Math.max(0.2, Math.min(5, camera.zoom * zoomFactor));
+
+  // Zoom toward cursor
+  const wx = (e.clientX - W/2 - camera.x) / camera.zoom;
+  const wy = (e.clientY - 48 - H/2 - camera.y) / camera.zoom;
+
+  camera.zoom = newZoom;
+  camera.x = e.clientX - W/2 - wx * camera.zoom;
+  camera.y = e.clientY - 48 - H/2 - wy * camera.zoom;
+}, { passive: false });
+
+// ============================================================================
+// TOOLTIP
+// ============================================================================
+
+const tooltip = document.getElementById('tooltip');
+
+function showTooltip(mx, my, node) {
+  const tt = tooltip;
+  tt.querySelector('.tt-title').textContent = node.label;
+  tt.querySelector('.tt-type').textContent = node.type.toUpperCase() + (node.isExisting ? ' (EXISTING)' : node.isDomain ? ' (CANDIDATE)' : '');
+
+  let body = '';
+  if (node.isDomain && node.domainData) {
+    const d = node.domainData;
+    const adoption = getAdoptionAtRound(d, currentRound);
+    body += `<div class="tt-row"><span>Builder Adoption</span><span class="tt-val">${(adoption * 100).toFixed(1)}%</span></div>`;
+    body += `<div class="tt-row"><span>Enterprise</span><span class="tt-val">${(d.enterprise_adoption * 100).toFixed(1)}%</span></div>`;
+    body += `<div class="tt-row"><span>Advocacy</span><span class="tt-val">${(d.advocacy_rate * 100).toFixed(1)}%</span></div>`;
+    body += `<div class="tt-row"><span>Consensus</span><span class="tt-val">${(d.consensus * 100).toFixed(1)}%</span></div>`;
+    body += `<div class="tt-row"><span>Static Score</span><span class="tt-val">${d.composite_score.toFixed(4)}</span></div>`;
+    if (d.tipping_point !== null) {
+      body += `<div class="tt-row"><span>Tipping Point</span><span class="tt-val">Round ${d.tipping_point}</span></div>`;
+    }
+    if (d.status) {
+      body += `<div class="tt-row"><span>Status</span><span class="tt-val">${d.status}</span></div>`;
+    }
+  } else {
+    // Count connections
+    const connections = edges.filter(e => e.source === node || e.target === node).length;
+    body += `<div class="tt-row"><span>Connections</span><span class="tt-val">${connections}</span></div>`;
+  }
+  tt.querySelector('.tt-body').innerHTML = body;
+
+  // Position
+  let x = mx + 16, y = my + 16;
+  if (x + 320 > window.innerWidth) x = mx - 320;
+  if (y + 200 > window.innerHeight) y = my - 200;
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
+  tt.classList.add('visible');
+}
+
+function hideTooltip() {
+  tooltip.classList.remove('visible');
+}
+
+// ============================================================================
+// MINIMAP
+// ============================================================================
+
+const minimapCanvas = document.getElementById('minimap-canvas');
+const mmCtx = minimapCanvas.getContext('2d');
+
+function updateMinimap() {
+  if (frameCount % 3 !== 0) return; // Update every 3rd frame
+  minimapCanvas.width = 180;
+  minimapCanvas.height = 120;
+
+  mmCtx.fillStyle = 'rgba(8,8,16,0.8)';
+  mmCtx.fillRect(0, 0, 180, 120);
+
+  // Find bounds
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  nodes.forEach(n => {
+    if (n.x < minX) minX = n.x;
+    if (n.y < minY) minY = n.y;
+    if (n.x > maxX) maxX = n.x;
+    if (n.y > maxY) maxY = n.y;
+  });
+
+  const rangeX = maxX - minX || 1;
+  const rangeY = maxY - minY || 1;
+  const padding = 10;
+  const scaleX = (180 - padding * 2) / rangeX;
+  const scaleY = (120 - padding * 2) / rangeY;
+  const scale = Math.min(scaleX, scaleY);
+
+  // Draw nodes
+  nodes.forEach(n => {
+    const mx = padding + (n.x - minX) * scale;
+    const my = padding + (n.y - minY) * scale;
+    mmCtx.fillStyle = getNodeColor(n);
+    mmCtx.globalAlpha = n.isDomain ? 0.8 : 0.3;
+    mmCtx.beginPath();
+    mmCtx.arc(mx, my, n.isDomain ? 3 : 1.5, 0, Math.PI * 2);
+    mmCtx.fill();
+  });
+  mmCtx.globalAlpha = 1;
+
+  // Viewport rectangle
+  const vpLeft = (-camera.x - W/2) / camera.zoom;
+  const vpTop = (-camera.y - H/2) / camera.zoom;
+  const vpRight = vpLeft + W / camera.zoom;
+  const vpBottom = vpTop + H / camera.zoom;
+
+  const rx = padding + (vpLeft - minX) * scale;
+  const ry = padding + (vpTop - minY) * scale;
+  const rw = (vpRight - vpLeft) * scale;
+  const rh = (vpBottom - vpTop) * scale;
+
+  mmCtx.strokeStyle = 'rgba(0,255,136,0.5)';
+  mmCtx.lineWidth = 1;
+  mmCtx.strokeRect(rx, ry, rw, rh);
+}
+
+// ============================================================================
+// SIDEBAR CHARTS
+// ============================================================================
+
+function drawNavCharts() {
+  // Left nav chart: average adoption across all domains over rounds
+  const leftCanvas = document.getElementById('nav-chart-left');
+  const lCtx = leftCanvas.getContext('2d');
+  lCtx.clearRect(0, 0, 140, 32);
+
+  const domains = DATA.domains.filter(d => d.builder_curve.length > 0);
+  const maxRound = 20;
+
+  // Average adoption per round
+  const avgAdoption = [];
+  for (let r = 0; r < maxRound; r++) {
+    let sum = 0, count = 0;
+    domains.forEach(d => {
+      if (d.builder_curve[r]) {
+        sum += d.builder_curve[r].adoption_rate;
+        count++;
+      }
+    });
+    avgAdoption.push(count > 0 ? sum / count : 0);
+  }
+
+  // Draw
+  lCtx.beginPath();
+  lCtx.moveTo(0, 30);
+  avgAdoption.forEach((v, i) => {
+    const x = (i / (maxRound - 1)) * 138 + 1;
+    const y = 30 - v * 28;
+    if (i === 0) lCtx.moveTo(x, y);
+    else lCtx.lineTo(x, y);
+  });
+  lCtx.strokeStyle = '#00ff88';
+  lCtx.lineWidth = 1.5;
+  lCtx.stroke();
+
+  // Fill under
+  lCtx.lineTo(139, 30);
+  lCtx.lineTo(1, 30);
+  lCtx.closePath();
+  const fillGrad = lCtx.createLinearGradient(0, 0, 0, 32);
+  fillGrad.addColorStop(0, 'rgba(0,255,136,0.15)');
+  fillGrad.addColorStop(1, 'rgba(0,255,136,0)');
+  lCtx.fillStyle = fillGrad;
+  lCtx.fill();
+
+  // Current round marker
+  if (currentRound > 0 && currentRound < maxRound) {
+    const cx = (currentRound / (maxRound - 1)) * 138 + 1;
+    lCtx.beginPath();
+    lCtx.arc(cx, 30 - avgAdoption[currentRound] * 28, 3, 0, Math.PI * 2);
+    lCtx.fillStyle = '#00ff88';
+    lCtx.fill();
+  }
+
+  // Right nav chart: signal count per type
+  const rightCanvas = document.getElementById('nav-chart-right');
+  const rCtx = rightCanvas.getContext('2d');
+  rCtx.clearRect(0, 0, 140, 32);
+
+  const signalTypes = DATA.signal_summary.signal_types;
+  const stKeys = Object.keys(signalTypes);
+  const stColors = ['#00ff88', '#ff6b35', '#3b82f6', '#a855f7', '#fbbf24', '#ef4444', '#06b6d4'];
+  const maxSignal = Math.max(...Object.values(signalTypes));
+
+  stKeys.forEach((key, i) => {
+    const barW = 138 / stKeys.length - 2;
+    const barH = (signalTypes[key] / maxSignal) * 26;
+    const x = (i / stKeys.length) * 138 + 2;
+    const y = 30 - barH;
+
+    rCtx.fillStyle = stColors[i % stColors.length];
+    rCtx.globalAlpha = 0.6;
+    rCtx.fillRect(x, y, barW, barH);
+    rCtx.globalAlpha = 1;
+  });
+}
+
+function drawPersonaChart() {
+  const canvas = document.getElementById('persona-chart');
+  const pCtx = canvas.getContext('2d');
+  pCtx.clearRect(0, 0, 252, 120);
+
+  const types = DATA.persona_types;
+  const colors = ['#00ff88', '#3b82f6', '#fbbf24', '#ef4444', '#a855f7', '#06b6d4', '#ec4899', '#ff6b35'];
+  const barW = 252 / types.length - 4;
+
+  types.forEach((pt, i) => {
+    const x = i * (barW + 4) + 2;
+    const barH = (pt.count / 130) * 80;
+    const y = 95 - barH;
+
+    // Bar
+    pCtx.fillStyle = colors[i % colors.length];
+    pCtx.globalAlpha = 0.5;
+    pCtx.fillRect(x, y, barW, barH);
+    pCtx.globalAlpha = 1;
+
+    // Border
+    pCtx.strokeStyle = colors[i % colors.length];
+    pCtx.lineWidth = 1;
+    pCtx.strokeRect(x, y, barW, barH);
+
+    // Count
+    pCtx.font = '8px monospace';
+    pCtx.fillStyle = colors[i % colors.length];
+    pCtx.textAlign = 'center';
+    pCtx.fillText(pt.count, x + barW/2, y - 3);
+
+    // Label (rotated)
+    pCtx.save();
+    pCtx.translate(x + barW/2, 105);
+    pCtx.rotate(-0.5);
+    pCtx.font = '7px monospace';
+    pCtx.fillStyle = 'rgba(255,255,255,0.4)';
+    pCtx.textAlign = 'left';
+    const shortLabel = pt.type.replace(/_/g, ' ').substring(0, 8);
+    pCtx.fillText(shortLabel, 0, 0);
+    pCtx.restore();
+  });
+}
+
+function drawComparisonChart() {
+  const canvas = document.getElementById('comparison-chart');
+  const cCtx = canvas.getContext('2d');
+  cCtx.clearRect(0, 0, 252, 160);
+
+  // Sort domains by builder adoption
+  const sorted = [...DATA.domains].sort((a, b) => b.builder_adoption - a.builder_adoption);
+  const top10 = sorted.slice(0, 12);
+  const barH = 10;
+  const gap = 2;
+  const maxW = 120;
+
+  top10.forEach((d, i) => {
+    const y = i * (barH + gap) + 2;
+
+    // Domain label
+    cCtx.font = '8px monospace';
+    cCtx.fillStyle = d.is_existing ? '#00ff88' : '#ff6b35';
+    cCtx.textAlign = 'right';
+    const shortName = d.domain_id.substring(0, 14);
+    cCtx.fillText(shortName, 90, y + 8);
+
+    // Builder bar
+    const bw = d.builder_adoption * maxW;
+    cCtx.fillStyle = 'rgba(0,255,136,0.4)';
+    cCtx.fillRect(95, y, bw, barH/2);
+
+    // Enterprise bar
+    const ew = d.enterprise_adoption * maxW;
+    cCtx.fillStyle = 'rgba(168,85,247,0.4)';
+    cCtx.fillRect(95, y + barH/2, ew, barH/2);
+
+    // Values
+    cCtx.font = '7px monospace';
+    cCtx.textAlign = 'left';
+    cCtx.fillStyle = 'rgba(255,255,255,0.4)';
+    cCtx.fillText(`${(d.builder_adoption*100).toFixed(0)}%`, 95 + Math.max(bw, ew) + 4, y + 8);
+  });
+
+  // Legend
+  const ly = top10.length * (barH + gap) + 8;
+  cCtx.fillStyle = 'rgba(0,255,136,0.4)';
+  cCtx.fillRect(95, ly, 20, 5);
+  cCtx.fillStyle = 'rgba(255,255,255,0.35)';
+  cCtx.font = '7px monospace';
+  cCtx.textAlign = 'left';
+  cCtx.fillText('Builder', 118, ly + 5);
+
+  cCtx.fillStyle = 'rgba(168,85,247,0.4)';
+  cCtx.fillRect(160, ly, 20, 5);
+  cCtx.fillStyle = 'rgba(255,255,255,0.35)';
+  cCtx.fillText('Enterprise', 183, ly + 5);
+}
+
+function updateAdoptionChart(node) {
+  const canvas = document.getElementById('adoption-chart');
+  const aCtx = canvas.getContext('2d');
+  aCtx.clearRect(0, 0, 272, 140);
+
+  if (!node || !node.domainData) {
+    aCtx.font = '11px monospace';
+    aCtx.fillStyle = 'rgba(255,255,255,0.3)';
+    aCtx.textAlign = 'center';
+    aCtx.fillText('Click a domain to see its adoption curve', 136, 70);
+    return;
+  }
+
+  const d = node.domainData;
+  const bc = d.builder_curve;
+  const ec = d.enterprise_curve;
+
+  if (!bc || bc.length === 0) return;
+
+  // Title
+  aCtx.font = 'bold 10px monospace';
+  aCtx.fillStyle = '#00ff88';
+  aCtx.textAlign = 'left';
+  aCtx.fillText(d.label, 4, 12);
+
+  // Chart area
+  const cx = 30, cy = 22, cw = 235, ch = 95;
+
+  // Axes
+  aCtx.strokeStyle = 'rgba(255,255,255,0.1)';
+  aCtx.lineWidth = 0.5;
+  aCtx.beginPath();
+  aCtx.moveTo(cx, cy); aCtx.lineTo(cx, cy + ch);
+  aCtx.lineTo(cx + cw, cy + ch);
+  aCtx.stroke();
+
+  // Y axis labels
+  aCtx.font = '7px monospace';
+  aCtx.fillStyle = 'rgba(255,255,255,0.3)';
+  aCtx.textAlign = 'right';
+  [0, 0.25, 0.5, 0.75, 1.0].forEach(v => {
+    const y = cy + ch - v * ch;
+    aCtx.fillText(`${(v*100).toFixed(0)}%`, cx - 3, y + 3);
+    aCtx.strokeStyle = 'rgba(255,255,255,0.04)';
+    aCtx.beginPath();
+    aCtx.moveTo(cx, y); aCtx.lineTo(cx + cw, y);
+    aCtx.stroke();
+  });
+
+  // Interest curve (area)
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const y = cy + ch - snap.interest_rate * ch;
+    if (i === 0) aCtx.moveTo(x, y);
+    else aCtx.lineTo(x, y);
+  });
+  aCtx.lineTo(cx + cw, cy + ch);
+  aCtx.lineTo(cx, cy + ch);
+  aCtx.closePath();
+  aCtx.fillStyle = 'rgba(59,130,246,0.1)';
+  aCtx.fill();
+
+  // Builder adoption curve
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const y = cy + ch - snap.adoption_rate * ch;
+    if (i === 0) aCtx.moveTo(x, y);
+    else aCtx.lineTo(x, y);
+  });
+  aCtx.strokeStyle = '#00ff88';
+  aCtx.lineWidth = 2;
+  aCtx.stroke();
+
+  // Enterprise curve
+  if (ec && ec.length > 0) {
+    aCtx.beginPath();
+    ec.forEach((snap, i) => {
+      const x = cx + (i / (ec.length - 1)) * cw;
+      const y = cy + ch - snap.adoption_rate * ch;
+      if (i === 0) aCtx.moveTo(x, y);
+      else aCtx.lineTo(x, y);
+    });
+    aCtx.strokeStyle = '#a855f7';
+    aCtx.lineWidth = 1.5;
+    aCtx.setLineDash([4, 3]);
+    aCtx.stroke();
+    aCtx.setLineDash([]);
+  }
+
+  // Advocacy curve
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const y = cy + ch - snap.advocacy_rate * ch;
+    if (i === 0) aCtx.moveTo(x, y);
+    else aCtx.lineTo(x, y);
+  });
+  aCtx.strokeStyle = '#fbbf24';
+  aCtx.lineWidth = 1;
+  aCtx.stroke();
+
+  // Current round marker
+  if (currentRound < bc.length) {
+    const cx2 = cx + (currentRound / (bc.length - 1)) * cw;
+    aCtx.strokeStyle = 'rgba(255,255,255,0.3)';
+    aCtx.lineWidth = 1;
+    aCtx.setLineDash([2, 2]);
+    aCtx.beginPath();
+    aCtx.moveTo(cx2, cy); aCtx.lineTo(cx2, cy + ch);
+    aCtx.stroke();
+    aCtx.setLineDash([]);
+  }
+
+  // Tipping point marker
+  if (d.tipping_point !== null) {
+    const tpX = cx + (d.tipping_point / (bc.length - 1)) * cw;
+    aCtx.strokeStyle = '#ff6b35';
+    aCtx.lineWidth = 1;
+    aCtx.setLineDash([3, 3]);
+    aCtx.beginPath();
+    aCtx.moveTo(tpX, cy); aCtx.lineTo(tpX, cy + ch);
+    aCtx.stroke();
+    aCtx.setLineDash([]);
+    aCtx.font = '7px monospace';
+    aCtx.fillStyle = '#ff6b35';
+    aCtx.textAlign = 'center';
+    aCtx.fillText('TIP', tpX, cy - 2);
+  }
+
+  // Legend
+  const ly = cy + ch + 8;
+  aCtx.font = '7px monospace';
+
+  aCtx.fillStyle = '#00ff88';
+  aCtx.fillRect(cx, ly, 12, 3);
+  aCtx.fillText('Adoption', cx + 15, ly + 3);
+
+  aCtx.fillStyle = '#a855f7';
+  aCtx.fillRect(cx + 65, ly, 12, 3);
+  aCtx.fillText('Enterprise', cx + 80, ly + 3);
+
+  aCtx.fillStyle = '#fbbf24';
+  aCtx.fillRect(cx + 140, ly, 12, 3);
+  aCtx.fillText('Advocacy', cx + 155, ly + 3);
+}
+
+function updateRankingList() {
+  const container = document.getElementById('ranking-list');
+  const sorted = [...DATA.domains].sort((a, b) => {
+    const aAdopt = getAdoptionAtRound(a, currentRound);
+    const bAdopt = getAdoptionAtRound(b, currentRound);
+    return bAdopt - aAdopt;
+  });
+
+  const top12 = sorted.slice(0, 12);
+  let html = '';
+  top12.forEach((d, i) => {
+    const adoption = getAdoptionAtRound(d, currentRound);
+    const tagClass = d.is_existing
+      ? (d.status === 'production' ? 'tag-production' : d.status === 'beta' ? 'tag-beta' : 'tag-alpha')
+      : 'tag-new';
+    const tagLabel = d.is_existing ? d.status : 'new';
+
+    html += `<div class="rank-item">
+      <div class="rank-pos ${i < 3 ? 'top3' : ''}">${i + 1}</div>
+      <div class="rank-name">${d.domain_id}</div>
+      <span class="tag ${tagClass}">${tagLabel}</span>
+      <div class="rank-bar"><div class="rank-bar-fill" style="width:${adoption * 100}%"></div></div>
+      <div class="rank-value">${(adoption * 100).toFixed(1)}%</div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function updateShockTimeline() {
+  const container = document.getElementById('shock-timeline');
+  let html = '';
+  DATA.shocks.forEach(s => {
+    const isActive = currentRound >= s.inject_at_round;
+    const color = s.effect === 'positive' ? '#00ff88' : s.effect === 'negative' ? '#ef4444' : '#fbbf24';
+    const opacity = isActive ? 1 : 0.3;
+    html += `<div style="display:flex;align-items:center;gap:8px;padding:4px 0;opacity:${opacity};font-size:10px;">
+      <div style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;${isActive ? 'box-shadow:0 0 6px ' + color : ''}"></div>
+      <div style="width:24px;color:rgba(255,255,255,0.4);">R${s.inject_at_round}</div>
+      <div style="color:rgba(255,255,255,0.7);flex:1;">${s.label}</div>
+      <div style="font-size:8px;color:${color};">${s.effect}</div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+// ============================================================================
+// ACTIVITY FEED
+// ============================================================================
+
+function addFeedItem(text, className) {
+  feedItems.unshift({ text, className, time: `R${currentRound}` });
+  if (feedItems.length > 100) feedItems.pop();
+  renderFeed();
+}
+
+function renderFeed() {
+  const container = document.getElementById('activity-feed');
+  container.innerHTML = feedItems.slice(0, 40).map(item => `
+    <div class="feed-item">
+      <div class="feed-time">${item.time}</div>
+      <div class="feed-event ${item.className || ''}">${item.text}</div>
+    </div>
+  `).join('');
+}
+
+function generateFeedForRound(round) {
+  // Find domains that change significantly this round
+  DATA.domains.forEach(d => {
+    if (!d.builder_curve || !d.builder_curve[round]) return;
+    const snap = d.builder_curve[round];
+    const prev = round > 0 ? d.builder_curve[round - 1] : null;
+
+    if (prev) {
+      const delta = snap.adoption_rate - prev.adoption_rate;
+      if (delta > 0.05) {
+        addFeedItem(`<span class="feed-highlight">${d.domain_id}</span> adoption surged +${(delta*100).toFixed(1)}% to ${(snap.adoption_rate*100).toFixed(1)}%`, '');
+      }
+
+      // Stage distribution changes
+      const dist = snap.stage_distribution;
+      const pDist = prev.stage_distribution;
+      if (dist.advocating > pDist.advocating) {
+        const newAdvocates = dist.advocating - pDist.advocating;
+        addFeedItem(`${newAdvocates} agents now <span class="feed-purple">advocating</span> for ${d.domain_id}`, '');
+      }
+    }
+
+    // First awareness
+    if (round === 0 && snap.adoption_rate > 0) {
+      addFeedItem(`Simulation started: <span class="feed-highlight">${d.domain_id}</span> initial adoption ${(snap.adoption_rate*100).toFixed(1)}%`, '');
+    }
+  });
+
+  // Shock events
+  DATA.shocks.forEach(s => {
+    if (s.inject_at_round === round) {
+      const emoji = s.effect === 'positive' ? '' : '';
+      addFeedItem(`<span class="feed-warn">${s.label}</span> hits ${s.affects_domains.join(', ')} (${s.effect})`, '');
+    }
+  });
+}
+
+// ============================================================================
+// SIMULATION PLAYBACK
+// ============================================================================
+
+function setRound(round) {
+  currentRound = Math.max(0, Math.min(20, round));
+  document.getElementById('round-num').textContent = currentRound;
+  document.getElementById('round-slider').value = currentRound;
+
+  // Update node sizes based on current adoption
+  nodes.forEach(n => {
+    if (n.isDomain && n.domainData) {
+      const adoption = getAdoptionAtRound(n.domainData, currentRound);
+      n.radius = n.baseRadius * (0.7 + adoption * 0.6);
+    }
+  });
+
+  // Update adopted count
+  let adoptedCount = 0;
+  DATA.domains.forEach(d => {
+    if (d.builder_curve && d.builder_curve[currentRound]) {
+      const snap = d.builder_curve[currentRound];
+      adoptedCount += (snap.stage_distribution.adopted || 0) + (snap.stage_distribution.advocating || 0);
+    }
+  });
+  document.getElementById('stat-adopted').textContent = adoptedCount.toLocaleString();
+
+  updateRankingList();
+  updateShockTimeline();
+  drawNavCharts();
+
+  if (selectedNode) {
+    updateAdoptionChart(selectedNode);
+  }
+}
+
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-btn').innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9654;';
+
+  if (isPlaying) {
+    const speed = parseInt(document.getElementById('speed-slider').value);
+    const interval = 1100 - speed * 100;
+    playTimer = setInterval(() => {
+      if (currentRound >= 20) {
+        isPlaying = false;
+        document.getElementById('play-btn').innerHTML = '&#9654;';
+        clearInterval(playTimer);
+        return;
+      }
+      currentRound++;
+      generateFeedForRound(currentRound - 1);
+      setRound(currentRound);
+    }, interval);
+  } else {
+    clearInterval(playTimer);
+  }
+}
+
+// ============================================================================
+// STATUS BAR
+// ============================================================================
+
+function updateStatusBar() {
+  if (frameCount % 10 !== 0) return;
+  document.getElementById('status-nodes').textContent = nodes.length;
+  document.getElementById('status-edges').textContent = edges.length;
+  document.getElementById('status-camera').textContent = `${Math.round(camera.x)},${Math.round(camera.y)}`;
+  document.getElementById('status-zoom').textContent = camera.zoom.toFixed(1) + 'x';
+}
+
+// ============================================================================
+// INIT
+// ============================================================================
+
+function init() {
+  // Update stats
+  document.getElementById('stat-agents').textContent = DATA.meta.agent_count.toLocaleString();
+  document.getElementById('stat-domains').textContent = DATA.meta.domain_count;
+  document.getElementById('stat-signals').textContent = DATA.meta.total_signals;
+
+  // Build layout
+  initLayout();
+
+  // Draw static charts
+  drawNavCharts();
+  drawPersonaChart();
+  drawComparisonChart();
+  updateAdoptionChart(null);
+  updateRankingList();
+  updateShockTimeline();
+
+  // Initial feed
+  addFeedItem('MiroFish simulation initialized with <span class="feed-highlight">1,000 agents</span>', '');
+  addFeedItem(`<span class="feed-highlight">${DATA.meta.domain_count}</span> domains loaded (${DATA.meta.existing_count} existing + ${DATA.meta.candidate_count} candidates)`, '');
+  addFeedItem(`<span class="feed-highlight">${DATA.meta.total_signals}</span> signals injected (${DATA.signal_summary.opportunity_signals} opportunity + ${DATA.signal_summary.graph_signals} graph)`, '');
+  addFeedItem(`Graph: ${DATA.meta.graph_nodes} nodes, ${DATA.meta.graph_edges} edges`, '');
+  addFeedItem('Press <span class="feed-highlight">PLAY</span> to watch adoption unfold', '');
+
+  // Event listeners
+  document.getElementById('play-btn').addEventListener('click', togglePlay);
+  document.getElementById('round-slider').addEventListener('input', (e) => {
+    if (isPlaying) {
+      isPlaying = false;
+      document.getElementById('play-btn').innerHTML = '&#9654;';
+      clearInterval(playTimer);
+    }
+    setRound(parseInt(e.target.value));
+  });
+  document.getElementById('speed-slider').addEventListener('input', () => {
+    if (isPlaying) {
+      clearInterval(playTimer);
+      const speed = parseInt(document.getElementById('speed-slider').value);
+      const interval = 1100 - speed * 100;
+      playTimer = setInterval(() => {
+        if (currentRound >= 20) {
+          isPlaying = false;
+          document.getElementById('play-btn').innerHTML = '&#9654;';
+          clearInterval(playTimer);
+          return;
+        }
+        currentRound++;
+        generateFeedForRound(currentRound - 1);
+        setRound(currentRound);
+      }, interval);
+    }
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+    if (e.key === 'ArrowRight') { setRound(currentRound + 1); }
+    if (e.key === 'ArrowLeft') { setRound(currentRound - 1); }
+  });
+
+  // Start render
+  setRound(0);
+  render();
+}
+
+// Start
+loadData();
+</script>
+</body>
+</html>
