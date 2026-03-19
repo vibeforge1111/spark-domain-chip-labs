@@ -232,23 +232,48 @@ def _propagate_influence(
     domains: list[str],
     graph: DomainGraph,
 ) -> None:
-    """Simulate influence propagation between personas."""
-    # Each persona's influence affects others in the same expertise domains
+    """Simulate influence propagation between personas.
+
+    Uses geometric mean of influence scores to prevent large agent counts
+    from overwhelming individual adoption thresholds. The influence
+    represents "quality of adoption signal" not "quantity of adopters".
+    """
     influence_map: dict[str, float] = {}
     for domain_id in domains:
-        total_influence = 0.0
+        # Count how many personas are in each meaningful stage
+        advocates = 0
+        adopters = 0
+        evaluators = 0
+        total = len(personas)
+        influence_sum = 0.0
+
         for persona in personas:
-            total_influence += persona_influence_score(persona, domain_id)
-        influence_map[domain_id] = min(1.0, total_influence / max(len(personas), 1))
+            stage = persona["adoption_state"].get(domain_id, "unaware")
+            inf = persona_influence_score(persona, domain_id)
+            if stage == "advocating":
+                advocates += 1
+                influence_sum += inf
+            elif stage == "adopted":
+                adopters += 1
+                influence_sum += inf * 0.6
+            elif stage == "evaluating":
+                evaluators += 1
+                influence_sum += inf * 0.2
+
+        # Influence is the fraction of weighted adopters, not absolute count
+        # This makes it independent of total persona count
+        adoption_fraction = (advocates + adopters * 0.6 + evaluators * 0.2) / max(total, 1)
+        avg_influence = influence_sum / max(advocates + adopters + evaluators, 1)
+        # Combined: adoption breadth * influence quality
+        influence_map[domain_id] = round(adoption_fraction * avg_influence, 4)
 
     # Apply aggregate influence as additional awareness
     for persona in personas:
         for domain_id in domains:
             current_stage = persona["adoption_state"].get(domain_id, "unaware")
-            if current_stage in ("unaware", "aware"):
-                # Aggregate influence can push personas to next stage
+            if current_stage in ("unaware", "aware", "interested"):
                 aggregate = influence_map.get(domain_id, 0.0)
-                if aggregate > persona["adoption_threshold"]:
+                if aggregate > persona["adoption_threshold"] * 0.8:
                     persona_evaluates_domain(persona, domain_id, aggregate)
 
 

@@ -292,8 +292,9 @@ def signals_from_graph(graph: "Any") -> list[dict[str, Any]]:
                     label=f"{src_node.get('label', src)} enables {tgt}",
                 ))
 
-        elif rel == "COMPETES_WITH":
-            # Competition creates pressure on both domains
+        elif rel == "COMPETES_WITH" and weight > 0.80:
+            # Competition creates pressure only for strong rivalries
+            # (skip weak competition edges to prevent signal flooding at scale)
             for a, b in [(src, tgt), (tgt, src)]:
                 pair = (a, b, "compete")
                 if pair not in seen and graph.nodes.get(a, {}).get("type") == "domain":
@@ -302,7 +303,7 @@ def signals_from_graph(graph: "Any") -> list[dict[str, Any]]:
                         f"graph-competes-{a}-{b}",
                         "competitor_chip",
                         [a],
-                        strength=round(weight * 0.4, 4),
+                        strength=round(weight * 0.3, 4),
                         label=f"Competitive pressure from {b}",
                     ))
 

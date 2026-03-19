@@ -98,7 +98,7 @@ def generate_personas(
     Returns:
         List of persona dicts (12-30 depending on parameters).
     """
-    count_per_type = max(1, min(4, count_per_type))
+    count_per_type = max(1, count_per_type)
     domains = domain_ids or [
         n["id"] for n in graph.nodes.values() if n["type"] == "domain"
     ]
