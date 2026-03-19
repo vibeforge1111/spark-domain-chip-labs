@@ -137,26 +137,28 @@ class TestChurn:
         assert result == "unaware"
 
     def test_sunk_cost_effect(self):
-        """Higher stages should resist regression more (sunk cost)."""
+        """Adopted/advocating personas never churn (committed)."""
         # Aware persona regresses easily
         p_aware = self._make_persona(stage="aware", threshold=0.3, risk=0.0)
         r_aware = persona_churn_check(p_aware, "test-domain", 0.0, 3)
+        assert r_aware == "unaware"
 
-        # Adopted persona resists regression with same signal
+        # Adopted persona does NOT regress (committed, sunk cost)
         p_adopted = self._make_persona(stage="adopted", threshold=0.3, risk=0.0)
         r_adopted = persona_churn_check(p_adopted, "test-domain", 0.0, 3)
+        assert r_adopted == "adopted"
 
-        # aware should regress, adopted may not (higher sunk cost threshold)
-        assert r_aware == "unaware"
-        # adopted -> evaluating requires signal below 0.3 * 0.35 = 0.105
-        # with 0.0 signal it should regress, but only one stage
-        assert r_adopted == "evaluating"
-
-    def test_regresses_one_stage_at_a_time(self):
+    def test_adopted_immune_to_churn(self):
+        """Adopted/advocating are immune to churn within simulation window."""
         p = self._make_persona(stage="advocating", threshold=0.3, risk=0.0)
         result = persona_churn_check(p, "test-domain", 0.0, 10)
-        # Should drop to adopted, not all the way to unaware
-        assert result == "adopted"
+        assert result == "advocating"
+
+    def test_evaluating_can_regress(self):
+        """Pre-commitment stages (evaluating) can still churn."""
+        p = self._make_persona(stage="evaluating", threshold=0.3, risk=0.0)
+        result = persona_churn_check(p, "test-domain", 0.0, 10)
+        assert result == "interested"
 
     def test_risk_tolerant_stickier(self):
         """High-risk personas should resist regression more (emotional investment)."""

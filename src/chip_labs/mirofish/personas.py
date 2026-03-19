@@ -212,10 +212,12 @@ def persona_churn_check(
     Churn happens when:
     1. Signal has decayed significantly below what got them to this stage
     2. They've been stalled at the same stage for too long without reinforcement
-    3. A negative shock pushes them backward
 
-    Regression is slower than advancement -- it takes sustained signal loss
-    to actually abandon something you've already committed to (sunk cost effect).
+    Key design: adopted/advocating personas do NOT churn within a 20-round
+    simulation. These represent genuine commitment (you're using the tech,
+    you've built on it). Only pre-commitment stages (aware, interested,
+    evaluating) are subject to churn. This prevents the "everything decays
+    to zero" problem when signals have finite lifetimes.
 
     Returns the (possibly regressed) adoption stage.
     """
@@ -225,6 +227,12 @@ def persona_churn_check(
 
     # Can't regress below "unaware"
     if current_idx <= 0:
+        return current
+
+    # Adopted/advocating = committed. They don't churn within the simulation
+    # window. Real-world churn from these stages happens on month/year
+    # timescales, not our 20-round simulation.
+    if current_idx >= 4:
         return current
 
     threshold = persona["adoption_threshold"]
@@ -238,22 +246,18 @@ def persona_churn_check(
     regression_threshold = {
         1: 0.05,   # aware -> unaware: very easy to forget
         2: 0.12,   # interested -> aware: moderate inertia
-        3: 0.20,   # evaluating -> interested: invested time, harder to abandon
-        4: 0.35,   # adopted -> evaluating: significant sunk cost
-        5: 0.50,   # advocating -> adopted: strong commitment, hard to break
+        3: 0.25,   # evaluating -> interested: invested real time, harder
     }
 
     # The signal level below which regression triggers
-    # Conservative personas (high threshold) are more likely to regress
-    # because they were barely over the bar to begin with
     regress_below = threshold * regression_threshold.get(current_idx, 0.3)
 
     # Sunk cost effect: risk-tolerant personas are stickier (invested emotionally)
     regress_below *= (1.0 - risk * 0.25)
 
     # Time decay: if stalled for many rounds, resistance to regression weakens
-    if rounds_since_advance > 5:
-        stall_factor = 1.0 + (rounds_since_advance - 5) * 0.08
+    if rounds_since_advance > 7:
+        stall_factor = 1.0 + (rounds_since_advance - 7) * 0.06
         regress_below *= stall_factor
 
     if effective_signal < regress_below and current_idx > 0:
