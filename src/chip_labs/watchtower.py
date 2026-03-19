@@ -33,6 +33,9 @@ def generate_watchtower_pages(mutations: dict[str, str],
     # Conditional: Graduation Pipeline
     pages.append(_graduation_pipeline_page(now, chip_search_dir))
 
+    # Always generate: Trend Predictions
+    pages.append(_trend_predictions_page(now))
+
     return pages
 
 
@@ -78,6 +81,7 @@ The recursive improvement engine for the Spark domain chip ecosystem.
 - [[Portfolio Dashboard]]
 - [[Agent Team Status]]
 - [[Graduation Pipeline]]
+- [[Trend Predictions]]
 """
     return {"path": "Lab Home.md", "content": content}
 
@@ -185,3 +189,35 @@ Domain Brief -> Evidence Gathering -> Architecture Packet -> Scaffold -> Quality
 ```
 """
     return {"path": "Graduation Pipeline.md", "content": content}
+
+
+def _trend_predictions_page(timestamp: str) -> dict[str, Any]:
+    """Generate the trend predictions page with MiroFish simulation data."""
+    from .trend_scanner import simulate_opportunities, SEED_OPPORTUNITIES
+    from .mirofish.report import format_report_markdown
+
+    sim = simulate_opportunities(SEED_OPPORTUNITIES, seed=42)
+    report = sim.get("simulation_report", {})
+    report_md = format_report_markdown(report)
+
+    content = f"""# Trend Predictions
+
+> Last updated: {timestamp}
+> Engine: MiroFish-inspired multi-agent simulation
+> Evidence lane: exploratory_frontier
+
+{report_md}
+
+## How To Use This
+
+1. **Do NOT auto-promote** these predictions to doctrine
+2. Predictions are `exploratory_frontier` until replay-benchmarked
+3. Use as input to the **suggest** hook for domain discovery candidates
+4. Cross-reference with static scoring from trend_scanner for calibration
+
+## Links
+
+- [[Lab Home]]
+- [[Portfolio Dashboard]]
+"""
+    return {"path": "Trend Predictions.md", "content": content}

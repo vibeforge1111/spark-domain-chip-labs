@@ -143,3 +143,43 @@ def rank_opportunities(opportunities: list[dict[str, Any]] | None = None) -> lis
 def get_top_opportunities(n: int = 5) -> list[dict[str, Any]]:
     """Get the top N domain opportunities."""
     return rank_opportunities()[:n]
+
+
+def simulate_opportunities(
+    opportunities: list[dict[str, Any]] | None = None,
+    seed: int = 42,
+    max_rounds: int = 15,
+) -> dict[str, Any]:
+    """Run MiroFish simulation on domain opportunities.
+
+    Enriches static rankings with simulation-backed adoption predictions.
+    Keeps static scoring as baseline for calibration comparison.
+    """
+    from .mirofish.graph import build_graph_from_opportunities
+    from .mirofish.simulation import run_dual_context
+    from .mirofish.calibration import calibration_report
+    from .mirofish.report import generate_prediction_report
+
+    ranked = rank_opportunities(opportunities)
+    graph = build_graph_from_opportunities(ranked)
+
+    domain_ids = [opp["domain_id"] for opp in ranked]
+    sim_results = run_dual_context(
+        graph, domain_ids=domain_ids, max_rounds=max_rounds, seed=seed,
+    )
+
+    # Build calibration from simulation predictions
+    builder_domains = sim_results.get("builder_community", {}).get("domains", {})
+    prediction_probs = {
+        d: data.get("final_adoption_rate", 0.0)
+        for d, data in builder_domains.items()
+    }
+    cal = calibration_report(prediction_probs)
+
+    report = generate_prediction_report(sim_results, ranked, cal)
+
+    return {
+        "static_rankings": ranked,
+        "simulation_report": report,
+        "calibration": cal,
+    }

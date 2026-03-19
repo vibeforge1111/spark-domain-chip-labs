@@ -49,7 +49,8 @@
         "transfer_patterns",
         "agi_theory",
         "portfolio_health",
-        "integration_health"
+        "integration_health",
+        "trend_simulation"
       ],
       "portfolio_target": [
         "startup-yc",
@@ -96,6 +97,14 @@
         "integration_specialist",
         "growth_analyst",
         "agi_theorist"
+      ],
+      "simulation_scenario": [
+        "baseline",
+        "market_crash",
+        "breakout_tool",
+        "regulatory_ban",
+        "viral_adoption",
+        "ecosystem_integration"
       ]
     },
     "field_patterns": {
@@ -104,7 +113,8 @@
       "methodology_area": "^[a-z0-9_]+$",
       "benchmark_profile": "^[a-z0-9_]+$",
       "trend_source": "^[a-z0-9_]+$",
-      "agent_workstream": "^[a-z0-9_]+$"
+      "agent_workstream": "^[a-z0-9_]+$",
+      "simulation_scenario": "^[a-z0-9_]+$"
     },
     "required_fields": [
       "research_focus"

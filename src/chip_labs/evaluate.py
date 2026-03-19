@@ -128,6 +128,29 @@ def evaluate(mutations: dict[str, str], chip_search_dir: str | Path | None = Non
             "note": "Transfer pattern research is early-stage. Study startup-yc and trading-crypto evidence first.",
         }
 
+    elif research_focus == "trend_simulation":
+        # Run MiroFish trend simulation and return prediction quality metrics
+        from .trend_scanner import simulate_opportunities, SEED_OPPORTUNITIES
+        sim = simulate_opportunities(SEED_OPPORTUNITIES, seed=42)
+        report = sim.get("simulation_report", {})
+        cal = sim.get("calibration", {})
+        hist = cal.get("historical_calibration", {})
+        agg_brier = hist.get("aggregate_brier", 1.0)
+        # Prediction quality = inverse of Brier score (lower Brier = better)
+        prediction_score = round(1.0 - agg_brier, 4)
+        return {
+            "lab_research_quality_score": prediction_score,
+            "portfolio_health": 0.0,
+            "methodology_coverage": 0.0,
+            "chips_evaluated": 0,
+            "graduation_pipeline_count": 0,
+            "trend_prediction_score": prediction_score,
+            "simulation_calibration": agg_brier,
+            "domain_predictions_count": len(report.get("domain_predictions", [])),
+            "comparison_class": "exploratory_frontier",
+            "note": "Simulation predictions are exploratory_frontier. Calibration via Brier scoring.",
+        }
+
     elif research_focus == "agi_theory":
         return {
             "lab_research_quality_score": 0.25,

@@ -45,6 +45,15 @@
       }
     },
     {
+      "candidate_id": "trend-simulation-baseline",
+      "candidate_summary": "Run MiroFish trend simulation to predict domain chip adoption.",
+      "hypothesis": "Multi-agent simulation reveals adoption dynamics invisible to static scoring.",
+      "mutations": {
+        "research_focus": "trend_simulation",
+        "simulation_scenario": "baseline"
+      }
+    },
+    {
       "candidate_id": "agi-theory-recursive-improvement",
       "candidate_summary": "Research how domain chip specialization contributes to recursive self-improvement.",
       "hypothesis": "Documenting the recursive improvement loop clarifies the path from specialized chips to general intelligence.",

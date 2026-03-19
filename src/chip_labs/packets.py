@@ -16,6 +16,7 @@ PACKET_KINDS = [
     "quality_assessment",
     "transfer_pattern",
     "graduation_candidate",
+    "trend_prediction",
 ]
 
 
@@ -82,6 +83,31 @@ def generate_packets(mutations: dict[str, str],
                 "opportunities": _get_domain_opportunities(trend_source),
             },
             "promotion_status": "exploratory_frontier",
+        })
+
+    elif research_focus == "trend_simulation":
+        from .trend_scanner import simulate_opportunities, SEED_OPPORTUNITIES
+        sim = simulate_opportunities(SEED_OPPORTUNITIES, seed=42)
+        report = sim.get("simulation_report", {})
+        cal = sim.get("calibration", {})
+
+        packets.append({
+            "packet_kind": "trend_prediction",
+            "evidence_lane": "exploratory_frontier",
+            "created_at": now,
+            "content": {
+                "title": "MiroFish Trend Prediction Report",
+                "domain_predictions": report.get("domain_predictions", []),
+                "cross_domain": report.get("cross_domain", {}),
+                "calibration_summary": {
+                    "aggregate_brier": cal.get("historical_calibration", {}).get("aggregate_brier"),
+                    "better_than_constant": cal.get("historical_calibration", {}).get("better_than_constant"),
+                    "contract_count": cal.get("contract_count", 0),
+                },
+                "governance": report.get("governance_note", ""),
+            },
+            "promotion_status": "exploratory_frontier",
+            "comparison_class": "exploratory_frontier",
         })
 
     elif research_focus == "transfer_patterns":

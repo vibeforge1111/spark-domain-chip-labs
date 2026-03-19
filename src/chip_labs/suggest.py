@@ -60,6 +60,17 @@ def suggest(recent_mutations: list[dict[str, str]] | None = None,
                 "priority": "high" if score < 0.40 else "medium",
             })
 
+    # 2b. Suggest trend simulation for data-driven domain discovery
+    mutation = {"research_focus": "trend_simulation"}
+    if frozenset(mutation.items()) not in recent_set:
+        suggestions.append({
+            "candidate_id": "trend-simulation-mirofish",
+            "candidate_summary": "Run MiroFish trend simulation for data-driven domain predictions.",
+            "hypothesis": "Multi-agent simulation reveals adoption dynamics invisible to static scoring.",
+            "mutations": mutation,
+            "priority": "high",
+        })
+
     # 3. Suggest domain discovery if portfolio has gaps
     if len(chips) < 15:
         for source in ["github", "producthunt", "spark_ecosystem"]:
