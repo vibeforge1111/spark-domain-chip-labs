@@ -445,6 +445,72 @@ def cmd_serve(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: serve-intelligence
+# ---------------------------------------------------------------------------
+
+def cmd_serve_intelligence(args: argparse.Namespace) -> None:
+    """Inject chip intelligence context for a task description."""
+    from .chip_context_injector import inject_context_for_task
+
+    result = inject_context_for_task(
+        args.task,
+        max_chips=args.max_chips,
+        style=args.style,
+    )
+    if args.output:
+        _write_output(args.output, {"context": result})
+    else:
+        print(result)
+
+
+# ---------------------------------------------------------------------------
+# Command: advise
+# ---------------------------------------------------------------------------
+
+def cmd_advise(args: argparse.Namespace) -> None:
+    """Get pre-action advisory from chip doctrines."""
+    from .chip_advisor import AdvisoryRequest, advise_pre_action
+
+    request = AdvisoryRequest(
+        action_description=args.action,
+        domain_hint=args.domain,
+    )
+    response = advise_pre_action(request)
+
+    output = {
+        "verdict": response.verdict,
+        "guidance": [
+            {
+                "claim": g.claim,
+                "confidence": g.confidence,
+                "relevance": round(g.relevance, 3),
+                "guidance_type": g.guidance_type,
+                "source_chip": g.source_chip,
+            }
+            for g in response.guidance
+        ],
+        "contradictions": response.contradictions,
+        "uncertainty_areas": response.uncertainty_areas,
+        "trajectory_context": response.trajectory_context,
+        "chips_consulted": response.chips_consulted,
+    }
+    _write_output(args.output, output)
+
+
+# ---------------------------------------------------------------------------
+# Command: run-mcp-server
+# ---------------------------------------------------------------------------
+
+def cmd_run_mcp_server(args: argparse.Namespace) -> None:
+    """Start the MCP server for domain chip intelligence."""
+    from .chip_mcp_server import ChipMCPServer
+
+    server = ChipMCPServer()
+    print("Starting domain chip MCP server on stdio...", file=sys.stderr)
+    server.run()
+
+
+# ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
 
@@ -545,6 +611,25 @@ def main() -> None:
     p_serve.add_argument("query", type=str, help="Query to match against chip intelligence.")
     p_serve.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_serve.set_defaults(func=cmd_serve)
+
+    # serve-intelligence
+    p_si = sub.add_parser("serve-intelligence", help="Inject chip intelligence context for a task.")
+    p_si.add_argument("task", type=str, help="Task description to match against chips.")
+    p_si.add_argument("--style", choices=["concise", "detailed", "guardrails_only"], default="concise")
+    p_si.add_argument("--max-chips", type=int, default=2)
+    p_si.add_argument("--output", type=str, default=None)
+    p_si.set_defaults(func=cmd_serve_intelligence)
+
+    # advise
+    p_advise = sub.add_parser("advise", help="Get pre-action advisory from chip doctrines.")
+    p_advise.add_argument("action", type=str, help="Action description to advise on.")
+    p_advise.add_argument("--domain", type=str, default=None, help="Domain hint.")
+    p_advise.add_argument("--output", type=str, default=None)
+    p_advise.set_defaults(func=cmd_advise)
+
+    # run-mcp-server
+    p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")
+    p_mcp.set_defaults(func=cmd_run_mcp_server)
 
     args = parser.parse_args()
     args.func(args)
