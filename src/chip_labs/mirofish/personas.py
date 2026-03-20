@@ -287,6 +287,53 @@ def persona_influence_score(persona: dict[str, Any], domain_id: str) -> float:
     )
 
 
+def persona_learn_from_round(
+    persona: dict[str, Any],
+    domain_id: str,
+    round_adoption_rate: float,
+) -> None:
+    """Persona adapts based on observed adoption outcomes.
+
+    If a domain the persona adopted is gaining traction (high adoption rate),
+    the persona becomes more confident and receptive to adjacent domains.
+    If their adopted domain is stalling, they become more cautious.
+
+    This creates a feedback loop: successful adoption breeds confidence,
+    failed bets breed skepticism. Models real-world learning behavior.
+    """
+    stage = persona["adoption_state"].get(domain_id, "unaware")
+    if stage not in ("adopted", "advocating"):
+        return
+
+    # Track learning history
+    if "learning_history" not in persona:
+        persona["learning_history"] = []
+
+    # Successful adoption: domain is gaining traction
+    if round_adoption_rate > 0.4:
+        # Confidence boost: slightly lower adoption threshold for future domains
+        persona["adoption_threshold"] = max(
+            0.1, persona["adoption_threshold"] * 0.98
+        )
+        persona["learning_history"].append({
+            "domain": domain_id, "outcome": "validated",
+            "adjustment": -0.02,
+        })
+    elif round_adoption_rate < 0.1:
+        # Cautionary: slightly raise threshold (bad bet)
+        persona["adoption_threshold"] = min(
+            0.95, persona["adoption_threshold"] * 1.02
+        )
+        persona["learning_history"].append({
+            "domain": domain_id, "outcome": "disappointing",
+            "adjustment": 0.02,
+        })
+
+    # Cap learning history to prevent unbounded growth
+    if len(persona["learning_history"]) > 20:
+        persona["learning_history"] = persona["learning_history"][-20:]
+
+
 def _deterministic_variation(seed: int, idx: int) -> float:
     """Generate a deterministic pseudo-random variation from seed and index."""
     h = hashlib.md5(f"{seed}-{idx}".encode()).hexdigest()

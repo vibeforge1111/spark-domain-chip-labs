@@ -13,7 +13,7 @@ from .graph import DomainGraph
 from .personas import (
     generate_personas, update_persona_activity,
     persona_evaluates_domain, persona_influence_score,
-    persona_churn_check,
+    persona_churn_check, persona_learn_from_round,
 )
 from .signals import decay_signal
 
@@ -158,6 +158,14 @@ def run_simulation(
             adoption_rate = snapshot["adoption_rate"]
             if adoption_rate > 0.5 and tipping_points[domain_id] is None:
                 tipping_points[domain_id] = round_num
+
+        # Phase 4: Persona learning -- personas adapt based on outcomes
+        for persona in personas:
+            for domain_id in domains:
+                snapshot = adoption_curves[domain_id][-1]
+                persona_learn_from_round(
+                    persona, domain_id, snapshot["adoption_rate"],
+                )
 
         # Decay signals
         active_signals = [

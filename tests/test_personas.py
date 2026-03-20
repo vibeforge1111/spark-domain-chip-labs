@@ -9,6 +9,7 @@ from chip_labs.mirofish.personas import (
     persona_evaluates_domain,
     persona_churn_check,
     persona_influence_score,
+    persona_learn_from_round,
     PERSONA_TYPES,
 )
 from chip_labs.trend_scanner import SEED_OPPORTUNITIES
@@ -188,3 +189,63 @@ class TestChurn:
         stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
         # Long stall should regress more (or at least equally)
         assert stages.index(r_long) <= stages.index(r_short)
+
+
+class TestPersonaLearning:
+    """Tests for persona learning/adaptation mechanics."""
+
+    def _make_adopted_persona(self, threshold=0.5):
+        return {
+            "persona_id": "learn-0",
+            "persona_type": "builder",
+            "adoption_state": {"domain-a": "adopted"},
+            "adoption_threshold": threshold,
+            "risk_tolerance": 0.5,
+            "activity_score": 1.0,
+            "influence_score": 0.7,
+            "network_reach": 0.5,
+            "expertise_domains": [],
+            "signal_memory": [],
+        }
+
+    def test_no_learning_when_not_adopted(self):
+        p = self._make_adopted_persona()
+        p["adoption_state"] = {"domain-a": "interested"}
+        original_threshold = p["adoption_threshold"]
+        persona_learn_from_round(p, "domain-a", 0.8)
+        assert p["adoption_threshold"] == original_threshold
+
+    def test_confidence_boost_on_success(self):
+        p = self._make_adopted_persona(threshold=0.5)
+        persona_learn_from_round(p, "domain-a", 0.6)
+        assert p["adoption_threshold"] < 0.5
+
+    def test_caution_on_failure(self):
+        p = self._make_adopted_persona(threshold=0.5)
+        persona_learn_from_round(p, "domain-a", 0.05)
+        assert p["adoption_threshold"] > 0.5
+
+    def test_learning_history_tracked(self):
+        p = self._make_adopted_persona()
+        persona_learn_from_round(p, "domain-a", 0.6)
+        assert "learning_history" in p
+        assert len(p["learning_history"]) == 1
+        assert p["learning_history"][0]["outcome"] == "validated"
+
+    def test_learning_history_capped(self):
+        p = self._make_adopted_persona()
+        for i in range(30):
+            persona_learn_from_round(p, "domain-a", 0.6)
+        assert len(p["learning_history"]) <= 20
+
+    def test_threshold_floor(self):
+        p = self._make_adopted_persona(threshold=0.1)
+        for _ in range(100):
+            persona_learn_from_round(p, "domain-a", 0.9)
+        assert p["adoption_threshold"] >= 0.1
+
+    def test_threshold_ceiling(self):
+        p = self._make_adopted_persona(threshold=0.95)
+        for _ in range(100):
+            persona_learn_from_round(p, "domain-a", 0.01)
+        assert p["adoption_threshold"] <= 0.95
