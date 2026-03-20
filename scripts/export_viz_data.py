@@ -1,4 +1,8 @@
-"""Export MiroFish simulation data as JSON for the knowledge graph visualization."""
+"""Export MiroFish simulation data as JSON for the knowledge graph visualization.
+
+Combines both the original 32-domain run and the 20 viral domain predictions
+into a single interactive graph.
+"""
 
 import json
 import sys
@@ -11,39 +15,57 @@ from chip_labs.mirofish.personas import generate_personas, PERSONA_TYPES
 from chip_labs.mirofish.simulation import run_simulation
 from chip_labs.mirofish.signals import (
     signals_from_opportunities, signals_from_graph,
-    create_shock, SIGNAL_TYPES, SHOCK_TEMPLATES,
+    create_signal, create_shock, SIGNAL_TYPES, SHOCK_TEMPLATES,
 )
 from chip_labs.trend_scanner import score_opportunity
 
-# Import domain data
+# Import domain data from both prediction scripts
 from predict_1000_agents import EXISTING_CHIPS, NEW_CANDIDATES, ALL_DOMAINS
+from predict_viral_domains import VIRAL_DOMAINS, VIRAL_RELATIONSHIPS, VIRAL_SIGNALS, VIRAL_SHOCKS
 
 
 def main():
+    # Combine all domains (original 32 + viral 20, deduplicating by domain_id)
+    seen_ids = {d["domain_id"] for d in ALL_DOMAINS}
+    combined_domains = list(ALL_DOMAINS)
+    viral_only = []
+    for d in VIRAL_DOMAINS:
+        if d["domain_id"] not in seen_ids:
+            combined_domains.append(d)
+            viral_only.append(d)
+            seen_ids.add(d["domain_id"])
+
     # Score all domains
-    for d in ALL_DOMAINS:
+    for d in combined_domains:
         d["composite_score"] = score_opportunity(d)
 
-    # Build graph
-    graph = build_graph_from_opportunities(ALL_DOMAINS)
+    # Build graph from combined domains
+    graph = build_graph_from_opportunities(combined_domains)
+
+    # Add viral-specific relationships
+    for rel in VIRAL_RELATIONSHIPS:
+        src, tgt, rtype = rel[0], rel[1], rel[2]
+        weight = rel[3] if len(rel) > 3 else 0.7
+        if src in graph.nodes and tgt in graph.nodes:
+            graph.add_edge(src, tgt, rtype, weight=weight)
 
     # Generate 1000 personas
-    domain_ids = [d["domain_id"] for d in ALL_DOMAINS]
+    domain_ids = [d["domain_id"] for d in combined_domains]
     personas = generate_personas(graph, domain_ids, count_per_type=125, seed=42)
 
-    # Generate signals
-    opp_signals = signals_from_opportunities(ALL_DOMAINS)
+    # Generate signals (original + viral)
+    opp_signals = signals_from_opportunities(combined_domains)
     graph_signals = signals_from_graph(graph)
-    all_signals = opp_signals + graph_signals
+    all_signals = opp_signals + graph_signals + list(VIRAL_SIGNALS)
 
-    # Shocks
+    # Shocks (original + viral)
     shocks = [
         create_shock("breakout_tool", ["ai-agent-builder", "prompt-engineer"], inject_at_round=3),
         create_shock("viral_adoption", ["solana-dev", "defi-architect"], inject_at_round=5),
         create_shock("market_crash", ["trading-crypto", "defi-architect", "solana-dev", "personal-finance"], inject_at_round=8),
         create_shock("ecosystem_integration", ["open-source-maintainer", "ai-agent-builder"], inject_at_round=4),
         create_shock("regulatory_ban", ["health-wellness", "compliance-shield"], inject_at_round=10),
-    ]
+    ] + list(VIRAL_SHOCKS)
 
     # Run builder simulation
     builder_result = run_simulation(
@@ -81,8 +103,9 @@ def main():
 
     # --- Export domain results ---
     existing_ids = {d["domain_id"] for d in EXISTING_CHIPS}
+    viral_ids = {d["domain_id"] for d in viral_only}
     domains_data = []
-    for d in ALL_DOMAINS:
+    for d in combined_domains:
         d_id = d["domain_id"]
         b = builder_result["domains"].get(d_id, {})
         e = enterprise_result["domains"].get(d_id, {})
@@ -112,6 +135,7 @@ def main():
             "label": d.get("label", d_id),
             "description": d.get("description", ""),
             "is_existing": d_id in existing_ids,
+            "is_viral": d_id in viral_ids,
             "status": d.get("status", "candidate"),
             "composite_score": d.get("composite_score", 0),
             "scores": d.get("scores", {}),
@@ -169,11 +193,12 @@ def main():
     # --- Assemble full export ---
     export = {
         "meta": {
-            "title": "MiroFish 1000-Agent Trend Prediction",
+            "title": "MiroFish 1000-Agent Trend Prediction (32 original + 20 viral domains)",
             "agent_count": len(personas),
             "domain_count": len(domain_ids),
             "existing_count": len(EXISTING_CHIPS),
             "candidate_count": len(NEW_CANDIDATES),
+            "viral_count": len(viral_only),
             "total_signals": len(all_signals),
             "graph_nodes": len(graph_nodes),
             "graph_edges": len(graph_edges),

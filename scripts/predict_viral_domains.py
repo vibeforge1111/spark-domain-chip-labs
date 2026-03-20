@@ -249,6 +249,46 @@ VIRAL_RELATIONSHIPS = [
 ]
 
 
+# ============================================================================
+# Viral-specific signals (importable for combined viz export)
+# ============================================================================
+
+VIRAL_SIGNALS = [
+    # Pump.fun/meme coin mania
+    create_signal("memecoin-mania", "viral_tweet", ["meme-coin-launcher", "crypto-airdrop"], strength=0.95),
+    create_signal("pumpfun-revenue", "vc_funding", ["meme-coin-launcher", "telegram-miniapp"], strength=0.90),
+    # AI tools explosion
+    create_signal("mcp-10k-servers", "github_trending", ["mcp-server-builder", "cursor-copilot"], strength=0.92),
+    create_signal("cursor-1m-users", "producthunt_launch", ["cursor-copilot"], strength=0.88),
+    # Creator economy surge
+    create_signal("creator-economy-2026", "community_request",
+                 ["tiktok-creator", "linkedin-ghostwriter", "twitter-threads", "podcast-producer"], strength=0.85),
+    # Supabase Series C
+    create_signal("supabase-funding", "vc_funding", ["supabase-fullstack"], strength=0.88),
+    # TON ecosystem growth
+    create_signal("ton-ecosystem", "viral_tweet", ["telegram-miniapp"], strength=0.90),
+    # AI art mainstream
+    create_signal("ai-art-mainstream", "producthunt_launch", ["midjourney-art", "ai-avatar"], strength=0.82),
+    # SEO revenue screenshots going viral
+    create_signal("seo-revenue-viral", "viral_tweet", ["seo-dominator", "shopify-growth"], strength=0.80),
+    # Voice AI breakthrough
+    create_signal("voice-ai-breakthrough", "github_trending", ["ai-voice-clone"], strength=0.78),
+]
+
+# ============================================================================
+# Viral shock events (importable for combined viz export)
+# ============================================================================
+
+VIRAL_SHOCKS = [
+    create_shock("viral_adoption", ["meme-coin-launcher", "tiktok-creator"], inject_at_round=2),
+    create_shock("breakout_tool", ["mcp-server-builder", "cursor-copilot", "supabase-fullstack"], inject_at_round=4),
+    create_shock("ecosystem_integration", ["github-actions", "mcp-server-builder"], inject_at_round=6),
+    create_shock("viral_adoption", ["telegram-miniapp", "crypto-airdrop"], inject_at_round=5),
+    create_shock("market_crash", ["meme-coin-launcher", "crypto-airdrop", "onchain-analytics"], inject_at_round=12),
+    create_shock("regulatory_ban", ["ai-voice-clone", "ai-avatar"], inject_at_round=14),
+]
+
+
 def main():
     print("=" * 80)
     print("MIROFISH VIRAL DOMAIN PREDICTION")
@@ -277,41 +317,11 @@ def main():
     opp_signals = signals_from_opportunities(VIRAL_DOMAINS)
     graph_signals = signals_from_graph(graph)
 
-    # Add viral-specific signals
-    viral_signals = [
-        # Pump.fun/meme coin mania
-        create_signal("memecoin-mania", "viral_tweet", ["meme-coin-launcher", "crypto-airdrop"], strength=0.95),
-        create_signal("pumpfun-revenue", "vc_funding", ["meme-coin-launcher", "telegram-miniapp"], strength=0.90),
-        # AI tools explosion
-        create_signal("mcp-10k-servers", "github_trending", ["mcp-server-builder", "cursor-copilot"], strength=0.92),
-        create_signal("cursor-1m-users", "producthunt_launch", ["cursor-copilot"], strength=0.88),
-        # Creator economy surge
-        create_signal("creator-economy-2026", "community_request",
-                     ["tiktok-creator", "linkedin-ghostwriter", "twitter-threads", "podcast-producer"], strength=0.85),
-        # Supabase Series C
-        create_signal("supabase-funding", "vc_funding", ["supabase-fullstack"], strength=0.88),
-        # TON ecosystem growth
-        create_signal("ton-ecosystem", "viral_tweet", ["telegram-miniapp"], strength=0.90),
-        # AI art mainstream
-        create_signal("ai-art-mainstream", "producthunt_launch", ["midjourney-art", "ai-avatar"], strength=0.82),
-        # SEO revenue screenshots going viral
-        create_signal("seo-revenue-viral", "viral_tweet", ["seo-dominator", "shopify-growth"], strength=0.80),
-        # Voice AI breakthrough
-        create_signal("voice-ai-breakthrough", "github_trending", ["ai-voice-clone"], strength=0.78),
-    ]
+    # Use module-level viral signals and shocks
+    all_signals = opp_signals + graph_signals + list(VIRAL_SIGNALS)
+    print(f"Signals: {len(opp_signals)} opportunity + {len(graph_signals)} graph + {len(VIRAL_SIGNALS)} viral = {len(all_signals)} total")
 
-    all_signals = opp_signals + graph_signals + viral_signals
-    print(f"Signals: {len(opp_signals)} opportunity + {len(graph_signals)} graph + {len(viral_signals)} viral = {len(all_signals)} total")
-
-    # Shocks: viral events that could happen
-    shocks = [
-        create_shock("viral_adoption", ["meme-coin-launcher", "tiktok-creator"], inject_at_round=2),
-        create_shock("breakout_tool", ["mcp-server-builder", "cursor-copilot", "supabase-fullstack"], inject_at_round=4),
-        create_shock("ecosystem_integration", ["github-actions", "mcp-server-builder"], inject_at_round=6),
-        create_shock("viral_adoption", ["telegram-miniapp", "crypto-airdrop"], inject_at_round=5),
-        create_shock("market_crash", ["meme-coin-launcher", "crypto-airdrop", "onchain-analytics"], inject_at_round=12),
-        create_shock("regulatory_ban", ["ai-voice-clone", "ai-avatar"], inject_at_round=14),
-    ]
+    shocks = list(VIRAL_SHOCKS)
 
     # ========================================================================
     # FLAGSHIP: 1000-agent simulation
