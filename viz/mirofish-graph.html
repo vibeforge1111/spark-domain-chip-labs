@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MiroFish Knowledge Graph - 1000-Agent Trend Prediction</title>
+<title>MiroFish v2 - 100-Domain Trend Prediction</title>
 <style>
   /* ===== RESET & BASE ===== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -602,9 +602,9 @@ function initLayout() {
     nodeMap[e.source] && nodeMap[e.target]
   );
 
-  // Sample edges for visualization (show max ~200 for readability)
-  const edgeSample = filteredEdges.length > 200
-    ? filteredEdges.filter(e => e.weight > 0.3 || e.relationship === 'ENABLES' || e.relationship === 'EXTENDS')
+  // Sample edges for visualization (keep significant ones, viewport culling handles the rest)
+  const edgeSample = filteredEdges.length > 300
+    ? filteredEdges.filter(e => e.weight > 0.4 || e.relationship === 'ENABLES')
     : filteredEdges;
 
   edges = edgeSample.map(e => ({
@@ -614,23 +614,31 @@ function initLayout() {
     weight: e.weight,
   }));
 
-  // Run force simulation for initial layout
-  for (let iter = 0; iter < 200; iter++) {
-    forceStep(0.3 * (1 - iter / 200));
+  // Run force simulation for initial layout (fewer iterations, faster startup)
+  for (let iter = 0; iter < 120; iter++) {
+    forceStep(0.3 * (1 - iter / 120));
   }
+
+  // Pre-sort nodes for rendering order (avoids filter() every frame)
+  sortedNonDomains = nodes.filter(n => !n.isDomain);
+  sortedDomains = nodes.filter(n => n.isDomain);
 }
 
 function forceStep(alpha) {
   const k = 120; // repulsion distance
   const gravity = 0.01;
+  const cutoff = k * 4; // skip repulsion for distant nodes
+  const cutoffSq = cutoff * cutoff;
 
-  // Repulsion between all nodes
+  // Repulsion between nodes (skip pairs beyond cutoff distance)
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
       const a = nodes[i], b = nodes[j];
       let dx = b.x - a.x;
       let dy = b.y - a.y;
-      let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      let distSq = dx * dx + dy * dy;
+      if (distSq > cutoffSq) continue; // skip distant pairs
+      let dist = Math.sqrt(distSq) || 1;
       let force = (k * k) / dist;
       let fx = (dx / dist) * force * alpha;
       let fy = (dy / dist) * force * alpha;
@@ -666,41 +674,87 @@ function forceStep(alpha) {
 // RENDERING
 // ============================================================================
 
+// Pre-sort nodes once (non-domains first, domains on top)
+let sortedNonDomains = [];
+let sortedDomains = [];
+let cachedBgGrad = null;
+let lastW = 0, lastH = 0;
+let needsResize = true;
+
+function onResize() { needsResize = true; }
+window.addEventListener('resize', onResize);
+
 function render() {
   frameCount++;
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight - 48;
+
+  // Only reset canvas size on actual resize (not every frame!)
+  const newW = window.innerWidth;
+  const newH = window.innerHeight - 48;
+  if (needsResize || newW !== lastW || newH !== lastH) {
+    W = canvas.width = newW;
+    H = canvas.height = newH;
+    lastW = newW; lastH = newH;
+    needsResize = false;
+    // Rebuild background gradient only on resize
+    cachedBgGrad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W, H) * 0.7);
+    cachedBgGrad.addColorStop(0, 'rgba(15,15,30,1)');
+    cachedBgGrad.addColorStop(1, 'rgba(5,5,12,1)');
+  }
 
   ctx.clearRect(0, 0, W, H);
-
-  // Background gradient
-  const bgGrad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W, H) * 0.7);
-  bgGrad.addColorStop(0, 'rgba(15,15,30,1)');
-  bgGrad.addColorStop(1, 'rgba(5,5,12,1)');
-  ctx.fillStyle = bgGrad;
+  ctx.fillStyle = cachedBgGrad;
   ctx.fillRect(0, 0, W, H);
 
-  // Grid
-  drawGrid();
+  // Grid (skip at high zoom-out for perf)
+  if (camera.zoom > 0.3) drawGrid();
 
   ctx.save();
   ctx.translate(W/2 + camera.x, H/2 + camera.y);
   ctx.scale(camera.zoom, camera.zoom);
 
-  // Draw edges
-  edges.forEach(drawEdge);
+  // Compute viewport bounds in world space for culling
+  const vpLeft = (-camera.x - W/2) / camera.zoom;
+  const vpTop = (-camera.y - H/2) / camera.zoom;
+  const vpRight = vpLeft + W / camera.zoom;
+  const vpBottom = vpTop + H / camera.zoom;
+  const margin = 60; // node radius margin
 
-  // Draw nodes (non-domain first, then domain on top)
-  const nonDomains = nodes.filter(n => !n.isDomain);
-  const domains = nodes.filter(n => n.isDomain);
-  nonDomains.forEach(n => drawNode(n));
-  domains.forEach(n => drawNode(n));
+  // Draw edges (batch with single style where possible)
+  const edgeLen = edges.length;
+  for (let i = 0; i < edgeLen; i++) {
+    const e = edges[i];
+    const s = e.source, t = e.target;
+    // Cull edges fully outside viewport
+    if ((s.x < vpLeft - margin && t.x < vpLeft - margin) ||
+        (s.x > vpRight + margin && t.x > vpRight + margin) ||
+        (s.y < vpTop - margin && t.y < vpTop - margin) ||
+        (s.y > vpBottom + margin && t.y > vpBottom + margin)) continue;
+    drawEdge(e);
+  }
+
+  // Draw nodes with viewport culling
+  const nodeLen = sortedNonDomains.length;
+  for (let i = 0; i < nodeLen; i++) {
+    const n = sortedNonDomains[i];
+    if (n.x > vpLeft - margin && n.x < vpRight + margin &&
+        n.y > vpTop - margin && n.y < vpBottom + margin) {
+      drawNode(n);
+    }
+  }
+  const domLen = sortedDomains.length;
+  for (let i = 0; i < domLen; i++) {
+    const n = sortedDomains[i];
+    if (n.x > vpLeft - margin && n.x < vpRight + margin &&
+        n.y > vpTop - margin && n.y < vpBottom + margin) {
+      drawNode(n);
+    }
+  }
 
   ctx.restore();
 
-  // Update UI
-  updateMinimap();
-  updateStatusBar();
+  // Throttled UI updates
+  if (frameCount % 3 === 0) updateMinimap();
+  if (frameCount % 10 === 0) updateStatusBar();
 
   requestAnimationFrame(render);
 }
@@ -752,58 +806,50 @@ function drawNode(node) {
   const time = frameCount * 0.02;
   const pulse = 1 + Math.sin(time + node.pulsePhase) * 0.08;
   const r = node.radius * pulse;
-  const color = getNodeColor(node);
+  const color = node._cachedColor || (node._cachedColor = getNodeColor(node));
   const isHovered = hoveredNode === node;
   const isSelected = selectedNode === node;
 
-  // Adoption glow for domains
-  if (node.isDomain && node.domainData) {
+  // Adoption glow for domains (only when hovered/selected or significant adoption — saves GPU)
+  if (node.isDomain && node.domainData && (isHovered || isSelected)) {
     const adoption = getAdoptionAtRound(node.domainData, currentRound);
-    const glowRadius = r * (1.5 + adoption * 2);
-    const glow = ctx.createRadialGradient(node.x, node.y, r, node.x, node.y, glowRadius);
-    glow.addColorStop(0, color.replace(')', ',0.15)').replace('rgb', 'rgba'));
-    glow.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = glow;
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, glowRadius, 0, Math.PI * 2);
-    ctx.fill();
+    if (adoption > 0.01) {
+      const glowRadius = r * (1.5 + adoption * 2);
+      const rgb = hexToRgb(color);
+      if (typeof rgb !== 'string') {
+        ctx.fillStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},0.1)`;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, glowRadius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
   }
 
-  // Outer glow on hover/select
-  if (isHovered || isSelected) {
-    const glowR = r * 2.5;
-    const glow = ctx.createRadialGradient(node.x, node.y, r, node.x, node.y, glowR);
-    glow.addColorStop(0, color.replace(')', ',0.25)').replace('rgb', 'rgba').replace('#', ''));
-    glow.addColorStop(1, 'rgba(0,0,0,0)');
-
-    // For hex colors, parse them
-    ctx.fillStyle = `${color}20`;
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, glowR, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  // Main circle
+  // Main circle — use flat color for distant/small nodes, gradient only for large/hovered
   ctx.beginPath();
   ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
-  const grad = ctx.createRadialGradient(
-    node.x - r * 0.3, node.y - r * 0.3, 0,
-    node.x, node.y, r
-  );
-  grad.addColorStop(0, color);
-  grad.addColorStop(1, adjustBrightness(color, -40));
-  ctx.fillStyle = grad;
+  if (isHovered || isSelected || r > 12) {
+    const grad = ctx.createRadialGradient(
+      node.x - r * 0.3, node.y - r * 0.3, 0,
+      node.x, node.y, r
+    );
+    grad.addColorStop(0, color);
+    grad.addColorStop(1, adjustBrightness(color, -40));
+    ctx.fillStyle = grad;
+  } else {
+    ctx.fillStyle = color;
+  }
   ctx.fill();
 
   // Ring
-  ctx.strokeStyle = isHovered || isSelected ? color : adjustAlpha(color, 0.4);
+  ctx.strokeStyle = isHovered || isSelected ? color : (node._ringColor || (node._ringColor = adjustAlpha(color, 0.4)));
   ctx.lineWidth = isHovered || isSelected ? 2 : 1;
   ctx.stroke();
 
   // Adoption ring for domains
   if (node.isDomain && node.domainData) {
     const adoption = getAdoptionAtRound(node.domainData, currentRound);
-    if (adoption > 0) {
+    if (adoption > 0.01) {
       ctx.beginPath();
       ctx.arc(node.x, node.y, r + 4, -Math.PI/2, -Math.PI/2 + Math.PI * 2 * adoption);
       ctx.strokeStyle = color;
@@ -812,18 +858,18 @@ function drawNode(node) {
     }
   }
 
-  // Label
-  if (camera.zoom > 0.5 || node.isDomain || isHovered) {
-    ctx.font = `${isHovered ? 'bold ' : ''}${node.isDomain ? 10 : 8}px 'JetBrains Mono', monospace`;
+  // Label — only show if zoomed in enough or hovered
+  if (isHovered || isSelected || (camera.zoom > 0.6 && node.isDomain) || camera.zoom > 1.2) {
+    const fontSize = node.isDomain ? 10 : 8;
+    ctx.font = `${isHovered ? 'bold ' : ''}${fontSize}px monospace`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
-    ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.6)';
     const labelY = node.y + r + 6;
 
-    // Background for label
-    const textW = ctx.measureText(node.label).width + 8;
+    // Cache label width
+    if (!node._labelWidth) node._labelWidth = ctx.measureText(node.label).width + 8;
     ctx.fillStyle = 'rgba(0,0,0,0.5)';
-    ctx.fillRect(node.x - textW/2, labelY - 1, textW, 13);
+    ctx.fillRect(node.x - node._labelWidth/2, labelY - 1, node._labelWidth, 13);
 
     ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.6)';
     ctx.fillText(node.label, node.x, labelY);
@@ -875,10 +921,14 @@ function screenToWorld(sx, sy) {
 }
 
 function findNodeAt(wx, wy) {
-  // Check domains first (they're on top)
-  const domains = nodes.filter(n => n.isDomain);
-  const others = nodes.filter(n => !n.isDomain);
-  for (const n of [...domains.reverse(), ...others.reverse()]) {
+  // Check domains first (they render on top), iterate backwards
+  for (let i = sortedDomains.length - 1; i >= 0; i--) {
+    const n = sortedDomains[i];
+    const dx = n.x - wx, dy = n.y - wy;
+    if (dx*dx + dy*dy < (n.radius + 4) * (n.radius + 4)) return n;
+  }
+  for (let i = sortedNonDomains.length - 1; i >= 0; i--) {
+    const n = sortedNonDomains[i];
     const dx = n.x - wx, dy = n.y - wy;
     if (dx*dx + dy*dy < (n.radius + 4) * (n.radius + 4)) return n;
   }
@@ -967,8 +1017,11 @@ function showTooltip(mx, my, node) {
       body += `<div class="tt-row"><span>Status</span><span class="tt-val">${d.status}</span></div>`;
     }
   } else {
-    // Count connections
-    const connections = edges.filter(e => e.source === node || e.target === node).length;
+    // Count connections (use cached count)
+    if (node._connectionCount === undefined) {
+      node._connectionCount = edges.filter(e => e.source === node || e.target === node).length;
+    }
+    const connections = node._connectionCount;
     body += `<div class="tt-row"><span>Connections</span><span class="tt-val">${connections}</span></div>`;
   }
   tt.querySelector('.tt-body').innerHTML = body;
@@ -994,10 +1047,7 @@ const minimapCanvas = document.getElementById('minimap-canvas');
 const mmCtx = minimapCanvas.getContext('2d');
 
 function updateMinimap() {
-  if (frameCount % 3 !== 0) return; // Update every 3rd frame
-  minimapCanvas.width = 180;
-  minimapCanvas.height = 120;
-
+  mmCtx.clearRect(0, 0, 180, 120);
   mmCtx.fillStyle = 'rgba(8,8,16,0.8)';
   mmCtx.fillRect(0, 0, 180, 120);
 
@@ -1017,11 +1067,11 @@ function updateMinimap() {
   const scaleY = (120 - padding * 2) / rangeY;
   const scale = Math.min(scaleX, scaleY);
 
-  // Draw nodes
+  // Draw nodes (use cached colors)
   nodes.forEach(n => {
     const mx = padding + (n.x - minX) * scale;
     const my = padding + (n.y - minY) * scale;
-    mmCtx.fillStyle = getNodeColor(n);
+    mmCtx.fillStyle = n._cachedColor || getNodeColor(n);
     mmCtx.globalAlpha = n.isDomain ? 0.8 : 0.3;
     mmCtx.beginPath();
     mmCtx.arc(mx, my, n.isDomain ? 3 : 1.5, 0, Math.PI * 2);
@@ -1566,7 +1616,7 @@ function init() {
   updateShockTimeline();
 
   // Initial feed
-  addFeedItem('MiroFish simulation initialized with <span class="feed-highlight">1,000 agents</span>', '');
+  addFeedItem(`MiroFish v2 initialized with <span class="feed-highlight">${DATA.meta.agent_count.toLocaleString()} agents</span> across ${DATA.meta.persona_types || 11} persona types`, '');
   addFeedItem(`<span class="feed-highlight">${DATA.meta.domain_count}</span> domains loaded (${DATA.meta.existing_count} existing + ${DATA.meta.candidate_count} candidates)`, '');
   addFeedItem(`<span class="feed-highlight">${DATA.meta.total_signals}</span> signals injected (${DATA.signal_summary.opportunity_signals} opportunity + ${DATA.signal_summary.graph_signals} graph)`, '');
   addFeedItem(`Graph: ${DATA.meta.graph_nodes} nodes, ${DATA.meta.graph_edges} edges`, '');
