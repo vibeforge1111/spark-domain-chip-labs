@@ -328,6 +328,82 @@ def cmd_score_v2(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: score-v3
+# ---------------------------------------------------------------------------
+
+def cmd_score_v3(args: argparse.Namespace) -> None:
+    """Score a chip with the V3 deep evaluation rubric."""
+    from .deep_eval import score_chip_v3
+
+    chip_path = Path(args.chip_path)
+    result = score_chip_v3(chip_path)
+    d = result.as_dict()
+
+    print(f"Chip: {chip_path.name}")
+    print(f"Score: {d['total_score']}/100 (v3 deep eval)")
+    print(f"Verdict: {d['verdict']}")
+    print()
+
+    for dim in d["dimensions"]:
+        depth = dim["depth_level"]
+        print(f"  {dim['label']}: {dim['score']}/{dim['max_points']} [{depth}]")
+
+    if args.verbose:
+        if d["strengths"]:
+            print("\nStrengths:")
+            for s in d["strengths"]:
+                print(f"  + {s}")
+        if d["gaps"]:
+            print("\nGaps:")
+            for g in d["gaps"]:
+                print(f"  - {g}")
+        if d["recommendations"]:
+            print("\nRecommendations:")
+            for r in d["recommendations"]:
+                print(f"  > {r}")
+        if d["anti_gaming_flags"]:
+            print("\nAnti-gaming flags:")
+            for f in d["anti_gaming_flags"]:
+                print(f"  ! {f}")
+
+    _write_output(args.output, d)
+
+
+# ---------------------------------------------------------------------------
+# Command: portfolio-v3
+# ---------------------------------------------------------------------------
+
+def cmd_portfolio_v3(args: argparse.Namespace) -> None:
+    """Score all discovered chips with the V3 deep evaluation rubric."""
+    from .deep_eval import score_portfolio_v3
+
+    search_dir = args.search_dir if args.search_dir else None
+    report = score_portfolio_v3(search_dir)
+
+    if "error" in report:
+        print(f"Error: {report['error']}", file=sys.stderr)
+        sys.exit(1)
+
+    summary = report.get("summary", {})
+    print(f"Portfolio V3 Deep Eval Report")
+    print(f"Chips: {summary.get('chip_count', 0)}")
+    print(f"Average: {summary.get('average_score', 0)}/100")
+    print(f"Verdicts: {summary.get('verdicts', {})}")
+    print()
+
+    ranking = summary.get("ranking", [])
+    print("Ranking:")
+    for i, (name, score) in enumerate(ranking, 1):
+        chip_data = report["chips"].get(name, {})
+        verdict = chip_data.get("verdict", "?")
+        flags = chip_data.get("anti_gaming_flags", [])
+        flag_str = f" [!{','.join(flags)}]" if flags else ""
+        print(f"  {i:2d}. {name}: {score}/100 ({verdict}){flag_str}")
+
+    _write_output(args.output, report)
+
+
+# ---------------------------------------------------------------------------
 # Command: build-skill
 # ---------------------------------------------------------------------------
 
@@ -444,6 +520,19 @@ def main() -> None:
     p_score_v2.add_argument("chip_path", type=str, help="Path to chip directory.")
     p_score_v2.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_score_v2.set_defaults(func=cmd_score_v2)
+
+    # score-v3
+    p_score_v3 = sub.add_parser("score-v3", help="Score a chip with the V3 deep evaluation rubric.")
+    p_score_v3.add_argument("chip_path", type=str, help="Path to chip directory.")
+    p_score_v3.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_score_v3.add_argument("--verbose", action="store_true", help="Show gaps, strengths, and anti-gaming flags.")
+    p_score_v3.set_defaults(func=cmd_score_v3)
+
+    # portfolio-v3
+    p_portfolio_v3 = sub.add_parser("portfolio-v3", help="Score all discovered chips with V3 deep eval.")
+    p_portfolio_v3.add_argument("--search-dir", type=str, default=None, help="Directory to scan for chips.")
+    p_portfolio_v3.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_portfolio_v3.set_defaults(func=cmd_portfolio_v3)
 
     # build-skill
     p_skill = sub.add_parser("build-skill", help="Build intelligence delivery artifacts.")
