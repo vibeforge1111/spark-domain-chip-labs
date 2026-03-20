@@ -7,6 +7,7 @@
 - Natural "show your work" moments that drive discovery of Spark
 """
 
+import os
 import time
 import json
 import sys
@@ -548,7 +549,9 @@ NETWORK EFFECTS:
         } for name, members in clusters.items()},
     }
 
-    output_path = "viz/viral_predictions.json"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(script_dir, "..", "viz", "viral_predictions.json")
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, "w") as f:
         json.dump(export, f, indent=2)
     print(f"Exported to {output_path}")

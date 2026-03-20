@@ -1,0 +1,5811 @@
+{
+  "run_metadata": {
+    "total_domains": 100,
+    "total_personas": 1375,
+    "persona_types": 11,
+    "ensemble_runs": 10,
+    "total_time_seconds": 2292.2
+  },
+  "rankings": [
+    {
+      "rank": 1,
+      "domain_id": "trading-crypto",
+      "label": "Crypto Trading Intelligence",
+      "status": "production",
+      "ensemble_mean": 0.3545,
+      "p10": 0.3455,
+      "p90": 0.3636,
+      "builder_adoption": 0.368,
+      "advocacy": 0.0407,
+      "static_score": 0.86,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.856,
+          "advocacy": 0.176
+        },
+        "entrepreneur": {
+          "adoption": 0.256,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.296,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.312,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.24,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.952,
+          "advocacy": 0.232
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.8,
+          "advocacy": 0.04
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "domain_id": "roblox-development",
+      "label": "Roblox Game Development",
+      "status": "alpha",
+      "ensemble_mean": 0.3073,
+      "p10": 0.2909,
+      "p90": 0.3227,
+      "builder_adoption": 0.2858,
+      "advocacy": 0.008,
+      "static_score": 0.76,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.232,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.304,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.912,
+          "advocacy": 0.064
+        },
+        "developer": {
+          "adoption": 0.272,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.136,
+          "advocacy": 0.008
+        },
+        "creative": {
+          "adoption": 0.544,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.456,
+          "advocacy": 0.016
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "domain_id": "defi-architect",
+      "label": "DeFi Protocol Architecture",
+      "status": "new",
+      "ensemble_mean": 0.2827,
+      "p10": 0.2682,
+      "p90": 0.3091,
+      "builder_adoption": 0.336,
+      "advocacy": 0.0073,
+      "static_score": 0.874,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.184,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.224,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.184,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.36,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.344,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.28,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.84,
+          "advocacy": 0.056
+        },
+        "tool_maker": {
+          "adoption": 0.608,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.376,
+          "advocacy": 0.024
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "domain_id": "web-designer",
+      "label": "AI Web Design",
+      "status": "alpha",
+      "ensemble_mean": 0.2773,
+      "p10": 0.2727,
+      "p90": 0.2909,
+      "builder_adoption": 0.3062,
+      "advocacy": 0.0247,
+      "static_score": 0.78,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.56,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.2,
+          "advocacy": 0.008
+        },
+        "solopreneur": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.304,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.336,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.952,
+          "advocacy": 0.248
+        },
+        "trader": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.528,
+          "advocacy": 0.016
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "domain_id": "agentic-marketing",
+      "label": "Agentic Marketing Campaigns",
+      "status": "beta",
+      "ensemble_mean": 0.2754,
+      "p10": 0.2636,
+      "p90": 0.2955,
+      "builder_adoption": 0.2742,
+      "advocacy": 0.0269,
+      "static_score": 0.84,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.184,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.632,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.352,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.952,
+          "advocacy": 0.296
+        },
+        "creative": {
+          "adoption": 0.168,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.456,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "domain_id": "vibe-incubator",
+      "label": "Vibe Coding Incubator",
+      "status": "alpha",
+      "ensemble_mean": 0.2727,
+      "p10": 0.2591,
+      "p90": 0.2955,
+      "builder_adoption": 0.3033,
+      "advocacy": 0.0095,
+      "static_score": 0.72,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.904,
+          "advocacy": 0.072
+        },
+        "content_creator": {
+          "adoption": 0.272,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.728,
+          "advocacy": 0.024
+        },
+        "developer": {
+          "adoption": 0.32,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.16,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.192,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.128,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.44,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "domain_id": "xcontent",
+      "label": "X/Twitter Content Strategy",
+      "status": "alpha",
+      "ensemble_mean": 0.2636,
+      "p10": 0.2318,
+      "p90": 0.2773,
+      "builder_adoption": 0.2633,
+      "advocacy": 0.0175,
+      "static_score": 0.82,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.992,
+          "advocacy": 0.12
+        },
+        "solopreneur": {
+          "adoption": 0.12,
+          "advocacy": 0.008
+        },
+        "ai_newcomer": {
+          "adoption": 0.344,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.184,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.16,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.768,
+          "advocacy": 0.056
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "domain_id": "startup-yc",
+      "label": "Y Combinator Startup Strategy",
+      "status": "production",
+      "ensemble_mean": 0.2609,
+      "p10": 0.25,
+      "p90": 0.2682,
+      "builder_adoption": 0.2524,
+      "advocacy": 0.0378,
+      "static_score": 0.88,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.2,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.968,
+          "advocacy": 0.4
+        },
+        "content_creator": {
+          "adoption": 0.272,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.344,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.216,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.408,
+          "advocacy": 0.016
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "domain_id": "content",
+      "label": "AI Content Creation",
+      "status": "alpha",
+      "ensemble_mean": 0.2545,
+      "p10": 0.2455,
+      "p90": 0.2682,
+      "builder_adoption": 0.2727,
+      "advocacy": 0.0109,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.184,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.984,
+          "advocacy": 0.112
+        },
+        "solopreneur": {
+          "adoption": 0.384,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.384,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.16,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.24,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.16,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.44,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 10,
+      "domain_id": "tiktok-creator",
+      "label": "TikTok Content Strategy",
+      "status": "new",
+      "ensemble_mean": 0.24,
+      "p10": 0.2364,
+      "p90": 0.2455,
+      "builder_adoption": 0.2138,
+      "advocacy": 0.0167,
+      "static_score": 0.8,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.856,
+          "advocacy": 0.12
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.584,
+          "advocacy": 0.04
+        },
+        "trader": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.512,
+          "advocacy": 0.024
+        }
+      }
+    },
+    {
+      "rank": 11,
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "status": "new",
+      "ensemble_mean": 0.2327,
+      "p10": 0.2273,
+      "p90": 0.2364,
+      "builder_adoption": 0.2233,
+      "advocacy": 0.0124,
+      "static_score": 0.83,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.136,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.36,
+          "advocacy": 0.016
+        },
+        "developer": {
+          "adoption": 0.784,
+          "advocacy": 0.08
+        },
+        "marketer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.376,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.504,
+          "advocacy": 0.032
+        }
+      }
+    },
+    {
+      "rank": 12,
+      "domain_id": "no-code-saas",
+      "label": "No-Code SaaS Builder",
+      "status": "new",
+      "ensemble_mean": 0.2291,
+      "p10": 0.2182,
+      "p90": 0.2364,
+      "builder_adoption": 0.2044,
+      "advocacy": 0.0138,
+      "static_score": 0.78,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.616,
+          "advocacy": 0.048
+        },
+        "content_creator": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.768,
+          "advocacy": 0.104
+        },
+        "ai_newcomer": {
+          "adoption": 0.352,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.184,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 13,
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "status": "new",
+      "ensemble_mean": 0.2245,
+      "p10": 0.2091,
+      "p90": 0.2364,
+      "builder_adoption": 0.2073,
+      "advocacy": 0.0109,
+      "static_score": 0.81,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.776,
+          "advocacy": 0.048
+        },
+        "marketer": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.76,
+          "advocacy": 0.056
+        },
+        "opportunity_hunter": {
+          "adoption": 0.192,
+          "advocacy": 0.016
+        }
+      }
+    },
+    {
+      "rank": 14,
+      "domain_id": "ai-agent-builder",
+      "label": "AI Agent Development Kit",
+      "status": "new",
+      "ensemble_mean": 0.22,
+      "p10": 0.2,
+      "p90": 0.2455,
+      "builder_adoption": 0.2393,
+      "advocacy": 0.0051,
+      "static_score": 0.827,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.304,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.84,
+          "advocacy": 0.048
+        },
+        "marketer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.192,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.36,
+          "advocacy": 0.008
+        },
+        "opportunity_hunter": {
+          "adoption": 0.32,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 15,
+      "domain_id": "prompt-engineer",
+      "label": "Prompt Engineering Mastery",
+      "status": "new",
+      "ensemble_mean": 0.22,
+      "p10": 0.2091,
+      "p90": 0.2364,
+      "builder_adoption": 0.2247,
+      "advocacy": 0.0073,
+      "static_score": 0.8235,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.168,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.648,
+          "advocacy": 0.048
+        },
+        "developer": {
+          "adoption": 0.76,
+          "advocacy": 0.032
+        },
+        "marketer": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.352,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 16,
+      "domain_id": "sales-closer",
+      "label": "AI Sales Closer",
+      "status": "new",
+      "ensemble_mean": 0.22,
+      "p10": 0.2136,
+      "p90": 0.2318,
+      "builder_adoption": 0.2196,
+      "advocacy": 0.0116,
+      "static_score": 0.7265,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.16,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.184,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.816,
+          "advocacy": 0.072
+        },
+        "creative": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.304,
+          "advocacy": 0.008
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.608,
+          "advocacy": 0.04
+        }
+      }
+    },
+    {
+      "rank": 17,
+      "domain_id": "solana-dev",
+      "label": "Solana Development",
+      "status": "new",
+      "ensemble_mean": 0.2173,
+      "p10": 0.2,
+      "p90": 0.2273,
+      "builder_adoption": 0.2335,
+      "advocacy": 0.0065,
+      "static_score": 0.8015,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.16,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.216,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.24,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.16,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.36,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.664,
+          "advocacy": 0.048
+        },
+        "opportunity_hunter": {
+          "adoption": 0.56,
+          "advocacy": 0.024
+        }
+      }
+    },
+    {
+      "rank": 18,
+      "domain_id": "video-creator",
+      "label": "AI Video Production",
+      "status": "new",
+      "ensemble_mean": 0.2073,
+      "p10": 0.2045,
+      "p90": 0.2091,
+      "builder_adoption": 0.2,
+      "advocacy": 0.0058,
+      "static_score": 0.686,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.688,
+          "advocacy": 0.008
+        },
+        "solopreneur": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.72,
+          "advocacy": 0.048
+        },
+        "trader": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.248,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 19,
+      "domain_id": "real-estate-analyst",
+      "label": "Real Estate AI Analyst",
+      "status": "new",
+      "ensemble_mean": 0.2036,
+      "p10": 0.1955,
+      "p90": 0.2091,
+      "builder_adoption": 0.1731,
+      "advocacy": 0.0182,
+      "static_score": 0.698,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.792,
+          "advocacy": 0.192
+        },
+        "entrepreneur": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.096,
+          "advocacy": 0.008
+        },
+        "ai_newcomer": {
+          "adoption": 0.112,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.304,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.168,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 20,
+      "domain_id": "security-audit",
+      "label": "Security Audit Automation",
+      "status": "new",
+      "ensemble_mean": 0.1973,
+      "p10": 0.1864,
+      "p90": 0.2136,
+      "builder_adoption": 0.1724,
+      "advocacy": 0.0044,
+      "static_score": 0.78,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.192,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.168,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.328,
+          "advocacy": 0.016
+        },
+        "tool_maker": {
+          "adoption": 0.408,
+          "advocacy": 0.008
+        },
+        "opportunity_hunter": {
+          "adoption": 0.296,
+          "advocacy": 0.024
+        }
+      }
+    },
+    {
+      "rank": 21,
+      "domain_id": "personal-finance",
+      "label": "Personal Finance AI",
+      "status": "new",
+      "ensemble_mean": 0.1964,
+      "p10": 0.1773,
+      "p90": 0.2182,
+      "builder_adoption": 0.1964,
+      "advocacy": 0.0007,
+      "static_score": 0.7435,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.416,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.112,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.352,
+          "advocacy": 0.008
+        },
+        "ai_newcomer": {
+          "adoption": 0.528,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.248,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 22,
+      "domain_id": "education-tutor",
+      "label": "AI Education Tutor",
+      "status": "new",
+      "ensemble_mean": 0.1964,
+      "p10": 0.1909,
+      "p90": 0.2045,
+      "builder_adoption": 0.1644,
+      "advocacy": 0.0145,
+      "static_score": 0.7385,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.096,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.304,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.792,
+          "advocacy": 0.144
+        },
+        "developer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.192,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 23,
+      "domain_id": "indie-hacker",
+      "label": "Indie Hacker Toolkit",
+      "status": "new",
+      "ensemble_mean": 0.1955,
+      "p10": 0.1818,
+      "p90": 0.2091,
+      "builder_adoption": 0.2298,
+      "advocacy": 0.0138,
+      "static_score": 0.798,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.808,
+          "advocacy": 0.112
+        },
+        "content_creator": {
+          "adoption": 0.168,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.656,
+          "advocacy": 0.008
+        },
+        "ai_newcomer": {
+          "adoption": 0.144,
+          "advocacy": 0.016
+        },
+        "developer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.208,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.32,
+          "advocacy": 0.016
+        }
+      }
+    },
+    {
+      "rank": 24,
+      "domain_id": "meme-coin-launcher",
+      "label": "Meme Coin Launch Strategy",
+      "status": "new",
+      "ensemble_mean": 0.1873,
+      "p10": 0.1818,
+      "p90": 0.1955,
+      "builder_adoption": 0.2095,
+      "advocacy": 0.0516,
+      "static_score": 0.82,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.112,
+          "advocacy": 0.008
+        },
+        "entrepreneur": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.152,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.176,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.648,
+          "advocacy": 0.016
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.912,
+          "advocacy": 0.536
+        }
+      }
+    },
+    {
+      "rank": 25,
+      "domain_id": "newsletter-growth",
+      "label": "Newsletter Growth Engine",
+      "status": "new",
+      "ensemble_mean": 0.1791,
+      "p10": 0.1591,
+      "p90": 0.2045,
+      "builder_adoption": 0.2145,
+      "advocacy": 0.0058,
+      "static_score": 0.719,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.832,
+          "advocacy": 0.048
+        },
+        "solopreneur": {
+          "adoption": 0.336,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.168,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.376,
+          "advocacy": 0.008
+        },
+        "creative": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.264,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 26,
+      "domain_id": "crypto-airdrop",
+      "label": "Crypto Airdrop Farming",
+      "status": "new",
+      "ensemble_mean": 0.1773,
+      "p10": 0.1682,
+      "p90": 0.1864,
+      "builder_adoption": 0.1716,
+      "advocacy": 0.0509,
+      "static_score": 0.73,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.528,
+          "advocacy": 0.024
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.92,
+          "advocacy": 0.536
+        }
+      }
+    },
+    {
+      "rank": 27,
+      "domain_id": "open-source-maintainer",
+      "label": "Open Source Maintainer Tools",
+      "status": "new",
+      "ensemble_mean": 0.1745,
+      "p10": 0.1682,
+      "p90": 0.1818,
+      "builder_adoption": 0.152,
+      "advocacy": 0.0029,
+      "static_score": 0.7455,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.112,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.08,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.208,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.656,
+          "advocacy": 0.016
+        },
+        "opportunity_hunter": {
+          "adoption": 0.216,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 28,
+      "domain_id": "onchain-analytics",
+      "label": "On-Chain Analytics",
+      "status": "new",
+      "ensemble_mean": 0.1736,
+      "p10": 0.1682,
+      "p90": 0.1818,
+      "builder_adoption": 0.1491,
+      "advocacy": 0.0109,
+      "static_score": 0.78,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.592,
+          "advocacy": 0.096
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.576,
+          "advocacy": 0.016
+        },
+        "tool_maker": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.128,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 29,
+      "domain_id": "token-launch",
+      "label": "Token Launch & Tokenomics",
+      "status": "new",
+      "ensemble_mean": 0.1682,
+      "p10": 0.1636,
+      "p90": 0.1727,
+      "builder_adoption": 0.1476,
+      "advocacy": 0.0385,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.416,
+          "advocacy": 0.024
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.296,
+          "advocacy": 0.024
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.76,
+          "advocacy": 0.376
+        }
+      }
+    },
+    {
+      "rank": 30,
+      "domain_id": "devrel-community",
+      "label": "DevRel & Community Building",
+      "status": "new",
+      "ensemble_mean": 0.1664,
+      "p10": 0.1591,
+      "p90": 0.1773,
+      "builder_adoption": 0.1549,
+      "advocacy": 0.0095,
+      "static_score": 0.6645,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.768,
+          "advocacy": 0.088
+        },
+        "solopreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.128,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.16,
+          "advocacy": 0.008
+        },
+        "trader": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.208,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 31,
+      "domain_id": "data-engineer",
+      "label": "Data Engineering Pipeline",
+      "status": "new",
+      "ensemble_mean": 0.1591,
+      "p10": 0.15,
+      "p90": 0.1727,
+      "builder_adoption": 0.1709,
+      "advocacy": 0.0022,
+      "static_score": 0.786,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.192,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.512,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.128,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.384,
+          "advocacy": 0.008
+        },
+        "opportunity_hunter": {
+          "adoption": 0.232,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 32,
+      "domain_id": "game-balance",
+      "label": "Game Balance & Economy Design",
+      "status": "new",
+      "ensemble_mean": 0.1582,
+      "p10": 0.1455,
+      "p90": 0.1727,
+      "builder_adoption": 0.1695,
+      "advocacy": 0.0058,
+      "static_score": 0.7305,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.16,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.248,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.112,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.664,
+          "advocacy": 0.032
+        },
+        "trader": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.312,
+          "advocacy": 0.032
+        }
+      }
+    },
+    {
+      "rank": 33,
+      "domain_id": "linkedin-ghostwriter",
+      "label": "LinkedIn Thought Leadership",
+      "status": "new",
+      "ensemble_mean": 0.1573,
+      "p10": 0.1364,
+      "p90": 0.1818,
+      "builder_adoption": 0.1782,
+      "advocacy": 0.0109,
+      "static_score": 0.79,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.744,
+          "advocacy": 0.048
+        },
+        "solopreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.08,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.648,
+          "advocacy": 0.056
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.168,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 34,
+      "domain_id": "resume-career",
+      "label": "AI Resume & Career Coach",
+      "status": "new",
+      "ensemble_mean": 0.1564,
+      "p10": 0.1409,
+      "p90": 0.1682,
+      "builder_adoption": 0.1622,
+      "advocacy": 0.0153,
+      "static_score": 0.7215,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.28,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.816,
+          "advocacy": 0.168
+        },
+        "developer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.2,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 35,
+      "domain_id": "telegram-miniapp",
+      "label": "Telegram Mini App Builder",
+      "status": "new",
+      "ensemble_mean": 0.1473,
+      "p10": 0.1409,
+      "p90": 0.1545,
+      "builder_adoption": 0.1309,
+      "advocacy": 0.0044,
+      "static_score": 0.77,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.28,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.296,
+          "advocacy": 0.008
+        },
+        "opportunity_hunter": {
+          "adoption": 0.424,
+          "advocacy": 0.032
+        }
+      }
+    },
+    {
+      "rank": 36,
+      "domain_id": "midjourney-art",
+      "label": "Midjourney Art Direction",
+      "status": "new",
+      "ensemble_mean": 0.1428,
+      "p10": 0.1364,
+      "p90": 0.1455,
+      "builder_adoption": 0.1316,
+      "advocacy": 0.0327,
+      "static_score": 0.68,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.84,
+          "advocacy": 0.344
+        },
+        "trader": {
+          "adoption": 0.04,
+          "advocacy": 0.008
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.232,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 37,
+      "domain_id": "supabase-fullstack",
+      "label": "Supabase Full-Stack Development",
+      "status": "new",
+      "ensemble_mean": 0.1427,
+      "p10": 0.1318,
+      "p90": 0.1545,
+      "builder_adoption": 0.1455,
+      "advocacy": 0.0029,
+      "static_score": 0.79,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.232,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.672,
+          "advocacy": 0.032
+        },
+        "marketer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.28,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 38,
+      "domain_id": "compliance-shield",
+      "label": "Compliance Automation",
+      "status": "new",
+      "ensemble_mean": 0.1409,
+      "p10": 0.1273,
+      "p90": 0.1455,
+      "builder_adoption": 0.1331,
+      "advocacy": 0.0022,
+      "static_score": 0.6765,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.104,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.128,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.12,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.32,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.376,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.2,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 39,
+      "domain_id": "browser-extension",
+      "label": "Browser Extension Builder",
+      "status": "new",
+      "ensemble_mean": 0.1364,
+      "p10": 0.1273,
+      "p90": 0.15,
+      "builder_adoption": 0.1091,
+      "advocacy": 0.0044,
+      "static_score": 0.72,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.216,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.576,
+          "advocacy": 0.04
+        },
+        "marketer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 40,
+      "domain_id": "ai-customer-support",
+      "label": "AI Customer Support Agent",
+      "status": "new",
+      "ensemble_mean": 0.1355,
+      "p10": 0.1273,
+      "p90": 0.1545,
+      "builder_adoption": 0.1324,
+      "advocacy": 0.0058,
+      "static_score": 0.79,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.128,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.72,
+          "advocacy": 0.048
+        },
+        "ai_newcomer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.24,
+          "advocacy": 0.016
+        },
+        "creative": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 41,
+      "domain_id": "legal-ops",
+      "label": "Legal Operations AI",
+      "status": "new",
+      "ensemble_mean": 0.1345,
+      "p10": 0.1227,
+      "p90": 0.15,
+      "builder_adoption": 0.1367,
+      "advocacy": 0.0007,
+      "static_score": 0.6445,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.28,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.208,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.312,
+          "advocacy": 0.008
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.224,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 42,
+      "domain_id": "ai-workflow-automation",
+      "label": "AI Workflow Automation (n8n/Make)",
+      "status": "new",
+      "ensemble_mean": 0.1327,
+      "p10": 0.1273,
+      "p90": 0.1364,
+      "builder_adoption": 0.1302,
+      "advocacy": 0.016,
+      "static_score": 0.8,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.856,
+          "advocacy": 0.144
+        },
+        "ai_newcomer": {
+          "adoption": 0.232,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.04,
+          "advocacy": 0.008
+        },
+        "creative": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.144,
+          "advocacy": 0.016
+        }
+      }
+    },
+    {
+      "rank": 43,
+      "domain_id": "ai-data-analyst",
+      "label": "AI Data Analyst (chat-with-CSV)",
+      "status": "new",
+      "ensemble_mean": 0.1327,
+      "p10": 0.1227,
+      "p90": 0.1455,
+      "builder_adoption": 0.1207,
+      "advocacy": 0.0124,
+      "static_score": 0.78,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.8,
+          "advocacy": 0.128
+        },
+        "developer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.056,
+          "advocacy": 0.008
+        },
+        "creative": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 44,
+      "domain_id": "podcast-producer",
+      "label": "AI Podcast Production",
+      "status": "new",
+      "ensemble_mean": 0.1309,
+      "p10": 0.1227,
+      "p90": 0.1364,
+      "builder_adoption": 0.1295,
+      "advocacy": 0.0116,
+      "static_score": 0.71,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.736,
+          "advocacy": 0.12
+        },
+        "solopreneur": {
+          "adoption": 0.224,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.096,
+          "advocacy": 0.008
+        },
+        "trader": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 45,
+      "domain_id": "saas-metrics",
+      "label": "SaaS Metrics Dashboard",
+      "status": "new",
+      "ensemble_mean": 0.1309,
+      "p10": 0.1182,
+      "p90": 0.1409,
+      "builder_adoption": 0.1084,
+      "advocacy": 0.0051,
+      "static_score": 0.76,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.432,
+          "advocacy": 0.024
+        },
+        "entrepreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.48,
+          "advocacy": 0.016
+        },
+        "creative": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.12,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 46,
+      "domain_id": "discord-community",
+      "label": "Discord Community Management",
+      "status": "new",
+      "ensemble_mean": 0.1273,
+      "p10": 0.1182,
+      "p90": 0.1364,
+      "builder_adoption": 0.1309,
+      "advocacy": 0.008,
+      "static_score": 0.76,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.824,
+          "advocacy": 0.088
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 47,
+      "domain_id": "twitter-threads",
+      "label": "X/Twitter Thread Mastery",
+      "status": "new",
+      "ensemble_mean": 0.1273,
+      "p10": 0.1182,
+      "p90": 0.1364,
+      "builder_adoption": 0.1418,
+      "advocacy": 0.0175,
+      "static_score": 0.76,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.768,
+          "advocacy": 0.152
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.44,
+          "advocacy": 0.04
+        }
+      }
+    },
+    {
+      "rank": 48,
+      "domain_id": "health-wellness",
+      "label": "Health & Wellness AI",
+      "status": "new",
+      "ensemble_mean": 0.1236,
+      "p10": 0.1091,
+      "p90": 0.1409,
+      "builder_adoption": 0.1418,
+      "advocacy": 0.0065,
+      "static_score": 0.6595,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.312,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.616,
+          "advocacy": 0.072
+        },
+        "developer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 49,
+      "domain_id": "shopify-growth",
+      "label": "Shopify Store Growth",
+      "status": "new",
+      "ensemble_mean": 0.1218,
+      "p10": 0.1182,
+      "p90": 0.1227,
+      "builder_adoption": 0.1273,
+      "advocacy": 0.0073,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.16,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.776,
+          "advocacy": 0.08
+        },
+        "creative": {
+          "adoption": 0.112,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 50,
+      "domain_id": "pricing-optimizer",
+      "label": "SaaS Pricing Optimizer",
+      "status": "new",
+      "ensemble_mean": 0.1209,
+      "p10": 0.1136,
+      "p90": 0.1318,
+      "builder_adoption": 0.0822,
+      "advocacy": 0.0029,
+      "static_score": 0.72,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.432,
+          "advocacy": 0.032
+        },
+        "creative": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 51,
+      "domain_id": "product-hunt-launcher",
+      "label": "Product Hunt Launch Playbook",
+      "status": "new",
+      "ensemble_mean": 0.12,
+      "p10": 0.1136,
+      "p90": 0.1273,
+      "builder_adoption": 0.1171,
+      "advocacy": 0.0371,
+      "static_score": 0.73,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.176,
+          "advocacy": 0.008
+        },
+        "solopreneur": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.168,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.8,
+          "advocacy": 0.4
+        }
+      }
+    },
+    {
+      "rank": 52,
+      "domain_id": "email-marketing",
+      "label": "AI Email Marketing",
+      "status": "new",
+      "ensemble_mean": 0.1191,
+      "p10": 0.1136,
+      "p90": 0.1227,
+      "builder_adoption": 0.1033,
+      "advocacy": 0.0153,
+      "static_score": 0.75,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.112,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.808,
+          "advocacy": 0.16
+        },
+        "creative": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.048,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 53,
+      "domain_id": "youtube-optimizer",
+      "label": "YouTube Growth Optimizer",
+      "status": "new",
+      "ensemble_mean": 0.1173,
+      "p10": 0.1091,
+      "p90": 0.1227,
+      "builder_adoption": 0.112,
+      "advocacy": 0.0095,
+      "static_score": 0.79,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.752,
+          "advocacy": 0.096
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.208,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.112,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 54,
+      "domain_id": "seo-dominator",
+      "label": "SEO Domination Strategy",
+      "status": "new",
+      "ensemble_mean": 0.1154,
+      "p10": 0.1136,
+      "p90": 0.1182,
+      "builder_adoption": 0.1498,
+      "advocacy": 0.0044,
+      "static_score": 0.75,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.464,
+          "advocacy": 0.016
+        },
+        "solopreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.616,
+          "advocacy": 0.016
+        },
+        "creative": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.168,
+          "advocacy": 0.016
+        }
+      }
+    },
+    {
+      "rank": 55,
+      "domain_id": "substack-writer",
+      "label": "Substack Newsletter Writer",
+      "status": "new",
+      "ensemble_mean": 0.1154,
+      "p10": 0.1091,
+      "p90": 0.1227,
+      "builder_adoption": 0.1127,
+      "advocacy": 0.0036,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.68,
+          "advocacy": 0.04
+        },
+        "solopreneur": {
+          "adoption": 0.2,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 56,
+      "domain_id": "cold-email-outbound",
+      "label": "AI Cold Email & Outbound",
+      "status": "new",
+      "ensemble_mean": 0.1145,
+      "p10": 0.1,
+      "p90": 0.1227,
+      "builder_adoption": 0.1273,
+      "advocacy": 0.008,
+      "static_score": 0.77,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.68,
+          "advocacy": 0.072
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.224,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.328,
+          "advocacy": 0.016
+        }
+      }
+    },
+    {
+      "rank": 57,
+      "domain_id": "options-trader",
+      "label": "Options Trading Intelligence",
+      "status": "new",
+      "ensemble_mean": 0.1145,
+      "p10": 0.1136,
+      "p90": 0.1182,
+      "builder_adoption": 0.1207,
+      "advocacy": 0.0211,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.28,
+          "advocacy": 0.016
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.744,
+          "advocacy": 0.2
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.232,
+          "advocacy": 0.016
+        }
+      }
+    },
+    {
+      "rank": 58,
+      "domain_id": "github-actions",
+      "label": "GitHub Actions Automation",
+      "status": "new",
+      "ensemble_mean": 0.1136,
+      "p10": 0.1045,
+      "p90": 0.1182,
+      "builder_adoption": 0.1375,
+      "advocacy": 0.0044,
+      "static_score": 0.72,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.336,
+          "advocacy": 0.008
+        },
+        "marketer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.072,
+          "advocacy": 0.008
+        },
+        "trader": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.664,
+          "advocacy": 0.032
+        },
+        "opportunity_hunter": {
+          "adoption": 0.128,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 59,
+      "domain_id": "rag-pipeline",
+      "label": "RAG Pipeline Architecture",
+      "status": "new",
+      "ensemble_mean": 0.1109,
+      "p10": 0.1,
+      "p90": 0.1227,
+      "builder_adoption": 0.1207,
+      "advocacy": 0.0029,
+      "static_score": 0.81,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.08,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.544,
+          "advocacy": 0.008
+        },
+        "marketer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.024,
+          "advocacy": 0.008
+        },
+        "trader": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.288,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.2,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 60,
+      "domain_id": "nft-collection",
+      "label": "NFT Collection Launch",
+      "status": "new",
+      "ensemble_mean": 0.1073,
+      "p10": 0.1045,
+      "p90": 0.1091,
+      "builder_adoption": 0.1178,
+      "advocacy": 0.0364,
+      "static_score": 0.71,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.368,
+          "advocacy": 0.032
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.8,
+          "advocacy": 0.368
+        }
+      }
+    },
+    {
+      "rank": 61,
+      "domain_id": "pitch-deck-builder",
+      "label": "AI Pitch Deck Creator",
+      "status": "new",
+      "ensemble_mean": 0.1045,
+      "p10": 0.1,
+      "p90": 0.1091,
+      "builder_adoption": 0.1127,
+      "advocacy": 0.0175,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.008
+        },
+        "entrepreneur": {
+          "adoption": 0.744,
+          "advocacy": 0.176
+        },
+        "content_creator": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.184,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.128,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 62,
+      "domain_id": "ai-voice-clone",
+      "label": "AI Voice Cloning Studio",
+      "status": "new",
+      "ensemble_mean": 0.1018,
+      "p10": 0.0864,
+      "p90": 0.1091,
+      "builder_adoption": 0.1025,
+      "advocacy": 0.0073,
+      "static_score": 0.67,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.192,
+          "advocacy": 0.008
+        },
+        "solopreneur": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.528,
+          "advocacy": 0.064
+        },
+        "trader": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.128,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 63,
+      "domain_id": "notion-second-brain",
+      "label": "Notion Second Brain System",
+      "status": "new",
+      "ensemble_mean": 0.1,
+      "p10": 0.0909,
+      "p90": 0.1136,
+      "builder_adoption": 0.1098,
+      "advocacy": 0.0065,
+      "static_score": 0.75,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.624,
+          "advocacy": 0.064
+        },
+        "ai_newcomer": {
+          "adoption": 0.232,
+          "advocacy": 0.008
+        },
+        "developer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 64,
+      "domain_id": "saas-boilerplate",
+      "label": "SaaS Boilerplate Generator",
+      "status": "new",
+      "ensemble_mean": 0.1,
+      "p10": 0.0955,
+      "p90": 0.1045,
+      "builder_adoption": 0.0873,
+      "advocacy": 0.0036,
+      "static_score": 0.78,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.424,
+          "advocacy": 0.016
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.32,
+          "advocacy": 0.016
+        },
+        "marketer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.088,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 65,
+      "domain_id": "mobile-app-builder",
+      "label": "Cross-Platform Mobile App Builder",
+      "status": "new",
+      "ensemble_mean": 0.0991,
+      "p10": 0.0909,
+      "p90": 0.1045,
+      "builder_adoption": 0.0669,
+      "advocacy": 0.0007,
+      "static_score": 0.77,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.368,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 66,
+      "domain_id": "viral-growth-hacker",
+      "label": "Viral Growth Hacking",
+      "status": "new",
+      "ensemble_mean": 0.0982,
+      "p10": 0.0909,
+      "p90": 0.1091,
+      "builder_adoption": 0.0967,
+      "advocacy": 0.0262,
+      "static_score": 0.77,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.712,
+          "advocacy": 0.288
+        }
+      }
+    },
+    {
+      "rank": 67,
+      "domain_id": "twitch-streamer",
+      "label": "Twitch Stream Optimizer",
+      "status": "new",
+      "ensemble_mean": 0.0973,
+      "p10": 0.0909,
+      "p90": 0.1045,
+      "builder_adoption": 0.0815,
+      "advocacy": 0.0029,
+      "static_score": 0.68,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.456,
+          "advocacy": 0.032
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.184,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 68,
+      "domain_id": "quant-strategy",
+      "label": "Quantitative Trading Strategy",
+      "status": "new",
+      "ensemble_mean": 0.0973,
+      "p10": 0.0818,
+      "p90": 0.1091,
+      "builder_adoption": 0.1164,
+      "advocacy": 0.0211,
+      "static_score": 0.78,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.824,
+          "advocacy": 0.208
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.248,
+          "advocacy": 0.024
+        }
+      }
+    },
+    {
+      "rank": 69,
+      "domain_id": "ai-avatar",
+      "label": "AI Avatar & Digital Presence",
+      "status": "new",
+      "ensemble_mean": 0.09,
+      "p10": 0.0818,
+      "p90": 0.1,
+      "builder_adoption": 0.1062,
+      "advocacy": 0.0327,
+      "static_score": 0.69,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.864,
+          "advocacy": 0.352
+        },
+        "trader": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.104,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 70,
+      "domain_id": "instagram-growth",
+      "label": "Instagram Growth Engine",
+      "status": "new",
+      "ensemble_mean": 0.09,
+      "p10": 0.0818,
+      "p90": 0.0955,
+      "builder_adoption": 0.1004,
+      "advocacy": 0.0073,
+      "static_score": 0.77,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.488,
+          "advocacy": 0.048
+        },
+        "solopreneur": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.36,
+          "advocacy": 0.032
+        },
+        "trader": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 71,
+      "domain_id": "productivity-system",
+      "label": "AI Productivity System",
+      "status": "new",
+      "ensemble_mean": 0.0873,
+      "p10": 0.0818,
+      "p90": 0.0909,
+      "builder_adoption": 0.0778,
+      "advocacy": 0.0036,
+      "static_score": 0.77,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.536,
+          "advocacy": 0.032
+        },
+        "ai_newcomer": {
+          "adoption": 0.184,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.072,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 72,
+      "domain_id": "customer-research",
+      "label": "AI Customer Research",
+      "status": "new",
+      "ensemble_mean": 0.0855,
+      "p10": 0.0727,
+      "p90": 0.0955,
+      "builder_adoption": 0.0633,
+      "advocacy": 0.0015,
+      "static_score": 0.73,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.352,
+          "advocacy": 0.016
+        },
+        "content_creator": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 73,
+      "domain_id": "stock-screener",
+      "label": "AI Stock Screener",
+      "status": "new",
+      "ensemble_mean": 0.0827,
+      "p10": 0.0818,
+      "p90": 0.0864,
+      "builder_adoption": 0.0909,
+      "advocacy": 0.0131,
+      "static_score": 0.76,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.656,
+          "advocacy": 0.136
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.176,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.088,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 74,
+      "domain_id": "ai-code-review",
+      "label": "AI Code Review Assistant",
+      "status": "new",
+      "ensemble_mean": 0.0818,
+      "p10": 0.0682,
+      "p90": 0.0909,
+      "builder_adoption": 0.0873,
+      "advocacy": 0.0007,
+      "static_score": 0.78,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.416,
+          "advocacy": 0.008
+        },
+        "marketer": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.184,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.128,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 75,
+      "domain_id": "voice-ai-app",
+      "label": "Voice AI Application Builder",
+      "status": "new",
+      "ensemble_mean": 0.0818,
+      "p10": 0.0727,
+      "p90": 0.0955,
+      "builder_adoption": 0.088,
+      "advocacy": 0.0044,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.44,
+          "advocacy": 0.048
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 76,
+      "domain_id": "fitness-coach",
+      "label": "AI Fitness Coach",
+      "status": "new",
+      "ensemble_mean": 0.0818,
+      "p10": 0.0727,
+      "p90": 0.0909,
+      "builder_adoption": 0.0829,
+      "advocacy": 0.0153,
+      "static_score": 0.72,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.696,
+          "advocacy": 0.16
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 77,
+      "domain_id": "crm-builder",
+      "label": "Custom CRM Builder",
+      "status": "new",
+      "ensemble_mean": 0.0791,
+      "p10": 0.0727,
+      "p90": 0.0909,
+      "builder_adoption": 0.0909,
+      "advocacy": 0.0022,
+      "static_score": 0.71,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.6,
+          "advocacy": 0.024
+        },
+        "ai_newcomer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.128,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.112,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 78,
+      "domain_id": "api-monetization",
+      "label": "API-as-Product Monetization",
+      "status": "new",
+      "ensemble_mean": 0.0782,
+      "p10": 0.0727,
+      "p90": 0.0818,
+      "builder_adoption": 0.0705,
+      "advocacy": 0.0022,
+      "static_score": 0.75,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.448,
+          "advocacy": 0.024
+        },
+        "opportunity_hunter": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 79,
+      "domain_id": "habit-tracker",
+      "label": "AI Habit & Behavior Design",
+      "status": "new",
+      "ensemble_mean": 0.0782,
+      "p10": 0.0727,
+      "p90": 0.0864,
+      "builder_adoption": 0.0887,
+      "advocacy": 0.0124,
+      "static_score": 0.71,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.808,
+          "advocacy": 0.136
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 80,
+      "domain_id": "travel-planner",
+      "label": "AI Travel Planner",
+      "status": "new",
+      "ensemble_mean": 0.0782,
+      "p10": 0.0727,
+      "p90": 0.0864,
+      "builder_adoption": 0.0727,
+      "advocacy": 0.0051,
+      "static_score": 0.73,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.56,
+          "advocacy": 0.056
+        },
+        "ai_newcomer": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 81,
+      "domain_id": "course-creator",
+      "label": "Online Course Creator",
+      "status": "new",
+      "ensemble_mean": 0.0755,
+      "p10": 0.0682,
+      "p90": 0.0818,
+      "builder_adoption": 0.0829,
+      "advocacy": 0.0029,
+      "static_score": 0.76,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.28,
+          "advocacy": 0.008
+        },
+        "content_creator": {
+          "adoption": 0.272,
+          "advocacy": 0.016
+        },
+        "solopreneur": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.008
+        },
+        "trader": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 82,
+      "domain_id": "dao-governance",
+      "label": "DAO Governance Toolkit",
+      "status": "new",
+      "ensemble_mean": 0.0755,
+      "p10": 0.0682,
+      "p90": 0.0864,
+      "builder_adoption": 0.0691,
+      "advocacy": 0.0007,
+      "static_score": 0.69,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.464,
+          "advocacy": 0.008
+        },
+        "opportunity_hunter": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 83,
+      "domain_id": "influencer-marketing",
+      "label": "Influencer Marketing Manager",
+      "status": "new",
+      "ensemble_mean": 0.0746,
+      "p10": 0.0591,
+      "p90": 0.0864,
+      "builder_adoption": 0.0924,
+      "advocacy": 0.0073,
+      "static_score": 0.76,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.192,
+          "advocacy": 0.008
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.68,
+          "advocacy": 0.064
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.024,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 84,
+      "domain_id": "language-learner",
+      "label": "AI Language Learning Tutor",
+      "status": "new",
+      "ensemble_mean": 0.0736,
+      "p10": 0.0682,
+      "p90": 0.0818,
+      "builder_adoption": 0.0778,
+      "advocacy": 0.0189,
+      "static_score": 0.75,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.792,
+          "advocacy": 0.208
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 85,
+      "domain_id": "music-producer",
+      "label": "AI Music Production",
+      "status": "new",
+      "ensemble_mean": 0.0727,
+      "p10": 0.0682,
+      "p90": 0.0773,
+      "builder_adoption": 0.0713,
+      "advocacy": 0.0116,
+      "static_score": 0.6195,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.64,
+          "advocacy": 0.128
+        },
+        "trader": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 86,
+      "domain_id": "fine-tuning-lab",
+      "label": "Model Fine-Tuning Studio",
+      "status": "new",
+      "ensemble_mean": 0.0691,
+      "p10": 0.0591,
+      "p90": 0.0773,
+      "builder_adoption": 0.0705,
+      "advocacy": 0.0007,
+      "static_score": 0.76,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.176,
+          "advocacy": 0.008
+        },
+        "marketer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.208,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.144,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 87,
+      "domain_id": "ebook-publisher",
+      "label": "AI eBook Publisher",
+      "status": "new",
+      "ensemble_mean": 0.0682,
+      "p10": 0.0545,
+      "p90": 0.0818,
+      "builder_adoption": 0.0669,
+      "advocacy": 0.0007,
+      "static_score": 0.7,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.152,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.12,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.184,
+          "advocacy": 0.008
+        },
+        "trader": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 88,
+      "domain_id": "community-growth",
+      "label": "Community Growth Playbook",
+      "status": "new",
+      "ensemble_mean": 0.0673,
+      "p10": 0.0636,
+      "p90": 0.0727,
+      "builder_adoption": 0.0596,
+      "advocacy": 0.0029,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.504,
+          "advocacy": 0.032
+        },
+        "solopreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 89,
+      "domain_id": "devops-pipeline",
+      "label": "DevOps CI/CD Pipeline",
+      "status": "new",
+      "ensemble_mean": 0.06,
+      "p10": 0.0455,
+      "p90": 0.0727,
+      "builder_adoption": 0.0371,
+      "advocacy": 0.0,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.112,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 90,
+      "domain_id": "llm-evaluator",
+      "label": "LLM Benchmark & Evaluation",
+      "status": "new",
+      "ensemble_mean": 0.0591,
+      "p10": 0.05,
+      "p90": 0.0727,
+      "builder_adoption": 0.072,
+      "advocacy": 0.0,
+      "static_score": 0.77,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.056,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.248,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.208,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 91,
+      "domain_id": "conversion-optimizer",
+      "label": "Conversion Rate Optimizer",
+      "status": "new",
+      "ensemble_mean": 0.0573,
+      "p10": 0.05,
+      "p90": 0.0636,
+      "builder_adoption": 0.0662,
+      "advocacy": 0.0044,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.136,
+          "advocacy": 0.008
+        },
+        "entrepreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.44,
+          "advocacy": 0.04
+        },
+        "creative": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 92,
+      "domain_id": "pokemon-red",
+      "label": "Pokemon Red AI Companion",
+      "status": "alpha",
+      "ensemble_mean": 0.0536,
+      "p10": 0.05,
+      "p90": 0.0591,
+      "builder_adoption": 0.0465,
+      "advocacy": 0.0022,
+      "static_score": 0.65,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.392,
+          "advocacy": 0.024
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 93,
+      "domain_id": "proposal-writer",
+      "label": "AI Business Proposal Writer",
+      "status": "new",
+      "ensemble_mean": 0.0518,
+      "p10": 0.0455,
+      "p90": 0.0591,
+      "builder_adoption": 0.056,
+      "advocacy": 0.0051,
+      "static_score": 0.72,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.072,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.296,
+          "advocacy": 0.056
+        }
+      }
+    },
+    {
+      "rank": 94,
+      "domain_id": "depin-builder",
+      "label": "DePIN Infrastructure Builder",
+      "status": "new",
+      "ensemble_mean": 0.0437,
+      "p10": 0.0364,
+      "p90": 0.05,
+      "builder_adoption": 0.0582,
+      "advocacy": 0.0058,
+      "static_score": 0.7,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.36,
+          "advocacy": 0.032
+        },
+        "opportunity_hunter": {
+          "adoption": 0.192,
+          "advocacy": 0.032
+        }
+      }
+    },
+    {
+      "rank": 95,
+      "domain_id": "database-architect",
+      "label": "Database Schema Architect",
+      "status": "new",
+      "ensemble_mean": 0.0418,
+      "p10": 0.0318,
+      "p90": 0.0545,
+      "builder_adoption": 0.0429,
+      "advocacy": 0.0,
+      "static_score": 0.73,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.136,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.088,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 96,
+      "domain_id": "freelance-scaler",
+      "label": "Freelance Agency Scaler",
+      "status": "new",
+      "ensemble_mean": 0.0391,
+      "p10": 0.0318,
+      "p90": 0.0455,
+      "builder_adoption": 0.048,
+      "advocacy": 0.0007,
+      "static_score": 0.74,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.224,
+          "advocacy": 0.008
+        },
+        "ai_newcomer": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.024,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 97,
+      "domain_id": "affiliate-marketing",
+      "label": "Affiliate Marketing Automation",
+      "status": "new",
+      "ensemble_mean": 0.03,
+      "p10": 0.0182,
+      "p90": 0.0364,
+      "builder_adoption": 0.0473,
+      "advocacy": 0.0007,
+      "static_score": 0.73,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.104,
+          "advocacy": 0.008
+        },
+        "entrepreneur": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.104,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.08,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.096,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 98,
+      "domain_id": "grant-writer",
+      "label": "AI Grant Writer",
+      "status": "new",
+      "ensemble_mean": 0.0136,
+      "p10": 0.0091,
+      "p90": 0.0182,
+      "builder_adoption": 0.016,
+      "advocacy": 0.0015,
+      "static_score": 0.7,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.064,
+          "advocacy": 0.008
+        },
+        "entrepreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.04,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.04,
+          "advocacy": 0.008
+        }
+      }
+    },
+    {
+      "rank": 99,
+      "domain_id": "supply-chain",
+      "label": "Supply Chain Optimization",
+      "status": "new",
+      "ensemble_mean": 0.0064,
+      "p10": 0.0,
+      "p90": 0.0091,
+      "builder_adoption": 0.0189,
+      "advocacy": 0.0,
+      "static_score": 0.618,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.064,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.032,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.008,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.016,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.048,
+          "advocacy": 0.0
+        }
+      }
+    },
+    {
+      "rank": 100,
+      "domain_id": "predictive-worlds-lab",
+      "label": "Predictive Worlds Research Lab",
+      "status": "alpha",
+      "ensemble_mean": 0.0,
+      "p10": 0.0,
+      "p90": 0.0,
+      "builder_adoption": 0.0,
+      "advocacy": 0.0,
+      "static_score": 0.45,
+      "per_persona": {
+        "investor": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "entrepreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "content_creator": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "solopreneur": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "ai_newcomer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "developer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "marketer": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "creative": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "trader": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "tool_maker": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        },
+        "opportunity_hunter": {
+          "adoption": 0.0,
+          "advocacy": 0.0
+        }
+      }
+    }
+  ]
+}
