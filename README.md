@@ -80,6 +80,38 @@ Currently tracking 10+ domain chips:
 - **vibe-incubator** (Beta v0.1.0) -- Venture incubation
 - **predictive-worlds-lab** (Exploratory) -- Prediction markets
 
+## MiroFish Prediction Engine
+
+A zero-dependency multi-agent simulation engine for predicting adoption dynamics. Runs 1000 stakeholder personas through a 20-round adoption simulation with Monte Carlo ensemble for confidence intervals.
+
+```bash
+# Run the full prediction pipeline (1000 agents, 32 domains, ensemble + sensitivity)
+python scripts/predict_1000_agents.py
+
+# View the interactive knowledge graph visualization
+cd viz && python -m http.server 8888
+# Open http://localhost:8888/mirofish-graph.html
+```
+
+**What it predicts**: Which domains/products/technologies will gain adoption, with confidence intervals, sensitivity analysis, and calibration scoring.
+
+**How to adapt it**: Define your own domains, inject signals, run the ensemble. Works for product roadmaps, market entry analysis, technology bets, content strategy, investment thesis -- anything where you're predicting adoption.
+
+Full documentation: **[docs/MIROFISH_PREDICTION_ENGINE.md](docs/MIROFISH_PREDICTION_ENGINE.md)**
+
+### Latest Predictions (March 2026)
+
+| Rank | Domain | Ensemble Mean | Confidence | Status |
+|------|--------|--------------|------------|--------|
+| 1 | prompt-engineer | 67.8% | HIGH (68%-69%) | New candidate |
+| 2 | indie-hacker | 67.8% | HIGH (68%-69%) | New candidate |
+| 3 | security-audit | 67.8% | HIGH (68%-69%) | New candidate |
+| 4 | solana-dev | 66.8% | HIGH (66%-68%) | New candidate |
+| 5 | ai-agent-builder | 65.9% | HIGH (65%-68%) | New candidate |
+| 6 | agentic-marketing | 61.3% | HIGH (60%-62%) | Existing (beta) |
+| 7 | defi-architect | 58.4% | HIGH (57%-60%) | New candidate |
+| 8 | game-balance | 54.0% | HIGH (54%-55%) | New candidate |
+
 ## Connected Systems
 
 - **spark-researcher** -- Autoloop runtime (the lab runs as a chip)
