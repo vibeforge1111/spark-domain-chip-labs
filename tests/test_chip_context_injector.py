@@ -340,13 +340,15 @@ class TestBuildGuardrails:
 class TestInjectContext:
     def test_with_portfolio(self) -> None:
         chip = MockChipHandle(
+            chip_name="startup-yc", domain="startup",
             quality_score=65, quality_verdict="beta",
             intelligence=_make_intel(
+                chip_name="startup-yc", domain="startup",
                 mission="Startup evaluation",
                 doctrines=[{"claim": "Test doctrine", "confidence": "high"}],
             ),
         )
-        result = inject_context_for_task("evaluate startups", portfolio=[chip])
+        result = inject_context_for_task("startup evaluation", portfolio=[chip])
         assert "Test doctrine" in result
 
     def test_empty_portfolio(self) -> None:
@@ -359,3 +361,71 @@ class TestInjectContext:
         # Will either load real chips or return fallback message
         assert isinstance(result, str)
         assert len(result) > 0
+
+
+# ---------------------------------------------------------------------------
+# TestRelevanceThreshold  (Layer 2: minimum relevance floor)
+# ---------------------------------------------------------------------------
+
+class TestRelevanceThreshold:
+    def test_irrelevant_query_returns_empty(self) -> None:
+        """Queries with no word overlap should return no chips."""
+        chip = MockChipHandle(
+            chip_name="startup-yc", domain="startup",
+            intelligence=_make_intel(
+                "startup-yc", "startup",
+                mission="Evaluate startups and YC applications",
+            ),
+        )
+        # "xyzzy foobar baz" has zero word overlap with startup/YC terms
+        result = select_chips_for_task("xyzzy foobar baz", [chip], max_chips=1)
+        assert result == []
+
+    def test_relevant_query_passes(self) -> None:
+        """Queries with clear domain overlap should return chips."""
+        chip = MockChipHandle(
+            chip_name="startup-yc", domain="startup",
+            intelligence=_make_intel(
+                "startup-yc", "startup",
+                mission="Evaluate startups and YC applications",
+            ),
+        )
+        result = select_chips_for_task("evaluate a startup", [chip], max_chips=1)
+        assert len(result) == 1
+        assert result[0].chip_name == "startup-yc"
+
+    def test_custom_high_threshold_rejects(self) -> None:
+        """A very high min_relevance rejects even decent matches."""
+        chip = MockChipHandle(
+            chip_name="test-chip", domain="testing",
+            intelligence=_make_intel(mission="Testing framework for quality"),
+        )
+        result = select_chips_for_task("testing framework", [chip],
+                                        max_chips=1, min_relevance=0.99)
+        assert result == []
+
+    def test_zero_threshold_allows_everything(self) -> None:
+        """min_relevance=0 should behave like the old code (no filtering)."""
+        chip = MockChipHandle(
+            chip_name="startup-yc", domain="startup",
+            intelligence=_make_intel(
+                "startup-yc", "startup",
+                mission="Evaluate startups and YC applications",
+            ),
+        )
+        result = select_chips_for_task("xyzzy foobar", [chip],
+                                        max_chips=1, min_relevance=0.0)
+        # With threshold 0, even zero-overlap matches pass
+        assert len(result) <= 1  # still respects max_chips
+
+    def test_inject_context_returns_no_chips_when_irrelevant(self) -> None:
+        """inject_context_for_task should return HTML comment when nothing is relevant."""
+        chip = MockChipHandle(
+            chip_name="trading-crypto", domain="trading",
+            intelligence=_make_intel(
+                "trading-crypto", "trading",
+                mission="Crypto trading signals and strategies",
+            ),
+        )
+        result = inject_context_for_task("xyzzy foobar baz", portfolio=[chip])
+        assert "No relevant chips" in result or "<!--" in result

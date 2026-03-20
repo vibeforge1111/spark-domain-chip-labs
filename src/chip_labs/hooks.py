@@ -46,6 +46,92 @@ DISABLE_ENV = "CHIP_HOOKS_DISABLED"
 
 
 # ---------------------------------------------------------------------------
+# Layer 1: Command pre-filter (sub-millisecond, no I/O)
+# ---------------------------------------------------------------------------
+
+# Commands that are never domain-relevant.  Matched against the first
+# token of tool_input["command"] (case-insensitive, after path/extension stripping).
+_SKIP_COMMANDS = frozenset({
+    # Version control
+    "git", "gh", "svn",
+    # Package managers
+    "npm", "npx", "yarn", "pnpm", "bun", "pip", "pip3", "pipx",
+    "poetry", "uv", "cargo", "go", "gem", "composer", "nuget",
+    "apt", "apt-get", "brew", "choco", "winget", "scoop",
+    # Navigation / filesystem inspection
+    "ls", "dir", "cd", "pwd", "tree", "find", "which", "where",
+    "wc", "du", "df", "stat", "file", "type",
+    # Text inspection (read-only)
+    "cat", "head", "tail", "less", "more", "grep", "rg", "ag",
+    "sed", "awk", "sort", "uniq", "diff", "comm",
+    # Process / system
+    "ps", "top", "htop", "kill", "tasklist", "taskkill",
+    "echo", "printf", "env", "set", "export", "printenv",
+    "whoami", "hostname", "uname", "systemctl", "journalctl",
+    # Network inspection
+    "curl", "wget", "ping", "ssh", "scp", "rsync",
+    "netstat", "nslookup", "dig", "tracert", "traceroute",
+    # Container / infra
+    "docker", "docker-compose", "kubectl", "terraform", "ansible",
+    # Build / lint / test runners
+    "make", "cmake", "tsc", "eslint", "prettier", "black",
+    "ruff", "mypy", "pytest", "jest", "vitest",
+    # Shells
+    "bash", "sh", "zsh", "powershell", "cmd",
+})
+
+# File extensions that are never domain-relevant when edited/written.
+_SKIP_EXTENSIONS = frozenset({
+    ".lock", ".sum", ".log", ".pid", ".tmp", ".bak",
+    ".gitignore", ".gitattributes", ".editorconfig",
+    ".prettierrc", ".eslintrc", ".stylelintrc",
+})
+
+# Well-known config/lock files by basename.
+_SKIP_BASENAMES = frozenset({
+    "package-lock.json", "yarn.lock", "pnpm-lock.yaml",
+    ".gitignore", ".dockerignore", "dockerfile",
+    "makefile", "tsconfig.json", "pyproject.toml",
+    "setup.py", "setup.cfg",
+})
+
+
+def _should_skip_action(tool_name: str, tool_input: dict[str, Any]) -> bool:
+    """Fast pre-filter: return True if this action is never domain-relevant.
+
+    Executes in <1ms.  No file I/O, no imports.  Pure string matching.
+    """
+    if tool_name == "Bash":
+        command = tool_input.get("command", "").strip()
+        if not command:
+            return True
+        # Extract first token (the executable)
+        first_token = command.split()[0]
+        # Handle path prefixes:  /usr/bin/git -> git,  C:\...\git.exe -> git
+        base = first_token.rsplit("/", 1)[-1].rsplit("\\", 1)[-1]
+        # Strip .exe / .cmd / .bat / .ps1 suffixes (Windows)
+        for suffix in (".exe", ".cmd", ".bat", ".ps1"):
+            if base.lower().endswith(suffix):
+                base = base[: -len(suffix)]
+                break
+        if base.lower() in _SKIP_COMMANDS:
+            return True
+
+    elif tool_name in ("Edit", "Write"):
+        file_path = tool_input.get("file_path", "")
+        if file_path:
+            lower_path = file_path.lower()
+            for ext in _SKIP_EXTENSIONS:
+                if lower_path.endswith(ext):
+                    return True
+            basename = file_path.rsplit("/", 1)[-1].rsplit("\\", 1)[-1].lower()
+            if basename in _SKIP_BASENAMES:
+                return True
+
+    return False
+
+
+# ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
@@ -69,6 +155,40 @@ def _write_stdout(data: dict[str, Any]) -> None:
 # Portfolio cache TTL in seconds (avoids re-running V3 deep eval on every hook call)
 _PORTFOLIO_CACHE_TTL = 600  # 10 minutes
 _PORTFOLIO_CACHE_DIR = Path.home() / ".cache" / "chip-labs"
+
+# Layer 3: Session domain file -- written by SessionStart, read by Pre/PostToolUse
+_SESSION_DOMAIN_FILE = _PORTFOLIO_CACHE_DIR / "session_domain.json"
+_SESSION_DOMAIN_TTL = 3600  # 1 hour (typical session length)
+
+
+def _write_session_domain(selected_chips: list[Any], query: str) -> None:
+    """Persist session domain context for Pre/PostToolUse hooks."""
+    try:
+        _PORTFOLIO_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        data = {
+            "query": query,
+            "chip_names": [c.chip_name for c in selected_chips],
+            "domains": list({c.domain for c in selected_chips}),
+            "ts": datetime.now(timezone.utc).isoformat(),
+        }
+        _SESSION_DOMAIN_FILE.write_text(
+            json.dumps(data, indent=2), encoding="utf-8",
+        )
+    except OSError:
+        pass
+
+
+def _read_session_domain() -> dict[str, Any] | None:
+    """Read session domain context.  Returns None if stale or missing."""
+    try:
+        if not _SESSION_DOMAIN_FILE.exists():
+            return None
+        age = datetime.now(timezone.utc).timestamp() - _SESSION_DOMAIN_FILE.stat().st_mtime
+        if age > _SESSION_DOMAIN_TTL:
+            return None
+        return json.loads(_SESSION_DOMAIN_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
 
 
 def _load_portfolio_safe() -> list[Any]:
@@ -281,6 +401,15 @@ def handle_session_start(input_data: dict[str, Any]) -> dict[str, Any]:
     if not context or context.startswith("<!--"):
         return {}
 
+    # Layer 3: Persist session domain for Pre/PostToolUse hooks
+    try:
+        from .chip_context_injector import select_chips_for_task
+        selected = select_chips_for_task(query, portfolio, max_chips=MAX_CHIPS_SESSION)
+        if selected:
+            _write_session_domain(selected, query)
+    except (ImportError, Exception):
+        pass
+
     guardrails = _build_guardrails(portfolio)
 
     full_context = context
@@ -300,12 +429,21 @@ def handle_pre_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
 
     Provides advisory context without blocking. Uses additionalContext
     to give Claude awareness of relevant doctrines before tool execution.
+
+    Three-layer gating:
+      Layer 1: Fast pre-filter (skip git/npm/ls etc. in <1ms)
+      Layer 2: Relevance threshold (via select_chips_for_task min_relevance)
+      Layer 3: Session domain enrichment (from SessionStart context)
     """
     if os.environ.get(DISABLE_ENV, "").lower() in ("1", "true", "yes"):
         return {}
 
     tool_name = input_data.get("tool_name", "")
     tool_input = input_data.get("tool_input", {})
+
+    # Layer 1: Fast pre-filter -- skip clearly irrelevant actions
+    if _should_skip_action(tool_name, tool_input):
+        return {}
 
     # Build action description from tool input
     if tool_name == "Bash":
@@ -314,6 +452,13 @@ def handle_pre_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
         action = f"Modifying file: {tool_input.get('file_path', '')}"
     else:
         action = f"Using tool: {tool_name}"
+
+    # Layer 3: Enrich query with session domain context
+    session = _read_session_domain()
+    if session:
+        domain_prefix = " ".join(session.get("domains", []))
+        if domain_prefix:
+            action = f"{domain_prefix} {action}"
 
     portfolio = _load_portfolio_safe()
     if not portfolio:
@@ -336,6 +481,11 @@ def handle_post_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
 
     Writes a feedback packet to the most relevant chip's
     research/realworld_validated/ directory.
+
+    Three-layer gating:
+      Layer 1: Fast pre-filter (skip git/npm/ls etc.)
+      Layer 2: Relevance threshold (via select_chips_for_task min_relevance)
+      Layer 3: Session domain restriction (only write feedback to relevant chips)
     """
     if os.environ.get(DISABLE_ENV, "").lower() in ("1", "true", "yes"):
         return {}
@@ -346,6 +496,10 @@ def handle_post_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
 
     # Only capture significant tool outcomes
     if tool_name not in ("Bash", "Edit", "Write"):
+        return {}
+
+    # Layer 1: Fast pre-filter -- skip clearly irrelevant actions
+    if _should_skip_action(tool_name, tool_input):
         return {}
 
     # Build action description
@@ -369,11 +523,24 @@ def handle_post_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
     if not portfolio:
         return {}
 
+    # Layer 3: Restrict to session-relevant chips if session domain is known
+    session = _read_session_domain()
+    if session:
+        session_chip_names = set(session.get("chip_names", []))
+        if session_chip_names:
+            portfolio = [c for c in portfolio if c.chip_name in session_chip_names]
+            if not portfolio:
+                return {}
+
     try:
         from .chip_context_injector import select_chips_for_task
         selected = select_chips_for_task(action, portfolio, max_chips=1)
     except (ImportError, Exception):
         selected = portfolio[:1]
+
+    # Layer 2: If nothing passes the relevance threshold, skip feedback
+    if not selected:
+        return {}
 
     feedback_paths: list[str] = []
     for chip in selected:

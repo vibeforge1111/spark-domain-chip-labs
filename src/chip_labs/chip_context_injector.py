@@ -59,14 +59,25 @@ def _ensure_intel(chip: "ChipHandle") -> ChipIntelligence | None:
         return None
 
 
+# Minimum Jaccard relevance score for a chip to be considered.
+# Chip text includes domain, name, mission, and top 5 doctrines (many words),
+# so even a clear domain query like "crypto trading" scores ~0.03 due to the
+# large union denominator.  0.03 filters pure noise (git/npm/ls → score 0.0)
+# while allowing any query with at least one domain-relevant word through.
+MIN_RELEVANCE_THRESHOLD = 0.03
+
+
 def select_chips_for_task(
     task_description: str,
     portfolio: list["ChipHandle"],
     max_chips: int = 2,
+    min_relevance: float = MIN_RELEVANCE_THRESHOLD,
 ) -> list["ChipHandle"]:
     """Select the most relevant chips for a task description.
 
     Uses Jaccard similarity between task description and chip domain/mission/doctrines.
+    Chips scoring below *min_relevance* are excluded entirely -- this prevents
+    injecting irrelevant domain intelligence for unrelated actions.
     """
     if not portfolio or not task_description.strip():
         return portfolio[:max_chips] if portfolio else []
@@ -78,7 +89,10 @@ def select_chips_for_task(
         scored.append((relevance, chip))
 
     scored.sort(key=lambda x: x[0], reverse=True)
-    return [chip for _, chip in scored[:max_chips]]
+
+    # Apply minimum relevance threshold
+    filtered = [(score, chip) for score, chip in scored if score >= min_relevance]
+    return [chip for _, chip in filtered[:max_chips]]
 
 
 # ---------------------------------------------------------------------------
