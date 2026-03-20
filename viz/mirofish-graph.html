@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MiroFish v2 - 100-Domain Trend Prediction</title>
+<title>MiroFish v2 - Knowledge Graph</title>
 <style>
-  /* ===== RESET & BASE ===== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: #0a0a0f;
@@ -17,480 +16,381 @@
     cursor: crosshair;
   }
 
-  /* ===== TOP NAV BAR ===== */
-  #navbar {
-    position: fixed; top: 0; left: 0; right: 0;
-    height: 48px;
-    background: linear-gradient(180deg, rgba(15,15,25,0.98) 0%, rgba(10,10,18,0.95) 100%);
-    border-bottom: 1px solid rgba(0,255,136,0.15);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 16px;
-    z-index: 100;
-    /* backdrop-filter removed for GPU perf */
-  }
-  #navbar .brand {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 14px; font-weight: 700; color: #00ff88;
-    letter-spacing: 1.5px; text-transform: uppercase;
-  }
-  #navbar .brand .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #00ff88;
-  }
-
-  /* Mini sparkline charts in navbar */
-  .nav-chart {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 2px;
-  }
-  .nav-chart-label {
-    font-size: 9px; color: rgba(255,255,255,0.4);
-    text-transform: uppercase; letter-spacing: 1px;
-  }
-  .nav-chart canvas {
-    border-radius: 4px;
-    background: rgba(255,255,255,0.03);
-  }
-  .nav-stats {
-    display: flex; gap: 24px; align-items: center;
-  }
-  .nav-stat {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 1px;
-  }
-  .nav-stat .value {
-    font-size: 16px; font-weight: 700; color: #00ff88;
-  }
-  .nav-stat .label {
-    font-size: 8px; color: rgba(255,255,255,0.35);
-    text-transform: uppercase; letter-spacing: 1px;
-  }
-
-  /* ===== MAIN CANVAS ===== */
   #graph-canvas {
-    position: fixed; top: 48px; left: 0; right: 0; bottom: 0;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     z-index: 1;
   }
 
-  /* ===== LEFT PANEL ===== */
-  #left-panel {
-    position: fixed; top: 56px; left: 8px; bottom: 8px;
-    width: 280px;
-    background: rgba(12,12,20,0.92);
-    border: 1px solid rgba(0,255,136,0.1);
-    border-radius: 12px;
-    z-index: 50;
-    display: flex; flex-direction: column;
-    overflow: hidden;
-    /* backdrop-filter removed for GPU perf */
-  }
-  .panel-header {
-    padding: 12px 14px 8px;
-    font-size: 11px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 1.5px;
-    color: #00ff88;
-    border-bottom: 1px solid rgba(0,255,136,0.08);
-  }
-  .panel-section {
-    padding: 10px 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-  .panel-section h3 {
-    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
-    color: rgba(255,255,255,0.35); margin-bottom: 8px;
-  }
-
-  /* ===== RIGHT PANEL ===== */
-  #right-panel {
-    position: fixed; top: 56px; right: 8px; bottom: 8px;
-    width: 300px;
-    background: rgba(12,12,20,0.92);
-    border: 1px solid rgba(0,255,136,0.1);
-    border-radius: 12px;
-    z-index: 50;
-    display: flex; flex-direction: column;
-    overflow: hidden;
-    /* backdrop-filter removed for GPU perf */
-  }
-
-  /* Activity feed */
-  #activity-feed {
-    flex: 1; overflow-y: auto; padding: 6px 12px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0,255,136,0.2) transparent;
-  }
-  #activity-feed::-webkit-scrollbar { width: 4px; }
-  #activity-feed::-webkit-scrollbar-thumb { background: rgba(0,255,136,0.2); border-radius: 2px; }
-  .feed-item {
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-    font-size: 10px;
-  }
-  .feed-time {
-    color: rgba(255,255,255,0.25); font-size: 9px;
-  }
-  .feed-event {
-    color: rgba(255,255,255,0.7); margin-top: 2px;
-  }
-  .feed-highlight { color: #00ff88; }
-  .feed-warn { color: #ff6b35; }
-  .feed-purple { color: #a855f7; }
-
-  /* Ranking list */
-  .rank-item {
-    display: flex; align-items: center; gap: 8px;
-    padding: 5px 0;
-    font-size: 10px;
-  }
-  .rank-pos {
-    width: 18px; height: 18px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 9px; font-weight: 700;
-    background: rgba(0,255,136,0.1);
-    color: #00ff88;
-  }
-  .rank-pos.top3 { background: rgba(0,255,136,0.2); }
-  .rank-pos.top10 { background: rgba(0,255,136,0.1); color: #66ffaa; }
-  .rank-name {
-    flex: 1; color: rgba(255,255,255,0.8);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .rank-bar {
-    width: 50px; height: 4px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 2px; overflow: hidden;
-  }
-  .rank-bar-fill {
-    height: 100%; border-radius: 2px;
-    background: linear-gradient(90deg, #00ff88, #00cc6a);
-    transition: width 1s ease;
-  }
-  .rank-value {
-    width: 40px; text-align: right;
-    font-size: 10px; color: #00ff88; font-weight: 600;
-  }
-  .tag {
-    font-size: 8px; padding: 1px 5px; border-radius: 3px;
-    font-weight: 600;
-  }
-  .tag-production { background: rgba(0,255,136,0.15); color: #00ff88; }
-  .tag-beta { background: rgba(168,85,247,0.15); color: #a855f7; }
-  .tag-alpha { background: rgba(59,130,246,0.15); color: #3b82f6; }
-  .tag-new { background: rgba(255,107,53,0.15); color: #ff6b35; }
-  .tag-viral { background: rgba(251,191,36,0.15); color: #fbbf24; }
-
-  /* ===== MINIMAP ===== */
-  #minimap {
-    position: fixed; bottom: 16px; left: 296px;
-    width: 180px; height: 120px;
-    background: rgba(12,12,20,0.9);
-    border: 1px solid rgba(0,255,136,0.15);
-    border-radius: 8px;
-    z-index: 50;
-    overflow: hidden;
-  }
-  #minimap canvas { width: 100%; height: 100%; }
-
-  /* ===== TOOLTIP ===== */
-  #tooltip {
-    position: fixed;
-    pointer-events: none;
-    background: rgba(8,8,16,0.95);
-    border: 1px solid rgba(0,255,136,0.3);
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 11px;
-    max-width: 320px;
-    z-index: 200;
-    opacity: 0;
-    transition: opacity 0.15s ease;
-    /* backdrop-filter removed for GPU perf */
-    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  }
-  #tooltip.visible { opacity: 1; }
-  #tooltip .tt-title {
-    font-size: 13px; font-weight: 700; color: #00ff88;
-    margin-bottom: 6px;
-  }
-  #tooltip .tt-type {
-    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
-    color: rgba(255,255,255,0.4); margin-bottom: 8px;
-  }
-  #tooltip .tt-row {
-    display: flex; justify-content: space-between;
-    padding: 2px 0; color: rgba(255,255,255,0.65);
-  }
-  #tooltip .tt-val { color: #00ff88; font-weight: 600; }
-  #tooltip canvas {
-    margin-top: 8px; border-radius: 4px;
-    background: rgba(255,255,255,0.02);
-  }
-
-  /* ===== BOTTOM BAR ===== */
-  #bottom-bar {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    height: 32px;
-    background: rgba(10,10,18,0.95);
-    border-top: 1px solid rgba(0,255,136,0.1);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 16px;
-    font-size: 10px;
-    color: rgba(255,255,255,0.4);
-    z-index: 100;
-  }
-  .status-item {
-    display: flex; align-items: center; gap: 6px;
-  }
-  .status-dot {
-    width: 5px; height: 5px; border-radius: 50%;
-  }
-  .status-dot.green { background: #00ff88; }
-  .status-dot.yellow { background: #fbbf24; }
-  .status-dot.red { background: #ef4444; }
-
-  /* ===== LEGEND ===== */
-  .legend-row {
-    display: flex; align-items: center; gap: 6px;
-    padding: 3px 0; font-size: 10px;
-    color: rgba(255,255,255,0.6);
-  }
-  .legend-dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .legend-line {
-    width: 20px; height: 2px; flex-shrink: 0;
-    border-radius: 1px;
-  }
-
-  /* ===== ROUND INDICATOR ===== */
+  /* Round indicator */
   #round-indicator {
-    position: fixed; bottom: 44px; left: 50%;
+    position: fixed; bottom: 20px; left: 50%;
     transform: translateX(-50%);
-    background: rgba(12,12,20,0.9);
-    border: 1px solid rgba(0,255,136,0.2);
-    border-radius: 20px;
-    padding: 6px 20px;
-    font-size: 12px;
-    color: #00ff88;
+    background: rgba(12,12,20,0.88);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 8px 20px;
     z-index: 60;
-    display: flex; align-items: center; gap: 12px;
-    /* backdrop-filter removed for GPU perf */
-  }
-  #round-indicator .round-num {
-    font-size: 18px; font-weight: 700;
-  }
-  #round-indicator .round-label {
-    font-size: 9px; text-transform: uppercase;
-    letter-spacing: 1px; color: rgba(255,255,255,0.4);
+    display: flex; align-items: center; gap: 14px;
+    font-size: 12px;
   }
   .play-btn {
-    width: 24px; height: 24px;
-    border: 1px solid rgba(0,255,136,0.3);
+    width: 28px; height: 28px;
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 50%;
-    background: rgba(0,255,136,0.05);
-    color: #00ff88;
+    background: rgba(255,255,255,0.04);
+    color: #fff;
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    font-size: 10px;
-    transition: all 0.2s;
+    font-size: 11px;
+    transition: background 0.2s;
   }
-  .play-btn:hover {
-    background: rgba(0,255,136,0.15);
-    border-color: rgba(0,255,136,0.5);
-  }
-
-  /* ===== SPEED SLIDER ===== */
+  .play-btn:hover { background: rgba(255,255,255,0.1); }
+  .round-num { font-size: 20px; font-weight: 700; color: #fff; }
+  .round-total { font-size: 11px; color: rgba(255,255,255,0.3); }
   input[type="range"] {
     -webkit-appearance: none;
-    width: 80px; height: 3px;
+    width: 100px; height: 3px;
     background: rgba(255,255,255,0.1);
     border-radius: 2px;
     outline: none;
   }
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 12px; height: 12px;
+    width: 14px; height: 14px;
     border-radius: 50%;
-    background: #00ff88;
+    background: #fff;
     cursor: pointer;
   }
 
-  /* ===== SCROLLBAR ===== */
-  ::-webkit-scrollbar { width: 4px; }
+  /* Legend (inside left panel) */
+  #legend {
+    padding: 8px 12px;
+    font-size: 9px;
+    display: flex; flex-wrap: wrap; gap: 3px 12px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  #legend .legend-title {
+    font-size: 7px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.2); width: 100%; margin-bottom: 0;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 4px;
+    color: rgba(255,255,255,0.45);
+    font-size: 8px;
+  }
+  .legend-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Tooltip */
+  #tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: rgba(8,8,16,0.94);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 11px;
+    max-width: 360px;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+  }
+  #tooltip.visible { opacity: 1; }
+  .tt-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .tt-type { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+  .tt-section { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin: 10px 0 4px; }
+  .tt-row { display: flex; align-items: center; gap: 8px; padding: 2px 0; font-size: 10px; color: rgba(255,255,255,0.6); }
+  .tt-bar { height: 4px; border-radius: 2px; min-width: 2px; }
+  .tt-val { font-weight: 600; min-width: 32px; text-align: right; }
+  .tt-tags { font-size: 9px; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .tt-matched { font-size: 9px; color: rgba(255,255,255,0.25); }
+
+  /* Shock banner */
+  #shock-banner {
+    position: fixed; top: 20px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(12,12,20,0.9);
+    border: 1px solid rgba(255,107,53,0.3);
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 11px;
+    color: #ff6b35;
+    z-index: 60;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  #shock-banner.visible { opacity: 1; }
+
+  /* ===== LEFT PANEL ===== */
+  #left-panel {
+    position: fixed; top: 12px; left: 12px; bottom: 60px;
+    width: 260px;
+    background: rgba(10,10,18,0.88);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    z-index: 50;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .panel-title {
+    padding: 12px 14px 8px;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  .panel-stats {
+    display: flex; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  .panel-stat {
+    flex: 1; padding: 8px 0;
+    display: flex; flex-direction: column; align-items: center; gap: 1px;
+  }
+  .panel-stat .val { font-size: 16px; font-weight: 700; color: #fff; }
+  .panel-stat .lbl { font-size: 7px; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(255,255,255,0.25); }
+  #ranking-list {
+    flex: 1; overflow-y: auto; padding: 4px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
+  }
+  #ranking-list::-webkit-scrollbar { width: 3px; }
+  #ranking-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  .rank-item {
+    display: flex; align-items: center; gap: 6px;
+    padding: 3px 0;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .rank-item:hover { background: rgba(255,255,255,0.04); }
+  .rank-pos {
+    width: 20px; text-align: center;
+    font-size: 9px; font-weight: 600;
+    color: rgba(255,255,255,0.3);
+  }
+  .rank-pos.top3 { color: #fbbf24; }
+  .rank-pos.top10 { color: rgba(255,255,255,0.5); }
+  .rank-name {
+    flex: 1; color: rgba(255,255,255,0.65);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .rank-bar {
+    width: 40px; height: 3px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px; overflow: hidden;
+  }
+  .rank-bar-fill { height: 100%; border-radius: 2px; }
+  .rank-pct {
+    width: 36px; text-align: right;
+    font-size: 9px; font-weight: 600;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ===== RIGHT PANEL ===== */
+  #right-panel {
+    position: fixed; top: 12px; right: 12px; bottom: 60px;
+    width: 280px;
+    background: rgba(10,10,18,0.88);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    z-index: 50;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  #right-panel .chart-area {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  #right-panel .chart-area h3 {
+    font-size: 8px; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(255,255,255,0.3); margin-bottom: 6px;
+  }
+  #shock-list {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  .shock-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 3px 0; font-size: 10px;
+  }
+  .shock-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .shock-round { width: 22px; color: rgba(255,255,255,0.3); font-size: 9px; }
+  .shock-label { flex: 1; color: rgba(255,255,255,0.55); }
+  .shock-effect { font-size: 8px; text-transform: uppercase; }
+  #activity-feed {
+    flex: 1; overflow-y: auto; padding: 6px 12px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
+  }
+  #activity-feed::-webkit-scrollbar { width: 3px; }
+  #activity-feed::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  .feed-item {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+    font-size: 9px;
+    color: rgba(255,255,255,0.4);
+  }
+  .feed-hl { color: #00ff88; }
+  .feed-warn { color: #ff6b35; }
+
+  ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(0,255,136,0.15); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<div id="navbar">
-  <div class="brand">
-    <div class="dot"></div>
-    <span>MiroFish</span>
-    <span style="color: rgba(255,255,255,0.3); font-weight: 400; font-size: 11px;">Knowledge Graph</span>
-  </div>
-
-  <div style="display: flex; gap: 20px; align-items: center;">
-    <div class="nav-chart">
-      <div class="nav-chart-label">Adoption Curve</div>
-      <canvas id="nav-chart-left" width="140" height="32"></canvas>
-    </div>
-    <div class="nav-stats">
-      <div class="nav-stat">
-        <div class="value" id="stat-agents">1000</div>
-        <div class="label">Agents</div>
-      </div>
-      <div class="nav-stat">
-        <div class="value" id="stat-domains">32</div>
-        <div class="label">Domains</div>
-      </div>
-      <div class="nav-stat">
-        <div class="value" id="stat-signals">758</div>
-        <div class="label">Signals</div>
-      </div>
-      <div class="nav-stat">
-        <div class="value" id="stat-adopted">0</div>
-        <div class="label">Adopted</div>
-      </div>
-    </div>
-    <div class="nav-chart">
-      <div class="nav-chart-label">Signal Activity</div>
-      <canvas id="nav-chart-right" width="140" height="32"></canvas>
-    </div>
-  </div>
-
-  <div style="display: flex; gap: 12px; align-items: center;">
-    <div style="font-size: 10px; color: rgba(255,255,255,0.3);">
-      Scroll: zoom | Drag: pan | Click: inspect
-    </div>
-  </div>
-</div>
-
-<!-- MAIN CANVAS -->
 <canvas id="graph-canvas"></canvas>
 
 <!-- LEFT PANEL -->
 <div id="left-panel">
-  <div class="panel-header">Domain Rankings</div>
-
-  <div class="panel-section" style="flex: 2; overflow-y: auto; max-height: 60vh;">
-    <h3>All 100 Domains by Adoption</h3>
-    <div id="ranking-list"></div>
+  <div class="panel-title">Domain Rankings</div>
+  <div class="panel-stats">
+    <div class="panel-stat"><div class="val" id="stat-domains">100</div><div class="lbl">Domains</div></div>
+    <div class="panel-stat"><div class="val" id="stat-agents">550</div><div class="lbl">Agents</div></div>
+    <div class="panel-stat"><div class="val" id="stat-signals">0</div><div class="lbl">Signals</div></div>
+    <div class="panel-stat"><div class="val" id="stat-adopted">0</div><div class="lbl">Adopted</div></div>
   </div>
-
-  <div class="panel-section">
-    <h3>Persona Distribution</h3>
-    <canvas id="persona-chart" width="252" height="120"></canvas>
-  </div>
-
-  <div class="panel-section">
-    <h3>Legend</h3>
-    <div class="legend-row"><div class="legend-dot" style="background:#00ff88;"></div> Domain (Existing)</div>
-    <div class="legend-row"><div class="legend-dot" style="background:#ff6b35;"></div> Domain (Candidate)</div>
-    <div class="legend-row"><div class="legend-dot" style="background:#3b82f6;"></div> Technology</div>
-    <div class="legend-row"><div class="legend-dot" style="background:#a855f7;"></div> Platform</div>
-    <div class="legend-row"><div class="legend-dot" style="background:#fbbf24;"></div> Community</div>
-    <div class="legend-row"><div class="legend-dot" style="background:#ef4444;"></div> Regulation</div>
-    <div class="legend-row"><div class="legend-line" style="background:rgba(0,255,136,0.3);"></div> ENABLES / EXTENDS</div>
-    <div class="legend-row"><div class="legend-line" style="background:rgba(255,107,53,0.3);"></div> COMPETES_WITH</div>
-  </div>
-
-  <div class="panel-section" style="flex: 1; overflow-y: auto;">
-    <h3>Builder vs Enterprise</h3>
-    <canvas id="comparison-chart" width="252" height="160"></canvas>
-  </div>
+  <div id="ranking-list"></div>
+  <div id="legend"></div>
 </div>
 
 <!-- RIGHT PANEL -->
 <div id="right-panel">
-  <div class="panel-header">Simulation Activity</div>
-
-  <div class="panel-section">
-    <h3>Adoption Curves (Selected)</h3>
-    <canvas id="adoption-chart" width="272" height="140"></canvas>
+  <div class="panel-title">Selected Domain</div>
+  <div class="chart-area">
+    <h3>Adoption Curve</h3>
+    <canvas id="adoption-chart" width="254" height="130"></canvas>
   </div>
-
-  <div class="panel-section">
-    <h3>Shock Events</h3>
-    <div id="shock-timeline"></div>
-  </div>
-
-  <div class="panel-header" style="border-bottom: 1px solid rgba(0,255,136,0.08);">Live Feed</div>
+  <div class="panel-title" style="padding-top:6px;">Shock Events</div>
+  <div id="shock-list"></div>
+  <div class="panel-title" style="padding-top:6px;">Activity Feed</div>
   <div id="activity-feed"></div>
 </div>
 
-<!-- MINIMAP -->
-<div id="minimap">
-  <canvas id="minimap-canvas"></canvas>
-</div>
-
-<!-- ROUND INDICATOR -->
 <div id="round-indicator">
   <button class="play-btn" id="play-btn" title="Play/Pause">&#9654;</button>
-  <div>
-    <div class="round-label">Simulation Round</div>
-    <div class="round-num" id="round-num">0</div>
-  </div>
-  <div style="font-size:10px;color:rgba(255,255,255,0.3);">/ 20</div>
-  <input type="range" id="round-slider" min="0" max="20" value="0" title="Scrub rounds">
   <div style="display:flex;flex-direction:column;align-items:center;">
-    <div style="font-size:8px;color:rgba(255,255,255,0.25);text-transform:uppercase;">Speed</div>
-    <input type="range" id="speed-slider" min="1" max="10" value="4" style="width:50px;">
+    <div class="round-num" id="round-num">0</div>
+    <div class="round-total">/ 20</div>
   </div>
+  <input type="range" id="round-slider" min="0" max="20" value="0" title="Scrub rounds">
 </div>
 
-<!-- TOOLTIP -->
 <div id="tooltip">
   <div class="tt-title"></div>
   <div class="tt-type"></div>
   <div class="tt-body"></div>
 </div>
 
-<!-- BOTTOM BAR -->
-<div id="bottom-bar">
-  <div style="display:flex;gap:16px;">
-    <div class="status-item"><div class="status-dot green"></div> Simulation Active</div>
-    <div class="status-item">Nodes: <span id="status-nodes">0</span></div>
-    <div class="status-item">Edges: <span id="status-edges">0</span></div>
-  </div>
-  <div style="display:flex;gap:16px;">
-    <div class="status-item">Camera: <span id="status-camera">0,0</span></div>
-    <div class="status-item">Zoom: <span id="status-zoom">1.0x</span></div>
-    <div class="status-item" style="color:rgba(0,255,136,0.5);">MiroFish v1.0 | 1000 Agents | spark-domain-chip-labs</div>
-  </div>
-</div>
+<div id="shock-banner"></div>
 
 <script>
 // ============================================================================
-// DATA (embedded from export)
+// PERSONA DATA (static from personas.py)
+// ============================================================================
+const PERSONA_DATA = {
+  investor: {
+    label: 'Investor', color: '#00ff88',
+    values: ['deal_flow', 'alpha', 'portfolio_intelligence', 'roi'],
+    pain_points: ['information_overload', 'slow_due_diligence', 'missed_deals'],
+    influence: 0.9, threshold: 0.45, risk: 0.6, reach: 0.85,
+  },
+  entrepreneur: {
+    label: 'Entrepreneur', color: '#ff6b35',
+    values: ['speed_to_ship', 'idea_validation', 'mvp_quality', 'market_fit'],
+    pain_points: ['too_slow', 'feature_bloat', 'analysis_paralysis'],
+    influence: 0.75, threshold: 0.3, risk: 0.85, reach: 0.7,
+  },
+  content_creator: {
+    label: 'Content Creator', color: '#ec4899',
+    values: ['audience_growth', 'content_quality', 'distribution'],
+    pain_points: ['writer_block', 'algorithm_changes', 'audience_fatigue'],
+    influence: 0.8, threshold: 0.25, risk: 0.7, reach: 0.9,
+  },
+  solopreneur: {
+    label: 'Solopreneur', color: '#06b6d4',
+    values: ['time_leverage', 'low_cost', 'simplicity', 'all_in_one'],
+    pain_points: ['no_team', 'limited_budget', 'wearing_all_hats'],
+    influence: 0.5, threshold: 0.35, risk: 0.75, reach: 0.4,
+  },
+  ai_newcomer: {
+    label: 'AI Newcomer', color: '#fbbf24',
+    values: ['easy_start', 'low_learning_curve', 'quick_wins'],
+    pain_points: ['overwhelmed', 'dont_know_where_to_start', 'fear_of_ai'],
+    influence: 0.3, threshold: 0.2, risk: 0.5, reach: 0.3,
+  },
+  developer: {
+    label: 'Developer', color: '#3b82f6',
+    values: ['code_quality', 'productivity', 'dx', 'extensibility'],
+    pain_points: ['bad_docs', 'vendor_lock_in', 'over_engineering'],
+    influence: 0.7, threshold: 0.4, risk: 0.65, reach: 0.65,
+  },
+  marketer: {
+    label: 'Marketer', color: '#a855f7',
+    values: ['campaign_roi', 'attribution', 'conversion'],
+    pain_points: ['cant_prove_roi', 'ad_fatigue', 'channel_fragmentation'],
+    influence: 0.65, threshold: 0.3, risk: 0.6, reach: 0.75,
+  },
+  creative: {
+    label: 'Creative', color: '#f43f5e',
+    values: ['aesthetic_quality', 'creative_control', 'uniqueness'],
+    pain_points: ['ai_looks_generic', 'loss_of_style', 'commoditization'],
+    influence: 0.6, threshold: 0.25, risk: 0.8, reach: 0.55,
+  },
+  trader: {
+    label: 'Trader', color: '#10b981',
+    values: ['alpha', 'speed', 'risk_management', 'edge'],
+    pain_points: ['slow_execution', 'information_lag', 'missed_entries'],
+    influence: 0.65, threshold: 0.35, risk: 0.9, reach: 0.5,
+  },
+  tool_maker: {
+    label: 'Tool Maker', color: '#6366f1',
+    values: ['infrastructure', 'api_quality', 'developer_adoption'],
+    pain_points: ['poor_docs', 'breaking_changes', 'low_adoption'],
+    influence: 0.75, threshold: 0.5, risk: 0.7, reach: 0.7,
+  },
+  opportunity_hunter: {
+    label: 'Opp. Hunter', color: '#f97316',
+    values: ['early_access', 'trend_spotting', 'speed', 'first_mover'],
+    pain_points: ['fomo', 'too_late', 'noise_vs_signal'],
+    influence: 0.55, threshold: 0.15, risk: 0.95, reach: 0.6,
+  },
+};
+
+const PERSONA_TYPES = Object.keys(PERSONA_DATA);
+
+// Domain category colors
+const DOMAIN_COLORS = {
+  existing: '#00ff88',
+  candidate: '#3b82f6',
+  viral: '#fbbf24',
+  new: '#8b9dc3',
+};
+
+// ============================================================================
+// GLOBALS
 // ============================================================================
 let DATA = null;
-
-async function loadData() {
-  try {
-    const resp = await fetch('mirofish_data.json');
-    DATA = await resp.json();
-  } catch(e) {
-    // Fallback: try inline
-    console.error('Failed to load data:', e);
-    return;
-  }
-  init();
-}
-
-// ============================================================================
-// GRAPH ENGINE
-// ============================================================================
-
 const canvas = document.getElementById('graph-canvas');
 const ctx = canvas.getContext('2d');
 
 let W, H;
 let camera = { x: 0, y: 0, zoom: 1 };
-let nodes = [];
-let edges = [];
+let personaNodes = [];
+let domainNodes = [];
+let allNodes = [];
+let domainEdges = [];       // domain-domain relationships (always faint)
+let adoptionEdges = [];     // persona-domain edges (per round)
 let hoveredNode = null;
 let selectedNode = null;
 let isDragging = false;
@@ -499,134 +399,122 @@ let camStart = { x: 0, y: 0 };
 let currentRound = 0;
 let isPlaying = false;
 let playTimer = null;
-let feedItems = [];
+let needsRender = true;
+let forceIters = 0;
 let frameCount = 0;
 
-// Color palette
-const COLORS = {
-  domain_existing: '#00ff88',
-  domain_candidate: '#ff6b35',
-  technology: '#3b82f6',
-  platform: '#a855f7',
-  community: '#fbbf24',
-  regulation: '#ef4444',
-  trend: '#06b6d4',
-  company: '#ec4899',
-  edge_enables: 'rgba(0,255,136,0.12)',
-  edge_competes: 'rgba(255,107,53,0.12)',
-  edge_depends: 'rgba(59,130,246,0.08)',
-  edge_default: 'rgba(255,255,255,0.04)',
-};
-
-function getNodeColor(node) {
-  if (node.type === 'domain') {
-    return node.isExisting ? COLORS.domain_existing : COLORS.domain_candidate;
+// ============================================================================
+// DATA LOADING
+// ============================================================================
+async function loadData() {
+  try {
+    const resp = await fetch('mirofish_data.json');
+    DATA = await resp.json();
+  } catch(e) {
+    console.error('Failed to load data:', e);
+    return;
   }
-  return COLORS[node.type] || '#888';
-}
-
-function getEdgeColor(edge) {
-  if (edge.relationship === 'ENABLES' || edge.relationship === 'EXTENDS') return COLORS.edge_enables;
-  if (edge.relationship === 'COMPETES_WITH') return COLORS.edge_competes;
-  if (edge.relationship === 'DEPENDS_ON') return COLORS.edge_depends;
-  return COLORS.edge_default;
+  init();
 }
 
 // ============================================================================
-// FORCE-DIRECTED LAYOUT
+// LAYOUT
 // ============================================================================
-
 function initLayout() {
-  const domainData = {};
-  DATA.domains.forEach(d => { domainData[d.domain_id] = d; });
+  const domainDataMap = {};
+  DATA.domains.forEach(d => { domainDataMap[d.domain_id] = d; });
 
-  // Create nodes
-  nodes = DATA.graph_nodes.map((n, i) => {
-    const dd = domainData[n.id];
-    const isDomain = n.type === 'domain';
-    const isExisting = dd ? dd.is_existing : false;
-
-    // Size based on adoption or type
-    let radius = 8;
-    if (isDomain && dd) {
-      radius = 14 + dd.builder_adoption * 20;
-    } else if (n.type === 'technology') {
-      radius = 10;
-    } else if (n.type === 'platform') {
-      radius = 9;
-    } else {
-      radius = 7;
-    }
-
-    // Position: radial layout with domains in center
-    const angle = (i / DATA.graph_nodes.length) * Math.PI * 2;
-    let dist = 350;
-    if (isDomain) dist = 180 + Math.random() * 120;
-    else if (n.type === 'technology') dist = 350 + Math.random() * 80;
-    else dist = 420 + Math.random() * 100;
-
+  // Create persona hub nodes (fixed ring)
+  const hubRadius = Math.min(W, H) * 0.35;
+  personaNodes = PERSONA_TYPES.map((ptype, i) => {
+    const angle = (i / PERSONA_TYPES.length) * Math.PI * 2 - Math.PI / 2;
+    const pd = PERSONA_DATA[ptype];
+    const jsonData = DATA.persona_types.find(p => p.type === ptype) || {};
     return {
-      id: n.id,
-      label: n.label,
-      type: n.type,
-      isDomain,
-      isExisting,
-      domainData: dd || null,
-      x: Math.cos(angle) * dist + (Math.random() - 0.5) * 60,
-      y: Math.sin(angle) * dist + (Math.random() - 0.5) * 60,
+      id: `persona-${ptype}`,
+      personaType: ptype,
+      label: pd.label,
+      type: 'persona',
+      isPersona: true,
+      isDomain: false,
+      color: pd.color,
+      x: Math.cos(angle) * hubRadius,
+      y: Math.sin(angle) * hubRadius,
       vx: 0, vy: 0,
-      radius,
-      baseRadius: radius,
-      pulsePhase: Math.random() * Math.PI * 2,
-      glowIntensity: isDomain ? 0.6 : 0.3,
+      radius: 24 + pd.influence * 14,
+      baseRadius: 24 + pd.influence * 14,
+      count: jsonData.count || 50,
+      values: pd.values,
+      pain_points: pd.pain_points,
+      influence: pd.influence,
+      threshold: pd.threshold,
+      risk: pd.risk,
+      reach: pd.reach,
+      fixed: true,
     };
   });
 
-  // Create edges (sample for performance)
+  // Create domain nodes
+  domainNodes = DATA.domains.map((d, i) => {
+    const angle = (i / DATA.domains.length) * Math.PI * 2 + Math.random() * 0.3;
+    const dist = 80 + Math.random() * 180;
+    const catColor = DOMAIN_COLORS[d.category] || DOMAIN_COLORS.candidate;
+    return {
+      id: d.domain_id,
+      label: d.label || d.domain_id,
+      type: 'domain',
+      isPersona: false,
+      isDomain: true,
+      isExisting: d.is_existing,
+      category: d.category,
+      color: catColor,
+      domainData: d,
+      x: Math.cos(angle) * dist + (Math.random() - 0.5) * 60,
+      y: Math.sin(angle) * dist + (Math.random() - 0.5) * 60,
+      vx: 0, vy: 0,
+      radius: 8,
+      baseRadius: 8,
+      fixed: false,
+    };
+  });
+
+  allNodes = [...domainNodes, ...personaNodes];
+
+  // Build node lookup
   const nodeMap = {};
-  nodes.forEach(n => { nodeMap[n.id] = n; });
+  allNodes.forEach(n => { nodeMap[n.id] = n; });
 
-  // Only include edges where both nodes exist
-  const filteredEdges = DATA.graph_edges.filter(e =>
-    nodeMap[e.source] && nodeMap[e.target]
-  );
+  // Domain-domain relationship edges only
+  const domainIdSet = new Set(DATA.domains.map(d => d.domain_id));
+  domainEdges = DATA.graph_edges
+    .filter(e => domainIdSet.has(e.source) && domainIdSet.has(e.target) && e.weight > 0.3)
+    .map(e => ({
+      source: nodeMap[e.source],
+      target: nodeMap[e.target],
+      weight: e.weight,
+    }))
+    .filter(e => e.source && e.target);
 
-  // Sample edges for visualization (keep significant ones, viewport culling handles the rest)
-  const edgeSample = filteredEdges.length > 300
-    ? filteredEdges.filter(e => e.weight > 0.4 || e.relationship === 'ENABLES')
-    : filteredEdges;
-
-  edges = edgeSample.map(e => ({
-    source: nodeMap[e.source],
-    target: nodeMap[e.target],
-    relationship: e.relationship,
-    weight: e.weight,
-  }));
-
-  // Run force simulation for initial layout (fewer iterations, faster startup)
-  for (let iter = 0; iter < 120; iter++) {
-    forceStep(0.3 * (1 - iter / 120));
+  // Run initial force layout
+  for (let iter = 0; iter < 150; iter++) {
+    forceStep(0.4 * (1 - iter / 150));
   }
-
-  // Pre-sort nodes for rendering order (avoids filter() every frame)
-  sortedNonDomains = nodes.filter(n => !n.isDomain);
-  sortedDomains = nodes.filter(n => n.isDomain);
 }
 
 function forceStep(alpha) {
-  const k = 120; // repulsion distance
-  const gravity = 0.01;
-  const cutoff = k * 4; // skip repulsion for distant nodes
+  const k = 80;
+  const gravity = 0.004;
+  const cutoff = k * 5;
   const cutoffSq = cutoff * cutoff;
 
-  // Repulsion between nodes (skip pairs beyond cutoff distance)
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i + 1; j < nodes.length; j++) {
-      const a = nodes[i], b = nodes[j];
+  // Repulsion between domain nodes only
+  for (let i = 0; i < domainNodes.length; i++) {
+    for (let j = i + 1; j < domainNodes.length; j++) {
+      const a = domainNodes[i], b = domainNodes[j];
       let dx = b.x - a.x;
       let dy = b.y - a.y;
       let distSq = dx * dx + dy * dy;
-      if (distSq > cutoffSq) continue; // skip distant pairs
+      if (distSq > cutoffSq) continue;
       let dist = Math.sqrt(distSq) || 1;
       let force = (k * k) / dist;
       let fx = (dx / dist) * force * alpha;
@@ -636,173 +524,51 @@ function forceStep(alpha) {
     }
   }
 
-  // Attraction along edges
-  edges.forEach(e => {
+  // Domain-domain edge springs (weak)
+  domainEdges.forEach(e => {
     let dx = e.target.x - e.source.x;
     let dy = e.target.y - e.source.y;
     let dist = Math.sqrt(dx * dx + dy * dy) || 1;
-    let force = (dist - 100) * 0.005 * alpha;
+    let force = (dist - 80) * 0.002 * alpha;
     let fx = (dx / dist) * force;
     let fy = (dy / dist) * force;
     e.source.vx += fx; e.source.vy += fy;
     e.target.vx -= fx; e.target.vy -= fy;
   });
 
-  // Gravity toward center
-  nodes.forEach(n => {
+  // Persona attractor pull
+  domainNodes.forEach(d => {
+    let pullX = 0, pullY = 0, totalWeight = 0;
+    personaNodes.forEach(p => {
+      const rate = getPersonaAdoptionAtRound(d.domainData, p.personaType, currentRound);
+      if (rate > 0.005) {
+        pullX += p.x * rate;
+        pullY += p.y * rate;
+        totalWeight += rate;
+      }
+    });
+    if (totalWeight > 0.01) {
+      const tx = pullX / totalWeight;
+      const ty = pullY / totalWeight;
+      d.vx += (tx - d.x) * 0.015 * alpha;
+      d.vy += (ty - d.y) * 0.015 * alpha;
+    }
+  });
+
+  // Gravity + apply velocity
+  domainNodes.forEach(n => {
     n.vx -= n.x * gravity * alpha;
     n.vy -= n.y * gravity * alpha;
     n.x += n.vx;
     n.y += n.vy;
-    n.vx *= 0.8;
-    n.vy *= 0.8;
+    n.vx *= 0.82;
+    n.vy *= 0.82;
   });
 }
 
 // ============================================================================
-// RENDERING
+// ADOPTION EDGE COMPUTATION
 // ============================================================================
-
-// Pre-sort nodes once (non-domains first, domains on top)
-let sortedNonDomains = [];
-let sortedDomains = [];
-let cachedBgGrad = null;
-let lastW = 0, lastH = 0;
-let needsResize = true;
-
-function onResize() { needsResize = true; }
-window.addEventListener('resize', onResize);
-
-function render() {
-  frameCount++;
-
-  // Only reset canvas size on actual resize (not every frame!)
-  const newW = window.innerWidth;
-  const newH = window.innerHeight - 48;
-  if (needsResize || newW !== lastW || newH !== lastH) {
-    W = canvas.width = newW;
-    H = canvas.height = newH;
-    lastW = newW; lastH = newH;
-    needsResize = false;
-    // Rebuild background gradient only on resize
-    cachedBgGrad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W, H) * 0.7);
-    cachedBgGrad.addColorStop(0, 'rgba(15,15,30,1)');
-    cachedBgGrad.addColorStop(1, 'rgba(5,5,12,1)');
-  }
-
-  ctx.clearRect(0, 0, W, H);
-  ctx.fillStyle = cachedBgGrad;
-  ctx.fillRect(0, 0, W, H);
-
-  // Grid removed for GPU perf
-
-  ctx.save();
-  ctx.translate(W/2 + camera.x, H/2 + camera.y);
-  ctx.scale(camera.zoom, camera.zoom);
-
-  // Compute viewport bounds in world space for culling
-  const vpLeft = (-camera.x - W/2) / camera.zoom;
-  const vpTop = (-camera.y - H/2) / camera.zoom;
-  const vpRight = vpLeft + W / camera.zoom;
-  const vpBottom = vpTop + H / camera.zoom;
-  const margin = 60; // node radius margin
-
-  // Draw edges — only for hovered/selected nodes to avoid GPU overload
-  const activeNode = hoveredNode || selectedNode;
-  if (activeNode) {
-    const edgeLen = edges.length;
-    for (let i = 0; i < edgeLen; i++) {
-      const e = edges[i];
-      if (e.source !== activeNode && e.target !== activeNode) continue;
-      const s = e.source, t = e.target;
-      if ((s.x < vpLeft - margin && t.x < vpLeft - margin) ||
-          (s.x > vpRight + margin && t.x > vpRight + margin) ||
-          (s.y < vpTop - margin && t.y < vpTop - margin) ||
-          (s.y > vpBottom + margin && t.y > vpBottom + margin)) continue;
-      drawEdge(e);
-    }
-  }
-
-  // Non-domain nodes hidden — only render domain nodes
-  const domLen = sortedDomains.length;
-  for (let i = 0; i < domLen; i++) {
-    const n = sortedDomains[i];
-    if (n.x > vpLeft - margin && n.x < vpRight + margin &&
-        n.y > vpTop - margin && n.y < vpBottom + margin) {
-      drawNode(n);
-    }
-  }
-
-  ctx.restore();
-
-  // Throttled UI updates
-  if (frameCount % 10 === 0) updateMinimap();
-  if (frameCount % 10 === 0) updateStatusBar();
-
-  requestAnimationFrame(render);
-}
-
-function drawGrid() { /* removed for GPU perf */ }
-
-function drawEdge(edge) {
-  const s = edge.source, t = edge.target;
-  const color = edge._cachedColor || (edge._cachedColor = getEdgeColor(edge));
-
-  ctx.beginPath();
-  ctx.moveTo(s.x, s.y);
-  ctx.lineTo(t.x, t.y);
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 0.5;
-  ctx.stroke();
-}
-
-function drawNode(node) {
-  const r = node.radius;
-  const color = node._cachedColor || (node._cachedColor = getNodeColor(node));
-  const isHovered = hoveredNode === node;
-  const isSelected = selectedNode === node;
-
-  // Main circle — flat color always (no gradients, no glow)
-  ctx.beginPath();
-  ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
-  ctx.fillStyle = color;
-  ctx.fill();
-
-  // Ring — simple outline
-  ctx.strokeStyle = node._ringColor || (node._ringColor = adjustAlpha(color, 0.4));
-  ctx.lineWidth = 1;
-  ctx.stroke();
-
-  // Adoption ring for domains
-  if (node.isDomain && node.domainData) {
-    const adoption = getAdoptionAtRound(node.domainData, currentRound);
-    if (adoption > 0.01) {
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, r + 4, -Math.PI/2, -Math.PI/2 + Math.PI * 2 * adoption);
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 2;
-      ctx.stroke();
-    }
-  }
-
-  // Label — only show if zoomed in enough or hovered
-  if (isHovered || isSelected || (camera.zoom > 0.6 && node.isDomain) || camera.zoom > 1.2) {
-    const fontSize = node.isDomain ? 10 : 8;
-    ctx.font = `${isHovered ? 'bold ' : ''}${fontSize}px monospace`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-    const labelY = node.y + r + 6;
-
-    // Cache label width
-    if (!node._labelWidth) node._labelWidth = ctx.measureText(node.label).width + 8;
-    ctx.fillStyle = 'rgba(0,0,0,0.5)';
-    ctx.fillRect(node.x - node._labelWidth/2, labelY - 1, node._labelWidth, 13);
-
-    ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.6)';
-    ctx.fillText(node.label, node.x, labelY);
-  }
-}
-
 function getAdoptionAtRound(domainData, round) {
   if (!domainData || !domainData.builder_curve) return 0;
   const curve = domainData.builder_curve;
@@ -811,53 +577,257 @@ function getAdoptionAtRound(domainData, round) {
   return curve[round] ? curve[round].adoption_rate : 0;
 }
 
+function getPersonaAdoptionAtRound(domainData, personaType, round) {
+  if (!domainData || !domainData.adoption_by_persona_type) return 0;
+  const pt = domainData.adoption_by_persona_type[personaType];
+  if (!pt || pt.adoption_rate === 0) return 0;
+  const overallAtRound = getAdoptionAtRound(domainData, round);
+  const overallFinal = domainData.builder_adoption;
+  if (overallFinal <= 0) return 0;
+  return pt.adoption_rate * Math.min(1, overallAtRound / overallFinal);
+}
+
+function computeAdoptionEdges() {
+  const nodeMap = {};
+  allNodes.forEach(n => { nodeMap[n.id] = n; });
+
+  adoptionEdges = [];
+  personaNodes.forEach(pNode => {
+    domainNodes.forEach(dNode => {
+      const rate = getPersonaAdoptionAtRound(dNode.domainData, pNode.personaType, currentRound);
+      if (rate > 0.005) {
+        adoptionEdges.push({
+          source: pNode,
+          target: dNode,
+          rate: rate,
+          color: pNode.color,
+          personaType: pNode.personaType,
+        });
+      }
+    });
+  });
+}
+
+// ============================================================================
+// RENDERING
+// ============================================================================
+function render() {
+  frameCount++;
+
+  // Force settling
+  if (forceIters > 0) {
+    const alpha = 0.25 * (forceIters / 30);
+    forceStep(alpha);
+    forceIters--;
+    needsRender = true;
+  }
+
+  if (!needsRender) {
+    requestAnimationFrame(render);
+    return;
+  }
+
+  const newW = window.innerWidth;
+  const newH = window.innerHeight;
+  if (canvas.width !== newW || canvas.height !== newH) {
+    W = canvas.width = newW;
+    H = canvas.height = newH;
+  }
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.save();
+  ctx.translate(W / 2 + camera.x, H / 2 + camera.y);
+  ctx.scale(camera.zoom, camera.zoom);
+
+  // Viewport bounds for culling
+  const vpL = (-camera.x - W / 2) / camera.zoom;
+  const vpT = (-camera.y - H / 2) / camera.zoom;
+  const vpR = vpL + W / camera.zoom;
+  const vpB = vpT + H / camera.zoom;
+  const margin = 50;
+
+  // Layer 1: Domain relationship edges (always, faint)
+  ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+  ctx.lineWidth = 0.5;
+  ctx.beginPath();
+  for (let i = 0; i < domainEdges.length; i++) {
+    const e = domainEdges[i];
+    const s = e.source, t = e.target;
+    if ((s.x < vpL - margin && t.x < vpL - margin) ||
+        (s.x > vpR + margin && t.x > vpR + margin) ||
+        (s.y < vpT - margin && t.y < vpT - margin) ||
+        (s.y > vpB + margin && t.y > vpB + margin)) continue;
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(t.x, t.y);
+  }
+  ctx.stroke();
+
+  // Layer 2: Adoption edges (colored by persona)
+  for (let i = 0; i < adoptionEdges.length; i++) {
+    const e = adoptionEdges[i];
+    const s = e.source, t = e.target;
+    if ((s.x < vpL - margin && t.x < vpL - margin) ||
+        (s.x > vpR + margin && t.x > vpR + margin) ||
+        (s.y < vpT - margin && t.y < vpT - margin) ||
+        (s.y > vpB + margin && t.y > vpB + margin)) continue;
+    const rgb = hexToRgb(e.color);
+    const alpha = Math.min(0.5, e.rate * 1.2);
+    const width = 0.5 + e.rate * 3;
+    ctx.beginPath();
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(t.x, t.y);
+    ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha})`;
+    ctx.lineWidth = width;
+    ctx.stroke();
+  }
+
+  // Layer 3: Domain nodes
+  for (let i = 0; i < domainNodes.length; i++) {
+    const n = domainNodes[i];
+    if (n.x < vpL - margin || n.x > vpR + margin ||
+        n.y < vpT - margin || n.y > vpB + margin) continue;
+    drawDomainNode(n);
+  }
+
+  // Layer 4: Persona hub nodes (on top)
+  for (let i = 0; i < personaNodes.length; i++) {
+    const n = personaNodes[i];
+    if (n.x < vpL - margin || n.x > vpR + margin ||
+        n.y < vpT - margin || n.y > vpB + margin) continue;
+    drawPersonaHub(n);
+  }
+
+  ctx.restore();
+  needsRender = false;
+  requestAnimationFrame(render);
+}
+
+function drawDomainNode(node) {
+  const r = node.radius;
+  const isHovered = hoveredNode === node;
+  const isSelected = selectedNode === node;
+
+  // Main circle
+  ctx.beginPath();
+  ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
+  ctx.fillStyle = node.color;
+  ctx.globalAlpha = isHovered || isSelected ? 1 : 0.75;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+
+  // Adoption ring
+  if (node.domainData) {
+    const adoption = getAdoptionAtRound(node.domainData, currentRound);
+    if (adoption > 0.01) {
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, r + 3, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * adoption);
+      ctx.strokeStyle = node.color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+  }
+
+  // Highlight ring on hover/select
+  if (isHovered || isSelected) {
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, r + 6, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Label
+  if (isHovered || isSelected || (camera.zoom > 0.5 && r > 10) || camera.zoom > 1.0) {
+    const fontSize = 9;
+    ctx.font = `${isHovered ? 'bold ' : ''}${fontSize}px monospace`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    const ly = node.y + r + 5;
+    const text = node.label.length > 22 ? node.label.substring(0, 20) + '..' : node.label;
+    const tw = ctx.measureText(text).width + 6;
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillRect(node.x - tw / 2, ly - 1, tw, 12);
+    ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.55)';
+    ctx.fillText(text, node.x, ly);
+  }
+}
+
+function drawPersonaHub(node) {
+  const r = node.radius;
+  const isHovered = hoveredNode === node;
+  const isSelected = selectedNode === node;
+  const rgb = hexToRgb(node.color);
+
+  // Outer glow ring
+  ctx.beginPath();
+  ctx.arc(node.x, node.y, r + 6, 0, Math.PI * 2);
+  ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${isHovered ? 0.5 : 0.2})`;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Main circle
+  ctx.beginPath();
+  ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
+  ctx.fillStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`;
+  ctx.fill();
+  ctx.strokeStyle = node.color;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Inner icon (initials)
+  ctx.font = 'bold 12px monospace';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = node.color;
+  const initials = node.label.split(' ').map(w => w[0]).join('').substring(0, 2);
+  ctx.fillText(initials, node.x, node.y);
+
+  // Label always visible
+  ctx.font = `${isHovered ? 'bold ' : ''}10px monospace`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  const ly = node.y + r + 9;
+  const tw = ctx.measureText(node.label).width + 8;
+  ctx.fillStyle = 'rgba(0,0,0,0.6)';
+  ctx.fillRect(node.x - tw / 2, ly - 1, tw, 13);
+  ctx.fillStyle = node.color;
+  ctx.fillText(node.label, node.x, ly);
+}
+
 // ============================================================================
 // COLOR HELPERS
 // ============================================================================
-
 function hexToRgb(hex) {
-  if (hex.startsWith('rgba') || hex.startsWith('rgb')) return hex;
+  if (!hex || hex.startsWith('rgba') || hex.startsWith('rgb')) return { r: 128, g: 128, b: 128 };
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (result) {
-    return { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) };
-  }
+  if (result) return { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) };
   return { r: 128, g: 128, b: 128 };
-}
-
-function adjustBrightness(color, amount) {
-  const rgb = hexToRgb(color);
-  if (typeof rgb === 'string') return rgb;
-  return `rgb(${Math.max(0,Math.min(255,rgb.r+amount))},${Math.max(0,Math.min(255,rgb.g+amount))},${Math.max(0,Math.min(255,rgb.b+amount))})`;
-}
-
-function adjustAlpha(color, alpha) {
-  const rgb = hexToRgb(color);
-  if (typeof rgb === 'string') return rgb;
-  return `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha})`;
 }
 
 // ============================================================================
 // INTERACTION
 // ============================================================================
-
 function screenToWorld(sx, sy) {
   return {
-    x: (sx - W/2 - camera.x) / camera.zoom,
-    y: (sy - H/2 - camera.y) / camera.zoom,
+    x: (sx - W / 2 - camera.x) / camera.zoom,
+    y: (sy - H / 2 - camera.y) / camera.zoom,
   };
 }
 
 function findNodeAt(wx, wy) {
-  // Check domains first (they render on top), iterate backwards
-  for (let i = sortedDomains.length - 1; i >= 0; i--) {
-    const n = sortedDomains[i];
+  // Check persona hubs first (on top)
+  for (let i = personaNodes.length - 1; i >= 0; i--) {
+    const n = personaNodes[i];
     const dx = n.x - wx, dy = n.y - wy;
-    if (dx*dx + dy*dy < (n.radius + 4) * (n.radius + 4)) return n;
+    if (dx * dx + dy * dy < (n.radius + 6) * (n.radius + 6)) return n;
   }
-  for (let i = sortedNonDomains.length - 1; i >= 0; i--) {
-    const n = sortedNonDomains[i];
+  for (let i = domainNodes.length - 1; i >= 0; i--) {
+    const n = domainNodes[i];
     const dx = n.x - wx, dy = n.y - wy;
-    if (dx*dx + dy*dy < (n.radius + 4) * (n.radius + 4)) return n;
+    if (dx * dx + dy * dy < (n.radius + 4) * (n.radius + 4)) return n;
   }
   return null;
 }
@@ -872,11 +842,13 @@ canvas.addEventListener('mousemove', (e) => {
   if (isDragging) {
     camera.x = camStart.x + (e.clientX - dragStart.x);
     camera.y = camStart.y + (e.clientY - dragStart.y);
+    needsRender = true;
     return;
   }
-
-  const world = screenToWorld(e.clientX, e.clientY - 48);
+  const world = screenToWorld(e.clientX, e.clientY);
+  const prev = hoveredNode;
   hoveredNode = findNodeAt(world.x, world.y);
+  if (hoveredNode !== prev) needsRender = true;
 
   if (hoveredNode) {
     canvas.style.cursor = 'pointer';
@@ -891,13 +863,12 @@ canvas.addEventListener('mouseup', (e) => {
   if (isDragging) {
     const moved = Math.abs(e.clientX - dragStart.x) + Math.abs(e.clientY - dragStart.y);
     if (moved < 5) {
-      // Click - select node
-      const world = screenToWorld(e.clientX, e.clientY - 48);
+      const world = screenToWorld(e.clientX, e.clientY);
       const clicked = findNodeAt(world.x, world.y);
       selectedNode = clicked === selectedNode ? null : clicked;
-      if (selectedNode && selectedNode.isDomain) {
-        updateAdoptionChart(selectedNode);
-      }
+      if (selectedNode && selectedNode.isDomain) updateAdoptionChart(selectedNode);
+      else updateAdoptionChart(null);
+      needsRender = true;
     }
   }
   isDragging = false;
@@ -906,57 +877,115 @@ canvas.addEventListener('mouseup', (e) => {
 canvas.addEventListener('wheel', (e) => {
   e.preventDefault();
   const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
-  const newZoom = Math.max(0.2, Math.min(5, camera.zoom * zoomFactor));
-
-  // Zoom toward cursor
-  const wx = (e.clientX - W/2 - camera.x) / camera.zoom;
-  const wy = (e.clientY - 48 - H/2 - camera.y) / camera.zoom;
-
+  const newZoom = Math.max(0.15, Math.min(5, camera.zoom * zoomFactor));
+  const wx = (e.clientX - W / 2 - camera.x) / camera.zoom;
+  const wy = (e.clientY - H / 2 - camera.y) / camera.zoom;
   camera.zoom = newZoom;
-  camera.x = e.clientX - W/2 - wx * camera.zoom;
-  camera.y = e.clientY - 48 - H/2 - wy * camera.zoom;
+  camera.x = e.clientX - W / 2 - wx * camera.zoom;
+  camera.y = e.clientY - H / 2 - wy * camera.zoom;
+  needsRender = true;
 }, { passive: false });
+
+window.addEventListener('resize', () => { needsRender = true; });
 
 // ============================================================================
 // TOOLTIP
 // ============================================================================
-
 const tooltip = document.getElementById('tooltip');
 
 function showTooltip(mx, my, node) {
   const tt = tooltip;
-  tt.querySelector('.tt-title').textContent = node.label;
-  tt.querySelector('.tt-type').textContent = node.type.toUpperCase() + (node.isExisting ? ' (EXISTING)' : node.isDomain ? ' (CANDIDATE)' : '');
-
   let body = '';
-  if (node.isDomain && node.domainData) {
+
+  if (node.isPersona) {
+    tt.querySelector('.tt-title').textContent = node.label;
+    tt.querySelector('.tt-type').textContent = `PERSONA TYPE (${node.count} agents)`;
+
+    body += `<div class="tt-section">Values</div>`;
+    body += `<div style="font-size:10px;color:${node.color};">${node.values.join(', ')}</div>`;
+    body += `<div class="tt-section">Pain Points</div>`;
+    body += `<div style="font-size:10px;color:rgba(255,255,255,0.4);">${node.pain_points.join(', ')}</div>`;
+
+    body += `<div class="tt-row" style="margin-top:6px;color:rgba(255,255,255,0.35);">`;
+    body += `Influence ${node.influence.toFixed(2)} | Threshold ${node.threshold.toFixed(2)} | Risk ${node.risk.toFixed(2)}`;
+    body += `</div>`;
+
+    // Top adopted domains at current round
+    const topDomains = [];
+    domainNodes.forEach(d => {
+      const rate = getPersonaAdoptionAtRound(d.domainData, node.personaType, currentRound);
+      if (rate > 0.005) topDomains.push({ id: d.id, label: d.label, rate });
+    });
+    topDomains.sort((a, b) => b.rate - a.rate);
+
+    if (topDomains.length > 0) {
+      body += `<div class="tt-section">Top Domains (Round ${currentRound})</div>`;
+      topDomains.slice(0, 8).forEach(d => {
+        const pct = (d.rate * 100).toFixed(1);
+        const barW = Math.max(2, d.rate * 120);
+        body += `<div class="tt-row">
+          <span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${d.label}</span>
+          <div class="tt-bar" style="width:${barW}px;background:${node.color};"></div>
+          <span class="tt-val" style="color:${node.color};">${pct}%</span>
+        </div>`;
+      });
+    } else {
+      body += `<div style="font-size:10px;color:rgba(255,255,255,0.25);margin-top:8px;">No adoptions yet at round ${currentRound}</div>`;
+    }
+
+  } else if (node.isDomain) {
     const d = node.domainData;
     const adoption = getAdoptionAtRound(d, currentRound);
-    body += `<div class="tt-row"><span>Builder Adoption</span><span class="tt-val">${(adoption * 100).toFixed(1)}%</span></div>`;
-    body += `<div class="tt-row"><span>Enterprise</span><span class="tt-val">${(d.enterprise_adoption * 100).toFixed(1)}%</span></div>`;
-    body += `<div class="tt-row"><span>Advocacy</span><span class="tt-val">${(d.advocacy_rate * 100).toFixed(1)}%</span></div>`;
-    body += `<div class="tt-row"><span>Consensus</span><span class="tt-val">${(d.consensus * 100).toFixed(1)}%</span></div>`;
-    body += `<div class="tt-row"><span>Static Score</span><span class="tt-val">${d.composite_score.toFixed(4)}</span></div>`;
-    if (d.tipping_point !== null) {
-      body += `<div class="tt-row"><span>Tipping Point</span><span class="tt-val">Round ${d.tipping_point}</span></div>`;
+    tt.querySelector('.tt-title').textContent = node.label;
+    tt.querySelector('.tt-type').textContent = `DOMAIN (${d.category.toUpperCase()}) | Adoption: ${(adoption * 100).toFixed(1)}%`;
+
+    // Persona fit breakdown
+    const breakdown = [];
+    PERSONA_TYPES.forEach(ptype => {
+      const rate = getPersonaAdoptionAtRound(d, ptype, currentRound);
+      if (rate > 0.005) {
+        // Compute matched values
+        const pValues = PERSONA_DATA[ptype].values;
+        const dTags = d.domain_tags || [];
+        const matched = pValues.filter(v => dTags.some(t =>
+          t.includes(v) || v.includes(t) || t.replace(/_/g, '') === v.replace(/_/g, '')
+        ));
+        breakdown.push({ ptype, rate, matched, color: PERSONA_DATA[ptype].color, label: PERSONA_DATA[ptype].label });
+      }
+    });
+    breakdown.sort((a, b) => b.rate - a.rate);
+
+    if (breakdown.length > 0) {
+      body += `<div class="tt-section">Persona Adoption Breakdown</div>`;
+      breakdown.forEach(b => {
+        const pct = (b.rate * 100).toFixed(1);
+        const barW = Math.max(2, b.rate * 120);
+        const matchStr = b.matched.length > 0 ? `<span class="tt-matched">[${b.matched.join(', ')}]</span>` : '';
+        body += `<div class="tt-row">
+          <span style="color:${b.color};min-width:80px;">${b.label}</span>
+          <div class="tt-bar" style="width:${barW}px;background:${b.color};"></div>
+          <span class="tt-val" style="color:${b.color};">${pct}%</span>
+          ${matchStr}
+        </div>`;
+      });
     }
-    if (d.status) {
-      body += `<div class="tt-row"><span>Status</span><span class="tt-val">${d.status}</span></div>`;
+
+    if (d.domain_tags && d.domain_tags.length > 0) {
+      body += `<div class="tt-tags">Tags: ${d.domain_tags.join(', ')}</div>`;
     }
-  } else {
-    // Count connections (use cached count)
-    if (node._connectionCount === undefined) {
-      node._connectionCount = edges.filter(e => e.source === node || e.target === node).length;
-    }
-    const connections = node._connectionCount;
-    body += `<div class="tt-row"><span>Connections</span><span class="tt-val">${connections}</span></div>`;
+
+    body += `<div class="tt-row" style="margin-top:6px;color:rgba(255,255,255,0.25);">`;
+    body += `Score: ${d.composite_score.toFixed(3)}`;
+    if (d.tipping_point !== null) body += ` | Tipping: R${d.tipping_point}`;
+    body += `</div>`;
   }
+
   tt.querySelector('.tt-body').innerHTML = body;
 
   // Position
   let x = mx + 16, y = my + 16;
-  if (x + 320 > window.innerWidth) x = mx - 320;
-  if (y + 200 > window.innerHeight) y = my - 200;
+  if (x + 360 > window.innerWidth) x = mx - 360;
+  if (y + 300 > window.innerHeight) y = my - 300;
   tt.style.left = x + 'px';
   tt.style.top = y + 'px';
   tt.classList.add('visible');
@@ -967,530 +996,53 @@ function hideTooltip() {
 }
 
 // ============================================================================
-// MINIMAP
-// ============================================================================
-
-const minimapCanvas = document.getElementById('minimap-canvas');
-const mmCtx = minimapCanvas.getContext('2d');
-
-function updateMinimap() {
-  mmCtx.clearRect(0, 0, 180, 120);
-  mmCtx.fillStyle = 'rgba(8,8,16,0.8)';
-  mmCtx.fillRect(0, 0, 180, 120);
-
-  // Find bounds
-  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-  nodes.forEach(n => {
-    if (n.x < minX) minX = n.x;
-    if (n.y < minY) minY = n.y;
-    if (n.x > maxX) maxX = n.x;
-    if (n.y > maxY) maxY = n.y;
-  });
-
-  const rangeX = maxX - minX || 1;
-  const rangeY = maxY - minY || 1;
-  const padding = 10;
-  const scaleX = (180 - padding * 2) / rangeX;
-  const scaleY = (120 - padding * 2) / rangeY;
-  const scale = Math.min(scaleX, scaleY);
-
-  // Draw domain nodes only on minimap
-  sortedDomains.forEach(n => {
-    const mx = padding + (n.x - minX) * scale;
-    const my = padding + (n.y - minY) * scale;
-    mmCtx.fillStyle = n._cachedColor || getNodeColor(n);
-    mmCtx.beginPath();
-    mmCtx.arc(mx, my, 2.5, 0, Math.PI * 2);
-    mmCtx.fill();
-  });
-
-  // Viewport rectangle
-  const vpLeft = (-camera.x - W/2) / camera.zoom;
-  const vpTop = (-camera.y - H/2) / camera.zoom;
-  const vpRight = vpLeft + W / camera.zoom;
-  const vpBottom = vpTop + H / camera.zoom;
-
-  const rx = padding + (vpLeft - minX) * scale;
-  const ry = padding + (vpTop - minY) * scale;
-  const rw = (vpRight - vpLeft) * scale;
-  const rh = (vpBottom - vpTop) * scale;
-
-  mmCtx.strokeStyle = 'rgba(0,255,136,0.5)';
-  mmCtx.lineWidth = 1;
-  mmCtx.strokeRect(rx, ry, rw, rh);
-}
-
-// ============================================================================
-// SIDEBAR CHARTS
-// ============================================================================
-
-function drawNavCharts() {
-  // Left nav chart: average adoption across all domains over rounds
-  const leftCanvas = document.getElementById('nav-chart-left');
-  const lCtx = leftCanvas.getContext('2d');
-  lCtx.clearRect(0, 0, 140, 32);
-
-  const domains = DATA.domains.filter(d => d.builder_curve.length > 0);
-  const maxRound = 20;
-
-  // Average adoption per round
-  const avgAdoption = [];
-  for (let r = 0; r < maxRound; r++) {
-    let sum = 0, count = 0;
-    domains.forEach(d => {
-      if (d.builder_curve[r]) {
-        sum += d.builder_curve[r].adoption_rate;
-        count++;
-      }
-    });
-    avgAdoption.push(count > 0 ? sum / count : 0);
-  }
-
-  // Draw
-  lCtx.beginPath();
-  lCtx.moveTo(0, 30);
-  avgAdoption.forEach((v, i) => {
-    const x = (i / (maxRound - 1)) * 138 + 1;
-    const y = 30 - v * 28;
-    if (i === 0) lCtx.moveTo(x, y);
-    else lCtx.lineTo(x, y);
-  });
-  lCtx.strokeStyle = '#00ff88';
-  lCtx.lineWidth = 1.5;
-  lCtx.stroke();
-
-  // Fill under
-  lCtx.lineTo(139, 30);
-  lCtx.lineTo(1, 30);
-  lCtx.closePath();
-  const fillGrad = lCtx.createLinearGradient(0, 0, 0, 32);
-  fillGrad.addColorStop(0, 'rgba(0,255,136,0.15)');
-  fillGrad.addColorStop(1, 'rgba(0,255,136,0)');
-  lCtx.fillStyle = fillGrad;
-  lCtx.fill();
-
-  // Current round marker
-  if (currentRound > 0 && currentRound < maxRound) {
-    const cx = (currentRound / (maxRound - 1)) * 138 + 1;
-    lCtx.beginPath();
-    lCtx.arc(cx, 30 - avgAdoption[currentRound] * 28, 3, 0, Math.PI * 2);
-    lCtx.fillStyle = '#00ff88';
-    lCtx.fill();
-  }
-
-  // Right nav chart: signal count per type
-  const rightCanvas = document.getElementById('nav-chart-right');
-  const rCtx = rightCanvas.getContext('2d');
-  rCtx.clearRect(0, 0, 140, 32);
-
-  const signalTypes = DATA.signal_summary.signal_types;
-  const stKeys = Object.keys(signalTypes);
-  const stColors = ['#00ff88', '#ff6b35', '#3b82f6', '#a855f7', '#fbbf24', '#ef4444', '#06b6d4'];
-  const maxSignal = Math.max(...Object.values(signalTypes));
-
-  stKeys.forEach((key, i) => {
-    const barW = 138 / stKeys.length - 2;
-    const barH = (signalTypes[key] / maxSignal) * 26;
-    const x = (i / stKeys.length) * 138 + 2;
-    const y = 30 - barH;
-
-    rCtx.fillStyle = stColors[i % stColors.length];
-    rCtx.globalAlpha = 0.6;
-    rCtx.fillRect(x, y, barW, barH);
-    rCtx.globalAlpha = 1;
-  });
-}
-
-function drawPersonaChart() {
-  const canvas = document.getElementById('persona-chart');
-  const pCtx = canvas.getContext('2d');
-  pCtx.clearRect(0, 0, 252, 120);
-
-  const types = DATA.persona_types;
-  const colors = ['#00ff88', '#3b82f6', '#fbbf24', '#ef4444', '#a855f7', '#06b6d4', '#ec4899', '#ff6b35'];
-  const barW = 252 / types.length - 4;
-
-  types.forEach((pt, i) => {
-    const x = i * (barW + 4) + 2;
-    const barH = (pt.count / 130) * 80;
-    const y = 95 - barH;
-
-    // Bar
-    pCtx.fillStyle = colors[i % colors.length];
-    pCtx.globalAlpha = 0.5;
-    pCtx.fillRect(x, y, barW, barH);
-    pCtx.globalAlpha = 1;
-
-    // Border
-    pCtx.strokeStyle = colors[i % colors.length];
-    pCtx.lineWidth = 1;
-    pCtx.strokeRect(x, y, barW, barH);
-
-    // Count
-    pCtx.font = '8px monospace';
-    pCtx.fillStyle = colors[i % colors.length];
-    pCtx.textAlign = 'center';
-    pCtx.fillText(pt.count, x + barW/2, y - 3);
-
-    // Label (rotated)
-    pCtx.save();
-    pCtx.translate(x + barW/2, 105);
-    pCtx.rotate(-0.5);
-    pCtx.font = '7px monospace';
-    pCtx.fillStyle = 'rgba(255,255,255,0.4)';
-    pCtx.textAlign = 'left';
-    const shortLabel = pt.type.replace(/_/g, ' ').substring(0, 8);
-    pCtx.fillText(shortLabel, 0, 0);
-    pCtx.restore();
-  });
-}
-
-function drawComparisonChart() {
-  const canvas = document.getElementById('comparison-chart');
-  const cCtx = canvas.getContext('2d');
-  cCtx.clearRect(0, 0, 252, 160);
-
-  // Sort domains by builder adoption
-  const sorted = [...DATA.domains].sort((a, b) => b.builder_adoption - a.builder_adoption);
-  const top10 = sorted.slice(0, 12);
-  const barH = 10;
-  const gap = 2;
-  const maxW = 120;
-
-  top10.forEach((d, i) => {
-    const y = i * (barH + gap) + 2;
-
-    // Domain label
-    cCtx.font = '8px monospace';
-    cCtx.fillStyle = d.is_existing ? '#00ff88' : '#ff6b35';
-    cCtx.textAlign = 'right';
-    const shortName = d.domain_id.substring(0, 14);
-    cCtx.fillText(shortName, 90, y + 8);
-
-    // Builder bar
-    const bw = d.builder_adoption * maxW;
-    cCtx.fillStyle = 'rgba(0,255,136,0.4)';
-    cCtx.fillRect(95, y, bw, barH/2);
-
-    // Enterprise bar
-    const ew = d.enterprise_adoption * maxW;
-    cCtx.fillStyle = 'rgba(168,85,247,0.4)';
-    cCtx.fillRect(95, y + barH/2, ew, barH/2);
-
-    // Values
-    cCtx.font = '7px monospace';
-    cCtx.textAlign = 'left';
-    cCtx.fillStyle = 'rgba(255,255,255,0.4)';
-    cCtx.fillText(`${(d.builder_adoption*100).toFixed(0)}%`, 95 + Math.max(bw, ew) + 4, y + 8);
-  });
-
-  // Legend
-  const ly = top10.length * (barH + gap) + 8;
-  cCtx.fillStyle = 'rgba(0,255,136,0.4)';
-  cCtx.fillRect(95, ly, 20, 5);
-  cCtx.fillStyle = 'rgba(255,255,255,0.35)';
-  cCtx.font = '7px monospace';
-  cCtx.textAlign = 'left';
-  cCtx.fillText('Builder', 118, ly + 5);
-
-  cCtx.fillStyle = 'rgba(168,85,247,0.4)';
-  cCtx.fillRect(160, ly, 20, 5);
-  cCtx.fillStyle = 'rgba(255,255,255,0.35)';
-  cCtx.fillText('Enterprise', 183, ly + 5);
-}
-
-function updateAdoptionChart(node) {
-  const canvas = document.getElementById('adoption-chart');
-  const aCtx = canvas.getContext('2d');
-  aCtx.clearRect(0, 0, 272, 140);
-
-  if (!node || !node.domainData) {
-    aCtx.font = '11px monospace';
-    aCtx.fillStyle = 'rgba(255,255,255,0.3)';
-    aCtx.textAlign = 'center';
-    aCtx.fillText('Click a domain to see its adoption curve', 136, 70);
-    return;
-  }
-
-  const d = node.domainData;
-  const bc = d.builder_curve;
-  const ec = d.enterprise_curve;
-
-  if (!bc || bc.length === 0) return;
-
-  // Title
-  aCtx.font = 'bold 10px monospace';
-  aCtx.fillStyle = '#00ff88';
-  aCtx.textAlign = 'left';
-  aCtx.fillText(d.label, 4, 12);
-
-  // Chart area
-  const cx = 30, cy = 22, cw = 235, ch = 95;
-
-  // Axes
-  aCtx.strokeStyle = 'rgba(255,255,255,0.1)';
-  aCtx.lineWidth = 0.5;
-  aCtx.beginPath();
-  aCtx.moveTo(cx, cy); aCtx.lineTo(cx, cy + ch);
-  aCtx.lineTo(cx + cw, cy + ch);
-  aCtx.stroke();
-
-  // Y axis labels
-  aCtx.font = '7px monospace';
-  aCtx.fillStyle = 'rgba(255,255,255,0.3)';
-  aCtx.textAlign = 'right';
-  [0, 0.25, 0.5, 0.75, 1.0].forEach(v => {
-    const y = cy + ch - v * ch;
-    aCtx.fillText(`${(v*100).toFixed(0)}%`, cx - 3, y + 3);
-    aCtx.strokeStyle = 'rgba(255,255,255,0.04)';
-    aCtx.beginPath();
-    aCtx.moveTo(cx, y); aCtx.lineTo(cx + cw, y);
-    aCtx.stroke();
-  });
-
-  // Interest curve (area)
-  aCtx.beginPath();
-  bc.forEach((snap, i) => {
-    const x = cx + (i / (bc.length - 1)) * cw;
-    const y = cy + ch - snap.interest_rate * ch;
-    if (i === 0) aCtx.moveTo(x, y);
-    else aCtx.lineTo(x, y);
-  });
-  aCtx.lineTo(cx + cw, cy + ch);
-  aCtx.lineTo(cx, cy + ch);
-  aCtx.closePath();
-  aCtx.fillStyle = 'rgba(59,130,246,0.1)';
-  aCtx.fill();
-
-  // Builder adoption curve
-  aCtx.beginPath();
-  bc.forEach((snap, i) => {
-    const x = cx + (i / (bc.length - 1)) * cw;
-    const y = cy + ch - snap.adoption_rate * ch;
-    if (i === 0) aCtx.moveTo(x, y);
-    else aCtx.lineTo(x, y);
-  });
-  aCtx.strokeStyle = '#00ff88';
-  aCtx.lineWidth = 2;
-  aCtx.stroke();
-
-  // Enterprise curve
-  if (ec && ec.length > 0) {
-    aCtx.beginPath();
-    ec.forEach((snap, i) => {
-      const x = cx + (i / (ec.length - 1)) * cw;
-      const y = cy + ch - snap.adoption_rate * ch;
-      if (i === 0) aCtx.moveTo(x, y);
-      else aCtx.lineTo(x, y);
-    });
-    aCtx.strokeStyle = '#a855f7';
-    aCtx.lineWidth = 1.5;
-    aCtx.setLineDash([4, 3]);
-    aCtx.stroke();
-    aCtx.setLineDash([]);
-  }
-
-  // Advocacy curve
-  aCtx.beginPath();
-  bc.forEach((snap, i) => {
-    const x = cx + (i / (bc.length - 1)) * cw;
-    const y = cy + ch - snap.advocacy_rate * ch;
-    if (i === 0) aCtx.moveTo(x, y);
-    else aCtx.lineTo(x, y);
-  });
-  aCtx.strokeStyle = '#fbbf24';
-  aCtx.lineWidth = 1;
-  aCtx.stroke();
-
-  // Current round marker
-  if (currentRound < bc.length) {
-    const cx2 = cx + (currentRound / (bc.length - 1)) * cw;
-    aCtx.strokeStyle = 'rgba(255,255,255,0.3)';
-    aCtx.lineWidth = 1;
-    aCtx.setLineDash([2, 2]);
-    aCtx.beginPath();
-    aCtx.moveTo(cx2, cy); aCtx.lineTo(cx2, cy + ch);
-    aCtx.stroke();
-    aCtx.setLineDash([]);
-  }
-
-  // Tipping point marker
-  if (d.tipping_point !== null) {
-    const tpX = cx + (d.tipping_point / (bc.length - 1)) * cw;
-    aCtx.strokeStyle = '#ff6b35';
-    aCtx.lineWidth = 1;
-    aCtx.setLineDash([3, 3]);
-    aCtx.beginPath();
-    aCtx.moveTo(tpX, cy); aCtx.lineTo(tpX, cy + ch);
-    aCtx.stroke();
-    aCtx.setLineDash([]);
-    aCtx.font = '7px monospace';
-    aCtx.fillStyle = '#ff6b35';
-    aCtx.textAlign = 'center';
-    aCtx.fillText('TIP', tpX, cy - 2);
-  }
-
-  // Legend
-  const ly = cy + ch + 8;
-  aCtx.font = '7px monospace';
-
-  aCtx.fillStyle = '#00ff88';
-  aCtx.fillRect(cx, ly, 12, 3);
-  aCtx.fillText('Adoption', cx + 15, ly + 3);
-
-  aCtx.fillStyle = '#a855f7';
-  aCtx.fillRect(cx + 65, ly, 12, 3);
-  aCtx.fillText('Enterprise', cx + 80, ly + 3);
-
-  aCtx.fillStyle = '#fbbf24';
-  aCtx.fillRect(cx + 140, ly, 12, 3);
-  aCtx.fillText('Advocacy', cx + 155, ly + 3);
-}
-
-function updateRankingList() {
-  const container = document.getElementById('ranking-list');
-  const sorted = [...DATA.domains].sort((a, b) => {
-    const aAdopt = getAdoptionAtRound(a, currentRound);
-    const bAdopt = getAdoptionAtRound(b, currentRound);
-    return bAdopt - aAdopt;
-  });
-
-  let html = '';
-  sorted.forEach((d, i) => {
-    const adoption = getAdoptionAtRound(d, currentRound);
-    const tagClass = d.is_existing
-      ? (d.status === 'production' ? 'tag-production' : d.status === 'beta' ? 'tag-beta' : 'tag-alpha')
-      : d.is_viral ? 'tag-viral' : 'tag-new';
-    const tagLabel = d.is_existing ? d.status : d.is_viral ? 'viral' : 'new';
-
-    html += `<div class="rank-item" style="opacity:${adoption > 0.01 ? 1 : 0.4}">
-      <div class="rank-pos ${i < 3 ? 'top3' : i < 10 ? 'top10' : ''}">${i + 1}</div>
-      <div class="rank-name" title="${d.label || d.domain_id}">${d.domain_id}</div>
-      <span class="tag ${tagClass}">${tagLabel}</span>
-      <div class="rank-bar"><div class="rank-bar-fill" style="width:${adoption * 100}%"></div></div>
-      <div class="rank-value">${(adoption * 100).toFixed(1)}%</div>
-    </div>`;
-  });
-  container.innerHTML = html;
-}
-
-function updateShockTimeline() {
-  const container = document.getElementById('shock-timeline');
-  let html = '';
-  DATA.shocks.forEach(s => {
-    const isActive = currentRound >= s.inject_at_round;
-    const color = s.effect === 'positive' ? '#00ff88' : s.effect === 'negative' ? '#ef4444' : '#fbbf24';
-    const opacity = isActive ? 1 : 0.3;
-    html += `<div style="display:flex;align-items:center;gap:8px;padding:4px 0;opacity:${opacity};font-size:10px;">
-      <div style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></div>
-      <div style="width:24px;color:rgba(255,255,255,0.4);">R${s.inject_at_round}</div>
-      <div style="color:rgba(255,255,255,0.7);flex:1;">${s.label}</div>
-      <div style="font-size:8px;color:${color};">${s.effect}</div>
-    </div>`;
-  });
-  container.innerHTML = html;
-}
-
-// ============================================================================
-// ACTIVITY FEED
-// ============================================================================
-
-function addFeedItem(text, className) {
-  feedItems.unshift({ text, className, time: `R${currentRound}` });
-  if (feedItems.length > 100) feedItems.pop();
-  renderFeed();
-}
-
-function renderFeed() {
-  const container = document.getElementById('activity-feed');
-  container.innerHTML = feedItems.slice(0, 40).map(item => `
-    <div class="feed-item">
-      <div class="feed-time">${item.time}</div>
-      <div class="feed-event ${item.className || ''}">${item.text}</div>
-    </div>
-  `).join('');
-}
-
-function generateFeedForRound(round) {
-  // Find domains that change significantly this round
-  DATA.domains.forEach(d => {
-    if (!d.builder_curve || !d.builder_curve[round]) return;
-    const snap = d.builder_curve[round];
-    const prev = round > 0 ? d.builder_curve[round - 1] : null;
-
-    if (prev) {
-      const delta = snap.adoption_rate - prev.adoption_rate;
-      if (delta > 0.05) {
-        addFeedItem(`<span class="feed-highlight">${d.domain_id}</span> adoption surged +${(delta*100).toFixed(1)}% to ${(snap.adoption_rate*100).toFixed(1)}%`, '');
-      }
-
-      // Stage distribution changes
-      const dist = snap.stage_distribution;
-      const pDist = prev.stage_distribution;
-      if (dist.advocating > pDist.advocating) {
-        const newAdvocates = dist.advocating - pDist.advocating;
-        addFeedItem(`${newAdvocates} agents now <span class="feed-purple">advocating</span> for ${d.domain_id}`, '');
-      }
-    }
-
-    // First awareness
-    if (round === 0 && snap.adoption_rate > 0) {
-      addFeedItem(`Simulation started: <span class="feed-highlight">${d.domain_id}</span> initial adoption ${(snap.adoption_rate*100).toFixed(1)}%`, '');
-    }
-  });
-
-  // Shock events
-  DATA.shocks.forEach(s => {
-    if (s.inject_at_round === round) {
-      const emoji = s.effect === 'positive' ? '' : '';
-      addFeedItem(`<span class="feed-warn">${s.label}</span> hits ${s.affects_domains.join(', ')} (${s.effect})`, '');
-    }
-  });
-}
-
-// ============================================================================
 // SIMULATION PLAYBACK
 // ============================================================================
-
 function setRound(round) {
   currentRound = Math.max(0, Math.min(20, round));
   document.getElementById('round-num').textContent = currentRound;
   document.getElementById('round-slider').value = currentRound;
 
-  // Update node sizes based on current adoption
-  nodes.forEach(n => {
-    if (n.isDomain && n.domainData) {
+  // Update domain node sizes based on adoption
+  domainNodes.forEach(n => {
+    if (n.domainData) {
       const adoption = getAdoptionAtRound(n.domainData, currentRound);
-      n.radius = n.baseRadius * (0.7 + adoption * 0.6);
+      n.radius = 6 + adoption * 20;
     }
   });
 
-  // Update adopted count
-  let adoptedCount = 0;
-  DATA.domains.forEach(d => {
-    if (d.builder_curve && d.builder_curve[currentRound]) {
-      const snap = d.builder_curve[currentRound];
-      adoptedCount += (snap.stage_distribution.adopted || 0) + (snap.stage_distribution.advocating || 0);
-    }
-  });
-  document.getElementById('stat-adopted').textContent = adoptedCount.toLocaleString();
+  // Recompute adoption edges
+  computeAdoptionEdges();
 
+  // Settle force layout for new positions
+  forceIters = 25;
+  needsRender = true;
+
+  // Update panels
   updateRankingList();
-  updateShockTimeline();
-  drawNavCharts();
+  updateStats();
+  updateShockList();
+  if (selectedNode) updateAdoptionChart(selectedNode);
 
-  if (selectedNode) {
-    updateAdoptionChart(selectedNode);
+  // Check for shock events
+  checkShocks();
+}
+
+function checkShocks() {
+  if (!DATA.shocks) return;
+  const active = DATA.shocks.filter(s => s.inject_at_round === currentRound);
+  if (active.length > 0) {
+    const banner = document.getElementById('shock-banner');
+    banner.textContent = `Round ${currentRound}: ${active.map(s => s.label).join(' + ')}`;
+    banner.classList.add('visible');
+    setTimeout(() => banner.classList.remove('visible'), 2500);
   }
 }
 
 function togglePlay() {
   isPlaying = !isPlaying;
   document.getElementById('play-btn').innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9654;';
-
   if (isPlaying) {
-    const speed = parseInt(document.getElementById('speed-slider').value);
-    const interval = 1100 - speed * 100;
     playTimer = setInterval(() => {
       if (currentRound >= 20) {
         isPlaying = false;
@@ -1499,53 +1051,267 @@ function togglePlay() {
         return;
       }
       currentRound++;
-      generateFeedForRound(currentRound - 1);
+      generateFeedForRound(currentRound);
       setRound(currentRound);
-    }, interval);
+    }, 800);
   } else {
     clearInterval(playTimer);
   }
 }
 
 // ============================================================================
-// STATUS BAR
+// LEGEND
 // ============================================================================
+function buildLegend() {
+  const container = document.getElementById('legend');
+  let html = '<div class="legend-title">Persona Types</div>';
+  PERSONA_TYPES.forEach(ptype => {
+    const pd = PERSONA_DATA[ptype];
+    html += `<div class="legend-item">
+      <div class="legend-dot" style="background:${pd.color};"></div>
+      <span>${pd.label}</span>
+    </div>`;
+  });
+  html += '<div class="legend-title" style="margin-top:6px;">Domains</div>';
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.existing};"></div><span>Existing</span></div>`;
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.candidate};"></div><span>Candidate</span></div>`;
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.viral};"></div><span>Viral</span></div>`;
+  container.innerHTML = html;
+}
 
-function updateStatusBar() {
-  if (frameCount % 10 !== 0) return;
-  document.getElementById('status-nodes').textContent = nodes.length;
-  document.getElementById('status-edges').textContent = edges.length;
-  document.getElementById('status-camera').textContent = `${Math.round(camera.x)},${Math.round(camera.y)}`;
-  document.getElementById('status-zoom').textContent = camera.zoom.toFixed(1) + 'x';
+// ============================================================================
+// LEFT PANEL: RANKINGS + STATS
+// ============================================================================
+function updateRankingList() {
+  const container = document.getElementById('ranking-list');
+  const sorted = [...DATA.domains].sort((a, b) => {
+    return getAdoptionAtRound(b, currentRound) - getAdoptionAtRound(a, currentRound);
+  });
+
+  let html = '';
+  sorted.forEach((d, i) => {
+    const adoption = getAdoptionAtRound(d, currentRound);
+    const color = DOMAIN_COLORS[d.category] || DOMAIN_COLORS.candidate;
+    html += `<div class="rank-item" data-domain="${d.domain_id}" onclick="selectDomainById('${d.domain_id}')" style="opacity:${adoption > 0.005 ? 1 : 0.35}">
+      <div class="rank-pos ${i < 3 ? 'top3' : i < 10 ? 'top10' : ''}">${i + 1}</div>
+      <div class="rank-name" title="${d.label || d.domain_id}">${d.domain_id}</div>
+      <div class="rank-bar"><div class="rank-bar-fill" style="width:${Math.min(100, adoption * 100)}%;background:${color};"></div></div>
+      <div class="rank-pct" style="color:${color};">${(adoption * 100).toFixed(1)}%</div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function updateStats() {
+  let adoptedCount = 0;
+  DATA.domains.forEach(d => {
+    if (d.builder_curve && d.builder_curve[currentRound]) {
+      const snap = d.builder_curve[currentRound];
+      adoptedCount += (snap.stage_distribution.adopted || 0) + (snap.stage_distribution.advocating || 0);
+    }
+  });
+  document.getElementById('stat-adopted').textContent = adoptedCount.toLocaleString();
+}
+
+function selectDomainById(domainId) {
+  const node = domainNodes.find(n => n.id === domainId);
+  if (node) {
+    selectedNode = node;
+    updateAdoptionChart(node);
+    needsRender = true;
+  }
+}
+
+// ============================================================================
+// RIGHT PANEL: ADOPTION CHART + SHOCKS + FEED
+// ============================================================================
+function updateAdoptionChart(node) {
+  const canvas = document.getElementById('adoption-chart');
+  const aCtx = canvas.getContext('2d');
+  aCtx.clearRect(0, 0, 254, 130);
+
+  if (!node || !node.domainData) {
+    aCtx.font = '10px monospace';
+    aCtx.fillStyle = 'rgba(255,255,255,0.2)';
+    aCtx.textAlign = 'center';
+    aCtx.fillText('Click a domain to see its curve', 127, 65);
+    return;
+  }
+
+  const d = node.domainData;
+  const bc = d.builder_curve;
+  const ec = d.enterprise_curve;
+  if (!bc || bc.length === 0) return;
+
+  // Title
+  aCtx.font = 'bold 9px monospace';
+  aCtx.fillStyle = node.color;
+  aCtx.textAlign = 'left';
+  aCtx.fillText(d.label || d.domain_id, 4, 10);
+
+  const cx = 28, cy = 18, cw = 218, ch = 88;
+
+  // Y axis
+  aCtx.font = '7px monospace';
+  aCtx.fillStyle = 'rgba(255,255,255,0.2)';
+  aCtx.textAlign = 'right';
+  [0, 0.5, 1.0].forEach(v => {
+    const y = cy + ch - v * ch;
+    aCtx.fillText(`${(v * 100).toFixed(0)}%`, cx - 3, y + 3);
+    aCtx.strokeStyle = 'rgba(255,255,255,0.03)';
+    aCtx.beginPath();
+    aCtx.moveTo(cx, y); aCtx.lineTo(cx + cw, y);
+    aCtx.stroke();
+  });
+
+  // Interest area
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const y = cy + ch - snap.interest_rate * ch;
+    i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+  });
+  aCtx.lineTo(cx + cw, cy + ch);
+  aCtx.lineTo(cx, cy + ch);
+  aCtx.closePath();
+  aCtx.fillStyle = 'rgba(59,130,246,0.08)';
+  aCtx.fill();
+
+  // Builder adoption
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const y = cy + ch - snap.adoption_rate * ch;
+    i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+  });
+  aCtx.strokeStyle = node.color;
+  aCtx.lineWidth = 2;
+  aCtx.stroke();
+
+  // Enterprise
+  if (ec && ec.length > 0) {
+    aCtx.beginPath();
+    ec.forEach((snap, i) => {
+      const x = cx + (i / (ec.length - 1)) * cw;
+      const y = cy + ch - snap.adoption_rate * ch;
+      i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+    });
+    aCtx.strokeStyle = '#a855f7';
+    aCtx.lineWidth = 1;
+    aCtx.setLineDash([3, 3]);
+    aCtx.stroke();
+    aCtx.setLineDash([]);
+  }
+
+  // Advocacy
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const y = cy + ch - snap.advocacy_rate * ch;
+    i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+  });
+  aCtx.strokeStyle = '#fbbf24';
+  aCtx.lineWidth = 1;
+  aCtx.stroke();
+
+  // Current round marker
+  if (currentRound < bc.length) {
+    const rx = cx + (currentRound / (bc.length - 1)) * cw;
+    aCtx.strokeStyle = 'rgba(255,255,255,0.2)';
+    aCtx.lineWidth = 1;
+    aCtx.setLineDash([2, 2]);
+    aCtx.beginPath();
+    aCtx.moveTo(rx, cy); aCtx.lineTo(rx, cy + ch);
+    aCtx.stroke();
+    aCtx.setLineDash([]);
+  }
+
+  // Legend
+  const ly = cy + ch + 6;
+  aCtx.font = '7px monospace';
+  aCtx.textAlign = 'left';
+  aCtx.fillStyle = node.color; aCtx.fillRect(cx, ly, 10, 2);
+  aCtx.fillText('Adopt', cx + 13, ly + 2);
+  aCtx.fillStyle = '#a855f7'; aCtx.fillRect(cx + 52, ly, 10, 2);
+  aCtx.fillText('Enterprise', cx + 65, ly + 2);
+  aCtx.fillStyle = '#fbbf24'; aCtx.fillRect(cx + 125, ly, 10, 2);
+  aCtx.fillText('Advocacy', cx + 138, ly + 2);
+}
+
+function updateShockList() {
+  const container = document.getElementById('shock-list');
+  if (!DATA.shocks) { container.innerHTML = ''; return; }
+  let html = '';
+  DATA.shocks.forEach(s => {
+    const active = currentRound >= s.inject_at_round;
+    const color = s.effect === 'positive' ? '#00ff88' : s.effect === 'negative' ? '#ef4444' : '#fbbf24';
+    html += `<div class="shock-item" style="opacity:${active ? 1 : 0.3};">
+      <div class="shock-dot" style="background:${color};"></div>
+      <div class="shock-round">R${s.inject_at_round}</div>
+      <div class="shock-label">${s.label}</div>
+      <div class="shock-effect" style="color:${color};">${s.effect}</div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+let feedItems = [];
+function addFeedItem(text) {
+  feedItems.unshift({ text, time: `R${currentRound}` });
+  if (feedItems.length > 60) feedItems.pop();
+  renderFeed();
+}
+
+function renderFeed() {
+  const container = document.getElementById('activity-feed');
+  container.innerHTML = feedItems.slice(0, 30).map(item =>
+    `<div class="feed-item"><span style="color:rgba(255,255,255,0.2);">${item.time}</span> ${item.text}</div>`
+  ).join('');
+}
+
+function generateFeedForRound(round) {
+  DATA.domains.forEach(d => {
+    if (!d.builder_curve || !d.builder_curve[round]) return;
+    const snap = d.builder_curve[round];
+    const prev = round > 0 ? d.builder_curve[round - 1] : null;
+    if (prev) {
+      const delta = snap.adoption_rate - prev.adoption_rate;
+      if (delta > 0.04) {
+        addFeedItem(`<span class="feed-hl">${d.domain_id}</span> +${(delta * 100).toFixed(1)}% to ${(snap.adoption_rate * 100).toFixed(1)}%`);
+      }
+    }
+  });
+  if (DATA.shocks) {
+    DATA.shocks.forEach(s => {
+      if (s.inject_at_round === round) {
+        addFeedItem(`<span class="feed-warn">${s.label}</span> hits ${s.affects_domains.slice(0, 3).join(', ')}`);
+      }
+    });
+  }
 }
 
 // ============================================================================
 // INIT
 // ============================================================================
-
 function init() {
-  // Update stats
-  document.getElementById('stat-agents').textContent = DATA.meta.agent_count.toLocaleString();
-  document.getElementById('stat-domains').textContent = DATA.meta.domain_count;
-  document.getElementById('stat-signals').textContent = DATA.meta.total_signals;
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
 
-  // Build layout
   initLayout();
+  computeAdoptionEdges();
+  buildLegend();
 
-  // Draw static charts
-  drawNavCharts();
-  drawPersonaChart();
-  drawComparisonChart();
+  // Populate stats
+  document.getElementById('stat-domains').textContent = DATA.meta.domain_count;
+  document.getElementById('stat-agents').textContent = DATA.meta.agent_count.toLocaleString();
+  document.getElementById('stat-signals').textContent = DATA.meta.total_signals;
   updateAdoptionChart(null);
-  updateRankingList();
-  updateShockTimeline();
+  updateShockList();
 
   // Initial feed
-  addFeedItem(`MiroFish v2 initialized with <span class="feed-highlight">${DATA.meta.agent_count.toLocaleString()} agents</span> across ${DATA.meta.persona_types || 11} persona types`, '');
-  addFeedItem(`<span class="feed-highlight">${DATA.meta.domain_count}</span> domains loaded (${DATA.meta.existing_count} existing + ${DATA.meta.candidate_count} candidates)`, '');
-  addFeedItem(`<span class="feed-highlight">${DATA.meta.total_signals}</span> signals injected (${DATA.signal_summary.opportunity_signals} opportunity + ${DATA.signal_summary.graph_signals} graph)`, '');
-  addFeedItem(`Graph: ${DATA.meta.graph_nodes} nodes, ${DATA.meta.graph_edges} edges`, '');
-  addFeedItem('Press <span class="feed-highlight">PLAY</span> to watch adoption unfold', '');
+  addFeedItem(`<span class="feed-hl">${DATA.meta.domain_count}</span> domains loaded`);
+  addFeedItem(`<span class="feed-hl">${DATA.meta.agent_count}</span> agents across 11 persona types`);
+  addFeedItem('Press <span class="feed-hl">PLAY</span> or Space to start');
 
   // Event listeners
   document.getElementById('play-btn').addEventListener('click', togglePlay);
@@ -1557,38 +1323,18 @@ function init() {
     }
     setRound(parseInt(e.target.value));
   });
-  document.getElementById('speed-slider').addEventListener('input', () => {
-    if (isPlaying) {
-      clearInterval(playTimer);
-      const speed = parseInt(document.getElementById('speed-slider').value);
-      const interval = 1100 - speed * 100;
-      playTimer = setInterval(() => {
-        if (currentRound >= 20) {
-          isPlaying = false;
-          document.getElementById('play-btn').innerHTML = '&#9654;';
-          clearInterval(playTimer);
-          return;
-        }
-        currentRound++;
-        generateFeedForRound(currentRound - 1);
-        setRound(currentRound);
-      }, interval);
-    }
-  });
 
   // Keyboard
   document.addEventListener('keydown', (e) => {
     if (e.key === ' ') { e.preventDefault(); togglePlay(); }
-    if (e.key === 'ArrowRight') { setRound(currentRound + 1); }
-    if (e.key === 'ArrowLeft') { setRound(currentRound - 1); }
+    if (e.key === 'ArrowRight') setRound(currentRound + 1);
+    if (e.key === 'ArrowLeft') setRound(currentRound - 1);
   });
 
-  // Start render
   setRound(0);
   render();
 }
 
-// Start
 loadData();
 </script>
 </body>
