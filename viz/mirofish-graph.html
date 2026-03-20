@@ -26,7 +26,7 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 16px;
     z-index: 100;
-    backdrop-filter: blur(12px);
+    /* backdrop-filter removed for GPU perf */
   }
   #navbar .brand {
     display: flex; align-items: center; gap: 10px;
@@ -36,12 +36,6 @@
   #navbar .brand .dot {
     width: 8px; height: 8px; border-radius: 50%;
     background: #00ff88;
-    box-shadow: 0 0 8px #00ff88;
-    animation: pulse-dot 2s ease infinite;
-  }
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; box-shadow: 0 0 8px #00ff88; }
-    50% { opacity: 0.5; box-shadow: 0 0 16px #00ff88; }
   }
 
   /* Mini sparkline charts in navbar */
@@ -88,7 +82,7 @@
     z-index: 50;
     display: flex; flex-direction: column;
     overflow: hidden;
-    backdrop-filter: blur(8px);
+    /* backdrop-filter removed for GPU perf */
   }
   .panel-header {
     padding: 12px 14px 8px;
@@ -116,7 +110,7 @@
     z-index: 50;
     display: flex; flex-direction: column;
     overflow: hidden;
-    backdrop-filter: blur(8px);
+    /* backdrop-filter removed for GPU perf */
   }
 
   /* Activity feed */
@@ -131,11 +125,6 @@
     padding: 6px 0;
     border-bottom: 1px solid rgba(255,255,255,0.03);
     font-size: 10px;
-    animation: feed-in 0.3s ease;
-  }
-  @keyframes feed-in {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
   }
   .feed-time {
     color: rgba(255,255,255,0.25); font-size: 9px;
@@ -215,7 +204,7 @@
     z-index: 200;
     opacity: 0;
     transition: opacity 0.15s ease;
-    backdrop-filter: blur(12px);
+    /* backdrop-filter removed for GPU perf */
     box-shadow: 0 4px 24px rgba(0,0,0,0.4);
   }
   #tooltip.visible { opacity: 1; }
@@ -255,9 +244,9 @@
   .status-dot {
     width: 5px; height: 5px; border-radius: 50%;
   }
-  .status-dot.green { background: #00ff88; box-shadow: 0 0 4px #00ff88; }
-  .status-dot.yellow { background: #fbbf24; box-shadow: 0 0 4px #fbbf24; }
-  .status-dot.red { background: #ef4444; box-shadow: 0 0 4px #ef4444; }
+  .status-dot.green { background: #00ff88; }
+  .status-dot.yellow { background: #fbbf24; }
+  .status-dot.red { background: #ef4444; }
 
   /* ===== LEGEND ===== */
   .legend-row {
@@ -286,7 +275,7 @@
     color: #00ff88;
     z-index: 60;
     display: flex; align-items: center; gap: 12px;
-    backdrop-filter: blur(8px);
+    /* backdrop-filter removed for GPU perf */
   }
   #round-indicator .round-num {
     font-size: 18px; font-weight: 700;
@@ -705,8 +694,7 @@ function render() {
   ctx.fillStyle = cachedBgGrad;
   ctx.fillRect(0, 0, W, H);
 
-  // Grid (skip at high zoom-out for perf)
-  if (camera.zoom > 0.3) drawGrid();
+  // Grid removed for GPU perf
 
   ctx.save();
   ctx.translate(W/2 + camera.x, H/2 + camera.y);
@@ -719,28 +707,23 @@ function render() {
   const vpBottom = vpTop + H / camera.zoom;
   const margin = 60; // node radius margin
 
-  // Draw edges (batch with single style where possible)
-  const edgeLen = edges.length;
-  for (let i = 0; i < edgeLen; i++) {
-    const e = edges[i];
-    const s = e.source, t = e.target;
-    // Cull edges fully outside viewport
-    if ((s.x < vpLeft - margin && t.x < vpLeft - margin) ||
-        (s.x > vpRight + margin && t.x > vpRight + margin) ||
-        (s.y < vpTop - margin && t.y < vpTop - margin) ||
-        (s.y > vpBottom + margin && t.y > vpBottom + margin)) continue;
-    drawEdge(e);
-  }
-
-  // Draw nodes with viewport culling
-  const nodeLen = sortedNonDomains.length;
-  for (let i = 0; i < nodeLen; i++) {
-    const n = sortedNonDomains[i];
-    if (n.x > vpLeft - margin && n.x < vpRight + margin &&
-        n.y > vpTop - margin && n.y < vpBottom + margin) {
-      drawNode(n);
+  // Draw edges — only for hovered/selected nodes to avoid GPU overload
+  const activeNode = hoveredNode || selectedNode;
+  if (activeNode) {
+    const edgeLen = edges.length;
+    for (let i = 0; i < edgeLen; i++) {
+      const e = edges[i];
+      if (e.source !== activeNode && e.target !== activeNode) continue;
+      const s = e.source, t = e.target;
+      if ((s.x < vpLeft - margin && t.x < vpLeft - margin) ||
+          (s.x > vpRight + margin && t.x > vpRight + margin) ||
+          (s.y < vpTop - margin && t.y < vpTop - margin) ||
+          (s.y > vpBottom + margin && t.y > vpBottom + margin)) continue;
+      drawEdge(e);
     }
   }
+
+  // Non-domain nodes hidden — only render domain nodes
   const domLen = sortedDomains.length;
   for (let i = 0; i < domLen; i++) {
     const n = sortedDomains[i];
@@ -753,97 +736,41 @@ function render() {
   ctx.restore();
 
   // Throttled UI updates
-  if (frameCount % 3 === 0) updateMinimap();
+  if (frameCount % 10 === 0) updateMinimap();
   if (frameCount % 10 === 0) updateStatusBar();
 
   requestAnimationFrame(render);
 }
 
-function drawGrid() {
-  const gridSize = 60 * camera.zoom;
-  const offsetX = (camera.x + W/2) % gridSize;
-  const offsetY = (camera.y + H/2) % gridSize;
-
-  ctx.strokeStyle = 'rgba(255,255,255,0.015)';
-  ctx.lineWidth = 0.5;
-
-  for (let x = offsetX; x < W; x += gridSize) {
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, H);
-    ctx.stroke();
-  }
-  for (let y = offsetY; y < H; y += gridSize) {
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(W, y);
-    ctx.stroke();
-  }
-}
+function drawGrid() { /* removed for GPU perf */ }
 
 function drawEdge(edge) {
   const s = edge.source, t = edge.target;
-  const color = getEdgeColor(edge);
-
-  // Curved edges
-  const mx = (s.x + t.x) / 2;
-  const my = (s.y + t.y) / 2;
-  const dx = t.x - s.x;
-  const dy = t.y - s.y;
-  const offset = Math.min(30, Math.sqrt(dx*dx + dy*dy) * 0.1);
-  const cx = mx + dy * 0.08;
-  const cy = my - dx * 0.08;
+  const color = edge._cachedColor || (edge._cachedColor = getEdgeColor(edge));
 
   ctx.beginPath();
   ctx.moveTo(s.x, s.y);
-  ctx.quadraticCurveTo(cx, cy, t.x, t.y);
+  ctx.lineTo(t.x, t.y);
   ctx.strokeStyle = color;
-  ctx.lineWidth = Math.max(0.5, edge.weight * 1.5);
+  ctx.lineWidth = 0.5;
   ctx.stroke();
 }
 
 function drawNode(node) {
-  const time = frameCount * 0.02;
-  const pulse = 1 + Math.sin(time + node.pulsePhase) * 0.08;
-  const r = node.radius * pulse;
+  const r = node.radius;
   const color = node._cachedColor || (node._cachedColor = getNodeColor(node));
   const isHovered = hoveredNode === node;
   const isSelected = selectedNode === node;
 
-  // Adoption glow for domains (only when hovered/selected or significant adoption — saves GPU)
-  if (node.isDomain && node.domainData && (isHovered || isSelected)) {
-    const adoption = getAdoptionAtRound(node.domainData, currentRound);
-    if (adoption > 0.01) {
-      const glowRadius = r * (1.5 + adoption * 2);
-      const rgb = hexToRgb(color);
-      if (typeof rgb !== 'string') {
-        ctx.fillStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},0.1)`;
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, glowRadius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-  }
-
-  // Main circle — use flat color for distant/small nodes, gradient only for large/hovered
+  // Main circle — flat color always (no gradients, no glow)
   ctx.beginPath();
   ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
-  if (isHovered || isSelected || r > 12) {
-    const grad = ctx.createRadialGradient(
-      node.x - r * 0.3, node.y - r * 0.3, 0,
-      node.x, node.y, r
-    );
-    grad.addColorStop(0, color);
-    grad.addColorStop(1, adjustBrightness(color, -40));
-    ctx.fillStyle = grad;
-  } else {
-    ctx.fillStyle = color;
-  }
+  ctx.fillStyle = color;
   ctx.fill();
 
-  // Ring
-  ctx.strokeStyle = isHovered || isSelected ? color : (node._ringColor || (node._ringColor = adjustAlpha(color, 0.4)));
-  ctx.lineWidth = isHovered || isSelected ? 2 : 1;
+  // Ring — simple outline
+  ctx.strokeStyle = node._ringColor || (node._ringColor = adjustAlpha(color, 0.4));
+  ctx.lineWidth = 1;
   ctx.stroke();
 
   // Adoption ring for domains
@@ -1067,17 +994,15 @@ function updateMinimap() {
   const scaleY = (120 - padding * 2) / rangeY;
   const scale = Math.min(scaleX, scaleY);
 
-  // Draw nodes (use cached colors)
-  nodes.forEach(n => {
+  // Draw domain nodes only on minimap
+  sortedDomains.forEach(n => {
     const mx = padding + (n.x - minX) * scale;
     const my = padding + (n.y - minY) * scale;
     mmCtx.fillStyle = n._cachedColor || getNodeColor(n);
-    mmCtx.globalAlpha = n.isDomain ? 0.8 : 0.3;
     mmCtx.beginPath();
-    mmCtx.arc(mx, my, n.isDomain ? 3 : 1.5, 0, Math.PI * 2);
+    mmCtx.arc(mx, my, 2.5, 0, Math.PI * 2);
     mmCtx.fill();
   });
-  mmCtx.globalAlpha = 1;
 
   // Viewport rectangle
   const vpLeft = (-camera.x - W/2) / camera.zoom;
@@ -1457,7 +1382,7 @@ function updateShockTimeline() {
     const color = s.effect === 'positive' ? '#00ff88' : s.effect === 'negative' ? '#ef4444' : '#fbbf24';
     const opacity = isActive ? 1 : 0.3;
     html += `<div style="display:flex;align-items:center;gap:8px;padding:4px 0;opacity:${opacity};font-size:10px;">
-      <div style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;${isActive ? 'box-shadow:0 0 6px ' + color : ''}"></div>
+      <div style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></div>
       <div style="width:24px;color:rgba(255,255,255,0.4);">R${s.inject_at_round}</div>
       <div style="color:rgba(255,255,255,0.7);flex:1;">${s.label}</div>
       <div style="font-size:8px;color:${color};">${s.effect}</div>
