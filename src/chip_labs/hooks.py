@@ -66,13 +66,137 @@ def _write_stdout(data: dict[str, Any]) -> None:
     sys.stdout.flush()
 
 
+# Portfolio cache TTL in seconds (avoids re-running V3 deep eval on every hook call)
+_PORTFOLIO_CACHE_TTL = 600  # 10 minutes
+_PORTFOLIO_CACHE_DIR = Path.home() / ".cache" / "chip-labs"
+
+
 def _load_portfolio_safe() -> list[Any]:
-    """Load chip portfolio with graceful fallback."""
+    """Load chip portfolio with file-based caching.
+
+    V3 deep eval is expensive (~3s per chip).  We cache serialized portfolio
+    metadata to a JSON file and reconstruct lightweight handles from it.
+    The cache refreshes every ``_PORTFOLIO_CACHE_TTL`` seconds.
+    """
+    cache_file = _PORTFOLIO_CACHE_DIR / "portfolio_cache.json"
+
+    # Try loading from cache first
+    try:
+        if cache_file.exists():
+            age = datetime.now(timezone.utc).timestamp() - cache_file.stat().st_mtime
+            if age < _PORTFOLIO_CACHE_TTL:
+                return _load_from_cache(cache_file)
+    except (OSError, Exception):
+        pass
+
+    # Full load (expensive -- runs V3 deep eval)
     try:
         from .chip_runtime import load_portfolio
-        return load_portfolio(min_score=MIN_QUALITY_SCORE)
+        portfolio = load_portfolio(min_score=MIN_QUALITY_SCORE)
     except (ImportError, Exception):
         return []
+
+    # Write cache for next hook call
+    _write_cache(cache_file, portfolio)
+    return portfolio
+
+
+def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
+    """Serialize portfolio handles to a JSON cache file."""
+    try:
+        cache_file.parent.mkdir(parents=True, exist_ok=True)
+        entries = []
+        for chip in portfolio:
+            intel = None
+            try:
+                intel_obj = chip.intelligence
+                if intel_obj:
+                    intel = {
+                        "chip_name": intel_obj.chip_name,
+                        "domain": intel_obj.domain,
+                        "version": intel_obj.version,
+                        "mission": intel_obj.mission,
+                        "doctrines": intel_obj.doctrines,
+                        "contradictions": intel_obj.contradictions,
+                        "evidence_summary": intel_obj.evidence_summary,
+                        "score_trajectory": intel_obj.score_trajectory,
+                        "current_score": getattr(intel_obj, "current_score", 0),
+                        "verdict": getattr(intel_obj, "verdict", ""),
+                    }
+            except Exception:
+                pass
+            entries.append({
+                "chip_path": str(chip.chip_path),
+                "chip_name": chip.chip_name,
+                "domain": chip.domain,
+                "version": chip.version,
+                "capabilities": chip.capabilities,
+                "quality_score": chip.quality_score,
+                "quality_verdict": chip.quality_verdict,
+                "intelligence": intel,
+            })
+        cache_file.write_text(
+            json.dumps({"portfolio": entries, "ts": datetime.now(timezone.utc).isoformat()},
+                       indent=2, default=str),
+            encoding="utf-8",
+        )
+    except (OSError, Exception):
+        pass
+
+
+def _load_from_cache(cache_file: Path) -> list[Any]:
+    """Reconstruct lightweight chip handles from cached JSON."""
+    from dataclasses import dataclass, field
+
+    data = json.loads(cache_file.read_text(encoding="utf-8"))
+
+    # Import ChipIntelligence for reconstruction
+    try:
+        from .intelligence_server import ChipIntelligence
+    except ImportError:
+        return []
+
+    @dataclass
+    class CachedChipHandle:
+        chip_path: Path
+        chip_name: str
+        domain: str
+        version: str
+        capabilities: list[str] = field(default_factory=list)
+        commands: dict[str, list[str]] = field(default_factory=dict)
+        frontier: dict[str, Any] = field(default_factory=dict)
+        quality_score: float = 0.0
+        quality_verdict: str = "scaffold"
+        intelligence: ChipIntelligence | None = None
+
+    handles = []
+    for entry in data.get("portfolio", []):
+        intel = None
+        intel_data = entry.get("intelligence")
+        if intel_data:
+            intel = ChipIntelligence(
+                chip_name=intel_data.get("chip_name", ""),
+                domain=intel_data.get("domain", ""),
+                version=intel_data.get("version", ""),
+                mission=intel_data.get("mission", ""),
+                doctrines=intel_data.get("doctrines", []),
+                contradictions=intel_data.get("contradictions", []),
+                evidence_summary=intel_data.get("evidence_summary", {}),
+                score_trajectory=intel_data.get("score_trajectory", []),
+                current_score=intel_data.get("current_score", 0),
+                verdict=intel_data.get("verdict", ""),
+            )
+        handles.append(CachedChipHandle(
+            chip_path=Path(entry["chip_path"]),
+            chip_name=entry["chip_name"],
+            domain=entry["domain"],
+            version=entry["version"],
+            capabilities=entry.get("capabilities", []),
+            quality_score=entry.get("quality_score", 0),
+            quality_verdict=entry.get("quality_verdict", "scaffold"),
+            intelligence=intel,
+        ))
+    return handles
 
 
 def _build_context_text(portfolio: list[Any], query: str = "", max_chips: int = 2) -> str:
