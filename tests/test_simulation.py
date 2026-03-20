@@ -8,6 +8,7 @@ from chip_labs.mirofish.simulation import (
     run_simulation,
     run_dual_context,
     run_ensemble,
+    run_sensitivity,
     _apply_competitive_displacement,
     ADOPTION_STAGES,
     MAX_ROUNDS,
@@ -332,6 +333,56 @@ class TestCompetitiveDisplacement:
         )
         # Weak competition: no displacement
         assert persona["adoption_state"]["domain-b"] == "evaluating"
+
+
+class TestSensitivity:
+    """Tests for sensitivity analysis."""
+
+    def test_sensitivity_runs(self, graph, domain_ids):
+        from chip_labs.mirofish.signals import signals_from_opportunities, signals_from_graph
+        signals = signals_from_opportunities(SEED_OPPORTUNITIES)
+        signals += signals_from_graph(graph)
+        shocks = [create_shock("breakout_tool", domain_ids[:2], inject_at_round=3)]
+        result = run_sensitivity(
+            graph, domain_ids, signals=signals, shocks=shocks,
+            max_rounds=5, seed=42, count_per_type=2,
+        )
+        assert "baseline_rates" in result
+        assert "variations" in result
+        assert "factor_importance" in result
+        assert "most_sensitive_factor" in result
+
+    def test_sensitivity_has_all_factors(self, graph, domain_ids):
+        from chip_labs.mirofish.signals import signals_from_opportunities, signals_from_graph
+        signals = signals_from_opportunities(SEED_OPPORTUNITIES)
+        signals += signals_from_graph(graph)
+        shocks = [create_shock("breakout_tool", domain_ids[:2], inject_at_round=3)]
+        result = run_sensitivity(
+            graph, domain_ids, signals=signals, shocks=shocks,
+            max_rounds=5, seed=42, count_per_type=2,
+        )
+        assert "signal_strength" in result["variations"]
+        assert "adoption_threshold" in result["variations"]
+        assert "persona_count" in result["variations"]
+        assert "shock_timing" in result["variations"]
+
+    def test_factor_importance_per_domain(self, graph, domain_ids):
+        from chip_labs.mirofish.signals import signals_from_opportunities
+        signals = signals_from_opportunities(SEED_OPPORTUNITIES)
+        result = run_sensitivity(
+            graph, domain_ids, signals=signals,
+            max_rounds=5, seed=42, count_per_type=2,
+        )
+        for d in domain_ids:
+            assert d in result["factor_importance"]
+            assert d in result["most_sensitive_factor"]
+
+    def test_baseline_rates_bounded(self, graph, domain_ids):
+        result = run_sensitivity(
+            graph, domain_ids, max_rounds=5, seed=42, count_per_type=2,
+        )
+        for d in domain_ids:
+            assert 0.0 <= result["baseline_rates"][d] <= 1.0
 
 
 class TestAdoptionStages:

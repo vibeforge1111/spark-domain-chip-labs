@@ -126,6 +126,34 @@ REPLAY_CASES: list[dict[str, Any]] = [
         "rationale": "Large addressable market but niche expertise needed.",
     },
     {
+        "domain_id": "xcontent",
+        "question": "Will an X/Twitter content chip be built?",
+        "predicted_probability": 0.70,
+        "actual_outcome": True,
+        "rationale": "High social media demand, clear content generation use case.",
+    },
+    {
+        "domain_id": "content",
+        "question": "Will a general content chip be built?",
+        "predicted_probability": 0.55,
+        "actual_outcome": True,
+        "rationale": "Broad domain but fragmented, lower differentiation than expected.",
+    },
+    {
+        "domain_id": "vibe-incubator",
+        "question": "Will a vibe-coding incubator chip be built?",
+        "predicted_probability": 0.50,
+        "actual_outcome": True,
+        "rationale": "Novel concept, moderate community interest, ecosystem fit.",
+    },
+    {
+        "domain_id": "predictive-worlds-lab",
+        "question": "Will a predictive worlds lab chip be built?",
+        "predicted_probability": 0.35,
+        "actual_outcome": True,
+        "rationale": "Research-oriented, niche but passionate builders.",
+    },
+    {
         "domain_id": "autonomous-vehicles",
         "question": "Will an autonomous vehicle chip be built?",
         "predicted_probability": 0.20,
@@ -138,6 +166,20 @@ REPLAY_CASES: list[dict[str, Any]] = [
         "predicted_probability": 0.15,
         "actual_outcome": False,
         "rationale": "Very niche, limited practical data, low community demand.",
+    },
+    {
+        "domain_id": "biotech-drug-discovery",
+        "question": "Will a biotech drug discovery chip be built?",
+        "predicted_probability": 0.10,
+        "actual_outcome": False,
+        "rationale": "Requires specialized domain expertise beyond current scope.",
+    },
+    {
+        "domain_id": "climate-modeling",
+        "question": "Will a climate modeling chip be built?",
+        "predicted_probability": 0.12,
+        "actual_outcome": False,
+        "rationale": "High complexity, limited data access, no community demand.",
     },
 ]
 

@@ -570,3 +570,150 @@ def run_ensemble(
         }
 
     return ensemble_results
+
+
+# ---------------------------------------------------------------------------
+# Sensitivity Analysis
+# ---------------------------------------------------------------------------
+
+def run_sensitivity(
+    graph: DomainGraph,
+    domain_ids: list[str] | None = None,
+    signals: list[dict[str, Any]] | None = None,
+    shocks: list[dict[str, Any]] | None = None,
+    max_rounds: int = MAX_ROUNDS,
+    seed: int = 42,
+    context: str = "builder_community",
+    count_per_type: int = 2,
+) -> dict[str, Any]:
+    """Run sensitivity analysis by varying key parameters one at a time.
+
+    Tests how sensitive adoption outcomes are to changes in:
+    - Signal strength (0.5x, 1.0x, 1.5x, 2.0x)
+    - Adoption thresholds (0.5x, 1.0x, 1.5x)
+    - Number of personas per type (1, 2, 4)
+    - Shock timing (early, baseline, late)
+
+    For each parameter variation, runs the simulation and records
+    the resulting adoption rates. The delta from baseline shows
+    which factors have the most influence on predictions.
+
+    Returns per-domain sensitivity data with factor importance ranking.
+    """
+    domains = domain_ids or [
+        n["id"] for n in graph.nodes.values() if n["type"] == "domain"
+    ]
+
+    # Baseline run
+    baseline = run_simulation(
+        graph, domains, signals=signals, shocks=shocks,
+        max_rounds=max_rounds, seed=seed, context=context,
+    )
+    baseline_rates = {
+        d: baseline["domains"][d]["final_adoption_rate"] for d in domains
+    }
+
+    variations: dict[str, list[dict[str, Any]]] = {}
+
+    # 1. Signal strength sensitivity
+    strength_multipliers = [0.5, 1.0, 1.5, 2.0]
+    strength_results = []
+    for mult in strength_multipliers:
+        varied_signals = None
+        if signals:
+            varied_signals = []
+            for s in signals:
+                vs = dict(s)
+                vs["strength"] = min(1.0, s.get("strength", 0.5) * mult)
+                varied_signals.append(vs)
+        result = run_simulation(
+            graph, domains, signals=varied_signals, shocks=shocks,
+            max_rounds=max_rounds, seed=seed, context=context,
+        )
+        rates = {d: result["domains"][d]["final_adoption_rate"] for d in domains}
+        strength_results.append({"multiplier": mult, "rates": rates})
+    variations["signal_strength"] = strength_results
+
+    # 2. Adoption threshold sensitivity
+    threshold_multipliers = [0.5, 1.0, 1.5]
+    threshold_results = []
+    for mult in threshold_multipliers:
+        personas = generate_personas(graph, domains, count_per_type=count_per_type, seed=seed)
+        for p in personas:
+            p["adoption_threshold"] = min(1.0, p["adoption_threshold"] * mult)
+        result = run_simulation(
+            graph, domains, personas=personas, signals=signals, shocks=shocks,
+            max_rounds=max_rounds, seed=seed, context=context,
+        )
+        rates = {d: result["domains"][d]["final_adoption_rate"] for d in domains}
+        threshold_results.append({"multiplier": mult, "rates": rates})
+    variations["adoption_threshold"] = threshold_results
+
+    # 3. Persona count sensitivity
+    count_variations = [1, 2, 4]
+    count_results = []
+    for cnt in count_variations:
+        personas = generate_personas(graph, domains, count_per_type=cnt, seed=seed)
+        result = run_simulation(
+            graph, domains, personas=personas, signals=signals, shocks=shocks,
+            max_rounds=max_rounds, seed=seed, context=context,
+        )
+        rates = {d: result["domains"][d]["final_adoption_rate"] for d in domains}
+        count_results.append({"count_per_type": cnt, "rates": rates})
+    variations["persona_count"] = count_results
+
+    # 4. Shock timing sensitivity
+    if shocks:
+        timing_offsets = {"early": -3, "baseline": 0, "late": 3}
+        timing_results = []
+        for label, offset in timing_offsets.items():
+            shifted = []
+            for s in shocks:
+                ss = dict(s)
+                ss["inject_at_round"] = max(0, s.get("inject_at_round", 0) + offset)
+                shifted.append(ss)
+            result = run_simulation(
+                graph, domains, signals=signals, shocks=shifted,
+                max_rounds=max_rounds, seed=seed, context=context,
+            )
+            rates = {d: result["domains"][d]["final_adoption_rate"] for d in domains}
+            timing_results.append({"timing": label, "offset": offset, "rates": rates})
+        variations["shock_timing"] = timing_results
+
+    # Compute factor importance per domain
+    factor_importance: dict[str, dict[str, float]] = {}
+    for domain_id in domains:
+        base = baseline_rates[domain_id]
+        importance: dict[str, float] = {}
+
+        for factor_name, results in variations.items():
+            max_delta = 0.0
+            for entry in results:
+                rate = entry["rates"].get(domain_id, 0.0)
+                delta = abs(rate - base)
+                max_delta = max(max_delta, delta)
+            importance[factor_name] = round(max_delta, 4)
+
+        factor_importance[domain_id] = importance
+
+    return {
+        "baseline_rates": baseline_rates,
+        "variations": variations,
+        "factor_importance": factor_importance,
+        "most_sensitive_factor": _most_sensitive_factor(factor_importance, domains),
+    }
+
+
+def _most_sensitive_factor(
+    factor_importance: dict[str, dict[str, float]],
+    domains: list[str],
+) -> dict[str, str]:
+    """Find the most sensitive factor per domain."""
+    result: dict[str, str] = {}
+    for domain_id in domains:
+        importance = factor_importance.get(domain_id, {})
+        if importance:
+            result[domain_id] = max(importance, key=importance.get)
+        else:
+            result[domain_id] = "none"
+    return result
