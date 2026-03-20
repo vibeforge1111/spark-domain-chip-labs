@@ -10,7 +10,9 @@ sys.path.insert(0, "src")
 
 from chip_labs.mirofish.graph import build_graph_from_opportunities
 from chip_labs.mirofish.personas import generate_personas
-from chip_labs.mirofish.simulation import run_simulation, run_dual_context
+from chip_labs.mirofish.simulation import (
+    run_simulation, run_dual_context, run_ensemble, run_sensitivity,
+)
 from chip_labs.mirofish.signals import (
     signals_from_opportunities, signals_from_graph,
     create_signal, create_shock,
@@ -402,7 +404,44 @@ def main():
     print(f"Enterprise simulation: {t_ent:.3f}s")
 
     total_time = t_graph + t_personas + t_signals + t_sim + t_ent
-    print(f"\nTotal wall time: {total_time:.3f}s")
+    print(f"\nTotal wall time (flagship): {total_time:.3f}s")
+
+    # ========================================================================
+    # MONTE CARLO ENSEMBLE (10 runs x 240 agents for confidence intervals)
+    # ========================================================================
+
+    print("\n" + "=" * 80)
+    print("MONTE CARLO ENSEMBLE (10 runs x 240 agents)")
+    print("=" * 80)
+
+    t0 = time.perf_counter()
+    ensemble_result = run_ensemble(
+        graph, domain_ids, signals=all_signals, shocks=shocks,
+        max_rounds=20, n_runs=10, base_seed=42,
+        context="builder_community", count_per_type=30,
+    )
+    t_ensemble = time.perf_counter() - t0
+    print(f"Ensemble completed in {t_ensemble:.3f}s ({10 * 240 * len(domain_ids) * 20:,} agent-domain-round evals)")
+
+    # ========================================================================
+    # SENSITIVITY ANALYSIS (4 factors, lightweight agents)
+    # ========================================================================
+
+    print("\n" + "=" * 80)
+    print("SENSITIVITY ANALYSIS (signal strength, thresholds, persona count, shock timing)")
+    print("=" * 80)
+
+    t0 = time.perf_counter()
+    sensitivity_result = run_sensitivity(
+        graph, domain_ids, signals=all_signals, shocks=shocks,
+        max_rounds=20, seed=42, context="builder_community",
+        count_per_type=2,
+    )
+    t_sensitivity = time.perf_counter() - t0
+    print(f"Sensitivity analysis completed in {t_sensitivity:.3f}s")
+
+    total_time += t_ensemble + t_sensitivity
+    print(f"\nTotal wall time (all analyses): {total_time:.3f}s")
 
     # ========================================================================
     # RESULTS
@@ -417,6 +456,7 @@ def main():
     for d_id in sorted(existing_ids):
         b = builder_result["domains"].get(d_id, {})
         e = enterprise_result["domains"].get(d_id, {})
+        ens = ensemble_result["domains"].get(d_id, {})
         existing_results.append({
             "domain_id": d_id,
             "builder": b.get("final_adoption_rate", 0),
@@ -427,14 +467,19 @@ def main():
             "disagreement": b.get("disagreement_score", 0),
             "status": next((c.get("status", "") for c in EXISTING_CHIPS if c["domain_id"] == d_id), ""),
             "static": next((c.get("composite_score", 0) for c in ALL_DOMAINS if c["domain_id"] == d_id), 0),
+            "ens_mean": ens.get("mean_adoption", 0),
+            "ens_p10": ens.get("p10_adoption", 0),
+            "ens_p90": ens.get("p90_adoption", 0),
+            "ens_std": ens.get("std_adoption", 0),
         })
 
     existing_results.sort(key=lambda x: x["builder"], reverse=True)
-    print(f"\n{'Domain':<25s} {'Status':<12s} {'Builder':>8s} {'Enterprise':>11s} {'Advocacy':>9s} {'Tipping':>8s} {'Consensus':>10s}")
-    print("-" * 90)
+    print(f"\n{'Domain':<25s} {'Status':<12s} {'Builder':>8s} {'Ent':>6s} {'Advocacy':>9s} {'Tip':>5s} {'Ens Mean':>9s} {'P10-P90':>12s}")
+    print("-" * 95)
     for r in existing_results:
-        tp = f"R{r['tipping']:d}" if r["tipping"] is not None else "None"
-        print(f"{r['domain_id']:<25s} {r['status']:<12s} {r['builder']:7.1%} {r['enterprise']:10.1%} {r['advocacy']:8.1%} {tp:>8s} {r['consensus']:9.1%}")
+        tp = f"R{r['tipping']:d}" if r["tipping"] is not None else "-"
+        ci = f"{r['ens_p10']:.0%}-{r['ens_p90']:.0%}"
+        print(f"{r['domain_id']:<25s} {r['status']:<12s} {r['builder']:7.1%} {r['enterprise']:5.1%} {r['advocacy']:8.1%} {tp:>5s} {r['ens_mean']:8.1%} {ci:>12s}")
 
     print("\n" + "=" * 80)
     print("PREDICTIONS: NEW DOMAIN CHIPS (what to build next)")
@@ -445,6 +490,7 @@ def main():
     for d_id in sorted(new_ids):
         b = builder_result["domains"].get(d_id, {})
         e = enterprise_result["domains"].get(d_id, {})
+        ens = ensemble_result["domains"].get(d_id, {})
         static = next((c.get("composite_score", 0) for c in ALL_DOMAINS if c["domain_id"] == d_id), 0)
         new_results.append({
             "domain_id": d_id,
@@ -456,20 +502,24 @@ def main():
             "disagreement": b.get("disagreement_score", 0),
             "static": static,
             "delta": round(b.get("final_adoption_rate", 0) - static, 4),
+            "ens_mean": ens.get("mean_adoption", 0),
+            "ens_p10": ens.get("p10_adoption", 0),
+            "ens_p90": ens.get("p90_adoption", 0),
+            "ens_std": ens.get("std_adoption", 0),
         })
 
     new_results.sort(key=lambda x: x["builder"], reverse=True)
-    print(f"\n{'Domain':<25s} {'Builder':>8s} {'Enterprise':>11s} {'Advocacy':>9s} {'Tipping':>8s} {'Static':>7s} {'Delta':>7s} {'Signal'}")
+    print(f"\n{'Domain':<25s} {'Builder':>8s} {'Ent':>6s} {'Ens Mean':>9s} {'P10-P90':>12s} {'Static':>7s} {'Delta':>7s} {'Signal'}")
     print("-" * 100)
     for r in new_results:
-        tp = f"R{r['tipping']:d}" if r["tipping"] is not None else "None"
+        ci = f"{r['ens_p10']:.0%}-{r['ens_p90']:.0%}"
         if r["delta"] > 0.05:
             signal = "SIM HIGHER"
         elif r["delta"] < -0.05:
             signal = "SIM LOWER"
         else:
             signal = "ALIGNED"
-        print(f"{r['domain_id']:<25s} {r['builder']:7.1%} {r['enterprise']:10.1%} {r['advocacy']:8.1%} {tp:>8s} {r['static']:6.4f} {r['delta']:+6.4f}  {signal}")
+        print(f"{r['domain_id']:<25s} {r['builder']:7.1%} {r['enterprise']:5.1%} {r['ens_mean']:8.1%} {ci:>12s} {r['static']:6.4f} {r['delta']:+6.4f}  {signal}")
 
     # Top picks
     print("\n" + "=" * 80)
@@ -477,15 +527,15 @@ def main():
     print("=" * 80)
 
     all_results = existing_results + new_results
-    all_results.sort(key=lambda x: (x["builder"], x.get("advocacy", 0)), reverse=True)
+    all_results.sort(key=lambda x: (x["ens_mean"], x["builder"]), reverse=True)
 
-    print(f"\n{'#':<4s} {'Domain':<25s} {'Builder':>8s} {'Enterprise':>11s} {'Gap':>6s} {'Advocacy':>9s} {'Tipping':>8s}")
-    print("-" * 75)
+    print(f"\n{'#':<4s} {'Domain':<25s} {'Ens Mean':>9s} {'P10-P90':>12s} {'Builder':>8s} {'Ent':>6s} {'Gap':>6s}")
+    print("-" * 80)
     for i, r in enumerate(all_results[:10], 1):
-        tp = f"R{r['tipping']:d}" if r["tipping"] is not None else "None"
         gap = r["builder"] - r["enterprise"]
+        ci = f"{r['ens_p10']:.0%}-{r['ens_p90']:.0%}"
         tag = " *NEW*" if r["domain_id"] in new_ids else f" [{r.get('status', '')}]"
-        print(f"{i:<4d} {r['domain_id']:<25s} {r['builder']:7.1%} {r['enterprise']:10.1%} {gap:+5.1%} {r['advocacy']:8.1%} {tp:>8s}{tag}")
+        print(f"{i:<4d} {r['domain_id']:<25s} {r['ens_mean']:8.1%} {ci:>12s} {r['builder']:7.1%} {r['enterprise']:5.1%} {gap:+5.1%}{tag}")
 
     # Bottom 5 (avoid these)
     print(f"\n{'BOTTOM 5 (low adoption signal)':}")
@@ -506,6 +556,86 @@ def main():
     for r in surprises[:8]:
         direction = "SIM HIGHER (undervalued by static)" if r["delta"] > 0 else "SIM LOWER (overvalued by static)"
         print(f"{r['domain_id']:<25s} {r['builder']:7.1%} {r['static']:6.4f} {r['delta']:+6.4f}  {direction}")
+
+    # ========================================================================
+    # ENSEMBLE CONFIDENCE ANALYSIS
+    # ========================================================================
+
+    print("\n" + "=" * 80)
+    print("ENSEMBLE CONFIDENCE ANALYSIS (10 Monte Carlo runs)")
+    print("=" * 80)
+
+    # Sort by confidence width (uncertainty) -- most uncertain first
+    uncertainty_ranked = sorted(all_results, key=lambda x: x.get("ens_std", 0), reverse=True)
+    print(f"\n{'Domain':<25s} {'Ens Mean':>9s} {'Std':>6s} {'P10':>6s} {'P90':>6s} {'Width':>7s} {'Certainty'}")
+    print("-" * 80)
+    for r in uncertainty_ranked:
+        width = r["ens_p90"] - r["ens_p10"]
+        if width < 0.05:
+            certainty = "HIGH"
+        elif width < 0.15:
+            certainty = "MEDIUM"
+        else:
+            certainty = "LOW"
+        print(f"{r['domain_id']:<25s} {r['ens_mean']:8.1%} {r['ens_std']:5.3f} {r['ens_p10']:5.1%} {r['ens_p90']:5.1%} {width:6.1%}  {certainty}")
+
+    # ========================================================================
+    # SENSITIVITY ANALYSIS
+    # ========================================================================
+
+    print("\n" + "=" * 80)
+    print("SENSITIVITY ANALYSIS (what factors drive adoption?)")
+    print("=" * 80)
+
+    factor_importance = sensitivity_result.get("factor_importance", {})
+    most_sensitive = sensitivity_result.get("most_sensitive_factor", {})
+
+    # Show per-domain most sensitive factor
+    print(f"\n{'Domain':<25s} {'Most Sensitive Factor':<22s} {'Impact':>8s} {'Signal':>9s} {'Threshold':>10s} {'Count':>7s} {'Timing':>8s}")
+    print("-" * 100)
+    for r in all_results[:15]:
+        d_id = r["domain_id"]
+        importance = factor_importance.get(d_id, {})
+        top_factor = most_sensitive.get(d_id, "?")
+        sig_imp = importance.get("signal_strength", 0)
+        thr_imp = importance.get("adoption_threshold", 0)
+        cnt_imp = importance.get("persona_count", 0)
+        tim_imp = importance.get("shock_timing", 0)
+        print(f"{d_id:<25s} {top_factor:<22s} {max(importance.values(), default=0):7.3f} {sig_imp:8.3f} {thr_imp:9.3f} {cnt_imp:6.3f} {tim_imp:7.3f}")
+
+    # Summary
+    print("\n" + "=" * 80)
+    print("ACTIONABLE SUMMARY")
+    print("=" * 80)
+
+    high_confidence_winners = [
+        r for r in all_results
+        if r["ens_mean"] > 0.3 and r.get("ens_std", 1) < 0.1
+    ]
+    high_upside_uncertain = [
+        r for r in all_results
+        if r["ens_mean"] > 0.2 and r.get("ens_std", 0) > 0.08
+    ]
+    low_adoption = [
+        r for r in all_results
+        if r["ens_mean"] < 0.1
+    ]
+
+    print(f"\nHigh-confidence picks (mean > 30%, std < 10%):")
+    for r in sorted(high_confidence_winners, key=lambda x: x["ens_mean"], reverse=True)[:5]:
+        tag = " *NEW*" if r["domain_id"] in new_ids else f" [{r.get('status', '')}]"
+        print(f"  {r['domain_id']:<25s} {r['ens_mean']:5.1%} (p10={r['ens_p10']:.0%}, p90={r['ens_p90']:.0%}){tag}")
+
+    print(f"\nHigh-upside / uncertain (mean > 20%, std > 8%):")
+    for r in sorted(high_upside_uncertain, key=lambda x: x["ens_mean"], reverse=True)[:5]:
+        tag = " *NEW*" if r["domain_id"] in new_ids else f" [{r.get('status', '')}]"
+        print(f"  {r['domain_id']:<25s} {r['ens_mean']:5.1%} (p10={r['ens_p10']:.0%}, p90={r['ens_p90']:.0%}){tag}")
+
+    print(f"\nLow adoption signal (mean < 10%) -- avoid or deprioritize:")
+    for r in sorted(low_adoption, key=lambda x: x["ens_mean"])[:5]:
+        tag = " *NEW*" if r["domain_id"] in new_ids else f" [{r.get('status', '')}]"
+        most = most_sensitive.get(r["domain_id"], "?")
+        print(f"  {r['domain_id']:<25s} {r['ens_mean']:5.1%} (most sensitive to: {most}){tag}")
 
 
 if __name__ == "__main__":

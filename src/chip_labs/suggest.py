@@ -7,6 +7,7 @@ from typing import Any
 
 from .quality_rubric import score_chip
 from .registry import discover_chips
+from .trend_scanner import SEED_OPPORTUNITIES, rank_opportunities
 
 
 def suggest(recent_mutations: list[dict[str, str]] | None = None,
@@ -71,6 +72,10 @@ def suggest(recent_mutations: list[dict[str, str]] | None = None,
             "priority": "high",
         })
 
+    # 2c. Simulation-backed domain suggestions (if enough opportunities exist)
+    sim_suggestions = _simulation_backed_suggestions(chips, recent_set)
+    suggestions.extend(sim_suggestions)
+
     # 3. Suggest domain discovery if portfolio has gaps
     if len(chips) < 15:
         for source in ["github", "producthunt", "spark_ecosystem"]:
@@ -97,4 +102,102 @@ def suggest(recent_mutations: list[dict[str, str]] | None = None,
                 "priority": "medium",
             })
 
+    return suggestions
+
+
+def _simulation_backed_suggestions(
+    chips: list[dict[str, Any]],
+    recent_set: set[frozenset],
+) -> list[dict[str, Any]]:
+    """Generate suggestions backed by Monte Carlo ensemble simulation.
+
+    Runs a lightweight ensemble (3 runs, 2 personas/type) to identify
+    high-adoption domains that don't have chips yet. Uses confidence
+    intervals to separate high-confidence picks from uncertain bets.
+    """
+    from .mirofish.graph import build_graph_from_opportunities
+    from .mirofish.simulation import run_ensemble
+    from .mirofish.signals import signals_from_opportunities, signals_from_graph
+
+    suggestions: list[dict[str, Any]] = []
+
+    ranked = rank_opportunities()
+    if len(ranked) < 2:
+        return suggestions
+
+    graph = build_graph_from_opportunities(ranked)
+    domain_ids = [opp["domain_id"] for opp in ranked]
+
+    opp_signals = signals_from_opportunities(ranked)
+    graph_signals = signals_from_graph(graph)
+    all_signals = opp_signals + graph_signals
+
+    # Lightweight ensemble: 3 runs, 2 per type = fast
+    ensemble = run_ensemble(
+        graph, domain_ids, signals=all_signals,
+        max_rounds=10, n_runs=3, base_seed=42,
+        count_per_type=2,
+    )
+
+    chip_names = {c["name"] for c in chips}
+    # Also match by domain_id pattern (domain-chip-X -> X)
+    chip_domains = set()
+    for c in chips:
+        name = c["name"]
+        if name.startswith("domain-chip-"):
+            chip_domains.add(name[len("domain-chip-"):])
+        chip_domains.add(name)
+
+    for domain_id in domain_ids:
+        stats = ensemble["domains"].get(domain_id, {})
+        mean_adoption = stats.get("mean_adoption", 0)
+        p10 = stats.get("p10_adoption", 0)
+        p90 = stats.get("p90_adoption", 0)
+        width = p90 - p10
+
+        # Skip domains that already have chips
+        if domain_id in chip_domains:
+            continue
+
+        if mean_adoption < 0.15:
+            continue
+
+        if mean_adoption > 0.4 and width < 0.15:
+            priority = "high"
+            confidence = "high"
+        elif mean_adoption > 0.25:
+            priority = "medium"
+            confidence = "medium" if width < 0.2 else "low"
+        else:
+            priority = "low"
+            confidence = "low"
+
+        mutation = {
+            "research_focus": "domain_discovery",
+            "simulation_domain": domain_id,
+        }
+        if frozenset(mutation.items()) not in recent_set:
+            suggestions.append({
+                "candidate_id": f"sim-backed-{domain_id}",
+                "candidate_summary": (
+                    f"Build {domain_id} chip (ensemble adoption: "
+                    f"{mean_adoption:.0%}, CI: {p10:.0%}-{p90:.0%})."
+                ),
+                "hypothesis": (
+                    f"Monte Carlo ensemble predicts {mean_adoption:.0%} adoption "
+                    f"with {confidence} confidence. "
+                    f"{'Strong signal across runs.' if width < 0.1 else 'Variable across runs -- needs more data.'}"
+                ),
+                "mutations": mutation,
+                "priority": priority,
+                "simulation_data": {
+                    "mean_adoption": mean_adoption,
+                    "p10": p10,
+                    "p90": p90,
+                    "confidence": confidence,
+                },
+            })
+
+    # Sort by mean adoption descending
+    suggestions.sort(key=lambda x: x.get("simulation_data", {}).get("mean_adoption", 0), reverse=True)
     return suggestions
