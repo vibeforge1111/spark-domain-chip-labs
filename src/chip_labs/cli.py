@@ -20,6 +20,7 @@ from .evaluate import evaluate as run_evaluate
 from .suggest import suggest as run_suggest
 from .packets import generate_packets
 from .watchtower import generate_watchtower_pages
+from .quality_rubric import score_chip
 
 
 def _load_input(input_path: str | None) -> dict[str, Any]:
@@ -126,6 +127,98 @@ def cmd_watchtower(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: scaffold
+# ---------------------------------------------------------------------------
+
+def cmd_scaffold(args: argparse.Namespace) -> None:
+    """Scaffold a new domain chip from a brief."""
+    from .scaffold import load_brief, scaffold_chip, validate_brief
+    from .category_templates import apply_template, detect_category
+
+    brief = load_brief(args.brief)
+
+    # Auto-detect and apply category template if not set
+    if not brief.get("category"):
+        brief["category"] = detect_category(brief)
+    brief = apply_template(brief)
+
+    errors = validate_brief(brief)
+    if errors:
+        print(f"Brief validation errors: {'; '.join(errors)}", file=sys.stderr)
+        sys.exit(1)
+
+    output_dir = Path(args.output_dir) if args.output_dir else Path.cwd()
+    chip_dir = scaffold_chip(brief, output_dir)
+
+    # Score the scaffolded chip
+    result = score_chip(chip_dir)
+    print(f"Scaffolded: {chip_dir}")
+    print(f"Score: {result['total_score']}/100 ({result['verdict']})")
+    print(f"Passed: {len(result['passed_checks'])}/30 checks")
+
+
+# ---------------------------------------------------------------------------
+# Command: doctor
+# ---------------------------------------------------------------------------
+
+def cmd_doctor(args: argparse.Namespace) -> None:
+    """Run gap analysis and auto-fix on a chip."""
+    from .gap_analyzer import analyze_gaps, improve_chip
+
+    chip_path = Path(args.chip_path)
+    if not chip_path.exists():
+        print(f"Chip path not found: {chip_path}", file=sys.stderr)
+        sys.exit(1)
+
+    # Initial score
+    initial = score_chip(chip_path)
+    print(f"Initial score: {initial['total_score']}/100 ({initial['verdict']})")
+    print(f"Failed checks: {len(initial['failed_checks'])}")
+
+    # Run improvement
+    target = args.target_score or 60
+    report = improve_chip(chip_path, target_score=target, max_iterations=args.max_iterations or 20)
+
+    final_result = report.get("final_result", {})
+    final_verdict = final_result.get("verdict", "unknown")
+    fixes_count = len(report.get("fixes_applied", []))
+
+    print(f"\nAfter improvement:")
+    print(f"Score: {report['final_score']}/100 ({final_verdict})")
+    print(f"Iterations: {report.get('iterations', 0)}")
+    print(f"Fixes applied: {fixes_count}")
+
+    remaining = [c for c in final_result.get("failed_checks", [])]
+    if remaining:
+        print(f"\nRemaining failed checks: {len(remaining)}")
+        for check_id in remaining[:5]:
+            print(f"  - {check_id}")
+
+
+# ---------------------------------------------------------------------------
+# Command: score
+# ---------------------------------------------------------------------------
+
+def cmd_score(args: argparse.Namespace) -> None:
+    """Score a chip against the quality rubric."""
+    chip_path = Path(args.chip_path)
+    result = score_chip(chip_path)
+
+    print(f"Chip: {chip_path.name}")
+    print(f"Score: {result['total_score']}/100")
+    print(f"Verdict: {result['verdict']}")
+    print()
+
+    for dim in result.get("dimensions", []):
+        print(f"  {dim['label']}: {dim['score']}/{dim['max_points']}")
+        for check in dim.get("checks", []):
+            status = "PASS" if check["passed"] else "FAIL"
+            print(f"    [{status}] {check['description']} ({check['points']} pts)")
+
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
 
@@ -160,6 +253,25 @@ def main() -> None:
     p_wt.add_argument("--input", type=str, default=None, help="Input JSON file path.")
     p_wt.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_wt.set_defaults(func=cmd_watchtower)
+
+    # scaffold
+    p_scaffold = sub.add_parser("scaffold", help="Scaffold a new domain chip from a brief.")
+    p_scaffold.add_argument("--brief", type=str, required=True, help="Path to domain brief (JSON or YAML).")
+    p_scaffold.add_argument("--output-dir", type=str, default=None, help="Directory to create chip in.")
+    p_scaffold.set_defaults(func=cmd_scaffold)
+
+    # doctor
+    p_doctor = sub.add_parser("doctor", help="Run gap analysis and auto-fix on a chip.")
+    p_doctor.add_argument("chip_path", type=str, help="Path to chip directory.")
+    p_doctor.add_argument("--target-score", type=int, default=60, help="Target quality score.")
+    p_doctor.add_argument("--max-iterations", type=int, default=20, help="Max fix iterations.")
+    p_doctor.set_defaults(func=cmd_doctor)
+
+    # score
+    p_score = sub.add_parser("score", help="Score a chip against the quality rubric.")
+    p_score.add_argument("chip_path", type=str, help="Path to chip directory.")
+    p_score.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_score.set_defaults(func=cmd_score)
 
     args = parser.parse_args()
     args.func(args)
