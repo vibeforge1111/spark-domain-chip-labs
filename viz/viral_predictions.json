@@ -1,0 +1,317 @@
+{
+  "meta": {
+    "title": "MiroFish Viral Domain Prediction",
+    "domain_count": 20,
+    "agent_count": 1000,
+    "ensemble_runs": 20,
+    "timestamp": "2026-03-20T12:14:45Z"
+  },
+  "results": [
+    {
+      "domain_id": "meme-coin-launcher",
+      "label": "Meme Coin Launch Strategy",
+      "ensemble_mean": 0.6796,
+      "ensemble_p10": 0.6667,
+      "ensemble_p90": 0.6917,
+      "builder_adoption": 0.681,
+      "enterprise_adoption": 0.625,
+      "advocacy_rate": 0.625,
+      "tipping_point": 3,
+      "static_score": 0.861,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "tiktok-creator",
+      "label": "TikTok Content Strategy",
+      "ensemble_mean": 0.6796,
+      "ensemble_p10": 0.6667,
+      "ensemble_p90": 0.6917,
+      "builder_adoption": 0.681,
+      "enterprise_adoption": 0.625,
+      "advocacy_rate": 0.625,
+      "tipping_point": 3,
+      "static_score": 0.814,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "ensemble_mean": 0.6796,
+      "ensemble_p10": 0.6667,
+      "ensemble_p90": 0.6917,
+      "builder_adoption": 0.681,
+      "enterprise_adoption": 0.625,
+      "advocacy_rate": 0.625,
+      "tipping_point": 3,
+      "static_score": 0.8715,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "telegram-miniapp",
+      "label": "Telegram Mini App Development",
+      "ensemble_mean": 0.6796,
+      "ensemble_p10": 0.6667,
+      "ensemble_p90": 0.6917,
+      "builder_adoption": 0.681,
+      "enterprise_adoption": 0.625,
+      "advocacy_rate": 0.625,
+      "tipping_point": 3,
+      "static_score": 0.8255,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "ensemble_mean": 0.6698,
+      "ensemble_p10": 0.6625,
+      "ensemble_p90": 0.6833,
+      "builder_adoption": 0.671,
+      "enterprise_adoption": 0.61,
+      "advocacy_rate": 0.628,
+      "tipping_point": 3,
+      "static_score": 0.884,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "linkedin-ghostwriter",
+      "label": "LinkedIn Thought Leadership",
+      "ensemble_mean": 0.6438,
+      "ensemble_p10": 0.6333,
+      "ensemble_p90": 0.6583,
+      "builder_adoption": 0.641,
+      "enterprise_adoption": 0.594,
+      "advocacy_rate": 0.605,
+      "tipping_point": 3,
+      "static_score": 0.791,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "crypto-airdrop",
+      "label": "Airdrop Farming Strategy",
+      "ensemble_mean": 0.6221,
+      "ensemble_p10": 0.6125,
+      "ensemble_p90": 0.6333,
+      "builder_adoption": 0.622,
+      "enterprise_adoption": 0.546,
+      "advocacy_rate": 0.612,
+      "tipping_point": 3,
+      "static_score": 0.821,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "supabase-fullstack",
+      "label": "Supabase Full-Stack Patterns",
+      "ensemble_mean": 0.5912,
+      "ensemble_p10": 0.5792,
+      "ensemble_p90": 0.6042,
+      "builder_adoption": 0.592,
+      "enterprise_adoption": 0.491,
+      "advocacy_rate": 0.585,
+      "tipping_point": 3,
+      "static_score": 0.845,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "onchain-analytics",
+      "label": "On-Chain Data Analytics",
+      "ensemble_mean": 0.5627,
+      "ensemble_p10": 0.55,
+      "ensemble_p90": 0.5792,
+      "builder_adoption": 0.568,
+      "enterprise_adoption": 0.433,
+      "advocacy_rate": 0.555,
+      "tipping_point": 3,
+      "static_score": 0.8325,
+      "most_sensitive_factor": "signal_strength"
+    },
+    {
+      "domain_id": "twitter-threads",
+      "label": "X/Twitter Thread Craft",
+      "ensemble_mean": 0.5008,
+      "ensemble_p10": 0.4875,
+      "ensemble_p90": 0.5208,
+      "builder_adoption": 0.516,
+      "enterprise_adoption": 0.39,
+      "advocacy_rate": 0.508,
+      "tipping_point": 3,
+      "static_score": 0.794,
+      "most_sensitive_factor": "signal_strength"
+    },
+    {
+      "domain_id": "seo-dominator",
+      "label": "AI-Powered SEO Strategy",
+      "ensemble_mean": 0.4696,
+      "ensemble_p10": 0.4583,
+      "ensemble_p90": 0.4875,
+      "builder_adoption": 0.474,
+      "enterprise_adoption": 0.332,
+      "advocacy_rate": 0.459,
+      "tipping_point": null,
+      "static_score": 0.7945,
+      "most_sensitive_factor": "signal_strength"
+    },
+    {
+      "domain_id": "no-code-saas",
+      "label": "No-Code SaaS Builder",
+      "ensemble_mean": 0.4296,
+      "ensemble_p10": 0.4125,
+      "ensemble_p90": 0.4625,
+      "builder_adoption": 0.43,
+      "enterprise_adoption": 0.279,
+      "advocacy_rate": 0.427,
+      "tipping_point": null,
+      "static_score": 0.799,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "discord-community",
+      "label": "Discord Server & Bot Building",
+      "ensemble_mean": 0.3396,
+      "ensemble_p10": 0.325,
+      "ensemble_p90": 0.3542,
+      "builder_adoption": 0.334,
+      "enterprise_adoption": 0.222,
+      "advocacy_rate": 0.33,
+      "tipping_point": null,
+      "static_score": 0.82,
+      "most_sensitive_factor": "signal_strength"
+    },
+    {
+      "domain_id": "podcast-producer",
+      "label": "AI Podcast Production",
+      "ensemble_mean": 0.2802,
+      "ensemble_p10": 0.2667,
+      "ensemble_p90": 0.3042,
+      "builder_adoption": 0.281,
+      "enterprise_adoption": 0.171,
+      "advocacy_rate": 0.281,
+      "tipping_point": null,
+      "static_score": 0.719,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "browser-extension",
+      "label": "Chrome Extension Development",
+      "ensemble_mean": 0.2412,
+      "ensemble_p10": 0.225,
+      "ensemble_p90": 0.2583,
+      "builder_adoption": 0.239,
+      "enterprise_adoption": 0.147,
+      "advocacy_rate": 0.239,
+      "tipping_point": null,
+      "static_score": 0.7935,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "shopify-growth",
+      "label": "Shopify Store Optimization",
+      "ensemble_mean": 0.2156,
+      "ensemble_p10": 0.2,
+      "ensemble_p90": 0.2333,
+      "builder_adoption": 0.219,
+      "enterprise_adoption": 0.124,
+      "advocacy_rate": 0.219,
+      "tipping_point": null,
+      "static_score": 0.7795,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "github-actions",
+      "label": "GitHub Actions & CI/CD",
+      "ensemble_mean": 0.1925,
+      "ensemble_p10": 0.175,
+      "ensemble_p90": 0.2042,
+      "builder_adoption": 0.206,
+      "enterprise_adoption": 0.103,
+      "advocacy_rate": 0.206,
+      "tipping_point": null,
+      "static_score": 0.8335,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "ai-avatar",
+      "label": "AI Avatar & Digital Identity",
+      "ensemble_mean": 0.1748,
+      "ensemble_p10": 0.1583,
+      "ensemble_p90": 0.1917,
+      "builder_adoption": 0.181,
+      "enterprise_adoption": 0.093,
+      "advocacy_rate": 0.181,
+      "tipping_point": null,
+      "static_score": 0.7245,
+      "most_sensitive_factor": "adoption_threshold"
+    },
+    {
+      "domain_id": "midjourney-art",
+      "label": "AI Art Direction",
+      "ensemble_mean": 0.1656,
+      "ensemble_p10": 0.1458,
+      "ensemble_p90": 0.1833,
+      "builder_adoption": 0.169,
+      "enterprise_adoption": 0.086,
+      "advocacy_rate": 0.146,
+      "tipping_point": null,
+      "static_score": 0.7535,
+      "most_sensitive_factor": "signal_strength"
+    },
+    {
+      "domain_id": "ai-voice-clone",
+      "label": "AI Voice Cloning & TTS",
+      "ensemble_mean": 0.1362,
+      "ensemble_p10": 0.1208,
+      "ensemble_p90": 0.1542,
+      "builder_adoption": 0.131,
+      "enterprise_adoption": 0.065,
+      "advocacy_rate": 0.11,
+      "tipping_point": null,
+      "static_score": 0.7315,
+      "most_sensitive_factor": "adoption_threshold"
+    }
+  ],
+  "clusters": {
+    "Crypto Viral Loop": {
+      "members": [
+        "meme-coin-launcher",
+        "crypto-airdrop",
+        "onchain-analytics",
+        "telegram-miniapp"
+      ],
+      "avg_adoption": 0.636
+    },
+    "Content Creator Engine": {
+      "members": [
+        "tiktok-creator",
+        "twitter-threads",
+        "linkedin-ghostwriter",
+        "podcast-producer"
+      ],
+      "avg_adoption": 0.5261
+    },
+    "Dev Tools Ecosystem": {
+      "members": [
+        "mcp-server-builder",
+        "cursor-copilot",
+        "github-actions",
+        "supabase-fullstack"
+      ],
+      "avg_adoption": 0.5332749999999999
+    },
+    "Visual/Creative": {
+      "members": [
+        "midjourney-art",
+        "ai-avatar",
+        "ai-voice-clone"
+      ],
+      "avg_adoption": 0.15886666666666668
+    },
+    "Commerce/Growth": {
+      "members": [
+        "shopify-growth",
+        "seo-dominator",
+        "no-code-saas",
+        "browser-extension"
+      ],
+      "avg_adoption": 0.339
+    }
+  }
+}
