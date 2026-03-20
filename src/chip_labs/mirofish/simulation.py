@@ -73,6 +73,21 @@ def run_simulation(
         p["persona_id"]: {} for p in personas
     }
 
+    # Extract domain_tags from graph node properties and signal metadata
+    domain_tags: dict[str, list[str]] = {}
+    for d_id in domains:
+        node = graph.nodes.get(d_id, {})
+        tags = list(node.get("properties", {}).get("domain_tags", []))
+        domain_tags[d_id] = tags
+    # Also extract tags from signal metadata
+    for sig in active_signals:
+        sig_tags = sig.get("metadata", {}).get("domain_tags", [])
+        if sig_tags:
+            for d_id in sig.get("affects_domains", []):
+                existing = set(domain_tags.get(d_id, []))
+                existing.update(sig_tags)
+                domain_tags[d_id] = list(existing)
+
     # Run simulation rounds
     for round_num in range(max_rounds):
         # Inject shocks scheduled for this round
@@ -110,15 +125,16 @@ def run_simulation(
             for domain_id, awareness in domain_awareness:
                 in_budget = domain_id in active_domains or evaluated < attention_budget
                 prev_stage = persona["adoption_state"].get(domain_id, "unaware")
+                d_tags = domain_tags.get(domain_id, [])
                 if in_budget:
-                    new_stage = persona_evaluates_domain(persona, domain_id, awareness)
+                    new_stage = persona_evaluates_domain(persona, domain_id, awareness, d_tags)
                     if domain_id not in active_domains:
                         evaluated += 1
                 else:
                     # Below attention budget -- only allow unaware->aware (discovery)
                     # with heavily dampened signal
                     if prev_stage == "unaware" and awareness > 0.5:
-                        new_stage = persona_evaluates_domain(persona, domain_id, awareness * 0.3)
+                        new_stage = persona_evaluates_domain(persona, domain_id, awareness * 0.3, d_tags)
                     else:
                         new_stage = prev_stage
 
@@ -144,7 +160,7 @@ def run_simulation(
                 persona_churn_check(persona, domain_id, awareness, rounds_since)
 
         # Phase 2: Influence propagation -- personas influence each other
-        _propagate_influence(personas, domains, graph)
+        _propagate_influence(personas, domains, graph, domain_tags)
 
         # Phase 3: Record adoption state
         for domain_id in domains:
@@ -192,6 +208,7 @@ def run_simulation(
             "final_consensus": consensus_history[domain_id][-1] if consensus_history[domain_id] else 0.0,
             "tipping_point_round": tipping_points[domain_id],
             "disagreement_score": _compute_disagreement(personas, domain_id),
+            "adoption_by_persona_type": _adoption_snapshot_by_type(personas, domain_id),
         }
 
     return results
@@ -298,6 +315,7 @@ def _propagate_influence(
     personas: list[dict[str, Any]],
     domains: list[str],
     graph: DomainGraph,
+    domain_tags: dict[str, list[str]] | None = None,
 ) -> None:
     """Simulate influence propagation between personas.
 
@@ -377,7 +395,8 @@ def _propagate_influence(
                 penalty = topology_penalty.get(domain_id, 0.0)
                 aggregate = max(0.0, base + bonus - penalty)
                 if aggregate > persona["adoption_threshold"] * 0.8:
-                    persona_evaluates_domain(persona, domain_id, aggregate)
+                    d_tags = (domain_tags or {}).get(domain_id, [])
+                    persona_evaluates_domain(persona, domain_id, aggregate, d_tags)
 
         # Competitive displacement: if persona adopted domain A and A
         # COMPETES_WITH domain B, raise B's effective threshold for this
@@ -454,6 +473,37 @@ def _adoption_snapshot(
         "advocacy_rate": round(stage_counts.get("advocating", 0) / max(total, 1), 4),
         "interest_rate": round(interested_plus / max(total, 1), 4),
     }
+
+
+def _adoption_snapshot_by_type(
+    personas: list[dict[str, Any]], domain_id: str,
+) -> dict[str, dict[str, Any]]:
+    """Per-persona-type adoption breakdown for a domain.
+
+    Returns a dict keyed by persona type, each containing:
+    - adoption_rate: fraction of this type that adopted/advocating
+    - advocacy_rate: fraction that reached advocating
+    - count: number of personas of this type
+    - stage_distribution: count per stage for this type
+    """
+    by_type: dict[str, list[str]] = {}
+    for p in personas:
+        ptype = p["persona_type"]
+        stage = p["adoption_state"].get(domain_id, "unaware")
+        by_type.setdefault(ptype, []).append(stage)
+
+    result: dict[str, dict[str, Any]] = {}
+    for ptype, stages in by_type.items():
+        total = len(stages)
+        adopted = sum(1 for s in stages if s in ("adopted", "advocating"))
+        advocates = sum(1 for s in stages if s == "advocating")
+        result[ptype] = {
+            "adoption_rate": round(adopted / max(total, 1), 4),
+            "advocacy_rate": round(advocates / max(total, 1), 4),
+            "count": total,
+            "stage_distribution": {s: stages.count(s) for s in set(stages)},
+        }
+    return result
 
 
 def _compute_consensus(personas: list[dict[str, Any]], domain_id: str) -> float:

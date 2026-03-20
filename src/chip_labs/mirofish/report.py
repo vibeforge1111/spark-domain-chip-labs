@@ -222,6 +222,121 @@ def _identify_risks(domain_data: dict[str, Any]) -> list[str]:
     return risks
 
 
+def generate_driver_summary(
+    personas: list[dict[str, Any]],
+    domain_id: str,
+) -> dict[str, Any]:
+    """Summarize WHY each persona type adopted or stalled for a domain.
+
+    Aggregates decision_log entries across all personas of each type
+    to produce per-type driver summaries showing matched values,
+    average fit scores, and signal-vs-threshold ratios.
+    """
+    by_type: dict[str, dict[str, Any]] = {}
+
+    for persona in personas:
+        ptype = persona.get("persona_type", "unknown")
+        stage = persona.get("adoption_state", {}).get(domain_id, "unaware")
+        logs = [
+            entry for entry in persona.get("decision_log", [])
+            if entry.get("domain_id") == domain_id
+        ]
+
+        if ptype not in by_type:
+            by_type[ptype] = {
+                "count": 0,
+                "adopted": 0,
+                "advocating": 0,
+                "stalled_at": {},
+                "total_fit": 0.0,
+                "value_matches": {},
+                "signal_sum": 0.0,
+                "threshold_sum": 0.0,
+                "log_count": 0,
+            }
+
+        entry = by_type[ptype]
+        entry["count"] += 1
+        if stage in ("adopted", "advocating"):
+            entry["adopted"] += 1
+        if stage == "advocating":
+            entry["advocating"] += 1
+        if stage not in ("adopted", "advocating"):
+            entry["stalled_at"][stage] = entry["stalled_at"].get(stage, 0) + 1
+
+        for log in logs:
+            entry["total_fit"] += log.get("fit_score", 0.5)
+            entry["signal_sum"] += log.get("effective_signal", 0.0)
+            entry["threshold_sum"] += log.get("threshold", 0.0)
+            entry["log_count"] += 1
+            for val in log.get("matched_values", []):
+                entry["value_matches"][val] = entry["value_matches"].get(val, 0) + 1
+
+    # Build summary
+    summaries: list[dict[str, Any]] = []
+    for ptype, data in sorted(by_type.items(), key=lambda x: x[1]["adopted"], reverse=True):
+        count = data["count"]
+        adoption_rate = data["adopted"] / max(count, 1)
+        avg_fit = data["total_fit"] / max(data["log_count"], 1)
+        avg_signal = data["signal_sum"] / max(data["log_count"], 1)
+        avg_threshold = data["threshold_sum"] / max(data["log_count"], 1)
+        top_values = sorted(data["value_matches"].items(), key=lambda x: x[1], reverse=True)[:3]
+
+        reason = _explain_outcome(adoption_rate, avg_fit, avg_signal, avg_threshold, top_values, data["stalled_at"])
+
+        summaries.append({
+            "persona_type": ptype,
+            "adoption_rate": round(adoption_rate, 4),
+            "advocacy_rate": round(data["advocating"] / max(count, 1), 4),
+            "count": count,
+            "avg_fit_score": round(avg_fit, 4),
+            "top_matched_values": [v[0] for v in top_values],
+            "signal_to_threshold": round(avg_signal / max(avg_threshold, 0.01), 4),
+            "stalled_at": data["stalled_at"],
+            "reason": reason,
+        })
+
+    return {
+        "domain_id": domain_id,
+        "type_summaries": summaries,
+    }
+
+
+def format_driver_summary(summary: dict[str, Any]) -> str:
+    """Format driver summary as human-readable text."""
+    lines = [f"Decision Drivers for {summary['domain_id']}:", ""]
+    for s in summary["type_summaries"]:
+        pct = f"{s['adoption_rate']:.0%}"
+        values_str = ", ".join(s["top_matched_values"]) if s["top_matched_values"] else "none"
+        lines.append(f"  {s['persona_type']:20s} {pct:>5s} adopted  fit={s['avg_fit_score']:.2f}  values=[{values_str}]")
+        lines.append(f"    {s['reason']}")
+    return "\n".join(lines)
+
+
+def _explain_outcome(
+    adoption_rate: float,
+    avg_fit: float,
+    avg_signal: float,
+    avg_threshold: float,
+    top_values: list[tuple[str, int]],
+    stalled_at: dict[str, int],
+) -> str:
+    """Generate a human-readable explanation for why a persona type adopted or stalled."""
+    if adoption_rate >= 0.7:
+        values_str = ", ".join(v[0] for v in top_values[:2]) if top_values else "general interest"
+        ratio = avg_signal / max(avg_threshold, 0.01)
+        return f"Strong adoption: values [{values_str}] matched, signal {ratio:.1f}x threshold"
+    elif adoption_rate >= 0.3:
+        values_str = ", ".join(v[0] for v in top_values[:2]) if top_values else "partial match"
+        return f"Moderate adoption: [{values_str}] resonated but threshold filtered some"
+    else:
+        stall_stage = max(stalled_at, key=stalled_at.get) if stalled_at else "unaware"
+        if avg_fit < 0.4:
+            return f"Low adoption: poor value fit ({avg_fit:.2f}), most stalled at {stall_stage}"
+        else:
+            return f"Low adoption: signal too weak ({avg_signal:.2f} vs {avg_threshold:.2f} threshold), stalled at {stall_stage}"
+
+
 def _cross_domain_analysis(
     predictions: list[dict[str, Any]],
     static_rankings: list[dict[str, Any]] | None,

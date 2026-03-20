@@ -10,7 +10,9 @@ from chip_labs.mirofish.personas import (
     persona_churn_check,
     persona_influence_score,
     persona_learn_from_round,
+    persona_domain_fit,
     PERSONA_TYPES,
+    CUSTOMER_PERSONAS,
 )
 from chip_labs.trend_scanner import SEED_OPPORTUNITIES
 
@@ -27,7 +29,7 @@ def personas(graph):
 
 class TestPersonaTypes:
     def test_all_types_defined(self):
-        assert len(PERSONA_TYPES) == 8
+        assert len(PERSONA_TYPES) == 11
 
     def test_each_type_has_required_fields(self):
         for ptype, traits in PERSONA_TYPES.items():
@@ -37,6 +39,13 @@ class TestPersonaTypes:
             assert "risk_tolerance" in traits
             assert "network_reach" in traits
 
+    def test_each_type_has_values_and_pain_points(self):
+        for ptype, traits in PERSONA_TYPES.items():
+            assert "values" in traits, f"{ptype} missing values"
+            assert "pain_points" in traits, f"{ptype} missing pain_points"
+            assert len(traits["values"]) >= 2, f"{ptype} needs at least 2 values"
+            assert len(traits["pain_points"]) >= 2, f"{ptype} needs at least 2 pain_points"
+
     def test_trait_values_in_range(self):
         for ptype, traits in PERSONA_TYPES.items():
             for key in ["influence_score", "adoption_threshold", "risk_tolerance", "network_reach"]:
@@ -45,11 +54,11 @@ class TestPersonaTypes:
 
 class TestPersonaGeneration:
     def test_generates_personas(self, personas):
-        assert len(personas) >= 12  # 8 types * at least 1 each
+        assert len(personas) >= 11  # 11 types * at least 1 each
 
     def test_persona_bounded(self, graph):
         personas = generate_personas(graph, count_per_type=4)
-        assert len(personas) <= 32  # 8 types * 4 max
+        assert len(personas) <= 44  # 11 types * 4 max
 
     def test_deterministic_with_seed(self, graph):
         p1 = generate_personas(graph, seed=42)
@@ -75,6 +84,49 @@ class TestPersonaGeneration:
         for p in personas:
             assert "adoption_state" in p
             assert isinstance(p["adoption_state"], dict)
+
+    def test_persona_has_values(self, personas):
+        for p in personas:
+            assert "values" in p
+            assert isinstance(p["values"], list)
+            assert len(p["values"]) >= 2
+
+    def test_persona_has_pain_points(self, personas):
+        for p in personas:
+            assert "pain_points" in p
+            assert isinstance(p["pain_points"], list)
+
+
+class TestPersonaDomainFit:
+    def test_perfect_match(self):
+        persona = {"values": ["speed", "alpha", "edge"]}
+        fit = persona_domain_fit(persona, "test", ["speed", "alpha", "edge", "risk_management"])
+        assert fit == 0.9  # 0.3 + 3 * 0.2
+
+    def test_no_match(self):
+        persona = {"values": ["speed", "alpha"]}
+        fit = persona_domain_fit(persona, "test", ["aesthetics", "creativity"])
+        assert fit == 0.3  # base, no overlap
+
+    def test_partial_match(self):
+        persona = {"values": ["speed", "alpha", "edge"]}
+        fit = persona_domain_fit(persona, "test", ["speed", "creativity"])
+        assert fit == 0.5  # 0.3 + 1 * 0.2
+
+    def test_no_tags_returns_neutral(self):
+        persona = {"values": ["speed"]}
+        fit = persona_domain_fit(persona, "test", [])
+        assert fit == 0.5
+
+    def test_no_values_returns_neutral(self):
+        persona = {}
+        fit = persona_domain_fit(persona, "test", ["speed"])
+        assert fit == 0.5
+
+    def test_capped_at_1(self):
+        persona = {"values": ["a", "b", "c", "d", "e"]}
+        fit = persona_domain_fit(persona, "test", ["a", "b", "c", "d", "e"])
+        assert fit == 1.0
 
 
 class TestPersonaDynamics:
@@ -111,7 +163,7 @@ class TestChurn:
     def _make_persona(self, stage="adopted", threshold=0.5, risk=0.5, activity=1.0):
         return {
             "persona_id": "test-0",
-            "persona_type": "builder",
+            "persona_type": "developer",
             "adoption_state": {"test-domain": stage},
             "adoption_threshold": threshold,
             "risk_tolerance": risk,
@@ -197,7 +249,7 @@ class TestPersonaLearning:
     def _make_adopted_persona(self, threshold=0.5):
         return {
             "persona_id": "learn-0",
-            "persona_type": "builder",
+            "persona_type": "developer",
             "adoption_state": {"domain-a": "adopted"},
             "adoption_threshold": threshold,
             "risk_tolerance": 0.5,
@@ -249,3 +301,79 @@ class TestPersonaLearning:
         for _ in range(100):
             persona_learn_from_round(p, "domain-a", 0.01)
         assert p["adoption_threshold"] <= 0.95
+
+
+class TestDecisionLog:
+    """Tests for decision driver tracking in persona_evaluates_domain."""
+
+    def _make_persona(self, ptype="developer"):
+        traits = CUSTOMER_PERSONAS[ptype]
+        return {
+            "persona_id": f"{ptype}-test",
+            "persona_type": ptype,
+            "influence_score": traits["influence_score"],
+            "adoption_threshold": traits["adoption_threshold"],
+            "risk_tolerance": traits["risk_tolerance"],
+            "network_reach": traits["network_reach"],
+            "values": list(traits["values"]),
+            "pain_points": list(traits["pain_points"]),
+            "expertise_domains": [],
+            "adoption_state": {},
+            "signal_memory": [],
+            "activity_score": 1.0,
+        }
+
+    def test_decision_log_created(self):
+        p = self._make_persona()
+        persona_evaluates_domain(p, "test-domain", 0.5, ["code_quality"])
+        assert "decision_log" in p
+        assert len(p["decision_log"]) == 1
+
+    def test_decision_log_records_domain(self):
+        p = self._make_persona()
+        persona_evaluates_domain(p, "test-domain", 0.5, ["code_quality"])
+        entry = p["decision_log"][0]
+        assert entry["domain_id"] == "test-domain"
+
+    def test_decision_log_records_stages(self):
+        p = self._make_persona()
+        persona_evaluates_domain(p, "test-domain", 0.5)
+        entry = p["decision_log"][0]
+        assert entry["from_stage"] == "unaware"
+        assert entry["to_stage"] in ["unaware", "aware", "interested"]
+
+    def test_decision_log_records_fit_score(self):
+        p = self._make_persona()
+        persona_evaluates_domain(p, "test-domain", 0.5, ["code_quality", "productivity"])
+        entry = p["decision_log"][0]
+        assert "fit_score" in entry
+        assert entry["fit_score"] > 0.3  # has value matches
+
+    def test_decision_log_records_matched_values(self):
+        p = self._make_persona("developer")  # values: code_quality, productivity, dx, extensibility
+        persona_evaluates_domain(p, "test-domain", 0.5, ["code_quality", "productivity", "speed"])
+        entry = p["decision_log"][0]
+        assert "matched_values" in entry
+        assert "code_quality" in entry["matched_values"]
+        assert "productivity" in entry["matched_values"]
+        assert "speed" not in entry["matched_values"]  # not in developer values
+
+    def test_decision_log_accumulates(self):
+        p = self._make_persona()
+        for i in range(5):
+            persona_evaluates_domain(p, f"domain-{i}", 0.5)
+        assert len(p["decision_log"]) == 5
+
+    def test_decision_log_capped(self):
+        p = self._make_persona()
+        for i in range(150):
+            persona_evaluates_domain(p, f"domain-{i}", 0.5)
+        assert len(p["decision_log"]) <= 100
+
+    def test_advanced_flag_set(self):
+        p = self._make_persona("opportunity_hunter")  # low threshold 0.15
+        persona_evaluates_domain(p, "test-domain", 0.9)
+        entry = p["decision_log"][0]
+        assert "advanced" in entry
+        # With very high signal and low threshold, likely advanced
+        assert isinstance(entry["advanced"], bool)

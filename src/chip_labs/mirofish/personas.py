@@ -1,7 +1,9 @@
 """Stakeholder persona generator.
 
 Creates differentiated agent archetypes that simulate domain adoption dynamics.
-Bounded at 12-30 personas per domain (not thousands).
+11 customer persona types matching real Spark users: investors, entrepreneurs,
+content creators, solopreneurs, AI newcomers, developers, marketers, creatives,
+traders, tool makers, and opportunity hunters.
 """
 
 from __future__ import annotations
@@ -12,73 +14,122 @@ from typing import Any
 from .graph import DomainGraph
 
 
-# 8 persona types with default trait ranges
-PERSONA_TYPES: dict[str, dict[str, Any]] = {
-    "early_adopter": {
-        "label": "Early Adopter",
-        "influence_score": 0.7,
-        "adoption_threshold": 0.2,
-        "risk_tolerance": 0.9,
-        "network_reach": 0.6,
-        "description": "Jumps on new tech fast, high risk tolerance, moderate influence.",
-    },
-    "builder": {
-        "label": "Builder / Developer",
-        "influence_score": 0.8,
-        "adoption_threshold": 0.35,
-        "risk_tolerance": 0.7,
-        "network_reach": 0.7,
-        "description": "Builds with the tech, high influence through shipping code.",
-    },
+# 11 real customer persona types
+CUSTOMER_PERSONAS: dict[str, dict[str, Any]] = {
     "investor": {
-        "label": "Investor / VC",
+        "label": "Investor",
         "influence_score": 0.9,
-        "adoption_threshold": 0.4,
+        "adoption_threshold": 0.45,
         "risk_tolerance": 0.6,
-        "network_reach": 0.9,
-        "description": "Funds the ecosystem, high network reach, moderate risk tolerance.",
+        "network_reach": 0.85,
+        "description": "Wants deal flow, alpha, portfolio intelligence. High influence, cautious adoption.",
+        "values": ["deal_flow", "alpha", "portfolio_intelligence", "roi"],
+        "pain_points": ["information_overload", "slow_due_diligence", "missed_deals"],
     },
-    "skeptic": {
-        "label": "Skeptic / Critic",
-        "influence_score": 0.5,
-        "adoption_threshold": 0.8,
-        "risk_tolerance": 0.2,
-        "network_reach": 0.4,
-        "description": "Slow to adopt, provides critical feedback, raises valid concerns.",
-    },
-    "enterprise_buyer": {
-        "label": "Enterprise Buyer",
-        "influence_score": 0.6,
-        "adoption_threshold": 0.7,
-        "risk_tolerance": 0.3,
-        "network_reach": 0.5,
-        "description": "Large budgets but high adoption barrier, needs proven ROI.",
+    "entrepreneur": {
+        "label": "Entrepreneur",
+        "influence_score": 0.75,
+        "adoption_threshold": 0.3,
+        "risk_tolerance": 0.85,
+        "network_reach": 0.7,
+        "description": "Wants to ship products fast, validate ideas. Action-oriented.",
+        "values": ["speed_to_ship", "idea_validation", "mvp_quality", "market_fit"],
+        "pain_points": ["too_slow", "feature_bloat", "analysis_paralysis"],
     },
     "content_creator": {
         "label": "Content Creator",
-        "influence_score": 0.75,
-        "adoption_threshold": 0.3,
-        "risk_tolerance": 0.65,
-        "network_reach": 0.85,
-        "description": "Amplifies signal, creates tutorials and content, high reach.",
+        "influence_score": 0.8,
+        "adoption_threshold": 0.25,
+        "risk_tolerance": 0.7,
+        "network_reach": 0.9,
+        "description": "Wants audience growth, content quality, distribution. Very high reach.",
+        "values": ["audience_growth", "content_quality", "distribution", "engagement"],
+        "pain_points": ["writer_block", "inconsistency", "platform_algorithms"],
     },
-    "researcher": {
-        "label": "Researcher / Academic",
-        "influence_score": 0.55,
-        "adoption_threshold": 0.5,
-        "risk_tolerance": 0.5,
+    "solopreneur": {
+        "label": "Solopreneur",
+        "influence_score": 0.5,
+        "adoption_threshold": 0.35,
+        "risk_tolerance": 0.75,
         "network_reach": 0.4,
-        "description": "Provides rigor and validation, moderate influence, domain expert.",
+        "description": "Builds with limited time/capital. Values simplicity and leverage.",
+        "values": ["time_leverage", "low_cost", "simplicity", "all_in_one"],
+        "pain_points": ["no_team", "limited_budget", "too_complex"],
     },
-    "regulator": {
-        "label": "Regulator / Policy Maker",
-        "influence_score": 0.85,
-        "adoption_threshold": 0.9,
-        "risk_tolerance": 0.1,
+    "ai_newcomer": {
+        "label": "AI Newcomer",
+        "influence_score": 0.3,
+        "adoption_threshold": 0.2,
+        "risk_tolerance": 0.5,
         "network_reach": 0.3,
-        "description": "Can block or enable adoption, extremely high threshold, low risk.",
+        "description": "Wants to start using AI, low learning curve. Eager but inexperienced.",
+        "values": ["easy_start", "low_learning_curve", "quick_wins", "outcompete"],
+        "pain_points": ["overwhelmed", "dont_know_where_to_start", "fear_of_ai"],
+    },
+    "developer": {
+        "label": "Developer",
+        "influence_score": 0.7,
+        "adoption_threshold": 0.4,
+        "risk_tolerance": 0.65,
+        "network_reach": 0.65,
+        "description": "Wants better tools, code quality, productivity. Technical evaluation.",
+        "values": ["code_quality", "productivity", "dx", "extensibility"],
+        "pain_points": ["bad_docs", "vendor_lock_in", "over_engineering"],
+    },
+    "marketer": {
+        "label": "Marketer",
+        "influence_score": 0.65,
+        "adoption_threshold": 0.3,
+        "risk_tolerance": 0.6,
+        "network_reach": 0.75,
+        "description": "Wants campaigns, attribution, conversion. ROI-focused.",
+        "values": ["campaign_roi", "attribution", "conversion", "audience_targeting"],
+        "pain_points": ["cant_prove_roi", "ad_fatigue", "fragmented_data"],
+    },
+    "creative": {
+        "label": "Creative",
+        "influence_score": 0.6,
+        "adoption_threshold": 0.25,
+        "risk_tolerance": 0.8,
+        "network_reach": 0.55,
+        "description": "Wants aesthetic quality, creative control. Low threshold, high risk tolerance.",
+        "values": ["aesthetic_quality", "creative_control", "uniqueness", "visual_impact"],
+        "pain_points": ["ai_looks_generic", "loss_of_style", "uncanny_valley"],
+    },
+    "trader": {
+        "label": "Trader",
+        "influence_score": 0.65,
+        "adoption_threshold": 0.35,
+        "risk_tolerance": 0.9,
+        "network_reach": 0.5,
+        "description": "Wants alpha, speed, risk management. Highest risk tolerance, speed-obsessed.",
+        "values": ["alpha", "speed", "risk_management", "edge"],
+        "pain_points": ["slow_execution", "information_lag", "blown_stops"],
+    },
+    "tool_maker": {
+        "label": "Tool Maker",
+        "influence_score": 0.75,
+        "adoption_threshold": 0.5,
+        "risk_tolerance": 0.7,
+        "network_reach": 0.7,
+        "description": "Builds infrastructure for other builders. Evaluates carefully.",
+        "values": ["infrastructure", "api_quality", "developer_adoption", "composability"],
+        "pain_points": ["poor_docs", "breaking_changes", "low_adoption"],
+    },
+    "opportunity_hunter": {
+        "label": "Opportunity Hunter",
+        "influence_score": 0.55,
+        "adoption_threshold": 0.15,
+        "risk_tolerance": 0.95,
+        "network_reach": 0.6,
+        "description": "Spots trends early, acts fast. Lowest threshold, highest risk tolerance.",
+        "values": ["early_access", "trend_spotting", "speed", "first_mover"],
+        "pain_points": ["fomo", "too_late", "noise_vs_signal"],
     },
 }
+
+# Backwards compatibility alias
+PERSONA_TYPES = CUSTOMER_PERSONAS
 
 
 def generate_personas(
@@ -124,6 +175,8 @@ def generate_personas(
                 "risk_tolerance": _vary(traits["risk_tolerance"], variation, 0.15),
                 "network_reach": _vary(traits["network_reach"], variation, 0.1),
                 "expertise_domains": expertise,
+                "values": list(traits.get("values", [])),
+                "pain_points": list(traits.get("pain_points", [])),
                 "adoption_state": {},  # domain_id -> adoption stage
                 "signal_memory": [],   # recent signals this persona has seen
                 "activity_score": 1.0, # decays over simulation rounds
@@ -139,10 +192,36 @@ def update_persona_activity(persona: dict[str, Any], round_num: int,
     persona["activity_score"] = max(0.1, 1.0 - (round_num * decay_rate))
 
 
+def _adoption_roll(
+    signal: float, threshold: float,
+    persona: dict[str, Any], domain_id: str, stage_idx: int,
+) -> bool:
+    """Probabilistic adoption decision using sigmoid curve.
+
+    When signal == threshold: 50% chance of advancing.
+    When signal >> threshold: ~100% chance.
+    When signal << threshold: ~0% chance.
+
+    Deterministic given the persona+domain+stage combination (uses hash PRNG).
+    """
+    steepness = 8.0
+    x = (signal - threshold) * steepness
+    x = max(-20.0, min(20.0, x))
+    probability = 1.0 / (1.0 + 2.718281828 ** (-x))
+
+    # Deterministic "random" roll from persona identity + domain + stage
+    seed_str = f"{persona['persona_id']}:{domain_id}:{stage_idx}"
+    h = hashlib.md5(seed_str.encode()).hexdigest()
+    roll = (int(h[:8], 16) % 10000) / 10000.0
+
+    return roll < probability
+
+
 def persona_evaluates_domain(
     persona: dict[str, Any],
     domain_id: str,
     awareness_score: float,
+    domain_tags: list[str] | None = None,
 ) -> str:
     """Determine a persona's adoption stage for a domain.
 
@@ -151,10 +230,8 @@ def persona_evaluates_domain(
     Each stage has a progressively higher threshold multiplier, so advancing
     from "evaluating" to "adopted" is much harder than "unaware" to "aware".
 
-    Key design: advance_threshold uses exponential difficulty scaling so that
-    only domains with genuinely strong, sustained signal reach adopted/advocating.
-    The risk_tolerance discount is capped so even high-risk personas still face
-    meaningful barriers at late stages.
+    The persona's values are compared against domain_tags to compute a fit
+    multiplier -- domains that match what the persona cares about get a boost.
 
     Returns new adoption stage.
     """
@@ -163,7 +240,10 @@ def persona_evaluates_domain(
     risk = persona["risk_tolerance"]
     activity = persona["activity_score"]
 
-    effective_signal = awareness_score * activity
+    # Value-based fit: how well does this domain match what this persona wants?
+    fit = persona_domain_fit(persona, domain_id, domain_tags)
+
+    effective_signal = awareness_score * activity * fit
 
     stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
     current_idx = stages.index(current) if current in stages else 0
@@ -192,10 +272,34 @@ def persona_evaluates_domain(
         # Penalty grows with each additional adopted domain beyond 5
         advance_threshold *= 1.0 + (adopted_count - 5) * 0.15
 
-    if effective_signal > advance_threshold and current_idx < len(stages) - 1:
-        new_stage = stages[current_idx + 1]
+    if current_idx < len(stages) - 1:
+        if _adoption_roll(effective_signal, advance_threshold, persona, domain_id, current_idx):
+            new_stage = stages[current_idx + 1]
+            advanced = True
+        else:
+            new_stage = current
+            advanced = False
     else:
         new_stage = current
+        advanced = False
+
+    # Decision driver tracking
+    if "decision_log" not in persona:
+        persona["decision_log"] = []
+    matched_values = list(set(persona.get("values", [])) & set(domain_tags or []))
+    persona["decision_log"].append({
+        "domain_id": domain_id,
+        "from_stage": current,
+        "to_stage": new_stage,
+        "advanced": advanced,
+        "effective_signal": round(effective_signal, 4),
+        "threshold": round(advance_threshold, 4),
+        "fit_score": round(fit, 4),
+        "matched_values": matched_values,
+    })
+    # Cap log to prevent unbounded growth
+    if len(persona["decision_log"]) > 100:
+        persona["decision_log"] = persona["decision_log"][-100:]
 
     persona["adoption_state"][domain_id] = new_stage
     return new_stage
@@ -346,19 +450,40 @@ def _vary(base: float, variation: float, amplitude: float) -> float:
     return round(max(0.0, min(1.0, base + offset)), 4)
 
 
+def persona_domain_fit(
+    persona: dict[str, Any],
+    domain_id: str,
+    domain_tags: list[str] | None = None,
+) -> float:
+    """How well does this domain match this persona's values?
+
+    Returns 0.0-1.0 fit score used as a multiplier on awareness.
+    Higher fit means the persona is naturally drawn to this domain.
+    """
+    values = persona.get("values", [])
+    tags = domain_tags or []
+    if not values or not tags:
+        return 0.5  # neutral if no data
+    overlap = len(set(values) & set(tags))
+    return min(1.0, round(0.3 + overlap * 0.2, 4))  # base 0.3, +0.2 per match, cap 1.0
+
+
 def _assign_expertise(graph: DomainGraph, domains: list[str],
                       ptype: str, variant: int) -> list[str]:
     """Assign expertise domains based on persona type and graph structure."""
     # Each persona type has affinity for certain graph entity types
     type_affinity = {
-        "early_adopter": ["technology", "trend"],
-        "builder": ["technology", "platform"],
         "investor": ["company", "trend"],
-        "skeptic": ["regulation", "community"],
-        "enterprise_buyer": ["company", "regulation"],
+        "entrepreneur": ["technology", "platform", "trend"],
         "content_creator": ["platform", "community"],
-        "researcher": ["technology", "trend"],
-        "regulator": ["regulation"],
+        "solopreneur": ["technology", "platform"],
+        "ai_newcomer": ["technology", "platform"],
+        "developer": ["technology", "platform"],
+        "marketer": ["platform", "community"],
+        "creative": ["platform", "community"],
+        "trader": ["technology", "trend"],
+        "tool_maker": ["technology", "platform"],
+        "opportunity_hunter": ["trend", "community"],
     }
     affinities = type_affinity.get(ptype, [])
 
