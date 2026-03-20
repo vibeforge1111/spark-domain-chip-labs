@@ -122,11 +122,27 @@ def run_simulation(
             domain_awareness.sort(key=lambda x: x[1], reverse=True)
 
             evaluated = 0
+            pid = persona["persona_id"]
             for domain_id, awareness in domain_awareness:
                 in_budget = domain_id in active_domains or evaluated < attention_budget
                 prev_stage = persona["adoption_state"].get(domain_id, "unaware")
                 d_tags = domain_tags.get(domain_id, [])
-                if in_budget:
+
+                # Stage cooldown: after advancing, persona needs time to
+                # "settle in" before considering the next stage. This models
+                # evaluation periods -- you don't go from discovering to
+                # adopting in consecutive rounds.
+                # Cooldown varies by persona traits: cautious personas (low
+                # risk_tolerance) take longer; eager ones (high risk) are faster.
+                # Hash of persona+domain creates per-pair variation so different
+                # personas advance at different rounds, producing gradual curves.
+                last_adv = last_advance[pid].get(domain_id, -10)
+                pair_hash = hash((pid, domain_id)) % 3  # 0, 1, or 2
+                base_cooldown = 3 - int(persona["risk_tolerance"] * 1.5)  # 1-3
+                cooldown = max(1, base_cooldown + pair_hash)  # 1-5 rounds
+                if round_num - last_adv < cooldown and prev_stage != "unaware":
+                    new_stage = prev_stage  # still cooling down
+                elif in_budget:
                     new_stage = persona_evaluates_domain(persona, domain_id, awareness, d_tags)
                     if domain_id not in active_domains:
                         evaluated += 1
@@ -139,7 +155,6 @@ def run_simulation(
                         new_stage = prev_stage
 
                 # Track when persona last advanced
-                pid = persona["persona_id"]
                 if new_stage != prev_stage:
                     last_advance[pid][domain_id] = round_num
 
@@ -287,6 +302,13 @@ def _compute_awareness(
         decayed = decay_signal(signal, max(0, elapsed))
         if decayed <= 0.0:
             continue
+
+        # Signal warmup: awareness builds over time, not instantly.
+        # New signals start at 20% effectiveness and ramp to full over 5 rounds.
+        warmup_rounds = 5
+        if elapsed >= 0:
+            warmup = 0.2 + 0.8 * min(1.0, elapsed / warmup_rounds)
+            decayed *= warmup
 
         # Shock effect modifier
         effect = signal.get("effect", "neutral")

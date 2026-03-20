@@ -1,86 +1,140 @@
 """Export MiroFish simulation data as JSON for the knowledge graph visualization.
 
-Combines both the original 32-domain run and the 20 viral domain predictions
-into a single interactive graph.
+Uses all 100 domains from predict_100_domains.py.
+Runs lightweight simulations (550 agents) to generate adoption curves
+for the interactive graph visualization.
 """
 
 import json
+import os
 import sys
 import time
 
-sys.path.insert(0, "src")
+script_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(script_dir, "..", "src"))
 
-from chip_labs.mirofish.graph import build_graph_from_opportunities
+from chip_labs.mirofish.graph import DomainGraph, build_graph_from_opportunities
 from chip_labs.mirofish.personas import generate_personas, PERSONA_TYPES
 from chip_labs.mirofish.simulation import run_simulation
 from chip_labs.mirofish.signals import (
     signals_from_opportunities, signals_from_graph,
-    create_signal, create_shock, SIGNAL_TYPES, SHOCK_TEMPLATES,
+    create_shock,
 )
-from chip_labs.trend_scanner import score_opportunity
 
-# Import domain data from both prediction scripts
-from predict_1000_agents import EXISTING_CHIPS, NEW_CANDIDATES, ALL_DOMAINS
-from predict_viral_domains import VIRAL_DOMAINS, VIRAL_RELATIONSHIPS, VIRAL_SIGNALS, VIRAL_SHOCKS
+# Import all 100 domains and relationships
+from predict_100_domains import (
+    ALL_100_DOMAINS, EXISTING_CHIPS, NEW_CANDIDATES,
+    VIRAL_DOMAINS, NEW_48_DOMAINS, RELATIONSHIPS,
+)
+
+
+def build_graph(domains, relationships):
+    """Build the domain graph (same logic as predict_100_domains.py)."""
+    graph = DomainGraph()
+    for d in domains:
+        graph.add_node(d["domain_id"], "domain", d.get("label", d["domain_id"]),
+                       {"domain_tags": d.get("domain_tags", [])})
+
+    tech_nodes = {"ai-tools", "blockchain", "web-platform", "social-media", "saas-infra"}
+    for t in tech_nodes:
+        graph.add_node(t, "technology", t)
+    for d in domains:
+        for src in d.get("evidence_sources", []):
+            if src == "github":
+                graph.add_edge("ai-tools", d["domain_id"], "ENABLES", 0.5)
+            elif src == "x_twitter":
+                graph.add_edge("social-media", d["domain_id"], "ENABLES", 0.4)
+
+    graph_from_opps = build_graph_from_opportunities(domains)
+    for node_id, node_data in graph_from_opps.nodes.items():
+        if node_id not in graph.nodes:
+            graph.add_node(node_id, node_data["type"], node_data["label"],
+                           node_data.get("properties", {}))
+    for edge in graph_from_opps.edges:
+        graph.add_edge(edge["source"], edge["target"], edge["relationship"],
+                       edge.get("weight", 0.5))
+
+    for r in relationships:
+        if r["source"] in graph.nodes and r["target"] in graph.nodes:
+            graph.add_edge(r["source"], r["target"], r["relationship"],
+                           r.get("weight", 0.5))
+
+    return graph
 
 
 def main():
-    # Combine all domains (original 32 + viral 20, deduplicating by domain_id)
-    seen_ids = {d["domain_id"] for d in ALL_DOMAINS}
-    combined_domains = list(ALL_DOMAINS)
-    viral_only = []
-    for d in VIRAL_DOMAINS:
-        if d["domain_id"] not in seen_ids:
-            combined_domains.append(d)
-            viral_only.append(d)
-            seen_ids.add(d["domain_id"])
+    t0 = time.time()
+    print(f"Building graph for {len(ALL_100_DOMAINS)} domains...")
 
-    # Score all domains
-    for d in combined_domains:
-        d["composite_score"] = score_opportunity(d)
+    graph = build_graph(ALL_100_DOMAINS, RELATIONSHIPS)
+    domain_ids = [d["domain_id"] for d in ALL_100_DOMAINS]
 
-    # Build graph from combined domains
-    graph = build_graph_from_opportunities(combined_domains)
-
-    # Add viral-specific relationships
-    for rel in VIRAL_RELATIONSHIPS:
-        src, tgt, rtype = rel[0], rel[1], rel[2]
-        weight = rel[3] if len(rel) > 3 else 0.7
-        if src in graph.nodes and tgt in graph.nodes:
-            graph.add_edge(src, tgt, rtype, weight=weight)
-
-    # Generate 1000 personas
-    domain_ids = [d["domain_id"] for d in combined_domains]
-    personas = generate_personas(graph, domain_ids, count_per_type=125, seed=42)
-
-    # Generate signals (original + viral)
-    opp_signals = signals_from_opportunities(combined_domains)
+    # Generate signals with staggered injection for dynamic adoption curves.
+    # Without staggering, all signals start at round 0 and personas blast
+    # through all stages by round 3, creating flat curves.
+    opp_signals = signals_from_opportunities(ALL_100_DOMAINS)
     graph_signals = signals_from_graph(graph)
-    all_signals = opp_signals + graph_signals + list(VIRAL_SIGNALS)
 
-    # Shocks (original + viral)
+    # Stagger opportunity signals: stronger domains get signals earlier,
+    # weaker domains "emerge" in later rounds. This creates realistic
+    # adoption dynamics where the viz shows gradual growth.
+    domain_scores = {d["domain_id"]: d.get("composite_score", 0.5) for d in ALL_100_DOMAINS}
+    for sig in opp_signals:
+        domains_affected = sig.get("affects_domains", [])
+        if domains_affected:
+            avg_score = sum(domain_scores.get(d, 0.5) for d in domains_affected) / len(domains_affected)
+            # Top domains (score > 0.8) get signals at rounds 0-2
+            # Mid domains (0.6-0.8) get signals at rounds 3-6
+            # Low domains (< 0.6) get signals at rounds 7-12
+            inject_round = int((1.0 - avg_score) * 14)
+            sig["inject_at_round"] = min(inject_round, 12)
+
+    # Stagger graph signals similarly but with a slight delay
+    for sig in graph_signals:
+        domains_affected = sig.get("affects_domains", [])
+        if domains_affected:
+            avg_score = sum(domain_scores.get(d, 0.5) for d in domains_affected) / len(domains_affected)
+            inject_round = int((1.0 - avg_score) * 14) + 2
+            sig["inject_at_round"] = min(inject_round, 14)
+
+    all_signals = opp_signals + graph_signals
+
+    # Shocks
     shocks = [
-        create_shock("breakout_tool", ["ai-agent-builder", "prompt-engineer"], inject_at_round=3),
-        create_shock("viral_adoption", ["solana-dev", "defi-architect"], inject_at_round=5),
-        create_shock("market_crash", ["trading-crypto", "defi-architect", "solana-dev", "personal-finance"], inject_at_round=8),
-        create_shock("ecosystem_integration", ["open-source-maintainer", "ai-agent-builder"], inject_at_round=4),
-        create_shock("regulatory_ban", ["health-wellness", "compliance-shield"], inject_at_round=10),
-    ] + list(VIRAL_SHOCKS)
+        create_shock("breakout_tool", ["ai-agent-builder", "prompt-engineer", "cursor-copilot"], inject_at_round=3),
+        create_shock("viral_adoption", ["solana-dev", "defi-architect", "meme-coin-launcher"], inject_at_round=5),
+        create_shock("market_crash", ["trading-crypto", "defi-architect", "solana-dev", "options-trader", "quant-strategy"], inject_at_round=8),
+        create_shock("ecosystem_integration", ["mcp-server-builder", "ai-agent-builder", "supabase-fullstack"], inject_at_round=4),
+        create_shock("regulatory_ban", ["health-wellness", "compliance-shield", "crypto-airdrop"], inject_at_round=10),
+        create_shock("viral_adoption", ["tiktok-creator", "meme-coin-launcher", "telegram-miniapp"], inject_at_round=6),
+        create_shock("breakout_tool", ["no-code-saas", "ai-workflow-automation"], inject_at_round=7),
+    ]
+
+    # Use 50 per type = 550 agents for fast viz export (vs 125 = 1375 for full run)
+    count_per_type = 50
+    print(f"Generating personas ({count_per_type} per type = {count_per_type * 11} agents)...")
+    personas = generate_personas(graph, domain_ids, count_per_type=count_per_type, seed=42)
 
     # Run builder simulation
+    print("Running builder simulation...")
     builder_result = run_simulation(
         graph, domain_ids, personas=list(personas),
         signals=all_signals, shocks=shocks,
         max_rounds=20, seed=42, context="builder_community",
     )
+    t1 = time.time()
+    print(f"  Builder sim: {t1 - t0:.1f}s")
 
     # Run enterprise simulation with fresh personas
-    enterprise_personas = generate_personas(graph, domain_ids, count_per_type=125, seed=42)
+    print("Running enterprise simulation...")
+    enterprise_personas = generate_personas(graph, domain_ids, count_per_type=count_per_type, seed=99)
     enterprise_result = run_simulation(
         graph, domain_ids, personas=enterprise_personas,
         signals=all_signals, shocks=shocks,
-        max_rounds=20, seed=42, context="enterprise_market",
+        max_rounds=20, seed=99, context="enterprise_market",
     )
+    t2 = time.time()
+    print(f"  Enterprise sim: {t2 - t1:.1f}s")
 
     # --- Export graph nodes ---
     graph_nodes = []
@@ -103,14 +157,14 @@ def main():
 
     # --- Export domain results ---
     existing_ids = {d["domain_id"] for d in EXISTING_CHIPS}
-    viral_ids = {d["domain_id"] for d in viral_only}
+    viral_ids = {d["domain_id"] for d in VIRAL_DOMAINS}
+    new_ids = {d["domain_id"] for d in NEW_48_DOMAINS}
     domains_data = []
-    for d in combined_domains:
+    for d in ALL_100_DOMAINS:
         d_id = d["domain_id"]
         b = builder_result["domains"].get(d_id, {})
         e = enterprise_result["domains"].get(d_id, {})
 
-        # Get adoption curve (per-round data)
         builder_curve = []
         for snapshot in b.get("adoption_curve", []):
             builder_curve.append({
@@ -130,17 +184,23 @@ def main():
                 "interest_rate": snapshot["interest_rate"],
             })
 
+        category = "existing" if d_id in existing_ids else \
+                   "viral" if d_id in viral_ids else \
+                   "new" if d_id in new_ids else "candidate"
+
         domains_data.append({
             "domain_id": d_id,
             "label": d.get("label", d_id),
             "description": d.get("description", ""),
             "is_existing": d_id in existing_ids,
             "is_viral": d_id in viral_ids,
+            "category": category,
             "status": d.get("status", "candidate"),
             "composite_score": d.get("composite_score", 0),
             "scores": d.get("scores", {}),
             "related_chips": d.get("related_chips", []),
             "evidence_sources": d.get("evidence_sources", []),
+            "domain_tags": d.get("domain_tags", []),
             "builder_adoption": b.get("final_adoption_rate", 0),
             "enterprise_adoption": e.get("final_adoption_rate", 0),
             "advocacy_rate": b.get("final_advocacy_rate", 0),
@@ -149,6 +209,7 @@ def main():
             "disagreement": b.get("disagreement_score", 0),
             "builder_curve": builder_curve,
             "enterprise_curve": enterprise_curve,
+            "adoption_by_persona_type": b.get("adoption_by_persona_type", {}),
         })
 
     # --- Export persona type distribution ---
@@ -193,16 +254,18 @@ def main():
     # --- Assemble full export ---
     export = {
         "meta": {
-            "title": "MiroFish 1000-Agent Trend Prediction (32 original + 20 viral domains)",
+            "title": f"MiroFish v2: {len(ALL_100_DOMAINS)}-Domain Trend Prediction",
             "agent_count": len(personas),
             "domain_count": len(domain_ids),
             "existing_count": len(EXISTING_CHIPS),
             "candidate_count": len(NEW_CANDIDATES),
-            "viral_count": len(viral_only),
+            "viral_count": len(VIRAL_DOMAINS),
+            "new_count": len(NEW_48_DOMAINS),
             "total_signals": len(all_signals),
             "graph_nodes": len(graph_nodes),
             "graph_edges": len(graph_edges),
             "rounds": 20,
+            "persona_types": 11,
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
         },
         "graph_nodes": graph_nodes,
@@ -214,10 +277,14 @@ def main():
     }
 
     # Write to file
-    output_path = "viz/mirofish_data.json"
+    output_path = os.path.join(script_dir, "..", "viz", "mirofish_data.json")
     with open(output_path, "w") as f:
         json.dump(export, f, indent=2)
-    print(f"Exported to {output_path} ({len(json.dumps(export)):,} bytes)")
+    size = os.path.getsize(output_path)
+    print(f"\nExported to {output_path} ({size:,} bytes)")
+    print(f"  {len(graph_nodes)} graph nodes, {len(graph_edges)} graph edges")
+    print(f"  {len(domains_data)} domains with adoption curves")
+    print(f"Total time: {time.time() - t0:.1f}s")
     return export
 
 
