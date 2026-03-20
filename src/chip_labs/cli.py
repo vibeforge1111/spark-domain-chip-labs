@@ -219,6 +219,90 @@ def cmd_score(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: autoloop
+# ---------------------------------------------------------------------------
+
+def cmd_autoloop(args: argparse.Namespace) -> None:
+    """Run recursive improvement loop on a chip."""
+    from .loop_controller import RecursiveLoopController, LoopConfig
+
+    config = LoopConfig(
+        target_score=args.target_score,
+        max_iterations=args.max_iterations,
+    )
+    controller = RecursiveLoopController(config)
+
+    if args.brief:
+        from .scaffold import load_brief
+        from .category_templates import apply_template, detect_category
+
+        brief = load_brief(args.brief)
+        if not brief.get("category"):
+            brief["category"] = detect_category(brief)
+        brief = apply_template(brief)
+
+        output_dir = Path(args.output_dir) if args.output_dir else Path.cwd()
+        result = controller.run_from_brief(brief, output_dir)
+    elif args.chip_path:
+        result = controller.run_on_chip(Path(args.chip_path))
+    else:
+        print("Either --brief or chip_path is required.", file=sys.stderr)
+        sys.exit(1)
+
+    print(f"Chip: {result.chip_path}")
+    print(f"Score: {result.initial_score} -> {result.final_score} ({result.verdict})")
+    print(f"Iterations: {result.iterations}")
+    print(f"Improvements: {len(result.improvements)}")
+    for imp in result.improvements:
+        print(f"  + {imp}")
+    if result.remaining_gaps:
+        print(f"Remaining gaps: {len(result.remaining_gaps)}")
+        for gap in result.remaining_gaps[:5]:
+            print(f"  - {gap}")
+
+
+# ---------------------------------------------------------------------------
+# Command: transfer
+# ---------------------------------------------------------------------------
+
+def cmd_transfer(args: argparse.Namespace) -> None:
+    """Transfer intelligence between chips."""
+    from .transfer import transfer_intelligence, extract_portfolio_patterns, find_applicable_patterns
+
+    target_path = Path(args.target_chip)
+    if not target_path.exists():
+        print(f"Target chip not found: {target_path}", file=sys.stderr)
+        sys.exit(1)
+
+    if args.source:
+        source_path = Path(args.source)
+        result = transfer_intelligence(source_path, target_path)
+    elif args.search_dir:
+        registry = extract_portfolio_patterns(Path(args.search_dir))
+        patterns = find_applicable_patterns(target_path, registry)
+        from .transfer import apply_pattern
+        score_before = score_chip(target_path)["total_score"]
+        applied = []
+        for p in patterns[:10]:
+            if apply_pattern(target_path, p):
+                applied.append(p.pattern_id)
+        score_after = score_chip(target_path)["total_score"]
+        print(f"Patterns applied: {len(applied)}")
+        print(f"Score: {score_before} -> {score_after} (+{score_after - score_before})")
+        return
+    else:
+        print("Either --source or --search-dir is required.", file=sys.stderr)
+        sys.exit(1)
+
+    print(f"Transfer: {len(result.patterns_applied)} patterns applied")
+    print(f"Score: {result.score_before} -> {result.score_after} (+{result.score_delta})")
+    if result.successful_transfers:
+        print(f"Successful: {len(result.successful_transfers)}")
+    if result.failed_transfers:
+        print(f"Failed: {len(result.failed_transfers)}")
+
+
+# ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
 
@@ -272,6 +356,22 @@ def main() -> None:
     p_score.add_argument("chip_path", type=str, help="Path to chip directory.")
     p_score.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_score.set_defaults(func=cmd_score)
+
+    # autoloop
+    p_loop = sub.add_parser("autoloop", help="Run recursive improvement loop on a chip.")
+    p_loop.add_argument("chip_path", type=str, nargs="?", default=None, help="Path to chip directory.")
+    p_loop.add_argument("--brief", type=str, default=None, help="Domain brief to scaffold from.")
+    p_loop.add_argument("--output-dir", type=str, default=None, help="Output dir for scaffold.")
+    p_loop.add_argument("--target-score", type=int, default=80, help="Target quality score.")
+    p_loop.add_argument("--max-iterations", type=int, default=50, help="Max loop iterations.")
+    p_loop.set_defaults(func=cmd_autoloop)
+
+    # transfer
+    p_transfer = sub.add_parser("transfer", help="Transfer intelligence between chips.")
+    p_transfer.add_argument("target_chip", type=str, help="Target chip path.")
+    p_transfer.add_argument("--source", type=str, default=None, help="Source chip path (auto-selects best if omitted).")
+    p_transfer.add_argument("--search-dir", type=str, default=None, help="Directory to scan for source chips.")
+    p_transfer.set_defaults(func=cmd_transfer)
 
     args = parser.parse_args()
     args.func(args)
