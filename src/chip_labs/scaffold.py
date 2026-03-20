@@ -1066,4 +1066,14 @@ def scaffold_chip(
     (research_dir / "packets").mkdir(parents=True, exist_ok=True)
     (research_dir / "sources").mkdir(parents=True, exist_ok=True)
 
+    # 11. Optional DSPy slot generation
+    if brief.get("dspy_enabled", False):
+        from .dspy_slot import scaffold_dspy_slot
+
+        slot_type = brief.get("dspy_slot_type", "packet_extractor")
+        try:
+            scaffold_dspy_slot(chip_dir, slot_type)
+        except Exception:
+            pass  # Non-fatal: DSPy slot is optional enhancement
+
     return chip_dir

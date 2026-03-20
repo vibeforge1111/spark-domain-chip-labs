@@ -303,6 +303,72 @@ def cmd_transfer(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: score-v2
+# ---------------------------------------------------------------------------
+
+def cmd_score_v2(args: argparse.Namespace) -> None:
+    """Score a chip against the hardened v2 quality rubric."""
+    from .quality_rubric_v2 import score_chip_v2
+
+    chip_path = Path(args.chip_path)
+    result = score_chip_v2(chip_path)
+
+    print(f"Chip: {chip_path.name}")
+    print(f"Score: {result['total_score']}/100 (v2 rubric)")
+    print(f"Verdict: {result['verdict']}")
+    print()
+
+    for dim in result.get("dimensions", []):
+        print(f"  {dim['label']}: {dim['score']}/{dim['max_points']}")
+        for check in dim.get("checks", []):
+            status = "PASS" if check["passed"] else "FAIL"
+            print(f"    [{status}] {check['description']} ({check['points']} pts)")
+
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
+# Command: build-skill
+# ---------------------------------------------------------------------------
+
+def cmd_build_skill(args: argparse.Namespace) -> None:
+    """Build intelligence delivery artifacts for a chip."""
+    from .intelligence_server import refresh_skill
+
+    chip_path = Path(args.chip_path)
+    if not chip_path.exists():
+        print(f"Chip path not found: {chip_path}", file=sys.stderr)
+        sys.exit(1)
+
+    result = refresh_skill(chip_path)
+
+    print(f"Chip: {chip_path.name}")
+    print(f"Skill file: {result['skill_path']}")
+    print(f"Context file: {result['context_path']}")
+    print(f"Digest file: {result['digest_path']}")
+    print(f"Doctrines: {result.get('doctrine_count', 0)}")
+    print(f"Evidence files: {result.get('evidence_files', 0)}")
+    print(f"Quality score: {result.get('current_score', 0)}/100")
+
+
+# ---------------------------------------------------------------------------
+# Command: serve
+# ---------------------------------------------------------------------------
+
+def cmd_serve(args: argparse.Namespace) -> None:
+    """Serve context from a chip for a query."""
+    from .intelligence_server import serve_context
+
+    chip_path = Path(args.chip_path)
+    if not chip_path.exists():
+        print(f"Chip path not found: {chip_path}", file=sys.stderr)
+        sys.exit(1)
+
+    result = serve_context(chip_path, args.query)
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
 
@@ -372,6 +438,24 @@ def main() -> None:
     p_transfer.add_argument("--source", type=str, default=None, help="Source chip path (auto-selects best if omitted).")
     p_transfer.add_argument("--search-dir", type=str, default=None, help="Directory to scan for source chips.")
     p_transfer.set_defaults(func=cmd_transfer)
+
+    # score-v2
+    p_score_v2 = sub.add_parser("score-v2", help="Score a chip against the hardened v2 rubric.")
+    p_score_v2.add_argument("chip_path", type=str, help="Path to chip directory.")
+    p_score_v2.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_score_v2.set_defaults(func=cmd_score_v2)
+
+    # build-skill
+    p_skill = sub.add_parser("build-skill", help="Build intelligence delivery artifacts.")
+    p_skill.add_argument("chip_path", type=str, help="Path to chip directory.")
+    p_skill.set_defaults(func=cmd_build_skill)
+
+    # serve
+    p_serve = sub.add_parser("serve", help="Serve context from a chip for a query.")
+    p_serve.add_argument("chip_path", type=str, help="Path to chip directory.")
+    p_serve.add_argument("query", type=str, help="Query to match against chip intelligence.")
+    p_serve.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_serve.set_defaults(func=cmd_serve)
 
     args = parser.parse_args()
     args.func(args)

@@ -498,6 +498,11 @@ class RecursiveLoopController:
                 self._telemetry.status = "target_reached"
                 break
 
+        # Phase 5: Regenerate intelligence delivery artifacts
+        skill_improvements = self._skill_regeneration_phase(chip_path)
+        if skill_improvements:
+            improvements.extend(skill_improvements)
+
         # Finalize
         if self._telemetry.status == "running":
             if self._iteration >= self._config.max_iterations:
@@ -809,6 +814,45 @@ class RecursiveLoopController:
         )
         self._telemetry.iterations.append(record)
         self._telemetry.score_trajectory.append(score_after)
+
+        return improvements
+
+    def _skill_regeneration_phase(self, chip_path: Path) -> list[str]:
+        """Phase 5: Regenerate intelligence delivery artifacts.
+
+        After the improvement loop completes, rebuild the chip_skill.md,
+        chip_context.json, and chip_doctrine_digest.md from the latest
+        accumulated evidence and doctrines.
+        """
+        improvements: list[str] = []
+        t_start = _now_ms()
+
+        try:
+            from .intelligence_server import refresh_skill
+
+            result = refresh_skill(chip_path)
+            doctrine_count = result.get("doctrine_count", 0)
+            evidence_files = result.get("evidence_files", 0)
+            improvements.append(
+                f"Skill regeneration: Built intelligence artifacts "
+                f"({doctrine_count} doctrines, {evidence_files} evidence files)"
+            )
+        except Exception:
+            # Non-fatal: intelligence_server may not be available
+            pass
+
+        t_end = _now_ms()
+
+        record = IterationRecord(
+            iteration=self._iteration,
+            action_type="skill_regeneration",
+            action_detail=f"Regenerated intelligence delivery artifacts",
+            score_before=self._current_score,
+            score_after=self._current_score,
+            delta=0,
+            duration_ms=t_end - t_start,
+        )
+        self._telemetry.iterations.append(record)
 
         return improvements
 
