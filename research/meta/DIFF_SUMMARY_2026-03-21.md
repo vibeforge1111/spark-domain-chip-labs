@@ -357,3 +357,27 @@
 
 - Turn the serving namespace into a partial real implementation boundary
 - Preserve existing imports while reducing the amount of serving logic still implemented at the top level
+
+## Follow-On Tranche: Serving Advisory Implementation Move
+
+## `src/chip_labs/intelligence_serving/chip_advisor.py`, `src/chip_labs/intelligence_serving/chip_context_injector.py`
+
+- Moved the advisory and context-injection implementations behind the serving namespace
+- Updated their runtime imports for the deeper package location
+
+## `src/chip_labs/chip_advisor.py`, `src/chip_labs/chip_context_injector.py`
+
+- Replaced the previous implementation files with compatibility wrappers that re-export the moved serving implementations
+
+## `src/chip_labs/intelligence_serving/api.py`
+
+- Repointed advisory and context-injection imports to the moved implementations instead of the top-level compatibility wrappers
+
+## `research/packets/packet_serving_advisory_impl_move.json`
+
+- Added a packet documenting why advisory and context injection are the next safe serving modules to move before runtime
+
+## Expected Effect
+
+- Extend the serving namespace into a larger real implementation boundary
+- Preserve existing imports while reducing serving-surface logic still implemented at the top level

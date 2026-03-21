@@ -116,6 +116,7 @@ Status:
 - Extended phase 7C again by moving `scaffold.py` under `src/chip_labs/chip_factory/` and leaving a top-level wrapper for compatibility
 - Extended phase 7C again by moving `methodology.py` and `graduation.py` under `src/chip_labs/chip_factory/` and leaving top-level wrappers for compatibility
 - Extended phase 7C into the serving surface by moving `intelligence_server.py` under `src/chip_labs/intelligence_serving/` and leaving a top-level wrapper for compatibility
+- Extended phase 7C again by moving `chip_advisor.py` and `chip_context_injector.py` under `src/chip_labs/intelligence_serving/` and leaving top-level wrappers for compatibility
 
 ## Exit Criteria
 

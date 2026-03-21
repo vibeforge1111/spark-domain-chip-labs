@@ -1,0 +1,5 @@
+{
+  "claim": "Once the serving namespace owns intelligence_server, the advisory and context-injection modules can move behind the same boundary with compatibility wrappers.",
+  "mechanism": "chip_advisor.py and chip_context_injector.py depend mainly on intelligence extraction and only load runtime helpers lazily. Moving them together behind the serving namespace preserves their shared internal coupling while avoiding a premature move of the more central runtime path.",
+  "boundary": "This does not relocate chip_runtime.py or chip_mcp_server.py yet. Those paths still need a more careful cycle and entrypoint review before moving."
+}

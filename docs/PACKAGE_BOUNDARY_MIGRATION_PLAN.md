@@ -114,6 +114,7 @@ Status:
   - `methodology.py`
   - `graduation.py`
 - Extended the same pattern into the serving surface by moving `intelligence_server.py` under `src/chip_labs/intelligence_serving/`
+- Extended the serving move by relocating `chip_advisor.py` and `chip_context_injector.py` behind the same namespace
 
 Exit condition:
 - Each surface depends only on sanctioned shared utilities and public interfaces

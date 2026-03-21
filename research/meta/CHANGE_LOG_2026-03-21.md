@@ -500,3 +500,38 @@ With the serving namespace already in place, `intelligence_server.py` was the sa
 ### Notes
 
 - This move is intentionally narrow. `chip_runtime.py`, `chip_advisor.py`, `chip_context_injector.py`, and `chip_mcp_server.py` still rely on compatibility paths until the serving dependency graph is cleaned up further.
+
+## Follow-On Tranche: Serving Advisory Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/intelligence_serving/chip_advisor.py`
+- `src/chip_labs/intelligence_serving/chip_context_injector.py`
+- `src/chip_labs/intelligence_serving/api.py`
+- `src/chip_labs/chip_advisor.py`
+- `src/chip_labs/chip_context_injector.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_serving_advisory_impl_move.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_serving_advisory_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+After moving `intelligence_server.py`, the next bounded serving slice was the advisory/context-injection pair. These modules are coupled to the same serving surface and only depend on runtime through lazy imports and type hints, so they can move behind the namespace without dragging runtime and MCP behavior into the same tranche.
+
+### What Changed
+
+- Moved `chip_advisor.py` and `chip_context_injector.py` under `src/chip_labs/intelligence_serving/`
+- Updated their runtime imports for the deeper package location
+- Replaced the old top-level modules with compatibility wrappers
+- Updated the serving namespace API to import advisory and context-injection behavior from the moved implementations directly
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.chip_advisor import AdvisoryRequest, advise_pre_action; from chip_labs.chip_context_injector import inject_context_for_task; from chip_labs.intelligence_serving.chip_advisor import advise_pre_action as moved_advise_pre_action; from chip_labs.intelligence_serving.chip_context_injector import inject_context_for_task as moved_inject_context_for_task; from chip_labs.intelligence_serving import AdvisoryRequest as api_AdvisoryRequest; print('serving-advisory-move-imports-ok')"`
+
+### Notes
+
+- Runtime and MCP-serving still remain top-level in this tranche. The point here is to keep the serving move bounded and compatibility-preserving.

@@ -1,0 +1,35 @@
+{
+  "request_id": "2026-03-21-phase7c-serving-advisory-impl-move",
+  "created_at": "2026-03-21",
+  "type": "compatibility_preserving_file_move",
+  "goal": "Move the serving advisory and context-injection implementations behind the intelligence_serving namespace while preserving top-level import paths through compatibility wrappers.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Preserve existing import paths for callers and tests",
+    "Keep runtime and MCP serving at top level in this tranche to avoid a larger dependency rewrite"
+  ],
+  "files_touched": [
+    "src/chip_labs/intelligence_serving/chip_advisor.py",
+    "src/chip_labs/intelligence_serving/chip_context_injector.py",
+    "src/chip_labs/intelligence_serving/api.py",
+    "src/chip_labs/chip_advisor.py",
+    "src/chip_labs/chip_context_injector.py",
+    "docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/packets/packet_serving_advisory_impl_move.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "The real advisory and context-injection implementations now live under chip_labs.intelligence_serving.",
+    "The old top-level chip_advisor and chip_context_injector modules now act as compatibility wrappers.",
+    "The serving namespace API now imports advisory and context-injection behavior from the moved implementations directly."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -c \"from chip_labs.chip_advisor import AdvisoryRequest, advise_pre_action; from chip_labs.chip_context_injector import inject_context_for_task; from chip_labs.intelligence_serving.chip_advisor import advise_pre_action as moved_advise_pre_action; from chip_labs.intelligence_serving.chip_context_injector import inject_context_for_task as moved_inject_context_for_task; from chip_labs.intelligence_serving import AdvisoryRequest as api_AdvisoryRequest; print('serving-advisory-move-imports-ok')\""
+  ],
+  "follow_up": [
+    "The next serving move should likely target chip_runtime.py or chip_mcp_server.py, but only after reviewing their remaining cycles against the moved serving modules.",
+    "Keep compatibility wrappers until the serving surface is fully settled behind the namespace."
+  ]
+}
