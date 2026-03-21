@@ -1,0 +1,5 @@
+{
+  "claim": "The repo should remain one package with internal subpackages for now rather than splitting factory or serving into separate distributions.",
+  "mechanism": "The internal seams are now real enough to control coupling inside one package, but the four surfaces still share a release cadence, one Spark compatibility story, and one operating history. Splitting now would add release overhead before it removes meaningful coordination cost.",
+  "boundary": "This is a packaging decision for the current state of the repo, not a permanent rule. A future split is justified only when explicit split triggers are met."
+}

@@ -129,12 +129,27 @@ Exit condition:
 
 ### Phase 7D: Packaging Decision
 
-Choose one:
+Decision:
 1. keep one repo with clear internal subpackages
-2. split factory and serving into separate distributions
 
-Decision rule:
-- Do not split packages until import boundaries are already stable inside the repo
+Why this is the correct decision now:
+- the internal seams are now real, but the surfaces still share one release cadence and one Spark compatibility story
+- the remaining work is dependency hygiene, operating history, and product positioning rather than independent distribution pressure
+- splitting now would add release coordination overhead before it removes enough real coupling to be worth it
+
+Split triggers:
+- a surface needs an independent version and release schedule for at least two consecutive release cycles
+- external consumers consistently need one surface without the others strongly enough that install or dependency boundaries matter
+- most changes stay within one surface for a sustained period instead of crossing the repo
+- top-level compatibility aliases can be removed without breaking the current hook/runtime contract
+
+Current rule:
+- keep one package until at least two split triggers are true at the same time
+
+Status:
+- Decision made: stay in one repo/package for now
+- Internal namespaces are now the enforcement layer
+- Future split remains explicit, but only after the triggers above are met
 
 ## Risks
 

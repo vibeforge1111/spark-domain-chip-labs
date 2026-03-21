@@ -131,6 +131,8 @@ This repo currently contains four distinct surfaces. Treating them as one undiff
 
 The canonical status breakdown is tracked in **[docs/REPO_SURFACES_AND_STATUS.md](docs/REPO_SURFACES_AND_STATUS.md)** so contributors can tell which claims are shipped, which are experimental, and which are still aspirational.
 
+Packaging decision for now: keep one repo/package with internal subpackages. The split criteria and future triggers are tracked in **[docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md](docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md)**.
+
 ## Key Principles
 
 1. **Meta-chip, not framework** -- follows spark-chip.v1, not a custom system

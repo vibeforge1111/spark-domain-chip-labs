@@ -551,3 +551,23 @@
 
 - Make compatibility behavior consistent across all four repo surfaces
 - Preserve public imports while strengthening alias identity and patch behavior
+
+## Follow-On Tranche: Phase 7D Package Decision
+
+## `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+
+- Replaced the placeholder packaging question with an explicit decision to stay in one repo/package for now
+- Added concrete split triggers and a rule for when to revisit the decision
+
+## `docs/REPO_SURFACES_AND_STATUS.md`, `README.md`, `docs/EXECUTION_PLAN_2026-03-21.md`
+
+- Propagated the same packaging decision across the high-level repo narrative and execution plan
+
+## `research/packets/packet_package_decision_single_repo.json`
+
+- Added a packet documenting why the current decision is one package with internal seams instead of an early split
+
+## Expected Effect
+
+- Remove ambiguity about the current packaging posture
+- Keep future splitting as an explicit option, but only when repo-state triggers justify it

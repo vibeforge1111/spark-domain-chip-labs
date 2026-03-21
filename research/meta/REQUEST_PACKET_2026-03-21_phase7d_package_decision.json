@@ -1,0 +1,32 @@
+{
+  "request_id": "2026-03-21-phase7d-package-decision",
+  "created_at": "2026-03-21",
+  "type": "packaging_decision",
+  "goal": "Record the current package-boundary decision now that the internal namespaces and implementation moves are in place.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Do not split packages in this tranche",
+    "Make the decision rule explicit and reversible with concrete future triggers"
+  ],
+  "files_touched": [
+    "README.md",
+    "docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "docs/REPO_SURFACES_AND_STATUS.md",
+    "research/packets/packet_package_decision_single_repo.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "No runtime or import behavior changes.",
+    "The repo now has an explicit packaging decision instead of an open-ended placeholder.",
+    "Future package splitting is gated by concrete triggers rather than broad aspiration."
+  ],
+  "verification_targets": [
+    "Manual consistency review across README.md, docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md, docs/EXECUTION_PLAN_2026-03-21.md, and docs/REPO_SURFACES_AND_STATUS.md"
+  ],
+  "follow_up": [
+    "If future release pressure or external usage patterns change, revisit the split triggers instead of reopening the whole packaging question from scratch.",
+    "Keep investing in internal namespace hygiene so a future split remains operationally cheap if it becomes justified."
+  ]
+}

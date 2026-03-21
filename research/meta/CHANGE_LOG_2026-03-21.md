@@ -808,3 +808,34 @@ The serving and transfer surfaces already used alias-style top-level compatibili
 ### Notes
 
 - This tranche hardens compatibility behavior only. It does not move implementations or change public APIs.
+
+## Follow-On Tranche: Phase 7D Package Decision
+
+### Files Changed
+
+- `README.md`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `docs/REPO_SURFACES_AND_STATUS.md`
+- `research/packets/packet_package_decision_single_repo.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7d_package_decision.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The repo had already built the internal seams needed for a packaging decision, but the docs still stopped at "choose one later." That left the project with a migration plan but no actual current decision.
+
+### What Changed
+
+- Recorded the current decision to keep one repo/package with internal subpackages
+- Added explicit split triggers so a future package split is rule-based instead of aspirational
+- Linked the decision from the README and the repo-surface status doc
+
+### Verification
+
+- Manual consistency review across the README, package migration plan, execution plan, and surface-status docs
+
+### Notes
+
+- This tranche makes the packaging posture explicit without forcing a premature multi-package release problem.

@@ -100,3 +100,17 @@ Aspirational:
 When changing this repo, first decide which surface the change belongs to. A patch is lower risk when it improves one surface without accidentally changing the product claim of another.
 
 The migration baseline for future package separation lives in `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`.
+
+## Packaging Decision
+
+Current decision:
+- keep one repo/package with internal subpackages
+
+Reason:
+- the code now has real internal seams, but the release cadence, compatibility layer, and operating history are still shared
+
+Future split triggers:
+- at least two surfaces need independent release timing
+- external consumers consistently need one surface without the rest
+- most changes stay within one surface rather than crossing the repo
+- top-level compatibility aliases are no longer needed
