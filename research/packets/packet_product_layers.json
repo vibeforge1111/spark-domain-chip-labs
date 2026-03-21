@@ -1,5 +1,16 @@
 {
-  "claim": "Documenting the repo as four layers reduces drift and improves contributor decision quality.",
-  "mechanism": "The repo currently contains meta-chip hooks, factory logic, transfer systems, and intelligence serving. If those layers are not named explicitly, contributors infer structure from scattered code and may optimize one layer while accidentally harming another. Layered framing reduces coordination errors because each change can be evaluated against the surface it is supposed to improve.",
-  "boundary": "Layered documentation helps whether or not the repo is physically split. It does not by itself resolve package-boundary questions."
+  "claim": "Documenting the repo as four explicit product layers reduces drift and makes roadmap decisions easier to audit.",
+  "mechanism": "The repo has already expanded beyond a single meta-chip into four overlapping surfaces: the lab hook surface, chip factory logic, transfer and recursive improvement, and intelligence serving. When those surfaces are unnamed, contributors infer intent from whichever file they touched last and can optimize the wrong layer. Naming the layers lets each change be judged against a clear user value, maturity level, and packaging expectation.",
+  "boundary": "Layered documentation does not by itself decide whether the repo should be physically split. It only removes ambiguity about what exists today and which surfaces are already shipped versus still experimental.",
+  "operating_status": {
+    "meta_chip_hooks": "shipped",
+    "chip_factory": "working_internal_surface",
+    "transfer_and_recursive_improvement": "guarded_beta",
+    "intelligence_serving": "integrated_but_still_forming"
+  },
+  "user_value": [
+    "Operators can distinguish stable chip behavior from still-maturing platform behavior.",
+    "Contributors can reason about scope without silently changing the product claim of a different layer.",
+    "Future repo-splitting work has a documented baseline instead of relying on memory."
+  ]
 }

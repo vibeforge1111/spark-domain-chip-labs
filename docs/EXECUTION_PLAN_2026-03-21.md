@@ -79,6 +79,12 @@ Decide whether to:
 1. keep them in one repo but document them as four layers, or
 2. split the chip factory / serving runtime into separate packages
 
+Status:
+
+- Added an explicit repo-surface map in `docs/REPO_SURFACES_AND_STATUS.md`
+- Updated `README.md` to name the four layers and mark the difference between shipped, integrated, and guarded-beta surfaces
+- Remaining work is packaging, not naming: if the repo is later split, this layer map becomes the migration baseline
+
 ### 6. Replace placeholder research scoring
 
 - Replace heuristic methodology/domain-discovery scores in `src/chip_labs/evaluate.py`

@@ -55,3 +55,32 @@
 - Preserve the stronger scoring state by reverting doctrine prose that reduces rubric-visible boundary specificity
 - Push contradiction specificity over the final threshold without inflating run history, maxing contradiction rigor while leaving the overall score ceiling unchanged
 - Increase empirical volume with real executed passes rather than synthetic ledger edits, even at the cost of a less-perfect trajectory subscore
+
+## Follow-On Tranche: Product Layer Separation
+
+## `docs/REPO_SURFACES_AND_STATUS.md`
+
+- Added a dedicated status map for the repo's four product surfaces
+- Marked which surfaces are shipped, internal, guarded beta, or still forming
+- Added a decision rule for classifying future changes by surface before changing code
+
+## `README.md`
+
+- Added a `Product Layers` section that names the four surfaces directly
+- Linked the canonical status doc so high-level positioning does not drift from the codebase
+- Clarified that the remaining repo problem is packaging and positioning, not contract ambiguity
+
+## `docs/EXECUTION_PLAN_2026-03-21.md`
+
+- Marked phase 5 as now partially executed through documentation
+- Framed package-splitting as future work built on the new layer map
+
+## `research/packets/packet_product_layers.json`
+
+- Expanded the packet from a generic claim to a status-bearing packet with operating-state and user-value fields
+
+## Expected Effect
+
+- Reduce future product-boundary drift
+- Make it easier to review whether a change belongs to the lab chip, factory, transfer system, or serving layer
+- Give future repo-splitting or packaging work a stable baseline

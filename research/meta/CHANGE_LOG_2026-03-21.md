@@ -87,3 +87,35 @@ The repo had four active failing tests in the last full run:
 - A later micro-pass improved contradiction specificity enough to max `Contradiction Rigor` at `12.0/12.0` while total v3 remained `87.0/100`; remaining headroom is now concentrated in doctrine thresholds, watchtower depth, and empirical history.
 - A real evaluation batch then pushed `run_count` to `50`, increasing empirical volume honestly while keeping the total v3 score flat at `87.0/100` because the trajectory subscore became less artificially clean.
 - The remaining roadmap is tracked in `docs/EXECUTION_PLAN_2026-03-21.md`.
+
+## Follow-On Tranche: Product Layer Separation
+
+### Files Changed
+
+- `README.md`
+- `docs/REPO_SURFACES_AND_STATUS.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_product_layers.json`
+
+### Why
+
+The repo had largely solved contract drift, but still presented itself too loosely. The remaining drift was no longer runtime ambiguity; it was product-boundary ambiguity. Contributors could see four real surfaces in code without one canonical status document explaining which ones were shipped, internal, guarded, or still forming.
+
+### What Changed
+
+- Added a repo-surface map that names the four layers explicitly:
+  - meta-chip hooks
+  - chip factory
+  - transfer and recursive improvement
+  - intelligence serving
+- Marked the maturity of each layer so repo claims match present reality
+- Linked the new surface map from `README.md`
+- Updated the execution plan so phase 5 is now partially completed in documentation rather than left as an abstract later task
+
+### Verification
+
+- Manual doc consistency review against `README.md`, `spark-chip.json`, and the current module layout
+
+### Notes
+
+- This tranche does not split packages yet. It gives future packaging work a clear baseline and removes ambiguity about what the repo already contains.

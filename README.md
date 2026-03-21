@@ -118,6 +118,19 @@ Full documentation: **[docs/MIROFISH_PREDICTION_ENGINE.md](docs/MIROFISH_PREDICT
 - **spark-swarm** -- Collective intelligence platform (the lab emits insights)
 - **Domain chips** -- The subjects of the lab's research
 
+## Product Layers
+
+This repo currently contains four distinct surfaces. Treating them as one undifferentiated product is where a lot of drift starts.
+
+| Layer | What It Does | Current Status |
+|-------|---------------|----------------|
+| Meta-chip hooks | `evaluate`, `suggest`, `packets`, `watchtower` for the lab itself | Shipped and rubric-validated |
+| Chip factory | scaffolding, gap analysis, loop control, creation helpers | Working, but still packaged as internal factory infrastructure |
+| Transfer and recursive improvement | cross-chip transfer, promotion logic, bounded self-edit support | Working under guardrails; still needs more repeated real wins |
+| Intelligence serving | runtime, MCP server, advisory and hook delivery surfaces | Integrated, but still maturing as a product boundary |
+
+The canonical status breakdown is tracked in **[docs/REPO_SURFACES_AND_STATUS.md](docs/REPO_SURFACES_AND_STATUS.md)** so contributors can tell which claims are shipped, which are experimental, and which are still aspirational.
+
 ## Key Principles
 
 1. **Meta-chip, not framework** -- follows spark-chip.v1, not a custom system
@@ -135,6 +148,8 @@ The repo is stronger structurally than it is operationally. The main deficits to
 - doctrine and contradiction handling were documented across broad design docs, but not yet normalized into durable belief artifacts
 - evidence lanes existed in concept, but the repo under-produced lane-specific packets about its own evolution
 - the repo still combines four surfaces in one package: meta-chip hooks, chip factory logic, transfer systems, and intelligence serving
+
+The repo no longer has a contract-ambiguity problem across runtime and rubrics, but it still has a packaging-and-positioning problem: some surfaces are proven internal infrastructure, while others are still emerging products.
 
 That means the lab can already scaffold, score, transfer, and serve intelligence, but it still needs a cleaner internal flywheel and more earned artifacts before its strongest claims are fully defended by its own history.
 
