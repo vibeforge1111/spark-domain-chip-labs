@@ -1,0 +1,31 @@
+{
+  "request_id": "2026-03-21-portfolio-audit",
+  "created_at": "2026-03-21T18:20:00Z",
+  "type": "portfolio_audit",
+  "goal": "Produce a fresh, live audit of the current Desktop domain-chip portfolio using discovery and portfolio-v3 scoring instead of stale status docs.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Base claims on commands that actually ran in this workspace",
+    "Do not overclaim maturity for shell or invalid chip directories"
+  ],
+  "files_touched": [
+    "research/meta/portfolio_v3_audit_2026-03-21.json",
+    "research/meta/PORTFOLIO_AUDIT_2026-03-21.json",
+    "research/meta/PORTFOLIO_AUDIT_2026-03-21.md",
+    "research/meta/REQUEST_PACKET_2026-03-21_portfolio_audit.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "No code changes.",
+    "The repo now carries a dated live portfolio audit based on current discovery and portfolio-v3 output."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -c \"from chip_labs.registry import discover_chips; import json; print(json.dumps(discover_chips(), indent=2))\"",
+    "PYTHONPATH=src python -m chip_labs.cli portfolio-v3 --output research/meta/portfolio_v3_audit_2026-03-21.json"
+  ],
+  "follow_up": [
+    "Use this audit to decide which chips remain active portfolio bets versus shell inventory.",
+    "If needed, run chip-by-chip deep dives on the top tier and the growth cluster separately."
+  ]
+}

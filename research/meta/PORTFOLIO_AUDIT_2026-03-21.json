@@ -1,0 +1,118 @@
+{
+  "audit_id": "2026-03-21-portfolio-audit",
+  "created_at": "2026-03-21T18:20:00Z",
+  "scope": "current Desktop domain-chip portfolio as discovered by spark-domain-chip-labs on 2026-03-21",
+  "sources": [
+    "PYTHONPATH=src python -c \"from chip_labs.registry import discover_chips; import json; print(json.dumps(discover_chips(), indent=2))\"",
+    "PYTHONPATH=src python -m chip_labs.cli portfolio-v3 --output research/meta/portfolio_v3_audit_2026-03-21.json"
+  ],
+  "portfolio_summary": {
+    "discovered_directories": 20,
+    "scored_chips": 19,
+    "average_v3_score": 41.7,
+    "verdicts": {
+      "beta": 8,
+      "alpha": 5,
+      "scaffold": 6
+    },
+    "invalid_or_unscored": [
+      "domain-chip-predictive-worlds-lab-spark-scaffold"
+    ]
+  },
+  "top_tier": [
+    {
+      "chip": "domain-chip-startup-yc",
+      "score": 72.0,
+      "verdict": "beta",
+      "why_it_leads": "Best balanced operating depth in the current portfolio with real artifact volume, vault depth, and no current anti-gaming flags."
+    },
+    {
+      "chip": "domain-chip-xcontent",
+      "score": 65.6,
+      "verdict": "beta",
+      "why_it_leads": "Strong evidence integrity and trajectory quality, but currently carries the single_day_batch anti-gaming flag."
+    },
+    {
+      "chip": "domain-chip-pokemon-red",
+      "score": 62.8,
+      "verdict": "beta",
+      "why_it_leads": "Massive artifact and vault volume with credible operating depth."
+    },
+    {
+      "chip": "domain-chip-content",
+      "score": 62.0,
+      "verdict": "beta",
+      "why_it_leads": "Good doctrine quality and evidence distribution, though still light on realworld_validated depth."
+    }
+  ],
+  "middle_tier": [
+    "domain-chip-agentic-marketing",
+    "domain-chip-spark-private",
+    "domain-chip-roblox-development",
+    "domain-chip-web-designer",
+    "domain-chip-spark-private-main",
+    "domain-chip-predictive-worlds-lab",
+    "domain-chip-trading-crypto",
+    "domain-chip-trading-crypto-private",
+    "domain-chip-growth-content"
+  ],
+  "critical_findings": [
+    {
+      "severity": "high",
+      "finding": "The portfolio has a strong top tier but a weak floor: 11 of 19 scored chips are still alpha or scaffold."
+    },
+    {
+      "severity": "high",
+      "finding": "The growth chip cluster is mostly structural shell with little or no operating evidence. Four chips are flagged high_structure_low_velocity and several have zero artifact and zero vault depth."
+    },
+    {
+      "severity": "high",
+      "finding": "One discovered directory is not a valid chip at all: domain-chip-predictive-worlds-lab-spark-scaffold has no manifest or project file and should not be treated as active portfolio inventory."
+    },
+    {
+      "severity": "medium",
+      "finding": "xcontent is near the top of the portfolio but currently carries the single_day_batch anti-gaming flag, so its momentum should be treated as suspicious until spread across real time."
+    },
+    {
+      "severity": "medium",
+      "finding": "Several mid-tier chips are beta by score but still missing contradiction rigor or watchtower depth, which means they are broader than they are intellectually grounded."
+    }
+  ],
+  "ugly_cluster": [
+    {
+      "chip": "domain-chip-growth-analytics",
+      "score": 15.0,
+      "flag": "high_structure_low_velocity",
+      "artifact_count": 0,
+      "vault_doc_count": 0
+    },
+    {
+      "chip": "domain-chip-growth-cgo",
+      "score": 15.0,
+      "flag": "high_structure_low_velocity",
+      "artifact_count": 0,
+      "vault_doc_count": 0
+    },
+    {
+      "chip": "domain-chip-growth-distribution",
+      "score": 16.0,
+      "flag": "high_structure_low_velocity",
+      "artifact_count": 0,
+      "vault_doc_count": 0
+    },
+    {
+      "chip": "domain-chip-gstack",
+      "score": 15.0,
+      "flag": "high_structure_low_velocity",
+      "artifact_count": 8,
+      "vault_doc_count": 0
+    }
+  ],
+  "recommended_actions": [
+    "Treat startup-yc, xcontent, pokemon-red, content, agentic-marketing, and spark-private as the active portfolio leadership set.",
+    "Stop counting the growth scaffold cluster as proof of portfolio maturity until each chip has real runs, doctrines, and evidence-lane content.",
+    "Quarantine or archive invalid inventory like domain-chip-predictive-worlds-lab-spark-scaffold from portfolio narratives.",
+    "Run a dedicated anti-gaming review on xcontent before using it as a transfer source.",
+    "Pick one or two growth chips to mature fully instead of carrying six low-signal variants in parallel."
+  ]
+}

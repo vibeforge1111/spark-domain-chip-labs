@@ -1013,3 +1013,33 @@ After fixing explicit domain hints, the same packaging-oriented repo-local advis
 ### Notes
 
 - This tranche repairs repo-local unhinted advisory only. It does not attempt to retune general multi-chip ranking.
+
+## Follow-On Tranche: Live Portfolio Audit
+
+### Files Changed
+
+- `research/meta/portfolio_v3_audit_2026-03-21.json`
+- `research/meta/PORTFOLIO_AUDIT_2026-03-21.json`
+- `research/meta/PORTFOLIO_AUDIT_2026-03-21.md`
+- `research/meta/REQUEST_PACKET_2026-03-21_portfolio_audit.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The user asked for a fresh audit of the current domain-chip portfolio. The existing repo narrative and older validation artifacts were not enough because the real Desktop inventory can drift independently of what the docs imply.
+
+### What Changed
+
+- Ran live chip discovery against the Desktop portfolio
+- Ran a fresh `portfolio-v3` sweep and stored the full JSON report
+- Added a dated portfolio audit in both JSON and Markdown forms, separating the real leadership set from shell or invalid inventory
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.registry import discover_chips; import json; print(json.dumps(discover_chips(), indent=2))"`
+- `PYTHONPATH=src python -m chip_labs.cli portfolio-v3 --output research/meta/portfolio_v3_audit_2026-03-21.json`
+
+### Notes
+
+- This tranche is audit-only. It changes no chip behavior.

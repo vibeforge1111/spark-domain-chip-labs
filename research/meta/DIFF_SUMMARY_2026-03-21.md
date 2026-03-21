@@ -696,3 +696,22 @@
 
 - Remove the empty-result failure mode from unhinted repo-local advisory
 - Narrow the remaining serving uncertainty to broader multi-chip ranking outside workspace-local fallback cases
+
+## Follow-On Tranche: Live Portfolio Audit
+
+## `research/meta/portfolio_v3_audit_2026-03-21.json`
+
+- Added a fresh full-portfolio v3 report generated from the current Desktop inventory
+
+## `research/meta/PORTFOLIO_AUDIT_2026-03-21.json`, `research/meta/PORTFOLIO_AUDIT_2026-03-21.md`
+
+- Added a dated portfolio audit that separates the leadership tier, middle tier, scaffold cluster, and invalid inventory
+
+## `research/meta/REQUEST_PACKET_2026-03-21_portfolio_audit.json`
+
+- Added the request packet capturing the scope, commands, and constraints for the live portfolio audit
+
+## Expected Effect
+
+- Replace stale or assumed portfolio narratives with a live dated snapshot
+- Make it easier to decide which chips deserve active investment versus archival or quarantine

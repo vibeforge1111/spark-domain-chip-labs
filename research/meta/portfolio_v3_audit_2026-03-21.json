@@ -1,0 +1,3172 @@
+{
+  "chips": {
+    "domain-chip-agentic-marketing": {
+      "total_score": 60.0,
+      "verdict": "beta",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 10.0,
+          "max_points": 18.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 29,
+            "volume_score": 2.0,
+            "spearman_rho": -0.131,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [
+              "baseline",
+              "flat",
+              "regressed",
+              "unknown"
+            ],
+            "verdict_score": 4,
+            "days_since_last_run": 6,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 7.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "doctrine_count": 4,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.077,
+            "boundary_score": 2.0,
+            "avg_jaccard_distance": 0.954,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 6.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "populated_lanes": 4,
+            "lane_file_counts": {
+              "research_grounded": 16,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 1
+            },
+            "gini_coefficient": 0.592,
+            "balance_score": 2.0,
+            "avg_words_per_file": 405.1,
+            "density_score": 3.0,
+            "structured_packets": 1,
+            "substantive_packets": 0,
+            "packet_score": 1.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 8.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "contradiction_entries": 11,
+            "run_count": 29,
+            "contradiction_ratio": 0.3793,
+            "ratio_score": 4.0,
+            "specificity_per_100w": 10.41,
+            "specificity_score": 4.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 6.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 29,
+            "avg_interval_days": 0.07,
+            "frequency_score": 4.0,
+            "avg_delta": -0.0009,
+            "delta_score": 0.0,
+            "coverage_score": 2.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 6.0,
+          "max_points": 8.0,
+          "depth_level": "expert",
+          "details": {
+            "page_count": 36,
+            "page_score": 3.0,
+            "avg_words_per_page": 255.3,
+            "substance_score": 2.0,
+            "total_wikilinks": 32,
+            "pages_with_links": 2,
+            "xref_score": 1.0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 7.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)",
+        "Watchtower Depth: expert (6.0/8.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 29 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "deep",
+        "doctrine_quality": "moderate",
+        "evidence_integrity": "deep",
+        "contradiction_rigor": "deep",
+        "flywheel_health": "moderate",
+        "watchtower_depth": "expert",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-content": {
+      "total_score": 62.0,
+      "verdict": "beta",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 9.0,
+          "max_points": 18.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 10,
+            "volume_score": 2.0,
+            "spearman_rho": -0.152,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [
+              "baseline",
+              "beta",
+              "improved",
+              "production_ready",
+              "regressed"
+            ],
+            "verdict_score": 4,
+            "days_since_last_run": 11,
+            "recency_score": 3.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 10.0,
+          "max_points": 15.0,
+          "depth_level": "deep",
+          "details": {
+            "doctrine_count": 5,
+            "causal_density": 1.92,
+            "causal_score": 2.0,
+            "boundary_specificity": 0.125,
+            "boundary_score": 3.0,
+            "avg_jaccard_distance": 0.89,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 7.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "populated_lanes": 3,
+            "lane_file_counts": {
+              "research_grounded": 3,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 0
+            },
+            "gini_coefficient": 0.267,
+            "balance_score": 4.0,
+            "avg_words_per_file": 51.6,
+            "density_score": 1.0,
+            "structured_packets": 3,
+            "substantive_packets": 0,
+            "packet_score": 2.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 8.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "contradiction_entries": 5,
+            "run_count": 10,
+            "contradiction_ratio": 0.5,
+            "ratio_score": 4.0,
+            "specificity_per_100w": 9.26,
+            "specificity_score": 4.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 6.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 10,
+            "avg_interval_days": 0.0,
+            "frequency_score": 4.0,
+            "avg_delta": -8.1489,
+            "delta_score": 0.0,
+            "coverage_score": 2.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 5.0,
+          "max_points": 8.0,
+          "depth_level": "deep",
+          "details": {
+            "page_count": 15,
+            "page_score": 3.0,
+            "avg_words_per_page": 40.9,
+            "substance_score": 0.0,
+            "total_wikilinks": 21,
+            "pages_with_links": 3,
+            "xref_score": 2.0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 7.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 10 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "deep",
+        "doctrine_quality": "deep",
+        "evidence_integrity": "deep",
+        "contradiction_rigor": "deep",
+        "flywheel_health": "moderate",
+        "watchtower_depth": "deep",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-growth-analytics": {
+      "total_score": 15.0,
+      "verdict": "scaffold",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 8.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 1.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 0.0,
+          "max_points": 18.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 0,
+            "volume_score": 0.0,
+            "spearman_rho": null,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [],
+            "verdict_score": 0,
+            "days_since_last_run": null,
+            "recency_score": 0.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "doctrine_count": 0,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.0,
+            "boundary_score": 0.0,
+            "avg_jaccard_distance": null,
+            "uniqueness_score": 0.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 0.0,
+          "max_points": 12.0,
+          "depth_level": "absent",
+          "details": {
+            "populated_lanes": 0,
+            "lane_file_counts": {
+              "research_grounded": 0,
+              "benchmark_grounded": 0,
+              "exploratory_frontier": 0,
+              "realworld_validated": 0
+            },
+            "balance_score": 0.0,
+            "avg_words_per_file": 0,
+            "density_score": 0.0,
+            "structured_packets": 0,
+            "substantive_packets": 0,
+            "packet_score": 0.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 0,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 0,
+            "avg_interval_days": null,
+            "frequency_score": 0.0,
+            "avg_delta": null,
+            "delta_score": 0.0,
+            "coverage_score": 0.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": false
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 6.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 0.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Empirical Velocity: absent (0.0/18.0)",
+        "Doctrine Quality: absent (0.0/15.0)",
+        "Evidence Integrity: absent (0.0/12.0)",
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Flywheel Health: absent (0.0/15.0)",
+        "Watchtower Depth: absent (0.0/8.0)",
+        "Anti-gaming flags: high_structure_low_velocity"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (8.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 0 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Populate more evidence lanes (currently 0/4)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [
+        "high_structure_low_velocity"
+      ],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "absent",
+        "doctrine_quality": "absent",
+        "evidence_integrity": "absent",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "absent",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-growth-cgo": {
+      "total_score": 15.0,
+      "verdict": "scaffold",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 8.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 1.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 0.0,
+          "max_points": 18.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 0,
+            "volume_score": 0.0,
+            "spearman_rho": null,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [],
+            "verdict_score": 0,
+            "days_since_last_run": null,
+            "recency_score": 0.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "doctrine_count": 0,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.0,
+            "boundary_score": 0.0,
+            "avg_jaccard_distance": null,
+            "uniqueness_score": 0.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 0.0,
+          "max_points": 12.0,
+          "depth_level": "absent",
+          "details": {
+            "populated_lanes": 0,
+            "lane_file_counts": {
+              "research_grounded": 0,
+              "benchmark_grounded": 0,
+              "exploratory_frontier": 0,
+              "realworld_validated": 0
+            },
+            "balance_score": 0.0,
+            "avg_words_per_file": 0,
+            "density_score": 0.0,
+            "structured_packets": 0,
+            "substantive_packets": 0,
+            "packet_score": 0.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 0,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 0,
+            "avg_interval_days": null,
+            "frequency_score": 0.0,
+            "avg_delta": null,
+            "delta_score": 0.0,
+            "coverage_score": 0.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": false
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 6.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 0.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Empirical Velocity: absent (0.0/18.0)",
+        "Doctrine Quality: absent (0.0/15.0)",
+        "Evidence Integrity: absent (0.0/12.0)",
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Flywheel Health: absent (0.0/15.0)",
+        "Watchtower Depth: absent (0.0/8.0)",
+        "Anti-gaming flags: high_structure_low_velocity"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (8.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 0 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Populate more evidence lanes (currently 0/4)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [
+        "high_structure_low_velocity"
+      ],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "absent",
+        "doctrine_quality": "absent",
+        "evidence_integrity": "absent",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "absent",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-growth-community": {
+      "total_score": 22.0,
+      "verdict": "scaffold",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 8.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 1.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 6.0,
+          "max_points": 18.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 1,
+            "volume_score": 1.0,
+            "spearman_rho": null,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [
+              "baseline"
+            ],
+            "verdict_score": 1,
+            "days_since_last_run": 1,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 1.0,
+          "max_points": 15.0,
+          "depth_level": "surface",
+          "details": {
+            "doctrine_count": 1,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.0,
+            "boundary_score": 0.0,
+            "avg_jaccard_distance": null,
+            "uniqueness_score": 1.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 0.0,
+          "max_points": 12.0,
+          "depth_level": "absent",
+          "details": {
+            "populated_lanes": 0,
+            "lane_file_counts": {
+              "research_grounded": 0,
+              "benchmark_grounded": 0,
+              "exploratory_frontier": 0,
+              "realworld_validated": 0
+            },
+            "balance_score": 0.0,
+            "avg_words_per_file": 0,
+            "density_score": 0.0,
+            "structured_packets": 0,
+            "substantive_packets": 0,
+            "packet_score": 0.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 1,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0.0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 1,
+            "avg_interval_days": null,
+            "frequency_score": 0.0,
+            "avg_delta": null,
+            "delta_score": 0.0,
+            "coverage_score": 0.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": false
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 6.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 0.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Doctrine Quality: surface (1.0/15.0)",
+        "Evidence Integrity: absent (0.0/12.0)",
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Flywheel Health: absent (0.0/15.0)",
+        "Watchtower Depth: absent (0.0/8.0)"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (8.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 1 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Populate more evidence lanes (currently 0/4)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "moderate",
+        "doctrine_quality": "surface",
+        "evidence_integrity": "absent",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "absent",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-growth-content": {
+      "total_score": 30.0,
+      "verdict": "alpha",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 9.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 2.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 9.0,
+          "max_points": 18.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 4,
+            "volume_score": 1.0,
+            "spearman_rho": null,
+            "trajectory_score": 1.0,
+            "unique_verdicts": [
+              "baseline",
+              "near_best",
+              "regressed"
+            ],
+            "verdict_score": 3,
+            "days_since_last_run": 1,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 1.0,
+          "max_points": 15.0,
+          "depth_level": "surface",
+          "details": {
+            "doctrine_count": 1,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.0,
+            "boundary_score": 0.0,
+            "avg_jaccard_distance": null,
+            "uniqueness_score": 1.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 0.0,
+          "max_points": 12.0,
+          "depth_level": "absent",
+          "details": {
+            "populated_lanes": 0,
+            "lane_file_counts": {
+              "research_grounded": 0,
+              "benchmark_grounded": 0,
+              "exploratory_frontier": 0,
+              "realworld_validated": 0
+            },
+            "balance_score": 0.0,
+            "avg_words_per_file": 0,
+            "density_score": 0.0,
+            "structured_packets": 0,
+            "substantive_packets": 0,
+            "packet_score": 0.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 4,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0.0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 4.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 4,
+            "avg_interval_days": 0.0,
+            "frequency_score": 4.0,
+            "avg_delta": -0.0065,
+            "delta_score": 0.0,
+            "coverage_score": 0.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": false
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 6.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 0.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Doctrine Quality: surface (1.0/15.0)",
+        "Evidence Integrity: absent (0.0/12.0)",
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Watchtower Depth: absent (0.0/8.0)"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (9.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 4 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Populate more evidence lanes (currently 0/4)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "deep",
+        "doctrine_quality": "surface",
+        "evidence_integrity": "absent",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "moderate",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-growth-distribution": {
+      "total_score": 16.0,
+      "verdict": "scaffold",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 9.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 2.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 0.0,
+          "max_points": 18.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 0,
+            "volume_score": 0.0,
+            "spearman_rho": null,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [],
+            "verdict_score": 0,
+            "days_since_last_run": null,
+            "recency_score": 0.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "doctrine_count": 0,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.0,
+            "boundary_score": 0.0,
+            "avg_jaccard_distance": null,
+            "uniqueness_score": 0.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 0.0,
+          "max_points": 12.0,
+          "depth_level": "absent",
+          "details": {
+            "populated_lanes": 0,
+            "lane_file_counts": {
+              "research_grounded": 0,
+              "benchmark_grounded": 0,
+              "exploratory_frontier": 0,
+              "realworld_validated": 0
+            },
+            "balance_score": 0.0,
+            "avg_words_per_file": 0,
+            "density_score": 0.0,
+            "structured_packets": 0,
+            "substantive_packets": 0,
+            "packet_score": 0.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 0,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 0,
+            "avg_interval_days": null,
+            "frequency_score": 0.0,
+            "avg_delta": null,
+            "delta_score": 0.0,
+            "coverage_score": 0.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": false
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 6.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 0.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Empirical Velocity: absent (0.0/18.0)",
+        "Doctrine Quality: absent (0.0/15.0)",
+        "Evidence Integrity: absent (0.0/12.0)",
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Flywheel Health: absent (0.0/15.0)",
+        "Watchtower Depth: absent (0.0/8.0)",
+        "Anti-gaming flags: high_structure_low_velocity"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (9.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 0 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Populate more evidence lanes (currently 0/4)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [
+        "high_structure_low_velocity"
+      ],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "absent",
+        "doctrine_quality": "absent",
+        "evidence_integrity": "absent",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "absent",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-growth-trend": {
+      "total_score": 22.0,
+      "verdict": "scaffold",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 8.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 1.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 6.0,
+          "max_points": 18.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 1,
+            "volume_score": 1.0,
+            "spearman_rho": null,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [
+              "baseline"
+            ],
+            "verdict_score": 1,
+            "days_since_last_run": 1,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 1.0,
+          "max_points": 15.0,
+          "depth_level": "surface",
+          "details": {
+            "doctrine_count": 1,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.0,
+            "boundary_score": 0.0,
+            "avg_jaccard_distance": null,
+            "uniqueness_score": 1.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 0.0,
+          "max_points": 12.0,
+          "depth_level": "absent",
+          "details": {
+            "populated_lanes": 0,
+            "lane_file_counts": {
+              "research_grounded": 0,
+              "benchmark_grounded": 0,
+              "exploratory_frontier": 0,
+              "realworld_validated": 0
+            },
+            "balance_score": 0.0,
+            "avg_words_per_file": 0,
+            "density_score": 0.0,
+            "structured_packets": 0,
+            "substantive_packets": 0,
+            "packet_score": 0.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 1,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0.0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 1,
+            "avg_interval_days": null,
+            "frequency_score": 0.0,
+            "avg_delta": null,
+            "delta_score": 0.0,
+            "coverage_score": 0.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": false
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 6.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 0.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Doctrine Quality: surface (1.0/15.0)",
+        "Evidence Integrity: absent (0.0/12.0)",
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Flywheel Health: absent (0.0/15.0)",
+        "Watchtower Depth: absent (0.0/8.0)"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (8.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 1 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Populate more evidence lanes (currently 0/4)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "moderate",
+        "doctrine_quality": "surface",
+        "evidence_integrity": "absent",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "absent",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-gstack": {
+      "total_score": 15.0,
+      "verdict": "scaffold",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 8.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": false
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 0.0,
+          "max_points": 18.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 0,
+            "volume_score": 0.0,
+            "spearman_rho": null,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [],
+            "verdict_score": 0,
+            "days_since_last_run": null,
+            "recency_score": 0.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "doctrine_count": 0,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.0,
+            "boundary_score": 0.0,
+            "avg_jaccard_distance": null,
+            "uniqueness_score": 0.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 0.0,
+          "max_points": 12.0,
+          "depth_level": "absent",
+          "details": {
+            "populated_lanes": 0,
+            "lane_file_counts": {
+              "research_grounded": 0,
+              "benchmark_grounded": 0,
+              "exploratory_frontier": 0,
+              "realworld_validated": 0
+            },
+            "balance_score": 0.0,
+            "avg_words_per_file": 0,
+            "density_score": 0.0,
+            "structured_packets": 0,
+            "substantive_packets": 0,
+            "packet_score": 0.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 0,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 0,
+            "avg_interval_days": null,
+            "frequency_score": 0.0,
+            "avg_delta": null,
+            "delta_score": 0.0,
+            "coverage_score": 0.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": false
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 6.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 0.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Empirical Velocity: absent (0.0/18.0)",
+        "Doctrine Quality: absent (0.0/15.0)",
+        "Evidence Integrity: absent (0.0/12.0)",
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Flywheel Health: absent (0.0/15.0)",
+        "Watchtower Depth: absent (0.0/8.0)",
+        "Anti-gaming flags: high_structure_low_velocity"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (8.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 0 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Populate more evidence lanes (currently 0/4)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [
+        "high_structure_low_velocity"
+      ],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "absent",
+        "doctrine_quality": "absent",
+        "evidence_integrity": "absent",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "absent",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-pokemon-red": {
+      "total_score": 62.8,
+      "verdict": "beta",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 14.0,
+          "max_points": 18.0,
+          "depth_level": "expert",
+          "details": {
+            "run_count": 776,
+            "volume_score": 5.0,
+            "spearman_rho": 0.027,
+            "trajectory_score": 1.0,
+            "unique_verdicts": [
+              "baseline",
+              "flat",
+              "improved",
+              "regressed"
+            ],
+            "verdict_score": 4,
+            "days_since_last_run": 6,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 8.0,
+          "max_points": 15.0,
+          "depth_level": "deep",
+          "details": {
+            "doctrine_count": 5,
+            "causal_density": 0.91,
+            "causal_score": 1.0,
+            "boundary_specificity": 0.073,
+            "boundary_score": 2.0,
+            "avg_jaccard_distance": 0.963,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 5.0,
+          "max_points": 12.0,
+          "depth_level": "moderate",
+          "details": {
+            "populated_lanes": 4,
+            "lane_file_counts": {
+              "research_grounded": 14,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 89
+            },
+            "gini_coefficient": 0.66,
+            "balance_score": 2.0,
+            "avg_words_per_file": 99.5,
+            "density_score": 1.0,
+            "structured_packets": 6,
+            "substantive_packets": 0,
+            "packet_score": 2.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 3.8,
+          "max_points": 12.0,
+          "depth_level": "moderate",
+          "details": {
+            "contradiction_entries": 2,
+            "run_count": 776,
+            "contradiction_ratio": 0.0026,
+            "ratio_score": 0.8,
+            "specificity_per_100w": 4.76,
+            "specificity_score": 3.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 7.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 776,
+            "avg_interval_days": 0.0,
+            "frequency_score": 4.0,
+            "avg_delta": -0.0,
+            "delta_score": 0.0,
+            "coverage_score": 3.0,
+            "has_gaps_file": false,
+            "has_future_work": true,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 8.0,
+          "max_points": 8.0,
+          "depth_level": "expert",
+          "details": {
+            "page_count": 48,
+            "page_score": 3.0,
+            "avg_words_per_page": 1665.9,
+            "substance_score": 3.0,
+            "total_wikilinks": 45,
+            "pages_with_links": 3,
+            "xref_score": 2.0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 7.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)",
+        "Empirical Velocity: expert (14.0/18.0)",
+        "Watchtower Depth: expert (8.0/8.0)"
+      ],
+      "recommendations": [
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "expert",
+        "doctrine_quality": "deep",
+        "evidence_integrity": "moderate",
+        "contradiction_rigor": "moderate",
+        "flywheel_health": "moderate",
+        "watchtower_depth": "expert",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-predictive-worlds-lab": {
+      "total_score": 43.0,
+      "verdict": "alpha",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 6.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 1.0,
+            "has_scoring_function": false
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 10.0,
+          "max_points": 18.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 23,
+            "volume_score": 2.0,
+            "spearman_rho": 0.91,
+            "trajectory_score": 5.0,
+            "unique_verdicts": [
+              "alpha",
+              "beta",
+              "production"
+            ],
+            "verdict_score": 3,
+            "days_since_last_run": null,
+            "recency_score": 0.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 13.0,
+          "max_points": 15.0,
+          "depth_level": "expert",
+          "details": {
+            "doctrine_count": 4,
+            "causal_density": 4.4,
+            "causal_score": 4.0,
+            "boundary_specificity": 0.24,
+            "boundary_score": 4.0,
+            "avg_jaccard_distance": 0.937,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 4.0,
+          "max_points": 12.0,
+          "depth_level": "moderate",
+          "details": {
+            "populated_lanes": 4,
+            "lane_file_counts": {
+              "research_grounded": 12,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 78
+            },
+            "gini_coefficient": 0.658,
+            "balance_score": 2.0,
+            "avg_words_per_file": 93.9,
+            "density_score": 1.0,
+            "structured_packets": 1,
+            "substantive_packets": 0,
+            "packet_score": 1.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 0.0,
+          "max_points": 12.0,
+          "depth_level": "absent",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 23,
+            "contradiction_ratio": 0.0,
+            "ratio_score": 0.0,
+            "specificity_per_100w": 0.0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 6.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 23,
+            "avg_interval_days": null,
+            "frequency_score": 0.0,
+            "avg_delta": 2.8182,
+            "delta_score": 4.0,
+            "coverage_score": 2.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 4.0,
+          "max_points": 10.0,
+          "depth_level": "moderate",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 0.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Contradiction Rigor: absent (0.0/12.0)",
+        "Watchtower Depth: absent (0.0/8.0)"
+      ],
+      "strengths": [
+        "Doctrine Quality: expert (13.0/15.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 23 runs, need 50+ for meaningful trajectory)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "deep",
+        "empirical_velocity": "deep",
+        "doctrine_quality": "expert",
+        "evidence_integrity": "moderate",
+        "contradiction_rigor": "absent",
+        "flywheel_health": "moderate",
+        "watchtower_depth": "absent",
+        "integration_maturity": "moderate"
+      }
+    },
+    "domain-chip-roblox-development": {
+      "total_score": 55.0,
+      "verdict": "beta",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 8.0,
+          "max_points": 18.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 5,
+            "volume_score": 1.0,
+            "spearman_rho": -0.375,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [
+              "baseline",
+              "improved",
+              "regressed"
+            ],
+            "verdict_score": 3,
+            "days_since_last_run": 6,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 7.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "doctrine_count": 4,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.077,
+            "boundary_score": 2.0,
+            "avg_jaccard_distance": 0.954,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 6.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "populated_lanes": 3,
+            "lane_file_counts": {
+              "research_grounded": 15,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 0
+            },
+            "gini_coefficient": 0.549,
+            "balance_score": 2.0,
+            "avg_words_per_file": 353.4,
+            "density_score": 3.0,
+            "structured_packets": 1,
+            "substantive_packets": 0,
+            "packet_score": 1.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 5.0,
+          "max_points": 12.0,
+          "depth_level": "moderate",
+          "details": {
+            "contradiction_entries": 2,
+            "run_count": 5,
+            "ratio_score": 2.0,
+            "specificity_per_100w": 4.58,
+            "specificity_score": 3.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 6.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 5,
+            "avg_interval_days": 0.47,
+            "frequency_score": 4.0,
+            "avg_delta": -0.035,
+            "delta_score": 0.0,
+            "coverage_score": 2.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 6.0,
+          "max_points": 8.0,
+          "depth_level": "expert",
+          "details": {
+            "page_count": 41,
+            "page_score": 3.0,
+            "avg_words_per_page": 163.0,
+            "substance_score": 2.0,
+            "total_wikilinks": 32,
+            "pages_with_links": 2,
+            "xref_score": 1.0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 7.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)",
+        "Watchtower Depth: expert (6.0/8.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 5 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "moderate",
+        "doctrine_quality": "moderate",
+        "evidence_integrity": "deep",
+        "contradiction_rigor": "moderate",
+        "flywheel_health": "moderate",
+        "watchtower_depth": "expert",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-spark-private": {
+      "total_score": 58.0,
+      "verdict": "beta",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 9.0,
+          "max_points": 18.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 8,
+            "volume_score": 1.0,
+            "spearman_rho": -0.411,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [
+              "baseline",
+              "flat",
+              "improved",
+              "regressed"
+            ],
+            "verdict_score": 4,
+            "days_since_last_run": 6,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 7.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "doctrine_count": 4,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.077,
+            "boundary_score": 2.0,
+            "avg_jaccard_distance": 0.96,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 6.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "populated_lanes": 3,
+            "lane_file_counts": {
+              "research_grounded": 20,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 0
+            },
+            "gini_coefficient": 0.576,
+            "balance_score": 2.0,
+            "avg_words_per_file": 214.5,
+            "density_score": 3.0,
+            "structured_packets": 2,
+            "substantive_packets": 0,
+            "packet_score": 1.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 6.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "contradiction_entries": 3,
+            "run_count": 8,
+            "ratio_score": 2.0,
+            "specificity_per_100w": 5.73,
+            "specificity_score": 4.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 7.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 8,
+            "avg_interval_days": 0.28,
+            "frequency_score": 4.0,
+            "avg_delta": 0.0,
+            "delta_score": 1.0,
+            "coverage_score": 2.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 6.0,
+          "max_points": 8.0,
+          "depth_level": "expert",
+          "details": {
+            "page_count": 198,
+            "page_score": 3.0,
+            "avg_words_per_page": 173.8,
+            "substance_score": 2.0,
+            "total_wikilinks": 42,
+            "pages_with_links": 2,
+            "xref_score": 1.0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 7.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)",
+        "Watchtower Depth: expert (6.0/8.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 8 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "deep",
+        "doctrine_quality": "moderate",
+        "evidence_integrity": "deep",
+        "contradiction_rigor": "deep",
+        "flywheel_health": "moderate",
+        "watchtower_depth": "expert",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-spark-private-main": {
+      "total_score": 48.0,
+      "verdict": "alpha",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 9.0,
+          "max_points": 18.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 3,
+            "volume_score": 1.0,
+            "spearman_rho": null,
+            "trajectory_score": 2.0,
+            "unique_verdicts": [
+              "baseline",
+              "improved"
+            ],
+            "verdict_score": 2,
+            "days_since_last_run": 1,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 7.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "doctrine_count": 3,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.091,
+            "boundary_score": 2.0,
+            "avg_jaccard_distance": 0.922,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 4.0,
+          "max_points": 12.0,
+          "depth_level": "moderate",
+          "details": {
+            "populated_lanes": 3,
+            "lane_file_counts": {
+              "research_grounded": 20,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 0
+            },
+            "gini_coefficient": 0.576,
+            "balance_score": 2.0,
+            "avg_words_per_file": 98.2,
+            "density_score": 1.0,
+            "structured_packets": 1,
+            "substantive_packets": 0,
+            "packet_score": 1.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 3,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0.0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 10.0,
+          "max_points": 15.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 3,
+            "avg_interval_days": 0.0,
+            "frequency_score": 4.0,
+            "avg_delta": 0.1,
+            "delta_score": 4.0,
+            "coverage_score": 2.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 7.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Watchtower Depth: absent (0.0/8.0)"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 3 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "deep",
+        "doctrine_quality": "moderate",
+        "evidence_integrity": "moderate",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "deep",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-startup-yc": {
+      "total_score": 72.0,
+      "verdict": "beta",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 15.0,
+          "max_points": 18.0,
+          "depth_level": "expert",
+          "details": {
+            "run_count": 785,
+            "volume_score": 5.0,
+            "spearman_rho": 0.379,
+            "trajectory_score": 2.0,
+            "unique_verdicts": [
+              "baseline",
+              "flat",
+              "improved",
+              "near_best",
+              "regressed"
+            ],
+            "verdict_score": 4,
+            "days_since_last_run": 6,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 7.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "doctrine_count": 9,
+            "causal_density": 0.41,
+            "causal_score": 1.0,
+            "boundary_specificity": 0.021,
+            "boundary_score": 1.0,
+            "avg_jaccard_distance": 0.971,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 7.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "populated_lanes": 4,
+            "lane_file_counts": {
+              "research_grounded": 104,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 10
+            },
+            "gini_coefficient": 0.685,
+            "balance_score": 2.0,
+            "avg_words_per_file": 309.4,
+            "density_score": 3.0,
+            "structured_packets": 7,
+            "substantive_packets": 0,
+            "packet_score": 2.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 8.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "contradiction_entries": 21,
+            "run_count": 785,
+            "contradiction_ratio": 0.0268,
+            "ratio_score": 4.0,
+            "specificity_per_100w": 15.58,
+            "specificity_score": 4.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 8.0,
+          "max_points": 15.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 785,
+            "avg_interval_days": 0.01,
+            "frequency_score": 4.0,
+            "avg_delta": 0.0004,
+            "delta_score": 2.0,
+            "coverage_score": 2.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 8.0,
+          "max_points": 8.0,
+          "depth_level": "expert",
+          "details": {
+            "page_count": 276,
+            "page_score": 3.0,
+            "avg_words_per_page": 457.9,
+            "substance_score": 3.0,
+            "total_wikilinks": 68,
+            "pages_with_links": 3,
+            "xref_score": 2.0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 9.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "dspy_score": 3.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)",
+        "Empirical Velocity: expert (15.0/18.0)",
+        "Watchtower Depth: expert (8.0/8.0)",
+        "Integration Maturity: expert (9.0/10.0)"
+      ],
+      "recommendations": [
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "expert",
+        "doctrine_quality": "moderate",
+        "evidence_integrity": "deep",
+        "contradiction_rigor": "deep",
+        "flywheel_health": "deep",
+        "watchtower_depth": "expert",
+        "integration_maturity": "expert"
+      }
+    },
+    "domain-chip-trading-crypto": {
+      "total_score": 41.0,
+      "verdict": "alpha",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 6.0,
+          "max_points": 18.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 1,
+            "volume_score": 1.0,
+            "spearman_rho": null,
+            "trajectory_score": 0.0,
+            "unique_verdicts": [
+              "baseline"
+            ],
+            "verdict_score": 1,
+            "days_since_last_run": 6,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 7.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "doctrine_count": 4,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.077,
+            "boundary_score": 2.0,
+            "avg_jaccard_distance": 0.96,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 2.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "populated_lanes": 4,
+            "lane_file_counts": {
+              "research_grounded": 9,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 159
+            },
+            "gini_coefficient": 0.709,
+            "balance_score": 1.0,
+            "avg_words_per_file": 28.0,
+            "density_score": 0.0,
+            "structured_packets": 1,
+            "substantive_packets": 0,
+            "packet_score": 1.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 1,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0.0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 0.0,
+          "max_points": 15.0,
+          "depth_level": "absent",
+          "details": {
+            "run_count": 1,
+            "avg_interval_days": null,
+            "frequency_score": 0.0,
+            "avg_delta": null,
+            "delta_score": 0.0,
+            "coverage_score": 0.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": false
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 8.0,
+          "max_points": 8.0,
+          "depth_level": "expert",
+          "details": {
+            "page_count": 61,
+            "page_score": 3.0,
+            "avg_words_per_page": 437.0,
+            "substance_score": 3.0,
+            "total_wikilinks": 122,
+            "pages_with_links": 3,
+            "xref_score": 2.0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 7.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Evidence Integrity: surface (2.0/12.0)",
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Flywheel Health: absent (0.0/15.0)"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)",
+        "Watchtower Depth: expert (8.0/8.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 1 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "moderate",
+        "doctrine_quality": "moderate",
+        "evidence_integrity": "surface",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "absent",
+        "watchtower_depth": "expert",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-trading-crypto-private": {
+      "total_score": 37.0,
+      "verdict": "alpha",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 9.0,
+          "max_points": 18.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 3,
+            "volume_score": 1.0,
+            "spearman_rho": null,
+            "trajectory_score": 1.0,
+            "unique_verdicts": [
+              "baseline",
+              "improved",
+              "regressed"
+            ],
+            "verdict_score": 3,
+            "days_since_last_run": 6,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 5.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "doctrine_count": 2,
+            "causal_density": 1.22,
+            "causal_score": 2.0,
+            "boundary_specificity": 0.062,
+            "boundary_score": 2.0,
+            "avg_jaccard_distance": null,
+            "uniqueness_score": 1.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 0.0,
+          "max_points": 12.0,
+          "depth_level": "absent",
+          "details": {
+            "populated_lanes": 0,
+            "lane_file_counts": {
+              "research_grounded": 0,
+              "benchmark_grounded": 0,
+              "exploratory_frontier": 0,
+              "realworld_validated": 0
+            },
+            "balance_score": 0.0,
+            "avg_words_per_file": 0,
+            "density_score": 0.0,
+            "structured_packets": 0,
+            "substantive_packets": 0,
+            "packet_score": 0.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 3,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0.0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 6.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "run_count": 3,
+            "avg_interval_days": 1.03,
+            "frequency_score": 3.0,
+            "avg_delta": 0.0,
+            "delta_score": 1.0,
+            "coverage_score": 2.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 6.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 0.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Evidence Integrity: absent (0.0/12.0)",
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Watchtower Depth: absent (0.0/8.0)"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 3 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Populate more evidence lanes (currently 0/4)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "deep",
+        "doctrine_quality": "moderate",
+        "evidence_integrity": "absent",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "moderate",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-web-designer": {
+      "total_score": 53.0,
+      "verdict": "beta",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 9.0,
+          "max_points": 18.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 3,
+            "volume_score": 1.0,
+            "spearman_rho": null,
+            "trajectory_score": 2.0,
+            "unique_verdicts": [
+              "baseline",
+              "improved"
+            ],
+            "verdict_score": 2,
+            "days_since_last_run": 1,
+            "recency_score": 4.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 7.0,
+          "max_points": 15.0,
+          "depth_level": "moderate",
+          "details": {
+            "doctrine_count": 3,
+            "causal_density": 0.0,
+            "causal_score": 0.0,
+            "boundary_specificity": 0.091,
+            "boundary_score": 2.0,
+            "avg_jaccard_distance": 0.921,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 7.0,
+          "max_points": 12.0,
+          "depth_level": "deep",
+          "details": {
+            "populated_lanes": 3,
+            "lane_file_counts": {
+              "research_grounded": 10,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 0
+            },
+            "gini_coefficient": 0.5,
+            "balance_score": 3.0,
+            "avg_words_per_file": 374.7,
+            "density_score": 3.0,
+            "structured_packets": 1,
+            "substantive_packets": 0,
+            "packet_score": 1.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 1.0,
+          "max_points": 12.0,
+          "depth_level": "surface",
+          "details": {
+            "contradiction_entries": 0,
+            "run_count": 3,
+            "ratio_score": 1.0,
+            "specificity_per_100w": 0.0,
+            "specificity_score": 0.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 12.0,
+          "max_points": 15.0,
+          "depth_level": "expert",
+          "details": {
+            "run_count": 3,
+            "avg_interval_days": 0.0,
+            "frequency_score": 4.0,
+            "avg_delta": 0.1,
+            "delta_score": 5.0,
+            "coverage_score": 3.0,
+            "has_gaps_file": false,
+            "has_future_work": true,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 0.0,
+          "max_points": 8.0,
+          "depth_level": "absent",
+          "details": {
+            "page_count": 0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 7.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Contradiction Rigor: surface (1.0/12.0)",
+        "Watchtower Depth: absent (0.0/8.0)"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)",
+        "Flywheel Health: expert (12.0/15.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 3 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)",
+        "Create Obsidian vault pages to document strategic knowledge"
+      ],
+      "anti_gaming_flags": [],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "deep",
+        "doctrine_quality": "moderate",
+        "evidence_integrity": "deep",
+        "contradiction_rigor": "surface",
+        "flywheel_health": "expert",
+        "watchtower_depth": "absent",
+        "integration_maturity": "deep"
+      }
+    },
+    "domain-chip-xcontent": {
+      "total_score": 65.6,
+      "verdict": "beta",
+      "rubric_version": "3.0",
+      "dimensions": [
+        {
+          "name": "manifest_structure",
+          "label": "Manifest & Structure",
+          "score": 10.0,
+          "max_points": 10.0,
+          "depth_level": "expert",
+          "details": {
+            "manifest_score": 5.0,
+            "project_score": 3.0,
+            "has_scoring_function": true
+          }
+        },
+        {
+          "name": "empirical_velocity",
+          "label": "Empirical Velocity",
+          "score": 13.0,
+          "max_points": 18.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 19,
+            "volume_score": 2.0,
+            "spearman_rho": 0.729,
+            "trajectory_score": 4.0,
+            "unique_verdicts": [
+              "baseline",
+              "flat",
+              "improved",
+              "regressed",
+              "unknown"
+            ],
+            "verdict_score": 4,
+            "days_since_last_run": 8,
+            "recency_score": 3.0
+          }
+        },
+        {
+          "name": "doctrine_quality",
+          "label": "Doctrine Quality",
+          "score": 8.0,
+          "max_points": 15.0,
+          "depth_level": "deep",
+          "details": {
+            "doctrine_count": 5,
+            "causal_density": 0.98,
+            "causal_score": 1.0,
+            "boundary_specificity": 0.077,
+            "boundary_score": 2.0,
+            "avg_jaccard_distance": 0.961,
+            "uniqueness_score": 5.0
+          }
+        },
+        {
+          "name": "evidence_integrity",
+          "label": "Evidence Integrity",
+          "score": 9.0,
+          "max_points": 12.0,
+          "depth_level": "expert",
+          "details": {
+            "populated_lanes": 3,
+            "lane_file_counts": {
+              "research_grounded": 2,
+              "benchmark_grounded": 1,
+              "exploratory_frontier": 1,
+              "realworld_validated": 0
+            },
+            "gini_coefficient": 0.167,
+            "balance_score": 4.0,
+            "avg_words_per_file": 481.8,
+            "density_score": 3.0,
+            "structured_packets": 3,
+            "substantive_packets": 0,
+            "packet_score": 2.0
+          }
+        },
+        {
+          "name": "contradiction_rigor",
+          "label": "Contradiction Rigor",
+          "score": 4.6,
+          "max_points": 12.0,
+          "depth_level": "moderate",
+          "details": {
+            "contradiction_entries": 2,
+            "run_count": 19,
+            "contradiction_ratio": 0.1053,
+            "ratio_score": 1.6,
+            "specificity_per_100w": 4.76,
+            "specificity_score": 3.0,
+            "resolution_matches": 0,
+            "resolution_score": 0.0
+          }
+        },
+        {
+          "name": "flywheel_health",
+          "label": "Flywheel Health",
+          "score": 9.0,
+          "max_points": 15.0,
+          "depth_level": "deep",
+          "details": {
+            "run_count": 19,
+            "avg_interval_days": 0.0,
+            "frequency_score": 4.0,
+            "avg_delta": 0.014,
+            "delta_score": 3.0,
+            "coverage_score": 2.0,
+            "has_gaps_file": false,
+            "has_future_work": false,
+            "has_suggest_output": true
+          }
+        },
+        {
+          "name": "watchtower_depth",
+          "label": "Watchtower Depth",
+          "score": 5.0,
+          "max_points": 8.0,
+          "depth_level": "deep",
+          "details": {
+            "page_count": 21,
+            "page_score": 3.0,
+            "avg_words_per_page": 99.3,
+            "substance_score": 1.0,
+            "total_wikilinks": 27,
+            "pages_with_links": 2,
+            "xref_score": 1.0
+          }
+        },
+        {
+          "name": "integration_maturity",
+          "label": "Integration Maturity",
+          "score": 7.0,
+          "max_points": 10.0,
+          "depth_level": "deep",
+          "details": {
+            "dspy_score": 1.0,
+            "scoring_model_score": 3.0,
+            "hook_count": 4,
+            "hook_score": 3.0
+          }
+        }
+      ],
+      "gaps": [
+        "Anti-gaming flags: single_day_batch"
+      ],
+      "strengths": [
+        "Manifest & Structure: expert (10.0/10.0)",
+        "Evidence Integrity: expert (9.0/12.0)"
+      ],
+      "recommendations": [
+        "Run more evaluation loops (currently 19 runs, need 50+ for meaningful trajectory)",
+        "Enrich doctrines with causal reasoning (because/therefore/leads to)"
+      ],
+      "anti_gaming_flags": [
+        "single_day_batch"
+      ],
+      "depth_profile": {
+        "manifest_structure": "expert",
+        "empirical_velocity": "deep",
+        "doctrine_quality": "deep",
+        "evidence_integrity": "expert",
+        "contradiction_rigor": "moderate",
+        "flywheel_health": "deep",
+        "watchtower_depth": "deep",
+        "integration_maturity": "deep"
+      }
+    }
+  },
+  "summary": {
+    "chip_count": 19,
+    "average_score": 41.7,
+    "verdicts": {
+      "beta": 8,
+      "scaffold": 6,
+      "alpha": 5
+    },
+    "ranking": [
+      [
+        "domain-chip-startup-yc",
+        72.0
+      ],
+      [
+        "domain-chip-xcontent",
+        65.6
+      ],
+      [
+        "domain-chip-pokemon-red",
+        62.8
+      ],
+      [
+        "domain-chip-content",
+        62.0
+      ],
+      [
+        "domain-chip-agentic-marketing",
+        60.0
+      ],
+      [
+        "domain-chip-spark-private",
+        58.0
+      ],
+      [
+        "domain-chip-roblox-development",
+        55.0
+      ],
+      [
+        "domain-chip-web-designer",
+        53.0
+      ],
+      [
+        "domain-chip-spark-private-main",
+        48.0
+      ],
+      [
+        "domain-chip-predictive-worlds-lab",
+        43.0
+      ],
+      [
+        "domain-chip-trading-crypto",
+        41.0
+      ],
+      [
+        "domain-chip-trading-crypto-private",
+        37.0
+      ],
+      [
+        "domain-chip-growth-content",
+        30.0
+      ],
+      [
+        "domain-chip-growth-community",
+        22.0
+      ],
+      [
+        "domain-chip-growth-trend",
+        22.0
+      ],
+      [
+        "domain-chip-growth-distribution",
+        16.0
+      ],
+      [
+        "domain-chip-growth-analytics",
+        15.0
+      ],
+      [
+        "domain-chip-growth-cgo",
+        15.0
+      ],
+      [
+        "domain-chip-gstack",
+        15.0
+      ]
+    ]
+  }
+}
