@@ -663,7 +663,7 @@ def _fix_has_skill_file(chip_path: Path) -> bool:
             return True
 
     try:
-        from ..intelligence_server import build_skill
+        from ..intelligence_serving.intelligence_server import build_skill
         build_skill(chip_path)
         return True
     except Exception:

@@ -742,3 +742,32 @@ The serving implementation now lives behind `src/chip_labs/intelligence_serving/
 ### Notes
 
 - This tranche does not move `hooks.py`. It tightens import direction now that the serving namespace exists materially in code.
+
+## Follow-On Tranche: Factory Serving Import Cleanup
+
+### Files Changed
+
+- `src/chip_labs/chip_factory/gap_analyzer.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_factory_serving_import_cleanup.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_factory_serving_import_cleanup.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+After the serving implementation moved behind `src/chip_labs/intelligence_serving/`, the factory gap analyzer still imported `build_skill` through the old top-level `intelligence_server` alias. That left one avoidable cross-surface reach-through in the factory surface.
+
+### What Changed
+
+- Repointed `chip_factory/gap_analyzer.py` to import `build_skill` from the namespace-local serving implementation
+- Left the top-level serving compatibility aliases untouched for external callers
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.chip_factory.gap_analyzer import improve_chip; from chip_labs.intelligence_serving.intelligence_server import build_skill; import chip_labs.cli; print('factory-serving-import-cleanup-ok')"`
+
+### Notes
+
+- This is intentionally narrow. The goal is to remove one remaining internal alias reach-through without broadening the surface of the tranche.

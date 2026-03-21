@@ -517,3 +517,18 @@
 
 - Make the top-level serving modules more purely compatibility-oriented
 - Tighten the serving boundary by reducing internal reach-through to legacy aliases
+
+## Follow-On Tranche: Factory Serving Import Cleanup
+
+## `src/chip_labs/chip_factory/gap_analyzer.py`
+
+- Repointed the `build_skill` import to the namespace-local serving implementation instead of the legacy top-level alias
+
+## `research/packets/packet_factory_serving_import_cleanup.json`
+
+- Added a packet documenting why factory code should call serving through the serving namespace now that the implementation lives there
+
+## Expected Effect
+
+- Remove one remaining internal factory-to-serving alias reach-through
+- Keep the top-level serving modules more purely compatibility-oriented

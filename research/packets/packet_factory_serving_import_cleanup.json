@@ -1,0 +1,5 @@
+{
+  "claim": "Once the serving implementation lives behind intelligence_serving, factory modules should call that namespace directly instead of the legacy top-level serving aliases.",
+  "mechanism": "gap_analyzer.py uses serving behavior only for skill generation. Repointing that import to the namespace-local intelligence-serving module reduces cross-surface alias reach-through without changing factory behavior.",
+  "boundary": "This cleanup is limited to one factory-to-serving import path. It does not change gap analysis logic or the generated skill content."
+}
