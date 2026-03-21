@@ -116,6 +116,7 @@ Status:
 - Extended the same pattern into the serving surface by moving `intelligence_server.py` under `src/chip_labs/intelligence_serving/`
 - Extended the serving move by relocating `chip_advisor.py` and `chip_context_injector.py` behind the same namespace
 - Extended the serving move again by relocating `chip_mcp_server.py` behind the same namespace
+- Completed the namespace-local serving implementation move by relocating `chip_runtime.py` behind the same namespace
 
 Exit condition:
 - Each surface depends only on sanctioned shared utilities and public interfaces

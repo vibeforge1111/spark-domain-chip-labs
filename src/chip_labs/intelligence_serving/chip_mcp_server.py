@@ -146,7 +146,7 @@ class ChipMCPServer:
             return
 
         try:
-            from ..chip_runtime import load_portfolio
+            from .chip_runtime import load_portfolio
             kwargs: dict[str, Any] = {"min_score": MIN_QUALITY_SCORE}
             if self._search_dir:
                 kwargs["search_dir"] = self._search_dir
@@ -257,7 +257,7 @@ class ChipMCPServer:
             return {"error": f"Chip '{chip_name}' not found in portfolio"}
 
         try:
-            from ..chip_runtime import execute_hook
+            from .chip_runtime import execute_hook
             result = execute_hook(chip, "evaluate", mutations=mutations)
             return {
                 "chip_name": result.chip_name,

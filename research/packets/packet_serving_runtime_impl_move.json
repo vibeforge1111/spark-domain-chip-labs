@@ -1,0 +1,5 @@
+{
+  "claim": "After intelligence, advisory, context injection, and MCP all sit behind the serving namespace, the runtime can move behind the same boundary with a compatibility wrapper.",
+  "mechanism": "chip_runtime.py is the serving surface's central shared entrypoint. Moving it last lets the rest of the serving modules switch to namespace-local runtime imports in the same tranche, reducing cross-boundary reach-through while preserving the top-level runtime path for external callers.",
+  "boundary": "This move preserves the public top-level runtime module through a wrapper. It does not change hook semantics or the runtime's manifest contract."
+}

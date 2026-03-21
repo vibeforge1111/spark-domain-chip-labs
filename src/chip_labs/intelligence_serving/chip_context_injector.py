@@ -344,7 +344,7 @@ def inject_context_for_task(
     """
     if portfolio is None:
         try:
-            from ..chip_runtime import load_portfolio
+            from .chip_runtime import load_portfolio
             portfolio = load_portfolio(min_score=35)
         except (ImportError, Exception):
             return "<!-- No chip intelligence available -->"

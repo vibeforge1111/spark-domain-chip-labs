@@ -1,0 +1,36 @@
+{
+  "request_id": "2026-03-21-phase7c-serving-runtime-impl-move",
+  "created_at": "2026-03-21",
+  "type": "compatibility_preserving_file_move",
+  "goal": "Move the runtime implementation behind the intelligence_serving namespace while preserving the top-level chip_runtime module through a compatibility wrapper.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Preserve existing import paths for callers and tests",
+    "Do not change runtime hook semantics in this tranche"
+  ],
+  "files_touched": [
+    "src/chip_labs/intelligence_serving/chip_runtime.py",
+    "src/chip_labs/intelligence_serving/api.py",
+    "src/chip_labs/intelligence_serving/chip_advisor.py",
+    "src/chip_labs/intelligence_serving/chip_context_injector.py",
+    "src/chip_labs/intelligence_serving/chip_mcp_server.py",
+    "src/chip_labs/chip_runtime.py",
+    "docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/packets/packet_serving_runtime_impl_move.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "The real runtime implementation now lives under chip_labs.intelligence_serving.",
+    "The old top-level chip_runtime module now acts as a compatibility wrapper.",
+    "Serving-surface modules now import the namespace-local runtime implementation instead of reaching through the top-level wrapper."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -c \"from chip_labs.chip_runtime import ChipHandle, execute_hook, load_portfolio; from chip_labs.intelligence_serving.chip_runtime import ChipHandle as moved_ChipHandle; from chip_labs.intelligence_serving import load_portfolio as api_load_portfolio; import chip_labs.hooks, chip_labs.cli; print('serving-runtime-move-imports-ok')\""
+  ],
+  "follow_up": [
+    "With runtime moved, the serving namespace now owns the full serving implementation surface behind compatibility wrappers.",
+    "The next structural work should be dependency cleanup across surfaces rather than more same-pattern serving moves."
+  ]
+}

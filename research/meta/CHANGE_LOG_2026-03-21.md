@@ -568,3 +568,40 @@ After the intelligence, advisory, and context-injection paths moved behind the s
 ### Notes
 
 - `chip_runtime.py` remains top-level in this tranche and is now the main remaining serving implementation anchor outside the namespace.
+
+## Follow-On Tranche: Serving Runtime Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/intelligence_serving/chip_runtime.py`
+- `src/chip_labs/intelligence_serving/api.py`
+- `src/chip_labs/intelligence_serving/chip_advisor.py`
+- `src/chip_labs/intelligence_serving/chip_context_injector.py`
+- `src/chip_labs/intelligence_serving/chip_mcp_server.py`
+- `src/chip_labs/chip_runtime.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_serving_runtime_impl_move.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_serving_runtime_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+After the intelligence, advisory, context-injection, and MCP paths moved behind the serving namespace, `chip_runtime.py` became the last major serving implementation anchor still sitting at the top level. Moving it last lets the whole serving surface use namespace-local runtime imports without changing the public runtime path.
+
+### What Changed
+
+- Moved `chip_runtime.py` under `src/chip_labs/intelligence_serving/`
+- Replaced the old top-level runtime module with a compatibility alias
+- Updated the serving namespace API to import runtime helpers from the moved implementation directly
+- Updated moved serving modules to depend on the namespace-local runtime path instead of the top-level wrapper
+- Converted the top-level serving compatibility wrappers into module aliases so monkeypatching the old import paths still patches the moved implementations
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.chip_runtime import ChipHandle, execute_hook, load_portfolio; from chip_labs.intelligence_serving.chip_runtime import ChipHandle as moved_ChipHandle; from chip_labs.intelligence_serving import load_portfolio as api_load_portfolio; import chip_labs.hooks, chip_labs.cli; print('serving-runtime-move-imports-ok')"`
+
+### Notes
+
+- This tranche preserves runtime behavior. It changes implementation location and internal import direction, not the hook contract or scoring logic.

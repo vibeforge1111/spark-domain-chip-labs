@@ -405,3 +405,31 @@
 
 - Make the serving namespace the real home of nearly all serving entrypoints except runtime
 - Preserve existing imports while reducing one more large top-level serving module
+
+## Follow-On Tranche: Serving Runtime Implementation Move
+
+## `src/chip_labs/intelligence_serving/chip_runtime.py`
+
+- Moved the runtime implementation behind the serving namespace
+- Updated it to import the namespace-local intelligence server implementation
+
+## `src/chip_labs/chip_runtime.py`
+
+- Replaced the previous implementation file with a compatibility alias that points at the moved serving runtime
+
+## `src/chip_labs/intelligence_serving/api.py`, `src/chip_labs/intelligence_serving/chip_advisor.py`, `src/chip_labs/intelligence_serving/chip_context_injector.py`, `src/chip_labs/intelligence_serving/chip_mcp_server.py`
+
+- Repointed serving-surface runtime imports to the moved implementation instead of the top-level compatibility wrapper
+
+## `src/chip_labs/intelligence_server.py`, `src/chip_labs/chip_advisor.py`, `src/chip_labs/chip_context_injector.py`, `src/chip_labs/chip_mcp_server.py`, `src/chip_labs/chip_runtime.py`
+
+- Converted top-level serving wrappers into module aliases so patches against the legacy module paths apply to the moved implementations too
+
+## `research/packets/packet_serving_runtime_impl_move.json`
+
+- Added a packet documenting why the runtime should move last within the serving surface
+
+## Expected Effect
+
+- Make the serving namespace the real home of the full serving implementation surface
+- Preserve existing imports while reducing top-level serving modules to compatibility wrappers
