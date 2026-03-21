@@ -133,6 +133,52 @@ class TestLoadPortfolio:
 
         assert len(handles) == 0
 
+    def test_includes_current_workspace_chip_for_default_search(self, tmp_path: Path) -> None:
+        chip_dir = tmp_path / "spark-domain-chip-labs"
+        chip_dir.mkdir()
+        (chip_dir / "spark-chip.json").write_text(
+            json.dumps(
+                {
+                    "chip_name": "domain-chip-labs",
+                    "domain": "chip-research",
+                    "version": "0.1.0",
+                    "capabilities": ["evaluate"],
+                    "commands": {},
+                    "frontier": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+
+        with patch("chip_labs.chip_runtime.discover_chips", return_value=[]):
+            with patch("chip_labs.chip_runtime.score_chip_v3", return_value=FakeEvalResult(55.0)):
+                with patch("chip_labs.chip_runtime.Path.cwd", return_value=chip_dir):
+                    handles = load_portfolio(min_score=0)
+
+        assert len(handles) == 1
+        assert handles[0].chip_name == "domain-chip-labs"
+        assert handles[0].chip_path == chip_dir
+
+    def test_explicit_search_dir_does_not_include_current_workspace_chip(self, tmp_path: Path) -> None:
+        chip_dir = tmp_path / "spark-domain-chip-labs"
+        chip_dir.mkdir()
+        (chip_dir / "spark-chip.json").write_text(
+            json.dumps(
+                {
+                    "chip_name": "domain-chip-labs",
+                    "domain": "chip-research",
+                    "version": "0.1.0",
+                }
+            ),
+            encoding="utf-8",
+        )
+
+        with patch("chip_labs.chip_runtime.discover_chips", return_value=[]):
+            with patch("chip_labs.chip_runtime.Path.cwd", return_value=chip_dir):
+                handles = load_portfolio(tmp_path, min_score=0)
+
+        assert handles == []
+
     def test_skips_broken_chips(self, tmp_path: Path) -> None:
         bad_dir = tmp_path / "domain-chip-broken"
         bad_dir.mkdir()  # No manifest

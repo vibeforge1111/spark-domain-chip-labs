@@ -590,3 +590,27 @@
 
 - Turn the latest structural and packaging work into ledger-visible operating evidence
 - Keep the repo's claimed stability grounded in executed scorer and regression results rather than only in code movement
+
+## Follow-On Tranche: Phase 8 Workspace Serving Fallback
+
+## `src/chip_labs/intelligence_serving/chip_runtime.py`
+
+- Added a default-search helper that appends the active workspace chip to the portfolio when the process is already running inside a chip repo
+- Kept explicit `search_dir` calls unchanged so external callers still control the search scope directly
+
+## `src/chip_labs/intelligence_serving/chip_context_injector.py`
+
+- Added an active-workspace fallback so `inject_context_for_task()` uses the current chip when lexical chip selection returns nothing
+
+## `tests/test_chip_runtime.py`, `tests/test_chip_context_injector.py`
+
+- Added coverage for current-workspace portfolio inclusion and current-workspace context fallback
+
+## `research/packets/packet_current_workspace_serving_fallback.json`
+
+- Added a packet documenting why repo-local serving should include the active workspace chip even when it is outside the Desktop prefix registry
+
+## Expected Effect
+
+- Prevent empty `serve-intelligence` outputs for repo-local work inside this chip
+- Keep the external relevance floor intact while making the active workspace chip first-class in local serving flows

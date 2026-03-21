@@ -874,3 +874,34 @@ The structural migration and packaging decision were complete, but the repo stil
 ### Notes
 
 - This tranche adds real operating history instead of more structural claims. The remaining score bottlenecks stay the same: watchtower depth and longer-run accumulation, not contract drift.
+
+## Follow-On Tranche: Phase 8 Workspace Serving Fallback
+
+### Files Changed
+
+- `src/chip_labs/intelligence_serving/chip_runtime.py`
+- `src/chip_labs/intelligence_serving/chip_context_injector.py`
+- `tests/test_chip_runtime.py`
+- `tests/test_chip_context_injector.py`
+- `research/packets/packet_current_workspace_serving_fallback.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase8_workspace_serving_fallback.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The serving stack still had one product-level drift after the package work: commands run inside this repo could not reliably surface this repo's own intelligence because portfolio loading only scanned `~/Desktop/domain-chip-*` and context injection returned an empty block when lexical relevance was too sparse.
+
+### What Changed
+
+- Default portfolio loading now appends the active workspace chip when a local `spark-chip.json` is found
+- `serve-intelligence` now falls back to the active workspace chip instead of returning an empty comment when no lexical match passes the relevance threshold
+- Added unit coverage for both behaviors while preserving explicit `search_dir` behavior
+
+### Verification
+
+- `PYTHONPATH=src python -m pytest tests/test_chip_runtime.py tests/test_chip_context_injector.py tests/test_chip_advisor.py tests/test_chip_mcp_server.py tests/test_hooks.py -q`
+
+### Notes
+
+- This tranche improves repo-local serving behavior only. It does not yet retune multi-chip advisory ranking.

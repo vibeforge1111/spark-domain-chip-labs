@@ -59,6 +59,22 @@ def _ensure_intel(chip: "ChipHandle") -> ChipIntelligence | None:
         return None
 
 
+def _find_current_workspace_chip(
+    portfolio: list["ChipHandle"],
+    start: Path | None = None,
+) -> "ChipHandle" | None:
+    """Return the portfolio chip that owns the current working directory."""
+    current = (start or Path.cwd()).resolve()
+    for chip in portfolio:
+        try:
+            chip_root = chip.chip_path.resolve()
+        except OSError:
+            continue
+        if current == chip_root or chip_root in current.parents:
+            return chip
+    return None
+
+
 # Minimum Jaccard relevance score for a chip to be considered.
 # Chip text includes domain, name, mission, and top 5 doctrines (many words),
 # so even a clear domain query like "crypto trading" scores ~0.03 due to the
@@ -354,6 +370,9 @@ def inject_context_for_task(
 
     selected = select_chips_for_task(task_description, portfolio, max_chips)
     if not selected:
-        return "<!-- No relevant chips found for this task -->"
+        current_chip = _find_current_workspace_chip(portfolio)
+        if current_chip is None:
+            return "<!-- No relevant chips found for this task -->"
+        selected = [current_chip]
 
     return build_system_prompt_section(selected, style=style, max_tokens=max_tokens)

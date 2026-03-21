@@ -6,6 +6,7 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+from unittest.mock import patch
 
 import pytest
 
@@ -361,6 +362,28 @@ class TestInjectContext:
         # Will either load real chips or return fallback message
         assert isinstance(result, str)
         assert len(result) > 0
+
+    def test_falls_back_to_current_workspace_chip(self, tmp_path: Path) -> None:
+        chip_dir = tmp_path / "spark-domain-chip-labs"
+        chip_dir.mkdir()
+        chip = MockChipHandle(
+            chip_path=chip_dir,
+            chip_name="domain-chip-labs",
+            domain="chip-research",
+            quality_score=65,
+            quality_verdict="beta",
+            intelligence=_make_intel(
+                chip_name="domain-chip-labs",
+                domain="chip-research",
+                mission="Meta research lab for chip methodology",
+                doctrines=[{"claim": "Runtime and CLI symmetry is required for trustworthy hook execution.", "confidence": "high"}],
+            ),
+        )
+
+        with patch("chip_labs.chip_context_injector.Path.cwd", return_value=chip_dir):
+            result = inject_context_for_task("xyzzy foobar baz", portfolio=[chip])
+
+        assert "Runtime and CLI symmetry" in result
 
 
 # ---------------------------------------------------------------------------

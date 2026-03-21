@@ -1,0 +1,5 @@
+{
+  "claim": "Intelligence serving should include the active chip workspace when commands are run inside a chip repo, even if that repo is not discoverable through the default Desktop prefix scan.",
+  "mechanism": "The serving runtime now appends the current workspace chip to the default portfolio when a local spark-chip.json is found, and context injection falls back to that active chip when lexical relevance returns no matches. This preserves the relevance floor for unrelated external chips while preventing empty intelligence blocks inside the repo that is being operated on.",
+  "boundary": "This does not change explicit search_dir behavior and does not force unrelated chips into the context. It only covers the active workspace chip when the process is already running inside that chip repo."
+}

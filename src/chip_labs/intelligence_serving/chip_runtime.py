@@ -119,6 +119,8 @@ def load_portfolio(
     Chips whose quality score falls below *min_score* are excluded.
     """
     descriptors = discover_chips(search_dir)
+    if search_dir is None:
+        descriptors = _include_current_workspace_chip(descriptors)
     handles: list[ChipHandle] = []
     for desc in descriptors:
         chip_dir = Path(desc["path"])
@@ -168,6 +170,47 @@ def execute_hook(
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
+
+
+def _include_current_workspace_chip(
+    descriptors: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Add the current chip workspace when running inside a chip repo.
+
+    The portfolio registry primarily discovers Desktop chips by directory
+    prefix. This repo does not follow that prefix, so serving/advisory flows
+    launched from inside the current workspace would otherwise exclude the
+    active chip entirely.
+    """
+    current_chip = _find_current_workspace_chip()
+    if current_chip is None:
+        return descriptors
+
+    existing_paths = {
+        str(Path(desc.get("path", "")).resolve())
+        for desc in descriptors
+        if desc.get("path")
+    }
+    current_path = str(current_chip.resolve())
+    if current_path in existing_paths:
+        return descriptors
+
+    return [
+        *descriptors,
+        {
+            "name": current_chip.name,
+            "path": current_path,
+        },
+    ]
+
+
+def _find_current_workspace_chip(start: Path | None = None) -> Path | None:
+    """Walk upward from *start* (or CWD) until a chip manifest is found."""
+    current = (start or Path.cwd()).resolve()
+    for candidate in [current, *current.parents]:
+        if (candidate / "spark-chip.json").exists():
+            return candidate
+    return None
 
 
 def _execute_subprocess(
