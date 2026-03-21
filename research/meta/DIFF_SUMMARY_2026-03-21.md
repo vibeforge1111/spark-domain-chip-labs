@@ -614,3 +614,30 @@
 
 - Prevent empty `serve-intelligence` outputs for repo-local work inside this chip
 - Keep the external relevance floor intact while making the active workspace chip first-class in local serving flows
+
+## Follow-On Tranche: Phase 8 Serving Validation
+
+## `research/meta/serve_output_phase7d_2026-03-21.json`, `research/meta/serve_intelligence_output_phase7d_2026-03-21.json`, `research/meta/advise_output_phase7d_2026-03-21.json`
+
+- Captured fresh raw outputs from the repaired serving flows
+
+## `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.json`, `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.md`
+
+- Added a structured summary of the repo-local serving validation batch, including the repaired `serve-intelligence` behavior and the still-noisy advisory ranking
+
+## `research/meta/runs.jsonl`
+
+- Appended three real serving-validation entries covering `serve`, `serve-intelligence`, and `advise`
+
+## `research/packets/packet_workspace_serving_validation.json`
+
+- Added a packet documenting why repo-local serving validation is a product check rather than a cosmetic one
+
+## `docs/EXECUTION_PLAN_2026-03-21.md`
+
+- Extended the execution plan with the phase 8 workspace-aware serving checkpoint and the remaining advisory-ranking gap
+
+## Expected Effect
+
+- Convert the workspace-serving repair into ledger-visible operating history
+- Narrow the next serving tranche to advisory ranking quality instead of active-workspace discovery

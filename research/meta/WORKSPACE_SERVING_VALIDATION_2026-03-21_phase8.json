@@ -1,0 +1,61 @@
+{
+  "batch_id": "2026-03-21-phase8-workspace-serving-validation",
+  "created_at": "2026-03-21T17:21:42.8963500Z",
+  "type": "operational_validation_batch",
+  "scope": "repo-local intelligence serving after active-workspace inclusion",
+  "commands": [
+    {
+      "command": "PYTHONPATH=src python -m pytest tests/test_chip_runtime.py tests/test_chip_context_injector.py tests/test_chip_advisor.py tests/test_chip_mcp_server.py tests/test_hooks.py -q",
+      "observed_at": "2026-03-21T17:21:42.8963500Z",
+      "status": "passed",
+      "summary": {
+        "passed": 134,
+        "failed": 0,
+        "duration_seconds": 41.49
+      }
+    },
+    {
+      "command": "PYTHONPATH=src python -m chip_labs.cli serve . \"package boundary migration\" --output research/meta/serve_output_phase7d_2026-03-21.json",
+      "observed_at": "2026-03-21T17:21:42.8963500Z",
+      "status": "passed",
+      "summary": {
+        "chip_name": "domain-chip-labs",
+        "score": 100,
+        "doctrine_count": 5,
+        "evidence_lanes_present": 4
+      }
+    },
+    {
+      "command": "PYTHONPATH=src python -m chip_labs.cli serve-intelligence \"stabilize packaging and preserve hook compatibility\" --max-chips 2 --style concise --output research/meta/serve_intelligence_output_phase7d_2026-03-21.json",
+      "observed_at": "2026-03-21T17:21:42.8963500Z",
+      "status": "passed",
+      "summary": {
+        "pre_fix_result": "<!-- No relevant chips found for this task -->",
+        "post_fix_chip": "domain-chip-labs",
+        "post_fix_quality_score": 88,
+        "post_fix_result": "non_empty_context"
+      }
+    },
+    {
+      "command": "PYTHONPATH=src python -m chip_labs.cli advise \"stabilize packaging and preserve hook compatibility\" --domain chip-labs --output research/meta/advise_output_phase7d_2026-03-21.json",
+      "observed_at": "2026-03-21T17:21:42.8963500Z",
+      "status": "passed_with_residual_noise",
+      "summary": {
+        "verdict": "proceed",
+        "top_source_chip": "domain-chip-labs",
+        "chips_consulted": [
+          "domain-chip-labs",
+          "content",
+          "domain-chip-agentic-marketing"
+        ],
+        "residual_issue": "advisory ranking still includes cross-chip noise for packaging-oriented tasks"
+      }
+    }
+  ],
+  "conclusion": {
+    "serve_context_state": "healthy",
+    "serve_intelligence_state": "repaired_for_repo_local_work",
+    "advisory_state": "partially_relevant",
+    "remaining_bottleneck": "chip ranking for advisory queries remains broader than the packaging-focused task warrants"
+  }
+}

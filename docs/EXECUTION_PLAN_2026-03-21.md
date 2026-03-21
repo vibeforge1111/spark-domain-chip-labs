@@ -127,6 +127,9 @@ Status:
 - Extended phase 7C again by converting the remaining hook and factory top-level wrappers into module aliases for stronger compatibility behavior
 - Completed phase 7D by deciding to keep one repo/package with internal subpackages for now and defining explicit future split triggers in `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
 - Added a real post-decision validation batch under `research/meta/`, confirming `score-v2 = 100/100`, `score-v3 = 87.0/100`, and a `304 passed` targeted regression pack while increasing the ledger from `50` to `53` runs
+- Started phase 8 by making default serving flows workspace-aware so the active repo enters the portfolio even when it is outside the Desktop prefix registry
+- Added a repo-local serving validation batch under `research/meta/`, confirming that `serve-intelligence` now returns `domain-chip-labs` context for packaging-oriented repo work instead of an empty block
+- The remaining serving-product gap is advisory ranking noise: `advise` now surfaces `domain-chip-labs` first, but still consults off-domain chips for the same packaging-focused task
 
 ## Exit Criteria
 

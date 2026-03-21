@@ -1,0 +1,5 @@
+{
+  "claim": "Repo-local serving behavior should be validated with real CLI runs because an empty intelligence block inside the active chip workspace is a product failure, not just a UX inconvenience.",
+  "mechanism": "Running serve, serve-intelligence, and advise from inside this repo proves whether the active workspace is present in the portfolio and whether context injection can recover when lexical matching is sparse. Capturing the residual advisory-noise case keeps the validation honest by separating the repaired local-serving path from the still-broad advisory ranking path.",
+  "boundary": "This validation does not prove portfolio-wide ranking quality. It only proves that repo-local serving now returns local context and that advisory ranking still needs refinement for packaging-focused actions."
+}

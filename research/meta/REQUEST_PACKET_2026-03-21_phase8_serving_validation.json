@@ -1,0 +1,39 @@
+{
+  "request_id": "2026-03-21-phase8-serving-validation",
+  "created_at": "2026-03-21T17:21:42.8963500Z",
+  "type": "operational_validation",
+  "goal": "Capture the real repo-local serving behavior after the active-workspace fix and append the resulting evidence to the lab ledger.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Record only commands that actually executed in this workspace",
+    "State both the repaired behavior and the residual advisory noise honestly"
+  ],
+  "files_touched": [
+    "research/meta/serve_output_phase7d_2026-03-21.json",
+    "research/meta/serve_intelligence_output_phase7d_2026-03-21.json",
+    "research/meta/advise_output_phase7d_2026-03-21.json",
+    "research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.json",
+    "research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.md",
+    "research/meta/runs.jsonl",
+    "research/packets/packet_workspace_serving_validation.json",
+    "research/meta/REQUEST_PACKET_2026-03-21_phase8_serving_validation.json",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "No additional code behavior changes.",
+    "The repo now carries a real serving-validation artifact set after the active-workspace fix.",
+    "The run ledger now includes three additional serving-validation entries."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -m pytest tests/test_chip_runtime.py tests/test_chip_context_injector.py tests/test_chip_advisor.py tests/test_chip_mcp_server.py tests/test_hooks.py -q",
+    "PYTHONPATH=src python -m chip_labs.cli serve . \"package boundary migration\" --output research/meta/serve_output_phase7d_2026-03-21.json",
+    "PYTHONPATH=src python -m chip_labs.cli serve-intelligence \"stabilize packaging and preserve hook compatibility\" --max-chips 2 --style concise --output research/meta/serve_intelligence_output_phase7d_2026-03-21.json",
+    "PYTHONPATH=src python -m chip_labs.cli advise \"stabilize packaging and preserve hook compatibility\" --domain chip-labs --output research/meta/advise_output_phase7d_2026-03-21.json"
+  ],
+  "follow_up": [
+    "Tighten advisory chip ranking so packaging-oriented tasks stop consulting visibly off-domain chips.",
+    "Keep converting repo-local serving behavior into real operating history rather than assuming internal fixes are enough."
+  ]
+}

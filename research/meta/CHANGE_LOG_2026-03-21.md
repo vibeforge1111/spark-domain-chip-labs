@@ -905,3 +905,41 @@ The serving stack still had one product-level drift after the package work: comm
 ### Notes
 
 - This tranche improves repo-local serving behavior only. It does not yet retune multi-chip advisory ranking.
+
+## Follow-On Tranche: Phase 8 Serving Validation
+
+### Files Changed
+
+- `research/meta/serve_output_phase7d_2026-03-21.json`
+- `research/meta/serve_intelligence_output_phase7d_2026-03-21.json`
+- `research/meta/advise_output_phase7d_2026-03-21.json`
+- `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.json`
+- `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.md`
+- `research/meta/runs.jsonl`
+- `research/packets/packet_workspace_serving_validation.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase8_serving_validation.json`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The runtime fix needed a real operating proof point. Without a post-fix serving validation batch, the repo would still only claim the behavior changed instead of showing that repo-local `serve-intelligence` stopped failing closed.
+
+### What Changed
+
+- Captured the raw `serve`, `serve-intelligence`, and `advise` outputs under `research/meta/`
+- Added JSON and Markdown validation summaries for the repo-local serving tranche
+- Appended three real serving-validation entries to `research/meta/runs.jsonl`
+- Recorded the residual weakness explicitly: advisory ranking still consults some off-domain chips for the packaging-oriented task
+
+### Verification
+
+- `PYTHONPATH=src python -m pytest tests/test_chip_runtime.py tests/test_chip_context_injector.py tests/test_chip_advisor.py tests/test_chip_mcp_server.py tests/test_hooks.py -q`
+- `PYTHONPATH=src python -m chip_labs.cli serve . "package boundary migration" --output research/meta/serve_output_phase7d_2026-03-21.json`
+- `PYTHONPATH=src python -m chip_labs.cli serve-intelligence "stabilize packaging and preserve hook compatibility" --max-chips 2 --style concise --output research/meta/serve_intelligence_output_phase7d_2026-03-21.json`
+- `PYTHONPATH=src python -m chip_labs.cli advise "stabilize packaging and preserve hook compatibility" --domain chip-labs --output research/meta/advise_output_phase7d_2026-03-21.json`
+
+### Notes
+
+- This tranche proves the local-serving repair and isolates the next serving problem to advisory ranking quality rather than active-workspace discovery.

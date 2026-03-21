@@ -1,0 +1,53 @@
+{
+  "chip_name": "domain-chip-labs",
+  "query": "package boundary migration",
+  "relevant_doctrines": [
+    {
+      "claim": "After the namespace migration and package decision, the repo should prove stability through real scorer and regression executions rather than assuming the structural work held.",
+      "confidence": "medium",
+      "evidence_lane": "exploratory_frontier",
+      "mechanism": "Running the v2 scorer, the v3 scorer, and a broad targeted regression pack validates that the repo's internal boundary changes preserved behavior across the main shipped and integrated surfaces. Recording those passes into the lab ledger turns structural work into observable operating history.",
+      "boundary": "A passing validation batch does not prove long-term product success. It proves that the current structural and contract state is stable under the chosen test surface at the time of execution.",
+      "source": "packet_operational_validation_batch.json"
+    },
+    {
+      "claim": "The repo should define package boundaries internally before attempting a physical package split.",
+      "confidence": "medium",
+      "evidence_lane": "exploratory_frontier",
+      "mechanism": "The codebase already contains four real surfaces, but they still live under one package. If the team splits distributions before stabilizing those boundaries internally, release complexity grows faster than clarity. A migration plan that first maps modules to surfaces, then introduces compatibility-preserving internal subpackages, reduces breakage risk while making later packaging choices reversible.",
+      "boundary": "This does not argue for or against a permanent multi-package architecture. It only argues that boundary cleanup should happen before distribution-level separation.",
+      "source": "packet_package_boundary_migration.json"
+    },
+    {
+      "claim": "The first safe step in package separation is to introduce a stable internal namespace for one surface before moving implementation files.",
+      "confidence": "medium",
+      "evidence_lane": "exploratory_frontier",
+      "mechanism": "By routing internal callers through a single hook-surface namespace, the repo gains one stable seam without changing the external CLI or manifest contract. That lowers migration risk because later file moves happen behind one internal public surface instead of forcing scattered import rewrites across the codebase.",
+      "boundary": "A namespace alone does not solve dependency drift. It only creates the first compatibility layer needed for later implementation moves.",
+      "source": "packet_hook_surface_namespace.json"
+    },
+    {
+      "claim": "Once the transfer namespace owns transfer.py and scoring_engine.py, loop_controller.py can move behind the same boundary with a top-level compatibility alias.",
+      "confidence": "medium",
+      "evidence_lane": "exploratory_frontier",
+      "mechanism": "loop_controller.py is the transfer/orchestration surface's main coordinator. Moving it after the lower-coupling transfer modules lets the CLI switch to the transfer namespace in the same tranche while preserving the old top-level import path for tests and external callers.",
+      "boundary": "This move preserves loop-controller behavior and does not change the loop contract. It only changes implementation location and internal import direction.",
+      "source": "packet_loop_controller_impl_move.json"
+    },
+    {
+      "claim": "After the serving namespace owns intelligence extraction and advisory paths, the MCP server can move behind the same boundary with a compatibility wrapper.",
+      "confidence": "medium",
+      "evidence_lane": "exploratory_frontier",
+      "mechanism": "chip_mcp_server.py already reaches serving helpers mostly through lazy imports. Moving it behind intelligence_serving keeps the serving entrypoints together while preserving the old top-level module path for existing callers.",
+      "boundary": "This does not move chip_runtime.py yet. Runtime remains top-level because it is still the most central shared entrypoint in the serving surface.",
+      "source": "packet_serving_mcp_impl_move.json"
+    }
+  ],
+  "evidence_summary": {
+    "research_grounded": 1,
+    "benchmark_grounded": 1,
+    "exploratory_frontier": 1,
+    "realworld_validated": 1
+  },
+  "score": 100
+}

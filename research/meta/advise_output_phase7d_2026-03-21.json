@@ -1,0 +1,85 @@
+{
+  "verdict": "proceed",
+  "guidance": [
+    {
+      "claim": "Runtime and CLI symmetry is required for trustworthy hook execution.",
+      "confidence": "medium",
+      "relevance": 0.143,
+      "guidance_type": "supports",
+      "source_chip": "domain-chip-labs"
+    },
+    {
+      "claim": "Test hook:proof_founder with proof_quality.",
+      "confidence": "high",
+      "relevance": 0.1,
+      "guidance_type": "informs",
+      "source_chip": "content"
+    },
+    {
+      "claim": "Run Belief proof-hook-founder",
+      "confidence": "medium",
+      "relevance": 0.1,
+      "guidance_type": "informs",
+      "source_chip": "content"
+    },
+    {
+      "claim": "Run Belief hook-proof_founder-proof_quality",
+      "confidence": "medium",
+      "relevance": 0.1,
+      "guidance_type": "informs",
+      "source_chip": "content"
+    },
+    {
+      "claim": "Once the serving namespace owns intelligence_server, the advisory and context-injection modules can move behind the same boundary with compatibility wrappers.",
+      "confidence": "medium",
+      "relevance": 0.087,
+      "guidance_type": "supports",
+      "source_chip": "domain-chip-labs"
+    },
+    {
+      "claim": "The lab's runtime and evaluators must share one manifest compatibility layer or they will mis-score structurally valid chips.",
+      "confidence": "medium",
+      "relevance": 0.083,
+      "guidance_type": "supports",
+      "source_chip": "domain-chip-labs"
+    },
+    {
+      "claim": "Once the transfer namespace owns transfer.py and scoring_engine.py, loop_controller.py can move behind the same boundary with a top-level compatibility alias.",
+      "confidence": "medium",
+      "relevance": 0.083,
+      "guidance_type": "supports",
+      "source_chip": "domain-chip-labs"
+    },
+    {
+      "claim": "1.6 Belief Promotion and Contradiction Tracking",
+      "confidence": "medium",
+      "relevance": 0.083,
+      "guidance_type": "informs",
+      "source_chip": "domain-chip-labs"
+    },
+    {
+      "claim": "The lab's evaluate hook should derive research scores from repo-owned artifacts and run history rather than fixed placeholder constants.",
+      "confidence": "medium",
+      "relevance": 0.08,
+      "guidance_type": "supports",
+      "source_chip": "domain-chip-labs"
+    },
+    {
+      "claim": "After the serving namespace owns intelligence extraction and advisory paths, the MCP server can move behind the same boundary with a compatibility wrapper.",
+      "confidence": "medium",
+      "relevance": 0.08,
+      "guidance_type": "supports",
+      "source_chip": "domain-chip-labs"
+    }
+  ],
+  "contradictions": [],
+  "uncertainty_areas": [
+    "content: no evidence in realworld_validated"
+  ],
+  "trajectory_context": "content: improving (74\u219292); domain-chip-agentic-marketing: declining (26\u219224)",
+  "chips_consulted": [
+    "domain-chip-labs",
+    "content",
+    "domain-chip-agentic-marketing"
+  ]
+}
