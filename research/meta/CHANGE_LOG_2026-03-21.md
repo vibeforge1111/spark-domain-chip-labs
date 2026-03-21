@@ -155,3 +155,36 @@ The repo had already fixed rubric drift, but the lab's own `evaluate` hook still
   - `domain_discovery/github = 0.7510`
   - `transfer_patterns = 0.7010`
   - `agi_theory = 0.4900`
+
+## Follow-On Tranche: Package Boundary Migration Baseline
+
+### Files Changed
+
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/REPO_SURFACES_AND_STATUS.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_package_boundary_migration.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The original execution plan is now largely complete, but the remaining unresolved problem is still structural: the repo has four real surfaces and one shared package. Without a migration baseline, later refactors risk becoming opportunistic reshuffles instead of controlled boundary cleanup.
+
+### What Changed
+
+- Added a dedicated migration plan that maps current modules to the four repo surfaces
+- Defined a staged migration order:
+  - internal naming
+  - internal subpackages
+  - dependency cleanup
+  - package-split decision
+- Kept the current CLI and manifest contract as the explicit compatibility layer for future moves
+
+### Verification
+
+- Manual module-to-surface review against the current `src/chip_labs/` layout and CLI entry points
+
+### Notes
+
+- This tranche is intentionally non-invasive. It creates the boundary plan so later code movement can happen one surface at a time instead of through a repo-wide shuffle.

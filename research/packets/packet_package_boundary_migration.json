@@ -1,0 +1,5 @@
+{
+  "claim": "The repo should define package boundaries internally before attempting a physical package split.",
+  "mechanism": "The codebase already contains four real surfaces, but they still live under one package. If the team splits distributions before stabilizing those boundaries internally, release complexity grows faster than clarity. A migration plan that first maps modules to surfaces, then introduces compatibility-preserving internal subpackages, reduces breakage risk while making later packaging choices reversible.",
+  "boundary": "This does not argue for or against a permanent multi-package architecture. It only argues that boundary cleanup should happen before distribution-level separation."
+}

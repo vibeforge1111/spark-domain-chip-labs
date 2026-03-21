@@ -98,3 +98,5 @@ Aspirational:
 ## Decision Rule
 
 When changing this repo, first decide which surface the change belongs to. A patch is lower risk when it improves one surface without accidentally changing the product claim of another.
+
+The migration baseline for future package separation lives in `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`.

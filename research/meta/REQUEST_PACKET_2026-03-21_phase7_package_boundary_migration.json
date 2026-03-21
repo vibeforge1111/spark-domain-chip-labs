@@ -1,0 +1,36 @@
+{
+  "request_id": "2026-03-21-phase7-package-boundary-migration",
+  "created_at": "2026-03-21",
+  "type": "structural_migration_planning",
+  "goal": "Define a compatibility-preserving migration baseline for separating the repo's four product surfaces without breaking the current CLI or manifest contract.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Do not move source files in this tranche",
+    "Keep the current hook contract as the compatibility layer"
+  ],
+  "files_touched": [
+    "docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md",
+    "docs/REPO_SURFACES_AND_STATUS.md",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/packets/packet_package_boundary_migration.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "The repo now has a concrete module-to-surface migration baseline for future package work.",
+    "The execution plan now includes a package-boundary preparation phase after the original six phases.",
+    "Future refactors can use the documented migration order instead of doing opportunistic file moves."
+  ],
+  "verification_targets": [
+    "src/chip_labs/cli.py",
+    "src/chip_labs/chip_runtime.py",
+    "src/chip_labs/chip_mcp_server.py",
+    "src/chip_labs/scaffold.py",
+    "src/chip_labs/transfer.py",
+    "src/chip_labs/loop_controller.py"
+  ],
+  "follow_up": [
+    "If package separation proceeds, start with internal subpackages and compatibility imports rather than a repo-wide rename.",
+    "Use the migration plan as the checklist for any future module moves."
+  ]
+}

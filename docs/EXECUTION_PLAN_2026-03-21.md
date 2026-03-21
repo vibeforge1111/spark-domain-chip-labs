@@ -96,6 +96,18 @@ Status:
 - Research-focus scoring now derives from repo-owned doctrine, packets, run history, opportunity rankings, and portfolio maturity
 - Verification for this tranche is command-based because the self-edit contract does not permit test-file edits outside mutable targets
 
+### 7. Prepare package boundary migration
+
+- Map the current module layout onto the four repo surfaces
+- Define the safest migration order for internal subpackages or future package splits
+- Keep the current CLI and manifest contract as the compatibility layer
+
+Status:
+
+- Added `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md` as the baseline for future package work
+- Defined which current modules belong to the hook, factory, transfer, and serving surfaces
+- Deferred actual file moves until a later tranche so package separation can happen without breaking hook consumers
+
 ## Exit Criteria
 
 Short-term checkpoint:

@@ -109,3 +109,29 @@
 - Make the lab's `evaluate` hook tell the truth about repo state instead of replaying fixed constants
 - Keep research scoring deterministic while tying it to real artifacts and run history
 - Preserve a cautious cap on AGI-theory confidence even as the lab accumulates more evidence
+
+## Follow-On Tranche: Package Boundary Migration Baseline
+
+## `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+
+- Added a concrete module-to-surface map for the current codebase
+- Defined a staged migration order that preserves compatibility while cleaning boundaries
+- Named the current CLI and manifest contract as the compatibility layer for future file moves
+
+## `docs/REPO_SURFACES_AND_STATUS.md`
+
+- Linked the new migration plan from the surface-status document
+
+## `docs/EXECUTION_PLAN_2026-03-21.md`
+
+- Added a new phase for package-boundary preparation
+- Marked the migration baseline as the next real structural task after the original six phases
+
+## `research/packets/packet_package_boundary_migration.json`
+
+- Added a packet documenting why internal boundary cleanup should precede any distribution split
+
+## Expected Effect
+
+- Make future packaging work more deliberate and less likely to break the current hook/runtime contract
+- Give later refactors a stable surface map and task order
