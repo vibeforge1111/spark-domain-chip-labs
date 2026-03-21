@@ -1,0 +1,5 @@
+{
+  "claim": "After the serving surface lives behind intelligence_serving, hooks.py should depend on that namespace directly instead of the legacy top-level serving aliases.",
+  "mechanism": "hooks.py is itself part of the serving surface. Repointing its internal imports to namespace-local serving modules reduces wrapper reach-through and makes the top-level aliases more strictly a compatibility layer for external callers.",
+  "boundary": "This tranche does not move hooks.py itself. It only changes internal import direction and preserves existing hook behavior."
+}

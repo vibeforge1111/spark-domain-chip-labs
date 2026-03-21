@@ -707,3 +707,38 @@ After moving `transfer.py` and `scoring_engine.py`, the loop controller became t
 ### Notes
 
 - This tranche completes the main implementation-file moves for the transfer surface while leaving top-level compatibility aliases in place.
+
+## Follow-On Tranche: Hooks Serving Namespace Cleanup
+
+### Files Changed
+
+- `src/chip_labs/hooks.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_hooks_serving_namespace_cleanup.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_hooks_serving_namespace_cleanup.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The serving implementation now lives behind `src/chip_labs/intelligence_serving/`, but `hooks.py` was still reaching through the old top-level serving aliases. That kept internal serving callers from benefiting fully from the new boundary and made the compatibility layer pull double duty.
+
+### What Changed
+
+- Repointed `hooks.py` imports to namespace-local serving modules for:
+  - portfolio loading
+  - cached intelligence reconstruction
+  - chip selection
+  - context injection
+  - guardrail rendering
+  - system-prompt building
+- Left the top-level serving aliases in place for external callers and compatibility
+
+### Verification
+
+- `PYTHONPATH=src python -m pytest tests/test_hooks.py -q`
+
+### Notes
+
+- This tranche does not move `hooks.py`. It tightens import direction now that the serving namespace exists materially in code.

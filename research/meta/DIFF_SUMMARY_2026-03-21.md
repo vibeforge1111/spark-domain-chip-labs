@@ -501,3 +501,19 @@
 
 - Make the transfer namespace the real home of the main transfer/orchestration implementation surface
 - Preserve existing imports while reducing the remaining top-level transfer-surface orchestration module
+
+## Follow-On Tranche: Hooks Serving Namespace Cleanup
+
+## `src/chip_labs/hooks.py`
+
+- Repointed internal serving imports to `intelligence_serving` modules instead of the legacy top-level serving aliases
+- Left hook behavior unchanged while reducing dependency on the compatibility layer from inside the repo
+
+## `research/packets/packet_hooks_serving_namespace_cleanup.json`
+
+- Added a packet documenting why internal serving callers should prefer the serving namespace once the implementation lives there
+
+## Expected Effect
+
+- Make the top-level serving modules more purely compatibility-oriented
+- Tighten the serving boundary by reducing internal reach-through to legacy aliases

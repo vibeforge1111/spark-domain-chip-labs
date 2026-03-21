@@ -211,7 +211,7 @@ def _load_portfolio_safe() -> list[Any]:
 
     # Full load (expensive -- runs V3 deep eval)
     try:
-        from .chip_runtime import load_portfolio
+        from .intelligence_serving.chip_runtime import load_portfolio
         portfolio = load_portfolio(min_score=MIN_QUALITY_SCORE)
     except (ImportError, Exception):
         return []
@@ -272,7 +272,7 @@ def _load_from_cache(cache_file: Path) -> list[Any]:
 
     # Import ChipIntelligence for reconstruction
     try:
-        from .intelligence_server import ChipIntelligence
+        from .intelligence_serving.intelligence_server import ChipIntelligence
     except ImportError:
         return []
 
@@ -336,7 +336,7 @@ def _select_session_chips(
 
     # First: try Jaccard (works for multi-word queries)
     try:
-        from .chip_context_injector import select_chips_for_task
+        from .intelligence_serving.chip_context_injector import select_chips_for_task
         jaccard_result = select_chips_for_task(query, portfolio, max_chips=max_chips)
         if jaccard_result:
             return jaccard_result
@@ -357,7 +357,7 @@ def _select_session_chips(
 def _build_context_text(portfolio: list[Any], query: str = "", max_chips: int = 2) -> str:
     """Build context text from portfolio for injection."""
     try:
-        from .chip_context_injector import inject_context_for_task
+        from .intelligence_serving.chip_context_injector import inject_context_for_task
         return inject_context_for_task(
             query,
             portfolio=portfolio,
@@ -371,7 +371,7 @@ def _build_context_text(portfolio: list[Any], query: str = "", max_chips: int = 
 def _build_guardrails(portfolio: list[Any]) -> str:
     """Build guardrails block from portfolio."""
     try:
-        from .chip_context_injector import build_guardrails_block
+        from .intelligence_serving.chip_context_injector import build_guardrails_block
         return build_guardrails_block(portfolio)
     except (ImportError, Exception):
         return ""
@@ -436,7 +436,7 @@ def handle_session_start(input_data: dict[str, Any]) -> dict[str, Any]:
     # Short domain hints (e.g. "startup") fail Jaccard against large chip texts,
     # so we also do substring matching on chip_name and domain fields.
     try:
-        from .chip_context_injector import select_chips_for_task
+        from .intelligence_serving.chip_context_injector import select_chips_for_task
         selected = _select_session_chips(query, portfolio)
     except (ImportError, Exception):
         selected = portfolio[:MAX_CHIPS_SESSION]
@@ -449,7 +449,7 @@ def handle_session_start(input_data: dict[str, Any]) -> dict[str, Any]:
     else:
         # Build context from selected chips directly
         try:
-            from .chip_context_injector import build_system_prompt_section
+            from .intelligence_serving.chip_context_injector import build_system_prompt_section
             context = build_system_prompt_section(selected, style="concise")
         except (ImportError, Exception):
             context = _build_context_text(portfolio, query, max_chips=MAX_CHIPS_SESSION)
@@ -611,7 +611,7 @@ def handle_post_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
     else:
         # No session context -- rely on Jaccard + threshold
         try:
-            from .chip_context_injector import select_chips_for_task
+            from .intelligence_serving.chip_context_injector import select_chips_for_task
             selected = select_chips_for_task(action, portfolio, max_chips=1)
         except (ImportError, Exception):
             selected = portfolio[:1]

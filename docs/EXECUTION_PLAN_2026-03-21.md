@@ -122,6 +122,7 @@ Status:
 - Extended phase 7C into the transfer surface by moving `transfer.py` under `src/chip_labs/transfer_surface/` and leaving a top-level compatibility alias
 - Extended phase 7C again by moving `scoring_engine.py` under `src/chip_labs/transfer_surface/` and leaving a top-level compatibility alias
 - Extended phase 7C again by moving `loop_controller.py` under `src/chip_labs/transfer_surface/`, exporting it through the transfer namespace, and leaving a top-level compatibility alias
+- Extended phase 7C again by repointing `hooks.py` to namespace-local serving modules so internal serving callers stop reaching through top-level compatibility aliases
 
 ## Exit Criteria
 

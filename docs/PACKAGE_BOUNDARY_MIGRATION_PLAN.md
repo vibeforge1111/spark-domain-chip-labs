@@ -120,6 +120,7 @@ Status:
 - Started the transfer implementation move by relocating `transfer.py` under `src/chip_labs/transfer_surface/`
 - Extended the transfer implementation move by relocating `scoring_engine.py` under `src/chip_labs/transfer_surface/`
 - Extended the transfer implementation move again by relocating `loop_controller.py` under `src/chip_labs/transfer_surface/`
+- Started the next dependency-cleanup pass by repointing `hooks.py` to namespace-local serving modules instead of legacy top-level aliases
 
 Exit condition:
 - Each surface depends only on sanctioned shared utilities and public interfaces
