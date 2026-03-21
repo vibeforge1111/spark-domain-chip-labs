@@ -1,0 +1,33 @@
+{
+  "request_id": "2026-03-21-phase6-evaluate-grounding",
+  "created_at": "2026-03-21",
+  "type": "evaluator_hardening",
+  "goal": "Replace placeholder research-focus scores in the lab's evaluate hook with deterministic scores grounded in repo artifacts, run history, opportunity data, and portfolio maturity.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Keep scoring deterministic and local-only",
+    "Do not fabricate additional run history to improve the score"
+  ],
+  "files_touched": [
+    "src/chip_labs/evaluate.py",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/packets/packet_evaluate_artifact_grounding.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "Methodology scoring now derives from area-specific docs, packet matches, v3 dimension strength, and methodology run history.",
+    "Domain-discovery scoring now derives from ranked opportunity data, exploratory artifacts, and domain-discovery run history.",
+    "Transfer-pattern scoring now derives from transfer doctrine, packet volume, run history, and portfolio maturity.",
+    "AGI-theory scoring now derives from doctrine and empirical history but remains explicitly capped below production confidence.",
+    "Repeated evaluate calls in one process now reuse a cached repo-state snapshot."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -m pytest tests/test_evaluate.py -q",
+    "PYTHONPATH=src python -c \"from chip_labs.evaluate import evaluate; ...\""
+  ],
+  "follow_up": [
+    "If evaluate-hook latency becomes a practical issue, isolate a cheaper repo-state summary from the full v3 scorer.",
+    "Extend future scoring changes by adding more repo-owned evidence rather than reintroducing constants."
+  ]
+}

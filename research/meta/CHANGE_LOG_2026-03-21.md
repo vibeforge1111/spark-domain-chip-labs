@@ -119,3 +119,39 @@ The repo had largely solved contract drift, but still presented itself too loose
 ### Notes
 
 - This tranche does not split packages yet. It gives future packaging work a clear baseline and removes ambiguity about what the repo already contains.
+
+## Follow-On Tranche: Evaluate Hook Grounding
+
+### Files Changed
+
+- `src/chip_labs/evaluate.py`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_evaluate_artifact_grounding.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The repo had already fixed rubric drift, but the lab's own `evaluate` hook still returned placeholder constants for several research modes. That created a mismatch between the repo's documented rigor and the hook that is supposed to represent the lab operationally.
+
+### What Changed
+
+- Replaced constant methodology scoring with artifact-grounded area scoring
+- Replaced constant domain-discovery scoring with opportunity and exploratory-artifact scoring
+- Replaced constant transfer-pattern scoring with doctrine, packet, run-history, and portfolio-maturity scoring
+- Replaced constant AGI-theory scoring with a capped empirical score based on doctrine and actual run history
+- Added caching so repeated research-focus evaluations in one process reuse the same repo-state snapshot
+
+### Verification
+
+- `PYTHONPATH=src python -m pytest tests/test_evaluate.py -q`
+- `PYTHONPATH=src python -c "from chip_labs.evaluate import evaluate; ..."`
+
+### Notes
+
+- The verification stayed command-based because the self-edit contract for this session does not allow edits under `tests/`.
+- Current measured research-focus outputs from the grounded evaluator:
+  - `methodology/scoring_systems = 0.8934`
+  - `domain_discovery/github = 0.7510`
+  - `transfer_patterns = 0.7010`
+  - `agi_theory = 0.4900`

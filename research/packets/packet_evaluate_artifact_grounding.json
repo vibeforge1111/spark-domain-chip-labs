@@ -1,0 +1,5 @@
+{
+  "claim": "The lab's evaluate hook should derive research scores from repo-owned artifacts and run history rather than fixed placeholder constants.",
+  "mechanism": "When methodology, discovery, transfer, or AGI-theory scores are hardcoded, the lab can appear more or less mature than its current evidence actually supports. Grounding those branches in doctrine files, packet volume, focus-specific run history, ranked opportunities, and portfolio maturity keeps the hook deterministic while making it responsive to real repo state. That improves trust because the hook stops narrating a frozen snapshot and starts reflecting what the lab has actually earned.",
+  "boundary": "Artifact grounding is not the same as scientific truth. It only ensures the evaluate hook is aligned with the evidence the repo currently owns. Speculative areas like AGI theory should still stay capped until repeated portfolio outcomes support stronger confidence."
+}

@@ -84,3 +84,28 @@
 - Reduce future product-boundary drift
 - Make it easier to review whether a change belongs to the lab chip, factory, transfer system, or serving layer
 - Give future repo-splitting or packaging work a stable baseline
+
+## Follow-On Tranche: Evaluate Hook Grounding
+
+## `src/chip_labs/evaluate.py`
+
+- Added repo-root resolution so research-focus evaluation can read lab-owned doctrine, packets, and run history
+- Added deterministic helpers for packet discovery, run loading, focus-specific run stats, and cached repo-state assembly
+- Replaced placeholder methodology constants with area-specific scoring based on relevant docs, packets, v3 dimensions, and methodology runs
+- Replaced placeholder domain-discovery constants with scoring based on ranked opportunities, exploratory artifacts, and domain-discovery runs
+- Replaced placeholder transfer-pattern and AGI-theory constants with scores derived from actual doctrine, packets, run history, and portfolio maturity
+
+## `docs/EXECUTION_PLAN_2026-03-21.md`
+
+- Marked phase 6 as now executed in code
+- Recorded that verification for this tranche is command-based within the current self-edit contract
+
+## `research/packets/packet_evaluate_artifact_grounding.json`
+
+- Added a packet documenting the evaluator-grounding principle and its operating boundary
+
+## Expected Effect
+
+- Make the lab's `evaluate` hook tell the truth about repo state instead of replaying fixed constants
+- Keep research scoring deterministic while tying it to real artifacts and run history
+- Preserve a cautious cap on AGI-theory confidence even as the lab accumulates more evidence

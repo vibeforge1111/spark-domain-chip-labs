@@ -90,6 +90,12 @@ Status:
 - Replace heuristic methodology/domain-discovery scores in `src/chip_labs/evaluate.py`
 - Make research-focus scoring depend on real artifacts, runs, and evidence quality
 
+Status:
+
+- `evaluate.py` no longer returns fixed placeholder constants for methodology, domain discovery, transfer patterns, or AGI theory
+- Research-focus scoring now derives from repo-owned doctrine, packets, run history, opportunity rankings, and portfolio maturity
+- Verification for this tranche is command-based because the self-edit contract does not permit test-file edits outside mutable targets
+
 ## Exit Criteria
 
 Short-term checkpoint:
