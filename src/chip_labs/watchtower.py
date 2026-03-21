@@ -1,3 +1,8 @@
-"""Compatibility wrapper for the lab hook watchtower module."""
+"""Compatibility alias for the lab hook watchtower module."""
 
-from .lab_hooks.watchtower import *  # noqa: F401,F403
+from __future__ import annotations
+
+from importlib import import_module
+import sys
+
+sys.modules[__name__] = import_module(".lab_hooks.watchtower", __package__)

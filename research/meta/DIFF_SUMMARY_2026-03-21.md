@@ -532,3 +532,22 @@
 
 - Remove one remaining internal factory-to-serving alias reach-through
 - Keep the top-level serving modules more purely compatibility-oriented
+
+## Follow-On Tranche: Wrapper Alias Hardening
+
+## `src/chip_labs/evaluate.py`, `src/chip_labs/suggest.py`, `src/chip_labs/packets.py`, `src/chip_labs/watchtower.py`
+
+- Converted the remaining top-level hook wrappers from `*` re-exports into module aliases
+
+## `src/chip_labs/scaffold.py`, `src/chip_labs/gap_analyzer.py`, `src/chip_labs/category_templates.py`, `src/chip_labs/methodology.py`, `src/chip_labs/graduation.py`
+
+- Converted the remaining top-level factory wrappers from `*` re-exports into module aliases
+
+## `research/packets/packet_wrapper_alias_hardening.json`
+
+- Added a packet documenting why compatibility aliases are stronger than plain re-export wrappers once implementations move behind namespaces
+
+## Expected Effect
+
+- Make compatibility behavior consistent across all four repo surfaces
+- Preserve public imports while strengthening alias identity and patch behavior

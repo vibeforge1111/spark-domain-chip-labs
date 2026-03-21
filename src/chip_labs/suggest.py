@@ -1,3 +1,8 @@
-"""Compatibility wrapper for the lab hook suggest module."""
+"""Compatibility alias for the lab hook suggest module."""
 
-from .lab_hooks.suggest import *  # noqa: F401,F403
+from __future__ import annotations
+
+from importlib import import_module
+import sys
+
+sys.modules[__name__] = import_module(".lab_hooks.suggest", __package__)

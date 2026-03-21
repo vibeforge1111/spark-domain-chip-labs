@@ -122,6 +122,7 @@ Status:
 - Extended the transfer implementation move again by relocating `loop_controller.py` under `src/chip_labs/transfer_surface/`
 - Started the next dependency-cleanup pass by repointing `hooks.py` to namespace-local serving modules instead of legacy top-level aliases
 - Extended dependency cleanup by repointing `chip_factory/gap_analyzer.py` to the namespace-local intelligence-serving implementation for skill generation
+- Hardened the remaining hook and factory compatibility modules by converting top-level wrappers into module aliases
 
 Exit condition:
 - Each surface depends only on sanctioned shared utilities and public interfaces

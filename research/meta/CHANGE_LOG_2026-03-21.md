@@ -771,3 +771,40 @@ After the serving implementation moved behind `src/chip_labs/intelligence_servin
 ### Notes
 
 - This is intentionally narrow. The goal is to remove one remaining internal alias reach-through without broadening the surface of the tranche.
+
+## Follow-On Tranche: Wrapper Alias Hardening
+
+### Files Changed
+
+- `src/chip_labs/evaluate.py`
+- `src/chip_labs/suggest.py`
+- `src/chip_labs/packets.py`
+- `src/chip_labs/watchtower.py`
+- `src/chip_labs/scaffold.py`
+- `src/chip_labs/gap_analyzer.py`
+- `src/chip_labs/category_templates.py`
+- `src/chip_labs/methodology.py`
+- `src/chip_labs/graduation.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_wrapper_alias_hardening.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_wrapper_alias_hardening.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The serving and transfer surfaces already used alias-style top-level compatibility modules, but the remaining hook and factory wrappers still used `*` re-exports. That weaker pattern can diverge under monkeypatching and makes the compatibility layer inconsistent across surfaces.
+
+### What Changed
+
+- Converted the remaining hook and factory top-level compatibility wrappers into module aliases
+- Kept the same public import paths and the same moved implementation locations
+
+### Verification
+
+- `PYTHONPATH=src python -m pytest tests/test_evaluate.py tests/test_suggest.py tests/test_packets.py tests/test_watchtower.py tests/test_graduation.py tests/test_loop_controller.py -q`
+
+### Notes
+
+- This tranche hardens compatibility behavior only. It does not move implementations or change public APIs.

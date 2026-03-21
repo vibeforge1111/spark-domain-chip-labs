@@ -1,3 +1,8 @@
-"""Compatibility wrapper for the chip factory scaffold module."""
+"""Compatibility alias for the chip factory scaffold module."""
 
-from .chip_factory.scaffold import *  # noqa: F401,F403
+from __future__ import annotations
+
+from importlib import import_module
+import sys
+
+sys.modules[__name__] = import_module(".chip_factory.scaffold", __package__)

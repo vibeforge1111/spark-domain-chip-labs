@@ -124,6 +124,7 @@ Status:
 - Extended phase 7C again by moving `loop_controller.py` under `src/chip_labs/transfer_surface/`, exporting it through the transfer namespace, and leaving a top-level compatibility alias
 - Extended phase 7C again by repointing `hooks.py` to namespace-local serving modules so internal serving callers stop reaching through top-level compatibility aliases
 - Extended phase 7C again by repointing `chip_factory/gap_analyzer.py` to the namespace-local intelligence-serving implementation for skill generation
+- Extended phase 7C again by converting the remaining hook and factory top-level wrappers into module aliases for stronger compatibility behavior
 
 ## Exit Criteria
 

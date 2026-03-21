@@ -1,0 +1,5 @@
+{
+  "claim": "Top-level compatibility modules should be module aliases rather than `*` re-export wrappers once the real implementations live behind internal namespaces.",
+  "mechanism": "Module aliases preserve monkeypatching and import identity across the old and new paths. That makes the compatibility layer stronger and more consistent with the serving and transfer surfaces that already use alias-based wrappers.",
+  "boundary": "This tranche does not move any implementation files or change public APIs. It only hardens the behavior of the compatibility layer."
+}
