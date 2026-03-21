@@ -467,3 +467,36 @@ After moving the scaffold path, the remaining factory support modules were the l
 ### Notes
 
 - This tranche makes the factory namespace the real home of the factory surface while still preserving top-level compatibility wrappers.
+
+## Follow-On Tranche: Intelligence Server Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/intelligence_serving/intelligence_server.py`
+- `src/chip_labs/intelligence_serving/api.py`
+- `src/chip_labs/intelligence_server.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_intelligence_server_impl_move.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_intelligence_server_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+With the serving namespace already in place, `intelligence_server.py` was the safest first serving implementation move. It is the main extraction and delivery module for the surface, and relocating it behind the namespace makes that seam real without forcing a broader runtime rewrite in the same tranche.
+
+### What Changed
+
+- Moved the real `intelligence_server.py` implementation under `src/chip_labs/intelligence_serving/`
+- Updated the moved module's rubric import for the deeper package location
+- Replaced the old top-level module with a compatibility wrapper
+- Updated the serving namespace API to import `refresh_skill` and `serve_context` from the moved implementation directly
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.intelligence_server import serve_context, refresh_skill; from chip_labs.intelligence_serving.intelligence_server import serve_context as moved_serve_context; from chip_labs.intelligence_serving import serve_context as api_serve_context; import chip_labs.cli; print('intelligence-server-move-imports-ok')"`
+
+### Notes
+
+- This move is intentionally narrow. `chip_runtime.py`, `chip_advisor.py`, `chip_context_injector.py`, and `chip_mcp_server.py` still rely on compatibility paths until the serving dependency graph is cleaned up further.

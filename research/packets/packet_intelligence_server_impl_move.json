@@ -1,0 +1,5 @@
+{
+  "claim": "After the serving namespace exists, intelligence_server can move behind it while preserving top-level imports through a compatibility wrapper.",
+  "mechanism": "The serving surface already had a stable namespace seam, so the main intelligence extraction and delivery module can move behind that seam without changing callers. Keeping a thin top-level wrapper preserves current imports while making the serving namespace a real implementation boundary instead of only a naming layer.",
+  "boundary": "This move does not relocate the whole serving surface yet. Runtime, advisor, context injection, and MCP-serving modules still remain top-level until their dependency graph is cleaned up further."
+}

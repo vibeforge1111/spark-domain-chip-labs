@@ -333,3 +333,27 @@
 
 - Make the factory namespace the real home of the remaining factory support behavior
 - Preserve top-level imports while significantly reducing factory logic still implemented at the top level
+
+## Follow-On Tranche: Intelligence Server Implementation Move
+
+## `src/chip_labs/intelligence_serving/intelligence_server.py`
+
+- Moved the real intelligence-serving implementation behind the serving namespace
+- Updated the moved module's `quality_rubric` import for the deeper package path
+
+## `src/chip_labs/intelligence_server.py`
+
+- Replaced the previous implementation file with a compatibility wrapper that re-exports the moved serving implementation
+
+## `src/chip_labs/intelligence_serving/api.py`
+
+- Repointed `refresh_skill` and `serve_context` imports to the moved implementation instead of the top-level compatibility wrapper
+
+## `research/packets/packet_intelligence_server_impl_move.json`
+
+- Added a packet documenting why the first serving implementation move should be the central intelligence module instead of the more coupled runtime path
+
+## Expected Effect
+
+- Turn the serving namespace into a partial real implementation boundary
+- Preserve existing imports while reducing the amount of serving logic still implemented at the top level

@@ -113,6 +113,7 @@ Status:
 - Moved the remaining factory support modules:
   - `methodology.py`
   - `graduation.py`
+- Extended the same pattern into the serving surface by moving `intelligence_server.py` under `src/chip_labs/intelligence_serving/`
 
 Exit condition:
 - Each surface depends only on sanctioned shared utilities and public interfaces
