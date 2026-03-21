@@ -1,0 +1,5 @@
+{
+  "claim": "Once scaffold and the lower-coupling factory modules have moved, the remaining factory support modules should also live behind the factory namespace.",
+  "mechanism": "Methodology and graduation are part of the same conceptual factory surface even though they are not the main execution path. Moving them after scaffold finishes the namespace boundary more honestly: the factory namespace becomes the real home of factory behavior, while top-level wrappers preserve compatibility for existing imports.",
+  "boundary": "This improves structural coherence, not functionality. The top-level wrapper files should remain until the repo is ready to tighten public import expectations."
+}

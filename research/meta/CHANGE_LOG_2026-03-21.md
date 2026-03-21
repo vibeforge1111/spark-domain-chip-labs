@@ -433,3 +433,37 @@ With the lower-coupling factory modules already moved and the factory namespace 
 ### Notes
 
 - This move completes the main factory execution path behind the factory namespace while still preserving top-level compatibility wrappers.
+
+## Follow-On Tranche: Factory Support Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/chip_factory/methodology.py`
+- `src/chip_labs/chip_factory/graduation.py`
+- `src/chip_labs/chip_factory/__init__.py`
+- `src/chip_labs/chip_factory/api.py`
+- `src/chip_labs/methodology.py`
+- `src/chip_labs/graduation.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_factory_support_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+After moving the scaffold path, the remaining factory support modules were the last major top-level files that still belonged conceptually to the factory surface.
+
+### What Changed
+
+- Moved `methodology.py` and `graduation.py` under `src/chip_labs/chip_factory/`
+- Updated the factory namespace exports so those functions are available directly from `chip_factory`
+- Replaced the old top-level files with compatibility wrappers
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.methodology import get_proven_patterns; from chip_labs.graduation import assess_graduation; from chip_labs.chip_factory.methodology import get_creation_checklist; from chip_labs.chip_factory.graduation import assess_graduation as moved_assess_graduation; from chip_labs.chip_factory import get_patterns_for_area; print('factory-support-move-imports-ok')"`
+
+### Notes
+
+- This tranche makes the factory namespace the real home of the factory surface while still preserving top-level compatibility wrappers.

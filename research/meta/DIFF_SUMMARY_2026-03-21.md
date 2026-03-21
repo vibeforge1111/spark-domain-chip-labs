@@ -313,3 +313,23 @@
 
 - Make the factory namespace the real home of the main scaffold execution path
 - Preserve existing imports while reducing the amount of central factory logic still living at the top level
+
+## Follow-On Tranche: Factory Support Implementation Move
+
+## `src/chip_labs/chip_factory/`
+
+- Moved `methodology.py` and `graduation.py` implementations into the factory namespace
+- Expanded the factory namespace exports to include methodology and graduation helpers
+
+## `src/chip_labs/methodology.py`, `src/chip_labs/graduation.py`
+
+- Replaced the previous implementation files with compatibility wrappers that re-export the moved implementations
+
+## `research/packets/packet_factory_support_impl_move.json`
+
+- Added a packet documenting why the final factory support modules should follow scaffold behind the namespace
+
+## Expected Effect
+
+- Make the factory namespace the real home of the remaining factory support behavior
+- Preserve top-level imports while significantly reducing factory logic still implemented at the top level

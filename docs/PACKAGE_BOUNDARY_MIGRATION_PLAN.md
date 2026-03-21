@@ -110,6 +110,9 @@ Status:
   - `gap_analyzer.py`
   - `category_templates.py`
 - Moved `scaffold.py` under `src/chip_labs/chip_factory/` once the lower-coupling factory slice was stable
+- Moved the remaining factory support modules:
+  - `methodology.py`
+  - `graduation.py`
 
 Exit condition:
 - Each surface depends only on sanctioned shared utilities and public interfaces

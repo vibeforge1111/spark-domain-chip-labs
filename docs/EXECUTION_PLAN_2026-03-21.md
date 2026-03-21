@@ -114,6 +114,7 @@ Status:
 - Started phase 7C by moving the hook implementation files under `src/chip_labs/lab_hooks/` and leaving top-level wrappers for compatibility
 - Extended phase 7C by moving `gap_analyzer.py` and `category_templates.py` under `src/chip_labs/chip_factory/` and leaving top-level wrappers for compatibility
 - Extended phase 7C again by moving `scaffold.py` under `src/chip_labs/chip_factory/` and leaving a top-level wrapper for compatibility
+- Extended phase 7C again by moving `methodology.py` and `graduation.py` under `src/chip_labs/chip_factory/` and leaving top-level wrappers for compatibility
 
 ## Exit Criteria
 
