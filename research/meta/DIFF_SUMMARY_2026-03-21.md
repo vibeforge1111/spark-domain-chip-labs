@@ -457,3 +457,22 @@
 
 - Turn the transfer namespace into a partial real implementation boundary
 - Preserve existing imports while reducing one more top-level surface module
+
+## Follow-On Tranche: Scoring Engine Implementation Move
+
+## `src/chip_labs/transfer_surface/scoring_engine.py`
+
+- Moved the scoring-engine implementation behind the transfer namespace
+
+## `src/chip_labs/scoring_engine.py`
+
+- Replaced the previous implementation file with a compatibility alias that points at the moved scoring engine
+
+## `research/packets/packet_scoring_engine_impl_move.json`
+
+- Added a packet documenting why the standalone scoring engine should move before the loop controller
+
+## Expected Effect
+
+- Extend the transfer namespace into another real implementation boundary
+- Preserve existing imports while reducing one more top-level transfer-surface module

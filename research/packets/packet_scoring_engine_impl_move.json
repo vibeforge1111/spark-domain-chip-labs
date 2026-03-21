@@ -1,0 +1,5 @@
+{
+  "claim": "scoring_engine.py can move behind the transfer namespace as a standalone tranche because it is structurally self-contained.",
+  "mechanism": "The scoring engine does not depend on loop-controller orchestration or transfer registry state. Moving it behind transfer_surface with a top-level compatibility alias reduces top-level surface sprawl without forcing any broader refactor in the same commit.",
+  "boundary": "This move does not change the scoring-engine public API and does not yet move loop_controller.py."
+}

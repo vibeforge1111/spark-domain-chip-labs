@@ -638,3 +638,35 @@ The transfer surface still had only a namespace seam. `transfer.py` was the clea
 ### Notes
 
 - `scoring_engine.py` and `loop_controller.py` remain top-level in this tranche. The goal here is to start the transfer implementation move with the smallest stable slice.
+
+## Follow-On Tranche: Scoring Engine Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/transfer_surface/scoring_engine.py`
+- `src/chip_labs/scoring_engine.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_scoring_engine_impl_move.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_scoring_engine_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+`scoring_engine.py` is a transfer-surface module but it is materially more self-contained than `loop_controller.py`. That makes it the right next implementation move after `transfer.py` and before any orchestration-path relocation.
+
+### What Changed
+
+- Moved `scoring_engine.py` under `src/chip_labs/transfer_surface/`
+- Replaced the old top-level module with a compatibility alias
+- Left the scoring-engine public API unchanged
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.scoring_engine import MutationScoringEngine, ScoringConfigBuilder, from_manifest; from chip_labs.transfer_surface.scoring_engine import MutationScoringEngine as moved_MutationScoringEngine; import chip_labs.cli; print('scoring-engine-move-imports-ok')"`
+- `PYTHONPATH=src python -m pytest tests/test_scoring_engine.py -q`
+
+### Notes
+
+- `loop_controller.py` remains top-level in this tranche and is now the main remaining transfer-surface orchestration module outside the namespace.
