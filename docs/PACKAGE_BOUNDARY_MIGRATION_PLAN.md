@@ -92,6 +92,7 @@ Status:
 - Routed CLI and selected internal consumers through that namespace without changing the external contract
 - Extended the same pattern to the factory surface with `src/chip_labs/chip_factory/`
 - Extended the same pattern to the transfer surface with `src/chip_labs/transfer_surface/`
+- Extended the same pattern to the intelligence-serving surface with `src/chip_labs/intelligence_serving/`
 
 Exit condition:
 - No external caller needs to change import paths yet

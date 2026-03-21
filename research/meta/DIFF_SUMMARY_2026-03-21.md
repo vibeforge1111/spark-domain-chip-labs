@@ -208,3 +208,27 @@
 
 - Reduce direct coupling to `transfer.py`
 - Make later recursive-improvement packaging work less invasive
+
+## Follow-On Tranche: Intelligence Serving Namespace
+
+## `src/chip_labs/intelligence_serving/`
+
+- Added the internal compatibility namespace for runtime, advisory, context-injection, and MCP-serving entry points
+- Exposed serving-facing public entry points through one surface
+
+## `src/chip_labs/cli.py`, `src/chip_labs/loop_controller.py`
+
+- Repointed serving-related top-level imports to the new `intelligence_serving` namespace
+
+## `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+
+- Marked phase 7B as extended into the intelligence-serving surface
+
+## `research/packets/packet_intelligence_serving_namespace.json`
+
+- Added a packet documenting why the serving layer needs a top-level seam before deeper rewiring
+
+## Expected Effect
+
+- Reduce direct top-level coupling to serving implementation modules
+- Create the last namespace seam needed before later implementation-file moves

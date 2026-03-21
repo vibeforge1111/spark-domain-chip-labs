@@ -1,0 +1,5 @@
+{
+  "claim": "The intelligence-serving layer needs its own internal compatibility API before deeper internal rewiring or file moves.",
+  "mechanism": "Serving is the broadest surface in the repo because it spans runtime loading, context injection, advisory logic, and MCP delivery. Introducing a single serving namespace gives the CLI and other top-level callers one stable seam while leaving deeper module relationships untouched. That lowers the risk of circular-import accidents during later structural work.",
+  "boundary": "This namespace does not yet normalize all internal serving dependencies. It only creates the first compatibility layer for top-level callers."
+}

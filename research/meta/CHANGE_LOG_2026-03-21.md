@@ -293,3 +293,35 @@ The transfer layer is the recursive-improvement surface. Before implementation f
 ### Notes
 
 - This tranche changes import boundaries only. Transfer implementation still lives in `src/chip_labs/transfer.py`.
+
+## Follow-On Tranche: Intelligence Serving Namespace
+
+### Files Changed
+
+- `src/chip_labs/intelligence_serving/__init__.py`
+- `src/chip_labs/intelligence_serving/api.py`
+- `src/chip_labs/cli.py`
+- `src/chip_labs/loop_controller.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_intelligence_serving_namespace.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The serving layer is the broadest remaining surface. It touches runtime execution, context injection, advisory flows, and MCP delivery. Before moving any implementation files, the repo needed one stable top-level seam for those entry points.
+
+### What Changed
+
+- Added `src/chip_labs/intelligence_serving/` as the internal namespace for serving entry points
+- Re-exported runtime loading, hook execution, context serving, advisory, injection, skill refresh, and MCP server entry points
+- Routed serving-facing CLI imports and the loop-controller skill-refresh import through that namespace
+
+### Verification
+
+- `PYTHONPATH=src python -c "import chip_labs.cli, chip_labs.loop_controller; from chip_labs.intelligence_serving import serve_context, ChipMCPServer, load_portfolio"`
+
+### Notes
+
+- This tranche keeps deeper serving internals unchanged to avoid accidental circular-import churn. It creates the compatibility seam first.

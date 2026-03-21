@@ -420,7 +420,7 @@ def cmd_portfolio_v3(args: argparse.Namespace) -> None:
 
 def cmd_build_skill(args: argparse.Namespace) -> None:
     """Build intelligence delivery artifacts for a chip."""
-    from .intelligence_server import refresh_skill
+    from .intelligence_serving import refresh_skill
 
     chip_path = Path(args.chip_path)
     if not chip_path.exists():
@@ -444,7 +444,7 @@ def cmd_build_skill(args: argparse.Namespace) -> None:
 
 def cmd_serve(args: argparse.Namespace) -> None:
     """Serve context from a chip for a query."""
-    from .intelligence_server import serve_context
+    from .intelligence_serving import serve_context
 
     chip_path = Path(args.chip_path)
     if not chip_path.exists():
@@ -461,7 +461,7 @@ def cmd_serve(args: argparse.Namespace) -> None:
 
 def cmd_serve_intelligence(args: argparse.Namespace) -> None:
     """Inject chip intelligence context for a task description."""
-    from .chip_context_injector import inject_context_for_task
+    from .intelligence_serving import inject_context_for_task
 
     result = inject_context_for_task(
         args.task,
@@ -480,7 +480,7 @@ def cmd_serve_intelligence(args: argparse.Namespace) -> None:
 
 def cmd_advise(args: argparse.Namespace) -> None:
     """Get pre-action advisory from chip doctrines."""
-    from .chip_advisor import AdvisoryRequest, advise_pre_action
+    from .intelligence_serving import AdvisoryRequest, advise_pre_action
 
     request = AdvisoryRequest(
         action_description=args.action,
@@ -514,7 +514,7 @@ def cmd_advise(args: argparse.Namespace) -> None:
 
 def cmd_run_mcp_server(args: argparse.Namespace) -> None:
     """Start the MCP server for domain chip intelligence."""
-    from .chip_mcp_server import ChipMCPServer
+    from .intelligence_serving import ChipMCPServer
 
     server = ChipMCPServer()
     print("Starting domain chip MCP server on stdio...", file=sys.stderr)

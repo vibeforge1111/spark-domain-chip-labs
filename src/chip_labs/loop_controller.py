@@ -827,7 +827,7 @@ class RecursiveLoopController:
         t_start = _now_ms()
 
         try:
-            from .intelligence_server import refresh_skill
+            from .intelligence_serving import refresh_skill
 
             result = refresh_skill(chip_path)
             doctrine_count = result.get("doctrine_count", 0)
