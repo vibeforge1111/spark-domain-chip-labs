@@ -325,3 +325,43 @@ The serving layer is the broadest remaining surface. It touches runtime executio
 ### Notes
 
 - This tranche keeps deeper serving internals unchanged to avoid accidental circular-import churn. It creates the compatibility seam first.
+
+## Follow-On Tranche: Hook Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/lab_hooks/evaluate.py`
+- `src/chip_labs/lab_hooks/suggest.py`
+- `src/chip_labs/lab_hooks/packets.py`
+- `src/chip_labs/lab_hooks/watchtower.py`
+- `src/chip_labs/lab_hooks/api.py`
+- `src/chip_labs/evaluate.py`
+- `src/chip_labs/suggest.py`
+- `src/chip_labs/packets.py`
+- `src/chip_labs/watchtower.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_hook_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The hook surface already had the cleanest namespace seam. That made it the right first surface for an actual implementation-file move instead of another namespace-only pass.
+
+### What Changed
+
+- Moved the real hook implementations under `src/chip_labs/lab_hooks/`
+- Updated moved files for their new relative-import paths
+- Adjusted evaluate's repo-root fallback for the deeper file path
+- Replaced the old top-level modules with thin compatibility wrappers that re-export the moved implementations
+- Updated the hook namespace API to import from the moved modules directly
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.evaluate import evaluate; from chip_labs.suggest import suggest; from chip_labs.packets import generate_packets; from chip_labs.watchtower import generate_watchtower_pages; from chip_labs.lab_hooks.evaluate import evaluate as moved_evaluate; print('hook-move-imports-ok')"`
+- `PYTHONPATH=src python -m chip_labs.cli suggest --input research/meta/eval_input_content_2026-03-21.json`
+
+### Notes
+
+- The old module paths continue to work through wrappers, so this is a real structural move without a public import break.

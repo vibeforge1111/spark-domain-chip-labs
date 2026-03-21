@@ -1,0 +1,40 @@
+{
+  "request_id": "2026-03-21-phase7c-hook-impl-move",
+  "created_at": "2026-03-21",
+  "type": "compatibility_preserving_file_move",
+  "goal": "Move the real hook implementation files under the hook namespace while preserving existing top-level imports through compatibility wrappers.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Preserve existing import paths for callers and tests",
+    "Adjust moved-file imports and path logic to match the deeper package location"
+  ],
+  "files_touched": [
+    "src/chip_labs/lab_hooks/evaluate.py",
+    "src/chip_labs/lab_hooks/suggest.py",
+    "src/chip_labs/lab_hooks/packets.py",
+    "src/chip_labs/lab_hooks/watchtower.py",
+    "src/chip_labs/lab_hooks/api.py",
+    "src/chip_labs/evaluate.py",
+    "src/chip_labs/suggest.py",
+    "src/chip_labs/packets.py",
+    "src/chip_labs/watchtower.py",
+    "docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/packets/packet_hook_impl_move.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "The real hook implementations now live under chip_labs.lab_hooks.",
+    "The old top-level hook modules now act as compatibility wrappers.",
+    "The hook namespace API now depends on the moved implementation modules directly."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -c \"from chip_labs.evaluate import evaluate; from chip_labs.lab_hooks.evaluate import evaluate as moved_evaluate; print('hook-move-imports-ok')\"",
+    "PYTHONPATH=src python -m chip_labs.cli suggest --input research/meta/eval_input_content_2026-03-21.json"
+  ],
+  "follow_up": [
+    "Apply the same move pattern to the other surfaces only after their namespace seams are stable.",
+    "Once the whole surface has moved, tighten namespace imports and remove redundant wrapper-only indirection only when safe."
+  ]
+}

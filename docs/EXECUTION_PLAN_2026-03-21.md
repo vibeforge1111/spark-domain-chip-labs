@@ -111,6 +111,7 @@ Status:
 - Extended phase 7B with `src/chip_labs/chip_factory/` and routed factory-facing CLI and loop-controller imports through that namespace
 - Extended phase 7B with `src/chip_labs/transfer_surface/` and routed transfer-facing CLI imports through that namespace
 - Extended phase 7B with `src/chip_labs/intelligence_serving/` and routed serving-facing CLI plus loop-controller imports through that namespace
+- Started phase 7C by moving the hook implementation files under `src/chip_labs/lab_hooks/` and leaving top-level wrappers for compatibility
 
 ## Exit Criteria
 

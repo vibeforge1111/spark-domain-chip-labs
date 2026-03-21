@@ -232,3 +232,28 @@
 
 - Reduce direct top-level coupling to serving implementation modules
 - Create the last namespace seam needed before later implementation-file moves
+
+## Follow-On Tranche: Hook Implementation Move
+
+## `src/chip_labs/lab_hooks/`
+
+- Moved the actual hook implementations into the hook namespace
+- Updated relative imports in the moved files to point back to shared top-level modules correctly
+- Updated the hook namespace API to import from the moved modules directly
+
+## `src/chip_labs/evaluate.py`, `src/chip_labs/suggest.py`, `src/chip_labs/packets.py`, `src/chip_labs/watchtower.py`
+
+- Replaced previous implementation files with compatibility wrappers that re-export the moved hook implementations
+
+## `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+
+- Marked phase 7C as started with a real implementation move on the hook surface
+
+## `research/packets/packet_hook_impl_move.json`
+
+- Added a packet documenting why implementation-file moves should happen only after a namespace seam exists
+
+## Expected Effect
+
+- Convert the hook surface namespace from a naming seam into a real implementation boundary
+- Preserve existing imports while making later hook-surface cleanup easier

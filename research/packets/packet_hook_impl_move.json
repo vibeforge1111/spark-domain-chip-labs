@@ -1,0 +1,5 @@
+{
+  "claim": "Once callers route through the hook namespace, the hook implementation files can be moved behind that namespace without breaking existing imports.",
+  "mechanism": "The namespace-first pass created one stable seam for the hook surface. That makes it possible to relocate the real implementation files under `lab_hooks/` while leaving thin top-level wrappers behind. The result is a real structural move, not just a naming exercise, but compatibility is preserved because old import paths continue to resolve to the same behavior.",
+  "boundary": "This only works cleanly because the hook surface already had a stable namespace seam. Other surfaces should follow the same order rather than skipping directly to implementation moves."
+}

@@ -102,6 +102,11 @@ Exit condition:
 - Remove cross-surface imports that violate the intended boundaries
 - Push shared utilities into clearly named common modules instead of letting one surface reach through another
 
+Status:
+- Started with the hook surface
+- Moved `evaluate.py`, `suggest.py`, `packets.py`, and `watchtower.py` implementations under `src/chip_labs/lab_hooks/`
+- Left top-level compatibility wrappers in place so existing imports continue to work
+
 Exit condition:
 - Each surface depends only on sanctioned shared utilities and public interfaces
 
