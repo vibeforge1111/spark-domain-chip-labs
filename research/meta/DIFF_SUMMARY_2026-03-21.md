@@ -730,3 +730,36 @@
 
 - Turn the top tier from a ranking list into an actual strategic read
 - Clarify which chips are strong because of scale, which are strong because of doctrine quality, and which are strong but still risky
+
+## Follow-On Tranche: Tomorrow Focus Documentation
+
+## `docs/TOMORROW_FOCUS_2026-03-22.md`
+
+- Added a one-session plan grounded in what was actually completed today
+- Summarized completed chip-labs work:
+  - contract stabilization
+  - package seams
+  - serving repairs
+  - self-score checkpoint
+  - portfolio audit artifacts
+- Summarized completed startup-yc work:
+  - routing improvements
+  - fallback hardening
+  - memory prioritization
+  - synthesis focus
+  - explicit note that the idea-ranking experiment was reverted
+- Reduced tomorrow's scope to four concrete tasks that are realistically finishable
+
+## `docs/EXECUTION_PLAN_2026-03-21.md`
+
+- Added a short next-session reference pointing to the new tomorrow-focus document
+
+## `research/meta/REQUEST_PACKET_2026-03-21_tomorrow_focus_documentation.json`
+
+- Added a request packet documenting the purpose, file scope, and intended follow-up for this documentation-only tranche
+
+## Expected Effect
+
+- Prevent tomorrow from starting with a vague backlog
+- Keep the next session focused on product behavior and audit clarity rather than another broad refactor
+- Preserve a transparent record of why the immediate next tasks are these four and not a larger wish list

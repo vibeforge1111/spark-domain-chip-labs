@@ -1072,3 +1072,40 @@ The live portfolio audit showed a real leadership tier, but the user asked to go
 ### Notes
 
 - This tranche is analysis-only. It changes no chip behavior.
+
+## Follow-On Tranche: Tomorrow Focus Documentation
+
+### Files Changed
+
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `docs/TOMORROW_FOCUS_2026-03-22.md`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+- `research/meta/REQUEST_PACKET_2026-03-21_tomorrow_focus_documentation.json`
+
+### Why
+
+The repo had accumulated a lot of completed work across contract stabilization, internal boundary cleanup, serving fixes, and portfolio audits. What was missing at the end of the day was a clean, realistic "tomorrow" document that says what we actually finished and what is small enough to finish next without drifting again.
+
+### What Changed
+
+- Added a dedicated next-day focus document in `docs/TOMORROW_FOCUS_2026-03-22.md`
+- Summarized the completed chip-labs work so tomorrow starts from facts instead of memory
+- Summarized the completed startup-yc work, including the deliberate revert of the idea-ranking experiment
+- Narrowed tomorrow's plan to four realistic tasks:
+  - chip-labs multi-chip advisory ranking quality
+  - top-tier weakest-dimension portfolio matrix
+  - startup-yc task-classification tightening
+  - a short startup-yc scenario validation batch
+- Linked the execution plan to the new next-day focus document
+
+### Verification
+
+- Manual consistency review against recent `git log` for:
+  - `spark-domain-chip-labs`
+  - `domain-chip-startup-yc`
+- Manual review that the tomorrow tasks stay within current mutable-target constraints
+
+### Notes
+
+- This tranche is intentionally documentary. It turns the current state into a practical next-session starting point rather than adding more code at the end of the day.

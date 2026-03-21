@@ -145,3 +145,11 @@ Medium-term checkpoint:
 
 - lab repo reaches defensible v2 and materially higher v3 through real artifacts
 - runtime can execute hooks without contract ambiguity
+
+## Next Session Reference
+
+- The concrete next-day plan is now captured in `docs/TOMORROW_FOCUS_2026-03-22.md`.
+- Tomorrow should prioritize:
+  - multi-chip advisory ranking quality in the chip-labs serving layer
+  - a weakest-dimension matrix for the top-tier portfolio chips
+  - smaller startup-yc routing and validation work instead of another large feature branch

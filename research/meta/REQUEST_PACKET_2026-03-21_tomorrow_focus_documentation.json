@@ -1,0 +1,31 @@
+{
+  "request_id": "2026-03-21-tomorrow-focus-documentation",
+  "created_at": "2026-03-21",
+  "type": "documentation_alignment",
+  "goal": "Document what was actually accomplished today and define a small set of realistic, finishable tasks for the next session without drifting scope.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Do not modify external domain chip repos from this workspace",
+    "Prefer realistic next-day tasks over aspirational roadmap writing"
+  ],
+  "files_touched": [
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "docs/TOMORROW_FOCUS_2026-03-22.md",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md",
+    "research/meta/REQUEST_PACKET_2026-03-21_tomorrow_focus_documentation.json"
+  ],
+  "behavioral_changes": [
+    "The repo now has an explicit next-day focus document grounded in the actual work already completed",
+    "The execution plan now points to a concrete next-session task list instead of only a broad multi-phase roadmap",
+    "The meta trail now records that tomorrow should focus on serving-quality improvements, leadership-tier audit clarity, and smaller startup-yc routing work rather than another large feature"
+  ],
+  "verification_targets": [
+    "Manual review of docs/TOMORROW_FOCUS_2026-03-22.md against recent chip-labs and startup-yc commit history",
+    "Manual consistency review of docs/EXECUTION_PLAN_2026-03-21.md and research/meta trail"
+  ],
+  "follow_up": [
+    "Use the tomorrow-focus document as the starting checklist for the next session",
+    "Keep next-day tasks tied to product behavior, audits, and validation rather than architecture for architecture's sake"
+  ]
+}
