@@ -1,0 +1,36 @@
+{
+  "request_id": "2026-03-21-phase7c-loop-controller-impl-move",
+  "created_at": "2026-03-21",
+  "type": "compatibility_preserving_file_move",
+  "goal": "Move the loop-controller implementation behind the transfer_surface namespace while preserving the top-level loop_controller module path through a compatibility alias.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Preserve existing import paths for callers and tests",
+    "Keep loop-controller behavior unchanged in this tranche"
+  ],
+  "files_touched": [
+    "src/chip_labs/transfer_surface/loop_controller.py",
+    "src/chip_labs/transfer_surface/api.py",
+    "src/chip_labs/transfer_surface/__init__.py",
+    "src/chip_labs/loop_controller.py",
+    "src/chip_labs/cli.py",
+    "docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/packets/packet_loop_controller_impl_move.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "The real loop-controller implementation now lives under chip_labs.transfer_surface.",
+    "The old top-level loop_controller module now acts as a compatibility alias.",
+    "The transfer namespace now exports LoopConfig, LoopTelemetry, LoopResult, and RecursiveLoopController for internal callers."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -c \"from chip_labs.loop_controller import RecursiveLoopController, LoopConfig; from chip_labs.transfer_surface.loop_controller import RecursiveLoopController as moved_RecursiveLoopController; from chip_labs.transfer_surface import RecursiveLoopController as api_RecursiveLoopController; import chip_labs.cli; print('loop-controller-move-imports-ok')\"",
+    "PYTHONPATH=src python -m pytest tests/test_loop_controller.py -q"
+  ],
+  "follow_up": [
+    "Phase 7C then shifts from implementation-file moves toward cross-surface dependency cleanup rather than more same-pattern relocations.",
+    "Keep the top-level compatibility alias until the transfer surface is fully settled."
+  ]
+}

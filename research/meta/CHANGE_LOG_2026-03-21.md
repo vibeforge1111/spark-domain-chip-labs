@@ -670,3 +670,40 @@ The transfer surface still had only a namespace seam. `transfer.py` was the clea
 ### Notes
 
 - `loop_controller.py` remains top-level in this tranche and is now the main remaining transfer-surface orchestration module outside the namespace.
+
+## Follow-On Tranche: Loop Controller Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/transfer_surface/loop_controller.py`
+- `src/chip_labs/transfer_surface/api.py`
+- `src/chip_labs/transfer_surface/__init__.py`
+- `src/chip_labs/loop_controller.py`
+- `src/chip_labs/cli.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_loop_controller_impl_move.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_loop_controller_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+After moving `transfer.py` and `scoring_engine.py`, the loop controller became the last major transfer-surface implementation anchor still sitting at the top level. Moving it behind the transfer namespace lets the CLI consume the namespace directly while preserving the old import path for compatibility.
+
+### What Changed
+
+- Moved `loop_controller.py` under `src/chip_labs/transfer_surface/`
+- Updated its imports for the deeper package location
+- Replaced the old top-level module with a compatibility alias
+- Exported loop-controller types and the controller itself through the transfer namespace
+- Updated the CLI autoloop path to import from the transfer namespace instead of the top-level wrapper
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.loop_controller import RecursiveLoopController, LoopConfig; from chip_labs.transfer_surface.loop_controller import RecursiveLoopController as moved_RecursiveLoopController; from chip_labs.transfer_surface import RecursiveLoopController as api_RecursiveLoopController; import chip_labs.cli; print('loop-controller-move-imports-ok')"`
+- `PYTHONPATH=src python -m pytest tests/test_loop_controller.py -q`
+
+### Notes
+
+- This tranche completes the main implementation-file moves for the transfer surface while leaving top-level compatibility aliases in place.

@@ -1,0 +1,5 @@
+{
+  "claim": "Once the transfer namespace owns transfer.py and scoring_engine.py, loop_controller.py can move behind the same boundary with a top-level compatibility alias.",
+  "mechanism": "loop_controller.py is the transfer/orchestration surface's main coordinator. Moving it after the lower-coupling transfer modules lets the CLI switch to the transfer namespace in the same tranche while preserving the old top-level import path for tests and external callers.",
+  "boundary": "This move preserves loop-controller behavior and does not change the loop contract. It only changes implementation location and internal import direction."
+}

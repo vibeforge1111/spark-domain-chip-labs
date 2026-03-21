@@ -231,7 +231,7 @@ def cmd_score(args: argparse.Namespace) -> None:
 
 def cmd_autoloop(args: argparse.Namespace) -> None:
     """Run recursive improvement loop on a chip."""
-    from .loop_controller import RecursiveLoopController, LoopConfig
+    from .transfer_surface import RecursiveLoopController, LoopConfig
 
     config = LoopConfig(
         target_score=args.target_score,

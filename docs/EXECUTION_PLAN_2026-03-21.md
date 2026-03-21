@@ -121,6 +121,7 @@ Status:
 - Extended phase 7C again by moving `chip_runtime.py` under `src/chip_labs/intelligence_serving/` and leaving a top-level wrapper for compatibility
 - Extended phase 7C into the transfer surface by moving `transfer.py` under `src/chip_labs/transfer_surface/` and leaving a top-level compatibility alias
 - Extended phase 7C again by moving `scoring_engine.py` under `src/chip_labs/transfer_surface/` and leaving a top-level compatibility alias
+- Extended phase 7C again by moving `loop_controller.py` under `src/chip_labs/transfer_surface/`, exporting it through the transfer namespace, and leaving a top-level compatibility alias
 
 ## Exit Criteria
 

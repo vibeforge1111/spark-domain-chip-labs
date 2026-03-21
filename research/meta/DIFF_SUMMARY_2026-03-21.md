@@ -476,3 +476,28 @@
 
 - Extend the transfer namespace into another real implementation boundary
 - Preserve existing imports while reducing one more top-level transfer-surface module
+
+## Follow-On Tranche: Loop Controller Implementation Move
+
+## `src/chip_labs/transfer_surface/loop_controller.py`
+
+- Moved the loop-controller implementation behind the transfer namespace
+- Updated its imports for the deeper package path
+
+## `src/chip_labs/loop_controller.py`
+
+- Replaced the previous implementation file with a compatibility alias that points at the moved loop controller
+
+## `src/chip_labs/transfer_surface/api.py`, `src/chip_labs/transfer_surface/__init__.py`, `src/chip_labs/cli.py`
+
+- Exported loop-controller types and controller entrypoints through the transfer namespace
+- Repointed the CLI autoloop import to the transfer namespace instead of the top-level compatibility alias
+
+## `research/packets/packet_loop_controller_impl_move.json`
+
+- Added a packet documenting why the loop controller should move after the lower-coupling transfer modules
+
+## Expected Effect
+
+- Make the transfer namespace the real home of the main transfer/orchestration implementation surface
+- Preserve existing imports while reducing the remaining top-level transfer-surface orchestration module
