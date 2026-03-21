@@ -117,6 +117,7 @@ Status:
 - Extended the serving move by relocating `chip_advisor.py` and `chip_context_injector.py` behind the same namespace
 - Extended the serving move again by relocating `chip_mcp_server.py` behind the same namespace
 - Completed the namespace-local serving implementation move by relocating `chip_runtime.py` behind the same namespace
+- Started the transfer implementation move by relocating `transfer.py` under `src/chip_labs/transfer_surface/`
 
 Exit condition:
 - Each surface depends only on sanctioned shared utilities and public interfaces

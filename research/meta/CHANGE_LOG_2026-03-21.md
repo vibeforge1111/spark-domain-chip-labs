@@ -605,3 +605,36 @@ After the intelligence, advisory, context-injection, and MCP paths moved behind 
 ### Notes
 
 - This tranche preserves runtime behavior. It changes implementation location and internal import direction, not the hook contract or scoring logic.
+
+## Follow-On Tranche: Transfer Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/transfer_surface/transfer.py`
+- `src/chip_labs/transfer_surface/api.py`
+- `src/chip_labs/transfer.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_transfer_impl_move.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_transfer_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The transfer surface still had only a namespace seam. `transfer.py` was the cleanest first implementation move because the transfer namespace API already centered on that module and did not require moving the loop controller in the same tranche.
+
+### What Changed
+
+- Moved `transfer.py` under `src/chip_labs/transfer_surface/`
+- Updated the moved module's rubric import for the deeper package location
+- Replaced the old top-level `transfer.py` with a compatibility alias
+- Updated the transfer namespace API to import from the moved implementation directly
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.transfer import transfer_intelligence, portfolio_transfer; from chip_labs.transfer_surface.transfer import transfer_intelligence as moved_transfer_intelligence; from chip_labs.transfer_surface import transfer_intelligence as api_transfer_intelligence; import chip_labs.cli; print('transfer-move-imports-ok')"`
+
+### Notes
+
+- `scoring_engine.py` and `loop_controller.py` remain top-level in this tranche. The goal here is to start the transfer implementation move with the smallest stable slice.

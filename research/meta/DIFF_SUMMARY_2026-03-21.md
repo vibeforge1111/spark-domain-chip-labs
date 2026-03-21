@@ -433,3 +433,27 @@
 
 - Make the serving namespace the real home of the full serving implementation surface
 - Preserve existing imports while reducing top-level serving modules to compatibility wrappers
+
+## Follow-On Tranche: Transfer Implementation Move
+
+## `src/chip_labs/transfer_surface/transfer.py`
+
+- Moved the transfer implementation behind the transfer namespace
+- Updated its rubric import for the deeper package path
+
+## `src/chip_labs/transfer.py`
+
+- Replaced the previous implementation file with a compatibility alias that points at the moved transfer implementation
+
+## `src/chip_labs/transfer_surface/api.py`
+
+- Repointed transfer-surface exports to the moved implementation instead of the top-level compatibility alias
+
+## `research/packets/packet_transfer_impl_move.json`
+
+- Added a packet documenting why the transfer surface should start with `transfer.py` before moving other adjacent modules
+
+## Expected Effect
+
+- Turn the transfer namespace into a partial real implementation boundary
+- Preserve existing imports while reducing one more top-level surface module

@@ -1,0 +1,5 @@
+{
+  "claim": "After the transfer namespace exists, transfer.py can move behind it while preserving the top-level module path through a compatibility alias.",
+  "mechanism": "The transfer surface API already re-exported the public transfer functions from one module. Moving that module behind transfer_surface makes the seam real with a small blast radius, while the top-level alias preserves existing callers and monkeypatch paths.",
+  "boundary": "This move does not relocate loop_controller.py or scoring_engine.py yet. Those transfer-adjacent modules still need their own dependency review."
+}
