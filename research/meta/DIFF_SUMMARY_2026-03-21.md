@@ -571,3 +571,22 @@
 
 - Remove ambiguity about the current packaging posture
 - Keep future splitting as an explicit option, but only when repo-state triggers justify it
+
+## Follow-On Tranche: Phase 7D Operational Validation Batch
+
+## `research/meta/VALIDATION_BATCH_2026-03-21_phase7d.json`, `research/meta/VALIDATION_BATCH_2026-03-21_phase7d.md`
+
+- Added a fresh post-decision validation snapshot covering both scorers and a broad targeted regression pack
+
+## `research/meta/runs.jsonl`
+
+- Appended three real validation entries for v2 scoring, v3 scoring, and the targeted regression suite
+
+## `research/packets/packet_operational_validation_batch.json`
+
+- Added a packet documenting why structural work should be converted into observable operating history through real validation passes
+
+## Expected Effect
+
+- Turn the latest structural and packaging work into ledger-visible operating evidence
+- Keep the repo's claimed stability grounded in executed scorer and regression results rather than only in code movement

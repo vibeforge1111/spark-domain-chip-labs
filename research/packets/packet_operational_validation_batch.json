@@ -1,0 +1,5 @@
+{
+  "claim": "After the namespace migration and package decision, the repo should prove stability through real scorer and regression executions rather than assuming the structural work held.",
+  "mechanism": "Running the v2 scorer, the v3 scorer, and a broad targeted regression pack validates that the repo's internal boundary changes preserved behavior across the main shipped and integrated surfaces. Recording those passes into the lab ledger turns structural work into observable operating history.",
+  "boundary": "A passing validation batch does not prove long-term product success. It proves that the current structural and contract state is stable under the chosen test surface at the time of execution."
+}

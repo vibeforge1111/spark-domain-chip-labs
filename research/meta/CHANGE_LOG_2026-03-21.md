@@ -839,3 +839,38 @@ The repo had already built the internal seams needed for a packaging decision, b
 ### Notes
 
 - This tranche makes the packaging posture explicit without forcing a premature multi-package release problem.
+
+## Follow-On Tranche: Phase 7D Operational Validation Batch
+
+### Files Changed
+
+- `research/meta/VALIDATION_BATCH_2026-03-21_phase7d.json`
+- `research/meta/VALIDATION_BATCH_2026-03-21_phase7d.md`
+- `research/meta/runs.jsonl`
+- `research/packets/packet_operational_validation_batch.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7d_validation_batch.json`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The structural migration and packaging decision were complete, but the repo still needed a fresh operational proof point after those changes. Without a real validation batch, the repo would still be relying on earlier execution evidence from before the final boundary-hardening passes and package decision.
+
+### What Changed
+
+- Ran a fresh v2 self-score and recorded `100/100`
+- Ran a fresh v3 self-score and recorded `87.0/100`
+- Ran a broad targeted regression pack covering serving, transfer, scoring, hooks, and hook-facing outputs, recording `304 passed in 59.58s`
+- Added a JSON and Markdown validation batch summary under `research/meta/`
+- Appended three real validation entries to `research/meta/runs.jsonl`
+
+### Verification
+
+- `PYTHONPATH=src python -m chip_labs.cli score-v2 .`
+- `PYTHONPATH=src python -m chip_labs.cli score-v3 . --verbose`
+- `PYTHONPATH=src python -m pytest tests/test_chip_runtime.py tests/test_chip_mcp_server.py tests/test_transfer.py tests/test_scoring_engine.py tests/test_loop_controller.py tests/test_hooks.py tests/test_evaluate.py tests/test_suggest.py tests/test_packets.py tests/test_watchtower.py tests/test_graduation.py -q`
+
+### Notes
+
+- This tranche adds real operating history instead of more structural claims. The remaining score bottlenecks stay the same: watchtower depth and longer-run accumulation, not contract drift.

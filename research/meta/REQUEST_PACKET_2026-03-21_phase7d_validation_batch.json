@@ -1,0 +1,35 @@
+{
+  "request_id": "2026-03-21-phase7d-validation-batch",
+  "created_at": "2026-03-21T17:10:45.0423852Z",
+  "type": "operational_validation",
+  "goal": "Capture a real post-boundary validation batch after the package decision and append the resulting passes to the lab's run ledger.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Record only commands that actually executed in this workspace",
+    "Do not manufacture history or claim scores that were not observed"
+  ],
+  "files_touched": [
+    "research/meta/VALIDATION_BATCH_2026-03-21_phase7d.json",
+    "research/meta/VALIDATION_BATCH_2026-03-21_phase7d.md",
+    "research/meta/runs.jsonl",
+    "research/packets/packet_operational_validation_batch.json",
+    "research/meta/REQUEST_PACKET_2026-03-21_phase7d_validation_batch.json",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "No code behavior changes.",
+    "The repo now carries one more real operational validation artifact set.",
+    "The run ledger now includes three additional real validation entries."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -m chip_labs.cli score-v2 .",
+    "PYTHONPATH=src python -m chip_labs.cli score-v3 . --verbose",
+    "PYTHONPATH=src python -m pytest tests/test_chip_runtime.py tests/test_chip_mcp_server.py tests/test_transfer.py tests/test_scoring_engine.py tests/test_loop_controller.py tests/test_hooks.py tests/test_evaluate.py tests/test_suggest.py tests/test_packets.py tests/test_watchtower.py tests/test_graduation.py -q"
+  ],
+  "follow_up": [
+    "Use future validation batches to grow operating history instead of reopening structural work without pressure.",
+    "If watchtower depth remains the main score bottleneck, future work should target real watchtower substance rather than more namespace cleanup."
+  ]
+}

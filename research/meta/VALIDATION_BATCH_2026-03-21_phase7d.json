@@ -1,0 +1,45 @@
+{
+  "batch_id": "2026-03-21-phase7d-validation-batch",
+  "created_at": "2026-03-21T17:10:45.0423852Z",
+  "type": "operational_validation_batch",
+  "scope": "post-boundary-stabilization regression and self-score validation",
+  "commands": [
+    {
+      "command": "PYTHONPATH=src python -m chip_labs.cli score-v2 .",
+      "observed_at": "2026-03-21T17:10:45.0383841Z",
+      "status": "passed",
+      "summary": {
+        "score": 100,
+        "verdict": "production_ready",
+        "rubric_version": "2.0"
+      }
+    },
+    {
+      "command": "PYTHONPATH=src python -m chip_labs.cli score-v3 . --verbose",
+      "observed_at": "2026-03-21T17:10:45.0423852Z",
+      "status": "passed",
+      "summary": {
+        "score": 87.0,
+        "verdict": "production_ready",
+        "rubric_version": "3.0",
+        "watchtower_depth": 4.0,
+        "empirical_velocity": 15.0
+      }
+    },
+    {
+      "command": "PYTHONPATH=src python -m pytest tests/test_chip_runtime.py tests/test_chip_mcp_server.py tests/test_transfer.py tests/test_scoring_engine.py tests/test_loop_controller.py tests/test_hooks.py tests/test_evaluate.py tests/test_suggest.py tests/test_packets.py tests/test_watchtower.py tests/test_graduation.py -q",
+      "observed_at": "2026-03-21T17:10:45.0423852Z",
+      "status": "passed",
+      "summary": {
+        "passed": 304,
+        "failed": 0,
+        "duration_seconds": 59.58
+      }
+    }
+  ],
+  "conclusion": {
+    "structure_state": "stable",
+    "packaging_state": "single_package_with_internal_subpackages",
+    "remaining_bottleneck": "watchtower_depth and longer-run operating history, not contract drift"
+  }
+}
