@@ -1,0 +1,5 @@
+{
+  "claim": "Narrow packets improve retrieval quality because they let the lab answer specific questions without replaying broad documents.",
+  "mechanism": "A retrieval step works best when each artifact corresponds to one reusable mechanism with a clear boundary. Broad reports often mix several lessons, which makes it harder to select the right one and easier to overgeneralize. A larger library of narrow packets increases precision and reduces advisory noise.",
+  "boundary": "Packet granularity should stop before fragmentation becomes excessive. Packets still need enough context to stand alone."
+}

@@ -1,0 +1,5 @@
+{
+  "claim": "Operator trust is a product feature for the lab, not a byproduct of good code.",
+  "mechanism": "Maintainers use the lab to decide what to fix, what to promote, and what to ignore. If scores and packets are hard to trust, the lab becomes a decoration instead of a control surface. Contract alignment, contradiction lineage, and explicit path rules all increase operator trust because they make the system's judgments easier to verify.",
+  "boundary": "Trust grows from coherent behavior over time. One clean stabilization pass is useful, but not sufficient on its own."
+}

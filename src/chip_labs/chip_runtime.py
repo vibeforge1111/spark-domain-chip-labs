@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import tempfile
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -98,7 +99,7 @@ def load_chip(chip_path: Path) -> ChipHandle:
 
     return ChipHandle(
         chip_path=chip_path,
-        chip_name=manifest.get("name", chip_path.name),
+        chip_name=manifest.get("chip_name") or manifest.get("name", chip_path.name),
         domain=manifest.get("domain", "unknown"),
         version=manifest.get("version", "0.0.0"),
         capabilities=manifest.get("capabilities", []),
@@ -176,22 +177,35 @@ def _execute_subprocess(
 ) -> HookResult:
     """Run the hook as a subprocess and capture JSON output."""
     cmd = chip.commands[hook_name]
-    stdin_payload = json.dumps(mutations or {})
 
     try:
-        proc = subprocess.run(
-            cmd,
-            input=stdin_payload,
-            capture_output=True,
-            text=True,
-            timeout=30,
-            cwd=str(chip.chip_path),
-        )
+        with tempfile.TemporaryDirectory(prefix="chip-hook-") as tmpdir:
+            tmp_path = Path(tmpdir)
+            input_path = tmp_path / f"{hook_name}_input.json"
+            output_path = tmp_path / f"{hook_name}_output.json"
+            input_path.write_text(
+                json.dumps(mutations or {}, indent=2),
+                encoding="utf-8",
+            )
+
+            resolved_cmd, use_stdin = _prepare_hook_command(
+                cmd,
+                hook_name,
+                input_path,
+                output_path,
+            )
+
+            proc = subprocess.run(
+                resolved_cmd,
+                input=json.dumps(mutations or {}) if use_stdin else None,
+                capture_output=True,
+                text=True,
+                timeout=30,
+                cwd=str(chip.chip_path),
+            )
+
         if proc.returncode == 0:
-            try:
-                output = json.loads(proc.stdout)
-            except json.JSONDecodeError:
-                output = {"raw_stdout": proc.stdout}
+            output = _parse_hook_output(output_path, proc.stdout)
             return HookResult(
                 hook_name=hook_name,
                 chip_name=chip.chip_name,
@@ -218,6 +232,64 @@ def _execute_subprocess(
             confidence=0.0,
             execution_mode="subprocess",
         )
+
+
+def _prepare_hook_command(
+    cmd: list[str] | str,
+    hook_name: str,
+    input_path: Path,
+    output_path: Path,
+) -> tuple[list[str], bool]:
+    """Prepare a hook command for execution.
+
+    Preferred path is file-based I/O using ``--input`` / ``--output`` because
+    the lab CLI and scaffolded chips are built around that contract. Commands
+    that do not appear to support file I/O fall back to the previous stdin
+    behavior.
+    """
+    if isinstance(cmd, str):
+        normalized = [cmd]
+    else:
+        normalized = [str(part) for part in cmd]
+
+    has_input_flag = any(part == "--input" or "{input}" in part for part in normalized)
+    has_output_flag = any(part == "--output" or "{output}" in part for part in normalized)
+    uses_placeholders = any(
+        "{input}" in part or "{output}" in part
+        for part in normalized
+    )
+    looks_like_cli_hook = (
+        any(".cli" in part for part in normalized)
+        or (normalized and normalized[-1] == hook_name)
+    )
+
+    resolved = [
+        part.replace("{input}", str(input_path)).replace("{output}", str(output_path))
+        for part in normalized
+    ]
+
+    if uses_placeholders or looks_like_cli_hook:
+        if not has_input_flag:
+            resolved.extend(["--input", str(input_path)])
+        if not has_output_flag:
+            resolved.extend(["--output", str(output_path)])
+        return resolved, False
+
+    return resolved, True
+
+
+def _parse_hook_output(output_path: Path, stdout: str) -> dict[str, Any]:
+    """Read hook output from file first, then fall back to stdout parsing."""
+    if output_path.exists():
+        try:
+            return json.loads(output_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    try:
+        return json.loads(stdout)
+    except json.JSONDecodeError:
+        return {"raw_stdout": stdout}
 
 
 def _execute_intelligence_fallback(

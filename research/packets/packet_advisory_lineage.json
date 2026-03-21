@@ -1,0 +1,5 @@
+{
+  "claim": "Advisory outputs are more trustworthy when they preserve the query context that narrowed the search space.",
+  "mechanism": "When advisory generation keeps the session domain while narrowing to relevant chips, the output stays legible and better grounded in the user's actual task. Dropping that context weakens relevance and makes later reasoning harder to audit because the chain from prompt context to advisory output becomes incomplete.",
+  "boundary": "This applies when narrowing logic is domain-aware. Generic global advice may not need session-specific phrasing."
+}

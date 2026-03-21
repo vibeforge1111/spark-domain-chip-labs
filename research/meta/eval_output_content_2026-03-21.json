@@ -1,0 +1,276 @@
+{
+  "lab_research_quality_score": 0.95,
+  "portfolio_health": 0.95,
+  "methodology_coverage": 0.0,
+  "chips_evaluated": 1,
+  "graduation_pipeline_count": 0,
+  "chip_result": {
+    "total_score": 95,
+    "dimensions": [
+      {
+        "name": "manifest_validity",
+        "label": "Manifest Validity",
+        "max_points": 15,
+        "score": 13,
+        "checks": [
+          {
+            "id": "schema_version",
+            "description": "spark-chip.v1 schema declared",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "io_protocol",
+            "description": "spark-hook-io.v1 protocol declared",
+            "points": 2,
+            "passed": true
+          },
+          {
+            "id": "all_four_hooks",
+            "description": "evaluate, suggest, packets, watchtower all present",
+            "points": 4,
+            "passed": true
+          },
+          {
+            "id": "frontier_enabled",
+            "description": "Frontier section with allowed_mutations defined",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "required_fields_set",
+            "description": "At least one required_field or explicit empty",
+            "points": 1,
+            "passed": true
+          },
+          {
+            "id": "field_patterns_set",
+            "description": "Field patterns defined for validation",
+            "points": 2,
+            "passed": false
+          }
+        ]
+      },
+      {
+        "name": "evidence_separation",
+        "label": "Evidence Separation",
+        "max_points": 20,
+        "score": 20,
+        "checks": [
+          {
+            "id": "has_research_grounded",
+            "description": "Research-grounded evidence lane exists",
+            "points": 5,
+            "passed": true
+          },
+          {
+            "id": "has_benchmark_grounded",
+            "description": "Benchmark-grounded evidence lane exists",
+            "points": 5,
+            "passed": true
+          },
+          {
+            "id": "has_exploratory_frontier",
+            "description": "Exploratory frontier lane exists",
+            "points": 5,
+            "passed": true
+          },
+          {
+            "id": "has_realworld_validated",
+            "description": "Real-world validation lane exists or is planned",
+            "points": 5,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "evaluation_depth",
+        "label": "Evaluation Depth",
+        "max_points": 20,
+        "score": 20,
+        "checks": [
+          {
+            "id": "primary_metric",
+            "description": "Primary eval metric defined in project.json",
+            "points": 4,
+            "passed": true
+          },
+          {
+            "id": "multiple_metrics",
+            "description": "At least 3 metrics defined",
+            "points": 4,
+            "passed": true
+          },
+          {
+            "id": "scoring_logic",
+            "description": "Scoring logic exists in evaluate hook",
+            "points": 4,
+            "passed": true
+          },
+          {
+            "id": "candidate_trials",
+            "description": "At least 3 candidate trials defined",
+            "points": 4,
+            "passed": true
+          },
+          {
+            "id": "baseline_trial",
+            "description": "Global baseline trial with empty mutations",
+            "points": 4,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "memory_knowledge",
+        "label": "Memory & Knowledge",
+        "max_points": 15,
+        "score": 15,
+        "checks": [
+          {
+            "id": "source_registry",
+            "description": "Source registry or documentation of primary sources",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "packet_schema",
+            "description": "Packet output schema defined or documented",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "watchtower_pages",
+            "description": "Watchtower generates meaningful Obsidian pages",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "obsidian_vault",
+            "description": "Obsidian vault exists with content",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "memory_backend",
+            "description": "Memory backend configured (local or ruvector)",
+            "points": 3,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "integration_health",
+        "label": "Integration Health",
+        "max_points": 15,
+        "score": 15,
+        "checks": [
+          {
+            "id": "project_json_valid",
+            "description": "spark-researcher.project.json exists and is valid",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "chip_path_set",
+            "description": "Chip path correctly points to manifest",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "commands_defined",
+            "description": "Commands section with chip-evaluate kind",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "guardrails_set",
+            "description": "Guardrails with loop limits and safety",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "self_edit_config",
+            "description": "Self-edit section with mutable_targets",
+            "points": 3,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "documentation",
+        "label": "Documentation",
+        "max_points": 15,
+        "score": 12,
+        "checks": [
+          {
+            "id": "readme_exists",
+            "description": "README.md with mission and quick start",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "mission_docs",
+            "description": "Mission or intent documentation",
+            "points": 3,
+            "passed": false
+          },
+          {
+            "id": "architecture_docs",
+            "description": "Architecture or one-loop spec documented",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "docs_directory",
+            "description": "docs/ directory with structured content",
+            "points": 3,
+            "passed": true
+          },
+          {
+            "id": "pyproject_valid",
+            "description": "pyproject.toml with valid package config",
+            "points": 3,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "passed_checks": [
+      "schema_version",
+      "io_protocol",
+      "all_four_hooks",
+      "frontier_enabled",
+      "required_fields_set",
+      "has_research_grounded",
+      "has_benchmark_grounded",
+      "has_exploratory_frontier",
+      "has_realworld_validated",
+      "primary_metric",
+      "multiple_metrics",
+      "scoring_logic",
+      "candidate_trials",
+      "baseline_trial",
+      "source_registry",
+      "packet_schema",
+      "watchtower_pages",
+      "obsidian_vault",
+      "memory_backend",
+      "project_json_valid",
+      "chip_path_set",
+      "commands_defined",
+      "guardrails_set",
+      "self_edit_config",
+      "readme_exists",
+      "architecture_docs",
+      "docs_directory",
+      "pyproject_valid"
+    ],
+    "failed_checks": [
+      "field_patterns_set",
+      "mission_docs"
+    ],
+    "verdict": "production_ready"
+  },
+  "comparison_class": "benchmark_grounded"
+}

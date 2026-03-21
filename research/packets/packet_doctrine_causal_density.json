@@ -1,0 +1,5 @@
+{
+  "claim": "Doctrine quality rises when the lab writes more explicit cause-and-effect explanations instead of relying on principle statements alone.",
+  "mechanism": "Principles communicate values, but reusable doctrine requires mechanisms. When doctrine states that a rule matters because it prevents a specific failure mode, enables a measurable benefit, or causes a known tradeoff, later operators can test and transfer the idea. Explicit causal language also improves evaluator visibility because the system can distinguish grounded doctrine from generic aspirations.",
+  "boundary": "Causal density should reflect real mechanism, not keyword stuffing. The goal is clearer reasoning, not decorative use of because and therefore."
+}

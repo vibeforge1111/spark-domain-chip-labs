@@ -1,0 +1,5 @@
+{
+  "claim": "Governance becomes more usable when constraints such as mutable-target scope are recorded as first-class evidence.",
+  "mechanism": "When a future reader sees an unfinished area, they need to know whether it was ignored, uncertain, or intentionally blocked by the active contract. Recording scope boundaries in packets and contradiction logs preserves that distinction. This prevents duplicated diagnosis work and helps future self-edit cycles request the right permission changes.",
+  "boundary": "Only material constraints should be elevated into governance evidence. Minor inconveniences do not need durable packets."
+}

@@ -1,0 +1,5 @@
+{
+  "claim": "Documenting the repo as four layers reduces drift and improves contributor decision quality.",
+  "mechanism": "The repo currently contains meta-chip hooks, factory logic, transfer systems, and intelligence serving. If those layers are not named explicitly, contributors infer structure from scattered code and may optimize one layer while accidentally harming another. Layered framing reduces coordination errors because each change can be evaluated against the surface it is supposed to improve.",
+  "boundary": "Layered documentation helps whether or not the repo is physically split. It does not by itself resolve package-boundary questions."
+}

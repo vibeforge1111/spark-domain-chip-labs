@@ -1,0 +1,5 @@
+{
+  "claim": "Runtime and CLI symmetry is required for trustworthy hook execution.",
+  "mechanism": "If the runtime invokes hooks differently from the canonical CLI path, a chip can appear valid in one surface and broken in another. Aligning the runtime with the file-based CLI contract removes that split-brain behavior, lowers integration ambiguity, and makes local verification far more predictive of real operation.",
+  "boundary": "This packet applies to CLI-style hook commands. Non-CLI subprocess patterns may still require fallback handling."
+}

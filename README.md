@@ -127,6 +127,24 @@ Full documentation: **[docs/MIROFISH_PREDICTION_ENGINE.md](docs/MIROFISH_PREDICT
 5. **Graduation = real-world eval** -- success metric is: do graduated chips actually work?
 6. **Prove before abstracting** -- no methodology chip until 2+ successful graduations
 
+## Known Gaps
+
+The repo is stronger structurally than it is operationally. The main deficits today are:
+
+- the lab has not yet accumulated a long, dense self-improvement run history inside the repo
+- doctrine and contradiction handling were documented across broad design docs, but not yet normalized into durable belief artifacts
+- evidence lanes existed in concept, but the repo under-produced lane-specific packets about its own evolution
+- the repo still combines four surfaces in one package: meta-chip hooks, chip factory logic, transfer systems, and intelligence serving
+
+That means the lab can already scaffold, score, transfer, and serve intelligence, but it still needs a cleaner internal flywheel and more earned artifacts before its strongest claims are fully defended by its own history.
+
+## Near-Term Roadmap
+
+1. Align every scorer and runtime on the same manifest contract.
+2. Keep generating lab-owned runs, packets, and contradiction logs under versioned research artifacts.
+3. Separate shipped behavior from speculative behavior in status docs.
+4. Raise graduation confidence by proving methodology changes across multiple real chips rather than one-off local wins.
+
 ## License
 
 Private -- Spark ecosystem internal.

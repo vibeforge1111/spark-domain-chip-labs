@@ -1,0 +1,5 @@
+{
+  "claim": "A self-edit loop should record when a remaining gap is blocked by mutable-target scope rather than by uncertainty or neglect.",
+  "mechanism": "Scope boundaries are part of the operating environment, so they should appear in the research trail. When an agent cannot deepen the watchtower because the vault sits outside mutable targets, documenting that boundary prevents later readers from mistaking a governance constraint for a missed investigation. This improves planning because future work can target the permission boundary directly instead of rerunning the same diagnosis.",
+  "boundary": "This applies to real scope constraints that materially block the next useful edit. It should not be used as a blanket excuse for unfinished work inside allowed paths."
+}

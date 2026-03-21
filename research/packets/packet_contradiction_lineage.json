@@ -1,0 +1,5 @@
+{
+  "claim": "Contradiction logs become much more valuable when each entry names a run, a numeric effect, and the concrete resolution path.",
+  "mechanism": "Generic contradiction prose proves that a team knows regressions exist, but it does not help future operators diagnose or reuse the lesson. When a contradiction names the run identifier, the score delta, the missed boundary, and the fix that addressed it, the artifact becomes searchable lineage rather than narrative residue. That change improves auditability and makes downstream packet promotion safer because the system can trace why a rule was changed.",
+  "boundary": "This packet applies to durable contradiction handling for meaningful regressions. Minor cosmetic slips do not all require full lineage treatment."
+}

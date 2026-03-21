@@ -1,0 +1,5 @@
+{
+  "claim": "Packet quality compounds only when the lab stores multiple narrow, mechanism-rich packets instead of a few broad summaries.",
+  "mechanism": "A small packet set can describe the system at a high level, but it usually mixes several claims into one artifact and makes retrieval less precise. As packet count increases with well-scoped claim, mechanism, and boundary fields, the lab can retrieve finer-grained lessons for scoring, transfer, and advisory outputs. That improves reuse because the system can select the exact mechanism that matches the current problem instead of replaying a broad document wholesale.",
+  "boundary": "More packets only help when each packet is narrow and substantive. High packet count with shallow or duplicate content produces noise rather than a moat."
+}

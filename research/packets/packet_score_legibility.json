@@ -1,0 +1,5 @@
+{
+  "claim": "Self-scores become more valuable when the repo can explain which dimensions are structural, operational, or blocked by scope.",
+  "mechanism": "A raw score is easy to misread. Breaking it into dimensions with explanations about real weaknesses, artifact deficits, and mutable-target constraints helps operators decide whether to patch code, generate evidence, or request broader access. That increases the usefulness of the score because it becomes a planning tool instead of a vanity number.",
+  "boundary": "Legibility does not replace rigor. Explanations should clarify scores, not rationalize away poor performance."
+}

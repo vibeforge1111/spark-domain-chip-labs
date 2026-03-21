@@ -1,0 +1,5 @@
+{
+  "claim": "The lab's runtime and evaluators must share one manifest compatibility layer or they will mis-score structurally valid chips.",
+  "mechanism": "The stabilization audit found that the live manifest had shifted to schema_version, capabilities, and commands while deep evaluation still counted only hooks and the runtime still preferred stdin payloads. When one compatibility parser is reused across those surfaces, hook visibility and runtime execution both line up with the contract the repo actually declares. That reduces false regressions, keeps old manifests readable, and makes downstream scoring more trustworthy.",
+  "boundary": "This packet applies to contract compatibility for chip manifests and hook execution. It does not imply that every future manifest shape should be accepted automatically; new shapes still need explicit scorer and runtime support."
+}

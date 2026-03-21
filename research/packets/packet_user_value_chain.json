@@ -1,0 +1,5 @@
+{
+  "claim": "The finished product is useful because it shortens the path from chip diagnosis to next justified action.",
+  "mechanism": "A user does not need another abstract research repo. They need a system that can evaluate a chip, identify the highest-signal gap, attach that gap to doctrine and evidence, and recommend the next bounded move. When the lab does that reliably, it saves time, reduces misprioritization, and makes recursive improvement practical rather than aspirational.",
+  "boundary": "This value chain depends on keeping advice tied to real evidence. Generic recommendations would weaken the product considerably."
+}

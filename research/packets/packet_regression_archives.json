@@ -1,0 +1,5 @@
+{
+  "claim": "Regression archives are useful because they convert failures into reusable boundaries for future chips.",
+  "mechanism": "A contradiction that only lives in a local fix is easy to repeat elsewhere. When regressions are archived with the failed assumption, the observed effect, and the resolution path, future chips can inherit the lesson without re-paying the same debugging cost. That makes contradiction handling an ecosystem asset rather than a local maintenance chore.",
+  "boundary": "Archives should focus on meaningful regressions with transfer value. Not every defect deserves durable promotion."
+}

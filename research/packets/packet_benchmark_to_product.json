@@ -1,0 +1,5 @@
+{
+  "claim": "The lab is useful when benchmark results translate directly into product actions.",
+  "mechanism": "A benchmark becomes operationally valuable when each failed check suggests a concrete next move: add missing evidence, repair contract drift, record contradictions, or improve transfer proof. That translation layer turns scoring from passive measurement into a workflow for continuous improvement and makes the lab valuable to both maintainers and future domain-chip owners.",
+  "boundary": "Some benchmark gaps are still diagnostic rather than prescriptive. Human review is still required for broad architectural changes."
+}

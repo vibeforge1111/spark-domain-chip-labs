@@ -1,0 +1,5 @@
+{
+  "claim": "Stable portfolio baselines are a moat because they let the lab detect real regressions instead of merely reporting current scores.",
+  "mechanism": "A baseline archive gives each future evaluation a reference point, so the lab can tell whether a chip improved, stagnated, or regressed relative to its prior state. That turns scoring into longitudinal judgment rather than snapshot ranking and makes contradictions much more useful because the system can explain what changed across time.",
+  "boundary": "This only works when baselines are updated deliberately and versioned with the evaluator logic that produced them."
+}

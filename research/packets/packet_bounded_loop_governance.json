@@ -1,0 +1,5 @@
+{
+  "claim": "Bounded mutation spaces with human approval gates are the correct default for self-editing the lab.",
+  "mechanism": "The lab sits upstream of portfolio doctrine, so a broad unsupervised mutation can spread drift faster than it spreads improvement. Closed mutation enums, explicit required fields, and approval checkpoints force each run to name what changed and why. That makes contradictions legible, allows benchmark comparison across runs, and lowers the risk that a speculative change silently becomes a durable belief.",
+  "boundary": "This guidance applies to self-edit and methodology promotion. It should not be interpreted as a ban on exploratory frontier work; frontier artifacts can stay looser as long as they are kept out of durable promotion paths."
+}

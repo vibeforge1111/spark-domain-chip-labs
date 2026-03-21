@@ -1,0 +1,5 @@
+{
+  "claim": "Benchmark honesty requires recording when low scores come from evaluator drift versus genuine product weakness.",
+  "mechanism": "A mature lab should respond differently to these two failure modes. If a score drops because the product regressed, the right response is operational repair. If a score drops because the evaluator drifted away from the live contract, the right response is compatibility alignment plus a documented contradiction. Distinguishing those cases improves capital allocation, because the team stops spending product effort to fix benchmark bugs and starts preserving the meaning of its metrics.",
+  "boundary": "This doctrine does not excuse weak products by blaming the evaluator. It applies only when the mismatch can be demonstrated with concrete contract evidence and passing verification after alignment."
+}

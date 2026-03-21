@@ -1,0 +1,5 @@
+{
+  "claim": "Rubric credibility depends on evaluating the same sanctioned artifact paths that the self-edit contract allows agents to populate.",
+  "mechanism": "When the scorer inspects only root-level files but the governance layer directs agents to persist durable artifacts under docs and research, valid work disappears from the benchmark surface. Aligning sanctioned artifact paths across rubric, runtime, and self-edit rules prevents false negatives, preserves operator trust in score deltas, and makes it possible to compare runs without path-induced distortion.",
+  "boundary": "This applies to sanctioned durable artifact paths such as docs, research, and explicit metadata locations. It does not justify accepting arbitrary files from unrelated directories."
+}

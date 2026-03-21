@@ -179,6 +179,8 @@ _RESOLUTION_MARKERS = re.compile(
     re.IGNORECASE,
 )
 
+_EXPECTED_HOOK_NAMES = {"evaluate", "suggest", "packets", "watchtower"}
+
 
 def _causal_density(text: str) -> float:
     """Causal markers per 100 words."""
@@ -213,6 +215,39 @@ def _content_density_words(file_path: Path) -> int:
     return words
 
 
+def _manifest_schema_version(manifest: dict[str, Any]) -> str:
+    """Return the declared schema version across old and current manifest keys."""
+    schema = manifest.get("schema") or manifest.get("schema_version")
+    return schema if isinstance(schema, str) else ""
+
+
+def _manifest_hook_names(manifest: dict[str, Any]) -> set[str]:
+    """Extract hook names across legacy and current manifest conventions."""
+    present: set[str] = set()
+
+    hooks = manifest.get("hooks", {})
+    if isinstance(hooks, dict):
+        present.update(name for name in hooks if isinstance(name, str))
+    elif isinstance(hooks, list):
+        for hook in hooks:
+            if isinstance(hook, str):
+                present.add(hook)
+            elif isinstance(hook, dict):
+                name = hook.get("name")
+                if isinstance(name, str):
+                    present.add(name)
+
+    capabilities = manifest.get("capabilities", [])
+    if isinstance(capabilities, list):
+        present.update(name for name in capabilities if isinstance(name, str))
+
+    commands = manifest.get("commands", {})
+    if isinstance(commands, dict):
+        present.update(name for name in commands if isinstance(name, str))
+
+    return present & _EXPECTED_HOOK_NAMES
+
+
 def _load_all_runs(chip_path: Path) -> list[dict[str, Any]]:
     """Load runs from all known locations, deduplicated by run_id."""
     runs: dict[str, dict[str, Any]] = {}
@@ -221,6 +256,7 @@ def _load_all_runs(chip_path: Path) -> list[dict[str, Any]]:
     for candidate in [
         chip_path / "score_history.jsonl",
         chip_path / "artifacts" / "ledger" / "runs.jsonl",
+        chip_path / "research" / "meta" / "runs.jsonl",
     ]:
         if not candidate.is_file():
             continue
@@ -242,8 +278,12 @@ def _load_all_runs(chip_path: Path) -> list[dict[str, Any]]:
             pass
 
     # loop_telemetry.json (array)
-    telemetry_path = chip_path / "loop_telemetry.json"
-    if telemetry_path.is_file():
+    for telemetry_path in [
+        chip_path / "loop_telemetry.json",
+        chip_path / "research" / "meta" / "loop_telemetry.json",
+    ]:
+        if not telemetry_path.is_file():
+            continue
         try:
             data = json.loads(telemetry_path.read_text(encoding="utf-8"))
             if isinstance(data, list):
@@ -385,22 +425,14 @@ def check_manifest_structure(chip_path: Path) -> DimensionResult:
         try:
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             # Schema check -- accept spark-chip.v1 or presence of io_protocol as v1 signal
-            schema = manifest.get("schema")
+            schema = _manifest_schema_version(manifest)
             if schema == "spark-chip.v1" or (
-                schema is None and manifest.get("io_protocol")
+                not schema and manifest.get("io_protocol")
             ):
                 manifest_score += 1.0
             if manifest.get("io_protocol") == "spark-hook-io.v1":
                 manifest_score += 1.0
-            # Hooks can be dict (standard) or list (some chips)
-            hooks = manifest.get("hooks", {})
-            expected = {"evaluate", "suggest", "packets", "watchtower"}
-            if isinstance(hooks, dict):
-                present = set(hooks.keys()) & expected
-            elif isinstance(hooks, list):
-                present = set(h if isinstance(h, str) else h.get("name", "") for h in hooks) & expected
-            else:
-                present = set()
+            present = _manifest_hook_names(manifest)
             manifest_score += len(present)
             manifest_score = min(manifest_score, 5.0)
             # Frontier with allowed_mutations is a strong signal
@@ -1211,9 +1243,7 @@ def check_integration_maturity(chip_path: Path) -> DimensionResult:
     if manifest_path.is_file():
         try:
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            hooks = manifest.get("hooks", {})
-            expected = {"evaluate", "suggest", "packets", "watchtower"}
-            hook_count = len(set(hooks.keys()) & expected)
+            hook_count = len(_manifest_hook_names(manifest))
         except (json.JSONDecodeError, OSError):
             pass
 

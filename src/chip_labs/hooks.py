@@ -319,6 +319,41 @@ def _load_from_cache(cache_file: Path) -> list[Any]:
     return handles
 
 
+def _select_session_chips(
+    query: str, portfolio: list[Any], max_chips: int = MAX_CHIPS_SESSION,
+) -> list[Any]:
+    """Select chips for a session using both Jaccard and substring matching.
+
+    Short domain hints like "startup" or "trading" fail Jaccard against large
+    chip texts (1 word / 70 word union = 0.014 < 0.03 threshold).  So we also
+    check if the query appears as a substring in the chip's name or domain.
+    This is only used by SessionStart where the query is a deliberate domain signal.
+    """
+    if not portfolio or not query.strip():
+        return portfolio[:max_chips] if portfolio else []
+
+    query_lower = query.strip().lower()
+
+    # First: try Jaccard (works for multi-word queries)
+    try:
+        from .chip_context_injector import select_chips_for_task
+        jaccard_result = select_chips_for_task(query, portfolio, max_chips=max_chips)
+        if jaccard_result:
+            return jaccard_result
+    except (ImportError, Exception):
+        pass
+
+    # Fallback: substring match on chip_name and domain
+    matches = []
+    for chip in portfolio:
+        name_lower = chip.chip_name.lower()
+        domain_lower = chip.domain.lower()
+        if query_lower in name_lower or query_lower in domain_lower:
+            matches.append(chip)
+
+    return matches[:max_chips]
+
+
 def _build_context_text(portfolio: list[Any], query: str = "", max_chips: int = 2) -> str:
     """Build context text from portfolio for injection."""
     try:
@@ -397,18 +432,33 @@ def handle_session_start(input_data: dict[str, Any]) -> dict[str, Any]:
     domain_hint = os.environ.get(DOMAIN_HINT_ENV, "")
     query = domain_hint or Path(cwd).name if cwd else ""
 
-    context = _build_context_text(portfolio, query, max_chips=MAX_CHIPS_SESSION)
-    if not context or context.startswith("<!--"):
-        return {}
-
-    # Layer 3: Persist session domain for Pre/PostToolUse hooks
+    # For SessionStart, select chips with domain-aware matching.
+    # Short domain hints (e.g. "startup") fail Jaccard against large chip texts,
+    # so we also do substring matching on chip_name and domain fields.
     try:
         from .chip_context_injector import select_chips_for_task
-        selected = select_chips_for_task(query, portfolio, max_chips=MAX_CHIPS_SESSION)
-        if selected:
-            _write_session_domain(selected, query)
+        selected = _select_session_chips(query, portfolio)
     except (ImportError, Exception):
-        pass
+        selected = portfolio[:MAX_CHIPS_SESSION]
+
+    if not selected:
+        # No chips match -- try broader context build as fallback
+        context = _build_context_text(portfolio, query, max_chips=MAX_CHIPS_SESSION)
+        if not context or context.startswith("<!--"):
+            return {}
+    else:
+        # Build context from selected chips directly
+        try:
+            from .chip_context_injector import build_system_prompt_section
+            context = build_system_prompt_section(selected, style="concise")
+        except (ImportError, Exception):
+            context = _build_context_text(portfolio, query, max_chips=MAX_CHIPS_SESSION)
+        if not context or context.startswith("<!--"):
+            return {}
+
+    # Layer 3: Persist session domain for Pre/PostToolUse hooks
+    if selected:
+        _write_session_domain(selected, query)
 
     guardrails = _build_guardrails(portfolio)
 
@@ -453,17 +503,34 @@ def handle_pre_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
     else:
         action = f"Using tool: {tool_name}"
 
-    # Layer 3: Enrich query with session domain context
-    session = _read_session_domain()
-    if session:
-        domain_prefix = " ".join(session.get("domains", []))
-        if domain_prefix:
-            action = f"{domain_prefix} {action}"
-
     portfolio = _load_portfolio_safe()
     if not portfolio:
         return {}
 
+    # Layer 3: If session domain is active, restrict to session chips and
+    # preserve the session's domain hint when building advisory context.
+    session = _read_session_domain()
+    if session:
+        session_chip_names = set(session.get("chip_names", []))
+        if session_chip_names:
+            narrowed = [c for c in portfolio if c.chip_name in session_chip_names]
+            if narrowed:
+                domain_prefix = " ".join(session.get("domains", []))
+                query = f"{domain_prefix} {action}".strip() if domain_prefix else action
+                context = _build_context_text(
+                    narrowed,
+                    query,
+                    max_chips=min(MAX_CHIPS_PRETOOL, len(narrowed)),
+                )
+                if context and not context.startswith("<!--"):
+                    return {
+                        "hookSpecificOutput": {
+                            "hookEventName": "PreToolUse",
+                            "additionalContext": f"[Domain chip advisory for {tool_name}]\n{context}",
+                        }
+                    }
+
+    # No session domain -- fall back to Jaccard-based selection with threshold
     context = _build_context_text(portfolio, action, max_chips=MAX_CHIPS_PRETOOL)
     if not context or context.startswith("<!--"):
         return {}
@@ -523,20 +590,31 @@ def handle_post_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
     if not portfolio:
         return {}
 
-    # Layer 3: Restrict to session-relevant chips if session domain is known
+    # Layer 3: Restrict to session-relevant chips if session domain is known.
+    # When the session domain narrows the portfolio, those chips are already
+    # confirmed relevant -- use them directly (skip Jaccard threshold).
     session = _read_session_domain()
+    session_restricted = False
     if session:
         session_chip_names = set(session.get("chip_names", []))
         if session_chip_names:
-            portfolio = [c for c in portfolio if c.chip_name in session_chip_names]
-            if not portfolio:
-                return {}
+            narrowed = [c for c in portfolio if c.chip_name in session_chip_names]
+            if narrowed:
+                portfolio = narrowed
+                session_restricted = True
+            else:
+                return {}  # No session chips in portfolio
 
-    try:
-        from .chip_context_injector import select_chips_for_task
-        selected = select_chips_for_task(action, portfolio, max_chips=1)
-    except (ImportError, Exception):
+    if session_restricted:
+        # Session already established relevance -- pick best match without threshold
         selected = portfolio[:1]
+    else:
+        # No session context -- rely on Jaccard + threshold
+        try:
+            from .chip_context_injector import select_chips_for_task
+            selected = select_chips_for_task(action, portfolio, max_chips=1)
+        except (ImportError, Exception):
+            selected = portfolio[:1]
 
     # Layer 2: If nothing passes the relevance threshold, skip feedback
     if not selected:

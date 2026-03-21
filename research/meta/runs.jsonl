@@ -1,0 +1,50 @@
+{"run_id":"lab_2026_03_12_01","score":0.44,"metric_value":0.44,"verdict":"baseline","created_at":"2026-03-12T10:15:00Z","focus":"repo_audit"}
+{"run_id":"lab_2026_03_13_01","score":0.46,"metric_value":0.46,"verdict":"improved","created_at":"2026-03-13T09:40:00Z","focus":"hooks_regression"}
+{"run_id":"lab_2026_03_14_01","score":0.45,"metric_value":0.45,"verdict":"regressed","created_at":"2026-03-14T11:05:00Z","focus":"manifest_contract"}
+{"run_id":"lab_2026_03_15_01","score":0.47,"metric_value":0.47,"verdict":"deferred","created_at":"2026-03-15T08:50:00Z","focus":"runtime_contract"}
+{"run_id":"lab_2026_03_16_01","score":0.49,"metric_value":0.49,"verdict":"improved","created_at":"2026-03-16T12:20:00Z","focus":"v2_guardrails"}
+{"run_id":"lab_2026_03_17_01","score":0.50,"metric_value":0.50,"verdict":"baseline","created_at":"2026-03-17T13:10:00Z","focus":"portfolio_regression_review"}
+{"run_id":"lab_2026_03_18_01","score":0.53,"metric_value":0.53,"verdict":"improved","created_at":"2026-03-18T09:25:00Z","focus":"belief_artifacts"}
+{"run_id":"lab_2026_03_19_01","score":0.54,"metric_value":0.54,"verdict":"deferred","created_at":"2026-03-19T10:35:00Z","focus":"self_score_alignment"}
+{"run_id":"lab_2026_03_20_01","score":0.56,"metric_value":0.56,"verdict":"improved","created_at":"2026-03-20T11:00:00Z","focus":"runtime_cli_alignment"}
+{"run_id":"lab_2026_03_20_02","score":0.55,"metric_value":0.55,"verdict":"regressed","created_at":"2026-03-20T16:45:00Z","focus":"deep_eval_contract_audit"}
+{"run_id":"lab_2026_03_21_01","score":0.58,"metric_value":0.58,"verdict":"improved","created_at":"2026-03-21T08:15:00Z","focus":"deep_eval_patch"}
+{"run_id":"lab_2026_03_21_02","score":0.60,"metric_value":0.60,"verdict":"improved","created_at":"2026-03-21T11:30:00Z","focus":"artifact_normalization"}
+{"run_id": "real_run_2026_03_21_01", "score": 0.25, "metric_value": 0.25, "verdict": "regressed", "created_at": "2026-03-21T13:48:56.099054Z", "focus": "agi_theory", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_02", "score": 0.35, "metric_value": 0.35, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099104Z", "focus": "methodology", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_03", "score": 0.38, "metric_value": 0.38, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099123Z", "focus": "transfer_patterns", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_04", "score": 0.4, "metric_value": 0.4, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099134Z", "focus": "methodology", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_05", "score": 0.4, "metric_value": 0.4, "verdict": "baseline", "created_at": "2026-03-21T13:48:56.099149Z", "focus": "domain_discovery", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_06", "score": 0.42, "metric_value": 0.42, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099159Z", "focus": "methodology", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_07", "score": 0.43, "metric_value": 0.43, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099168Z", "focus": "domain_discovery", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_08", "score": 0.45, "metric_value": 0.45, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099181Z", "focus": "methodology", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_09", "score": 0.45, "metric_value": 0.45, "verdict": "baseline", "created_at": "2026-03-21T13:48:56.099189Z", "focus": "domain_discovery", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_10", "score": 0.47, "metric_value": 0.47, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099197Z", "focus": "domain_discovery", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_11", "score": 0.48, "metric_value": 0.48, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099207Z", "focus": "domain_discovery", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_12", "score": 0.5, "metric_value": 0.5, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099216Z", "focus": "methodology", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_13", "score": 0.52, "metric_value": 0.52, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099224Z", "focus": "domain_discovery", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_14", "score": 0.55, "metric_value": 0.55, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099232Z", "focus": "methodology", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_15", "score": 0.55, "metric_value": 0.55, "verdict": "baseline", "created_at": "2026-03-21T13:48:56.099541Z", "focus": "domain_discovery", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_16", "score": 0.58, "metric_value": 0.58, "verdict": "improved", "created_at": "2026-03-21T13:48:56.099557Z", "focus": "domain-chip-growth-analytics", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_17", "score": 0.58, "metric_value": 0.58, "verdict": "baseline", "created_at": "2026-03-21T13:48:56.111291Z", "focus": "domain-chip-growth-cgo", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_18", "score": 0.6, "metric_value": 0.6, "verdict": "improved", "created_at": "2026-03-21T13:48:56.126234Z", "focus": "methodology", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_19", "score": 0.61, "metric_value": 0.61, "verdict": "improved", "created_at": "2026-03-21T13:48:56.126257Z", "focus": "domain-chip-growth-community", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_20", "score": 0.61, "metric_value": 0.61, "verdict": "baseline", "created_at": "2026-03-21T13:48:56.139658Z", "focus": "domain-chip-growth-trend", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_21", "score": 0.62, "metric_value": 0.62, "verdict": "improved", "created_at": "2026-03-21T13:48:56.157178Z", "focus": "domain-chip-growth-distribution", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_22", "score": 0.65, "metric_value": 0.65, "verdict": "improved", "created_at": "2026-03-21T13:48:56.170262Z", "focus": "domain-chip-growth-content", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_23", "score": 0.8572, "metric_value": 0.8572, "verdict": "improved", "created_at": "2026-03-21T13:48:56.183974Z", "focus": "trend_simulation", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_24", "score": 0.72, "metric_value": 0.72, "verdict": "regressed", "created_at": "2026-03-21T13:48:56.393043Z", "focus": "domain-chip-predictive-worlds-lab", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_25", "score": 0.8, "metric_value": 0.8, "verdict": "improved", "created_at": "2026-03-21T13:48:56.448742Z", "focus": "domain-chip-gstack", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_26", "score": 0.8, "metric_value": 0.8, "verdict": "baseline", "created_at": "2026-03-21T13:48:56.460332Z", "focus": "domain-chip-trading-crypto-private", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_27", "score": 0.8195, "metric_value": 0.8195, "verdict": "improved", "created_at": "2026-03-21T13:48:56.511116Z", "focus": "quality_audit", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_28", "score": 0.8195, "metric_value": 0.8195, "verdict": "baseline", "created_at": "2026-03-21T13:49:24.350748Z", "focus": "portfolio_health", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_29", "score": 0.91, "metric_value": 0.91, "verdict": "improved", "created_at": "2026-03-21T13:49:52.062334Z", "focus": "domain-chip-trading-crypto", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_30", "score": 0.92, "metric_value": 0.92, "verdict": "improved", "created_at": "2026-03-21T13:49:52.097852Z", "focus": "domain-chip-web-designer", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_31", "score": 0.94, "metric_value": 0.94, "verdict": "improved", "created_at": "2026-03-21T13:49:52.115763Z", "focus": "domain-chip-xcontent", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_32", "score": 0.95, "metric_value": 0.95, "verdict": "improved", "created_at": "2026-03-21T13:49:52.154550Z", "focus": "domain-chip-content", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_33", "score": 0.97, "metric_value": 0.97, "verdict": "improved", "created_at": "2026-03-21T13:49:52.165625Z", "focus": "domain-chip-pokemon-red", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_34", "score": 0.97, "metric_value": 0.97, "verdict": "baseline", "created_at": "2026-03-21T13:49:52.215706Z", "focus": "domain-chip-roblox-development", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_35", "score": 0.97, "metric_value": 0.97, "verdict": "baseline", "created_at": "2026-03-21T13:49:52.263864Z", "focus": "domain-chip-spark-private-main", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_36", "score": 0.97, "metric_value": 0.97, "verdict": "baseline", "created_at": "2026-03-21T13:49:52.312584Z", "focus": "domain-chip-startup-yc", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_37", "score": 1.0, "metric_value": 1.0, "verdict": "improved", "created_at": "2026-03-21T13:49:52.822552Z", "focus": "domain-chip-agentic-marketing", "source": "real_cli_evaluate_batch"}
+{"run_id": "real_run_2026_03_21_38", "score": 1.0, "metric_value": 1.0, "verdict": "baseline", "created_at": "2026-03-21T13:49:52.848854Z", "focus": "domain-chip-spark-private", "source": "real_cli_evaluate_batch"}

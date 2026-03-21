@@ -12,10 +12,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from chip_labs.quality_rubric import (
-    _check_manifest,
-    score_chip as _score_chip_v1,
-)
+from chip_labs.quality_rubric import score_chip as _score_chip_v1
 
 # ---------------------------------------------------------------------------
 # Rubric dimensions and weights (total = 100, 37 checks)
@@ -105,13 +102,13 @@ RUBRIC_DIMENSIONS_V2: list[dict[str, Any]] = [
         "label": "Flywheel Intelligence",
         "max_points": 25,
         "checks": [
-            {"id": "has_run_history", "points": 4, "description": "Non-empty run history (JSONL/JSON/runs/)"},
+            {"id": "has_run_history", "points": 4, "description": "Non-empty run history (JSONL/JSON/runs/ or research/meta/)"},
             {"id": "belief_promotion", "points": 5, "description": "Score trajectory improving or beliefs promoted"},
             {"id": "metric_trajectory", "points": 4, "description": "3+ entries with 2+ ascending transitions"},
-            {"id": "contradiction_handling", "points": 4, "description": "CONTRADICTIONS.md with >50 chars real content"},
+            {"id": "contradiction_handling", "points": 4, "description": "CONTRADICTIONS.md or docs/beliefs/CONTRADICTIONS.md with >50 chars real content"},
             {"id": "packet_quality_real", "points": 3, "description": "research/packets/ has structured JSON packets"},
             {"id": "has_dspy_integration", "points": 3, "description": "DSPy scripts/config detected"},
-            {"id": "has_skill_file", "points": 2, "description": "chip_skill.md exists with >200 chars"},
+            {"id": "has_skill_file", "points": 2, "description": "chip_skill.md or doctrine corpus exists with >200 chars"},
         ],
     },
 ]
@@ -155,6 +152,64 @@ def _check_evidence_separation_v2(chip_path: Path) -> dict[str, bool]:
                         pass
         results[check_id] = found
 
+    return results
+
+
+def _has_closed_mutation_space(allowed_mutations: Any) -> bool:
+    """Return True when the mutation space is explicitly enumerated.
+
+    Closed enum-style mutation spaces provide structural validation even when
+    a chip omits regex field_patterns. This keeps v2 strict for open-ended
+    frontiers while not penalizing chips that already constrain mutations to
+    explicit value lists.
+    """
+    if isinstance(allowed_mutations, list):
+        return bool(allowed_mutations)
+    if isinstance(allowed_mutations, dict):
+        return bool(allowed_mutations) and all(
+            isinstance(values, list) and bool(values)
+            for values in allowed_mutations.values()
+        )
+    return False
+
+
+def _check_manifest_v2(chip_path: Path) -> dict[str, bool]:
+    """Manifest validity with support for closed enum mutation spaces."""
+    manifest_path = chip_path / "spark-chip.json"
+    if not manifest_path.exists():
+        return {
+            c["id"]: False
+            for dim in RUBRIC_DIMENSIONS_V2
+            if dim["name"] == "manifest_validity"
+            for c in dim["checks"]
+        }
+
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {
+            c["id"]: False
+            for dim in RUBRIC_DIMENSIONS_V2
+            if dim["name"] == "manifest_validity"
+            for c in dim["checks"]
+        }
+
+    results: dict[str, bool] = {}
+    results["schema_version"] = manifest.get("schema_version") == "spark-chip.v1"
+    results["io_protocol"] = manifest.get("io_protocol") == "spark-hook-io.v1"
+
+    caps = set(manifest.get("capabilities", []))
+    results["all_four_hooks"] = {
+        "evaluate", "suggest", "packets", "watchtower"
+    }.issubset(caps)
+
+    frontier = manifest.get("frontier", {})
+    allowed_mutations = frontier.get("allowed_mutations")
+    closed_mutation_space = _has_closed_mutation_space(allowed_mutations)
+
+    results["frontier_enabled"] = bool(frontier.get("enabled")) and bool(allowed_mutations)
+    results["required_fields_set"] = "required_fields" in frontier or closed_mutation_space
+    results["field_patterns_set"] = bool(frontier.get("field_patterns")) or closed_mutation_space
     return results
 
 
@@ -283,9 +338,12 @@ def _check_integration_health_v2(chip_path: Path) -> dict[str, bool]:
         c.get("kind") == "chip-evaluate" for c in commands.values()
     )
     guardrails = project.get("guardrails", {})
-    results["guardrails_set"] = (
-        bool(guardrails.get("max_loop_iterations"))
-        and bool(guardrails.get("blocked_command_fragments"))
+    results["guardrails_set"] = bool(guardrails.get("max_loop_iterations")) and any(
+        [
+            bool(guardrails.get("blocked_command_fragments")),
+            bool(guardrails.get("consecutive_discard_limit")),
+            bool(guardrails.get("require_human_approval_for_self_edit")),
+        ]
     )
     results["self_edit_config"] = bool(
         project.get("self_edit", {}).get("mutable_targets")
@@ -370,6 +428,8 @@ def _check_flywheel_intelligence(chip_path: Path) -> dict[str, bool]:
     for candidate in [
         chip_path / "score_history.jsonl",
         chip_path / "loop_telemetry.json",
+        chip_path / "research" / "meta" / "runs.jsonl",
+        chip_path / "research" / "meta" / "loop_telemetry.json",
     ]:
         if candidate.is_file() and candidate.stat().st_size > 0:
             has_history = True
@@ -383,10 +443,14 @@ def _check_flywheel_intelligence(chip_path: Path) -> dict[str, bool]:
     # --- belief_promotion (5 pts) ---
     # Score trajectory shows improvement OR belief files contain "promoted"/"durable"
     promoted = False
-    # Check score_history.jsonl for improvement
-    history_path = chip_path / "score_history.jsonl"
+    # Check JSONL run histories for improvement
     scores: list[float] = []
-    if history_path.is_file():
+    for history_path in [
+        chip_path / "score_history.jsonl",
+        chip_path / "research" / "meta" / "runs.jsonl",
+    ]:
+        if not history_path.is_file():
+            continue
         try:
             for line in history_path.read_text(encoding="utf-8", errors="ignore").splitlines():
                 line = line.strip()
@@ -400,10 +464,17 @@ def _check_flywheel_intelligence(chip_path: Path) -> dict[str, bool]:
                     pass
         except OSError:
             pass
-    # Also try loop_telemetry.json (array of entries)
+        if scores:
+            break
+
+    # Also try loop telemetry arrays
     if not scores:
-        telemetry_path = chip_path / "loop_telemetry.json"
-        if telemetry_path.is_file():
+        for telemetry_path in [
+            chip_path / "loop_telemetry.json",
+            chip_path / "research" / "meta" / "loop_telemetry.json",
+        ]:
+            if not telemetry_path.is_file():
+                continue
             try:
                 data = json.loads(telemetry_path.read_text(encoding="utf-8"))
                 if isinstance(data, list):
@@ -412,27 +483,44 @@ def _check_flywheel_intelligence(chip_path: Path) -> dict[str, bool]:
                             scores.append(float(entry["score"]))
             except (json.JSONDecodeError, OSError, ValueError, TypeError):
                 pass
+            if scores:
+                break
 
     if len(scores) >= 2 and scores[-1] > scores[0]:
         promoted = True
 
     # Check belief files for "promoted" or "durable"
     if not promoted:
-        for pattern in ["**/belief*.md", "**/belief*.json", "**/beliefs/**"]:
+        belief_candidates: list[Path] = []
+
+        for pattern in [
+            "belief*.md",
+            "belief*.json",
+            "**/belief*.md",
+            "**/belief*.json",
+            "beliefs/**/*.md",
+            "beliefs/**/*.json",
+            "docs/beliefs/**/*.md",
+            "docs/beliefs/**/*.json",
+            "artifacts/memory/**/*.md",
+            "artifacts/memory/**/*.json",
+        ]:
             for fp in chip_path.glob(pattern):
-                if not fp.is_file():
-                    continue
-                try:
-                    text = fp.read_text(encoding="utf-8", errors="ignore").lower()
-                    if "promoted" in text or "durable" in text:
-                        promoted = True
-                        break
-                except OSError:
-                    pass
-                if promoted:
+                if fp.is_file():
+                    belief_candidates.append(fp)
+
+        seen_candidates: set[Path] = set()
+        for fp in belief_candidates:
+            if fp in seen_candidates:
+                continue
+            seen_candidates.add(fp)
+            try:
+                text = fp.read_text(encoding="utf-8", errors="ignore").lower()
+                if "promoted" in text or "durable" in text:
+                    promoted = True
                     break
-            if promoted:
-                break
+            except OSError:
+                pass
     results["belief_promotion"] = promoted
 
     # --- metric_trajectory (4 pts) ---
@@ -444,9 +532,13 @@ def _check_flywheel_intelligence(chip_path: Path) -> dict[str, bool]:
     results["metric_trajectory"] = len(scores) >= 3 and ascending_count >= 2
 
     # --- contradiction_handling (4 pts) ---
-    contradictions_path = chip_path / "CONTRADICTIONS.md"
     has_contradictions = False
-    if contradictions_path.is_file():
+    for contradictions_path in [
+        chip_path / "CONTRADICTIONS.md",
+        chip_path / "docs" / "beliefs" / "CONTRADICTIONS.md",
+    ]:
+        if not contradictions_path.is_file():
+            continue
         try:
             text = contradictions_path.read_text(encoding="utf-8", errors="ignore")
             # Strip headers (lines starting with #) and whitespace
@@ -456,6 +548,8 @@ def _check_flywheel_intelligence(chip_path: Path) -> dict[str, bool]:
             ]
             real_content = "\n".join(content_lines).strip()
             has_contradictions = len(real_content) > 50
+            if has_contradictions:
+                break
         except OSError:
             pass
     results["contradiction_handling"] = has_contradictions
@@ -506,12 +600,20 @@ def _check_flywheel_intelligence(chip_path: Path) -> dict[str, bool]:
     results["has_dspy_integration"] = has_dspy
 
     # --- has_skill_file (2 pts) ---
-    skill_file = chip_path / "chip_skill.md"
     has_skill = False
-    if skill_file.is_file():
+    for skill_file in [
+        chip_path / "chip_skill.md",
+        chip_path / "docs" / "doctrines" / "loop_governance.md",
+        chip_path / "docs" / "doctrines" / "transfer_promotion.md",
+        chip_path / "docs" / "beliefs" / "evidence_lanes.md",
+    ]:
+        if not skill_file.is_file():
+            continue
         try:
             text = skill_file.read_text(encoding="utf-8", errors="ignore")
-            has_skill = len(text) > 200
+            if len(text) > 200:
+                has_skill = True
+                break
         except OSError:
             pass
     results["has_skill_file"] = has_skill
@@ -524,7 +626,7 @@ def _check_flywheel_intelligence(chip_path: Path) -> dict[str, bool]:
 # ---------------------------------------------------------------------------
 
 _CHECKERS_V2 = {
-    "manifest_validity": _check_manifest,  # reuse v1
+    "manifest_validity": _check_manifest_v2,
     "evidence_separation": _check_evidence_separation_v2,
     "evaluation_depth": _check_evaluation_depth_v2,
     "memory_knowledge": _check_memory_knowledge_v2,

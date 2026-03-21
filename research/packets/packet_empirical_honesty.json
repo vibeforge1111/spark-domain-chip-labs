@@ -1,0 +1,5 @@
+{
+  "claim": "A recursive lab should prefer honest low empirical volume over fabricated maturity signals.",
+  "mechanism": "Empirical velocity is valuable precisely because it measures history rather than aspiration. If the lab inflates run volume just to satisfy a rubric, later decisions will rely on false trajectory evidence and the benchmark loses meaning. Preserving honest volume keeps the flywheel interpretable and tells operators where real repetition is still needed.",
+  "boundary": "This rule does not forbid bootstrapping minimal examples for pipeline validation. It forbids presenting synthetic history as durable operational proof."
+}

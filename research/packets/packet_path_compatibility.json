@@ -1,0 +1,5 @@
+{
+  "claim": "Path compatibility is part of product correctness, not a secondary documentation concern.",
+  "mechanism": "If the runtime, rubric, and agent contract expect different artifact paths, the product behaves inconsistently even when each component works in isolation. Aligning those paths makes the system easier to reason about and prevents invisible work from disappearing from evaluation. That is a correctness fix because it changes what the product sees as real state.",
+  "boundary": "Path compatibility should preserve a small sanctioned set of paths. Unlimited path acceptance would reduce clarity."
+}

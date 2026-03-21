@@ -1,0 +1,5 @@
+{
+  "claim": "Sanctioned memory locations are necessary for trustworthy self-edit loops.",
+  "mechanism": "A self-edit system needs stable places where it is allowed to persist run history, doctrines, and contradictions. Without those sanctioned locations, either important evidence stays ephemeral or agents are pushed toward prohibited paths. Explicit sanctioned memory lets the loop accumulate traceable history while staying inside governance boundaries.",
+  "boundary": "Sanctioned memory locations should remain few and documented. Too many allowed persistence surfaces create new ambiguity."
+}

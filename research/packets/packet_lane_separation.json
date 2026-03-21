@@ -1,0 +1,5 @@
+{
+  "claim": "Evidence lane separation is a memory hygiene feature, not just a documentation preference.",
+  "mechanism": "Research-grounded, benchmark-grounded, exploratory-frontier, and realworld-validated artifacts carry different confidence levels and should not be retrieved as if they are interchangeable. Separating them reduces the chance that speculative frontier observations get promoted as validated lessons or that benchmark-only gains are mistaken for field-proof outcomes. The lane model improves retrieval quality because each packet arrives with an embedded confidence context.",
+  "boundary": "Lane separation only helps when artifacts also include a clear claim, mechanism, and boundary. A lane label without substantive content still produces low-quality memory."
+}
