@@ -1,0 +1,5 @@
+{
+  "claim": "The transfer layer should expose one internal compatibility API before its implementation files are moved.",
+  "mechanism": "Transfer logic is one of the repo's highest-risk surfaces because it touches recursive improvement and cross-chip mutation. Wrapping its current entry points behind a single namespace lets callers depend on one stable seam while preserving the existing implementation. That reduces the chance that later structural work rewires recursive-improvement behavior accidentally while chasing imports.",
+  "boundary": "This does not validate the transfer algorithms themselves. It only creates a cleaner internal boundary for future movement and review."
+}

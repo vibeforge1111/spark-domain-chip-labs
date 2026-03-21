@@ -274,7 +274,12 @@ def cmd_autoloop(args: argparse.Namespace) -> None:
 
 def cmd_transfer(args: argparse.Namespace) -> None:
     """Transfer intelligence between chips."""
-    from .transfer import transfer_intelligence, extract_portfolio_patterns, find_applicable_patterns
+    from .transfer_surface import (
+        apply_pattern,
+        extract_portfolio_patterns,
+        find_applicable_patterns,
+        transfer_intelligence,
+    )
 
     target_path = Path(args.target_chip)
     if not target_path.exists():
@@ -287,7 +292,6 @@ def cmd_transfer(args: argparse.Namespace) -> None:
     elif args.search_dir:
         registry = extract_portfolio_patterns(Path(args.search_dir))
         patterns = find_applicable_patterns(target_path, registry)
-        from .transfer import apply_pattern
         score_before = score_chip(target_path)["total_score"]
         applied = []
         for p in patterns[:10]:

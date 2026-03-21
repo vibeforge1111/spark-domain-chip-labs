@@ -262,3 +262,34 @@ After creating the hook-surface seam, the next highest-leverage boundary was the
 ### Notes
 
 - As with the hook namespace tranche, implementation files remain in place for now. This change only establishes the compatibility seam.
+
+## Follow-On Tranche: Transfer Surface Namespace
+
+### Files Changed
+
+- `src/chip_labs/transfer_surface/__init__.py`
+- `src/chip_labs/transfer_surface/api.py`
+- `src/chip_labs/cli.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_transfer_surface_namespace.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The transfer layer is the recursive-improvement surface. Before implementation files are moved, callers need one stable internal seam so later packaging work does not scatter transfer-related import changes across the repo.
+
+### What Changed
+
+- Added `src/chip_labs/transfer_surface/` as the internal namespace for transfer entry points
+- Re-exported transfer extraction, applicability, application, and pipeline functions
+- Routed transfer-facing CLI imports through that namespace
+
+### Verification
+
+- `PYTHONPATH=src python -c "import chip_labs.cli; from chip_labs.transfer_surface import transfer_intelligence, apply_pattern"`
+
+### Notes
+
+- This tranche changes import boundaries only. Transfer implementation still lives in `src/chip_labs/transfer.py`.

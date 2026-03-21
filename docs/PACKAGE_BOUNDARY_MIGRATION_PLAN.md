@@ -91,6 +91,7 @@ Status:
 - Added `src/chip_labs/lab_hooks/` as the first internal namespace
 - Routed CLI and selected internal consumers through that namespace without changing the external contract
 - Extended the same pattern to the factory surface with `src/chip_labs/chip_factory/`
+- Extended the same pattern to the transfer surface with `src/chip_labs/transfer_surface/`
 
 Exit condition:
 - No external caller needs to change import paths yet

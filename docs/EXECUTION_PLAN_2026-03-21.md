@@ -109,6 +109,7 @@ Status:
 - Deferred actual file moves until a later tranche so package separation can happen without breaking hook consumers
 - Started phase 7B by adding `src/chip_labs/lab_hooks/` and routing the CLI plus selected internal consumers through that namespace
 - Extended phase 7B with `src/chip_labs/chip_factory/` and routed factory-facing CLI and loop-controller imports through that namespace
+- Extended phase 7B with `src/chip_labs/transfer_surface/` and routed transfer-facing CLI imports through that namespace
 
 ## Exit Criteria
 

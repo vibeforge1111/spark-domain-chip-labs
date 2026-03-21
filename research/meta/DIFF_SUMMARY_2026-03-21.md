@@ -184,3 +184,27 @@
 
 - Reduce direct top-level factory-module coupling
 - Make later scaffold/gap-analyzer file moves less invasive
+
+## Follow-On Tranche: Transfer Surface Namespace
+
+## `src/chip_labs/transfer_surface/`
+
+- Added the internal compatibility namespace for transfer and recursive-improvement entry points
+- Exposed extraction, applicability, application, and transfer pipeline functions through one surface
+
+## `src/chip_labs/cli.py`
+
+- Repointed transfer-related imports to the new `transfer_surface` namespace
+
+## `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+
+- Marked phase 7B as extended into the transfer surface
+
+## `research/packets/packet_transfer_surface_namespace.json`
+
+- Added a packet documenting why the transfer layer should gain its seam before implementation-file moves
+
+## Expected Effect
+
+- Reduce direct coupling to `transfer.py`
+- Make later recursive-improvement packaging work less invasive
