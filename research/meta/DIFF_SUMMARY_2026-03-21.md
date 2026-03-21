@@ -160,3 +160,27 @@
 
 - Create the first compatibility-preserving seam for later package separation
 - Reduce direct top-level hook-module coupling inside the repo
+
+## Follow-On Tranche: Factory Surface Namespace
+
+## `src/chip_labs/chip_factory/`
+
+- Added the second internal surface namespace for scaffold and gap-analysis behavior
+- Exposed a compatibility API for scaffold loading, validation, creation, and improvement helpers
+
+## `src/chip_labs/cli.py`, `src/chip_labs/loop_controller.py`
+
+- Repointed factory-facing internal imports to the new `chip_factory` namespace
+
+## `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+
+- Marked phase 7B as extended from the hook surface into the factory surface
+
+## `research/packets/packet_factory_surface_namespace.json`
+
+- Added a packet documenting why the factory surface needs its own internal compatibility seam
+
+## Expected Effect
+
+- Reduce direct top-level factory-module coupling
+- Make later scaffold/gap-analyzer file moves less invasive

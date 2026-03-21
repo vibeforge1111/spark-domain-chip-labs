@@ -1,0 +1,5 @@
+{
+  "claim": "The factory surface should gain its own internal namespace before any implementation files are moved.",
+  "mechanism": "The scaffold and gap-analysis modules are already acting as one internal product surface, but callers still reach into multiple top-level modules directly. A factory namespace creates one compatibility seam, so later refactors can move factory implementation files without forcing repeated import rewrites across the CLI and loop controller.",
+  "boundary": "This namespace does not yet reduce factory complexity by itself. It only creates the stable import surface needed for safer later movement."
+}

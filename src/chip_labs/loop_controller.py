@@ -24,10 +24,9 @@ from typing import Any
 
 
 from .category_templates import apply_template
-from .gap_analyzer import analyze_gaps, improve_chip
+from .chip_factory import analyze_gaps, improve_chip, scaffold_chip, validate_brief
 from .lab_hooks import run_suggest
 from .quality_rubric import score_chip
-from .scaffold import scaffold_chip, validate_brief
 
 
 # ---------------------------------------------------------------------------

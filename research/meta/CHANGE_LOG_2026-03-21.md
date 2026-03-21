@@ -226,3 +226,39 @@ The package-boundary plan needed a first implementation slice. The safest starti
 ### Notes
 
 - This tranche creates the compatibility seam for the hook surface without moving implementation files yet.
+
+## Follow-On Tranche: Factory Surface Namespace
+
+### Files Changed
+
+- `src/chip_labs/chip_factory/__init__.py`
+- `src/chip_labs/chip_factory/api.py`
+- `src/chip_labs/cli.py`
+- `src/chip_labs/loop_controller.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_factory_surface_namespace.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+After creating the hook-surface seam, the next highest-leverage boundary was the factory surface. The CLI and loop controller still depended on `scaffold.py`, `gap_analyzer.py`, and `category_templates.py` directly, which would make later package movement noisier than necessary.
+
+### What Changed
+
+- Added `src/chip_labs/chip_factory/` as the internal namespace for the factory surface
+- Re-exported:
+  - scaffold loading and validation
+  - scaffold creation
+  - gap analysis and improvement
+  - category-template helpers
+- Routed factory-facing imports in the CLI and loop controller through that namespace
+
+### Verification
+
+- `PYTHONPATH=src python -c "import chip_labs.cli, chip_labs.loop_controller; from chip_labs.chip_factory import scaffold_chip, improve_chip"`
+
+### Notes
+
+- As with the hook namespace tranche, implementation files remain in place for now. This change only establishes the compatibility seam.

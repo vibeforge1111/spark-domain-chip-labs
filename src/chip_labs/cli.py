@@ -134,8 +134,13 @@ def cmd_watchtower(args: argparse.Namespace) -> None:
 
 def cmd_scaffold(args: argparse.Namespace) -> None:
     """Scaffold a new domain chip from a brief."""
-    from .scaffold import load_brief, scaffold_chip, validate_brief
-    from .category_templates import apply_template, detect_category
+    from .chip_factory import (
+        apply_template,
+        detect_category,
+        load_brief,
+        scaffold_chip,
+        validate_brief,
+    )
 
     brief = load_brief(args.brief)
 
@@ -165,7 +170,7 @@ def cmd_scaffold(args: argparse.Namespace) -> None:
 
 def cmd_doctor(args: argparse.Namespace) -> None:
     """Run gap analysis and auto-fix on a chip."""
-    from .gap_analyzer import analyze_gaps, improve_chip
+    from .chip_factory import improve_chip
 
     chip_path = Path(args.chip_path)
     if not chip_path.exists():
@@ -235,7 +240,7 @@ def cmd_autoloop(args: argparse.Namespace) -> None:
     controller = RecursiveLoopController(config)
 
     if args.brief:
-        from .scaffold import load_brief
+        from .chip_factory import load_brief
         from .category_templates import apply_template, detect_category
 
         brief = load_brief(args.brief)
