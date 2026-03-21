@@ -400,3 +400,36 @@ After the hook move, the next safe implementation move was a bounded factory sli
 ### Notes
 
 - `scaffold.py` remains top-level in this tranche on purpose. The goal here is a bounded implementation move, not a full factory relocation in one shot.
+
+## Follow-On Tranche: Scaffold Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/chip_factory/scaffold.py`
+- `src/chip_labs/chip_factory/api.py`
+- `src/chip_labs/scaffold.py`
+- `src/chip_labs/loop_controller.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_scaffold_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+With the lower-coupling factory modules already moved and the factory namespace in place, the central `scaffold.py` path became safe enough to relocate behind the same boundary.
+
+### What Changed
+
+- Moved the real scaffold implementation under `src/chip_labs/chip_factory/`
+- Updated the factory namespace API to import the moved scaffold implementation directly
+- Replaced the old top-level `src/chip_labs/scaffold.py` with a compatibility wrapper
+- Updated `loop_controller.py` to import `apply_template` from the factory namespace instead of the top-level category-template wrapper
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.scaffold import scaffold_chip, load_brief, validate_brief; from chip_labs.chip_factory.scaffold import scaffold_chip as moved_scaffold_chip; import chip_labs.cli, chip_labs.loop_controller; print('scaffold-move-imports-ok')"`
+
+### Notes
+
+- This move completes the main factory execution path behind the factory namespace while still preserving top-level compatibility wrappers.

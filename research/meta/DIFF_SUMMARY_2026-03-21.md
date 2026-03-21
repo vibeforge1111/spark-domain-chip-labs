@@ -285,3 +285,31 @@
 
 - Turn the factory namespace into a partial real implementation boundary
 - Reduce later risk when `scaffold.py` eventually moves
+
+## Follow-On Tranche: Scaffold Implementation Move
+
+## `src/chip_labs/chip_factory/scaffold.py`
+
+- Moved the real scaffold implementation into the factory namespace
+- Updated its imports to point back to shared modules from the deeper package location
+
+## `src/chip_labs/scaffold.py`
+
+- Replaced the previous implementation file with a compatibility wrapper that re-exports the moved scaffold implementation
+
+## `src/chip_labs/chip_factory/api.py`, `src/chip_labs/loop_controller.py`
+
+- Updated the factory API and loop-controller imports to use the moved scaffold path and the factory namespace consistently
+
+## `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+
+- Marked phase 7C as extended from bounded factory modules into the central scaffold path
+
+## `research/packets/packet_scaffold_impl_move.json`
+
+- Added a packet documenting why scaffold moved only after the supporting factory slice was already stable
+
+## Expected Effect
+
+- Make the factory namespace the real home of the main scaffold execution path
+- Preserve existing imports while reducing the amount of central factory logic still living at the top level

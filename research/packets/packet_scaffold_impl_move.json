@@ -1,0 +1,5 @@
+{
+  "claim": "After the lower-coupling factory modules move cleanly, scaffold can move behind the factory namespace while preserving top-level imports.",
+  "mechanism": "Scaffold is the central factory module, so moving it first would have been riskier. Once category templates, gap analysis, and factory callers already route through the factory namespace, scaffold can move with a much smaller blast radius. Leaving a compatibility wrapper at the old top-level path preserves existing callers while making the factory boundary materially more real.",
+  "boundary": "This does not finish the entire factory-surface relocation. It moves the central scaffold path only after the namespace and supporting lower-coupling modules were already in place."
+}

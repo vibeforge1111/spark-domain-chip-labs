@@ -23,8 +23,13 @@ from pathlib import Path
 from typing import Any
 
 
-from .category_templates import apply_template
-from .chip_factory import analyze_gaps, improve_chip, scaffold_chip, validate_brief
+from .chip_factory import (
+    analyze_gaps,
+    apply_template,
+    improve_chip,
+    scaffold_chip,
+    validate_brief,
+)
 from .lab_hooks import run_suggest
 from .quality_rubric import score_chip
 
