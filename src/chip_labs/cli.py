@@ -241,7 +241,7 @@ def cmd_autoloop(args: argparse.Namespace) -> None:
 
     if args.brief:
         from .chip_factory import load_brief
-        from .category_templates import apply_template, detect_category
+        from .chip_factory import apply_template, detect_category
 
         brief = load_brief(args.brief)
         if not brief.get("category"):

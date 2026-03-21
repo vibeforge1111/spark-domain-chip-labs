@@ -365,3 +365,38 @@ The hook surface already had the cleanest namespace seam. That made it the right
 ### Notes
 
 - The old module paths continue to work through wrappers, so this is a real structural move without a public import break.
+
+## Follow-On Tranche: Bounded Factory Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/chip_factory/gap_analyzer.py`
+- `src/chip_labs/chip_factory/category_templates.py`
+- `src/chip_labs/chip_factory/api.py`
+- `src/chip_labs/gap_analyzer.py`
+- `src/chip_labs/category_templates.py`
+- `src/chip_labs/cli.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_factory_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+After the hook move, the next safe implementation move was a bounded factory slice. `gap_analyzer.py` and `category_templates.py` are materially less central than `scaffold.py`, so they can move first without dragging the whole factory surface into one risky tranche.
+
+### What Changed
+
+- Moved the real implementations of `gap_analyzer.py` and `category_templates.py` under `src/chip_labs/chip_factory/`
+- Updated the factory namespace API to import those moved modules directly
+- Replaced the old top-level modules with compatibility wrappers
+- Updated the remaining CLI autoloop import path to go through the factory namespace
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.gap_analyzer import improve_chip; from chip_labs.category_templates import apply_template; from chip_labs.chip_factory.gap_analyzer import improve_chip as moved_improve_chip; from chip_labs.chip_factory.category_templates import apply_template as moved_apply_template; import chip_labs.cli; print('factory-move-imports-ok')"`
+
+### Notes
+
+- `scaffold.py` remains top-level in this tranche on purpose. The goal here is a bounded implementation move, not a full factory relocation in one shot.

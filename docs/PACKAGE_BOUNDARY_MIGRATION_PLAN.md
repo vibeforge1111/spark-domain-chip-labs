@@ -106,6 +106,9 @@ Status:
 - Started with the hook surface
 - Moved `evaluate.py`, `suggest.py`, `packets.py`, and `watchtower.py` implementations under `src/chip_labs/lab_hooks/`
 - Left top-level compatibility wrappers in place so existing imports continue to work
+- Extended the same pattern to the lower-coupling factory modules:
+  - `gap_analyzer.py`
+  - `category_templates.py`
 
 Exit condition:
 - Each surface depends only on sanctioned shared utilities and public interfaces

@@ -1,0 +1,5 @@
+{
+  "claim": "Lower-coupling factory modules can be moved behind the factory namespace before the more central scaffold module moves.",
+  "mechanism": "The factory namespace already gave callers a stable seam. That allows less-coupled factory modules such as category templates and gap analysis to move first, while leaving scaffold in place until a later tranche. This staged move reduces risk because the repo gains a real implementation boundary without forcing the most central factory module to move at the same time.",
+  "boundary": "This is not the full factory-surface move. Scaffold remains top-level for now because it is more central and more likely to ripple through the repo."
+}

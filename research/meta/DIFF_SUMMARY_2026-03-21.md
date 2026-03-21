@@ -257,3 +257,31 @@
 
 - Convert the hook surface namespace from a naming seam into a real implementation boundary
 - Preserve existing imports while making later hook-surface cleanup easier
+
+## Follow-On Tranche: Bounded Factory Implementation Move
+
+## `src/chip_labs/chip_factory/`
+
+- Moved `gap_analyzer.py` and `category_templates.py` implementations into the factory namespace
+- Updated the factory API to import the moved modules directly
+
+## `src/chip_labs/gap_analyzer.py`, `src/chip_labs/category_templates.py`
+
+- Replaced previous implementation files with compatibility wrappers that re-export the moved implementations
+
+## `src/chip_labs/cli.py`
+
+- Routed the remaining autoloop category-template import through the factory namespace
+
+## `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+
+- Marked phase 7C as extended into a bounded factory implementation move
+
+## `research/packets/packet_factory_impl_move.json`
+
+- Added a packet documenting why lower-coupling factory modules should move before scaffold
+
+## Expected Effect
+
+- Turn the factory namespace into a partial real implementation boundary
+- Reduce later risk when `scaffold.py` eventually moves
