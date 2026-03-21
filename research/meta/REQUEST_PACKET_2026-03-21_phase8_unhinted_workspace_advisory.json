@@ -1,0 +1,36 @@
+{
+  "request_id": "2026-03-21-phase8-unhinted-workspace-advisory",
+  "created_at": "2026-03-21T18:00:00Z",
+  "type": "advisory_fallback_fix",
+  "goal": "Make unhinted repo-local advisory use the active workspace chip instead of returning an empty result when lexical selection finds no matches.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Preserve explicit domain-hint behavior",
+    "Validate with both unit tests and a real unhinted advise run"
+  ],
+  "files_touched": [
+    "src/chip_labs/intelligence_serving/chip_advisor.py",
+    "tests/test_chip_advisor.py",
+    "research/meta/advise_output_phase8_unhinted_2026-03-21.json",
+    "research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.json",
+    "research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.md",
+    "research/meta/runs.jsonl",
+    "research/packets/packet_unhinted_workspace_advisory_fallback.json",
+    "research/meta/REQUEST_PACKET_2026-03-21_phase8_unhinted_workspace_advisory.json",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "Unhinted repo-local advisory now falls back to the active workspace chip when relevance selection returns nothing.",
+    "The packaging-oriented unhinted advise path now returns domain-chip-labs guidance instead of an empty advisory response."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -m pytest tests/test_chip_advisor.py tests/test_chip_mcp_server.py tests/test_hooks.py -q",
+    "PYTHONPATH=src python -m chip_labs.cli advise \"stabilize packaging and preserve hook compatibility\" --output research/meta/advise_output_phase8_unhinted_2026-03-21.json"
+  ],
+  "follow_up": [
+    "Decide whether the same workspace fallback should influence any other advisory entrypoints.",
+    "Keep distinguishing repo-local fallback behavior from general multi-chip ranking behavior."
+  ]
+}

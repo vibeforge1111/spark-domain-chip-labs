@@ -130,7 +130,8 @@ Status:
 - Started phase 8 by making default serving flows workspace-aware so the active repo enters the portfolio even when it is outside the Desktop prefix registry
 - Added a repo-local serving validation batch under `research/meta/`, confirming that `serve-intelligence` now returns `domain-chip-labs` context for packaging-oriented repo work instead of an empty block
 - Closed the explicit domain-hint advisory gap by making `chip-labs` advisories consult only `domain-chip-labs` for that hinted path
-- The remaining serving-product gap is now narrower: unhinted advisory ranking still depends on the broader relevance heuristic
+- Closed the repo-local unhinted advisory gap by making no-match advisory fall back to the active workspace chip
+- The remaining serving-product gap is now narrower: broader multi-chip ranking outside repo-local fallback still depends on the relevance heuristic
 
 ## Exit Criteria
 

@@ -669,3 +669,30 @@
 
 - Remove off-domain consultation from explicit `chip-labs` advisory calls
 - Reduce the remaining serving-product uncertainty to unhinted advisory ranking only
+
+## Follow-On Tranche: Phase 8 Unhinted Workspace Advisory
+
+## `src/chip_labs/intelligence_serving/chip_advisor.py`
+
+- Added an active-workspace fallback for no-match advisory selection so repo-local unhinted requests do not fail closed
+
+## `tests/test_chip_advisor.py`
+
+- Added a regression test proving the unhinted repo-local advisory path falls back to `domain-chip-labs`
+
+## `research/meta/advise_output_phase8_unhinted_2026-03-21.json`
+
+- Captured a fresh unhinted advisory output showing `chips_consulted = ["domain-chip-labs"]`
+
+## `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.json`, `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.md`
+
+- Extended the repo-local serving validation summary to include the repaired unhinted advisory path
+
+## `research/packets/packet_unhinted_workspace_advisory_fallback.json`
+
+- Added a packet documenting why repo-local unhinted advisory should use the active workspace chip instead of returning nothing
+
+## Expected Effect
+
+- Remove the empty-result failure mode from unhinted repo-local advisory
+- Narrow the remaining serving uncertainty to broader multi-chip ranking outside workspace-local fallback cases

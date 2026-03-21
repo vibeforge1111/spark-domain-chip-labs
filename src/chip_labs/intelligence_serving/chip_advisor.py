@@ -127,6 +127,22 @@ def _filter_portfolio_by_domain_hint(
     return filtered or portfolio
 
 
+def _find_current_workspace_chip(
+    portfolio: list["ChipHandle"],
+    start: Path | None = None,
+) -> "ChipHandle" | None:
+    """Return the portfolio chip that owns the current working directory."""
+    current = (start or Path.cwd()).resolve()
+    for chip in portfolio:
+        try:
+            chip_root = chip.chip_path.resolve()
+        except OSError:
+            continue
+        if current == chip_root or chip_root in current.parents:
+            return chip
+    return None
+
+
 def _get_intel(chip: "ChipHandle") -> ChipIntelligence | None:
     """Get intelligence from a chip, using the property or extracting."""
     try:
@@ -234,7 +250,10 @@ def advise_pre_action(
     candidate_portfolio = _filter_portfolio_by_domain_hint(portfolio, request.domain_hint)
     selected = _select_chips(query, candidate_portfolio, max_chips=3)
     if not selected:
-        return AdvisoryResponse(verdict="proceed")
+        current_chip = _find_current_workspace_chip(candidate_portfolio)
+        if current_chip is None:
+            return AdvisoryResponse(verdict="proceed")
+        selected = [current_chip]
 
     guidance: list[DoctrineGuidance] = []
     all_contradictions: list[dict[str, Any]] = []
@@ -315,7 +334,10 @@ def advise_post_action(
     candidate_portfolio = _filter_portfolio_by_domain_hint(portfolio, request.domain_hint)
     selected = _select_chips(request.action_description, candidate_portfolio, max_chips=1)
     if not selected:
-        return {"feedback_written": False, "reason": "no relevant chips"}
+        current_chip = _find_current_workspace_chip(candidate_portfolio)
+        if current_chip is None:
+            return {"feedback_written": False, "reason": "no relevant chips"}
+        selected = [current_chip]
 
     chip = selected[0]
     rw_dir = chip.chip_path / "research" / "realworld_validated"

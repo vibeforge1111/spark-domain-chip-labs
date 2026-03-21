@@ -48,12 +48,24 @@
         ],
         "explicit_domain_hint_behavior": "clean"
       }
+    },
+    {
+      "command": "PYTHONPATH=src python -m chip_labs.cli advise \"stabilize packaging and preserve hook compatibility\" --output research/meta/advise_output_phase8_unhinted_2026-03-21.json",
+      "observed_at": "2026-03-21T18:00:00.0000000Z",
+      "status": "passed",
+      "summary": {
+        "verdict": "proceed",
+        "chips_consulted": [
+          "domain-chip-labs"
+        ],
+        "unhinted_workspace_behavior": "clean"
+      }
     }
   ],
   "conclusion": {
     "serve_context_state": "healthy",
     "serve_intelligence_state": "repaired_for_repo_local_work",
-    "advisory_state": "healthy_for_explicit_domain_hints",
-    "remaining_bottleneck": "unhinted advisory ranking still depends on the broader relevance heuristic"
+    "advisory_state": "healthy_for_repo_local_explicit_and_unhinted_paths",
+    "remaining_bottleneck": "general multi-chip ranking still depends on the broader relevance heuristic outside repo-local fallback cases"
   }
 }

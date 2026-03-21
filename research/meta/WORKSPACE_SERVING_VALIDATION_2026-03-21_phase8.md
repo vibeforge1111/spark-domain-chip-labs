@@ -17,6 +17,7 @@ Repo-local intelligence serving validation after making the serving stack aware 
 - `serve`: returned `domain-chip-labs`, score `100`, with doctrines across all four evidence lanes
 - `serve-intelligence`: before the fix, the same task returned `<!-- No relevant chips found for this task -->`; after the fix it returned a non-empty `domain-chip-labs` context block
 - `advise`: for the explicit `--domain chip-labs` path, now consults only `domain-chip-labs`
+- unhinted `advise`: for the same repo-local packaging task, now also consults only `domain-chip-labs` instead of returning an empty result
 
 ## Interpretation
 
@@ -27,8 +28,9 @@ The remaining gap is narrower and more honest:
 - `serve` is healthy for repo-local doctrine lookup
 - `serve-intelligence` is now healthy for repo-local context injection
 - `advise` is now clean for explicit domain-hint calls
-- unhinted advisory ranking still depends on the broader relevance heuristic
+- unhinted repo-local advisory is now clean through active-workspace fallback
+- broader multi-chip ranking outside repo-local fallback still depends on the relevance heuristic
 
 ## Ledger Effect
 
-This batch now includes four real serving-validation runs in `research/meta/runs.jsonl`, bringing the lab ledger from `41` to `45` recorded runs.
+This batch now includes five real serving-validation runs in `research/meta/runs.jsonl`, bringing the lab ledger from `41` to `46` recorded runs.

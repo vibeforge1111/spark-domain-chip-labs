@@ -978,3 +978,38 @@ The repo-local serving validation exposed one remaining weakness: even with an e
 ### Notes
 
 - This tranche tightens only the explicit domain-hint path. Unhinted advisory behavior is intentionally left for a later pass.
+
+## Follow-On Tranche: Phase 8 Unhinted Workspace Advisory
+
+### Files Changed
+
+- `src/chip_labs/intelligence_serving/chip_advisor.py`
+- `tests/test_chip_advisor.py`
+- `research/meta/advise_output_phase8_unhinted_2026-03-21.json`
+- `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.json`
+- `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.md`
+- `research/meta/runs.jsonl`
+- `research/packets/packet_unhinted_workspace_advisory_fallback.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase8_unhinted_workspace_advisory.json`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+After fixing explicit domain hints, the same packaging-oriented repo-local advisory request still failed closed when run without `--domain`. That made unhinted local advisory weaker than local context injection even though both are serving entrypoints over the same chip workspace.
+
+### What Changed
+
+- Added an active-workspace fallback to advisory when relevance selection returns nothing
+- Added unit coverage for the unhinted repo-local fallback behavior
+- Re-ran the real unhinted `advise` command and updated the serving validation artifacts to show a non-empty `domain-chip-labs` result
+
+### Verification
+
+- `PYTHONPATH=src python -m pytest tests/test_chip_advisor.py tests/test_chip_mcp_server.py tests/test_hooks.py -q`
+- `PYTHONPATH=src python -m chip_labs.cli advise "stabilize packaging and preserve hook compatibility" --output research/meta/advise_output_phase8_unhinted_2026-03-21.json`
+
+### Notes
+
+- This tranche repairs repo-local unhinted advisory only. It does not attempt to retune general multi-chip ranking.

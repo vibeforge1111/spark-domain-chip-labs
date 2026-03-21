@@ -238,6 +238,33 @@ class TestAdvisePreAction:
         if len(response.guidance) >= 2:
             assert response.guidance[0].relevance >= response.guidance[-1].relevance
 
+    def test_unhinted_repo_local_action_falls_back_to_current_workspace_chip(self, tmp_path: Path) -> None:
+        chip_dir = tmp_path / "spark-domain-chip-labs"
+        chip_dir.mkdir()
+        portfolio = [
+            MockChipHandle(
+                chip_path=chip_dir,
+                chip_name="domain-chip-labs",
+                domain="chip-research",
+                intelligence=_make_intel(
+                    "domain-chip-labs",
+                    "chip-research",
+                    doctrines=[
+                        {
+                            "claim": "Runtime and CLI symmetry is required for trustworthy hook execution.",
+                            "confidence": "medium",
+                        }
+                    ],
+                ),
+            )
+        ]
+        request = AdvisoryRequest(action_description="xyzzy packaging foobar compatibility")
+        with patch("chip_labs.chip_advisor.Path.cwd", return_value=chip_dir):
+            response = advise_pre_action(request, portfolio=portfolio)
+
+        assert response.chips_consulted == ["domain-chip-labs"]
+        assert len(response.guidance) > 0
+
 
 # ---------------------------------------------------------------------------
 # TestAdvisePostAction

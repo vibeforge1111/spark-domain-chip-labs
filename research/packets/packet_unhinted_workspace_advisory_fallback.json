@@ -1,0 +1,5 @@
+{
+  "claim": "Repo-local advisory should not fail closed just because the caller omitted an explicit domain hint when operating inside the active chip workspace.",
+  "mechanism": "When advisory selection finds no relevant chips, the middleware now falls back to the chip that owns the current working directory. That makes unhinted repo-local advisory behave like repo-local context injection: empty relevance does not erase the active chip's own doctrine surface.",
+  "boundary": "This only affects the no-match fallback path. It does not override successful multi-chip selection and does not change explicit domain-hint filtering."
+}
