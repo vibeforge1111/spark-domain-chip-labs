@@ -715,3 +715,18 @@
 
 - Replace stale or assumed portfolio narratives with a live dated snapshot
 - Make it easier to decide which chips deserve active investment versus archival or quarantine
+
+## Follow-On Tranche: Top-Tier Deep Dive
+
+## `research/meta/TOP_TIER_DEEP_DIVE_2026-03-21.json`, `research/meta/TOP_TIER_DEEP_DIVE_2026-03-21.md`
+
+- Added a deep-dive analysis of the current top 6 chips, including v2/v3 contrast, operating read, and per-chip risks
+
+## `research/meta/REQUEST_PACKET_2026-03-21_top_tier_deep_dive.json`
+
+- Added the request packet capturing the scope and verification basis for the leadership-tier deep dive
+
+## Expected Effect
+
+- Turn the top tier from a ranking list into an actual strategic read
+- Clarify which chips are strong because of scale, which are strong because of doctrine quality, and which are strong but still risky

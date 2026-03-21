@@ -1,0 +1,132 @@
+{
+  "audit_id": "2026-03-21-top-tier-deep-dive",
+  "created_at": "2026-03-21T18:35:00Z",
+  "scope": "deep dive on the top 6 portfolio chips as ranked by the live 2026-03-21 portfolio-v3 run",
+  "chips": [
+    {
+      "name": "domain-chip-startup-yc",
+      "domain": "startup",
+      "artifact_count": 124119,
+      "vault_doc_count": 276,
+      "v2_score": 98,
+      "v2_verdict": "production_ready",
+      "v3_score": 72.0,
+      "v3_verdict": "beta",
+      "read": "flagship",
+      "strengths": [
+        "Best operating depth in the portfolio with 785 runs and the deepest watchtower.",
+        "Strong integration maturity and real empirical volume."
+      ],
+      "risks": [
+        "Doctrine quality is only moderate despite the scale.",
+        "Contradiction resolution is still weak relative to run volume."
+      ]
+    },
+    {
+      "name": "domain-chip-xcontent",
+      "domain": "xcontent",
+      "artifact_count": 1132,
+      "vault_doc_count": 21,
+      "v2_score": 92,
+      "v2_verdict": "production_ready",
+      "v3_score": 65.6,
+      "v3_verdict": "beta",
+      "read": "promising but not fully trusted",
+      "strengths": [
+        "Strong evidence integrity and fast positive trajectory.",
+        "Doctrine quality is already better than most of the portfolio."
+      ],
+      "risks": [
+        "Carries the single_day_batch anti-gaming flag.",
+        "No realworld_validated lane yet and contradiction rigor is still moderate."
+      ]
+    },
+    {
+      "name": "domain-chip-pokemon-red",
+      "domain": "pokemon",
+      "artifact_count": 66903,
+      "vault_doc_count": 48,
+      "v2_score": 98,
+      "v2_verdict": "production_ready",
+      "v3_score": 62.8,
+      "v3_verdict": "beta",
+      "read": "high-volume specialist",
+      "strengths": [
+        "Massive operating history and excellent watchtower substance.",
+        "Very strong empirical velocity and artifact production."
+      ],
+      "risks": [
+        "Evidence integrity is only moderate because lane balance is skewed.",
+        "Contradiction rigor is too light for the amount of history."
+      ]
+    },
+    {
+      "name": "domain-chip-content",
+      "domain": "content",
+      "artifact_count": 227,
+      "vault_doc_count": 15,
+      "v2_score": 83,
+      "v2_verdict": "production_ready",
+      "v3_score": 62.0,
+      "v3_verdict": "beta",
+      "read": "intellectually strongest relative to size",
+      "strengths": [
+        "Best doctrine quality in the top tier.",
+        "Strong contradiction rigor relative to its run count."
+      ],
+      "risks": [
+        "Run count is still low at 10.",
+        "No realworld_validated evidence and weak watchtower substance."
+      ]
+    },
+    {
+      "name": "domain-chip-agentic-marketing",
+      "domain": "agentic-marketing",
+      "artifact_count": 1209,
+      "vault_doc_count": 36,
+      "v2_score": 100,
+      "v2_verdict": "production_ready",
+      "v3_score": 60.0,
+      "v3_verdict": "beta",
+      "read": "operational but drifting",
+      "strengths": [
+        "Healthy watchtower depth and real artifact volume.",
+        "Good contradiction coverage and mature structure."
+      ],
+      "risks": [
+        "Empirical trajectory is not improving.",
+        "Doctrine quality is only moderate and causal density is still zero."
+      ]
+    },
+    {
+      "name": "domain-chip-spark-private",
+      "domain": "spark-operations",
+      "artifact_count": 2336,
+      "vault_doc_count": 198,
+      "v2_score": 100,
+      "v2_verdict": "production_ready",
+      "v3_score": 58.0,
+      "v3_verdict": "beta",
+      "read": "broad internal operating system",
+      "strengths": [
+        "Very strong watchtower depth and solid operating surface breadth.",
+        "Strong v2 hardening and decent contradiction coverage."
+      ],
+      "risks": [
+        "Only 8 recorded runs, so empirical claims are still thin.",
+        "No realworld_validated lane and doctrine quality remains moderate."
+      ]
+    }
+  ],
+  "portfolio_read": {
+    "shared_pattern": "All six top chips are already production_ready on v2 but still only beta on v3.",
+    "meaning": "The leadership tier is structurally hardened. The remaining gap is not basic chip correctness; it is deeper operating truth, doctrine quality, evidence balance, contradiction resolution, and sustained flywheel history."
+  },
+  "recommendations": [
+    "Treat startup-yc as the flagship reference chip.",
+    "Treat xcontent as a probationary leader until the anti-gaming flag clears.",
+    "Use content as the doctrine-quality model and startup-yc as the operating-depth model.",
+    "Push pokemon-red to improve contradiction rigor instead of simply adding more runs.",
+    "Force agentic-marketing and spark-private to prove positive trajectory before expanding their strategic weight."
+  ]
+}

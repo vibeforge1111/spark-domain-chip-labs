@@ -1043,3 +1043,32 @@ The user asked for a fresh audit of the current domain-chip portfolio. The exist
 ### Notes
 
 - This tranche is audit-only. It changes no chip behavior.
+
+## Follow-On Tranche: Top-Tier Deep Dive
+
+### Files Changed
+
+- `research/meta/TOP_TIER_DEEP_DIVE_2026-03-21.json`
+- `research/meta/TOP_TIER_DEEP_DIVE_2026-03-21.md`
+- `research/meta/REQUEST_PACKET_2026-03-21_top_tier_deep_dive.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The live portfolio audit showed a real leadership tier, but the user asked to go deeper. Ranking alone was not enough; the next useful step was to understand what kind of strength each top chip actually represents and what still prevents those chips from becoming true v3 leaders.
+
+### What Changed
+
+- Added a top-tier deep dive covering the best 6 current chips
+- Combined live portfolio-v3 output with fresh v2 checks to separate structural hardening from deeper operating maturity
+- Recorded per-chip reads, strengths, and concrete risks
+
+### Verification
+
+- `PYTHONPATH=src python -m chip_labs.cli portfolio-v3 --output research/meta/portfolio_v3_audit_2026-03-21.json`
+- Fresh `score-v2` checks for `startup-yc`, `xcontent`, `pokemon-red`, `content`, `agentic-marketing`, and `spark-private`
+
+### Notes
+
+- This tranche is analysis-only. It changes no chip behavior.
