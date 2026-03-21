@@ -1,0 +1,33 @@
+{
+  "request_id": "2026-03-21-phase7c-serving-mcp-impl-move",
+  "created_at": "2026-03-21",
+  "type": "compatibility_preserving_file_move",
+  "goal": "Move the MCP server implementation behind the intelligence_serving namespace while preserving the top-level module path through a compatibility wrapper.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Preserve existing import paths for callers and tests",
+    "Keep chip_runtime.py top-level in this tranche to avoid a larger serving rewrite"
+  ],
+  "files_touched": [
+    "src/chip_labs/intelligence_serving/chip_mcp_server.py",
+    "src/chip_labs/intelligence_serving/api.py",
+    "src/chip_labs/chip_mcp_server.py",
+    "docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/packets/packet_serving_mcp_impl_move.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "The real MCP server implementation now lives under chip_labs.intelligence_serving.",
+    "The old top-level chip_mcp_server module now acts as a compatibility wrapper.",
+    "The serving namespace API now imports ChipMCPServer from the moved implementation directly."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -c \"from chip_labs.chip_mcp_server import ChipMCPServer; from chip_labs.intelligence_serving.chip_mcp_server import ChipMCPServer as moved_ChipMCPServer; from chip_labs.intelligence_serving import ChipMCPServer as api_ChipMCPServer; import chip_labs.cli; print('serving-mcp-move-imports-ok')\""
+  ],
+  "follow_up": [
+    "The next serving move is likely chip_runtime.py because it is now the largest top-level implementation still anchoring the serving surface.",
+    "Keep compatibility wrappers until the serving namespace owns the full surface."
+  ]
+}

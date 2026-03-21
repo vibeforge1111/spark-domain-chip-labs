@@ -381,3 +381,27 @@
 
 - Extend the serving namespace into a larger real implementation boundary
 - Preserve existing imports while reducing serving-surface logic still implemented at the top level
+
+## Follow-On Tranche: Serving MCP Implementation Move
+
+## `src/chip_labs/intelligence_serving/chip_mcp_server.py`
+
+- Moved the MCP server implementation behind the serving namespace
+- Updated its runtime imports for the deeper package path
+
+## `src/chip_labs/chip_mcp_server.py`
+
+- Replaced the previous implementation file with a compatibility wrapper that re-exports the moved serving implementation
+
+## `src/chip_labs/intelligence_serving/api.py`
+
+- Repointed the `ChipMCPServer` import to the moved implementation instead of the top-level compatibility wrapper
+
+## `research/packets/packet_serving_mcp_impl_move.json`
+
+- Added a packet documenting why the MCP server is the next safe serving module to move before runtime
+
+## Expected Effect
+
+- Make the serving namespace the real home of nearly all serving entrypoints except runtime
+- Preserve existing imports while reducing one more large top-level serving module

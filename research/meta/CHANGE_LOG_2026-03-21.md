@@ -535,3 +535,36 @@ After moving `intelligence_server.py`, the next bounded serving slice was the ad
 ### Notes
 
 - Runtime and MCP-serving still remain top-level in this tranche. The point here is to keep the serving move bounded and compatibility-preserving.
+
+## Follow-On Tranche: Serving MCP Implementation Move
+
+### Files Changed
+
+- `src/chip_labs/intelligence_serving/chip_mcp_server.py`
+- `src/chip_labs/intelligence_serving/api.py`
+- `src/chip_labs/chip_mcp_server.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_serving_mcp_impl_move.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase7c_serving_mcp_impl_move.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+After the intelligence, advisory, and context-injection paths moved behind the serving namespace, the next bounded serving slice was the MCP server. Its implementation already reaches most serving collaborators through lazy imports, so it could move without forcing the core runtime path to move in the same tranche.
+
+### What Changed
+
+- Moved `chip_mcp_server.py` under `src/chip_labs/intelligence_serving/`
+- Updated its runtime imports for the deeper package location
+- Replaced the old top-level module with a compatibility wrapper
+- Updated the serving namespace API to import `ChipMCPServer` from the moved implementation directly
+
+### Verification
+
+- `PYTHONPATH=src python -c "from chip_labs.chip_mcp_server import ChipMCPServer; from chip_labs.intelligence_serving.chip_mcp_server import ChipMCPServer as moved_ChipMCPServer; from chip_labs.intelligence_serving import ChipMCPServer as api_ChipMCPServer; import chip_labs.cli; print('serving-mcp-move-imports-ok')"`
+
+### Notes
+
+- `chip_runtime.py` remains top-level in this tranche and is now the main remaining serving implementation anchor outside the namespace.

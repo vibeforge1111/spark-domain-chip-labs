@@ -1,0 +1,5 @@
+{
+  "claim": "After the serving namespace owns intelligence extraction and advisory paths, the MCP server can move behind the same boundary with a compatibility wrapper.",
+  "mechanism": "chip_mcp_server.py already reaches serving helpers mostly through lazy imports. Moving it behind intelligence_serving keeps the serving entrypoints together while preserving the old top-level module path for existing callers.",
+  "boundary": "This does not move chip_runtime.py yet. Runtime remains top-level because it is still the most central shared entrypoint in the serving surface."
+}
