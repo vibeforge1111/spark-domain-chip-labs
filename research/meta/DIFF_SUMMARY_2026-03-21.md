@@ -135,3 +135,28 @@
 
 - Make future packaging work more deliberate and less likely to break the current hook/runtime contract
 - Give later refactors a stable surface map and task order
+
+## Follow-On Tranche: Hook Surface Namespace
+
+## `src/chip_labs/lab_hooks/`
+
+- Added the first internal surface namespace for the lab hook layer
+- Exposed a compatibility API for `evaluate`, `suggest`, `packets`, and `watchtower`
+
+## `src/chip_labs/cli.py`, `src/chip_labs/scaffold.py`, `src/chip_labs/loop_controller.py`
+
+- Repointed selected internal callers to the new `lab_hooks` namespace
+- Preserved the external CLI and manifest contract
+
+## `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+
+- Marked phase 7B as started with the hook surface namespace
+
+## `research/packets/packet_hook_surface_namespace.json`
+
+- Added a packet documenting why a stable internal namespace should precede implementation-file moves
+
+## Expected Effect
+
+- Create the first compatibility-preserving seam for later package separation
+- Reduce direct top-level hook-module coupling inside the repo

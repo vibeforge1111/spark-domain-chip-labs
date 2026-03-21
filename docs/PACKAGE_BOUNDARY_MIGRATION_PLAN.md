@@ -86,6 +86,11 @@ Status:
 - Move implementation files behind compatibility imports
 - Keep `python -m chip_labs.cli` and existing import paths working
 
+Status:
+- Started with the hook surface
+- Added `src/chip_labs/lab_hooks/` as the first internal namespace
+- Routed CLI and selected internal consumers through that namespace without changing the external contract
+
 Exit condition:
 - No external caller needs to change import paths yet
 

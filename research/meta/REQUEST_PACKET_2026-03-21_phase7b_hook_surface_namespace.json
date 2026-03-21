@@ -1,0 +1,36 @@
+{
+  "request_id": "2026-03-21-phase7b-hook-surface-namespace",
+  "created_at": "2026-03-21",
+  "type": "compatibility_preserving_refactor",
+  "goal": "Create the first internal namespace package for the lab hook surface and route internal callers through it without changing the external CLI or manifest contract.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Do not move implementation files yet",
+    "Preserve the current external hook contract"
+  ],
+  "files_touched": [
+    "src/chip_labs/lab_hooks/__init__.py",
+    "src/chip_labs/lab_hooks/api.py",
+    "src/chip_labs/cli.py",
+    "src/chip_labs/scaffold.py",
+    "src/chip_labs/loop_controller.py",
+    "docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/packets/packet_hook_surface_namespace.json",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "The repo now has an internal namespace package for the lab hook surface.",
+    "CLI and selected internal consumers now depend on the hook surface namespace instead of direct top-level hook-module imports.",
+    "The external hook contract remains unchanged."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -m chip_labs.cli evaluate --input research/meta/eval_input_content_2026-03-21.json",
+    "PYTHONPATH=src python -c \"import chip_labs.cli, chip_labs.scaffold, chip_labs.loop_controller; from chip_labs.lab_hooks import run_evaluate\""
+  ],
+  "follow_up": [
+    "Move hook implementation files behind the namespace only after internal callers are consistently routed through it.",
+    "Repeat the same compatibility-first pattern for the other repo surfaces."
+  ]
+}

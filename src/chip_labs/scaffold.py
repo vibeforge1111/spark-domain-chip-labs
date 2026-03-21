@@ -396,10 +396,12 @@ import json
 from pathlib import Path
 from typing import Any
 
-from .evaluate import evaluate as run_evaluate
-from .suggest import suggest as run_suggest
-from .packets import generate_packets
-from .watchtower import generate_watchtower_pages
+from .lab_hooks import (
+    generate_packets,
+    generate_watchtower_pages,
+    run_evaluate,
+    run_suggest,
+)
 
 
 def _load_input(input_path: str | None) -> dict[str, Any]:

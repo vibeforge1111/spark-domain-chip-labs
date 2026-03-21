@@ -107,6 +107,7 @@ Status:
 - Added `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md` as the baseline for future package work
 - Defined which current modules belong to the hook, factory, transfer, and serving surfaces
 - Deferred actual file moves until a later tranche so package separation can happen without breaking hook consumers
+- Started phase 7B by adding `src/chip_labs/lab_hooks/` and routing the CLI plus selected internal consumers through that namespace
 
 ## Exit Criteria
 

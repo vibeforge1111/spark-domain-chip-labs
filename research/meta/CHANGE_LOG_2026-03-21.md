@@ -188,3 +188,41 @@ The original execution plan is now largely complete, but the remaining unresolve
 ### Notes
 
 - This tranche is intentionally non-invasive. It creates the boundary plan so later code movement can happen one surface at a time instead of through a repo-wide shuffle.
+
+## Follow-On Tranche: Hook Surface Namespace
+
+### Files Changed
+
+- `src/chip_labs/lab_hooks/__init__.py`
+- `src/chip_labs/lab_hooks/api.py`
+- `src/chip_labs/cli.py`
+- `src/chip_labs/scaffold.py`
+- `src/chip_labs/loop_controller.py`
+- `docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/packets/packet_hook_surface_namespace.json`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The package-boundary plan needed a first implementation slice. The safest starting point was the hook surface, because it already has a clear public contract and multiple internal callers that should stop importing top-level hook modules directly.
+
+### What Changed
+
+- Added `src/chip_labs/lab_hooks/` as the first internal namespace package
+- Exposed the hook-facing API there:
+  - `run_evaluate`
+  - `run_suggest`
+  - `generate_packets`
+  - `generate_watchtower_pages`
+- Updated the CLI and selected internal consumers to depend on that namespace instead of direct top-level hook-module imports
+
+### Verification
+
+- `PYTHONPATH=src python -m chip_labs.cli evaluate --input research/meta/eval_input_content_2026-03-21.json`
+- `PYTHONPATH=src python -c "import chip_labs.cli, chip_labs.scaffold, chip_labs.loop_controller; from chip_labs.lab_hooks import run_evaluate"`
+
+### Notes
+
+- This tranche creates the compatibility seam for the hook surface without moving implementation files yet.

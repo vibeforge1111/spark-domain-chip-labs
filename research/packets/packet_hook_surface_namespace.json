@@ -1,0 +1,5 @@
+{
+  "claim": "The first safe step in package separation is to introduce a stable internal namespace for one surface before moving implementation files.",
+  "mechanism": "By routing internal callers through a single hook-surface namespace, the repo gains one stable seam without changing the external CLI or manifest contract. That lowers migration risk because later file moves happen behind one internal public surface instead of forcing scattered import rewrites across the codebase.",
+  "boundary": "A namespace alone does not solve dependency drift. It only creates the first compatibility layer needed for later implementation moves."
+}

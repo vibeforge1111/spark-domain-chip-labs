@@ -25,9 +25,9 @@ from typing import Any
 
 from .category_templates import apply_template
 from .gap_analyzer import analyze_gaps, improve_chip
+from .lab_hooks import run_suggest
 from .quality_rubric import score_chip
 from .scaffold import scaffold_chip, validate_brief
-from .suggest import suggest
 
 
 # ---------------------------------------------------------------------------
@@ -709,7 +709,7 @@ class RecursiveLoopController:
 
         # Generate suggestions (use chip_path parent as search dir)
         try:
-            suggestions = suggest(
+            suggestions = run_suggest(
                 recent_mutations=None,
                 chip_search_dir=chip_path.parent,
             )
