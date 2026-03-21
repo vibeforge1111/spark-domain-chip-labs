@@ -1,0 +1,36 @@
+{
+  "request_id": "2026-03-21-phase8-domain-hint-advisory-filter",
+  "created_at": "2026-03-21T17:40:00Z",
+  "type": "advisory_ranking_fix",
+  "goal": "Make explicit domain hints act as real candidate filters so chip-labs advisory calls stop consulting unrelated domain-chip repos.",
+  "constraints": [
+    "Edit only within mutable_targets",
+    "Keep unhinted advisory behavior unchanged",
+    "Validate with both unit tests and a real advise command"
+  ],
+  "files_touched": [
+    "src/chip_labs/intelligence_serving/chip_advisor.py",
+    "tests/test_chip_advisor.py",
+    "research/meta/advise_output_phase7d_2026-03-21.json",
+    "research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.json",
+    "research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.md",
+    "research/meta/runs.jsonl",
+    "research/packets/packet_domain_hint_advisory_filter.json",
+    "research/meta/REQUEST_PACKET_2026-03-21_phase8_domain_hint_advisory_filter.json",
+    "docs/EXECUTION_PLAN_2026-03-21.md",
+    "research/meta/CHANGE_LOG_2026-03-21.md",
+    "research/meta/DIFF_SUMMARY_2026-03-21.md"
+  ],
+  "behavioral_changes": [
+    "Explicit domain hints now constrain advisory candidate chips before relevance scoring.",
+    "Packaging-oriented `chip-labs` advisory runs now consult only `domain-chip-labs` for that hinted path."
+  ],
+  "verification_targets": [
+    "PYTHONPATH=src python -m pytest tests/test_chip_advisor.py tests/test_chip_mcp_server.py tests/test_hooks.py -q",
+    "PYTHONPATH=src python -m chip_labs.cli advise \"stabilize packaging and preserve hook compatibility\" --domain chip-labs --output research/meta/advise_output_phase7d_2026-03-21.json"
+  ],
+  "follow_up": [
+    "Decide whether unhinted advisory ranking also needs a stronger portfolio filter.",
+    "Keep explicit-domain behavior grounded in real outputs instead of just unit tests."
+  ]
+}

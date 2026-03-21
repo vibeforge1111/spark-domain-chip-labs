@@ -9,27 +9,6 @@
       "source_chip": "domain-chip-labs"
     },
     {
-      "claim": "Test hook:proof_founder with proof_quality.",
-      "confidence": "high",
-      "relevance": 0.1,
-      "guidance_type": "informs",
-      "source_chip": "content"
-    },
-    {
-      "claim": "Run Belief proof-hook-founder",
-      "confidence": "medium",
-      "relevance": 0.1,
-      "guidance_type": "informs",
-      "source_chip": "content"
-    },
-    {
-      "claim": "Run Belief hook-proof_founder-proof_quality",
-      "confidence": "medium",
-      "relevance": 0.1,
-      "guidance_type": "informs",
-      "source_chip": "content"
-    },
-    {
       "claim": "Once the serving namespace owns intelligence_server, the advisory and context-injection modules can move behind the same boundary with compatibility wrappers.",
       "confidence": "medium",
       "relevance": 0.087,
@@ -70,16 +49,33 @@
       "relevance": 0.08,
       "guidance_type": "supports",
       "source_chip": "domain-chip-labs"
+    },
+    {
+      "claim": "After intelligence, advisory, context injection, and MCP all sit behind the serving namespace, the runtime can move behind the same boundary with a compatibility wrapper.",
+      "confidence": "medium",
+      "relevance": 0.077,
+      "guidance_type": "supports",
+      "source_chip": "domain-chip-labs"
+    },
+    {
+      "claim": "Path compatibility is part of product correctness, not a secondary documentation concern.",
+      "confidence": "medium",
+      "relevance": 0.059,
+      "guidance_type": "informs",
+      "source_chip": "domain-chip-labs"
+    },
+    {
+      "claim": "The lab's moat compounds where rubric discipline, packet quality, and portfolio history intersect.",
+      "confidence": "medium",
+      "relevance": 0.053,
+      "guidance_type": "informs",
+      "source_chip": "domain-chip-labs"
     }
   ],
   "contradictions": [],
-  "uncertainty_areas": [
-    "content: no evidence in realworld_validated"
-  ],
-  "trajectory_context": "content: improving (74\u219292); domain-chip-agentic-marketing: declining (26\u219224)",
+  "uncertainty_areas": [],
+  "trajectory_context": "No trajectory data available",
   "chips_consulted": [
-    "domain-chip-labs",
-    "content",
-    "domain-chip-agentic-marketing"
+    "domain-chip-labs"
   ]
 }

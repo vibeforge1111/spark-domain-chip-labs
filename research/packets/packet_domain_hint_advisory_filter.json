@@ -1,0 +1,5 @@
+{
+  "claim": "An explicit advisory domain hint should constrain candidate chips instead of acting only as extra free-text query terms.",
+  "mechanism": "The advisory selector now filters the portfolio to chips whose domain/name matches the full hint or all of its tokens before relevance scoring. That keeps packaging-focused `chip-labs` advisories from consulting other `domain-chip-*` repos just because they share the generic token `chip`.",
+  "boundary": "This only tightens the explicit-domain-hint path. Unhinted advisory ranking still depends on the broader relevance heuristic."
+}

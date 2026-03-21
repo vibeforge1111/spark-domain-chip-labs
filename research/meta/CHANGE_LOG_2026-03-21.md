@@ -943,3 +943,38 @@ The runtime fix needed a real operating proof point. Without a post-fix serving 
 ### Notes
 
 - This tranche proves the local-serving repair and isolates the next serving problem to advisory ranking quality rather than active-workspace discovery.
+
+## Follow-On Tranche: Phase 8 Domain-Hint Advisory Filter
+
+### Files Changed
+
+- `src/chip_labs/intelligence_serving/chip_advisor.py`
+- `tests/test_chip_advisor.py`
+- `research/meta/advise_output_phase7d_2026-03-21.json`
+- `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.json`
+- `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.md`
+- `research/meta/runs.jsonl`
+- `research/packets/packet_domain_hint_advisory_filter.json`
+- `research/meta/REQUEST_PACKET_2026-03-21_phase8_domain_hint_advisory_filter.json`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/meta/CHANGE_LOG_2026-03-21.md`
+- `research/meta/DIFF_SUMMARY_2026-03-21.md`
+
+### Why
+
+The repo-local serving validation exposed one remaining weakness: even with an explicit `chip-labs` domain hint, advisory ranking still consulted other `domain-chip-*` repos because the selector treated the generic token `chip` as enough to match.
+
+### What Changed
+
+- Made explicit domain hints constrain candidate chips before relevance scoring
+- Added unit coverage proving the hinted path filters unrelated chips
+- Re-ran the real `advise` command and updated the serving validation artifacts to show the cleaned consulted set
+
+### Verification
+
+- `PYTHONPATH=src python -m pytest tests/test_chip_advisor.py tests/test_chip_mcp_server.py tests/test_hooks.py -q`
+- `PYTHONPATH=src python -m chip_labs.cli advise "stabilize packaging and preserve hook compatibility" --domain chip-labs --output research/meta/advise_output_phase7d_2026-03-21.json`
+
+### Notes
+
+- This tranche tightens only the explicit domain-hint path. Unhinted advisory behavior is intentionally left for a later pass.

@@ -641,3 +641,31 @@
 
 - Convert the workspace-serving repair into ledger-visible operating history
 - Narrow the next serving tranche to advisory ranking quality instead of active-workspace discovery
+
+## Follow-On Tranche: Phase 8 Domain-Hint Advisory Filter
+
+## `src/chip_labs/intelligence_serving/chip_advisor.py`
+
+- Made explicit domain hints filter the candidate portfolio before advisory relevance scoring
+- Tightened token matching so `chip-labs` no longer matches unrelated `domain-chip-*` repos just because they share the generic token `chip`
+
+## `tests/test_chip_advisor.py`
+
+- Strengthened the domain-hint selection test and added a regression test for filtering unrelated chips
+
+## `research/meta/advise_output_phase7d_2026-03-21.json`
+
+- Captured a fresh explicit-domain advisory output showing `chips_consulted = ["domain-chip-labs"]`
+
+## `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.json`, `research/meta/WORKSPACE_SERVING_VALIDATION_2026-03-21_phase8.md`
+
+- Updated the repo-local serving validation summary to reflect that the explicit hinted advisory path is now clean
+
+## `research/packets/packet_domain_hint_advisory_filter.json`
+
+- Added a packet documenting why domain hints should constrain candidate chips instead of acting as loose free-text bias
+
+## Expected Effect
+
+- Remove off-domain consultation from explicit `chip-labs` advisory calls
+- Reduce the remaining serving-product uncertainty to unhinted advisory ranking only

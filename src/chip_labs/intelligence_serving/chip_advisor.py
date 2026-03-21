@@ -81,6 +81,7 @@ def _select_chips(
     query: str,
     portfolio: list["ChipHandle"],
     max_chips: int = 3,
+    min_relevance: float = 0.03,
 ) -> list["ChipHandle"]:
     """Select chips most relevant to *query* using Jaccard similarity."""
     if not portfolio:
@@ -100,7 +101,30 @@ def _select_chips(
         scored.append((relevance, chip))
 
     scored.sort(key=lambda x: x[0], reverse=True)
-    return [chip for _, chip in scored[:max_chips]]
+    filtered = [(score, chip) for score, chip in scored if score >= min_relevance]
+    return [chip for _, chip in filtered[:max_chips]]
+
+
+def _filter_portfolio_by_domain_hint(
+    portfolio: list["ChipHandle"],
+    domain_hint: str | None,
+) -> list["ChipHandle"]:
+    """Restrict candidate chips when the caller provided a domain hint."""
+    if not portfolio or not domain_hint:
+        return portfolio
+
+    hint_tokens = {token for token in domain_hint.lower().replace("_", "-").split("-") if token}
+    filtered: list["ChipHandle"] = []
+    for chip in portfolio:
+        haystack = f"{chip.domain} {chip.chip_name}".lower().replace("_", "-")
+        if domain_hint.lower() in haystack:
+            filtered.append(chip)
+            continue
+        haystack_tokens = {token for token in haystack.replace("-", " ").split() if token}
+        if hint_tokens and hint_tokens <= haystack_tokens:
+            filtered.append(chip)
+
+    return filtered or portfolio
 
 
 def _get_intel(chip: "ChipHandle") -> ChipIntelligence | None:
@@ -207,7 +231,8 @@ def advise_pre_action(
     if request.domain_hint:
         query = f"{request.domain_hint} {query}"
 
-    selected = _select_chips(query, portfolio, max_chips=3)
+    candidate_portfolio = _filter_portfolio_by_domain_hint(portfolio, request.domain_hint)
+    selected = _select_chips(query, candidate_portfolio, max_chips=3)
     if not selected:
         return AdvisoryResponse(verdict="proceed")
 
@@ -287,7 +312,8 @@ def advise_post_action(
     if not portfolio:
         return {"feedback_written": False, "reason": "empty portfolio"}
 
-    selected = _select_chips(request.action_description, portfolio, max_chips=1)
+    candidate_portfolio = _filter_portfolio_by_domain_hint(portfolio, request.domain_hint)
+    selected = _select_chips(request.action_description, candidate_portfolio, max_chips=1)
     if not selected:
         return {"feedback_written": False, "reason": "no relevant chips"}
 

@@ -171,7 +171,45 @@ class TestAdvisePreAction:
             domain_hint="startup",
         )
         response = advise_pre_action(request, portfolio=portfolio)
-        assert "startup-yc" in response.chips_consulted
+        assert response.chips_consulted == ["startup-yc"]
+
+    def test_domain_hint_filters_unrelated_chips(self) -> None:
+        portfolio = [
+            MockChipHandle(
+                chip_name="domain-chip-labs",
+                domain="chip-research",
+                intelligence=_make_intel(
+                    "domain-chip-labs",
+                    "chip-research",
+                    doctrines=[
+                        {
+                            "claim": "Runtime and CLI symmetry is required for trustworthy hook execution",
+                            "confidence": "medium",
+                        }
+                    ],
+                ),
+            ),
+            MockChipHandle(
+                chip_name="content",
+                domain="content",
+                intelligence=_make_intel(
+                    "content",
+                    "content",
+                    doctrines=[
+                        {
+                            "claim": "Test hook proof founder quality",
+                            "confidence": "high",
+                        }
+                    ],
+                ),
+            ),
+        ]
+        request = AdvisoryRequest(
+            action_description="stabilize packaging and preserve hook compatibility",
+            domain_hint="chip-labs",
+        )
+        response = advise_pre_action(request, portfolio=portfolio)
+        assert response.chips_consulted == ["domain-chip-labs"]
 
     def test_trajectory_context_present(self) -> None:
         portfolio = _make_portfolio()
