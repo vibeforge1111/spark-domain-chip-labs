@@ -113,3 +113,12 @@ MiroFish enterprise cluster playoff:
 - remove proposal and discovery-lane asymmetry from the cluster
 - rank first and second cluster priority under the cleanest comparison
 - confirm that maintained benchmark admission is still premature
+
+## Batch 14
+
+MiroFish enterprise cluster diagnostic:
+
+- add a diagnostic brief command for saved hybrid runs
+- measure where enterprise domains lose conversion across the funnel
+- show that questionnaire and renewal mainly leak after choice
+- show that RFP mainly fails before choice, at interest-to-choice conversion

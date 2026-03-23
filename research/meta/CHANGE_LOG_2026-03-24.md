@@ -558,3 +558,46 @@ The proposal tranche still mixed roles inside the enterprise cluster. The repo n
 - In the cluster playoff, `startup-yc` still beats the entire enterprise cluster on builder ensemble adoption.
 - `ai-security-questionnaire-copilot` wins the cluster on flagship choice signal and finishes only slightly behind `ai-renewal-risk-briefing-copilot` on ensemble adoption.
 - `ai-rfp-response-copilot` falls to the bottom of the enterprise cluster under symmetric conditions.
+
+## Tranche: MiroFish Enterprise Cluster Diagnostic
+
+### Files Changed
+
+- `src/chip_labs/mirofish/hybrid.py`
+- `src/chip_labs/cli.py`
+- `docs/MIROFISH_DIAGNOSTICS.md`
+- `research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_cluster_diagnostic.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The cluster playoff ranked the enterprise domains, but the next tranche required a methodology read explaining where the conversion failures actually happen.
+
+### What Changed
+
+- Added a run-diagnostic brief builder on top of saved hybrid runs
+- Added a `mirofish-run-diagnostic` CLI command
+- Documented the diagnostic workflow
+- Saved a focused diagnostic brief for the enterprise cluster playoff
+- Saved a note concluding that:
+  - questionnaire and renewal mainly fail between choice and retained adoption
+  - RFP mainly fails between interest and actual choice
+  - compliance evidence suffers from both conversion friction and below-median ensemble adoption
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-run-diagnostic` on the enterprise cluster playoff run with the four enterprise domains
+- Run `python -m pytest tests/test_trend_prediction.py -q`
+- Inspect that:
+  - benchmark median reference is present
+  - each focus domain has diagnostic tags and summaries
+  - the note distinguishes conversion-stage bottlenecks across the cluster
+
+### Notes
+
+- The enterprise cluster does not have one generic weakness.
+- Questionnaire and renewal need better choice-to-retention persistence.
+- RFP and compliance evidence need better interest-to-choice conversion before admission should be reconsidered.

@@ -1,0 +1,59 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_enterprise_cluster_diagnostic",
+  "created_at": "2026-03-24",
+  "scope": "Add a diagnostic brief layer for saved MiroFish runs and apply it to the enterprise cluster playoff",
+  "decision_context": {
+    "prior_state": "The enterprise cluster playoff produced a stable ranking, but the next step needed a methodology read explaining why questionnaire, renewal, compliance evidence, and RFP were failing in different ways.",
+    "decision": "Add a run-diagnostic brief command that computes conversion and retention bottlenecks from a saved hybrid run, then emit a focused diagnostic packet for the enterprise cluster playoff.",
+    "why_now": "The next tranche should be model tuning, and tuning should be driven by explicit bottleneck tags rather than qualitative rereads of raw run JSON."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/hybrid.py",
+      "purpose": "Adds run-diagnostic brief generation for saved hybrid runs."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Exposes the run-diagnostic builder as a CLI command."
+    },
+    {
+      "path": "docs/MIROFISH_DIAGNOSTICS.md",
+      "purpose": "Documents how to build and interpret diagnostic briefs."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_2026-03-24.json",
+      "purpose": "Stores the diagnostic brief for the enterprise cluster playoff."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the enterprise cluster bottlenecks in operator-readable form."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_cluster_diagnostic.json",
+      "purpose": "Captures the request and verification plan for the diagnostic tranche."
+    }
+  ],
+  "planned_steps": [
+    "Add a run-diagnostic brief builder",
+    "Expose it through the CLI",
+    "Document the diagnostic workflow",
+    "Run the diagnostic on the enterprise cluster playoff",
+    "Save the methodology note and update the transparent logs"
+  ],
+  "verification": {
+    "commands": [
+      "python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_2026-03-24.json",
+      "python -m pytest tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The diagnostic packet exposes benchmark median reference",
+      "Each focused enterprise domain has diagnostic tags and summaries",
+      "The note distinguishes choice-to-retention problems from interest-to-choice problems"
+    ]
+  },
+  "guardrails": [
+    "Diagnostics do not change benchmark membership",
+    "Diagnostics do not auto-tune the model",
+    "Keep the output in exploratory_frontier and use it only to guide the next tuning tranche"
+  ]
+}

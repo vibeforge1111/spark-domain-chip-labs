@@ -392,6 +392,90 @@ def build_promotion_brief(
     }
 
 
+def build_run_diagnostic_brief(
+    run_packet: dict[str, Any],
+    focus_domain_ids: list[str] | None = None,
+) -> dict[str, Any]:
+    """Build a bottleneck-focused diagnostic brief from a saved hybrid run packet."""
+    prediction_map = {
+        item.get("domain_id"): item
+        for item in run_packet.get("domain_predictions", [])
+        if item.get("domain_id")
+    }
+    ensemble_map = {
+        item.get("domain_id"): item
+        for item in run_packet.get("builder_ensemble_summary", [])
+        if item.get("domain_id")
+    }
+
+    benchmark_ids = list(run_packet.get("benchmark_domain_ids", []))
+    focus_ids = focus_domain_ids or list(run_packet.get("promotion_review_domain_ids", [])) or list(run_packet.get("discovered_domain_ids", []))
+
+    benchmark_rows = [
+        _merged_domain_metrics(domain_id, prediction_map, ensemble_map)
+        for domain_id in benchmark_ids
+        if domain_id in prediction_map or domain_id in ensemble_map
+    ]
+    benchmark_mean_values = [row.get("mean_adoption", 0.0) for row in benchmark_rows]
+    benchmark_median = _median(benchmark_mean_values)
+
+    focus_rows: list[dict[str, Any]] = []
+    for domain_id in focus_ids:
+        row = _merged_domain_metrics(domain_id, prediction_map, ensemble_map)
+        if not row:
+            continue
+        row["attention_to_ensemble_gap"] = round(row.get("agent_choice_signal", 0.0) - row.get("mean_adoption", 0.0), 4)
+        row["interest_to_choice_gap"] = round(row.get("peak_interest_probability", 0.0) - row.get("agent_choice_signal", 0.0), 4)
+        row["flagship_retention_gap"] = round(row.get("agent_choice_signal", 0.0) - row.get("adoption_probability", 0.0), 4)
+        row["trial_to_adoption_gap"] = round(max(0.0, row.get("mean_trial", 0.0) - row.get("mean_adoption", 0.0)), 4)
+        row["benchmark_gap"] = round(row.get("mean_adoption", 0.0) - benchmark_median, 4)
+        row["diagnostic_tags"] = _diagnostic_tags(row, benchmark_median)
+        row["diagnostic_summary"] = _diagnostic_summary(row, benchmark_median)
+        focus_rows.append(row)
+
+    focus_rows.sort(
+        key=lambda item: (
+            item.get("benchmark_gap", 0.0),
+            item.get("mean_adoption", 0.0),
+            -item.get("attention_to_ensemble_gap", 0.0),
+        ),
+        reverse=True,
+    )
+
+    benchmark_leaders = sorted(benchmark_rows, key=lambda item: item.get("mean_adoption", 0.0), reverse=True)[:3]
+    return {
+        "packet_kind": "mirofish_run_diagnostic_brief",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "source_batch_id": run_packet.get("source_batch_id"),
+        "source_run_created_at": run_packet.get("created_at"),
+        "evidence_lane": "exploratory_frontier",
+        "focus_domain_ids": [row["domain_id"] for row in focus_rows],
+        "benchmark_domain_ids": benchmark_ids,
+        "benchmark_summary": {
+            "benchmark_mean_adoption_median": round(benchmark_median, 4),
+            "benchmark_top_ensemble_domains": [
+                {
+                    "domain_id": row["domain_id"],
+                    "mean_adoption": row.get("mean_adoption", 0.0),
+                    "agent_choice_signal": row.get("agent_choice_signal", 0.0),
+                }
+                for row in benchmark_leaders
+            ],
+        },
+        "focus_diagnostics": focus_rows,
+        "cluster_readout": {
+            "strongest_attention_domain": _top_focus_domain(focus_rows, "agent_choice_signal"),
+            "strongest_ensemble_domain": _top_focus_domain(focus_rows, "mean_adoption"),
+            "worst_attention_to_ensemble_gap_domain": _top_focus_domain(focus_rows, "attention_to_ensemble_gap"),
+            "largest_trial_to_adoption_gap_domain": _top_focus_domain(focus_rows, "trial_to_adoption_gap"),
+        },
+        "governance_note": (
+            "Diagnostic briefs explain bottlenecks in exploratory MiroFish runs. "
+            "They do not change benchmark membership or auto-tune the model."
+        ),
+    }
+
+
 def discovery_candidate_to_opportunity(candidate: dict[str, Any]) -> dict[str, Any]:
     """Convert a canonical discovery candidate into a conservative MiroFish opportunity."""
     scores = infer_discovery_scores(candidate)
@@ -615,6 +699,49 @@ def _merged_domain_metrics(
         "mean_churn": ensemble.get("mean_churn", 0.0),
         "confidence_width": ensemble.get("confidence_width", 0.0),
     }
+
+
+def _diagnostic_tags(row: dict[str, Any], benchmark_median: float) -> list[str]:
+    tags: list[str] = []
+    if row.get("mean_adoption", 0.0) < benchmark_median:
+        tags.append("below_benchmark_median")
+    if row.get("attention_to_ensemble_gap", 0.0) >= 0.12:
+        tags.append("attention_retention_drop")
+    if row.get("interest_to_choice_gap", 0.0) >= 0.55:
+        tags.append("interest_to_choice_friction")
+    if row.get("trial_to_adoption_gap", 0.0) >= 0.02:
+        tags.append("trial_to_retention_collapse")
+    if row.get("mean_churn", 0.0) >= 0.008:
+        tags.append("churn_drag")
+    if row.get("agent_choice_signal", 0.0) >= 0.18 and row.get("mean_adoption", 0.0) >= benchmark_median:
+        tags.append("strong_candidate")
+    return tags
+
+
+def _diagnostic_summary(row: dict[str, Any], benchmark_median: float) -> list[str]:
+    summary: list[str] = []
+    if row.get("mean_adoption", 0.0) < benchmark_median:
+        summary.append("Ensemble adoption is still below the current benchmark median.")
+    else:
+        summary.append("Ensemble adoption clears the current benchmark median.")
+    if row.get("attention_to_ensemble_gap", 0.0) >= 0.12:
+        summary.append("Agents select this domain, but the run loses too much between choice and retained ensemble adoption.")
+    if row.get("interest_to_choice_gap", 0.0) >= 0.55:
+        summary.append("Interest converts weakly into actual agent choice.")
+    if row.get("trial_to_adoption_gap", 0.0) >= 0.02:
+        summary.append("Trial behavior is not converting into retained adoption.")
+    if row.get("mean_churn", 0.0) >= 0.008:
+        summary.append("Churn is high enough to drag the ensemble result down.")
+    if not summary:
+        summary.append("No single dominant bottleneck exceeded the current diagnostic thresholds.")
+    return summary
+
+
+def _top_focus_domain(rows: list[dict[str, Any]], metric: str) -> str | None:
+    if not rows:
+        return None
+    ordered = sorted(rows, key=lambda item: item.get(metric, 0.0), reverse=True)
+    return ordered[0].get("domain_id")
 
 
 def _promotion_recommendation(row: dict[str, Any], benchmark_floor: float) -> str:

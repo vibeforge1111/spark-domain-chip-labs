@@ -1,0 +1,154 @@
+{
+  "packet_kind": "mirofish_run_diagnostic_brief",
+  "created_at": "2026-03-23T22:28:27.713616+00:00",
+  "source_batch_id": "mirofish-discovery-batch-enterprise-benchmark-proposal-2026-03-24",
+  "source_run_created_at": "2026-03-23T22:24:49.213621+00:00",
+  "evidence_lane": "exploratory_frontier",
+  "focus_domain_ids": [
+    "ai-renewal-risk-briefing-copilot",
+    "ai-security-questionnaire-copilot",
+    "ai-compliance-evidence-copilot",
+    "ai-rfp-response-copilot"
+  ],
+  "benchmark_domain_ids": [
+    "compliance-shield",
+    "legal-ops",
+    "startup-yc",
+    "cursor-copilot",
+    "ai-compliance-evidence-copilot",
+    "ai-security-questionnaire-copilot",
+    "ai-rfp-response-copilot",
+    "ai-renewal-risk-briefing-copilot"
+  ],
+  "benchmark_summary": {
+    "benchmark_mean_adoption_median": 0.021,
+    "benchmark_top_ensemble_domains": [
+      {
+        "domain_id": "cursor-copilot",
+        "mean_adoption": 0.0489,
+        "agent_choice_signal": 0.2334
+      },
+      {
+        "domain_id": "startup-yc",
+        "mean_adoption": 0.0418,
+        "agent_choice_signal": 0.2334
+      },
+      {
+        "domain_id": "ai-renewal-risk-briefing-copilot",
+        "mean_adoption": 0.0267,
+        "agent_choice_signal": 0.2
+      }
+    ]
+  },
+  "focus_diagnostics": [
+    {
+      "domain_id": "ai-renewal-risk-briefing-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.8667,
+      "agent_choice_signal": 0.2,
+      "consensus_score": 1.0,
+      "mean_adoption": 0.0267,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0032,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.1733,
+      "interest_to_choice_gap": 0.6667,
+      "flagship_retention_gap": 0.2,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": 0.0057,
+      "diagnostic_tags": [
+        "attention_retention_drop",
+        "interest_to_choice_friction",
+        "strong_candidate"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Agents select this domain, but the run loses too much between choice and retained ensemble adoption.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "ai-security-questionnaire-copilot",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.8667,
+      "agent_choice_signal": 0.2667,
+      "consensus_score": 0.9667,
+      "mean_adoption": 0.0258,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0133,
+      "attention_to_ensemble_gap": 0.2409,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.2334,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": 0.0048,
+      "diagnostic_tags": [
+        "attention_retention_drop",
+        "interest_to_choice_friction",
+        "strong_candidate"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Agents select this domain, but the run loses too much between choice and retained ensemble adoption.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "ai-compliance-evidence-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.8333,
+      "agent_choice_signal": 0.1667,
+      "consensus_score": 1.0,
+      "mean_adoption": 0.0163,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0003,
+      "confidence_width": 0.0223,
+      "attention_to_ensemble_gap": 0.1504,
+      "interest_to_choice_gap": 0.6666,
+      "flagship_retention_gap": 0.1667,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0048,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "attention_retention_drop",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Agents select this domain, but the run loses too much between choice and retained ensemble adoption.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "ai-rfp-response-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 1.0,
+      "mean_adoption": 0.0145,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0032,
+      "confidence_width": 0.0133,
+      "attention_to_ensemble_gap": 0.0188,
+      "interest_to_choice_gap": 0.7,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0065,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    }
+  ],
+  "cluster_readout": {
+    "strongest_attention_domain": "ai-security-questionnaire-copilot",
+    "strongest_ensemble_domain": "ai-renewal-risk-briefing-copilot",
+    "worst_attention_to_ensemble_gap_domain": "ai-security-questionnaire-copilot",
+    "largest_trial_to_adoption_gap_domain": "ai-renewal-risk-briefing-copilot"
+  },
+  "governance_note": "Diagnostic briefs explain bottlenecks in exploratory MiroFish runs. They do not change benchmark membership or auto-tune the model."
+}
