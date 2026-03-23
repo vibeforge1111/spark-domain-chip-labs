@@ -50,6 +50,19 @@ python -m chip_labs.cli mirofish-hybrid-spec \
 
 That removes the nominated candidate from the discovery breakout lane and treats it as a benchmark-review candidate for the next run.
 
+To draft a maintained benchmark proposal without editing the benchmark library yet, move a discovered domain into the provisional benchmark lane:
+
+```bash
+python -m chip_labs.cli mirofish-hybrid-spec \
+  --input research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_REVIEW_RESULT_2026-03-24.json \
+  --benchmarks compliance-shield,legal-ops,startup-yc,cursor-copilot \
+  --proposed-benchmarks ai-rfp-response-copilot \
+  --promote-domains ai-security-questionnaire-copilot \
+  --output research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_BENCHMARK_PROPOSAL_2026-03-24.json
+```
+
+That treats the nominated domain as a provisional benchmark member for evaluation while preserving the rule that maintained benchmark membership still requires explicit review.
+
 ## Decision Rules
 
 The brief currently uses a conservative operator heuristic:

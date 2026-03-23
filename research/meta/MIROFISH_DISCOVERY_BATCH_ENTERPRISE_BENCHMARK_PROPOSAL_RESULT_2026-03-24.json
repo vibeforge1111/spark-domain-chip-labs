@@ -1,0 +1,148 @@
+{
+    "packet_kind":  "mirofish_discovery_batch",
+    "evidence_lane":  "exploratory_frontier",
+    "created_at":  "2026-03-23T22:22:00.9399731Z",
+    "batch_id":  "mirofish-discovery-batch-enterprise-benchmark-proposal-2026-03-24",
+    "summary":  {
+                    "raw_count":  4,
+                    "accepted_count":  4,
+                    "merged_count":  0,
+                    "rejected_count":  0,
+                    "clear_count":  4,
+                    "proto_count":  0
+                },
+    "accepted_candidates":  [
+                                {
+                                    "label":  "AI Compliance Evidence Copilot",
+                                    "description":  "Collects recurring audit artifacts, maps controls, and prepares evidence packets for compliance reviews.",
+                                    "specialization_surface":  "control mapping, evidence collection, and audit packet assembly",
+                                    "mastery_surface":  "improving repeated compliance evidence operations across audits",
+                                    "user_value_loop":  "collect artifacts, map controls, prepare evidence packet, learn from auditor gaps",
+                                    "domain_tags":  [
+                                                        "compliance",
+                                                        "enterprise-ops"
+                                                    ],
+                                    "evidence_sources":  [
+                                                             "community",
+                                                             "vc_landscape"
+                                                         ],
+                                    "evidence_summary":  "Repeated enterprise pain exists around turning scattered operational artifacts into reusable compliance evidence.",
+                                    "adjacent_domains":  [
+                                                             "compliance-shield",
+                                                             "legal-ops"
+                                                         ],
+                                    "duplicate_aliases":  [
+
+                                                          ],
+                                    "confidence_read":  "medium",
+                                    "promotion_status":  "candidate",
+                                    "raw_observation":  "The repeated loop is evidence readiness across multiple audits and reviews.",
+                                    "domain_id":  "ai-compliance-evidence-copilot",
+                                    "classification":  "clear_domain_chip",
+                                    "classification_reasons":  [
+                                                                   "Has domain shape, specialization surface, mastery surface, and evidence summary."
+                                                               ]
+                                },
+                                {
+                                    "label":  "AI Security Questionnaire Copilot",
+                                    "description":  "Helps teams answer repeated security questionnaires with reusable evidence, control mapping, and answer updates.",
+                                    "specialization_surface":  "security answer drafting, evidence retrieval, and procurement response packaging",
+                                    "mastery_surface":  "improving repeated questionnaire response accuracy and speed",
+                                    "user_value_loop":  "retrieve prior answers, update evidence, submit questionnaire, learn from follow-up requests",
+                                    "domain_tags":  [
+                                                        "security",
+                                                        "enterprise-sales"
+                                                    ],
+                                    "evidence_sources":  [
+                                                             "community",
+                                                             "github"
+                                                         ],
+                                    "evidence_summary":  "Repeated enterprise sales friction appears around security review loops, especially where answers must be maintained across deals.",
+                                    "adjacent_domains":  [
+                                                             "AI RFP Response Copilot",
+                                                             "compliance-shield"
+                                                         ],
+                                    "duplicate_aliases":  [
+
+                                                          ],
+                                    "confidence_read":  "medium",
+                                    "promotion_status":  "candidate",
+                                    "raw_observation":  "This is a repeated enterprise response loop with its own evidence surface.",
+                                    "domain_id":  "ai-security-questionnaire-copilot",
+                                    "classification":  "clear_domain_chip",
+                                    "classification_reasons":  [
+                                                                   "Has domain shape, specialization surface, mastery surface, and evidence summary."
+                                                               ]
+                                },
+                                {
+                                    "label":  "AI RFP Response Copilot",
+                                    "description":  "Helps B2B teams assemble, tailor, and learn from repeated RFP and security questionnaire responses.",
+                                    "specialization_surface":  "response drafting, knowledge retrieval, and enterprise packaging",
+                                    "mastery_surface":  "improving repeated enterprise response accuracy and speed",
+                                    "user_value_loop":  "retrieve evidence, draft response, submit package, learn from procurement feedback",
+                                    "domain_tags":  [
+                                                        "enterprise-sales",
+                                                        "compliance"
+                                                    ],
+                                    "evidence_sources":  [
+                                                             "community",
+                                                             "github"
+                                                         ],
+                                    "evidence_summary":  "Repeated demand appears around high-friction enterprise response loops, especially where teams reuse prior answers.",
+                                    "adjacent_domains":  [
+                                                             "compliance-shield",
+                                                             "sales-copilot"
+                                                         ],
+                                    "duplicate_aliases":  [
+
+                                                          ],
+                                    "confidence_read":  "medium",
+                                    "promotion_status":  "candidate",
+                                    "raw_observation":  "This is a recurring enterprise operating loop rather than one-off document generation.",
+                                    "domain_id":  "ai-rfp-response-copilot",
+                                    "classification":  "clear_domain_chip",
+                                    "classification_reasons":  [
+                                                                   "Has domain shape, specialization surface, mastery surface, and evidence summary."
+                                                               ]
+                                },
+                                {
+                                    "label":  "AI Renewal Risk Briefing Copilot",
+                                    "description":  "Builds recurring renewal-risk briefs from usage, support, and stakeholder signals before customer success reviews.",
+                                    "specialization_surface":  "renewal-risk synthesis and account review preparation",
+                                    "mastery_surface":  "improving repeated renewal intervention quality over account cycles",
+                                    "user_value_loop":  "collect account signals, draft renewal brief, run review, refine intervention playbook",
+                                    "domain_tags":  [
+                                                        "customer-success",
+                                                        "sales"
+                                                    ],
+                                    "evidence_sources":  [
+                                                             "community",
+                                                             "github"
+                                                         ],
+                                    "evidence_summary":  "Customer teams repeatedly need a compounding risk-readout loop before renewals, not just static dashboards.",
+                                    "adjacent_domains":  [
+                                                             "AI Sales Call Prep Copilot",
+                                                             "AI Customer Research Synthesizer"
+                                                         ],
+                                    "duplicate_aliases":  [
+
+                                                          ],
+                                    "confidence_read":  "medium",
+                                    "promotion_status":  "candidate",
+                                    "raw_observation":  "This is a repeated account-risk preparation domain.",
+                                    "domain_id":  "ai-renewal-risk-briefing-copilot",
+                                    "classification":  "clear_domain_chip",
+                                    "classification_reasons":  [
+                                                                   "Has domain shape, specialization surface, mastery surface, and evidence summary."
+                                                               ]
+                                }
+                            ],
+    "merged_candidates":  [
+
+                          ],
+    "rejected_candidates":  [
+
+                            ],
+    "source_batch_id":  "mirofish-discovery-batch-focused-2026-03-24",
+    "narrowing_note":  "Subset of focused enterprise-response candidates for provisional benchmark proposal evaluation."
+}

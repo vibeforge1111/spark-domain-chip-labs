@@ -1,0 +1,499 @@
+{
+  "packet_kind": "mirofish_hybrid_evaluation_run",
+  "created_at": "2026-03-23T22:22:35.372870+00:00",
+  "source_batch_id": "mirofish-discovery-batch-enterprise-benchmark-proposal-2026-03-24",
+  "source_spec_created_at": "2026-03-23T22:22:09.899179+00:00",
+  "evidence_lane": "exploratory_frontier",
+  "seed": 42,
+  "harness": {
+    "max_rounds": 20,
+    "flagship_count_per_type": 30,
+    "flagship_agent_count": 450,
+    "ensemble_runs": 15,
+    "ensemble_count_per_type": 15,
+    "ensemble_agent_count": 225,
+    "persona_types": 15,
+    "read_order": [
+      "agent_choice_signal",
+      "peak_interest_probability",
+      "final_adoption_rate"
+    ]
+  },
+  "scenario": {
+    "scenario_id": "scenario-mirofish-hybrid-discovery",
+    "label": "mirofish-hybrid-discovery",
+    "shocks": [
+      {
+        "shock_id": "shock-breakout_tool-r4",
+        "template": "breakout_tool",
+        "signal_type": "producthunt_launch",
+        "label": "Breakout Tool Launch",
+        "strength": 0.9,
+        "effect": "positive",
+        "affected_persona_types": [
+          "opportunity_hunter",
+          "developer",
+          "tool_maker",
+          "ai_newcomer"
+        ],
+        "affects_domains": [
+          "ai-compliance-evidence-copilot",
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "inject_at_round": 4,
+        "description": "A tool goes viral and creates massive awareness for the domain."
+      },
+      {
+        "shock_id": "shock-open_source_release-r7",
+        "template": "open_source_release",
+        "signal_type": "github_trending",
+        "label": "Free Open Source Model Drop",
+        "strength": 0.85,
+        "effect": "positive",
+        "affected_persona_types": [
+          "developer",
+          "tool_maker",
+          "student_builder",
+          "ai_newcomer"
+        ],
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "inject_at_round": 7,
+        "description": "Major open source AI model released free, lowers barrier to entry.",
+        "decay_curve": "s_curve",
+        "peak_round": 4
+      }
+    ],
+    "shock_count": 2
+  },
+  "discovered_domain_ids": [
+    "ai-compliance-evidence-copilot",
+    "ai-renewal-risk-briefing-copilot"
+  ],
+  "proposed_benchmark_domain_ids": [
+    "ai-rfp-response-copilot"
+  ],
+  "promotion_review_domain_ids": [
+    "ai-security-questionnaire-copilot"
+  ],
+  "benchmark_domain_ids": [
+    "compliance-shield",
+    "legal-ops",
+    "startup-yc",
+    "cursor-copilot",
+    "ai-rfp-response-copilot",
+    "ai-security-questionnaire-copilot"
+  ],
+  "top_line": {
+    "top_choice_signal_domain": "ai-compliance-evidence-copilot",
+    "top_choice_signal": 0.2667,
+    "top_final_adoption_domain": "ai-compliance-evidence-copilot",
+    "top_final_adoption": 0.0,
+    "top_ensemble_domain": "cursor-copilot",
+    "top_ensemble_mean_adoption": 0.0563
+  },
+  "domain_predictions": [
+    {
+      "domain_id": "ai-compliance-evidence-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0667,
+      "peak_active_probability": 0.2667,
+      "peak_interest_probability": 0.8333,
+      "agent_choice_signal": 0.2667,
+      "peak_active_round": 15,
+      "peak_interest_round": 6,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "Agents showed real try-out behavior before retention normalized",
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption",
+        "Many agents tried it, but the funnel lost them before retention"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "ai-renewal-risk-briefing-copilot",
+      "adoption_probability": 0.0333,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0667,
+      "peak_active_probability": 0.2334,
+      "peak_interest_probability": 0.9333,
+      "agent_choice_signal": 0.2334,
+      "peak_active_round": 12,
+      "peak_interest_round": 6,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "High retention rate indicates sticky usage pattern",
+        "Agents showed real try-out behavior before retention normalized",
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption",
+        "Many agents tried it, but the funnel lost them before retention"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0333,
+        "enterprise_adoption": 0.0333,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "adoption_probability": 0.1333,
+      "final_active_probability": 0.2,
+      "peak_adoption_probability": 0.1333,
+      "peak_active_probability": 0.2333,
+      "peak_interest_probability": 0.8333,
+      "agent_choice_signal": 0.2333,
+      "peak_active_round": 18,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3,
+      "disagreement_score": 0.7,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.1333,
+        "enterprise_adoption": 0.1,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0333
+      }
+    },
+    {
+      "domain_id": "ai-security-questionnaire-copilot",
+      "adoption_probability": 0.0333,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.1333,
+      "peak_active_probability": 0.2333,
+      "peak_interest_probability": 0.9,
+      "agent_choice_signal": 0.2333,
+      "peak_active_round": 12,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "high",
+      "consensus_score": 0.9667,
+      "disagreement_score": 0.0333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "High consensus indicates clear market demand",
+        "High retention rate indicates sticky usage pattern",
+        "Agents showed real try-out behavior before retention normalized",
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption",
+        "Many agents tried it, but the funnel lost them before retention"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0333,
+        "enterprise_adoption": 0.0333,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "ai-rfp-response-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0667,
+      "peak_active_probability": 0.1334,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.1334,
+      "peak_active_round": 8,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "high",
+      "consensus_score": 1.0,
+      "disagreement_score": 0.0,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "High consensus indicates clear market demand",
+        "Agents showed real try-out behavior before retention normalized",
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption",
+        "Many agents tried it, but the funnel lost them before retention"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "startup-yc",
+      "adoption_probability": 0.0333,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0333,
+      "peak_active_probability": 0.1333,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.1333,
+      "peak_active_round": 8,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "high",
+      "consensus_score": 0.9667,
+      "disagreement_score": 0.0333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "High consensus indicates clear market demand",
+        "High retention rate indicates sticky usage pattern",
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption",
+        "Many agents tried it, but the funnel lost them before retention"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0333,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0333
+      }
+    },
+    {
+      "domain_id": "compliance-shield",
+      "adoption_probability": 0.0333,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0333,
+      "peak_active_probability": 0.1,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.1,
+      "peak_active_round": 15,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "high",
+      "consensus_score": 0.9333,
+      "disagreement_score": 0.0667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "High consensus indicates clear market demand",
+        "High retention rate indicates sticky usage pattern",
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption",
+        "Many agents tried it, but the funnel lost them before retention"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0333,
+        "enterprise_adoption": 0.0333,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "legal-ops",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.1,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.1,
+      "peak_active_round": 13,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "high",
+      "consensus_score": 0.9333,
+      "disagreement_score": 0.0667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "High consensus indicates clear market demand",
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption",
+        "Many agents tried it, but the funnel lost them before retention"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    }
+  ],
+  "cross_domain": {
+    "portfolio_gaps": [
+      "Fewer than 2 domains show strong adoption -- portfolio concentration risk.",
+      "Weak adoption signals for: ai-compliance-evidence-copilot, ai-renewal-risk-briefing-copilot, cursor-copilot, ai-security-questionnaire-copilot, ai-rfp-response-copilot, startup-yc, compliance-shield, legal-ops"
+    ],
+    "synergy_opportunities": [],
+    "simulation_vs_static": [
+      {
+        "domain_id": "ai-compliance-evidence-copilot",
+        "simulation": 0.0,
+        "static": 0.6596,
+        "delta": -0.6596
+      },
+      {
+        "domain_id": "ai-renewal-risk-briefing-copilot",
+        "simulation": 0.0333,
+        "static": 0.6596,
+        "delta": -0.6263
+      },
+      {
+        "domain_id": "cursor-copilot",
+        "simulation": 0.1333,
+        "static": 0.8665,
+        "delta": -0.7332
+      },
+      {
+        "domain_id": "ai-security-questionnaire-copilot",
+        "simulation": 0.0333,
+        "static": 0.6716,
+        "delta": -0.6383
+      },
+      {
+        "domain_id": "ai-rfp-response-copilot",
+        "simulation": 0.0,
+        "static": 0.6716,
+        "delta": -0.6716
+      },
+      {
+        "domain_id": "startup-yc",
+        "simulation": 0.0333,
+        "static": 0.826,
+        "delta": -0.7927
+      },
+      {
+        "domain_id": "compliance-shield",
+        "simulation": 0.0333,
+        "static": 0.6765,
+        "delta": -0.6432
+      },
+      {
+        "domain_id": "legal-ops",
+        "simulation": 0.0,
+        "static": 0.6445,
+        "delta": -0.6445
+      }
+    ],
+    "top_recommendation": "ai-compliance-evidence-copilot"
+  },
+  "builder_ensemble_summary": [
+    {
+      "domain_id": "cursor-copilot",
+      "mean_adoption": 0.0563,
+      "median_adoption": 0.0578,
+      "mean_trial": 0.1322,
+      "mean_churn": 0.0065,
+      "confidence_width": 0.0267,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "ai-renewal-risk-briefing-copilot",
+      "mean_adoption": 0.0373,
+      "median_adoption": 0.04,
+      "mean_trial": 0.0157,
+      "mean_churn": 0.0041,
+      "confidence_width": 0.0222,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "ai-compliance-evidence-copilot",
+      "mean_adoption": 0.037,
+      "median_adoption": 0.0356,
+      "mean_trial": 0.0145,
+      "mean_churn": 0.0021,
+      "confidence_width": 0.0133,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "ai-security-questionnaire-copilot",
+      "mean_adoption": 0.0326,
+      "median_adoption": 0.0311,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0041,
+      "confidence_width": 0.0222,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "ai-rfp-response-copilot",
+      "mean_adoption": 0.0314,
+      "median_adoption": 0.0311,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0012,
+      "confidence_width": 0.0178,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "startup-yc",
+      "mean_adoption": 0.0142,
+      "median_adoption": 0.0133,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0015,
+      "confidence_width": 0.0223,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "compliance-shield",
+      "mean_adoption": 0.0098,
+      "median_adoption": 0.0089,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0003,
+      "confidence_width": 0.0134,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "legal-ops",
+      "mean_adoption": 0.0032,
+      "median_adoption": 0.0044,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0089,
+      "tipping_rate": 0.0
+    }
+  ],
+  "governance_note": "Hybrid evaluation output remains exploratory_frontier. Use it to compare discovered candidates against the benchmark panel, not to auto-promote them."
+}

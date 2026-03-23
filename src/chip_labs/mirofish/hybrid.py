@@ -129,6 +129,7 @@ def build_hybrid_evaluation_spec(
     packet: dict[str, Any],
     benchmark_ids: list[str] | None = None,
     promoted_domain_ids: list[str] | None = None,
+    proposed_benchmark_domain_ids: list[str] | None = None,
     max_rounds: int = 20,
     flagship_count_per_type: int = 30,
     ensemble_runs: int = 15,
@@ -145,17 +146,25 @@ def build_hybrid_evaluation_spec(
             "error": "No accepted discovery candidates were available to build a hybrid evaluation spec.",
         }
 
-    promoted_ids = {domain_id for domain_id in (promoted_domain_ids or []) if domain_id}
+    proposed_ids = {domain_id for domain_id in (proposed_benchmark_domain_ids or []) if domain_id}
+    promoted_ids = {
+        domain_id
+        for domain_id in (promoted_domain_ids or [])
+        if domain_id and domain_id not in proposed_ids
+    }
     discovered: list[dict[str, Any]] = []
     promoted: list[dict[str, Any]] = []
+    proposed: list[dict[str, Any]] = []
     for candidate in accepted_candidates:
         opportunity = discovery_candidate_to_opportunity(candidate)
-        if opportunity["domain_id"] in promoted_ids:
+        if opportunity["domain_id"] in proposed_ids:
+            proposed.append(_as_proposed_benchmark(opportunity))
+        elif opportunity["domain_id"] in promoted_ids:
             promoted.append(_as_review_benchmark(opportunity))
         else:
             discovered.append(opportunity)
 
-    benchmarks = select_benchmark_panel(benchmark_ids) + promoted
+    benchmarks = select_benchmark_panel(benchmark_ids) + proposed + promoted
 
     combined_map: dict[str, dict[str, Any]] = {}
     for opportunity in benchmarks + discovered:
@@ -175,6 +184,7 @@ def build_hybrid_evaluation_spec(
         "source_packet_kind": packet.get("packet_kind"),
         "evidence_lane": "exploratory_frontier",
         "discovered_domain_ids": [item["domain_id"] for item in discovered],
+        "proposed_benchmark_domain_ids": [item["domain_id"] for item in proposed],
         "promotion_review_domain_ids": [item["domain_id"] for item in promoted],
         "benchmark_domain_ids": [item["domain_id"] for item in benchmarks],
         "harness": {
@@ -193,6 +203,7 @@ def build_hybrid_evaluation_spec(
         },
         "benchmark_panel": benchmarks,
         "discovered_opportunities": discovered,
+        "proposed_benchmark_opportunities": proposed,
         "promotion_review_opportunities": promoted,
         "static_rankings": ranked,
         "simulation_inputs": {
@@ -205,6 +216,7 @@ def build_hybrid_evaluation_spec(
         "summary": {
             "discovered_count": len(discovered),
             "benchmark_count": len(benchmarks),
+            "proposed_benchmark_count": len(proposed),
             "promotion_review_count": len(promoted),
             "combined_domain_count": len(ranked),
             "signal_count": len(signals),
@@ -214,7 +226,7 @@ def build_hybrid_evaluation_spec(
         "governance_note": (
             "Discovered candidates use conservative inferred priors. "
             "Hybrid specs are exploratory_frontier and must not auto-promote benchmark membership, "
-            "including promotion-review candidates."
+            "including proposed benchmark members and promotion-review candidates."
         ),
     }
 
@@ -263,6 +275,7 @@ def run_hybrid_evaluation(spec: dict[str, Any], seed: int = 42) -> dict[str, Any
         "harness": harness,
         "scenario": scenario,
         "discovered_domain_ids": spec.get("discovered_domain_ids", []),
+        "proposed_benchmark_domain_ids": spec.get("proposed_benchmark_domain_ids", []),
         "promotion_review_domain_ids": spec.get("promotion_review_domain_ids", []),
         "benchmark_domain_ids": spec.get("benchmark_domain_ids", []),
         "top_line": _top_line_summary(report, ensemble),
@@ -413,6 +426,16 @@ def _as_review_benchmark(opportunity: dict[str, Any]) -> dict[str, Any]:
     candidate_context["promotion_status"] = "benchmark_review"
     review_candidate["candidate_context"] = candidate_context
     return review_candidate
+
+
+def _as_proposed_benchmark(opportunity: dict[str, Any]) -> dict[str, Any]:
+    proposed_candidate = deepcopy(opportunity)
+    proposed_candidate["origin"] = "proposed_benchmark_candidate"
+    proposed_candidate["benchmark_tier"] = "proposed_benchmark"
+    candidate_context = deepcopy(proposed_candidate.get("candidate_context", {}))
+    candidate_context["promotion_status"] = "maintained_benchmark_proposal"
+    proposed_candidate["candidate_context"] = candidate_context
+    return proposed_candidate
 
 
 def infer_discovery_scores(candidate: dict[str, Any]) -> dict[str, float]:

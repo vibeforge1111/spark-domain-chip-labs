@@ -532,10 +532,12 @@ def cmd_mirofish_hybrid_spec(args: argparse.Namespace) -> None:
     input_data = _load_input(args.input)
     benchmark_ids = [item.strip() for item in (args.benchmarks or "").split(",") if item.strip()]
     promoted_domain_ids = [item.strip() for item in (args.promote_domains or "").split(",") if item.strip()]
+    proposed_benchmark_domain_ids = [item.strip() for item in (args.proposed_benchmarks or "").split(",") if item.strip()]
     result = build_hybrid_evaluation_spec(
         input_data,
         benchmark_ids=benchmark_ids or None,
         promoted_domain_ids=promoted_domain_ids or None,
+        proposed_benchmark_domain_ids=proposed_benchmark_domain_ids or None,
         max_rounds=args.rounds,
         flagship_count_per_type=args.flagship_count_per_type,
         ensemble_runs=args.ensemble_runs,
@@ -729,6 +731,12 @@ def main() -> None:
         type=str,
         default=None,
         help="Comma-separated discovered domain_ids to move into the benchmark-review lane.",
+    )
+    p_mirofish_hybrid.add_argument(
+        "--proposed-benchmarks",
+        type=str,
+        default=None,
+        help="Comma-separated discovered domain_ids to treat as provisional benchmark members in the spec.",
     )
     p_mirofish_hybrid.add_argument("--rounds", type=int, default=20, help="Simulation rounds for the hybrid harness.")
     p_mirofish_hybrid.add_argument(

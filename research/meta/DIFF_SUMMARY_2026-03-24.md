@@ -95,3 +95,12 @@ MiroFish enterprise symmetric review:
 - remove the final discovery-breakout asymmetry
 - rerun the tight enterprise panel under symmetric conditions
 - recommend the first maintained benchmark admission based on ensemble stability
+
+## Batch 12
+
+MiroFish enterprise benchmark proposal:
+
+- add a provisional benchmark lane without editing the maintained library
+- test RFP as a proposed benchmark member on a broader enterprise panel
+- confirm that the narrow RFP recommendation does not yet survive the broader context
+- defer the maintained benchmark library edit and keep the enterprise wedge in cluster review

@@ -468,3 +468,50 @@ The enterprise-only review still left one asymmetry: `ai-rfp-response-copilot` r
 - In the symmetric run, `ai-rfp-response-copilot` leads `ai-security-questionnaire-copilot` on builder ensemble mean adoption (`3.20%` vs `2.93%`).
 - `ai-security-questionnaire-copilot` still leads on flagship choice signal (`20.0%` vs `6.67%`).
 - The recommendation is therefore based on stable ensemble behavior, not on direct single-run choice signal.
+
+## Tranche: MiroFish Enterprise Benchmark Proposal
+
+### Files Changed
+
+- `src/chip_labs/mirofish/hybrid.py`
+- `src/chip_labs/cli.py`
+- `docs/MIROFISH_PROMOTION_REVIEW.md`
+- `docs/MIROFISH_HYBRID_EVALUATION_SPEC.md`
+- `research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_BENCHMARK_PROPOSAL_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_BENCHMARK_PROPOSAL_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_BENCHMARK_PROPOSAL_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_BENCHMARK_PROPOSAL_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_benchmark_proposal.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The symmetric two-domain review recommended `ai-rfp-response-copilot`, but the repo still lacked a clean way to test a maintained benchmark proposal without directly editing the benchmark library first.
+
+### What Changed
+
+- Added a provisional benchmark lane to the hybrid spec builder
+- Exposed that lane through the CLI as `--proposed-benchmarks`
+- Documented the maintained benchmark proposal workflow
+- Generated a broader enterprise proposal packet with:
+  - `ai-rfp-response-copilot` as the provisional benchmark member
+  - `ai-security-questionnaire-copilot` as the first review challenger
+  - `ai-compliance-evidence-copilot` and `ai-renewal-risk-briefing-copilot` as secondary enterprise context domains
+- Ran the broader enterprise proposal harness
+- Saved a note deferring the maintained benchmark library edit because the narrow RFP recommendation did not survive the broader panel strongly enough
+
+### Verification
+
+- Run `python -m pytest tests/test_trend_prediction.py -q`
+- Run `python -m chip_labs.cli mirofish-hybrid-spec` on the broader enterprise proposal packet with `--proposed-benchmarks ai-rfp-response-copilot`
+- Run `python -m chip_labs.cli mirofish-hybrid-run` on the proposal spec
+- Inspect that:
+  - `ai-rfp-response-copilot` appears in `proposed_benchmark_domain_ids`
+  - `ai-security-questionnaire-copilot` appears in `promotion_review_domain_ids`
+  - the note states that the maintained benchmark library edit is deferred
+
+### Notes
+
+- In the broader enterprise proposal run, `ai-rfp-response-copilot` falls behind `ai-security-questionnaire-copilot`, `ai-compliance-evidence-copilot`, and `ai-renewal-risk-briefing-copilot` on builder ensemble adoption.
+- The enterprise-response wedge still clearly beats the incumbent enterprise benchmarks, but the first maintained benchmark admission is not stable enough yet for a library edit.

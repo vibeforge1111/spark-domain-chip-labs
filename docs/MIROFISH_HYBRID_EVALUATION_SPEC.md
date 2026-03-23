@@ -111,6 +111,13 @@ $env:PYTHONPATH='src'
 python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_RESULT_2026-03-24.json --benchmarks compliance-shield,legal-ops,startup-yc,indie-hacker,cursor-copilot --promote-domains ai-security-questionnaire-copilot --output research/meta/MIROFISH_HYBRID_SPEC_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json
 ```
 
+To treat a discovered candidate as a provisional benchmark member without editing the maintained benchmark library yet:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_REVIEW_RESULT_2026-03-24.json --benchmarks compliance-shield,legal-ops,startup-yc,cursor-copilot --proposed-benchmarks ai-rfp-response-copilot --promote-domains ai-security-questionnaire-copilot --output research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_BENCHMARK_PROPOSAL_2026-03-24.json
+```
+
 ## Starter Sample
 
 The current starter batch produces:
@@ -148,6 +155,7 @@ So the discovered candidate is not winning the benchmark panel yet, but it is al
 - discovery output should never auto-promote directly into the maintained universe
 - use a promotion-review packet before proposing any maintained benchmark change
 - promotion-review candidates should be rerun without discovery breakout favoritism
+- proposed benchmark members should be evaluated before any maintained benchmark library edit
 
 ## Scenario Guardrail
 

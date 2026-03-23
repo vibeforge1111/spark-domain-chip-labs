@@ -1,0 +1,71 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_enterprise_benchmark_proposal",
+  "created_at": "2026-03-24",
+  "scope": "Add a provisional benchmark proposal lane and evaluate whether ai-rfp-response-copilot should enter the maintained enterprise benchmark panel",
+  "decision_context": {
+    "prior_state": "The symmetric two-domain review recommended ai-rfp-response-copilot for first maintained benchmark admission, but that result still needed to be stress-tested on a broader enterprise panel before editing the maintained benchmark library.",
+    "decision": "Add a provisional benchmark lane to the hybrid spec, treat ai-rfp-response-copilot as a proposed benchmark member, keep ai-security-questionnaire-copilot as the first review challenger, and rerun a broader enterprise panel with secondary enterprise domains included.",
+    "why_now": "The repo needed a proposal path that does not mutate the maintained benchmark library before the broader enterprise validation is complete."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/hybrid.py",
+      "purpose": "Adds support for provisional benchmark members in hybrid specs."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Exposes the provisional benchmark lane through the hybrid spec CLI."
+    },
+    {
+      "path": "docs/MIROFISH_PROMOTION_REVIEW.md",
+      "purpose": "Documents how to draft a maintained benchmark proposal without editing the benchmark library."
+    },
+    {
+      "path": "docs/MIROFISH_HYBRID_EVALUATION_SPEC.md",
+      "purpose": "Documents proposed benchmark members in the hybrid workflow."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_BENCHMARK_PROPOSAL_RESULT_2026-03-24.json",
+      "purpose": "Stores the broader enterprise proposal packet."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_BENCHMARK_PROPOSAL_2026-03-24.json",
+      "purpose": "Stores the provisional benchmark proposal spec."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_BENCHMARK_PROPOSAL_2026-03-24.json",
+      "purpose": "Stores the broader enterprise proposal run."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_BENCHMARK_PROPOSAL_NOTE_2026-03-24.md",
+      "purpose": "Summarizes whether the provisional benchmark proposal should become a real benchmark-library edit."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_benchmark_proposal.json",
+      "purpose": "Captures the request and verification plan for this proposal tranche."
+    }
+  ],
+  "planned_steps": [
+    "Add a provisional benchmark lane to the hybrid spec builder",
+    "Generate the broader enterprise proposal packet and spec",
+    "Run the broader enterprise proposal harness",
+    "Decide whether the maintained benchmark library edit should proceed or be deferred"
+  ],
+  "verification": {
+    "commands": [
+      "python -m pytest tests/test_trend_prediction.py -q",
+      "python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_BENCHMARK_PROPOSAL_RESULT_2026-03-24.json --benchmarks compliance-shield,legal-ops,startup-yc,cursor-copilot --proposed-benchmarks ai-rfp-response-copilot --promote-domains ai-security-questionnaire-copilot --output research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_BENCHMARK_PROPOSAL_2026-03-24.json",
+      "python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_BENCHMARK_PROPOSAL_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_BENCHMARK_PROPOSAL_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "The spec lists ai-rfp-response-copilot in proposed_benchmark_domain_ids",
+      "The spec lists ai-security-questionnaire-copilot in promotion_review_domain_ids",
+      "The final note states explicitly whether the maintained benchmark library should be edited"
+    ]
+  },
+  "guardrails": [
+    "Do not edit the maintained benchmark library in this tranche",
+    "Keep all output in exploratory_frontier until the proposal survives the broader panel",
+    "Record explicitly if the narrow recommendation fails to survive the broader enterprise run"
+  ]
+}
