@@ -83,6 +83,13 @@ $env:PYTHONPATH='src'
 python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_TEMPLATE_RESULT_2026-03-24.json --output research/meta/MIROFISH_HYBRID_SPEC_TEMPLATE_2026-03-24.json
 ```
 
+To run the saved hybrid spec:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_TEMPLATE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_TEMPLATE_2026-03-24.json
+```
+
 To override the benchmark panel:
 
 ```powershell
@@ -107,6 +114,17 @@ Top-ranked benchmark in the starter panel:
 Starter discovered candidate:
 
 - `ai-meeting-prep-copilot`
+
+## Starter Run Snapshot
+
+The first end-to-end starter run currently shows:
+
+- top choice signal: `cursor-copilot` at `20.0%`
+- top final retained adoption in the flagship run: `cursor-copilot` at `6.67%`
+- top ensemble mean adoption: `cursor-copilot` at `6.10%`
+- discovered candidate `ai-meeting-prep-copilot` places second in ensemble mean adoption at `5.03%`
+
+So the discovered candidate is not winning the benchmark panel yet, but it is already competitive enough to justify another discovery batch and a broader hybrid comparison.
 
 ## Governance
 

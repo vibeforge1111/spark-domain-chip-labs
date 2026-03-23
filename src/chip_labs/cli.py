@@ -544,6 +544,19 @@ def cmd_mirofish_hybrid_spec(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: mirofish-hybrid-run
+# ---------------------------------------------------------------------------
+
+def cmd_mirofish_hybrid_run(args: argparse.Namespace) -> None:
+    """Run a saved hybrid evaluation spec through MiroFish."""
+    from .mirofish.hybrid import run_hybrid_evaluation
+
+    input_data = _load_input(args.input)
+    result = run_hybrid_evaluation(input_data, seed=args.seed)
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
 
@@ -721,6 +734,16 @@ def main() -> None:
         help="Scenario label for generated shocks.",
     )
     p_mirofish_hybrid.set_defaults(func=cmd_mirofish_hybrid_spec)
+
+    # mirofish-hybrid-run
+    p_mirofish_hybrid_run = sub.add_parser(
+        "mirofish-hybrid-run",
+        help="Run a saved hybrid MiroFish evaluation spec.",
+    )
+    p_mirofish_hybrid_run.add_argument("--input", type=str, required=True, help="Input hybrid spec path.")
+    p_mirofish_hybrid_run.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_hybrid_run.add_argument("--seed", type=int, default=42, help="Base seed for the run.")
+    p_mirofish_hybrid_run.set_defaults(func=cmd_mirofish_hybrid_run)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")

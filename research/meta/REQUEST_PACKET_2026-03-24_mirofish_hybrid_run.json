@@ -1,0 +1,43 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_hybrid_run",
+  "created_at": "2026-03-24",
+  "scope": "Run the starter hybrid MiroFish spec and save an end-to-end evaluation artifact",
+  "problem": {
+    "summary": "The repo could canonicalize discovery packets and build hybrid specs, but it still lacked a saved end-to-end example showing how a discovered candidate performs against a stable benchmark panel under the current harness.",
+    "decision": "Add a repo-local hybrid runner, execute the starter spec, and save both the JSON result and a compact interpretation note."
+  },
+  "deliverables": [
+    {
+      "file": "src/chip_labs/mirofish/hybrid.py",
+      "purpose": "Runs a saved hybrid spec through dual-context simulation and builder ensemble aggregation."
+    },
+    {
+      "file": "src/chip_labs/cli.py",
+      "purpose": "Exposes `mirofish-hybrid-run` as a repo-local CLI command."
+    },
+    {
+      "file": "research/meta/MIROFISH_HYBRID_RUN_TEMPLATE_2026-03-24.json",
+      "purpose": "Stores the starter end-to-end hybrid evaluation output."
+    },
+    {
+      "file": "research/meta/MIROFISH_HYBRID_RUN_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the starter run outcome in a human-readable research note."
+    }
+  ],
+  "verification_plan": [
+    "Run chip-labs mirofish-hybrid-run on the saved starter hybrid spec",
+    "Inspect top_line and builder_ensemble_summary",
+    "Confirm the discovered candidate is ranked against the benchmark panel in the output"
+  ],
+  "mutable_target_compliance": {
+    "edited_paths": [
+      "src/chip_labs/mirofish/hybrid.py",
+      "src/chip_labs/cli.py",
+      "docs/MIROFISH_HYBRID_EVALUATION_SPEC.md",
+      "research/meta/MIROFISH_HYBRID_RUN_TEMPLATE_2026-03-24.json",
+      "research/meta/MIROFISH_HYBRID_RUN_NOTE_2026-03-24.md",
+      "research/meta/REQUEST_PACKET_2026-03-24_mirofish_hybrid_run.json"
+    ],
+    "outside_mutable_targets_edited": []
+  }
+}

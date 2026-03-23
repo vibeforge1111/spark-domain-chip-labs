@@ -168,3 +168,43 @@ The discovery contract now produced accepted candidates, but there was still no 
 
 - The hybrid spec is simulation-ready but still exploratory.
 - The next tranche can run the starter hybrid spec through simulation and save a report artifact.
+
+## Tranche: MiroFish Hybrid Starter Run
+
+### Files Changed
+
+- `src/chip_labs/mirofish/hybrid.py`
+- `src/chip_labs/cli.py`
+- `docs/MIROFISH_HYBRID_EVALUATION_SPEC.md`
+- `research/meta/MIROFISH_HYBRID_RUN_TEMPLATE_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_hybrid_run.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The repo could already build a hybrid evaluation spec, but it still needed one saved end-to-end example showing how a discovered candidate actually performs against the benchmark panel under the current harness.
+
+### What Changed
+
+- Added a `mirofish-hybrid-run` CLI command
+- Added a hybrid runner that:
+  - runs dual-context simulation from a saved hybrid spec
+  - runs the builder ensemble
+  - emits a compact evaluation artifact
+- Saved the starter hybrid run JSON
+- Added a compact run note summarizing the first outcome
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-hybrid-run` on the saved starter spec
+- Inspect:
+  - `top_line`
+  - `builder_ensemble_summary`
+  - discovered candidate placement against the benchmark panel
+
+### Notes
+
+- In the current starter run, `cursor-copilot` leads the benchmark panel.
+- The discovered `ai-meeting-prep-copilot` candidate ranks second by ensemble mean adoption, which is enough to justify a broader discovery batch.

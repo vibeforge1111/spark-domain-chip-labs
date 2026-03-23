@@ -34,3 +34,11 @@ MiroFish hybrid evaluation spec bridge:
 - add a stable benchmark panel
 - emit graph, signals, scenario, and harness inputs
 - expose hybrid spec generation in the CLI
+
+## Batch 5
+
+MiroFish hybrid starter run:
+
+- add a repo-local hybrid runner
+- save an end-to-end starter evaluation artifact
+- summarize how the first discovered candidate performed against the panel

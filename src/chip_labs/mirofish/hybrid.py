@@ -12,7 +12,9 @@ from typing import Any
 
 from ..trend_scanner import SEED_OPPORTUNITIES, rank_opportunities, score_opportunity
 from .graph import build_graph_from_opportunities
+from .report import generate_prediction_report
 from .signals import build_scenario, create_shock, signals_from_graph, signals_from_opportunities
+from .simulation import run_dual_context, run_ensemble
 
 
 DEFAULT_BENCHMARK_IDS = [
@@ -203,6 +205,62 @@ def build_hybrid_evaluation_spec(
     }
 
 
+def run_hybrid_evaluation(spec: dict[str, Any], seed: int = 42) -> dict[str, Any]:
+    """Run the hybrid evaluation spec through MiroFish and return a compact artifact."""
+    simulation_inputs = spec.get("simulation_inputs", {})
+    opportunities = list(simulation_inputs.get("opportunities", []))
+    domain_ids = list(simulation_inputs.get("domain_ids", []))
+    signals = list(simulation_inputs.get("signals", []))
+    scenario = simulation_inputs.get("scenario", {})
+    shocks = list(scenario.get("shocks", []))
+    harness = spec.get("harness", {})
+
+    graph = build_graph_from_opportunities(opportunities)
+
+    dual = run_dual_context(
+        graph,
+        domain_ids=domain_ids,
+        signals=signals,
+        shocks=shocks,
+        max_rounds=int(harness.get("max_rounds", 20)),
+        seed=seed,
+    )
+    report = generate_prediction_report(dual, static_rankings=spec.get("static_rankings"))
+
+    ensemble = run_ensemble(
+        graph,
+        domain_ids=domain_ids,
+        signals=signals,
+        shocks=shocks,
+        max_rounds=int(harness.get("max_rounds", 20)),
+        n_runs=int(harness.get("ensemble_runs", 15)),
+        base_seed=seed,
+        context="builder_community",
+        count_per_type=int(harness.get("ensemble_count_per_type", 15)),
+    )
+
+    return {
+        "packet_kind": "mirofish_hybrid_evaluation_run",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "source_batch_id": spec.get("source_batch_id"),
+        "source_spec_created_at": spec.get("created_at"),
+        "evidence_lane": "exploratory_frontier",
+        "seed": seed,
+        "harness": harness,
+        "scenario": scenario,
+        "discovered_domain_ids": spec.get("discovered_domain_ids", []),
+        "benchmark_domain_ids": spec.get("benchmark_domain_ids", []),
+        "top_line": _top_line_summary(report, ensemble),
+        "domain_predictions": report.get("domain_predictions", []),
+        "cross_domain": report.get("cross_domain", {}),
+        "builder_ensemble_summary": _compact_ensemble_summary(ensemble),
+        "governance_note": (
+            "Hybrid evaluation output remains exploratory_frontier. "
+            "Use it to compare discovered candidates against the benchmark panel, not to auto-promote them."
+        ),
+    }
+
+
 def discovery_candidate_to_opportunity(candidate: dict[str, Any]) -> dict[str, Any]:
     """Convert a canonical discovery candidate into a conservative MiroFish opportunity."""
     scores = infer_discovery_scores(candidate)
@@ -340,10 +398,40 @@ def _contains_any(opportunity: dict[str, Any], terms: set[str]) -> bool:
         opportunity.get("label", ""),
         opportunity.get("description", ""),
         opportunity.get("rationale", ""),
-        " ".join(opportunity.get("related_chips", [])),
     ]).lower()
     return any(term in text for term in terms)
 
 
 def _clamp(value: float) -> float:
     return round(min(0.95, max(0.05, value)), 4)
+
+
+def _compact_ensemble_summary(ensemble: dict[str, Any]) -> list[dict[str, Any]]:
+    summary: list[dict[str, Any]] = []
+    for domain_id, data in ensemble.get("domains", {}).items():
+        summary.append({
+            "domain_id": domain_id,
+            "mean_adoption": data.get("mean_adoption", 0.0),
+            "median_adoption": data.get("median_adoption", 0.0),
+            "mean_trial": data.get("mean_trial", 0.0),
+            "mean_churn": data.get("mean_churn", 0.0),
+            "confidence_width": data.get("confidence_width", 0.0),
+            "tipping_rate": data.get("tipping_rate", 0.0),
+        })
+    summary.sort(key=lambda item: (item["mean_adoption"], item["mean_trial"]), reverse=True)
+    return summary
+
+
+def _top_line_summary(report: dict[str, Any], ensemble: dict[str, Any]) -> dict[str, Any]:
+    predictions = report.get("domain_predictions", [])
+    ensemble_summary = _compact_ensemble_summary(ensemble)
+    top_prediction = predictions[0] if predictions else {}
+    top_ensemble = ensemble_summary[0] if ensemble_summary else {}
+    return {
+        "top_choice_signal_domain": top_prediction.get("domain_id"),
+        "top_choice_signal": top_prediction.get("agent_choice_signal", 0.0),
+        "top_final_adoption_domain": top_prediction.get("domain_id"),
+        "top_final_adoption": top_prediction.get("adoption_probability", 0.0),
+        "top_ensemble_domain": top_ensemble.get("domain_id"),
+        "top_ensemble_mean_adoption": top_ensemble.get("mean_adoption", 0.0),
+    }
