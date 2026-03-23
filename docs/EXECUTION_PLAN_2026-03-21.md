@@ -158,3 +158,11 @@ Medium-term checkpoint:
   - open-ended domain-chip discovery upstream
   - canonicalization in the middle
   - controlled MiroFish evaluation downstream
+- The current end-of-day MiroFish wrap is now captured in `docs/TODAY_SUMMARY_2026-03-24.md`.
+- The concrete next-day MiroFish plan is now captured in `docs/TOMORROW_FOCUS_2026-03-25.md`.
+- The current MiroFish remaining blocker is no longer broad engine instability.
+- The remaining work is now narrower:
+  - explicit choice-conversion tuning for RFP and compliance evidence
+  - one stable enterprise validation replay
+  - a full `515`-domain rerun
+  - a trusted full-list artifact before dashboard refresh
