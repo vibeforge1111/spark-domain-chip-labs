@@ -385,3 +385,47 @@ The promotion brief nominated `ai-security-questionnaire-copilot`, but that read
 
 - `ai-security-questionnaire-copilot` remains a valid benchmark-review candidate, but it does not yet earn maintained benchmark admission.
 - Removing discovery breakout support dropped its builder ensemble mean adoption from `4.83%` to `2.64%`.
+
+## Tranche: MiroFish Enterprise-Only Review
+
+### Files Changed
+
+- `research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_REVIEW_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_ONLY_REVIEW_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_ONLY_REVIEW_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_ONLY_REVIEW_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_only_review.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The prior benchmark-review run was still too broad and mixed. It showed that the questionnaire lane remained promising, but it did not cleanly answer whether that wedge outruns the closest enterprise-response challenger under a tighter panel.
+
+### What Changed
+
+- Narrowed the canonical packet to:
+  - `ai-security-questionnaire-copilot`
+  - `ai-rfp-response-copilot`
+- Generated an enterprise-only hybrid review spec
+- Ran the enterprise-only hybrid harness against:
+  - `compliance-shield`
+  - `legal-ops`
+  - `startup-yc`
+  - `cursor-copilot`
+- Saved a note concluding that `ai-rfp-response-copilot` is strong enough to become a co-review candidate, but the benchmark admission decision still remains open
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-hybrid-spec` on the narrowed enterprise packet with `--promote-domains ai-security-questionnaire-copilot`
+- Run `python -m chip_labs.cli mirofish-hybrid-run` on the enterprise-only spec
+- Inspect that:
+  - the narrowed packet contains only the two enterprise-response domains
+  - the questionnaire lane stays in `promotion_review_domain_ids`
+  - the note records the remaining breakout asymmetry
+
+### Notes
+
+- `ai-rfp-response-copilot` slightly outruns `ai-security-questionnaire-copilot` on builder ensemble mean adoption in this narrower run (`4.35%` vs `3.97%`).
+- `ai-security-questionnaire-copilot` still has the stronger flagship choice signal (`20.0%` vs `6.67%`).
+- The next clean comparison should treat both enterprise-response domains as benchmark-review candidates with no discovery-breakout favoritism for either one.

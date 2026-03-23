@@ -1,0 +1,86 @@
+{
+    "packet_kind":  "mirofish_discovery_batch",
+    "evidence_lane":  "exploratory_frontier",
+    "created_at":  "2026-03-23T22:08:09.4705705Z",
+    "batch_id":  "mirofish-discovery-batch-enterprise-review-2026-03-24",
+    "summary":  {
+                    "raw_count":  2,
+                    "accepted_count":  2,
+                    "merged_count":  0,
+                    "rejected_count":  0,
+                    "clear_count":  2,
+                    "proto_count":  0
+                },
+    "accepted_candidates":  [
+                                {
+                                    "label":  "AI Security Questionnaire Copilot",
+                                    "description":  "Helps teams answer repeated security questionnaires with reusable evidence, control mapping, and answer updates.",
+                                    "specialization_surface":  "security answer drafting, evidence retrieval, and procurement response packaging",
+                                    "mastery_surface":  "improving repeated questionnaire response accuracy and speed",
+                                    "user_value_loop":  "retrieve prior answers, update evidence, submit questionnaire, learn from follow-up requests",
+                                    "domain_tags":  [
+                                                        "security",
+                                                        "enterprise-sales"
+                                                    ],
+                                    "evidence_sources":  [
+                                                             "community",
+                                                             "github"
+                                                         ],
+                                    "evidence_summary":  "Repeated enterprise sales friction appears around security review loops, especially where answers must be maintained across deals.",
+                                    "adjacent_domains":  [
+                                                             "AI RFP Response Copilot",
+                                                             "compliance-shield"
+                                                         ],
+                                    "duplicate_aliases":  [
+
+                                                          ],
+                                    "confidence_read":  "medium",
+                                    "promotion_status":  "candidate",
+                                    "raw_observation":  "This is a repeated enterprise response loop with its own evidence surface.",
+                                    "domain_id":  "ai-security-questionnaire-copilot",
+                                    "classification":  "clear_domain_chip",
+                                    "classification_reasons":  [
+                                                                   "Has domain shape, specialization surface, mastery surface, and evidence summary."
+                                                               ]
+                                },
+                                {
+                                    "label":  "AI RFP Response Copilot",
+                                    "description":  "Helps B2B teams assemble, tailor, and learn from repeated RFP and security questionnaire responses.",
+                                    "specialization_surface":  "response drafting, knowledge retrieval, and enterprise packaging",
+                                    "mastery_surface":  "improving repeated enterprise response accuracy and speed",
+                                    "user_value_loop":  "retrieve evidence, draft response, submit package, learn from procurement feedback",
+                                    "domain_tags":  [
+                                                        "enterprise-sales",
+                                                        "compliance"
+                                                    ],
+                                    "evidence_sources":  [
+                                                             "community",
+                                                             "github"
+                                                         ],
+                                    "evidence_summary":  "Repeated demand appears around high-friction enterprise response loops, especially where teams reuse prior answers.",
+                                    "adjacent_domains":  [
+                                                             "compliance-shield",
+                                                             "sales-copilot"
+                                                         ],
+                                    "duplicate_aliases":  [
+
+                                                          ],
+                                    "confidence_read":  "medium",
+                                    "promotion_status":  "candidate",
+                                    "raw_observation":  "This is a recurring enterprise operating loop rather than one-off document generation.",
+                                    "domain_id":  "ai-rfp-response-copilot",
+                                    "classification":  "clear_domain_chip",
+                                    "classification_reasons":  [
+                                                                   "Has domain shape, specialization surface, mastery surface, and evidence summary."
+                                                               ]
+                                }
+                            ],
+    "merged_candidates":  [
+
+                          ],
+    "rejected_candidates":  [
+
+                            ],
+    "source_batch_id":  "mirofish-discovery-batch-focused-2026-03-24",
+    "narrowing_note":  "Subset of the focused enterprise-response batch for enterprise-only benchmark review."
+}

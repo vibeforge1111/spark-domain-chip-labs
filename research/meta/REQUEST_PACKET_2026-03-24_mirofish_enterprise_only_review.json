@@ -1,0 +1,55 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_enterprise_only_review",
+  "created_at": "2026-03-24",
+  "scope": "Run a narrower enterprise-only benchmark review batch with one review candidate and one shadow challenger",
+  "decision_context": {
+    "prior_state": "The previous benchmark-review run showed ai-security-questionnaire-copilot remained promising but did not yet earn maintained benchmark admission, and explicitly recommended a narrower enterprise-only comparison against ai-rfp-response-copilot.",
+    "decision": "Create a narrowed canonical packet with only ai-security-questionnaire-copilot and ai-rfp-response-copilot, then rerun the enterprise benchmark panel with the questionnaire lane in benchmark review and RFP as the only discovered challenger.",
+    "why_now": "The remaining ambiguity is inside the enterprise-response wedge, not the broader mixed panel."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_REVIEW_RESULT_2026-03-24.json",
+      "purpose": "Stores the narrowed two-candidate canonical packet for enterprise-only review."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_ONLY_REVIEW_2026-03-24.json",
+      "purpose": "Stores the enterprise-only hybrid review spec."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_ONLY_REVIEW_2026-03-24.json",
+      "purpose": "Stores the enterprise-only hybrid run output."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_ONLY_REVIEW_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the narrower enterprise-only comparison and decision."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_only_review.json",
+      "purpose": "Captures the request and verification plan for this narrower batch."
+    }
+  ],
+  "planned_steps": [
+    "Narrow the focused canonical packet to two enterprise-response candidates",
+    "Generate the enterprise-only hybrid spec",
+    "Run the enterprise-only hybrid harness",
+    "Compare the review candidate against the shadow challenger and maintained benchmarks",
+    "Save the note and update the transparent tranche logs"
+  ],
+  "verification": {
+    "commands": [
+      "python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_REVIEW_RESULT_2026-03-24.json --benchmarks compliance-shield,legal-ops,startup-yc,cursor-copilot --promote-domains ai-security-questionnaire-copilot --output research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_ONLY_REVIEW_2026-03-24.json",
+      "python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_ONLY_REVIEW_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_ONLY_REVIEW_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "The narrowed packet contains only ai-security-questionnaire-copilot and ai-rfp-response-copilot",
+      "The review candidate remains in promotion_review_domain_ids",
+      "The final note states whether the shadow challenger changes the admission decision"
+    ]
+  },
+  "guardrails": [
+    "Do not auto-admit either enterprise-response candidate into maintained benchmarks",
+    "Keep the run in exploratory_frontier",
+    "Make any asymmetry from breakout support explicit in the note"
+  ]
+}

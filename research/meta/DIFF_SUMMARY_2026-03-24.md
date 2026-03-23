@@ -77,3 +77,12 @@ MiroFish benchmark-review validation:
 - rerun the nominated enterprise candidate without discovery breakout support
 - save the benchmark-review spec and run artifacts
 - record that the candidate remains promising but does not yet earn maintained benchmark admission
+
+## Batch 10
+
+MiroFish enterprise-only review:
+
+- narrow the enterprise-response comparison to questionnaire vs RFP
+- rerun against the tighter maintained benchmark panel
+- record that RFP becomes a co-review candidate rather than a resolved loser
+- keep maintained benchmark admission open pending a symmetric no-breakout comparison
