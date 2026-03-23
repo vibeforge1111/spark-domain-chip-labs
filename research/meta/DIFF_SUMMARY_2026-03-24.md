@@ -122,3 +122,14 @@ MiroFish enterprise cluster diagnostic:
 - measure where enterprise domains lose conversion across the funnel
 - show that questionnaire and renewal mainly leak after choice
 - show that RFP mainly fails before choice, at interest-to-choice conversion
+
+## Batch 15
+
+MiroFish enterprise graph tuning:
+
+- infer behavioral `domain_tags` from domain text and candidate context
+- infer graph-level `retention_score` from sticky workflow cues
+- rerun the symmetric enterprise cluster playoff with richer graph semantics
+- show that questionnaire becomes the strongest enterprise ensemble domain
+- show that renewal becomes the strongest enterprise attention domain
+- show that RFP improves on ensemble adoption but remains a conversion problem

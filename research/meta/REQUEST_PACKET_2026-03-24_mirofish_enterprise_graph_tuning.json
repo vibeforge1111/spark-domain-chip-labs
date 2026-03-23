@@ -1,0 +1,56 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_enterprise_graph_tuning",
+  "created_at": "2026-03-24",
+  "scope": "Enrich MiroFish domain graph nodes with inferred fit and retention semantics, then rerun the enterprise cluster playoff and diagnostic",
+  "decision_context": {
+    "prior_state": "The enterprise cluster diagnostic showed different bottlenecks across questionnaire, renewal, compliance evidence, and RFP, but the graph layer was still emitting domain nodes without explicit behavioral tags or retention priors.",
+    "decision": "Infer domain_tags and retention_score directly from opportunity text and candidate context, rerun the symmetric enterprise cluster playoff, and save a tuned diagnostic brief plus methodology note.",
+    "why_now": "Methodology tuning should happen before any more benchmark-promotion decisions, and the simulation should not keep evaluating enterprise domains with flattened graph semantics."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/graph.py",
+      "purpose": "Adds inferred domain fit tags and retention priors to graph domain nodes."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_TUNED_2026-03-24.json",
+      "purpose": "Stores the rerun of the symmetric enterprise cluster playoff after graph enrichment."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_TUNED_2026-03-24.json",
+      "purpose": "Stores the tuned diagnostic brief for the enterprise cluster."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CLUSTER_GRAPH_TUNING_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the graph-tuning rationale and the before/after enterprise ranking shift."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_graph_tuning.json",
+      "purpose": "Captures the request, verification plan, and guardrails for this tuning tranche."
+    }
+  ],
+  "planned_steps": [
+    "Enrich graph domain nodes with inferred behavioral tags",
+    "Enrich graph domain nodes with inferred retention priors",
+    "Rerun the symmetric enterprise cluster playoff",
+    "Build a tuned diagnostic brief from the rerun",
+    "Save the methodology note and update the transparent logs"
+  ],
+  "verification": {
+    "commands": [
+      "python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_TUNED_2026-03-24.json",
+      "python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_TUNED_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_TUNED_2026-03-24.json",
+      "python -m pytest tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The tuned run changes enterprise cluster ordering relative to the earlier symmetric playoff",
+      "The tuned diagnostic exposes whether each enterprise domain is now primarily a conversion or persistence problem",
+      "The methodology note records that benchmark admission remains deferred"
+    ]
+  },
+  "guardrails": [
+    "Do not auto-admit any enterprise domain into maintained benchmarks",
+    "Keep the tuning inside the MiroFish graph layer and research artifacts",
+    "Treat this tranche as methodology correction rather than promotion"
+  ]
+}

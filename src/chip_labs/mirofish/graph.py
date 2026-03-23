@@ -112,6 +112,8 @@ def build_graph_from_opportunities(
                 "composite_score": opp.get("composite_score", 0.0),
                 "scores": opp.get("scores", {}),
                 "rationale": opp.get("rationale", ""),
+                "domain_tags": _behavioral_domain_tags(opp),
+                "retention_score": _inferred_retention_score(opp),
             },
         )
 
@@ -189,3 +191,104 @@ def _score_similarity(s1: dict[str, float], s2: dict[str, float]) -> float:
         return 0.0
     diffs = [abs(s1[k] - s2[k]) for k in keys]
     return round(1.0 - (sum(diffs) / len(diffs)), 4)
+
+
+def _behavioral_domain_tags(opportunity: dict[str, Any]) -> list[str]:
+    """Infer persona-relevant tags used by fit and macro logic."""
+    candidate_context = opportunity.get("candidate_context", {})
+    source_tags = [str(tag).strip().lower() for tag in candidate_context.get("domain_tags", []) if str(tag).strip()]
+    text = " ".join([
+        opportunity.get("domain_id", ""),
+        opportunity.get("label", ""),
+        opportunity.get("description", ""),
+        opportunity.get("rationale", ""),
+        candidate_context.get("specialization_surface", ""),
+        candidate_context.get("mastery_surface", ""),
+        candidate_context.get("user_value_loop", ""),
+        " ".join(opportunity.get("related_chips", [])),
+    ]).lower()
+
+    inferred = set(source_tags)
+
+    keyword_map = {
+        "security": {"audit", "compliance", "infrastructure", "productivity", "roi"},
+        "questionnaire": {"audit", "compliance", "productivity", "roi"},
+        "rfp": {"roi", "productivity", "campaign_roi"},
+        "procurement": {"audit", "roi", "productivity"},
+        "compliance": {"audit", "compliance", "infrastructure", "roi"},
+        "audit": {"audit", "compliance", "infrastructure"},
+        "evidence": {"audit", "compliance", "productivity"},
+        "renewal": {"roi", "productivity", "portfolio_intelligence"},
+        "customer": {"roi", "productivity", "portfolio_intelligence"},
+        "support": {"productivity", "portfolio_intelligence"},
+        "startup": {"speed_to_ship", "idea_validation", "market_fit", "roi"},
+        "founder": {"speed_to_ship", "idea_validation", "market_fit", "roi"},
+        "investor": {"portfolio_intelligence", "roi", "deal_flow"},
+        "board": {"portfolio_intelligence", "roi"},
+        "sales": {"roi", "campaign_roi", "audience_targeting"},
+        "partner": {"roi", "audience_targeting"},
+        "developer": {"productivity", "dx", "extensibility", "infrastructure"},
+        "coding": {"productivity", "dx", "extensibility"},
+        "workflow": {"productivity"},
+        "copilot": {"productivity", "quick_wins"},
+        "automation": {"productivity", "time_leverage"},
+        "risk": {"portfolio_intelligence", "roi"},
+    }
+
+    for keyword, tags in keyword_map.items():
+        if keyword in text:
+            inferred.update(tags)
+
+    # Always keep a small neutral base so fit is not empty for semantically rich domains.
+    if inferred:
+        inferred.add("productivity")
+
+    return sorted(inferred)
+
+
+def _inferred_retention_score(opportunity: dict[str, Any]) -> float:
+    """Infer how sticky a domain is likely to be once tried."""
+    candidate_context = opportunity.get("candidate_context", {})
+    text = " ".join([
+        opportunity.get("domain_id", ""),
+        opportunity.get("label", ""),
+        opportunity.get("description", ""),
+        opportunity.get("rationale", ""),
+        candidate_context.get("specialization_surface", ""),
+        candidate_context.get("mastery_surface", ""),
+        candidate_context.get("user_value_loop", ""),
+    ]).lower()
+
+    score = 0.42
+
+    sticky_keywords = {
+        "recurring": 0.08,
+        "repeated": 0.08,
+        "workflow": 0.05,
+        "renewal": 0.12,
+        "questionnaire": 0.10,
+        "security": 0.07,
+        "audit": 0.08,
+        "compliance": 0.08,
+        "evidence": 0.06,
+        "review": 0.05,
+        "account": 0.05,
+        "board": 0.04,
+        "weekly": 0.05,
+        "daily": 0.08,
+    }
+    weak_keywords = {
+        "prospecting": -0.04,
+        "launch": -0.03,
+        "viral": -0.04,
+        "idea": -0.03,
+    }
+
+    for keyword, delta in sticky_keywords.items():
+        if keyword in text:
+            score += delta
+    for keyword, delta in weak_keywords.items():
+        if keyword in text:
+            score += delta
+
+    return round(max(0.2, min(0.85, score)), 4)

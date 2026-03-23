@@ -601,3 +601,48 @@ The cluster playoff ranked the enterprise domains, but the next tranche required
 - The enterprise cluster does not have one generic weakness.
 - Questionnaire and renewal need better choice-to-retention persistence.
 - RFP and compliance evidence need better interest-to-choice conversion before admission should be reconsidered.
+
+## Tranche: MiroFish Enterprise Graph Tuning
+
+### Files Changed
+
+- `src/chip_labs/mirofish/graph.py`
+- `research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_TUNED_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_TUNED_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CLUSTER_GRAPH_TUNING_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_graph_tuning.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The cluster diagnostic exposed different bottlenecks, but the graph layer was still feeding the simulation domain nodes without explicit behavioral fit tags or retention priors. That made the enterprise ranking more brittle than it should be.
+
+### What Changed
+
+- Added inferred `domain_tags` to graph domain nodes from domain text, candidate context, and related chips
+- Added inferred `retention_score` to graph domain nodes from sticky workflow cues
+- Reran the symmetric enterprise cluster playoff after the graph enrichment
+- Built a tuned enterprise-cluster diagnostic brief from the rerun
+- Saved a methodology note concluding that:
+  - `ai-security-questionnaire-copilot` now leads the enterprise cluster on ensemble adoption
+  - `ai-renewal-risk-briefing-copilot` now leads the enterprise cluster on attention signal
+  - `ai-rfp-response-copilot` clears the benchmark median but remains a conversion problem
+  - `startup-yc` still beats the enterprise cluster on ensemble adoption, so admission remains deferred
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_TUNED_2026-03-24.json`
+- Run `python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_TUNED_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_TUNED_2026-03-24.json`
+- Run `python -m pytest tests/test_trend_prediction.py -q`
+- Inspect that:
+  - graph domain nodes now include `domain_tags` and `retention_score`
+  - the tuned playoff ranks `ai-security-questionnaire-copilot` above the other enterprise domains on ensemble adoption
+  - the tuned diagnostic shows renewal as the strongest enterprise attention domain but still a persistence problem
+
+### Notes
+
+- This tranche changes methodology confidence more than it changes promotion status.
+- The earlier enterprise cluster playoff should now be treated as under-specified because it lacked explicit graph-level fit semantics.
+- `ai-rfp-response-copilot` and `ai-compliance-evidence-copilot` remain primarily interest-to-choice conversion problems.
+- `ai-security-questionnaire-copilot` is now the clearest ensemble-stable enterprise candidate, but it still trails `startup-yc`.
