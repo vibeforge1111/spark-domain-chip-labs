@@ -1,0 +1,78 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_v4_engine_rebalance",
+  "created_at": "2026-03-24",
+  "scope": "MiroFish v4 engine calibration and report observability",
+  "problem": {
+    "summary": "The latest committed MiroFish v4 run collapsed to near-zero final adoption across 515 domains, making agent-choice output look empty.",
+    "root_cause": [
+      "trial-stage learning inflated persona adoption thresholds too aggressively",
+      "trial counted as full adoption inside the fatigue penalty",
+      "retention gates were too harsh for a 20-round simulation window",
+      "report ranking emphasized final retained adoption and hid stronger mid-run choice signal"
+    ]
+  },
+  "changes": [
+    {
+      "file": "src/chip_labs/mirofish/personas.py",
+      "actions": [
+        "exclude trial from fatigue adoption count",
+        "limit threshold learning to retained stages",
+        "reduce disappointing-outcome threshold inflation",
+        "soften trial/adopted retention fallback gates"
+      ]
+    },
+    {
+      "file": "src/chip_labs/mirofish/simulation.py",
+      "actions": [
+        "add final_active_rate",
+        "add peak_adoption_rate",
+        "add peak_active_rate",
+        "add peak_interest_rate",
+        "add peak_trial_rate"
+      ]
+    },
+    {
+      "file": "src/chip_labs/mirofish/report.py",
+      "actions": [
+        "surface agent_choice_signal based on peak_active_rate",
+        "sort report by agent_choice_signal before final adoption",
+        "add driver/risk language for high-interest but low-retention trajectories"
+      ]
+    },
+    {
+      "file": "research/meta/MIROFISH_V4_ENGINE_REBALANCE_2026-03-24.md",
+      "actions": [
+        "record root cause, before/after metrics, and verification notes"
+      ]
+    }
+  ],
+  "verification": {
+    "commands": [
+      "python -m pytest tests/test_trend_prediction.py -q",
+      "python -c \"...30-domain validation slice...\""
+    ],
+    "results": {
+      "trend_prediction_tests": "10 passed",
+      "threshold_drift_before": "0.3227 -> 0.4526",
+      "threshold_drift_after": "0.3227 -> 0.3262",
+      "mean_final_adoption_before": 0.0044,
+      "mean_final_adoption_after": 0.01,
+      "max_final_adoption_after": 0.0417,
+      "max_peak_active_after": 0.175
+    },
+    "known_preexisting_failures": [
+      "tests/test_simulation.py expects 6 adoption stages; v4 now has 9",
+      "tests/test_simulation.py expects run_ensemble(n_runs=3) to return exactly 3; v4 enforces a 15-run minimum"
+    ]
+  },
+  "mutable_target_compliance": {
+    "edited_paths": [
+      "src/chip_labs/mirofish/personas.py",
+      "src/chip_labs/mirofish/simulation.py",
+      "src/chip_labs/mirofish/report.py",
+      "research/meta/MIROFISH_V4_ENGINE_REBALANCE_2026-03-24.md",
+      "research/meta/REQUEST_PACKET_2026-03-24_mirofish_v4_engine_rebalance.json"
+    ],
+    "outside_mutable_targets_edited": []
+  }
+}

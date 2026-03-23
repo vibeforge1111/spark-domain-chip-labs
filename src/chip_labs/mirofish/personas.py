@@ -312,11 +312,13 @@ def persona_evaluates_domain(
     # Risk discount capped at 20% to prevent easy late-stage advancement
     advance_threshold = threshold * difficulty * (1.0 - risk * 0.2)
 
-    # Attention fatigue: if persona has already adopted many domains,
-    # it's harder to adopt more (finite attention budget)
+    # Attention fatigue: once a persona has several retained domains,
+    # it becomes harder to push more domains into deeper commitment.
+    # Trial should not count the same as real adoption here or the
+    # funnel self-chokes on exploratory behavior.
     adopted_count = sum(
         1 for s in persona["adoption_state"].values()
-        if s in ("trial", "adopted", "committed", "advocating")
+        if s in ("adopted", "committed", "advocating")
     )
     if adopted_count > 5 and current_idx >= 3:
         # Penalty grows with each additional adopted domain beyond 5
@@ -450,18 +452,18 @@ def persona_retention_check(
     current = persona["adoption_state"].get(domain_id, "unaware")
 
     if current == "trial":
-        # Trial users churn if signal fades and domain isn't sticky
-        # Low-retention domains churn faster (2 rounds), high-retention slower (5+)
-        churn_window = max(2, int(3 + domain_retention_score * 4))
-        if rounds_in_stage >= churn_window and awareness_score < persona["adoption_threshold"] * 0.5:
+        # Trial users should churn, but not before the simulation has a fair
+        # chance to observe whether curiosity turns into retained use.
+        churn_window = max(4, int(5 + domain_retention_score * 5))
+        if rounds_in_stage >= churn_window and awareness_score < persona["adoption_threshold"] * 0.35:
             persona["adoption_state"][domain_id] = "churned"
             return "churned"
 
     elif current == "adopted":
         # Adopted users can regress to trial if signal drops AND domain
         # has low retention (not a daily-use habit)
-        if domain_retention_score < 0.4 and rounds_in_stage >= 5:
-            if awareness_score < persona["adoption_threshold"] * 0.3:
+        if domain_retention_score < 0.3 and rounds_in_stage >= 7:
+            if awareness_score < persona["adoption_threshold"] * 0.2:
                 persona["adoption_state"][domain_id] = "trial"
                 return "trial"
 
@@ -503,7 +505,7 @@ def persona_learn_from_round(
     failed bets breed skepticism. Models real-world learning behavior.
     """
     stage = persona["adoption_state"].get(domain_id, "unaware")
-    if stage not in ("trial", "adopted", "committed", "advocating"):
+    if stage not in ("adopted", "committed", "advocating"):
         return
 
     # Track learning history
@@ -514,20 +516,22 @@ def persona_learn_from_round(
     if round_adoption_rate > 0.4:
         # Confidence boost: slightly lower adoption threshold for future domains
         persona["adoption_threshold"] = max(
-            0.1, persona["adoption_threshold"] * 0.98
+            0.1, persona["adoption_threshold"] * 0.985
         )
         persona["learning_history"].append({
             "domain": domain_id, "outcome": "validated",
-            "adjustment": -0.02,
+            "adjustment": -0.015,
         })
-    elif round_adoption_rate < 0.1:
-        # Cautionary: slightly raise threshold (bad bet)
+    elif round_adoption_rate < 0.03:
+        # Cautionary: weak end-state outcomes should make personas a little
+        # more selective, but not so much that exploratory trials freeze the
+        # rest of the simulation.
         persona["adoption_threshold"] = min(
-            0.95, persona["adoption_threshold"] * 1.02
+            0.95, persona["adoption_threshold"] * 1.005
         )
         persona["learning_history"].append({
             "domain": domain_id, "outcome": "disappointing",
-            "adjustment": 0.02,
+            "adjustment": 0.005,
         })
 
     # Cap learning history to prevent unbounded growth

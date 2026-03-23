@@ -306,14 +306,17 @@ def run_simulation(
 
     for domain_id in domains:
         final_snapshot = adoption_curves[domain_id][-1] if adoption_curves[domain_id] else {}
+        peak_metrics = _peak_curve_metrics(adoption_curves[domain_id])
         results["domains"][domain_id] = {
             "adoption_curve": adoption_curves[domain_id],
             "final_adoption_rate": final_snapshot.get("adoption_rate", 0.0),
+            "final_active_rate": final_snapshot.get("trial_rate", 0.0) + final_snapshot.get("adoption_rate", 0.0),
             "final_advocacy_rate": final_snapshot.get("advocacy_rate", 0.0),
             "final_trial_rate": final_snapshot.get("trial_rate", 0.0),
             "final_retention_rate": final_snapshot.get("retention_rate", 0.0),
             "final_churn_rate": final_snapshot.get("churn_rate", 0.0),
             "final_committed_rate": final_snapshot.get("committed_rate", 0.0),
+            **peak_metrics,
             "consensus_history": consensus_history[domain_id],
             "final_consensus": consensus_history[domain_id][-1] if consensus_history[domain_id] else 0.0,
             "tipping_point_round": tipping_points[domain_id],
@@ -637,6 +640,7 @@ def _adoption_snapshot_by_type(
         churned = sum(1 for s in type_stages if s == "churned")
         result[ptype] = {
             "adoption_rate": round(retained / max(total, 1), 4),
+            "active_rate": round((retained + trialing) / max(total, 1), 4),
             "advocacy_rate": round(advocates / max(total, 1), 4),
             "trial_rate": round(trialing / max(total, 1), 4),
             "churn_rate": round(churned / max(total, 1), 4),
@@ -644,6 +648,51 @@ def _adoption_snapshot_by_type(
             "stage_distribution": {s: type_stages.count(s) for s in set(type_stages)},
         }
     return result
+
+
+def _peak_curve_metrics(curve: list[dict[str, Any]]) -> dict[str, Any]:
+    """Summarize the strongest points of a domain's trajectory.
+
+    Final retained adoption is useful for durability, but it hides what agents
+    actually explored during the run. Peak metrics preserve that signal.
+    """
+    if not curve:
+        return {
+            "peak_adoption_rate": 0.0,
+            "peak_adoption_round": None,
+            "peak_active_rate": 0.0,
+            "peak_active_round": None,
+            "peak_interest_rate": 0.0,
+            "peak_interest_round": None,
+            "peak_trial_rate": 0.0,
+            "peak_trial_round": None,
+        }
+
+    def _peak(metric: str) -> tuple[float, int | None]:
+        best = max(curve, key=lambda item: item.get(metric, 0.0))
+        return (round(best.get(metric, 0.0), 4), best.get("round"))
+
+    peak_adoption_rate, peak_adoption_round = _peak("adoption_rate")
+    peak_trial_rate, peak_trial_round = _peak("trial_rate")
+    peak_interest_rate, peak_interest_round = _peak("interest_rate")
+    peak_active_rate = 0.0
+    peak_active_round: int | None = None
+    for snapshot in curve:
+        active = round(snapshot.get("adoption_rate", 0.0) + snapshot.get("trial_rate", 0.0), 4)
+        if active >= peak_active_rate:
+            peak_active_rate = active
+            peak_active_round = snapshot.get("round")
+
+    return {
+        "peak_adoption_rate": peak_adoption_rate,
+        "peak_adoption_round": peak_adoption_round,
+        "peak_active_rate": peak_active_rate,
+        "peak_active_round": peak_active_round,
+        "peak_interest_rate": peak_interest_rate,
+        "peak_interest_round": peak_interest_round,
+        "peak_trial_rate": peak_trial_rate,
+        "peak_trial_round": peak_trial_round,
+    }
 
 
 def _compute_consensus(personas: list[dict[str, Any]], domain_id: str) -> float:

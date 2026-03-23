@@ -42,6 +42,10 @@ def generate_prediction_report(
     domain_predictions: list[dict[str, Any]] = []
     for domain_id, data in primary_domains.items():
         adoption_prob = data.get("final_adoption_rate", 0.0)
+        final_active = data.get("final_active_rate", adoption_prob)
+        peak_adoption = data.get("peak_adoption_rate", adoption_prob)
+        peak_active = data.get("peak_active_rate", final_active)
+        peak_interest = data.get("peak_interest_rate", 0.0)
         tipping_round = data.get("tipping_point_round")
 
         # Timeline estimate based on tipping point
@@ -71,6 +75,13 @@ def generate_prediction_report(
         prediction = {
             "domain_id": domain_id,
             "adoption_probability": round(adoption_prob, 4),
+            "final_active_probability": round(final_active, 4),
+            "peak_adoption_probability": round(peak_adoption, 4),
+            "peak_active_probability": round(peak_active, 4),
+            "peak_interest_probability": round(peak_interest, 4),
+            "agent_choice_signal": round(peak_active, 4),
+            "peak_active_round": data.get("peak_active_round"),
+            "peak_interest_round": data.get("peak_interest_round"),
             "timeline_estimate": timeline,
             "confidence": confidence,
             "consensus_score": consensus,
@@ -87,7 +98,13 @@ def generate_prediction_report(
         domain_predictions.append(prediction)
 
     # Sort by adoption probability
-    domain_predictions.sort(key=lambda x: x["adoption_probability"], reverse=True)
+    domain_predictions.sort(
+        key=lambda x: (
+            x.get("agent_choice_signal", 0.0),
+            x.get("adoption_probability", 0.0),
+        ),
+        reverse=True,
+    )
 
     # Cross-domain analysis
     cross_domain = _cross_domain_analysis(domain_predictions, static_rankings)
@@ -124,16 +141,15 @@ def format_report_markdown(report: dict[str, Any]) -> str:
         "",
         "## Domain Predictions",
         "",
-        "| Domain | Adoption Prob | Timeline | Confidence | Tipping Point |",
-        "|--------|--------------|----------|------------|---------------|",
+        "| Domain | Choice Signal | Final Adoption | Peak Interest | Timeline |",
+        "|--------|---------------|----------------|---------------|----------|",
     ]
 
     for pred in report.get("domain_predictions", []):
-        tp = pred.get("tipping_point_round")
-        tp_str = f"Round {tp}" if tp is not None else "None"
         lines.append(
-            f"| {pred['domain_id']} | {pred['adoption_probability']:.2%} "
-            f"| {pred['timeline_estimate']} | {pred['confidence']} | {tp_str} |"
+            f"| {pred['domain_id']} | {pred.get('agent_choice_signal', 0.0):.2%} "
+            f"| {pred['adoption_probability']:.2%} | {pred.get('peak_interest_probability', 0.0):.2%} "
+            f"| {pred['timeline_estimate']} |"
         )
 
     lines.extend(["", "## Cross-Domain Analysis", ""])
@@ -188,6 +204,8 @@ def _identify_drivers(domain_data: dict[str, Any]) -> list[str]:
     advocacy = domain_data.get("final_advocacy_rate", 0.0)
     consensus = domain_data.get("final_consensus", 0.0)
     tipping = domain_data.get("tipping_point_round")
+    peak_active = domain_data.get("peak_active_rate", adoption)
+    peak_interest = domain_data.get("peak_interest_rate", 0.0)
 
     if adoption > 0.6:
         drivers.append("Strong adoption signal across persona types")
@@ -208,6 +226,10 @@ def _identify_drivers(domain_data: dict[str, Any]) -> list[str]:
         drivers.append("Committed users show deep workflow integration")
     if trial > 0.3:
         drivers.append("High trial rate shows low barrier to experimentation")
+    if peak_active > adoption + 0.1:
+        drivers.append("Agents showed real try-out behavior before retention normalized")
+    if peak_interest > 0.35:
+        drivers.append("The domain captured broad attention during the run")
 
     if not drivers:
         drivers.append("No strong adoption drivers detected yet")
@@ -220,6 +242,8 @@ def _identify_risks(domain_data: dict[str, Any]) -> list[str]:
     disagreement = domain_data.get("disagreement_score", 0.0)
     adoption = domain_data.get("final_adoption_rate", 0.0)
     tipping = domain_data.get("tipping_point_round")
+    peak_active = domain_data.get("peak_active_rate", adoption)
+    peak_interest = domain_data.get("peak_interest_rate", 0.0)
 
     if disagreement > 0.6:
         risks.append("High disagreement across persona types signals uncertainty")
@@ -235,6 +259,10 @@ def _identify_risks(domain_data: dict[str, Any]) -> list[str]:
         risks.append(f"High churn rate ({churn:.0%}) indicates retention problem")
     if retention < 0.3 and adoption > 0.1:
         risks.append("Low retention despite adoption -- users trying but not sticking")
+    if peak_interest > 0.3 and adoption < 0.05:
+        risks.append("Attention converted poorly into durable adoption")
+    if peak_active > 0.08 and adoption < peak_active * 0.4:
+        risks.append("Many agents tried it, but the funnel lost them before retention")
 
     if not risks:
         risks.append("No major risks identified")
