@@ -36,3 +36,45 @@ The latest committed MiroFish v4 run had effectively collapsed into near-zero fi
   - 6 adoption stages
   - exact requested ensemble run count even though v4 enforces a minimum
 - Those mismatches predate this rebalance tranche.
+
+## Tranche: MiroFish Discovery Factory Plan
+
+### Files Changed
+
+- `docs/MIROFISH_DISCOVERY_FACTORY_PLAN.md`
+- `docs/EXECUTION_PLAN_2026-03-21.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_factory_plan.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The current MiroFish system can compare seeded domain-chip universes, but it cannot yet discover candidate domain chips from real specialization, mastery, and demand signals without being handed a menu first.
+
+### What Changed
+
+- Added a discovery-first hybrid architecture plan
+- Defined the hard boundary between:
+  - discovery
+  - canonicalization
+  - evaluation
+  - promotion
+- Defined the first implementation tranche:
+  - discovery schema
+  - output classes
+  - canonicalization rules
+  - one manual discovery batch
+  - one smaller hybrid evaluation pass
+- Linked the main repo execution plan to the new MiroFish discovery-factory plan
+
+### Verification
+
+- Manual consistency review against:
+  - current MiroFish docs
+  - current CLI/runtime structure
+  - current execution plan
+
+### Notes
+
+- This tranche is planning-only.
+- The next tranche should implement the discovery contract and repo-local packet scaffolding.

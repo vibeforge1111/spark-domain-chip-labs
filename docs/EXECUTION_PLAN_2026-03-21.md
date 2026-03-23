@@ -153,3 +153,8 @@ Medium-term checkpoint:
   - multi-chip advisory ranking quality in the chip-labs serving layer
   - a weakest-dimension matrix for the top-tier portfolio chips
   - smaller startup-yc routing and validation work instead of another large feature branch
+- The next MiroFish product-expansion plan is now captured in `docs/MIROFISH_DISCOVERY_FACTORY_PLAN.md`.
+- That plan defines the discovery-first hybrid:
+  - open-ended domain-chip discovery upstream
+  - canonicalization in the middle
+  - controlled MiroFish evaluation downstream
