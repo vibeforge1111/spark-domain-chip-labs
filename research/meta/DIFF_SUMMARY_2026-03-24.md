@@ -59,3 +59,12 @@ MiroFish focused benchmark batch:
 - narrow discovery around the strongest cluster
 - run a custom enterprise-response benchmark panel
 - identify the strongest discovered candidate under relevant comparison
+
+## Batch 8
+
+MiroFish promotion review:
+
+- add a promotion-brief CLI for focused hybrid runs
+- document the promotion-review operator workflow
+- emit the first enterprise-response promotion brief
+- recommend the first candidate for maintained benchmark review without auto-promoting it

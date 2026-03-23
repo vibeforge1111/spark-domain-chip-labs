@@ -1,0 +1,67 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_promotion_review",
+  "created_at": "2026-03-24",
+  "scope": "Add a promotion-review layer for focused MiroFish hybrid runs and emit the first enterprise-response promotion brief",
+  "decision_context": {
+    "prior_state": "The repo could discover, canonicalize, benchmark, and run hybrid evaluations, but promotion into the maintained benchmark universe was still being handled only through manual notes.",
+    "decision": "Add a repo-local promotion brief command and use it to compare the strongest enterprise-response candidates from the focused run before any benchmark-review proposal.",
+    "why_now": "The focused benchmark batch identified a clear frontier leader and the next question is promotion priority, not broader discovery."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/hybrid.py",
+      "purpose": "Adds promotion-brief generation on top of a saved hybrid run."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Exposes the promotion-brief generator as a CLI command."
+    },
+    {
+      "path": "docs/MIROFISH_PROMOTION_REVIEW.md",
+      "purpose": "Documents how promotion review should be run and interpreted."
+    },
+    {
+      "path": "docs/MIROFISH_HYBRID_EVALUATION_SPEC.md",
+      "purpose": "Links the hybrid run flow to the promotion-review step."
+    },
+    {
+      "path": "docs/MIROFISH_DISCOVERY_FACTORY_PLAN.md",
+      "purpose": "Makes the promotion-review operator path explicit in the discovery factory plan."
+    },
+    {
+      "path": "research/meta/MIROFISH_PROMOTION_BRIEF_ENTERPRISE_RESPONSE_2026-03-24.json",
+      "purpose": "Stores the first enterprise-response promotion brief."
+    },
+    {
+      "path": "research/meta/MIROFISH_PROMOTION_BRIEF_ENTERPRISE_RESPONSE_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the promotion recommendation in operator-readable form."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_promotion_review.json",
+      "purpose": "Captures the request, scope, and verification plan for this tranche."
+    }
+  ],
+  "planned_steps": [
+    "Add a promotion-brief builder to the MiroFish hybrid module",
+    "Expose a CLI command for promotion review",
+    "Document the operator workflow",
+    "Run the promotion brief on the focused enterprise-response hybrid run",
+    "Save the research note and update the transparent tranche logs"
+  ],
+  "verification": {
+    "commands": [
+      "python -m chip_labs.cli mirofish-promotion-brief --input research/meta/MIROFISH_HYBRID_RUN_FOCUSED_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-rfp-response-copilot,ai-compliance-evidence-copilot,ai-renewal-risk-briefing-copilot --output research/meta/MIROFISH_PROMOTION_BRIEF_ENTERPRISE_RESPONSE_2026-03-24.json",
+      "python -m pytest tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The promotion brief nominates exactly one domain for human benchmark review",
+      "The benchmark summary remains visible in the saved packet",
+      "The governance note explicitly prevents auto-promotion"
+    ]
+  },
+  "guardrails": [
+    "Do not auto-promote benchmark membership",
+    "Keep all output in exploratory_frontier / operator-review lanes",
+    "Do not modify unrelated benchmark artifacts"
+  ]
+}

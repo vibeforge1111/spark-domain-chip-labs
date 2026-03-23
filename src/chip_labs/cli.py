@@ -557,6 +557,20 @@ def cmd_mirofish_hybrid_run(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: mirofish-promotion-brief
+# ---------------------------------------------------------------------------
+
+def cmd_mirofish_promotion_brief(args: argparse.Namespace) -> None:
+    """Build a promotion-review brief from a saved hybrid run packet."""
+    from .mirofish.hybrid import build_promotion_brief
+
+    input_data = _load_input(args.input)
+    domain_ids = [item.strip() for item in (args.domains or "").split(",") if item.strip()]
+    result = build_promotion_brief(input_data, candidate_ids=domain_ids or None)
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
 
@@ -744,6 +758,21 @@ def main() -> None:
     p_mirofish_hybrid_run.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_hybrid_run.add_argument("--seed", type=int, default=42, help="Base seed for the run.")
     p_mirofish_hybrid_run.set_defaults(func=cmd_mirofish_hybrid_run)
+
+    # mirofish-promotion-brief
+    p_mirofish_promotion = sub.add_parser(
+        "mirofish-promotion-brief",
+        help="Build a promotion-review brief from a hybrid MiroFish run.",
+    )
+    p_mirofish_promotion.add_argument("--input", type=str, required=True, help="Input hybrid run path.")
+    p_mirofish_promotion.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_promotion.add_argument(
+        "--domains",
+        type=str,
+        default=None,
+        help="Optional comma-separated discovered domain_ids to include. Defaults to all discovered candidates.",
+    )
+    p_mirofish_promotion.set_defaults(func=cmd_mirofish_promotion_brief)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")

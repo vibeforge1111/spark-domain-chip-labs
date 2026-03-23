@@ -131,6 +131,12 @@ Promotion outcomes:
 - `needs more evidence`
 - `reject / duplicate / too vague`
 
+Operator path:
+
+- focused hybrid run
+- promotion-review packet
+- human benchmark-review decision
+
 ## Hard Boundary
 
 Discovery and evaluation must stay separate.

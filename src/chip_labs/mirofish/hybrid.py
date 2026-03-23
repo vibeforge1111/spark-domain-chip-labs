@@ -261,6 +261,109 @@ def run_hybrid_evaluation(spec: dict[str, Any], seed: int = 42) -> dict[str, Any
     }
 
 
+def build_promotion_brief(
+    run_packet: dict[str, Any],
+    candidate_ids: list[str] | None = None,
+) -> dict[str, Any]:
+    """Build a promotion-review brief from a saved hybrid run packet."""
+    discovered_ids = list(run_packet.get("discovered_domain_ids", []))
+    benchmark_ids = list(run_packet.get("benchmark_domain_ids", []))
+    selected_ids = candidate_ids or discovered_ids
+
+    prediction_map = {
+        item.get("domain_id"): item
+        for item in run_packet.get("domain_predictions", [])
+        if item.get("domain_id")
+    }
+    ensemble_map = {
+        item.get("domain_id"): item
+        for item in run_packet.get("builder_ensemble_summary", [])
+        if item.get("domain_id")
+    }
+
+    benchmark_rows = [
+        _merged_domain_metrics(domain_id, prediction_map, ensemble_map)
+        for domain_id in benchmark_ids
+        if domain_id in prediction_map or domain_id in ensemble_map
+    ]
+    benchmark_mean_values = [row.get("mean_adoption", 0.0) for row in benchmark_rows]
+    benchmark_floor = _median(benchmark_mean_values)
+
+    candidate_rows: list[dict[str, Any]] = []
+    for domain_id in selected_ids:
+        merged = _merged_domain_metrics(domain_id, prediction_map, ensemble_map)
+        if not merged:
+            continue
+        mean_adoption = merged.get("mean_adoption", 0.0)
+        benchmark_wins = [
+            row["domain_id"]
+            for row in benchmark_rows
+            if mean_adoption > row.get("mean_adoption", 0.0)
+        ]
+        readiness_score = round(
+            mean_adoption * 0.4
+            + merged.get("agent_choice_signal", 0.0) * 0.25
+            + merged.get("peak_interest_probability", 0.0) * 0.1
+            + merged.get("adoption_probability", 0.0) * 0.1
+            + merged.get("consensus_score", 0.0) * 0.1
+            + (len(benchmark_wins) / max(1, len(benchmark_rows))) * 0.05,
+            4,
+        )
+        candidate_rows.append({
+            **merged,
+            "benchmark_wins": benchmark_wins,
+            "benchmark_win_count": len(benchmark_wins),
+            "benchmark_loss_count": max(0, len(benchmark_rows) - len(benchmark_wins)),
+            "benchmark_floor_gap": round(mean_adoption - benchmark_floor, 4),
+            "promotion_readiness_score": readiness_score,
+        })
+
+    candidate_rows.sort(
+        key=lambda item: (
+            item.get("promotion_readiness_score", 0.0),
+            item.get("mean_adoption", 0.0),
+            item.get("agent_choice_signal", 0.0),
+        ),
+        reverse=True,
+    )
+
+    for index, row in enumerate(candidate_rows, start=1):
+        row["rank"] = index
+        row["promotion_recommendation"] = _promotion_recommendation(row, benchmark_floor)
+        row["promotion_rationale"] = _promotion_rationale(row, benchmark_floor)
+
+    top_candidate = candidate_rows[0] if candidate_rows else {}
+    return {
+        "packet_kind": "mirofish_promotion_brief",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "source_batch_id": run_packet.get("source_batch_id"),
+        "source_run_created_at": run_packet.get("created_at"),
+        "evidence_lane": "exploratory_frontier",
+        "candidate_domain_ids": [row["domain_id"] for row in candidate_rows],
+        "benchmark_domain_ids": benchmark_ids,
+        "benchmark_summary": {
+            "benchmark_count": len(benchmark_rows),
+            "mean_benchmark_ensemble_adoption": round(_mean(benchmark_mean_values), 4),
+            "median_benchmark_ensemble_adoption": round(benchmark_floor, 4),
+            "max_benchmark_ensemble_adoption": round(max(benchmark_mean_values or [0.0]), 4),
+        },
+        "promotion_table": candidate_rows,
+        "recommendation": {
+            "domain_id": top_candidate.get("domain_id"),
+            "action": (
+                "promote_for_human_review"
+                if top_candidate and top_candidate.get("promotion_recommendation") == "review_now"
+                else "hold_in_frontier"
+            ),
+            "reason": _promotion_decision_reason(top_candidate, benchmark_floor),
+        },
+        "governance_note": (
+            "Promotion briefs recommend candidates for human review only. "
+            "They do not modify benchmark membership or auto-promote any domain."
+        ),
+    }
+
+
 def discovery_candidate_to_opportunity(candidate: dict[str, Any]) -> dict[str, Any]:
     """Convert a canonical discovery candidate into a conservative MiroFish opportunity."""
     scores = infer_discovery_scores(candidate)
@@ -442,3 +545,84 @@ def _top_line_summary(report: dict[str, Any], ensemble: dict[str, Any]) -> dict[
         "top_ensemble_domain": top_ensemble.get("domain_id"),
         "top_ensemble_mean_adoption": top_ensemble.get("mean_adoption", 0.0),
     }
+
+
+def _merged_domain_metrics(
+    domain_id: str,
+    prediction_map: dict[str, dict[str, Any]],
+    ensemble_map: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    prediction = deepcopy(prediction_map.get(domain_id, {}))
+    ensemble = deepcopy(ensemble_map.get(domain_id, {}))
+    if not prediction and not ensemble:
+        return {}
+    return {
+        "domain_id": domain_id,
+        "adoption_probability": prediction.get("adoption_probability", 0.0),
+        "peak_interest_probability": prediction.get("peak_interest_probability", 0.0),
+        "agent_choice_signal": prediction.get("agent_choice_signal", 0.0),
+        "consensus_score": prediction.get("consensus_score", 0.0),
+        "mean_adoption": ensemble.get("mean_adoption", 0.0),
+        "mean_trial": ensemble.get("mean_trial", 0.0),
+        "mean_churn": ensemble.get("mean_churn", 0.0),
+        "confidence_width": ensemble.get("confidence_width", 0.0),
+    }
+
+
+def _promotion_recommendation(row: dict[str, Any], benchmark_floor: float) -> str:
+    if (
+        row.get("mean_adoption", 0.0) >= benchmark_floor
+        and row.get("agent_choice_signal", 0.0) >= 0.15
+        and row.get("benchmark_win_count", 0) >= 2
+    ):
+        return "review_now"
+    if row.get("mean_adoption", 0.0) >= 0.015 or row.get("agent_choice_signal", 0.0) >= 0.15:
+        return "watchlist"
+    return "hold"
+
+
+def _promotion_rationale(row: dict[str, Any], benchmark_floor: float) -> list[str]:
+    reasons: list[str] = []
+    if row.get("mean_adoption", 0.0) >= benchmark_floor:
+        reasons.append("Builder ensemble adoption clears the current benchmark median.")
+    if row.get("benchmark_win_count", 0) >= 2:
+        reasons.append("Outruns at least two benchmark domains on builder ensemble adoption.")
+    if row.get("agent_choice_signal", 0.0) >= 0.2:
+        reasons.append("Flagship choice signal shows strong in-run agent selection.")
+    elif row.get("agent_choice_signal", 0.0) >= 0.15:
+        reasons.append("Flagship choice signal is high enough to justify closer review.")
+    if row.get("mean_churn", 0.0) > 0.08:
+        reasons.append("Churn remains elevated, so benchmark promotion should stay provisional.")
+    if not reasons:
+        reasons.append("Signal is still exploratory and does not yet clear the promotion floor.")
+    return reasons
+
+
+def _promotion_decision_reason(top_candidate: dict[str, Any], benchmark_floor: float) -> str:
+    if not top_candidate:
+        return "No candidate metrics were available."
+    if top_candidate.get("promotion_recommendation") == "review_now":
+        return (
+            f"{top_candidate.get('domain_id')} leads the promotion table, clears the benchmark median "
+            f"({benchmark_floor:.4f}), and shows enough agent-choice signal to justify benchmark review."
+        )
+    return (
+        f"{top_candidate.get('domain_id')} leads the current frontier set, but its metrics do not yet justify "
+        "promotion review against the benchmark floor."
+    )
+
+
+def _mean(values: list[float]) -> float:
+    if not values:
+        return 0.0
+    return sum(values) / len(values)
+
+
+def _median(values: list[float]) -> float:
+    if not values:
+        return 0.0
+    ordered = sorted(values)
+    middle = len(ordered) // 2
+    if len(ordered) % 2:
+        return ordered[middle]
+    return (ordered[middle - 1] + ordered[middle]) / 2

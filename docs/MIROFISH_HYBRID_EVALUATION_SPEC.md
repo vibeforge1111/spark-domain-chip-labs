@@ -90,6 +90,13 @@ $env:PYTHONPATH='src'
 python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_TEMPLATE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_TEMPLATE_2026-03-24.json
 ```
 
+To turn a focused hybrid run into a promotion-review packet:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-promotion-brief --input research/meta/MIROFISH_HYBRID_RUN_TEMPLATE_2026-03-24.json --output research/meta/MIROFISH_PROMOTION_BRIEF_TEMPLATE_2026-03-24.json
+```
+
 To override the benchmark panel:
 
 ```powershell
@@ -132,6 +139,7 @@ So the discovered candidate is not winning the benchmark panel yet, but it is al
 - inferred priors must stay visible in the output
 - benchmark membership still requires human review
 - discovery output should never auto-promote directly into the maintained universe
+- use a promotion-review packet before proposing any maintained benchmark change
 
 ## Scenario Guardrail
 

@@ -1,0 +1,137 @@
+{
+  "packet_kind": "mirofish_promotion_brief",
+  "created_at": "2026-03-23T22:00:47.196679+00:00",
+  "source_batch_id": "mirofish-discovery-batch-focused-2026-03-24",
+  "source_run_created_at": "2026-03-23T21:55:21.693501+00:00",
+  "evidence_lane": "exploratory_frontier",
+  "candidate_domain_ids": [
+    "ai-security-questionnaire-copilot",
+    "ai-compliance-evidence-copilot",
+    "ai-renewal-risk-briefing-copilot",
+    "ai-rfp-response-copilot"
+  ],
+  "benchmark_domain_ids": [
+    "compliance-shield",
+    "legal-ops",
+    "startup-yc",
+    "indie-hacker",
+    "cursor-copilot"
+  ],
+  "benchmark_summary": {
+    "benchmark_count": 5,
+    "mean_benchmark_ensemble_adoption": 0.0243,
+    "median_benchmark_ensemble_adoption": 0.0175,
+    "max_benchmark_ensemble_adoption": 0.0607
+  },
+  "promotion_table": [
+    {
+      "domain_id": "ai-security-questionnaire-copilot",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.8667,
+      "agent_choice_signal": 0.2334,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0483,
+      "mean_trial": 0.0112,
+      "mean_churn": 0.0035,
+      "confidence_width": 0.0311,
+      "benchmark_wins": [
+        "compliance-shield",
+        "legal-ops",
+        "startup-yc",
+        "indie-hacker"
+      ],
+      "benchmark_win_count": 4,
+      "benchmark_loss_count": 1,
+      "benchmark_floor_gap": 0.0308,
+      "promotion_readiness_score": 0.2543,
+      "rank": 1,
+      "promotion_recommendation": "review_now",
+      "promotion_rationale": [
+        "Builder ensemble adoption clears the current benchmark median.",
+        "Outruns at least two benchmark domains on builder ensemble adoption.",
+        "Flagship choice signal shows strong in-run agent selection."
+      ]
+    },
+    {
+      "domain_id": "ai-compliance-evidence-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.8667,
+      "agent_choice_signal": 0.1667,
+      "consensus_score": 1.0,
+      "mean_adoption": 0.013,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0006,
+      "confidence_width": 0.0178,
+      "benchmark_wins": [
+        "compliance-shield",
+        "legal-ops"
+      ],
+      "benchmark_win_count": 2,
+      "benchmark_loss_count": 3,
+      "benchmark_floor_gap": -0.0045,
+      "promotion_readiness_score": 0.2535,
+      "rank": 2,
+      "promotion_recommendation": "watchlist",
+      "promotion_rationale": [
+        "Outruns at least two benchmark domains on builder ensemble adoption.",
+        "Flagship choice signal is high enough to justify closer review."
+      ]
+    },
+    {
+      "domain_id": "ai-renewal-risk-briefing-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.8333,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 1.0,
+      "mean_adoption": 0.016,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0015,
+      "confidence_width": 0.0178,
+      "benchmark_wins": [
+        "compliance-shield",
+        "legal-ops"
+      ],
+      "benchmark_win_count": 2,
+      "benchmark_loss_count": 3,
+      "benchmark_floor_gap": -0.0015,
+      "promotion_readiness_score": 0.2347,
+      "rank": 3,
+      "promotion_recommendation": "watchlist",
+      "promotion_rationale": [
+        "Outruns at least two benchmark domains on builder ensemble adoption."
+      ]
+    },
+    {
+      "domain_id": "ai-rfp-response-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7667,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.5333,
+      "mean_adoption": 0.0252,
+      "mean_trial": 0.0053,
+      "mean_churn": 0.0009,
+      "confidence_width": 0.0133,
+      "benchmark_wins": [
+        "compliance-shield",
+        "legal-ops",
+        "startup-yc"
+      ],
+      "benchmark_win_count": 3,
+      "benchmark_loss_count": 2,
+      "benchmark_floor_gap": 0.0077,
+      "promotion_readiness_score": 0.1951,
+      "rank": 4,
+      "promotion_recommendation": "watchlist",
+      "promotion_rationale": [
+        "Builder ensemble adoption clears the current benchmark median.",
+        "Outruns at least two benchmark domains on builder ensemble adoption."
+      ]
+    }
+  ],
+  "recommendation": {
+    "domain_id": "ai-security-questionnaire-copilot",
+    "action": "promote_for_human_review",
+    "reason": "ai-security-questionnaire-copilot leads the promotion table, clears the benchmark median (0.0175), and shows enough agent-choice signal to justify benchmark review."
+  },
+  "governance_note": "Promotion briefs recommend candidates for human review only. They do not modify benchmark membership or auto-promote any domain."
+}

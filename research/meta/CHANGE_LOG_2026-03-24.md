@@ -300,3 +300,46 @@ The expanded discovery batch found a promising cluster, but it still needed a na
 
 - `ai-security-questionnaire-copilot` is now the strongest discovered candidate under a relevant benchmark comparison.
 - It outruns `startup-yc`, `compliance-shield`, and `legal-ops` on builder ensemble mean adoption inside this focused panel.
+
+## Tranche: MiroFish Promotion Review
+
+### Files Changed
+
+- `src/chip_labs/mirofish/hybrid.py`
+- `src/chip_labs/cli.py`
+- `docs/MIROFISH_PROMOTION_REVIEW.md`
+- `docs/MIROFISH_HYBRID_EVALUATION_SPEC.md`
+- `docs/MIROFISH_DISCOVERY_FACTORY_PLAN.md`
+- `research/meta/MIROFISH_PROMOTION_BRIEF_ENTERPRISE_RESPONSE_2026-03-24.json`
+- `research/meta/MIROFISH_PROMOTION_BRIEF_ENTERPRISE_RESPONSE_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_promotion_review.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The focused enterprise-response run identified a likely promotion candidate, but the repo still lacked a reproducible way to convert a saved hybrid run into a benchmark-review recommendation without manual re-reading.
+
+### What Changed
+
+- Added a promotion-brief builder on top of saved hybrid run packets
+- Added a `mirofish-promotion-brief` CLI command
+- Documented the operator workflow for promotion review
+- Linked the promotion-review step back into the hybrid evaluation and discovery-factory docs
+- Saved the first enterprise-response promotion brief and note
+- Recommended `ai-security-questionnaire-copilot` for first maintained benchmark review
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-promotion-brief` on the focused hybrid run with the selected enterprise-response domains
+- Run `python -m pytest tests/test_trend_prediction.py -q`
+- Inspect that the saved brief exposes:
+  - benchmark median
+  - benchmark wins
+  - a single human-review recommendation
+  - a no-auto-promotion governance note
+
+### Notes
+
+- The promotion brief is a review layer only; it does not mutate benchmark membership.
+- `ai-security-questionnaire-copilot` is the only current enterprise-response candidate that clears the explicit `review_now` bar.
