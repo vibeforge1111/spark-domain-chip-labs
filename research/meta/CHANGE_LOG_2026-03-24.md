@@ -208,3 +208,48 @@ The repo could already build a hybrid evaluation spec, but it still needed one s
 
 - In the current starter run, `cursor-copilot` leads the benchmark panel.
 - The discovered `ai-meeting-prep-copilot` candidate ranks second by ensemble mean adoption, which is enough to justify a broader discovery batch.
+
+## Tranche: MiroFish Expanded Discovery Batch
+
+### Files Changed
+
+- `src/chip_labs/mirofish/hybrid.py`
+- `docs/MIROFISH_HYBRID_EVALUATION_SPEC.md`
+- `research/meta/MIROFISH_DISCOVERY_BATCH_EXPANDED_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_BATCH_EXPANDED_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_SPEC_EXPANDED_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_EXPANDED_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_EXPANDED_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_expanded_batch.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The repo needed a larger discovery batch to see whether newly proposed operator domains could survive canonicalization and stay competitive once they were compared against the benchmark panel under the hybrid harness.
+
+### What Changed
+
+- Added the first expanded manual discovery batch with 17 raw candidates
+- Canonicalized that batch into:
+  - 12 accepted candidates
+  - 2 merged candidates
+  - 3 rejected candidates
+- Generated and ran the hybrid harness on the expanded set
+- Tightened the default breakout shock so it only targets the top 3 discovered candidates instead of all discovered candidates at once
+- Saved a research note describing the discovered-domain cluster read from the results
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-discovery-batch` on the expanded raw packet
+- Run `python -m chip_labs.cli mirofish-hybrid-spec` on the expanded canonical packet
+- Run `python -m chip_labs.cli mirofish-hybrid-run` on the expanded spec
+- Inspect the discovered-only leaderboard from the builder ensemble
+
+### Notes
+
+- Benchmarks still lead overall after the scenario correction.
+- The strongest discovered cluster is now:
+  - compliance / enterprise evidence
+  - founder communication
+  - sales / partner preparation

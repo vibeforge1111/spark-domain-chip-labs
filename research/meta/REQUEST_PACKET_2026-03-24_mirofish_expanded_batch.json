@@ -1,0 +1,50 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_expanded_batch",
+  "created_at": "2026-03-24",
+  "scope": "Run the first expanded manual discovery batch through the hybrid MiroFish harness",
+  "problem": {
+    "summary": "The repo had only a tiny starter discovery example. It still needed a broader batch that could reveal which newly discovered operator domains survive intake, benchmark comparison, and the hybrid simulation harness.",
+    "decision": "Add an expanded manual discovery batch, canonicalize it, generate a hybrid spec, run the corrected harness, and save a research note with the resulting domain cluster read."
+  },
+  "deliverables": [
+    {
+      "file": "research/meta/MIROFISH_DISCOVERY_BATCH_EXPANDED_2026-03-24.json",
+      "purpose": "Stores the first expanded manual discovery intake with real candidates, duplicates, noise, and benchmark overlap."
+    },
+    {
+      "file": "research/meta/MIROFISH_DISCOVERY_BATCH_EXPANDED_RESULT_2026-03-24.json",
+      "purpose": "Stores the canonicalized expanded discovery packet."
+    },
+    {
+      "file": "research/meta/MIROFISH_HYBRID_SPEC_EXPANDED_2026-03-24.json",
+      "purpose": "Stores the hybrid evaluation spec built from the expanded accepted set."
+    },
+    {
+      "file": "research/meta/MIROFISH_HYBRID_RUN_EXPANDED_2026-03-24.json",
+      "purpose": "Stores the end-to-end hybrid run for the expanded batch."
+    },
+    {
+      "file": "research/meta/MIROFISH_HYBRID_RUN_EXPANDED_NOTE_2026-03-24.md",
+      "purpose": "Summarizes what the expanded batch revealed about promising discovered domains."
+    }
+  ],
+  "verification_plan": [
+    "Run chip-labs mirofish-discovery-batch on the expanded raw batch",
+    "Run chip-labs mirofish-hybrid-spec on the expanded canonical packet",
+    "Run chip-labs mirofish-hybrid-run on the saved expanded spec",
+    "Inspect the discovered-only leaderboard in the ensemble output"
+  ],
+  "mutable_target_compliance": {
+    "edited_paths": [
+      "src/chip_labs/mirofish/hybrid.py",
+      "docs/MIROFISH_HYBRID_EVALUATION_SPEC.md",
+      "research/meta/MIROFISH_DISCOVERY_BATCH_EXPANDED_2026-03-24.json",
+      "research/meta/MIROFISH_DISCOVERY_BATCH_EXPANDED_RESULT_2026-03-24.json",
+      "research/meta/MIROFISH_HYBRID_SPEC_EXPANDED_2026-03-24.json",
+      "research/meta/MIROFISH_HYBRID_RUN_EXPANDED_2026-03-24.json",
+      "research/meta/MIROFISH_HYBRID_RUN_EXPANDED_NOTE_2026-03-24.md",
+      "research/meta/REQUEST_PACKET_2026-03-24_mirofish_expanded_batch.json"
+    ],
+    "outside_mutable_targets_edited": []
+  }
+}

@@ -132,3 +132,13 @@ So the discovered candidate is not winning the benchmark panel yet, but it is al
 - inferred priors must stay visible in the output
 - benchmark membership still requires human review
 - discovery output should never auto-promote directly into the maintained universe
+
+## Scenario Guardrail
+
+The default breakout shock should not boost every discovered candidate at once.
+
+Current rule:
+
+- limit the breakout shock to the top `3` discovered candidates by inferred composite score
+
+This keeps the hybrid harness from giving the intake set an automatic portfolio-wide positive event.

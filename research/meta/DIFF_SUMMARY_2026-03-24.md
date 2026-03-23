@@ -42,3 +42,12 @@ MiroFish hybrid starter run:
 - add a repo-local hybrid runner
 - save an end-to-end starter evaluation artifact
 - summarize how the first discovered candidate performed against the panel
+
+## Batch 6
+
+MiroFish expanded discovery batch:
+
+- add the first broader manual discovery intake
+- run the expanded accepted set through the hybrid harness
+- tighten breakout-shock targeting to avoid intake-wide favoritism
+- summarize the strongest discovered domain cluster

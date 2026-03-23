@@ -361,9 +361,16 @@ def recommended_hybrid_scenario(
     """Create a simple shock scenario for hybrid runs."""
     shocks: list[dict[str, Any]] = []
 
-    discovered_ids = [item["domain_id"] for item in discovered]
-    if discovered_ids:
-        shocks.append(create_shock("breakout_tool", discovered_ids, inject_at_round=4))
+    breakout_targets = [
+        item["domain_id"]
+        for item in sorted(
+            discovered,
+            key=lambda opportunity: opportunity.get("composite_score", 0.0),
+            reverse=True,
+        )[:3]
+    ]
+    if breakout_targets:
+        shocks.append(create_shock("breakout_tool", breakout_targets, inject_at_round=4))
 
     infra_ids = [
         item["domain_id"]
