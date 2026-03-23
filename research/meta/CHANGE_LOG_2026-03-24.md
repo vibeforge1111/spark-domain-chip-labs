@@ -515,3 +515,46 @@ The symmetric two-domain review recommended `ai-rfp-response-copilot`, but the r
 
 - In the broader enterprise proposal run, `ai-rfp-response-copilot` falls behind `ai-security-questionnaire-copilot`, `ai-compliance-evidence-copilot`, and `ai-renewal-risk-briefing-copilot` on builder ensemble adoption.
 - The enterprise-response wedge still clearly beats the incumbent enterprise benchmarks, but the first maintained benchmark admission is not stable enough yet for a library edit.
+
+## Tranche: MiroFish Enterprise Cluster Playoff
+
+### Files Changed
+
+- `research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CLUSTER_PLAYOFF_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_cluster_playoff.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The proposal tranche still mixed roles inside the enterprise cluster. The repo needed one stable playoff where all four enterprise-response domains occupied the same lane so their relative ordering could be trusted.
+
+### What Changed
+
+- Generated a symmetric enterprise cluster playoff spec with:
+  - no discovered domains
+  - no proposed benchmark domains
+  - all four enterprise-response domains in `promotion_review_domain_ids`
+- Ran the cluster playoff harness
+- Saved a note concluding that:
+  - no enterprise domain earns maintained benchmark admission yet
+  - `ai-security-questionnaire-copilot` becomes first cluster priority
+  - `ai-renewal-risk-briefing-copilot` becomes second cluster priority
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-hybrid-spec` on the enterprise proposal packet with all four enterprise domains in `--promote-domains`
+- Run `python -m chip_labs.cli mirofish-hybrid-run` on the cluster playoff spec
+- Inspect that:
+  - `discovered_domain_ids` is empty
+  - all four enterprise domains appear in `promotion_review_domain_ids`
+  - the note states that maintained admission remains deferred
+  - the note ranks first and second cluster priority
+
+### Notes
+
+- In the cluster playoff, `startup-yc` still beats the entire enterprise cluster on builder ensemble adoption.
+- `ai-security-questionnaire-copilot` wins the cluster on flagship choice signal and finishes only slightly behind `ai-renewal-risk-briefing-copilot` on ensemble adoption.
+- `ai-rfp-response-copilot` falls to the bottom of the enterprise cluster under symmetric conditions.

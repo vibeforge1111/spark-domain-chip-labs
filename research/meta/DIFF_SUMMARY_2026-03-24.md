@@ -104,3 +104,12 @@ MiroFish enterprise benchmark proposal:
 - test RFP as a proposed benchmark member on a broader enterprise panel
 - confirm that the narrow RFP recommendation does not yet survive the broader context
 - defer the maintained benchmark library edit and keep the enterprise wedge in cluster review
+
+## Batch 13
+
+MiroFish enterprise cluster playoff:
+
+- move all four enterprise-response domains into symmetric benchmark review
+- remove proposal and discovery-lane asymmetry from the cluster
+- rank first and second cluster priority under the cleanest comparison
+- confirm that maintained benchmark admission is still premature

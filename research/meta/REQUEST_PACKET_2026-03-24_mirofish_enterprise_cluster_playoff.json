@@ -1,0 +1,51 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_enterprise_cluster_playoff",
+  "created_at": "2026-03-24",
+  "scope": "Run a symmetric enterprise cluster playoff across the four leading enterprise-response domains",
+  "decision_context": {
+    "prior_state": "The provisional benchmark proposal showed that the narrow RFP recommendation did not survive a broader enterprise panel, but it still did not fully resolve the ordering inside the enterprise cluster because different domains occupied different lanes.",
+    "decision": "Move all four enterprise-response domains into promotion review, remove the proposal lane and discovery breakout entirely, and use that symmetric cluster playoff to rank first cluster priority, second priority, and maintained admission readiness.",
+    "why_now": "The repo needed a stable cluster-wide ranking before another maintained benchmark admission attempt."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json",
+      "purpose": "Stores the symmetric enterprise cluster playoff spec."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json",
+      "purpose": "Stores the symmetric enterprise cluster playoff run."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CLUSTER_PLAYOFF_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the stable cluster ranking and admission decision."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_cluster_playoff.json",
+      "purpose": "Captures the request and verification plan for the cluster-playoff tranche."
+    }
+  ],
+  "planned_steps": [
+    "Generate a symmetric enterprise cluster playoff spec with all four enterprise domains in promotion review",
+    "Run the cluster playoff harness",
+    "Rank first and second cluster priority",
+    "Decide whether any enterprise domain is now strong enough for maintained benchmark admission"
+  ],
+  "verification": {
+    "commands": [
+      "python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_BENCHMARK_PROPOSAL_RESULT_2026-03-24.json --benchmarks compliance-shield,legal-ops,startup-yc,cursor-copilot --promote-domains ai-rfp-response-copilot,ai-security-questionnaire-copilot,ai-compliance-evidence-copilot,ai-renewal-risk-briefing-copilot --output research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json",
+      "python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "discovered_domain_ids is empty",
+      "all four enterprise domains appear in promotion_review_domain_ids",
+      "the final note states whether any enterprise domain earns maintained benchmark admission",
+      "the final note ranks first and second cluster priority"
+    ]
+  },
+  "guardrails": [
+    "Do not edit the maintained benchmark library in this tranche",
+    "Keep the cluster playoff in exploratory_frontier",
+    "Use the playoff result to rank the cluster honestly even if it weakens earlier narrower conclusions"
+  ]
+}
