@@ -1,0 +1,42 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_hybrid_spec",
+  "created_at": "2026-03-24",
+  "scope": "Build a hybrid MiroFish evaluation spec from accepted discovery packets",
+  "problem": {
+    "summary": "The discovery contract can now canonicalize raw frontier observations, but the repo still lacked the bridge that turns accepted candidates into simulation-ready opportunities with a stable benchmark comparison panel.",
+    "decision": "Ship a repo-local hybrid spec builder that infers conservative priors for discovered candidates, adds benchmark panel domains, and emits graph, signal, shock, and harness inputs."
+  },
+  "deliverables": [
+    {
+      "file": "src/chip_labs/mirofish/hybrid.py",
+      "purpose": "Builds benchmark panels, infers candidate priors, constructs hybrid specs, and recommends simple scenarios."
+    },
+    {
+      "file": "src/chip_labs/cli.py",
+      "purpose": "Exposes `mirofish-hybrid-spec` as a repo-local CLI command."
+    },
+    {
+      "file": "docs/MIROFISH_HYBRID_EVALUATION_SPEC.md",
+      "purpose": "Documents the hybrid bridge, default panel, harness, and CLI flow."
+    },
+    {
+      "file": "research/meta/MIROFISH_HYBRID_SPEC_TEMPLATE_2026-03-24.json",
+      "purpose": "Captures a sample hybrid spec generated from the starter discovery packet."
+    }
+  ],
+  "verification_plan": [
+    "Run chip-labs mirofish-hybrid-spec on the canonical starter discovery packet",
+    "Inspect discovered_count, benchmark_count, signal_count, and shock_count",
+    "Confirm the output contains graph, signals, scenario, and harness blocks"
+  ],
+  "mutable_target_compliance": {
+    "edited_paths": [
+      "src/chip_labs/mirofish/hybrid.py",
+      "src/chip_labs/cli.py",
+      "docs/MIROFISH_HYBRID_EVALUATION_SPEC.md",
+      "research/meta/MIROFISH_HYBRID_SPEC_TEMPLATE_2026-03-24.json",
+      "research/meta/REQUEST_PACKET_2026-03-24_mirofish_hybrid_spec.json"
+    ],
+    "outside_mutable_targets_edited": []
+  }
+}

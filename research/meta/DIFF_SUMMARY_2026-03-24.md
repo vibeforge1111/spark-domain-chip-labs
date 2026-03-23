@@ -25,3 +25,12 @@ MiroFish discovery contract and packet scaffolding:
 - expose batch canonicalization in the CLI
 - define the operator-facing discovery contract
 - add a starter discovery batch packet for verification
+
+## Batch 4
+
+MiroFish hybrid evaluation spec bridge:
+
+- infer conservative priors for accepted discovery candidates
+- add a stable benchmark panel
+- emit graph, signals, scenario, and harness inputs
+- expose hybrid spec generation in the CLI

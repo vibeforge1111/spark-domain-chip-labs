@@ -522,6 +522,28 @@ def cmd_mirofish_discovery_batch(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: mirofish-hybrid-spec
+# ---------------------------------------------------------------------------
+
+def cmd_mirofish_hybrid_spec(args: argparse.Namespace) -> None:
+    """Build a hybrid evaluation spec from a canonical discovery packet."""
+    from .mirofish.hybrid import build_hybrid_evaluation_spec
+
+    input_data = _load_input(args.input)
+    benchmark_ids = [item.strip() for item in (args.benchmarks or "").split(",") if item.strip()]
+    result = build_hybrid_evaluation_spec(
+        input_data,
+        benchmark_ids=benchmark_ids or None,
+        max_rounds=args.rounds,
+        flagship_count_per_type=args.flagship_count_per_type,
+        ensemble_runs=args.ensemble_runs,
+        ensemble_count_per_type=args.ensemble_count_per_type,
+        scenario_label=args.scenario_label,
+    )
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
 
@@ -659,6 +681,46 @@ def main() -> None:
     p_mirofish_discovery.add_argument("--input", type=str, required=True, help="Input JSON file path.")
     p_mirofish_discovery.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_discovery.set_defaults(func=cmd_mirofish_discovery_batch)
+
+    # mirofish-hybrid-spec
+    p_mirofish_hybrid = sub.add_parser(
+        "mirofish-hybrid-spec",
+        help="Build a hybrid MiroFish evaluation spec from a discovery packet.",
+    )
+    p_mirofish_hybrid.add_argument("--input", type=str, required=True, help="Input discovery packet path.")
+    p_mirofish_hybrid.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_hybrid.add_argument(
+        "--benchmarks",
+        type=str,
+        default=None,
+        help="Comma-separated benchmark domain_ids to include. Defaults to the standard panel.",
+    )
+    p_mirofish_hybrid.add_argument("--rounds", type=int, default=20, help="Simulation rounds for the hybrid harness.")
+    p_mirofish_hybrid.add_argument(
+        "--flagship-count-per-type",
+        type=int,
+        default=30,
+        help="Personas per type for the flagship hybrid harness.",
+    )
+    p_mirofish_hybrid.add_argument(
+        "--ensemble-runs",
+        type=int,
+        default=15,
+        help="Monte Carlo runs for the hybrid harness.",
+    )
+    p_mirofish_hybrid.add_argument(
+        "--ensemble-count-per-type",
+        type=int,
+        default=15,
+        help="Personas per type per ensemble run.",
+    )
+    p_mirofish_hybrid.add_argument(
+        "--scenario-label",
+        type=str,
+        default="mirofish-hybrid-discovery",
+        help="Scenario label for generated shocks.",
+    )
+    p_mirofish_hybrid.set_defaults(func=cmd_mirofish_hybrid_spec)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")

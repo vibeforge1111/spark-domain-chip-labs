@@ -1,0 +1,1761 @@
+{
+  "packet_kind": "mirofish_hybrid_evaluation_spec",
+  "created_at": "2026-03-23T21:40:59.962021+00:00",
+  "source_batch_id": "mirofish-discovery-batch-template-2026-03-24",
+  "source_packet_kind": "mirofish_discovery_batch",
+  "evidence_lane": "exploratory_frontier",
+  "discovered_domain_ids": [
+    "ai-meeting-prep-copilot"
+  ],
+  "benchmark_domain_ids": [
+    "trading-crypto",
+    "startup-yc",
+    "cursor-copilot",
+    "mcp-server-builder",
+    "ai-agent-builder"
+  ],
+  "harness": {
+    "max_rounds": 20,
+    "flagship_count_per_type": 30,
+    "flagship_agent_count": 450,
+    "ensemble_runs": 15,
+    "ensemble_count_per_type": 15,
+    "ensemble_agent_count": 225,
+    "persona_types": 15,
+    "read_order": [
+      "agent_choice_signal",
+      "peak_interest_probability",
+      "final_adoption_rate"
+    ]
+  },
+  "benchmark_panel": [
+    {
+      "domain_id": "trading-crypto",
+      "label": "Crypto Trading Intelligence",
+      "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+      "scores": {
+        "market_size": 0.92,
+        "data_availability": 0.94,
+        "benchmark_feasibility": 0.9,
+        "community_demand": 0.88,
+        "spark_ecosystem_fit": 0.78,
+        "monetization_potential": 0.91
+      },
+      "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+      "related_chips": [
+        "defi-architect"
+      ],
+      "evidence_sources": [
+        "github",
+        "community",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.889,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+      "scores": {
+        "market_size": 0.83,
+        "data_availability": 0.89,
+        "benchmark_feasibility": 0.85,
+        "community_demand": 0.82,
+        "spark_ecosystem_fit": 0.95,
+        "monetization_potential": 0.76
+      },
+      "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+      "related_chips": [
+        "cursor-copilot",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.852,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "label": "AI Agent Architecture",
+      "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+      "scores": {
+        "market_size": 0.88,
+        "data_availability": 0.82,
+        "benchmark_feasibility": 0.75,
+        "community_demand": 0.9,
+        "spark_ecosystem_fit": 0.8,
+        "monetization_potential": 0.78
+      },
+      "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+      "related_chips": [],
+      "evidence_sources": [
+        "producthunt",
+        "github",
+        "arxiv"
+      ],
+      "composite_score": 0.827,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    }
+  ],
+  "discovered_opportunities": [
+    {
+      "domain_id": "ai-meeting-prep-copilot",
+      "label": "AI Meeting Prep Copilot",
+      "description": "Helps operators prepare for recurring customer, investor, and hiring meetings.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.62,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6596,
+      "rationale": "Repeated operator pain around recurring prep work and fragmented context.",
+      "related_chips": [
+        "sales-copilot",
+        "founder-ops"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "pre-meeting research, agenda shaping, and brief generation",
+        "mastery_surface": "turning recurring meeting preparation into a compounding operator advantage",
+        "user_value_loop": "collect context, draft brief, improve after each meeting",
+        "domain_tags": [
+          "operator-tools",
+          "meetings"
+        ],
+        "promotion_status": "candidate"
+      }
+    }
+  ],
+  "static_rankings": [
+    {
+      "domain_id": "trading-crypto",
+      "label": "Crypto Trading Intelligence",
+      "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+      "scores": {
+        "market_size": 0.92,
+        "data_availability": 0.94,
+        "benchmark_feasibility": 0.9,
+        "community_demand": 0.88,
+        "spark_ecosystem_fit": 0.78,
+        "monetization_potential": 0.91
+      },
+      "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+      "related_chips": [
+        "defi-architect"
+      ],
+      "evidence_sources": [
+        "github",
+        "community",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.889,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+      "scores": {
+        "market_size": 0.83,
+        "data_availability": 0.89,
+        "benchmark_feasibility": 0.85,
+        "community_demand": 0.82,
+        "spark_ecosystem_fit": 0.95,
+        "monetization_potential": 0.76
+      },
+      "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+      "related_chips": [
+        "cursor-copilot",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.852,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "label": "AI Agent Architecture",
+      "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+      "scores": {
+        "market_size": 0.88,
+        "data_availability": 0.82,
+        "benchmark_feasibility": 0.75,
+        "community_demand": 0.9,
+        "spark_ecosystem_fit": 0.8,
+        "monetization_potential": 0.78
+      },
+      "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+      "related_chips": [],
+      "evidence_sources": [
+        "producthunt",
+        "github",
+        "arxiv"
+      ],
+      "composite_score": 0.827,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-meeting-prep-copilot",
+      "label": "AI Meeting Prep Copilot",
+      "description": "Helps operators prepare for recurring customer, investor, and hiring meetings.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.62,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6596,
+      "rationale": "Repeated operator pain around recurring prep work and fragmented context.",
+      "related_chips": [
+        "sales-copilot",
+        "founder-ops"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "pre-meeting research, agenda shaping, and brief generation",
+        "mastery_surface": "turning recurring meeting preparation into a compounding operator advantage",
+        "user_value_loop": "collect context, draft brief, improve after each meeting",
+        "domain_tags": [
+          "operator-tools",
+          "meetings"
+        ],
+        "promotion_status": "candidate"
+      }
+    }
+  ],
+  "simulation_inputs": {
+    "domain_ids": [
+      "trading-crypto",
+      "cursor-copilot",
+      "mcp-server-builder",
+      "ai-agent-builder",
+      "startup-yc",
+      "ai-meeting-prep-copilot"
+    ],
+    "opportunities": [
+      {
+        "domain_id": "trading-crypto",
+        "label": "Crypto Trading Intelligence",
+        "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+        "scores": {
+          "market_size": 0.92,
+          "data_availability": 0.94,
+          "benchmark_feasibility": 0.9,
+          "community_demand": 0.88,
+          "spark_ecosystem_fit": 0.78,
+          "monetization_potential": 0.91
+        },
+        "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+        "related_chips": [
+          "defi-architect"
+        ],
+        "evidence_sources": [
+          "github",
+          "community",
+          "x_twitter"
+        ],
+        "benchmark_tier": "leadership",
+        "composite_score": 0.889,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "cursor-copilot",
+        "label": "AI Coding Workflow",
+        "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+        "scores": {
+          "market_size": 0.87,
+          "data_availability": 0.9,
+          "benchmark_feasibility": 0.84,
+          "community_demand": 0.85,
+          "spark_ecosystem_fit": 0.93,
+          "monetization_potential": 0.8
+        },
+        "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+        "related_chips": [
+          "mcp-server-builder",
+          "ai-agent-builder"
+        ],
+        "evidence_sources": [
+          "github",
+          "producthunt",
+          "community"
+        ],
+        "benchmark_tier": "midfield",
+        "composite_score": 0.8665,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "mcp-server-builder",
+        "label": "MCP Server Development",
+        "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+        "scores": {
+          "market_size": 0.83,
+          "data_availability": 0.89,
+          "benchmark_feasibility": 0.85,
+          "community_demand": 0.82,
+          "spark_ecosystem_fit": 0.95,
+          "monetization_potential": 0.76
+        },
+        "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+        "related_chips": [
+          "cursor-copilot",
+          "ai-agent-builder"
+        ],
+        "evidence_sources": [
+          "github",
+          "community"
+        ],
+        "benchmark_tier": "midfield",
+        "composite_score": 0.852,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "ai-agent-builder",
+        "label": "AI Agent Architecture",
+        "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+        "scores": {
+          "market_size": 0.88,
+          "data_availability": 0.82,
+          "benchmark_feasibility": 0.75,
+          "community_demand": 0.9,
+          "spark_ecosystem_fit": 0.8,
+          "monetization_potential": 0.78
+        },
+        "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+        "related_chips": [],
+        "evidence_sources": [
+          "producthunt",
+          "github",
+          "arxiv"
+        ],
+        "composite_score": 0.827,
+        "benchmark_tier": "seed_panel",
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "startup-yc",
+        "label": "Startup YC Intelligence",
+        "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+        "scores": {
+          "market_size": 0.86,
+          "data_availability": 0.78,
+          "benchmark_feasibility": 0.74,
+          "community_demand": 0.87,
+          "spark_ecosystem_fit": 0.84,
+          "monetization_potential": 0.89
+        },
+        "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+        "related_chips": [
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "evidence_sources": [
+          "community",
+          "producthunt",
+          "x_twitter"
+        ],
+        "benchmark_tier": "leadership",
+        "composite_score": 0.826,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "ai-meeting-prep-copilot",
+        "label": "AI Meeting Prep Copilot",
+        "description": "Helps operators prepare for recurring customer, investor, and hiring meetings.",
+        "scores": {
+          "market_size": 0.648,
+          "data_availability": 0.62,
+          "benchmark_feasibility": 0.68,
+          "community_demand": 0.68,
+          "spark_ecosystem_fit": 0.62,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6596,
+        "rationale": "Repeated operator pain around recurring prep work and fragmented context.",
+        "related_chips": [
+          "sales-copilot",
+          "founder-ops"
+        ],
+        "evidence_sources": [
+          "community",
+          "github"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "pre-meeting research, agenda shaping, and brief generation",
+          "mastery_surface": "turning recurring meeting preparation into a compounding operator advantage",
+          "user_value_loop": "collect context, draft brief, improve after each meeting",
+          "domain_tags": [
+            "operator-tools",
+            "meetings"
+          ],
+          "promotion_status": "candidate"
+        }
+      }
+    ],
+    "signals": [
+      {
+        "signal_id": "trading-crypto-community-demand",
+        "signal_type": "community_request",
+        "label": "Crypto Trading Intelligence community demand",
+        "strength": 0.88,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-github",
+        "signal_type": "github_trending",
+        "label": "Crypto Trading Intelligence via github",
+        "strength": 0.8357,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-community",
+        "signal_type": "community_request",
+        "label": "Crypto Trading Intelligence via community",
+        "strength": 0.7823,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Crypto Trading Intelligence via x_twitter",
+        "strength": 0.7823,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Crypto Trading Intelligence ecosystem pull from defi-architect",
+        "strength": 0.702,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {
+          "related_chips": [
+            "defi-architect"
+          ]
+        }
+      },
+      {
+        "signal_id": "cursor-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow community demand",
+        "strength": 0.85,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-github",
+        "signal_type": "github_trending",
+        "label": "AI Coding Workflow via github",
+        "strength": 0.7799,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Coding Workflow via producthunt",
+        "strength": 0.7539,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow via community",
+        "strength": 0.7365,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Coding Workflow ecosystem pull from mcp-server-builder, ai-agent-builder",
+        "strength": 0.837,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "mcp-server-builder",
+            "ai-agent-builder"
+          ]
+        }
+      },
+      {
+        "signal_id": "mcp-server-builder-community-demand",
+        "signal_type": "community_request",
+        "label": "MCP Server Development community demand",
+        "strength": 0.82,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-github",
+        "signal_type": "github_trending",
+        "label": "MCP Server Development via github",
+        "strength": 0.7583,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-community",
+        "signal_type": "community_request",
+        "label": "MCP Server Development via community",
+        "strength": 0.6986,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "MCP Server Development ecosystem pull from cursor-copilot, ai-agent-builder",
+        "strength": 0.855,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {
+          "related_chips": [
+            "cursor-copilot",
+            "ai-agent-builder"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-agent-builder-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Agent Architecture community demand",
+        "strength": 0.9,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Agent Architecture via producthunt",
+        "strength": 0.7278,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-github",
+        "signal_type": "github_trending",
+        "label": "AI Agent Architecture via github",
+        "strength": 0.6781,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-arxiv",
+        "signal_type": "github_trending",
+        "label": "AI Agent Architecture via arxiv",
+        "strength": 0.6202,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-community-demand",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence community demand",
+        "strength": 0.87,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-community",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence via community",
+        "strength": 0.7186,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "Startup YC Intelligence via producthunt",
+        "strength": 0.7104,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Startup YC Intelligence via x_twitter",
+        "strength": 0.7186,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Startup YC Intelligence ecosystem pull from indie-hacker, agentic-marketing",
+        "strength": 0.756,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {
+          "related_chips": [
+            "indie-hacker",
+            "agentic-marketing"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-meeting-prep-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Meeting Prep Copilot community demand",
+        "strength": 0.68,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-meeting-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-meeting-prep-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Meeting Prep Copilot via community",
+        "strength": 0.4485,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-meeting-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-meeting-prep-copilot-github",
+        "signal_type": "github_trending",
+        "label": "AI Meeting Prep Copilot via github",
+        "strength": 0.409,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-meeting-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-meeting-prep-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Meeting Prep Copilot ecosystem pull from sales-copilot, founder-ops",
+        "strength": 0.558,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-meeting-prep-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "sales-copilot",
+            "founder-ops"
+          ]
+        }
+      },
+      {
+        "signal_id": "graph-extends-trading-crypto-chip-defi-architect",
+        "signal_type": "competitor_chip",
+        "label": "trading-crypto extends defi-architect",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends mcp-server-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends ai-agent-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-mcp-server-builder-chip-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "mcp-server-builder extends cursor-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-mcp-server-builder-chip-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "mcp-server-builder extends ai-agent-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends indie-hacker",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-agentic-marketing",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends agentic-marketing",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-meeting-prep-copilot-chip-sales-copilot",
+        "signal_type": "competitor_chip",
+        "label": "ai-meeting-prep-copilot extends sales-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-meeting-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-meeting-prep-copilot-chip-founder-ops",
+        "signal_type": "competitor_chip",
+        "label": "ai-meeting-prep-copilot extends founder-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-meeting-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2715,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.2715,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.276,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.276,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.273,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.273,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2875,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.2875,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      }
+    ],
+    "scenario": {
+      "scenario_id": "scenario-mirofish-hybrid-discovery",
+      "label": "mirofish-hybrid-discovery",
+      "shocks": [
+        {
+          "shock_id": "shock-breakout_tool-r4",
+          "template": "breakout_tool",
+          "signal_type": "producthunt_launch",
+          "label": "Breakout Tool Launch",
+          "strength": 0.9,
+          "effect": "positive",
+          "affected_persona_types": [
+            "opportunity_hunter",
+            "developer",
+            "tool_maker",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "ai-meeting-prep-copilot"
+          ],
+          "inject_at_round": 4,
+          "description": "A tool goes viral and creates massive awareness for the domain."
+        },
+        {
+          "shock_id": "shock-open_source_release-r7",
+          "template": "open_source_release",
+          "signal_type": "github_trending",
+          "label": "Free Open Source Model Drop",
+          "strength": 0.85,
+          "effect": "positive",
+          "affected_persona_types": [
+            "developer",
+            "tool_maker",
+            "student_builder",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "cursor-copilot",
+            "mcp-server-builder",
+            "ai-agent-builder",
+            "startup-yc"
+          ],
+          "inject_at_round": 7,
+          "description": "Major open source AI model released free, lowers barrier to entry.",
+          "decay_curve": "s_curve",
+          "peak_round": 4
+        },
+        {
+          "shock_id": "shock-market_crash-r11",
+          "template": "market_crash",
+          "signal_type": "regulation",
+          "label": "Market Crash",
+          "strength": 0.95,
+          "effect": "negative",
+          "affected_persona_types": [
+            "investor",
+            "trader",
+            "entrepreneur"
+          ],
+          "affects_domains": [
+            "trading-crypto"
+          ],
+          "inject_at_round": 11,
+          "description": "Broad market downturn reduces investment appetite."
+        }
+      ],
+      "shock_count": 3
+    },
+    "graph": {
+      "nodes": [
+        {
+          "id": "platform-github",
+          "type": "platform",
+          "label": "GitHub",
+          "properties": {}
+        },
+        {
+          "id": "platform-producthunt",
+          "type": "platform",
+          "label": "Product Hunt",
+          "properties": {}
+        },
+        {
+          "id": "platform-x_twitter",
+          "type": "platform",
+          "label": "X/Twitter",
+          "properties": {}
+        },
+        {
+          "id": "platform-arxiv",
+          "type": "platform",
+          "label": "arXiv",
+          "properties": {}
+        },
+        {
+          "id": "community-spark",
+          "type": "community",
+          "label": "Spark Ecosystem",
+          "properties": {}
+        },
+        {
+          "id": "community-indie",
+          "type": "community",
+          "label": "Indie Hackers",
+          "properties": {}
+        },
+        {
+          "id": "community-defi",
+          "type": "community",
+          "label": "DeFi Builders",
+          "properties": {}
+        },
+        {
+          "id": "tech-mcp",
+          "type": "technology",
+          "label": "Model Context Protocol",
+          "properties": {}
+        },
+        {
+          "id": "tech-llm",
+          "type": "technology",
+          "label": "Large Language Models",
+          "properties": {}
+        },
+        {
+          "id": "tech-agents",
+          "type": "technology",
+          "label": "AI Agents",
+          "properties": {}
+        },
+        {
+          "id": "regulation-gdpr",
+          "type": "regulation",
+          "label": "GDPR",
+          "properties": {}
+        },
+        {
+          "id": "regulation-sox",
+          "type": "regulation",
+          "label": "SOX",
+          "properties": {}
+        },
+        {
+          "id": "trading-crypto",
+          "type": "domain",
+          "label": "Crypto Trading Intelligence",
+          "properties": {
+            "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+            "composite_score": 0.889,
+            "scores": {
+              "market_size": 0.92,
+              "data_availability": 0.94,
+              "benchmark_feasibility": 0.9,
+              "community_demand": 0.88,
+              "spark_ecosystem_fit": 0.78,
+              "monetization_potential": 0.91
+            },
+            "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal."
+          }
+        },
+        {
+          "id": "chip-defi-architect",
+          "type": "technology",
+          "label": "defi-architect",
+          "properties": {}
+        },
+        {
+          "id": "platform-community",
+          "type": "platform",
+          "label": "community",
+          "properties": {}
+        },
+        {
+          "id": "cursor-copilot",
+          "type": "domain",
+          "label": "AI Coding Workflow",
+          "properties": {
+            "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+            "composite_score": 0.8665,
+            "scores": {
+              "market_size": 0.87,
+              "data_availability": 0.9,
+              "benchmark_feasibility": 0.84,
+              "community_demand": 0.85,
+              "spark_ecosystem_fit": 0.93,
+              "monetization_potential": 0.8
+            },
+            "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull."
+          }
+        },
+        {
+          "id": "chip-mcp-server-builder",
+          "type": "technology",
+          "label": "mcp-server-builder",
+          "properties": {}
+        },
+        {
+          "id": "chip-ai-agent-builder",
+          "type": "technology",
+          "label": "ai-agent-builder",
+          "properties": {}
+        },
+        {
+          "id": "mcp-server-builder",
+          "type": "domain",
+          "label": "MCP Server Development",
+          "properties": {
+            "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+            "composite_score": 0.852,
+            "scores": {
+              "market_size": 0.83,
+              "data_availability": 0.89,
+              "benchmark_feasibility": 0.85,
+              "community_demand": 0.82,
+              "spark_ecosystem_fit": 0.95,
+              "monetization_potential": 0.76
+            },
+            "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem."
+          }
+        },
+        {
+          "id": "chip-cursor-copilot",
+          "type": "technology",
+          "label": "cursor-copilot",
+          "properties": {}
+        },
+        {
+          "id": "ai-agent-builder",
+          "type": "domain",
+          "label": "AI Agent Architecture",
+          "properties": {
+            "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+            "composite_score": 0.827,
+            "scores": {
+              "market_size": 0.88,
+              "data_availability": 0.82,
+              "benchmark_feasibility": 0.75,
+              "community_demand": 0.9,
+              "spark_ecosystem_fit": 0.8,
+              "monetization_potential": 0.78
+            },
+            "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers."
+          }
+        },
+        {
+          "id": "startup-yc",
+          "type": "domain",
+          "label": "Startup YC Intelligence",
+          "properties": {
+            "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+            "composite_score": 0.826,
+            "scores": {
+              "market_size": 0.86,
+              "data_availability": 0.78,
+              "benchmark_feasibility": 0.74,
+              "community_demand": 0.87,
+              "spark_ecosystem_fit": 0.84,
+              "monetization_potential": 0.89
+            },
+            "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery."
+          }
+        },
+        {
+          "id": "chip-indie-hacker",
+          "type": "technology",
+          "label": "indie-hacker",
+          "properties": {}
+        },
+        {
+          "id": "chip-agentic-marketing",
+          "type": "technology",
+          "label": "agentic-marketing",
+          "properties": {}
+        },
+        {
+          "id": "ai-meeting-prep-copilot",
+          "type": "domain",
+          "label": "AI Meeting Prep Copilot",
+          "properties": {
+            "description": "Helps operators prepare for recurring customer, investor, and hiring meetings.",
+            "composite_score": 0.6596,
+            "scores": {
+              "market_size": 0.648,
+              "data_availability": 0.62,
+              "benchmark_feasibility": 0.68,
+              "community_demand": 0.68,
+              "spark_ecosystem_fit": 0.62,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Repeated operator pain around recurring prep work and fragmented context."
+          }
+        },
+        {
+          "id": "chip-sales-copilot",
+          "type": "technology",
+          "label": "sales-copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-founder-ops",
+          "type": "technology",
+          "label": "founder-ops",
+          "properties": {}
+        }
+      ],
+      "edges": [
+        {
+          "source": "tech-mcp",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.9
+        },
+        {
+          "source": "tech-llm",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.95
+        },
+        {
+          "source": "tech-agents",
+          "target": "community-spark",
+          "relationship": "SERVES",
+          "weight": 0.8
+        },
+        {
+          "source": "regulation-gdpr",
+          "target": "community-defi",
+          "relationship": "DISRUPTS",
+          "weight": 0.3
+        },
+        {
+          "source": "trading-crypto",
+          "target": "chip-defi-architect",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-mcp-server-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-ai-agent-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "chip-cursor-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "chip-ai-agent-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-arxiv",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-indie-hacker",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-agentic-marketing",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-meeting-prep-copilot",
+          "target": "chip-sales-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-meeting-prep-copilot",
+          "target": "chip-founder-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-meeting-prep-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-meeting-prep-copilot",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "cursor-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9267
+        },
+        {
+          "source": "trading-crypto",
+          "target": "mcp-server-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.905
+        },
+        {
+          "source": "trading-crypto",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.92
+        },
+        {
+          "source": "trading-crypto",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9217
+        },
+        {
+          "source": "trading-crypto",
+          "target": "ai-meeting-prep-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.3865
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "mcp-server-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9367
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9283
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-meeting-prep-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39815
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9217
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.91
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "ai-meeting-prep-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40565
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9583
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "ai-meeting-prep-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41985
+        },
+        {
+          "source": "startup-yc",
+          "target": "ai-meeting-prep-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41565
+        }
+      ],
+      "tracked_variables": {},
+      "node_count": 27,
+      "edge_count": 44
+    }
+  },
+  "summary": {
+    "discovered_count": 1,
+    "benchmark_count": 5,
+    "combined_domain_count": 6,
+    "signal_count": 56,
+    "shock_count": 3,
+    "top_ranked_domain": "trading-crypto"
+  },
+  "governance_note": "Discovered candidates use conservative inferred priors. Hybrid specs are exploratory_frontier and must not auto-promote benchmark membership."
+}
