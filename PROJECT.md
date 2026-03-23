@@ -31,3 +31,11 @@ Seven specialized workstreams within one governing flywheel:
 
 The lab is itself a chip. It follows the same spark-chip.v1 contract as every other domain chip.
 This means the lab can be evaluated, improved, and graduated using its own methodology.
+
+## Project Intelligence
+
+<!-- SPARK_PROJECT_START -->
+Updated: 2026-03-22T12:11:12Z
+Domain: engineering
+Phase: discovery
+<!-- SPARK_PROJECT_END -->

@@ -10,16 +10,32 @@ from __future__ import annotations
 from typing import Any
 
 from .graph import DomainGraph
+from .macro import MacroContext, apply_macro_event, compute_macro_modifier, generate_macro_signals
+from .network import build_persona_network, network_influence_propagation
 from .personas import (
     generate_personas, update_persona_activity,
     persona_evaluates_domain, persona_influence_score,
-    persona_churn_check, persona_learn_from_round,
+    persona_churn_check, persona_retention_check, persona_learn_from_round,
 )
 from .signals import decay_signal
 
 
-# Adoption stages in order
-ADOPTION_STAGES = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
+# Adoption stages in order (v4: added trial, committed, churned)
+ADOPTION_STAGES = [
+    "unaware", "aware", "interested", "evaluating",
+    "trial",       # trying it out (low commitment, can churn)
+    "adopted",     # regular user
+    "committed",   # daily active user, integrated into workflow
+    "advocating",  # promoting to others
+    "churned",     # tried and left (terminal)
+]
+
+# Stages that count as "using it" for adoption rate
+ACTIVE_STAGES = {"trial", "adopted", "committed", "advocating"}
+# Stages that count as "retained" (past trial)
+RETAINED_STAGES = {"adopted", "committed", "advocating"}
+# Stages immune to churn within simulation window
+STICKY_STAGES = {"committed", "advocating"}
 
 # Maximum simulation rounds
 MAX_ROUNDS = 20
@@ -34,6 +50,8 @@ def run_simulation(
     max_rounds: int = MAX_ROUNDS,
     seed: int = 42,
     context: str = "builder_community",
+    macro: MacroContext | None = None,
+    macro_events: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Run a bounded multi-round adoption simulation.
 
@@ -46,6 +64,8 @@ def run_simulation(
         max_rounds: Maximum simulation rounds (capped at 20).
         seed: Random seed for deterministic simulation.
         context: Simulation context ("builder_community" or "enterprise_market").
+        macro: Global macro context (economic sentiment, AI pressure, etc.).
+        macro_events: Scheduled macro events that modify context per round.
 
     Returns:
         Simulation results with adoption curves, consensus, and tipping points.
@@ -72,6 +92,13 @@ def run_simulation(
     last_advance: dict[str, dict[str, int]] = {
         p["persona_id"]: {} for p in personas
     }
+    # Track how many rounds each persona has been in their current stage per domain
+    time_in_stage: dict[str, dict[str, int]] = {
+        p["persona_id"]: {} for p in personas
+    }
+
+    # Build small-world network among personas for influence propagation
+    persona_network = build_persona_network(personas, seed=seed)
 
     # Extract domain_tags from graph node properties and signal metadata
     domain_tags: dict[str, list[str]] = {}
@@ -88,8 +115,23 @@ def run_simulation(
                 existing.update(sig_tags)
                 domain_tags[d_id] = list(existing)
 
+    # Initialize macro context (copy so we don't mutate caller's object)
+    active_macro = macro.copy() if macro else MacroContext()
+    macro_event_list = list(macro_events or [])
+    macro_timeline: list[dict[str, Any]] = []
+
     # Run simulation rounds
     for round_num in range(max_rounds):
+        # Apply macro events scheduled for this round
+        for event in macro_event_list:
+            if event.get("inject_at_round", 0) == round_num:
+                apply_macro_event(active_macro, event)
+        macro_timeline.append({"round": round_num, **active_macro.to_dict()})
+
+        # Inject macro ambient signals based on current macro state
+        macro_sigs = generate_macro_signals(active_macro, domain_tags, round_num)
+        active_signals.extend(macro_sigs)
+
         # Inject shocks scheduled for this round
         for shock in shock_list:
             if shock.get("inject_at_round", 0) == round_num:
@@ -104,12 +146,19 @@ def run_simulation(
         for persona in personas:
             update_persona_activity(persona, round_num)
 
-            # Compute raw awareness for every domain
+            # Compute raw awareness for every domain, boosted by macro context
             domain_awareness: list[tuple[str, float]] = []
             for domain_id in domains:
                 awareness = _compute_awareness(
                     persona, domain_id, active_signals, round_num,
                 )
+                # Macro context modifier: adjusts effective awareness based on
+                # global conditions. High AI displacement pressure makes
+                # career/reskill domains easier; low speculative appetite makes
+                # crypto/defi domains harder.
+                d_tags = domain_tags.get(domain_id, [])
+                macro_mod = compute_macro_modifier(active_macro, d_tags)
+                awareness = min(1.0, max(0.0, awareness + macro_mod))
                 domain_awareness.append((domain_id, awareness))
 
             # Always evaluate domains persona already has traction with
@@ -154,9 +203,12 @@ def run_simulation(
                     else:
                         new_stage = prev_stage
 
-                # Track when persona last advanced
+                # Track when persona last advanced and time in current stage
                 if new_stage != prev_stage:
                     last_advance[pid][domain_id] = round_num
+                    time_in_stage[pid][domain_id] = 0
+                else:
+                    time_in_stage[pid][domain_id] = time_in_stage[pid].get(domain_id, 0) + 1
 
         # Phase 1b: Churn check -- personas can regress if signal fades
         # Recompute awareness per persona (domain_awareness above was scoped
@@ -172,10 +224,48 @@ def run_simulation(
                 )
                 last_adv_round = last_advance[pid].get(domain_id, 0)
                 rounds_since = round_num - last_adv_round
-                persona_churn_check(persona, domain_id, awareness, rounds_since)
+                new_stage = persona_churn_check(persona, domain_id, awareness, rounds_since)
+                if new_stage != current_stage:
+                    time_in_stage[pid][domain_id] = 0
+
+        # Phase 1c: Retention check -- trial/adopted personas can churn
+        # if domain doesn't prove sticky enough over time
+        for persona in personas:
+            pid = persona["persona_id"]
+            for domain_id in domains:
+                current_stage = persona["adoption_state"].get(domain_id, "unaware")
+                if current_stage not in ("trial", "adopted"):
+                    continue
+                awareness = _compute_awareness(
+                    persona, domain_id, active_signals, round_num,
+                )
+                rounds_in = time_in_stage[pid].get(domain_id, 0)
+                # Use domain retention_score from graph properties (default 0.5)
+                node = graph.nodes.get(domain_id, {})
+                retention_score = node.get("properties", {}).get("retention_score", 0.5)
+                new_stage = persona_retention_check(
+                    persona, domain_id, awareness, rounds_in, retention_score,
+                )
+                if new_stage != current_stage:
+                    time_in_stage[pid][domain_id] = 0
 
         # Phase 2: Influence propagation -- personas influence each other
         _propagate_influence(personas, domains, graph, domain_tags)
+
+        # Phase 2b: Network-based influence -- propagate through social graph
+        for domain_id in domains:
+            d_tags = domain_tags.get(domain_id, [])
+            net_influence = network_influence_propagation(
+                personas, persona_network, domain_id, d_tags,
+            )
+            for persona in personas:
+                pid = persona["persona_id"]
+                inf = net_influence.get(pid, 0.0)
+                if abs(inf) > 0.05:
+                    current_stage = persona["adoption_state"].get(domain_id, "unaware")
+                    # Network influence can push early-stage personas forward
+                    if current_stage in ("unaware", "aware", "interested", "evaluating", "trial") and inf > 0:
+                        persona_evaluates_domain(persona, domain_id, inf, d_tags)
 
         # Phase 3: Record adoption state
         for domain_id in domains:
@@ -210,6 +300,7 @@ def run_simulation(
         "rounds_run": max_rounds,
         "persona_count": len(personas),
         "domain_count": len(domains),
+        "macro_timeline": macro_timeline,
         "domains": {},
     }
 
@@ -219,6 +310,10 @@ def run_simulation(
             "adoption_curve": adoption_curves[domain_id],
             "final_adoption_rate": final_snapshot.get("adoption_rate", 0.0),
             "final_advocacy_rate": final_snapshot.get("advocacy_rate", 0.0),
+            "final_trial_rate": final_snapshot.get("trial_rate", 0.0),
+            "final_retention_rate": final_snapshot.get("retention_rate", 0.0),
+            "final_churn_rate": final_snapshot.get("churn_rate", 0.0),
+            "final_committed_rate": final_snapshot.get("committed_rate", 0.0),
             "consensus_history": consensus_history[domain_id],
             "final_consensus": consensus_history[domain_id][-1] if consensus_history[domain_id] else 0.0,
             "tipping_point_round": tipping_points[domain_id],
@@ -359,22 +454,31 @@ def _propagate_influence(
         total = len(personas)
         influence_sum = 0.0
 
+        committed_count = 0
+        trialing = 0
+
         for persona in personas:
             stage = persona["adoption_state"].get(domain_id, "unaware")
             inf = persona_influence_score(persona, domain_id)
             if stage == "advocating":
                 advocates += 1
                 influence_sum += inf
+            elif stage == "committed":
+                committed_count += 1
+                influence_sum += inf * 0.85
             elif stage == "adopted":
                 adopters += 1
                 influence_sum += inf * 0.6
+            elif stage == "trial":
+                trialing += 1
+                influence_sum += inf * 0.3
             elif stage == "evaluating":
                 evaluators += 1
                 influence_sum += inf * 0.2
 
         # Influence is the fraction of weighted adopters, not absolute count
         # This makes it independent of total persona count
-        adoption_fraction = (advocates + adopters * 0.6 + evaluators * 0.2) / max(total, 1)
+        adoption_fraction = (advocates + committed_count * 0.85 + adopters * 0.6 + trialing * 0.3 + evaluators * 0.2) / max(total, 1)
         avg_influence = influence_sum / max(advocates + adopters + evaluators, 1)
         # Combined: adoption breadth * influence quality
         influence_map[domain_id] = round(adoption_fraction * avg_influence, 4)
@@ -411,7 +515,7 @@ def _propagate_influence(
     for persona in personas:
         for domain_id in domains:
             current_stage = persona["adoption_state"].get(domain_id, "unaware")
-            if current_stage in ("unaware", "aware", "interested"):
+            if current_stage in ("unaware", "aware", "interested", "evaluating", "trial"):
                 base = influence_map.get(domain_id, 0.0)
                 bonus = topology_bonus.get(domain_id, 0.0)
                 penalty = topology_penalty.get(domain_id, 0.0)
@@ -440,17 +544,15 @@ def _apply_competitive_displacement(
     Displacement is gentle — drops one stage at most — because personas
     can rationally use competing products (just less likely to champion both).
     """
-    stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
-
     # Collect domains this persona has strongly committed to
-    committed = {
+    committed_domains = {
         d_id for d_id, stage in persona["adoption_state"].items()
-        if stage in ("adopted", "advocating")
+        if stage in ("adopted", "committed", "advocating")
     }
-    if not committed:
+    if not committed_domains:
         return
 
-    for adopted_domain in committed:
+    for adopted_domain in committed_domains:
         if adopted_domain not in graph.nodes:
             continue
         edges = graph.get_edges_for(adopted_domain)
@@ -462,15 +564,15 @@ def _apply_competitive_displacement(
                 continue
 
             comp_stage = persona["adoption_state"][competitor]
-            comp_idx = stages.index(comp_stage) if comp_stage in stages else 0
+            comp_idx = ADOPTION_STAGES.index(comp_stage) if comp_stage in ADOPTION_STAGES else 0
 
-            # Only displace if competitor is in early-mid funnel
-            # Don't displace already-adopted (sunk cost too high)
-            if comp_idx in (1, 2, 3):  # aware, interested, evaluating
+            # Only displace if competitor is in early-mid funnel (aware through trial)
+            # Don't displace adopted+ (sunk cost too high)
+            if comp_idx in (1, 2, 3, 4):  # aware, interested, evaluating, trial
                 weight = edge.get("weight", 0.5)
                 # Stronger competition = more displacement
                 if weight > 0.7:
-                    persona["adoption_state"][competitor] = stages[comp_idx - 1]
+                    persona["adoption_state"][competitor] = ADOPTION_STAGES[comp_idx - 1]
 
 
 def _adoption_snapshot(
@@ -485,15 +587,27 @@ def _adoption_snapshot(
         if stage in stage_counts:
             stage_counts[stage] += 1
 
-    adopted_plus = stage_counts.get("adopted", 0) + stage_counts.get("advocating", 0)
-    interested_plus = adopted_plus + stage_counts.get("interested", 0) + stage_counts.get("evaluating", 0)
+    # Active = trial + adopted + committed + advocating (using the domain)
+    active_count = sum(stage_counts.get(s, 0) for s in ACTIVE_STAGES)
+    # Retained = adopted + committed + advocating (past trial, real users)
+    retained_count = sum(stage_counts.get(s, 0) for s in RETAINED_STAGES)
+    # Sticky = committed + advocating (deep integration)
+    sticky_count = sum(stage_counts.get(s, 0) for s in STICKY_STAGES)
+    # Interest = everyone past unaware except churned
+    interested_plus = active_count + stage_counts.get("interested", 0) + stage_counts.get("evaluating", 0)
+    churned_count = stage_counts.get("churned", 0)
+    trial_count = stage_counts.get("trial", 0)
 
     return {
         "round": round_num,
         "stage_distribution": stage_counts,
-        "adoption_rate": round(adopted_plus / max(total, 1), 4),
+        "adoption_rate": round(retained_count / max(total, 1), 4),
+        "trial_rate": round(trial_count / max(total, 1), 4),
+        "retention_rate": round(retained_count / max(active_count, 1), 4) if active_count > 0 else 0.0,
+        "churn_rate": round(churned_count / max(total, 1), 4),
         "advocacy_rate": round(stage_counts.get("advocating", 0) / max(total, 1), 4),
         "interest_rate": round(interested_plus / max(total, 1), 4),
+        "committed_rate": round(sticky_count / max(total, 1), 4),
     }
 
 
@@ -515,15 +629,19 @@ def _adoption_snapshot_by_type(
         by_type.setdefault(ptype, []).append(stage)
 
     result: dict[str, dict[str, Any]] = {}
-    for ptype, stages in by_type.items():
-        total = len(stages)
-        adopted = sum(1 for s in stages if s in ("adopted", "advocating"))
-        advocates = sum(1 for s in stages if s == "advocating")
+    for ptype, type_stages in by_type.items():
+        total = len(type_stages)
+        retained = sum(1 for s in type_stages if s in RETAINED_STAGES)
+        advocates = sum(1 for s in type_stages if s == "advocating")
+        trialing = sum(1 for s in type_stages if s == "trial")
+        churned = sum(1 for s in type_stages if s == "churned")
         result[ptype] = {
-            "adoption_rate": round(adopted / max(total, 1), 4),
+            "adoption_rate": round(retained / max(total, 1), 4),
             "advocacy_rate": round(advocates / max(total, 1), 4),
+            "trial_rate": round(trialing / max(total, 1), 4),
+            "churn_rate": round(churned / max(total, 1), 4),
             "count": total,
-            "stage_distribution": {s: stages.count(s) for s in set(stages)},
+            "stage_distribution": {s: type_stages.count(s) for s in set(type_stages)},
         }
     return result
 
@@ -562,19 +680,24 @@ def run_ensemble(
     signals: list[dict[str, Any]] | None = None,
     shocks: list[dict[str, Any]] | None = None,
     max_rounds: int = MAX_ROUNDS,
-    n_runs: int = 50,
+    n_runs: int = 30,
     base_seed: int = 42,
     context: str = "builder_community",
-    count_per_type: int = 125,
+    count_per_type: int = 50,
+    macro: MacroContext | None = None,
+    macro_events: list[dict[str, Any]] | None = None,
+    convergence_threshold: float = 0.005,
+    min_runs: int = 15,
 ) -> dict[str, Any]:
     """Run Monte Carlo ensemble of N simulations with different seeds.
 
-    Each run uses a different seed for persona generation, producing
-    different trait variations and expertise assignments. The signals
-    and shocks remain the same across runs (they're the scenario).
-
-    Returns per-domain statistics: median, mean, p10, p90, std, plus
-    the full distribution of adoption rates across runs.
+    v4 upgrades:
+    - Minimum 15 runs (was 3), default 30
+    - Bootstrap 95% confidence intervals (1000 resamples)
+    - Coefficient of variation per domain
+    - Convergence detection (stop early if mean stabilized)
+    - Macro context propagated to each run
+    - Tracks churn_rate and trial_rate across runs
 
     Args:
         graph: Domain knowledge graph.
@@ -582,19 +705,31 @@ def run_ensemble(
         signals: Signals to inject (same across all runs).
         shocks: Shocks to inject (same across all runs).
         max_rounds: Rounds per simulation.
-        n_runs: Number of Monte Carlo runs (default 50).
+        n_runs: Number of Monte Carlo runs (default 30, min 15).
         base_seed: Starting seed (incremented per run).
         context: Simulation context.
         count_per_type: Personas per type per run.
+        macro: Global macro context for all runs.
+        macro_events: Macro events for all runs.
+        convergence_threshold: Stop early if running mean changes < this.
+        min_runs: Minimum runs before convergence check.
     """
+    import hashlib as _hashlib
+
+    n_runs = max(min_runs, n_runs)
     domains = domain_ids or [
         n["id"] for n in graph.nodes.values() if n["type"] == "domain"
     ]
 
-    # Collect adoption rates across runs
+    # Collect rates across runs
     adoption_runs: dict[str, list[float]] = {d: [] for d in domains}
     advocacy_runs: dict[str, list[float]] = {d: [] for d in domains}
+    churn_runs: dict[str, list[float]] = {d: [] for d in domains}
+    trial_runs: dict[str, list[float]] = {d: [] for d in domains}
     tipping_runs: dict[str, list[int | None]] = {d: [] for d in domains}
+
+    actual_runs = 0
+    converged_at: int | None = None
 
     for run_idx in range(n_runs):
         seed = base_seed + run_idx
@@ -604,26 +739,52 @@ def run_ensemble(
             graph, domains, personas=personas,
             signals=signals, shocks=shocks,
             max_rounds=max_rounds, seed=seed, context=context,
+            macro=macro, macro_events=macro_events,
         )
 
         for d_id in domains:
             d_result = result["domains"].get(d_id, {})
             adoption_runs[d_id].append(d_result.get("final_adoption_rate", 0.0))
             advocacy_runs[d_id].append(d_result.get("final_advocacy_rate", 0.0))
+            churn_runs[d_id].append(d_result.get("final_churn_rate", 0.0))
+            trial_runs[d_id].append(d_result.get("final_trial_rate", 0.0))
             tipping_runs[d_id].append(d_result.get("tipping_point_round"))
 
-    # Compute statistics
+        actual_runs = run_idx + 1
+
+        # Convergence check after min_runs
+        if actual_runs >= min_runs and actual_runs > 1:
+            # Check if running mean has stabilized across all domains
+            all_converged = True
+            for d_id in domains:
+                rates = adoption_runs[d_id]
+                if len(rates) < 2:
+                    all_converged = False
+                    break
+                current_mean = sum(rates) / len(rates)
+                prev_mean = sum(rates[:-1]) / (len(rates) - 1)
+                if abs(current_mean - prev_mean) > convergence_threshold:
+                    all_converged = False
+                    break
+
+            if all_converged and converged_at is None:
+                converged_at = actual_runs
+
+    # Compute statistics with bootstrap CIs
     ensemble_results: dict[str, Any] = {
         "context": context,
-        "n_runs": n_runs,
+        "n_runs": actual_runs,
         "max_rounds": max_rounds,
         "base_seed": base_seed,
+        "converged_at": converged_at,
         "domains": {},
     }
 
     for d_id in domains:
         rates = sorted(adoption_runs[d_id])
         adv_rates = sorted(advocacy_runs[d_id])
+        churn_rates_sorted = sorted(churn_runs[d_id])
+        trial_rates_sorted = sorted(trial_runs[d_id])
         tips = [t for t in tipping_runs[d_id] if t is not None]
 
         n = len(rates)
@@ -633,8 +794,16 @@ def run_ensemble(
 
         mean_rate = sum(rates) / n if n > 0 else 0.0
         mean_adv = sum(adv_rates) / n if n > 0 else 0.0
+        mean_churn = sum(churn_runs[d_id]) / n if n > 0 else 0.0
+        mean_trial = sum(trial_runs[d_id]) / n if n > 0 else 0.0
         variance = sum((r - mean_rate) ** 2 for r in rates) / n if n > 0 else 0.0
         std = variance ** 0.5
+        cv = round(std / mean_rate, 4) if mean_rate > 0.001 else 0.0
+
+        # Bootstrap 95% CI (1000 resamples)
+        bootstrap_lower, bootstrap_upper = _bootstrap_ci(
+            adoption_runs[d_id], n_resamples=1000, seed=base_seed + 10000,
+        )
 
         ensemble_results["domains"][d_id] = {
             "mean_adoption": round(mean_rate, 4),
@@ -642,7 +811,12 @@ def run_ensemble(
             "p10_adoption": round(rates[p10_idx], 4) if n > 0 else 0.0,
             "p90_adoption": round(rates[p90_idx], 4) if n > 0 else 0.0,
             "std_adoption": round(std, 4),
+            "coefficient_of_variation": cv,
+            "bootstrap_ci_lower": bootstrap_lower,
+            "bootstrap_ci_upper": bootstrap_upper,
             "mean_advocacy": round(mean_adv, 4),
+            "mean_churn": round(mean_churn, 4),
+            "mean_trial": round(mean_trial, 4),
             "tipping_rate": round(len(tips) / n, 4) if n > 0 else 0.0,
             "mean_tipping_round": round(sum(tips) / len(tips), 1) if tips else None,
             "distribution": rates,
@@ -650,6 +824,44 @@ def run_ensemble(
         }
 
     return ensemble_results
+
+
+def _bootstrap_ci(
+    data: list[float],
+    n_resamples: int = 1000,
+    confidence: float = 0.95,
+    seed: int = 42,
+) -> tuple[float, float]:
+    """Compute bootstrap confidence interval for the mean.
+
+    Uses deterministic hash-based resampling for reproducibility.
+    """
+    import hashlib as _hashlib
+
+    n = len(data)
+    if n < 2:
+        val = data[0] if data else 0.0
+        return (round(val, 4), round(val, 4))
+
+    bootstrap_means: list[float] = []
+    for i in range(n_resamples):
+        # Deterministic resample using hash
+        sample_sum = 0.0
+        for j in range(n):
+            h = _hashlib.md5(f"{seed}-{i}-{j}".encode()).hexdigest()
+            idx = int(h[:8], 16) % n
+            sample_sum += data[idx]
+        bootstrap_means.append(sample_sum / n)
+
+    bootstrap_means.sort()
+    alpha = (1.0 - confidence) / 2.0
+    lower_idx = max(0, int(alpha * n_resamples))
+    upper_idx = min(n_resamples - 1, int((1.0 - alpha) * n_resamples))
+
+    return (
+        round(bootstrap_means[lower_idx], 4),
+        round(bootstrap_means[upper_idx], 4),
+    )
 
 
 # ---------------------------------------------------------------------------

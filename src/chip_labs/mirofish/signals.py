@@ -104,6 +104,56 @@ SHOCK_TEMPLATES: dict[str, dict[str, Any]] = {
         "effect": "positive",
         "description": "A major platform integrates with the domain, reducing friction.",
     },
+    # v4 shock templates -- 2026 macro-driven events
+    "mass_layoff": {
+        "label": "Mass AI Layoff Event",
+        "signal_type": "regulation",
+        "strength_override": 0.90,
+        "decay_curve": "plateau",
+        "plateau_duration": 6,
+        "affected_persona_types": ["displaced_worker", "ai_newcomer", "student_builder", "solopreneur"],
+        "effect": "positive",
+        "description": "AI replaces jobs in a sector, driving demand for reskilling domains.",
+    },
+    "platform_ban": {
+        "label": "Platform Bans AI Content",
+        "signal_type": "regulation",
+        "strength_override": 0.85,
+        "decay_curve": "plateau",
+        "plateau_duration": 10,
+        "affected_persona_types": ["content_creator", "creative", "marketer"],
+        "effect": "negative",
+        "description": "Major platform restricts AI-generated content.",
+    },
+    "open_source_release": {
+        "label": "Free Open Source Model Drop",
+        "signal_type": "github_trending",
+        "strength_override": 0.85,
+        "decay_curve": "s_curve",
+        "peak_round": 4,
+        "affected_persona_types": ["developer", "tool_maker", "student_builder", "ai_newcomer"],
+        "effect": "positive",
+        "description": "Major open source AI model released free, lowers barrier to entry.",
+    },
+    "government_subsidy": {
+        "label": "Government AI Retraining Subsidy",
+        "signal_type": "regulation",
+        "strength_override": 0.75,
+        "decay_curve": "plateau",
+        "plateau_duration": 8,
+        "affected_persona_types": ["displaced_worker", "ai_newcomer", "corporate_innovator"],
+        "effect": "positive",
+        "description": "Government funds AI training programs, boosting reskilling domains.",
+    },
+    "security_breach": {
+        "label": "Major AI Security Breach",
+        "signal_type": "viral_tweet",
+        "strength_override": 0.90,
+        "decay_curve": "exponential",
+        "affected_persona_types": ["corporate_innovator", "skeptic", "investor"],
+        "effect": "negative",
+        "description": "High-profile AI security incident damages enterprise trust.",
+    },
 }
 
 
@@ -136,7 +186,7 @@ def create_shock(
 ) -> dict[str, Any]:
     """Create a shock event from a template for scenario injection."""
     template = SHOCK_TEMPLATES.get(shock_template, {})
-    return {
+    shock = {
         "shock_id": f"shock-{shock_template}-r{inject_at_round}",
         "template": shock_template,
         "signal_type": template.get("signal_type", "community_request"),
@@ -148,13 +198,67 @@ def create_shock(
         "inject_at_round": inject_at_round,
         "description": template.get("description", ""),
     }
+    # v4: propagate curve-aware decay properties from template
+    if "decay_curve" in template:
+        shock["decay_curve"] = template["decay_curve"]
+    if "plateau_duration" in template:
+        shock["plateau_duration"] = template["plateau_duration"]
+    if "peak_round" in template:
+        shock["peak_round"] = template["peak_round"]
+    return shock
 
 
 def decay_signal(signal: dict[str, Any], rounds_elapsed: int) -> float:
-    """Calculate decayed signal strength after N rounds."""
+    """Calculate decayed signal strength after N rounds.
+
+    v4: supports multiple decay curve shapes:
+    - linear: Steady grassroots decline (default, backward compatible)
+    - exponential: Fast spike, fast decay (viral tweets, memes)
+    - s_curve: Builds to peak then fades (GitHub trending, product launches)
+    - plateau: Quick rise, sustained, sharp drop (VC funding, regulation)
+    """
     base = signal.get("strength", 0.5)
     decay = signal.get("decay_per_round", 0.05)
-    return max(0.0, round(base - (decay * rounds_elapsed), 4))
+    curve = signal.get("decay_curve", "linear")
+
+    if rounds_elapsed <= 0:
+        return base
+
+    if curve == "exponential":
+        # Fast spike, fast decay: strength * e^(-decay * t * 3)
+        import math
+        return max(0.0, round(base * math.exp(-decay * rounds_elapsed * 3), 4))
+
+    elif curve == "s_curve":
+        # Builds to peak at ~5 rounds, then fades
+        import math
+        peak_round = signal.get("peak_round", 5)
+        if rounds_elapsed <= peak_round:
+            # Rising phase: logistic growth to peak
+            growth = 1.0 / (1.0 + math.exp(-1.5 * (rounds_elapsed - peak_round / 2)))
+            return round(base * growth, 4)
+        else:
+            # Decay phase after peak
+            elapsed_past_peak = rounds_elapsed - peak_round
+            return max(0.0, round(base - (decay * elapsed_past_peak), 4))
+
+    elif curve == "plateau":
+        # Quick rise, sustained plateau, then sharp drop
+        plateau_duration = signal.get("plateau_duration", 8)
+        if rounds_elapsed <= 2:
+            # Quick rise
+            return round(base * (rounds_elapsed / 2.0), 4)
+        elif rounds_elapsed <= plateau_duration:
+            # Sustained plateau
+            return base
+        else:
+            # Sharp drop (3x normal decay)
+            elapsed_past = rounds_elapsed - plateau_duration
+            return max(0.0, round(base - (decay * elapsed_past * 3), 4))
+
+    else:
+        # Linear (default): backward compatible
+        return max(0.0, round(base - (decay * rounds_elapsed), 4))
 
 
 def build_scenario(

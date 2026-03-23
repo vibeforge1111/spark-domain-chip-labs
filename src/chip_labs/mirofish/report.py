@@ -198,6 +198,17 @@ def _identify_drivers(domain_data: dict[str, Any]) -> list[str]:
     if tipping is not None and tipping <= 8:
         drivers.append("Early tipping point suggests rapid adoption potential")
 
+    # v4 metrics
+    retention = domain_data.get("final_retention_rate", 0.0)
+    committed = domain_data.get("final_committed_rate", 0.0)
+    trial = domain_data.get("final_trial_rate", 0.0)
+    if retention > 0.7:
+        drivers.append("High retention rate indicates sticky usage pattern")
+    if committed > 0.1:
+        drivers.append("Committed users show deep workflow integration")
+    if trial > 0.3:
+        drivers.append("High trial rate shows low barrier to experimentation")
+
     if not drivers:
         drivers.append("No strong adoption drivers detected yet")
     return drivers
@@ -216,6 +227,14 @@ def _identify_risks(domain_data: dict[str, Any]) -> list[str]:
         risks.append("Low adoption rate indicates weak demand signal")
     if tipping is None:
         risks.append("No tipping point reached -- adoption may stall")
+
+    # v4 metrics
+    churn = domain_data.get("final_churn_rate", 0.0)
+    retention = domain_data.get("final_retention_rate", 0.0)
+    if churn > 0.1:
+        risks.append(f"High churn rate ({churn:.0%}) indicates retention problem")
+    if retention < 0.3 and adoption > 0.1:
+        risks.append("Low retention despite adoption -- users trying but not sticking")
 
     if not risks:
         risks.append("No major risks identified")
@@ -247,6 +266,9 @@ def generate_driver_summary(
                 "count": 0,
                 "adopted": 0,
                 "advocating": 0,
+                "committed": 0,
+                "trialing": 0,
+                "churned": 0,
                 "stalled_at": {},
                 "total_fit": 0.0,
                 "value_matches": {},
@@ -257,11 +279,17 @@ def generate_driver_summary(
 
         entry = by_type[ptype]
         entry["count"] += 1
-        if stage in ("adopted", "advocating"):
+        if stage in ("adopted", "committed", "advocating"):
             entry["adopted"] += 1
         if stage == "advocating":
             entry["advocating"] += 1
-        if stage not in ("adopted", "advocating"):
+        if stage == "committed":
+            entry["committed"] += 1
+        if stage == "trial":
+            entry["trialing"] += 1
+        if stage == "churned":
+            entry["churned"] += 1
+        if stage not in ("adopted", "committed", "advocating"):
             entry["stalled_at"][stage] = entry["stalled_at"].get(stage, 0) + 1
 
         for log in logs:
@@ -288,6 +316,9 @@ def generate_driver_summary(
             "persona_type": ptype,
             "adoption_rate": round(adoption_rate, 4),
             "advocacy_rate": round(data["advocating"] / max(count, 1), 4),
+            "committed_rate": round(data["committed"] / max(count, 1), 4),
+            "trial_rate": round(data["trialing"] / max(count, 1), 4),
+            "churn_rate": round(data["churned"] / max(count, 1), 4),
             "count": count,
             "avg_fit_score": round(avg_fit, 4),
             "top_matched_values": [v[0] for v in top_values],

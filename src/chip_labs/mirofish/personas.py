@@ -126,6 +126,47 @@ CUSTOMER_PERSONAS: dict[str, dict[str, Any]] = {
         "values": ["early_access", "trend_spotting", "speed", "first_mover"],
         "pain_points": ["fomo", "too_late", "noise_vs_signal"],
     },
+    # v4 personas -- 2026 macro-driven archetypes
+    "displaced_worker": {
+        "label": "Displaced Worker",
+        "influence_score": 0.35,
+        "adoption_threshold": 0.15,
+        "risk_tolerance": 0.4,
+        "network_reach": 0.3,
+        "description": "Lost job or fears losing it to AI. Desperate to reskill. Very low threshold, low influence.",
+        "values": ["reskill", "career", "easy_start", "low_learning_curve", "quick_wins", "ai_survival"],
+        "pain_points": ["job_loss", "overwhelmed", "cant_afford_courses", "time_pressure"],
+    },
+    "corporate_innovator": {
+        "label": "Corporate Innovator",
+        "influence_score": 0.7,
+        "adoption_threshold": 0.4,
+        "risk_tolerance": 0.5,
+        "network_reach": 0.75,
+        "description": "Enterprise mandate to adopt AI. Needs compliance, security, ROI proof.",
+        "values": ["compliance", "roi", "infrastructure", "audit", "productivity"],
+        "pain_points": ["red_tape", "vendor_lock_in", "security_concerns", "budget_approval"],
+    },
+    "student_builder": {
+        "label": "Student Builder",
+        "influence_score": 0.4,
+        "adoption_threshold": 0.1,
+        "risk_tolerance": 0.9,
+        "network_reach": 0.5,
+        "description": "Gen Z, nothing to lose. Tries everything, builds fast, low commitment.",
+        "values": ["easy_start", "speed_to_ship", "low_cost", "trend_spotting", "outcompete"],
+        "pain_points": ["no_budget", "no_experience", "too_many_options"],
+    },
+    "skeptic": {
+        "label": "Skeptic",
+        "influence_score": 0.8,
+        "adoption_threshold": 0.6,
+        "risk_tolerance": 0.2,
+        "network_reach": 0.7,
+        "description": "Hard to convert but extremely influential when converted. Demands proof.",
+        "values": ["code_quality", "infrastructure", "extensibility", "audit"],
+        "pain_points": ["hype_fatigue", "broken_promises", "vendor_lock_in", "ai_looks_generic"],
+    },
 }
 
 # Backwards compatibility alias
@@ -245,17 +286,26 @@ def persona_evaluates_domain(
 
     effective_signal = awareness_score * activity * fit
 
-    stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
+    stages = [
+        "unaware", "aware", "interested", "evaluating",
+        "trial", "adopted", "committed", "advocating", "churned",
+    ]
     current_idx = stages.index(current) if current in stages else 0
 
-    # Stage difficulty -- late stages are significantly harder but reachable
-    # for domains with strong sustained signal
+    # Churned is terminal -- cannot advance from it
+    if current == "churned":
+        return current
+
+    # Stage difficulty -- recalibrated for 9-stage funnel
+    # Trial is easy to enter (low commitment) but adopted requires proof of value
     stage_difficulty = {
         0: 0.2,    # unaware -> aware: easy, just some signal
         1: 0.45,   # aware -> interested: moderate
         2: 0.8,    # interested -> evaluating: needs real signal
-        3: 1.3,    # evaluating -> adopted: hard gate -- weaker domains stall here
-        4: 1.7,    # adopted -> advocating: strong conviction required
+        3: 1.0,    # evaluating -> trial: easier gate (low commitment tryout)
+        4: 1.4,    # trial -> adopted: must prove value, harder than old gate
+        5: 1.2,    # adopted -> committed: regular use becoming daily habit
+        6: 1.7,    # committed -> advocating: strong conviction required
     }
 
     difficulty = stage_difficulty.get(current_idx, 2.5)
@@ -266,7 +316,7 @@ def persona_evaluates_domain(
     # it's harder to adopt more (finite attention budget)
     adopted_count = sum(
         1 for s in persona["adoption_state"].values()
-        if s in ("adopted", "advocating")
+        if s in ("trial", "adopted", "committed", "advocating")
     )
     if adopted_count > 5 and current_idx >= 3:
         # Penalty grows with each additional adopted domain beyond 5
@@ -317,26 +367,26 @@ def persona_churn_check(
     1. Signal has decayed significantly below what got them to this stage
     2. They've been stalled at the same stage for too long without reinforcement
 
-    Key design: adopted/advocating personas do NOT churn within a 20-round
-    simulation. These represent genuine commitment (you're using the tech,
-    you've built on it). Only pre-commitment stages (aware, interested,
-    evaluating) are subject to churn. This prevents the "everything decays
-    to zero" problem when signals have finite lifetimes.
+    v4 design: committed/advocating are sticky (don't churn in 20 rounds).
+    Trial and adopted CAN churn -- trial is low commitment, and adopted
+    users who lose signal can regress to trial. Pre-commitment stages
+    (aware, interested, evaluating) regress as before.
 
     Returns the (possibly regressed) adoption stage.
     """
     current = persona["adoption_state"].get(domain_id, "unaware")
-    stages = ["unaware", "aware", "interested", "evaluating", "adopted", "advocating"]
+    stages = [
+        "unaware", "aware", "interested", "evaluating",
+        "trial", "adopted", "committed", "advocating", "churned",
+    ]
     current_idx = stages.index(current) if current in stages else 0
 
-    # Can't regress below "unaware"
-    if current_idx <= 0:
+    # Can't regress below "unaware" or from churned/terminal
+    if current_idx <= 0 or current == "churned":
         return current
 
-    # Adopted/advocating = committed. They don't churn within the simulation
-    # window. Real-world churn from these stages happens on month/year
-    # timescales, not our 20-round simulation.
-    if current_idx >= 4:
+    # Committed/advocating = deeply invested. Don't churn in 20-round window.
+    if current in ("committed", "advocating"):
         return current
 
     threshold = persona["adoption_threshold"]
@@ -351,6 +401,8 @@ def persona_churn_check(
         1: 0.05,   # aware -> unaware: very easy to forget
         2: 0.12,   # interested -> aware: moderate inertia
         3: 0.25,   # evaluating -> interested: invested real time, harder
+        4: 0.15,   # trial -> evaluating: low commitment, easy to drop
+        5: 0.35,   # adopted -> trial: significant sunk cost, hard to regress
     }
 
     # The signal level below which regression triggers
@@ -372,6 +424,50 @@ def persona_churn_check(
     return current
 
 
+def persona_retention_check(
+    persona: dict[str, Any],
+    domain_id: str,
+    awareness_score: float,
+    rounds_in_stage: int,
+    domain_retention_score: float = 0.5,
+) -> str:
+    """Check if a trial/adopted persona should churn or regress.
+
+    This models the "tried it, didn't stick" dynamic that churn_check
+    doesn't cover. Specifically:
+
+    - Trial users churn to "churned" (terminal) after 3+ rounds without
+      reinforcement signal, scaled by domain retention_score.
+    - Adopted users regress to "trial" under sustained signal loss,
+      but only if domain_retention_score is low (not habitual).
+
+    Args:
+        domain_retention_score: 0-1, how habitual/sticky this domain is.
+            High (>0.7) = daily habit, low (<0.3) = curiosity-driven.
+
+    Returns the (possibly changed) adoption stage.
+    """
+    current = persona["adoption_state"].get(domain_id, "unaware")
+
+    if current == "trial":
+        # Trial users churn if signal fades and domain isn't sticky
+        # Low-retention domains churn faster (2 rounds), high-retention slower (5+)
+        churn_window = max(2, int(3 + domain_retention_score * 4))
+        if rounds_in_stage >= churn_window and awareness_score < persona["adoption_threshold"] * 0.5:
+            persona["adoption_state"][domain_id] = "churned"
+            return "churned"
+
+    elif current == "adopted":
+        # Adopted users can regress to trial if signal drops AND domain
+        # has low retention (not a daily-use habit)
+        if domain_retention_score < 0.4 and rounds_in_stage >= 5:
+            if awareness_score < persona["adoption_threshold"] * 0.3:
+                persona["adoption_state"][domain_id] = "trial"
+                return "trial"
+
+    return current
+
+
 def persona_influence_score(persona: dict[str, Any], domain_id: str) -> float:
     """Calculate influence a persona exerts on a domain.
 
@@ -380,7 +476,8 @@ def persona_influence_score(persona: dict[str, Any], domain_id: str) -> float:
     stage = persona["adoption_state"].get(domain_id, "unaware")
     stage_multiplier = {
         "unaware": 0.0, "aware": 0.1, "interested": 0.3,
-        "evaluating": 0.5, "adopted": 0.8, "advocating": 1.0,
+        "evaluating": 0.5, "trial": 0.6, "adopted": 0.8,
+        "committed": 0.95, "advocating": 1.0, "churned": 0.0,
     }
     mult = stage_multiplier.get(stage, 0.0)
 
@@ -406,7 +503,7 @@ def persona_learn_from_round(
     failed bets breed skepticism. Models real-world learning behavior.
     """
     stage = persona["adoption_state"].get(domain_id, "unaware")
-    if stage not in ("adopted", "advocating"):
+    if stage not in ("trial", "adopted", "committed", "advocating"):
         return
 
     # Track learning history
@@ -484,6 +581,10 @@ def _assign_expertise(graph: DomainGraph, domains: list[str],
         "trader": ["technology", "trend"],
         "tool_maker": ["technology", "platform"],
         "opportunity_hunter": ["trend", "community"],
+        "displaced_worker": ["technology", "platform"],
+        "corporate_innovator": ["technology", "company"],
+        "student_builder": ["technology", "platform", "trend"],
+        "skeptic": ["technology", "platform"],
     }
     affinities = type_affinity.get(ptype, [])
 

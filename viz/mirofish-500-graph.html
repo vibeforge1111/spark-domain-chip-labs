@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiroFish v4 - 500 Domain Knowledge Graph</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0f;
+    color: #e0e0e0;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    cursor: crosshair;
+  }
+
+  #graph-canvas {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+  }
+
+  /* Round indicator */
+  #round-indicator {
+    position: fixed; bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(12,12,20,0.88);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 8px 20px;
+    z-index: 60;
+    display: flex; align-items: center; gap: 14px;
+    font-size: 12px;
+  }
+  .play-btn {
+    width: 28px; height: 28px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    transition: background 0.2s;
+  }
+  .play-btn:hover { background: rgba(255,255,255,0.1); }
+  .round-num { font-size: 20px; font-weight: 700; color: #fff; }
+  .round-total { font-size: 11px; color: rgba(255,255,255,0.3); }
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100px; height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  /* Legend (inside left panel) */
+  #legend {
+    padding: 8px 12px;
+    font-size: 9px;
+    display: flex; flex-wrap: wrap; gap: 3px 12px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  #legend .legend-title {
+    font-size: 7px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.2); width: 100%; margin-bottom: 0;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 4px;
+    color: rgba(255,255,255,0.45);
+    font-size: 8px;
+  }
+  .legend-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Tooltip */
+  #tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: rgba(8,8,16,0.94);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 11px;
+    max-width: 360px;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+  }
+  #tooltip.visible { opacity: 1; }
+  .tt-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .tt-type { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+  .tt-section { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin: 10px 0 4px; }
+  .tt-row { display: flex; align-items: center; gap: 8px; padding: 2px 0; font-size: 10px; color: rgba(255,255,255,0.6); }
+  .tt-bar { height: 4px; border-radius: 2px; min-width: 2px; }
+  .tt-val { font-weight: 600; min-width: 32px; text-align: right; }
+  .tt-tags { font-size: 9px; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .tt-matched { font-size: 9px; color: rgba(255,255,255,0.25); }
+
+  /* Shock banner */
+  #shock-banner {
+    position: fixed; top: 20px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(12,12,20,0.9);
+    border: 1px solid rgba(255,107,53,0.3);
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 11px;
+    color: #ff6b35;
+    z-index: 60;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  #shock-banner.visible { opacity: 1; }
+
+  /* Macro timeline bar */
+  #macro-bar {
+    position: fixed; bottom: 56px; left: 280px; right: 300px;
+    background: rgba(12,12,20,0.85);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 6px 14px;
+    z-index: 55;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 9px;
+  }
+  .macro-dim {
+    display: flex; align-items: center; gap: 4px;
+    color: rgba(255,255,255,0.4);
+  }
+  .macro-dim .macro-val {
+    font-weight: 600; font-size: 10px;
+  }
+  .macro-pos { color: #00ff88; }
+  .macro-neg { color: #ef4444; }
+  .macro-neutral { color: rgba(255,255,255,0.5); }
+
+  /* ===== LEFT PANEL ===== */
+  #left-panel {
+    position: fixed; top: 12px; left: 12px; bottom: 60px;
+    width: 260px;
+    background: rgba(10,10,18,0.88);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    z-index: 50;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .panel-title {
+    padding: 12px 14px 8px;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  .panel-stats {
+    display: flex; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  .panel-stat {
+    flex: 1; padding: 8px 0;
+    display: flex; flex-direction: column; align-items: center; gap: 1px;
+  }
+  .panel-stat .val { font-size: 16px; font-weight: 700; color: #fff; }
+  .panel-stat .lbl { font-size: 7px; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(255,255,255,0.25); }
+  #ranking-list {
+    flex: 1; overflow-y: auto; padding: 4px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
+  }
+  #ranking-list::-webkit-scrollbar { width: 3px; }
+  #ranking-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  .rank-item {
+    display: flex; align-items: center; gap: 6px;
+    padding: 3px 0;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .rank-item:hover { background: rgba(255,255,255,0.04); }
+  .rank-pos {
+    width: 20px; text-align: center;
+    font-size: 9px; font-weight: 600;
+    color: rgba(255,255,255,0.3);
+  }
+  .rank-pos.top3 { color: #fbbf24; }
+  .rank-pos.top10 { color: rgba(255,255,255,0.5); }
+  .rank-name {
+    flex: 1; color: rgba(255,255,255,0.65);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .rank-bar {
+    width: 40px; height: 3px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px; overflow: hidden;
+  }
+  .rank-bar-fill { height: 100%; border-radius: 2px; }
+  .rank-pct {
+    width: 36px; text-align: right;
+    font-size: 9px; font-weight: 600;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ===== RIGHT PANEL ===== */
+  #right-panel {
+    position: fixed; top: 12px; right: 12px; bottom: 60px;
+    width: 280px;
+    background: rgba(10,10,18,0.88);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    z-index: 50;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  #right-panel .chart-area {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  #right-panel .chart-area h3 {
+    font-size: 8px; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(255,255,255,0.3); margin-bottom: 6px;
+  }
+  #shock-list {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  .shock-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 3px 0; font-size: 10px;
+  }
+  .shock-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .shock-round { width: 22px; color: rgba(255,255,255,0.3); font-size: 9px; }
+  .shock-label { flex: 1; color: rgba(255,255,255,0.55); }
+  .shock-effect { font-size: 8px; text-transform: uppercase; }
+  #activity-feed {
+    flex: 1; overflow-y: auto; padding: 6px 12px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
+  }
+  #activity-feed::-webkit-scrollbar { width: 3px; }
+  #activity-feed::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  .feed-item {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+    font-size: 9px;
+    color: rgba(255,255,255,0.4);
+  }
+  .feed-hl { color: #00ff88; }
+  .feed-warn { color: #ff6b35; }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<canvas id="graph-canvas"></canvas>
+
+<!-- LEFT PANEL -->
+<div id="left-panel">
+  <div class="panel-title">Domain Rankings</div>
+  <div class="panel-stats">
+    <div class="panel-stat"><div class="val" id="stat-domains">500</div><div class="lbl">Domains</div></div>
+    <div class="panel-stat"><div class="val" id="stat-agents">750</div><div class="lbl">Agents</div></div>
+    <div class="panel-stat"><div class="val" id="stat-adopted">0</div><div class="lbl">Adopted</div></div>
+    <div class="panel-stat"><div class="val" id="stat-churned">0</div><div class="lbl">Churned</div></div>
+  </div>
+  <div id="ranking-list"></div>
+  <div id="legend"></div>
+</div>
+
+<!-- RIGHT PANEL -->
+<div id="right-panel">
+  <div class="panel-title">Selected Domain</div>
+  <div class="chart-area">
+    <h3>Adoption &amp; Retention Curve</h3>
+    <canvas id="adoption-chart" width="254" height="150"></canvas>
+  </div>
+  <div class="panel-title" style="padding-top:6px;">Shock Events</div>
+  <div id="shock-list"></div>
+  <div class="panel-title" style="padding-top:6px;">Activity Feed</div>
+  <div id="activity-feed"></div>
+</div>
+
+<div id="round-indicator">
+  <button class="play-btn" id="play-btn" title="Play/Pause">&#9654;</button>
+  <div style="display:flex;flex-direction:column;align-items:center;">
+    <div class="round-num" id="round-num">0</div>
+    <div class="round-total">/ 20</div>
+  </div>
+  <input type="range" id="round-slider" min="0" max="20" value="0" title="Scrub rounds">
+</div>
+
+<div id="tooltip">
+  <div class="tt-title"></div>
+  <div class="tt-type"></div>
+  <div class="tt-body"></div>
+</div>
+
+<div id="shock-banner"></div>
+
+<!-- MACRO CONTEXT BAR -->
+<div id="macro-bar">
+  <div class="macro-dim">Displacement <span class="macro-val macro-neg" id="macro-disp">0.8</span></div>
+  <div class="macro-dim">Economy <span class="macro-val macro-neg" id="macro-econ">-0.3</span></div>
+  <div class="macro-dim">Speculation <span class="macro-val macro-neutral" id="macro-spec">0.3</span></div>
+  <div class="macro-dim">Regulation <span class="macro-val macro-neg" id="macro-reg">0.6</span></div>
+  <div class="macro-dim">Stability <span class="macro-val macro-neg" id="macro-stab">0.4</span></div>
+</div>
+
+<script>
+// ============================================================================
+// PERSONA DATA (static from personas.py)
+// ============================================================================
+const PERSONA_DATA = {
+  investor: {
+    label: 'Investor', color: '#00ff88',
+    values: ['deal_flow', 'alpha', 'portfolio_intelligence', 'roi'],
+    pain_points: ['information_overload', 'slow_due_diligence', 'missed_deals'],
+    influence: 0.9, threshold: 0.45, risk: 0.6, reach: 0.85,
+  },
+  entrepreneur: {
+    label: 'Entrepreneur', color: '#ff6b35',
+    values: ['speed_to_ship', 'idea_validation', 'mvp_quality', 'market_fit'],
+    pain_points: ['too_slow', 'feature_bloat', 'analysis_paralysis'],
+    influence: 0.75, threshold: 0.3, risk: 0.85, reach: 0.7,
+  },
+  content_creator: {
+    label: 'Content Creator', color: '#ec4899',
+    values: ['audience_growth', 'content_quality', 'distribution'],
+    pain_points: ['writer_block', 'algorithm_changes', 'audience_fatigue'],
+    influence: 0.8, threshold: 0.25, risk: 0.7, reach: 0.9,
+  },
+  solopreneur: {
+    label: 'Solopreneur', color: '#06b6d4',
+    values: ['time_leverage', 'low_cost', 'simplicity', 'all_in_one'],
+    pain_points: ['no_team', 'limited_budget', 'wearing_all_hats'],
+    influence: 0.5, threshold: 0.35, risk: 0.75, reach: 0.4,
+  },
+  ai_newcomer: {
+    label: 'AI Newcomer', color: '#fbbf24',
+    values: ['easy_start', 'low_learning_curve', 'quick_wins'],
+    pain_points: ['overwhelmed', 'dont_know_where_to_start', 'fear_of_ai'],
+    influence: 0.3, threshold: 0.2, risk: 0.5, reach: 0.3,
+  },
+  developer: {
+    label: 'Developer', color: '#3b82f6',
+    values: ['code_quality', 'productivity', 'dx', 'extensibility'],
+    pain_points: ['bad_docs', 'vendor_lock_in', 'over_engineering'],
+    influence: 0.7, threshold: 0.4, risk: 0.65, reach: 0.65,
+  },
+  marketer: {
+    label: 'Marketer', color: '#a855f7',
+    values: ['campaign_roi', 'attribution', 'conversion'],
+    pain_points: ['cant_prove_roi', 'ad_fatigue', 'channel_fragmentation'],
+    influence: 0.65, threshold: 0.3, risk: 0.6, reach: 0.75,
+  },
+  creative: {
+    label: 'Creative', color: '#f43f5e',
+    values: ['aesthetic_quality', 'creative_control', 'uniqueness'],
+    pain_points: ['ai_looks_generic', 'loss_of_style', 'commoditization'],
+    influence: 0.6, threshold: 0.25, risk: 0.8, reach: 0.55,
+  },
+  trader: {
+    label: 'Trader', color: '#10b981',
+    values: ['alpha', 'speed', 'risk_management', 'edge'],
+    pain_points: ['slow_execution', 'information_lag', 'missed_entries'],
+    influence: 0.65, threshold: 0.35, risk: 0.9, reach: 0.5,
+  },
+  tool_maker: {
+    label: 'Tool Maker', color: '#6366f1',
+    values: ['infrastructure', 'api_quality', 'developer_adoption'],
+    pain_points: ['poor_docs', 'breaking_changes', 'low_adoption'],
+    influence: 0.75, threshold: 0.5, risk: 0.7, reach: 0.7,
+  },
+  opportunity_hunter: {
+    label: 'Opp. Hunter', color: '#f97316',
+    values: ['early_access', 'trend_spotting', 'speed', 'first_mover'],
+    pain_points: ['fomo', 'too_late', 'noise_vs_signal'],
+    influence: 0.55, threshold: 0.15, risk: 0.95, reach: 0.6,
+  },
+  // v4 persona types
+  displaced_worker: {
+    label: 'Displaced Worker', color: '#ef4444',
+    values: ['career', 'reskill', 'easy_start', 'quick_wins'],
+    pain_points: ['job_loss', 'no_ai_skills', 'age_discrimination'],
+    influence: 0.35, threshold: 0.15, risk: 0.4, reach: 0.3,
+  },
+  corporate_innovator: {
+    label: 'Corp. Innovator', color: '#14b8a6',
+    values: ['roi', 'compliance', 'workflow', 'productivity'],
+    pain_points: ['bureaucracy', 'procurement_hell', 'security_concerns'],
+    influence: 0.7, threshold: 0.4, risk: 0.5, reach: 0.55,
+  },
+  student_builder: {
+    label: 'Student Builder', color: '#f472b6',
+    values: ['easy_start', 'low_cost', 'speed_to_ship', 'quick_wins'],
+    pain_points: ['no_budget', 'overwhelmed', 'no_experience'],
+    influence: 0.4, threshold: 0.1, risk: 0.9, reach: 0.35,
+  },
+  skeptic: {
+    label: 'Skeptic', color: '#78716c',
+    values: ['code_quality', 'risk_management', 'infrastructure'],
+    pain_points: ['ai_hype', 'vendor_lock_in', 'unreliable_output'],
+    influence: 0.8, threshold: 0.6, risk: 0.2, reach: 0.7,
+  },
+};
+
+const PERSONA_TYPES = Object.keys(PERSONA_DATA);
+
+// Domain category colors
+const DOMAIN_COLORS = {
+  existing: '#00ff88',
+  candidate: '#3b82f6',
+  viral: '#fbbf24',
+  new: '#8b9dc3',
+  new48: '#06b6d4',
+  new150: '#a78bfa',
+  // v4 categories
+  v4_survival: '#ef4444',
+  v4_health: '#f472b6',
+  v4_gov: '#6366f1',
+  v4_enterprise: '#14b8a6',
+  v4_blue_collar: '#d97706',
+  v4_finance: '#10b981',
+  v4_other: '#94a3b8',
+};
+
+// ============================================================================
+// GLOBALS
+// ============================================================================
+let DATA = null;
+const canvas = document.getElementById('graph-canvas');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+let camera = { x: 0, y: 0, zoom: 1 };
+let personaNodes = [];
+let domainNodes = [];
+let allNodes = [];
+let domainEdges = [];       // domain-domain relationships (always faint)
+let adoptionEdges = [];     // persona-domain edges (per round)
+let hoveredNode = null;
+let selectedNode = null;
+let isDragging = false;
+let dragStart = { x: 0, y: 0 };
+let camStart = { x: 0, y: 0 };
+let currentRound = 0;
+let isPlaying = false;
+let playTimer = null;
+let needsRender = true;
+let forceIters = 0;
+let frameCount = 0;
+
+// ============================================================================
+// DATA LOADING
+// ============================================================================
+async function loadData() {
+  try {
+    const resp = await fetch('mirofish_500_data.json');
+    DATA = await resp.json();
+  } catch(e) {
+    console.error('Failed to load data:', e);
+    return;
+  }
+  init();
+}
+
+// ============================================================================
+// LAYOUT
+// ============================================================================
+function initLayout() {
+  const domainDataMap = {};
+  DATA.domains.forEach(d => { domainDataMap[d.domain_id] = d; });
+
+  // Create persona hub nodes (fixed ring)
+  const hubRadius = Math.min(W, H) * 0.35;
+  personaNodes = PERSONA_TYPES.map((ptype, i) => {
+    const angle = (i / PERSONA_TYPES.length) * Math.PI * 2 - Math.PI / 2;
+    const pd = PERSONA_DATA[ptype];
+    const jsonData = DATA.persona_types.find(p => p.type === ptype) || {};
+    return {
+      id: `persona-${ptype}`,
+      personaType: ptype,
+      label: pd.label,
+      type: 'persona',
+      isPersona: true,
+      isDomain: false,
+      color: pd.color,
+      x: Math.cos(angle) * hubRadius,
+      y: Math.sin(angle) * hubRadius,
+      vx: 0, vy: 0,
+      radius: 24 + pd.influence * 14,
+      baseRadius: 24 + pd.influence * 14,
+      count: jsonData.count || 50,
+      values: pd.values,
+      pain_points: pd.pain_points,
+      influence: pd.influence,
+      threshold: pd.threshold,
+      risk: pd.risk,
+      reach: pd.reach,
+      fixed: true,
+    };
+  });
+
+  // Create domain nodes
+  domainNodes = DATA.domains.map((d, i) => {
+    const angle = (i / DATA.domains.length) * Math.PI * 2 + Math.random() * 0.3;
+    const dist = 80 + Math.random() * 180;
+    const catColor = DOMAIN_COLORS[d.category] || DOMAIN_COLORS.candidate;
+    return {
+      id: d.domain_id,
+      label: d.label || d.domain_id,
+      type: 'domain',
+      isPersona: false,
+      isDomain: true,
+      isExisting: d.is_existing,
+      category: d.category,
+      color: catColor,
+      domainData: d,
+      x: Math.cos(angle) * dist + (Math.random() - 0.5) * 60,
+      y: Math.sin(angle) * dist + (Math.random() - 0.5) * 60,
+      vx: 0, vy: 0,
+      radius: 8,
+      baseRadius: 8,
+      fixed: false,
+    };
+  });
+
+  allNodes = [...domainNodes, ...personaNodes];
+
+  // Build node lookup
+  const nodeMap = {};
+  allNodes.forEach(n => { nodeMap[n.id] = n; });
+
+  // Domain-domain relationship edges only
+  const domainIdSet = new Set(DATA.domains.map(d => d.domain_id));
+  domainEdges = DATA.graph_edges
+    .filter(e => domainIdSet.has(e.source) && domainIdSet.has(e.target) && e.weight > 0.3)
+    .map(e => ({
+      source: nodeMap[e.source],
+      target: nodeMap[e.target],
+      weight: e.weight,
+    }))
+    .filter(e => e.source && e.target);
+
+  // Run initial force layout
+  for (let iter = 0; iter < 150; iter++) {
+    forceStep(0.4 * (1 - iter / 150));
+  }
+}
+
+function forceStep(alpha) {
+  const k = 80;
+  const gravity = 0.004;
+  const cutoff = k * 5;
+  const cutoffSq = cutoff * cutoff;
+
+  // Repulsion between domain nodes only
+  for (let i = 0; i < domainNodes.length; i++) {
+    for (let j = i + 1; j < domainNodes.length; j++) {
+      const a = domainNodes[i], b = domainNodes[j];
+      let dx = b.x - a.x;
+      let dy = b.y - a.y;
+      let distSq = dx * dx + dy * dy;
+      if (distSq > cutoffSq) continue;
+      let dist = Math.sqrt(distSq) || 1;
+      let force = (k * k) / dist;
+      let fx = (dx / dist) * force * alpha;
+      let fy = (dy / dist) * force * alpha;
+      a.vx -= fx; a.vy -= fy;
+      b.vx += fx; b.vy += fy;
+    }
+  }
+
+  // Domain-domain edge springs (weak)
+  domainEdges.forEach(e => {
+    let dx = e.target.x - e.source.x;
+    let dy = e.target.y - e.source.y;
+    let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    let force = (dist - 80) * 0.002 * alpha;
+    let fx = (dx / dist) * force;
+    let fy = (dy / dist) * force;
+    e.source.vx += fx; e.source.vy += fy;
+    e.target.vx -= fx; e.target.vy -= fy;
+  });
+
+  // Persona attractor pull
+  domainNodes.forEach(d => {
+    let pullX = 0, pullY = 0, totalWeight = 0;
+    personaNodes.forEach(p => {
+      const rate = getPersonaAdoptionAtRound(d.domainData, p.personaType, currentRound);
+      if (rate > 0.005) {
+        pullX += p.x * rate;
+        pullY += p.y * rate;
+        totalWeight += rate;
+      }
+    });
+    if (totalWeight > 0.01) {
+      const tx = pullX / totalWeight;
+      const ty = pullY / totalWeight;
+      d.vx += (tx - d.x) * 0.015 * alpha;
+      d.vy += (ty - d.y) * 0.015 * alpha;
+    }
+  });
+
+  // Gravity + apply velocity
+  domainNodes.forEach(n => {
+    n.vx -= n.x * gravity * alpha;
+    n.vy -= n.y * gravity * alpha;
+    n.x += n.vx;
+    n.y += n.vy;
+    n.vx *= 0.82;
+    n.vy *= 0.82;
+  });
+}
+
+// ============================================================================
+// ADOPTION EDGE COMPUTATION
+// ============================================================================
+function getAdoptionAtRound(domainData, round) {
+  if (!domainData || !domainData.builder_curve) return 0;
+  const curve = domainData.builder_curve;
+  if (round >= curve.length) return domainData.builder_adoption;
+  if (round < 0) return 0;
+  return curve[round] ? curve[round].adoption_rate : 0;
+}
+
+function getPersonaAdoptionAtRound(domainData, personaType, round) {
+  if (!domainData || !domainData.adoption_by_persona_type) return 0;
+  const pt = domainData.adoption_by_persona_type[personaType];
+  if (!pt || pt.adoption_rate === 0) return 0;
+  const overallAtRound = getAdoptionAtRound(domainData, round);
+  const overallFinal = domainData.builder_adoption;
+  if (overallFinal <= 0) return 0;
+  return pt.adoption_rate * Math.min(1, overallAtRound / overallFinal);
+}
+
+function computeAdoptionEdges() {
+  const nodeMap = {};
+  allNodes.forEach(n => { nodeMap[n.id] = n; });
+
+  adoptionEdges = [];
+  personaNodes.forEach(pNode => {
+    domainNodes.forEach(dNode => {
+      const rate = getPersonaAdoptionAtRound(dNode.domainData, pNode.personaType, currentRound);
+      if (rate > 0.005) {
+        adoptionEdges.push({
+          source: pNode,
+          target: dNode,
+          rate: rate,
+          color: pNode.color,
+          personaType: pNode.personaType,
+        });
+      }
+    });
+  });
+}
+
+// ============================================================================
+// RENDERING
+// ============================================================================
+function render() {
+  frameCount++;
+
+  // Force settling
+  if (forceIters > 0) {
+    const alpha = 0.25 * (forceIters / 30);
+    forceStep(alpha);
+    forceIters--;
+    needsRender = true;
+  }
+
+  if (!needsRender) {
+    requestAnimationFrame(render);
+    return;
+  }
+
+  const newW = window.innerWidth;
+  const newH = window.innerHeight;
+  if (canvas.width !== newW || canvas.height !== newH) {
+    W = canvas.width = newW;
+    H = canvas.height = newH;
+  }
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.save();
+  ctx.translate(W / 2 + camera.x, H / 2 + camera.y);
+  ctx.scale(camera.zoom, camera.zoom);
+
+  // Viewport bounds for culling
+  const vpL = (-camera.x - W / 2) / camera.zoom;
+  const vpT = (-camera.y - H / 2) / camera.zoom;
+  const vpR = vpL + W / camera.zoom;
+  const vpB = vpT + H / camera.zoom;
+  const margin = 50;
+
+  // Layer 1: Domain relationship edges (always, faint)
+  ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+  ctx.lineWidth = 0.5;
+  ctx.beginPath();
+  for (let i = 0; i < domainEdges.length; i++) {
+    const e = domainEdges[i];
+    const s = e.source, t = e.target;
+    if ((s.x < vpL - margin && t.x < vpL - margin) ||
+        (s.x > vpR + margin && t.x > vpR + margin) ||
+        (s.y < vpT - margin && t.y < vpT - margin) ||
+        (s.y > vpB + margin && t.y > vpB + margin)) continue;
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(t.x, t.y);
+  }
+  ctx.stroke();
+
+  // Layer 2: Adoption edges (colored by persona)
+  for (let i = 0; i < adoptionEdges.length; i++) {
+    const e = adoptionEdges[i];
+    const s = e.source, t = e.target;
+    if ((s.x < vpL - margin && t.x < vpL - margin) ||
+        (s.x > vpR + margin && t.x > vpR + margin) ||
+        (s.y < vpT - margin && t.y < vpT - margin) ||
+        (s.y > vpB + margin && t.y > vpB + margin)) continue;
+    const rgb = hexToRgb(e.color);
+    const alpha = Math.min(0.5, e.rate * 1.2);
+    const width = 0.5 + e.rate * 3;
+    ctx.beginPath();
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(t.x, t.y);
+    ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha})`;
+    ctx.lineWidth = width;
+    ctx.stroke();
+  }
+
+  // Layer 3: Domain nodes
+  for (let i = 0; i < domainNodes.length; i++) {
+    const n = domainNodes[i];
+    if (n.x < vpL - margin || n.x > vpR + margin ||
+        n.y < vpT - margin || n.y > vpB + margin) continue;
+    drawDomainNode(n);
+  }
+
+  // Layer 4: Persona hub nodes (on top)
+  for (let i = 0; i < personaNodes.length; i++) {
+    const n = personaNodes[i];
+    if (n.x < vpL - margin || n.x > vpR + margin ||
+        n.y < vpT - margin || n.y > vpB + margin) continue;
+    drawPersonaHub(n);
+  }
+
+  ctx.restore();
+  needsRender = false;
+  requestAnimationFrame(render);
+}
+
+function drawDomainNode(node) {
+  const r = node.radius;
+  const isHovered = hoveredNode === node;
+  const isSelected = selectedNode === node;
+
+  // Main circle
+  ctx.beginPath();
+  ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
+  ctx.fillStyle = node.color;
+  ctx.globalAlpha = isHovered || isSelected ? 1 : 0.75;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+
+  // Adoption ring
+  if (node.domainData) {
+    const adoption = getAdoptionAtRound(node.domainData, currentRound);
+    if (adoption > 0.01) {
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, r + 3, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * adoption);
+      ctx.strokeStyle = node.color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+  }
+
+  // Highlight ring on hover/select
+  if (isHovered || isSelected) {
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, r + 6, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Label
+  if (isHovered || isSelected || (camera.zoom > 0.5 && r > 10) || camera.zoom > 1.0) {
+    const fontSize = 9;
+    ctx.font = `${isHovered ? 'bold ' : ''}${fontSize}px monospace`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    const ly = node.y + r + 5;
+    const text = node.label.length > 22 ? node.label.substring(0, 20) + '..' : node.label;
+    const tw = ctx.measureText(text).width + 6;
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillRect(node.x - tw / 2, ly - 1, tw, 12);
+    ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.55)';
+    ctx.fillText(text, node.x, ly);
+  }
+}
+
+function drawPersonaHub(node) {
+  const r = node.radius;
+  const isHovered = hoveredNode === node;
+  const isSelected = selectedNode === node;
+  const rgb = hexToRgb(node.color);
+
+  // Outer glow ring
+  ctx.beginPath();
+  ctx.arc(node.x, node.y, r + 6, 0, Math.PI * 2);
+  ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${isHovered ? 0.5 : 0.2})`;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Main circle
+  ctx.beginPath();
+  ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
+  ctx.fillStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`;
+  ctx.fill();
+  ctx.strokeStyle = node.color;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Inner icon (initials)
+  ctx.font = 'bold 12px monospace';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = node.color;
+  const initials = node.label.split(' ').map(w => w[0]).join('').substring(0, 2);
+  ctx.fillText(initials, node.x, node.y);
+
+  // Label always visible
+  ctx.font = `${isHovered ? 'bold ' : ''}10px monospace`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  const ly = node.y + r + 9;
+  const tw = ctx.measureText(node.label).width + 8;
+  ctx.fillStyle = 'rgba(0,0,0,0.6)';
+  ctx.fillRect(node.x - tw / 2, ly - 1, tw, 13);
+  ctx.fillStyle = node.color;
+  ctx.fillText(node.label, node.x, ly);
+}
+
+// ============================================================================
+// COLOR HELPERS
+// ============================================================================
+function hexToRgb(hex) {
+  if (!hex || hex.startsWith('rgba') || hex.startsWith('rgb')) return { r: 128, g: 128, b: 128 };
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if (result) return { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) };
+  return { r: 128, g: 128, b: 128 };
+}
+
+// ============================================================================
+// INTERACTION
+// ============================================================================
+function screenToWorld(sx, sy) {
+  return {
+    x: (sx - W / 2 - camera.x) / camera.zoom,
+    y: (sy - H / 2 - camera.y) / camera.zoom,
+  };
+}
+
+function findNodeAt(wx, wy) {
+  // Check persona hubs first (on top)
+  for (let i = personaNodes.length - 1; i >= 0; i--) {
+    const n = personaNodes[i];
+    const dx = n.x - wx, dy = n.y - wy;
+    if (dx * dx + dy * dy < (n.radius + 6) * (n.radius + 6)) return n;
+  }
+  for (let i = domainNodes.length - 1; i >= 0; i--) {
+    const n = domainNodes[i];
+    const dx = n.x - wx, dy = n.y - wy;
+    if (dx * dx + dy * dy < (n.radius + 4) * (n.radius + 4)) return n;
+  }
+  return null;
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  dragStart = { x: e.clientX, y: e.clientY };
+  camStart = { x: camera.x, y: camera.y };
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    camera.x = camStart.x + (e.clientX - dragStart.x);
+    camera.y = camStart.y + (e.clientY - dragStart.y);
+    needsRender = true;
+    return;
+  }
+  const world = screenToWorld(e.clientX, e.clientY);
+  const prev = hoveredNode;
+  hoveredNode = findNodeAt(world.x, world.y);
+  if (hoveredNode !== prev) needsRender = true;
+
+  if (hoveredNode) {
+    canvas.style.cursor = 'pointer';
+    showTooltip(e.clientX, e.clientY, hoveredNode);
+  } else {
+    canvas.style.cursor = 'crosshair';
+    hideTooltip();
+  }
+});
+
+canvas.addEventListener('mouseup', (e) => {
+  if (isDragging) {
+    const moved = Math.abs(e.clientX - dragStart.x) + Math.abs(e.clientY - dragStart.y);
+    if (moved < 5) {
+      const world = screenToWorld(e.clientX, e.clientY);
+      const clicked = findNodeAt(world.x, world.y);
+      selectedNode = clicked === selectedNode ? null : clicked;
+      if (selectedNode && selectedNode.isDomain) updateAdoptionChart(selectedNode);
+      else updateAdoptionChart(null);
+      needsRender = true;
+    }
+  }
+  isDragging = false;
+});
+
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
+  const newZoom = Math.max(0.15, Math.min(5, camera.zoom * zoomFactor));
+  const wx = (e.clientX - W / 2 - camera.x) / camera.zoom;
+  const wy = (e.clientY - H / 2 - camera.y) / camera.zoom;
+  camera.zoom = newZoom;
+  camera.x = e.clientX - W / 2 - wx * camera.zoom;
+  camera.y = e.clientY - H / 2 - wy * camera.zoom;
+  needsRender = true;
+}, { passive: false });
+
+window.addEventListener('resize', () => { needsRender = true; });
+
+// ============================================================================
+// TOOLTIP
+// ============================================================================
+const tooltip = document.getElementById('tooltip');
+
+function showTooltip(mx, my, node) {
+  const tt = tooltip;
+  let body = '';
+
+  if (node.isPersona) {
+    tt.querySelector('.tt-title').textContent = node.label;
+    tt.querySelector('.tt-type').textContent = `PERSONA TYPE (${node.count} agents)`;
+
+    body += `<div class="tt-section">Values</div>`;
+    body += `<div style="font-size:10px;color:${node.color};">${node.values.join(', ')}</div>`;
+    body += `<div class="tt-section">Pain Points</div>`;
+    body += `<div style="font-size:10px;color:rgba(255,255,255,0.4);">${node.pain_points.join(', ')}</div>`;
+
+    body += `<div class="tt-row" style="margin-top:6px;color:rgba(255,255,255,0.35);">`;
+    body += `Influence ${node.influence.toFixed(2)} | Threshold ${node.threshold.toFixed(2)} | Risk ${node.risk.toFixed(2)}`;
+    body += `</div>`;
+
+    // Top adopted domains at current round
+    const topDomains = [];
+    domainNodes.forEach(d => {
+      const rate = getPersonaAdoptionAtRound(d.domainData, node.personaType, currentRound);
+      if (rate > 0.005) topDomains.push({ id: d.id, label: d.label, rate });
+    });
+    topDomains.sort((a, b) => b.rate - a.rate);
+
+    if (topDomains.length > 0) {
+      body += `<div class="tt-section">Top Domains (Round ${currentRound})</div>`;
+      topDomains.slice(0, 8).forEach(d => {
+        const pct = (d.rate * 100).toFixed(1);
+        const barW = Math.max(2, d.rate * 120);
+        body += `<div class="tt-row">
+          <span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${d.label}</span>
+          <div class="tt-bar" style="width:${barW}px;background:${node.color};"></div>
+          <span class="tt-val" style="color:${node.color};">${pct}%</span>
+        </div>`;
+      });
+    } else {
+      body += `<div style="font-size:10px;color:rgba(255,255,255,0.25);margin-top:8px;">No adoptions yet at round ${currentRound}</div>`;
+    }
+
+  } else if (node.isDomain) {
+    const d = node.domainData;
+    const adoption = getAdoptionAtRound(d, currentRound);
+    tt.querySelector('.tt-title').textContent = node.label;
+    tt.querySelector('.tt-type').textContent = `DOMAIN (${d.category.toUpperCase()}) | Adoption: ${(adoption * 100).toFixed(1)}%`;
+
+    // Persona fit breakdown
+    const breakdown = [];
+    PERSONA_TYPES.forEach(ptype => {
+      const rate = getPersonaAdoptionAtRound(d, ptype, currentRound);
+      if (rate > 0.005) {
+        // Compute matched values
+        const pValues = PERSONA_DATA[ptype].values;
+        const dTags = d.domain_tags || [];
+        const matched = pValues.filter(v => dTags.some(t =>
+          t.includes(v) || v.includes(t) || t.replace(/_/g, '') === v.replace(/_/g, '')
+        ));
+        breakdown.push({ ptype, rate, matched, color: PERSONA_DATA[ptype].color, label: PERSONA_DATA[ptype].label });
+      }
+    });
+    breakdown.sort((a, b) => b.rate - a.rate);
+
+    if (breakdown.length > 0) {
+      body += `<div class="tt-section">Persona Adoption Breakdown</div>`;
+      breakdown.forEach(b => {
+        const pct = (b.rate * 100).toFixed(1);
+        const barW = Math.max(2, b.rate * 120);
+        const matchStr = b.matched.length > 0 ? `<span class="tt-matched">[${b.matched.join(', ')}]</span>` : '';
+        body += `<div class="tt-row">
+          <span style="color:${b.color};min-width:80px;">${b.label}</span>
+          <div class="tt-bar" style="width:${barW}px;background:${b.color};"></div>
+          <span class="tt-val" style="color:${b.color};">${pct}%</span>
+          ${matchStr}
+        </div>`;
+      });
+    }
+
+    if (d.domain_tags && d.domain_tags.length > 0) {
+      body += `<div class="tt-tags">Tags: ${d.domain_tags.join(', ')}</div>`;
+    }
+
+    // v4 metrics row
+    const sd = (bc && bc[currentRound]) ? (bc[currentRound].stage_distribution || {}) : {};
+    const total = Object.values(sd).reduce((a, b) => a + b, 0) || 1;
+    const trialPct = ((sd.trial || 0) / total * 100).toFixed(0);
+    const commitPct = ((sd.committed || 0) / total * 100).toFixed(0);
+    const churnPct = ((sd.churned || 0) / total * 100).toFixed(0);
+    body += `<div class="tt-section">Funnel (Round ${currentRound})</div>`;
+    body += `<div class="tt-row">
+      <span style="color:#06b6d4;">Trial ${trialPct}%</span>
+      <span style="color:#00ff88;">Commit ${commitPct}%</span>
+      <span style="color:#ef4444;">Churn ${churnPct}%</span>
+    </div>`;
+
+    body += `<div class="tt-row" style="margin-top:6px;color:rgba(255,255,255,0.25);">`;
+    body += `Score: ${d.composite_score.toFixed(3)}`;
+    if (d.retention_score !== undefined) body += ` | Ret: ${d.retention_score.toFixed(2)}`;
+    if (d.tipping_point !== null) body += ` | Tipping: R${d.tipping_point}`;
+    body += `</div>`;
+  }
+
+  tt.querySelector('.tt-body').innerHTML = body;
+
+  // Position
+  let x = mx + 16, y = my + 16;
+  if (x + 360 > window.innerWidth) x = mx - 360;
+  if (y + 300 > window.innerHeight) y = my - 300;
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
+  tt.classList.add('visible');
+}
+
+function hideTooltip() {
+  tooltip.classList.remove('visible');
+}
+
+// ============================================================================
+// SIMULATION PLAYBACK
+// ============================================================================
+function setRound(round) {
+  currentRound = Math.max(0, Math.min(20, round));
+  document.getElementById('round-num').textContent = currentRound;
+  document.getElementById('round-slider').value = currentRound;
+
+  // Update domain node sizes based on adoption
+  domainNodes.forEach(n => {
+    if (n.domainData) {
+      const adoption = getAdoptionAtRound(n.domainData, currentRound);
+      n.radius = 6 + adoption * 20;
+    }
+  });
+
+  // Recompute adoption edges
+  computeAdoptionEdges();
+
+  // Settle force layout for new positions
+  forceIters = 25;
+  needsRender = true;
+
+  // Update panels
+  updateRankingList();
+  updateStats();
+  updateShockList();
+  updateMacroBar();
+  if (selectedNode) updateAdoptionChart(selectedNode);
+
+  // Check for shock events
+  checkShocks();
+}
+
+function checkShocks() {
+  if (!DATA.shocks) return;
+  const active = DATA.shocks.filter(s => s.inject_at_round === currentRound);
+  if (active.length > 0) {
+    const banner = document.getElementById('shock-banner');
+    banner.textContent = `Round ${currentRound}: ${active.map(s => s.label).join(' + ')}`;
+    banner.classList.add('visible');
+    setTimeout(() => banner.classList.remove('visible'), 2500);
+  }
+}
+
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('play-btn').innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9654;';
+  if (isPlaying) {
+    playTimer = setInterval(() => {
+      if (currentRound >= 20) {
+        isPlaying = false;
+        document.getElementById('play-btn').innerHTML = '&#9654;';
+        clearInterval(playTimer);
+        return;
+      }
+      currentRound++;
+      generateFeedForRound(currentRound);
+      setRound(currentRound);
+    }, 800);
+  } else {
+    clearInterval(playTimer);
+  }
+}
+
+// ============================================================================
+// LEGEND
+// ============================================================================
+function buildLegend() {
+  const container = document.getElementById('legend');
+  let html = '<div class="legend-title">Persona Types</div>';
+  PERSONA_TYPES.forEach(ptype => {
+    const pd = PERSONA_DATA[ptype];
+    html += `<div class="legend-item">
+      <div class="legend-dot" style="background:${pd.color};"></div>
+      <span>${pd.label}</span>
+    </div>`;
+  });
+  html += '<div class="legend-title" style="margin-top:6px;">Domains</div>';
+  html += '<div class="legend-title" style="margin-top:6px;">V3 Domains</div>';
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.existing};"></div><span>Existing</span></div>`;
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.candidate};"></div><span>Candidate</span></div>`;
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.viral};"></div><span>Viral</span></div>`;
+  html += '<div class="legend-title" style="margin-top:6px;">V4 Domains</div>';
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.v4_survival};"></div><span>AI Survival</span></div>`;
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.v4_health};"></div><span>Health</span></div>`;
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.v4_enterprise};"></div><span>Enterprise</span></div>`;
+  html += `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS.v4_other};"></div><span>Other v4</span></div>`;
+  container.innerHTML = html;
+}
+
+// ============================================================================
+// LEFT PANEL: RANKINGS + STATS
+// ============================================================================
+function updateRankingList() {
+  const container = document.getElementById('ranking-list');
+  const sorted = [...DATA.domains].sort((a, b) => {
+    return getAdoptionAtRound(b, currentRound) - getAdoptionAtRound(a, currentRound);
+  });
+
+  let html = '';
+  sorted.forEach((d, i) => {
+    const adoption = getAdoptionAtRound(d, currentRound);
+    const color = DOMAIN_COLORS[d.category] || DOMAIN_COLORS.candidate;
+    html += `<div class="rank-item" data-domain="${d.domain_id}" onclick="selectDomainById('${d.domain_id}')" style="opacity:${adoption > 0.005 ? 1 : 0.35}">
+      <div class="rank-pos ${i < 3 ? 'top3' : i < 10 ? 'top10' : ''}">${i + 1}</div>
+      <div class="rank-name" title="${d.label || d.domain_id}">${d.domain_id}</div>
+      <div class="rank-bar"><div class="rank-bar-fill" style="width:${Math.min(100, adoption * 100)}%;background:${color};"></div></div>
+      <div class="rank-pct" style="color:${color};">${(adoption * 100).toFixed(1)}%</div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function updateStats() {
+  let adoptedCount = 0;
+  let churnedCount = 0;
+  DATA.domains.forEach(d => {
+    if (d.builder_curve && d.builder_curve[currentRound]) {
+      const sd = d.builder_curve[currentRound].stage_distribution || {};
+      adoptedCount += (sd.adopted || 0) + (sd.committed || 0) + (sd.advocating || 0);
+      churnedCount += (sd.churned || 0);
+    }
+  });
+  document.getElementById('stat-adopted').textContent = adoptedCount.toLocaleString();
+  document.getElementById('stat-churned').textContent = churnedCount.toLocaleString();
+}
+
+function selectDomainById(domainId) {
+  const node = domainNodes.find(n => n.id === domainId);
+  if (node) {
+    selectedNode = node;
+    updateAdoptionChart(node);
+    needsRender = true;
+  }
+}
+
+// ============================================================================
+// RIGHT PANEL: ADOPTION CHART + SHOCKS + FEED
+// ============================================================================
+function updateAdoptionChart(node) {
+  const canvas = document.getElementById('adoption-chart');
+  const aCtx = canvas.getContext('2d');
+  aCtx.clearRect(0, 0, 254, 150);
+
+  if (!node || !node.domainData) {
+    aCtx.font = '10px monospace';
+    aCtx.fillStyle = 'rgba(255,255,255,0.2)';
+    aCtx.textAlign = 'center';
+    aCtx.fillText('Click a domain to see its curve', 127, 75);
+    return;
+  }
+
+  const d = node.domainData;
+  const bc = d.builder_curve;
+  if (!bc || bc.length === 0) return;
+
+  // Title
+  aCtx.font = 'bold 9px monospace';
+  aCtx.fillStyle = node.color;
+  aCtx.textAlign = 'left';
+  aCtx.fillText(d.label || d.domain_id, 4, 10);
+
+  // Retention badge
+  if (d.retention_score !== undefined) {
+    aCtx.font = '7px monospace';
+    aCtx.fillStyle = d.retention_score > 0.6 ? '#00ff88' : d.retention_score > 0.4 ? '#fbbf24' : '#ef4444';
+    aCtx.textAlign = 'right';
+    aCtx.fillText(`ret:${d.retention_score.toFixed(1)}`, 250, 10);
+  }
+
+  const cx = 28, cy = 18, cw = 218, ch = 100;
+
+  // Y axis
+  aCtx.font = '7px monospace';
+  aCtx.fillStyle = 'rgba(255,255,255,0.2)';
+  aCtx.textAlign = 'right';
+  [0, 0.5, 1.0].forEach(v => {
+    const y = cy + ch - v * ch;
+    aCtx.fillText(`${(v * 100).toFixed(0)}%`, cx - 3, y + 3);
+    aCtx.strokeStyle = 'rgba(255,255,255,0.03)';
+    aCtx.beginPath();
+    aCtx.moveTo(cx, y); aCtx.lineTo(cx + cw, y);
+    aCtx.stroke();
+  });
+
+  // Interest area (faint fill)
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const y = cy + ch - (snap.interest_rate || 0) * ch;
+    i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+  });
+  aCtx.lineTo(cx + cw, cy + ch);
+  aCtx.lineTo(cx, cy + ch);
+  aCtx.closePath();
+  aCtx.fillStyle = 'rgba(59,130,246,0.06)';
+  aCtx.fill();
+
+  // Trial curve (dashed cyan)
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const trial = (snap.stage_distribution || {}).trial || 0;
+    const total = Object.values(snap.stage_distribution || {}).reduce((a, b) => a + b, 0) || 1;
+    const y = cy + ch - (trial / total) * ch;
+    i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+  });
+  aCtx.strokeStyle = '#06b6d4';
+  aCtx.lineWidth = 1;
+  aCtx.setLineDash([3, 3]);
+  aCtx.stroke();
+  aCtx.setLineDash([]);
+
+  // Adoption curve (main solid)
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const y = cy + ch - snap.adoption_rate * ch;
+    i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+  });
+  aCtx.strokeStyle = node.color;
+  aCtx.lineWidth = 2;
+  aCtx.stroke();
+
+  // Committed curve (green dotted)
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const committed = (snap.stage_distribution || {}).committed || 0;
+    const total = Object.values(snap.stage_distribution || {}).reduce((a, b) => a + b, 0) || 1;
+    const y = cy + ch - (committed / total) * ch;
+    i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+  });
+  aCtx.strokeStyle = '#00ff88';
+  aCtx.lineWidth = 1;
+  aCtx.setLineDash([2, 2]);
+  aCtx.stroke();
+  aCtx.setLineDash([]);
+
+  // Churn curve (red)
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const churned = (snap.stage_distribution || {}).churned || 0;
+    const total = Object.values(snap.stage_distribution || {}).reduce((a, b) => a + b, 0) || 1;
+    const y = cy + ch - (churned / total) * ch;
+    i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+  });
+  aCtx.strokeStyle = '#ef4444';
+  aCtx.lineWidth = 1;
+  aCtx.stroke();
+
+  // Advocacy curve
+  aCtx.beginPath();
+  bc.forEach((snap, i) => {
+    const x = cx + (i / (bc.length - 1)) * cw;
+    const y = cy + ch - snap.advocacy_rate * ch;
+    i === 0 ? aCtx.moveTo(x, y) : aCtx.lineTo(x, y);
+  });
+  aCtx.strokeStyle = '#fbbf24';
+  aCtx.lineWidth = 1;
+  aCtx.stroke();
+
+  // Current round marker
+  if (currentRound < bc.length) {
+    const rx = cx + (currentRound / (bc.length - 1)) * cw;
+    aCtx.strokeStyle = 'rgba(255,255,255,0.2)';
+    aCtx.lineWidth = 1;
+    aCtx.setLineDash([2, 2]);
+    aCtx.beginPath();
+    aCtx.moveTo(rx, cy); aCtx.lineTo(rx, cy + ch);
+    aCtx.stroke();
+    aCtx.setLineDash([]);
+  }
+
+  // Legend (two rows for v4)
+  const ly = cy + ch + 4;
+  aCtx.font = '6px monospace';
+  aCtx.textAlign = 'left';
+  aCtx.fillStyle = node.color; aCtx.fillRect(cx, ly, 8, 2);
+  aCtx.fillText('Adopt', cx + 10, ly + 2);
+  aCtx.fillStyle = '#06b6d4'; aCtx.fillRect(cx + 42, ly, 8, 2);
+  aCtx.fillText('Trial', cx + 52, ly + 2);
+  aCtx.fillStyle = '#00ff88'; aCtx.fillRect(cx + 78, ly, 8, 2);
+  aCtx.fillText('Commit', cx + 88, ly + 2);
+  aCtx.fillStyle = '#ef4444'; aCtx.fillRect(cx + 124, ly, 8, 2);
+  aCtx.fillText('Churn', cx + 134, ly + 2);
+  aCtx.fillStyle = '#fbbf24'; aCtx.fillRect(cx + 165, ly, 8, 2);
+  aCtx.fillText('Advocacy', cx + 175, ly + 2);
+}
+
+function updateShockList() {
+  const container = document.getElementById('shock-list');
+  if (!DATA.shocks) { container.innerHTML = ''; return; }
+  let html = '';
+  DATA.shocks.forEach(s => {
+    const active = currentRound >= s.inject_at_round;
+    const color = s.effect === 'positive' ? '#00ff88' : s.effect === 'negative' ? '#ef4444' : '#fbbf24';
+    html += `<div class="shock-item" style="opacity:${active ? 1 : 0.3};">
+      <div class="shock-dot" style="background:${color};"></div>
+      <div class="shock-round">R${s.inject_at_round}</div>
+      <div class="shock-label">${s.label}</div>
+      <div class="shock-effect" style="color:${color};">${s.effect}</div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+let feedItems = [];
+function addFeedItem(text) {
+  feedItems.unshift({ text, time: `R${currentRound}` });
+  if (feedItems.length > 60) feedItems.pop();
+  renderFeed();
+}
+
+function renderFeed() {
+  const container = document.getElementById('activity-feed');
+  container.innerHTML = feedItems.slice(0, 30).map(item =>
+    `<div class="feed-item"><span style="color:rgba(255,255,255,0.2);">${item.time}</span> ${item.text}</div>`
+  ).join('');
+}
+
+function updateMacroBar() {
+  if (!DATA.macro_timeline) return;
+  const macro = DATA.macro_timeline[currentRound] || DATA.macro_timeline[0];
+  if (!macro) return;
+  const dims = {
+    'macro-disp': macro.ai_displacement_pressure,
+    'macro-econ': macro.economic_sentiment,
+    'macro-spec': macro.speculative_appetite,
+    'macro-reg': macro.regulatory_pressure,
+    'macro-stab': macro.geopolitical_stability,
+  };
+  for (const [id, val] of Object.entries(dims)) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    el.textContent = val !== undefined ? val.toFixed(2) : '?';
+    el.className = 'macro-val ' + (val > 0.5 ? 'macro-neg' : val < -0.1 ? 'macro-neg' : 'macro-neutral');
+  }
+}
+
+function generateFeedForRound(round) {
+  DATA.domains.forEach(d => {
+    if (!d.builder_curve || !d.builder_curve[round]) return;
+    const snap = d.builder_curve[round];
+    const prev = round > 0 ? d.builder_curve[round - 1] : null;
+    if (prev) {
+      const delta = snap.adoption_rate - prev.adoption_rate;
+      if (delta > 0.04) {
+        addFeedItem(`<span class="feed-hl">${d.domain_id}</span> +${(delta * 100).toFixed(1)}% adoption to ${(snap.adoption_rate * 100).toFixed(1)}%`);
+      }
+      // v4: churn events
+      const prevChurn = (prev.stage_distribution || {}).churned || 0;
+      const curChurn = (snap.stage_distribution || {}).churned || 0;
+      if (curChurn > prevChurn) {
+        addFeedItem(`<span class="feed-warn">${d.domain_id}</span> +${curChurn - prevChurn} churned`);
+      }
+      // v4: committed events
+      const prevCommit = (prev.stage_distribution || {}).committed || 0;
+      const curCommit = (snap.stage_distribution || {}).committed || 0;
+      if (curCommit > prevCommit + 1) {
+        addFeedItem(`<span class="feed-hl">${d.domain_id}</span> +${curCommit - prevCommit} committed users`);
+      }
+    }
+  });
+  if (DATA.shocks) {
+    DATA.shocks.forEach(s => {
+      if (s.inject_at_round === round) {
+        addFeedItem(`<span class="feed-warn">${s.label}</span> hits ${s.affects_domains.slice(0, 3).join(', ')}`);
+      }
+    });
+  }
+  // v4: macro events
+  if (DATA.macro_events) {
+    DATA.macro_events.forEach(e => {
+      if (e.inject_at_round === round) {
+        addFeedItem(`<span class="feed-warn">MACRO:</span> ${e.label || e.description || 'event'}`);
+      }
+    });
+  }
+}
+
+// ============================================================================
+// INIT
+// ============================================================================
+function init() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+
+  initLayout();
+  computeAdoptionEdges();
+  buildLegend();
+
+  // Populate stats
+  document.getElementById('stat-domains').textContent = DATA.meta.domain_count;
+  document.getElementById('stat-agents').textContent = DATA.meta.agent_count.toLocaleString();
+  updateAdoptionChart(null);
+  updateShockList();
+  updateMacroBar();
+
+  // Initial feed
+  addFeedItem(`<span class="feed-hl">${DATA.meta.domain_count}</span> domains loaded`);
+  addFeedItem(`<span class="feed-hl">${DATA.meta.agent_count}</span> agents across ${DATA.meta.persona_types || 15} persona types`);
+  addFeedItem('v4: 9-stage funnel with trial/committed/churn');
+  addFeedItem('Macro: March 2026 context active');
+  addFeedItem('Press <span class="feed-hl">PLAY</span> or Space to start');
+
+  // Event listeners
+  document.getElementById('play-btn').addEventListener('click', togglePlay);
+  document.getElementById('round-slider').addEventListener('input', (e) => {
+    if (isPlaying) {
+      isPlaying = false;
+      document.getElementById('play-btn').innerHTML = '&#9654;';
+      clearInterval(playTimer);
+    }
+    setRound(parseInt(e.target.value));
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+    if (e.key === 'ArrowRight') setRound(currentRound + 1);
+    if (e.key === 'ArrowLeft') setRound(currentRound - 1);
+  });
+
+  setRound(0);
+  render();
+}
+
+loadData();
+</script>
+</body>
+</html>
