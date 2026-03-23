@@ -1,0 +1,51 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_enterprise_symmetric_review",
+  "created_at": "2026-03-24",
+  "scope": "Run the symmetric enterprise-response benchmark review with both candidates in the review lane",
+  "decision_context": {
+    "prior_state": "The enterprise-only review batch still favored ai-rfp-response-copilot because it remained the only discovered challenger and therefore retained breakout support.",
+    "decision": "Move both ai-security-questionnaire-copilot and ai-rfp-response-copilot into promotion review, rerun the same tight enterprise panel, and use that symmetric result as the first-admission decision point.",
+    "why_now": "The remaining admission question could not be answered cleanly while one candidate still received discovery-lane support."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_SYMMETRIC_REVIEW_2026-03-24.json",
+      "purpose": "Stores the symmetric enterprise benchmark-review spec."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_SYMMETRIC_REVIEW_2026-03-24.json",
+      "purpose": "Stores the symmetric enterprise benchmark-review run output."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_SYMMETRIC_REVIEW_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the clean admission decision between the questionnaire and RFP wedges."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_symmetric_review.json",
+      "purpose": "Captures the request and verification plan for the symmetric review tranche."
+    }
+  ],
+  "planned_steps": [
+    "Generate the symmetric enterprise spec with both enterprise-response candidates in promotion review",
+    "Run the symmetric hybrid harness",
+    "Compare the two enterprise-response candidates against each other and the maintained benchmarks",
+    "Record the first-admission recommendation"
+  ],
+  "verification": {
+    "commands": [
+      "python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_ENTERPRISE_REVIEW_RESULT_2026-03-24.json --benchmarks compliance-shield,legal-ops,startup-yc,cursor-copilot --promote-domains ai-security-questionnaire-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_SYMMETRIC_REVIEW_2026-03-24.json",
+      "python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_SYMMETRIC_REVIEW_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_SYMMETRIC_REVIEW_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "discovered_domain_ids is empty",
+      "both enterprise-response domains appear in promotion_review_domain_ids",
+      "the breakout shock is absent from the scenario",
+      "the note names the first maintained benchmark admission recommendation"
+    ]
+  },
+  "guardrails": [
+    "Do not auto-edit the maintained benchmark library in this tranche",
+    "Keep the result in exploratory_frontier until the maintained benchmark proposal is reviewed",
+    "State clearly whether the recommendation is driven by ensemble performance or flagship choice signal"
+  ]
+}

@@ -429,3 +429,42 @@ The prior benchmark-review run was still too broad and mixed. It showed that the
 - `ai-rfp-response-copilot` slightly outruns `ai-security-questionnaire-copilot` on builder ensemble mean adoption in this narrower run (`4.35%` vs `3.97%`).
 - `ai-security-questionnaire-copilot` still has the stronger flagship choice signal (`20.0%` vs `6.67%`).
 - The next clean comparison should treat both enterprise-response domains as benchmark-review candidates with no discovery-breakout favoritism for either one.
+
+## Tranche: MiroFish Enterprise Symmetric Review
+
+### Files Changed
+
+- `research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_SYMMETRIC_REVIEW_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_SYMMETRIC_REVIEW_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_SYMMETRIC_REVIEW_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_symmetric_review.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The enterprise-only review still left one asymmetry: `ai-rfp-response-copilot` remained in the discovery lane and therefore kept breakout support. The repo needed one final symmetric comparison before naming the first enterprise-response domain for maintained benchmark admission.
+
+### What Changed
+
+- Generated a symmetric enterprise review spec with:
+  - no discovered candidates
+  - both `ai-security-questionnaire-copilot` and `ai-rfp-response-copilot` in `promotion_review_domain_ids`
+- Ran the symmetric enterprise hybrid harness
+- Saved a note recommending `ai-rfp-response-copilot` for first maintained benchmark admission while keeping `ai-security-questionnaire-copilot` immediately behind it in the benchmark-review lane
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-hybrid-spec` on the narrowed enterprise packet with both enterprise-response domains in `--promote-domains`
+- Run `python -m chip_labs.cli mirofish-hybrid-run` on the symmetric spec
+- Inspect that:
+  - `discovered_domain_ids` is empty
+  - both enterprise-response domains are in `promotion_review_domain_ids`
+  - the breakout shock is absent
+  - the note names the first maintained benchmark admission recommendation
+
+### Notes
+
+- In the symmetric run, `ai-rfp-response-copilot` leads `ai-security-questionnaire-copilot` on builder ensemble mean adoption (`3.20%` vs `2.93%`).
+- `ai-security-questionnaire-copilot` still leads on flagship choice signal (`20.0%` vs `6.67%`).
+- The recommendation is therefore based on stable ensemble behavior, not on direct single-run choice signal.

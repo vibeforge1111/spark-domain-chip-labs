@@ -86,3 +86,12 @@ MiroFish enterprise-only review:
 - rerun against the tighter maintained benchmark panel
 - record that RFP becomes a co-review candidate rather than a resolved loser
 - keep maintained benchmark admission open pending a symmetric no-breakout comparison
+
+## Batch 11
+
+MiroFish enterprise symmetric review:
+
+- move both enterprise-response domains into benchmark review
+- remove the final discovery-breakout asymmetry
+- rerun the tight enterprise panel under symmetric conditions
+- recommend the first maintained benchmark admission based on ensemble stability
