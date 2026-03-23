@@ -16,6 +16,7 @@ from .personas import (
     generate_personas, update_persona_activity,
     persona_evaluates_domain, persona_influence_score,
     persona_churn_check, persona_retention_check, persona_learn_from_round,
+    persona_domain_fit,
 )
 from .signals import decay_signal
 
@@ -149,16 +150,10 @@ def run_simulation(
             # Compute raw awareness for every domain, boosted by macro context
             domain_awareness: list[tuple[str, float]] = []
             for domain_id in domains:
-                awareness = _compute_awareness(
+                awareness = _effective_awareness(
                     persona, domain_id, active_signals, round_num,
+                    active_macro=active_macro, domain_tags=domain_tags,
                 )
-                # Macro context modifier: adjusts effective awareness based on
-                # global conditions. High AI displacement pressure makes
-                # career/reskill domains easier; low speculative appetite makes
-                # crypto/defi domains harder.
-                d_tags = domain_tags.get(domain_id, [])
-                macro_mod = compute_macro_modifier(active_macro, d_tags)
-                awareness = min(1.0, max(0.0, awareness + macro_mod))
                 domain_awareness.append((domain_id, awareness))
 
             # Always evaluate domains persona already has traction with
@@ -219,8 +214,9 @@ def run_simulation(
                 current_stage = persona["adoption_state"].get(domain_id, "unaware")
                 if current_stage == "unaware":
                     continue
-                awareness = _compute_awareness(
+                awareness = _fit_adjusted_awareness(
                     persona, domain_id, active_signals, round_num,
+                    active_macro=active_macro, domain_tags=domain_tags,
                 )
                 last_adv_round = last_advance[pid].get(domain_id, 0)
                 rounds_since = round_num - last_adv_round
@@ -236,8 +232,9 @@ def run_simulation(
                 current_stage = persona["adoption_state"].get(domain_id, "unaware")
                 if current_stage not in ("trial", "adopted"):
                     continue
-                awareness = _compute_awareness(
+                awareness = _fit_adjusted_awareness(
                     persona, domain_id, active_signals, round_num,
+                    active_macro=active_macro, domain_tags=domain_tags,
                 )
                 rounds_in = time_in_stage[pid].get(domain_id, 0)
                 # Use domain retention_score from graph properties (default 0.5)
@@ -429,6 +426,39 @@ def _compute_awareness(
 
     awareness = 1.0 - miss_probability
     return round(awareness, 4)
+
+
+def _effective_awareness(
+    persona: dict[str, Any],
+    domain_id: str,
+    signals: list[dict[str, Any]],
+    current_round: int,
+    active_macro: MacroContext | None = None,
+    domain_tags: dict[str, list[str]] | None = None,
+) -> float:
+    """Compute macro-adjusted awareness used for discovery and evaluation."""
+    awareness = _compute_awareness(persona, domain_id, signals, current_round)
+    d_tags = (domain_tags or {}).get(domain_id, [])
+    macro_mod = compute_macro_modifier(active_macro or MacroContext(), d_tags)
+    return round(min(1.0, max(0.0, awareness + macro_mod)), 4)
+
+
+def _fit_adjusted_awareness(
+    persona: dict[str, Any],
+    domain_id: str,
+    signals: list[dict[str, Any]],
+    current_round: int,
+    active_macro: MacroContext | None = None,
+    domain_tags: dict[str, list[str]] | None = None,
+) -> float:
+    """Keep retention-side checks in the same fit-aware signal family as adoption."""
+    awareness = _effective_awareness(
+        persona, domain_id, signals, current_round,
+        active_macro=active_macro, domain_tags=domain_tags,
+    )
+    d_tags = (domain_tags or {}).get(domain_id, [])
+    fit = persona_domain_fit(persona, domain_id, d_tags)
+    return round(min(1.0, awareness * fit), 4)
 
 
 def _propagate_influence(

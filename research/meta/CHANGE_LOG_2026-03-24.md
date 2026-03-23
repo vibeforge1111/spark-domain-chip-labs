@@ -646,3 +646,47 @@ The cluster diagnostic exposed different bottlenecks, but the graph layer was st
 - The earlier enterprise cluster playoff should now be treated as under-specified because it lacked explicit graph-level fit semantics.
 - `ai-rfp-response-copilot` and `ai-compliance-evidence-copilot` remain primarily interest-to-choice conversion problems.
 - `ai-security-questionnaire-copilot` is now the clearest ensemble-stable enterprise candidate, but it still trails `startup-yc`.
+
+## Tranche: MiroFish Enterprise Signal Symmetry
+
+### Files Changed
+
+- `src/chip_labs/mirofish/simulation.py`
+- `research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_SIGNAL_SYMMETRY_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_SIGNAL_SYMMETRY_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_SIGNAL_SYMMETRY_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_signal_symmetry.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The graph-tuning tranche improved domain semantics, but churn and retention were still using weaker raw-awareness checks than the ones that drove adoption. That asymmetry could artificially punish enterprise domains after they had already won persona attention.
+
+### What Changed
+
+- Added shared macro-aware awareness helpers in the simulation
+- Applied fit-adjusted awareness to churn and retention checks
+- Reran the symmetric enterprise cluster playoff under the new signal-symmetry logic
+- Built a fresh enterprise-cluster diagnostic brief from the replay
+- Saved a methodology note concluding that:
+  - `ai-security-questionnaire-copilot` remains the strongest enterprise ensemble domain
+  - `ai-rfp-response-copilot` strengthens materially and becomes the clearest improved challenger
+  - `ai-compliance-evidence-copilot` also improves, but still remains below the benchmark median
+  - `startup-yc` still beats the enterprise cluster on ensemble adoption, so admission remains deferred
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_SIGNAL_SYMMETRY_2026-03-24.json`
+- Run `python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_SIGNAL_SYMMETRY_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_SIGNAL_SYMMETRY_2026-03-24.json`
+- Run `python -m pytest tests/test_trend_prediction.py -q`
+- Inspect that:
+  - retention-side checks now use fit-aware awareness instead of raw awareness
+  - `ai-rfp-response-copilot` and `ai-compliance-evidence-copilot` improve relative to the graph-only tuned replay
+  - the note keeps maintained benchmark admission deferred
+
+### Notes
+
+- This tranche is a methodology fix, not a promotion verdict.
+- Signal symmetry helps the enterprise-response cluster, but it does not solve the gap to `startup-yc`.
+- `ai-renewal-risk-briefing-copilot` still reads as a persistence problem more than a benchmark-admission candidate.

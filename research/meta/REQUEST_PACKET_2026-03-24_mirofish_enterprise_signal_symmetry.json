@@ -1,0 +1,56 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_enterprise_signal_symmetry",
+  "created_at": "2026-03-24",
+  "scope": "Align MiroFish churn and retention checks with the same macro-aware, fit-aware signal family used during adoption advancement, then rerun the enterprise cluster playoff",
+  "decision_context": {
+    "prior_state": "The graph-fit tuning improved semantic domain priors, but the simulation still used raw awareness for churn and retention checks, creating a mismatch between what helped a persona adopt and what helped them persist.",
+    "decision": "Add shared effective-awareness helpers, use fit-adjusted awareness in churn and retention checks, rerun the symmetric enterprise cluster playoff, and save a new diagnostic brief plus methodology note.",
+    "why_now": "The enterprise diagnostics still showed large attention-to-retention and interest-to-choice gaps. Before changing thresholds again, the simulation should first stop judging persistence with weaker semantics than adoption."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/simulation.py",
+      "purpose": "Adds shared awareness helpers and applies fit-aware, macro-aware signals to churn and retention checks."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_SIGNAL_SYMMETRY_2026-03-24.json",
+      "purpose": "Stores the enterprise cluster replay after retention-side signal symmetry."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_SIGNAL_SYMMETRY_2026-03-24.json",
+      "purpose": "Stores the diagnostic brief for the signal-symmetry replay."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_SIGNAL_SYMMETRY_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the symmetry fix and the resulting enterprise-cluster movement."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_signal_symmetry.json",
+      "purpose": "Captures the request, verification plan, and guardrails for this tuning tranche."
+    }
+  ],
+  "planned_steps": [
+    "Add shared macro-aware awareness helpers",
+    "Apply fit-aware awareness to churn and retention checks",
+    "Rerun the symmetric enterprise cluster playoff",
+    "Build a diagnostic brief from the replay",
+    "Save the methodology note and update the transparent logs"
+  ],
+  "verification": {
+    "commands": [
+      "python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_SIGNAL_SYMMETRY_2026-03-24.json",
+      "python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_SIGNAL_SYMMETRY_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_SIGNAL_SYMMETRY_2026-03-24.json",
+      "python -m pytest tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The replay keeps questionnaire as the strongest enterprise ensemble domain",
+      "The replay materially improves RFP and compliance evidence relative to the graph-only tuned replay",
+      "The note records that maintained benchmark admission remains deferred"
+    ]
+  },
+  "guardrails": [
+    "Do not auto-admit any enterprise domain into maintained benchmarks",
+    "Keep the change inside the simulation layer and research artifacts",
+    "Use the replay to evaluate methodology quality, not to force a benchmark winner"
+  ]
+}

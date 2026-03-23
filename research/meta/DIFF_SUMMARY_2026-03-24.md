@@ -133,3 +133,13 @@ MiroFish enterprise graph tuning:
 - show that questionnaire becomes the strongest enterprise ensemble domain
 - show that renewal becomes the strongest enterprise attention domain
 - show that RFP improves on ensemble adoption but remains a conversion problem
+
+## Batch 16
+
+MiroFish enterprise signal symmetry:
+
+- add shared macro-aware awareness helpers in the simulation
+- align churn and retention checks with fit-aware signals
+- rerun the enterprise cluster playoff under signal symmetry
+- show that questionnaire remains the strongest enterprise ensemble domain
+- show that RFP and compliance evidence improve once retention-side checks stop using weaker semantics
