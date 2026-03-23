@@ -1,0 +1,47 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_discovery_contract",
+  "created_at": "2026-03-24",
+  "scope": "Implement the first packet-first discovery contract for MiroFish",
+  "problem": {
+    "summary": "The discovery-first plan existed, but the repo still lacked an operator-facing contract and a runnable batch packet format for canonicalizing raw discovered domain-chip candidates.",
+    "decision": "Ship a deterministic discovery contract plus a repo-local starter packet and CLI path before building the hybrid evaluation harness."
+  },
+  "deliverables": [
+    {
+      "file": "docs/MIROFISH_DISCOVERY_CONTRACT.md",
+      "purpose": "Defines what counts as a domain chip, candidate fields, classification outcomes, canonicalization rules, packet shape, and operator workflow."
+    },
+    {
+      "file": "research/meta/MIROFISH_DISCOVERY_BATCH_TEMPLATE_2026-03-24.json",
+      "purpose": "Provides a runnable starter batch with accepted, duplicate, workflow-only, persona-only, known-existing, and too-vague examples."
+    },
+    {
+      "file": "research/meta/MIROFISH_DISCOVERY_BATCH_TEMPLATE_RESULT_2026-03-24.json",
+      "purpose": "Captures the canonicalized output from the starter batch for inspection and downstream evaluation setup."
+    },
+    {
+      "file": "src/chip_labs/mirofish/discovery.py",
+      "purpose": "Implements deterministic canonicalization and classification of discovery candidates."
+    },
+    {
+      "file": "src/chip_labs/cli.py",
+      "purpose": "Exposes the discovery canonicalization flow as a repo-local CLI command."
+    }
+  ],
+  "verification_plan": [
+    "Run chip-labs mirofish-discovery-batch on the starter packet",
+    "Inspect accepted, merged, and rejected outputs",
+    "Confirm packet fields align with the contract"
+  ],
+  "mutable_target_compliance": {
+    "edited_paths": [
+      "docs/MIROFISH_DISCOVERY_CONTRACT.md",
+      "src/chip_labs/cli.py",
+      "src/chip_labs/mirofish/discovery.py",
+      "research/meta/MIROFISH_DISCOVERY_BATCH_TEMPLATE_2026-03-24.json",
+      "research/meta/MIROFISH_DISCOVERY_BATCH_TEMPLATE_RESULT_2026-03-24.json",
+      "research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_contract.json"
+    ],
+    "outside_mutable_targets_edited": []
+  }
+}

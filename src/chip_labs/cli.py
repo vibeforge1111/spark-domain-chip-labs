@@ -509,6 +509,19 @@ def cmd_advise(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: mirofish-discovery-batch
+# ---------------------------------------------------------------------------
+
+def cmd_mirofish_discovery_batch(args: argparse.Namespace) -> None:
+    """Canonicalize a raw MiroFish discovery batch into a packet."""
+    from .mirofish.discovery import canonicalize_discovery_batch
+
+    input_data = _load_input(args.input)
+    result = canonicalize_discovery_batch(input_data)
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
 
@@ -637,6 +650,15 @@ def main() -> None:
     p_advise.add_argument("--domain", type=str, default=None, help="Domain hint.")
     p_advise.add_argument("--output", type=str, default=None)
     p_advise.set_defaults(func=cmd_advise)
+
+    # mirofish-discovery-batch
+    p_mirofish_discovery = sub.add_parser(
+        "mirofish-discovery-batch",
+        help="Canonicalize a raw discovery batch into a MiroFish candidate packet.",
+    )
+    p_mirofish_discovery.add_argument("--input", type=str, required=True, help="Input JSON file path.")
+    p_mirofish_discovery.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_discovery.set_defaults(func=cmd_mirofish_discovery_batch)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")

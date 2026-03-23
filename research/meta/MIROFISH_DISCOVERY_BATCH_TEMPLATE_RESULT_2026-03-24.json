@@ -1,0 +1,183 @@
+{
+  "packet_kind": "mirofish_discovery_batch",
+  "evidence_lane": "exploratory_frontier",
+  "created_at": "2026-03-23T21:37:05.677290+00:00",
+  "batch_id": "mirofish-discovery-batch-template-2026-03-24",
+  "summary": {
+    "raw_count": 6,
+    "accepted_count": 1,
+    "merged_count": 2,
+    "rejected_count": 3,
+    "clear_count": 1,
+    "proto_count": 0
+  },
+  "accepted_candidates": [
+    {
+      "label": "AI Meeting Prep Copilot",
+      "description": "Helps operators prepare for recurring customer, investor, and hiring meetings.",
+      "specialization_surface": "pre-meeting research, agenda shaping, and brief generation",
+      "mastery_surface": "turning recurring meeting preparation into a compounding operator advantage",
+      "user_value_loop": "collect context, draft brief, improve after each meeting",
+      "domain_tags": [
+        "operator-tools",
+        "meetings"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "evidence_summary": "Repeated operator pain around recurring prep work and fragmented context.",
+      "adjacent_domains": [
+        "sales-copilot",
+        "founder-ops"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Operators want a repeated prep workflow, not just generic note-taking.",
+      "domain_id": "ai-meeting-prep-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ]
+    }
+  ],
+  "merged_candidates": [
+    {
+      "label": "AI Meeting Prep Assistant",
+      "description": "An assistant for recurring high-stakes meeting preparation.",
+      "specialization_surface": "meeting prep workflow packaging",
+      "mastery_surface": "improving high-stakes prep quality over repeated cycles",
+      "user_value_loop": "collect context, generate brief, review outcomes, refine next time",
+      "domain_tags": [
+        "meetings",
+        "operator-tools"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Same recurring operator need observed from a second angle.",
+      "adjacent_domains": [
+        "founder-ops"
+      ],
+      "duplicate_aliases": [
+        "AI Meeting Prep Copilot"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Alias candidate for the same repeated meeting prep domain.",
+      "domain_id": "ai-meeting-prep-assistant",
+      "classification": "duplicate_of_existing",
+      "classification_reasons": [
+        "Duplicate of another candidate in the same batch."
+      ],
+      "duplicate_of": "ai-meeting-prep-copilot"
+    },
+    {
+      "label": "MCP Server Builder",
+      "description": "Tools that help developers build MCP servers faster.",
+      "specialization_surface": "server scaffolding and protocol packaging",
+      "mastery_surface": "repeated MCP server implementation quality",
+      "user_value_loop": "define interface, scaffold server, test integration, iterate",
+      "domain_tags": [
+        "developer-tools",
+        "mcp"
+      ],
+      "evidence_sources": [
+        "github"
+      ],
+      "evidence_summary": "Already represented in the maintained benchmark universe.",
+      "adjacent_domains": [
+        "cursor-copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "high",
+      "promotion_status": "candidate",
+      "raw_observation": "Known existing benchmark chip.",
+      "domain_id": "mcp-server-builder",
+      "classification": "duplicate_of_existing",
+      "classification_reasons": [
+        "Already exists in the current benchmark or known universe."
+      ],
+      "duplicate_of": "mcp-server-builder"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "label": "Prompt Library For Teams",
+      "description": "A shared place to store prompts used by a team.",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "domain_tags": [
+        "prompts"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Useful workflow, but still mostly a feature bucket.",
+      "adjacent_domains": [
+        "prompt-ops"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "low",
+      "promotion_status": "candidate",
+      "raw_observation": "This sounds more like a workflow or feature set than a durable domain.",
+      "domain_id": "prompt-library-for-teams",
+      "classification": "workflow_not_domain",
+      "classification_reasons": [
+        "Does not specify a specialization or mastery surface."
+      ]
+    },
+    {
+      "label": "Displaced Workers",
+      "description": "People hit by AI-driven job loss.",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "domain_tags": [
+        "reskilling"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Real audience, but not a domain by itself.",
+      "adjacent_domains": [
+        "ai-career-reskilling"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Persona group under macro pressure, not yet a repeated workflow domain.",
+      "domain_id": "displaced-workers",
+      "classification": "persona_only_not_domain",
+      "classification_reasons": [
+        "Describes a persona or audience but not a repeated operating domain."
+      ]
+    },
+    {
+      "label": "Vibe Stuff",
+      "description": "",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "domain_tags": [],
+      "evidence_sources": [],
+      "evidence_summary": "",
+      "adjacent_domains": [],
+      "duplicate_aliases": [],
+      "confidence_read": "low",
+      "promotion_status": "candidate",
+      "raw_observation": "Too vague to keep.",
+      "domain_id": "vibe-stuff",
+      "classification": "too_vague_to_keep",
+      "classification_reasons": [
+        "Missing enough naming or description detail to define a domain."
+      ]
+    }
+  ],
+  "next_actions": [
+    "Feed the clear_domain_chip set into a smaller MiroFish evaluation run.",
+    "Review rejected candidates to ensure duplicates and vague ideas were not misclassified."
+  ]
+}

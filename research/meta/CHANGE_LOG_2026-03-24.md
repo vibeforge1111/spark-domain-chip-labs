@@ -78,3 +78,50 @@ The current MiroFish system can compare seeded domain-chip universes, but it can
 
 - This tranche is planning-only.
 - The next tranche should implement the discovery contract and repo-local packet scaffolding.
+
+## Tranche: MiroFish Discovery Contract
+
+### Files Changed
+
+- `src/chip_labs/mirofish/discovery.py`
+- `src/chip_labs/cli.py`
+- `docs/MIROFISH_DISCOVERY_CONTRACT.md`
+- `research/meta/MIROFISH_DISCOVERY_BATCH_TEMPLATE_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_BATCH_TEMPLATE_RESULT_2026-03-24.json`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_contract.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The discovery-first architecture had been planned, but there was still no concrete contract for what a valid discovered domain chip looks like, how noisy candidates get classified, or how operators should run the first packet-first intake flow.
+
+### What Changed
+
+- Added a discovery contract document that defines:
+  - what counts as a domain chip
+  - required candidate fields
+  - classification outcomes
+  - canonicalization rules
+  - packet shape
+  - operator workflow
+- Added deterministic batch canonicalization code in `mirofish/discovery.py`
+- Added a repo-local CLI command to canonicalize raw discovery batches
+- Added a starter discovery batch packet that exercises:
+  - accepted candidates
+  - alias duplicates
+  - workflow-only candidates
+  - persona-only candidates
+  - existing benchmark duplicates
+  - too-vague candidates
+- Saved the emitted canonicalized result packet for direct inspection and downstream handoff
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-discovery-batch` on the starter packet
+- Inspect the emitted accepted, merged, and rejected candidate groups
+
+### Notes
+
+- This tranche still stops before simulation.
+- The next tranche should translate accepted discovery packets into a hybrid evaluation run spec with a stable benchmark panel.

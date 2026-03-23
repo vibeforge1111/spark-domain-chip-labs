@@ -16,3 +16,12 @@ MiroFish discovery-factory planning:
 - define discovery-first hybrid architecture
 - preserve fixed benchmark universe as comparison layer
 - specify first implementation tranche and harness shape
+
+## Batch 3
+
+MiroFish discovery contract and packet scaffolding:
+
+- add deterministic discovery canonicalization module
+- expose batch canonicalization in the CLI
+- define the operator-facing discovery contract
+- add a starter discovery batch packet for verification

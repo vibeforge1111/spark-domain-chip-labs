@@ -1,0 +1,136 @@
+{
+  "batch_id": "mirofish-discovery-batch-template-2026-03-24",
+  "existing_domain_ids": [
+    "cursor-copilot",
+    "mcp-server-builder"
+  ],
+  "raw_candidates": [
+    {
+      "label": "AI Meeting Prep Copilot",
+      "description": "Helps operators prepare for recurring customer, investor, and hiring meetings.",
+      "specialization_surface": "pre-meeting research, agenda shaping, and brief generation",
+      "mastery_surface": "turning recurring meeting preparation into a compounding operator advantage",
+      "user_value_loop": "collect context, draft brief, improve after each meeting",
+      "domain_tags": [
+        "operator-tools",
+        "meetings"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "evidence_summary": "Repeated operator pain around recurring prep work and fragmented context.",
+      "adjacent_domains": [
+        "sales-copilot",
+        "founder-ops"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Operators want a repeated prep workflow, not just generic note-taking."
+    },
+    {
+      "label": "AI Meeting Prep Assistant",
+      "description": "An assistant for recurring high-stakes meeting preparation.",
+      "specialization_surface": "meeting prep workflow packaging",
+      "mastery_surface": "improving high-stakes prep quality over repeated cycles",
+      "user_value_loop": "collect context, generate brief, review outcomes, refine next time",
+      "domain_tags": [
+        "meetings",
+        "operator-tools"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Same recurring operator need observed from a second angle.",
+      "adjacent_domains": [
+        "founder-ops"
+      ],
+      "duplicate_aliases": [
+        "AI Meeting Prep Copilot"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Alias candidate for the same repeated meeting prep domain."
+    },
+    {
+      "label": "Prompt Library For Teams",
+      "description": "A shared place to store prompts used by a team.",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "domain_tags": [
+        "prompts"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Useful workflow, but still mostly a feature bucket.",
+      "adjacent_domains": [
+        "prompt-ops"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "low",
+      "promotion_status": "candidate",
+      "raw_observation": "This sounds more like a workflow or feature set than a durable domain."
+    },
+    {
+      "label": "Displaced Workers",
+      "description": "People hit by AI-driven job loss.",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "domain_tags": [
+        "reskilling"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Real audience, but not a domain by itself.",
+      "adjacent_domains": [
+        "ai-career-reskilling"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Persona group under macro pressure, not yet a repeated workflow domain."
+    },
+    {
+      "label": "MCP Server Builder",
+      "description": "Tools that help developers build MCP servers faster.",
+      "specialization_surface": "server scaffolding and protocol packaging",
+      "mastery_surface": "repeated MCP server implementation quality",
+      "user_value_loop": "define interface, scaffold server, test integration, iterate",
+      "domain_tags": [
+        "developer-tools",
+        "mcp"
+      ],
+      "evidence_sources": [
+        "github"
+      ],
+      "evidence_summary": "Already represented in the maintained benchmark universe.",
+      "adjacent_domains": [
+        "cursor-copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "high",
+      "promotion_status": "candidate",
+      "raw_observation": "Known existing benchmark chip."
+    },
+    {
+      "label": "Vibe Stuff",
+      "description": "",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "domain_tags": [],
+      "evidence_sources": [],
+      "evidence_summary": "",
+      "adjacent_domains": [],
+      "duplicate_aliases": [],
+      "confidence_read": "low",
+      "promotion_status": "candidate",
+      "raw_observation": "Too vague to keep."
+    }
+  ]
+}
