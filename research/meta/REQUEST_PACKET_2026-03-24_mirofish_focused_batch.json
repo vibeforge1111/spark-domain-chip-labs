@@ -1,0 +1,48 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_focused_batch",
+  "created_at": "2026-03-24",
+  "scope": "Run a focused enterprise-response discovery batch against a narrower benchmark panel",
+  "problem": {
+    "summary": "The expanded discovery batch identified a promising cluster, but it still compared those new domains against a broad mixed benchmark panel. A narrower comparison was needed to see whether the strongest discovered domains actually beat relevant benchmarks.",
+    "decision": "Create a focused batch around enterprise response, founder communication, and sales / partner preparation, then run it against a custom benchmark panel centered on compliance, legal ops, startup, and workflow incumbents."
+  },
+  "deliverables": [
+    {
+      "file": "research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_2026-03-24.json",
+      "purpose": "Stores the focused raw discovery batch."
+    },
+    {
+      "file": "research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_RESULT_2026-03-24.json",
+      "purpose": "Stores the canonicalized focused discovery packet."
+    },
+    {
+      "file": "research/meta/MIROFISH_HYBRID_SPEC_FOCUSED_2026-03-24.json",
+      "purpose": "Stores the focused hybrid spec with the custom benchmark panel."
+    },
+    {
+      "file": "research/meta/MIROFISH_HYBRID_RUN_FOCUSED_2026-03-24.json",
+      "purpose": "Stores the focused hybrid run output."
+    },
+    {
+      "file": "research/meta/MIROFISH_HYBRID_RUN_FOCUSED_NOTE_2026-03-24.md",
+      "purpose": "Summarizes what the focused benchmark comparison revealed."
+    }
+  ],
+  "verification_plan": [
+    "Run chip-labs mirofish-discovery-batch on the focused raw packet",
+    "Run chip-labs mirofish-hybrid-spec with a custom benchmark list",
+    "Run chip-labs mirofish-hybrid-run on the focused spec",
+    "Inspect whether the strongest discovered candidate beats relevant benchmark domains"
+  ],
+  "mutable_target_compliance": {
+    "edited_paths": [
+      "research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_2026-03-24.json",
+      "research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_RESULT_2026-03-24.json",
+      "research/meta/MIROFISH_HYBRID_SPEC_FOCUSED_2026-03-24.json",
+      "research/meta/MIROFISH_HYBRID_RUN_FOCUSED_2026-03-24.json",
+      "research/meta/MIROFISH_HYBRID_RUN_FOCUSED_NOTE_2026-03-24.md",
+      "research/meta/REQUEST_PACKET_2026-03-24_mirofish_focused_batch.json"
+    ],
+    "outside_mutable_targets_edited": []
+  }
+}

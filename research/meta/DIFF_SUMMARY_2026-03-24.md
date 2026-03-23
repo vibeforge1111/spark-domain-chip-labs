@@ -51,3 +51,11 @@ MiroFish expanded discovery batch:
 - run the expanded accepted set through the hybrid harness
 - tighten breakout-shock targeting to avoid intake-wide favoritism
 - summarize the strongest discovered domain cluster
+
+## Batch 7
+
+MiroFish focused benchmark batch:
+
+- narrow discovery around the strongest cluster
+- run a custom enterprise-response benchmark panel
+- identify the strongest discovered candidate under relevant comparison

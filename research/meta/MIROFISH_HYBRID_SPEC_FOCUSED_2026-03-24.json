@@ -1,0 +1,4192 @@
+{
+  "packet_kind": "mirofish_hybrid_evaluation_spec",
+  "created_at": "2026-03-23T21:54:22.382448+00:00",
+  "source_batch_id": "mirofish-discovery-batch-focused-2026-03-24",
+  "source_packet_kind": "mirofish_discovery_batch",
+  "evidence_lane": "exploratory_frontier",
+  "discovered_domain_ids": [
+    "ai-compliance-evidence-copilot",
+    "ai-security-questionnaire-copilot",
+    "ai-rfp-response-copilot",
+    "ai-investor-update-copilot",
+    "ai-partner-prospecting-copilot",
+    "ai-sales-call-prep-copilot",
+    "ai-renewal-risk-briefing-copilot"
+  ],
+  "benchmark_domain_ids": [
+    "compliance-shield",
+    "legal-ops",
+    "startup-yc",
+    "indie-hacker",
+    "cursor-copilot"
+  ],
+  "harness": {
+    "max_rounds": 20,
+    "flagship_count_per_type": 30,
+    "flagship_agent_count": 450,
+    "ensemble_runs": 15,
+    "ensemble_count_per_type": 15,
+    "ensemble_agent_count": 225,
+    "persona_types": 15,
+    "read_order": [
+      "agent_choice_signal",
+      "peak_interest_probability",
+      "final_adoption_rate"
+    ]
+  },
+  "benchmark_panel": [
+    {
+      "domain_id": "compliance-shield",
+      "label": "Compliance Automation",
+      "description": "SOX, GDPR, SOC2, HIPAA automated checks and evidence collection.",
+      "scores": {
+        "market_size": 0.75,
+        "data_availability": 0.6,
+        "benchmark_feasibility": 0.65,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.55,
+        "monetization_potential": 0.88
+      },
+      "rationale": "Domain-specific AI in enterprise is 'Year of 2026'. High willingness to pay.",
+      "related_chips": [],
+      "evidence_sources": [
+        "vc_landscape",
+        "community"
+      ],
+      "composite_score": 0.6765,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "legal-ops",
+      "label": "Legal Operations",
+      "description": "Contract analysis, clause identification, risk scoring, due diligence.",
+      "scores": {
+        "market_size": 0.78,
+        "data_availability": 0.55,
+        "benchmark_feasibility": 0.58,
+        "community_demand": 0.65,
+        "spark_ecosystem_fit": 0.5,
+        "monetization_potential": 0.85
+      },
+      "rationale": "Harvey (legal AI) is a vertical AI poster child. Strong VC interest.",
+      "related_chips": [],
+      "evidence_sources": [
+        "vc_landscape"
+      ],
+      "composite_score": 0.6445,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "indie-hacker",
+      "label": "Indie Hacker / Micro SaaS",
+      "description": "Micro SaaS validation, pricing strategy, launch playbook, distribution channels.",
+      "scores": {
+        "market_size": 0.82,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.72,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.82,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Micro SaaS market growing 30% annually. Solo founders are most active sharers.",
+      "related_chips": [
+        "startup-yc",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "x_twitter",
+        "producthunt"
+      ],
+      "composite_score": 0.798,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    }
+  ],
+  "discovered_opportunities": [
+    {
+      "domain_id": "ai-compliance-evidence-copilot",
+      "label": "AI Compliance Evidence Copilot",
+      "description": "Collects recurring audit artifacts, maps controls, and prepares evidence packets for compliance reviews.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.62,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6596,
+      "rationale": "Repeated enterprise pain exists around turning scattered operational artifacts into reusable compliance evidence.",
+      "related_chips": [
+        "compliance-shield",
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "community",
+        "vc_landscape"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "control mapping, evidence collection, and audit packet assembly",
+        "mastery_surface": "improving repeated compliance evidence operations across audits",
+        "user_value_loop": "collect artifacts, map controls, prepare evidence packet, learn from auditor gaps",
+        "domain_tags": [
+          "compliance",
+          "enterprise-ops"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-security-questionnaire-copilot",
+      "label": "AI Security Questionnaire Copilot",
+      "description": "Helps teams answer repeated security questionnaires with reusable evidence, control mapping, and answer updates.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6716,
+      "rationale": "Repeated enterprise sales friction appears around security review loops, especially where answers must be maintained across deals.",
+      "related_chips": [
+        "AI RFP Response Copilot",
+        "compliance-shield"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "security answer drafting, evidence retrieval, and procurement response packaging",
+        "mastery_surface": "improving repeated questionnaire response accuracy and speed",
+        "user_value_loop": "retrieve prior answers, update evidence, submit questionnaire, learn from follow-up requests",
+        "domain_tags": [
+          "security",
+          "enterprise-sales"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-rfp-response-copilot",
+      "label": "AI RFP Response Copilot",
+      "description": "Helps B2B teams assemble, tailor, and learn from repeated RFP and security questionnaire responses.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6716,
+      "rationale": "Repeated demand appears around high-friction enterprise response loops, especially where teams reuse prior answers.",
+      "related_chips": [
+        "compliance-shield",
+        "sales-copilot"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "response drafting, knowledge retrieval, and enterprise packaging",
+        "mastery_surface": "improving repeated enterprise response accuracy and speed",
+        "user_value_loop": "retrieve evidence, draft response, submit package, learn from procurement feedback",
+        "domain_tags": [
+          "enterprise-sales",
+          "compliance"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-investor-update-copilot",
+      "label": "AI Investor Update Copilot",
+      "description": "Helps founders turn weekly operating data into recurring investor updates and board-ready narratives.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.46,
+        "benchmark_feasibility": 0.6,
+        "community_demand": 0.8,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6556,
+      "rationale": "Founders repeatedly struggle to convert raw company data into high-trust investor communication.",
+      "related_chips": [
+        "startup-yc",
+        "founder-ops"
+      ],
+      "evidence_sources": [
+        "community",
+        "x_twitter"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "founder update drafting, board prep, and operating narrative packaging",
+        "mastery_surface": "getting better at recurring investor communication and company storytelling",
+        "user_value_loop": "collect metrics, draft update, review stakeholder feedback, refine next update",
+        "domain_tags": [
+          "founder-ops",
+          "investor-relations"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-partner-prospecting-copilot",
+      "label": "AI Partner Prospecting Copilot",
+      "description": "Helps teams find, brief, and sequence outreach to recurring integration and distribution partners.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.46,
+        "benchmark_feasibility": 0.6,
+        "community_demand": 0.8,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6486,
+      "rationale": "Teams repeatedly treat partnership development like scattered spreadsheet work instead of a compounding operating loop.",
+      "related_chips": [
+        "startup-yc",
+        "sales-copilot"
+      ],
+      "evidence_sources": [
+        "community",
+        "x_twitter"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "partner research, qualification, and outreach planning",
+        "mastery_surface": "getting better at repeated partner development loops",
+        "user_value_loop": "research partner, draft outreach brief, run conversations, refine partner thesis",
+        "domain_tags": [
+          "bd",
+          "operator-tools"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-sales-call-prep-copilot",
+      "label": "AI Sales Call Prep Copilot",
+      "description": "Prepares account context, risks, objections, and next-step plans before recurring sales calls.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.8,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.79
+      },
+      "composite_score": 0.7026,
+      "rationale": "Revenue teams want recurring prep workflows around live calls, not just generic CRM note generation.",
+      "related_chips": [
+        "sales-copilot",
+        "founder-ops"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "deal-context assembly and pre-call sales preparation",
+        "mastery_surface": "getting better at repeated high-stakes sales preparation",
+        "user_value_loop": "collect account context, draft prep brief, run call, learn from outcome",
+        "domain_tags": [
+          "sales",
+          "operator-tools"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-renewal-risk-briefing-copilot",
+      "label": "AI Renewal Risk Briefing Copilot",
+      "description": "Builds recurring renewal-risk briefs from usage, support, and stakeholder signals before customer success reviews.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.62,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6596,
+      "rationale": "Customer teams repeatedly need a compounding risk-readout loop before renewals, not just static dashboards.",
+      "related_chips": [
+        "AI Sales Call Prep Copilot",
+        "AI Customer Research Synthesizer"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "renewal-risk synthesis and account review preparation",
+        "mastery_surface": "improving repeated renewal intervention quality over account cycles",
+        "user_value_loop": "collect account signals, draft renewal brief, run review, refine intervention playbook",
+        "domain_tags": [
+          "customer-success",
+          "sales"
+        ],
+        "promotion_status": "candidate"
+      }
+    }
+  ],
+  "static_rankings": [
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "indie-hacker",
+      "label": "Indie Hacker / Micro SaaS",
+      "description": "Micro SaaS validation, pricing strategy, launch playbook, distribution channels.",
+      "scores": {
+        "market_size": 0.82,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.72,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.82,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Micro SaaS market growing 30% annually. Solo founders are most active sharers.",
+      "related_chips": [
+        "startup-yc",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "x_twitter",
+        "producthunt"
+      ],
+      "composite_score": 0.798,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-sales-call-prep-copilot",
+      "label": "AI Sales Call Prep Copilot",
+      "description": "Prepares account context, risks, objections, and next-step plans before recurring sales calls.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.8,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.79
+      },
+      "composite_score": 0.7026,
+      "rationale": "Revenue teams want recurring prep workflows around live calls, not just generic CRM note generation.",
+      "related_chips": [
+        "sales-copilot",
+        "founder-ops"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "deal-context assembly and pre-call sales preparation",
+        "mastery_surface": "getting better at repeated high-stakes sales preparation",
+        "user_value_loop": "collect account context, draft prep brief, run call, learn from outcome",
+        "domain_tags": [
+          "sales",
+          "operator-tools"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "compliance-shield",
+      "label": "Compliance Automation",
+      "description": "SOX, GDPR, SOC2, HIPAA automated checks and evidence collection.",
+      "scores": {
+        "market_size": 0.75,
+        "data_availability": 0.6,
+        "benchmark_feasibility": 0.65,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.55,
+        "monetization_potential": 0.88
+      },
+      "rationale": "Domain-specific AI in enterprise is 'Year of 2026'. High willingness to pay.",
+      "related_chips": [],
+      "evidence_sources": [
+        "vc_landscape",
+        "community"
+      ],
+      "composite_score": 0.6765,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-security-questionnaire-copilot",
+      "label": "AI Security Questionnaire Copilot",
+      "description": "Helps teams answer repeated security questionnaires with reusable evidence, control mapping, and answer updates.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6716,
+      "rationale": "Repeated enterprise sales friction appears around security review loops, especially where answers must be maintained across deals.",
+      "related_chips": [
+        "AI RFP Response Copilot",
+        "compliance-shield"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "security answer drafting, evidence retrieval, and procurement response packaging",
+        "mastery_surface": "improving repeated questionnaire response accuracy and speed",
+        "user_value_loop": "retrieve prior answers, update evidence, submit questionnaire, learn from follow-up requests",
+        "domain_tags": [
+          "security",
+          "enterprise-sales"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-rfp-response-copilot",
+      "label": "AI RFP Response Copilot",
+      "description": "Helps B2B teams assemble, tailor, and learn from repeated RFP and security questionnaire responses.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6716,
+      "rationale": "Repeated demand appears around high-friction enterprise response loops, especially where teams reuse prior answers.",
+      "related_chips": [
+        "compliance-shield",
+        "sales-copilot"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "response drafting, knowledge retrieval, and enterprise packaging",
+        "mastery_surface": "improving repeated enterprise response accuracy and speed",
+        "user_value_loop": "retrieve evidence, draft response, submit package, learn from procurement feedback",
+        "domain_tags": [
+          "enterprise-sales",
+          "compliance"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-compliance-evidence-copilot",
+      "label": "AI Compliance Evidence Copilot",
+      "description": "Collects recurring audit artifacts, maps controls, and prepares evidence packets for compliance reviews.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.62,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6596,
+      "rationale": "Repeated enterprise pain exists around turning scattered operational artifacts into reusable compliance evidence.",
+      "related_chips": [
+        "compliance-shield",
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "community",
+        "vc_landscape"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "control mapping, evidence collection, and audit packet assembly",
+        "mastery_surface": "improving repeated compliance evidence operations across audits",
+        "user_value_loop": "collect artifacts, map controls, prepare evidence packet, learn from auditor gaps",
+        "domain_tags": [
+          "compliance",
+          "enterprise-ops"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-renewal-risk-briefing-copilot",
+      "label": "AI Renewal Risk Briefing Copilot",
+      "description": "Builds recurring renewal-risk briefs from usage, support, and stakeholder signals before customer success reviews.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.62,
+        "benchmark_feasibility": 0.68,
+        "community_demand": 0.68,
+        "spark_ecosystem_fit": 0.62,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6596,
+      "rationale": "Customer teams repeatedly need a compounding risk-readout loop before renewals, not just static dashboards.",
+      "related_chips": [
+        "AI Sales Call Prep Copilot",
+        "AI Customer Research Synthesizer"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "renewal-risk synthesis and account review preparation",
+        "mastery_surface": "improving repeated renewal intervention quality over account cycles",
+        "user_value_loop": "collect account signals, draft renewal brief, run review, refine intervention playbook",
+        "domain_tags": [
+          "customer-success",
+          "sales"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-investor-update-copilot",
+      "label": "AI Investor Update Copilot",
+      "description": "Helps founders turn weekly operating data into recurring investor updates and board-ready narratives.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.46,
+        "benchmark_feasibility": 0.6,
+        "community_demand": 0.8,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6556,
+      "rationale": "Founders repeatedly struggle to convert raw company data into high-trust investor communication.",
+      "related_chips": [
+        "startup-yc",
+        "founder-ops"
+      ],
+      "evidence_sources": [
+        "community",
+        "x_twitter"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "founder update drafting, board prep, and operating narrative packaging",
+        "mastery_surface": "getting better at recurring investor communication and company storytelling",
+        "user_value_loop": "collect metrics, draft update, review stakeholder feedback, refine next update",
+        "domain_tags": [
+          "founder-ops",
+          "investor-relations"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "ai-partner-prospecting-copilot",
+      "label": "AI Partner Prospecting Copilot",
+      "description": "Helps teams find, brief, and sequence outreach to recurring integration and distribution partners.",
+      "scores": {
+        "market_size": 0.648,
+        "data_availability": 0.46,
+        "benchmark_feasibility": 0.6,
+        "community_demand": 0.8,
+        "spark_ecosystem_fit": 0.7,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6486,
+      "rationale": "Teams repeatedly treat partnership development like scattered spreadsheet work instead of a compounding operating loop.",
+      "related_chips": [
+        "startup-yc",
+        "sales-copilot"
+      ],
+      "evidence_sources": [
+        "community",
+        "x_twitter"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "partner research, qualification, and outreach planning",
+        "mastery_surface": "getting better at repeated partner development loops",
+        "user_value_loop": "research partner, draft outreach brief, run conversations, refine partner thesis",
+        "domain_tags": [
+          "bd",
+          "operator-tools"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "legal-ops",
+      "label": "Legal Operations",
+      "description": "Contract analysis, clause identification, risk scoring, due diligence.",
+      "scores": {
+        "market_size": 0.78,
+        "data_availability": 0.55,
+        "benchmark_feasibility": 0.58,
+        "community_demand": 0.65,
+        "spark_ecosystem_fit": 0.5,
+        "monetization_potential": 0.85
+      },
+      "rationale": "Harvey (legal AI) is a vertical AI poster child. Strong VC interest.",
+      "related_chips": [],
+      "evidence_sources": [
+        "vc_landscape"
+      ],
+      "composite_score": 0.6445,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    }
+  ],
+  "simulation_inputs": {
+    "domain_ids": [
+      "cursor-copilot",
+      "startup-yc",
+      "indie-hacker",
+      "ai-sales-call-prep-copilot",
+      "compliance-shield",
+      "ai-security-questionnaire-copilot",
+      "ai-rfp-response-copilot",
+      "ai-compliance-evidence-copilot",
+      "ai-renewal-risk-briefing-copilot",
+      "ai-investor-update-copilot",
+      "ai-partner-prospecting-copilot",
+      "legal-ops"
+    ],
+    "opportunities": [
+      {
+        "domain_id": "cursor-copilot",
+        "label": "AI Coding Workflow",
+        "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+        "scores": {
+          "market_size": 0.87,
+          "data_availability": 0.9,
+          "benchmark_feasibility": 0.84,
+          "community_demand": 0.85,
+          "spark_ecosystem_fit": 0.93,
+          "monetization_potential": 0.8
+        },
+        "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+        "related_chips": [
+          "mcp-server-builder",
+          "ai-agent-builder"
+        ],
+        "evidence_sources": [
+          "github",
+          "producthunt",
+          "community"
+        ],
+        "benchmark_tier": "midfield",
+        "composite_score": 0.8665,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "startup-yc",
+        "label": "Startup YC Intelligence",
+        "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+        "scores": {
+          "market_size": 0.86,
+          "data_availability": 0.78,
+          "benchmark_feasibility": 0.74,
+          "community_demand": 0.87,
+          "spark_ecosystem_fit": 0.84,
+          "monetization_potential": 0.89
+        },
+        "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+        "related_chips": [
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "evidence_sources": [
+          "community",
+          "producthunt",
+          "x_twitter"
+        ],
+        "benchmark_tier": "leadership",
+        "composite_score": 0.826,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "indie-hacker",
+        "label": "Indie Hacker / Micro SaaS",
+        "description": "Micro SaaS validation, pricing strategy, launch playbook, distribution channels.",
+        "scores": {
+          "market_size": 0.82,
+          "data_availability": 0.78,
+          "benchmark_feasibility": 0.72,
+          "community_demand": 0.85,
+          "spark_ecosystem_fit": 0.82,
+          "monetization_potential": 0.8
+        },
+        "rationale": "Micro SaaS market growing 30% annually. Solo founders are most active sharers.",
+        "related_chips": [
+          "startup-yc",
+          "agentic-marketing"
+        ],
+        "evidence_sources": [
+          "community",
+          "x_twitter",
+          "producthunt"
+        ],
+        "composite_score": 0.798,
+        "benchmark_tier": "seed_panel",
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "ai-sales-call-prep-copilot",
+        "label": "AI Sales Call Prep Copilot",
+        "description": "Prepares account context, risks, objections, and next-step plans before recurring sales calls.",
+        "scores": {
+          "market_size": 0.648,
+          "data_availability": 0.62,
+          "benchmark_feasibility": 0.68,
+          "community_demand": 0.8,
+          "spark_ecosystem_fit": 0.7,
+          "monetization_potential": 0.79
+        },
+        "composite_score": 0.7026,
+        "rationale": "Revenue teams want recurring prep workflows around live calls, not just generic CRM note generation.",
+        "related_chips": [
+          "sales-copilot",
+          "founder-ops"
+        ],
+        "evidence_sources": [
+          "community",
+          "producthunt"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "deal-context assembly and pre-call sales preparation",
+          "mastery_surface": "getting better at repeated high-stakes sales preparation",
+          "user_value_loop": "collect account context, draft prep brief, run call, learn from outcome",
+          "domain_tags": [
+            "sales",
+            "operator-tools"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "compliance-shield",
+        "label": "Compliance Automation",
+        "description": "SOX, GDPR, SOC2, HIPAA automated checks and evidence collection.",
+        "scores": {
+          "market_size": 0.75,
+          "data_availability": 0.6,
+          "benchmark_feasibility": 0.65,
+          "community_demand": 0.68,
+          "spark_ecosystem_fit": 0.55,
+          "monetization_potential": 0.88
+        },
+        "rationale": "Domain-specific AI in enterprise is 'Year of 2026'. High willingness to pay.",
+        "related_chips": [],
+        "evidence_sources": [
+          "vc_landscape",
+          "community"
+        ],
+        "composite_score": 0.6765,
+        "benchmark_tier": "seed_panel",
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "ai-security-questionnaire-copilot",
+        "label": "AI Security Questionnaire Copilot",
+        "description": "Helps teams answer repeated security questionnaires with reusable evidence, control mapping, and answer updates.",
+        "scores": {
+          "market_size": 0.648,
+          "data_availability": 0.62,
+          "benchmark_feasibility": 0.68,
+          "community_demand": 0.68,
+          "spark_ecosystem_fit": 0.7,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6716,
+        "rationale": "Repeated enterprise sales friction appears around security review loops, especially where answers must be maintained across deals.",
+        "related_chips": [
+          "AI RFP Response Copilot",
+          "compliance-shield"
+        ],
+        "evidence_sources": [
+          "community",
+          "github"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "security answer drafting, evidence retrieval, and procurement response packaging",
+          "mastery_surface": "improving repeated questionnaire response accuracy and speed",
+          "user_value_loop": "retrieve prior answers, update evidence, submit questionnaire, learn from follow-up requests",
+          "domain_tags": [
+            "security",
+            "enterprise-sales"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "ai-rfp-response-copilot",
+        "label": "AI RFP Response Copilot",
+        "description": "Helps B2B teams assemble, tailor, and learn from repeated RFP and security questionnaire responses.",
+        "scores": {
+          "market_size": 0.648,
+          "data_availability": 0.62,
+          "benchmark_feasibility": 0.68,
+          "community_demand": 0.68,
+          "spark_ecosystem_fit": 0.7,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6716,
+        "rationale": "Repeated demand appears around high-friction enterprise response loops, especially where teams reuse prior answers.",
+        "related_chips": [
+          "compliance-shield",
+          "sales-copilot"
+        ],
+        "evidence_sources": [
+          "community",
+          "github"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "response drafting, knowledge retrieval, and enterprise packaging",
+          "mastery_surface": "improving repeated enterprise response accuracy and speed",
+          "user_value_loop": "retrieve evidence, draft response, submit package, learn from procurement feedback",
+          "domain_tags": [
+            "enterprise-sales",
+            "compliance"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "ai-compliance-evidence-copilot",
+        "label": "AI Compliance Evidence Copilot",
+        "description": "Collects recurring audit artifacts, maps controls, and prepares evidence packets for compliance reviews.",
+        "scores": {
+          "market_size": 0.648,
+          "data_availability": 0.62,
+          "benchmark_feasibility": 0.68,
+          "community_demand": 0.68,
+          "spark_ecosystem_fit": 0.62,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6596,
+        "rationale": "Repeated enterprise pain exists around turning scattered operational artifacts into reusable compliance evidence.",
+        "related_chips": [
+          "compliance-shield",
+          "legal-ops"
+        ],
+        "evidence_sources": [
+          "community",
+          "vc_landscape"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "control mapping, evidence collection, and audit packet assembly",
+          "mastery_surface": "improving repeated compliance evidence operations across audits",
+          "user_value_loop": "collect artifacts, map controls, prepare evidence packet, learn from auditor gaps",
+          "domain_tags": [
+            "compliance",
+            "enterprise-ops"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "ai-renewal-risk-briefing-copilot",
+        "label": "AI Renewal Risk Briefing Copilot",
+        "description": "Builds recurring renewal-risk briefs from usage, support, and stakeholder signals before customer success reviews.",
+        "scores": {
+          "market_size": 0.648,
+          "data_availability": 0.62,
+          "benchmark_feasibility": 0.68,
+          "community_demand": 0.68,
+          "spark_ecosystem_fit": 0.62,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6596,
+        "rationale": "Customer teams repeatedly need a compounding risk-readout loop before renewals, not just static dashboards.",
+        "related_chips": [
+          "AI Sales Call Prep Copilot",
+          "AI Customer Research Synthesizer"
+        ],
+        "evidence_sources": [
+          "community",
+          "github"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "renewal-risk synthesis and account review preparation",
+          "mastery_surface": "improving repeated renewal intervention quality over account cycles",
+          "user_value_loop": "collect account signals, draft renewal brief, run review, refine intervention playbook",
+          "domain_tags": [
+            "customer-success",
+            "sales"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "ai-investor-update-copilot",
+        "label": "AI Investor Update Copilot",
+        "description": "Helps founders turn weekly operating data into recurring investor updates and board-ready narratives.",
+        "scores": {
+          "market_size": 0.648,
+          "data_availability": 0.46,
+          "benchmark_feasibility": 0.6,
+          "community_demand": 0.8,
+          "spark_ecosystem_fit": 0.7,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6556,
+        "rationale": "Founders repeatedly struggle to convert raw company data into high-trust investor communication.",
+        "related_chips": [
+          "startup-yc",
+          "founder-ops"
+        ],
+        "evidence_sources": [
+          "community",
+          "x_twitter"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "founder update drafting, board prep, and operating narrative packaging",
+          "mastery_surface": "getting better at recurring investor communication and company storytelling",
+          "user_value_loop": "collect metrics, draft update, review stakeholder feedback, refine next update",
+          "domain_tags": [
+            "founder-ops",
+            "investor-relations"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "ai-partner-prospecting-copilot",
+        "label": "AI Partner Prospecting Copilot",
+        "description": "Helps teams find, brief, and sequence outreach to recurring integration and distribution partners.",
+        "scores": {
+          "market_size": 0.648,
+          "data_availability": 0.46,
+          "benchmark_feasibility": 0.6,
+          "community_demand": 0.8,
+          "spark_ecosystem_fit": 0.7,
+          "monetization_potential": 0.65
+        },
+        "composite_score": 0.6486,
+        "rationale": "Teams repeatedly treat partnership development like scattered spreadsheet work instead of a compounding operating loop.",
+        "related_chips": [
+          "startup-yc",
+          "sales-copilot"
+        ],
+        "evidence_sources": [
+          "community",
+          "x_twitter"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "partner research, qualification, and outreach planning",
+          "mastery_surface": "getting better at repeated partner development loops",
+          "user_value_loop": "research partner, draft outreach brief, run conversations, refine partner thesis",
+          "domain_tags": [
+            "bd",
+            "operator-tools"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "legal-ops",
+        "label": "Legal Operations",
+        "description": "Contract analysis, clause identification, risk scoring, due diligence.",
+        "scores": {
+          "market_size": 0.78,
+          "data_availability": 0.55,
+          "benchmark_feasibility": 0.58,
+          "community_demand": 0.65,
+          "spark_ecosystem_fit": 0.5,
+          "monetization_potential": 0.85
+        },
+        "rationale": "Harvey (legal AI) is a vertical AI poster child. Strong VC interest.",
+        "related_chips": [],
+        "evidence_sources": [
+          "vc_landscape"
+        ],
+        "composite_score": 0.6445,
+        "benchmark_tier": "seed_panel",
+        "origin": "benchmark_panel"
+      }
+    ],
+    "signals": [
+      {
+        "signal_id": "cursor-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow community demand",
+        "strength": 0.85,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-github",
+        "signal_type": "github_trending",
+        "label": "AI Coding Workflow via github",
+        "strength": 0.7799,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Coding Workflow via producthunt",
+        "strength": 0.7539,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow via community",
+        "strength": 0.7365,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Coding Workflow ecosystem pull from mcp-server-builder, ai-agent-builder",
+        "strength": 0.837,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "mcp-server-builder",
+            "ai-agent-builder"
+          ]
+        }
+      },
+      {
+        "signal_id": "startup-yc-community-demand",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence community demand",
+        "strength": 0.87,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-community",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence via community",
+        "strength": 0.7186,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "Startup YC Intelligence via producthunt",
+        "strength": 0.7104,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Startup YC Intelligence via x_twitter",
+        "strength": 0.7186,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Startup YC Intelligence ecosystem pull from indie-hacker, agentic-marketing",
+        "strength": 0.756,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {
+          "related_chips": [
+            "indie-hacker",
+            "agentic-marketing"
+          ]
+        }
+      },
+      {
+        "signal_id": "indie-hacker-community-demand",
+        "signal_type": "community_request",
+        "label": "Indie Hacker / Micro SaaS community demand",
+        "strength": 0.85,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "indie-hacker-community",
+        "signal_type": "community_request",
+        "label": "Indie Hacker / Micro SaaS via community",
+        "strength": 0.6783,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "indie-hacker-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Indie Hacker / Micro SaaS via x_twitter",
+        "strength": 0.6783,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "indie-hacker-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "Indie Hacker / Micro SaaS via producthunt",
+        "strength": 0.6544,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "indie-hacker-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Indie Hacker / Micro SaaS ecosystem pull from startup-yc, agentic-marketing",
+        "strength": 0.738,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {
+          "related_chips": [
+            "startup-yc",
+            "agentic-marketing"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-sales-call-prep-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Sales Call Prep Copilot community demand",
+        "strength": 0.8,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-sales-call-prep-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Sales Call Prep Copilot via community",
+        "strength": 0.5621,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-sales-call-prep-copilot-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Sales Call Prep Copilot via producthunt",
+        "strength": 0.4553,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-sales-call-prep-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Sales Call Prep Copilot ecosystem pull from sales-copilot, founder-ops",
+        "strength": 0.63,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "sales-copilot",
+            "founder-ops"
+          ]
+        }
+      },
+      {
+        "signal_id": "compliance-shield-community-demand",
+        "signal_type": "community_request",
+        "label": "Compliance Automation community demand",
+        "strength": 0.68,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "compliance-shield-vc_landscape",
+        "signal_type": "vc_funding",
+        "label": "Compliance Automation via vc_landscape",
+        "strength": 0.5953,
+        "decay_per_round": 0.03,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "compliance-shield-community",
+        "signal_type": "community_request",
+        "label": "Compliance Automation via community",
+        "strength": 0.46,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-security-questionnaire-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Security Questionnaire Copilot community demand",
+        "strength": 0.68,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-security-questionnaire-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Security Questionnaire Copilot via community",
+        "strength": 0.4567,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-security-questionnaire-copilot-github",
+        "signal_type": "github_trending",
+        "label": "AI Security Questionnaire Copilot via github",
+        "strength": 0.4164,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-security-questionnaire-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Security Questionnaire Copilot ecosystem pull from AI RFP Response Copilot, compliance-shield",
+        "strength": 0.63,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "AI RFP Response Copilot",
+            "compliance-shield"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-rfp-response-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI RFP Response Copilot community demand",
+        "strength": 0.68,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-rfp-response-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI RFP Response Copilot via community",
+        "strength": 0.4567,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-rfp-response-copilot-github",
+        "signal_type": "github_trending",
+        "label": "AI RFP Response Copilot via github",
+        "strength": 0.4164,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-rfp-response-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI RFP Response Copilot ecosystem pull from compliance-shield, sales-copilot",
+        "strength": 0.63,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "compliance-shield",
+            "sales-copilot"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-compliance-evidence-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Compliance Evidence Copilot community demand",
+        "strength": 0.68,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-compliance-evidence-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Compliance Evidence Copilot via community",
+        "strength": 0.4485,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-compliance-evidence-copilot-vc_landscape",
+        "signal_type": "vc_funding",
+        "label": "AI Compliance Evidence Copilot via vc_landscape",
+        "strength": 0.4749,
+        "decay_per_round": 0.03,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-compliance-evidence-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Compliance Evidence Copilot ecosystem pull from compliance-shield, legal-ops",
+        "strength": 0.558,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "compliance-shield",
+            "legal-ops"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-renewal-risk-briefing-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Renewal Risk Briefing Copilot community demand",
+        "strength": 0.68,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-renewal-risk-briefing-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Renewal Risk Briefing Copilot via community",
+        "strength": 0.4485,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-renewal-risk-briefing-copilot-github",
+        "signal_type": "github_trending",
+        "label": "AI Renewal Risk Briefing Copilot via github",
+        "strength": 0.409,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-renewal-risk-briefing-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Renewal Risk Briefing Copilot ecosystem pull from AI Sales Call Prep Copilot, AI Customer Research Synthesizer",
+        "strength": 0.558,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "AI Sales Call Prep Copilot",
+            "AI Customer Research Synthesizer"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-investor-update-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Investor Update Copilot community demand",
+        "strength": 0.8,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-investor-update-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Investor Update Copilot via community",
+        "strength": 0.5245,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-investor-update-copilot-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "AI Investor Update Copilot via x_twitter",
+        "strength": 0.5245,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-investor-update-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Investor Update Copilot ecosystem pull from startup-yc, founder-ops",
+        "strength": 0.63,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "startup-yc",
+            "founder-ops"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-partner-prospecting-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Partner Prospecting Copilot community demand",
+        "strength": 0.8,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-partner-prospecting-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Partner Prospecting Copilot via community",
+        "strength": 0.5189,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-partner-prospecting-copilot-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "AI Partner Prospecting Copilot via x_twitter",
+        "strength": 0.5189,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-partner-prospecting-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Partner Prospecting Copilot ecosystem pull from startup-yc, sales-copilot",
+        "strength": 0.63,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "startup-yc",
+            "sales-copilot"
+          ]
+        }
+      },
+      {
+        "signal_id": "legal-ops-community-demand",
+        "signal_type": "community_request",
+        "label": "Legal Operations community demand",
+        "strength": 0.65,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "legal-ops-vc_landscape",
+        "signal_type": "vc_funding",
+        "label": "Legal Operations via vc_landscape",
+        "strength": 0.5478,
+        "decay_per_round": 0.03,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends mcp-server-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends ai-agent-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends indie-hacker",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-agentic-marketing",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends agentic-marketing",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-indie-hacker-chip-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "indie-hacker extends startup-yc",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-indie-hacker-chip-agentic-marketing",
+        "signal_type": "competitor_chip",
+        "label": "indie-hacker extends agentic-marketing",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-sales-call-prep-copilot-chip-sales-copilot",
+        "signal_type": "competitor_chip",
+        "label": "ai-sales-call-prep-copilot extends sales-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-sales-call-prep-copilot-chip-founder-ops",
+        "signal_type": "competitor_chip",
+        "label": "ai-sales-call-prep-copilot extends founder-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-security-questionnaire-copilot-chip-AI RFP Response Copilot",
+        "signal_type": "competitor_chip",
+        "label": "ai-security-questionnaire-copilot extends AI RFP Response Copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-security-questionnaire-copilot-chip-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "ai-security-questionnaire-copilot extends compliance-shield",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-rfp-response-copilot-chip-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "ai-rfp-response-copilot extends compliance-shield",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-rfp-response-copilot-chip-sales-copilot",
+        "signal_type": "competitor_chip",
+        "label": "ai-rfp-response-copilot extends sales-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-compliance-evidence-copilot-chip-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "ai-compliance-evidence-copilot extends compliance-shield",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-compliance-evidence-copilot-chip-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "ai-compliance-evidence-copilot extends legal-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-renewal-risk-briefing-copilot-chip-AI Sales Call Prep Copilot",
+        "signal_type": "competitor_chip",
+        "label": "ai-renewal-risk-briefing-copilot extends AI Sales Call Prep Copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-renewal-risk-briefing-copilot-chip-AI Customer Research Synthesizer",
+        "signal_type": "competitor_chip",
+        "label": "ai-renewal-risk-briefing-copilot extends AI Customer Research Synthesizer",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-investor-update-copilot-chip-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "ai-investor-update-copilot extends startup-yc",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-investor-update-copilot-chip-founder-ops",
+        "signal_type": "competitor_chip",
+        "label": "ai-investor-update-copilot extends founder-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-partner-prospecting-copilot-chip-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "ai-partner-prospecting-copilot extends startup-yc",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-ai-partner-prospecting-copilot-chip-sales-copilot",
+        "signal_type": "competitor_chip",
+        "label": "ai-partner-prospecting-copilot extends sales-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from indie-hacker",
+        "strength": 0.28,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-indie-hacker-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.28,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from indie-hacker",
+        "strength": 0.2905,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-indie-hacker-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2905,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.2629,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2629,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.2565,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2565,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-indie-hacker-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.2724,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from indie-hacker",
+        "strength": 0.2724,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-indie-hacker-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.258,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from indie-hacker",
+        "strength": 0.258,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-indie-hacker-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-security-questionnaire-copilot",
+        "strength": 0.2629,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-security-questionnaire-copilot-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from indie-hacker",
+        "strength": 0.2629,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-indie-hacker-ai-rfp-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-rfp-response-copilot",
+        "strength": 0.2629,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-rfp-response-copilot-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from indie-hacker",
+        "strength": 0.2629,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-indie-hacker-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-compliance-evidence-copilot",
+        "strength": 0.2589,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-compliance-evidence-copilot-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from indie-hacker",
+        "strength": 0.2589,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-indie-hacker-ai-renewal-risk-briefing-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-renewal-risk-briefing-copilot",
+        "strength": 0.2589,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-renewal-risk-briefing-copilot-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from indie-hacker",
+        "strength": 0.2589,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-indie-hacker-ai-investor-update-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-investor-update-copilot",
+        "strength": 0.2569,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "indie-hacker"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-investor-update-copilot-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from indie-hacker",
+        "strength": 0.2569,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.2744,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.2744,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-security-questionnaire-copilot",
+        "strength": 0.2905,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-security-questionnaire-copilot-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.2905,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-ai-rfp-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-rfp-response-copilot",
+        "strength": 0.2905,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-rfp-response-copilot-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.2905,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-compliance-evidence-copilot",
+        "strength": 0.2865,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-compliance-evidence-copilot-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.2865,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-ai-renewal-risk-briefing-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-renewal-risk-briefing-copilot",
+        "strength": 0.2865,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-renewal-risk-briefing-copilot-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.2865,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-ai-investor-update-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-investor-update-copilot",
+        "strength": 0.2845,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-investor-update-copilot-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.2845,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-ai-partner-prospecting-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-partner-prospecting-copilot",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-partner-prospecting-copilot-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-sales-call-prep-copilot-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from legal-ops",
+        "strength": 0.2644,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-sales-call-prep-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-legal-ops-ai-sales-call-prep-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-sales-call-prep-copilot",
+        "strength": 0.2644,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-security-questionnaire-copilot",
+        "strength": 0.2769,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-security-questionnaire-copilot-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.2769,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-ai-rfp-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-rfp-response-copilot",
+        "strength": 0.2769,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-rfp-response-copilot-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.2769,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-compliance-evidence-copilot",
+        "strength": 0.2809,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-compliance-evidence-copilot-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.2809,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-ai-renewal-risk-briefing-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-renewal-risk-briefing-copilot",
+        "strength": 0.2809,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-renewal-risk-briefing-copilot-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.2809,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-ai-investor-update-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-investor-update-copilot",
+        "strength": 0.2639,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-investor-update-copilot-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.2639,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-ai-partner-prospecting-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-partner-prospecting-copilot",
+        "strength": 0.2604,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-partner-prospecting-copilot-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.2604,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compliance-shield-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from legal-ops",
+        "strength": 0.287,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compliance-shield"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-legal-ops-compliance-shield",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compliance-shield",
+        "strength": 0.287,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-security-questionnaire-copilot-ai-rfp-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-rfp-response-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-rfp-response-copilot-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-security-questionnaire-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-security-questionnaire-copilot-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-compliance-evidence-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-compliance-evidence-copilot-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-security-questionnaire-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-security-questionnaire-copilot-ai-renewal-risk-briefing-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-renewal-risk-briefing-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-renewal-risk-briefing-copilot-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-security-questionnaire-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-security-questionnaire-copilot-ai-investor-update-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-investor-update-copilot",
+        "strength": 0.282,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-investor-update-copilot-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-security-questionnaire-copilot",
+        "strength": 0.282,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-security-questionnaire-copilot-ai-partner-prospecting-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-partner-prospecting-copilot",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-partner-prospecting-copilot-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-security-questionnaire-copilot",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-security-questionnaire-copilot-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from legal-ops",
+        "strength": 0.2669,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-security-questionnaire-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-legal-ops-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-security-questionnaire-copilot",
+        "strength": 0.2669,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-rfp-response-copilot-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-compliance-evidence-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-compliance-evidence-copilot-ai-rfp-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-rfp-response-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-rfp-response-copilot-ai-renewal-risk-briefing-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-renewal-risk-briefing-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-renewal-risk-briefing-copilot-ai-rfp-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-rfp-response-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-rfp-response-copilot-ai-investor-update-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-investor-update-copilot",
+        "strength": 0.282,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-investor-update-copilot-ai-rfp-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-rfp-response-copilot",
+        "strength": 0.282,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-rfp-response-copilot-ai-partner-prospecting-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-partner-prospecting-copilot",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-partner-prospecting-copilot-ai-rfp-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-rfp-response-copilot",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-rfp-response-copilot-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from legal-ops",
+        "strength": 0.2669,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-rfp-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-legal-ops-ai-rfp-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-rfp-response-copilot",
+        "strength": 0.2669,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-compliance-evidence-copilot-ai-renewal-risk-briefing-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-renewal-risk-briefing-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-renewal-risk-briefing-copilot-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-compliance-evidence-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-compliance-evidence-copilot-ai-investor-update-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-investor-update-copilot",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-investor-update-copilot-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-compliance-evidence-copilot",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-compliance-evidence-copilot-ai-partner-prospecting-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-partner-prospecting-copilot",
+        "strength": 0.2745,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-partner-prospecting-copilot-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-compliance-evidence-copilot",
+        "strength": 0.2745,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-compliance-evidence-copilot-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from legal-ops",
+        "strength": 0.2709,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-compliance-evidence-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-legal-ops-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-compliance-evidence-copilot",
+        "strength": 0.2709,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-renewal-risk-briefing-copilot-ai-investor-update-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-investor-update-copilot",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-investor-update-copilot-ai-renewal-risk-briefing-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-renewal-risk-briefing-copilot",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-renewal-risk-briefing-copilot-ai-partner-prospecting-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-partner-prospecting-copilot",
+        "strength": 0.2745,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-partner-prospecting-copilot-ai-renewal-risk-briefing-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-renewal-risk-briefing-copilot",
+        "strength": 0.2745,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-renewal-risk-briefing-copilot-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from legal-ops",
+        "strength": 0.2709,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-renewal-risk-briefing-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-legal-ops-ai-renewal-risk-briefing-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-renewal-risk-briefing-copilot",
+        "strength": 0.2709,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-investor-update-copilot-ai-partner-prospecting-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-partner-prospecting-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-partner-prospecting-copilot-ai-investor-update-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-investor-update-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-investor-update-copilot-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from legal-ops",
+        "strength": 0.2639,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-investor-update-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-legal-ops-ai-investor-update-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-investor-update-copilot",
+        "strength": 0.2639,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-partner-prospecting-copilot-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from legal-ops",
+        "strength": 0.2604,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-partner-prospecting-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-legal-ops-ai-partner-prospecting-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-partner-prospecting-copilot",
+        "strength": 0.2604,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "legal-ops"
+        ],
+        "metadata": {}
+      }
+    ],
+    "scenario": {
+      "scenario_id": "scenario-mirofish-hybrid-discovery",
+      "label": "mirofish-hybrid-discovery",
+      "shocks": [
+        {
+          "shock_id": "shock-breakout_tool-r4",
+          "template": "breakout_tool",
+          "signal_type": "producthunt_launch",
+          "label": "Breakout Tool Launch",
+          "strength": 0.9,
+          "effect": "positive",
+          "affected_persona_types": [
+            "opportunity_hunter",
+            "developer",
+            "tool_maker",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "ai-sales-call-prep-copilot",
+            "ai-security-questionnaire-copilot",
+            "ai-rfp-response-copilot"
+          ],
+          "inject_at_round": 4,
+          "description": "A tool goes viral and creates massive awareness for the domain."
+        },
+        {
+          "shock_id": "shock-open_source_release-r7",
+          "template": "open_source_release",
+          "signal_type": "github_trending",
+          "label": "Free Open Source Model Drop",
+          "strength": 0.85,
+          "effect": "positive",
+          "affected_persona_types": [
+            "developer",
+            "tool_maker",
+            "student_builder",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "cursor-copilot"
+          ],
+          "inject_at_round": 7,
+          "description": "Major open source AI model released free, lowers barrier to entry.",
+          "decay_curve": "s_curve",
+          "peak_round": 4
+        }
+      ],
+      "shock_count": 2
+    },
+    "graph": {
+      "nodes": [
+        {
+          "id": "platform-github",
+          "type": "platform",
+          "label": "GitHub",
+          "properties": {}
+        },
+        {
+          "id": "platform-producthunt",
+          "type": "platform",
+          "label": "Product Hunt",
+          "properties": {}
+        },
+        {
+          "id": "platform-x_twitter",
+          "type": "platform",
+          "label": "X/Twitter",
+          "properties": {}
+        },
+        {
+          "id": "platform-arxiv",
+          "type": "platform",
+          "label": "arXiv",
+          "properties": {}
+        },
+        {
+          "id": "community-spark",
+          "type": "community",
+          "label": "Spark Ecosystem",
+          "properties": {}
+        },
+        {
+          "id": "community-indie",
+          "type": "community",
+          "label": "Indie Hackers",
+          "properties": {}
+        },
+        {
+          "id": "community-defi",
+          "type": "community",
+          "label": "DeFi Builders",
+          "properties": {}
+        },
+        {
+          "id": "tech-mcp",
+          "type": "technology",
+          "label": "Model Context Protocol",
+          "properties": {}
+        },
+        {
+          "id": "tech-llm",
+          "type": "technology",
+          "label": "Large Language Models",
+          "properties": {}
+        },
+        {
+          "id": "tech-agents",
+          "type": "technology",
+          "label": "AI Agents",
+          "properties": {}
+        },
+        {
+          "id": "regulation-gdpr",
+          "type": "regulation",
+          "label": "GDPR",
+          "properties": {}
+        },
+        {
+          "id": "regulation-sox",
+          "type": "regulation",
+          "label": "SOX",
+          "properties": {}
+        },
+        {
+          "id": "cursor-copilot",
+          "type": "domain",
+          "label": "AI Coding Workflow",
+          "properties": {
+            "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+            "composite_score": 0.8665,
+            "scores": {
+              "market_size": 0.87,
+              "data_availability": 0.9,
+              "benchmark_feasibility": 0.84,
+              "community_demand": 0.85,
+              "spark_ecosystem_fit": 0.93,
+              "monetization_potential": 0.8
+            },
+            "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull."
+          }
+        },
+        {
+          "id": "chip-mcp-server-builder",
+          "type": "technology",
+          "label": "mcp-server-builder",
+          "properties": {}
+        },
+        {
+          "id": "chip-ai-agent-builder",
+          "type": "technology",
+          "label": "ai-agent-builder",
+          "properties": {}
+        },
+        {
+          "id": "platform-community",
+          "type": "platform",
+          "label": "community",
+          "properties": {}
+        },
+        {
+          "id": "startup-yc",
+          "type": "domain",
+          "label": "Startup YC Intelligence",
+          "properties": {
+            "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+            "composite_score": 0.826,
+            "scores": {
+              "market_size": 0.86,
+              "data_availability": 0.78,
+              "benchmark_feasibility": 0.74,
+              "community_demand": 0.87,
+              "spark_ecosystem_fit": 0.84,
+              "monetization_potential": 0.89
+            },
+            "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery."
+          }
+        },
+        {
+          "id": "chip-indie-hacker",
+          "type": "technology",
+          "label": "indie-hacker",
+          "properties": {}
+        },
+        {
+          "id": "chip-agentic-marketing",
+          "type": "technology",
+          "label": "agentic-marketing",
+          "properties": {}
+        },
+        {
+          "id": "indie-hacker",
+          "type": "domain",
+          "label": "Indie Hacker / Micro SaaS",
+          "properties": {
+            "description": "Micro SaaS validation, pricing strategy, launch playbook, distribution channels.",
+            "composite_score": 0.798,
+            "scores": {
+              "market_size": 0.82,
+              "data_availability": 0.78,
+              "benchmark_feasibility": 0.72,
+              "community_demand": 0.85,
+              "spark_ecosystem_fit": 0.82,
+              "monetization_potential": 0.8
+            },
+            "rationale": "Micro SaaS market growing 30% annually. Solo founders are most active sharers."
+          }
+        },
+        {
+          "id": "chip-startup-yc",
+          "type": "technology",
+          "label": "startup-yc",
+          "properties": {}
+        },
+        {
+          "id": "ai-sales-call-prep-copilot",
+          "type": "domain",
+          "label": "AI Sales Call Prep Copilot",
+          "properties": {
+            "description": "Prepares account context, risks, objections, and next-step plans before recurring sales calls.",
+            "composite_score": 0.7026,
+            "scores": {
+              "market_size": 0.648,
+              "data_availability": 0.62,
+              "benchmark_feasibility": 0.68,
+              "community_demand": 0.8,
+              "spark_ecosystem_fit": 0.7,
+              "monetization_potential": 0.79
+            },
+            "rationale": "Revenue teams want recurring prep workflows around live calls, not just generic CRM note generation."
+          }
+        },
+        {
+          "id": "chip-sales-copilot",
+          "type": "technology",
+          "label": "sales-copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-founder-ops",
+          "type": "technology",
+          "label": "founder-ops",
+          "properties": {}
+        },
+        {
+          "id": "compliance-shield",
+          "type": "domain",
+          "label": "Compliance Automation",
+          "properties": {
+            "description": "SOX, GDPR, SOC2, HIPAA automated checks and evidence collection.",
+            "composite_score": 0.6765,
+            "scores": {
+              "market_size": 0.75,
+              "data_availability": 0.6,
+              "benchmark_feasibility": 0.65,
+              "community_demand": 0.68,
+              "spark_ecosystem_fit": 0.55,
+              "monetization_potential": 0.88
+            },
+            "rationale": "Domain-specific AI in enterprise is 'Year of 2026'. High willingness to pay."
+          }
+        },
+        {
+          "id": "platform-vc_landscape",
+          "type": "platform",
+          "label": "vc_landscape",
+          "properties": {}
+        },
+        {
+          "id": "ai-security-questionnaire-copilot",
+          "type": "domain",
+          "label": "AI Security Questionnaire Copilot",
+          "properties": {
+            "description": "Helps teams answer repeated security questionnaires with reusable evidence, control mapping, and answer updates.",
+            "composite_score": 0.6716,
+            "scores": {
+              "market_size": 0.648,
+              "data_availability": 0.62,
+              "benchmark_feasibility": 0.68,
+              "community_demand": 0.68,
+              "spark_ecosystem_fit": 0.7,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Repeated enterprise sales friction appears around security review loops, especially where answers must be maintained across deals."
+          }
+        },
+        {
+          "id": "chip-AI RFP Response Copilot",
+          "type": "technology",
+          "label": "AI RFP Response Copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-compliance-shield",
+          "type": "technology",
+          "label": "compliance-shield",
+          "properties": {}
+        },
+        {
+          "id": "ai-rfp-response-copilot",
+          "type": "domain",
+          "label": "AI RFP Response Copilot",
+          "properties": {
+            "description": "Helps B2B teams assemble, tailor, and learn from repeated RFP and security questionnaire responses.",
+            "composite_score": 0.6716,
+            "scores": {
+              "market_size": 0.648,
+              "data_availability": 0.62,
+              "benchmark_feasibility": 0.68,
+              "community_demand": 0.68,
+              "spark_ecosystem_fit": 0.7,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Repeated demand appears around high-friction enterprise response loops, especially where teams reuse prior answers."
+          }
+        },
+        {
+          "id": "ai-compliance-evidence-copilot",
+          "type": "domain",
+          "label": "AI Compliance Evidence Copilot",
+          "properties": {
+            "description": "Collects recurring audit artifacts, maps controls, and prepares evidence packets for compliance reviews.",
+            "composite_score": 0.6596,
+            "scores": {
+              "market_size": 0.648,
+              "data_availability": 0.62,
+              "benchmark_feasibility": 0.68,
+              "community_demand": 0.68,
+              "spark_ecosystem_fit": 0.62,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Repeated enterprise pain exists around turning scattered operational artifacts into reusable compliance evidence."
+          }
+        },
+        {
+          "id": "chip-legal-ops",
+          "type": "technology",
+          "label": "legal-ops",
+          "properties": {}
+        },
+        {
+          "id": "ai-renewal-risk-briefing-copilot",
+          "type": "domain",
+          "label": "AI Renewal Risk Briefing Copilot",
+          "properties": {
+            "description": "Builds recurring renewal-risk briefs from usage, support, and stakeholder signals before customer success reviews.",
+            "composite_score": 0.6596,
+            "scores": {
+              "market_size": 0.648,
+              "data_availability": 0.62,
+              "benchmark_feasibility": 0.68,
+              "community_demand": 0.68,
+              "spark_ecosystem_fit": 0.62,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Customer teams repeatedly need a compounding risk-readout loop before renewals, not just static dashboards."
+          }
+        },
+        {
+          "id": "chip-AI Sales Call Prep Copilot",
+          "type": "technology",
+          "label": "AI Sales Call Prep Copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-AI Customer Research Synthesizer",
+          "type": "technology",
+          "label": "AI Customer Research Synthesizer",
+          "properties": {}
+        },
+        {
+          "id": "ai-investor-update-copilot",
+          "type": "domain",
+          "label": "AI Investor Update Copilot",
+          "properties": {
+            "description": "Helps founders turn weekly operating data into recurring investor updates and board-ready narratives.",
+            "composite_score": 0.6556,
+            "scores": {
+              "market_size": 0.648,
+              "data_availability": 0.46,
+              "benchmark_feasibility": 0.6,
+              "community_demand": 0.8,
+              "spark_ecosystem_fit": 0.7,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Founders repeatedly struggle to convert raw company data into high-trust investor communication."
+          }
+        },
+        {
+          "id": "ai-partner-prospecting-copilot",
+          "type": "domain",
+          "label": "AI Partner Prospecting Copilot",
+          "properties": {
+            "description": "Helps teams find, brief, and sequence outreach to recurring integration and distribution partners.",
+            "composite_score": 0.6486,
+            "scores": {
+              "market_size": 0.648,
+              "data_availability": 0.46,
+              "benchmark_feasibility": 0.6,
+              "community_demand": 0.8,
+              "spark_ecosystem_fit": 0.7,
+              "monetization_potential": 0.65
+            },
+            "rationale": "Teams repeatedly treat partnership development like scattered spreadsheet work instead of a compounding operating loop."
+          }
+        },
+        {
+          "id": "legal-ops",
+          "type": "domain",
+          "label": "Legal Operations",
+          "properties": {
+            "description": "Contract analysis, clause identification, risk scoring, due diligence.",
+            "composite_score": 0.6445,
+            "scores": {
+              "market_size": 0.78,
+              "data_availability": 0.55,
+              "benchmark_feasibility": 0.58,
+              "community_demand": 0.65,
+              "spark_ecosystem_fit": 0.5,
+              "monetization_potential": 0.85
+            },
+            "rationale": "Harvey (legal AI) is a vertical AI poster child. Strong VC interest."
+          }
+        }
+      ],
+      "edges": [
+        {
+          "source": "tech-mcp",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.9
+        },
+        {
+          "source": "tech-llm",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.95
+        },
+        {
+          "source": "tech-agents",
+          "target": "community-spark",
+          "relationship": "SERVES",
+          "weight": 0.8
+        },
+        {
+          "source": "regulation-gdpr",
+          "target": "community-defi",
+          "relationship": "DISRUPTS",
+          "weight": 0.3
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-mcp-server-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-ai-agent-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-indie-hacker",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-agentic-marketing",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "indie-hacker",
+          "target": "chip-startup-yc",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "indie-hacker",
+          "target": "chip-agentic-marketing",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "indie-hacker",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "indie-hacker",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "indie-hacker",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "chip-sales-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "chip-founder-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "compliance-shield",
+          "target": "platform-vc_landscape",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "compliance-shield",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "chip-AI RFP Response Copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "chip-compliance-shield",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-rfp-response-copilot",
+          "target": "chip-compliance-shield",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-rfp-response-copilot",
+          "target": "chip-sales-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-rfp-response-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-rfp-response-copilot",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-compliance-evidence-copilot",
+          "target": "chip-compliance-shield",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-compliance-evidence-copilot",
+          "target": "chip-legal-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-compliance-evidence-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-compliance-evidence-copilot",
+          "target": "platform-vc_landscape",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-renewal-risk-briefing-copilot",
+          "target": "chip-AI Sales Call Prep Copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-renewal-risk-briefing-copilot",
+          "target": "chip-AI Customer Research Synthesizer",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-renewal-risk-briefing-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-renewal-risk-briefing-copilot",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-investor-update-copilot",
+          "target": "chip-startup-yc",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-investor-update-copilot",
+          "target": "chip-founder-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-investor-update-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-investor-update-copilot",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-partner-prospecting-copilot",
+          "target": "chip-startup-yc",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-partner-prospecting-copilot",
+          "target": "chip-sales-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "ai-partner-prospecting-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-partner-prospecting-copilot",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "legal-ops",
+          "target": "platform-vc_landscape",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9283
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "indie-hacker",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9333
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-sales-call-prep-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42065
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "compliance-shield",
+          "relationship": "ENABLES",
+          "weight": 0.39665
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-security-questionnaire-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40485
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-rfp-response-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40485
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-compliance-evidence-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39815
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-renewal-risk-briefing-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39815
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-investor-update-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39485
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.389
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "legal-ops",
+          "relationship": "ENABLES",
+          "weight": 0.385
+        },
+        {
+          "source": "startup-yc",
+          "target": "indie-hacker",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9683
+        },
+        {
+          "source": "startup-yc",
+          "target": "ai-sales-call-prep-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.8763
+        },
+        {
+          "source": "startup-yc",
+          "target": "compliance-shield",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.855
+        },
+        {
+          "source": "startup-yc",
+          "target": "ai-security-questionnaire-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42235
+        },
+        {
+          "source": "startup-yc",
+          "target": "ai-rfp-response-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42235
+        },
+        {
+          "source": "startup-yc",
+          "target": "ai-compliance-evidence-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41565
+        },
+        {
+          "source": "startup-yc",
+          "target": "ai-renewal-risk-briefing-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41565
+        },
+        {
+          "source": "startup-yc",
+          "target": "ai-investor-update-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41235
+        },
+        {
+          "source": "startup-yc",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.4065
+        },
+        {
+          "source": "startup-yc",
+          "target": "legal-ops",
+          "relationship": "ENABLES",
+          "weight": 0.41085
+        },
+        {
+          "source": "indie-hacker",
+          "target": "ai-sales-call-prep-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.908
+        },
+        {
+          "source": "indie-hacker",
+          "target": "compliance-shield",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.86
+        },
+        {
+          "source": "indie-hacker",
+          "target": "ai-security-questionnaire-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.8763
+        },
+        {
+          "source": "indie-hacker",
+          "target": "ai-rfp-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.8763
+        },
+        {
+          "source": "indie-hacker",
+          "target": "ai-compliance-evidence-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.863
+        },
+        {
+          "source": "indie-hacker",
+          "target": "ai-renewal-risk-briefing-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.863
+        },
+        {
+          "source": "indie-hacker",
+          "target": "ai-investor-update-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.8563
+        },
+        {
+          "source": "indie-hacker",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42235
+        },
+        {
+          "source": "indie-hacker",
+          "target": "legal-ops",
+          "relationship": "ENABLES",
+          "weight": 0.41835
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "compliance-shield",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9147
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "ai-security-questionnaire-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9683
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "ai-rfp-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9683
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "ai-compliance-evidence-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.955
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "ai-renewal-risk-briefing-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.955
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "ai-investor-update-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9483
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9367
+        },
+        {
+          "source": "ai-sales-call-prep-copilot",
+          "target": "legal-ops",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.8813
+        },
+        {
+          "source": "compliance-shield",
+          "target": "ai-security-questionnaire-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.923
+        },
+        {
+          "source": "compliance-shield",
+          "target": "ai-rfp-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.923
+        },
+        {
+          "source": "compliance-shield",
+          "target": "ai-compliance-evidence-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9363
+        },
+        {
+          "source": "compliance-shield",
+          "target": "ai-renewal-risk-briefing-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9363
+        },
+        {
+          "source": "compliance-shield",
+          "target": "ai-investor-update-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.8797
+        },
+        {
+          "source": "compliance-shield",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.868
+        },
+        {
+          "source": "compliance-shield",
+          "target": "legal-ops",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9567
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "ai-rfp-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "ai-compliance-evidence-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "ai-renewal-risk-briefing-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "ai-investor-update-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.94
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9283
+        },
+        {
+          "source": "ai-security-questionnaire-copilot",
+          "target": "legal-ops",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.8897
+        },
+        {
+          "source": "ai-rfp-response-copilot",
+          "target": "ai-compliance-evidence-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "ai-rfp-response-copilot",
+          "target": "ai-renewal-risk-briefing-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "ai-rfp-response-copilot",
+          "target": "ai-investor-update-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.94
+        },
+        {
+          "source": "ai-rfp-response-copilot",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9283
+        },
+        {
+          "source": "ai-rfp-response-copilot",
+          "target": "legal-ops",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.8897
+        },
+        {
+          "source": "ai-compliance-evidence-copilot",
+          "target": "ai-renewal-risk-briefing-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "ai-compliance-evidence-copilot",
+          "target": "ai-investor-update-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9267
+        },
+        {
+          "source": "ai-compliance-evidence-copilot",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.915
+        },
+        {
+          "source": "ai-compliance-evidence-copilot",
+          "target": "legal-ops",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.903
+        },
+        {
+          "source": "ai-renewal-risk-briefing-copilot",
+          "target": "ai-investor-update-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9267
+        },
+        {
+          "source": "ai-renewal-risk-briefing-copilot",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.915
+        },
+        {
+          "source": "ai-renewal-risk-briefing-copilot",
+          "target": "legal-ops",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.903
+        },
+        {
+          "source": "ai-investor-update-copilot",
+          "target": "ai-partner-prospecting-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "ai-investor-update-copilot",
+          "target": "legal-ops",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.8797
+        },
+        {
+          "source": "ai-partner-prospecting-copilot",
+          "target": "legal-ops",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.868
+        }
+      ],
+      "tracked_variables": {},
+      "node_count": 38,
+      "edge_count": 116
+    }
+  },
+  "summary": {
+    "discovered_count": 7,
+    "benchmark_count": 5,
+    "combined_domain_count": 12,
+    "signal_count": 164,
+    "shock_count": 2,
+    "top_ranked_domain": "cursor-copilot"
+  },
+  "governance_note": "Discovered candidates use conservative inferred priors. Hybrid specs are exploratory_frontier and must not auto-promote benchmark membership."
+}

@@ -253,3 +253,50 @@ The repo needed a larger discovery batch to see whether newly proposed operator 
   - compliance / enterprise evidence
   - founder communication
   - sales / partner preparation
+
+## Tranche: MiroFish Focused Benchmark Batch
+
+### Files Changed
+
+- `research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_SPEC_FOCUSED_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_FOCUSED_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_FOCUSED_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_focused_batch.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The expanded discovery batch found a promising cluster, but it still needed a narrower benchmark comparison to see whether the strongest discovered domains could outrun relevant incumbents rather than only look decent inside a broad mixed panel.
+
+### What Changed
+
+- Added a focused discovery batch centered on:
+  - enterprise response loops
+  - founder communication loops
+  - sales / partner preparation loops
+- Canonicalized that batch into:
+  - 7 accepted candidates
+  - 2 merged candidates
+  - 3 rejected candidates
+- Ran the focused set against a custom benchmark panel:
+  - `compliance-shield`
+  - `legal-ops`
+  - `startup-yc`
+  - `indie-hacker`
+  - `cursor-copilot`
+- Saved a focused run note highlighting the strongest discovered candidate
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-discovery-batch` on the focused raw packet
+- Run `python -m chip_labs.cli mirofish-hybrid-spec` with the custom benchmark list
+- Run `python -m chip_labs.cli mirofish-hybrid-run` on the focused spec
+- Inspect the discovered-only leaderboard and compare it to the benchmark domains
+
+### Notes
+
+- `ai-security-questionnaire-copilot` is now the strongest discovered candidate under a relevant benchmark comparison.
+- It outruns `startup-yc`, `compliance-shield`, and `legal-ops` on builder ensemble mean adoption inside this focused panel.

@@ -1,0 +1,360 @@
+{
+  "packet_kind": "mirofish_discovery_batch",
+  "evidence_lane": "exploratory_frontier",
+  "created_at": "2026-03-23T21:54:10.089855+00:00",
+  "batch_id": "mirofish-discovery-batch-focused-2026-03-24",
+  "summary": {
+    "raw_count": 12,
+    "accepted_count": 7,
+    "merged_count": 2,
+    "rejected_count": 3,
+    "clear_count": 7,
+    "proto_count": 0
+  },
+  "accepted_candidates": [
+    {
+      "label": "AI Compliance Evidence Copilot",
+      "description": "Collects recurring audit artifacts, maps controls, and prepares evidence packets for compliance reviews.",
+      "specialization_surface": "control mapping, evidence collection, and audit packet assembly",
+      "mastery_surface": "improving repeated compliance evidence operations across audits",
+      "user_value_loop": "collect artifacts, map controls, prepare evidence packet, learn from auditor gaps",
+      "domain_tags": [
+        "compliance",
+        "enterprise-ops"
+      ],
+      "evidence_sources": [
+        "community",
+        "vc_landscape"
+      ],
+      "evidence_summary": "Repeated enterprise pain exists around turning scattered operational artifacts into reusable compliance evidence.",
+      "adjacent_domains": [
+        "compliance-shield",
+        "legal-ops"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "The repeated loop is evidence readiness across multiple audits and reviews.",
+      "domain_id": "ai-compliance-evidence-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ]
+    },
+    {
+      "label": "AI Security Questionnaire Copilot",
+      "description": "Helps teams answer repeated security questionnaires with reusable evidence, control mapping, and answer updates.",
+      "specialization_surface": "security answer drafting, evidence retrieval, and procurement response packaging",
+      "mastery_surface": "improving repeated questionnaire response accuracy and speed",
+      "user_value_loop": "retrieve prior answers, update evidence, submit questionnaire, learn from follow-up requests",
+      "domain_tags": [
+        "security",
+        "enterprise-sales"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "evidence_summary": "Repeated enterprise sales friction appears around security review loops, especially where answers must be maintained across deals.",
+      "adjacent_domains": [
+        "AI RFP Response Copilot",
+        "compliance-shield"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "This is a repeated enterprise response loop with its own evidence surface.",
+      "domain_id": "ai-security-questionnaire-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ]
+    },
+    {
+      "label": "AI RFP Response Copilot",
+      "description": "Helps B2B teams assemble, tailor, and learn from repeated RFP and security questionnaire responses.",
+      "specialization_surface": "response drafting, knowledge retrieval, and enterprise packaging",
+      "mastery_surface": "improving repeated enterprise response accuracy and speed",
+      "user_value_loop": "retrieve evidence, draft response, submit package, learn from procurement feedback",
+      "domain_tags": [
+        "enterprise-sales",
+        "compliance"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "evidence_summary": "Repeated demand appears around high-friction enterprise response loops, especially where teams reuse prior answers.",
+      "adjacent_domains": [
+        "compliance-shield",
+        "sales-copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "This is a recurring enterprise operating loop rather than one-off document generation.",
+      "domain_id": "ai-rfp-response-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ]
+    },
+    {
+      "label": "AI Investor Update Copilot",
+      "description": "Helps founders turn weekly operating data into recurring investor updates and board-ready narratives.",
+      "specialization_surface": "founder update drafting, board prep, and operating narrative packaging",
+      "mastery_surface": "getting better at recurring investor communication and company storytelling",
+      "user_value_loop": "collect metrics, draft update, review stakeholder feedback, refine next update",
+      "domain_tags": [
+        "founder-ops",
+        "investor-relations"
+      ],
+      "evidence_sources": [
+        "community",
+        "x_twitter"
+      ],
+      "evidence_summary": "Founders repeatedly struggle to convert raw company data into high-trust investor communication.",
+      "adjacent_domains": [
+        "startup-yc",
+        "founder-ops"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "This is not generic writing help; it is a recurring founder operating loop.",
+      "domain_id": "ai-investor-update-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ]
+    },
+    {
+      "label": "AI Partner Prospecting Copilot",
+      "description": "Helps teams find, brief, and sequence outreach to recurring integration and distribution partners.",
+      "specialization_surface": "partner research, qualification, and outreach planning",
+      "mastery_surface": "getting better at repeated partner development loops",
+      "user_value_loop": "research partner, draft outreach brief, run conversations, refine partner thesis",
+      "domain_tags": [
+        "bd",
+        "operator-tools"
+      ],
+      "evidence_sources": [
+        "community",
+        "x_twitter"
+      ],
+      "evidence_summary": "Teams repeatedly treat partnership development like scattered spreadsheet work instead of a compounding operating loop.",
+      "adjacent_domains": [
+        "startup-yc",
+        "sales-copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "This is a recurring partner-development workflow with clear specialization.",
+      "domain_id": "ai-partner-prospecting-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ]
+    },
+    {
+      "label": "AI Sales Call Prep Copilot",
+      "description": "Prepares account context, risks, objections, and next-step plans before recurring sales calls.",
+      "specialization_surface": "deal-context assembly and pre-call sales preparation",
+      "mastery_surface": "getting better at repeated high-stakes sales preparation",
+      "user_value_loop": "collect account context, draft prep brief, run call, learn from outcome",
+      "domain_tags": [
+        "sales",
+        "operator-tools"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt"
+      ],
+      "evidence_summary": "Revenue teams want recurring prep workflows around live calls, not just generic CRM note generation.",
+      "adjacent_domains": [
+        "sales-copilot",
+        "founder-ops"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "The durable loop is pre-call preparation plus post-call learning.",
+      "domain_id": "ai-sales-call-prep-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ]
+    },
+    {
+      "label": "AI Renewal Risk Briefing Copilot",
+      "description": "Builds recurring renewal-risk briefs from usage, support, and stakeholder signals before customer success reviews.",
+      "specialization_surface": "renewal-risk synthesis and account review preparation",
+      "mastery_surface": "improving repeated renewal intervention quality over account cycles",
+      "user_value_loop": "collect account signals, draft renewal brief, run review, refine intervention playbook",
+      "domain_tags": [
+        "customer-success",
+        "sales"
+      ],
+      "evidence_sources": [
+        "community",
+        "github"
+      ],
+      "evidence_summary": "Customer teams repeatedly need a compounding risk-readout loop before renewals, not just static dashboards.",
+      "adjacent_domains": [
+        "AI Sales Call Prep Copilot",
+        "AI Customer Research Synthesizer"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "This is a repeated account-risk preparation domain.",
+      "domain_id": "ai-renewal-risk-briefing-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ]
+    }
+  ],
+  "merged_candidates": [
+    {
+      "label": "Audit Readiness Coordinator",
+      "description": "Prepares recurring audit-ready evidence packets from scattered company artifacts.",
+      "specialization_surface": "audit packet assembly and control evidence coordination",
+      "mastery_surface": "improving recurring audit readiness across cycles",
+      "user_value_loop": "collect artifacts, assemble audit packet, answer auditor gaps, improve next packet",
+      "domain_tags": [
+        "compliance",
+        "enterprise-ops"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Alias view of the same recurring compliance evidence domain.",
+      "adjacent_domains": [
+        "compliance-shield"
+      ],
+      "duplicate_aliases": [
+        "AI Compliance Evidence Copilot"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Repeated audit readiness workflow, same core evidence operations domain.",
+      "domain_id": "audit-readiness-coordinator",
+      "classification": "duplicate_of_existing",
+      "classification_reasons": [
+        "Duplicate of another candidate in the same batch."
+      ],
+      "duplicate_of": "ai-compliance-evidence-copilot"
+    },
+    {
+      "label": "Board Narrative Copilot",
+      "description": "Turns company metrics and operating notes into recurring board narratives and investor-facing updates.",
+      "specialization_surface": "board packet narrative assembly and investor communication packaging",
+      "mastery_surface": "improving recurring board communication quality across cycles",
+      "user_value_loop": "gather metrics, draft board narrative, send update, learn from board questions",
+      "domain_tags": [
+        "founder-ops",
+        "investor-relations"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Alias framing of the same recurring founder update domain.",
+      "adjacent_domains": [
+        "startup-yc"
+      ],
+      "duplicate_aliases": [
+        "AI Investor Update Copilot"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Repeated board communication workflow, same domain shape as investor updates.",
+      "domain_id": "board-narrative-copilot",
+      "classification": "duplicate_of_existing",
+      "classification_reasons": [
+        "Duplicate of another candidate in the same batch."
+      ],
+      "duplicate_of": "ai-investor-update-copilot"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "label": "Shared Answer Library",
+      "description": "A shared place to store prior enterprise answers used by the team.",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "domain_tags": [
+        "enterprise-sales"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Useful feature area but still mostly a library pattern rather than a full operating domain.",
+      "adjacent_domains": [
+        "AI RFP Response Copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "low",
+      "promotion_status": "candidate",
+      "raw_observation": "Workflow or feature bucket rather than a specialized chip.",
+      "domain_id": "shared-answer-library",
+      "classification": "workflow_not_domain",
+      "classification_reasons": [
+        "Does not specify a specialization or mastery surface."
+      ]
+    },
+    {
+      "label": "Enterprise Buyers",
+      "description": "People inside companies evaluating vendor purchases.",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "domain_tags": [
+        "enterprise"
+      ],
+      "evidence_sources": [
+        "community"
+      ],
+      "evidence_summary": "Real audience segment but not a repeated operating domain by itself.",
+      "adjacent_domains": [
+        "AI RFP Response Copilot",
+        "AI Security Questionnaire Copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Persona group, not a domain.",
+      "domain_id": "enterprise-buyers",
+      "classification": "persona_only_not_domain",
+      "classification_reasons": [
+        "Describes a persona or audience but not a repeated operating domain."
+      ]
+    },
+    {
+      "label": "Deal vibes",
+      "description": "",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "domain_tags": [],
+      "evidence_sources": [],
+      "evidence_summary": "",
+      "adjacent_domains": [],
+      "duplicate_aliases": [],
+      "confidence_read": "low",
+      "promotion_status": "candidate",
+      "raw_observation": "Too vague to keep.",
+      "domain_id": "deal-vibes",
+      "classification": "too_vague_to_keep",
+      "classification_reasons": [
+        "Missing enough naming or description detail to define a domain."
+      ]
+    }
+  ],
+  "next_actions": [
+    "Feed the clear_domain_chip set into a smaller MiroFish evaluation run.",
+    "Review rejected candidates to ensure duplicates and vague ideas were not misclassified."
+  ]
+}
