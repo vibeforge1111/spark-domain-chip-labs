@@ -263,6 +263,7 @@ def persona_evaluates_domain(
     domain_id: str,
     awareness_score: float,
     domain_tags: list[str] | None = None,
+    domain_retention_score: float = 0.5,
 ) -> str:
     """Determine a persona's adoption stage for a domain.
 
@@ -312,6 +313,14 @@ def persona_evaluates_domain(
     # Risk discount capped at 20% to prevent easy late-stage advancement
     advance_threshold = threshold * difficulty * (1.0 - risk * 0.2)
 
+    # Sticky workflow domains are easier to justify trying once a persona is
+    # already interested. This targets the interested/evaluating bottleneck
+    # without making late-stage retained adoption artificially easy.
+    if current_idx in (2, 3) and domain_retention_score > 0.6:
+        max_bonus = 0.18 if current_idx == 2 else 0.22
+        sticky_bonus = min(max_bonus, (domain_retention_score - 0.6) * 0.8)
+        advance_threshold *= (1.0 - sticky_bonus)
+
     # Attention fatigue: once a persona has several retained domains,
     # it becomes harder to push more domains into deeper commitment.
     # Trial should not count the same as real adoption here or the
@@ -347,6 +356,7 @@ def persona_evaluates_domain(
         "effective_signal": round(effective_signal, 4),
         "threshold": round(advance_threshold, 4),
         "fit_score": round(fit, 4),
+        "retention_score": round(domain_retention_score, 4),
         "matched_values": matched_values,
     })
     # Cap log to prevent unbounded growth

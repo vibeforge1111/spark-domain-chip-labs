@@ -690,3 +690,47 @@ The graph-tuning tranche improved domain semantics, but churn and retention were
 - This tranche is a methodology fix, not a promotion verdict.
 - Signal symmetry helps the enterprise-response cluster, but it does not solve the gap to `startup-yc`.
 - `ai-renewal-risk-briefing-copilot` still reads as a persistence problem more than a benchmark-admission candidate.
+
+## Tranche: MiroFish Enterprise Conversion Tuning
+
+### Files Changed
+
+- `src/chip_labs/mirofish/personas.py`
+- `src/chip_labs/mirofish/simulation.py`
+- `research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CONVERSION_TUNING_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_CONVERSION_TUNING_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CONVERSION_TUNING_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_conversion_tuning.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The signal-symmetry tranche still left the enterprise cluster heavily bottlenecked in interested and evaluating. The next narrow hypothesis was that sticky recurring workflows should be easier to justify trying once interest already exists.
+
+### What Changed
+
+- Added a retention-aware threshold easing inside persona stage advancement for the interested and evaluating stages
+- Passed graph `retention_score` through simulation calls into persona evaluation
+- Reran the symmetric enterprise cluster playoff under the conversion-tuned logic
+- Built a fresh diagnostic brief from the replay
+- Saved a methodology note concluding that:
+  - `ai-security-questionnaire-copilot` and `ai-renewal-risk-briefing-copilot` are the main beneficiaries
+  - `ai-rfp-response-copilot` and `ai-compliance-evidence-copilot` do not materially benefit
+  - the enterprise cluster still does not beat `startup-yc`, so admission remains deferred
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CONVERSION_TUNING_2026-03-24.json`
+- Run `python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CONVERSION_TUNING_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_CONVERSION_TUNING_2026-03-24.json`
+- Run `python -m pytest tests/test_trend_prediction.py -q`
+- Inspect that:
+  - questionnaire and renewal improve relative to the signal-symmetry replay
+  - RFP and compliance evidence do not receive the same uplift
+  - the note keeps maintained benchmark admission deferred
+
+### Notes
+
+- This tranche is useful because it separates sticky recurring workflows from pure choice-conversion problems.
+- Renewal becomes much more credible as a methodology target, but still not a maintained benchmark admission.
+- RFP and compliance evidence now need a different next hypothesis than questionnaire and renewal.

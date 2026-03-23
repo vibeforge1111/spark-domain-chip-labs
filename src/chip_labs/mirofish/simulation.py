@@ -171,6 +171,8 @@ def run_simulation(
                 in_budget = domain_id in active_domains or evaluated < attention_budget
                 prev_stage = persona["adoption_state"].get(domain_id, "unaware")
                 d_tags = domain_tags.get(domain_id, [])
+                node = graph.nodes.get(domain_id, {})
+                retention_score = node.get("properties", {}).get("retention_score", 0.5)
 
                 # Stage cooldown: after advancing, persona needs time to
                 # "settle in" before considering the next stage. This models
@@ -187,14 +189,18 @@ def run_simulation(
                 if round_num - last_adv < cooldown and prev_stage != "unaware":
                     new_stage = prev_stage  # still cooling down
                 elif in_budget:
-                    new_stage = persona_evaluates_domain(persona, domain_id, awareness, d_tags)
+                    new_stage = persona_evaluates_domain(
+                        persona, domain_id, awareness, d_tags, retention_score,
+                    )
                     if domain_id not in active_domains:
                         evaluated += 1
                 else:
                     # Below attention budget -- only allow unaware->aware (discovery)
                     # with heavily dampened signal
                     if prev_stage == "unaware" and awareness > 0.5:
-                        new_stage = persona_evaluates_domain(persona, domain_id, awareness * 0.3, d_tags)
+                        new_stage = persona_evaluates_domain(
+                            persona, domain_id, awareness * 0.3, d_tags, retention_score,
+                        )
                     else:
                         new_stage = prev_stage
 
@@ -255,6 +261,8 @@ def run_simulation(
             net_influence = network_influence_propagation(
                 personas, persona_network, domain_id, d_tags,
             )
+            node = graph.nodes.get(domain_id, {})
+            retention_score = node.get("properties", {}).get("retention_score", 0.5)
             for persona in personas:
                 pid = persona["persona_id"]
                 inf = net_influence.get(pid, 0.0)
@@ -262,7 +270,7 @@ def run_simulation(
                     current_stage = persona["adoption_state"].get(domain_id, "unaware")
                     # Network influence can push early-stage personas forward
                     if current_stage in ("unaware", "aware", "interested", "evaluating", "trial") and inf > 0:
-                        persona_evaluates_domain(persona, domain_id, inf, d_tags)
+                        persona_evaluates_domain(persona, domain_id, inf, d_tags, retention_score)
 
         # Phase 3: Record adoption state
         for domain_id in domains:

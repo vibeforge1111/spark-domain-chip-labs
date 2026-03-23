@@ -1,0 +1,60 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_enterprise_conversion_tuning",
+  "created_at": "2026-03-24",
+  "scope": "Use graph-level retention priors to ease interested-to-trial conversion for sticky workflow domains, then rerun the enterprise cluster playoff",
+  "decision_context": {
+    "prior_state": "The signal-symmetry tranche showed that enterprise domains still piled up in interested and evaluating, with very few personas reaching trial and almost none reaching retained adoption.",
+    "decision": "Pass domain retention_score into persona evaluation and use it as a narrow threshold reduction for the interested and evaluating stages, then replay the symmetric enterprise cluster and save a fresh diagnostic brief.",
+    "why_now": "The enterprise cluster needed a smaller conversion-side intervention than a global threshold cut. Recurring workflow domains like questionnaire and renewal already had high retention priors in the graph layer, so the model should test whether those priors should matter earlier in the funnel."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/personas.py",
+      "purpose": "Adds retention-aware conversion easing for interested and evaluating stages."
+    },
+    {
+      "path": "src/chip_labs/mirofish/simulation.py",
+      "purpose": "Passes graph retention scores into persona evaluation calls."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CONVERSION_TUNING_2026-03-24.json",
+      "purpose": "Stores the enterprise cluster replay after the conversion-side tuning."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_CONVERSION_TUNING_2026-03-24.json",
+      "purpose": "Stores the diagnostic brief for the conversion-tuned replay."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CONVERSION_TUNING_NOTE_2026-03-24.md",
+      "purpose": "Summarizes which enterprise domains actually benefit from the recurring-workflow trial prior."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_conversion_tuning.json",
+      "purpose": "Captures the request, verification plan, and guardrails for this tuning tranche."
+    }
+  ],
+  "planned_steps": [
+    "Add retention-aware threshold easing for interested and evaluating stages",
+    "Replay the symmetric enterprise cluster playoff",
+    "Build a diagnostic brief from the replay",
+    "Write the methodology note",
+    "Update the transparent logs"
+  ],
+  "verification": {
+    "commands": [
+      "python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CONVERSION_TUNING_2026-03-24.json",
+      "python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CONVERSION_TUNING_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_CONVERSION_TUNING_2026-03-24.json",
+      "python -m pytest tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "Questionnaire and renewal improve relative to the signal-symmetry replay",
+      "RFP and compliance evidence do not receive a free general boost from the sticky-workflow prior",
+      "The note records that maintained benchmark admission remains deferred"
+    ]
+  },
+  "guardrails": [
+    "Do not lower retained-adoption gates",
+    "Do not auto-admit any enterprise domain into maintained benchmarks",
+    "Treat this tranche as a mechanism test for sticky workflow domains rather than a generic enterprise uplift"
+  ]
+}

@@ -143,3 +143,13 @@ MiroFish enterprise signal symmetry:
 - rerun the enterprise cluster playoff under signal symmetry
 - show that questionnaire remains the strongest enterprise ensemble domain
 - show that RFP and compliance evidence improve once retention-side checks stop using weaker semantics
+
+## Batch 17
+
+MiroFish enterprise conversion tuning:
+
+- add a retention-aware conversion prior for interested and evaluating stages
+- pass graph retention scores into persona evaluation
+- rerun the enterprise cluster playoff under the conversion-tuned logic
+- show that questionnaire and renewal benefit from the sticky-workflow prior
+- show that RFP and compliance evidence still need a different choice-conversion hypothesis
