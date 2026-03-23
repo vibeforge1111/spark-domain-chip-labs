@@ -68,3 +68,12 @@ MiroFish promotion review:
 - document the promotion-review operator workflow
 - emit the first enterprise-response promotion brief
 - recommend the first candidate for maintained benchmark review without auto-promoting it
+
+## Batch 9
+
+MiroFish benchmark-review validation:
+
+- allow selected discovered candidates to move into a benchmark-review lane
+- rerun the nominated enterprise candidate without discovery breakout support
+- save the benchmark-review spec and run artifacts
+- record that the candidate remains promising but does not yet earn maintained benchmark admission

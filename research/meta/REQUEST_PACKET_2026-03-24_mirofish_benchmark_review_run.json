@@ -1,0 +1,68 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_benchmark_review_run",
+  "created_at": "2026-03-24",
+  "scope": "Validate the first enterprise-response promotion candidate by rerunning it in a benchmark-review lane",
+  "decision_context": {
+    "prior_state": "The promotion brief recommended ai-security-questionnaire-copilot for human benchmark review, but that read still came from a run where the candidate received discovery-lane breakout support.",
+    "decision": "Add a benchmark-review path to the hybrid spec and rerun the focused enterprise panel with ai-security-questionnaire-copilot treated as a review candidate rather than a discovered candidate.",
+    "why_now": "Benchmark membership should not be decided from a discovery-favored run."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/hybrid.py",
+      "purpose": "Allows selected discovered candidates to move into the benchmark-review lane."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Exposes promotion-review movement through the hybrid spec CLI."
+    },
+    {
+      "path": "docs/MIROFISH_PROMOTION_REVIEW.md",
+      "purpose": "Documents the benchmark-review validation step."
+    },
+    {
+      "path": "docs/MIROFISH_HYBRID_EVALUATION_SPEC.md",
+      "purpose": "Documents promote-domains behavior and the no-breakout-favoritism rule."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_SPEC_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json",
+      "purpose": "Stores the benchmark-review spec for the enterprise panel."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json",
+      "purpose": "Stores the benchmark-review run output."
+    },
+    {
+      "path": "research/meta/MIROFISH_BENCHMARK_REVIEW_ENTERPRISE_NOTE_2026-03-24.md",
+      "purpose": "Summarizes whether the nominated candidate still holds up without discovery-lane breakout support."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_benchmark_review_run.json",
+      "purpose": "Captures the benchmark-review validation request and verification plan."
+    }
+  ],
+  "planned_steps": [
+    "Allow promoted candidates to enter a benchmark-review lane during hybrid spec generation",
+    "Generate the enterprise benchmark-review spec",
+    "Run the benchmark-review harness",
+    "Compare the result to the earlier focused promotion read",
+    "Save an operator note and update tranche logs"
+  ],
+  "verification": {
+    "commands": [
+      "python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_RESULT_2026-03-24.json --benchmarks compliance-shield,legal-ops,startup-yc,indie-hacker,cursor-copilot --promote-domains ai-security-questionnaire-copilot --output research/meta/MIROFISH_HYBRID_SPEC_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json",
+      "python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json",
+      "python -m pytest tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The promoted candidate is listed under promotion_review_domain_ids",
+      "The breakout shock no longer targets the promoted candidate",
+      "The note states whether the candidate still clears maintained benchmark admission"
+    ]
+  },
+  "guardrails": [
+    "Do not auto-admit the review candidate into maintained benchmarks",
+    "Keep the validation run in exploratory_frontier",
+    "Make the discovery-bias removal explicit in the saved note"
+  ]
+}

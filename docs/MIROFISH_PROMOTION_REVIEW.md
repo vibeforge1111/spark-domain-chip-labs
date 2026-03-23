@@ -38,6 +38,18 @@ python -m chip_labs.cli mirofish-promotion-brief \
 
 If `--domains` is omitted, the command reviews all discovered candidates from the run.
 
+To validate a nominated candidate in a benchmark-review lane, move it into the hybrid benchmark panel for the next spec build:
+
+```bash
+python -m chip_labs.cli mirofish-hybrid-spec \
+  --input research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_RESULT_2026-03-24.json \
+  --benchmarks compliance-shield,legal-ops,startup-yc,indie-hacker,cursor-copilot \
+  --promote-domains ai-security-questionnaire-copilot \
+  --output research/meta/MIROFISH_HYBRID_SPEC_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json
+```
+
+That removes the nominated candidate from the discovery breakout lane and treats it as a benchmark-review candidate for the next run.
+
 ## Decision Rules
 
 The brief currently uses a conservative operator heuristic:

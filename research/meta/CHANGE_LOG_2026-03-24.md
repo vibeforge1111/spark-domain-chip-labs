@@ -343,3 +343,45 @@ The focused enterprise-response run identified a likely promotion candidate, but
 
 - The promotion brief is a review layer only; it does not mutate benchmark membership.
 - `ai-security-questionnaire-copilot` is the only current enterprise-response candidate that clears the explicit `review_now` bar.
+
+## Tranche: MiroFish Benchmark Review Run
+
+### Files Changed
+
+- `src/chip_labs/mirofish/hybrid.py`
+- `src/chip_labs/cli.py`
+- `docs/MIROFISH_PROMOTION_REVIEW.md`
+- `docs/MIROFISH_HYBRID_EVALUATION_SPEC.md`
+- `research/meta/MIROFISH_HYBRID_SPEC_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json`
+- `research/meta/MIROFISH_BENCHMARK_REVIEW_ENTERPRISE_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_benchmark_review_run.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The promotion brief nominated `ai-security-questionnaire-copilot`, but that read still came from a discovery-favored run. The repo needed one validation pass where the candidate was treated like a benchmark-review member rather than a discovered candidate.
+
+### What Changed
+
+- Added support for moving selected discovered candidates into a benchmark-review lane during hybrid spec generation
+- Added a CLI option to promote selected discovered domain IDs into that lane
+- Documented the benchmark-review validation path
+- Generated and ran a benchmark-review spec where `ai-security-questionnaire-copilot` no longer received discovery breakout support
+- Saved a note comparing the review-run result to the earlier promotion brief
+
+### Verification
+
+- Run `python -m chip_labs.cli mirofish-hybrid-spec` on the focused discovery packet with `--promote-domains ai-security-questionnaire-copilot`
+- Run `python -m chip_labs.cli mirofish-hybrid-run` on the benchmark-review spec
+- Run `python -m pytest tests/test_trend_prediction.py -q`
+- Inspect that:
+  - `promotion_review_domain_ids` contains `ai-security-questionnaire-copilot`
+  - the breakout shock no longer targets that candidate
+  - the saved note makes the admission decision explicit
+
+### Notes
+
+- `ai-security-questionnaire-copilot` remains a valid benchmark-review candidate, but it does not yet earn maintained benchmark admission.
+- Removing discovery breakout support dropped its builder ensemble mean adoption from `4.83%` to `2.64%`.

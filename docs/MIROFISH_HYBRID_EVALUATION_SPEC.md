@@ -104,6 +104,13 @@ $env:PYTHONPATH='src'
 python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_TEMPLATE_RESULT_2026-03-24.json --benchmarks trading-crypto,startup-yc,compliance-shield --output research/meta/MIROFISH_HYBRID_SPEC_TEMPLATE_2026-03-24.json
 ```
 
+To move a discovered candidate into a benchmark-review lane for the next run:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_BATCH_FOCUSED_RESULT_2026-03-24.json --benchmarks compliance-shield,legal-ops,startup-yc,indie-hacker,cursor-copilot --promote-domains ai-security-questionnaire-copilot --output research/meta/MIROFISH_HYBRID_SPEC_BENCHMARK_REVIEW_ENTERPRISE_2026-03-24.json
+```
+
 ## Starter Sample
 
 The current starter batch produces:
@@ -140,6 +147,7 @@ So the discovered candidate is not winning the benchmark panel yet, but it is al
 - benchmark membership still requires human review
 - discovery output should never auto-promote directly into the maintained universe
 - use a promotion-review packet before proposing any maintained benchmark change
+- promotion-review candidates should be rerun without discovery breakout favoritism
 
 ## Scenario Guardrail
 
