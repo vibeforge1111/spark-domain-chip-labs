@@ -436,3 +436,11 @@ MiroFish discovery frontier completion:
 - fill every remaining frontier submission across all `18` clusters
 - move the live frontier from `109 / 1000` to `1000 / 1000`
 - rebuild the cluster bundle, regenerate progress, and generate the merged frontier discovery-program packet
+
+## Batch 50
+
+MiroFish discovery frontier canonicalization:
+
+- run the full merged `1000`-agent frontier packet through `mirofish-discovery-program`
+- save the canonical result JSON and markdown readout
+- confirm the canonical packet currently lands at `1000` accepted, `0` merged, `0` rejected

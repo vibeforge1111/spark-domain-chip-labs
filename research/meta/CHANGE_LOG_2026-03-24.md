@@ -2008,3 +2008,33 @@ The user asked to stop relying on repeated manual prompting and simply carry the
 
 - The frontier intake stage is now complete.
 - Simulation remains intentionally deferred until canonicalization runs.
+
+## Tranche: MiroFish Discovery Frontier Canonicalization
+
+### Files
+
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_RESULT_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_FRONTIER_1000_CANONICALIZATION_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_frontier_canonicalization.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The full diverse frontier had been collected and merged, but it still needed to be converted from raw agent submissions into the canonical discovery packet that MiroFish uses for the next evaluation stage.
+
+### What Changed
+
+- Ran the merged `1000`-agent frontier packet through `mirofish-discovery-program`
+- Saved the canonical result JSON and operator-facing markdown readout
+- Confirmed the frontier canonicalization outcome is `1000` accepted, `0` merged, `0` rejected
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_RESULT_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_RESULT_2026-03-24.json --title "MiroFish Discovery Frontier 1000 Diverse Result" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_RESULT_2026-03-24.md`
+
+### Notes
+
+- The next correct step is a bounded hybrid evaluation pass on the accepted candidate set.
