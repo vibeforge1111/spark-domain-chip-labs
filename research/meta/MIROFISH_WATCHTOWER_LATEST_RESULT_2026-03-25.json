@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "Lab Home.md",
+    "Portfolio Dashboard.md",
+    "MiroFish Portfolio.md",
+    "MiroFish Frontier.md",
+    "Agent Team Status.md",
+    "Graduation Pipeline.md",
+    "Trend Predictions.md"
+  ],
+  "count": 7,
+  "vault_dir": "research/meta/watchtower_latest",
+  "chip_search_dir": ".",
+  "mutations": {
+    "research_focus": "mirofish_portfolio_surface",
+    "agent_workstream": "methodology_researcher"
+  }
+}

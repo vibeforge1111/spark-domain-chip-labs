@@ -1,6 +1,6 @@
 # MiroFish Portfolio
 
-> Last updated: 2026-03-24 16:56 UTC
+> Last updated: 2026-03-24 20:11 UTC
 > Canonical export: `research\meta\MIROFISH_PORTFOLIO_EXPORT_515_MEDIUM_2026-03-24.md`
 
 ## Current Checkpoint
@@ -111,4 +111,5 @@ The page below is sourced from the latest saved MiroFish portfolio export artifa
 
 - [[Lab Home]]
 - [[Portfolio Dashboard]]
+- [[MiroFish Frontier]]
 - [[Trend Predictions]]

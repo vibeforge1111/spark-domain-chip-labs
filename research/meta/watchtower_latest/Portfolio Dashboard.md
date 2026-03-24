@@ -1,6 +1,6 @@
 # Portfolio Dashboard
 
-> Last updated: 2026-03-24 16:56 UTC
+> Last updated: 2026-03-24 20:11 UTC
 
 ## Summary
 
@@ -28,4 +28,5 @@ _Updated each watchtower pass. Track portfolio average over time._
 
 - [[Lab Home]]
 - [[MiroFish Portfolio]]
+- [[MiroFish Frontier]]
 - [[Trend Predictions]]

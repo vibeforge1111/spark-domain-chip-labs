@@ -1,0 +1,57 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-25_mirofish_frontier_watchtower_surface",
+  "created_at": "2026-03-25",
+  "scope": "Add the current MiroFish frontier checkpoint to the repo-local watchtower surface and fix latest-artifact selection for frontier exports",
+  "decision_context": {
+    "prior_state": "The local comparison page existed, but the watchtower surface still only had a MiroFish portfolio page and the frontier export resolver could choose the wrong frontier checkpoint by filename sort.",
+    "decision": "Add a dedicated MiroFish frontier watchtower page, keep the local comparison HTML under research/meta, and switch latest-artifact selection to modification time.",
+    "why_now": "The user asked to see which domain chips the agents have chosen right now, so the current frontier checkpoint needs a real downstream dashboard surface instead of only raw artifacts."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/lab_hooks/watchtower.py",
+      "purpose": "Adds the MiroFish frontier watchtower page and fixes latest artifact selection."
+    },
+    {
+      "path": "tests/test_watchtower.py",
+      "purpose": "Covers the new frontier watchtower page."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_CHECKPOINTS_2026-03-25.html",
+      "purpose": "Comparative local-host surface for the current frontier checkpoints."
+    },
+    {
+      "path": "research/meta/watchtower_latest/MiroFish Frontier.md",
+      "purpose": "Repo-local watchtower frontier page for the current checkpoint."
+    },
+    {
+      "path": "research/meta/MIROFISH_WATCHTOWER_LATEST_RESULT_2026-03-25.json",
+      "purpose": "Records the refreshed watchtower page set including the frontier page."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_WATCHTOWER_NOTE_2026-03-25.md",
+      "purpose": "Documents the new frontier surface and the latest-artifact resolver fix."
+    }
+  ],
+  "planned_steps": [
+    "Add a dedicated MiroFish frontier watchtower page",
+    "Refresh the repo-local watchtower latest surface so the new page is emitted",
+    "Fix latest frontier export selection so the page points at the real newest checkpoint"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_watchtower.py tests/test_mirofish_hybrid.py tests/test_mirofish_discovery.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-watchtower-snapshot --vault-dir research/meta/watchtower_latest --output research/meta/MIROFISH_WATCHTOWER_LATEST_RESULT_2026-03-25.json"
+    ],
+    "expected_checks": [
+      "The watchtower page set includes MiroFish Frontier.md",
+      "The frontier watchtower page resolves to the deeper 180 export rather than the older deeper 90 export",
+      "The repo-local local-host comparison page exists under research/meta"
+    ]
+  },
+  "guardrails": [
+    "Do not remove the existing MiroFish portfolio watchtower page",
+    "Keep the comparison HTML and generated watchtower surface inside research/meta",
+    "Use artifact modification time instead of filename sort when selecting the latest frontier export"
+  ]
+}

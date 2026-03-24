@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiroFish Frontier Checkpoints</title>
+  <style>
+    :root {
+      --bg: #f4f1e8;
+      --panel: #fffaf0;
+      --ink: #1f2a20;
+      --muted: #5d675f;
+      --accent: #0f766e;
+      --accent-2: #b45309;
+      --line: #d8d1c2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(15,118,110,0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(180,83,9,0.08), transparent 30%),
+        var(--bg);
+    }
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.1;
+    }
+    p { margin: 0; }
+    .hero {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255,250,240,0.96), rgba(247,242,230,0.96));
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(31,42,32,0.06);
+      margin-bottom: 24px;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 920px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .summary-grid, .checkpoint-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .summary-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin: 24px 0;
+    }
+    .checkpoint-grid {
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 14px 30px rgba(31,42,32,0.05);
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .metric {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .metric-label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .checkpoint-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .tag {
+      border: 1px solid rgba(15,118,110,0.25);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      white-space: nowrap;
+      background: rgba(15,118,110,0.07);
+    }
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .leaders {
+      margin-top: 14px;
+      display: grid;
+      gap: 10px;
+    }
+    .leader-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(216,209,194,0.7);
+      font-size: 14px;
+    }
+    .leader-row strong {
+      display: block;
+      font-size: 15px;
+    }
+    .metric-pill {
+      color: var(--accent-2);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .list {
+      margin-top: 16px;
+      display: grid;
+      gap: 8px;
+    }
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed var(--line);
+      font-size: 14px;
+    }
+    .list-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+    .status {
+      margin-top: 24px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent);
+      background: rgba(15,118,110,0.08);
+      color: var(--muted);
+      border-radius: 12px;
+      font-size: 14px;
+    }
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.95em;
+    }
+    @media (max-width: 720px) {
+      .checkpoint-grid { grid-template-columns: 1fr; }
+      .checkpoint-head, .leader-row, .list-item { display: block; }
+      .tag, .metric-pill { margin-top: 8px; display: inline-block; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <span class="eyebrow">MiroFish Frontier</span>
+      <h1>Current Agent-Chosen Domain Chips</h1>
+      <p>
+        This page compares the current tractable frontier checkpoints so you can see which domain chips
+        are actually surviving the simulator right now. It uses the saved MiroFish readouts, not raw intake.
+      </p>
+    </section>
+
+    <section class="summary-grid" id="summary"></section>
+    <section class="checkpoint-grid" id="checkpoints"></section>
+
+    <div class="status">
+      Current best quality checkpoint: <code>tranche_90_deeper</code>.
+      Current best breadth checkpoint: <code>tranche_180_deeper</code>.
+      If a chip appears across both, it is stronger than a one-off winner.
+    </div>
+  </div>
+
+  <script>
+    const checkpointDefs = [
+      {
+        key: "tranche_90_deeper",
+        title: "Deeper 90",
+        note: "Best benchmark-floor checkpoint",
+        path: "./MIROFISH_FRONTIER_READOUT_TRANCHE_90_DEEPER_2026-03-24.json"
+      },
+      {
+        key: "tranche_180_medium",
+        title: "Medium 180",
+        note: "Broader but weaker checkpoint",
+        path: "./MIROFISH_FRONTIER_READOUT_TRANCHE_180_MEDIUM_2026-03-24.json"
+      },
+      {
+        key: "tranche_180_deeper",
+        title: "Deeper 180",
+        note: "Best breadth checkpoint",
+        path: "./MIROFISH_FRONTIER_READOUT_TRANCHE_180_DEEPER_2026-03-25.json"
+      }
+    ];
+
+    const pct = (value) => `${(Number(value || 0) * 100).toFixed(2)}%`;
+
+    function leaderRow(label, row, metricLabel, metricValue) {
+      if (!row) return "";
+      return `
+        <div class="leader-row">
+          <div>
+            <div class="muted">${label}</div>
+            <strong>${row.domain_id}</strong>
+          </div>
+          <div class="metric-pill">${metricLabel}: ${metricValue}</div>
+        </div>
+      `;
+    }
+
+    async function loadCheckpoint(def) {
+      const response = await fetch(def.path);
+      if (!response.ok) throw new Error(`Failed to load ${def.path}`);
+      const data = await response.json();
+      return { ...def, data };
+    }
+
+    function renderSummary(checkpoints) {
+      const summary = document.getElementById("summary");
+      const bestQuality = checkpoints.find(item => item.key === "tranche_90_deeper");
+      const bestBreadth = checkpoints.find(item => item.key === "tranche_180_deeper");
+      const repeated = new Set();
+
+      const topsByCheckpoint = checkpoints.map(item =>
+        item.data.top_domains_overall.slice(0, 10).map(row => row.domain_id)
+      );
+      topsByCheckpoint.forEach((ids, idx) => {
+        ids.forEach(id => {
+          const appearsElsewhere = topsByCheckpoint.some((other, otherIdx) => otherIdx !== idx && other.includes(id));
+          if (appearsElsewhere) repeated.add(id);
+        });
+      });
+
+      summary.innerHTML = `
+        <div class="card">
+          <span class="eyebrow">Best Quality</span>
+          <div class="metric">${bestQuality.data.top_domains_overall[0].domain_id}</div>
+          <div class="metric-label">Top ensemble ${pct(bestQuality.data.top_domains_overall[0].mean_adoption)}</div>
+        </div>
+        <div class="card">
+          <span class="eyebrow">Best Breadth</span>
+          <div class="metric">${bestBreadth.data.top_domains_overall[0].domain_id}</div>
+          <div class="metric-label">Top ensemble ${pct(bestBreadth.data.top_domains_overall[0].mean_adoption)}</div>
+        </div>
+        <div class="card">
+          <span class="eyebrow">Repeated Winners</span>
+          <div class="metric">${repeated.size}</div>
+          <div class="metric-label">chips appearing across checkpoints</div>
+        </div>
+        <div class="card">
+          <span class="eyebrow">Strongest Choice</span>
+          <div class="metric">${bestBreadth.data.top_choice_domains[0].domain_id}</div>
+          <div class="metric-label">Choice ${pct(bestBreadth.data.top_choice_domains[0].agent_choice_signal)}</div>
+        </div>
+      `;
+    }
+
+    function renderCheckpoint(item) {
+      const root = document.getElementById("checkpoints");
+      const data = item.data;
+      const top = data.top_domains_overall[0];
+      const choice = data.top_choice_domains[0];
+      const above = data.above_benchmark_domains.slice(0, 5);
+      const watch = data.watchlist_domains.slice(0, 8);
+
+      const block = document.createElement("section");
+      block.className = "card";
+      block.innerHTML = `
+        <div class="checkpoint-head">
+          <div>
+            <span class="eyebrow">${item.title}</span>
+            <h2>${item.note}</h2>
+            <p class="muted">
+              Domains: ${data.meta.domain_count} • Rounds: ${data.meta.rounds} • Ensemble runs: ${data.meta.ensemble_runs} •
+              Benchmark median: ${pct(data.meta.benchmark_median_adoption)}
+            </p>
+          </div>
+          <div class="tag">${item.key}</div>
+        </div>
+
+        <div class="leaders">
+          ${leaderRow("Overall leader", top, "Ensemble", pct(top?.mean_adoption))}
+          ${leaderRow("Choice leader", choice, "Choice", pct(choice?.agent_choice_signal))}
+          ${leaderRow("Retained leader", { domain_id: data.top_line.top_final_adoption_domain }, "Adoption", pct(data.top_line.top_final_adoption))}
+        </div>
+
+        <h3 style="margin-top:16px;">Top Overall</h3>
+        <div class="list">
+          ${data.top_domains_overall.slice(0, 8).map((row, idx) => `
+            <div class="list-item">
+              <div>${idx + 1}. <strong>${row.domain_id}</strong></div>
+              <div class="metric-pill">${pct(row.mean_adoption)}</div>
+            </div>
+          `).join("")}
+        </div>
+
+        <h3 style="margin-top:16px;">Above Benchmark</h3>
+        <div class="list">
+          ${above.length ? above.map((row, idx) => `
+            <div class="list-item">
+              <div>${idx + 1}. <strong>${row.domain_id}</strong></div>
+              <div class="metric-pill">${pct(row.mean_adoption)}</div>
+            </div>
+          `).join("") : `<div class="muted">No above-benchmark rows in this checkpoint.</div>`}
+        </div>
+
+        <h3 style="margin-top:16px;">Watchlist</h3>
+        <div class="list">
+          ${watch.map((row, idx) => `
+            <div class="list-item">
+              <div>${idx + 1}. <strong>${row.domain_id}</strong></div>
+              <div class="metric-pill">choice ${pct(row.agent_choice_signal)}</div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+      root.appendChild(block);
+    }
+
+    async function main() {
+      const checkpoints = await Promise.all(checkpointDefs.map(loadCheckpoint));
+      renderSummary(checkpoints);
+      checkpoints.forEach(renderCheckpoint);
+    }
+
+    main().catch((error) => {
+      document.getElementById("checkpoints").innerHTML = `
+        <div class="card">
+          <h2>Load Failed</h2>
+          <p class="muted">${error.message}</p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

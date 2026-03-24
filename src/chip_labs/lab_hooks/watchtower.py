@@ -31,6 +31,9 @@ def generate_watchtower_pages(mutations: dict[str, str],
     # Always generate: MiroFish Portfolio
     pages.append(_mirofish_portfolio_page(now))
 
+    # Always generate: MiroFish Frontier
+    pages.append(_mirofish_frontier_page(now))
+
     # Conditional: Agent Team Status
     pages.append(_agent_team_page(now, mutations))
 
@@ -84,6 +87,7 @@ The recursive improvement engine for the Spark domain chip ecosystem.
 
 - [[Portfolio Dashboard]]
 - [[MiroFish Portfolio]]
+- [[MiroFish Frontier]]
 - [[Agent Team Status]]
 - [[Graduation Pipeline]]
 - [[Trend Predictions]]
@@ -131,6 +135,7 @@ _Updated each watchtower pass. Track portfolio average over time._
 
 - [[Lab Home]]
 - [[MiroFish Portfolio]]
+- [[MiroFish Frontier]]
 - [[Trend Predictions]]
 """
     return {"path": "Portfolio Dashboard.md", "content": content}
@@ -158,6 +163,7 @@ The page below is sourced from the latest saved MiroFish portfolio export artifa
 
 - [[Lab Home]]
 - [[Portfolio Dashboard]]
+- [[MiroFish Frontier]]
 - [[Trend Predictions]]
 """
         return {"path": "MiroFish Portfolio.md", "content": content}
@@ -185,6 +191,7 @@ No saved markdown export was found, so this page was rendered directly from the 
 
 - [[Lab Home]]
 - [[Portfolio Dashboard]]
+- [[MiroFish Frontier]]
 - [[Trend Predictions]]
 """
         return {"path": "MiroFish Portfolio.md", "content": content}
@@ -205,9 +212,97 @@ No saved MiroFish portfolio export or readout artifact was found under `research
 
 - [[Lab Home]]
 - [[Portfolio Dashboard]]
+- [[MiroFish Frontier]]
 - [[Trend Predictions]]
 """
     return {"path": "MiroFish Portfolio.md", "content": content}
+
+
+def _mirofish_frontier_page(timestamp: str) -> dict[str, Any]:
+    """Generate the current MiroFish frontier checkpoint page."""
+    export_path = _latest_meta_file("MIROFISH_FRONTIER_EXPORT_*.md")
+    readout_path = _latest_meta_file("MIROFISH_FRONTIER_READOUT_*.json")
+    compare_path = _latest_meta_file("MIROFISH_FRONTIER_CHECKPOINTS_*.html")
+
+    compare_line = (
+        f"> Local comparison page: `{compare_path.relative_to(_repo_root())}`"
+        if compare_path is not None
+        else "> Local comparison page: not generated yet"
+    )
+
+    if export_path is not None:
+        export_body = export_path.read_text(encoding="utf-8").strip()
+        content = f"""# MiroFish Frontier
+
+> Last updated: {timestamp}
+> Canonical export: `{export_path.relative_to(_repo_root())}`
+{compare_line}
+
+## Current Frontier Checkpoint
+
+The page below is sourced from the latest saved MiroFish frontier export artifact.
+
+{export_body}
+
+## Links
+
+- [[Lab Home]]
+- [[Portfolio Dashboard]]
+- [[MiroFish Portfolio]]
+- [[Trend Predictions]]
+"""
+        return {"path": "MiroFish Frontier.md", "content": content}
+
+    if readout_path is not None:
+        from ..mirofish.hybrid import format_frontier_readout_markdown
+
+        readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        export_body = format_frontier_readout_markdown(
+            readout_packet,
+            title="MiroFish Frontier Readout",
+        )
+        content = f"""# MiroFish Frontier
+
+> Last updated: {timestamp}
+> Canonical readout: `{readout_path.relative_to(_repo_root())}`
+{compare_line}
+
+## Current Frontier Checkpoint
+
+No saved markdown export was found, so this page was rendered directly from the latest frontier readout packet.
+
+{export_body}
+
+## Links
+
+- [[Lab Home]]
+- [[Portfolio Dashboard]]
+- [[MiroFish Portfolio]]
+- [[Trend Predictions]]
+"""
+        return {"path": "MiroFish Frontier.md", "content": content}
+
+    content = f"""# MiroFish Frontier
+
+> Last updated: {timestamp}
+{compare_line}
+
+## Current Frontier Checkpoint
+
+No saved MiroFish frontier export or readout artifact was found under `research/meta/`.
+
+## Next Step
+
+- Generate a saved frontier readout or export artifact before treating this page as the canonical MiroFish frontier surface.
+
+## Links
+
+- [[Lab Home]]
+- [[Portfolio Dashboard]]
+- [[MiroFish Portfolio]]
+- [[Trend Predictions]]
+"""
+    return {"path": "MiroFish Frontier.md", "content": content}
 
 
 def _agent_team_page(timestamp: str, mutations: dict[str, str]) -> dict[str, Any]:
@@ -305,6 +400,7 @@ def _trend_predictions_page(timestamp: str) -> dict[str, Any]:
 - [[Lab Home]]
 - [[Portfolio Dashboard]]
 - [[MiroFish Portfolio]]
+- [[MiroFish Frontier]]
 """
     return {"path": "Trend Predictions.md", "content": content}
 
@@ -315,9 +411,9 @@ def _repo_root() -> Path:
 
 
 def _latest_meta_file(pattern: str) -> Path | None:
-    """Return the most recent matching research/meta artifact by name."""
+    """Return the most recent matching research/meta artifact by modification time."""
     research_meta = _repo_root() / "research" / "meta"
-    matches = sorted(research_meta.glob(pattern))
+    matches = list(research_meta.glob(pattern))
     if not matches:
         return None
-    return matches[-1]
+    return max(matches, key=lambda path: path.stat().st_mtime_ns)

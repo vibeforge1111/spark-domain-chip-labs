@@ -1,6 +1,6 @@
 # Spark Domain Chip Labs
 
-> Last updated: 2026-03-24 16:56 UTC
+> Last updated: 2026-03-24 20:11 UTC
 
 ## Mission
 
@@ -35,6 +35,7 @@ The recursive improvement engine for the Spark domain chip ecosystem.
 
 - [[Portfolio Dashboard]]
 - [[MiroFish Portfolio]]
+- [[MiroFish Frontier]]
 - [[Agent Team Status]]
 - [[Graduation Pipeline]]
 - [[Trend Predictions]]
