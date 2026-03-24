@@ -412,3 +412,11 @@ MiroFish discovery frontier initial fill:
 - push the first frontier seed pool into the live `1000`-agent materialized cluster directory
 - fill `57` agent slots across `11` diverse clusters instead of staying in a zero-state scaffold
 - rebuild the combined cluster bundle and regenerate the frontier progress surface at `57 / 1000`
+
+## Batch 47
+
+MiroFish discovery frontier phase 1 empty wedge activation:
+
+- activate the `7` wedges that were still empty after the initial fill
+- add first seed candidates for education, health, dating, ecommerce, local, finance, and developer-distribution clusters
+- move the live frontier from `57 / 1000` to `78 / 1000` with all `18` clusters now represented

@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "workout-streak-proof-loop",
+          "label": "Workout Streak Proof Loop",
+          "description": "A recurring accountability system that turns workouts into visible streaks, evidence, and next-session preparation.",
+          "specialization_surface": "running the repeated workout streak proof loop workflow inside the health / fitness / self systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Workout Streak Proof Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next workout streak proof loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fitness",
+            "accountability",
+            "streaks",
+            "self-improvement"
+          ],
+          "evidence_summary": "Fitness adherence improves when people can see and share repeated proof that they are still in motion.",
+          "adjacent_domains": [
+            "fitness-coach-ai",
+            "habit-coach-ai",
+            "meal-plan-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fitness adherence improves when people can see and share repeated proof that they are still in motion."
+        }
+      ]
     },
     {
       "agent_id": "agent-752",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "meal-prep-adherence-loop",
+          "label": "Meal Prep Adherence Loop",
+          "description": "A loop for planning, prepping, and reviewing meals around what people actually stick to rather than idealized plans.",
+          "specialization_surface": "running the repeated meal prep adherence loop workflow inside the health / fitness / self systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Meal Prep Adherence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next meal prep adherence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "health",
+            "nutrition",
+            "meal-prep",
+            "adherence"
+          ],
+          "evidence_summary": "Nutrition plans fail less from knowledge gaps than from the lack of a repeatable adherence loop that fits real life.",
+          "adjacent_domains": [
+            "fitness-coach-ai",
+            "habit-coach-ai",
+            "meal-plan-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Nutrition plans fail less from knowledge gaps than from the lack of a repeatable adherence loop that fits real life."
+        }
+      ]
     },
     {
       "agent_id": "agent-753",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "sleep-recovery-feedback-loop",
+          "label": "Sleep Recovery Feedback Loop",
+          "description": "A workflow for adjusting bedtime, training load, and daily intensity based on repeated recovery signals.",
+          "specialization_surface": "running the repeated sleep recovery feedback loop workflow inside the health / fitness / self systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Sleep Recovery Feedback Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next sleep recovery feedback loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "sleep",
+            "recovery",
+            "health",
+            "feedback"
+          ],
+          "evidence_summary": "People increasingly treat recovery as an operating metric, but most still lack a lightweight loop that turns sleep data into action.",
+          "adjacent_domains": [
+            "fitness-coach-ai",
+            "habit-coach-ai",
+            "meal-plan-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "People increasingly treat recovery as an operating metric, but most still lack a lightweight loop that turns sleep data into action."
+        }
+      ]
     },
     {
       "agent_id": "agent-754",

@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-to-launch-loop",
+          "label": "Changelog to Launch Loop",
+          "description": "A developer workflow for converting product changes into repeated launch posts, release notes, and distribution assets.",
+          "specialization_surface": "running the repeated changelog to launch loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog to Launch Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog to launch loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developers",
+            "launch",
+            "distribution",
+            "changelog"
+          ],
+          "evidence_summary": "Many dev tools ship constantly but fail to translate that shipping energy into visible growth moments.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Many dev tools ship constantly but fail to translate that shipping energy into visible growth moments."
+        }
+      ]
     },
     {
       "agent_id": "agent-972",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "repo-proof-loop",
+          "label": "Repo Proof Loop",
+          "description": "A system for turning commits, stars, issues, and merged work into social proof that attracts more users and contributors.",
+          "specialization_surface": "running the repeated repo proof loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Repo Proof Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next repo proof loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developers",
+            "github",
+            "social-proof",
+            "open-source"
+          ],
+          "evidence_summary": "Open-source growth often depends on making momentum visible, not just improving the code privately.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Open-source growth often depends on making momentum visible, not just improving the code privately."
+        }
+      ]
     },
     {
       "agent_id": "agent-973",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "devrel-reply-loop",
+          "label": "DevRel Reply Loop",
+          "description": "A repeated response workflow for answering developer questions in public and turning those replies into durable distribution.",
+          "specialization_surface": "running the repeated devrel reply loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make DevRel Reply Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next devrel reply loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developers",
+            "devrel",
+            "community",
+            "distribution"
+          ],
+          "evidence_summary": "Developer trust compounds when teams answer questions publicly and consistently, but most replies disappear into the feed.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer trust compounds when teams answer questions publicly and consistently, but most replies disappear into the feed."
+        }
+      ]
     },
     {
       "agent_id": "agent-974",

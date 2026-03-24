@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-allocation-loop",
+          "label": "Paycheck Allocation Loop",
+          "description": "A personal finance workflow that routes each paycheck into repeated allocations across bills, saving, and conviction bets.",
+          "specialization_surface": "running the repeated paycheck allocation loop workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Allocation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck allocation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance",
+            "paychecks",
+            "allocation",
+            "consumer"
+          ],
+          "evidence_summary": "A lot of money management pain happens right when income lands and people have to re-decide the split every time.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "A lot of money management pain happens right when income lands and people have to re-decide the split every time."
+        }
+      ]
     },
     {
       "agent_id": "agent-942",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "subscription-prune-loop",
+          "label": "Subscription Prune Loop",
+          "description": "A recurring utility for surfacing stale subscriptions, low-value renewals, and easy monthly savings.",
+          "specialization_surface": "running the repeated subscription prune loop workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Subscription Prune Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next subscription prune loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance",
+            "subscriptions",
+            "savings",
+            "consumer"
+          ],
+          "evidence_summary": "People repeatedly leak money through neglected recurring charges that are annoying enough to ignore but frequent enough to matter.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "People repeatedly leak money through neglected recurring charges that are annoying enough to ignore but frequent enough to matter."
+        }
+      ]
     },
     {
       "agent_id": "agent-943",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "spending-pattern-reset-loop",
+          "label": "Spending Pattern Reset Loop",
+          "description": "A feedback loop for identifying spending drift and resetting behavior before it compounds into financial regret.",
+          "specialization_surface": "running the repeated spending pattern reset loop workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Spending Pattern Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next spending pattern reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance",
+            "spending",
+            "behavior",
+            "feedback"
+          ],
+          "evidence_summary": "Consumers usually notice bad money habits late, after they have already become normalized.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers usually notice bad money habits late, after they have already become normalized."
+        }
+      ]
     },
     {
       "agent_id": "agent-944",

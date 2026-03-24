@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "language-output-drill-loop",
+          "label": "Language Output Drill Loop",
+          "description": "A recurring practice loop that pushes language learners to produce spoken or written output in short, escalating drills.",
+          "specialization_surface": "running the repeated language output drill loop workflow inside the education / skill acceleration wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Language Output Drill Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next language output drill loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "education",
+            "language",
+            "practice",
+            "skill-building"
+          ],
+          "evidence_summary": "People improve languages faster when they repeatedly output under pressure, but most apps still overweight passive review.",
+          "adjacent_domains": [
+            "language-tutor-ai",
+            "interview-prep-ai",
+            "career-pivot-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "People improve languages faster when they repeatedly output under pressure, but most apps still overweight passive review."
+        }
+      ]
     },
     {
       "agent_id": "agent-712",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "tutorial-sprint-lab",
+          "label": "Tutorial Sprint Lab",
+          "description": "A workflow for compressing a long tutorial into short build-and-test sprints that preserve momentum and visible skill gain.",
+          "specialization_surface": "running the repeated tutorial sprint lab workflow inside the education / skill acceleration wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Tutorial Sprint Lab outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next tutorial sprint lab move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "education",
+            "tutorials",
+            "builders",
+            "acceleration"
+          ],
+          "evidence_summary": "A lot of ambitious learners buy courses or bookmark tutorials but stall because the path from watching to doing is too loose.",
+          "adjacent_domains": [
+            "language-tutor-ai",
+            "interview-prep-ai",
+            "career-pivot-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "A lot of ambitious learners buy courses or bookmark tutorials but stall because the path from watching to doing is too loose."
+        }
+      ]
     },
     {
       "agent_id": "agent-713",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "interview-story-rehearsal-loop",
+          "label": "Interview Story Rehearsal Loop",
+          "description": "A system for repeatedly practicing achievement stories, behavioral answers, and delivery patterns until they feel sharp and natural.",
+          "specialization_surface": "running the repeated interview story rehearsal loop workflow inside the education / skill acceleration wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Interview Story Rehearsal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next interview story rehearsal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career",
+            "education",
+            "interviews",
+            "practice"
+          ],
+          "evidence_summary": "Interview performance often improves through repeated narrative rehearsal, not by collecting more generic advice.",
+          "adjacent_domains": [
+            "language-tutor-ai",
+            "interview-prep-ai",
+            "career-pivot-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Interview performance often improves through repeated narrative rehearsal, not by collecting more generic advice."
+        }
+      ]
     },
     {
       "agent_id": "agent-714",

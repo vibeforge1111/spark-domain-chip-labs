@@ -24136,7 +24136,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "language-output-drill-loop",
+              "label": "Language Output Drill Loop",
+              "description": "A recurring practice loop that pushes language learners to produce spoken or written output in short, escalating drills.",
+              "specialization_surface": "running the repeated language output drill loop workflow inside the education / skill acceleration wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Language Output Drill Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next language output drill loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "education",
+                "language",
+                "practice",
+                "skill-building"
+              ],
+              "evidence_summary": "People improve languages faster when they repeatedly output under pressure, but most apps still overweight passive review.",
+              "adjacent_domains": [
+                "language-tutor-ai",
+                "interview-prep-ai",
+                "career-pivot-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "People improve languages faster when they repeatedly output under pressure, but most apps still overweight passive review."
+            }
+          ]
         },
         {
           "agent_id": "agent-712",
@@ -24167,7 +24192,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "tutorial-sprint-lab",
+              "label": "Tutorial Sprint Lab",
+              "description": "A workflow for compressing a long tutorial into short build-and-test sprints that preserve momentum and visible skill gain.",
+              "specialization_surface": "running the repeated tutorial sprint lab workflow inside the education / skill acceleration wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Tutorial Sprint Lab outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next tutorial sprint lab move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "education",
+                "tutorials",
+                "builders",
+                "acceleration"
+              ],
+              "evidence_summary": "A lot of ambitious learners buy courses or bookmark tutorials but stall because the path from watching to doing is too loose.",
+              "adjacent_domains": [
+                "language-tutor-ai",
+                "interview-prep-ai",
+                "career-pivot-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "A lot of ambitious learners buy courses or bookmark tutorials but stall because the path from watching to doing is too loose."
+            }
+          ]
         },
         {
           "agent_id": "agent-713",
@@ -24198,7 +24248,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "interview-story-rehearsal-loop",
+              "label": "Interview Story Rehearsal Loop",
+              "description": "A system for repeatedly practicing achievement stories, behavioral answers, and delivery patterns until they feel sharp and natural.",
+              "specialization_surface": "running the repeated interview story rehearsal loop workflow inside the education / skill acceleration wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Interview Story Rehearsal Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next interview story rehearsal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "career",
+                "education",
+                "interviews",
+                "practice"
+              ],
+              "evidence_summary": "Interview performance often improves through repeated narrative rehearsal, not by collecting more generic advice.",
+              "adjacent_domains": [
+                "language-tutor-ai",
+                "interview-prep-ai",
+                "career-pivot-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Interview performance often improves through repeated narrative rehearsal, not by collecting more generic advice."
+            }
+          ]
         },
         {
           "agent_id": "agent-714",
@@ -25419,7 +25494,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "workout-streak-proof-loop",
+              "label": "Workout Streak Proof Loop",
+              "description": "A recurring accountability system that turns workouts into visible streaks, evidence, and next-session preparation.",
+              "specialization_surface": "running the repeated workout streak proof loop workflow inside the health / fitness / self systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Workout Streak Proof Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next workout streak proof loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "fitness",
+                "accountability",
+                "streaks",
+                "self-improvement"
+              ],
+              "evidence_summary": "Fitness adherence improves when people can see and share repeated proof that they are still in motion.",
+              "adjacent_domains": [
+                "fitness-coach-ai",
+                "habit-coach-ai",
+                "meal-plan-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Fitness adherence improves when people can see and share repeated proof that they are still in motion."
+            }
+          ]
         },
         {
           "agent_id": "agent-752",
@@ -25450,7 +25550,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "meal-prep-adherence-loop",
+              "label": "Meal Prep Adherence Loop",
+              "description": "A loop for planning, prepping, and reviewing meals around what people actually stick to rather than idealized plans.",
+              "specialization_surface": "running the repeated meal prep adherence loop workflow inside the health / fitness / self systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Meal Prep Adherence Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next meal prep adherence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "health",
+                "nutrition",
+                "meal-prep",
+                "adherence"
+              ],
+              "evidence_summary": "Nutrition plans fail less from knowledge gaps than from the lack of a repeatable adherence loop that fits real life.",
+              "adjacent_domains": [
+                "fitness-coach-ai",
+                "habit-coach-ai",
+                "meal-plan-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Nutrition plans fail less from knowledge gaps than from the lack of a repeatable adherence loop that fits real life."
+            }
+          ]
         },
         {
           "agent_id": "agent-753",
@@ -25481,7 +25606,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "sleep-recovery-feedback-loop",
+              "label": "Sleep Recovery Feedback Loop",
+              "description": "A workflow for adjusting bedtime, training load, and daily intensity based on repeated recovery signals.",
+              "specialization_surface": "running the repeated sleep recovery feedback loop workflow inside the health / fitness / self systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Sleep Recovery Feedback Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next sleep recovery feedback loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "sleep",
+                "recovery",
+                "health",
+                "feedback"
+              ],
+              "evidence_summary": "People increasingly treat recovery as an operating metric, but most still lack a lightweight loop that turns sleep data into action.",
+              "adjacent_domains": [
+                "fitness-coach-ai",
+                "habit-coach-ai",
+                "meal-plan-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "People increasingly treat recovery as an operating metric, but most still lack a lightweight loop that turns sleep data into action."
+            }
+          ]
         },
         {
           "agent_id": "agent-754",
@@ -26702,7 +26852,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "opener-iteration-loop",
+              "label": "Opener Iteration Loop",
+              "description": "A dating workflow for testing message openers, reviewing response patterns, and refining the next wave quickly.",
+              "specialization_surface": "running the repeated opener iteration loop workflow inside the dating / social signal wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Iteration Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next opener iteration loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "dating",
+                "messaging",
+                "iteration",
+                "social"
+              ],
+              "evidence_summary": "People keep trying new openers in dating apps, but almost never turn that into a real feedback loop.",
+              "adjacent_domains": [
+                "dating-message-ai",
+                "social-confidence-ai",
+                "personal-brand-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "People keep trying new openers in dating apps, but almost never turn that into a real feedback loop."
+            }
+          ]
         },
         {
           "agent_id": "agent-792",
@@ -26733,7 +26908,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "date-debrief-loop",
+              "label": "Date Debrief Loop",
+              "description": "A repeated reflection and follow-up loop for learning from dates, spotting patterns, and improving future conversations.",
+              "specialization_surface": "running the repeated date debrief loop workflow inside the dating / social signal wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Date Debrief Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next date debrief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "dating",
+                "reflection",
+                "follow-up",
+                "self-improvement"
+              ],
+              "evidence_summary": "A lot of social progress comes from honest debriefs after interactions, but most people do not preserve those lessons.",
+              "adjacent_domains": [
+                "dating-message-ai",
+                "social-confidence-ai",
+                "personal-brand-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "A lot of social progress comes from honest debriefs after interactions, but most people do not preserve those lessons."
+            }
+          ]
         },
         {
           "agent_id": "agent-793",
@@ -26764,7 +26964,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "profile-signal-refresh-loop",
+              "label": "Profile Signal Refresh Loop",
+              "description": "A system for updating profile photos, prompts, and social cues based on repeated response quality rather than guesswork.",
+              "specialization_surface": "running the repeated profile signal refresh loop workflow inside the dating / social signal wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Profile Signal Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next profile signal refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "dating",
+                "profile",
+                "signals",
+                "optimization"
+              ],
+              "evidence_summary": "Dating profiles function like signal surfaces, and small repeated improvements can materially change outcomes.",
+              "adjacent_domains": [
+                "dating-message-ai",
+                "social-confidence-ai",
+                "personal-brand-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Dating profiles function like signal surfaces, and small repeated improvements can materially change outcomes."
+            }
+          ]
         },
         {
           "agent_id": "agent-794",
@@ -27985,7 +28210,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "product-angle-test-loop",
+              "label": "Product Angle Test Loop",
+              "description": "A merchant workflow for repeatedly testing new product angles, hooks, and merchandising narratives against audience response.",
+              "specialization_surface": "running the repeated product angle test loop workflow inside the ecommerce / merchant growth wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Test Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next product angle test loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "ecommerce",
+                "angles",
+                "testing",
+                "growth"
+              ],
+              "evidence_summary": "Merchants often have enough products but not enough repeatable angle testing on what to say and emphasize.",
+              "adjacent_domains": [
+                "shopify-growth-ai",
+                "price-optimization-ai",
+                "ugc-ads-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Merchants often have enough products but not enough repeatable angle testing on what to say and emphasize."
+            }
+          ]
         },
         {
           "agent_id": "agent-832",
@@ -28016,7 +28266,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "creator-ugc-brief-loop",
+              "label": "Creator UGC Brief Loop",
+              "description": "A system for issuing, refining, and learning from repeated UGC creator briefs for ads and storefront growth.",
+              "specialization_surface": "running the repeated creator ugc brief loop workflow inside the ecommerce / merchant growth wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Creator UGC Brief Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next creator ugc brief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "ecommerce",
+                "ugc",
+                "creators",
+                "ads"
+              ],
+              "evidence_summary": "Merchant growth is increasingly tied to how quickly teams can produce and tune creator-style ad inputs.",
+              "adjacent_domains": [
+                "shopify-growth-ai",
+                "price-optimization-ai",
+                "ugc-ads-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Merchant growth is increasingly tied to how quickly teams can produce and tune creator-style ad inputs."
+            }
+          ]
         },
         {
           "agent_id": "agent-833",
@@ -28047,7 +28322,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "merch-drop-timing-loop",
+              "label": "Merch Drop Timing Loop",
+              "description": "A recurring workflow for planning merch drops around audience heat, inventory, and creator momentum.",
+              "specialization_surface": "running the repeated merch drop timing loop workflow inside the ecommerce / merchant growth wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Merch Drop Timing Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next merch drop timing loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "ecommerce",
+                "drops",
+                "timing",
+                "merch"
+              ],
+              "evidence_summary": "A lot of ecommerce upside depends on timing drops into the right audience moment, not just stocking more items.",
+              "adjacent_domains": [
+                "shopify-growth-ai",
+                "price-optimization-ai",
+                "ugc-ads-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "A lot of ecommerce upside depends on timing drops into the right audience moment, not just stocking more items."
+            }
+          ]
         },
         {
           "agent_id": "agent-834",
@@ -29268,7 +29568,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "city-weekend-stack-loop",
+              "label": "City Weekend Stack Loop",
+              "description": "A local planning loop for assembling repeatable weekend combinations of food, events, and social spots.",
+              "specialization_surface": "running the repeated city weekend stack loop workflow inside the local discovery / experiences wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make City Weekend Stack Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next city weekend stack loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "local",
+                "weekends",
+                "planning",
+                "consumer"
+              ],
+              "evidence_summary": "People keep asking the same question every weekend: what is the best stack of things to do without wasting time deciding.",
+              "adjacent_domains": [
+                "trip-planner-ai",
+                "local-deal-finder",
+                "restaurant-decider-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "People keep asking the same question every weekend: what is the best stack of things to do without wasting time deciding."
+            }
+          ]
         },
         {
           "agent_id": "agent-872",
@@ -29299,7 +29624,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "restaurant-veto-resolution-loop",
+              "label": "Restaurant Veto Resolution Loop",
+              "description": "A utility for resolving group restaurant indecision through repeated preference and veto patterns.",
+              "specialization_surface": "running the repeated restaurant veto resolution loop workflow inside the local discovery / experiences wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Restaurant Veto Resolution Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next restaurant veto resolution loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "local",
+                "restaurants",
+                "groups",
+                "consumer"
+              ],
+              "evidence_summary": "Group dining decisions are a recurring friction point that feels small but happens constantly.",
+              "adjacent_domains": [
+                "trip-planner-ai",
+                "local-deal-finder",
+                "restaurant-decider-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Group dining decisions are a recurring friction point that feels small but happens constantly."
+            }
+          ]
         },
         {
           "agent_id": "agent-873",
@@ -29330,7 +29680,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "live-event-discovery-loop",
+              "label": "Live Event Discovery Loop",
+              "description": "A system for surfacing local live events based on repeated taste patterns, mood, and social context.",
+              "specialization_surface": "running the repeated live event discovery loop workflow inside the local discovery / experiences wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Live Event Discovery Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next live event discovery loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "local",
+                "events",
+                "discovery",
+                "taste"
+              ],
+              "evidence_summary": "People want better local discovery, but the real need is a repeated taste-aware event loop rather than a generic listings feed.",
+              "adjacent_domains": [
+                "trip-planner-ai",
+                "local-deal-finder",
+                "restaurant-decider-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "People want better local discovery, but the real need is a repeated taste-aware event loop rather than a generic listings feed."
+            }
+          ]
         },
         {
           "agent_id": "agent-874",
@@ -31549,7 +31924,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "paycheck-allocation-loop",
+              "label": "Paycheck Allocation Loop",
+              "description": "A personal finance workflow that routes each paycheck into repeated allocations across bills, saving, and conviction bets.",
+              "specialization_surface": "running the repeated paycheck allocation loop workflow inside the finance / money ops wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Allocation Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next paycheck allocation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "finance",
+                "paychecks",
+                "allocation",
+                "consumer"
+              ],
+              "evidence_summary": "A lot of money management pain happens right when income lands and people have to re-decide the split every time.",
+              "adjacent_domains": [
+                "budgeting-ai",
+                "side-hustle-ai",
+                "money-coach-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "A lot of money management pain happens right when income lands and people have to re-decide the split every time."
+            }
+          ]
         },
         {
           "agent_id": "agent-942",
@@ -31580,7 +31980,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "subscription-prune-loop",
+              "label": "Subscription Prune Loop",
+              "description": "A recurring utility for surfacing stale subscriptions, low-value renewals, and easy monthly savings.",
+              "specialization_surface": "running the repeated subscription prune loop workflow inside the finance / money ops wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Subscription Prune Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next subscription prune loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "finance",
+                "subscriptions",
+                "savings",
+                "consumer"
+              ],
+              "evidence_summary": "People repeatedly leak money through neglected recurring charges that are annoying enough to ignore but frequent enough to matter.",
+              "adjacent_domains": [
+                "budgeting-ai",
+                "side-hustle-ai",
+                "money-coach-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "People repeatedly leak money through neglected recurring charges that are annoying enough to ignore but frequent enough to matter."
+            }
+          ]
         },
         {
           "agent_id": "agent-943",
@@ -31611,7 +32036,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "spending-pattern-reset-loop",
+              "label": "Spending Pattern Reset Loop",
+              "description": "A feedback loop for identifying spending drift and resetting behavior before it compounds into financial regret.",
+              "specialization_surface": "running the repeated spending pattern reset loop workflow inside the finance / money ops wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Spending Pattern Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next spending pattern reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "finance",
+                "spending",
+                "behavior",
+                "feedback"
+              ],
+              "evidence_summary": "Consumers usually notice bad money habits late, after they have already become normalized.",
+              "adjacent_domains": [
+                "budgeting-ai",
+                "side-hustle-ai",
+                "money-coach-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Consumers usually notice bad money habits late, after they have already become normalized."
+            }
+          ]
         },
         {
           "agent_id": "agent-944",
@@ -32522,7 +32972,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "changelog-to-launch-loop",
+              "label": "Changelog to Launch Loop",
+              "description": "A developer workflow for converting product changes into repeated launch posts, release notes, and distribution assets.",
+              "specialization_surface": "running the repeated changelog to launch loop workflow inside the developer distribution tools wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog to Launch Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next changelog to launch loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "developers",
+                "launch",
+                "distribution",
+                "changelog"
+              ],
+              "evidence_summary": "Many dev tools ship constantly but fail to translate that shipping energy into visible growth moments.",
+              "adjacent_domains": [
+                "github-growth-ai",
+                "devrel-copilot",
+                "open-source-launch-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Many dev tools ship constantly but fail to translate that shipping energy into visible growth moments."
+            }
+          ]
         },
         {
           "agent_id": "agent-972",
@@ -32553,7 +33028,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "repo-proof-loop",
+              "label": "Repo Proof Loop",
+              "description": "A system for turning commits, stars, issues, and merged work into social proof that attracts more users and contributors.",
+              "specialization_surface": "running the repeated repo proof loop workflow inside the developer distribution tools wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Repo Proof Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next repo proof loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "developers",
+                "github",
+                "social-proof",
+                "open-source"
+              ],
+              "evidence_summary": "Open-source growth often depends on making momentum visible, not just improving the code privately.",
+              "adjacent_domains": [
+                "github-growth-ai",
+                "devrel-copilot",
+                "open-source-launch-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Open-source growth often depends on making momentum visible, not just improving the code privately."
+            }
+          ]
         },
         {
           "agent_id": "agent-973",
@@ -32584,7 +33084,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "devrel-reply-loop",
+              "label": "DevRel Reply Loop",
+              "description": "A repeated response workflow for answering developer questions in public and turning those replies into durable distribution.",
+              "specialization_surface": "running the repeated devrel reply loop workflow inside the developer distribution tools wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make DevRel Reply Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next devrel reply loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "developers",
+                "devrel",
+                "community",
+                "distribution"
+              ],
+              "evidence_summary": "Developer trust compounds when teams answer questions publicly and consistently, but most replies disappear into the feed.",
+              "adjacent_domains": [
+                "github-growth-ai",
+                "devrel-copilot",
+                "open-source-launch-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Developer trust compounds when teams answer questions publicly and consistently, but most replies disappear into the feed."
+            }
+          ]
         },
         {
           "agent_id": "agent-974",

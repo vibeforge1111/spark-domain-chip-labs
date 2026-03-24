@@ -1873,3 +1873,43 @@ The broad frontier had a scaffold and seed groups, but the live materialized dir
 
 - This tranche prioritizes breadth of live intake over early recommendation selectivity.
 - Simulation remains intentionally deferred.
+
+## Tranche: MiroFish Discovery Frontier Phase 1 Empty Wedge Activation
+
+### Files
+
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/11_education-skill-acceleration.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/12_health-fitness-self-systems.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/13_dating-social-signal.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/14_ecommerce-merchant-growth.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/15_local-discovery-experiences.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/17_finance-money-ops.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/18_developer-distribution-tools.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_FRONTIER_1000_PHASE_1_EMPTY_WEDGE_ACTIVATION_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_frontier_phase_1_empty_wedge_activation.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+After the initial fill, the broad frontier still had several completely empty wedges. That left the intake surface biased toward the first interesting clusters rather than the full portfolio we want to test later.
+
+### What Changed
+
+- Activated `7` previously empty wedges with an initial seed tranche
+- Added education, health, dating, ecommerce, local, finance, and developer-distribution candidates
+- Regenerated the frontier bundle and progress surface to confirm the broader coverage
+- Moved the live frontier from `57 / 1000` to `78 / 1000`
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md --title "MiroFish Discovery Frontier 1000 Diverse Progress"`
+
+### Notes
+
+- All `18` frontier clusters now have at least one live candidate.
+- Simulation remains intentionally deferred.

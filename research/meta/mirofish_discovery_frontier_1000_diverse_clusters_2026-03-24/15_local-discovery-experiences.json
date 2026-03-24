@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "city-weekend-stack-loop",
+          "label": "City Weekend Stack Loop",
+          "description": "A local planning loop for assembling repeatable weekend combinations of food, events, and social spots.",
+          "specialization_surface": "running the repeated city weekend stack loop workflow inside the local discovery / experiences wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make City Weekend Stack Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next city weekend stack loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "local",
+            "weekends",
+            "planning",
+            "consumer"
+          ],
+          "evidence_summary": "People keep asking the same question every weekend: what is the best stack of things to do without wasting time deciding.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "local-deal-finder",
+            "restaurant-decider-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "People keep asking the same question every weekend: what is the best stack of things to do without wasting time deciding."
+        }
+      ]
     },
     {
       "agent_id": "agent-872",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "restaurant-veto-resolution-loop",
+          "label": "Restaurant Veto Resolution Loop",
+          "description": "A utility for resolving group restaurant indecision through repeated preference and veto patterns.",
+          "specialization_surface": "running the repeated restaurant veto resolution loop workflow inside the local discovery / experiences wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Restaurant Veto Resolution Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next restaurant veto resolution loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "local",
+            "restaurants",
+            "groups",
+            "consumer"
+          ],
+          "evidence_summary": "Group dining decisions are a recurring friction point that feels small but happens constantly.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "local-deal-finder",
+            "restaurant-decider-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Group dining decisions are a recurring friction point that feels small but happens constantly."
+        }
+      ]
     },
     {
       "agent_id": "agent-873",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "live-event-discovery-loop",
+          "label": "Live Event Discovery Loop",
+          "description": "A system for surfacing local live events based on repeated taste patterns, mood, and social context.",
+          "specialization_surface": "running the repeated live event discovery loop workflow inside the local discovery / experiences wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Live Event Discovery Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next live event discovery loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "local",
+            "events",
+            "discovery",
+            "taste"
+          ],
+          "evidence_summary": "People want better local discovery, but the real need is a repeated taste-aware event loop rather than a generic listings feed.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "local-deal-finder",
+            "restaurant-decider-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "People want better local discovery, but the real need is a repeated taste-aware event loop rather than a generic listings feed."
+        }
+      ]
     },
     {
       "agent_id": "agent-874",

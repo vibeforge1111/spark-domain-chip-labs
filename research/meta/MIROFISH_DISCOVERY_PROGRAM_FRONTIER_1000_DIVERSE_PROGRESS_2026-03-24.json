@@ -4,10 +4,10 @@
   "summary": {
     "cluster_count": 18,
     "total_agent_count": 1000,
-    "filled_agent_count": 57,
-    "empty_agent_count": 943,
-    "raw_candidate_count": 57,
-    "fill_rate": 0.057
+    "filled_agent_count": 78,
+    "empty_agent_count": 922,
+    "raw_candidate_count": 78,
+    "fill_rate": 0.078
   },
   "clusters": [
     {
@@ -104,45 +104,45 @@
       "cluster_id": "education-skill-acceleration",
       "cluster_label": "Education / Skill Acceleration",
       "target_agent_count": 40,
-      "filled_agent_count": 0,
-      "empty_agent_count": 40,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 37,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\11_education-skill-acceleration.json"
     },
     {
       "cluster_id": "health-fitness-self-systems",
       "cluster_label": "Health / Fitness / Self Systems",
       "target_agent_count": 40,
-      "filled_agent_count": 0,
-      "empty_agent_count": 40,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 37,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\12_health-fitness-self-systems.json"
     },
     {
       "cluster_id": "dating-social-signal",
       "cluster_label": "Dating / Social Signal",
       "target_agent_count": 40,
-      "filled_agent_count": 0,
-      "empty_agent_count": 40,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 37,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\13_dating-social-signal.json"
     },
     {
       "cluster_id": "ecommerce-merchant-growth",
       "cluster_label": "Ecommerce / Merchant Growth",
       "target_agent_count": 40,
-      "filled_agent_count": 0,
-      "empty_agent_count": 40,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 37,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\14_ecommerce-merchant-growth.json"
     },
     {
       "cluster_id": "local-discovery-experiences",
       "cluster_label": "Local Discovery / Experiences",
       "target_agent_count": 40,
-      "filled_agent_count": 0,
-      "empty_agent_count": 40,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 37,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\15_local-discovery-experiences.json"
     },
     {
@@ -158,18 +158,18 @@
       "cluster_id": "finance-money-ops",
       "cluster_label": "Finance / Money Ops",
       "target_agent_count": 30,
-      "filled_agent_count": 0,
-      "empty_agent_count": 30,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 27,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\17_finance-money-ops.json"
     },
     {
       "cluster_id": "developer-distribution-tools",
       "cluster_label": "Developer Distribution Tools",
       "target_agent_count": 30,
-      "filled_agent_count": 0,
-      "empty_agent_count": 30,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 27,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\18_developer-distribution-tools.json"
     }
   ],

@@ -2,9 +2,9 @@
 
 - Directory: `research\meta\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24`
 - Clusters: `18`
-- Filled agents: `57` / `1000`
-- Raw candidates: `57`
-- Fill rate: `5.70%`
+- Filled agents: `78` / `1000`
+- Raw candidates: `78`
+- Fill rate: `7.80%`
 
 ## Cluster Progress
 
@@ -18,14 +18,14 @@
 - `crypto-defi-trading`: 7 / 80 agents filled, 7 raw candidates
 - `x-native-persona-tools`: 3 / 50 agents filled, 3 raw candidates
 - `design-remix-aesthetics`: 2 / 40 agents filled, 2 raw candidates
-- `education-skill-acceleration`: 0 / 40 agents filled, 0 raw candidates
-- `health-fitness-self-systems`: 0 / 40 agents filled, 0 raw candidates
-- `dating-social-signal`: 0 / 40 agents filled, 0 raw candidates
-- `ecommerce-merchant-growth`: 0 / 40 agents filled, 0 raw candidates
-- `local-discovery-experiences`: 0 / 40 agents filled, 0 raw candidates
+- `education-skill-acceleration`: 3 / 40 agents filled, 3 raw candidates
+- `health-fitness-self-systems`: 3 / 40 agents filled, 3 raw candidates
+- `dating-social-signal`: 3 / 40 agents filled, 3 raw candidates
+- `ecommerce-merchant-growth`: 3 / 40 agents filled, 3 raw candidates
+- `local-discovery-experiences`: 3 / 40 agents filled, 3 raw candidates
 - `fandom-collectibles-communities`: 1 / 30 agents filled, 1 raw candidates
-- `finance-money-ops`: 0 / 30 agents filled, 0 raw candidates
-- `developer-distribution-tools`: 0 / 30 agents filled, 0 raw candidates
+- `finance-money-ops`: 3 / 30 agents filled, 3 raw candidates
+- `developer-distribution-tools`: 3 / 30 agents filled, 3 raw candidates
 
 ## Next Actions
 

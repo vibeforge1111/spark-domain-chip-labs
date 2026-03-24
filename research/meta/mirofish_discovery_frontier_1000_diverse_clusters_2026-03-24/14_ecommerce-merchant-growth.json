@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-test-loop",
+          "label": "Product Angle Test Loop",
+          "description": "A merchant workflow for repeatedly testing new product angles, hooks, and merchandising narratives against audience response.",
+          "specialization_surface": "running the repeated product angle test loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Test Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle test loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce",
+            "angles",
+            "testing",
+            "growth"
+          ],
+          "evidence_summary": "Merchants often have enough products but not enough repeatable angle testing on what to say and emphasize.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants often have enough products but not enough repeatable angle testing on what to say and emphasize."
+        }
+      ]
     },
     {
       "agent_id": "agent-832",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "creator-ugc-brief-loop",
+          "label": "Creator UGC Brief Loop",
+          "description": "A system for issuing, refining, and learning from repeated UGC creator briefs for ads and storefront growth.",
+          "specialization_surface": "running the repeated creator ugc brief loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Creator UGC Brief Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next creator ugc brief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce",
+            "ugc",
+            "creators",
+            "ads"
+          ],
+          "evidence_summary": "Merchant growth is increasingly tied to how quickly teams can produce and tune creator-style ad inputs.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchant growth is increasingly tied to how quickly teams can produce and tune creator-style ad inputs."
+        }
+      ]
     },
     {
       "agent_id": "agent-833",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "merch-drop-timing-loop",
+          "label": "Merch Drop Timing Loop",
+          "description": "A recurring workflow for planning merch drops around audience heat, inventory, and creator momentum.",
+          "specialization_surface": "running the repeated merch drop timing loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Merch Drop Timing Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next merch drop timing loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce",
+            "drops",
+            "timing",
+            "merch"
+          ],
+          "evidence_summary": "A lot of ecommerce upside depends on timing drops into the right audience moment, not just stocking more items.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "A lot of ecommerce upside depends on timing drops into the right audience moment, not just stocking more items."
+        }
+      ]
     },
     {
       "agent_id": "agent-834",

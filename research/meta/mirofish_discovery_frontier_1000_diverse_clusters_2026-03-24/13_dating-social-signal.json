@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-iteration-loop",
+          "label": "Opener Iteration Loop",
+          "description": "A dating workflow for testing message openers, reviewing response patterns, and refining the next wave quickly.",
+          "specialization_surface": "running the repeated opener iteration loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Iteration Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener iteration loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating",
+            "messaging",
+            "iteration",
+            "social"
+          ],
+          "evidence_summary": "People keep trying new openers in dating apps, but almost never turn that into a real feedback loop.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "People keep trying new openers in dating apps, but almost never turn that into a real feedback loop."
+        }
+      ]
     },
     {
       "agent_id": "agent-792",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "date-debrief-loop",
+          "label": "Date Debrief Loop",
+          "description": "A repeated reflection and follow-up loop for learning from dates, spotting patterns, and improving future conversations.",
+          "specialization_surface": "running the repeated date debrief loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Date Debrief Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next date debrief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating",
+            "reflection",
+            "follow-up",
+            "self-improvement"
+          ],
+          "evidence_summary": "A lot of social progress comes from honest debriefs after interactions, but most people do not preserve those lessons.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "A lot of social progress comes from honest debriefs after interactions, but most people do not preserve those lessons."
+        }
+      ]
     },
     {
       "agent_id": "agent-793",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "profile-signal-refresh-loop",
+          "label": "Profile Signal Refresh Loop",
+          "description": "A system for updating profile photos, prompts, and social cues based on repeated response quality rather than guesswork.",
+          "specialization_surface": "running the repeated profile signal refresh loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Profile Signal Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next profile signal refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating",
+            "profile",
+            "signals",
+            "optimization"
+          ],
+          "evidence_summary": "Dating profiles function like signal surfaces, and small repeated improvements can materially change outcomes.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating profiles function like signal surfaces, and small repeated improvements can materially change outcomes."
+        }
+      ]
     },
     {
       "agent_id": "agent-794",
