@@ -1193,3 +1193,38 @@ The repo already had a single-batch discovery contract, but the next strategic n
 
 - The smoke pass proves the staged intake surface, not the final quality of a 1,000-agent frontier sweep.
 - The hybrid smoke read shows that the accepted discoveries are still weak against the benchmark panel, which is why the next stage remains the 100-agent pilot.
+
+## Tranche: MiroFish Discovery Pilot Scaffold
+
+### Files Changed
+
+- `src/chip_labs/mirofish/discovery.py`
+- `src/chip_labs/cli.py`
+- `tests/test_mirofish_discovery.py`
+- `docs/MIROFISH_DISCOVERY_PROGRAM.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_pilot_100.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+After the smoke pass, the next honest artifact was the real 100-agent pilot scaffold, not a synthetic filled pilot result.
+
+### What Changed
+
+- Added a scaffold builder with a default 100-agent cluster allocation
+- Added a CLI command to generate that scaffold directly
+- Generated the actual 100-agent pilot intake packet
+- Added a note explaining why the scaffold is the right next-stage artifact
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-scaffold --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+
+### Notes
+
+- This tranche prepares the real pilot collection surface.
+- It does not claim that the 100-agent pilot has already been run.

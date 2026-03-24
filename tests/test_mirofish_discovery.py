@@ -1,6 +1,10 @@
 """Tests for MiroFish discovery batch and program canonicalization."""
 
-from chip_labs.mirofish.discovery import canonicalize_discovery_batch, canonicalize_discovery_program
+from chip_labs.mirofish.discovery import (
+    build_discovery_program_scaffold,
+    canonicalize_discovery_batch,
+    canonicalize_discovery_program,
+)
 
 
 def test_canonicalize_discovery_batch_preserves_basic_counts() -> None:
@@ -129,3 +133,14 @@ def test_canonicalize_discovery_program_emits_scale_readiness_and_agent_rollup()
     assert result["scale_readiness"]["next_stage"] == "run_100_agent_pilot"
     assert len(result["agent_rollup"]) == 4
     assert result["accepted_candidates"][0]["supporting_agent_count"] >= 1
+
+
+def test_build_discovery_program_scaffold_creates_100_agent_plan() -> None:
+    scaffold = build_discovery_program_scaffold()
+
+    assert scaffold["packet_kind"] == "mirofish_discovery_program_scaffold"
+    assert scaffold["target_agent_count"] == 100
+    assert len(scaffold["agent_submissions"]) == 100
+    assert scaffold["agent_submissions"][0]["agent_id"] == "agent-001"
+    assert scaffold["agent_submissions"][-1]["agent_id"] == "agent-100"
+    assert scaffold["cluster_plan"][0]["cluster_id"] == "security-compliance-response"

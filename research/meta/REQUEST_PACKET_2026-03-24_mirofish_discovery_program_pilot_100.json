@@ -1,0 +1,53 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_discovery_program_pilot_100",
+  "created_at": "2026-03-24",
+  "scope": "Create the actual 100-agent discovery pilot scaffold after the smoke pass",
+  "decision_context": {
+    "prior_state": "The smoke discovery-program run recommended the 100-agent pilot as the next stage, but the repo only had a generic template rather than the actual pilot packet.",
+    "decision": "Add a scaffold builder and generate the real 100-agent pilot intake packet with wedge allocation, per-agent briefs, and scale gates.",
+    "why_now": "The correct next step after the smoke pass is to prepare the real pilot collection surface, not to fabricate a synthetic 100-agent result."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/discovery.py",
+      "purpose": "Adds the structured pilot scaffold builder and default cluster allocation."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Adds the mirofish-discovery-program-scaffold command."
+    },
+    {
+      "path": "tests/test_mirofish_discovery.py",
+      "purpose": "Covers the pilot scaffold builder."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json",
+      "purpose": "Stores the real 100-agent pilot scaffold packet."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_NOTE_2026-03-24.md",
+      "purpose": "Explains why the scaffold is the truthful next-stage artifact."
+    }
+  ],
+  "planned_steps": [
+    "Add a scaffold builder for the next-stage pilot packet",
+    "Generate the real 100-agent pilot scaffold under research/meta",
+    "Verify the scaffold builder with the focused discovery regression slice"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-scaffold --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The scaffold packet contains exactly 100 agent submissions",
+      "The cluster allocation totals exactly 100 agents",
+      "The regression suite stays green after the scaffold builder is added"
+    ]
+  },
+  "guardrails": [
+    "Do not fabricate a fake 100-agent result packet in place of the real scaffold",
+    "Keep the scaffold grounded in the wedges surfaced by the smoke pass",
+    "Preserve the 100-agent pilot as the next default stage instead of jumping directly to the full sweep"
+  ]
+}

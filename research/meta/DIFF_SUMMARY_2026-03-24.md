@@ -270,3 +270,12 @@ MiroFish discovery program:
 - add scale-readiness metrics so smoke and pilot runs recommend the next stage explicitly
 - save a smoke-trial program packet, canonicalized result, hybrid spec, and hybrid run
 - document that the next stage is the 100-agent pilot rather than a direct jump to the full 1,000-agent sweep
+
+## Batch 31
+
+MiroFish discovery pilot scaffold:
+
+- add a dedicated scaffold builder for the real 100-agent pilot packet
+- expose it through `mirofish-discovery-program-scaffold`
+- generate the actual pilot intake packet with cluster allocation and per-agent briefs
+- keep the next-stage artifact truthful by generating a scaffold rather than a fake filled result

@@ -117,6 +117,22 @@ Every program run should emit:
 - scale-readiness recommendation
 - accepted candidate set for hybrid evaluation
 
+## Repo-Local Commands
+
+Build a `100`-agent pilot scaffold:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-discovery-program-scaffold --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json
+```
+
+Canonicalize a filled pilot packet:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json
+```
+
 ## Governance
 
 - all discovery-program outputs remain `exploratory_frontier`

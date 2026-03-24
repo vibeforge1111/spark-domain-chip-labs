@@ -23,6 +23,119 @@ DISCOVERY_OUTPUT_CLASSES = {
     "too_vague_to_keep",
 }
 
+DEFAULT_DISCOVERY_PILOT_CLUSTERS = [
+    {
+        "cluster_id": "security-compliance-response",
+        "label": "Security / Compliance Response",
+        "agent_count": 16,
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+            "vendor-security-review-copilot",
+            "ai-security-questionnaire-copilot",
+            "data-loss-prevention",
+        ],
+    },
+    {
+        "cluster_id": "healthcare-revenue-cycle",
+        "label": "Healthcare Revenue Cycle",
+        "agent_count": 14,
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+            "dental-insurance-appeals-ai",
+            "chronic-disease-mgr",
+            "continuing-ed-ai",
+        ],
+    },
+    {
+        "cluster_id": "hvac-field-maintenance",
+        "label": "HVAC / Field Maintenance",
+        "agent_count": 10,
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+            "hvac-maintenance-planner-ai",
+            "hvac-optimizer-ai",
+            "quality-inspection-ai",
+        ],
+    },
+    {
+        "cluster_id": "insurance-claims-appeals",
+        "label": "Insurance / Claims / Appeals",
+        "agent_count": 10,
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+            "dental-insurance-appeals-ai",
+            "appraisal-ai",
+            "legal-ops",
+        ],
+    },
+    {
+        "cluster_id": "vendor-procurement-ops",
+        "label": "Vendor / Procurement Ops",
+        "agent_count": 10,
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+            "vendor-security-review-copilot",
+            "ai-rfp-response-copilot",
+            "ai-compliance-evidence-copilot",
+        ],
+    },
+    {
+        "cluster_id": "legal-audit-evidence",
+        "label": "Legal / Audit / Evidence",
+        "agent_count": 10,
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+            "legal-ops",
+            "ai-compliance-evidence-copilot",
+            "patent-writer",
+        ],
+    },
+    {
+        "cluster_id": "workplace-training-compliance",
+        "label": "Workplace Training / Compliance",
+        "agent_count": 8,
+        "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+        "seed_domains": [
+            "workplace-ai-trainer",
+            "continuing-ed-ai",
+            "safety-compliance-ai",
+        ],
+    },
+    {
+        "cluster_id": "industrial-quality-inspection",
+        "label": "Industrial Quality / Inspection",
+        "agent_count": 8,
+        "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+        "seed_domains": [
+            "quality-inspection-ai",
+            "manufacturing-ai",
+            "safety-compliance-ai",
+        ],
+    },
+    {
+        "cluster_id": "finance-reconciliation-backoffice",
+        "label": "Finance / Reconciliation / Backoffice",
+        "agent_count": 8,
+        "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+        "seed_domains": [
+            "ai-renewal-risk-briefing-copilot",
+            "legal-ops",
+            "carbon-credit-ai",
+        ],
+    },
+    {
+        "cluster_id": "logistics-last-mile-ops",
+        "label": "Logistics / Last Mile Ops",
+        "agent_count": 6,
+        "focus": "Recurring route planning, delivery exception handling, and logistics coordination loops.",
+        "seed_domains": [
+            "last-mile-delivery-ai",
+            "warehouse-optimizer",
+            "inventory-tracker-ai",
+        ],
+    },
+]
+
 
 @dataclass
 class DiscoveryDecision:
@@ -246,6 +359,87 @@ def canonicalize_discovery_program(program: dict[str, Any]) -> dict[str, Any]:
             rejected_candidates=outputs.rejected,
             scale_readiness=scale_readiness,
         ),
+    }
+
+
+def build_discovery_program_scaffold(
+    program_id: str = "mirofish-discovery-program-pilot-100",
+    target_agent_count: int = 100,
+    stage_label: str = "pilot_100",
+) -> dict[str, Any]:
+    """Build a structured multi-agent discovery pilot scaffold."""
+    now = datetime.now(timezone.utc).isoformat()
+    cluster_plan = deepcopy(DEFAULT_DISCOVERY_PILOT_CLUSTERS)
+    assigned_total = sum(int(cluster.get("agent_count", 0)) for cluster in cluster_plan)
+    if target_agent_count != assigned_total:
+        raise ValueError(
+            f"Pilot scaffold target_agent_count={target_agent_count} does not match cluster plan total={assigned_total}."
+        )
+
+    agent_submissions: list[dict[str, Any]] = []
+    next_agent_number = 1
+    for cluster in cluster_plan:
+        cluster_id = cluster["cluster_id"]
+        cluster_label = cluster["label"]
+        focus = cluster["focus"]
+        seed_domains = list(cluster.get("seed_domains", []))
+        for within_cluster_index in range(1, int(cluster["agent_count"]) + 1):
+            agent_submissions.append({
+                "agent_id": f"agent-{next_agent_number:03d}",
+                "cluster_id": cluster_id,
+                "notes": (
+                    f"Pilot agent {within_cluster_index} for {cluster_label}. "
+                    f"Focus on repeated domain loops, not generic tooling."
+                ),
+                "agent_brief": {
+                    "cluster_label": cluster_label,
+                    "focus": focus,
+                    "seed_domains": seed_domains,
+                    "candidate_requirements": [
+                        "Return 1-3 candidate domain chips only",
+                        "Every candidate must describe a repeated specialization loop",
+                        "Every candidate must describe a repeated mastery loop",
+                        "Reject personas, generic features, and vague workflow ideas",
+                    ],
+                },
+                "raw_candidates": [],
+            })
+            next_agent_number += 1
+
+    return {
+        "packet_kind": "mirofish_discovery_program_scaffold",
+        "created_at": now,
+        "program_id": program_id,
+        "stage_label": stage_label,
+        "target_agent_count": target_agent_count,
+        "cluster_plan": cluster_plan,
+        "collection_rules": {
+            "max_candidates_per_agent": 3,
+            "min_candidates_per_agent": 1,
+            "required_candidate_fields": [
+                "label",
+                "description",
+                "specialization_surface",
+                "mastery_surface",
+                "user_value_loop",
+                "evidence_summary",
+                "adjacent_domains",
+                "raw_observation",
+            ],
+            "scale_gate_for_250": {
+                "min_acceptance_rate": 0.3,
+                "max_merge_rate": 0.4,
+                "max_too_vague_rate": 0.3,
+                "min_clear_count": 5,
+                "needs_hybrid_ready_cluster": True,
+            },
+        },
+        "agent_submissions": agent_submissions,
+        "next_actions": [
+            "Fill each agent submission with 1-3 concrete candidates from the assigned cluster.",
+            "Run the filled packet through `mirofish-discovery-program`.",
+            "Promote only the accepted candidate set into focused hybrid evaluation.",
+        ],
     }
 
 

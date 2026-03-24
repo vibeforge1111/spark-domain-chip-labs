@@ -567,6 +567,18 @@ def cmd_mirofish_discovery_program(args: argparse.Namespace) -> None:
     _write_output(args.output, result)
 
 
+def cmd_mirofish_discovery_program_scaffold(args: argparse.Namespace) -> None:
+    """Build a structured multi-agent discovery pilot scaffold."""
+    from .mirofish.discovery import build_discovery_program_scaffold
+
+    result = build_discovery_program_scaffold(
+        program_id=args.program_id,
+        target_agent_count=args.target_agent_count,
+        stage_label=args.stage_label,
+    )
+    _write_output(args.output, result)
+
+
 # ---------------------------------------------------------------------------
 # Command: mirofish-hybrid-spec
 # ---------------------------------------------------------------------------
@@ -869,6 +881,32 @@ def main() -> None:
     p_mirofish_discovery_program.add_argument("--input", type=str, required=True, help="Input JSON file path.")
     p_mirofish_discovery_program.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_discovery_program.set_defaults(func=cmd_mirofish_discovery_program)
+
+    # mirofish-discovery-program-scaffold
+    p_mirofish_discovery_program_scaffold = sub.add_parser(
+        "mirofish-discovery-program-scaffold",
+        help="Build a staged multi-agent discovery pilot scaffold.",
+    )
+    p_mirofish_discovery_program_scaffold.add_argument(
+        "--program-id",
+        type=str,
+        default="mirofish-discovery-program-pilot-100",
+        help="Program ID for the scaffold packet.",
+    )
+    p_mirofish_discovery_program_scaffold.add_argument(
+        "--target-agent-count",
+        type=int,
+        default=100,
+        help="Target agent count for the scaffold packet.",
+    )
+    p_mirofish_discovery_program_scaffold.add_argument(
+        "--stage-label",
+        type=str,
+        default="pilot_100",
+        help="Stage label for the scaffold packet.",
+    )
+    p_mirofish_discovery_program_scaffold.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_discovery_program_scaffold.set_defaults(func=cmd_mirofish_discovery_program_scaffold)
 
     # mirofish-hybrid-spec
     p_mirofish_hybrid = sub.add_parser(
