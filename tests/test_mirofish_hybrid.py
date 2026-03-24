@@ -1,11 +1,13 @@
 """Tests for MiroFish frontier readout and export helpers."""
 
 from chip_labs.mirofish.hybrid import (
+    build_frontier_viz_packet,
     build_frontier_simulation_tranche,
     build_frontier_readout,
     build_frontier_shortlist,
     format_frontier_readout_markdown,
     format_frontier_shortlist_markdown,
+    render_frontier_viz_html,
 )
 
 
@@ -365,3 +367,98 @@ def test_format_frontier_shortlist_markdown_includes_sections() -> None:
     assert "## Speculative" in markdown
     assert "`chip_ai_agent_07`" in markdown
     assert "*exploratory_frontier*" in markdown
+
+
+def test_build_frontier_viz_packet_builds_legacy_graph_shape() -> None:
+    result_packet = {
+        "created_at": "2026-03-25T00:00:00+00:00",
+        "program_id": "frontier-1000",
+        "stage_label": "frontier_1000",
+        "evidence_lane": "exploratory_frontier",
+        "accepted_candidates": [
+            {
+                "domain_id": "alpha",
+                "label": "Alpha",
+                "description": "Creator alpha loop.",
+                "domain_tags": ["creator-growth-systems"],
+                "adjacent_domains": ["beta"],
+                "evidence_sources": ["x_twitter"],
+                "promotion_status": "candidate",
+                "specialization_surface": "creator hooks",
+                "mastery_surface": "packaging",
+                "user_value_loop": "publish and learn",
+            },
+            {
+                "domain_id": "beta",
+                "label": "Beta",
+                "description": "Crypto beta loop.",
+                "domain_tags": ["crypto-defi-trading"],
+                "adjacent_domains": ["alpha"],
+                "evidence_sources": ["community"],
+                "promotion_status": "candidate",
+                "specialization_surface": "onchain signals",
+                "mastery_surface": "rotation timing",
+                "user_value_loop": "track and rotate",
+            },
+        ],
+    }
+    anchor_readout = {
+        "top_domains_overall": [{"domain_id": "alpha"}],
+        "top_choice_domains": [{"domain_id": "beta"}],
+        "watchlist_domains": [],
+        "above_benchmark_domains": [],
+    }
+    run_packet = {
+        "domain_predictions": [
+            {
+                "domain_id": "alpha",
+                "adoption_probability": 0.04,
+                "peak_interest_probability": 0.75,
+                "agent_choice_signal": 0.12,
+                "consensus_score": 0.61,
+            }
+        ],
+        "builder_ensemble_summary": [
+            {
+                "domain_id": "alpha",
+                "mean_adoption": 0.05,
+                "mean_trial": 0.07,
+                "mean_churn": 0.01,
+                "confidence_width": 0.02,
+            }
+        ],
+    }
+
+    packet = build_frontier_viz_packet(
+        result_packet,
+        target_count=2,
+        anchor_readout=anchor_readout,
+        run_packet=run_packet,
+        rounds=12,
+    )
+
+    assert packet["meta"]["domain_count"] == 2
+    assert "graph_nodes" in packet
+    assert "graph_edges" in packet
+    assert "domains" in packet
+    assert "persona_types" in packet
+    assert "shocks" in packet
+    assert packet["domains"][0]["domain_id"] == "alpha"
+    assert packet["domains"][0]["builder_curve"][0]["round"] == 0
+    assert "adoption_by_persona_type" in packet["domains"][0]
+
+
+def test_render_frontier_viz_html_rewrites_template_fetch_and_title() -> None:
+    template = (
+        "<html><head><title>MiroFish v4 - 500 Domain Knowledge Graph</title></head>"
+        "<body><script>fetch('mirofish_500_data.json')</script></body></html>"
+    )
+
+    html = render_frontier_viz_html(
+        data_filename="MIROFISH_FRONTIER_VIZ_500_2026-03-25.json",
+        title="MiroFish Frontier 500 Graph",
+        template_html=template,
+    )
+
+    assert "<title>MiroFish Frontier 500 Graph</title>" in html
+    assert "fetch('MIROFISH_FRONTIER_VIZ_500_2026-03-25.json')" in html

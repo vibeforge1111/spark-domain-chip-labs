@@ -8,6 +8,8 @@ from __future__ import annotations
 
 from copy import deepcopy
 from datetime import datetime, timezone
+import math
+from pathlib import Path
 from typing import Any
 
 from ..trend_scanner import SEED_OPPORTUNITIES, rank_opportunities, score_opportunity
@@ -911,6 +913,530 @@ def build_frontier_simulation_tranche(
             "and diversity, but they are not equivalent to a full-frontier hybrid evaluation."
         ),
     }
+
+
+_FRONTIER_VIZ_PERSONAS: list[dict[str, Any]] = [
+    {
+        "type": "x_native_founder",
+        "label": "X-Native Solo Founder",
+        "count": 180,
+        "influence_score": 0.86,
+        "adoption_threshold": 0.34,
+        "risk_tolerance": 0.74,
+        "network_reach": 0.82,
+    },
+    {
+        "type": "indie_hacker_public",
+        "label": "Indie Hacker Shipping in Public",
+        "count": 170,
+        "influence_score": 0.78,
+        "adoption_threshold": 0.32,
+        "risk_tolerance": 0.72,
+        "network_reach": 0.76,
+    },
+    {
+        "type": "ai_builder_leverage",
+        "label": "AI Builder Chasing Leverage",
+        "count": 180,
+        "influence_score": 0.84,
+        "adoption_threshold": 0.30,
+        "risk_tolerance": 0.77,
+        "network_reach": 0.72,
+    },
+    {
+        "type": "creator_attention",
+        "label": "Creator Optimizing Attention",
+        "count": 170,
+        "influence_score": 0.76,
+        "adoption_threshold": 0.33,
+        "risk_tolerance": 0.68,
+        "network_reach": 0.88,
+    },
+    {
+        "type": "crypto_researcher",
+        "label": "Crypto-Native Trader and Researcher",
+        "count": 150,
+        "influence_score": 0.82,
+        "adoption_threshold": 0.36,
+        "risk_tolerance": 0.84,
+        "network_reach": 0.79,
+    },
+    {
+        "type": "career_status_optimizer",
+        "label": "Career Optimizer Chasing Status",
+        "count": 150,
+        "influence_score": 0.68,
+        "adoption_threshold": 0.35,
+        "risk_tolerance": 0.58,
+        "network_reach": 0.74,
+    },
+]
+
+
+def build_frontier_viz_packet(
+    result_packet: dict[str, Any],
+    target_count: int = 500,
+    anchor_readout: dict[str, Any] | None = None,
+    run_packet: dict[str, Any] | None = None,
+    rounds: int = 20,
+) -> dict[str, Any]:
+    """Build a viz-style frontier graph packet for the current 1000-agent discovery frontier."""
+    tranche = build_frontier_simulation_tranche(
+        result_packet,
+        target_count=target_count,
+        anchor_readout=anchor_readout,
+    )
+    selected = list(tranche.get("accepted_candidates", []))
+
+    prediction_map = {
+        item.get("domain_id"): item
+        for item in (run_packet or {}).get("domain_predictions", [])
+        if item.get("domain_id")
+    }
+    ensemble_map = {
+        item.get("domain_id"): item
+        for item in (run_packet or {}).get("builder_ensemble_summary", [])
+        if item.get("domain_id")
+    }
+
+    graph_nodes: list[dict[str, Any]] = []
+    graph_edges: list[dict[str, Any]] = []
+    seen_edges: set[tuple[str, str, str]] = set()
+    domains_data: list[dict[str, Any]] = []
+    selected_ids = {item.get("domain_id") for item in selected if item.get("domain_id")}
+
+    tech_nodes = {
+        "ai-tools": "AI Tools",
+        "social-media": "Social Media",
+        "blockchain": "Blockchain",
+        "web-platform": "Web Platform",
+        "consumer-apps": "Consumer Apps",
+        "founder-stack": "Founder Stack",
+        "career-graph": "Career Graph",
+        "gaming-worlds": "Gaming Worlds",
+    }
+    for node_id, label in tech_nodes.items():
+        graph_nodes.append({"id": node_id, "label": label, "type": "technology"})
+
+    for candidate in selected:
+        domain_id = candidate.get("domain_id")
+        if not domain_id:
+            continue
+        graph_nodes.append({
+            "id": domain_id,
+            "label": candidate.get("label", domain_id),
+            "type": "domain",
+        })
+
+        merged = _merged_domain_metrics(domain_id, prediction_map, ensemble_map)
+        metrics = _frontier_viz_metrics(candidate, merged)
+        builder_curve = _frontier_logistic_curve(
+            metrics["builder_adoption"],
+            rounds=rounds,
+            midpoint=metrics["builder_midpoint"],
+            steepness=metrics["builder_steepness"],
+            peak_interest=metrics["peak_interest"],
+            advocacy=metrics["advocacy_rate"],
+        )
+        enterprise_curve = _frontier_enterprise_curve(
+            metrics["enterprise_adoption"],
+            rounds=rounds,
+            midpoint=min(rounds - 2, metrics["builder_midpoint"] + 2),
+            steepness=max(0.18, metrics["builder_steepness"] * 0.78),
+        )
+        adoption_by_persona = _frontier_persona_adoption(
+            candidate,
+            metrics["builder_adoption"],
+            metrics["advocacy_rate"],
+        )
+
+        category = _frontier_viz_category(candidate)
+        domains_data.append({
+            "domain_id": domain_id,
+            "label": candidate.get("label", domain_id),
+            "description": candidate.get("description", ""),
+            "is_existing": False,
+            "is_viral": category == "viral",
+            "is_v4": True,
+            "category": category,
+            "status": candidate.get("promotion_status", "seed_candidate"),
+            "composite_score": metrics["composite_score"],
+            "retention_score": metrics["retention_score"],
+            "urgency_score": metrics["urgency_score"],
+            "scores": metrics["scores"],
+            "related_chips": list(candidate.get("adjacent_domains", [])),
+            "evidence_sources": list(candidate.get("evidence_sources", [])),
+            "domain_tags": list(candidate.get("domain_tags", [])),
+            "builder_adoption": metrics["builder_adoption"],
+            "trial_rate": metrics["trial_rate"],
+            "retention_rate": metrics["retention_rate"],
+            "churn_rate": metrics["churn_rate"],
+            "committed_rate": metrics["committed_rate"],
+            "advocacy_rate": metrics["advocacy_rate"],
+            "enterprise_adoption": metrics["enterprise_adoption"],
+            "tipping_point": metrics["tipping_point"],
+            "consensus": metrics["consensus"],
+            "disagreement": metrics["disagreement"],
+            "builder_curve": builder_curve,
+            "enterprise_curve": enterprise_curve,
+            "adoption_by_persona_type": adoption_by_persona,
+        })
+
+        for tech in _frontier_viz_tech_links(candidate):
+            edge_key = (tech, domain_id, "ENABLES")
+            if edge_key not in seen_edges:
+                graph_edges.append({
+                    "source": tech,
+                    "target": domain_id,
+                    "relationship": "ENABLES",
+                    "weight": 0.4,
+                })
+                seen_edges.add(edge_key)
+
+        for adjacent in candidate.get("adjacent_domains", []):
+            adjacent_id = str(adjacent).strip()
+            if adjacent_id and adjacent_id in selected_ids:
+                edge_key = (domain_id, adjacent_id, "ADJACENT")
+                if edge_key not in seen_edges:
+                    graph_edges.append({
+                        "source": domain_id,
+                        "target": adjacent_id,
+                        "relationship": "ADJACENT",
+                        "weight": 0.55,
+                    })
+                    seen_edges.add(edge_key)
+
+    domains_data.sort(key=lambda row: (row["builder_adoption"], row["consensus"]), reverse=True)
+
+    total_signals = sum(
+        max(1, len(item.get("domain_tags", []))) + max(0, len(item.get("adjacent_domains", [])))
+        for item in selected
+    )
+    shocks = _frontier_viz_shocks(domains_data)
+    return {
+        "meta": {
+            "title": f"MiroFish Frontier: {len(domains_data)} Domain X-Persona Graph",
+            "version": "frontier_v1",
+            "agent_count": sum(item["count"] for item in _FRONTIER_VIZ_PERSONAS),
+            "domain_count": len(domains_data),
+            "v3_domains": 0,
+            "v4_domains": len(domains_data),
+            "total_signals": total_signals,
+            "graph_nodes": len(graph_nodes),
+            "graph_edges": len(graph_edges),
+            "rounds": rounds,
+            "persona_types": len(_FRONTIER_VIZ_PERSONAS),
+            "funnel_stages": 6,
+            "macro_context": "frontier_x_persona",
+            "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        },
+        "graph_nodes": graph_nodes,
+        "graph_edges": graph_edges,
+        "domains": domains_data,
+        "persona_types": deepcopy(_FRONTIER_VIZ_PERSONAS),
+        "signal_summary": {
+            "opportunity_signals": total_signals,
+            "graph_signals": len(graph_edges),
+            "total_signals": total_signals + len(graph_edges),
+            "signal_types": {
+                "frontier_interest": total_signals,
+                "adjacency": len([edge for edge in graph_edges if edge["relationship"] == "ADJACENT"]),
+                "technology_enablement": len([edge for edge in graph_edges if edge["relationship"] == "ENABLES"]),
+            },
+        },
+        "shocks": shocks,
+        "macro_timeline": [],
+        "macro_events": [],
+        "selection_policy": tranche.get("selection_policy", {}),
+        "governance_note": (
+            "This graph is a frontier-selection surface anchored by the current 1000-agent discovery program. "
+            "It keeps the current deeper-180 winners and expands to a 500-domain diverse frontier set."
+        ),
+    }
+
+
+def render_frontier_viz_html(
+    data_filename: str,
+    title: str = "MiroFish Frontier 500 Graph",
+    template_html: str | None = None,
+) -> str:
+    """Render a viz-style HTML page for a saved frontier graph packet."""
+    if template_html is None:
+        repo_root = Path(__file__).resolve().parents[3]
+        template_html = (repo_root / "viz" / "mirofish-500-graph.html").read_text(encoding="utf-8")
+
+    rendered = template_html.replace(
+        "<title>MiroFish v4 - 500 Domain Knowledge Graph</title>",
+        f"<title>{title}</title>",
+        1,
+    )
+    rendered = rendered.replace("fetch('mirofish_500_data.json')", f"fetch('{data_filename}')", 1)
+    return rendered
+
+
+def _frontier_viz_metrics(candidate: dict[str, Any], merged: dict[str, Any]) -> dict[str, Any]:
+    opportunity = discovery_candidate_to_opportunity(candidate)
+    scores = deepcopy(opportunity.get("scores", {}))
+    composite_score = float(opportunity.get("composite_score", 0.5))
+    primary_tag = _primary_tag(candidate)
+
+    tag_bonus = 0.0
+    if primary_tag in {"creator-growth-systems", "gaming-npc-community", "x-native-persona-tools"}:
+        tag_bonus += 0.01
+    if primary_tag in {"crypto-defi-trading", "agentic-builders", "startup-founder-systems"}:
+        tag_bonus += 0.012
+    if primary_tag in {"productivity-builder-ops", "career-status-social-proof"}:
+        tag_bonus += 0.008
+
+    mean_adoption = merged.get("mean_adoption", 0.0)
+    agent_choice_signal = merged.get("agent_choice_signal", 0.0)
+    peak_interest_probability = merged.get("peak_interest_probability", 0.0)
+    adoption_probability = merged.get("adoption_probability", 0.0)
+    consensus_score = merged.get("consensus_score", 0.0)
+
+    if mean_adoption <= 0.0:
+        mean_adoption = min(0.055, 0.004 + composite_score * 0.032 + tag_bonus)
+    if agent_choice_signal <= 0.0:
+        agent_choice_signal = min(0.22, 0.018 + composite_score * 0.16 + tag_bonus * 2)
+    if peak_interest_probability <= 0.0:
+        peak_interest_probability = min(0.88, 0.18 + composite_score * 0.72 + tag_bonus * 6)
+    if adoption_probability <= 0.0:
+        adoption_probability = min(0.09, max(mean_adoption * 0.72, 0.003 + composite_score * 0.028))
+    if consensus_score <= 0.0:
+        consensus_score = min(0.72, 0.12 + composite_score * 0.34)
+
+    retention_score = float(scores.get("benchmark_feasibility", 0.5))
+    urgency_score = float(scores.get("community_demand", 0.5))
+    trial_rate = min(0.20, adoption_probability + agent_choice_signal * 0.33)
+    retention_rate = max(0.0, adoption_probability - max(0.0, trial_rate - mean_adoption))
+    churn_rate = max(0.0, min(0.12, trial_rate - retention_rate))
+    committed_rate = max(0.0, retention_rate * 0.4)
+    advocacy_rate = max(0.0, min(0.05, retention_rate * 0.22))
+    enterprise_adoption = max(0.0, min(0.08, mean_adoption * (0.9 if primary_tag in {
+        "agentic-builders", "startup-founder-systems", "productivity-builder-ops", "career-status-social-proof"
+    } else 0.55)))
+    tipping_point = 4 + int((1.0 - min(peak_interest_probability, 0.95)) * 10)
+    return {
+        "scores": scores,
+        "composite_score": round(composite_score, 4),
+        "retention_score": round(retention_score, 4),
+        "urgency_score": round(urgency_score, 4),
+        "builder_adoption": round(adoption_probability, 4),
+        "trial_rate": round(trial_rate, 4),
+        "retention_rate": round(retention_rate, 4),
+        "churn_rate": round(churn_rate, 4),
+        "committed_rate": round(committed_rate, 4),
+        "advocacy_rate": round(advocacy_rate, 4),
+        "enterprise_adoption": round(enterprise_adoption, 4),
+        "peak_interest": round(peak_interest_probability, 4),
+        "choice_signal": round(agent_choice_signal, 4),
+        "consensus": round(mean_adoption, 4),
+        "disagreement": round(max(0.0, 1.0 - consensus_score), 4),
+        "tipping_point": min(max(tipping_point, 3), 16),
+        "builder_midpoint": min(max(tipping_point - 1, 3), 14),
+        "builder_steepness": 0.28 + min(0.5, peak_interest_probability * 0.35),
+    }
+
+
+def _frontier_logistic_curve(
+    final_rate: float,
+    rounds: int,
+    midpoint: int,
+    steepness: float,
+    peak_interest: float,
+    advocacy: float,
+) -> list[dict[str, Any]]:
+    curve: list[dict[str, Any]] = []
+    for round_index in range(rounds + 1):
+        adoption = _logistic_value(final_rate, round_index, midpoint, steepness)
+        advocacy_rate = _logistic_value(advocacy, round_index, min(rounds, midpoint + 4), max(0.16, steepness * 0.7))
+        interest = min(1.0, _logistic_value(peak_interest, round_index, max(2, midpoint - 2), max(0.18, steepness * 0.9)))
+        curve.append({
+            "round": round_index,
+            "adoption_rate": round(adoption, 4),
+            "advocacy_rate": round(advocacy_rate, 4),
+            "interest_rate": round(interest, 4),
+            "stage_distribution": _frontier_stage_distribution(adoption, advocacy_rate, interest),
+        })
+    return curve
+
+
+def _frontier_enterprise_curve(
+    final_rate: float,
+    rounds: int,
+    midpoint: int,
+    steepness: float,
+) -> list[dict[str, Any]]:
+    curve: list[dict[str, Any]] = []
+    for round_index in range(rounds + 1):
+        adoption = _logistic_value(final_rate, round_index, midpoint, steepness)
+        curve.append({
+            "round": round_index,
+            "adoption_rate": round(adoption, 4),
+            "advocacy_rate": round(min(final_rate * 0.18, adoption * 0.18), 4),
+            "interest_rate": round(min(1.0, adoption * 2.2), 4),
+        })
+    return curve
+
+
+def _logistic_value(final_rate: float, round_index: int, midpoint: int, steepness: float) -> float:
+    if final_rate <= 0.0:
+        return 0.0
+    value = final_rate / (1.0 + math.exp(-steepness * (round_index - midpoint)))
+    return min(final_rate, value)
+
+
+def _frontier_stage_distribution(adoption_rate: float, advocacy_rate: float, interest_rate: float) -> dict[str, float]:
+    advocating = advocacy_rate
+    adopted = max(0.0, adoption_rate - advocating)
+    evaluating = min(0.10, max(adoption_rate * 0.35, interest_rate * 0.06))
+    interested = max(0.0, min(0.45, interest_rate - adoption_rate - evaluating))
+    aware = max(0.0, min(0.30, 1.0 - adopted - advocating - evaluating - interested))
+    unaware = max(0.0, 1.0 - aware - interested - evaluating - adopted - advocating)
+    return {
+        "unaware": round(unaware, 4),
+        "aware": round(aware, 4),
+        "interested": round(interested, 4),
+        "evaluating": round(evaluating, 4),
+        "adopted": round(adopted, 4),
+        "advocating": round(advocating, 4),
+    }
+
+
+def _frontier_persona_adoption(
+    candidate: dict[str, Any],
+    builder_adoption: float,
+    advocacy_rate: float,
+) -> dict[str, dict[str, float]]:
+    weights = _frontier_persona_weights(candidate)
+    total = sum(weights.values()) or 1.0
+    return {
+        persona["type"]: {
+            "adoption_rate": round(builder_adoption * (weights[persona["type"]] / total), 4),
+            "advocacy_rate": round(advocacy_rate * (weights[persona["type"]] / total), 4),
+        }
+        for persona in _FRONTIER_VIZ_PERSONAS
+    }
+
+
+def _frontier_persona_weights(candidate: dict[str, Any]) -> dict[str, float]:
+    primary = _primary_tag(candidate)
+    weights = {persona["type"]: 1.0 for persona in _FRONTIER_VIZ_PERSONAS}
+    if primary in {"creator-growth-systems", "x-native-persona-tools", "design-remix-aesthetics"}:
+        weights["creator_attention"] += 3.0
+        weights["x_native_founder"] += 1.0
+    if primary in {"gaming-npc-community", "fandom-collectibles-communities", "dating-social-signal"}:
+        weights["creator_attention"] += 2.0
+        weights["indie_hacker_public"] += 1.0
+    if primary in {"agentic-builders", "productivity-builder-ops", "developer-distribution-tools"}:
+        weights["ai_builder_leverage"] += 3.0
+        weights["indie_hacker_public"] += 2.0
+    if primary in {"startup-founder-systems", "ecommerce-merchant-growth", "local-discovery-experiences"}:
+        weights["x_native_founder"] += 3.0
+        weights["indie_hacker_public"] += 2.0
+    if primary in {"crypto-defi-trading", "finance-money-ops"}:
+        weights["crypto_researcher"] += 4.0
+        weights["x_native_founder"] += 1.0
+    if primary in {"career-status-social-proof", "education-skill-acceleration"}:
+        weights["career_status_optimizer"] += 4.0
+    if primary in {"consumer-agent-utilities", "health-fitness-self-systems"}:
+        weights["creator_attention"] += 1.0
+        weights["career_status_optimizer"] += 1.0
+    return weights
+
+
+def _frontier_viz_category(candidate: dict[str, Any]) -> str:
+    primary = _primary_tag(candidate)
+    if primary in {"creator-growth-systems", "gaming-npc-community", "x-native-persona-tools", "design-remix-aesthetics", "fandom-collectibles-communities", "dating-social-signal"}:
+        return "viral"
+    if primary in {"agentic-builders", "productivity-builder-ops", "developer-distribution-tools"}:
+        return "v4_enterprise"
+    if primary in {"startup-founder-systems", "career-status-social-proof", "education-skill-acceleration"}:
+        return "v4_survival"
+    if primary in {"health-fitness-self-systems"}:
+        return "v4_health"
+    if primary in {"crypto-defi-trading", "finance-money-ops"}:
+        return "v4_finance"
+    return "v4_other"
+
+
+def _frontier_viz_tech_links(candidate: dict[str, Any]) -> list[str]:
+    primary = _primary_tag(candidate)
+    techs: list[str] = []
+    if primary in {"creator-growth-systems", "x-native-persona-tools", "design-remix-aesthetics", "dating-social-signal"}:
+        techs.append("social-media")
+    if primary in {"gaming-npc-community", "fandom-collectibles-communities"}:
+        techs.append("gaming-worlds")
+    if primary in {"agentic-builders", "productivity-builder-ops", "developer-distribution-tools"}:
+        techs.append("ai-tools")
+    if primary in {"startup-founder-systems", "ecommerce-merchant-growth", "local-discovery-experiences"}:
+        techs.append("founder-stack")
+    if primary in {"career-status-social-proof", "education-skill-acceleration"}:
+        techs.append("career-graph")
+    if primary in {"crypto-defi-trading", "finance-money-ops"}:
+        techs.append("blockchain")
+    if primary in {"consumer-agent-utilities", "health-fitness-self-systems"}:
+        techs.append("consumer-apps")
+    if not techs:
+        techs.append("web-platform")
+    return techs
+
+
+def _frontier_viz_shocks(domains: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    def top_ids(category: str, count: int = 4) -> list[str]:
+        rows = [row["domain_id"] for row in domains if row.get("category") == category][:count]
+        return rows
+
+    shocks: list[dict[str, Any]] = []
+    ai_targets = top_ids("v4_enterprise")
+    if ai_targets:
+        shocks.append({
+            "shock_id": "frontier_ai_breakout",
+            "label": "AI Builder Breakout",
+            "template": "breakout_tool",
+            "inject_at_round": 4,
+            "strength": 0.7,
+            "effect": "positive",
+            "affects_domains": ai_targets,
+            "affected_persona_types": ["ai_builder_leverage", "indie_hacker_public", "x_native_founder"],
+        })
+    creator_targets = top_ids("viral")
+    if creator_targets:
+        shocks.append({
+            "shock_id": "frontier_creator_surge",
+            "label": "Creator Attention Surge",
+            "template": "viral_adoption",
+            "inject_at_round": 6,
+            "strength": 0.6,
+            "effect": "positive",
+            "affects_domains": creator_targets,
+            "affected_persona_types": ["creator_attention", "x_native_founder"],
+        })
+    crypto_targets = top_ids("v4_finance")
+    if crypto_targets:
+        shocks.append({
+            "shock_id": "frontier_crypto_rotation",
+            "label": "Crypto Rotation",
+            "template": "market_crash",
+            "inject_at_round": 9,
+            "strength": 0.55,
+            "effect": "volatile",
+            "affects_domains": crypto_targets,
+            "affected_persona_types": ["crypto_researcher"],
+        })
+    career_targets = top_ids("v4_survival")
+    if career_targets:
+        shocks.append({
+            "shock_id": "frontier_career_pressure",
+            "label": "Career Pressure Spike",
+            "template": "mass_layoff",
+            "inject_at_round": 8,
+            "strength": 0.5,
+            "effect": "positive",
+            "affects_domains": career_targets,
+            "affected_persona_types": ["career_status_optimizer", "x_native_founder"],
+        })
+    return shocks
 
 
 def discovery_candidate_to_opportunity(candidate: dict[str, Any]) -> dict[str, Any]:

@@ -994,6 +994,33 @@ def cmd_mirofish_frontier_shortlist_export(args: argparse.Namespace) -> None:
     _write_text_output(args.output, result)
 
 
+def cmd_mirofish_frontier_viz(args: argparse.Namespace) -> None:
+    """Build a viz-style 500-domain frontier graph packet and optional HTML page."""
+    from .mirofish.hybrid import build_frontier_viz_packet, render_frontier_viz_html
+
+    input_data = _load_input(args.input)
+    anchor_data = _load_input(args.anchor_readout) if args.anchor_readout else None
+    run_data = _load_input(args.run_input) if args.run_input else None
+    result = build_frontier_viz_packet(
+        input_data,
+        target_count=args.target_count,
+        anchor_readout=anchor_data,
+        run_packet=run_data,
+        rounds=args.rounds,
+    )
+    _write_output(args.output, result)
+
+    if args.html_output:
+        data_filename = args.data_filename or (
+            Path(args.output).name if args.output else "MIROFISH_FRONTIER_VIZ_500.json"
+        )
+        html = render_frontier_viz_html(
+            data_filename=data_filename,
+            title=args.title,
+        )
+        _write_text_output(args.html_output, html)
+
+
 # ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
@@ -1570,6 +1597,57 @@ def main() -> None:
         help="Document title for the markdown export.",
     )
     p_mirofish_frontier_shortlist_export.set_defaults(func=cmd_mirofish_frontier_shortlist_export)
+
+    # mirofish-frontier-viz
+    p_mirofish_frontier_viz = sub.add_parser(
+        "mirofish-frontier-viz",
+        help="Build a viz-style frontier graph packet and optional localhost HTML page.",
+    )
+    p_mirofish_frontier_viz.add_argument("--input", type=str, required=True, help="Input canonical frontier result path.")
+    p_mirofish_frontier_viz.add_argument("--output", type=str, default=None, help="Output graph JSON file path.")
+    p_mirofish_frontier_viz.add_argument(
+        "--anchor-readout",
+        type=str,
+        default=None,
+        help="Optional frontier readout path used to anchor 500-domain selection.",
+    )
+    p_mirofish_frontier_viz.add_argument(
+        "--run-input",
+        type=str,
+        default=None,
+        help="Optional saved frontier run path used to anchor real simulation metrics.",
+    )
+    p_mirofish_frontier_viz.add_argument(
+        "--html-output",
+        type=str,
+        default=None,
+        help="Optional HTML page path that renders the generated graph packet with the legacy viz UI.",
+    )
+    p_mirofish_frontier_viz.add_argument(
+        "--data-filename",
+        type=str,
+        default=None,
+        help="Data filename to embed in the generated HTML. Defaults to the JSON output basename.",
+    )
+    p_mirofish_frontier_viz.add_argument(
+        "--target-count",
+        type=int,
+        default=500,
+        help="Target number of frontier domains to keep in the viz packet.",
+    )
+    p_mirofish_frontier_viz.add_argument(
+        "--rounds",
+        type=int,
+        default=20,
+        help="Number of rounds to synthesize in the viz curves.",
+    )
+    p_mirofish_frontier_viz.add_argument(
+        "--title",
+        type=str,
+        default="MiroFish Frontier 500 Graph",
+        help="HTML page title for the generated viz surface.",
+    )
+    p_mirofish_frontier_viz.set_defaults(func=cmd_mirofish_frontier_viz)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")
