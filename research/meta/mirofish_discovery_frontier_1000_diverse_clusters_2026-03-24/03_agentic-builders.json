@@ -735,7 +735,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-upgrade-copilot",
+          "label": "Prompt Upgrade Copilot",
+          "description": "A recurring agentic builders workflow for prompt and upgrade decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt upgrade copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Upgrade Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt upgrade copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and upgrade decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and upgrade decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-194",
@@ -766,7 +790,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-upgrade-loop",
+          "label": "Prompt Upgrade Loop",
+          "description": "A recurring agentic builders workflow for prompt and upgrade decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt upgrade loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Upgrade Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt upgrade loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and upgrade decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and upgrade decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-195",
@@ -797,7 +845,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-upgrade-system",
+          "label": "Prompt Upgrade System",
+          "description": "A recurring agentic builders workflow for prompt and upgrade decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt upgrade system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Upgrade System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt upgrade system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and upgrade decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and upgrade decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-196",
@@ -828,7 +900,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-upgrade-workflow",
+          "label": "Prompt Upgrade Workflow",
+          "description": "A recurring agentic builders workflow for prompt and upgrade decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt upgrade workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Upgrade Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt upgrade workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and upgrade decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and upgrade decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-197",
@@ -859,7 +955,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-audit-copilot",
+          "label": "Prompt Audit Copilot",
+          "description": "A recurring agentic builders workflow for prompt and audit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt audit copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Audit Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt audit copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and audit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and audit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-198",
@@ -890,7 +1010,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-audit-loop",
+          "label": "Prompt Audit Loop",
+          "description": "A recurring agentic builders workflow for prompt and audit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt audit loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Audit Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt audit loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and audit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and audit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-199",
@@ -921,7 +1065,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-audit-system",
+          "label": "Prompt Audit System",
+          "description": "A recurring agentic builders workflow for prompt and audit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt audit system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Audit System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt audit system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and audit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and audit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-200",
@@ -952,7 +1120,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-audit-workflow",
+          "label": "Prompt Audit Workflow",
+          "description": "A recurring agentic builders workflow for prompt and audit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt audit workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Audit Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt audit workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and audit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and audit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-201",
@@ -983,7 +1175,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-cycle-copilot",
+          "label": "Prompt Cycle Copilot",
+          "description": "A recurring agentic builders workflow for prompt and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt cycle copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-202",
@@ -1014,7 +1230,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-cycle-loop",
+          "label": "Prompt Cycle Loop",
+          "description": "A recurring agentic builders workflow for prompt and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt cycle loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-203",
@@ -1045,7 +1285,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-cycle-system",
+          "label": "Prompt Cycle System",
+          "description": "A recurring agentic builders workflow for prompt and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt cycle system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-204",
@@ -1076,7 +1340,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-cycle-workflow",
+          "label": "Prompt Cycle Workflow",
+          "description": "A recurring agentic builders workflow for prompt and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt cycle workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-205",
@@ -1107,7 +1395,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-planner-copilot",
+          "label": "Prompt Planner Copilot",
+          "description": "A recurring agentic builders workflow for prompt and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt planner copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-206",
@@ -1138,7 +1450,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-planner-loop",
+          "label": "Prompt Planner Loop",
+          "description": "A recurring agentic builders workflow for prompt and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt planner loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-207",
@@ -1169,7 +1505,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-planner-system",
+          "label": "Prompt Planner System",
+          "description": "A recurring agentic builders workflow for prompt and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt planner system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-208",
@@ -1200,7 +1560,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-planner-workflow",
+          "label": "Prompt Planner Workflow",
+          "description": "A recurring agentic builders workflow for prompt and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt planner workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-209",
@@ -1231,7 +1615,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-control-copilot",
+          "label": "Prompt Control Copilot",
+          "description": "A recurring agentic builders workflow for prompt and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt control copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Control Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt control copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-210",
@@ -1262,7 +1670,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-control-loop",
+          "label": "Prompt Control Loop",
+          "description": "A recurring agentic builders workflow for prompt and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt control loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Control Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt control loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-211",
@@ -1293,7 +1725,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-control-system",
+          "label": "Prompt Control System",
+          "description": "A recurring agentic builders workflow for prompt and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt control system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Control System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt control system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-212",
@@ -1324,7 +1780,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-control-workflow",
+          "label": "Prompt Control Workflow",
+          "description": "A recurring agentic builders workflow for prompt and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt control workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Control Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt control workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-213",
@@ -1355,7 +1835,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-engine-copilot",
+          "label": "Prompt Engine Copilot",
+          "description": "A recurring agentic builders workflow for prompt and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt engine copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-214",
@@ -1386,7 +1890,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-engine-loop",
+          "label": "Prompt Engine Loop",
+          "description": "A recurring agentic builders workflow for prompt and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt engine loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-215",
@@ -1417,7 +1945,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-engine-system",
+          "label": "Prompt Engine System",
+          "description": "A recurring agentic builders workflow for prompt and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt engine system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-216",
@@ -1448,7 +2000,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-engine-workflow",
+          "label": "Prompt Engine Workflow",
+          "description": "A recurring agentic builders workflow for prompt and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt engine workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-217",
@@ -1479,7 +2055,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-review-copilot",
+          "label": "Prompt Review Copilot",
+          "description": "A recurring agentic builders workflow for prompt and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt review copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Review Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt review copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-218",
@@ -1510,7 +2110,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-review-loop",
+          "label": "Prompt Review Loop",
+          "description": "A recurring agentic builders workflow for prompt and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt review loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Review Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt review loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-219",
@@ -1541,7 +2165,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-review-system",
+          "label": "Prompt Review System",
+          "description": "A recurring agentic builders workflow for prompt and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt review system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Review System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt review system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-220",
@@ -1572,7 +2220,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-review-workflow",
+          "label": "Prompt Review Workflow",
+          "description": "A recurring agentic builders workflow for prompt and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt review workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Review Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt review workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-221",
@@ -1603,7 +2275,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-radar-copilot",
+          "label": "Prompt Radar Copilot",
+          "description": "A recurring agentic builders workflow for prompt and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt radar copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-222",
@@ -1634,7 +2330,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-radar-loop",
+          "label": "Prompt Radar Loop",
+          "description": "A recurring agentic builders workflow for prompt and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt radar loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-223",
@@ -1665,7 +2385,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-radar-system",
+          "label": "Prompt Radar System",
+          "description": "A recurring agentic builders workflow for prompt and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt radar system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-224",
@@ -1696,7 +2440,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-radar-workflow",
+          "label": "Prompt Radar Workflow",
+          "description": "A recurring agentic builders workflow for prompt and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt radar workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-225",
@@ -1727,7 +2495,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-pipeline-copilot",
+          "label": "Prompt Pipeline Copilot",
+          "description": "A recurring agentic builders workflow for prompt and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt pipeline copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Pipeline Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt pipeline copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-226",
@@ -1758,7 +2550,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-pipeline-loop",
+          "label": "Prompt Pipeline Loop",
+          "description": "A recurring agentic builders workflow for prompt and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt pipeline loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Pipeline Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt pipeline loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-227",
@@ -1789,7 +2605,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-pipeline-system",
+          "label": "Prompt Pipeline System",
+          "description": "A recurring agentic builders workflow for prompt and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt pipeline system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Pipeline System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt pipeline system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-228",
@@ -1820,7 +2660,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-pipeline-workflow",
+          "label": "Prompt Pipeline Workflow",
+          "description": "A recurring agentic builders workflow for prompt and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt pipeline workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Pipeline Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt pipeline workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-229",
@@ -1851,7 +2715,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-triage-copilot",
+          "label": "Prompt Triage Copilot",
+          "description": "A recurring agentic builders workflow for prompt and triage decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt triage copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Triage Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt triage copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and triage decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and triage decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-230",
@@ -1882,7 +2770,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-triage-loop",
+          "label": "Prompt Triage Loop",
+          "description": "A recurring agentic builders workflow for prompt and triage decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt triage loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Triage Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt triage loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and triage decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and triage decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-231",
@@ -1913,7 +2825,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-triage-system",
+          "label": "Prompt Triage System",
+          "description": "A recurring agentic builders workflow for prompt and triage decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt triage system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Triage System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt triage system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and triage decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and triage decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-232",
@@ -1944,7 +2880,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-triage-workflow",
+          "label": "Prompt Triage Workflow",
+          "description": "A recurring agentic builders workflow for prompt and triage decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt triage workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Triage Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt triage workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and triage decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and triage decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-233",
@@ -1975,7 +2935,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-guard-copilot",
+          "label": "Prompt Guard Copilot",
+          "description": "A recurring agentic builders workflow for prompt and guard decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt guard copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Guard Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt guard copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and guard decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and guard decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-234",
@@ -2006,7 +2990,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-guard-loop",
+          "label": "Prompt Guard Loop",
+          "description": "A recurring agentic builders workflow for prompt and guard decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt guard loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Guard Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt guard loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and guard decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and guard decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-235",
@@ -2037,7 +3045,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-guard-system",
+          "label": "Prompt Guard System",
+          "description": "A recurring agentic builders workflow for prompt and guard decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt guard system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Guard System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt guard system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and guard decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and guard decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-236",
@@ -2068,7 +3100,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-guard-workflow",
+          "label": "Prompt Guard Workflow",
+          "description": "A recurring agentic builders workflow for prompt and guard decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt guard workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Guard Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt guard workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and guard decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and guard decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-237",
@@ -2099,7 +3155,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-studio-copilot",
+          "label": "Prompt Studio Copilot",
+          "description": "A recurring agentic builders workflow for prompt and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt studio copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Studio Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt studio copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-238",
@@ -2130,7 +3210,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-studio-loop",
+          "label": "Prompt Studio Loop",
+          "description": "A recurring agentic builders workflow for prompt and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt studio loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Studio Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt studio loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-239",
@@ -2161,7 +3265,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-studio-system",
+          "label": "Prompt Studio System",
+          "description": "A recurring agentic builders workflow for prompt and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt studio system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Studio System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt studio system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-240",
@@ -2192,7 +3320,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "prompt-studio-workflow",
+          "label": "Prompt Studio Workflow",
+          "description": "A recurring agentic builders workflow for prompt and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated prompt studio workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Prompt Studio Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next prompt studio workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face prompt and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face prompt and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-241",
@@ -2223,7 +3375,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-upgrade-copilot",
+          "label": "Toolchain Upgrade Copilot",
+          "description": "A recurring agentic builders workflow for toolchain and upgrade decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain upgrade copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Upgrade Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain upgrade copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and upgrade decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and upgrade decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-242",
@@ -2254,7 +3430,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-upgrade-loop",
+          "label": "Toolchain Upgrade Loop",
+          "description": "A recurring agentic builders workflow for toolchain and upgrade decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain upgrade loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Upgrade Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain upgrade loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and upgrade decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and upgrade decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-243",
@@ -2285,7 +3485,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-upgrade-system",
+          "label": "Toolchain Upgrade System",
+          "description": "A recurring agentic builders workflow for toolchain and upgrade decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain upgrade system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Upgrade System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain upgrade system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and upgrade decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and upgrade decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-244",
@@ -2316,7 +3540,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-upgrade-workflow",
+          "label": "Toolchain Upgrade Workflow",
+          "description": "A recurring agentic builders workflow for toolchain and upgrade decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain upgrade workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Upgrade Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain upgrade workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and upgrade decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and upgrade decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-245",
@@ -2347,7 +3595,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-audit-copilot",
+          "label": "Toolchain Audit Copilot",
+          "description": "A recurring agentic builders workflow for toolchain and audit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain audit copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Audit Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain audit copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and audit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and audit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-246",
@@ -2378,7 +3650,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-audit-loop",
+          "label": "Toolchain Audit Loop",
+          "description": "A recurring agentic builders workflow for toolchain and audit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain audit loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Audit Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain audit loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and audit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and audit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-247",
@@ -2409,7 +3705,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-audit-system",
+          "label": "Toolchain Audit System",
+          "description": "A recurring agentic builders workflow for toolchain and audit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain audit system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Audit System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain audit system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and audit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and audit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-248",
@@ -2440,7 +3760,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-audit-workflow",
+          "label": "Toolchain Audit Workflow",
+          "description": "A recurring agentic builders workflow for toolchain and audit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain audit workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Audit Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain audit workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and audit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and audit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-249",
@@ -2471,7 +3815,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-cycle-copilot",
+          "label": "Toolchain Cycle Copilot",
+          "description": "A recurring agentic builders workflow for toolchain and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain cycle copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-250",
@@ -2502,7 +3870,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-cycle-loop",
+          "label": "Toolchain Cycle Loop",
+          "description": "A recurring agentic builders workflow for toolchain and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain cycle loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-251",
@@ -2533,7 +3925,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-cycle-system",
+          "label": "Toolchain Cycle System",
+          "description": "A recurring agentic builders workflow for toolchain and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain cycle system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-252",
@@ -2564,7 +3980,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-cycle-workflow",
+          "label": "Toolchain Cycle Workflow",
+          "description": "A recurring agentic builders workflow for toolchain and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain cycle workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-253",
@@ -2595,7 +4035,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-planner-copilot",
+          "label": "Toolchain Planner Copilot",
+          "description": "A recurring agentic builders workflow for toolchain and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain planner copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-254",
@@ -2626,7 +4090,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-planner-loop",
+          "label": "Toolchain Planner Loop",
+          "description": "A recurring agentic builders workflow for toolchain and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain planner loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-255",
@@ -2657,7 +4145,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-planner-system",
+          "label": "Toolchain Planner System",
+          "description": "A recurring agentic builders workflow for toolchain and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain planner system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-256",
@@ -2688,7 +4200,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-planner-workflow",
+          "label": "Toolchain Planner Workflow",
+          "description": "A recurring agentic builders workflow for toolchain and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain planner workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-257",
@@ -2719,7 +4255,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-control-copilot",
+          "label": "Toolchain Control Copilot",
+          "description": "A recurring agentic builders workflow for toolchain and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain control copilot workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Control Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain control copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-258",
@@ -2750,7 +4310,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-control-loop",
+          "label": "Toolchain Control Loop",
+          "description": "A recurring agentic builders workflow for toolchain and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain control loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Control Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain control loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-259",
@@ -2781,7 +4365,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-control-system",
+          "label": "Toolchain Control System",
+          "description": "A recurring agentic builders workflow for toolchain and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain control system workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Control System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain control system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-260",
@@ -2812,7 +4420,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-control-workflow",
+          "label": "Toolchain Control Workflow",
+          "description": "A recurring agentic builders workflow for toolchain and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated toolchain control workflow workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Control Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain control workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agentic-builders",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Agent builders repeatedly face toolchain and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly face toolchain and control decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

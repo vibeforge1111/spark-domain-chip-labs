@@ -231,7 +231,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-planner-copilot",
+          "label": "Life Admin Planner Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin planner copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-485",
@@ -262,7 +286,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-planner-loop",
+          "label": "Life Admin Planner Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin planner loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-486",
@@ -293,7 +341,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-planner-system",
+          "label": "Life Admin Planner System",
+          "description": "A recurring consumer agent utilities workflow for life admin and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin planner system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-487",
@@ -324,7 +396,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-planner-workflow",
+          "label": "Life Admin Planner Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin planner workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-488",
@@ -355,7 +451,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-cycle-copilot",
+          "label": "Life Admin Cycle Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin cycle copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-489",
@@ -386,7 +506,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-cycle-loop",
+          "label": "Life Admin Cycle Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin cycle loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-490",
@@ -417,7 +561,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-cycle-system",
+          "label": "Life Admin Cycle System",
+          "description": "A recurring consumer agent utilities workflow for life admin and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin cycle system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-491",
@@ -448,7 +616,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-cycle-workflow",
+          "label": "Life Admin Cycle Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin cycle workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-492",
@@ -479,7 +671,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-radar-copilot",
+          "label": "Life Admin Radar Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin radar copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-493",
@@ -510,7 +726,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-radar-loop",
+          "label": "Life Admin Radar Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin radar loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-494",
@@ -541,7 +781,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-radar-system",
+          "label": "Life Admin Radar System",
+          "description": "A recurring consumer agent utilities workflow for life admin and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin radar system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-495",
@@ -572,7 +836,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-radar-workflow",
+          "label": "Life Admin Radar Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin radar workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-496",
@@ -603,7 +891,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-routine-copilot",
+          "label": "Life Admin Routine Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin routine copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-497",
@@ -634,7 +946,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-routine-loop",
+          "label": "Life Admin Routine Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin routine loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-498",
@@ -665,7 +1001,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-routine-system",
+          "label": "Life Admin Routine System",
+          "description": "A recurring consumer agent utilities workflow for life admin and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin routine system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-499",
@@ -696,7 +1056,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-routine-workflow",
+          "label": "Life Admin Routine Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin routine workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-500",
@@ -727,7 +1111,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-reset-copilot",
+          "label": "Life Admin Reset Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin reset copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Reset Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin reset copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-501",
@@ -758,7 +1166,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-reset-loop",
+          "label": "Life Admin Reset Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin reset loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-502",
@@ -789,7 +1221,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-reset-system",
+          "label": "Life Admin Reset System",
+          "description": "A recurring consumer agent utilities workflow for life admin and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin reset system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Reset System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin reset system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-503",
@@ -820,7 +1276,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-reset-workflow",
+          "label": "Life Admin Reset Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin reset workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Reset Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin reset workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-504",
@@ -851,7 +1331,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-flow-copilot",
+          "label": "Life Admin Flow Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin flow copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Flow Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin flow copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and flow decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-505",
@@ -882,7 +1386,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-flow-loop",
+          "label": "Life Admin Flow Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin flow loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Flow Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin flow loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and flow decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-506",
@@ -913,7 +1441,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-flow-system",
+          "label": "Life Admin Flow System",
+          "description": "A recurring consumer agent utilities workflow for life admin and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin flow system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Flow System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin flow system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and flow decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-507",
@@ -944,7 +1496,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-flow-workflow",
+          "label": "Life Admin Flow Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin flow workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Flow Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin flow workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and flow decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-508",
@@ -975,7 +1551,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-engine-copilot",
+          "label": "Life Admin Engine Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin engine copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-509",
@@ -1006,7 +1606,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-engine-loop",
+          "label": "Life Admin Engine Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin engine loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-510",
@@ -1037,7 +1661,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-engine-system",
+          "label": "Life Admin Engine System",
+          "description": "A recurring consumer agent utilities workflow for life admin and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin engine system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-511",
@@ -1068,7 +1716,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-engine-workflow",
+          "label": "Life Admin Engine Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin engine workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-512",
@@ -1099,7 +1771,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-calendar-copilot",
+          "label": "Life Admin Calendar Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin calendar copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Calendar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin calendar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-513",
@@ -1130,7 +1826,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-calendar-loop",
+          "label": "Life Admin Calendar Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin calendar loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Calendar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin calendar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-514",
@@ -1161,7 +1881,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-calendar-system",
+          "label": "Life Admin Calendar System",
+          "description": "A recurring consumer agent utilities workflow for life admin and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin calendar system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Calendar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin calendar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-515",
@@ -1192,7 +1936,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-calendar-workflow",
+          "label": "Life Admin Calendar Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin calendar workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Calendar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin calendar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-516",
@@ -1223,7 +1991,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-tracker-copilot",
+          "label": "Life Admin Tracker Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin tracker copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Tracker Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin tracker copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-517",
@@ -1254,7 +2046,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-tracker-loop",
+          "label": "Life Admin Tracker Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin tracker loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Tracker Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin tracker loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-518",
@@ -1285,7 +2101,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-tracker-system",
+          "label": "Life Admin Tracker System",
+          "description": "A recurring consumer agent utilities workflow for life admin and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin tracker system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Tracker System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin tracker system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-519",
@@ -1316,7 +2156,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-tracker-workflow",
+          "label": "Life Admin Tracker Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin tracker workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Tracker Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin tracker workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-520",
@@ -1347,7 +2211,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-resolver-copilot",
+          "label": "Life Admin Resolver Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and resolver decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin resolver copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Resolver Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin resolver copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and resolver decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and resolver decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-521",
@@ -1378,7 +2266,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-resolver-loop",
+          "label": "Life Admin Resolver Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and resolver decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin resolver loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Resolver Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin resolver loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and resolver decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and resolver decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-522",
@@ -1409,7 +2321,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-resolver-system",
+          "label": "Life Admin Resolver System",
+          "description": "A recurring consumer agent utilities workflow for life admin and resolver decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin resolver system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Resolver System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin resolver system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and resolver decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and resolver decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-523",
@@ -1440,7 +2376,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-resolver-workflow",
+          "label": "Life Admin Resolver Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and resolver decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin resolver workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Resolver Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin resolver workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and resolver decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and resolver decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-524",
@@ -1471,7 +2431,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-guide-copilot",
+          "label": "Life Admin Guide Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and guide decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin guide copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Guide Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin guide copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and guide decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and guide decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-525",
@@ -1502,7 +2486,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-guide-loop",
+          "label": "Life Admin Guide Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and guide decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin guide loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Guide Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin guide loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and guide decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and guide decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-526",
@@ -1533,7 +2541,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-guide-system",
+          "label": "Life Admin Guide System",
+          "description": "A recurring consumer agent utilities workflow for life admin and guide decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin guide system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Guide System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin guide system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and guide decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and guide decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-527",
@@ -1564,7 +2596,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-guide-workflow",
+          "label": "Life Admin Guide Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and guide decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin guide workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Guide Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin guide workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and guide decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and guide decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-528",
@@ -1595,7 +2651,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-map-copilot",
+          "label": "Life Admin Map Copilot",
+          "description": "A recurring consumer agent utilities workflow for life admin and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin map copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Map Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin map copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-529",
@@ -1626,7 +2706,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-map-loop",
+          "label": "Life Admin Map Loop",
+          "description": "A recurring consumer agent utilities workflow for life admin and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin map loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Map Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin map loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-530",
@@ -1657,7 +2761,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-map-system",
+          "label": "Life Admin Map System",
+          "description": "A recurring consumer agent utilities workflow for life admin and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin map system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Map System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin map system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-531",
@@ -1688,7 +2816,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "life-admin-map-workflow",
+          "label": "Life Admin Map Workflow",
+          "description": "A recurring consumer agent utilities workflow for life admin and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated life admin map workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Map Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next life admin map workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face life admin and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face life admin and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-532",
@@ -1719,7 +2871,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shopping-planner-copilot",
+          "label": "Shopping Planner Copilot",
+          "description": "A recurring consumer agent utilities workflow for shopping and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated shopping planner copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shopping Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shopping planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face shopping and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face shopping and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-533",
@@ -1750,7 +2926,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shopping-planner-loop",
+          "label": "Shopping Planner Loop",
+          "description": "A recurring consumer agent utilities workflow for shopping and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated shopping planner loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shopping Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shopping planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face shopping and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face shopping and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-534",
@@ -1781,7 +2981,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shopping-planner-system",
+          "label": "Shopping Planner System",
+          "description": "A recurring consumer agent utilities workflow for shopping and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated shopping planner system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shopping Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shopping planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face shopping and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face shopping and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-535",
@@ -1812,7 +3036,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shopping-planner-workflow",
+          "label": "Shopping Planner Workflow",
+          "description": "A recurring consumer agent utilities workflow for shopping and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated shopping planner workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shopping Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shopping planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face shopping and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face shopping and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-536",
@@ -1843,7 +3091,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shopping-cycle-copilot",
+          "label": "Shopping Cycle Copilot",
+          "description": "A recurring consumer agent utilities workflow for shopping and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated shopping cycle copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shopping Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shopping cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face shopping and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face shopping and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-537",
@@ -1874,7 +3146,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shopping-cycle-loop",
+          "label": "Shopping Cycle Loop",
+          "description": "A recurring consumer agent utilities workflow for shopping and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated shopping cycle loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shopping Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shopping cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Consumers repeatedly face shopping and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face shopping and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-538",
@@ -1905,7 +3201,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shopping-cycle-system",
+          "label": "Shopping Cycle System",
+          "description": "A recurring consumer agent utilities workflow for shopping and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated shopping cycle system workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shopping Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shopping cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Consumers repeatedly face shopping and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face shopping and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-539",
@@ -1936,7 +3256,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shopping-cycle-workflow",
+          "label": "Shopping Cycle Workflow",
+          "description": "A recurring consumer agent utilities workflow for shopping and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated shopping cycle workflow workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shopping Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shopping cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Consumers repeatedly face shopping and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face shopping and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-540",
@@ -1967,7 +3311,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shopping-radar-copilot",
+          "label": "Shopping Radar Copilot",
+          "description": "A recurring consumer agent utilities workflow for shopping and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated shopping radar copilot workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shopping Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shopping radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer-agent-utilities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Consumers repeatedly face shopping and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Consumers repeatedly face shopping and radar decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

@@ -1,0 +1,25 @@
+{
+  "request_id": "mirofish_discovery_frontier_completion_2026-03-24",
+  "created_at": "2026-03-24",
+  "owner": "codex",
+  "scope": "research/meta",
+  "summary": "Complete the 1000-agent diverse frontier intake, refresh the bundle/progress artifacts, and generate the merged frontier program packet.",
+  "inputs": [
+    "mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 materialized directory",
+    "existing diverse frontier progress state at 109/1000"
+  ],
+  "outputs": [
+    "Updated all 18 cluster packet files to full target counts",
+    "MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json",
+    "MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json",
+    "MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md",
+    "MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_RECOMBINED_2026-03-24.json",
+    "MIROFISH_DISCOVERY_FRONTIER_1000_COMPLETION_NOTE_2026-03-24.md"
+  ],
+  "constraints": [
+    "Complete frontier intake without reopening simulation",
+    "Use the materialized MiroFish discovery system rather than ad hoc side artifacts",
+    "Do not touch pre-existing personas.py or simulation.py noise"
+  ],
+  "status": "completed"
+}

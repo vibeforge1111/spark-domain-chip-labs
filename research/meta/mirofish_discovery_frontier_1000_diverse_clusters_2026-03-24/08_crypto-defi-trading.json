@@ -847,7 +847,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-watch-copilot",
+          "label": "Wallet Watch Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet watch copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Watch Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet watch copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-556",
@@ -878,7 +902,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-watch-loop",
+          "label": "Wallet Watch Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet watch loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Watch Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet watch loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-557",
@@ -909,7 +957,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-watch-system",
+          "label": "Wallet Watch System",
+          "description": "A recurring crypto defi trading workflow for wallet and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet watch system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Watch System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet watch system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-558",
@@ -940,7 +1012,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-watch-workflow",
+          "label": "Wallet Watch Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet watch workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Watch Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet watch workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-559",
@@ -971,7 +1067,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-rotation-copilot",
+          "label": "Wallet Rotation Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet rotation copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Rotation Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet rotation copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-560",
@@ -1002,7 +1122,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-rotation-loop",
+          "label": "Wallet Rotation Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet rotation loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-561",
@@ -1033,7 +1177,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-rotation-system",
+          "label": "Wallet Rotation System",
+          "description": "A recurring crypto defi trading workflow for wallet and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet rotation system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Rotation System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet rotation system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-562",
@@ -1064,7 +1232,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-rotation-workflow",
+          "label": "Wallet Rotation Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet rotation workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Rotation Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet rotation workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-563",
@@ -1095,7 +1287,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-reset-copilot",
+          "label": "Wallet Reset Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet reset copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Reset Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet reset copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-564",
@@ -1126,7 +1342,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-reset-loop",
+          "label": "Wallet Reset Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet reset loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-565",
@@ -1157,7 +1397,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-reset-system",
+          "label": "Wallet Reset System",
+          "description": "A recurring crypto defi trading workflow for wallet and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet reset system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Reset System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet reset system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-566",
@@ -1188,7 +1452,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-reset-workflow",
+          "label": "Wallet Reset Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet reset workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Reset Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet reset workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-567",
@@ -1219,7 +1507,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-planner-copilot",
+          "label": "Wallet Planner Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet planner copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-568",
@@ -1250,7 +1562,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-planner-loop",
+          "label": "Wallet Planner Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet planner loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-569",
@@ -1281,7 +1617,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-planner-system",
+          "label": "Wallet Planner System",
+          "description": "A recurring crypto defi trading workflow for wallet and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet planner system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-570",
@@ -1312,7 +1672,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-planner-workflow",
+          "label": "Wallet Planner Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet planner workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-571",
@@ -1343,7 +1727,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-cycle-copilot",
+          "label": "Wallet Cycle Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet cycle copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-572",
@@ -1374,7 +1782,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-cycle-loop",
+          "label": "Wallet Cycle Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet cycle loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-573",
@@ -1405,7 +1837,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-cycle-system",
+          "label": "Wallet Cycle System",
+          "description": "A recurring crypto defi trading workflow for wallet and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet cycle system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-574",
@@ -1436,7 +1892,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-cycle-workflow",
+          "label": "Wallet Cycle Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet cycle workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-575",
@@ -1467,7 +1947,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-brief-copilot",
+          "label": "Wallet Brief Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and brief decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet brief copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Brief Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet brief copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and brief decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and brief decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-576",
@@ -1498,7 +2002,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-brief-loop",
+          "label": "Wallet Brief Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and brief decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet brief loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Brief Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet brief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and brief decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and brief decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-577",
@@ -1529,7 +2057,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-brief-system",
+          "label": "Wallet Brief System",
+          "description": "A recurring crypto defi trading workflow for wallet and brief decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet brief system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Brief System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet brief system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and brief decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and brief decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-578",
@@ -1560,7 +2112,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-brief-workflow",
+          "label": "Wallet Brief Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and brief decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet brief workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Brief Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet brief workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and brief decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and brief decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-579",
@@ -1591,7 +2167,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-radar-copilot",
+          "label": "Wallet Radar Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet radar copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-580",
@@ -1622,7 +2222,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-radar-loop",
+          "label": "Wallet Radar Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet radar loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-581",
@@ -1653,7 +2277,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-radar-system",
+          "label": "Wallet Radar System",
+          "description": "A recurring crypto defi trading workflow for wallet and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet radar system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-582",
@@ -1684,7 +2332,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-radar-workflow",
+          "label": "Wallet Radar Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet radar workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-583",
@@ -1715,7 +2387,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-engine-copilot",
+          "label": "Wallet Engine Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet engine copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-584",
@@ -1746,7 +2442,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-engine-loop",
+          "label": "Wallet Engine Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet engine loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-585",
@@ -1777,7 +2497,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-engine-system",
+          "label": "Wallet Engine System",
+          "description": "A recurring crypto defi trading workflow for wallet and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet engine system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-586",
@@ -1808,7 +2552,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-engine-workflow",
+          "label": "Wallet Engine Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet engine workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-587",
@@ -1839,7 +2607,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-review-copilot",
+          "label": "Wallet Review Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet review copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Review Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet review copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-588",
@@ -1870,7 +2662,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-review-loop",
+          "label": "Wallet Review Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet review loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Review Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet review loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-589",
@@ -1901,7 +2717,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-review-system",
+          "label": "Wallet Review System",
+          "description": "A recurring crypto defi trading workflow for wallet and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet review system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Review System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet review system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-590",
@@ -1932,7 +2772,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-review-workflow",
+          "label": "Wallet Review Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet review workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Review Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet review workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-591",
@@ -1963,7 +2827,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-map-copilot",
+          "label": "Wallet Map Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet map copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Map Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet map copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-592",
@@ -1994,7 +2882,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-map-loop",
+          "label": "Wallet Map Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet map loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Map Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet map loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-593",
@@ -2025,7 +2937,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-map-system",
+          "label": "Wallet Map System",
+          "description": "A recurring crypto defi trading workflow for wallet and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet map system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Map System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet map system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-594",
@@ -2056,7 +2992,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-map-workflow",
+          "label": "Wallet Map Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet map workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Map Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet map workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-595",
@@ -2087,7 +3047,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-signal-copilot",
+          "label": "Wallet Signal Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet signal copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-596",
@@ -2118,7 +3102,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-signal-loop",
+          "label": "Wallet Signal Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet signal loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-597",
@@ -2149,7 +3157,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-signal-system",
+          "label": "Wallet Signal System",
+          "description": "A recurring crypto defi trading workflow for wallet and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet signal system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-598",
@@ -2180,7 +3212,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-signal-workflow",
+          "label": "Wallet Signal Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet signal workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-599",
@@ -2211,7 +3267,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-tracker-copilot",
+          "label": "Wallet Tracker Copilot",
+          "description": "A recurring crypto defi trading workflow for wallet and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet tracker copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Tracker Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet tracker copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-600",
@@ -2242,7 +3322,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-tracker-loop",
+          "label": "Wallet Tracker Loop",
+          "description": "A recurring crypto defi trading workflow for wallet and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet tracker loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Tracker Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet tracker loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-601",
@@ -2273,7 +3377,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-tracker-system",
+          "label": "Wallet Tracker System",
+          "description": "A recurring crypto defi trading workflow for wallet and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet tracker system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Tracker System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet tracker system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-602",
@@ -2304,7 +3432,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-tracker-workflow",
+          "label": "Wallet Tracker Workflow",
+          "description": "A recurring crypto defi trading workflow for wallet and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated wallet tracker workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Tracker Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet tracker workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face wallet and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face wallet and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-603",
@@ -2335,7 +3487,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-watch-copilot",
+          "label": "Airdrop Watch Copilot",
+          "description": "A recurring crypto defi trading workflow for airdrop and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop watch copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Watch Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop watch copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-604",
@@ -2366,7 +3542,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-watch-loop",
+          "label": "Airdrop Watch Loop",
+          "description": "A recurring crypto defi trading workflow for airdrop and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop watch loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Watch Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop watch loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-605",
@@ -2397,7 +3597,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-watch-system",
+          "label": "Airdrop Watch System",
+          "description": "A recurring crypto defi trading workflow for airdrop and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop watch system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Watch System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop watch system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-606",
@@ -2428,7 +3652,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-watch-workflow",
+          "label": "Airdrop Watch Workflow",
+          "description": "A recurring crypto defi trading workflow for airdrop and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop watch workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Watch Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop watch workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-607",
@@ -2459,7 +3707,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-rotation-copilot",
+          "label": "Airdrop Rotation Copilot",
+          "description": "A recurring crypto defi trading workflow for airdrop and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop rotation copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Rotation Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop rotation copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-608",
@@ -2490,7 +3762,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-rotation-loop",
+          "label": "Airdrop Rotation Loop",
+          "description": "A recurring crypto defi trading workflow for airdrop and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop rotation loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-609",
@@ -2521,7 +3817,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-rotation-system",
+          "label": "Airdrop Rotation System",
+          "description": "A recurring crypto defi trading workflow for airdrop and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop rotation system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Rotation System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop rotation system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-610",
@@ -2552,7 +3872,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-rotation-workflow",
+          "label": "Airdrop Rotation Workflow",
+          "description": "A recurring crypto defi trading workflow for airdrop and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop rotation workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Rotation Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop rotation workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-611",
@@ -2583,7 +3927,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-reset-copilot",
+          "label": "Airdrop Reset Copilot",
+          "description": "A recurring crypto defi trading workflow for airdrop and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop reset copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Reset Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop reset copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-612",
@@ -2614,7 +3982,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-reset-loop",
+          "label": "Airdrop Reset Loop",
+          "description": "A recurring crypto defi trading workflow for airdrop and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop reset loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-613",
@@ -2645,7 +4037,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-reset-system",
+          "label": "Airdrop Reset System",
+          "description": "A recurring crypto defi trading workflow for airdrop and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop reset system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Reset System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop reset system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-614",
@@ -2676,7 +4092,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-reset-workflow",
+          "label": "Airdrop Reset Workflow",
+          "description": "A recurring crypto defi trading workflow for airdrop and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop reset workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Reset Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop reset workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-615",
@@ -2707,7 +4147,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-planner-copilot",
+          "label": "Airdrop Planner Copilot",
+          "description": "A recurring crypto defi trading workflow for airdrop and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop planner copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-616",
@@ -2738,7 +4202,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-planner-loop",
+          "label": "Airdrop Planner Loop",
+          "description": "A recurring crypto defi trading workflow for airdrop and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop planner loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-617",
@@ -2769,7 +4257,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-planner-system",
+          "label": "Airdrop Planner System",
+          "description": "A recurring crypto defi trading workflow for airdrop and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop planner system workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-618",
@@ -2800,7 +4312,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-planner-workflow",
+          "label": "Airdrop Planner Workflow",
+          "description": "A recurring crypto defi trading workflow for airdrop and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop planner workflow workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-619",
@@ -2831,7 +4367,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-cycle-copilot",
+          "label": "Airdrop Cycle Copilot",
+          "description": "A recurring crypto defi trading workflow for airdrop and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop cycle copilot workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-620",
@@ -2862,7 +4422,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "airdrop-cycle-loop",
+          "label": "Airdrop Cycle Loop",
+          "description": "A recurring crypto defi trading workflow for airdrop and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated airdrop cycle loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Airdrop Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next airdrop cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto-defi-trading",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Crypto-native users repeatedly face airdrop and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users repeatedly face airdrop and cycle decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

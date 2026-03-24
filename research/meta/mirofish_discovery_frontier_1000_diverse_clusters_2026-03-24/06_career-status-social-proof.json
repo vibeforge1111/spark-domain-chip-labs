@@ -287,7 +287,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-refresh-copilot",
+          "label": "Resume Refresh Copilot",
+          "description": "A recurring career status social proof workflow for resume and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume refresh copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-426",
@@ -318,7 +342,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-refresh-loop",
+          "label": "Resume Refresh Loop",
+          "description": "A recurring career status social proof workflow for resume and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume refresh loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-427",
@@ -349,7 +397,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-refresh-system",
+          "label": "Resume Refresh System",
+          "description": "A recurring career status social proof workflow for resume and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume refresh system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Refresh System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume refresh system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-428",
@@ -380,7 +452,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-refresh-workflow",
+          "label": "Resume Refresh Workflow",
+          "description": "A recurring career status social proof workflow for resume and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume refresh workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-429",
@@ -411,7 +507,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-cycle-copilot",
+          "label": "Resume Cycle Copilot",
+          "description": "A recurring career status social proof workflow for resume and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume cycle copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-430",
@@ -442,7 +562,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-cycle-loop",
+          "label": "Resume Cycle Loop",
+          "description": "A recurring career status social proof workflow for resume and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume cycle loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-431",
@@ -473,7 +617,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-cycle-system",
+          "label": "Resume Cycle System",
+          "description": "A recurring career status social proof workflow for resume and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume cycle system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-432",
@@ -504,7 +672,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-cycle-workflow",
+          "label": "Resume Cycle Workflow",
+          "description": "A recurring career status social proof workflow for resume and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume cycle workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-433",
@@ -535,7 +727,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-planner-copilot",
+          "label": "Resume Planner Copilot",
+          "description": "A recurring career status social proof workflow for resume and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume planner copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-434",
@@ -566,7 +782,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-planner-loop",
+          "label": "Resume Planner Loop",
+          "description": "A recurring career status social proof workflow for resume and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume planner loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-435",
@@ -597,7 +837,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-planner-system",
+          "label": "Resume Planner System",
+          "description": "A recurring career status social proof workflow for resume and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume planner system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-436",
@@ -628,7 +892,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-planner-workflow",
+          "label": "Resume Planner Workflow",
+          "description": "A recurring career status social proof workflow for resume and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume planner workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-437",
@@ -659,7 +947,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-engine-copilot",
+          "label": "Resume Engine Copilot",
+          "description": "A recurring career status social proof workflow for resume and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume engine copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-438",
@@ -690,7 +1002,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-engine-loop",
+          "label": "Resume Engine Loop",
+          "description": "A recurring career status social proof workflow for resume and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume engine loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-439",
@@ -721,7 +1057,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-engine-system",
+          "label": "Resume Engine System",
+          "description": "A recurring career status social proof workflow for resume and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume engine system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-440",
@@ -752,7 +1112,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-engine-workflow",
+          "label": "Resume Engine Workflow",
+          "description": "A recurring career status social proof workflow for resume and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume engine workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-441",
@@ -783,7 +1167,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-routine-copilot",
+          "label": "Resume Routine Copilot",
+          "description": "A recurring career status social proof workflow for resume and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume routine copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-442",
@@ -814,7 +1222,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-routine-loop",
+          "label": "Resume Routine Loop",
+          "description": "A recurring career status social proof workflow for resume and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume routine loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-443",
@@ -845,7 +1277,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-routine-system",
+          "label": "Resume Routine System",
+          "description": "A recurring career status social proof workflow for resume and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume routine system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-444",
@@ -876,7 +1332,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-routine-workflow",
+          "label": "Resume Routine Workflow",
+          "description": "A recurring career status social proof workflow for resume and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume routine workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-445",
@@ -907,7 +1387,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-tracker-copilot",
+          "label": "Resume Tracker Copilot",
+          "description": "A recurring career status social proof workflow for resume and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume tracker copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Tracker Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume tracker copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-446",
@@ -938,7 +1442,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-tracker-loop",
+          "label": "Resume Tracker Loop",
+          "description": "A recurring career status social proof workflow for resume and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume tracker loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Tracker Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume tracker loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-447",
@@ -969,7 +1497,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-tracker-system",
+          "label": "Resume Tracker System",
+          "description": "A recurring career status social proof workflow for resume and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume tracker system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Tracker System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume tracker system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-448",
@@ -1000,7 +1552,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-tracker-workflow",
+          "label": "Resume Tracker Workflow",
+          "description": "A recurring career status social proof workflow for resume and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume tracker workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Tracker Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume tracker workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-449",
@@ -1031,7 +1607,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-review-copilot",
+          "label": "Resume Review Copilot",
+          "description": "A recurring career status social proof workflow for resume and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume review copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Review Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume review copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-450",
@@ -1062,7 +1662,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-review-loop",
+          "label": "Resume Review Loop",
+          "description": "A recurring career status social proof workflow for resume and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume review loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Review Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume review loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-451",
@@ -1093,7 +1717,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-review-system",
+          "label": "Resume Review System",
+          "description": "A recurring career status social proof workflow for resume and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume review system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Review System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume review system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-452",
@@ -1124,7 +1772,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-review-workflow",
+          "label": "Resume Review Workflow",
+          "description": "A recurring career status social proof workflow for resume and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume review workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Review Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume review workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-453",
@@ -1155,7 +1827,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-cadence-copilot",
+          "label": "Resume Cadence Copilot",
+          "description": "A recurring career status social proof workflow for resume and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume cadence copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Cadence Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume cadence copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-454",
@@ -1186,7 +1882,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-cadence-loop",
+          "label": "Resume Cadence Loop",
+          "description": "A recurring career status social proof workflow for resume and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume cadence loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-455",
@@ -1217,7 +1937,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-cadence-system",
+          "label": "Resume Cadence System",
+          "description": "A recurring career status social proof workflow for resume and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume cadence system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Cadence System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume cadence system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-456",
@@ -1248,7 +1992,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-cadence-workflow",
+          "label": "Resume Cadence Workflow",
+          "description": "A recurring career status social proof workflow for resume and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume cadence workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Cadence Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume cadence workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-457",
@@ -1279,7 +2047,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-map-copilot",
+          "label": "Resume Map Copilot",
+          "description": "A recurring career status social proof workflow for resume and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume map copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Map Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume map copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-458",
@@ -1310,7 +2102,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-map-loop",
+          "label": "Resume Map Loop",
+          "description": "A recurring career status social proof workflow for resume and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume map loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Map Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume map loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-459",
@@ -1341,7 +2157,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-map-system",
+          "label": "Resume Map System",
+          "description": "A recurring career status social proof workflow for resume and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume map system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Map System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume map system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-460",
@@ -1372,7 +2212,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-map-workflow",
+          "label": "Resume Map Workflow",
+          "description": "A recurring career status social proof workflow for resume and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume map workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Map Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume map workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-461",
@@ -1403,7 +2267,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-signal-copilot",
+          "label": "Resume Signal Copilot",
+          "description": "A recurring career status social proof workflow for resume and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume signal copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-462",
@@ -1434,7 +2322,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-signal-loop",
+          "label": "Resume Signal Loop",
+          "description": "A recurring career status social proof workflow for resume and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume signal loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-463",
@@ -1465,7 +2377,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-signal-system",
+          "label": "Resume Signal System",
+          "description": "A recurring career status social proof workflow for resume and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume signal system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-464",
@@ -1496,7 +2432,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-signal-workflow",
+          "label": "Resume Signal Workflow",
+          "description": "A recurring career status social proof workflow for resume and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume signal workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-465",
@@ -1527,7 +2487,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-playbook-copilot",
+          "label": "Resume Playbook Copilot",
+          "description": "A recurring career status social proof workflow for resume and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume playbook copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Playbook Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume playbook copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-466",
@@ -1558,7 +2542,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-playbook-loop",
+          "label": "Resume Playbook Loop",
+          "description": "A recurring career status social proof workflow for resume and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume playbook loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Playbook Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume playbook loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-467",
@@ -1589,7 +2597,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-playbook-system",
+          "label": "Resume Playbook System",
+          "description": "A recurring career status social proof workflow for resume and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume playbook system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Playbook System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume playbook system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-468",
@@ -1620,7 +2652,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-playbook-workflow",
+          "label": "Resume Playbook Workflow",
+          "description": "A recurring career status social proof workflow for resume and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume playbook workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Playbook Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume playbook workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-469",
@@ -1651,7 +2707,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-boost-copilot",
+          "label": "Resume Boost Copilot",
+          "description": "A recurring career status social proof workflow for resume and boost decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume boost copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Boost Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume boost copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and boost decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and boost decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-470",
@@ -1682,7 +2762,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-boost-loop",
+          "label": "Resume Boost Loop",
+          "description": "A recurring career status social proof workflow for resume and boost decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume boost loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Boost Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume boost loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and boost decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and boost decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-471",
@@ -1713,7 +2817,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-boost-system",
+          "label": "Resume Boost System",
+          "description": "A recurring career status social proof workflow for resume and boost decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume boost system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Boost System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume boost system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and boost decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and boost decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-472",
@@ -1744,7 +2872,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "resume-boost-workflow",
+          "label": "Resume Boost Workflow",
+          "description": "A recurring career status social proof workflow for resume and boost decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated resume boost workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Boost Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next resume boost workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face resume and boost decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face resume and boost decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-473",
@@ -1775,7 +2927,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "portfolio-refresh-copilot",
+          "label": "Portfolio Refresh Copilot",
+          "description": "A recurring career status social proof workflow for portfolio and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated portfolio refresh copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Portfolio Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next portfolio refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face portfolio and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face portfolio and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-474",
@@ -1806,7 +2982,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "portfolio-refresh-loop",
+          "label": "Portfolio Refresh Loop",
+          "description": "A recurring career status social proof workflow for portfolio and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated portfolio refresh loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Portfolio Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next portfolio refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face portfolio and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face portfolio and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-475",
@@ -1837,7 +3037,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "portfolio-refresh-system",
+          "label": "Portfolio Refresh System",
+          "description": "A recurring career status social proof workflow for portfolio and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated portfolio refresh system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Portfolio Refresh System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next portfolio refresh system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face portfolio and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face portfolio and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-476",
@@ -1868,7 +3092,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "portfolio-refresh-workflow",
+          "label": "Portfolio Refresh Workflow",
+          "description": "A recurring career status social proof workflow for portfolio and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated portfolio refresh workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Portfolio Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next portfolio refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face portfolio and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face portfolio and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-477",
@@ -1899,7 +3147,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "portfolio-cycle-copilot",
+          "label": "Portfolio Cycle Copilot",
+          "description": "A recurring career status social proof workflow for portfolio and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated portfolio cycle copilot workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Portfolio Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next portfolio cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face portfolio and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face portfolio and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-478",
@@ -1930,7 +3202,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "portfolio-cycle-loop",
+          "label": "Portfolio Cycle Loop",
+          "description": "A recurring career status social proof workflow for portfolio and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated portfolio cycle loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Portfolio Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next portfolio cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face portfolio and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face portfolio and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-479",
@@ -1961,7 +3257,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "portfolio-cycle-system",
+          "label": "Portfolio Cycle System",
+          "description": "A recurring career status social proof workflow for portfolio and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated portfolio cycle system workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Portfolio Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next portfolio cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face portfolio and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face portfolio and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-480",
@@ -1992,7 +3312,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "portfolio-cycle-workflow",
+          "label": "Portfolio Cycle Workflow",
+          "description": "A recurring career status social proof workflow for portfolio and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated portfolio cycle workflow workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Portfolio Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next portfolio cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career-status-social-proof",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Career-focused users repeatedly face portfolio and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career-focused users repeatedly face portfolio and cycle decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

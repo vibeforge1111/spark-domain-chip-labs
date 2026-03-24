@@ -175,7 +175,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-refresh-copilot",
+          "label": "Remix Refresh Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix refresh copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-674",
@@ -206,7 +230,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-refresh-loop",
+          "label": "Remix Refresh Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix refresh loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-675",
@@ -237,7 +285,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-refresh-workflow",
+          "label": "Remix Refresh Workflow",
+          "description": "A recurring design remix aesthetics workflow for remix and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix refresh workflow workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-676",
@@ -268,7 +340,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-refresh-system",
+          "label": "Remix Refresh System",
+          "description": "A recurring design remix aesthetics workflow for remix and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix refresh system workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Refresh System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix refresh system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-677",
@@ -299,7 +395,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-cycle-copilot",
+          "label": "Remix Cycle Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix cycle copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-678",
@@ -330,7 +450,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-cycle-loop",
+          "label": "Remix Cycle Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix cycle loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-679",
@@ -361,7 +505,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-cycle-workflow",
+          "label": "Remix Cycle Workflow",
+          "description": "A recurring design remix aesthetics workflow for remix and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix cycle workflow workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-680",
@@ -392,7 +560,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-cycle-system",
+          "label": "Remix Cycle System",
+          "description": "A recurring design remix aesthetics workflow for remix and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix cycle system workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-681",
@@ -423,7 +615,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-engine-copilot",
+          "label": "Remix Engine Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix engine copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-682",
@@ -454,7 +670,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-engine-loop",
+          "label": "Remix Engine Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix engine loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-683",
@@ -485,7 +725,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-engine-workflow",
+          "label": "Remix Engine Workflow",
+          "description": "A recurring design remix aesthetics workflow for remix and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix engine workflow workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-684",
@@ -516,7 +780,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-engine-system",
+          "label": "Remix Engine System",
+          "description": "A recurring design remix aesthetics workflow for remix and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix engine system workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-685",
@@ -547,7 +835,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-studio-copilot",
+          "label": "Remix Studio Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix studio copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Studio Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix studio copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-686",
@@ -578,7 +890,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-studio-loop",
+          "label": "Remix Studio Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix studio loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Studio Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix studio loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-687",
@@ -609,7 +945,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-studio-workflow",
+          "label": "Remix Studio Workflow",
+          "description": "A recurring design remix aesthetics workflow for remix and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix studio workflow workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Studio Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix studio workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-688",
@@ -640,7 +1000,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-studio-system",
+          "label": "Remix Studio System",
+          "description": "A recurring design remix aesthetics workflow for remix and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix studio system workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Studio System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix studio system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-689",
@@ -671,7 +1055,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-routine-copilot",
+          "label": "Remix Routine Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix routine copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-690",
@@ -702,7 +1110,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-routine-loop",
+          "label": "Remix Routine Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix routine loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-691",
@@ -733,7 +1165,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-routine-workflow",
+          "label": "Remix Routine Workflow",
+          "description": "A recurring design remix aesthetics workflow for remix and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix routine workflow workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-692",
@@ -764,7 +1220,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-routine-system",
+          "label": "Remix Routine System",
+          "description": "A recurring design remix aesthetics workflow for remix and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix routine system workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-693",
@@ -795,7 +1275,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-lab-copilot",
+          "label": "Remix Lab Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and lab decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix lab copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Lab Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix lab copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and lab decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and lab decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-694",
@@ -826,7 +1330,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-lab-loop",
+          "label": "Remix Lab Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and lab decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix lab loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Lab Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix lab loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and lab decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and lab decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-695",
@@ -857,7 +1385,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-lab-workflow",
+          "label": "Remix Lab Workflow",
+          "description": "A recurring design remix aesthetics workflow for remix and lab decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix lab workflow workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Lab Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix lab workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and lab decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and lab decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-696",
@@ -888,7 +1440,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-lab-system",
+          "label": "Remix Lab System",
+          "description": "A recurring design remix aesthetics workflow for remix and lab decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix lab system workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Lab System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix lab system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and lab decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and lab decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-697",
@@ -919,7 +1495,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-planner-copilot",
+          "label": "Remix Planner Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix planner copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-698",
@@ -950,7 +1550,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-planner-loop",
+          "label": "Remix Planner Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix planner loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-699",
@@ -981,7 +1605,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-planner-workflow",
+          "label": "Remix Planner Workflow",
+          "description": "A recurring design remix aesthetics workflow for remix and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix planner workflow workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-700",
@@ -1012,7 +1660,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-planner-system",
+          "label": "Remix Planner System",
+          "description": "A recurring design remix aesthetics workflow for remix and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix planner system workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-701",
@@ -1043,7 +1715,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-radar-copilot",
+          "label": "Remix Radar Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix radar copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-702",
@@ -1074,7 +1770,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-radar-loop",
+          "label": "Remix Radar Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix radar loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-703",
@@ -1105,7 +1825,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-radar-workflow",
+          "label": "Remix Radar Workflow",
+          "description": "A recurring design remix aesthetics workflow for remix and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix radar workflow workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-704",
@@ -1136,7 +1880,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-radar-system",
+          "label": "Remix Radar System",
+          "description": "A recurring design remix aesthetics workflow for remix and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix radar system workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-705",
@@ -1167,7 +1935,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-kit-copilot",
+          "label": "Remix Kit Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and kit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix kit copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Kit Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix kit copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and kit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and kit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-706",
@@ -1198,7 +1990,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-kit-loop",
+          "label": "Remix Kit Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and kit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix kit loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Kit Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix kit loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and kit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and kit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-707",
@@ -1229,7 +2045,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-kit-workflow",
+          "label": "Remix Kit Workflow",
+          "description": "A recurring design remix aesthetics workflow for remix and kit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix kit workflow workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Kit Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix kit workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and kit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and kit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-708",
@@ -1260,7 +2100,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-kit-system",
+          "label": "Remix Kit System",
+          "description": "A recurring design remix aesthetics workflow for remix and kit decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix kit system workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Kit System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix kit system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and kit decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and kit decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-709",
@@ -1291,7 +2155,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-system-copilot",
+          "label": "Remix System Copilot",
+          "description": "A recurring design remix aesthetics workflow for remix and system decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix system copilot workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix System Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix system copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and system decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and system decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-710",
@@ -1322,7 +2210,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-system-loop",
+          "label": "Remix System Loop",
+          "description": "A recurring design remix aesthetics workflow for remix and system decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated remix system loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix System Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix system loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design-remix-aesthetics",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Design-native users repeatedly face remix and system decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Design-native users repeatedly face remix and system decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

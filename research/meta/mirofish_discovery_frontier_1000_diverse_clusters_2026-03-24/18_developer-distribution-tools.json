@@ -231,7 +231,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-thread-copilot",
+          "label": "Changelog Thread Copilot",
+          "description": "A recurring developer distribution tools workflow for changelog and thread decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog thread copilot workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Thread Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog thread copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-975",
@@ -262,7 +286,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-thread-loop",
+          "label": "Changelog Thread Loop",
+          "description": "A recurring developer distribution tools workflow for changelog and thread decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog thread loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Thread Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog thread loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-976",
@@ -293,7 +341,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-thread-workflow",
+          "label": "Changelog Thread Workflow",
+          "description": "A recurring developer distribution tools workflow for changelog and thread decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog thread workflow workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Thread Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog thread workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-977",
@@ -324,7 +396,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-thread-tool",
+          "label": "Changelog Thread Tool",
+          "description": "A recurring developer distribution tools workflow for changelog and thread decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog thread tool workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Thread Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog thread tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-978",
@@ -355,7 +451,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-proof-copilot",
+          "label": "Changelog Proof Copilot",
+          "description": "A recurring developer distribution tools workflow for changelog and proof decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog proof copilot workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Proof Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog proof copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and proof decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and proof decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-979",
@@ -386,7 +506,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-proof-loop",
+          "label": "Changelog Proof Loop",
+          "description": "A recurring developer distribution tools workflow for changelog and proof decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog proof loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Proof Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog proof loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and proof decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and proof decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-980",
@@ -417,7 +561,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-proof-workflow",
+          "label": "Changelog Proof Workflow",
+          "description": "A recurring developer distribution tools workflow for changelog and proof decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog proof workflow workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Proof Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog proof workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and proof decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and proof decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-981",
@@ -448,7 +616,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-proof-tool",
+          "label": "Changelog Proof Tool",
+          "description": "A recurring developer distribution tools workflow for changelog and proof decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog proof tool workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Proof Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog proof tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and proof decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and proof decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-982",
@@ -479,7 +671,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-reply-copilot",
+          "label": "Changelog Reply Copilot",
+          "description": "A recurring developer distribution tools workflow for changelog and reply decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog reply copilot workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Reply Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog reply copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and reply decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and reply decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-983",
@@ -510,7 +726,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-reply-loop",
+          "label": "Changelog Reply Loop",
+          "description": "A recurring developer distribution tools workflow for changelog and reply decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog reply loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Reply Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog reply loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and reply decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and reply decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-984",
@@ -541,7 +781,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-reply-workflow",
+          "label": "Changelog Reply Workflow",
+          "description": "A recurring developer distribution tools workflow for changelog and reply decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog reply workflow workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Reply Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog reply workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and reply decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and reply decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-985",
@@ -572,7 +836,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-reply-tool",
+          "label": "Changelog Reply Tool",
+          "description": "A recurring developer distribution tools workflow for changelog and reply decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog reply tool workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Reply Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog reply tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and reply decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and reply decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-986",
@@ -603,7 +891,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-refresh-copilot",
+          "label": "Changelog Refresh Copilot",
+          "description": "A recurring developer distribution tools workflow for changelog and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog refresh copilot workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-987",
@@ -634,7 +946,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-refresh-loop",
+          "label": "Changelog Refresh Loop",
+          "description": "A recurring developer distribution tools workflow for changelog and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog refresh loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-988",
@@ -665,7 +1001,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-refresh-workflow",
+          "label": "Changelog Refresh Workflow",
+          "description": "A recurring developer distribution tools workflow for changelog and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog refresh workflow workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-989",
@@ -696,7 +1056,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-refresh-tool",
+          "label": "Changelog Refresh Tool",
+          "description": "A recurring developer distribution tools workflow for changelog and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog refresh tool workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Refresh Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog refresh tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-990",
@@ -727,7 +1111,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-cycle-copilot",
+          "label": "Changelog Cycle Copilot",
+          "description": "A recurring developer distribution tools workflow for changelog and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog cycle copilot workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-991",
@@ -758,7 +1166,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-cycle-loop",
+          "label": "Changelog Cycle Loop",
+          "description": "A recurring developer distribution tools workflow for changelog and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog cycle loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-992",
@@ -789,7 +1221,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-cycle-workflow",
+          "label": "Changelog Cycle Workflow",
+          "description": "A recurring developer distribution tools workflow for changelog and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog cycle workflow workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-993",
@@ -820,7 +1276,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-cycle-tool",
+          "label": "Changelog Cycle Tool",
+          "description": "A recurring developer distribution tools workflow for changelog and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog cycle tool workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Cycle Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog cycle tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-994",
@@ -851,7 +1331,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-planner-copilot",
+          "label": "Changelog Planner Copilot",
+          "description": "A recurring developer distribution tools workflow for changelog and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog planner copilot workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-995",
@@ -882,7 +1386,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-planner-loop",
+          "label": "Changelog Planner Loop",
+          "description": "A recurring developer distribution tools workflow for changelog and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog planner loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-996",
@@ -913,7 +1441,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-planner-workflow",
+          "label": "Changelog Planner Workflow",
+          "description": "A recurring developer distribution tools workflow for changelog and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog planner workflow workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-997",
@@ -944,7 +1496,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-planner-tool",
+          "label": "Changelog Planner Tool",
+          "description": "A recurring developer distribution tools workflow for changelog and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog planner tool workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Planner Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog planner tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-998",
@@ -975,7 +1551,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-radar-copilot",
+          "label": "Changelog Radar Copilot",
+          "description": "A recurring developer distribution tools workflow for changelog and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog radar copilot workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-999",
@@ -1006,7 +1606,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-radar-loop",
+          "label": "Changelog Radar Loop",
+          "description": "A recurring developer distribution tools workflow for changelog and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog radar loop workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-1000",
@@ -1037,7 +1661,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "changelog-radar-workflow",
+          "label": "Changelog Radar Workflow",
+          "description": "A recurring developer distribution tools workflow for changelog and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated changelog radar workflow workflow inside the developer distribution tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next changelog radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "developer-distribution-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Developer teams repeatedly face changelog and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "github-growth-ai",
+            "devrel-copilot",
+            "open-source-launch-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Developer teams repeatedly face changelog and radar decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

@@ -231,7 +231,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-refresh-copilot",
+          "label": "Opener Refresh Copilot",
+          "description": "A recurring dating social signal workflow for opener and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener refresh copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-795",
@@ -262,7 +286,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-refresh-loop",
+          "label": "Opener Refresh Loop",
+          "description": "A recurring dating social signal workflow for opener and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener refresh loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-796",
@@ -293,7 +341,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-refresh-system",
+          "label": "Opener Refresh System",
+          "description": "A recurring dating social signal workflow for opener and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener refresh system workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Refresh System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener refresh system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-797",
@@ -324,7 +396,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-refresh-workflow",
+          "label": "Opener Refresh Workflow",
+          "description": "A recurring dating social signal workflow for opener and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener refresh workflow workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-798",
@@ -355,7 +451,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-cycle-copilot",
+          "label": "Opener Cycle Copilot",
+          "description": "A recurring dating social signal workflow for opener and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener cycle copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-799",
@@ -386,7 +506,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-cycle-loop",
+          "label": "Opener Cycle Loop",
+          "description": "A recurring dating social signal workflow for opener and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener cycle loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-800",
@@ -417,7 +561,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-cycle-system",
+          "label": "Opener Cycle System",
+          "description": "A recurring dating social signal workflow for opener and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener cycle system workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-801",
@@ -448,7 +616,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-cycle-workflow",
+          "label": "Opener Cycle Workflow",
+          "description": "A recurring dating social signal workflow for opener and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener cycle workflow workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-802",
@@ -479,7 +671,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-planner-copilot",
+          "label": "Opener Planner Copilot",
+          "description": "A recurring dating social signal workflow for opener and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener planner copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-803",
@@ -510,7 +726,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-planner-loop",
+          "label": "Opener Planner Loop",
+          "description": "A recurring dating social signal workflow for opener and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener planner loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-804",
@@ -541,7 +781,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-planner-system",
+          "label": "Opener Planner System",
+          "description": "A recurring dating social signal workflow for opener and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener planner system workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-805",
@@ -572,7 +836,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-planner-workflow",
+          "label": "Opener Planner Workflow",
+          "description": "A recurring dating social signal workflow for opener and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener planner workflow workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-806",
@@ -603,7 +891,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-review-copilot",
+          "label": "Opener Review Copilot",
+          "description": "A recurring dating social signal workflow for opener and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener review copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Review Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener review copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-807",
@@ -634,7 +946,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-review-loop",
+          "label": "Opener Review Loop",
+          "description": "A recurring dating social signal workflow for opener and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener review loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Review Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener review loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-808",
@@ -665,7 +1001,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-review-system",
+          "label": "Opener Review System",
+          "description": "A recurring dating social signal workflow for opener and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener review system workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Review System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener review system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-809",
@@ -696,7 +1056,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-review-workflow",
+          "label": "Opener Review Workflow",
+          "description": "A recurring dating social signal workflow for opener and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener review workflow workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Review Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener review workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-810",
@@ -727,7 +1111,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-signal-copilot",
+          "label": "Opener Signal Copilot",
+          "description": "A recurring dating social signal workflow for opener and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener signal copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-811",
@@ -758,7 +1166,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-signal-loop",
+          "label": "Opener Signal Loop",
+          "description": "A recurring dating social signal workflow for opener and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener signal loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-812",
@@ -789,7 +1221,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-signal-system",
+          "label": "Opener Signal System",
+          "description": "A recurring dating social signal workflow for opener and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener signal system workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-813",
@@ -820,7 +1276,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-signal-workflow",
+          "label": "Opener Signal Workflow",
+          "description": "A recurring dating social signal workflow for opener and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener signal workflow workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-814",
@@ -851,7 +1331,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-routine-copilot",
+          "label": "Opener Routine Copilot",
+          "description": "A recurring dating social signal workflow for opener and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener routine copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-815",
@@ -882,7 +1386,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-routine-loop",
+          "label": "Opener Routine Loop",
+          "description": "A recurring dating social signal workflow for opener and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener routine loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-816",
@@ -913,7 +1441,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-routine-system",
+          "label": "Opener Routine System",
+          "description": "A recurring dating social signal workflow for opener and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener routine system workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-817",
@@ -944,7 +1496,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-routine-workflow",
+          "label": "Opener Routine Workflow",
+          "description": "A recurring dating social signal workflow for opener and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener routine workflow workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-818",
@@ -975,7 +1551,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-map-copilot",
+          "label": "Opener Map Copilot",
+          "description": "A recurring dating social signal workflow for opener and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener map copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Map Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener map copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-819",
@@ -1006,7 +1606,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-map-loop",
+          "label": "Opener Map Loop",
+          "description": "A recurring dating social signal workflow for opener and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener map loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Map Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener map loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-820",
@@ -1037,7 +1661,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-map-system",
+          "label": "Opener Map System",
+          "description": "A recurring dating social signal workflow for opener and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener map system workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Map System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener map system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-821",
@@ -1068,7 +1716,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-map-workflow",
+          "label": "Opener Map Workflow",
+          "description": "A recurring dating social signal workflow for opener and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener map workflow workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Map Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener map workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-822",
@@ -1099,7 +1771,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-engine-copilot",
+          "label": "Opener Engine Copilot",
+          "description": "A recurring dating social signal workflow for opener and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener engine copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-823",
@@ -1130,7 +1826,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-engine-loop",
+          "label": "Opener Engine Loop",
+          "description": "A recurring dating social signal workflow for opener and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener engine loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-824",
@@ -1161,7 +1881,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-engine-system",
+          "label": "Opener Engine System",
+          "description": "A recurring dating social signal workflow for opener and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener engine system workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-825",
@@ -1192,7 +1936,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-engine-workflow",
+          "label": "Opener Engine Workflow",
+          "description": "A recurring dating social signal workflow for opener and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener engine workflow workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-826",
@@ -1223,7 +1991,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-cadence-copilot",
+          "label": "Opener Cadence Copilot",
+          "description": "A recurring dating social signal workflow for opener and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener cadence copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Cadence Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener cadence copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-827",
@@ -1254,7 +2046,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-cadence-loop",
+          "label": "Opener Cadence Loop",
+          "description": "A recurring dating social signal workflow for opener and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener cadence loop workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-828",
@@ -1285,7 +2101,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-cadence-system",
+          "label": "Opener Cadence System",
+          "description": "A recurring dating social signal workflow for opener and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener cadence system workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Cadence System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener cadence system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-829",
@@ -1316,7 +2156,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-cadence-workflow",
+          "label": "Opener Cadence Workflow",
+          "description": "A recurring dating social signal workflow for opener and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener cadence workflow workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Cadence Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener cadence workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-830",
@@ -1347,7 +2211,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "opener-reset-copilot",
+          "label": "Opener Reset Copilot",
+          "description": "A recurring dating social signal workflow for opener and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated opener reset copilot workflow inside the dating / social signal wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Reset Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opener reset copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "dating-social-signal",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Dating users repeatedly face opener and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "dating-message-ai",
+            "social-confidence-ai",
+            "personal-brand-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Dating users repeatedly face opener and reset decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

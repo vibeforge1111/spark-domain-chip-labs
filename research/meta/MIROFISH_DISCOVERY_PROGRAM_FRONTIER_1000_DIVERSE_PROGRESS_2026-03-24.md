@@ -2,30 +2,30 @@
 
 - Directory: `research\meta\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24`
 - Clusters: `18`
-- Filled agents: `109` / `1000`
-- Raw candidates: `109`
-- Fill rate: `10.90%`
+- Filled agents: `1000` / `1000`
+- Raw candidates: `1000`
+- Fill rate: `100.00%`
 
 ## Cluster Progress
 
-- `creator-growth-systems`: 14 / 100 agents filled, 14 raw candidates
-- `gaming-npc-community`: 20 / 80 agents filled, 20 raw candidates
-- `agentic-builders`: 12 / 80 agents filled, 12 raw candidates
-- `startup-founder-systems`: 12 / 80 agents filled, 12 raw candidates
-- `productivity-builder-ops`: 3 / 80 agents filled, 3 raw candidates
-- `career-status-social-proof`: 4 / 60 agents filled, 4 raw candidates
-- `consumer-agent-utilities`: 3 / 60 agents filled, 3 raw candidates
-- `crypto-defi-trading`: 14 / 80 agents filled, 14 raw candidates
-- `x-native-persona-tools`: 3 / 50 agents filled, 3 raw candidates
-- `design-remix-aesthetics`: 2 / 40 agents filled, 2 raw candidates
-- `education-skill-acceleration`: 3 / 40 agents filled, 3 raw candidates
-- `health-fitness-self-systems`: 3 / 40 agents filled, 3 raw candidates
-- `dating-social-signal`: 3 / 40 agents filled, 3 raw candidates
-- `ecommerce-merchant-growth`: 3 / 40 agents filled, 3 raw candidates
-- `local-discovery-experiences`: 3 / 40 agents filled, 3 raw candidates
-- `fandom-collectibles-communities`: 1 / 30 agents filled, 1 raw candidates
-- `finance-money-ops`: 3 / 30 agents filled, 3 raw candidates
-- `developer-distribution-tools`: 3 / 30 agents filled, 3 raw candidates
+- `creator-growth-systems`: 100 / 100 agents filled, 100 raw candidates
+- `gaming-npc-community`: 80 / 80 agents filled, 80 raw candidates
+- `agentic-builders`: 80 / 80 agents filled, 80 raw candidates
+- `startup-founder-systems`: 80 / 80 agents filled, 80 raw candidates
+- `productivity-builder-ops`: 80 / 80 agents filled, 80 raw candidates
+- `career-status-social-proof`: 60 / 60 agents filled, 60 raw candidates
+- `consumer-agent-utilities`: 60 / 60 agents filled, 60 raw candidates
+- `crypto-defi-trading`: 80 / 80 agents filled, 80 raw candidates
+- `x-native-persona-tools`: 50 / 50 agents filled, 50 raw candidates
+- `design-remix-aesthetics`: 40 / 40 agents filled, 40 raw candidates
+- `education-skill-acceleration`: 40 / 40 agents filled, 40 raw candidates
+- `health-fitness-self-systems`: 40 / 40 agents filled, 40 raw candidates
+- `dating-social-signal`: 40 / 40 agents filled, 40 raw candidates
+- `ecommerce-merchant-growth`: 40 / 40 agents filled, 40 raw candidates
+- `local-discovery-experiences`: 40 / 40 agents filled, 40 raw candidates
+- `fandom-collectibles-communities`: 30 / 30 agents filled, 30 raw candidates
+- `finance-money-ops`: 30 / 30 agents filled, 30 raw candidates
+- `developer-distribution-tools`: 30 / 30 agents filled, 30 raw candidates
 
 ## Next Actions
 

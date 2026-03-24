@@ -847,7 +847,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-refresh-copilot",
+          "label": "Audience Refresh Copilot",
+          "description": "A recurring creator growth systems workflow for audience and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience refresh copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-016",
@@ -878,7 +902,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-refresh-loop",
+          "label": "Audience Refresh Loop",
+          "description": "A recurring creator growth systems workflow for audience and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience refresh loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-017",
@@ -909,7 +957,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-refresh-system",
+          "label": "Audience Refresh System",
+          "description": "A recurring creator growth systems workflow for audience and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience refresh system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Refresh System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience refresh system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-018",
@@ -940,7 +1012,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-refresh-workflow",
+          "label": "Audience Refresh Workflow",
+          "description": "A recurring creator growth systems workflow for audience and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience refresh workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-019",
@@ -971,7 +1067,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-cadence-copilot",
+          "label": "Audience Cadence Copilot",
+          "description": "A recurring creator growth systems workflow for audience and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience cadence copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Cadence Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience cadence copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-020",
@@ -1002,7 +1122,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-cadence-loop",
+          "label": "Audience Cadence Loop",
+          "description": "A recurring creator growth systems workflow for audience and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience cadence loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-021",
@@ -1033,7 +1177,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-cadence-system",
+          "label": "Audience Cadence System",
+          "description": "A recurring creator growth systems workflow for audience and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience cadence system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Cadence System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience cadence system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-022",
@@ -1064,7 +1232,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-cadence-workflow",
+          "label": "Audience Cadence Workflow",
+          "description": "A recurring creator growth systems workflow for audience and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience cadence workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Cadence Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience cadence workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-023",
@@ -1095,7 +1287,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-pipeline-copilot",
+          "label": "Audience Pipeline Copilot",
+          "description": "A recurring creator growth systems workflow for audience and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience pipeline copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Pipeline Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience pipeline copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-024",
@@ -1126,7 +1342,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-pipeline-loop",
+          "label": "Audience Pipeline Loop",
+          "description": "A recurring creator growth systems workflow for audience and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience pipeline loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Pipeline Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience pipeline loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-025",
@@ -1157,7 +1397,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-pipeline-system",
+          "label": "Audience Pipeline System",
+          "description": "A recurring creator growth systems workflow for audience and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience pipeline system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Pipeline System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience pipeline system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-026",
@@ -1188,7 +1452,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-pipeline-workflow",
+          "label": "Audience Pipeline Workflow",
+          "description": "A recurring creator growth systems workflow for audience and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience pipeline workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Pipeline Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience pipeline workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-027",
@@ -1219,7 +1507,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-calendar-copilot",
+          "label": "Audience Calendar Copilot",
+          "description": "A recurring creator growth systems workflow for audience and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience calendar copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Calendar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience calendar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-028",
@@ -1250,7 +1562,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-calendar-loop",
+          "label": "Audience Calendar Loop",
+          "description": "A recurring creator growth systems workflow for audience and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience calendar loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Calendar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience calendar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-029",
@@ -1281,7 +1617,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-calendar-system",
+          "label": "Audience Calendar System",
+          "description": "A recurring creator growth systems workflow for audience and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience calendar system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Calendar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience calendar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-030",
@@ -1312,7 +1672,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-calendar-workflow",
+          "label": "Audience Calendar Workflow",
+          "description": "A recurring creator growth systems workflow for audience and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience calendar workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Calendar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience calendar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-031",
@@ -1343,7 +1727,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-signal-copilot",
+          "label": "Audience Signal Copilot",
+          "description": "A recurring creator growth systems workflow for audience and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience signal copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-032",
@@ -1374,7 +1782,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-signal-loop",
+          "label": "Audience Signal Loop",
+          "description": "A recurring creator growth systems workflow for audience and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience signal loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-033",
@@ -1405,7 +1837,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-signal-system",
+          "label": "Audience Signal System",
+          "description": "A recurring creator growth systems workflow for audience and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience signal system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-034",
@@ -1436,7 +1892,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-signal-workflow",
+          "label": "Audience Signal Workflow",
+          "description": "A recurring creator growth systems workflow for audience and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience signal workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-035",
@@ -1467,7 +1947,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-sprint-copilot",
+          "label": "Audience Sprint Copilot",
+          "description": "A recurring creator growth systems workflow for audience and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience sprint copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Sprint Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience sprint copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-036",
@@ -1498,7 +2002,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-sprint-loop",
+          "label": "Audience Sprint Loop",
+          "description": "A recurring creator growth systems workflow for audience and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience sprint loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Sprint Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience sprint loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-037",
@@ -1529,7 +2057,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-sprint-system",
+          "label": "Audience Sprint System",
+          "description": "A recurring creator growth systems workflow for audience and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience sprint system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Sprint System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience sprint system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-038",
@@ -1560,7 +2112,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-sprint-workflow",
+          "label": "Audience Sprint Workflow",
+          "description": "A recurring creator growth systems workflow for audience and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience sprint workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Sprint Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience sprint workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-039",
@@ -1591,7 +2167,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-flywheel-copilot",
+          "label": "Audience Flywheel Copilot",
+          "description": "A recurring creator growth systems workflow for audience and flywheel decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience flywheel copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Flywheel Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience flywheel copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and flywheel decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and flywheel decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-040",
@@ -1622,7 +2222,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-flywheel-loop",
+          "label": "Audience Flywheel Loop",
+          "description": "A recurring creator growth systems workflow for audience and flywheel decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience flywheel loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Flywheel Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience flywheel loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and flywheel decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and flywheel decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-041",
@@ -1653,7 +2277,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-flywheel-system",
+          "label": "Audience Flywheel System",
+          "description": "A recurring creator growth systems workflow for audience and flywheel decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience flywheel system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Flywheel System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience flywheel system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and flywheel decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and flywheel decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-042",
@@ -1684,7 +2332,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-flywheel-workflow",
+          "label": "Audience Flywheel Workflow",
+          "description": "A recurring creator growth systems workflow for audience and flywheel decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience flywheel workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Flywheel Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience flywheel workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and flywheel decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and flywheel decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-043",
@@ -1715,7 +2387,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-engine-copilot",
+          "label": "Audience Engine Copilot",
+          "description": "A recurring creator growth systems workflow for audience and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience engine copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-044",
@@ -1746,7 +2442,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-engine-loop",
+          "label": "Audience Engine Loop",
+          "description": "A recurring creator growth systems workflow for audience and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience engine loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-045",
@@ -1777,7 +2497,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-engine-system",
+          "label": "Audience Engine System",
+          "description": "A recurring creator growth systems workflow for audience and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience engine system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-046",
@@ -1808,7 +2552,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-engine-workflow",
+          "label": "Audience Engine Workflow",
+          "description": "A recurring creator growth systems workflow for audience and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience engine workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-047",
@@ -1839,7 +2607,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-radar-copilot",
+          "label": "Audience Radar Copilot",
+          "description": "A recurring creator growth systems workflow for audience and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience radar copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-048",
@@ -1870,7 +2662,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-radar-loop",
+          "label": "Audience Radar Loop",
+          "description": "A recurring creator growth systems workflow for audience and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience radar loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-049",
@@ -1901,7 +2717,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-radar-system",
+          "label": "Audience Radar System",
+          "description": "A recurring creator growth systems workflow for audience and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience radar system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-050",
@@ -1932,7 +2772,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-radar-workflow",
+          "label": "Audience Radar Workflow",
+          "description": "A recurring creator growth systems workflow for audience and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience radar workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-051",
@@ -1963,7 +2827,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-routine-copilot",
+          "label": "Audience Routine Copilot",
+          "description": "A recurring creator growth systems workflow for audience and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience routine copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-052",
@@ -1994,7 +2882,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-routine-loop",
+          "label": "Audience Routine Loop",
+          "description": "A recurring creator growth systems workflow for audience and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience routine loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-053",
@@ -2025,7 +2937,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-routine-system",
+          "label": "Audience Routine System",
+          "description": "A recurring creator growth systems workflow for audience and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience routine system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-054",
@@ -2056,7 +2992,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-routine-workflow",
+          "label": "Audience Routine Workflow",
+          "description": "A recurring creator growth systems workflow for audience and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience routine workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-055",
@@ -2087,7 +3047,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-playbook-copilot",
+          "label": "Audience Playbook Copilot",
+          "description": "A recurring creator growth systems workflow for audience and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience playbook copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Playbook Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience playbook copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-056",
@@ -2118,7 +3102,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-playbook-loop",
+          "label": "Audience Playbook Loop",
+          "description": "A recurring creator growth systems workflow for audience and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience playbook loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Playbook Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience playbook loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-057",
@@ -2149,7 +3157,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-playbook-system",
+          "label": "Audience Playbook System",
+          "description": "A recurring creator growth systems workflow for audience and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience playbook system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Playbook System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience playbook system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-058",
@@ -2180,7 +3212,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-playbook-workflow",
+          "label": "Audience Playbook Workflow",
+          "description": "A recurring creator growth systems workflow for audience and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience playbook workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Playbook Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience playbook workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-059",
@@ -2211,7 +3267,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-studio-copilot",
+          "label": "Audience Studio Copilot",
+          "description": "A recurring creator growth systems workflow for audience and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience studio copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Studio Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience studio copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-060",
@@ -2242,7 +3322,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-studio-loop",
+          "label": "Audience Studio Loop",
+          "description": "A recurring creator growth systems workflow for audience and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience studio loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Studio Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience studio loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-061",
@@ -2273,7 +3377,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-studio-system",
+          "label": "Audience Studio System",
+          "description": "A recurring creator growth systems workflow for audience and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience studio system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Studio System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience studio system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-062",
@@ -2304,7 +3432,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-studio-workflow",
+          "label": "Audience Studio Workflow",
+          "description": "A recurring creator growth systems workflow for audience and studio decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated audience studio workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Studio Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience studio workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face audience and studio decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face audience and studio decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-063",
@@ -2335,7 +3487,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-refresh-copilot",
+          "label": "Hook Refresh Copilot",
+          "description": "A recurring creator growth systems workflow for hook and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook refresh copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-064",
@@ -2366,7 +3542,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-refresh-loop",
+          "label": "Hook Refresh Loop",
+          "description": "A recurring creator growth systems workflow for hook and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook refresh loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-065",
@@ -2397,7 +3597,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-refresh-system",
+          "label": "Hook Refresh System",
+          "description": "A recurring creator growth systems workflow for hook and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook refresh system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Refresh System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook refresh system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-066",
@@ -2428,7 +3652,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-refresh-workflow",
+          "label": "Hook Refresh Workflow",
+          "description": "A recurring creator growth systems workflow for hook and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook refresh workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-067",
@@ -2459,7 +3707,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-cadence-copilot",
+          "label": "Hook Cadence Copilot",
+          "description": "A recurring creator growth systems workflow for hook and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook cadence copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Cadence Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook cadence copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-068",
@@ -2490,7 +3762,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-cadence-loop",
+          "label": "Hook Cadence Loop",
+          "description": "A recurring creator growth systems workflow for hook and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook cadence loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-069",
@@ -2521,7 +3817,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-cadence-system",
+          "label": "Hook Cadence System",
+          "description": "A recurring creator growth systems workflow for hook and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook cadence system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Cadence System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook cadence system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-070",
@@ -2552,7 +3872,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-cadence-workflow",
+          "label": "Hook Cadence Workflow",
+          "description": "A recurring creator growth systems workflow for hook and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook cadence workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Cadence Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook cadence workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-071",
@@ -2583,7 +3927,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-pipeline-copilot",
+          "label": "Hook Pipeline Copilot",
+          "description": "A recurring creator growth systems workflow for hook and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook pipeline copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Pipeline Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook pipeline copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-072",
@@ -2614,7 +3982,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-pipeline-loop",
+          "label": "Hook Pipeline Loop",
+          "description": "A recurring creator growth systems workflow for hook and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook pipeline loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Pipeline Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook pipeline loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-073",
@@ -2645,7 +4037,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-pipeline-system",
+          "label": "Hook Pipeline System",
+          "description": "A recurring creator growth systems workflow for hook and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook pipeline system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Pipeline System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook pipeline system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-074",
@@ -2676,7 +4092,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-pipeline-workflow",
+          "label": "Hook Pipeline Workflow",
+          "description": "A recurring creator growth systems workflow for hook and pipeline decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook pipeline workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Pipeline Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook pipeline workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and pipeline decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and pipeline decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-075",
@@ -2707,7 +4147,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-calendar-copilot",
+          "label": "Hook Calendar Copilot",
+          "description": "A recurring creator growth systems workflow for hook and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook calendar copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Calendar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook calendar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-076",
@@ -2738,7 +4202,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-calendar-loop",
+          "label": "Hook Calendar Loop",
+          "description": "A recurring creator growth systems workflow for hook and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook calendar loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Calendar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook calendar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-077",
@@ -2769,7 +4257,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-calendar-system",
+          "label": "Hook Calendar System",
+          "description": "A recurring creator growth systems workflow for hook and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook calendar system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Calendar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook calendar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-078",
@@ -2800,7 +4312,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-calendar-workflow",
+          "label": "Hook Calendar Workflow",
+          "description": "A recurring creator growth systems workflow for hook and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook calendar workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Calendar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook calendar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-079",
@@ -2831,7 +4367,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-signal-copilot",
+          "label": "Hook Signal Copilot",
+          "description": "A recurring creator growth systems workflow for hook and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook signal copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-080",
@@ -2862,7 +4422,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-signal-loop",
+          "label": "Hook Signal Loop",
+          "description": "A recurring creator growth systems workflow for hook and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook signal loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-081",
@@ -2893,7 +4477,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-signal-system",
+          "label": "Hook Signal System",
+          "description": "A recurring creator growth systems workflow for hook and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook signal system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-082",
@@ -2924,7 +4532,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-signal-workflow",
+          "label": "Hook Signal Workflow",
+          "description": "A recurring creator growth systems workflow for hook and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook signal workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-083",
@@ -2955,7 +4587,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-sprint-copilot",
+          "label": "Hook Sprint Copilot",
+          "description": "A recurring creator growth systems workflow for hook and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook sprint copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Sprint Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook sprint copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-084",
@@ -2986,7 +4642,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-sprint-loop",
+          "label": "Hook Sprint Loop",
+          "description": "A recurring creator growth systems workflow for hook and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook sprint loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Sprint Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook sprint loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-085",
@@ -3017,7 +4697,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-sprint-system",
+          "label": "Hook Sprint System",
+          "description": "A recurring creator growth systems workflow for hook and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook sprint system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Sprint System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook sprint system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-086",
@@ -3048,7 +4752,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-sprint-workflow",
+          "label": "Hook Sprint Workflow",
+          "description": "A recurring creator growth systems workflow for hook and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook sprint workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Sprint Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook sprint workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-087",
@@ -3079,7 +4807,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-flywheel-copilot",
+          "label": "Hook Flywheel Copilot",
+          "description": "A recurring creator growth systems workflow for hook and flywheel decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook flywheel copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Flywheel Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook flywheel copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and flywheel decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and flywheel decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-088",
@@ -3110,7 +4862,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-flywheel-loop",
+          "label": "Hook Flywheel Loop",
+          "description": "A recurring creator growth systems workflow for hook and flywheel decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook flywheel loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Flywheel Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook flywheel loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and flywheel decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and flywheel decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-089",
@@ -3141,7 +4917,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-flywheel-system",
+          "label": "Hook Flywheel System",
+          "description": "A recurring creator growth systems workflow for hook and flywheel decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook flywheel system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Flywheel System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook flywheel system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and flywheel decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and flywheel decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-090",
@@ -3172,7 +4972,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-flywheel-workflow",
+          "label": "Hook Flywheel Workflow",
+          "description": "A recurring creator growth systems workflow for hook and flywheel decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook flywheel workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Flywheel Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook flywheel workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and flywheel decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and flywheel decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-091",
@@ -3203,7 +5027,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-engine-copilot",
+          "label": "Hook Engine Copilot",
+          "description": "A recurring creator growth systems workflow for hook and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook engine copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-092",
@@ -3234,7 +5082,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-engine-loop",
+          "label": "Hook Engine Loop",
+          "description": "A recurring creator growth systems workflow for hook and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook engine loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-093",
@@ -3265,7 +5137,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-engine-system",
+          "label": "Hook Engine System",
+          "description": "A recurring creator growth systems workflow for hook and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook engine system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-094",
@@ -3296,7 +5192,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-engine-workflow",
+          "label": "Hook Engine Workflow",
+          "description": "A recurring creator growth systems workflow for hook and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook engine workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-095",
@@ -3327,7 +5247,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-radar-copilot",
+          "label": "Hook Radar Copilot",
+          "description": "A recurring creator growth systems workflow for hook and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook radar copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-096",
@@ -3358,7 +5302,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-radar-loop",
+          "label": "Hook Radar Loop",
+          "description": "A recurring creator growth systems workflow for hook and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook radar loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-097",
@@ -3389,7 +5357,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-radar-system",
+          "label": "Hook Radar System",
+          "description": "A recurring creator growth systems workflow for hook and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook radar system workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-098",
@@ -3420,7 +5412,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-radar-workflow",
+          "label": "Hook Radar Workflow",
+          "description": "A recurring creator growth systems workflow for hook and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook radar workflow workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-099",
@@ -3451,7 +5467,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-routine-copilot",
+          "label": "Hook Routine Copilot",
+          "description": "A recurring creator growth systems workflow for hook and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook routine copilot workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-100",
@@ -3482,7 +5522,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "hook-routine-loop",
+          "label": "Hook Routine Loop",
+          "description": "A recurring creator growth systems workflow for hook and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated hook routine loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Hook Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next hook routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator-growth-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Creators repeatedly face hook and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators repeatedly face hook and routine decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

@@ -231,7 +231,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-reset-copilot",
+          "label": "Task Queue Reset Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue reset copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Reset Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue reset copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-345",
@@ -262,7 +286,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-reset-loop",
+          "label": "Task Queue Reset Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue reset loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-346",
@@ -293,7 +341,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-reset-system",
+          "label": "Task Queue Reset System",
+          "description": "A recurring productivity builder ops workflow for task queue and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue reset system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Reset System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue reset system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-347",
@@ -324,7 +396,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-reset-workflow",
+          "label": "Task Queue Reset Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue reset workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Reset Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue reset workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-348",
@@ -355,7 +451,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-cycle-copilot",
+          "label": "Task Queue Cycle Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue cycle copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-349",
@@ -386,7 +506,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-cycle-loop",
+          "label": "Task Queue Cycle Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue cycle loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-350",
@@ -417,7 +561,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-cycle-system",
+          "label": "Task Queue Cycle System",
+          "description": "A recurring productivity builder ops workflow for task queue and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue cycle system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-351",
@@ -448,7 +616,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-cycle-workflow",
+          "label": "Task Queue Cycle Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue cycle workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-352",
@@ -479,7 +671,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-planner-copilot",
+          "label": "Task Queue Planner Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue planner copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-353",
@@ -510,7 +726,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-planner-loop",
+          "label": "Task Queue Planner Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue planner loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-354",
@@ -541,7 +781,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-planner-system",
+          "label": "Task Queue Planner System",
+          "description": "A recurring productivity builder ops workflow for task queue and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue planner system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-355",
@@ -572,7 +836,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-planner-workflow",
+          "label": "Task Queue Planner Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue planner workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-356",
@@ -603,7 +891,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-routine-copilot",
+          "label": "Task Queue Routine Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue routine copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-357",
@@ -634,7 +946,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-routine-loop",
+          "label": "Task Queue Routine Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue routine loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-358",
@@ -665,7 +1001,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-routine-system",
+          "label": "Task Queue Routine System",
+          "description": "A recurring productivity builder ops workflow for task queue and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue routine system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-359",
@@ -696,7 +1056,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-routine-workflow",
+          "label": "Task Queue Routine Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue routine workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-360",
@@ -727,7 +1111,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-engine-copilot",
+          "label": "Task Queue Engine Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue engine copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-361",
@@ -758,7 +1166,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-engine-loop",
+          "label": "Task Queue Engine Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue engine loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-362",
@@ -789,7 +1221,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-engine-system",
+          "label": "Task Queue Engine System",
+          "description": "A recurring productivity builder ops workflow for task queue and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue engine system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-363",
@@ -820,7 +1276,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-engine-workflow",
+          "label": "Task Queue Engine Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue engine workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-364",
@@ -851,7 +1331,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-radar-copilot",
+          "label": "Task Queue Radar Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue radar copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-365",
@@ -882,7 +1386,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-radar-loop",
+          "label": "Task Queue Radar Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue radar loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-366",
@@ -913,7 +1441,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-radar-system",
+          "label": "Task Queue Radar System",
+          "description": "A recurring productivity builder ops workflow for task queue and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue radar system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-367",
@@ -944,7 +1496,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-radar-workflow",
+          "label": "Task Queue Radar Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue radar workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-368",
@@ -975,7 +1551,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-cadence-copilot",
+          "label": "Task Queue Cadence Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue cadence copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Cadence Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue cadence copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-369",
@@ -1006,7 +1606,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-cadence-loop",
+          "label": "Task Queue Cadence Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue cadence loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-370",
@@ -1037,7 +1661,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-cadence-system",
+          "label": "Task Queue Cadence System",
+          "description": "A recurring productivity builder ops workflow for task queue and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue cadence system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Cadence System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue cadence system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-371",
@@ -1068,7 +1716,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-cadence-workflow",
+          "label": "Task Queue Cadence Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue cadence workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Cadence Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue cadence workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-372",
@@ -1099,7 +1771,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-triage-copilot",
+          "label": "Task Queue Triage Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and triage decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue triage copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Triage Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue triage copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and triage decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and triage decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-373",
@@ -1130,7 +1826,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-triage-loop",
+          "label": "Task Queue Triage Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and triage decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue triage loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Triage Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue triage loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and triage decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and triage decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-374",
@@ -1161,7 +1881,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-triage-system",
+          "label": "Task Queue Triage System",
+          "description": "A recurring productivity builder ops workflow for task queue and triage decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue triage system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Triage System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue triage system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and triage decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and triage decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-375",
@@ -1192,7 +1936,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-triage-workflow",
+          "label": "Task Queue Triage Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and triage decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue triage workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Triage Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue triage workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and triage decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and triage decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-376",
@@ -1223,7 +1991,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-tracker-copilot",
+          "label": "Task Queue Tracker Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue tracker copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Tracker Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue tracker copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-377",
@@ -1254,7 +2046,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-tracker-loop",
+          "label": "Task Queue Tracker Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue tracker loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Tracker Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue tracker loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-378",
@@ -1285,7 +2101,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-tracker-system",
+          "label": "Task Queue Tracker System",
+          "description": "A recurring productivity builder ops workflow for task queue and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue tracker system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Tracker System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue tracker system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-379",
@@ -1316,7 +2156,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-tracker-workflow",
+          "label": "Task Queue Tracker Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue tracker workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Tracker Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue tracker workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-380",
@@ -1347,7 +2211,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-refresh-copilot",
+          "label": "Task Queue Refresh Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue refresh copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-381",
@@ -1378,7 +2266,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-refresh-loop",
+          "label": "Task Queue Refresh Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue refresh loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-382",
@@ -1409,7 +2321,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-refresh-system",
+          "label": "Task Queue Refresh System",
+          "description": "A recurring productivity builder ops workflow for task queue and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue refresh system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Refresh System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue refresh system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-383",
@@ -1440,7 +2376,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-refresh-workflow",
+          "label": "Task Queue Refresh Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue refresh workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-384",
@@ -1471,7 +2431,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-flow-copilot",
+          "label": "Task Queue Flow Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue flow copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Flow Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue flow copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and flow decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-385",
@@ -1502,7 +2486,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-flow-loop",
+          "label": "Task Queue Flow Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue flow loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Flow Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue flow loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and flow decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-386",
@@ -1533,7 +2541,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-flow-system",
+          "label": "Task Queue Flow System",
+          "description": "A recurring productivity builder ops workflow for task queue and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue flow system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Flow System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue flow system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and flow decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-387",
@@ -1564,7 +2596,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-flow-workflow",
+          "label": "Task Queue Flow Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue flow workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Flow Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue flow workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and flow decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-388",
@@ -1595,7 +2651,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-control-copilot",
+          "label": "Task Queue Control Copilot",
+          "description": "A recurring productivity builder ops workflow for task queue and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue control copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Control Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue control copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-389",
@@ -1626,7 +2706,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-control-loop",
+          "label": "Task Queue Control Loop",
+          "description": "A recurring productivity builder ops workflow for task queue and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue control loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Control Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue control loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-390",
@@ -1657,7 +2761,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-control-system",
+          "label": "Task Queue Control System",
+          "description": "A recurring productivity builder ops workflow for task queue and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue control system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Control System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue control system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-391",
@@ -1688,7 +2816,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "task-queue-control-workflow",
+          "label": "Task Queue Control Workflow",
+          "description": "A recurring productivity builder ops workflow for task queue and control decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated task queue control workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Control Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue control workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face task queue and control decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face task queue and control decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-392",
@@ -1719,7 +2871,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-reset-copilot",
+          "label": "Focus Reset Copilot",
+          "description": "A recurring productivity builder ops workflow for focus and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus reset copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Reset Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus reset copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-393",
@@ -1750,7 +2926,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-reset-loop",
+          "label": "Focus Reset Loop",
+          "description": "A recurring productivity builder ops workflow for focus and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus reset loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-394",
@@ -1781,7 +2981,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-reset-system",
+          "label": "Focus Reset System",
+          "description": "A recurring productivity builder ops workflow for focus and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus reset system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Reset System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus reset system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-395",
@@ -1812,7 +3036,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-reset-workflow",
+          "label": "Focus Reset Workflow",
+          "description": "A recurring productivity builder ops workflow for focus and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus reset workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Reset Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus reset workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-396",
@@ -1843,7 +3091,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-cycle-copilot",
+          "label": "Focus Cycle Copilot",
+          "description": "A recurring productivity builder ops workflow for focus and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus cycle copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-397",
@@ -1874,7 +3146,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-cycle-loop",
+          "label": "Focus Cycle Loop",
+          "description": "A recurring productivity builder ops workflow for focus and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus cycle loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-398",
@@ -1905,7 +3201,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-cycle-system",
+          "label": "Focus Cycle System",
+          "description": "A recurring productivity builder ops workflow for focus and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus cycle system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-399",
@@ -1936,7 +3256,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-cycle-workflow",
+          "label": "Focus Cycle Workflow",
+          "description": "A recurring productivity builder ops workflow for focus and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus cycle workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-400",
@@ -1967,7 +3311,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-planner-copilot",
+          "label": "Focus Planner Copilot",
+          "description": "A recurring productivity builder ops workflow for focus and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus planner copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-401",
@@ -1998,7 +3366,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-planner-loop",
+          "label": "Focus Planner Loop",
+          "description": "A recurring productivity builder ops workflow for focus and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus planner loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-402",
@@ -2029,7 +3421,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-planner-system",
+          "label": "Focus Planner System",
+          "description": "A recurring productivity builder ops workflow for focus and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus planner system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-403",
@@ -2060,7 +3476,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-planner-workflow",
+          "label": "Focus Planner Workflow",
+          "description": "A recurring productivity builder ops workflow for focus and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus planner workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-404",
@@ -2091,7 +3531,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-routine-copilot",
+          "label": "Focus Routine Copilot",
+          "description": "A recurring productivity builder ops workflow for focus and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus routine copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-405",
@@ -2122,7 +3586,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-routine-loop",
+          "label": "Focus Routine Loop",
+          "description": "A recurring productivity builder ops workflow for focus and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus routine loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-406",
@@ -2153,7 +3641,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-routine-system",
+          "label": "Focus Routine System",
+          "description": "A recurring productivity builder ops workflow for focus and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus routine system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-407",
@@ -2184,7 +3696,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-routine-workflow",
+          "label": "Focus Routine Workflow",
+          "description": "A recurring productivity builder ops workflow for focus and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus routine workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-408",
@@ -2215,7 +3751,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-engine-copilot",
+          "label": "Focus Engine Copilot",
+          "description": "A recurring productivity builder ops workflow for focus and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus engine copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-409",
@@ -2246,7 +3806,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-engine-loop",
+          "label": "Focus Engine Loop",
+          "description": "A recurring productivity builder ops workflow for focus and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus engine loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-410",
@@ -2277,7 +3861,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-engine-system",
+          "label": "Focus Engine System",
+          "description": "A recurring productivity builder ops workflow for focus and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus engine system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-411",
@@ -2308,7 +3916,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-engine-workflow",
+          "label": "Focus Engine Workflow",
+          "description": "A recurring productivity builder ops workflow for focus and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus engine workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-412",
@@ -2339,7 +3971,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-radar-copilot",
+          "label": "Focus Radar Copilot",
+          "description": "A recurring productivity builder ops workflow for focus and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus radar copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-413",
@@ -2370,7 +4026,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-radar-loop",
+          "label": "Focus Radar Loop",
+          "description": "A recurring productivity builder ops workflow for focus and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus radar loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-414",
@@ -2401,7 +4081,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-radar-system",
+          "label": "Focus Radar System",
+          "description": "A recurring productivity builder ops workflow for focus and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus radar system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-415",
@@ -2432,7 +4136,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-radar-workflow",
+          "label": "Focus Radar Workflow",
+          "description": "A recurring productivity builder ops workflow for focus and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus radar workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-416",
@@ -2463,7 +4191,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-cadence-copilot",
+          "label": "Focus Cadence Copilot",
+          "description": "A recurring productivity builder ops workflow for focus and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus cadence copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Cadence Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus cadence copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-417",
@@ -2494,7 +4246,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-cadence-loop",
+          "label": "Focus Cadence Loop",
+          "description": "A recurring productivity builder ops workflow for focus and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus cadence loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-418",
@@ -2525,7 +4301,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-cadence-system",
+          "label": "Focus Cadence System",
+          "description": "A recurring productivity builder ops workflow for focus and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus cadence system workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Cadence System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus cadence system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-419",
@@ -2556,7 +4356,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-cadence-workflow",
+          "label": "Focus Cadence Workflow",
+          "description": "A recurring productivity builder ops workflow for focus and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus cadence workflow workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Cadence Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus cadence workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-420",
@@ -2587,7 +4411,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "focus-triage-copilot",
+          "label": "Focus Triage Copilot",
+          "description": "A recurring productivity builder ops workflow for focus and triage decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated focus triage copilot workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Focus Triage Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next focus triage copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "productivity-builder-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Builders repeatedly face focus and triage decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders repeatedly face focus and triage decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

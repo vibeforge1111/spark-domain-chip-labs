@@ -735,7 +735,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-review-copilot",
+          "label": "Pricing Review Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing review copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Review Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing review copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-274",
@@ -766,7 +790,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-review-loop",
+          "label": "Pricing Review Loop",
+          "description": "A recurring startup founder systems workflow for pricing and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing review loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Review Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing review loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-275",
@@ -797,7 +845,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-review-system",
+          "label": "Pricing Review System",
+          "description": "A recurring startup founder systems workflow for pricing and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing review system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Review System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing review system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-276",
@@ -828,7 +900,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-review-workflow",
+          "label": "Pricing Review Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing review workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Review Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing review workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-277",
@@ -859,7 +955,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-cadence-copilot",
+          "label": "Pricing Cadence Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing cadence copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Cadence Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing cadence copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-278",
@@ -890,7 +1010,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-cadence-loop",
+          "label": "Pricing Cadence Loop",
+          "description": "A recurring startup founder systems workflow for pricing and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing cadence loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-279",
@@ -921,7 +1065,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-cadence-system",
+          "label": "Pricing Cadence System",
+          "description": "A recurring startup founder systems workflow for pricing and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing cadence system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Cadence System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing cadence system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-280",
@@ -952,7 +1120,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-cadence-workflow",
+          "label": "Pricing Cadence Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing cadence workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Cadence Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing cadence workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-281",
@@ -983,7 +1175,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-signal-copilot",
+          "label": "Pricing Signal Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing signal copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-282",
@@ -1014,7 +1230,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-signal-loop",
+          "label": "Pricing Signal Loop",
+          "description": "A recurring startup founder systems workflow for pricing and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing signal loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-283",
@@ -1045,7 +1285,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-signal-system",
+          "label": "Pricing Signal System",
+          "description": "A recurring startup founder systems workflow for pricing and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing signal system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-284",
@@ -1076,7 +1340,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-signal-workflow",
+          "label": "Pricing Signal Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing signal workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-285",
@@ -1107,7 +1395,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-decision-copilot",
+          "label": "Pricing Decision Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and decision decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing decision copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Decision Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing decision copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and decision decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and decision decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-286",
@@ -1138,7 +1450,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-decision-loop",
+          "label": "Pricing Decision Loop",
+          "description": "A recurring startup founder systems workflow for pricing and decision decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing decision loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Decision Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing decision loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and decision decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and decision decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-287",
@@ -1169,7 +1505,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-decision-system",
+          "label": "Pricing Decision System",
+          "description": "A recurring startup founder systems workflow for pricing and decision decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing decision system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Decision System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing decision system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and decision decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and decision decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-288",
@@ -1200,7 +1560,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-decision-workflow",
+          "label": "Pricing Decision Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and decision decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing decision workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Decision Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing decision workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and decision decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and decision decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-289",
@@ -1231,7 +1615,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-cycle-copilot",
+          "label": "Pricing Cycle Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing cycle copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-290",
@@ -1262,7 +1670,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-cycle-loop",
+          "label": "Pricing Cycle Loop",
+          "description": "A recurring startup founder systems workflow for pricing and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing cycle loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-291",
@@ -1293,7 +1725,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-cycle-system",
+          "label": "Pricing Cycle System",
+          "description": "A recurring startup founder systems workflow for pricing and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing cycle system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-292",
@@ -1324,7 +1780,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-cycle-workflow",
+          "label": "Pricing Cycle Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing cycle workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-293",
@@ -1355,7 +1835,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-planner-copilot",
+          "label": "Pricing Planner Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing planner copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-294",
@@ -1386,7 +1890,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-planner-loop",
+          "label": "Pricing Planner Loop",
+          "description": "A recurring startup founder systems workflow for pricing and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing planner loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-295",
@@ -1417,7 +1945,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-planner-system",
+          "label": "Pricing Planner System",
+          "description": "A recurring startup founder systems workflow for pricing and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing planner system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-296",
@@ -1448,7 +2000,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-planner-workflow",
+          "label": "Pricing Planner Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing planner workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-297",
@@ -1479,7 +2055,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-engine-copilot",
+          "label": "Pricing Engine Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing engine copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-298",
@@ -1510,7 +2110,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-engine-loop",
+          "label": "Pricing Engine Loop",
+          "description": "A recurring startup founder systems workflow for pricing and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing engine loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-299",
@@ -1541,7 +2165,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-engine-system",
+          "label": "Pricing Engine System",
+          "description": "A recurring startup founder systems workflow for pricing and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing engine system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-300",
@@ -1572,7 +2220,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-engine-workflow",
+          "label": "Pricing Engine Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing engine workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-301",
@@ -1603,7 +2275,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-radar-copilot",
+          "label": "Pricing Radar Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing radar copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-302",
@@ -1634,7 +2330,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-radar-loop",
+          "label": "Pricing Radar Loop",
+          "description": "A recurring startup founder systems workflow for pricing and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing radar loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-303",
@@ -1665,7 +2385,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-radar-system",
+          "label": "Pricing Radar System",
+          "description": "A recurring startup founder systems workflow for pricing and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing radar system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-304",
@@ -1696,7 +2440,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-radar-workflow",
+          "label": "Pricing Radar Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing radar workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-305",
@@ -1727,7 +2495,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-refresh-copilot",
+          "label": "Pricing Refresh Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing refresh copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-306",
@@ -1758,7 +2550,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-refresh-loop",
+          "label": "Pricing Refresh Loop",
+          "description": "A recurring startup founder systems workflow for pricing and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing refresh loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-307",
@@ -1789,7 +2605,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-refresh-system",
+          "label": "Pricing Refresh System",
+          "description": "A recurring startup founder systems workflow for pricing and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing refresh system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Refresh System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing refresh system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-308",
@@ -1820,7 +2660,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-refresh-workflow",
+          "label": "Pricing Refresh Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing refresh workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-309",
@@ -1851,7 +2715,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-routine-copilot",
+          "label": "Pricing Routine Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing routine copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-310",
@@ -1882,7 +2770,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-routine-loop",
+          "label": "Pricing Routine Loop",
+          "description": "A recurring startup founder systems workflow for pricing and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing routine loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-311",
@@ -1913,7 +2825,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-routine-system",
+          "label": "Pricing Routine System",
+          "description": "A recurring startup founder systems workflow for pricing and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing routine system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-312",
@@ -1944,7 +2880,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-routine-workflow",
+          "label": "Pricing Routine Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing routine workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-313",
@@ -1975,7 +2935,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-tracker-copilot",
+          "label": "Pricing Tracker Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing tracker copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Tracker Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing tracker copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-314",
@@ -2006,7 +2990,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-tracker-loop",
+          "label": "Pricing Tracker Loop",
+          "description": "A recurring startup founder systems workflow for pricing and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing tracker loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Tracker Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing tracker loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-315",
@@ -2037,7 +3045,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-tracker-system",
+          "label": "Pricing Tracker System",
+          "description": "A recurring startup founder systems workflow for pricing and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing tracker system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Tracker System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing tracker system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-316",
@@ -2068,7 +3100,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-tracker-workflow",
+          "label": "Pricing Tracker Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing tracker workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Tracker Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing tracker workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-317",
@@ -2099,7 +3155,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-playbook-copilot",
+          "label": "Pricing Playbook Copilot",
+          "description": "A recurring startup founder systems workflow for pricing and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing playbook copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Playbook Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing playbook copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-318",
@@ -2130,7 +3210,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-playbook-loop",
+          "label": "Pricing Playbook Loop",
+          "description": "A recurring startup founder systems workflow for pricing and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing playbook loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Playbook Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing playbook loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-319",
@@ -2161,7 +3265,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-playbook-system",
+          "label": "Pricing Playbook System",
+          "description": "A recurring startup founder systems workflow for pricing and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing playbook system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Playbook System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing playbook system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-320",
@@ -2192,7 +3320,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-playbook-workflow",
+          "label": "Pricing Playbook Workflow",
+          "description": "A recurring startup founder systems workflow for pricing and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated pricing playbook workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Playbook Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing playbook workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face pricing and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face pricing and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-321",
@@ -2223,7 +3375,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-review-copilot",
+          "label": "Launch Review Copilot",
+          "description": "A recurring startup founder systems workflow for launch and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch review copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Review Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch review copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-322",
@@ -2254,7 +3430,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-review-loop",
+          "label": "Launch Review Loop",
+          "description": "A recurring startup founder systems workflow for launch and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch review loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Review Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch review loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-323",
@@ -2285,7 +3485,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-review-system",
+          "label": "Launch Review System",
+          "description": "A recurring startup founder systems workflow for launch and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch review system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Review System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch review system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-324",
@@ -2316,7 +3540,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-review-workflow",
+          "label": "Launch Review Workflow",
+          "description": "A recurring startup founder systems workflow for launch and review decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch review workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Review Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch review workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and review decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and review decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-325",
@@ -2347,7 +3595,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-cadence-copilot",
+          "label": "Launch Cadence Copilot",
+          "description": "A recurring startup founder systems workflow for launch and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch cadence copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Cadence Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch cadence copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-326",
@@ -2378,7 +3650,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-cadence-loop",
+          "label": "Launch Cadence Loop",
+          "description": "A recurring startup founder systems workflow for launch and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch cadence loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-327",
@@ -2409,7 +3705,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-cadence-system",
+          "label": "Launch Cadence System",
+          "description": "A recurring startup founder systems workflow for launch and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch cadence system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Cadence System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch cadence system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-328",
@@ -2440,7 +3760,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-cadence-workflow",
+          "label": "Launch Cadence Workflow",
+          "description": "A recurring startup founder systems workflow for launch and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch cadence workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Cadence Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch cadence workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-329",
@@ -2471,7 +3815,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-signal-copilot",
+          "label": "Launch Signal Copilot",
+          "description": "A recurring startup founder systems workflow for launch and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch signal copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-330",
@@ -2502,7 +3870,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-signal-loop",
+          "label": "Launch Signal Loop",
+          "description": "A recurring startup founder systems workflow for launch and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch signal loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-331",
@@ -2533,7 +3925,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-signal-system",
+          "label": "Launch Signal System",
+          "description": "A recurring startup founder systems workflow for launch and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch signal system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-332",
@@ -2564,7 +3980,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-signal-workflow",
+          "label": "Launch Signal Workflow",
+          "description": "A recurring startup founder systems workflow for launch and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch signal workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-333",
@@ -2595,7 +4035,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-decision-copilot",
+          "label": "Launch Decision Copilot",
+          "description": "A recurring startup founder systems workflow for launch and decision decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch decision copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Decision Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch decision copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and decision decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and decision decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-334",
@@ -2626,7 +4090,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-decision-loop",
+          "label": "Launch Decision Loop",
+          "description": "A recurring startup founder systems workflow for launch and decision decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch decision loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Decision Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch decision loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and decision decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and decision decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-335",
@@ -2657,7 +4145,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-decision-system",
+          "label": "Launch Decision System",
+          "description": "A recurring startup founder systems workflow for launch and decision decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch decision system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Decision System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch decision system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and decision decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and decision decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-336",
@@ -2688,7 +4200,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-decision-workflow",
+          "label": "Launch Decision Workflow",
+          "description": "A recurring startup founder systems workflow for launch and decision decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch decision workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Decision Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch decision workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and decision decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and decision decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-337",
@@ -2719,7 +4255,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-cycle-copilot",
+          "label": "Launch Cycle Copilot",
+          "description": "A recurring startup founder systems workflow for launch and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch cycle copilot workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-338",
@@ -2750,7 +4310,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-cycle-loop",
+          "label": "Launch Cycle Loop",
+          "description": "A recurring startup founder systems workflow for launch and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch cycle loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-339",
@@ -2781,7 +4365,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-cycle-system",
+          "label": "Launch Cycle System",
+          "description": "A recurring startup founder systems workflow for launch and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch cycle system workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-340",
@@ -2812,7 +4420,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-cycle-workflow",
+          "label": "Launch Cycle Workflow",
+          "description": "A recurring startup founder systems workflow for launch and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated launch cycle workflow workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup-founder-systems",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Founders repeatedly face launch and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly face launch and cycle decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

@@ -428,3 +428,11 @@ MiroFish discovery frontier phase 2 densification:
 - deepen the highest-priority interesting wedges instead of spreading into more new categories
 - move creator to `14`, gaming to `20`, agentic builders to `12`, startup to `12`, and crypto to `14`
 - move the live frontier from `78 / 1000` to `109 / 1000`
+
+## Batch 49
+
+MiroFish discovery frontier completion:
+
+- fill every remaining frontier submission across all `18` clusters
+- move the live frontier from `109 / 1000` to `1000 / 1000`
+- rebuild the cluster bundle, regenerate progress, and generate the merged frontier discovery-program packet

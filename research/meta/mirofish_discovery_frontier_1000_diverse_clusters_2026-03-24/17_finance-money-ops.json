@@ -231,7 +231,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-allocation-copilot",
+          "label": "Paycheck Allocation Copilot",
+          "description": "A recurring finance money ops workflow for paycheck and allocation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck allocation copilot workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Allocation Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck allocation copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-945",
@@ -262,7 +286,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-allocation-system",
+          "label": "Paycheck Allocation System",
+          "description": "A recurring finance money ops workflow for paycheck and allocation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck allocation system workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Allocation System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck allocation system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-946",
@@ -293,7 +341,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-allocation-workflow",
+          "label": "Paycheck Allocation Workflow",
+          "description": "A recurring finance money ops workflow for paycheck and allocation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck allocation workflow workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Allocation Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck allocation workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-947",
@@ -324,7 +396,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-prune-copilot",
+          "label": "Paycheck Prune Copilot",
+          "description": "A recurring finance money ops workflow for paycheck and prune decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck prune copilot workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Prune Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck prune copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and prune decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and prune decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-948",
@@ -355,7 +451,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-prune-loop",
+          "label": "Paycheck Prune Loop",
+          "description": "A recurring finance money ops workflow for paycheck and prune decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck prune loop workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Prune Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck prune loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and prune decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and prune decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-949",
@@ -386,7 +506,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-prune-system",
+          "label": "Paycheck Prune System",
+          "description": "A recurring finance money ops workflow for paycheck and prune decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck prune system workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Prune System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck prune system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and prune decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and prune decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-950",
@@ -417,7 +561,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-prune-workflow",
+          "label": "Paycheck Prune Workflow",
+          "description": "A recurring finance money ops workflow for paycheck and prune decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck prune workflow workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Prune Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck prune workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and prune decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and prune decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-951",
@@ -448,7 +616,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-reset-copilot",
+          "label": "Paycheck Reset Copilot",
+          "description": "A recurring finance money ops workflow for paycheck and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck reset copilot workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Reset Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck reset copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-952",
@@ -479,7 +671,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-reset-loop",
+          "label": "Paycheck Reset Loop",
+          "description": "A recurring finance money ops workflow for paycheck and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck reset loop workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-953",
@@ -510,7 +726,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-reset-system",
+          "label": "Paycheck Reset System",
+          "description": "A recurring finance money ops workflow for paycheck and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck reset system workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Reset System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck reset system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-954",
@@ -541,7 +781,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-reset-workflow",
+          "label": "Paycheck Reset Workflow",
+          "description": "A recurring finance money ops workflow for paycheck and reset decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck reset workflow workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Reset Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck reset workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and reset decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and reset decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-955",
@@ -572,7 +836,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-sprint-copilot",
+          "label": "Paycheck Sprint Copilot",
+          "description": "A recurring finance money ops workflow for paycheck and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck sprint copilot workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Sprint Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck sprint copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-956",
@@ -603,7 +891,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-sprint-loop",
+          "label": "Paycheck Sprint Loop",
+          "description": "A recurring finance money ops workflow for paycheck and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck sprint loop workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Sprint Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck sprint loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-957",
@@ -634,7 +946,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-sprint-system",
+          "label": "Paycheck Sprint System",
+          "description": "A recurring finance money ops workflow for paycheck and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck sprint system workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Sprint System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck sprint system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-958",
@@ -665,7 +1001,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-sprint-workflow",
+          "label": "Paycheck Sprint Workflow",
+          "description": "A recurring finance money ops workflow for paycheck and sprint decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck sprint workflow workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Sprint Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck sprint workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and sprint decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and sprint decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-959",
@@ -696,7 +1056,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-calendar-copilot",
+          "label": "Paycheck Calendar Copilot",
+          "description": "A recurring finance money ops workflow for paycheck and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck calendar copilot workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Calendar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck calendar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-960",
@@ -727,7 +1111,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-calendar-loop",
+          "label": "Paycheck Calendar Loop",
+          "description": "A recurring finance money ops workflow for paycheck and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck calendar loop workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Calendar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck calendar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-961",
@@ -758,7 +1166,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-calendar-system",
+          "label": "Paycheck Calendar System",
+          "description": "A recurring finance money ops workflow for paycheck and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck calendar system workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Calendar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck calendar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-962",
@@ -789,7 +1221,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-calendar-workflow",
+          "label": "Paycheck Calendar Workflow",
+          "description": "A recurring finance money ops workflow for paycheck and calendar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck calendar workflow workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Calendar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck calendar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and calendar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and calendar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-963",
@@ -820,7 +1276,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-cycle-copilot",
+          "label": "Paycheck Cycle Copilot",
+          "description": "A recurring finance money ops workflow for paycheck and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck cycle copilot workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-964",
@@ -851,7 +1331,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-cycle-loop",
+          "label": "Paycheck Cycle Loop",
+          "description": "A recurring finance money ops workflow for paycheck and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck cycle loop workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-965",
@@ -882,7 +1386,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-cycle-system",
+          "label": "Paycheck Cycle System",
+          "description": "A recurring finance money ops workflow for paycheck and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck cycle system workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-966",
@@ -913,7 +1441,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-cycle-workflow",
+          "label": "Paycheck Cycle Workflow",
+          "description": "A recurring finance money ops workflow for paycheck and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck cycle workflow workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-967",
@@ -944,7 +1496,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-tracker-copilot",
+          "label": "Paycheck Tracker Copilot",
+          "description": "A recurring finance money ops workflow for paycheck and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck tracker copilot workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Tracker Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck tracker copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-968",
@@ -975,7 +1551,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-tracker-loop",
+          "label": "Paycheck Tracker Loop",
+          "description": "A recurring finance money ops workflow for paycheck and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck tracker loop workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Tracker Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck tracker loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-969",
@@ -1006,7 +1606,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-tracker-system",
+          "label": "Paycheck Tracker System",
+          "description": "A recurring finance money ops workflow for paycheck and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck tracker system workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Tracker System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck tracker system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-970",
@@ -1037,7 +1661,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "paycheck-tracker-workflow",
+          "label": "Paycheck Tracker Workflow",
+          "description": "A recurring finance money ops workflow for paycheck and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated paycheck tracker workflow workflow inside the finance / money ops wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Tracker Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next paycheck tracker workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "finance-money-ops",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Money-management users repeatedly face paycheck and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "budgeting-ai",
+            "side-hustle-ai",
+            "money-coach-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Money-management users repeatedly face paycheck and tracker decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

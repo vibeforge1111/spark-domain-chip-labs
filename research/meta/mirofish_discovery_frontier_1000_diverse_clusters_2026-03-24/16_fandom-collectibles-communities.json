@@ -119,7 +119,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-alert-copilot",
+          "label": "Drop Alert Copilot",
+          "description": "A recurring fandom collectibles communities workflow for drop and alert decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop alert copilot workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Alert Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop alert copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-913",
@@ -150,7 +174,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-alert-loop",
+          "label": "Drop Alert Loop",
+          "description": "A recurring fandom collectibles communities workflow for drop and alert decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop alert loop workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Alert Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop alert loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-914",
@@ -181,7 +229,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-alert-system",
+          "label": "Drop Alert System",
+          "description": "A recurring fandom collectibles communities workflow for drop and alert decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop alert system workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Alert System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop alert system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-915",
@@ -212,7 +284,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-alert-workflow",
+          "label": "Drop Alert Workflow",
+          "description": "A recurring fandom collectibles communities workflow for drop and alert decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop alert workflow workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Alert Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop alert workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-916",
@@ -243,7 +339,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-brief-copilot",
+          "label": "Drop Brief Copilot",
+          "description": "A recurring fandom collectibles communities workflow for drop and brief decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop brief copilot workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Brief Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop brief copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and brief decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and brief decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-917",
@@ -274,7 +394,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-brief-loop",
+          "label": "Drop Brief Loop",
+          "description": "A recurring fandom collectibles communities workflow for drop and brief decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop brief loop workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Brief Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop brief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and brief decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and brief decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-918",
@@ -305,7 +449,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-brief-system",
+          "label": "Drop Brief System",
+          "description": "A recurring fandom collectibles communities workflow for drop and brief decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop brief system workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Brief System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop brief system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and brief decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and brief decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-919",
@@ -336,7 +504,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-brief-workflow",
+          "label": "Drop Brief Workflow",
+          "description": "A recurring fandom collectibles communities workflow for drop and brief decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop brief workflow workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Brief Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop brief workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and brief decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and brief decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-920",
@@ -367,7 +559,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-watch-copilot",
+          "label": "Drop Watch Copilot",
+          "description": "A recurring fandom collectibles communities workflow for drop and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop watch copilot workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Watch Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop watch copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-921",
@@ -398,7 +614,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-watch-loop",
+          "label": "Drop Watch Loop",
+          "description": "A recurring fandom collectibles communities workflow for drop and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop watch loop workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Watch Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop watch loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-922",
@@ -429,7 +669,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-watch-system",
+          "label": "Drop Watch System",
+          "description": "A recurring fandom collectibles communities workflow for drop and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop watch system workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Watch System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop watch system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-923",
@@ -460,7 +724,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-watch-workflow",
+          "label": "Drop Watch Workflow",
+          "description": "A recurring fandom collectibles communities workflow for drop and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop watch workflow workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Watch Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop watch workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-924",
@@ -491,7 +779,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-cycle-copilot",
+          "label": "Drop Cycle Copilot",
+          "description": "A recurring fandom collectibles communities workflow for drop and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop cycle copilot workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-925",
@@ -522,7 +834,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-cycle-loop",
+          "label": "Drop Cycle Loop",
+          "description": "A recurring fandom collectibles communities workflow for drop and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop cycle loop workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-926",
@@ -553,7 +889,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-cycle-system",
+          "label": "Drop Cycle System",
+          "description": "A recurring fandom collectibles communities workflow for drop and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop cycle system workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-927",
@@ -584,7 +944,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-cycle-workflow",
+          "label": "Drop Cycle Workflow",
+          "description": "A recurring fandom collectibles communities workflow for drop and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop cycle workflow workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-928",
@@ -615,7 +999,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-map-copilot",
+          "label": "Drop Map Copilot",
+          "description": "A recurring fandom collectibles communities workflow for drop and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop map copilot workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Map Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop map copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-929",
@@ -646,7 +1054,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-map-loop",
+          "label": "Drop Map Loop",
+          "description": "A recurring fandom collectibles communities workflow for drop and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop map loop workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Map Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop map loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-930",
@@ -677,7 +1109,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-map-system",
+          "label": "Drop Map System",
+          "description": "A recurring fandom collectibles communities workflow for drop and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop map system workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Map System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop map system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-931",
@@ -708,7 +1164,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-map-workflow",
+          "label": "Drop Map Workflow",
+          "description": "A recurring fandom collectibles communities workflow for drop and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop map workflow workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Map Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop map workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-932",
@@ -739,7 +1219,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-routine-copilot",
+          "label": "Drop Routine Copilot",
+          "description": "A recurring fandom collectibles communities workflow for drop and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop routine copilot workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-933",
@@ -770,7 +1274,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-routine-loop",
+          "label": "Drop Routine Loop",
+          "description": "A recurring fandom collectibles communities workflow for drop and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop routine loop workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-934",
@@ -801,7 +1329,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-routine-system",
+          "label": "Drop Routine System",
+          "description": "A recurring fandom collectibles communities workflow for drop and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop routine system workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-935",
@@ -832,7 +1384,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-routine-workflow",
+          "label": "Drop Routine Workflow",
+          "description": "A recurring fandom collectibles communities workflow for drop and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop routine workflow workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-936",
@@ -863,7 +1439,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-planner-copilot",
+          "label": "Drop Planner Copilot",
+          "description": "A recurring fandom collectibles communities workflow for drop and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop planner copilot workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-937",
@@ -894,7 +1494,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-planner-loop",
+          "label": "Drop Planner Loop",
+          "description": "A recurring fandom collectibles communities workflow for drop and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop planner loop workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-938",
@@ -925,7 +1549,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-planner-system",
+          "label": "Drop Planner System",
+          "description": "A recurring fandom collectibles communities workflow for drop and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop planner system workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-939",
@@ -956,7 +1604,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-planner-workflow",
+          "label": "Drop Planner Workflow",
+          "description": "A recurring fandom collectibles communities workflow for drop and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop planner workflow workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-940",
@@ -987,7 +1659,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "drop-radar-copilot",
+          "label": "Drop Radar Copilot",
+          "description": "A recurring fandom collectibles communities workflow for drop and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated drop radar copilot workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next drop radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom-collectibles-communities",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Fandom communities repeatedly face drop and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Fandom communities repeatedly face drop and radar decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

@@ -231,7 +231,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-test-copilot",
+          "label": "Product Angle Test Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and test decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle test copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Test Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle test copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-835",
@@ -262,7 +286,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-test-system",
+          "label": "Product Angle Test System",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and test decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle test system workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Test System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle test system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-836",
@@ -293,7 +341,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-test-workflow",
+          "label": "Product Angle Test Workflow",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and test decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle test workflow workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Test Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle test workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-837",
@@ -324,7 +396,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-cycle-copilot",
+          "label": "Product Angle Cycle Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle cycle copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-838",
@@ -355,7 +451,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-cycle-loop",
+          "label": "Product Angle Cycle Loop",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle cycle loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-839",
@@ -386,7 +506,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-cycle-system",
+          "label": "Product Angle Cycle System",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle cycle system workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-840",
@@ -417,7 +561,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-cycle-workflow",
+          "label": "Product Angle Cycle Workflow",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle cycle workflow workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-841",
@@ -448,7 +616,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-planner-copilot",
+          "label": "Product Angle Planner Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle planner copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-842",
@@ -479,7 +671,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-planner-loop",
+          "label": "Product Angle Planner Loop",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle planner loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-843",
@@ -510,7 +726,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-planner-system",
+          "label": "Product Angle Planner System",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle planner system workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-844",
@@ -541,7 +781,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-planner-workflow",
+          "label": "Product Angle Planner Workflow",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle planner workflow workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-845",
@@ -572,7 +836,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-refresh-copilot",
+          "label": "Product Angle Refresh Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle refresh copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-846",
@@ -603,7 +891,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-refresh-loop",
+          "label": "Product Angle Refresh Loop",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle refresh loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-847",
@@ -634,7 +946,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-refresh-system",
+          "label": "Product Angle Refresh System",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle refresh system workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Refresh System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle refresh system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-848",
@@ -665,7 +1001,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-refresh-workflow",
+          "label": "Product Angle Refresh Workflow",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle refresh workflow workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-849",
@@ -696,7 +1056,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-engine-copilot",
+          "label": "Product Angle Engine Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle engine copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-850",
@@ -727,7 +1111,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-engine-loop",
+          "label": "Product Angle Engine Loop",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle engine loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-851",
@@ -758,7 +1166,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-engine-system",
+          "label": "Product Angle Engine System",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle engine system workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-852",
@@ -789,7 +1221,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-engine-workflow",
+          "label": "Product Angle Engine Workflow",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle engine workflow workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-853",
@@ -820,7 +1276,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-signal-copilot",
+          "label": "Product Angle Signal Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle signal copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-854",
@@ -851,7 +1331,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-signal-loop",
+          "label": "Product Angle Signal Loop",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle signal loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-855",
@@ -882,7 +1386,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-signal-system",
+          "label": "Product Angle Signal System",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle signal system workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-856",
@@ -913,7 +1441,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-signal-workflow",
+          "label": "Product Angle Signal Workflow",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle signal workflow workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-857",
@@ -944,7 +1496,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-routine-copilot",
+          "label": "Product Angle Routine Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle routine copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-858",
@@ -975,7 +1551,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-routine-loop",
+          "label": "Product Angle Routine Loop",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle routine loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-859",
@@ -1006,7 +1606,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-routine-system",
+          "label": "Product Angle Routine System",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle routine system workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-860",
@@ -1037,7 +1661,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-routine-workflow",
+          "label": "Product Angle Routine Workflow",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle routine workflow workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-861",
@@ -1068,7 +1716,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-tracker-copilot",
+          "label": "Product Angle Tracker Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle tracker copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Tracker Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle tracker copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-862",
@@ -1099,7 +1771,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-tracker-loop",
+          "label": "Product Angle Tracker Loop",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle tracker loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Tracker Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle tracker loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-863",
@@ -1130,7 +1826,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-tracker-system",
+          "label": "Product Angle Tracker System",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle tracker system workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Tracker System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle tracker system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-864",
@@ -1161,7 +1881,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-tracker-workflow",
+          "label": "Product Angle Tracker Workflow",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and tracker decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle tracker workflow workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Tracker Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle tracker workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and tracker decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and tracker decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-865",
@@ -1192,7 +1936,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-playbook-copilot",
+          "label": "Product Angle Playbook Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle playbook copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Playbook Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle playbook copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-866",
@@ -1223,7 +1991,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-playbook-loop",
+          "label": "Product Angle Playbook Loop",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle playbook loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Playbook Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle playbook loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-867",
@@ -1254,7 +2046,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-playbook-system",
+          "label": "Product Angle Playbook System",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle playbook system workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Playbook System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle playbook system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-868",
@@ -1285,7 +2101,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-playbook-workflow",
+          "label": "Product Angle Playbook Workflow",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle playbook workflow workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Playbook Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle playbook workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-869",
@@ -1316,7 +2156,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-flow-copilot",
+          "label": "Product Angle Flow Copilot",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle flow copilot workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Flow Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle flow copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and flow decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-870",
@@ -1347,7 +2211,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "product-angle-flow-loop",
+          "label": "Product Angle Flow Loop",
+          "description": "A recurring ecommerce merchant growth workflow for product angle and flow decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated product angle flow loop workflow inside the ecommerce / merchant growth wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Flow Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next product angle flow loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ecommerce-merchant-growth",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Merchants repeatedly face product angle and flow decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "shopify-growth-ai",
+            "price-optimization-ai",
+            "ugc-ads-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Merchants repeatedly face product angle and flow decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

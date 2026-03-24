@@ -231,7 +231,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-game-copilot",
+          "label": "Reply Game Copilot",
+          "description": "A recurring x native persona tools workflow for reply and game decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply game copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Game Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply game copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and game decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and game decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-625",
@@ -262,7 +286,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-game-workflow",
+          "label": "Reply Game Workflow",
+          "description": "A recurring x native persona tools workflow for reply and game decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply game workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Game Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply game workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and game decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and game decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-626",
@@ -293,7 +341,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-game-studio",
+          "label": "Reply Game Studio",
+          "description": "A recurring x native persona tools workflow for reply and game decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply game studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Game Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply game studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and game decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and game decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-627",
@@ -324,7 +396,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-game-tool",
+          "label": "Reply Game Tool",
+          "description": "A recurring x native persona tools workflow for reply and game decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply game tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Game Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply game tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and game decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and game decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-628",
@@ -355,7 +451,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-refresh-copilot",
+          "label": "Reply Refresh Copilot",
+          "description": "A recurring x native persona tools workflow for reply and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply refresh copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-629",
@@ -386,7 +506,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-refresh-workflow",
+          "label": "Reply Refresh Workflow",
+          "description": "A recurring x native persona tools workflow for reply and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply refresh workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-630",
@@ -417,7 +561,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-refresh-studio",
+          "label": "Reply Refresh Studio",
+          "description": "A recurring x native persona tools workflow for reply and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply refresh studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Refresh Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply refresh studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-631",
@@ -448,7 +616,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-refresh-tool",
+          "label": "Reply Refresh Tool",
+          "description": "A recurring x native persona tools workflow for reply and refresh decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply refresh tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Refresh Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply refresh tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and refresh decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and refresh decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-632",
@@ -479,7 +671,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-cadence-copilot",
+          "label": "Reply Cadence Copilot",
+          "description": "A recurring x native persona tools workflow for reply and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply cadence copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Cadence Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply cadence copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-633",
@@ -510,7 +726,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-cadence-workflow",
+          "label": "Reply Cadence Workflow",
+          "description": "A recurring x native persona tools workflow for reply and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply cadence workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Cadence Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply cadence workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-634",
@@ -541,7 +781,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-cadence-studio",
+          "label": "Reply Cadence Studio",
+          "description": "A recurring x native persona tools workflow for reply and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply cadence studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Cadence Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply cadence studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-635",
@@ -572,7 +836,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-cadence-tool",
+          "label": "Reply Cadence Tool",
+          "description": "A recurring x native persona tools workflow for reply and cadence decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply cadence tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Cadence Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply cadence tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and cadence decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and cadence decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-636",
@@ -603,7 +891,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-engine-copilot",
+          "label": "Reply Engine Copilot",
+          "description": "A recurring x native persona tools workflow for reply and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply engine copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-637",
@@ -634,7 +946,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-engine-workflow",
+          "label": "Reply Engine Workflow",
+          "description": "A recurring x native persona tools workflow for reply and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply engine workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-638",
@@ -665,7 +1001,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-engine-studio",
+          "label": "Reply Engine Studio",
+          "description": "A recurring x native persona tools workflow for reply and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply engine studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Engine Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply engine studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-639",
@@ -696,7 +1056,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-engine-tool",
+          "label": "Reply Engine Tool",
+          "description": "A recurring x native persona tools workflow for reply and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply engine tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Engine Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply engine tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-640",
@@ -727,7 +1111,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-loop-copilot",
+          "label": "Reply Loop Copilot",
+          "description": "A recurring x native persona tools workflow for reply and loop decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply loop copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Loop Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply loop copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and loop decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and loop decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-641",
@@ -758,7 +1166,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-loop-workflow",
+          "label": "Reply Loop Workflow",
+          "description": "A recurring x native persona tools workflow for reply and loop decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply loop workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Loop Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply loop workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and loop decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and loop decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-642",
@@ -789,7 +1221,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-loop-studio",
+          "label": "Reply Loop Studio",
+          "description": "A recurring x native persona tools workflow for reply and loop decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply loop studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Loop Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply loop studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and loop decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and loop decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-643",
@@ -820,7 +1276,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-loop-tool",
+          "label": "Reply Loop Tool",
+          "description": "A recurring x native persona tools workflow for reply and loop decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply loop tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Loop Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply loop tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and loop decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and loop decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-644",
@@ -851,7 +1331,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-routine-copilot",
+          "label": "Reply Routine Copilot",
+          "description": "A recurring x native persona tools workflow for reply and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply routine copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-645",
@@ -882,7 +1386,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-routine-workflow",
+          "label": "Reply Routine Workflow",
+          "description": "A recurring x native persona tools workflow for reply and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply routine workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-646",
@@ -913,7 +1441,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-routine-studio",
+          "label": "Reply Routine Studio",
+          "description": "A recurring x native persona tools workflow for reply and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply routine studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Routine Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply routine studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-647",
@@ -944,7 +1496,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-routine-tool",
+          "label": "Reply Routine Tool",
+          "description": "A recurring x native persona tools workflow for reply and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply routine tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Routine Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply routine tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-648",
@@ -975,7 +1551,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-planner-copilot",
+          "label": "Reply Planner Copilot",
+          "description": "A recurring x native persona tools workflow for reply and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply planner copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-649",
@@ -1006,7 +1606,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-planner-workflow",
+          "label": "Reply Planner Workflow",
+          "description": "A recurring x native persona tools workflow for reply and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply planner workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-650",
@@ -1037,7 +1661,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-planner-studio",
+          "label": "Reply Planner Studio",
+          "description": "A recurring x native persona tools workflow for reply and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply planner studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Planner Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply planner studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-651",
@@ -1068,7 +1716,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-planner-tool",
+          "label": "Reply Planner Tool",
+          "description": "A recurring x native persona tools workflow for reply and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply planner tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Planner Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply planner tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-652",
@@ -1099,7 +1771,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-radar-copilot",
+          "label": "Reply Radar Copilot",
+          "description": "A recurring x native persona tools workflow for reply and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply radar copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-653",
@@ -1130,7 +1826,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-radar-workflow",
+          "label": "Reply Radar Workflow",
+          "description": "A recurring x native persona tools workflow for reply and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply radar workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-654",
@@ -1161,7 +1881,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-radar-studio",
+          "label": "Reply Radar Studio",
+          "description": "A recurring x native persona tools workflow for reply and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply radar studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Radar Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply radar studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-655",
@@ -1192,7 +1936,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-radar-tool",
+          "label": "Reply Radar Tool",
+          "description": "A recurring x native persona tools workflow for reply and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply radar tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Radar Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply radar tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-656",
@@ -1223,7 +1991,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-cycle-copilot",
+          "label": "Reply Cycle Copilot",
+          "description": "A recurring x native persona tools workflow for reply and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply cycle copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-657",
@@ -1254,7 +2046,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-cycle-workflow",
+          "label": "Reply Cycle Workflow",
+          "description": "A recurring x native persona tools workflow for reply and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply cycle workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-658",
@@ -1285,7 +2101,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-cycle-studio",
+          "label": "Reply Cycle Studio",
+          "description": "A recurring x native persona tools workflow for reply and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply cycle studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Cycle Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply cycle studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-659",
@@ -1316,7 +2156,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-cycle-tool",
+          "label": "Reply Cycle Tool",
+          "description": "A recurring x native persona tools workflow for reply and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply cycle tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Cycle Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply cycle tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-660",
@@ -1347,7 +2211,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-system-copilot",
+          "label": "Reply System Copilot",
+          "description": "A recurring x native persona tools workflow for reply and system decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply system copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply System Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply system copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and system decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and system decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-661",
@@ -1378,7 +2266,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-system-workflow",
+          "label": "Reply System Workflow",
+          "description": "A recurring x native persona tools workflow for reply and system decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply system workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply System Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply system workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and system decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and system decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-662",
@@ -1409,7 +2321,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-system-studio",
+          "label": "Reply System Studio",
+          "description": "A recurring x native persona tools workflow for reply and system decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply system studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply System Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply system studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and system decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and system decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-663",
@@ -1440,7 +2376,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-system-tool",
+          "label": "Reply System Tool",
+          "description": "A recurring x native persona tools workflow for reply and system decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply system tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply System Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply system tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and system decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and system decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-664",
@@ -1471,7 +2431,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-map-copilot",
+          "label": "Reply Map Copilot",
+          "description": "A recurring x native persona tools workflow for reply and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply map copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Map Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply map copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-665",
@@ -1502,7 +2486,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-map-workflow",
+          "label": "Reply Map Workflow",
+          "description": "A recurring x native persona tools workflow for reply and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply map workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Map Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply map workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-666",
@@ -1533,7 +2541,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-map-studio",
+          "label": "Reply Map Studio",
+          "description": "A recurring x native persona tools workflow for reply and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply map studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Map Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply map studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-667",
@@ -1564,7 +2596,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-map-tool",
+          "label": "Reply Map Tool",
+          "description": "A recurring x native persona tools workflow for reply and map decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply map tool workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Map Tool outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply map tool move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "tool"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and map decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and map decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-668",
@@ -1595,7 +2651,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-playbook-copilot",
+          "label": "Reply Playbook Copilot",
+          "description": "A recurring x native persona tools workflow for reply and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply playbook copilot workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Playbook Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply playbook copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-669",
@@ -1626,7 +2706,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-playbook-workflow",
+          "label": "Reply Playbook Workflow",
+          "description": "A recurring x native persona tools workflow for reply and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply playbook workflow workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Playbook Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply playbook workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and playbook decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-670",
@@ -1657,7 +2761,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-playbook-studio",
+          "label": "Reply Playbook Studio",
+          "description": "A recurring x native persona tools workflow for reply and playbook decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated reply playbook studio workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Playbook Studio outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply playbook studio move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "x-native-persona-tools",
+            "seed-generated",
+            "studio"
+          ],
+          "evidence_summary": "X-native users repeatedly face reply and playbook decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native users repeatedly face reply and playbook decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [

@@ -1183,7 +1183,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-rotation-copilot",
+          "label": "Guild Rotation Copilot",
+          "description": "A recurring gaming npc community workflow for guild and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild rotation copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Rotation Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild rotation copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-122",
@@ -1214,7 +1238,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-rotation-loop",
+          "label": "Guild Rotation Loop",
+          "description": "A recurring gaming npc community workflow for guild and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild rotation loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-123",
@@ -1245,7 +1293,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-rotation-system",
+          "label": "Guild Rotation System",
+          "description": "A recurring gaming npc community workflow for guild and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild rotation system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Rotation System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild rotation system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-124",
@@ -1276,7 +1348,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-rotation-workflow",
+          "label": "Guild Rotation Workflow",
+          "description": "A recurring gaming npc community workflow for guild and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild rotation workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Rotation Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild rotation workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-125",
@@ -1307,7 +1403,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-signal-copilot",
+          "label": "Guild Signal Copilot",
+          "description": "A recurring gaming npc community workflow for guild and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild signal copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-126",
@@ -1338,7 +1458,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-signal-loop",
+          "label": "Guild Signal Loop",
+          "description": "A recurring gaming npc community workflow for guild and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild signal loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-127",
@@ -1369,7 +1513,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-signal-system",
+          "label": "Guild Signal System",
+          "description": "A recurring gaming npc community workflow for guild and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild signal system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-128",
@@ -1400,7 +1568,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-signal-workflow",
+          "label": "Guild Signal Workflow",
+          "description": "A recurring gaming npc community workflow for guild and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild signal workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-129",
@@ -1431,7 +1623,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-memory-copilot",
+          "label": "Guild Memory Copilot",
+          "description": "A recurring gaming npc community workflow for guild and memory decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild memory copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Memory Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild memory copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and memory decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and memory decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-130",
@@ -1462,7 +1678,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-memory-loop",
+          "label": "Guild Memory Loop",
+          "description": "A recurring gaming npc community workflow for guild and memory decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild memory loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Memory Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild memory loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and memory decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and memory decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-131",
@@ -1493,7 +1733,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-memory-system",
+          "label": "Guild Memory System",
+          "description": "A recurring gaming npc community workflow for guild and memory decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild memory system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Memory System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild memory system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and memory decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and memory decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-132",
@@ -1524,7 +1788,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-memory-workflow",
+          "label": "Guild Memory Workflow",
+          "description": "A recurring gaming npc community workflow for guild and memory decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild memory workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Memory Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild memory workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and memory decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and memory decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-133",
@@ -1555,7 +1843,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-coordination-copilot",
+          "label": "Guild Coordination Copilot",
+          "description": "A recurring gaming npc community workflow for guild and coordination decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild coordination copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Coordination Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild coordination copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and coordination decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and coordination decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-134",
@@ -1586,7 +1898,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-coordination-loop",
+          "label": "Guild Coordination Loop",
+          "description": "A recurring gaming npc community workflow for guild and coordination decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild coordination loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Coordination Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild coordination loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and coordination decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and coordination decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-135",
@@ -1617,7 +1953,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-coordination-system",
+          "label": "Guild Coordination System",
+          "description": "A recurring gaming npc community workflow for guild and coordination decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild coordination system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Coordination System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild coordination system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and coordination decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and coordination decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-136",
@@ -1648,7 +2008,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-coordination-workflow",
+          "label": "Guild Coordination Workflow",
+          "description": "A recurring gaming npc community workflow for guild and coordination decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild coordination workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Coordination Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild coordination workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and coordination decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and coordination decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-137",
@@ -1679,7 +2063,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-cycle-copilot",
+          "label": "Guild Cycle Copilot",
+          "description": "A recurring gaming npc community workflow for guild and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild cycle copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Cycle Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild cycle copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-138",
@@ -1710,7 +2118,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-cycle-loop",
+          "label": "Guild Cycle Loop",
+          "description": "A recurring gaming npc community workflow for guild and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild cycle loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Cycle Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild cycle loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-139",
@@ -1741,7 +2173,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-cycle-system",
+          "label": "Guild Cycle System",
+          "description": "A recurring gaming npc community workflow for guild and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild cycle system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Cycle System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild cycle system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-140",
@@ -1772,7 +2228,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-cycle-workflow",
+          "label": "Guild Cycle Workflow",
+          "description": "A recurring gaming npc community workflow for guild and cycle decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild cycle workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Cycle Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild cycle workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and cycle decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and cycle decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-141",
@@ -1803,7 +2283,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-engine-copilot",
+          "label": "Guild Engine Copilot",
+          "description": "A recurring gaming npc community workflow for guild and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild engine copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Engine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild engine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-142",
@@ -1834,7 +2338,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-engine-loop",
+          "label": "Guild Engine Loop",
+          "description": "A recurring gaming npc community workflow for guild and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild engine loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-143",
@@ -1865,7 +2393,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-engine-system",
+          "label": "Guild Engine System",
+          "description": "A recurring gaming npc community workflow for guild and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild engine system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Engine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild engine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-144",
@@ -1896,7 +2448,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-engine-workflow",
+          "label": "Guild Engine Workflow",
+          "description": "A recurring gaming npc community workflow for guild and engine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild engine workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Engine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild engine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and engine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and engine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-145",
@@ -1927,7 +2503,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-watch-copilot",
+          "label": "Guild Watch Copilot",
+          "description": "A recurring gaming npc community workflow for guild and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild watch copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Watch Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild watch copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-146",
@@ -1958,7 +2558,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-watch-loop",
+          "label": "Guild Watch Loop",
+          "description": "A recurring gaming npc community workflow for guild and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild watch loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Watch Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild watch loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-147",
@@ -1989,7 +2613,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-watch-system",
+          "label": "Guild Watch System",
+          "description": "A recurring gaming npc community workflow for guild and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild watch system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Watch System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild watch system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-148",
@@ -2020,7 +2668,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-watch-workflow",
+          "label": "Guild Watch Workflow",
+          "description": "A recurring gaming npc community workflow for guild and watch decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild watch workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Watch Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild watch workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and watch decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and watch decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-149",
@@ -2051,7 +2723,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-planner-copilot",
+          "label": "Guild Planner Copilot",
+          "description": "A recurring gaming npc community workflow for guild and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild planner copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-150",
@@ -2082,7 +2778,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-planner-loop",
+          "label": "Guild Planner Loop",
+          "description": "A recurring gaming npc community workflow for guild and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild planner loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-151",
@@ -2113,7 +2833,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-planner-system",
+          "label": "Guild Planner System",
+          "description": "A recurring gaming npc community workflow for guild and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild planner system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Planner System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild planner system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-152",
@@ -2144,7 +2888,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-planner-workflow",
+          "label": "Guild Planner Workflow",
+          "description": "A recurring gaming npc community workflow for guild and planner decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild planner workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Planner Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild planner workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and planner decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and planner decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-153",
@@ -2175,7 +2943,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-routine-copilot",
+          "label": "Guild Routine Copilot",
+          "description": "A recurring gaming npc community workflow for guild and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild routine copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Routine Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild routine copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-154",
@@ -2206,7 +2998,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-routine-loop",
+          "label": "Guild Routine Loop",
+          "description": "A recurring gaming npc community workflow for guild and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild routine loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-155",
@@ -2237,7 +3053,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-routine-system",
+          "label": "Guild Routine System",
+          "description": "A recurring gaming npc community workflow for guild and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild routine system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Routine System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild routine system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-156",
@@ -2268,7 +3108,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-routine-workflow",
+          "label": "Guild Routine Workflow",
+          "description": "A recurring gaming npc community workflow for guild and routine decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild routine workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Routine Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild routine workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and routine decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and routine decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-157",
@@ -2299,7 +3163,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-escalation-copilot",
+          "label": "Guild Escalation Copilot",
+          "description": "A recurring gaming npc community workflow for guild and escalation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild escalation copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Escalation Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild escalation copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and escalation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and escalation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-158",
@@ -2330,7 +3218,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-escalation-loop",
+          "label": "Guild Escalation Loop",
+          "description": "A recurring gaming npc community workflow for guild and escalation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild escalation loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Escalation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild escalation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and escalation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and escalation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-159",
@@ -2361,7 +3273,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-escalation-system",
+          "label": "Guild Escalation System",
+          "description": "A recurring gaming npc community workflow for guild and escalation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild escalation system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Escalation System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild escalation system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and escalation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and escalation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-160",
@@ -2392,7 +3328,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-escalation-workflow",
+          "label": "Guild Escalation Workflow",
+          "description": "A recurring gaming npc community workflow for guild and escalation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild escalation workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Escalation Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild escalation workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and escalation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and escalation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-161",
@@ -2423,7 +3383,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-radar-copilot",
+          "label": "Guild Radar Copilot",
+          "description": "A recurring gaming npc community workflow for guild and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild radar copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Radar Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild radar copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-162",
@@ -2454,7 +3438,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-radar-loop",
+          "label": "Guild Radar Loop",
+          "description": "A recurring gaming npc community workflow for guild and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild radar loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-163",
@@ -2485,7 +3493,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-radar-system",
+          "label": "Guild Radar System",
+          "description": "A recurring gaming npc community workflow for guild and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild radar system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Radar System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild radar system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-164",
@@ -2516,7 +3548,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-radar-workflow",
+          "label": "Guild Radar Workflow",
+          "description": "A recurring gaming npc community workflow for guild and radar decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild radar workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Radar Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild radar workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and radar decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and radar decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-165",
@@ -2547,7 +3603,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-ritual-copilot",
+          "label": "Guild Ritual Copilot",
+          "description": "A recurring gaming npc community workflow for guild and ritual decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild ritual copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Ritual Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild ritual copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and ritual decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and ritual decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-166",
@@ -2578,7 +3658,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-ritual-loop",
+          "label": "Guild Ritual Loop",
+          "description": "A recurring gaming npc community workflow for guild and ritual decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild ritual loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Ritual Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild ritual loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and ritual decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and ritual decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-167",
@@ -2609,7 +3713,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-ritual-system",
+          "label": "Guild Ritual System",
+          "description": "A recurring gaming npc community workflow for guild and ritual decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild ritual system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Ritual System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild ritual system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and ritual decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and ritual decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-168",
@@ -2640,7 +3768,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-ritual-workflow",
+          "label": "Guild Ritual Workflow",
+          "description": "A recurring gaming npc community workflow for guild and ritual decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated guild ritual workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Ritual Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild ritual workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face guild and ritual decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face guild and ritual decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-169",
@@ -2671,7 +3823,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-rotation-copilot",
+          "label": "Patch Rotation Copilot",
+          "description": "A recurring gaming npc community workflow for patch and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch rotation copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Rotation Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch rotation copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-170",
@@ -2702,7 +3878,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-rotation-loop",
+          "label": "Patch Rotation Loop",
+          "description": "A recurring gaming npc community workflow for patch and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch rotation loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-171",
@@ -2733,7 +3933,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-rotation-system",
+          "label": "Patch Rotation System",
+          "description": "A recurring gaming npc community workflow for patch and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch rotation system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Rotation System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch rotation system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-172",
@@ -2764,7 +3988,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-rotation-workflow",
+          "label": "Patch Rotation Workflow",
+          "description": "A recurring gaming npc community workflow for patch and rotation decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch rotation workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Rotation Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch rotation workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and rotation decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and rotation decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-173",
@@ -2795,7 +4043,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-signal-copilot",
+          "label": "Patch Signal Copilot",
+          "description": "A recurring gaming npc community workflow for patch and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch signal copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Signal Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch signal copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-174",
@@ -2826,7 +4098,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-signal-loop",
+          "label": "Patch Signal Loop",
+          "description": "A recurring gaming npc community workflow for patch and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch signal loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-175",
@@ -2857,7 +4153,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-signal-system",
+          "label": "Patch Signal System",
+          "description": "A recurring gaming npc community workflow for patch and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch signal system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Signal System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch signal system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-176",
@@ -2888,7 +4208,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-signal-workflow",
+          "label": "Patch Signal Workflow",
+          "description": "A recurring gaming npc community workflow for patch and signal decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch signal workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Signal Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch signal workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and signal decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and signal decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-177",
@@ -2919,7 +4263,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-memory-copilot",
+          "label": "Patch Memory Copilot",
+          "description": "A recurring gaming npc community workflow for patch and memory decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch memory copilot workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Memory Copilot outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch memory copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "copilot"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and memory decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and memory decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-178",
@@ -2950,7 +4318,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-memory-loop",
+          "label": "Patch Memory Loop",
+          "description": "A recurring gaming npc community workflow for patch and memory decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch memory loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Memory Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch memory loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "loop"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and memory decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and memory decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-179",
@@ -2981,7 +4373,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-memory-system",
+          "label": "Patch Memory System",
+          "description": "A recurring gaming npc community workflow for patch and memory decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch memory system workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Memory System outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch memory system move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "system"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and memory decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and memory decisions, but most still improvise them manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-180",
@@ -3012,7 +4428,31 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-memory-workflow",
+          "label": "Patch Memory Workflow",
+          "description": "A recurring gaming npc community workflow for patch and memory decisions that compounds through repeated cycles.",
+          "specialization_surface": "running the repeated patch memory workflow workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Memory Workflow outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch memory workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming-npc-community",
+            "seed-generated",
+            "workflow"
+          ],
+          "evidence_summary": "Gaming communities repeatedly face patch and memory decisions, but most still improvise them manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly face patch and memory decisions, but most still improvise them manually."
+        }
+      ]
     }
   ],
   "next_actions": [
