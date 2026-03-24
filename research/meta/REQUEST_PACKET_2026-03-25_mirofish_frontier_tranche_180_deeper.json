@@ -1,0 +1,61 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-25_mirofish_frontier_tranche_180_deeper",
+  "created_at": "2026-03-25",
+  "scope": "Re-run the anchored 180-domain frontier tranche under the deeper harness and save the resulting breadth checkpoint",
+  "decision_context": {
+    "prior_state": "The anchored 180-domain frontier tranche from March 24, 2026 proved that broader frontier slices were tractable, but the medium harness weakened the top line and collapsed the benchmark median back to zero.",
+    "decision": "Keep the same anchored 180-domain tranche and rerun it with the deeper harness instead of changing the tranche selection or retuning conversion logic.",
+    "why_now": "This is the cleanest way to test whether broader frontier quality survives once the harness is deep enough."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_180_DEEPER_2026-03-25.json",
+      "purpose": "Deeper bounded hybrid spec for the anchored 180-domain frontier tranche."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_180_DEEPER_2026-03-25.json",
+      "purpose": "Saved deeper hybrid run for the anchored 180-domain frontier tranche."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_DIAGNOSTIC_FRONTIER_TRANCHE_180_DEEPER_2026-03-25.json",
+      "purpose": "Diagnostic brief for the deeper anchored 180-domain run."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_180_DEEPER_2026-03-25.json",
+      "purpose": "Ranked readout for the deeper anchored 180-domain checkpoint."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_EXPORT_TRANCHE_180_DEEPER_2026-03-25.md",
+      "purpose": "Operator-facing markdown export for the deeper anchored 180-domain checkpoint."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_TRANCHE_180_DEEPER_NOTE_2026-03-25.md",
+      "purpose": "Documents why the deeper 180 exists and how it compares to the existing checkpoints."
+    }
+  ],
+  "planned_steps": [
+    "Build the deeper hybrid spec from the existing anchored 180-domain tranche",
+    "Run the deeper hybrid evaluation and save the diagnostic",
+    "Generate a ranked readout and markdown export for comparison against the medium 180 and deeper 90 checkpoints"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_hybrid.py tests/test_mirofish_discovery.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_SIMULATION_TRANCHE_180_2026-03-24.json --rounds 12 --flagship-count-per-type 6 --ensemble-runs 6 --ensemble-count-per-type 3 --scenario-label mirofish-frontier-tranche-180-deeper --output research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_180_DEEPER_2026-03-25.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_180_DEEPER_2026-03-25.json --output research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_180_DEEPER_2026-03-25.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_180_DEEPER_2026-03-25.json --output research/meta/MIROFISH_HYBRID_DIAGNOSTIC_FRONTIER_TRANCHE_180_DEEPER_2026-03-25.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-frontier-readout --input research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_180_DEEPER_2026-03-25.json --output research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_180_DEEPER_2026-03-25.json --top-n 25 --watchlist-n 15 --benchmark-n 10",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-frontier-export --input research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_180_DEEPER_2026-03-25.json --output research/meta/MIROFISH_FRONTIER_EXPORT_TRANCHE_180_DEEPER_2026-03-25.md --title \"MiroFish Frontier Tranche 180 Deeper Export\""
+    ],
+    "expected_checks": [
+      "The broader anchored 180-domain slice remains tractable under the deeper harness",
+      "Top-line retained adoption and benchmark median stay non-zero",
+      "The deeper 180 checkpoint is directly comparable against the medium 180 and deeper 90 checkpoints"
+    ]
+  },
+  "guardrails": [
+    "Do not change tranche selection or frontier conversion logic in this tranche",
+    "Do not treat the deeper 180 checkpoint as a full-frontier substitute",
+    "Use this checkpoint to compare breadth versus quality, not to auto-promote doctrine"
+  ]
+}
