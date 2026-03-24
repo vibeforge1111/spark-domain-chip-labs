@@ -859,3 +859,39 @@ The repo-local 515-domain wrapper was functionally correct but too slow to compl
 - This tranche changes execution cost, not domain methodology.
 - The next step is still the full-universe rerun and readout.
 - The interactive harness should now be able to finish with materially less wasted CPU.
+
+## Tranche: MiroFish Portfolio Interactive Readout
+
+### Files Changed
+
+- `research/meta/MIROFISH_PORTFOLIO_RUN_515_2026-03-24.json`
+- `research/meta/MIROFISH_PORTFOLIO_READOUT_515_2026-03-24.json`
+- `research/meta/MIROFISH_PORTFOLIO_INTERACTIVE_READOUT_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_interactive_readout.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+After the runtime-fix tranche, the immediate need was to prove the repo-local 515-domain path could complete end to end and produce a readout packet inside the session. That required an explicitly interactive harness.
+
+### What Changed
+
+- Ran the full 515-domain universe through the repo-local portfolio CLI with a small interactive harness
+- Saved the portfolio packet and derived readout under `research/meta/`
+- Saved a note concluding that:
+  - the repo-local full-universe path now completes end to end
+  - the thin harness collapses absolute adoption and direct-choice values to zero
+  - the result is an execution checkpoint and coarse interest skeleton, not the final trusted portfolio verdict
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-portfolio-run --rounds 4 --flagship-count-per-type 2 --ensemble-runs 3 --min-runs 3 --ensemble-count-per-type 1 --bootstrap-resamples 10 --output research/meta/MIROFISH_PORTFOLIO_RUN_515_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-portfolio-readout --input research/meta/MIROFISH_PORTFOLIO_RUN_515_2026-03-24.json --output research/meta/MIROFISH_PORTFOLIO_READOUT_515_2026-03-24.json`
+- Inspect that the full-universe packet completes and the readout is generated under `research/meta/`
+
+### Notes
+
+- This checkpoint proves execution, not final portfolio confidence.
+- The next meaningful step is to raise harness depth enough to recover non-zero adoption signal without reintroducing runaway runtime.
+- Dashboard and export refresh should still wait for that deeper rerun.

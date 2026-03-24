@@ -182,3 +182,12 @@ MiroFish portfolio runtime fix:
 - index signals by domain once per round during simulation
 - cache effective awareness within a round so churn and retention reuse the same awareness family
 - confirm the tiny full-universe portfolio harness now completes in interactive time
+
+## Batch 21
+
+MiroFish portfolio interactive readout:
+
+- run the full 515-domain universe through the repo-local portfolio CLI with a thin interactive harness
+- save the portfolio packet and derived readout under research/meta
+- record that the harness completes operationally but collapses absolute adoption and choice values to zero
+- treat the batch as an execution checkpoint rather than the final trusted portfolio verdict

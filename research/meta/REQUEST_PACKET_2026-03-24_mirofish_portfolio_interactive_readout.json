@@ -1,0 +1,50 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_portfolio_interactive_readout",
+  "created_at": "2026-03-24",
+  "scope": "Run the full 515-domain portfolio under an interactive harness after the runtime fixes, then save the packet and readout with explicit caveats",
+  "decision_context": {
+    "prior_state": "The default portfolio harness and the first interactive attempts were still too expensive to finish in-session, even after making bootstrap resamples configurable.",
+    "decision": "Use the optimized runtime path with a much smaller interactive harness to complete a full-universe packet and readout today, while recording that the thinner harness is only a checkpoint and not a full-fidelity ranking artifact.",
+    "why_now": "The main immediate goal was to prove the repo-local 515-domain path can complete on the full universe after the runtime fixes, rather than to claim that the thin harness is an authoritative final ranking."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_RUN_515_2026-03-24.json",
+      "purpose": "Stores the completed interactive full-universe portfolio packet."
+    },
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_READOUT_515_2026-03-24.json",
+      "purpose": "Stores the readout derived from the completed interactive full-universe portfolio packet."
+    },
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_INTERACTIVE_READOUT_NOTE_2026-03-24.md",
+      "purpose": "Explains the harness settings, what completed, and why the resulting absolute adoption read is not yet trustworthy."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_interactive_readout.json",
+      "purpose": "Captures the execution choice and limitations for the interactive portfolio checkpoint."
+    }
+  ],
+  "planned_steps": [
+    "Run the full 515-domain universe with an explicitly interactive harness",
+    "Save the portfolio packet under research/meta",
+    "Build the readout packet from the saved portfolio run",
+    "Write the limitation note so the checkpoint is not mistaken for a full-fidelity ranking"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-portfolio-run --rounds 4 --flagship-count-per-type 2 --ensemble-runs 3 --min-runs 3 --ensemble-count-per-type 1 --bootstrap-resamples 10 --output research/meta/MIROFISH_PORTFOLIO_RUN_515_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-portfolio-readout --input research/meta/MIROFISH_PORTFOLIO_RUN_515_2026-03-24.json --output research/meta/MIROFISH_PORTFOLIO_READOUT_515_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "The full 515-domain packet completes and is saved under research/meta",
+      "The readout packet completes and references the saved portfolio run",
+      "The limitation note records that the thin harness collapses absolute adoption and should not be treated as the final trusted ranking"
+    ]
+  },
+  "guardrails": [
+    "Do not present the interactive harness output as a full-fidelity portfolio verdict",
+    "Do not change benchmark membership from this checkpoint",
+    "Treat this batch as execution proof plus a coarse rank skeleton, not the final portfolio readout"
+  ]
+}
