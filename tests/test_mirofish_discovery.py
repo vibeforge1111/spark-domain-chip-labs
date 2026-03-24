@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from chip_labs.cli import (
+    cmd_mirofish_discovery_program_bundle,
     cmd_mirofish_discovery_program_materialize,
     cmd_mirofish_discovery_program_progress,
 )
@@ -255,3 +256,34 @@ def test_discovery_program_progress_reports_empty_materialized_directory(tmp_pat
     assert progress["summary"]["filled_agent_count"] == 0
     assert progress["summary"]["total_agent_count"] == 100
     assert "Pilot Progress" in progress_md_path.read_text(encoding="utf-8")
+
+
+def test_discovery_program_bundle_rebuilds_from_materialized_directory(tmp_path: Path) -> None:
+    scaffold = build_discovery_program_scaffold()
+    cluster_bundle = split_discovery_program_scaffold(scaffold)
+    input_path = tmp_path / "cluster_bundle.json"
+    manifest_path = tmp_path / "manifest.json"
+    rebuilt_path = tmp_path / "rebuilt_bundle.json"
+    output_dir = tmp_path / "materialized"
+    input_path.write_text(json.dumps(cluster_bundle, indent=2), encoding="utf-8")
+
+    cmd_mirofish_discovery_program_materialize(
+        Namespace(
+            input=str(input_path),
+            output_dir=str(output_dir),
+            index_title="Pilot Cluster Directory",
+            output=str(manifest_path),
+        )
+    )
+    cmd_mirofish_discovery_program_bundle(
+        Namespace(
+            input_dir=str(output_dir),
+            output=str(rebuilt_path),
+        )
+    )
+
+    rebuilt = json.loads(rebuilt_path.read_text(encoding="utf-8"))
+    assert rebuilt["packet_kind"] == "mirofish_discovery_program_cluster_packets"
+    assert rebuilt["cluster_packet_count"] == 10
+    assert rebuilt["summary"]["agent_count"] == 100
+    assert rebuilt["cluster_packets"][0]["cluster_id"] == "security-compliance-response"

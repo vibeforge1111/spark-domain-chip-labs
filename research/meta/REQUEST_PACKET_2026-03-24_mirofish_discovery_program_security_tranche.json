@@ -1,0 +1,62 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_discovery_program_security_tranche",
+  "created_at": "2026-03-24",
+  "scope": "Start the first real discovery collection tranche in the security/compliance cluster and validate it through the pilot flow",
+  "decision_context": {
+    "prior_state": "The repo had the full pilot scaffold, materialized cluster files, progress tracking, and merge/canonicalize plumbing, but no real collected candidates yet.",
+    "decision": "Fill the first three security-cluster agents with evidence-grounded candidates, refresh the cluster bundle from the materialized directory, canonicalize the partial pilot result, and run a bounded hybrid validation pass.",
+    "why_now": "The next truthful step after all the pilot plumbing was to start actual collection in one cluster and see whether the first tranche survives intake and early MiroFish validation."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Adds the bundle rebuild step needed after editing the materialized cluster directory."
+    },
+    {
+      "path": "tests/test_mirofish_discovery.py",
+      "purpose": "Covers rebuilding the combined bundle from the materialized directory."
+    },
+    {
+      "path": "research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/01_security-compliance-response.json",
+      "purpose": "Stores the first three evidence-grounded security-cluster candidate submissions."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json",
+      "purpose": "Stores the canonicalized partial pilot result after the first collection tranche."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json",
+      "purpose": "Stores the bounded hybrid validation run for the first security tranche."
+    }
+  ],
+  "planned_steps": [
+    "Fill the first security-cluster agents with grounded candidates",
+    "Refresh the combined cluster bundle from the materialized directory",
+    "Merge and canonicalize the partial pilot result",
+    "Run a bounded hybrid validation pass and save the diagnostic/promotion read"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.md --title \"MiroFish Discovery Pilot 100 Progress\"",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json --output research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --rounds 8 --flagship-count-per-type 8 --ensemble-runs 4 --ensemble-count-per-type 4 --scenario-label mirofish-discovery-pilot-100-security-tranche",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_DIAGNOSTIC_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-promotion-brief --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_PROMOTION_BRIEF_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The pilot progress snapshot shows 3 filled agents and 3 raw candidates",
+      "The partial pilot result accepts all three first-tranche candidates as clear_domain_chip",
+      "The hybrid validation still holds the tranche in frontier rather than promoting it",
+      "The focused regression suite stays green"
+    ]
+  },
+  "guardrails": [
+    "Do not treat the first three accepted candidates as a completed pilot or promotion-ready result",
+    "Preserve the evidence-grounded distinction between real collected candidates and unfilled cluster slots",
+    "Rerun the bundle rebuild step after editing the materialized directory so merge reads the current cluster state"
+  ]
+}

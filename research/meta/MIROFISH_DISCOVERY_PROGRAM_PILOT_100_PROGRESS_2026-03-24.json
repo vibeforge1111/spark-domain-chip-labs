@@ -4,19 +4,19 @@
   "summary": {
     "cluster_count": 10,
     "total_agent_count": 100,
-    "filled_agent_count": 0,
-    "empty_agent_count": 100,
-    "raw_candidate_count": 0,
-    "fill_rate": 0.0
+    "filled_agent_count": 3,
+    "empty_agent_count": 97,
+    "raw_candidate_count": 3,
+    "fill_rate": 0.03
   },
   "clusters": [
     {
       "cluster_id": "security-compliance-response",
       "cluster_label": "Security / Compliance Response",
       "target_agent_count": 16,
-      "filled_agent_count": 0,
-      "empty_agent_count": 16,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 13,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\01_security-compliance-response.json"
     },
     {

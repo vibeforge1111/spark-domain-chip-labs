@@ -1,6 +1,6 @@
 {
   "packet_kind": "mirofish_discovery_program_cluster_packets",
-  "created_at": "2026-03-24T17:23:20.277225+00:00",
+  "directory": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24",
   "program_id": "mirofish-discovery-program-pilot-100",
   "stage_label": "pilot_100",
   "target_agent_count": 100,
@@ -198,7 +198,44 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Security Control Crosswalk Copilot",
+              "description": "Builds and maintains a reusable control-and-evidence crosswalk across SOC 2, ISO 27001, HIPAA, and similar frameworks.",
+              "specialization_surface": "mapping one internal control baseline to multiple external framework requirements",
+              "mastery_surface": "reducing repeated evidence collection by learning reusable control crosswalks and evidence mappings",
+              "user_value_loop": "ingest a new framework request, map it to the control baseline, attach reusable evidence, and refine the crosswalk after auditor or customer review",
+              "domain_tags": [
+                "security",
+                "compliance",
+                "control-mapping",
+                "multi-framework"
+              ],
+              "evidence_sources": [
+                "hyperproof-crosswalks",
+                "controlmap-frameworks",
+                "reddit-compliance-mapping"
+              ],
+              "evidence_summary": "Hyperproof says teams repeat administrative work when they map frameworks one at a time and re-collect evidence, while ControlMap and practitioner discussion describe one control mapped to many frameworks with evidence reuse as the operational win.",
+              "adjacent_domains": [
+                "ai-compliance-evidence-copilot",
+                "legal-ops",
+                "ai-security-questionnaire-copilot"
+              ],
+              "duplicate_aliases": [
+                "Compliance Crosswalk Copilot",
+                "Control Mapping Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Security and GRC teams keep rebuilding the same control-to-framework mapping and evidence matrix instead of operating a maintained crosswalk.",
+              "evidence_links": [
+                "https://hyperproof.io/resource/crosswalks-between-compliance-frameworks/",
+                "https://help.controlmap.io/hc/en-us/articles/18161192714651-Frameworks",
+                "https://www.reddit.com/r/Compliance/comments/1pndh3s/how_do_you_deal_with_soc_2_and_hipaa_at_the_same/"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-002",
@@ -219,7 +256,44 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Vendor Assertion Evidence Verifier",
+              "description": "Requests, validates, and tracks supporting artifacts behind vendor questionnaire claims for high-risk reviews.",
+              "specialization_surface": "turning self-reported questionnaire answers into verified evidence packets for vendor risk teams",
+              "mastery_surface": "learning which artifact types, freshness windows, and follow-ups actually resolve high-risk vendor assertions",
+              "user_value_loop": "parse vendor answers, request supporting evidence, verify artifact freshness and scope, and update the vendor evidence profile for future reviews",
+              "domain_tags": [
+                "security",
+                "third-party-risk",
+                "vendor-risk",
+                "evidence-validation"
+              ],
+              "evidence_sources": [
+                "upguard-vraq",
+                "safe-security-vraq",
+                "thirdproof-questionnaire-limitations"
+              ],
+              "evidence_summary": "UpGuard and Safe Security both describe repetitive questionnaires, inconsistent responses, and verification difficulty as core TPRM bottlenecks, and Safe Security explicitly recommends requesting recent supporting artifacts for critical control assertions instead of trusting questionnaire answers alone.",
+              "adjacent_domains": [
+                "vendor-security-review-copilot",
+                "ai-security-questionnaire-copilot",
+                "data-loss-prevention"
+              ],
+              "duplicate_aliases": [
+                "Vendor Evidence Validation Copilot",
+                "Questionnaire Evidence Verifier"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Buyer-side security teams still spend manual cycles turning vendor attestations into evidence they can trust, especially for critical vendors.",
+              "evidence_links": [
+                "https://www.upguard.com/blog/vendor-risk-assessment-questionnaire-template",
+                "https://safe.security/resources/blog/vendor-security-questionnaire-vraq-best-practices/",
+                "https://thirdproof.ai/learn/vendor-risk-assessment-without-questionnaires"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-003",
@@ -240,7 +314,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Trust Center Gap Copilot",
+              "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
+              "specialization_surface": "closing the gap between reusable trust-center content and bespoke customer security review asks",
+              "mastery_surface": "learning which trust-center gaps recur and how to answer them with minimal manual pre-sales and security effort",
+              "user_value_loop": "detect repeated customer asks, point to existing trust-center assets, package missing evidence, and update reusable trust-center content after each review",
+              "domain_tags": [
+                "security",
+                "trust-center",
+                "customer-security-review",
+                "pre-sales"
+              ],
+              "evidence_sources": [
+                "cyberday-trust-center",
+                "reddit-sysadmin-security-reviews"
+              ],
+              "evidence_summary": "Cyberday positions trust centers as a way to cut repetitive security reviews, and practitioners still report that customers ask for the same evidence in different formats, leaving a recurring gap-handling layer after the trust center is in place.",
+              "adjacent_domains": [
+                "vendor-security-review-copilot",
+                "ai-security-questionnaire-copilot",
+                "legal-ops"
+              ],
+              "duplicate_aliases": [
+                "Customer Security Review Gap Copilot",
+                "Trust Center Follow-up Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Even after SOC 2 and a trust center are in place, teams still need a repeatable way to handle the leftover spreadsheet, portal, and evidence-gap work.",
+              "evidence_links": [
+                "https://www.cyberday.ai/use-cases/trust-center",
+                "https://www.reddit.com/r/sysadmin/comments/1po9c3h/security_reviews_keep_asking_for_the_same/"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-004",
@@ -2675,8 +2784,8 @@
     }
   ],
   "next_actions": [
-    "Assign each cluster packet to a collection owner or agent swarm tranche.",
-    "Fill the per-cluster packets with real discoveries.",
-    "Recombine the filled packets into one discovery-program packet before canonicalization."
+    "Run `mirofish-discovery-program-merge` on this refreshed bundle.",
+    "Canonicalize the merged program packet after collection updates.",
+    "Rebuild the bundle again after each new collection tranche."
   ]
 }

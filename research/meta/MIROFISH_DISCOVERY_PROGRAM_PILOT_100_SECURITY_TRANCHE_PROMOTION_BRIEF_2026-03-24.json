@@ -1,0 +1,100 @@
+{
+  "packet_kind": "mirofish_promotion_brief",
+  "created_at": "2026-03-24T17:37:51.064156+00:00",
+  "source_batch_id": null,
+  "source_run_created_at": "2026-03-24T17:37:33.505090+00:00",
+  "evidence_lane": "exploratory_frontier",
+  "candidate_domain_ids": [
+    "security-control-crosswalk-copilot",
+    "vendor-assertion-evidence-verifier",
+    "trust-center-gap-copilot"
+  ],
+  "benchmark_domain_ids": [
+    "trading-crypto",
+    "startup-yc",
+    "cursor-copilot",
+    "mcp-server-builder",
+    "ai-agent-builder"
+  ],
+  "benchmark_summary": {
+    "benchmark_count": 5,
+    "mean_benchmark_ensemble_adoption": 0.0082,
+    "median_benchmark_ensemble_adoption": 0.0089,
+    "max_benchmark_ensemble_adoption": 0.0145
+  },
+  "promotion_table": [
+    {
+      "domain_id": "security-control-crosswalk-copilot",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.8667,
+      "agent_choice_signal": 0.1333,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0011,
+      "mean_trial": 0.0689,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "benchmark_wins": [
+        "ai-agent-builder"
+      ],
+      "benchmark_win_count": 1,
+      "benchmark_loss_count": 4,
+      "benchmark_floor_gap": -0.0078,
+      "promotion_readiness_score": 0.1804,
+      "rank": 1,
+      "promotion_recommendation": "hold",
+      "promotion_rationale": [
+        "Signal is still exploratory and does not yet clear the promotion floor."
+      ]
+    },
+    {
+      "domain_id": "vendor-assertion-evidence-verifier",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.8333,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.5333,
+      "mean_adoption": 0.0056,
+      "mean_trial": 0.0567,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0167,
+      "benchmark_wins": [
+        "ai-agent-builder"
+      ],
+      "benchmark_win_count": 1,
+      "benchmark_loss_count": 4,
+      "benchmark_floor_gap": -0.0033,
+      "promotion_readiness_score": 0.1739,
+      "rank": 2,
+      "promotion_recommendation": "hold",
+      "promotion_rationale": [
+        "Signal is still exploratory and does not yet clear the promotion floor."
+      ]
+    },
+    {
+      "domain_id": "trust-center-gap-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.8333,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.4333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0289,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "benchmark_wins": [],
+      "benchmark_win_count": 0,
+      "benchmark_loss_count": 5,
+      "benchmark_floor_gap": -0.0089,
+      "promotion_readiness_score": 0.1267,
+      "rank": 3,
+      "promotion_recommendation": "hold",
+      "promotion_rationale": [
+        "Signal is still exploratory and does not yet clear the promotion floor."
+      ]
+    }
+  ],
+  "recommendation": {
+    "domain_id": "security-control-crosswalk-copilot",
+    "action": "hold_in_frontier",
+    "reason": "security-control-crosswalk-copilot leads the current frontier set, but its metrics do not yet justify promotion review against the benchmark floor."
+  },
+  "governance_note": "Promotion briefs recommend candidates for human review only. They do not modify benchmark membership or auto-promote any domain."
+}

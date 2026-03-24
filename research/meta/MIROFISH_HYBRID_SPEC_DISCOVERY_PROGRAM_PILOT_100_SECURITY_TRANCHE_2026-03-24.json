@@ -1,0 +1,2616 @@
+{
+  "packet_kind": "mirofish_hybrid_evaluation_spec",
+  "created_at": "2026-03-24T17:37:17.502224+00:00",
+  "source_batch_id": null,
+  "source_packet_kind": "mirofish_discovery_program",
+  "evidence_lane": "exploratory_frontier",
+  "discovered_domain_ids": [
+    "security-control-crosswalk-copilot",
+    "vendor-assertion-evidence-verifier",
+    "trust-center-gap-copilot"
+  ],
+  "proposed_benchmark_domain_ids": [],
+  "promotion_review_domain_ids": [],
+  "benchmark_domain_ids": [
+    "trading-crypto",
+    "startup-yc",
+    "cursor-copilot",
+    "mcp-server-builder",
+    "ai-agent-builder"
+  ],
+  "harness": {
+    "max_rounds": 8,
+    "flagship_count_per_type": 8,
+    "flagship_agent_count": 120,
+    "ensemble_runs": 4,
+    "ensemble_count_per_type": 4,
+    "ensemble_agent_count": 60,
+    "persona_types": 15,
+    "read_order": [
+      "agent_choice_signal",
+      "peak_interest_probability",
+      "final_adoption_rate"
+    ]
+  },
+  "benchmark_panel": [
+    {
+      "domain_id": "trading-crypto",
+      "label": "Crypto Trading Intelligence",
+      "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+      "scores": {
+        "market_size": 0.92,
+        "data_availability": 0.94,
+        "benchmark_feasibility": 0.9,
+        "community_demand": 0.88,
+        "spark_ecosystem_fit": 0.78,
+        "monetization_potential": 0.91
+      },
+      "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+      "related_chips": [
+        "defi-architect"
+      ],
+      "evidence_sources": [
+        "github",
+        "community",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.889,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+      "scores": {
+        "market_size": 0.83,
+        "data_availability": 0.89,
+        "benchmark_feasibility": 0.85,
+        "community_demand": 0.82,
+        "spark_ecosystem_fit": 0.95,
+        "monetization_potential": 0.76
+      },
+      "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+      "related_chips": [
+        "cursor-copilot",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.852,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "label": "AI Agent Architecture",
+      "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+      "scores": {
+        "market_size": 0.88,
+        "data_availability": 0.82,
+        "benchmark_feasibility": 0.75,
+        "community_demand": 0.9,
+        "spark_ecosystem_fit": 0.8,
+        "monetization_potential": 0.78
+      },
+      "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+      "related_chips": [],
+      "evidence_sources": [
+        "producthunt",
+        "github",
+        "arxiv"
+      ],
+      "composite_score": 0.827,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    }
+  ],
+  "discovered_opportunities": [
+    {
+      "domain_id": "security-control-crosswalk-copilot",
+      "label": "Security Control Crosswalk Copilot",
+      "description": "Builds and maintains a reusable control-and-evidence crosswalk across SOC 2, ISO 27001, HIPAA, and similar frameworks.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.67,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6581,
+      "rationale": "Hyperproof says teams repeat administrative work when they map frameworks one at a time and re-collect evidence, while ControlMap and practitioner discussion describe one control mapped to many frameworks with evidence reuse as the operational win.",
+      "related_chips": [
+        "ai-compliance-evidence-copilot",
+        "legal-ops",
+        "ai-security-questionnaire-copilot"
+      ],
+      "evidence_sources": [
+        "hyperproof-crosswalks",
+        "controlmap-frameworks",
+        "reddit-compliance-mapping"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "mapping one internal control baseline to multiple external framework requirements",
+        "mastery_surface": "reducing repeated evidence collection by learning reusable control crosswalks and evidence mappings",
+        "user_value_loop": "ingest a new framework request, map it to the control baseline, attach reusable evidence, and refine the crosswalk after auditor or customer review",
+        "domain_tags": [
+          "security",
+          "compliance",
+          "control-mapping",
+          "multi-framework"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "vendor-assertion-evidence-verifier",
+      "label": "Vendor Assertion Evidence Verifier",
+      "description": "Requests, validates, and tracks supporting artifacts behind vendor questionnaire claims for high-risk reviews.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.59,
+        "monetization_potential": 0.58
+      },
+      "composite_score": 0.6321,
+      "rationale": "UpGuard and Safe Security both describe repetitive questionnaires, inconsistent responses, and verification difficulty as core TPRM bottlenecks, and Safe Security explicitly recommends requesting recent supporting artifacts for critical control assertions instead of trusting questionnaire answers alone.",
+      "related_chips": [
+        "vendor-security-review-copilot",
+        "ai-security-questionnaire-copilot",
+        "data-loss-prevention"
+      ],
+      "evidence_sources": [
+        "upguard-vraq",
+        "safe-security-vraq",
+        "thirdproof-questionnaire-limitations"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "turning self-reported questionnaire answers into verified evidence packets for vendor risk teams",
+        "mastery_surface": "learning which artifact types, freshness windows, and follow-ups actually resolve high-risk vendor assertions",
+        "user_value_loop": "parse vendor answers, request supporting evidence, verify artifact freshness and scope, and update the vendor evidence profile for future reviews",
+        "domain_tags": [
+          "security",
+          "third-party-risk",
+          "vendor-risk",
+          "evidence-validation"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "trust-center-gap-copilot",
+      "label": "Trust Center Gap Copilot",
+      "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.79
+      },
+      "composite_score": 0.6631,
+      "rationale": "Cyberday positions trust centers as a way to cut repetitive security reviews, and practitioners still report that customers ask for the same evidence in different formats, leaving a recurring gap-handling layer after the trust center is in place.",
+      "related_chips": [
+        "vendor-security-review-copilot",
+        "ai-security-questionnaire-copilot",
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "cyberday-trust-center",
+        "reddit-sysadmin-security-reviews"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "closing the gap between reusable trust-center content and bespoke customer security review asks",
+        "mastery_surface": "learning which trust-center gaps recur and how to answer them with minimal manual pre-sales and security effort",
+        "user_value_loop": "detect repeated customer asks, point to existing trust-center assets, package missing evidence, and update reusable trust-center content after each review",
+        "domain_tags": [
+          "security",
+          "trust-center",
+          "customer-security-review",
+          "pre-sales"
+        ],
+        "promotion_status": "candidate"
+      }
+    }
+  ],
+  "proposed_benchmark_opportunities": [],
+  "promotion_review_opportunities": [],
+  "static_rankings": [
+    {
+      "domain_id": "trading-crypto",
+      "label": "Crypto Trading Intelligence",
+      "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+      "scores": {
+        "market_size": 0.92,
+        "data_availability": 0.94,
+        "benchmark_feasibility": 0.9,
+        "community_demand": 0.88,
+        "spark_ecosystem_fit": 0.78,
+        "monetization_potential": 0.91
+      },
+      "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+      "related_chips": [
+        "defi-architect"
+      ],
+      "evidence_sources": [
+        "github",
+        "community",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.889,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+      "scores": {
+        "market_size": 0.83,
+        "data_availability": 0.89,
+        "benchmark_feasibility": 0.85,
+        "community_demand": 0.82,
+        "spark_ecosystem_fit": 0.95,
+        "monetization_potential": 0.76
+      },
+      "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+      "related_chips": [
+        "cursor-copilot",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.852,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "label": "AI Agent Architecture",
+      "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+      "scores": {
+        "market_size": 0.88,
+        "data_availability": 0.82,
+        "benchmark_feasibility": 0.75,
+        "community_demand": 0.9,
+        "spark_ecosystem_fit": 0.8,
+        "monetization_potential": 0.78
+      },
+      "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+      "related_chips": [],
+      "evidence_sources": [
+        "producthunt",
+        "github",
+        "arxiv"
+      ],
+      "composite_score": 0.827,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "trust-center-gap-copilot",
+      "label": "Trust Center Gap Copilot",
+      "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.79
+      },
+      "composite_score": 0.6631,
+      "rationale": "Cyberday positions trust centers as a way to cut repetitive security reviews, and practitioners still report that customers ask for the same evidence in different formats, leaving a recurring gap-handling layer after the trust center is in place.",
+      "related_chips": [
+        "vendor-security-review-copilot",
+        "ai-security-questionnaire-copilot",
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "cyberday-trust-center",
+        "reddit-sysadmin-security-reviews"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "closing the gap between reusable trust-center content and bespoke customer security review asks",
+        "mastery_surface": "learning which trust-center gaps recur and how to answer them with minimal manual pre-sales and security effort",
+        "user_value_loop": "detect repeated customer asks, point to existing trust-center assets, package missing evidence, and update reusable trust-center content after each review",
+        "domain_tags": [
+          "security",
+          "trust-center",
+          "customer-security-review",
+          "pre-sales"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "security-control-crosswalk-copilot",
+      "label": "Security Control Crosswalk Copilot",
+      "description": "Builds and maintains a reusable control-and-evidence crosswalk across SOC 2, ISO 27001, HIPAA, and similar frameworks.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.67,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6581,
+      "rationale": "Hyperproof says teams repeat administrative work when they map frameworks one at a time and re-collect evidence, while ControlMap and practitioner discussion describe one control mapped to many frameworks with evidence reuse as the operational win.",
+      "related_chips": [
+        "ai-compliance-evidence-copilot",
+        "legal-ops",
+        "ai-security-questionnaire-copilot"
+      ],
+      "evidence_sources": [
+        "hyperproof-crosswalks",
+        "controlmap-frameworks",
+        "reddit-compliance-mapping"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "mapping one internal control baseline to multiple external framework requirements",
+        "mastery_surface": "reducing repeated evidence collection by learning reusable control crosswalks and evidence mappings",
+        "user_value_loop": "ingest a new framework request, map it to the control baseline, attach reusable evidence, and refine the crosswalk after auditor or customer review",
+        "domain_tags": [
+          "security",
+          "compliance",
+          "control-mapping",
+          "multi-framework"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "vendor-assertion-evidence-verifier",
+      "label": "Vendor Assertion Evidence Verifier",
+      "description": "Requests, validates, and tracks supporting artifacts behind vendor questionnaire claims for high-risk reviews.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.59,
+        "monetization_potential": 0.58
+      },
+      "composite_score": 0.6321,
+      "rationale": "UpGuard and Safe Security both describe repetitive questionnaires, inconsistent responses, and verification difficulty as core TPRM bottlenecks, and Safe Security explicitly recommends requesting recent supporting artifacts for critical control assertions instead of trusting questionnaire answers alone.",
+      "related_chips": [
+        "vendor-security-review-copilot",
+        "ai-security-questionnaire-copilot",
+        "data-loss-prevention"
+      ],
+      "evidence_sources": [
+        "upguard-vraq",
+        "safe-security-vraq",
+        "thirdproof-questionnaire-limitations"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "turning self-reported questionnaire answers into verified evidence packets for vendor risk teams",
+        "mastery_surface": "learning which artifact types, freshness windows, and follow-ups actually resolve high-risk vendor assertions",
+        "user_value_loop": "parse vendor answers, request supporting evidence, verify artifact freshness and scope, and update the vendor evidence profile for future reviews",
+        "domain_tags": [
+          "security",
+          "third-party-risk",
+          "vendor-risk",
+          "evidence-validation"
+        ],
+        "promotion_status": "candidate"
+      }
+    }
+  ],
+  "simulation_inputs": {
+    "domain_ids": [
+      "trading-crypto",
+      "cursor-copilot",
+      "mcp-server-builder",
+      "ai-agent-builder",
+      "startup-yc",
+      "trust-center-gap-copilot",
+      "security-control-crosswalk-copilot",
+      "vendor-assertion-evidence-verifier"
+    ],
+    "opportunities": [
+      {
+        "domain_id": "trading-crypto",
+        "label": "Crypto Trading Intelligence",
+        "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+        "scores": {
+          "market_size": 0.92,
+          "data_availability": 0.94,
+          "benchmark_feasibility": 0.9,
+          "community_demand": 0.88,
+          "spark_ecosystem_fit": 0.78,
+          "monetization_potential": 0.91
+        },
+        "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+        "related_chips": [
+          "defi-architect"
+        ],
+        "evidence_sources": [
+          "github",
+          "community",
+          "x_twitter"
+        ],
+        "benchmark_tier": "leadership",
+        "composite_score": 0.889,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "cursor-copilot",
+        "label": "AI Coding Workflow",
+        "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+        "scores": {
+          "market_size": 0.87,
+          "data_availability": 0.9,
+          "benchmark_feasibility": 0.84,
+          "community_demand": 0.85,
+          "spark_ecosystem_fit": 0.93,
+          "monetization_potential": 0.8
+        },
+        "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+        "related_chips": [
+          "mcp-server-builder",
+          "ai-agent-builder"
+        ],
+        "evidence_sources": [
+          "github",
+          "producthunt",
+          "community"
+        ],
+        "benchmark_tier": "midfield",
+        "composite_score": 0.8665,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "mcp-server-builder",
+        "label": "MCP Server Development",
+        "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+        "scores": {
+          "market_size": 0.83,
+          "data_availability": 0.89,
+          "benchmark_feasibility": 0.85,
+          "community_demand": 0.82,
+          "spark_ecosystem_fit": 0.95,
+          "monetization_potential": 0.76
+        },
+        "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+        "related_chips": [
+          "cursor-copilot",
+          "ai-agent-builder"
+        ],
+        "evidence_sources": [
+          "github",
+          "community"
+        ],
+        "benchmark_tier": "midfield",
+        "composite_score": 0.852,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "ai-agent-builder",
+        "label": "AI Agent Architecture",
+        "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+        "scores": {
+          "market_size": 0.88,
+          "data_availability": 0.82,
+          "benchmark_feasibility": 0.75,
+          "community_demand": 0.9,
+          "spark_ecosystem_fit": 0.8,
+          "monetization_potential": 0.78
+        },
+        "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+        "related_chips": [],
+        "evidence_sources": [
+          "producthunt",
+          "github",
+          "arxiv"
+        ],
+        "composite_score": 0.827,
+        "benchmark_tier": "seed_panel",
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "startup-yc",
+        "label": "Startup YC Intelligence",
+        "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+        "scores": {
+          "market_size": 0.86,
+          "data_availability": 0.78,
+          "benchmark_feasibility": 0.74,
+          "community_demand": 0.87,
+          "spark_ecosystem_fit": 0.84,
+          "monetization_potential": 0.89
+        },
+        "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+        "related_chips": [
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "evidence_sources": [
+          "community",
+          "producthunt",
+          "x_twitter"
+        ],
+        "benchmark_tier": "leadership",
+        "composite_score": 0.826,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "trust-center-gap-copilot",
+        "label": "Trust Center Gap Copilot",
+        "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.75,
+          "monetization_potential": 0.79
+        },
+        "composite_score": 0.6631,
+        "rationale": "Cyberday positions trust centers as a way to cut repetitive security reviews, and practitioners still report that customers ask for the same evidence in different formats, leaving a recurring gap-handling layer after the trust center is in place.",
+        "related_chips": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "legal-ops"
+        ],
+        "evidence_sources": [
+          "cyberday-trust-center",
+          "reddit-sysadmin-security-reviews"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "closing the gap between reusable trust-center content and bespoke customer security review asks",
+          "mastery_surface": "learning which trust-center gaps recur and how to answer them with minimal manual pre-sales and security effort",
+          "user_value_loop": "detect repeated customer asks, point to existing trust-center assets, package missing evidence, and update reusable trust-center content after each review",
+          "domain_tags": [
+            "security",
+            "trust-center",
+            "customer-security-review",
+            "pre-sales"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "security-control-crosswalk-copilot",
+        "label": "Security Control Crosswalk Copilot",
+        "description": "Builds and maintains a reusable control-and-evidence crosswalk across SOC 2, ISO 27001, HIPAA, and similar frameworks.",
+        "scores": {
+          "market_size": 0.788,
+          "data_availability": 0.52,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.67,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6581,
+        "rationale": "Hyperproof says teams repeat administrative work when they map frameworks one at a time and re-collect evidence, while ControlMap and practitioner discussion describe one control mapped to many frameworks with evidence reuse as the operational win.",
+        "related_chips": [
+          "ai-compliance-evidence-copilot",
+          "legal-ops",
+          "ai-security-questionnaire-copilot"
+        ],
+        "evidence_sources": [
+          "hyperproof-crosswalks",
+          "controlmap-frameworks",
+          "reddit-compliance-mapping"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "mapping one internal control baseline to multiple external framework requirements",
+          "mastery_surface": "reducing repeated evidence collection by learning reusable control crosswalks and evidence mappings",
+          "user_value_loop": "ingest a new framework request, map it to the control baseline, attach reusable evidence, and refine the crosswalk after auditor or customer review",
+          "domain_tags": [
+            "security",
+            "compliance",
+            "control-mapping",
+            "multi-framework"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "vendor-assertion-evidence-verifier",
+        "label": "Vendor Assertion Evidence Verifier",
+        "description": "Requests, validates, and tracks supporting artifacts behind vendor questionnaire claims for high-risk reviews.",
+        "scores": {
+          "market_size": 0.788,
+          "data_availability": 0.52,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.59,
+          "monetization_potential": 0.58
+        },
+        "composite_score": 0.6321,
+        "rationale": "UpGuard and Safe Security both describe repetitive questionnaires, inconsistent responses, and verification difficulty as core TPRM bottlenecks, and Safe Security explicitly recommends requesting recent supporting artifacts for critical control assertions instead of trusting questionnaire answers alone.",
+        "related_chips": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "evidence_sources": [
+          "upguard-vraq",
+          "safe-security-vraq",
+          "thirdproof-questionnaire-limitations"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "turning self-reported questionnaire answers into verified evidence packets for vendor risk teams",
+          "mastery_surface": "learning which artifact types, freshness windows, and follow-ups actually resolve high-risk vendor assertions",
+          "user_value_loop": "parse vendor answers, request supporting evidence, verify artifact freshness and scope, and update the vendor evidence profile for future reviews",
+          "domain_tags": [
+            "security",
+            "third-party-risk",
+            "vendor-risk",
+            "evidence-validation"
+          ],
+          "promotion_status": "candidate"
+        }
+      }
+    ],
+    "signals": [
+      {
+        "signal_id": "trading-crypto-community-demand",
+        "signal_type": "community_request",
+        "label": "Crypto Trading Intelligence community demand",
+        "strength": 0.88,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-github",
+        "signal_type": "github_trending",
+        "label": "Crypto Trading Intelligence via github",
+        "strength": 0.8357,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-community",
+        "signal_type": "community_request",
+        "label": "Crypto Trading Intelligence via community",
+        "strength": 0.7823,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Crypto Trading Intelligence via x_twitter",
+        "strength": 0.7823,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Crypto Trading Intelligence ecosystem pull from defi-architect",
+        "strength": 0.702,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {
+          "related_chips": [
+            "defi-architect"
+          ]
+        }
+      },
+      {
+        "signal_id": "cursor-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow community demand",
+        "strength": 0.85,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-github",
+        "signal_type": "github_trending",
+        "label": "AI Coding Workflow via github",
+        "strength": 0.7799,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Coding Workflow via producthunt",
+        "strength": 0.7539,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow via community",
+        "strength": 0.7365,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Coding Workflow ecosystem pull from mcp-server-builder, ai-agent-builder",
+        "strength": 0.837,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "mcp-server-builder",
+            "ai-agent-builder"
+          ]
+        }
+      },
+      {
+        "signal_id": "mcp-server-builder-community-demand",
+        "signal_type": "community_request",
+        "label": "MCP Server Development community demand",
+        "strength": 0.82,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-github",
+        "signal_type": "github_trending",
+        "label": "MCP Server Development via github",
+        "strength": 0.7583,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-community",
+        "signal_type": "community_request",
+        "label": "MCP Server Development via community",
+        "strength": 0.6986,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "MCP Server Development ecosystem pull from cursor-copilot, ai-agent-builder",
+        "strength": 0.855,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {
+          "related_chips": [
+            "cursor-copilot",
+            "ai-agent-builder"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-agent-builder-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Agent Architecture community demand",
+        "strength": 0.9,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Agent Architecture via producthunt",
+        "strength": 0.7278,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-github",
+        "signal_type": "github_trending",
+        "label": "AI Agent Architecture via github",
+        "strength": 0.6781,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-arxiv",
+        "signal_type": "github_trending",
+        "label": "AI Agent Architecture via arxiv",
+        "strength": 0.6202,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-community-demand",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence community demand",
+        "strength": 0.87,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-community",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence via community",
+        "strength": 0.7186,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "Startup YC Intelligence via producthunt",
+        "strength": 0.7104,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Startup YC Intelligence via x_twitter",
+        "strength": 0.7186,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Startup YC Intelligence ecosystem pull from indie-hacker, agentic-marketing",
+        "strength": 0.756,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {
+          "related_chips": [
+            "indie-hacker",
+            "agentic-marketing"
+          ]
+        }
+      },
+      {
+        "signal_id": "trust-center-gap-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Trust Center Gap Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trust-center-gap-copilot-cyberday-trust-center",
+        "signal_type": "community_request",
+        "label": "Trust Center Gap Copilot via cyberday-trust-center",
+        "strength": 0.3316,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trust-center-gap-copilot-reddit-sysadmin-security-reviews",
+        "signal_type": "community_request",
+        "label": "Trust Center Gap Copilot via reddit-sysadmin-security-reviews",
+        "strength": 0.3316,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trust-center-gap-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Trust Center Gap Copilot ecosystem pull from vendor-security-review-copilot, ai-security-questionnaire-copilot, legal-ops",
+        "strength": 0.675,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "vendor-security-review-copilot",
+            "ai-security-questionnaire-copilot",
+            "legal-ops"
+          ]
+        }
+      },
+      {
+        "signal_id": "security-control-crosswalk-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Security Control Crosswalk Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "security-control-crosswalk-copilot-hyperproof-crosswalks",
+        "signal_type": "community_request",
+        "label": "Security Control Crosswalk Copilot via hyperproof-crosswalks",
+        "strength": 0.3291,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "security-control-crosswalk-copilot-controlmap-frameworks",
+        "signal_type": "community_request",
+        "label": "Security Control Crosswalk Copilot via controlmap-frameworks",
+        "strength": 0.3291,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "security-control-crosswalk-copilot-reddit-compliance-mapping",
+        "signal_type": "community_request",
+        "label": "Security Control Crosswalk Copilot via reddit-compliance-mapping",
+        "strength": 0.3291,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "security-control-crosswalk-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Security Control Crosswalk Copilot ecosystem pull from ai-compliance-evidence-copilot, legal-ops, ai-security-questionnaire-copilot",
+        "strength": 0.603,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "ai-compliance-evidence-copilot",
+            "legal-ops",
+            "ai-security-questionnaire-copilot"
+          ]
+        }
+      },
+      {
+        "signal_id": "vendor-assertion-evidence-verifier-community-demand",
+        "signal_type": "community_request",
+        "label": "Vendor Assertion Evidence Verifier community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "vendor-assertion-evidence-verifier-upguard-vraq",
+        "signal_type": "community_request",
+        "label": "Vendor Assertion Evidence Verifier via upguard-vraq",
+        "strength": 0.316,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "vendor-assertion-evidence-verifier-safe-security-vraq",
+        "signal_type": "community_request",
+        "label": "Vendor Assertion Evidence Verifier via safe-security-vraq",
+        "strength": 0.316,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "vendor-assertion-evidence-verifier-thirdproof-questionnaire-limitations",
+        "signal_type": "community_request",
+        "label": "Vendor Assertion Evidence Verifier via thirdproof-questionnaire-limitations",
+        "strength": 0.316,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trading-crypto-chip-defi-architect",
+        "signal_type": "competitor_chip",
+        "label": "trading-crypto extends defi-architect",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends mcp-server-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends ai-agent-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-mcp-server-builder-chip-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "mcp-server-builder extends cursor-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-mcp-server-builder-chip-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "mcp-server-builder extends ai-agent-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends indie-hacker",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-agentic-marketing",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends agentic-marketing",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trust-center-gap-copilot-chip-vendor-security-review-copilot",
+        "signal_type": "competitor_chip",
+        "label": "trust-center-gap-copilot extends vendor-security-review-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trust-center-gap-copilot-chip-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "trust-center-gap-copilot extends ai-security-questionnaire-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trust-center-gap-copilot-chip-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "trust-center-gap-copilot extends legal-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-security-control-crosswalk-copilot-chip-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "security-control-crosswalk-copilot extends ai-compliance-evidence-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-security-control-crosswalk-copilot-chip-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "security-control-crosswalk-copilot extends legal-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-security-control-crosswalk-copilot-chip-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "security-control-crosswalk-copilot extends ai-security-questionnaire-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-vendor-assertion-evidence-verifier-chip-vendor-security-review-copilot",
+        "signal_type": "competitor_chip",
+        "label": "vendor-assertion-evidence-verifier extends vendor-security-review-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-vendor-assertion-evidence-verifier-chip-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "vendor-assertion-evidence-verifier extends ai-security-questionnaire-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-vendor-assertion-evidence-verifier-chip-data-loss-prevention",
+        "signal_type": "competitor_chip",
+        "label": "vendor-assertion-evidence-verifier extends data-loss-prevention",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2715,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.2715,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.276,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.276,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.273,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.273,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2875,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.2875,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-center-gap-copilot-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-control-crosswalk-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-control-crosswalk-copilot-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-center-gap-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-center-gap-copilot-vendor-assertion-evidence-verifier",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-assertion-evidence-verifier",
+        "strength": 0.2775,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-assertion-evidence-verifier-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-center-gap-copilot",
+        "strength": 0.2775,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-control-crosswalk-copilot-vendor-assertion-evidence-verifier",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-assertion-evidence-verifier",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-assertion-evidence-verifier-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-control-crosswalk-copilot",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      }
+    ],
+    "scenario": {
+      "scenario_id": "scenario-mirofish-discovery-pilot-100-security-tranche",
+      "label": "mirofish-discovery-pilot-100-security-tranche",
+      "shocks": [
+        {
+          "shock_id": "shock-breakout_tool-r4",
+          "template": "breakout_tool",
+          "signal_type": "producthunt_launch",
+          "label": "Breakout Tool Launch",
+          "strength": 0.9,
+          "effect": "positive",
+          "affected_persona_types": [
+            "opportunity_hunter",
+            "developer",
+            "tool_maker",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "trust-center-gap-copilot",
+            "security-control-crosswalk-copilot",
+            "vendor-assertion-evidence-verifier"
+          ],
+          "inject_at_round": 4,
+          "description": "A tool goes viral and creates massive awareness for the domain."
+        },
+        {
+          "shock_id": "shock-open_source_release-r7",
+          "template": "open_source_release",
+          "signal_type": "github_trending",
+          "label": "Free Open Source Model Drop",
+          "strength": 0.85,
+          "effect": "positive",
+          "affected_persona_types": [
+            "developer",
+            "tool_maker",
+            "student_builder",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "cursor-copilot",
+            "mcp-server-builder",
+            "ai-agent-builder"
+          ],
+          "inject_at_round": 7,
+          "description": "Major open source AI model released free, lowers barrier to entry.",
+          "decay_curve": "s_curve",
+          "peak_round": 4
+        },
+        {
+          "shock_id": "shock-market_crash-r11",
+          "template": "market_crash",
+          "signal_type": "regulation",
+          "label": "Market Crash",
+          "strength": 0.95,
+          "effect": "negative",
+          "affected_persona_types": [
+            "investor",
+            "trader",
+            "entrepreneur"
+          ],
+          "affects_domains": [
+            "trading-crypto"
+          ],
+          "inject_at_round": 11,
+          "description": "Broad market downturn reduces investment appetite."
+        }
+      ],
+      "shock_count": 3
+    },
+    "graph": {
+      "nodes": [
+        {
+          "id": "platform-github",
+          "type": "platform",
+          "label": "GitHub",
+          "properties": {}
+        },
+        {
+          "id": "platform-producthunt",
+          "type": "platform",
+          "label": "Product Hunt",
+          "properties": {}
+        },
+        {
+          "id": "platform-x_twitter",
+          "type": "platform",
+          "label": "X/Twitter",
+          "properties": {}
+        },
+        {
+          "id": "platform-arxiv",
+          "type": "platform",
+          "label": "arXiv",
+          "properties": {}
+        },
+        {
+          "id": "community-spark",
+          "type": "community",
+          "label": "Spark Ecosystem",
+          "properties": {}
+        },
+        {
+          "id": "community-indie",
+          "type": "community",
+          "label": "Indie Hackers",
+          "properties": {}
+        },
+        {
+          "id": "community-defi",
+          "type": "community",
+          "label": "DeFi Builders",
+          "properties": {}
+        },
+        {
+          "id": "tech-mcp",
+          "type": "technology",
+          "label": "Model Context Protocol",
+          "properties": {}
+        },
+        {
+          "id": "tech-llm",
+          "type": "technology",
+          "label": "Large Language Models",
+          "properties": {}
+        },
+        {
+          "id": "tech-agents",
+          "type": "technology",
+          "label": "AI Agents",
+          "properties": {}
+        },
+        {
+          "id": "regulation-gdpr",
+          "type": "regulation",
+          "label": "GDPR",
+          "properties": {}
+        },
+        {
+          "id": "regulation-sox",
+          "type": "regulation",
+          "label": "SOX",
+          "properties": {}
+        },
+        {
+          "id": "trading-crypto",
+          "type": "domain",
+          "label": "Crypto Trading Intelligence",
+          "properties": {
+            "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+            "composite_score": 0.889,
+            "scores": {
+              "market_size": 0.92,
+              "data_availability": 0.94,
+              "benchmark_feasibility": 0.9,
+              "community_demand": 0.88,
+              "spark_ecosystem_fit": 0.78,
+              "monetization_potential": 0.91
+            },
+            "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+            "domain_tags": [
+              "productivity"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-defi-architect",
+          "type": "technology",
+          "label": "defi-architect",
+          "properties": {}
+        },
+        {
+          "id": "platform-community",
+          "type": "platform",
+          "label": "community",
+          "properties": {}
+        },
+        {
+          "id": "cursor-copilot",
+          "type": "domain",
+          "label": "AI Coding Workflow",
+          "properties": {
+            "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+            "composite_score": 0.8665,
+            "scores": {
+              "market_size": 0.87,
+              "data_availability": 0.9,
+              "benchmark_feasibility": 0.84,
+              "community_demand": 0.85,
+              "spark_ecosystem_fit": 0.93,
+              "monetization_potential": 0.8
+            },
+            "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+            "domain_tags": [
+              "dx",
+              "extensibility",
+              "infrastructure",
+              "productivity",
+              "quick_wins"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-mcp-server-builder",
+          "type": "technology",
+          "label": "mcp-server-builder",
+          "properties": {}
+        },
+        {
+          "id": "chip-ai-agent-builder",
+          "type": "technology",
+          "label": "ai-agent-builder",
+          "properties": {}
+        },
+        {
+          "id": "mcp-server-builder",
+          "type": "domain",
+          "label": "MCP Server Development",
+          "properties": {
+            "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+            "composite_score": 0.852,
+            "scores": {
+              "market_size": 0.83,
+              "data_availability": 0.89,
+              "benchmark_feasibility": 0.85,
+              "community_demand": 0.82,
+              "spark_ecosystem_fit": 0.95,
+              "monetization_potential": 0.76
+            },
+            "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+            "domain_tags": [
+              "dx",
+              "extensibility",
+              "infrastructure",
+              "productivity",
+              "quick_wins"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.41
+          }
+        },
+        {
+          "id": "chip-cursor-copilot",
+          "type": "technology",
+          "label": "cursor-copilot",
+          "properties": {}
+        },
+        {
+          "id": "ai-agent-builder",
+          "type": "domain",
+          "label": "AI Agent Architecture",
+          "properties": {
+            "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+            "composite_score": 0.827,
+            "scores": {
+              "market_size": 0.88,
+              "data_availability": 0.82,
+              "benchmark_feasibility": 0.75,
+              "community_demand": 0.9,
+              "spark_ecosystem_fit": 0.8,
+              "monetization_potential": 0.78
+            },
+            "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+            "domain_tags": [],
+            "retention_score": 0.42,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "startup-yc",
+          "type": "domain",
+          "label": "Startup YC Intelligence",
+          "properties": {
+            "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+            "composite_score": 0.826,
+            "scores": {
+              "market_size": 0.86,
+              "data_availability": 0.78,
+              "benchmark_feasibility": 0.74,
+              "community_demand": 0.87,
+              "spark_ecosystem_fit": 0.84,
+              "monetization_potential": 0.89
+            },
+            "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+            "domain_tags": [
+              "idea_validation",
+              "market_fit",
+              "portfolio_intelligence",
+              "productivity",
+              "roi",
+              "speed_to_ship"
+            ],
+            "retention_score": 0.55,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-indie-hacker",
+          "type": "technology",
+          "label": "indie-hacker",
+          "properties": {}
+        },
+        {
+          "id": "chip-agentic-marketing",
+          "type": "technology",
+          "label": "agentic-marketing",
+          "properties": {}
+        },
+        {
+          "id": "trust-center-gap-copilot",
+          "type": "domain",
+          "label": "Trust Center Gap Copilot",
+          "properties": {
+            "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
+            "composite_score": 0.6631,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.75,
+              "monetization_potential": 0.79
+            },
+            "rationale": "Cyberday positions trust centers as a way to cut repetitive security reviews, and practitioners still report that customers ask for the same evidence in different formats, leaving a recurring gap-handling layer after the trust center is in place.",
+            "domain_tags": [
+              "audience_targeting",
+              "audit",
+              "campaign_roi",
+              "compliance",
+              "customer-security-review",
+              "infrastructure",
+              "portfolio_intelligence",
+              "pre-sales",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "security",
+              "trust-center"
+            ],
+            "retention_score": 0.81,
+            "choice_score": 0.58
+          }
+        },
+        {
+          "id": "chip-vendor-security-review-copilot",
+          "type": "technology",
+          "label": "vendor-security-review-copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-ai-security-questionnaire-copilot",
+          "type": "technology",
+          "label": "ai-security-questionnaire-copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-legal-ops",
+          "type": "technology",
+          "label": "legal-ops",
+          "properties": {}
+        },
+        {
+          "id": "platform-cyberday-trust-center",
+          "type": "platform",
+          "label": "cyberday-trust-center",
+          "properties": {}
+        },
+        {
+          "id": "platform-reddit-sysadmin-security-reviews",
+          "type": "platform",
+          "label": "reddit-sysadmin-security-reviews",
+          "properties": {}
+        },
+        {
+          "id": "security-control-crosswalk-copilot",
+          "type": "domain",
+          "label": "Security Control Crosswalk Copilot",
+          "properties": {
+            "description": "Builds and maintains a reusable control-and-evidence crosswalk across SOC 2, ISO 27001, HIPAA, and similar frameworks.",
+            "composite_score": 0.6581,
+            "scores": {
+              "market_size": 0.788,
+              "data_availability": 0.52,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.67,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Hyperproof says teams repeat administrative work when they map frameworks one at a time and re-collect evidence, while ControlMap and practitioner discussion describe one control mapped to many frameworks with evidence reuse as the operational win.",
+            "domain_tags": [
+              "audit",
+              "compliance",
+              "control-mapping",
+              "infrastructure",
+              "multi-framework",
+              "portfolio_intelligence",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "security"
+            ],
+            "retention_score": 0.76,
+            "choice_score": 0.9
+          }
+        },
+        {
+          "id": "chip-ai-compliance-evidence-copilot",
+          "type": "technology",
+          "label": "ai-compliance-evidence-copilot",
+          "properties": {}
+        },
+        {
+          "id": "platform-hyperproof-crosswalks",
+          "type": "platform",
+          "label": "hyperproof-crosswalks",
+          "properties": {}
+        },
+        {
+          "id": "platform-controlmap-frameworks",
+          "type": "platform",
+          "label": "controlmap-frameworks",
+          "properties": {}
+        },
+        {
+          "id": "platform-reddit-compliance-mapping",
+          "type": "platform",
+          "label": "reddit-compliance-mapping",
+          "properties": {}
+        },
+        {
+          "id": "vendor-assertion-evidence-verifier",
+          "type": "domain",
+          "label": "Vendor Assertion Evidence Verifier",
+          "properties": {
+            "description": "Requests, validates, and tracks supporting artifacts behind vendor questionnaire claims for high-risk reviews.",
+            "composite_score": 0.6321,
+            "scores": {
+              "market_size": 0.788,
+              "data_availability": 0.52,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.59,
+              "monetization_potential": 0.58
+            },
+            "rationale": "UpGuard and Safe Security both describe repetitive questionnaires, inconsistent responses, and verification difficulty as core TPRM bottlenecks, and Safe Security explicitly recommends requesting recent supporting artifacts for critical control assertions instead of trusting questionnaire answers alone.",
+            "domain_tags": [
+              "audit",
+              "compliance",
+              "evidence-validation",
+              "infrastructure",
+              "portfolio_intelligence",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "security",
+              "third-party-risk",
+              "vendor-risk"
+            ],
+            "retention_score": 0.7,
+            "choice_score": 0.79
+          }
+        },
+        {
+          "id": "chip-data-loss-prevention",
+          "type": "technology",
+          "label": "data-loss-prevention",
+          "properties": {}
+        },
+        {
+          "id": "platform-upguard-vraq",
+          "type": "platform",
+          "label": "upguard-vraq",
+          "properties": {}
+        },
+        {
+          "id": "platform-safe-security-vraq",
+          "type": "platform",
+          "label": "safe-security-vraq",
+          "properties": {}
+        },
+        {
+          "id": "platform-thirdproof-questionnaire-limitations",
+          "type": "platform",
+          "label": "thirdproof-questionnaire-limitations",
+          "properties": {}
+        }
+      ],
+      "edges": [
+        {
+          "source": "tech-mcp",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.9
+        },
+        {
+          "source": "tech-llm",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.95
+        },
+        {
+          "source": "tech-agents",
+          "target": "community-spark",
+          "relationship": "SERVES",
+          "weight": 0.8
+        },
+        {
+          "source": "regulation-gdpr",
+          "target": "community-defi",
+          "relationship": "DISRUPTS",
+          "weight": 0.3
+        },
+        {
+          "source": "trading-crypto",
+          "target": "chip-defi-architect",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-mcp-server-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-ai-agent-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "chip-cursor-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "chip-ai-agent-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-arxiv",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-indie-hacker",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-agentic-marketing",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trust-center-gap-copilot",
+          "target": "chip-vendor-security-review-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trust-center-gap-copilot",
+          "target": "chip-ai-security-questionnaire-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trust-center-gap-copilot",
+          "target": "chip-legal-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trust-center-gap-copilot",
+          "target": "platform-cyberday-trust-center",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trust-center-gap-copilot",
+          "target": "platform-reddit-sysadmin-security-reviews",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
+          "target": "chip-ai-compliance-evidence-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
+          "target": "chip-legal-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
+          "target": "chip-ai-security-questionnaire-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
+          "target": "platform-hyperproof-crosswalks",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
+          "target": "platform-controlmap-frameworks",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
+          "target": "platform-reddit-compliance-mapping",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "vendor-assertion-evidence-verifier",
+          "target": "chip-vendor-security-review-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "vendor-assertion-evidence-verifier",
+          "target": "chip-ai-security-questionnaire-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "vendor-assertion-evidence-verifier",
+          "target": "chip-data-loss-prevention",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "vendor-assertion-evidence-verifier",
+          "target": "platform-upguard-vraq",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "vendor-assertion-evidence-verifier",
+          "target": "platform-safe-security-vraq",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "vendor-assertion-evidence-verifier",
+          "target": "platform-thirdproof-questionnaire-limitations",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "cursor-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9267
+        },
+        {
+          "source": "trading-crypto",
+          "target": "mcp-server-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.905
+        },
+        {
+          "source": "trading-crypto",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.92
+        },
+        {
+          "source": "trading-crypto",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9217
+        },
+        {
+          "source": "trading-crypto",
+          "target": "trust-center-gap-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39065
+        },
+        {
+          "source": "trading-crypto",
+          "target": "security-control-crosswalk-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.38485
+        },
+        {
+          "source": "trading-crypto",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "ENABLES",
+          "weight": 0.3665
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "mcp-server-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9367
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9283
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "trust-center-gap-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40235
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "security-control-crosswalk-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.3965
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "ENABLES",
+          "weight": 0.37815
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9217
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.91
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "trust-center-gap-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40485
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "security-control-crosswalk-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.404
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "ENABLES",
+          "weight": 0.38565
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9583
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "trust-center-gap-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42235
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "security-control-crosswalk-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41815
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "ENABLES",
+          "weight": 0.39985
+        },
+        {
+          "source": "startup-yc",
+          "target": "trust-center-gap-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41985
+        },
+        {
+          "source": "startup-yc",
+          "target": "security-control-crosswalk-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.414
+        },
+        {
+          "source": "startup-yc",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "ENABLES",
+          "weight": 0.39565
+        },
+        {
+          "source": "trust-center-gap-copilot",
+          "target": "security-control-crosswalk-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9617
+        },
+        {
+          "source": "trust-center-gap-copilot",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.925
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9633
+        }
+      ],
+      "tracked_variables": {},
+      "node_count": 40,
+      "edge_count": 70
+    }
+  },
+  "summary": {
+    "discovered_count": 3,
+    "benchmark_count": 5,
+    "proposed_benchmark_count": 0,
+    "promotion_review_count": 0,
+    "combined_domain_count": 8,
+    "signal_count": 78,
+    "shock_count": 3,
+    "top_ranked_domain": "trading-crypto"
+  },
+  "governance_note": "Discovered candidates use conservative inferred priors. Hybrid specs are exploratory_frontier and must not auto-promote benchmark membership, including proposed benchmark members and promotion-review candidates."
+}

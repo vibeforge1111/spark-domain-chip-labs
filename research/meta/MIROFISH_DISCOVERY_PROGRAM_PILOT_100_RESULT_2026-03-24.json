@@ -1,0 +1,983 @@
+{
+  "packet_kind": "mirofish_discovery_program",
+  "evidence_lane": "exploratory_frontier",
+  "created_at": "2026-03-24T17:36:50.262159+00:00",
+  "program_id": "mirofish-discovery-program-pilot-100",
+  "stage_label": "pilot_100",
+  "target_agent_count": 100,
+  "participating_agent_count": 100,
+  "summary": {
+    "raw_count": 3,
+    "accepted_count": 3,
+    "merged_count": 0,
+    "rejected_count": 0,
+    "clear_count": 3,
+    "proto_count": 0,
+    "acceptance_rate": 1.0,
+    "merge_rate": 0.0,
+    "too_vague_rate": 0.0,
+    "persona_only_rate": 0.0,
+    "workflow_only_rate": 0.0,
+    "duplicate_existing_count": 0
+  },
+  "scale_readiness": {
+    "participating_agent_count": 100,
+    "target_agent_count": 100,
+    "next_stage": "refine_contract_before_scaling",
+    "reasons": [
+      "The program already produces multiple clear_domain_chip candidates.",
+      "Acceptance rate is high enough to justify a larger intake pass.",
+      "Duplicate pressure is still manageable.",
+      "Vague-candidate rejection is under control."
+    ]
+  },
+  "agent_rollup": [
+    {
+      "agent_id": "agent-001",
+      "candidate_count": 1,
+      "notes": "Pilot agent 1 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 1,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-002",
+      "candidate_count": 1,
+      "notes": "Pilot agent 2 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 1,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-003",
+      "candidate_count": 1,
+      "notes": "Pilot agent 3 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 1,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-004",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-005",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-006",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-007",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-008",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-009",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-010",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-011",
+      "candidate_count": 0,
+      "notes": "Pilot agent 11 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-012",
+      "candidate_count": 0,
+      "notes": "Pilot agent 12 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-013",
+      "candidate_count": 0,
+      "notes": "Pilot agent 13 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-014",
+      "candidate_count": 0,
+      "notes": "Pilot agent 14 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-015",
+      "candidate_count": 0,
+      "notes": "Pilot agent 15 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-016",
+      "candidate_count": 0,
+      "notes": "Pilot agent 16 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-017",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-018",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-019",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-020",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-021",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-022",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-023",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-024",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-025",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-026",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-027",
+      "candidate_count": 0,
+      "notes": "Pilot agent 11 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-028",
+      "candidate_count": 0,
+      "notes": "Pilot agent 12 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-029",
+      "candidate_count": 0,
+      "notes": "Pilot agent 13 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-030",
+      "candidate_count": 0,
+      "notes": "Pilot agent 14 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-031",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-032",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-033",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-034",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-035",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-036",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-037",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-038",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-039",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-040",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-041",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-042",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-043",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-044",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-045",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-046",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-047",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-048",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-049",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-050",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-051",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-052",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-053",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-054",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-055",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-056",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-057",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-058",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-059",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-060",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-061",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-062",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-063",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-064",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-065",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-066",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-067",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-068",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-069",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-070",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-071",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-072",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-073",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-074",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-075",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-076",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-077",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-078",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-079",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-080",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-081",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-082",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-083",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-084",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-085",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-086",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-087",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-088",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-089",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-090",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-091",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-092",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-093",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-094",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-095",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-096",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-097",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-098",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-099",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-100",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    }
+  ],
+  "accepted_candidates": [
+    {
+      "label": "Security Control Crosswalk Copilot",
+      "description": "Builds and maintains a reusable control-and-evidence crosswalk across SOC 2, ISO 27001, HIPAA, and similar frameworks.",
+      "specialization_surface": "mapping one internal control baseline to multiple external framework requirements",
+      "mastery_surface": "reducing repeated evidence collection by learning reusable control crosswalks and evidence mappings",
+      "user_value_loop": "ingest a new framework request, map it to the control baseline, attach reusable evidence, and refine the crosswalk after auditor or customer review",
+      "domain_tags": [
+        "security",
+        "compliance",
+        "control-mapping",
+        "multi-framework"
+      ],
+      "evidence_sources": [
+        "hyperproof-crosswalks",
+        "controlmap-frameworks",
+        "reddit-compliance-mapping"
+      ],
+      "evidence_summary": "Hyperproof says teams repeat administrative work when they map frameworks one at a time and re-collect evidence, while ControlMap and practitioner discussion describe one control mapped to many frameworks with evidence reuse as the operational win.",
+      "adjacent_domains": [
+        "ai-compliance-evidence-copilot",
+        "legal-ops",
+        "ai-security-questionnaire-copilot"
+      ],
+      "duplicate_aliases": [
+        "Compliance Crosswalk Copilot",
+        "Control Mapping Copilot"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Security and GRC teams keep rebuilding the same control-to-framework mapping and evidence matrix instead of operating a maintained crosswalk.",
+      "evidence_links": [
+        "https://hyperproof.io/resource/crosswalks-between-compliance-frameworks/",
+        "https://help.controlmap.io/hc/en-us/articles/18161192714651-Frameworks",
+        "https://www.reddit.com/r/Compliance/comments/1pndh3s/how_do_you_deal_with_soc_2_and_hipaa_at_the_same/"
+      ],
+      "submitted_by_agent": "agent-001",
+      "submission_index": 1,
+      "domain_id": "security-control-crosswalk-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-001"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "label": "Vendor Assertion Evidence Verifier",
+      "description": "Requests, validates, and tracks supporting artifacts behind vendor questionnaire claims for high-risk reviews.",
+      "specialization_surface": "turning self-reported questionnaire answers into verified evidence packets for vendor risk teams",
+      "mastery_surface": "learning which artifact types, freshness windows, and follow-ups actually resolve high-risk vendor assertions",
+      "user_value_loop": "parse vendor answers, request supporting evidence, verify artifact freshness and scope, and update the vendor evidence profile for future reviews",
+      "domain_tags": [
+        "security",
+        "third-party-risk",
+        "vendor-risk",
+        "evidence-validation"
+      ],
+      "evidence_sources": [
+        "upguard-vraq",
+        "safe-security-vraq",
+        "thirdproof-questionnaire-limitations"
+      ],
+      "evidence_summary": "UpGuard and Safe Security both describe repetitive questionnaires, inconsistent responses, and verification difficulty as core TPRM bottlenecks, and Safe Security explicitly recommends requesting recent supporting artifacts for critical control assertions instead of trusting questionnaire answers alone.",
+      "adjacent_domains": [
+        "vendor-security-review-copilot",
+        "ai-security-questionnaire-copilot",
+        "data-loss-prevention"
+      ],
+      "duplicate_aliases": [
+        "Vendor Evidence Validation Copilot",
+        "Questionnaire Evidence Verifier"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Buyer-side security teams still spend manual cycles turning vendor attestations into evidence they can trust, especially for critical vendors.",
+      "evidence_links": [
+        "https://www.upguard.com/blog/vendor-risk-assessment-questionnaire-template",
+        "https://safe.security/resources/blog/vendor-security-questionnaire-vraq-best-practices/",
+        "https://thirdproof.ai/learn/vendor-risk-assessment-without-questionnaires"
+      ],
+      "submitted_by_agent": "agent-002",
+      "submission_index": 1,
+      "domain_id": "vendor-assertion-evidence-verifier",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-002"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "label": "Trust Center Gap Copilot",
+      "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
+      "specialization_surface": "closing the gap between reusable trust-center content and bespoke customer security review asks",
+      "mastery_surface": "learning which trust-center gaps recur and how to answer them with minimal manual pre-sales and security effort",
+      "user_value_loop": "detect repeated customer asks, point to existing trust-center assets, package missing evidence, and update reusable trust-center content after each review",
+      "domain_tags": [
+        "security",
+        "trust-center",
+        "customer-security-review",
+        "pre-sales"
+      ],
+      "evidence_sources": [
+        "cyberday-trust-center",
+        "reddit-sysadmin-security-reviews"
+      ],
+      "evidence_summary": "Cyberday positions trust centers as a way to cut repetitive security reviews, and practitioners still report that customers ask for the same evidence in different formats, leaving a recurring gap-handling layer after the trust center is in place.",
+      "adjacent_domains": [
+        "vendor-security-review-copilot",
+        "ai-security-questionnaire-copilot",
+        "legal-ops"
+      ],
+      "duplicate_aliases": [
+        "Customer Security Review Gap Copilot",
+        "Trust Center Follow-up Copilot"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Even after SOC 2 and a trust center are in place, teams still need a repeatable way to handle the leftover spreadsheet, portal, and evidence-gap work.",
+      "evidence_links": [
+        "https://www.cyberday.ai/use-cases/trust-center",
+        "https://www.reddit.com/r/sysadmin/comments/1po9c3h/security_reviews_keep_asking_for_the_same/"
+      ],
+      "submitted_by_agent": "agent-003",
+      "submission_index": 1,
+      "domain_id": "trust-center-gap-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-003"
+      ],
+      "supporting_agent_count": 1
+    }
+  ],
+  "merged_candidates": [],
+  "rejected_candidates": [],
+  "next_actions": [
+    "Feed the clear_domain_chip set into a smaller MiroFish evaluation run.",
+    "Refine the intake contract and rejection reasons before scaling to a larger agent count."
+  ]
+}

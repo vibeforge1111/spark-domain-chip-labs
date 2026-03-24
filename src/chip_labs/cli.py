@@ -152,6 +152,65 @@ def _summarize_discovery_cluster_directory(directory: str | Path) -> dict[str, A
     }
 
 
+def _build_discovery_cluster_bundle_from_directory(directory: str | Path) -> dict[str, Any]:
+    """Rebuild a combined cluster bundle from a materialized discovery directory."""
+    directory_path = Path(directory)
+    cluster_paths = sorted(
+        path for path in directory_path.glob("*.json")
+        if path.name[:2].isdigit()
+    )
+    cluster_packets = [_load_input(str(path)) for path in cluster_paths]
+    if not cluster_packets:
+        return {
+            "packet_kind": "mirofish_discovery_program_cluster_packets",
+            "directory": str(directory_path),
+            "cluster_packet_count": 0,
+            "summary": {"cluster_count": 0, "agent_count": 0},
+            "cluster_plan": [],
+            "collection_rules": {},
+            "cluster_packets": [],
+            "next_actions": [
+                "Materialize or populate cluster packet files before rebuilding the bundle.",
+            ],
+        }
+
+    first_packet = cluster_packets[0]
+    collection_rules = first_packet.get("collection_rules", {})
+    cluster_plan = []
+    agent_count = 0
+    for packet in cluster_packets:
+        agent_submissions = list(packet.get("agent_submissions", []))
+        agent_count += len(agent_submissions)
+        cluster_plan.append({
+            "cluster_id": packet.get("cluster_id", ""),
+            "label": packet.get("cluster_label", packet.get("cluster_id", "")),
+            "agent_count": int(packet.get("target_agent_count", len(agent_submissions))),
+            "focus": packet.get("focus", ""),
+            "seed_domains": list(packet.get("seed_domains", [])),
+        })
+
+    return {
+        "packet_kind": "mirofish_discovery_program_cluster_packets",
+        "directory": str(directory_path),
+        "program_id": first_packet.get("program_id", "mirofish-discovery-program"),
+        "stage_label": first_packet.get("stage_label", "pilot"),
+        "target_agent_count": sum(int(item.get("agent_count", 0)) for item in cluster_plan),
+        "cluster_plan": cluster_plan,
+        "collection_rules": collection_rules,
+        "cluster_packet_count": len(cluster_packets),
+        "summary": {
+            "cluster_count": len(cluster_packets),
+            "agent_count": agent_count,
+        },
+        "cluster_packets": cluster_packets,
+        "next_actions": [
+            "Run `mirofish-discovery-program-merge` on this refreshed bundle.",
+            "Canonicalize the merged program packet after collection updates.",
+            "Rebuild the bundle again after each new collection tranche.",
+        ],
+    }
+
+
 def _format_discovery_progress_markdown(progress: dict[str, Any], title: str) -> str:
     """Render a materialized discovery directory progress report as markdown."""
     summary = progress.get("summary", {})
@@ -744,6 +803,12 @@ def cmd_mirofish_discovery_program_progress(args: argparse.Namespace) -> None:
         )
 
 
+def cmd_mirofish_discovery_program_bundle(args: argparse.Namespace) -> None:
+    """Rebuild a combined cluster bundle from a materialized discovery directory."""
+    result = _build_discovery_cluster_bundle_from_directory(args.input_dir)
+    _write_output(args.output, result)
+
+
 # ---------------------------------------------------------------------------
 # Command: mirofish-hybrid-spec
 # ---------------------------------------------------------------------------
@@ -1162,6 +1227,20 @@ def main() -> None:
         help="Markdown heading for the progress report.",
     )
     p_mirofish_discovery_program_progress.set_defaults(func=cmd_mirofish_discovery_program_progress)
+
+    # mirofish-discovery-program-bundle
+    p_mirofish_discovery_program_bundle = sub.add_parser(
+        "mirofish-discovery-program-bundle",
+        help="Rebuild a combined cluster bundle from a materialized discovery directory.",
+    )
+    p_mirofish_discovery_program_bundle.add_argument(
+        "--input-dir",
+        type=str,
+        required=True,
+        help="Materialized cluster directory path.",
+    )
+    p_mirofish_discovery_program_bundle.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_discovery_program_bundle.set_defaults(func=cmd_mirofish_discovery_program_bundle)
 
     # mirofish-hybrid-spec
     p_mirofish_hybrid = sub.add_parser(

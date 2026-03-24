@@ -315,3 +315,12 @@ MiroFish discovery pilot progress surface:
 - generate JSON and markdown progress snapshots for the empty pilot baseline
 - make cluster collection status visible without opening each packet manually
 - preserve the truthful starting state of `0 / 100` filled agents before collection begins
+
+## Batch 36
+
+MiroFish discovery security tranche:
+
+- add a repo-local bundle rebuild step so the materialized directory can feed back into merge and canonicalization
+- fill the first three security-cluster agents with evidence-grounded candidates
+- refresh the progress, recombined packet, and canonicalized partial pilot result
+- run a bounded hybrid validation pass plus diagnostic and promotion briefs for the first collected slice

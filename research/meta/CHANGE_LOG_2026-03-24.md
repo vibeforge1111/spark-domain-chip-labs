@@ -1379,3 +1379,54 @@ Once the pilot directory existed, the next operator need was a truthful progress
 
 - The saved progress snapshot is intentionally empty because the pilot collection has not started yet.
 - This tranche creates the status surface needed for real collection work.
+
+## Tranche: MiroFish Discovery Security Tranche
+
+### Files Changed
+
+- `src/chip_labs/cli.py`
+- `tests/test_mirofish_discovery.py`
+- `docs/MIROFISH_DISCOVERY_PROGRAM.md`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/01_security-compliance-response.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.md`
+- `research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_DIAGNOSTIC_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_PROMOTION_BRIEF_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_SECURITY_TRANCHE_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_security_tranche.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The pilot plumbing was complete, so the next honest step was to start real collection in one cluster and see whether the first tranche survived both discovery intake and early MiroFish evaluation.
+
+### What Changed
+
+- Added a bundle rebuild step so edits in the materialized cluster directory feed back into merge and canonicalization
+- Filled the first three security-cluster agents with evidence-grounded candidates
+- Refreshed the pilot progress read, partial pilot result, and bounded hybrid evaluation artifacts
+- Saved the resulting diagnostic and promotion briefs for the first real collection slice
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.md --title "MiroFish Discovery Pilot 100 Progress"`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json --output research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --rounds 8 --flagship-count-per-type 8 --ensemble-runs 4 --ensemble-count-per-type 4 --scenario-label mirofish-discovery-pilot-100-security-tranche`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_DIAGNOSTIC_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-promotion-brief --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_PROMOTION_BRIEF_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+
+### Notes
+
+- This tranche starts real collection, but it is still only `3 / 100` agents filled.
+- The security slice is promising enough to keep collecting, but not strong enough yet for promotion review.
