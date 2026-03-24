@@ -220,6 +220,14 @@ No saved MiroFish portfolio export or readout artifact was found under `research
 
 def _mirofish_frontier_page(timestamp: str) -> dict[str, Any]:
     """Generate the current MiroFish frontier checkpoint page."""
+    shortlist_path = _latest_meta_file("MIROFISH_FRONTIER_SHORTLIST_*.md")
+    if shortlist_path is not None and "_NOTE_" in shortlist_path.name:
+        shortlist_candidates = [
+            path
+            for path in (_repo_root() / "research" / "meta").glob("MIROFISH_FRONTIER_SHORTLIST_*.md")
+            if "_NOTE_" not in path.name
+        ]
+        shortlist_path = max(shortlist_candidates, key=lambda path: path.stat().st_mtime_ns) if shortlist_candidates else None
     export_path = _latest_meta_file("MIROFISH_FRONTIER_EXPORT_*.md")
     readout_path = _latest_meta_file("MIROFISH_FRONTIER_READOUT_*.json")
     compare_path = _latest_meta_file("MIROFISH_FRONTIER_CHECKPOINTS_*.html")
@@ -229,12 +237,49 @@ def _mirofish_frontier_page(timestamp: str) -> dict[str, Any]:
         if compare_path is not None
         else "> Local comparison page: not generated yet"
     )
+    shortlist_line = (
+        f"> Canonical shortlist: `{shortlist_path.relative_to(_repo_root())}`"
+        if shortlist_path is not None
+        else "> Canonical shortlist: not generated yet"
+    )
+
+    if shortlist_path is not None and export_path is not None:
+        shortlist_body = shortlist_path.read_text(encoding="utf-8").strip()
+        export_body = export_path.read_text(encoding="utf-8").strip()
+        content = f"""# MiroFish Frontier
+
+> Last updated: {timestamp}
+{shortlist_line}
+> Canonical export: `{export_path.relative_to(_repo_root())}`
+{compare_line}
+
+## Current Frontier Shortlist
+
+The page below is sourced from the latest saved MiroFish frontier shortlist artifact.
+
+{shortlist_body}
+
+## Full Frontier Checkpoint
+
+The broader ranked frontier export is kept below for comparison and deeper review.
+
+{export_body}
+
+## Links
+
+- [[Lab Home]]
+- [[Portfolio Dashboard]]
+- [[MiroFish Portfolio]]
+- [[Trend Predictions]]
+"""
+        return {"path": "MiroFish Frontier.md", "content": content}
 
     if export_path is not None:
         export_body = export_path.read_text(encoding="utf-8").strip()
         content = f"""# MiroFish Frontier
 
 > Last updated: {timestamp}
+{shortlist_line}
 > Canonical export: `{export_path.relative_to(_repo_root())}`
 {compare_line}
 

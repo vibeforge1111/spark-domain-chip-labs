@@ -1,0 +1,45 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-25_mirofish_frontier_shortlist_watchtower",
+  "created_at": "2026-03-25",
+  "scope": "Make the saved deeper 180 frontier shortlist the primary watchtower/dashboard surface for frontier review",
+  "decision_context": {
+    "prior_state": "The watchtower frontier page exposed the full ranked frontier export, and the newly added shortlist was saved but not yet the first operator view.",
+    "decision": "Render the frontier shortlist first on the watchtower page and keep the full export below it.",
+    "why_now": "This makes the current simulator winners easier to inspect immediately from the local dashboard."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/watchtower_latest/MiroFish Frontier.md",
+      "purpose": "Refreshed watchtower frontier page with shortlist-first layout."
+    },
+    {
+      "path": "research/meta/MIROFISH_WATCHTOWER_LATEST_RESULT_2026-03-25.json",
+      "purpose": "Updated page list after refreshing the watchtower snapshot."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_SHORTLIST_WATCHTOWER_NOTE_2026-03-25.md",
+      "purpose": "Documents the shortlist-first watchtower surface and the shortlist-note resolver fix."
+    }
+  ],
+  "planned_steps": [
+    "Update the watchtower frontier page to prefer the saved shortlist markdown artifact",
+    "Add a regression test for the shortlist-note glob collision",
+    "Refresh watchtower_latest so the local dashboard matches the new frontier surface"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_watchtower.py tests/test_mirofish_hybrid.py tests/test_mirofish_discovery.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-watchtower-snapshot --vault-dir research/meta/watchtower_latest --output research/meta/MIROFISH_WATCHTOWER_LATEST_RESULT_2026-03-25.json"
+    ],
+    "expected_checks": [
+      "The frontier watchtower page renders the shortlist export first",
+      "The shortlist-note markdown file is not mistaken for the canonical shortlist export",
+      "The refreshed watchtower_latest surface shows the current frontier winners immediately"
+    ]
+  },
+  "guardrails": [
+    "Do not change the underlying frontier checkpoint in this tranche",
+    "Do not treat the shortlist as a replacement for the saved readout or full export",
+    "Keep the full export available beneath the shortlist for deeper review"
+  ]
+}

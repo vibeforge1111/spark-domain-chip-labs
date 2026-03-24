@@ -21,3 +21,11 @@ MiroFish frontier shortlist:
 - add a shortlist builder and markdown exporter for frontier readouts
 - extract a fast operator shortlist from the deeper `180` frontier checkpoint under `research/meta/`
 - separate the current frontier surface into `winners`, `breakouts`, and `speculative` buckets so the best domains are easier to review without reopening another simulation run
+
+## Batch 4
+
+MiroFish frontier shortlist watchtower surface:
+
+- update the `MiroFish Frontier` watchtower page to render the saved deeper `180` shortlist before the full frontier export
+- fix the shortlist-artifact resolver so the page chooses the shortlist export instead of the similarly named shortlist note
+- refresh `research/meta/watchtower_latest/` so the repo-local dashboard shows the current frontier winners first
