@@ -780,3 +780,44 @@ The sticky-workflow tranche clarified that RFP and compliance evidence still lac
 - This tranche improves the enterprise read without becoming a broad enterprise boost.
 - The main new information is that compliance evidence is not just a pre-choice problem.
 - `startup-yc` still leads the cluster overall, so the next step remains a stable validation replay rather than admission.
+
+## Tranche: MiroFish Validation Determinism Fix
+
+### Files Changed
+
+- `src/chip_labs/mirofish/simulation.py`
+- `research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_VALIDATION_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_VALIDATION_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_VALIDATION_STABILITY_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_validation_determinism_fix.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The planned stable enterprise validation replay was not actually stable. The cooldown path used Python's built-in `hash()` for persona-domain variation, which changes across Python processes and made same-spec same-seed replays drift.
+
+### What Changed
+
+- Replaced the process-randomized cooldown hash with a deterministic md5-based persona-domain bucket
+- Rebuilt the planned enterprise validation replay after the fix
+- Rebuilt the diagnostic brief from the stable validation replay
+- Confirmed that the same replay now matches across fresh Python processes with different `PYTHONHASHSEED` values
+- Saved a methodology note concluding that:
+  - questionnaire remains the strongest enterprise ensemble candidate
+  - renewal remains barely above the benchmark median and still looks like a retention-side issue
+  - RFP remains just below the benchmark median
+  - compliance evidence remains clearly below the benchmark median
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_VALIDATION_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_VALIDATION_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_VALIDATION_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_trend_prediction.py tests/test_mirofish_portfolio.py -q`
+- Run the same `run_hybrid_evaluation(..., seed=42)` replay in fresh Python processes with different `PYTHONHASHSEED` values and confirm that the focus metrics match exactly
+
+### Notes
+
+- This is a replay-integrity fix, not another enterprise uplift.
+- The main outcome is that the next full portfolio rerun can now be trusted.
+- The correct next step is the repo-local `515`-domain rerun, not another methodology mutation.

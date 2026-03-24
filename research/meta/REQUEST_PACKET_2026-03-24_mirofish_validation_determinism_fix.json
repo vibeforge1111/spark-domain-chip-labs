@@ -1,0 +1,59 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_validation_determinism_fix",
+  "created_at": "2026-03-24",
+  "scope": "Remove process-dependent cooldown drift from MiroFish, then rebuild the planned enterprise validation replay as a stable artifact",
+  "decision_context": {
+    "prior_state": "The enterprise choice-conversion tranche had landed, but the planned validation replay produced materially different results from the saved replay even under the same spec and seed.",
+    "decision": "Replace the process-randomized persona-domain cooldown hash with a deterministic md5-based bucket, rerun the enterprise validation packet, and confirm that the replay matches across fresh Python processes with different PYTHONHASHSEED values.",
+    "why_now": "Running the full 515-domain portfolio before fixing replay drift would have produced an untrusted ranked readout and made the next batch harder to interpret."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/simulation.py",
+      "purpose": "Replaces process-randomized cooldown variation with deterministic pair bucketing."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_VALIDATION_2026-03-24.json",
+      "purpose": "Stores the stable post-choice-conversion enterprise validation replay."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_VALIDATION_2026-03-24.json",
+      "purpose": "Stores the diagnostic brief for the stable enterprise validation replay."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_VALIDATION_STABILITY_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the determinism issue, the fix, and what the stable validation replay says."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_validation_determinism_fix.json",
+      "purpose": "Captures the request, verification plan, and guardrails for the determinism fix tranche."
+    }
+  ],
+  "planned_steps": [
+    "Replace built-in hash usage in cooldown variation with deterministic md5-based bucketing",
+    "Replay the symmetric enterprise cluster as the planned validation artifact",
+    "Rebuild the diagnostic brief from the validation replay",
+    "Confirm that identical spec-plus-seed runs match across fresh Python processes",
+    "Write the methodology note and update the transparent logs"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_VALIDATION_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_VALIDATION_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_VALIDATION_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_trend_prediction.py tests/test_mirofish_portfolio.py -q",
+      "$env:PYTHONPATH='src'; $env:PYTHONHASHSEED='11'; python -c \"...run_hybrid_evaluation(spec, seed=42)...\"",
+      "$env:PYTHONPATH='src'; $env:PYTHONHASHSEED='99'; python -c \"...run_hybrid_evaluation(spec, seed=42)...\""
+    ],
+    "expected_checks": [
+      "Cross-process replays with different PYTHONHASHSEED values produce identical enterprise focus metrics",
+      "Questionnaire remains above the benchmark median on ensemble adoption",
+      "Renewal remains slightly above the benchmark median and still shows a retention-side bottleneck",
+      "RFP remains just below the benchmark median and compliance evidence remains clearly below it"
+    ]
+  },
+  "guardrails": [
+    "Do not add a new conversion or retention heuristic in this tranche",
+    "Do not change maintained benchmark membership",
+    "Use the fix to stabilize replay semantics, not to manufacture a stronger enterprise outcome"
+  ]
+}

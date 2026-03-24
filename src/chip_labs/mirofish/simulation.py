@@ -7,6 +7,7 @@ consensus scores, and tipping point detection.
 
 from __future__ import annotations
 
+import hashlib
 from typing import Any
 
 from .graph import DomainGraph
@@ -40,6 +41,12 @@ STICKY_STAGES = {"committed", "advocating"}
 
 # Maximum simulation rounds
 MAX_ROUNDS = 20
+
+
+def _stable_pair_bucket(pid: str, domain_id: str, buckets: int = 3) -> int:
+    """Return a deterministic small bucket for a persona-domain pair."""
+    digest = hashlib.md5(f"{pid}:{domain_id}".encode()).hexdigest()
+    return int(digest[:8], 16) % buckets
 
 
 def run_simulation(
@@ -191,7 +198,7 @@ def run_simulation(
                 # Hash of persona+domain creates per-pair variation so different
                 # personas advance at different rounds, producing gradual curves.
                 last_adv = last_advance[pid].get(domain_id, -10)
-                pair_hash = hash((pid, domain_id)) % 3  # 0, 1, or 2
+                pair_hash = _stable_pair_bucket(pid, domain_id)  # 0, 1, or 2
                 base_cooldown = 3 - int(persona["risk_tolerance"] * 1.5)  # 1-3
                 cooldown = max(1, base_cooldown + pair_hash)  # 1-5 rounds
                 if round_num - last_adv < cooldown and prev_stage != "unaware":

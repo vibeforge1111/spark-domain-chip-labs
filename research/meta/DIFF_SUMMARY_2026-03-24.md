@@ -163,3 +163,13 @@ MiroFish enterprise choice conversion:
 - rerun the enterprise cluster playoff under the explicit choice-conversion logic
 - show that questionnaire and renewal stay above the benchmark median
 - show that RFP gets closer to the benchmark line while compliance evidence still fails to retain after stronger choice
+
+## Batch 19
+
+MiroFish validation determinism fix:
+
+- replace the cooldown path's process-randomized `hash()` usage with deterministic md5-based pair bucketing
+- rerun the planned enterprise validation artifact after restoring replay stability
+- confirm that same-spec same-seed enterprise replays match across fresh Python processes
+- show that questionnaire remains the strongest enterprise ensemble candidate
+- show that renewal stays narrowly above the benchmark median while RFP stays narrowly below it
