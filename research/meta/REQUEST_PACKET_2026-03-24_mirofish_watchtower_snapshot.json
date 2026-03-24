@@ -1,0 +1,52 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_watchtower_snapshot",
+  "created_at": "2026-03-24",
+  "scope": "Generate a repo-local watchtower snapshot that includes the new MiroFish Portfolio dashboard surface",
+  "decision_context": {
+    "prior_state": "The watchtower code could now render the canonical MiroFish checkpoint, but the repo did not yet contain a generated observatory snapshot under mutable targets.",
+    "decision": "Run the existing watchtower command with a research/meta vault directory so the generated observatory pages are saved inside the allowed workspace scope.",
+    "why_now": "This turns the new watchtower surface from code-only support into a concrete downstream artifact for review."
+  },
+  "vault_dir": "research/meta/watchtower_2026-03-24",
+  "mutations": {
+    "research_focus": "mirofish_portfolio_surface",
+    "agent_workstream": "methodology_researcher"
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/watchtower_2026-03-24/Lab Home.md",
+      "purpose": "Generated watchtower home page."
+    },
+    {
+      "path": "research/meta/watchtower_2026-03-24/Portfolio Dashboard.md",
+      "purpose": "Generated portfolio dashboard page."
+    },
+    {
+      "path": "research/meta/watchtower_2026-03-24/MiroFish Portfolio.md",
+      "purpose": "Generated MiroFish checkpoint dashboard page."
+    },
+    {
+      "path": "research/meta/watchtower_2026-03-24/Trend Predictions.md",
+      "purpose": "Generated trend predictions page with links into the MiroFish portfolio surface."
+    }
+  ],
+  "planned_steps": [
+    "Run the watchtower CLI with a vault directory inside research/meta",
+    "Save the generated page list to a result packet",
+    "Inspect the generated MiroFish Portfolio page to confirm it resolves to the canonical medium checkpoint export"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli watchtower --input research/meta/REQUEST_PACKET_2026-03-24_mirofish_watchtower_snapshot.json --output research/meta/MIROFISH_WATCHTOWER_SNAPSHOT_RESULT_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "The generated page list includes MiroFish Portfolio.md",
+      "The generated MiroFish Portfolio page points at the canonical medium export artifact",
+      "All generated pages are written under research/meta/watchtower_2026-03-24"
+    ]
+  },
+  "guardrails": [
+    "Do not write the watchtower snapshot outside research/meta",
+    "Treat the generated pages as a surface over the canonical checkpoint, not as a new scoring source"
+  ]
+}

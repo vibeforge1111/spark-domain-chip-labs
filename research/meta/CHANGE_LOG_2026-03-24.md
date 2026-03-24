@@ -1075,3 +1075,39 @@ The medium checkpoint already had a canonical export artifact, but there was sti
 
 - This tranche deliberately uses the watchtower surface instead of the legacy `viz/` path.
 - The watchtower page is a downstream surface over the canonical checkpoint, not a new ranking source.
+
+## Tranche: MiroFish Watchtower Snapshot
+
+### Files Changed
+
+- `research/meta/watchtower_2026-03-24/Lab Home.md`
+- `research/meta/watchtower_2026-03-24/Portfolio Dashboard.md`
+- `research/meta/watchtower_2026-03-24/MiroFish Portfolio.md`
+- `research/meta/watchtower_2026-03-24/Agent Team Status.md`
+- `research/meta/watchtower_2026-03-24/Graduation Pipeline.md`
+- `research/meta/watchtower_2026-03-24/Trend Predictions.md`
+- `research/meta/MIROFISH_WATCHTOWER_SNAPSHOT_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_WATCHTOWER_SNAPSHOT_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_watchtower_snapshot.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The watchtower surface could already render the canonical MiroFish checkpoint, but the repo still did not contain a generated observatory snapshot under mutable targets.
+
+### What Changed
+
+- Ran the watchtower command with `vault_dir=research/meta/watchtower_2026-03-24`
+- Saved the generated page list as a result packet
+- Confirmed that the generated `MiroFish Portfolio.md` page resolves to the canonical medium export artifact
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; $env:SPARK_CHIP_SEARCH_DIR='.'; python -m chip_labs.cli watchtower --input research/meta/REQUEST_PACKET_2026-03-24_mirofish_watchtower_snapshot.json --output research/meta/MIROFISH_WATCHTOWER_SNAPSHOT_RESULT_2026-03-24.json`
+- Inspect `research/meta/watchtower_2026-03-24/MiroFish Portfolio.md`
+
+### Notes
+
+- This snapshot keeps the observatory export inside the mutable-target contract.
+- The generated page set is a concrete review surface for the current checkpoint, not a new evaluation run.

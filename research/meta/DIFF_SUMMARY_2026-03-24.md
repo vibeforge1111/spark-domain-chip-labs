@@ -244,3 +244,11 @@ MiroFish dashboard surface:
 - add a `MiroFish Portfolio` page that prefers the saved markdown export and falls back to the saved readout packet
 - link the new page from the main watchtower pages
 - verify the surface with focused tests and a direct generation check
+
+## Batch 28
+
+MiroFish watchtower snapshot:
+
+- generate a repo-local watchtower page set under `research/meta/`
+- save the generated page list as a result packet
+- confirm that `MiroFish Portfolio.md` resolves to the canonical medium export artifact
