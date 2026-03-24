@@ -452,3 +452,11 @@ MiroFish frontier simulation tranche 90:
 - record that the direct full-frontier bounded hybrid spec became too large to evaluate practically
 - build a diversity-preserving `90`-domain simulation tranche from the canonical frontier
 - run the bounded hybrid spec and diagnostic on that tranche as the first usable simulation checkpoint
+
+## Batch 52
+
+MiroFish frontier simulation tranche 90 deeper:
+
+- keep the same diversity-preserving `90`-domain frontier packet and increase harness depth instead of mutating conversion logic again
+- run a deeper bounded hybrid spec, run, and diagnostic with `12` rounds, `6` flagship slots, and `6` ensemble runs
+- confirm that the frontier read escapes the earlier zero-adoption collapse, with top final adoption at `3.33%`, top ensemble mean adoption at `5.18%`, and benchmark median adoption at `2.52%`

@@ -1,0 +1,2281 @@
+{
+  "packet_kind": "mirofish_run_diagnostic_brief",
+  "created_at": "2026-03-24T19:42:16.111000+00:00",
+  "source_batch_id": null,
+  "source_run_created_at": "2026-03-24T19:42:05.902509+00:00",
+  "evidence_lane": "exploratory_frontier",
+  "focus_domain_ids": [
+    "chip_ai_agent_07",
+    "chip_ai_agent_11",
+    "fandom-drop-interpretation-loop",
+    "changelog-to-launch-loop",
+    "live-raid-coordination-loop",
+    "chip_ai_agent_01",
+    "crypto_airdrop_hunting_loop",
+    "chip_ai_agent_12",
+    "subscription-prune-loop",
+    "creator-idea-sprint-loop",
+    "repo-proof-loop",
+    "resume-refresh-copilot",
+    "chip_ai_agent_14",
+    "product-angle-test-loop",
+    "chip_ai_agent_03",
+    "opener-refresh-loop",
+    "distribution-repack-loop",
+    "workout-streak-copilot",
+    "reply-game-workflow",
+    "changelog-thread-loop",
+    "chip_ai_agent_02",
+    "identity-proof-loop",
+    "remix-meme-loop",
+    "remix-refresh-copilot",
+    "devrel-reply-loop",
+    "drop-alert-workflow",
+    "onchain_alpha_scan_loop",
+    "workout-streak-proof-loop",
+    "defi_yield_rotation_loop",
+    "life-admin-planner-loop",
+    "sleep-recovery-feedback-loop",
+    "creator_public_wins_loop",
+    "paycheck-allocation-copilot",
+    "language-sprint-loop",
+    "drop-alert-copilot",
+    "chip_ai_agent_05",
+    "merch-drop-timing-loop",
+    "weekend-stack-system",
+    "changelog-thread-copilot",
+    "chip_ai_agent_09",
+    "weekend-stack-copilot",
+    "remix-refresh-workflow",
+    "product-angle-test-copilot",
+    "chip_ai_agent_08",
+    "money_admin_loop",
+    "chip_ai_agent_06",
+    "micro-community-loop",
+    "wallet_ops_security_loop",
+    "personal_cfo_loop",
+    "collab-graph-loop",
+    "watch-party-escalation-loop",
+    "chip_ai_agent_10",
+    "career_signal_compounding_loop",
+    "independent_operator_brand_loop",
+    "design-feedback-loop",
+    "language-output-drill-loop",
+    "language-sprint-copilot",
+    "meal-prep-adherence-loop",
+    "workout-streak-loop",
+    "opener-iteration-loop",
+    "profile-signal-refresh-loop",
+    "restaurant-veto-resolution-loop",
+    "paycheck-allocation-system",
+    "audience-comment-loop",
+    "guild-ops-loop",
+    "chip_ai_agent_04",
+    "task-queue-reset-copilot",
+    "task-queue-reset-loop",
+    "networking_followup_loop",
+    "trade_journal_feedback_loop",
+    "status-signal-loop",
+    "trend-to-thesis-loop",
+    "reply-game-copilot",
+    "tutorial-sprint-lab",
+    "date-debrief-loop",
+    "creator-ugc-brief-loop",
+    "product-angle-test-system",
+    "drop-alert-loop",
+    "drop-alert-system",
+    "spending-pattern-reset-loop",
+    "npc-response-loop",
+    "consumer_utility_stack",
+    "life-admin-planner-copilot",
+    "interview-story-rehearsal-loop",
+    "opener-refresh-copilot",
+    "city-weekend-stack-loop",
+    "community-ritual-loop",
+    "paycheck-allocation-loop",
+    "remix-refresh-loop",
+    "live-event-discovery-loop"
+  ],
+  "benchmark_domain_ids": [
+    "trading-crypto",
+    "startup-yc",
+    "cursor-copilot",
+    "mcp-server-builder",
+    "ai-agent-builder"
+  ],
+  "benchmark_summary": {
+    "benchmark_mean_adoption_median": 0.0252,
+    "benchmark_top_ensemble_domains": [
+      {
+        "domain_id": "trading-crypto",
+        "mean_adoption": 0.0459,
+        "agent_choice_signal": 0.0333
+      },
+      {
+        "domain_id": "startup-yc",
+        "mean_adoption": 0.0414,
+        "agent_choice_signal": 0.1334
+      },
+      {
+        "domain_id": "cursor-copilot",
+        "mean_adoption": 0.0252,
+        "agent_choice_signal": 0.0667
+      }
+    ]
+  },
+  "focus_diagnostics": [
+    {
+      "domain_id": "chip_ai_agent_07",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.3,
+      "mean_adoption": 0.0518,
+      "mean_trial": 0.0607,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0667,
+      "attention_to_ensemble_gap": 0.0482,
+      "interest_to_choice_gap": 0.6333,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0089,
+      "benchmark_gap": 0.0266,
+      "diagnostic_tags": [
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_11",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0414,
+      "mean_trial": 0.0163,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0253,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0334,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": 0.0162,
+      "diagnostic_tags": [
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "fandom-drop-interpretation-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.1666,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0385,
+      "mean_trial": 0.0904,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.1281,
+      "interest_to_choice_gap": 0.5334,
+      "flagship_retention_gap": 0.1333,
+      "trial_to_adoption_gap": 0.0519,
+      "benchmark_gap": 0.0133,
+      "diagnostic_tags": [
+        "attention_retention_drop",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Agents select this domain, but the run loses too much between choice and retained ensemble adoption.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "changelog-to-launch-loop",
+      "adoption_probability": 0.0667,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.3,
+      "mean_adoption": 0.034,
+      "mean_trial": 0.0696,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0444,
+      "attention_to_ensemble_gap": 0.066,
+      "interest_to_choice_gap": 0.7,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0356,
+      "benchmark_gap": 0.0088,
+      "diagnostic_tags": [
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "live-raid-coordination-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.3333,
+      "mean_adoption": 0.0311,
+      "mean_trial": 0.0044,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0445,
+      "attention_to_ensemble_gap": 0.0022,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": 0.0059,
+      "diagnostic_tags": [
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_01",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.3,
+      "mean_adoption": 0.0311,
+      "mean_trial": 0.0133,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0689,
+      "interest_to_choice_gap": 0.5333,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": 0.0059,
+      "diagnostic_tags": [],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "crypto_airdrop_hunting_loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.3333,
+      "mean_adoption": 0.0296,
+      "mean_trial": 0.0015,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0444,
+      "attention_to_ensemble_gap": 0.0037,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": 0.0044,
+      "diagnostic_tags": [
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_12",
+      "adoption_probability": 0.0667,
+      "peak_interest_probability": 0.8667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3,
+      "mean_adoption": 0.0296,
+      "mean_trial": 0.037,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0444,
+      "attention_to_ensemble_gap": 0.0371,
+      "interest_to_choice_gap": 0.8,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0074,
+      "benchmark_gap": 0.0044,
+      "diagnostic_tags": [
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "subscription-prune-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0296,
+      "mean_trial": 0.0355,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0444,
+      "attention_to_ensemble_gap": 0.0371,
+      "interest_to_choice_gap": 0.5666,
+      "flagship_retention_gap": 0.0334,
+      "trial_to_adoption_gap": 0.0059,
+      "benchmark_gap": 0.0044,
+      "diagnostic_tags": [
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "creator-idea-sprint-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0281,
+      "mean_trial": 0.0118,
+      "mean_churn": 0.0015,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0386,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": 0.0029,
+      "diagnostic_tags": [
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "repo-proof-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.1334,
+      "consensus_score": 0.3333,
+      "mean_adoption": 0.0267,
+      "mean_trial": 0.0607,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0667,
+      "attention_to_ensemble_gap": 0.1067,
+      "interest_to_choice_gap": 0.6666,
+      "flagship_retention_gap": 0.1001,
+      "trial_to_adoption_gap": 0.034,
+      "benchmark_gap": 0.0015,
+      "diagnostic_tags": [
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "resume-refresh-copilot",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0207,
+      "mean_trial": 0.003,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0444,
+      "attention_to_ensemble_gap": 0.0126,
+      "interest_to_choice_gap": 0.6334,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0045,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_14",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0207,
+      "mean_trial": 0.0252,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0444,
+      "attention_to_ensemble_gap": 0.046,
+      "interest_to_choice_gap": 0.5,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0045,
+      "benchmark_gap": -0.0045,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "product-angle-test-loop",
+      "adoption_probability": 0.0667,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.1333,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0207,
+      "mean_trial": 0.0133,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0444,
+      "attention_to_ensemble_gap": 0.1126,
+      "interest_to_choice_gap": 0.3334,
+      "flagship_retention_gap": 0.0666,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0045,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_03",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.7667,
+      "agent_choice_signal": 0.1333,
+      "consensus_score": 0.3,
+      "mean_adoption": 0.0192,
+      "mean_trial": 0.0978,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0444,
+      "attention_to_ensemble_gap": 0.1141,
+      "interest_to_choice_gap": 0.6334,
+      "flagship_retention_gap": 0.1,
+      "trial_to_adoption_gap": 0.0786,
+      "benchmark_gap": -0.006,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "opener-refresh-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.6333,
+      "mean_adoption": 0.0148,
+      "mean_trial": 0.0252,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": -0.0148,
+      "interest_to_choice_gap": 0.5333,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0104,
+      "benchmark_gap": -0.0104,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "distribution-repack-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0148,
+      "mean_trial": 0.0341,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0519,
+      "interest_to_choice_gap": 0.6666,
+      "flagship_retention_gap": 0.0334,
+      "trial_to_adoption_gap": 0.0193,
+      "benchmark_gap": -0.0104,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "workout-streak-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.4333,
+      "mean_adoption": 0.0148,
+      "mean_trial": 0.0207,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0519,
+      "interest_to_choice_gap": 0.6333,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0059,
+      "benchmark_gap": -0.0104,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "reply-game-workflow",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.4,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0133,
+      "mean_trial": 0.0133,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.02,
+      "interest_to_choice_gap": 0.3667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0119,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "changelog-thread-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0133,
+      "mean_trial": 0.0237,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0534,
+      "interest_to_choice_gap": 0.4666,
+      "flagship_retention_gap": 0.0334,
+      "trial_to_adoption_gap": 0.0104,
+      "benchmark_gap": -0.0119,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_02",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.3333,
+      "mean_adoption": 0.0118,
+      "mean_trial": 0.0059,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0215,
+      "interest_to_choice_gap": 0.6334,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0134,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "identity-proof-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0118,
+      "mean_trial": 0.0222,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0215,
+      "interest_to_choice_gap": 0.5,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0104,
+      "benchmark_gap": -0.0134,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "remix-meme-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5333,
+      "mean_adoption": 0.0118,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0215,
+      "interest_to_choice_gap": 0.4,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0134,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "remix-refresh-copilot",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0118,
+      "mean_trial": 0.034,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0549,
+      "interest_to_choice_gap": 0.6333,
+      "flagship_retention_gap": 0.0334,
+      "trial_to_adoption_gap": 0.0222,
+      "benchmark_gap": -0.0134,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "devrel-reply-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.1333,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0118,
+      "mean_trial": 0.0385,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0444,
+      "attention_to_ensemble_gap": 0.1215,
+      "interest_to_choice_gap": 0.5667,
+      "flagship_retention_gap": 0.1,
+      "trial_to_adoption_gap": 0.0267,
+      "benchmark_gap": -0.0134,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "attention_retention_drop",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Agents select this domain, but the run loses too much between choice and retained ensemble adoption.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "drop-alert-workflow",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0104,
+      "mean_trial": 0.0148,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": -0.0104,
+      "interest_to_choice_gap": 0.5333,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0044,
+      "benchmark_gap": -0.0148,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "onchain_alpha_scan_loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0104,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0229,
+      "interest_to_choice_gap": 0.6667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0148,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "workout-streak-proof-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5667,
+      "mean_adoption": 0.0104,
+      "mean_trial": 0.0074,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0229,
+      "interest_to_choice_gap": 0.4334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0148,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "defi_yield_rotation_loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.8667,
+      "agent_choice_signal": 0.1666,
+      "consensus_score": 0.2667,
+      "mean_adoption": 0.0104,
+      "mean_trial": 0.0519,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.1562,
+      "interest_to_choice_gap": 0.7001,
+      "flagship_retention_gap": 0.1333,
+      "trial_to_adoption_gap": 0.0415,
+      "benchmark_gap": -0.0148,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "attention_retention_drop",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Agents select this domain, but the run loses too much between choice and retained ensemble adoption.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "life-admin-planner-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.5,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0089,
+      "mean_trial": 0.0059,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0244,
+      "interest_to_choice_gap": 0.4667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0163,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "sleep-recovery-feedback-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.4333,
+      "mean_adoption": 0.0089,
+      "mean_trial": 0.0148,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0911,
+      "interest_to_choice_gap": 0.5,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0059,
+      "benchmark_gap": -0.0163,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "creator_public_wins_loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0074,
+      "mean_trial": 0.0311,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0259,
+      "interest_to_choice_gap": 0.7,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0237,
+      "benchmark_gap": -0.0178,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "paycheck-allocation-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0074,
+      "mean_trial": 0.0444,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0259,
+      "interest_to_choice_gap": 0.6334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.037,
+      "benchmark_gap": -0.0178,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "language-sprint-loop",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.6,
+      "mean_adoption": 0.0074,
+      "mean_trial": 0.0089,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0593,
+      "interest_to_choice_gap": 0.4666,
+      "flagship_retention_gap": 0.0334,
+      "trial_to_adoption_gap": 0.0015,
+      "benchmark_gap": -0.0178,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "drop-alert-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0074,
+      "mean_trial": 0.037,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0593,
+      "interest_to_choice_gap": 0.4666,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0296,
+      "benchmark_gap": -0.0178,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_05",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3333,
+      "mean_adoption": 0.0059,
+      "mean_trial": 0.0489,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0608,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.043,
+      "benchmark_gap": -0.0193,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "merch-drop-timing-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0044,
+      "mean_trial": 0.0059,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": -0.0044,
+      "interest_to_choice_gap": 0.5667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0015,
+      "benchmark_gap": -0.0208,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "weekend-stack-system",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.3667,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.6333,
+      "mean_adoption": 0.0044,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": -0.0044,
+      "interest_to_choice_gap": 0.3667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0208,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "changelog-thread-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.4333,
+      "mean_adoption": 0.0044,
+      "mean_trial": 0.0059,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": -0.0044,
+      "interest_to_choice_gap": 0.5667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0015,
+      "benchmark_gap": -0.0208,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_09",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0044,
+      "mean_trial": 0.0355,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0289,
+      "interest_to_choice_gap": 0.6667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0311,
+      "benchmark_gap": -0.0208,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "weekend-stack-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5667,
+      "mean_adoption": 0.0044,
+      "mean_trial": 0.0222,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0289,
+      "interest_to_choice_gap": 0.4334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0178,
+      "benchmark_gap": -0.0208,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "remix-refresh-workflow",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0044,
+      "mean_trial": 0.003,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0623,
+      "interest_to_choice_gap": 0.5333,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0208,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "product-angle-test-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0044,
+      "mean_trial": 0.0637,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0623,
+      "interest_to_choice_gap": 0.5666,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0593,
+      "benchmark_gap": -0.0208,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_08",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.003,
+      "mean_trial": 0.0385,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0303,
+      "interest_to_choice_gap": 0.7,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0355,
+      "benchmark_gap": -0.0222,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "money_admin_loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4333,
+      "mean_adoption": 0.003,
+      "mean_trial": 0.0266,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.0303,
+      "interest_to_choice_gap": 0.6334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0236,
+      "benchmark_gap": -0.0222,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_06",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.003,
+      "mean_trial": 0.0252,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0222,
+      "attention_to_ensemble_gap": 0.097,
+      "interest_to_choice_gap": 0.5,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0222,
+      "benchmark_gap": -0.0222,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "micro-community-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0015,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": -0.0015,
+      "interest_to_choice_gap": 0.6667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0237,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "wallet_ops_security_loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.3333,
+      "mean_adoption": 0.0015,
+      "mean_trial": 0.0222,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0318,
+      "interest_to_choice_gap": 0.6667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0207,
+      "benchmark_gap": -0.0237,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "personal_cfo_loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0015,
+      "mean_trial": 0.0711,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0652,
+      "interest_to_choice_gap": 0.7333,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0696,
+      "benchmark_gap": -0.0237,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "collab-graph-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0059,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0059,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "watch-party-escalation-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.6667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.4333,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_10",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0104,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.4667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0104,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "career_signal_compounding_loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.5333,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "independent_operator_brand_loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.034,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.7,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.034,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "design-feedback-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.7333,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "language-output-drill-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.4333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0074,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.5667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0074,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "language-sprint-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0192,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.5333,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0192,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "meal-prep-adherence-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "workout-streak-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.3333,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.6333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.003,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.3333,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.003,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "opener-iteration-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.5333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.4333,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "profile-signal-refresh-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.5333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0015,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.4667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0015,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "restaurant-veto-resolution-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.6,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0059,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.4667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0059,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "paycheck-allocation-system",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.3667,
+      "agent_choice_signal": 0.0,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0148,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0,
+      "interest_to_choice_gap": 0.3667,
+      "flagship_retention_gap": 0.0,
+      "trial_to_adoption_gap": 0.0148,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "audience-comment-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0459,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.6667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0459,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "guild-ops-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0222,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.5667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0222,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "chip_ai_agent_04",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.3333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0563,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.6667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0563,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "task-queue-reset-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0148,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0148,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "task-queue-reset-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0237,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.4334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0237,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "networking_followup_loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0266,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.4667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0266,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "trade_journal_feedback_loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0296,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.5667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0296,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "status-signal-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.003,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.4,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.003,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "trend-to-thesis-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0059,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.5667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0059,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    },
+    {
+      "domain_id": "reply-game-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0355,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.6334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0355,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "tutorial-sprint-lab",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0459,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0459,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "date-debrief-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.4334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "creator-ugc-brief-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.037,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.4,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.037,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "product-angle-test-system",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0163,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.4,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0163,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "drop-alert-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.4334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "drop-alert-system",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.3667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.6,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.034,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.3334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.034,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "spending-pattern-reset-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0192,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.4334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0192,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "npc-response-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.04,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0667,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.04,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "consumer_utility_stack",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.037,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0667,
+      "interest_to_choice_gap": 0.5666,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.037,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "life-admin-planner-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0459,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0667,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0459,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "interview-story-rehearsal-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.6,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.04,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0667,
+      "interest_to_choice_gap": 0.4,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.04,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "opener-refresh-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0355,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0667,
+      "interest_to_choice_gap": 0.5,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0355,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "city-weekend-stack-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.5667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0015,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0667,
+      "interest_to_choice_gap": 0.4,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0015,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median."
+      ]
+    },
+    {
+      "domain_id": "community-ritual-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0281,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0667,
+      "interest_to_choice_gap": 0.5666,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0281,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "paycheck-allocation-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.3667,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0563,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0667,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0563,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "remix-refresh-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0266,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.1,
+      "interest_to_choice_gap": 0.5333,
+      "flagship_retention_gap": 0.1,
+      "trial_to_adoption_gap": 0.0266,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "live-event-discovery-loop",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.5333,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0429,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.1,
+      "interest_to_choice_gap": 0.5333,
+      "flagship_retention_gap": 0.1,
+      "trial_to_adoption_gap": 0.0429,
+      "benchmark_gap": -0.0252,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    }
+  ],
+  "cluster_readout": {
+    "strongest_attention_domain": "fandom-drop-interpretation-loop",
+    "strongest_ensemble_domain": "chip_ai_agent_07",
+    "worst_attention_to_ensemble_gap_domain": "defi_yield_rotation_loop",
+    "largest_trial_to_adoption_gap_domain": "chip_ai_agent_03"
+  },
+  "governance_note": "Diagnostic briefs explain bottlenecks in exploratory MiroFish runs. They do not change benchmark membership or auto-tune the model."
+}

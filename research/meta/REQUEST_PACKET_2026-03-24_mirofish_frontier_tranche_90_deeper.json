@@ -1,0 +1,51 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_frontier_tranche_90_deeper",
+  "created_at": "2026-03-24",
+  "scope": "Re-run the tractable 90-domain frontier simulation tranche under a deeper bounded hybrid harness and save the resulting checkpoint",
+  "decision_context": {
+    "prior_state": "The first 90-domain frontier tranche was the first usable evaluation checkpoint, but it stayed pinned at zero adoption and zero ensemble retention, making it unclear whether the frontier had no demand or the harness was too thin.",
+    "decision": "Keep the same diversity-preserving 90-domain tranche and increase rounds, flagship breadth, and ensemble depth instead of mutating conversion logic again.",
+    "why_now": "A deeper read is the cheapest way to separate methodology underpower from true frontier weakness before attempting any larger-scale frontier simulation."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_90_DEEPER_2026-03-24.json",
+      "purpose": "Deeper bounded hybrid spec for the tractable frontier tranche."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_90_DEEPER_2026-03-24.json",
+      "purpose": "Saved deeper hybrid run output."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_DIAGNOSTIC_FRONTIER_TRANCHE_90_DEEPER_2026-03-24.json",
+      "purpose": "Saved diagnostic brief for the deeper run."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_SIMULATION_TRANCHE_90_DEEPER_NOTE_2026-03-24.md",
+      "purpose": "Documents why the deeper tranche was run and what changed."
+    }
+  ],
+  "planned_steps": [
+    "Build a deeper bounded hybrid spec from the existing 90-domain frontier tranche",
+    "Run the deeper hybrid evaluation and save the result packet",
+    "Generate the diagnostic brief and compare the top-line output against the thinner tranche"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_trend_prediction.py tests/test_mirofish_portfolio.py tests/test_mirofish_discovery.py -q",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_SIMULATION_TRANCHE_90_2026-03-24.json --rounds 12 --flagship-count-per-type 6 --ensemble-runs 6 --ensemble-count-per-type 3 --scenario-label mirofish-frontier-tranche-90-deeper --output research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_90_DEEPER_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_90_DEEPER_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_90_DEEPER_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_90_DEEPER_2026-03-24.json --output research/meta/MIROFISH_HYBRID_DIAGNOSTIC_FRONTIER_TRANCHE_90_DEEPER_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "The deeper run exits successfully on the tractable 90-domain tranche",
+      "Top-line frontier adoption is no longer pinned at zero",
+      "The diagnostic brief shows whether the main remaining bottleneck is interest-to-choice friction or trial-to-retention collapse"
+    ]
+  },
+  "guardrails": [
+    "Do not change frontier intake or canonicalization in this tranche",
+    "Do not treat the deeper 90-domain checkpoint as equivalent to a full 1000-domain hybrid read",
+    "Use harness depth before reopening another conversion-logic tuning loop"
+  ]
+}
