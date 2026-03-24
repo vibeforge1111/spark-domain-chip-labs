@@ -1,8 +1,8 @@
 {
   "packet_kind": "mirofish_hybrid_evaluation_run",
-  "created_at": "2026-03-24T18:23:20.310308+00:00",
+  "created_at": "2026-03-24T18:27:03.180174+00:00",
   "source_batch_id": null,
-  "source_spec_created_at": "2026-03-24T18:23:18.231758+00:00",
+  "source_spec_created_at": "2026-03-24T18:27:00.562482+00:00",
   "evidence_lane": "exploratory_frontier",
   "seed": 42,
   "harness": {
@@ -91,7 +91,10 @@
   "discovered_domain_ids": [
     "hook-angle-test-copilot",
     "cross-platform-clip-calendar-copilot",
-    "creator-membership-flywheel-copilot"
+    "creator-membership-flywheel-copilot",
+    "thumbnail-package-test-copilot",
+    "audience-comment-signal-copilot",
+    "creator-brand-deal-fit-copilot"
   ],
   "proposed_benchmark_domain_ids": [],
   "promotion_review_domain_ids": [],
@@ -186,8 +189,8 @@
       "peak_interest_round": 6,
       "timeline_estimate": "uncertain (no tipping point detected)",
       "confidence": "medium",
-      "consensus_score": 0.4667,
-      "disagreement_score": 0.5333,
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
       "tipping_point_round": null,
       "key_drivers": [
         "The domain captured broad attention during the run"
@@ -243,7 +246,7 @@
       "final_active_probability": 0.0333,
       "peak_adoption_probability": 0.0,
       "peak_active_probability": 0.0333,
-      "peak_interest_probability": 0.6667,
+      "peak_interest_probability": 0.6333,
       "agent_choice_signal": 0.0333,
       "peak_active_round": 7,
       "peak_interest_round": 5,
@@ -282,6 +285,37 @@
       "confidence": "low",
       "consensus_score": 0.4,
       "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "thumbnail-package-test-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0333,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0333,
+      "peak_active_round": 7,
+      "peak_interest_round": 6,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
       "tipping_point_round": null,
       "key_drivers": [
         "The domain captured broad attention during the run"
@@ -361,12 +395,75 @@
         "enterprise_tipping_point": null,
         "adoption_gap": 0.0
       }
+    },
+    {
+      "domain_id": "creator-brand-deal-fit-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 7,
+      "peak_interest_round": 6,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "audience-comment-signal-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 7,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3,
+      "disagreement_score": 0.7,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
     }
   ],
   "cross_domain": {
     "portfolio_gaps": [
       "Fewer than 2 domains show strong adoption -- portfolio concentration risk.",
-      "Weak adoption signals for: cursor-copilot, startup-yc, hook-angle-test-copilot, creator-membership-flywheel-copilot, trading-crypto, cross-platform-clip-calendar-copilot, mcp-server-builder, ai-agent-builder"
+      "Weak adoption signals for: cursor-copilot, startup-yc, hook-angle-test-copilot, creator-membership-flywheel-copilot, trading-crypto, cross-platform-clip-calendar-copilot, thumbnail-package-test-copilot, mcp-server-builder, ai-agent-builder, creator-brand-deal-fit-copilot, audience-comment-signal-copilot"
     ],
     "synergy_opportunities": [],
     "simulation_vs_static": [
@@ -407,6 +504,12 @@
         "delta": -0.6751
       },
       {
+        "domain_id": "thumbnail-package-test-copilot",
+        "simulation": 0.0,
+        "static": 0.6681,
+        "delta": -0.6681
+      },
+      {
         "domain_id": "mcp-server-builder",
         "simulation": 0.0,
         "static": 0.852,
@@ -417,6 +520,18 @@
         "simulation": 0.0,
         "static": 0.827,
         "delta": -0.827
+      },
+      {
+        "domain_id": "creator-brand-deal-fit-copilot",
+        "simulation": 0.0,
+        "static": 0.6681,
+        "delta": -0.6681
+      },
+      {
+        "domain_id": "audience-comment-signal-copilot",
+        "simulation": 0.0,
+        "static": 0.6491,
+        "delta": -0.6491
       }
     ],
     "top_recommendation": "cursor-copilot"
@@ -435,7 +550,7 @@
       "domain_id": "trading-crypto",
       "mean_adoption": 0.0122,
       "median_adoption": 0.0,
-      "mean_trial": 0.0489,
+      "mean_trial": 0.0467,
       "mean_churn": 0.0,
       "confidence_width": 0.0333,
       "tipping_rate": 0.0
@@ -459,19 +574,37 @@
       "tipping_rate": 0.0
     },
     {
+      "domain_id": "hook-angle-test-copilot",
+      "mean_adoption": 0.0022,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0278,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0167,
+      "tipping_rate": 0.0
+    },
+    {
       "domain_id": "creator-membership-flywheel-copilot",
       "mean_adoption": 0.0011,
       "median_adoption": 0.0,
-      "mean_trial": 0.0778,
+      "mean_trial": 0.08,
       "mean_churn": 0.0,
       "confidence_width": 0.0,
       "tipping_rate": 0.0
     },
     {
-      "domain_id": "hook-angle-test-copilot",
+      "domain_id": "thumbnail-package-test-copilot",
       "mean_adoption": 0.0011,
       "median_adoption": 0.0,
-      "mean_trial": 0.0289,
+      "mean_trial": 0.0389,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "creator-brand-deal-fit-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0278,
       "mean_churn": 0.0,
       "confidence_width": 0.0,
       "tipping_rate": 0.0
@@ -490,6 +623,15 @@
       "mean_adoption": 0.0,
       "median_adoption": 0.0,
       "mean_trial": 0.0167,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "audience-comment-signal-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0033,
       "mean_churn": 0.0,
       "confidence_width": 0.0,
       "tipping_rate": 0.0

@@ -408,7 +408,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Thumbnail Package Test Copilot",
+              "description": "Builds and tracks repeated title, thumbnail, and opening-package experiments so creators can learn which packaging combinations actually lift click-through and early watch performance.",
+              "specialization_surface": "testing and iterating video packaging combinations for creator content before and after publish",
+              "mastery_surface": "learning which thumbnail-title-opening combinations consistently improve click-through and early watch behavior for a creator's niche and audience",
+              "user_value_loop": "generate packaging variants, map them to a release, compare test outcomes, and update the creator's packaging playbook after each publish cycle",
+              "domain_tags": [
+                "creator-growth",
+                "thumbnail-testing",
+                "title-testing",
+                "youtube"
+              ],
+              "evidence_sources": [
+                "youtube-thumbnail-ab-testing-2025",
+                "partnered-youtube-title-testing-2025"
+              ],
+              "evidence_summary": "YouTube now treats thumbnail A/B testing as a core creator workflow, and creator discussion shows the next operational pain is coordinated title-plus-thumbnail testing rather than ad hoc manual swapping. That makes packaging optimization look like a repeated system, not a single feature.",
+              "adjacent_domains": [
+                "youtube-remixer",
+                "xcontent",
+                "hook-angle-test-copilot"
+              ],
+              "duplicate_aliases": [
+                "Title Thumbnail Test Copilot",
+                "Creator Packaging Lab"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Creators increasingly win or lose on packaging, and once platforms normalize A/B testing, the valuable layer becomes the repeated operating loop that decides what to test and what to keep.",
+              "evidence_links": [
+                "https://blog.youtube/news-and-events/11-features-for-youtube-creators/",
+                "https://www.reddit.com/r/PartneredYoutube/comments/1p3z394/when_will_we_be_able_to_ab_test_titles/"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-005",
@@ -439,7 +474,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Audience Comment Signal Copilot",
+              "description": "Clusters comments and reply patterns into recurring audience personas, objections, and follow-up content opportunities so creators can turn feedback into their next content loop.",
+              "specialization_surface": "mining creator comments and replies for repeated audience signals that shape future content and community strategy",
+              "mastery_surface": "learning which audience questions, identity signals, objections, and emotional reactions consistently predict the next high-performing content directions",
+              "user_value_loop": "ingest comments and replies, cluster them into actionable audience signals, draft the next content or community moves, and refine the audience map after each release cycle",
+              "domain_tags": [
+                "creator-growth",
+                "comments",
+                "audience-research",
+                "community"
+              ],
+              "evidence_sources": [
+                "proxona-audience-personas-2024",
+                "simtube-comment-simulation-2024"
+              ],
+              "evidence_summary": "Recent creator-research work treats comments as a rich repeated signal layer rather than a moderation afterthought. Proxona shows creators struggle to interpret audience feedback with current tools, while SimTube frames believable comment generation and audience simulation as useful for refining content before release.",
+              "adjacent_domains": [
+                "xcontent",
+                "creator-membership-flywheel-copilot",
+                "discord-community"
+              ],
+              "duplicate_aliases": [
+                "Creator Comment Radar Copilot",
+                "Audience Feedback Loop Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Comments, replies, and community reactions are increasingly part of the content engine itself; creators want a system that turns that mess into repeatable next-post and next-offer decisions.",
+              "evidence_links": [
+                "https://arxiv.org/abs/2408.10937",
+                "https://arxiv.org/abs/2411.09577"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-006",
@@ -470,7 +540,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Creator Brand Deal Fit Copilot",
+              "description": "Builds recurring brand-fit briefs, pitch angles, and campaign match recommendations so creators can turn inbound attention into higher-conviction sponsorship revenue.",
+              "specialization_surface": "matching creator identity, audience, and content format to repeatable brand partnership opportunities",
+              "mastery_surface": "learning which creator-brand combinations, packaging angles, and campaign structures actually convert into recurring sponsorship and commerce revenue",
+              "user_value_loop": "analyze the creator's content and audience, generate brand-fit briefs and outreach angles, track deal outcomes, and refine the sponsorship playbook after each partnership cycle",
+              "domain_tags": [
+                "creator-growth",
+                "brand-deals",
+                "monetization",
+                "sponsorships"
+              ],
+              "evidence_sources": [
+                "youtube-brand-partnerships-2025",
+                "creatoriq-state-of-creator-marketing-2025"
+              ],
+              "evidence_summary": "YouTube's 2025 brand-partnership roadmap and CreatorIQ's 2025-2026 state-of-market report both point to creator content being extended beyond social posts into broader media and commerce programs. The repeated bottleneck is identifying the right partnerships and packaging creators for them in a scalable way.",
+              "adjacent_domains": [
+                "creator-membership-flywheel-copilot",
+                "agentic-marketing",
+                "startup-yc"
+              ],
+              "duplicate_aliases": [
+                "Sponsorship Match Copilot",
+                "Creator Brand Fit Brief Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "As creator revenue matures, a lot of the leverage shifts from simply getting noticed to repeatedly matching the right creator, format, and audience story to the right sponsor or commerce program.",
+              "evidence_links": [
+                "https://blog.youtube/news-and-events/earn-more-with-brand-partnerships/",
+                "https://www.creatoriq.com/hubfs/2025-26%20State%20of%20Creator%20Marketing/CreatorIQ-StateofCreatorMarketing2025-2026.pdf"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-007",

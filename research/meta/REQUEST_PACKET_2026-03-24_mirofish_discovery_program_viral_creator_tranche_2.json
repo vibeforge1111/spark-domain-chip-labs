@@ -1,0 +1,35 @@
+{
+  "request_id": "2026-03-24-mirofish-discovery-program-viral-creator-tranche-2",
+  "chip": "mirofish",
+  "workstream": "Frontier Scout",
+  "status": "completed",
+  "why": [
+    "Deepen the creator-growth wedge before opening gaming or agent-builder wedges.",
+    "Test whether a broader set of creator-growth loops still survives canonicalization and strengthens the viral-first pilot."
+  ],
+  "outputs": [
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RECOMBINED_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.md",
+    "research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json",
+    "research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_DIAGNOSTIC_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_PROMOTION_BRIEF_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_VIRAL_CREATOR_TRANCHE_2_NOTE_2026-03-24.md"
+  ],
+  "verification": [
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md --title \"MiroFish Discovery Pilot 100 Viral Progress\"",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RECOMBINED_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json --title \"MiroFish Discovery Pilot 100 Viral Result\" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.md",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json --output research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json --rounds 8 --flagship-count-per-type 8 --ensemble-runs 4 --ensemble-count-per-type 4 --scenario-label mirofish-discovery-pilot-100-viral-creator-tranche",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_DIAGNOSTIC_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-promotion-brief --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_PROMOTION_BRIEF_2026-03-24.json"
+  ],
+  "next_step": "Continue creator-growth collection before opening gaming."
+}

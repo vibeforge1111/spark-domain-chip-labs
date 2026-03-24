@@ -1629,3 +1629,53 @@ The viral-first pilot had a clean scaffold but no real collection yet. The next 
 
 - All three current creator candidates survive canonicalization as `clear_domain_chip`.
 - `creator-membership-flywheel-copilot` leads the bounded creator frontier read, but the entire slice still remains below the current benchmark floor and stays in `hold_in_frontier`.
+
+## Tranche: MiroFish Discovery Program Viral Creator Tranche 2
+
+### Files Changed
+
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/01_creator-growth-systems.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RECOMBINED_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.md`
+- `research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_DIAGNOSTIC_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_PROMOTION_BRIEF_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_VIRAL_CREATOR_TRANCHE_2_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_viral_creator_tranche_2.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The first creator tranche showed a real frontier wedge, but it was still too small to tell whether creator-growth would keep producing concrete chips or collapse back into vague creator tooling. The next step was to deepen the creator cluster before opening gaming.
+
+### What Changed
+
+- Filled three more creator-growth agents with evidence-linked candidates around packaging tests, audience-comment mining, and creator brand-deal fit
+- Refreshed the pilot progress, canonical result, and bounded creator-tranche hybrid read
+- Increased the creator cluster to `6 / 16` filled agents and the pilot to `6 / 100`
+- Reached `6` accepted `clear_domain_chip` candidates, pushing the pilot-level recommendation to `run_250_agent_pilot`
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md --title "MiroFish Discovery Pilot 100 Viral Progress"`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RECOMBINED_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json --title "MiroFish Discovery Pilot 100 Viral Result" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.md`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json --output research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json --rounds 8 --flagship-count-per-type 8 --ensemble-runs 4 --ensemble-count-per-type 4 --scenario-label mirofish-discovery-pilot-100-viral-creator-tranche`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_DIAGNOSTIC_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-promotion-brief --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_PROMOTION_BRIEF_2026-03-24.json`
+
+### Notes
+
+- Intake and bounded evaluation are now telling slightly different things:
+  - intake quality says the creator wedge is strong enough to keep scaling
+  - bounded hybrid evaluation still keeps the wedge in `hold_in_frontier`
+- `creator-membership-flywheel-copilot` still leads the creator set, while the packaging loop candidates now form the next strongest slice.

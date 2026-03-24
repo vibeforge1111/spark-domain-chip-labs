@@ -1,13 +1,16 @@
 {
   "packet_kind": "mirofish_hybrid_evaluation_spec",
-  "created_at": "2026-03-24T18:23:18.231758+00:00",
+  "created_at": "2026-03-24T18:27:00.562482+00:00",
   "source_batch_id": null,
   "source_packet_kind": "mirofish_discovery_program",
   "evidence_lane": "exploratory_frontier",
   "discovered_domain_ids": [
     "hook-angle-test-copilot",
     "cross-platform-clip-calendar-copilot",
-    "creator-membership-flywheel-copilot"
+    "creator-membership-flywheel-copilot",
+    "thumbnail-package-test-copilot",
+    "audience-comment-signal-copilot",
+    "creator-brand-deal-fit-copilot"
   ],
   "proposed_benchmark_domain_ids": [],
   "promotion_review_domain_ids": [],
@@ -280,6 +283,126 @@
         ],
         "promotion_status": "candidate"
       }
+    },
+    {
+      "domain_id": "thumbnail-package-test-copilot",
+      "label": "Thumbnail Package Test Copilot",
+      "description": "Builds and tracks repeated title, thumbnail, and opening-package experiments so creators can learn which packaging combinations actually lift click-through and early watch performance.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6681,
+      "rationale": "YouTube now treats thumbnail A/B testing as a core creator workflow, and creator discussion shows the next operational pain is coordinated title-plus-thumbnail testing rather than ad hoc manual swapping. That makes packaging optimization look like a repeated system, not a single feature.",
+      "related_chips": [
+        "youtube-remixer",
+        "xcontent",
+        "hook-angle-test-copilot"
+      ],
+      "evidence_sources": [
+        "youtube-thumbnail-ab-testing-2025",
+        "partnered-youtube-title-testing-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "testing and iterating video packaging combinations for creator content before and after publish",
+        "mastery_surface": "learning which thumbnail-title-opening combinations consistently improve click-through and early watch behavior for a creator's niche and audience",
+        "user_value_loop": "generate packaging variants, map them to a release, compare test outcomes, and update the creator's packaging playbook after each publish cycle",
+        "domain_tags": [
+          "creator-growth",
+          "thumbnail-testing",
+          "title-testing",
+          "youtube"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "audience-comment-signal-copilot",
+      "label": "Audience Comment Signal Copilot",
+      "description": "Clusters comments and reply patterns into recurring audience personas, objections, and follow-up content opportunities so creators can turn feedback into their next content loop.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6491,
+      "rationale": "Recent creator-research work treats comments as a rich repeated signal layer rather than a moderation afterthought. Proxona shows creators struggle to interpret audience feedback with current tools, while SimTube frames believable comment generation and audience simulation as useful for refining content before release.",
+      "related_chips": [
+        "xcontent",
+        "creator-membership-flywheel-copilot",
+        "discord-community"
+      ],
+      "evidence_sources": [
+        "proxona-audience-personas-2024",
+        "simtube-comment-simulation-2024"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "mining creator comments and replies for repeated audience signals that shape future content and community strategy",
+        "mastery_surface": "learning which audience questions, identity signals, objections, and emotional reactions consistently predict the next high-performing content directions",
+        "user_value_loop": "ingest comments and replies, cluster them into actionable audience signals, draft the next content or community moves, and refine the audience map after each release cycle",
+        "domain_tags": [
+          "creator-growth",
+          "comments",
+          "audience-research",
+          "community"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "creator-brand-deal-fit-copilot",
+      "label": "Creator Brand Deal Fit Copilot",
+      "description": "Builds recurring brand-fit briefs, pitch angles, and campaign match recommendations so creators can turn inbound attention into higher-conviction sponsorship revenue.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6681,
+      "rationale": "YouTube's 2025 brand-partnership roadmap and CreatorIQ's 2025-2026 state-of-market report both point to creator content being extended beyond social posts into broader media and commerce programs. The repeated bottleneck is identifying the right partnerships and packaging creators for them in a scalable way.",
+      "related_chips": [
+        "creator-membership-flywheel-copilot",
+        "agentic-marketing",
+        "startup-yc"
+      ],
+      "evidence_sources": [
+        "youtube-brand-partnerships-2025",
+        "creatoriq-state-of-creator-marketing-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "matching creator identity, audience, and content format to repeatable brand partnership opportunities",
+        "mastery_surface": "learning which creator-brand combinations, packaging angles, and campaign structures actually convert into recurring sponsorship and commerce revenue",
+        "user_value_loop": "analyze the creator's content and audience, generate brand-fit briefs and outreach angles, track deal outcomes, and refine the sponsorship playbook after each partnership cycle",
+        "domain_tags": [
+          "creator-growth",
+          "brand-deals",
+          "monetization",
+          "sponsorships"
+        ],
+        "promotion_status": "candidate"
+      }
     }
   ],
   "proposed_benchmark_opportunities": [],
@@ -530,6 +653,126 @@
         ],
         "promotion_status": "candidate"
       }
+    },
+    {
+      "domain_id": "thumbnail-package-test-copilot",
+      "label": "Thumbnail Package Test Copilot",
+      "description": "Builds and tracks repeated title, thumbnail, and opening-package experiments so creators can learn which packaging combinations actually lift click-through and early watch performance.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6681,
+      "rationale": "YouTube now treats thumbnail A/B testing as a core creator workflow, and creator discussion shows the next operational pain is coordinated title-plus-thumbnail testing rather than ad hoc manual swapping. That makes packaging optimization look like a repeated system, not a single feature.",
+      "related_chips": [
+        "youtube-remixer",
+        "xcontent",
+        "hook-angle-test-copilot"
+      ],
+      "evidence_sources": [
+        "youtube-thumbnail-ab-testing-2025",
+        "partnered-youtube-title-testing-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "testing and iterating video packaging combinations for creator content before and after publish",
+        "mastery_surface": "learning which thumbnail-title-opening combinations consistently improve click-through and early watch behavior for a creator's niche and audience",
+        "user_value_loop": "generate packaging variants, map them to a release, compare test outcomes, and update the creator's packaging playbook after each publish cycle",
+        "domain_tags": [
+          "creator-growth",
+          "thumbnail-testing",
+          "title-testing",
+          "youtube"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "creator-brand-deal-fit-copilot",
+      "label": "Creator Brand Deal Fit Copilot",
+      "description": "Builds recurring brand-fit briefs, pitch angles, and campaign match recommendations so creators can turn inbound attention into higher-conviction sponsorship revenue.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6681,
+      "rationale": "YouTube's 2025 brand-partnership roadmap and CreatorIQ's 2025-2026 state-of-market report both point to creator content being extended beyond social posts into broader media and commerce programs. The repeated bottleneck is identifying the right partnerships and packaging creators for them in a scalable way.",
+      "related_chips": [
+        "creator-membership-flywheel-copilot",
+        "agentic-marketing",
+        "startup-yc"
+      ],
+      "evidence_sources": [
+        "youtube-brand-partnerships-2025",
+        "creatoriq-state-of-creator-marketing-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "matching creator identity, audience, and content format to repeatable brand partnership opportunities",
+        "mastery_surface": "learning which creator-brand combinations, packaging angles, and campaign structures actually convert into recurring sponsorship and commerce revenue",
+        "user_value_loop": "analyze the creator's content and audience, generate brand-fit briefs and outreach angles, track deal outcomes, and refine the sponsorship playbook after each partnership cycle",
+        "domain_tags": [
+          "creator-growth",
+          "brand-deals",
+          "monetization",
+          "sponsorships"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "audience-comment-signal-copilot",
+      "label": "Audience Comment Signal Copilot",
+      "description": "Clusters comments and reply patterns into recurring audience personas, objections, and follow-up content opportunities so creators can turn feedback into their next content loop.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6491,
+      "rationale": "Recent creator-research work treats comments as a rich repeated signal layer rather than a moderation afterthought. Proxona shows creators struggle to interpret audience feedback with current tools, while SimTube frames believable comment generation and audience simulation as useful for refining content before release.",
+      "related_chips": [
+        "xcontent",
+        "creator-membership-flywheel-copilot",
+        "discord-community"
+      ],
+      "evidence_sources": [
+        "proxona-audience-personas-2024",
+        "simtube-comment-simulation-2024"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "mining creator comments and replies for repeated audience signals that shape future content and community strategy",
+        "mastery_surface": "learning which audience questions, identity signals, objections, and emotional reactions consistently predict the next high-performing content directions",
+        "user_value_loop": "ingest comments and replies, cluster them into actionable audience signals, draft the next content or community moves, and refine the audience map after each release cycle",
+        "domain_tags": [
+          "creator-growth",
+          "comments",
+          "audience-research",
+          "community"
+        ],
+        "promotion_status": "candidate"
+      }
     }
   ],
   "simulation_inputs": {
@@ -541,7 +784,10 @@
       "startup-yc",
       "cross-platform-clip-calendar-copilot",
       "creator-membership-flywheel-copilot",
-      "hook-angle-test-copilot"
+      "hook-angle-test-copilot",
+      "thumbnail-package-test-copilot",
+      "creator-brand-deal-fit-copilot",
+      "audience-comment-signal-copilot"
     ],
     "opportunities": [
       {
@@ -786,6 +1032,126 @@
             "short-form-video",
             "retention",
             "hook-testing"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "thumbnail-package-test-copilot",
+        "label": "Thumbnail Package Test Copilot",
+        "description": "Builds and tracks repeated title, thumbnail, and opening-package experiments so creators can learn which packaging combinations actually lift click-through and early watch performance.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.83,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6681,
+        "rationale": "YouTube now treats thumbnail A/B testing as a core creator workflow, and creator discussion shows the next operational pain is coordinated title-plus-thumbnail testing rather than ad hoc manual swapping. That makes packaging optimization look like a repeated system, not a single feature.",
+        "related_chips": [
+          "youtube-remixer",
+          "xcontent",
+          "hook-angle-test-copilot"
+        ],
+        "evidence_sources": [
+          "youtube-thumbnail-ab-testing-2025",
+          "partnered-youtube-title-testing-2025"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "testing and iterating video packaging combinations for creator content before and after publish",
+          "mastery_surface": "learning which thumbnail-title-opening combinations consistently improve click-through and early watch behavior for a creator's niche and audience",
+          "user_value_loop": "generate packaging variants, map them to a release, compare test outcomes, and update the creator's packaging playbook after each publish cycle",
+          "domain_tags": [
+            "creator-growth",
+            "thumbnail-testing",
+            "title-testing",
+            "youtube"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "creator-brand-deal-fit-copilot",
+        "label": "Creator Brand Deal Fit Copilot",
+        "description": "Builds recurring brand-fit briefs, pitch angles, and campaign match recommendations so creators can turn inbound attention into higher-conviction sponsorship revenue.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.83,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6681,
+        "rationale": "YouTube's 2025 brand-partnership roadmap and CreatorIQ's 2025-2026 state-of-market report both point to creator content being extended beyond social posts into broader media and commerce programs. The repeated bottleneck is identifying the right partnerships and packaging creators for them in a scalable way.",
+        "related_chips": [
+          "creator-membership-flywheel-copilot",
+          "agentic-marketing",
+          "startup-yc"
+        ],
+        "evidence_sources": [
+          "youtube-brand-partnerships-2025",
+          "creatoriq-state-of-creator-marketing-2025"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "matching creator identity, audience, and content format to repeatable brand partnership opportunities",
+          "mastery_surface": "learning which creator-brand combinations, packaging angles, and campaign structures actually convert into recurring sponsorship and commerce revenue",
+          "user_value_loop": "analyze the creator's content and audience, generate brand-fit briefs and outreach angles, track deal outcomes, and refine the sponsorship playbook after each partnership cycle",
+          "domain_tags": [
+            "creator-growth",
+            "brand-deals",
+            "monetization",
+            "sponsorships"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "audience-comment-signal-copilot",
+        "label": "Audience Comment Signal Copilot",
+        "description": "Clusters comments and reply patterns into recurring audience personas, objections, and follow-up content opportunities so creators can turn feedback into their next content loop.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.75,
+          "monetization_potential": 0.65
+        },
+        "composite_score": 0.6491,
+        "rationale": "Recent creator-research work treats comments as a rich repeated signal layer rather than a moderation afterthought. Proxona shows creators struggle to interpret audience feedback with current tools, while SimTube frames believable comment generation and audience simulation as useful for refining content before release.",
+        "related_chips": [
+          "xcontent",
+          "creator-membership-flywheel-copilot",
+          "discord-community"
+        ],
+        "evidence_sources": [
+          "proxona-audience-personas-2024",
+          "simtube-comment-simulation-2024"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "mining creator comments and replies for repeated audience signals that shape future content and community strategy",
+          "mastery_surface": "learning which audience questions, identity signals, objections, and emotional reactions consistently predict the next high-performing content directions",
+          "user_value_loop": "ingest comments and replies, cluster them into actionable audience signals, draft the next content or community moves, and refine the audience map after each release cycle",
+          "domain_tags": [
+            "creator-growth",
+            "comments",
+            "audience-research",
+            "community"
           ],
           "promotion_status": "candidate"
         }
@@ -1226,6 +1592,156 @@
         }
       },
       {
+        "signal_id": "thumbnail-package-test-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Thumbnail Package Test Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "thumbnail-package-test-copilot-youtube-thumbnail-ab-testing-2025",
+        "signal_type": "community_request",
+        "label": "Thumbnail Package Test Copilot via youtube-thumbnail-ab-testing-2025",
+        "strength": 0.3341,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "thumbnail-package-test-copilot-partnered-youtube-title-testing-2025",
+        "signal_type": "community_request",
+        "label": "Thumbnail Package Test Copilot via partnered-youtube-title-testing-2025",
+        "strength": 0.3341,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "thumbnail-package-test-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Thumbnail Package Test Copilot ecosystem pull from youtube-remixer, xcontent, hook-angle-test-copilot",
+        "strength": 0.747,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "youtube-remixer",
+            "xcontent",
+            "hook-angle-test-copilot"
+          ]
+        }
+      },
+      {
+        "signal_id": "creator-brand-deal-fit-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Creator Brand Deal Fit Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "creator-brand-deal-fit-copilot-youtube-brand-partnerships-2025",
+        "signal_type": "community_request",
+        "label": "Creator Brand Deal Fit Copilot via youtube-brand-partnerships-2025",
+        "strength": 0.3341,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "creator-brand-deal-fit-copilot-creatoriq-state-of-creator-marketing-2025",
+        "signal_type": "community_request",
+        "label": "Creator Brand Deal Fit Copilot via creatoriq-state-of-creator-marketing-2025",
+        "strength": 0.3341,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "creator-brand-deal-fit-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Creator Brand Deal Fit Copilot ecosystem pull from creator-membership-flywheel-copilot, agentic-marketing, startup-yc",
+        "strength": 0.747,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "creator-membership-flywheel-copilot",
+            "agentic-marketing",
+            "startup-yc"
+          ]
+        }
+      },
+      {
+        "signal_id": "audience-comment-signal-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Audience Comment Signal Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "audience-comment-signal-copilot-proxona-audience-personas-2024",
+        "signal_type": "community_request",
+        "label": "Audience Comment Signal Copilot via proxona-audience-personas-2024",
+        "strength": 0.3246,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "audience-comment-signal-copilot-simtube-comment-simulation-2024",
+        "signal_type": "community_request",
+        "label": "Audience Comment Signal Copilot via simtube-comment-simulation-2024",
+        "strength": 0.3246,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "audience-comment-signal-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Audience Comment Signal Copilot ecosystem pull from xcontent, creator-membership-flywheel-copilot, discord-community",
+        "strength": 0.675,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "xcontent",
+            "creator-membership-flywheel-copilot",
+            "discord-community"
+          ]
+        }
+      },
+      {
         "signal_id": "graph-extends-trading-crypto-chip-defi-architect",
         "signal_type": "competitor_chip",
         "label": "trading-crypto extends defi-architect",
@@ -1398,6 +1914,105 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-thumbnail-package-test-copilot-chip-youtube-remixer",
+        "signal_type": "competitor_chip",
+        "label": "thumbnail-package-test-copilot extends youtube-remixer",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-thumbnail-package-test-copilot-chip-xcontent",
+        "signal_type": "competitor_chip",
+        "label": "thumbnail-package-test-copilot extends xcontent",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-thumbnail-package-test-copilot-chip-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "thumbnail-package-test-copilot extends hook-angle-test-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-creator-brand-deal-fit-copilot-chip-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "creator-brand-deal-fit-copilot extends creator-membership-flywheel-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-creator-brand-deal-fit-copilot-chip-agentic-marketing",
+        "signal_type": "competitor_chip",
+        "label": "creator-brand-deal-fit-copilot extends agentic-marketing",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-creator-brand-deal-fit-copilot-chip-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "creator-brand-deal-fit-copilot extends startup-yc",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-audience-comment-signal-copilot-chip-xcontent",
+        "signal_type": "competitor_chip",
+        "label": "audience-comment-signal-copilot extends xcontent",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-audience-comment-signal-copilot-chip-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "audience-comment-signal-copilot extends creator-membership-flywheel-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-audience-comment-signal-copilot-chip-discord-community",
+        "signal_type": "competitor_chip",
+        "label": "audience-comment-signal-copilot extends discord-community",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
         ],
         "metadata": {}
       },
@@ -1688,6 +2303,72 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-thumbnail-package-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from thumbnail-package-test-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-thumbnail-package-test-copilot-cross-platform-clip-calendar-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cross-platform-clip-calendar-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-creator-brand-deal-fit-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-brand-deal-fit-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-brand-deal-fit-copilot-cross-platform-clip-calendar-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cross-platform-clip-calendar-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-audience-comment-signal-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from audience-comment-signal-copilot",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-audience-comment-signal-copilot-cross-platform-clip-calendar-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cross-platform-clip-calendar-copilot",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-creator-membership-flywheel-copilot-hook-angle-test-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from hook-angle-test-copilot",
@@ -1706,6 +2387,204 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-membership-flywheel-copilot-thumbnail-package-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from thumbnail-package-test-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-thumbnail-package-test-copilot-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-membership-flywheel-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-membership-flywheel-copilot-creator-brand-deal-fit-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-brand-deal-fit-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-brand-deal-fit-copilot-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-membership-flywheel-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-membership-flywheel-copilot-audience-comment-signal-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from audience-comment-signal-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-audience-comment-signal-copilot-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-membership-flywheel-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-hook-angle-test-copilot-thumbnail-package-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from thumbnail-package-test-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-thumbnail-package-test-copilot-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hook-angle-test-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-hook-angle-test-copilot-creator-brand-deal-fit-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-brand-deal-fit-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-brand-deal-fit-copilot-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hook-angle-test-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-hook-angle-test-copilot-audience-comment-signal-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from audience-comment-signal-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-audience-comment-signal-copilot-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hook-angle-test-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-thumbnail-package-test-copilot-creator-brand-deal-fit-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-brand-deal-fit-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-brand-deal-fit-copilot-thumbnail-package-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from thumbnail-package-test-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-thumbnail-package-test-copilot-audience-comment-signal-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from audience-comment-signal-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-audience-comment-signal-copilot-thumbnail-package-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from thumbnail-package-test-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-brand-deal-fit-copilot-audience-comment-signal-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from audience-comment-signal-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-audience-comment-signal-copilot-creator-brand-deal-fit-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-brand-deal-fit-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
         ],
         "metadata": {}
       }
@@ -2175,6 +3054,149 @@
           "type": "platform",
           "label": "hook-studio-retention-2025",
           "properties": {}
+        },
+        {
+          "id": "thumbnail-package-test-copilot",
+          "type": "domain",
+          "label": "Thumbnail Package Test Copilot",
+          "properties": {
+            "description": "Builds and tracks repeated title, thumbnail, and opening-package experiments so creators can learn which packaging combinations actually lift click-through and early watch performance.",
+            "composite_score": 0.6681,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.83,
+              "monetization_potential": 0.72
+            },
+            "rationale": "YouTube now treats thumbnail A/B testing as a core creator workflow, and creator discussion shows the next operational pain is coordinated title-plus-thumbnail testing rather than ad hoc manual swapping. That makes packaging optimization look like a repeated system, not a single feature.",
+            "domain_tags": [
+              "creator-growth",
+              "productivity",
+              "quick_wins",
+              "thumbnail-testing",
+              "title-testing",
+              "youtube"
+            ],
+            "retention_score": 0.55,
+            "choice_score": 0.53
+          }
+        },
+        {
+          "id": "chip-hook-angle-test-copilot",
+          "type": "technology",
+          "label": "hook-angle-test-copilot",
+          "properties": {}
+        },
+        {
+          "id": "platform-youtube-thumbnail-ab-testing-2025",
+          "type": "platform",
+          "label": "youtube-thumbnail-ab-testing-2025",
+          "properties": {}
+        },
+        {
+          "id": "platform-partnered-youtube-title-testing-2025",
+          "type": "platform",
+          "label": "partnered-youtube-title-testing-2025",
+          "properties": {}
+        },
+        {
+          "id": "creator-brand-deal-fit-copilot",
+          "type": "domain",
+          "label": "Creator Brand Deal Fit Copilot",
+          "properties": {
+            "description": "Builds recurring brand-fit briefs, pitch angles, and campaign match recommendations so creators can turn inbound attention into higher-conviction sponsorship revenue.",
+            "composite_score": 0.6681,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.83,
+              "monetization_potential": 0.72
+            },
+            "rationale": "YouTube's 2025 brand-partnership roadmap and CreatorIQ's 2025-2026 state-of-market report both point to creator content being extended beyond social posts into broader media and commerce programs. The repeated bottleneck is identifying the right partnerships and packaging creators for them in a scalable way.",
+            "domain_tags": [
+              "audience_targeting",
+              "brand-deals",
+              "creator-growth",
+              "idea_validation",
+              "market_fit",
+              "monetization",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "speed_to_ship",
+              "sponsorships"
+            ],
+            "retention_score": 0.58,
+            "choice_score": 0.39
+          }
+        },
+        {
+          "id": "chip-creator-membership-flywheel-copilot",
+          "type": "technology",
+          "label": "creator-membership-flywheel-copilot",
+          "properties": {}
+        },
+        {
+          "id": "platform-youtube-brand-partnerships-2025",
+          "type": "platform",
+          "label": "youtube-brand-partnerships-2025",
+          "properties": {}
+        },
+        {
+          "id": "platform-creatoriq-state-of-creator-marketing-2025",
+          "type": "platform",
+          "label": "creatoriq-state-of-creator-marketing-2025",
+          "properties": {}
+        },
+        {
+          "id": "audience-comment-signal-copilot",
+          "type": "domain",
+          "label": "Audience Comment Signal Copilot",
+          "properties": {
+            "description": "Clusters comments and reply patterns into recurring audience personas, objections, and follow-up content opportunities so creators can turn feedback into their next content loop.",
+            "composite_score": 0.6491,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.75,
+              "monetization_potential": 0.65
+            },
+            "rationale": "Recent creator-research work treats comments as a rich repeated signal layer rather than a moderation afterthought. Proxona shows creators struggle to interpret audience feedback with current tools, while SimTube frames believable comment generation and audience simulation as useful for refining content before release.",
+            "domain_tags": [
+              "audience-research",
+              "comments",
+              "community",
+              "creator-growth",
+              "productivity",
+              "quick_wins"
+            ],
+            "retention_score": 0.58,
+            "choice_score": 0.35
+          }
+        },
+        {
+          "id": "chip-discord-community",
+          "type": "technology",
+          "label": "discord-community",
+          "properties": {}
+        },
+        {
+          "id": "platform-proxona-audience-personas-2024",
+          "type": "platform",
+          "label": "proxona-audience-personas-2024",
+          "properties": {}
+        },
+        {
+          "id": "platform-simtube-comment-simulation-2024",
+          "type": "platform",
+          "label": "simtube-comment-simulation-2024",
+          "properties": {}
         }
       ],
       "edges": [
@@ -2425,6 +3447,96 @@
           "weight": 0.5
         },
         {
+          "source": "thumbnail-package-test-copilot",
+          "target": "chip-youtube-remixer",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "thumbnail-package-test-copilot",
+          "target": "chip-xcontent",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "thumbnail-package-test-copilot",
+          "target": "chip-hook-angle-test-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "thumbnail-package-test-copilot",
+          "target": "platform-youtube-thumbnail-ab-testing-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "thumbnail-package-test-copilot",
+          "target": "platform-partnered-youtube-title-testing-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "creator-brand-deal-fit-copilot",
+          "target": "chip-creator-membership-flywheel-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "creator-brand-deal-fit-copilot",
+          "target": "chip-agentic-marketing",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "creator-brand-deal-fit-copilot",
+          "target": "chip-startup-yc",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "creator-brand-deal-fit-copilot",
+          "target": "platform-youtube-brand-partnerships-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "creator-brand-deal-fit-copilot",
+          "target": "platform-creatoriq-state-of-creator-marketing-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "audience-comment-signal-copilot",
+          "target": "chip-xcontent",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "audience-comment-signal-copilot",
+          "target": "chip-creator-membership-flywheel-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "audience-comment-signal-copilot",
+          "target": "chip-discord-community",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "audience-comment-signal-copilot",
+          "target": "platform-proxona-audience-personas-2024",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "audience-comment-signal-copilot",
+          "target": "platform-simtube-comment-simulation-2024",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
           "source": "trading-crypto",
           "target": "cursor-copilot",
           "relationship": "COMPETES_WITH",
@@ -2467,6 +3579,24 @@
           "weight": 0.38315
         },
         {
+          "source": "trading-crypto",
+          "target": "thumbnail-package-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.38315
+        },
+        {
+          "source": "trading-crypto",
+          "target": "creator-brand-deal-fit-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.38315
+        },
+        {
+          "source": "trading-crypto",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.379
+        },
+        {
           "source": "cursor-copilot",
           "target": "mcp-server-builder",
           "relationship": "COMPETES_WITH",
@@ -2503,6 +3633,24 @@
           "weight": 0.40315
         },
         {
+          "source": "cursor-copilot",
+          "target": "thumbnail-package-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40315
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "creator-brand-deal-fit-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40315
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39065
+        },
+        {
           "source": "mcp-server-builder",
           "target": "ai-agent-builder",
           "relationship": "COMPETES_WITH",
@@ -2533,6 +3681,24 @@
           "weight": 0.41065
         },
         {
+          "source": "mcp-server-builder",
+          "target": "thumbnail-package-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41065
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "creator-brand-deal-fit-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41065
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39815
+        },
+        {
           "source": "ai-agent-builder",
           "target": "startup-yc",
           "relationship": "COMPETES_WITH",
@@ -2557,6 +3723,24 @@
           "weight": 0.41985
         },
         {
+          "source": "ai-agent-builder",
+          "target": "thumbnail-package-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41985
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "creator-brand-deal-fit-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41985
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41235
+        },
+        {
           "source": "startup-yc",
           "target": "cross-platform-clip-calendar-copilot",
           "relationship": "COMPETES_WITH",
@@ -2575,6 +3759,24 @@
           "weight": 0.42065
         },
         {
+          "source": "startup-yc",
+          "target": "thumbnail-package-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42065
+        },
+        {
+          "source": "startup-yc",
+          "target": "creator-brand-deal-fit-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42065
+        },
+        {
+          "source": "startup-yc",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40815
+        },
+        {
           "source": "cross-platform-clip-calendar-copilot",
           "target": "creator-membership-flywheel-copilot",
           "relationship": "COMPETES_WITH",
@@ -2587,24 +3789,96 @@
           "weight": 0.9883
         },
         {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "thumbnail-package-test-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "creator-brand-deal-fit-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9633
+        },
+        {
           "source": "creator-membership-flywheel-copilot",
           "target": "hook-angle-test-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9733
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "thumbnail-package-test-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9733
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "creator-brand-deal-fit-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9733
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "thumbnail-package-test-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "creator-brand-deal-fit-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "thumbnail-package-test-copilot",
+          "target": "creator-brand-deal-fit-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "thumbnail-package-test-copilot",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "creator-brand-deal-fit-copilot",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
         }
       ],
       "tracked_variables": {},
-      "node_count": 38,
-      "edge_count": 69
+      "node_count": 50,
+      "edge_count": 111
     }
   },
   "summary": {
-    "discovered_count": 3,
+    "discovered_count": 6,
     "benchmark_count": 5,
     "proposed_benchmark_count": 0,
     "promotion_review_count": 0,
-    "combined_domain_count": 8,
-    "signal_count": 80,
+    "combined_domain_count": 11,
+    "signal_count": 125,
     "shock_count": 3,
     "top_ranked_domain": "trading-crypto"
   },

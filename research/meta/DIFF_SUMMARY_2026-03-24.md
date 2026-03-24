@@ -360,3 +360,12 @@ MiroFish discovery viral creator tranche 1:
 - refresh the viral pilot progress, bundle, recombined packet, and canonicalized result
 - run a bounded hybrid creator-tranche read plus diagnostic and promotion brief
 - correct the malformed duplicate `raw_candidates` key that briefly broke the first cluster bundle during refresh
+
+## Batch 41
+
+MiroFish discovery viral creator tranche 2:
+
+- extend the creator-growth cluster from `3` to `6` filled agents
+- add packaging-test, audience-comment, and brand-deal creator loops
+- refresh the viral pilot result to `6` accepted clear-domain candidates
+- record that intake quality now supports `run_250_agent_pilot` while bounded hybrid evaluation still keeps the wedge in frontier
