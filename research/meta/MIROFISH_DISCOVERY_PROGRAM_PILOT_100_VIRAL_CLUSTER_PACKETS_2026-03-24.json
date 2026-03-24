@@ -1,6 +1,6 @@
 {
   "packet_kind": "mirofish_discovery_program_cluster_packets",
-  "created_at": "2026-03-24T18:12:28.794883+00:00",
+  "directory": "research\\meta\\mirofish_discovery_pilot_100_viral_clusters_2026-03-24",
   "program_id": "mirofish-discovery-program-pilot-100-viral",
   "stage_label": "pilot_100_viral",
   "target_agent_count": 100,
@@ -208,7 +208,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Hook Angle Test Copilot",
+              "description": "Generates, tracks, and learns from repeated short-form hook variants so creators can systematically improve opening retention in their niche.",
+              "specialization_surface": "testing and iterating opening hooks for short-form creator content across X, TikTok, Reels, and Shorts",
+              "mastery_surface": "learning which curiosity gaps, claims, structures, and pacing patterns actually raise completion and hold rates for a creator's specific audience",
+              "user_value_loop": "draft hook variants, attach them to content drafts, compare early retention and completion outcomes, and update the creator's winning hook library after each post batch",
+              "domain_tags": [
+                "creator-growth",
+                "short-form-video",
+                "retention",
+                "hook-testing"
+              ],
+              "evidence_sources": [
+                "mrpopular-hook-tests-2025",
+                "hook-studio-retention-2025"
+              ],
+              "evidence_summary": "Recent creator-growth writing increasingly treats the first seconds of short-form content as an explicit testing surface. MRPOPULAR reports repeated hook testing as a core workflow, and Hook Studio argues completion-rate optimization has become the deciding growth loop rather than generic vanity metrics.",
+              "adjacent_domains": [
+                "xcontent",
+                "tiktok-creator",
+                "youtube-remixer"
+              ],
+              "duplicate_aliases": [
+                "Short-Form Hook Testing Copilot",
+                "Creator Hook Lab"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Creators are no longer just 'writing better hooks' ad hoc; they are repeatedly testing openings as a structured growth loop because the first seconds now decide whether content travels.",
+              "evidence_links": [
+                "https://www.mrpopular.net/blog/we-tested-117-hooks-in-2025-here-s-what-actually-works-and-what-flops",
+                "https://www.hookstudio.ai/blog/2025-retention-revolution-completion-rate-new-king"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-002",
@@ -239,7 +274,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Cross-Platform Clip Calendar Copilot",
+              "description": "Turns one long-form creator asset into a scheduled, cross-platform clip and post calendar that keeps learning which formats and channels actually compound reach.",
+              "specialization_surface": "repurposing long-form creator content into recurring short-form clips, posts, and publishing plans across multiple channels",
+              "mastery_surface": "learning which source segments, packaging formats, and platform-specific edits consistently generate reuse and distribution gains for a creator business",
+              "user_value_loop": "ingest a podcast, video, or thread, cut candidate clips and post variants, distribute them across channels, and refine the repurposing playbook from performance outcomes",
+              "domain_tags": [
+                "creator-growth",
+                "content-repurposing",
+                "distribution",
+                "publishing-ops"
+              ],
+              "evidence_sources": [
+                "repurpose-tools-2025",
+                "athenic-repurposing-automation-2025"
+              ],
+              "evidence_summary": "Creator tooling in 2025 is converging on repurposing as a repeated workflow rather than a one-off editing task. Repurpose.io frames the main problem as turning one long-form asset into many channel-native outputs, while Athenic presents structured automation flows that drip one source asset across multiple platforms over time.",
+              "adjacent_domains": [
+                "youtube-remixer",
+                "xcontent",
+                "tiktok-creator"
+              ],
+              "duplicate_aliases": [
+                "Creator Repurposing Calendar Copilot",
+                "Longform-to-Clips Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "A lot of creator growth now depends on whether one idea can be operationalized into a repeatable distribution calendar across formats, not just whether the original post was good.",
+              "evidence_links": [
+                "https://repurpose.ws/blog/best-content-repurposing-tools-2025",
+                "https://getathenic.com/blog/content-repurposing-automation-ai-workflow-2025"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-003",
@@ -270,7 +340,44 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Creator Membership Flywheel Copilot",
+              "description": "Helps creators convert attention into recurring paid-community revenue by packaging offers, launch cadence, member touchpoints, and retention signals into one repeatable operating loop.",
+              "specialization_surface": "turning creator audience engagement into paid memberships, community offers, and recurring revenue operations",
+              "mastery_surface": "learning which offers, launch structures, pricing bands, and retention rituals actually move followers into long-lived paid communities",
+              "user_value_loop": "analyze audience demand signals, draft the membership offer and launch sequence, ship recurring member value touches, and refine conversion and retention plays after each cycle",
+              "domain_tags": [
+                "creator-growth",
+                "membership",
+                "community",
+                "monetization"
+              ],
+              "evidence_sources": [
+                "circle-community-trends-2025",
+                "circle-creator-economy-statistics-2026",
+                "iab-creator-ad-spend-2025"
+              ],
+              "evidence_summary": "Recent creator-economy reporting points toward memberships and community as the stable monetization center of gravity. Circle's 2025 and 2026 reporting emphasizes recurring revenue and owned community as the core creator business model, while IAB's ad-spend growth shows attention is still expanding even as creators look for more durable monetization layers.",
+              "adjacent_domains": [
+                "xcontent",
+                "startup-yc",
+                "agentic-marketing"
+              ],
+              "duplicate_aliases": [
+                "Creator Community Launch Copilot",
+                "Membership Offer Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "For a lot of creators, the real business question is no longer just how to get views; it is how to repeatedly turn attention into a membership or community flywheel with stable monthly revenue.",
+              "evidence_links": [
+                "https://circle.so/2025-community-trends-report",
+                "https://circle.so/blog/creator-economy-statistics",
+                "https://www.iab.com/news/creator-economy-ad-spend-to-reach-37-billion-in-2025-growing-4x-faster-than-total-media-industry-according-to-iab"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-004",
@@ -3675,8 +3782,8 @@
     }
   ],
   "next_actions": [
-    "Assign each cluster packet to a collection owner or agent swarm tranche.",
-    "Fill the per-cluster packets with real discoveries.",
-    "Recombine the filled packets into one discovery-program packet before canonicalization."
+    "Run `mirofish-discovery-program-merge` on this refreshed bundle.",
+    "Canonicalize the merged program packet after collection updates.",
+    "Rebuild the bundle again after each new collection tranche."
   ]
 }

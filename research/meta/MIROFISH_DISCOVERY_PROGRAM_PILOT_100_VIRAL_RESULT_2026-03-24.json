@@ -1,0 +1,981 @@
+{
+  "packet_kind": "mirofish_discovery_program",
+  "evidence_lane": "exploratory_frontier",
+  "created_at": "2026-03-24T18:23:17.858820+00:00",
+  "program_id": "mirofish-discovery-program-pilot-100-viral",
+  "stage_label": "pilot_100_viral",
+  "target_agent_count": 100,
+  "participating_agent_count": 100,
+  "summary": {
+    "raw_count": 3,
+    "accepted_count": 3,
+    "merged_count": 0,
+    "rejected_count": 0,
+    "clear_count": 3,
+    "proto_count": 0,
+    "acceptance_rate": 1.0,
+    "merge_rate": 0.0,
+    "too_vague_rate": 0.0,
+    "persona_only_rate": 0.0,
+    "workflow_only_rate": 0.0,
+    "duplicate_existing_count": 0
+  },
+  "scale_readiness": {
+    "participating_agent_count": 100,
+    "target_agent_count": 100,
+    "next_stage": "refine_contract_before_scaling",
+    "reasons": [
+      "The program already produces multiple clear_domain_chip candidates.",
+      "Acceptance rate is high enough to justify a larger intake pass.",
+      "Duplicate pressure is still manageable.",
+      "Vague-candidate rejection is under control."
+    ]
+  },
+  "agent_rollup": [
+    {
+      "agent_id": "agent-001",
+      "candidate_count": 1,
+      "notes": "Pilot agent 1 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 1,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-002",
+      "candidate_count": 1,
+      "notes": "Pilot agent 2 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 1,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-003",
+      "candidate_count": 1,
+      "notes": "Pilot agent 3 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 1,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-004",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-005",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-006",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-007",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-008",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-009",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-010",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-011",
+      "candidate_count": 0,
+      "notes": "Pilot agent 11 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-012",
+      "candidate_count": 0,
+      "notes": "Pilot agent 12 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-013",
+      "candidate_count": 0,
+      "notes": "Pilot agent 13 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-014",
+      "candidate_count": 0,
+      "notes": "Pilot agent 14 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-015",
+      "candidate_count": 0,
+      "notes": "Pilot agent 15 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-016",
+      "candidate_count": 0,
+      "notes": "Pilot agent 16 for Creator Growth Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-017",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-018",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-019",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-020",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-021",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-022",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-023",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-024",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-025",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-026",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-027",
+      "candidate_count": 0,
+      "notes": "Pilot agent 11 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-028",
+      "candidate_count": 0,
+      "notes": "Pilot agent 12 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-029",
+      "candidate_count": 0,
+      "notes": "Pilot agent 13 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-030",
+      "candidate_count": 0,
+      "notes": "Pilot agent 14 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-031",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-032",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-033",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-034",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-035",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-036",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-037",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-038",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-039",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-040",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-041",
+      "candidate_count": 0,
+      "notes": "Pilot agent 11 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-042",
+      "candidate_count": 0,
+      "notes": "Pilot agent 12 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-043",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-044",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-045",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-046",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-047",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-048",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-049",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-050",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-051",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-052",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-053",
+      "candidate_count": 0,
+      "notes": "Pilot agent 11 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-054",
+      "candidate_count": 0,
+      "notes": "Pilot agent 12 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-055",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-056",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-057",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-058",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-059",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-060",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-061",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-062",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-063",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-064",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Builder Productivity Systems. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-065",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-066",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-067",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-068",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-069",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-070",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-071",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-072",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-073",
+      "candidate_count": 0,
+      "notes": "Pilot agent 9 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-074",
+      "candidate_count": 0,
+      "notes": "Pilot agent 10 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-075",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-076",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-077",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-078",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-079",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-080",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-081",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-082",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-083",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Crypto / DeFi / Trading. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-084",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Crypto / DeFi / Trading. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-085",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Crypto / DeFi / Trading. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-086",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Crypto / DeFi / Trading. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-087",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for Crypto / DeFi / Trading. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-088",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for Crypto / DeFi / Trading. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-089",
+      "candidate_count": 0,
+      "notes": "Pilot agent 7 for Crypto / DeFi / Trading. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-090",
+      "candidate_count": 0,
+      "notes": "Pilot agent 8 for Crypto / DeFi / Trading. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-091",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for X-Native Persona Tools. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-092",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for X-Native Persona Tools. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-093",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for X-Native Persona Tools. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-094",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for X-Native Persona Tools. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-095",
+      "candidate_count": 0,
+      "notes": "Pilot agent 5 for X-Native Persona Tools. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-096",
+      "candidate_count": 0,
+      "notes": "Pilot agent 6 for X-Native Persona Tools. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-097",
+      "candidate_count": 0,
+      "notes": "Pilot agent 1 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-098",
+      "candidate_count": 0,
+      "notes": "Pilot agent 2 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-099",
+      "candidate_count": 0,
+      "notes": "Pilot agent 3 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-100",
+      "candidate_count": 0,
+      "notes": "Pilot agent 4 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "accepted_count": 0,
+      "merged_count": 0,
+      "rejected_count": 0
+    }
+  ],
+  "accepted_candidates": [
+    {
+      "label": "Hook Angle Test Copilot",
+      "description": "Generates, tracks, and learns from repeated short-form hook variants so creators can systematically improve opening retention in their niche.",
+      "specialization_surface": "testing and iterating opening hooks for short-form creator content across X, TikTok, Reels, and Shorts",
+      "mastery_surface": "learning which curiosity gaps, claims, structures, and pacing patterns actually raise completion and hold rates for a creator's specific audience",
+      "user_value_loop": "draft hook variants, attach them to content drafts, compare early retention and completion outcomes, and update the creator's winning hook library after each post batch",
+      "domain_tags": [
+        "creator-growth",
+        "short-form-video",
+        "retention",
+        "hook-testing"
+      ],
+      "evidence_sources": [
+        "mrpopular-hook-tests-2025",
+        "hook-studio-retention-2025"
+      ],
+      "evidence_summary": "Recent creator-growth writing increasingly treats the first seconds of short-form content as an explicit testing surface. MRPOPULAR reports repeated hook testing as a core workflow, and Hook Studio argues completion-rate optimization has become the deciding growth loop rather than generic vanity metrics.",
+      "adjacent_domains": [
+        "xcontent",
+        "tiktok-creator",
+        "youtube-remixer"
+      ],
+      "duplicate_aliases": [
+        "Short-Form Hook Testing Copilot",
+        "Creator Hook Lab"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Creators are no longer just 'writing better hooks' ad hoc; they are repeatedly testing openings as a structured growth loop because the first seconds now decide whether content travels.",
+      "evidence_links": [
+        "https://www.mrpopular.net/blog/we-tested-117-hooks-in-2025-here-s-what-actually-works-and-what-flops",
+        "https://www.hookstudio.ai/blog/2025-retention-revolution-completion-rate-new-king"
+      ],
+      "submitted_by_agent": "agent-001",
+      "submission_index": 1,
+      "domain_id": "hook-angle-test-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-001"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "label": "Cross-Platform Clip Calendar Copilot",
+      "description": "Turns one long-form creator asset into a scheduled, cross-platform clip and post calendar that keeps learning which formats and channels actually compound reach.",
+      "specialization_surface": "repurposing long-form creator content into recurring short-form clips, posts, and publishing plans across multiple channels",
+      "mastery_surface": "learning which source segments, packaging formats, and platform-specific edits consistently generate reuse and distribution gains for a creator business",
+      "user_value_loop": "ingest a podcast, video, or thread, cut candidate clips and post variants, distribute them across channels, and refine the repurposing playbook from performance outcomes",
+      "domain_tags": [
+        "creator-growth",
+        "content-repurposing",
+        "distribution",
+        "publishing-ops"
+      ],
+      "evidence_sources": [
+        "repurpose-tools-2025",
+        "athenic-repurposing-automation-2025"
+      ],
+      "evidence_summary": "Creator tooling in 2025 is converging on repurposing as a repeated workflow rather than a one-off editing task. Repurpose.io frames the main problem as turning one long-form asset into many channel-native outputs, while Athenic presents structured automation flows that drip one source asset across multiple platforms over time.",
+      "adjacent_domains": [
+        "youtube-remixer",
+        "xcontent",
+        "tiktok-creator"
+      ],
+      "duplicate_aliases": [
+        "Creator Repurposing Calendar Copilot",
+        "Longform-to-Clips Copilot"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "A lot of creator growth now depends on whether one idea can be operationalized into a repeatable distribution calendar across formats, not just whether the original post was good.",
+      "evidence_links": [
+        "https://repurpose.ws/blog/best-content-repurposing-tools-2025",
+        "https://getathenic.com/blog/content-repurposing-automation-ai-workflow-2025"
+      ],
+      "submitted_by_agent": "agent-002",
+      "submission_index": 1,
+      "domain_id": "cross-platform-clip-calendar-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-002"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "label": "Creator Membership Flywheel Copilot",
+      "description": "Helps creators convert attention into recurring paid-community revenue by packaging offers, launch cadence, member touchpoints, and retention signals into one repeatable operating loop.",
+      "specialization_surface": "turning creator audience engagement into paid memberships, community offers, and recurring revenue operations",
+      "mastery_surface": "learning which offers, launch structures, pricing bands, and retention rituals actually move followers into long-lived paid communities",
+      "user_value_loop": "analyze audience demand signals, draft the membership offer and launch sequence, ship recurring member value touches, and refine conversion and retention plays after each cycle",
+      "domain_tags": [
+        "creator-growth",
+        "membership",
+        "community",
+        "monetization"
+      ],
+      "evidence_sources": [
+        "circle-community-trends-2025",
+        "circle-creator-economy-statistics-2026",
+        "iab-creator-ad-spend-2025"
+      ],
+      "evidence_summary": "Recent creator-economy reporting points toward memberships and community as the stable monetization center of gravity. Circle's 2025 and 2026 reporting emphasizes recurring revenue and owned community as the core creator business model, while IAB's ad-spend growth shows attention is still expanding even as creators look for more durable monetization layers.",
+      "adjacent_domains": [
+        "xcontent",
+        "startup-yc",
+        "agentic-marketing"
+      ],
+      "duplicate_aliases": [
+        "Creator Community Launch Copilot",
+        "Membership Offer Copilot"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "For a lot of creators, the real business question is no longer just how to get views; it is how to repeatedly turn attention into a membership or community flywheel with stable monthly revenue.",
+      "evidence_links": [
+        "https://circle.so/2025-community-trends-report",
+        "https://circle.so/blog/creator-economy-statistics",
+        "https://www.iab.com/news/creator-economy-ad-spend-to-reach-37-billion-in-2025-growing-4x-faster-than-total-media-industry-according-to-iab"
+      ],
+      "submitted_by_agent": "agent-003",
+      "submission_index": 1,
+      "domain_id": "creator-membership-flywheel-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-003"
+      ],
+      "supporting_agent_count": 1
+    }
+  ],
+  "merged_candidates": [],
+  "rejected_candidates": [],
+  "next_actions": [
+    "Feed the clear_domain_chip set into a smaller MiroFish evaluation run.",
+    "Refine the intake contract and rejection reasons before scaling to a larger agent count."
+  ]
+}

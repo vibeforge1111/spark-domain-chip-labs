@@ -351,3 +351,12 @@ MiroFish discovery viral pivot:
 - add X persona archetypes and social-spread guidance to the scaffolded agent brief
 - update the discovery-program tests and operator doc to match the new default
 - generate a fresh `pilot_100_viral` scaffold, cluster bundle, brief, materialized directory, and zero-state progress surface
+
+## Batch 40
+
+MiroFish discovery viral creator tranche 1:
+
+- fill the first `3` creator-growth agents with evidence-linked viral/X-native creator candidates
+- refresh the viral pilot progress, bundle, recombined packet, and canonicalized result
+- run a bounded hybrid creator-tranche read plus diagnostic and promotion brief
+- correct the malformed duplicate `raw_candidates` key that briefly broke the first cluster bundle during refresh

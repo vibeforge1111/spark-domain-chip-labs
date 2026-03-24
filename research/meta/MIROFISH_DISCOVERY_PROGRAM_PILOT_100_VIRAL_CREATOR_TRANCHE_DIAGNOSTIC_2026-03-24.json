@@ -1,0 +1,124 @@
+{
+  "packet_kind": "mirofish_run_diagnostic_brief",
+  "created_at": "2026-03-24T18:23:20.502010+00:00",
+  "source_batch_id": null,
+  "source_run_created_at": "2026-03-24T18:23:20.310308+00:00",
+  "evidence_lane": "exploratory_frontier",
+  "focus_domain_ids": [
+    "creator-membership-flywheel-copilot",
+    "hook-angle-test-copilot",
+    "cross-platform-clip-calendar-copilot"
+  ],
+  "benchmark_domain_ids": [
+    "trading-crypto",
+    "startup-yc",
+    "cursor-copilot",
+    "mcp-server-builder",
+    "ai-agent-builder"
+  ],
+  "benchmark_summary": {
+    "benchmark_mean_adoption_median": 0.0089,
+    "benchmark_top_ensemble_domains": [
+      {
+        "domain_id": "startup-yc",
+        "mean_adoption": 0.0134,
+        "agent_choice_signal": 0.1
+      },
+      {
+        "domain_id": "trading-crypto",
+        "mean_adoption": 0.0122,
+        "agent_choice_signal": 0.0333
+      },
+      {
+        "domain_id": "cursor-copilot",
+        "mean_adoption": 0.0089,
+        "agent_choice_signal": 0.1667
+      }
+    ]
+  },
+  "focus_diagnostics": [
+    {
+      "domain_id": "creator-membership-flywheel-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7667,
+      "agent_choice_signal": 0.0667,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0011,
+      "mean_trial": 0.0778,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0656,
+      "interest_to_choice_gap": 0.7,
+      "flagship_retention_gap": 0.0667,
+      "trial_to_adoption_gap": 0.0767,
+      "benchmark_gap": -0.0078,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "hook-angle-test-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.1,
+      "consensus_score": 0.4667,
+      "mean_adoption": 0.0011,
+      "mean_trial": 0.0289,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0989,
+      "interest_to_choice_gap": 0.5667,
+      "flagship_retention_gap": 0.1,
+      "trial_to_adoption_gap": 0.0278,
+      "benchmark_gap": -0.0078,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "cross-platform-clip-calendar-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.4,
+      "mean_adoption": 0.0,
+      "mean_trial": 0.0178,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "attention_to_ensemble_gap": 0.0333,
+      "interest_to_choice_gap": 0.6,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0178,
+      "benchmark_gap": -0.0089,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice."
+      ]
+    }
+  ],
+  "cluster_readout": {
+    "strongest_attention_domain": "hook-angle-test-copilot",
+    "strongest_ensemble_domain": "creator-membership-flywheel-copilot",
+    "worst_attention_to_ensemble_gap_domain": "hook-angle-test-copilot",
+    "largest_trial_to_adoption_gap_domain": "creator-membership-flywheel-copilot"
+  },
+  "governance_note": "Diagnostic briefs explain bottlenecks in exploratory MiroFish runs. They do not change benchmark membership or auto-tune the model."
+}

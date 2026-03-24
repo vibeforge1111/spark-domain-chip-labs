@@ -1,0 +1,2612 @@
+{
+  "packet_kind": "mirofish_hybrid_evaluation_spec",
+  "created_at": "2026-03-24T18:23:18.231758+00:00",
+  "source_batch_id": null,
+  "source_packet_kind": "mirofish_discovery_program",
+  "evidence_lane": "exploratory_frontier",
+  "discovered_domain_ids": [
+    "hook-angle-test-copilot",
+    "cross-platform-clip-calendar-copilot",
+    "creator-membership-flywheel-copilot"
+  ],
+  "proposed_benchmark_domain_ids": [],
+  "promotion_review_domain_ids": [],
+  "benchmark_domain_ids": [
+    "trading-crypto",
+    "startup-yc",
+    "cursor-copilot",
+    "mcp-server-builder",
+    "ai-agent-builder"
+  ],
+  "harness": {
+    "max_rounds": 8,
+    "flagship_count_per_type": 8,
+    "flagship_agent_count": 120,
+    "ensemble_runs": 4,
+    "ensemble_count_per_type": 4,
+    "ensemble_agent_count": 60,
+    "persona_types": 15,
+    "read_order": [
+      "agent_choice_signal",
+      "peak_interest_probability",
+      "final_adoption_rate"
+    ]
+  },
+  "benchmark_panel": [
+    {
+      "domain_id": "trading-crypto",
+      "label": "Crypto Trading Intelligence",
+      "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+      "scores": {
+        "market_size": 0.92,
+        "data_availability": 0.94,
+        "benchmark_feasibility": 0.9,
+        "community_demand": 0.88,
+        "spark_ecosystem_fit": 0.78,
+        "monetization_potential": 0.91
+      },
+      "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+      "related_chips": [
+        "defi-architect"
+      ],
+      "evidence_sources": [
+        "github",
+        "community",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.889,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+      "scores": {
+        "market_size": 0.83,
+        "data_availability": 0.89,
+        "benchmark_feasibility": 0.85,
+        "community_demand": 0.82,
+        "spark_ecosystem_fit": 0.95,
+        "monetization_potential": 0.76
+      },
+      "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+      "related_chips": [
+        "cursor-copilot",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.852,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "label": "AI Agent Architecture",
+      "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+      "scores": {
+        "market_size": 0.88,
+        "data_availability": 0.82,
+        "benchmark_feasibility": 0.75,
+        "community_demand": 0.9,
+        "spark_ecosystem_fit": 0.8,
+        "monetization_potential": 0.78
+      },
+      "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+      "related_chips": [],
+      "evidence_sources": [
+        "producthunt",
+        "github",
+        "arxiv"
+      ],
+      "composite_score": 0.827,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    }
+  ],
+  "discovered_opportunities": [
+    {
+      "domain_id": "hook-angle-test-copilot",
+      "label": "Hook Angle Test Copilot",
+      "description": "Generates, tracks, and learns from repeated short-form hook variants so creators can systematically improve opening retention in their niche.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6681,
+      "rationale": "Recent creator-growth writing increasingly treats the first seconds of short-form content as an explicit testing surface. MRPOPULAR reports repeated hook testing as a core workflow, and Hook Studio argues completion-rate optimization has become the deciding growth loop rather than generic vanity metrics.",
+      "related_chips": [
+        "xcontent",
+        "tiktok-creator",
+        "youtube-remixer"
+      ],
+      "evidence_sources": [
+        "mrpopular-hook-tests-2025",
+        "hook-studio-retention-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "testing and iterating opening hooks for short-form creator content across X, TikTok, Reels, and Shorts",
+        "mastery_surface": "learning which curiosity gaps, claims, structures, and pacing patterns actually raise completion and hold rates for a creator's specific audience",
+        "user_value_loop": "draft hook variants, attach them to content drafts, compare early retention and completion outcomes, and update the creator's winning hook library after each post batch",
+        "domain_tags": [
+          "creator-growth",
+          "short-form-video",
+          "retention",
+          "hook-testing"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "cross-platform-clip-calendar-copilot",
+      "label": "Cross-Platform Clip Calendar Copilot",
+      "description": "Turns one long-form creator asset into a scheduled, cross-platform clip and post calendar that keeps learning which formats and channels actually compound reach.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.79
+      },
+      "composite_score": 0.6751,
+      "rationale": "Creator tooling in 2025 is converging on repurposing as a repeated workflow rather than a one-off editing task. Repurpose.io frames the main problem as turning one long-form asset into many channel-native outputs, while Athenic presents structured automation flows that drip one source asset across multiple platforms over time.",
+      "related_chips": [
+        "youtube-remixer",
+        "xcontent",
+        "tiktok-creator"
+      ],
+      "evidence_sources": [
+        "repurpose-tools-2025",
+        "athenic-repurposing-automation-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "repurposing long-form creator content into recurring short-form clips, posts, and publishing plans across multiple channels",
+        "mastery_surface": "learning which source segments, packaging formats, and platform-specific edits consistently generate reuse and distribution gains for a creator business",
+        "user_value_loop": "ingest a podcast, video, or thread, cut candidate clips and post variants, distribute them across channels, and refine the repurposing playbook from performance outcomes",
+        "domain_tags": [
+          "creator-growth",
+          "content-repurposing",
+          "distribution",
+          "publishing-ops"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "creator-membership-flywheel-copilot",
+      "label": "Creator Membership Flywheel Copilot",
+      "description": "Helps creators convert attention into recurring paid-community revenue by packaging offers, launch cadence, member touchpoints, and retention signals into one repeatable operating loop.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6701,
+      "rationale": "Recent creator-economy reporting points toward memberships and community as the stable monetization center of gravity. Circle's 2025 and 2026 reporting emphasizes recurring revenue and owned community as the core creator business model, while IAB's ad-spend growth shows attention is still expanding even as creators look for more durable monetization layers.",
+      "related_chips": [
+        "xcontent",
+        "startup-yc",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "circle-community-trends-2025",
+        "circle-creator-economy-statistics-2026",
+        "iab-creator-ad-spend-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "turning creator audience engagement into paid memberships, community offers, and recurring revenue operations",
+        "mastery_surface": "learning which offers, launch structures, pricing bands, and retention rituals actually move followers into long-lived paid communities",
+        "user_value_loop": "analyze audience demand signals, draft the membership offer and launch sequence, ship recurring member value touches, and refine conversion and retention plays after each cycle",
+        "domain_tags": [
+          "creator-growth",
+          "membership",
+          "community",
+          "monetization"
+        ],
+        "promotion_status": "candidate"
+      }
+    }
+  ],
+  "proposed_benchmark_opportunities": [],
+  "promotion_review_opportunities": [],
+  "static_rankings": [
+    {
+      "domain_id": "trading-crypto",
+      "label": "Crypto Trading Intelligence",
+      "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+      "scores": {
+        "market_size": 0.92,
+        "data_availability": 0.94,
+        "benchmark_feasibility": 0.9,
+        "community_demand": 0.88,
+        "spark_ecosystem_fit": 0.78,
+        "monetization_potential": 0.91
+      },
+      "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+      "related_chips": [
+        "defi-architect"
+      ],
+      "evidence_sources": [
+        "github",
+        "community",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.889,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+      "scores": {
+        "market_size": 0.83,
+        "data_availability": 0.89,
+        "benchmark_feasibility": 0.85,
+        "community_demand": 0.82,
+        "spark_ecosystem_fit": 0.95,
+        "monetization_potential": 0.76
+      },
+      "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+      "related_chips": [
+        "cursor-copilot",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.852,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "label": "AI Agent Architecture",
+      "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+      "scores": {
+        "market_size": 0.88,
+        "data_availability": 0.82,
+        "benchmark_feasibility": 0.75,
+        "community_demand": 0.9,
+        "spark_ecosystem_fit": 0.8,
+        "monetization_potential": 0.78
+      },
+      "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+      "related_chips": [],
+      "evidence_sources": [
+        "producthunt",
+        "github",
+        "arxiv"
+      ],
+      "composite_score": 0.827,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cross-platform-clip-calendar-copilot",
+      "label": "Cross-Platform Clip Calendar Copilot",
+      "description": "Turns one long-form creator asset into a scheduled, cross-platform clip and post calendar that keeps learning which formats and channels actually compound reach.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.79
+      },
+      "composite_score": 0.6751,
+      "rationale": "Creator tooling in 2025 is converging on repurposing as a repeated workflow rather than a one-off editing task. Repurpose.io frames the main problem as turning one long-form asset into many channel-native outputs, while Athenic presents structured automation flows that drip one source asset across multiple platforms over time.",
+      "related_chips": [
+        "youtube-remixer",
+        "xcontent",
+        "tiktok-creator"
+      ],
+      "evidence_sources": [
+        "repurpose-tools-2025",
+        "athenic-repurposing-automation-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "repurposing long-form creator content into recurring short-form clips, posts, and publishing plans across multiple channels",
+        "mastery_surface": "learning which source segments, packaging formats, and platform-specific edits consistently generate reuse and distribution gains for a creator business",
+        "user_value_loop": "ingest a podcast, video, or thread, cut candidate clips and post variants, distribute them across channels, and refine the repurposing playbook from performance outcomes",
+        "domain_tags": [
+          "creator-growth",
+          "content-repurposing",
+          "distribution",
+          "publishing-ops"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "creator-membership-flywheel-copilot",
+      "label": "Creator Membership Flywheel Copilot",
+      "description": "Helps creators convert attention into recurring paid-community revenue by packaging offers, launch cadence, member touchpoints, and retention signals into one repeatable operating loop.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6701,
+      "rationale": "Recent creator-economy reporting points toward memberships and community as the stable monetization center of gravity. Circle's 2025 and 2026 reporting emphasizes recurring revenue and owned community as the core creator business model, while IAB's ad-spend growth shows attention is still expanding even as creators look for more durable monetization layers.",
+      "related_chips": [
+        "xcontent",
+        "startup-yc",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "circle-community-trends-2025",
+        "circle-creator-economy-statistics-2026",
+        "iab-creator-ad-spend-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "turning creator audience engagement into paid memberships, community offers, and recurring revenue operations",
+        "mastery_surface": "learning which offers, launch structures, pricing bands, and retention rituals actually move followers into long-lived paid communities",
+        "user_value_loop": "analyze audience demand signals, draft the membership offer and launch sequence, ship recurring member value touches, and refine conversion and retention plays after each cycle",
+        "domain_tags": [
+          "creator-growth",
+          "membership",
+          "community",
+          "monetization"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "hook-angle-test-copilot",
+      "label": "Hook Angle Test Copilot",
+      "description": "Generates, tracks, and learns from repeated short-form hook variants so creators can systematically improve opening retention in their niche.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6681,
+      "rationale": "Recent creator-growth writing increasingly treats the first seconds of short-form content as an explicit testing surface. MRPOPULAR reports repeated hook testing as a core workflow, and Hook Studio argues completion-rate optimization has become the deciding growth loop rather than generic vanity metrics.",
+      "related_chips": [
+        "xcontent",
+        "tiktok-creator",
+        "youtube-remixer"
+      ],
+      "evidence_sources": [
+        "mrpopular-hook-tests-2025",
+        "hook-studio-retention-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "testing and iterating opening hooks for short-form creator content across X, TikTok, Reels, and Shorts",
+        "mastery_surface": "learning which curiosity gaps, claims, structures, and pacing patterns actually raise completion and hold rates for a creator's specific audience",
+        "user_value_loop": "draft hook variants, attach them to content drafts, compare early retention and completion outcomes, and update the creator's winning hook library after each post batch",
+        "domain_tags": [
+          "creator-growth",
+          "short-form-video",
+          "retention",
+          "hook-testing"
+        ],
+        "promotion_status": "candidate"
+      }
+    }
+  ],
+  "simulation_inputs": {
+    "domain_ids": [
+      "trading-crypto",
+      "cursor-copilot",
+      "mcp-server-builder",
+      "ai-agent-builder",
+      "startup-yc",
+      "cross-platform-clip-calendar-copilot",
+      "creator-membership-flywheel-copilot",
+      "hook-angle-test-copilot"
+    ],
+    "opportunities": [
+      {
+        "domain_id": "trading-crypto",
+        "label": "Crypto Trading Intelligence",
+        "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+        "scores": {
+          "market_size": 0.92,
+          "data_availability": 0.94,
+          "benchmark_feasibility": 0.9,
+          "community_demand": 0.88,
+          "spark_ecosystem_fit": 0.78,
+          "monetization_potential": 0.91
+        },
+        "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+        "related_chips": [
+          "defi-architect"
+        ],
+        "evidence_sources": [
+          "github",
+          "community",
+          "x_twitter"
+        ],
+        "benchmark_tier": "leadership",
+        "composite_score": 0.889,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "cursor-copilot",
+        "label": "AI Coding Workflow",
+        "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+        "scores": {
+          "market_size": 0.87,
+          "data_availability": 0.9,
+          "benchmark_feasibility": 0.84,
+          "community_demand": 0.85,
+          "spark_ecosystem_fit": 0.93,
+          "monetization_potential": 0.8
+        },
+        "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+        "related_chips": [
+          "mcp-server-builder",
+          "ai-agent-builder"
+        ],
+        "evidence_sources": [
+          "github",
+          "producthunt",
+          "community"
+        ],
+        "benchmark_tier": "midfield",
+        "composite_score": 0.8665,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "mcp-server-builder",
+        "label": "MCP Server Development",
+        "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+        "scores": {
+          "market_size": 0.83,
+          "data_availability": 0.89,
+          "benchmark_feasibility": 0.85,
+          "community_demand": 0.82,
+          "spark_ecosystem_fit": 0.95,
+          "monetization_potential": 0.76
+        },
+        "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+        "related_chips": [
+          "cursor-copilot",
+          "ai-agent-builder"
+        ],
+        "evidence_sources": [
+          "github",
+          "community"
+        ],
+        "benchmark_tier": "midfield",
+        "composite_score": 0.852,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "ai-agent-builder",
+        "label": "AI Agent Architecture",
+        "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+        "scores": {
+          "market_size": 0.88,
+          "data_availability": 0.82,
+          "benchmark_feasibility": 0.75,
+          "community_demand": 0.9,
+          "spark_ecosystem_fit": 0.8,
+          "monetization_potential": 0.78
+        },
+        "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+        "related_chips": [],
+        "evidence_sources": [
+          "producthunt",
+          "github",
+          "arxiv"
+        ],
+        "composite_score": 0.827,
+        "benchmark_tier": "seed_panel",
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "startup-yc",
+        "label": "Startup YC Intelligence",
+        "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+        "scores": {
+          "market_size": 0.86,
+          "data_availability": 0.78,
+          "benchmark_feasibility": 0.74,
+          "community_demand": 0.87,
+          "spark_ecosystem_fit": 0.84,
+          "monetization_potential": 0.89
+        },
+        "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+        "related_chips": [
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "evidence_sources": [
+          "community",
+          "producthunt",
+          "x_twitter"
+        ],
+        "benchmark_tier": "leadership",
+        "composite_score": 0.826,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "cross-platform-clip-calendar-copilot",
+        "label": "Cross-Platform Clip Calendar Copilot",
+        "description": "Turns one long-form creator asset into a scheduled, cross-platform clip and post calendar that keeps learning which formats and channels actually compound reach.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.83,
+          "monetization_potential": 0.79
+        },
+        "composite_score": 0.6751,
+        "rationale": "Creator tooling in 2025 is converging on repurposing as a repeated workflow rather than a one-off editing task. Repurpose.io frames the main problem as turning one long-form asset into many channel-native outputs, while Athenic presents structured automation flows that drip one source asset across multiple platforms over time.",
+        "related_chips": [
+          "youtube-remixer",
+          "xcontent",
+          "tiktok-creator"
+        ],
+        "evidence_sources": [
+          "repurpose-tools-2025",
+          "athenic-repurposing-automation-2025"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "repurposing long-form creator content into recurring short-form clips, posts, and publishing plans across multiple channels",
+          "mastery_surface": "learning which source segments, packaging formats, and platform-specific edits consistently generate reuse and distribution gains for a creator business",
+          "user_value_loop": "ingest a podcast, video, or thread, cut candidate clips and post variants, distribute them across channels, and refine the repurposing playbook from performance outcomes",
+          "domain_tags": [
+            "creator-growth",
+            "content-repurposing",
+            "distribution",
+            "publishing-ops"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "creator-membership-flywheel-copilot",
+        "label": "Creator Membership Flywheel Copilot",
+        "description": "Helps creators convert attention into recurring paid-community revenue by packaging offers, launch cadence, member touchpoints, and retention signals into one repeatable operating loop.",
+        "scores": {
+          "market_size": 0.788,
+          "data_availability": 0.52,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.75,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6701,
+        "rationale": "Recent creator-economy reporting points toward memberships and community as the stable monetization center of gravity. Circle's 2025 and 2026 reporting emphasizes recurring revenue and owned community as the core creator business model, while IAB's ad-spend growth shows attention is still expanding even as creators look for more durable monetization layers.",
+        "related_chips": [
+          "xcontent",
+          "startup-yc",
+          "agentic-marketing"
+        ],
+        "evidence_sources": [
+          "circle-community-trends-2025",
+          "circle-creator-economy-statistics-2026",
+          "iab-creator-ad-spend-2025"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "turning creator audience engagement into paid memberships, community offers, and recurring revenue operations",
+          "mastery_surface": "learning which offers, launch structures, pricing bands, and retention rituals actually move followers into long-lived paid communities",
+          "user_value_loop": "analyze audience demand signals, draft the membership offer and launch sequence, ship recurring member value touches, and refine conversion and retention plays after each cycle",
+          "domain_tags": [
+            "creator-growth",
+            "membership",
+            "community",
+            "monetization"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "hook-angle-test-copilot",
+        "label": "Hook Angle Test Copilot",
+        "description": "Generates, tracks, and learns from repeated short-form hook variants so creators can systematically improve opening retention in their niche.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.83,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6681,
+        "rationale": "Recent creator-growth writing increasingly treats the first seconds of short-form content as an explicit testing surface. MRPOPULAR reports repeated hook testing as a core workflow, and Hook Studio argues completion-rate optimization has become the deciding growth loop rather than generic vanity metrics.",
+        "related_chips": [
+          "xcontent",
+          "tiktok-creator",
+          "youtube-remixer"
+        ],
+        "evidence_sources": [
+          "mrpopular-hook-tests-2025",
+          "hook-studio-retention-2025"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "testing and iterating opening hooks for short-form creator content across X, TikTok, Reels, and Shorts",
+          "mastery_surface": "learning which curiosity gaps, claims, structures, and pacing patterns actually raise completion and hold rates for a creator's specific audience",
+          "user_value_loop": "draft hook variants, attach them to content drafts, compare early retention and completion outcomes, and update the creator's winning hook library after each post batch",
+          "domain_tags": [
+            "creator-growth",
+            "short-form-video",
+            "retention",
+            "hook-testing"
+          ],
+          "promotion_status": "candidate"
+        }
+      }
+    ],
+    "signals": [
+      {
+        "signal_id": "trading-crypto-community-demand",
+        "signal_type": "community_request",
+        "label": "Crypto Trading Intelligence community demand",
+        "strength": 0.88,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-github",
+        "signal_type": "github_trending",
+        "label": "Crypto Trading Intelligence via github",
+        "strength": 0.8357,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-community",
+        "signal_type": "community_request",
+        "label": "Crypto Trading Intelligence via community",
+        "strength": 0.7823,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Crypto Trading Intelligence via x_twitter",
+        "strength": 0.7823,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Crypto Trading Intelligence ecosystem pull from defi-architect",
+        "strength": 0.702,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {
+          "related_chips": [
+            "defi-architect"
+          ]
+        }
+      },
+      {
+        "signal_id": "cursor-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow community demand",
+        "strength": 0.85,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-github",
+        "signal_type": "github_trending",
+        "label": "AI Coding Workflow via github",
+        "strength": 0.7799,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Coding Workflow via producthunt",
+        "strength": 0.7539,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow via community",
+        "strength": 0.7365,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Coding Workflow ecosystem pull from mcp-server-builder, ai-agent-builder",
+        "strength": 0.837,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "mcp-server-builder",
+            "ai-agent-builder"
+          ]
+        }
+      },
+      {
+        "signal_id": "mcp-server-builder-community-demand",
+        "signal_type": "community_request",
+        "label": "MCP Server Development community demand",
+        "strength": 0.82,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-github",
+        "signal_type": "github_trending",
+        "label": "MCP Server Development via github",
+        "strength": 0.7583,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-community",
+        "signal_type": "community_request",
+        "label": "MCP Server Development via community",
+        "strength": 0.6986,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "MCP Server Development ecosystem pull from cursor-copilot, ai-agent-builder",
+        "strength": 0.855,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {
+          "related_chips": [
+            "cursor-copilot",
+            "ai-agent-builder"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-agent-builder-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Agent Architecture community demand",
+        "strength": 0.9,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Agent Architecture via producthunt",
+        "strength": 0.7278,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-github",
+        "signal_type": "github_trending",
+        "label": "AI Agent Architecture via github",
+        "strength": 0.6781,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-arxiv",
+        "signal_type": "github_trending",
+        "label": "AI Agent Architecture via arxiv",
+        "strength": 0.6202,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-community-demand",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence community demand",
+        "strength": 0.87,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-community",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence via community",
+        "strength": 0.7186,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "Startup YC Intelligence via producthunt",
+        "strength": 0.7104,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Startup YC Intelligence via x_twitter",
+        "strength": 0.7186,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Startup YC Intelligence ecosystem pull from indie-hacker, agentic-marketing",
+        "strength": 0.756,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {
+          "related_chips": [
+            "indie-hacker",
+            "agentic-marketing"
+          ]
+        }
+      },
+      {
+        "signal_id": "cross-platform-clip-calendar-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Cross-Platform Clip Calendar Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cross-platform-clip-calendar-copilot-repurpose-tools-2025",
+        "signal_type": "community_request",
+        "label": "Cross-Platform Clip Calendar Copilot via repurpose-tools-2025",
+        "strength": 0.3376,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cross-platform-clip-calendar-copilot-athenic-repurposing-automation-2025",
+        "signal_type": "community_request",
+        "label": "Cross-Platform Clip Calendar Copilot via athenic-repurposing-automation-2025",
+        "strength": 0.3376,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cross-platform-clip-calendar-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Cross-Platform Clip Calendar Copilot ecosystem pull from youtube-remixer, xcontent, tiktok-creator",
+        "strength": 0.747,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "youtube-remixer",
+            "xcontent",
+            "tiktok-creator"
+          ]
+        }
+      },
+      {
+        "signal_id": "creator-membership-flywheel-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Creator Membership Flywheel Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "creator-membership-flywheel-copilot-circle-community-trends-2025",
+        "signal_type": "community_request",
+        "label": "Creator Membership Flywheel Copilot via circle-community-trends-2025",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "creator-membership-flywheel-copilot-circle-creator-economy-statistics-2026",
+        "signal_type": "community_request",
+        "label": "Creator Membership Flywheel Copilot via circle-creator-economy-statistics-2026",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "creator-membership-flywheel-copilot-iab-creator-ad-spend-2025",
+        "signal_type": "community_request",
+        "label": "Creator Membership Flywheel Copilot via iab-creator-ad-spend-2025",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "creator-membership-flywheel-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Creator Membership Flywheel Copilot ecosystem pull from xcontent, startup-yc, agentic-marketing",
+        "strength": 0.675,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "xcontent",
+            "startup-yc",
+            "agentic-marketing"
+          ]
+        }
+      },
+      {
+        "signal_id": "hook-angle-test-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Hook Angle Test Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "hook-angle-test-copilot-mrpopular-hook-tests-2025",
+        "signal_type": "community_request",
+        "label": "Hook Angle Test Copilot via mrpopular-hook-tests-2025",
+        "strength": 0.3341,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "hook-angle-test-copilot-hook-studio-retention-2025",
+        "signal_type": "community_request",
+        "label": "Hook Angle Test Copilot via hook-studio-retention-2025",
+        "strength": 0.3341,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "hook-angle-test-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Hook Angle Test Copilot ecosystem pull from xcontent, tiktok-creator, youtube-remixer",
+        "strength": 0.747,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "xcontent",
+            "tiktok-creator",
+            "youtube-remixer"
+          ]
+        }
+      },
+      {
+        "signal_id": "graph-extends-trading-crypto-chip-defi-architect",
+        "signal_type": "competitor_chip",
+        "label": "trading-crypto extends defi-architect",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends mcp-server-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends ai-agent-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-mcp-server-builder-chip-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "mcp-server-builder extends cursor-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-mcp-server-builder-chip-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "mcp-server-builder extends ai-agent-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends indie-hacker",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-agentic-marketing",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends agentic-marketing",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cross-platform-clip-calendar-copilot-chip-youtube-remixer",
+        "signal_type": "competitor_chip",
+        "label": "cross-platform-clip-calendar-copilot extends youtube-remixer",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cross-platform-clip-calendar-copilot-chip-xcontent",
+        "signal_type": "competitor_chip",
+        "label": "cross-platform-clip-calendar-copilot extends xcontent",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cross-platform-clip-calendar-copilot-chip-tiktok-creator",
+        "signal_type": "competitor_chip",
+        "label": "cross-platform-clip-calendar-copilot extends tiktok-creator",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-creator-membership-flywheel-copilot-chip-xcontent",
+        "signal_type": "competitor_chip",
+        "label": "creator-membership-flywheel-copilot extends xcontent",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-creator-membership-flywheel-copilot-chip-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "creator-membership-flywheel-copilot extends startup-yc",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-creator-membership-flywheel-copilot-chip-agentic-marketing",
+        "signal_type": "competitor_chip",
+        "label": "creator-membership-flywheel-copilot extends agentic-marketing",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-hook-angle-test-copilot-chip-xcontent",
+        "signal_type": "competitor_chip",
+        "label": "hook-angle-test-copilot extends xcontent",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-hook-angle-test-copilot-chip-tiktok-creator",
+        "signal_type": "competitor_chip",
+        "label": "hook-angle-test-copilot extends tiktok-creator",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-hook-angle-test-copilot-chip-youtube-remixer",
+        "signal_type": "competitor_chip",
+        "label": "hook-angle-test-copilot extends youtube-remixer",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2715,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.2715,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.276,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.276,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.273,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.273,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2875,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.2875,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-cross-platform-clip-calendar-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cross-platform-clip-calendar-copilot",
+        "strength": 0.2559,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2559,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-membership-flywheel-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-membership-flywheel-copilot-cross-platform-clip-calendar-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cross-platform-clip-calendar-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hook-angle-test-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-hook-angle-test-copilot-cross-platform-clip-calendar-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cross-platform-clip-calendar-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-membership-flywheel-copilot-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hook-angle-test-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-hook-angle-test-copilot-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-membership-flywheel-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      }
+    ],
+    "scenario": {
+      "scenario_id": "scenario-mirofish-discovery-pilot-100-viral-creator-tranche",
+      "label": "mirofish-discovery-pilot-100-viral-creator-tranche",
+      "shocks": [
+        {
+          "shock_id": "shock-breakout_tool-r4",
+          "template": "breakout_tool",
+          "signal_type": "producthunt_launch",
+          "label": "Breakout Tool Launch",
+          "strength": 0.9,
+          "effect": "positive",
+          "affected_persona_types": [
+            "opportunity_hunter",
+            "developer",
+            "tool_maker",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "cross-platform-clip-calendar-copilot",
+            "creator-membership-flywheel-copilot",
+            "hook-angle-test-copilot"
+          ],
+          "inject_at_round": 4,
+          "description": "A tool goes viral and creates massive awareness for the domain."
+        },
+        {
+          "shock_id": "shock-open_source_release-r7",
+          "template": "open_source_release",
+          "signal_type": "github_trending",
+          "label": "Free Open Source Model Drop",
+          "strength": 0.85,
+          "effect": "positive",
+          "affected_persona_types": [
+            "developer",
+            "tool_maker",
+            "student_builder",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "cursor-copilot",
+            "mcp-server-builder",
+            "ai-agent-builder"
+          ],
+          "inject_at_round": 7,
+          "description": "Major open source AI model released free, lowers barrier to entry.",
+          "decay_curve": "s_curve",
+          "peak_round": 4
+        },
+        {
+          "shock_id": "shock-market_crash-r11",
+          "template": "market_crash",
+          "signal_type": "regulation",
+          "label": "Market Crash",
+          "strength": 0.95,
+          "effect": "negative",
+          "affected_persona_types": [
+            "investor",
+            "trader",
+            "entrepreneur"
+          ],
+          "affects_domains": [
+            "trading-crypto"
+          ],
+          "inject_at_round": 11,
+          "description": "Broad market downturn reduces investment appetite."
+        }
+      ],
+      "shock_count": 3
+    },
+    "graph": {
+      "nodes": [
+        {
+          "id": "platform-github",
+          "type": "platform",
+          "label": "GitHub",
+          "properties": {}
+        },
+        {
+          "id": "platform-producthunt",
+          "type": "platform",
+          "label": "Product Hunt",
+          "properties": {}
+        },
+        {
+          "id": "platform-x_twitter",
+          "type": "platform",
+          "label": "X/Twitter",
+          "properties": {}
+        },
+        {
+          "id": "platform-arxiv",
+          "type": "platform",
+          "label": "arXiv",
+          "properties": {}
+        },
+        {
+          "id": "community-spark",
+          "type": "community",
+          "label": "Spark Ecosystem",
+          "properties": {}
+        },
+        {
+          "id": "community-indie",
+          "type": "community",
+          "label": "Indie Hackers",
+          "properties": {}
+        },
+        {
+          "id": "community-defi",
+          "type": "community",
+          "label": "DeFi Builders",
+          "properties": {}
+        },
+        {
+          "id": "tech-mcp",
+          "type": "technology",
+          "label": "Model Context Protocol",
+          "properties": {}
+        },
+        {
+          "id": "tech-llm",
+          "type": "technology",
+          "label": "Large Language Models",
+          "properties": {}
+        },
+        {
+          "id": "tech-agents",
+          "type": "technology",
+          "label": "AI Agents",
+          "properties": {}
+        },
+        {
+          "id": "regulation-gdpr",
+          "type": "regulation",
+          "label": "GDPR",
+          "properties": {}
+        },
+        {
+          "id": "regulation-sox",
+          "type": "regulation",
+          "label": "SOX",
+          "properties": {}
+        },
+        {
+          "id": "trading-crypto",
+          "type": "domain",
+          "label": "Crypto Trading Intelligence",
+          "properties": {
+            "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+            "composite_score": 0.889,
+            "scores": {
+              "market_size": 0.92,
+              "data_availability": 0.94,
+              "benchmark_feasibility": 0.9,
+              "community_demand": 0.88,
+              "spark_ecosystem_fit": 0.78,
+              "monetization_potential": 0.91
+            },
+            "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+            "domain_tags": [
+              "productivity"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-defi-architect",
+          "type": "technology",
+          "label": "defi-architect",
+          "properties": {}
+        },
+        {
+          "id": "platform-community",
+          "type": "platform",
+          "label": "community",
+          "properties": {}
+        },
+        {
+          "id": "cursor-copilot",
+          "type": "domain",
+          "label": "AI Coding Workflow",
+          "properties": {
+            "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+            "composite_score": 0.8665,
+            "scores": {
+              "market_size": 0.87,
+              "data_availability": 0.9,
+              "benchmark_feasibility": 0.84,
+              "community_demand": 0.85,
+              "spark_ecosystem_fit": 0.93,
+              "monetization_potential": 0.8
+            },
+            "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+            "domain_tags": [
+              "dx",
+              "extensibility",
+              "infrastructure",
+              "productivity",
+              "quick_wins"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-mcp-server-builder",
+          "type": "technology",
+          "label": "mcp-server-builder",
+          "properties": {}
+        },
+        {
+          "id": "chip-ai-agent-builder",
+          "type": "technology",
+          "label": "ai-agent-builder",
+          "properties": {}
+        },
+        {
+          "id": "mcp-server-builder",
+          "type": "domain",
+          "label": "MCP Server Development",
+          "properties": {
+            "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+            "composite_score": 0.852,
+            "scores": {
+              "market_size": 0.83,
+              "data_availability": 0.89,
+              "benchmark_feasibility": 0.85,
+              "community_demand": 0.82,
+              "spark_ecosystem_fit": 0.95,
+              "monetization_potential": 0.76
+            },
+            "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+            "domain_tags": [
+              "dx",
+              "extensibility",
+              "infrastructure",
+              "productivity",
+              "quick_wins"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.41
+          }
+        },
+        {
+          "id": "chip-cursor-copilot",
+          "type": "technology",
+          "label": "cursor-copilot",
+          "properties": {}
+        },
+        {
+          "id": "ai-agent-builder",
+          "type": "domain",
+          "label": "AI Agent Architecture",
+          "properties": {
+            "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+            "composite_score": 0.827,
+            "scores": {
+              "market_size": 0.88,
+              "data_availability": 0.82,
+              "benchmark_feasibility": 0.75,
+              "community_demand": 0.9,
+              "spark_ecosystem_fit": 0.8,
+              "monetization_potential": 0.78
+            },
+            "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+            "domain_tags": [],
+            "retention_score": 0.42,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "startup-yc",
+          "type": "domain",
+          "label": "Startup YC Intelligence",
+          "properties": {
+            "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+            "composite_score": 0.826,
+            "scores": {
+              "market_size": 0.86,
+              "data_availability": 0.78,
+              "benchmark_feasibility": 0.74,
+              "community_demand": 0.87,
+              "spark_ecosystem_fit": 0.84,
+              "monetization_potential": 0.89
+            },
+            "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+            "domain_tags": [
+              "idea_validation",
+              "market_fit",
+              "portfolio_intelligence",
+              "productivity",
+              "roi",
+              "speed_to_ship"
+            ],
+            "retention_score": 0.55,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-indie-hacker",
+          "type": "technology",
+          "label": "indie-hacker",
+          "properties": {}
+        },
+        {
+          "id": "chip-agentic-marketing",
+          "type": "technology",
+          "label": "agentic-marketing",
+          "properties": {}
+        },
+        {
+          "id": "cross-platform-clip-calendar-copilot",
+          "type": "domain",
+          "label": "Cross-Platform Clip Calendar Copilot",
+          "properties": {
+            "description": "Turns one long-form creator asset into a scheduled, cross-platform clip and post calendar that keeps learning which formats and channels actually compound reach.",
+            "composite_score": 0.6751,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.83,
+              "monetization_potential": 0.79
+            },
+            "rationale": "Creator tooling in 2025 is converging on repurposing as a repeated workflow rather than a one-off editing task. Repurpose.io frames the main problem as turning one long-form asset into many channel-native outputs, while Athenic presents structured automation flows that drip one source asset across multiple platforms over time.",
+            "domain_tags": [
+              "content-repurposing",
+              "creator-growth",
+              "distribution",
+              "productivity",
+              "publishing-ops",
+              "quick_wins",
+              "time_leverage"
+            ],
+            "retention_score": 0.63,
+            "choice_score": 0.46
+          }
+        },
+        {
+          "id": "chip-youtube-remixer",
+          "type": "technology",
+          "label": "youtube-remixer",
+          "properties": {}
+        },
+        {
+          "id": "chip-xcontent",
+          "type": "technology",
+          "label": "xcontent",
+          "properties": {}
+        },
+        {
+          "id": "chip-tiktok-creator",
+          "type": "technology",
+          "label": "tiktok-creator",
+          "properties": {}
+        },
+        {
+          "id": "platform-repurpose-tools-2025",
+          "type": "platform",
+          "label": "repurpose-tools-2025",
+          "properties": {}
+        },
+        {
+          "id": "platform-athenic-repurposing-automation-2025",
+          "type": "platform",
+          "label": "athenic-repurposing-automation-2025",
+          "properties": {}
+        },
+        {
+          "id": "creator-membership-flywheel-copilot",
+          "type": "domain",
+          "label": "Creator Membership Flywheel Copilot",
+          "properties": {
+            "description": "Helps creators convert attention into recurring paid-community revenue by packaging offers, launch cadence, member touchpoints, and retention signals into one repeatable operating loop.",
+            "composite_score": 0.6701,
+            "scores": {
+              "market_size": 0.788,
+              "data_availability": 0.52,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.75,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Recent creator-economy reporting points toward memberships and community as the stable monetization center of gravity. Circle's 2025 and 2026 reporting emphasizes recurring revenue and owned community as the core creator business model, while IAB's ad-spend growth shows attention is still expanding even as creators look for more durable monetization layers.",
+            "domain_tags": [
+              "community",
+              "creator-growth",
+              "idea_validation",
+              "market_fit",
+              "membership",
+              "monetization",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "speed_to_ship"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.41
+          }
+        },
+        {
+          "id": "chip-startup-yc",
+          "type": "technology",
+          "label": "startup-yc",
+          "properties": {}
+        },
+        {
+          "id": "platform-circle-community-trends-2025",
+          "type": "platform",
+          "label": "circle-community-trends-2025",
+          "properties": {}
+        },
+        {
+          "id": "platform-circle-creator-economy-statistics-2026",
+          "type": "platform",
+          "label": "circle-creator-economy-statistics-2026",
+          "properties": {}
+        },
+        {
+          "id": "platform-iab-creator-ad-spend-2025",
+          "type": "platform",
+          "label": "iab-creator-ad-spend-2025",
+          "properties": {}
+        },
+        {
+          "id": "hook-angle-test-copilot",
+          "type": "domain",
+          "label": "Hook Angle Test Copilot",
+          "properties": {
+            "description": "Generates, tracks, and learns from repeated short-form hook variants so creators can systematically improve opening retention in their niche.",
+            "composite_score": 0.6681,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.83,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Recent creator-growth writing increasingly treats the first seconds of short-form content as an explicit testing surface. MRPOPULAR reports repeated hook testing as a core workflow, and Hook Studio argues completion-rate optimization has become the deciding growth loop rather than generic vanity metrics.",
+            "domain_tags": [
+              "creator-growth",
+              "hook-testing",
+              "productivity",
+              "quick_wins",
+              "retention",
+              "short-form-video"
+            ],
+            "retention_score": 0.55,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "platform-mrpopular-hook-tests-2025",
+          "type": "platform",
+          "label": "mrpopular-hook-tests-2025",
+          "properties": {}
+        },
+        {
+          "id": "platform-hook-studio-retention-2025",
+          "type": "platform",
+          "label": "hook-studio-retention-2025",
+          "properties": {}
+        }
+      ],
+      "edges": [
+        {
+          "source": "tech-mcp",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.9
+        },
+        {
+          "source": "tech-llm",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.95
+        },
+        {
+          "source": "tech-agents",
+          "target": "community-spark",
+          "relationship": "SERVES",
+          "weight": 0.8
+        },
+        {
+          "source": "regulation-gdpr",
+          "target": "community-defi",
+          "relationship": "DISRUPTS",
+          "weight": 0.3
+        },
+        {
+          "source": "trading-crypto",
+          "target": "chip-defi-architect",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-mcp-server-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-ai-agent-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "chip-cursor-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "chip-ai-agent-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-arxiv",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-indie-hacker",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-agentic-marketing",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "chip-youtube-remixer",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "chip-xcontent",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "chip-tiktok-creator",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "platform-repurpose-tools-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "platform-athenic-repurposing-automation-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "chip-xcontent",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "chip-startup-yc",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "chip-agentic-marketing",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "platform-circle-community-trends-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "platform-circle-creator-economy-statistics-2026",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "platform-iab-creator-ad-spend-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "chip-xcontent",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "chip-tiktok-creator",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "chip-youtube-remixer",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "platform-mrpopular-hook-tests-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "platform-hook-studio-retention-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "cursor-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9267
+        },
+        {
+          "source": "trading-crypto",
+          "target": "mcp-server-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.905
+        },
+        {
+          "source": "trading-crypto",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.92
+        },
+        {
+          "source": "trading-crypto",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9217
+        },
+        {
+          "source": "trading-crypto",
+          "target": "cross-platform-clip-calendar-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.389
+        },
+        {
+          "source": "trading-crypto",
+          "target": "creator-membership-flywheel-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.3915
+        },
+        {
+          "source": "trading-crypto",
+          "target": "hook-angle-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.38315
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "mcp-server-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9367
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9283
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "cross-platform-clip-calendar-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.409
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "creator-membership-flywheel-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40315
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "hook-angle-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40315
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9217
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.91
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "cross-platform-clip-calendar-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.4115
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "creator-membership-flywheel-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41065
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "hook-angle-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41065
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9583
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "cross-platform-clip-calendar-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.424
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "creator-membership-flywheel-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42485
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "hook-angle-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41985
+        },
+        {
+          "source": "startup-yc",
+          "target": "cross-platform-clip-calendar-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.853
+        },
+        {
+          "source": "startup-yc",
+          "target": "creator-membership-flywheel-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42065
+        },
+        {
+          "source": "startup-yc",
+          "target": "hook-angle-test-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42065
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "creator-membership-flywheel-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9617
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "hook-angle-test-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "hook-angle-test-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9733
+        }
+      ],
+      "tracked_variables": {},
+      "node_count": 38,
+      "edge_count": 69
+    }
+  },
+  "summary": {
+    "discovered_count": 3,
+    "benchmark_count": 5,
+    "proposed_benchmark_count": 0,
+    "promotion_review_count": 0,
+    "combined_domain_count": 8,
+    "signal_count": 80,
+    "shock_count": 3,
+    "top_ranked_domain": "trading-crypto"
+  },
+  "governance_note": "Discovered candidates use conservative inferred priors. Hybrid specs are exploratory_frontier and must not auto-promote benchmark membership, including proposed benchmark members and promotion-review candidates."
+}
