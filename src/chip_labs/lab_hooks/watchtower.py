@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import json
 from pathlib import Path
 from typing import Any
 
@@ -26,6 +27,9 @@ def generate_watchtower_pages(mutations: dict[str, str],
 
     # Always generate: Portfolio Dashboard
     pages.append(_portfolio_dashboard_page(now, chip_search_dir))
+
+    # Always generate: MiroFish Portfolio
+    pages.append(_mirofish_portfolio_page(now))
 
     # Conditional: Agent Team Status
     pages.append(_agent_team_page(now, mutations))
@@ -79,6 +83,7 @@ The recursive improvement engine for the Spark domain chip ecosystem.
 ## Links
 
 - [[Portfolio Dashboard]]
+- [[MiroFish Portfolio]]
 - [[Agent Team Status]]
 - [[Graduation Pipeline]]
 - [[Trend Predictions]]
@@ -121,8 +126,88 @@ _Updated each watchtower pass. Track portfolio average over time._
 - Audit chips scoring below 50/100
 - Investigate chips missing evidence lane separation
 - Prioritize graduation pipeline candidates
+
+## Links
+
+- [[Lab Home]]
+- [[MiroFish Portfolio]]
+- [[Trend Predictions]]
 """
     return {"path": "Portfolio Dashboard.md", "content": content}
+
+
+def _mirofish_portfolio_page(timestamp: str) -> dict[str, Any]:
+    """Generate the current MiroFish portfolio checkpoint page."""
+    export_path = _latest_meta_file("MIROFISH_PORTFOLIO_EXPORT_*.md")
+    readout_path = _latest_meta_file("MIROFISH_PORTFOLIO_READOUT_*.json")
+
+    if export_path is not None:
+        export_body = export_path.read_text(encoding="utf-8").strip()
+        content = f"""# MiroFish Portfolio
+
+> Last updated: {timestamp}
+> Canonical export: `{export_path.relative_to(_repo_root())}`
+
+## Current Checkpoint
+
+The page below is sourced from the latest saved MiroFish portfolio export artifact.
+
+{export_body}
+
+## Links
+
+- [[Lab Home]]
+- [[Portfolio Dashboard]]
+- [[Trend Predictions]]
+"""
+        return {"path": "MiroFish Portfolio.md", "content": content}
+
+    if readout_path is not None:
+        from ..mirofish.portfolio import format_portfolio_readout_markdown
+
+        readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        export_body = format_portfolio_readout_markdown(
+            readout_packet,
+            title="MiroFish Portfolio Readout",
+        )
+        content = f"""# MiroFish Portfolio
+
+> Last updated: {timestamp}
+> Canonical readout: `{readout_path.relative_to(_repo_root())}`
+
+## Current Checkpoint
+
+No saved markdown export was found, so this page was rendered directly from the latest portfolio readout packet.
+
+{export_body}
+
+## Links
+
+- [[Lab Home]]
+- [[Portfolio Dashboard]]
+- [[Trend Predictions]]
+"""
+        return {"path": "MiroFish Portfolio.md", "content": content}
+
+    content = f"""# MiroFish Portfolio
+
+> Last updated: {timestamp}
+
+## Current Checkpoint
+
+No saved MiroFish portfolio export or readout artifact was found under `research/meta/`.
+
+## Next Step
+
+- Generate a saved portfolio readout or export artifact before treating this page as the canonical MiroFish dashboard surface.
+
+## Links
+
+- [[Lab Home]]
+- [[Portfolio Dashboard]]
+- [[Trend Predictions]]
+"""
+    return {"path": "MiroFish Portfolio.md", "content": content}
 
 
 def _agent_team_page(timestamp: str, mutations: dict[str, str]) -> dict[str, Any]:
@@ -219,5 +304,20 @@ def _trend_predictions_page(timestamp: str) -> dict[str, Any]:
 
 - [[Lab Home]]
 - [[Portfolio Dashboard]]
+- [[MiroFish Portfolio]]
 """
     return {"path": "Trend Predictions.md", "content": content}
+
+
+def _repo_root() -> Path:
+    """Return the repository root from the watchtower module location."""
+    return Path(__file__).resolve().parents[3]
+
+
+def _latest_meta_file(pattern: str) -> Path | None:
+    """Return the most recent matching research/meta artifact by name."""
+    research_meta = _repo_root() / "research" / "meta"
+    matches = sorted(research_meta.glob(pattern))
+    if not matches:
+        return None
+    return matches[-1]

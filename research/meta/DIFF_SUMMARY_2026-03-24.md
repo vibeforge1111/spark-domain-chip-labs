@@ -235,3 +235,12 @@ MiroFish portfolio export:
 - expose a repo-local `mirofish-portfolio-export` CLI command
 - generate the medium-checkpoint markdown export under `research/meta/`
 - verify the new exporter with the focused portfolio regression suite
+
+## Batch 27
+
+MiroFish dashboard surface:
+
+- wire the canonical medium checkpoint into the watchtower observatory surface
+- add a `MiroFish Portfolio` page that prefers the saved markdown export and falls back to the saved readout packet
+- link the new page from the main watchtower pages
+- verify the surface with focused tests and a direct generation check

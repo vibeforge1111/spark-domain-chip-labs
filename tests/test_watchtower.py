@@ -15,7 +15,7 @@ class TestPageGeneration:
             mutations={},
             chip_search_dir=tmp_path,
         )
-        assert len(pages) >= 4
+        assert len(pages) >= 5
 
     def test_expected_page_names(self, tmp_path: Path) -> None:
         pages = generate_watchtower_pages(
@@ -25,6 +25,7 @@ class TestPageGeneration:
         paths = [p["path"] for p in pages]
         assert "Lab Home.md" in paths
         assert "Portfolio Dashboard.md" in paths
+        assert "MiroFish Portfolio.md" in paths
         assert "Agent Team Status.md" in paths
         assert "Graduation Pipeline.md" in paths
 
@@ -72,3 +73,23 @@ class TestLabHomePage:
         lab_home = next(p for p in pages if p["path"] == "Lab Home.md")
         assert "Frontier Scout" in lab_home["content"]
         assert "Methodology Researcher" in lab_home["content"]
+
+
+class TestMiroFishPortfolioPage:
+    """Test MiroFish portfolio watchtower page generation."""
+
+    def test_mirofish_page_contains_heading(self, tmp_path: Path) -> None:
+        pages = generate_watchtower_pages(
+            mutations={},
+            chip_search_dir=tmp_path,
+        )
+        mirofish_page = next(p for p in pages if p["path"] == "MiroFish Portfolio.md")
+        assert "# MiroFish Portfolio" in mirofish_page["content"]
+
+    def test_mirofish_page_links_back_to_dashboard(self, tmp_path: Path) -> None:
+        pages = generate_watchtower_pages(
+            mutations={},
+            chip_search_dir=tmp_path,
+        )
+        mirofish_page = next(p for p in pages if p["path"] == "MiroFish Portfolio.md")
+        assert "[[Portfolio Dashboard]]" in mirofish_page["content"]

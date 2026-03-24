@@ -1042,3 +1042,36 @@ The repo could already produce raw portfolio run packets and JSON readouts, but 
 
 - The export path is downstream of the saved readout packet and does not introduce a second ranking algorithm.
 - This tranche makes the medium checkpoint easier to consume without reopening the rerun question.
+
+## Tranche: MiroFish Dashboard Surface
+
+### Files Changed
+
+- `src/chip_labs/lab_hooks/watchtower.py`
+- `tests/test_watchtower.py`
+- `research/meta/MIROFISH_DASHBOARD_SURFACE_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_dashboard_surface.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The medium checkpoint already had a canonical export artifact, but there was still no in-repo dashboard surface consuming it inside the current mutable-target contract.
+
+### What Changed
+
+- Added a `MiroFish Portfolio.md` watchtower page
+- Linked that page from the core watchtower surfaces
+- Made the new page prefer the saved markdown export artifact
+- Added a fallback that renders directly from the saved JSON readout packet if the markdown export is missing
+- Added a clear stub when no saved MiroFish portfolio artifact exists yet
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+- Run `$env:PYTHONPATH='src'; python -c "from chip_labs.watchtower import generate_watchtower_pages; pages=generate_watchtower_pages({}, chip_search_dir='.'); page=next(p for p in pages if p['path']=='MiroFish Portfolio.md'); print(page['content'][:1200])"`
+
+### Notes
+
+- This tranche deliberately uses the watchtower surface instead of the legacy `viz/` path.
+- The watchtower page is a downstream surface over the canonical checkpoint, not a new ranking source.

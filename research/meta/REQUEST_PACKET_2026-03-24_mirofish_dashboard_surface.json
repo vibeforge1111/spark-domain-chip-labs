@@ -1,0 +1,50 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_dashboard_surface",
+  "created_at": "2026-03-24",
+  "scope": "Wire the canonical medium MiroFish checkpoint into the existing in-repo watchtower dashboard surface",
+  "decision_context": {
+    "prior_state": "The repo had a canonical medium checkpoint and a markdown export, but no downstream in-repo dashboard surface consumed it yet. The legacy viz path is outside the mutable-target contract for this session.",
+    "decision": "Integrate the checkpoint into the watchtower observatory by adding a first-class MiroFish Portfolio page that prefers the saved markdown export and falls back to the saved JSON readout.",
+    "why_now": "The next useful step after the export tranche is to make the current checkpoint visible in an existing dashboard-like surface inside the allowed edit scope."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/lab_hooks/watchtower.py",
+      "purpose": "Adds the MiroFish Portfolio watchtower page and links to it from related observatory pages."
+    },
+    {
+      "path": "tests/test_watchtower.py",
+      "purpose": "Covers the new watchtower page."
+    },
+    {
+      "path": "research/meta/MIROFISH_DASHBOARD_SURFACE_NOTE_2026-03-24.md",
+      "purpose": "Records why the watchtower surface was used as the in-repo dashboard path."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_dashboard_surface.json",
+      "purpose": "Captures why the dashboard-surface tranche was added."
+    }
+  ],
+  "planned_steps": [
+    "Add a MiroFish Portfolio page to the watchtower output",
+    "Make that page consume the canonical markdown export when available",
+    "Add a JSON-readout fallback and a no-artifact stub",
+    "Verify the page through focused tests and a direct runtime generation check"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q",
+      "$env:PYTHONPATH='src'; python -c \"from chip_labs.watchtower import generate_watchtower_pages; pages=generate_watchtower_pages({}, chip_search_dir='.'); page=next(p for p in pages if p['path']=='MiroFish Portfolio.md'); print(page['content'][:1200])\""
+    ],
+    "expected_checks": [
+      "The watchtower output includes a new MiroFish Portfolio page",
+      "The page links back into the rest of the observatory surface",
+      "The generated page resolves to the canonical medium export artifact when that artifact exists"
+    ]
+  },
+  "guardrails": [
+    "Do not touch the legacy viz path in this tranche",
+    "Do not re-rank domains inside the watchtower surface",
+    "Treat the watchtower page as a surface over the canonical checkpoint, not as a new source of truth"
+  ]
+}
