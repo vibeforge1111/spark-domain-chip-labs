@@ -1,6 +1,7 @@
 """Tests for MiroFish frontier readout and export helpers."""
 
 from chip_labs.mirofish.hybrid import (
+    build_frontier_simulation_tranche,
     build_frontier_readout,
     format_frontier_readout_markdown,
 )
@@ -179,3 +180,38 @@ def test_format_frontier_readout_markdown_includes_sections() -> None:
     assert "## Above Benchmark" in markdown
     assert "`chip_ai_agent_07`" in markdown
     assert "*exploratory_frontier*" in markdown
+
+
+def test_build_frontier_simulation_tranche_keeps_anchors_and_diversifies() -> None:
+    result_packet = {
+        "created_at": "2026-03-24T00:00:00+00:00",
+        "program_id": "frontier-1000",
+        "stage_label": "frontier_1000",
+        "evidence_lane": "exploratory_frontier",
+        "accepted_candidates": [
+            {"domain_id": "alpha", "domain_tags": ["creator"]},
+            {"domain_id": "beta", "domain_tags": ["gaming"]},
+            {"domain_id": "gamma", "domain_tags": ["crypto"]},
+            {"domain_id": "delta", "domain_tags": ["creator"]},
+            {"domain_id": "epsilon", "domain_tags": ["gaming"]},
+            {"domain_id": "zeta", "domain_tags": ["career"]},
+        ],
+    }
+    anchor_readout = {
+        "above_benchmark_domains": [{"domain_id": "beta"}],
+        "top_domains_overall": [{"domain_id": "alpha"}],
+        "top_choice_domains": [{"domain_id": "gamma"}],
+        "watchlist_domains": [{"domain_id": "alpha"}],
+    }
+
+    tranche = build_frontier_simulation_tranche(
+        result_packet,
+        target_count=5,
+        anchor_readout=anchor_readout,
+    )
+
+    selected_ids = [row["domain_id"] for row in tranche["accepted_candidates"]]
+    assert selected_ids[:3] == ["beta", "alpha", "gamma"]
+    assert len(selected_ids) == 5
+    assert tranche["selection_policy"]["anchor_count_retained"] == 3
+    assert set(tranche["selection_policy"]["represented_primary_tags"]) >= {"creator", "gaming", "crypto"}

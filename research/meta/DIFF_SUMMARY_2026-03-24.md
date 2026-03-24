@@ -468,3 +468,11 @@ MiroFish frontier readout export:
 - add a repo-local frontier readout and markdown export path on top of saved hybrid runs
 - generate the ranked JSON readout and operator-facing markdown export for the deeper `90`-domain frontier checkpoint
 - surface the first usable deeper-frontier winners, with `chip_ai_agent_07`, `chip_ai_agent_11`, `fandom-drop-interpretation-loop`, and `changelog-to-launch-loop` clearing the benchmark median in the current tractable run
+
+## Batch 54
+
+MiroFish frontier tranche 180 medium:
+
+- add a repo-local anchored frontier tranche builder so broader slices can be selected from the full `1000`-domain frontier using the deeper `90` readout as the anchor
+- generate the anchored `180`-domain simulation tranche and run a medium bounded hybrid checkpoint on it
+- confirm that the broader slice is still tractable and still yields retained leaders, but that it is materially weaker than the deeper `90`, with top ensemble adoption at `2.67%` and the benchmark median back at `0.00%`

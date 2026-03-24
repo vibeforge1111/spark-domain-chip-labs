@@ -954,6 +954,20 @@ def cmd_mirofish_frontier_export(args: argparse.Namespace) -> None:
     _write_text_output(args.output, result)
 
 
+def cmd_mirofish_frontier_tranche(args: argparse.Namespace) -> None:
+    """Build a tractable frontier simulation tranche from the full canonical frontier."""
+    from .mirofish.hybrid import build_frontier_simulation_tranche
+
+    input_data = _load_input(args.input)
+    anchor_data = _load_input(args.anchor_readout) if args.anchor_readout else None
+    result = build_frontier_simulation_tranche(
+        input_data,
+        target_count=args.target_count,
+        anchor_readout=anchor_data,
+    )
+    _write_output(args.output, result)
+
+
 # ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
@@ -1482,6 +1496,27 @@ def main() -> None:
         help="Document title for the markdown export.",
     )
     p_mirofish_frontier_export.set_defaults(func=cmd_mirofish_frontier_export)
+
+    # mirofish-frontier-tranche
+    p_mirofish_frontier_tranche = sub.add_parser(
+        "mirofish-frontier-tranche",
+        help="Build a tractable frontier simulation tranche from the canonical frontier result.",
+    )
+    p_mirofish_frontier_tranche.add_argument("--input", type=str, required=True, help="Input canonical frontier result path.")
+    p_mirofish_frontier_tranche.add_argument("--output", type=str, default=None, help="Output tranche path.")
+    p_mirofish_frontier_tranche.add_argument(
+        "--anchor-readout",
+        type=str,
+        default=None,
+        help="Optional frontier readout path to anchor tranche selection.",
+    )
+    p_mirofish_frontier_tranche.add_argument(
+        "--target-count",
+        type=int,
+        default=180,
+        help="Target number of accepted frontier domains to keep in the tranche.",
+    )
+    p_mirofish_frontier_tranche.set_defaults(func=cmd_mirofish_frontier_tranche)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")

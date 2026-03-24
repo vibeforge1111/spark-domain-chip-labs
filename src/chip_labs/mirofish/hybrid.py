@@ -666,6 +666,105 @@ def format_frontier_readout_markdown(
     return "\n".join(lines) + "\n"
 
 
+def build_frontier_simulation_tranche(
+    result_packet: dict[str, Any],
+    target_count: int = 180,
+    anchor_readout: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Build a larger tractable frontier tranche anchored by a saved readout."""
+    accepted_candidates = list(result_packet.get("accepted_candidates", []))
+    candidate_map = {
+        item.get("domain_id"): deepcopy(item)
+        for item in accepted_candidates
+        if item.get("domain_id")
+    }
+
+    anchor_ids: list[str] = []
+    if anchor_readout:
+        for section in (
+            "above_benchmark_domains",
+            "top_domains_overall",
+            "top_choice_domains",
+            "watchlist_domains",
+        ):
+            for row in anchor_readout.get(section, []):
+                domain_id = row.get("domain_id")
+                if domain_id and domain_id not in anchor_ids:
+                    anchor_ids.append(domain_id)
+
+    selected: list[dict[str, Any]] = []
+    selected_ids: set[str] = set()
+    for domain_id in anchor_ids:
+        candidate = candidate_map.get(domain_id)
+        if not candidate or domain_id in selected_ids or len(selected) >= target_count:
+            continue
+        selected.append(candidate)
+        selected_ids.add(domain_id)
+
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    group_order: list[str] = []
+    for candidate in accepted_candidates:
+        domain_id = candidate.get("domain_id")
+        if not domain_id or domain_id in selected_ids:
+            continue
+        group = _primary_tag(candidate)
+        if group not in grouped:
+            grouped[group] = []
+            group_order.append(group)
+        grouped[group].append(deepcopy(candidate))
+
+    while len(selected) < target_count:
+        progressed = False
+        for group in group_order:
+            rows = grouped.get(group, [])
+            if not rows:
+                continue
+            candidate = rows.pop(0)
+            domain_id = candidate.get("domain_id")
+            if not domain_id or domain_id in selected_ids:
+                continue
+            selected.append(candidate)
+            selected_ids.add(domain_id)
+            progressed = True
+            if len(selected) >= target_count:
+                break
+        if not progressed:
+            break
+
+    represented_groups: dict[str, int] = {}
+    for candidate in selected:
+        group = _primary_tag(candidate)
+        represented_groups[group] = represented_groups.get(group, 0) + 1
+
+    anchor_retained = [domain_id for domain_id in anchor_ids if domain_id in selected_ids]
+    return {
+        "packet_kind": "mirofish_discovery_program_result",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "program_id": f"{result_packet.get('program_id', 'mirofish-frontier')}-simulation-tranche-{len(selected)}",
+        "stage_label": f"{result_packet.get('stage_label', 'frontier')}_simulation_tranche_{len(selected)}",
+        "evidence_lane": result_packet.get("evidence_lane", "exploratory_frontier"),
+        "participating_agent_count": len(selected),
+        "target_agent_count": target_count,
+        "selection_policy": {
+            "strategy": "anchor_then_round_robin_primary_tag",
+            "anchor_readout_used": anchor_readout is not None,
+            "anchor_sections": [
+                "above_benchmark_domains",
+                "top_domains_overall",
+                "top_choice_domains",
+                "watchlist_domains",
+            ] if anchor_readout else [],
+            "anchor_count_retained": len(anchor_retained),
+            "represented_primary_tags": represented_groups,
+        },
+        "accepted_candidates": selected,
+        "governance_note": (
+            "Simulation tranches are tractability artifacts. They preserve current frontier winners "
+            "and diversity, but they are not equivalent to a full-frontier hybrid evaluation."
+        ),
+    }
+
+
 def discovery_candidate_to_opportunity(candidate: dict[str, Any]) -> dict[str, Any]:
     """Convert a canonical discovery candidate into a conservative MiroFish opportunity."""
     scores = infer_discovery_scores(candidate)
@@ -710,6 +809,13 @@ def _as_proposed_benchmark(opportunity: dict[str, Any]) -> dict[str, Any]:
     candidate_context["promotion_status"] = "maintained_benchmark_proposal"
     proposed_candidate["candidate_context"] = candidate_context
     return proposed_candidate
+
+
+def _primary_tag(candidate: dict[str, Any]) -> str:
+    tags = list(candidate.get("domain_tags", []))
+    if not tags:
+        return "untagged"
+    return str(tags[0])
 
 
 def infer_discovery_scores(candidate: dict[str, Any]) -> dict[str, float]:

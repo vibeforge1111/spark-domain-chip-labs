@@ -1,0 +1,70 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_frontier_tranche_180_medium",
+  "created_at": "2026-03-24",
+  "scope": "Build an anchored larger frontier simulation tranche from the 1000-domain canonical frontier and run a medium hybrid checkpoint on it",
+  "decision_context": {
+    "prior_state": "The deeper 90-domain frontier checkpoint was the current best quality read, but it was still unclear whether a broader tractable frontier slice could preserve any meaningful signal.",
+    "decision": "Add a repo-local frontier tranche builder, generate an anchored 180-domain slice from the full frontier using the deeper 90 readout, and run a medium hybrid harness on that broader slice.",
+    "why_now": "This is the cheapest way to test frontier breadth scaling without reopening the impossible full-frontier path."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/hybrid.py",
+      "purpose": "Adds anchored frontier tranche construction."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Exposes the frontier tranche builder through the repo-local CLI."
+    },
+    {
+      "path": "tests/test_mirofish_hybrid.py",
+      "purpose": "Covers anchored tranche selection."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_SIMULATION_TRANCHE_180_2026-03-24.json",
+      "purpose": "Anchored 180-domain frontier tranche packet."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_180_MEDIUM_2026-03-24.json",
+      "purpose": "Saved medium hybrid run for the anchored 180-domain tranche."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_180_MEDIUM_2026-03-24.json",
+      "purpose": "Ranked readout for the anchored 180-domain medium checkpoint."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_EXPORT_TRANCHE_180_MEDIUM_2026-03-24.md",
+      "purpose": "Operator-facing markdown export for the anchored 180-domain medium checkpoint."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_TRANCHE_180_MEDIUM_NOTE_2026-03-24.md",
+      "purpose": "Documents why the 180-domain tranche exists and how it compares to the deeper 90."
+    }
+  ],
+  "planned_steps": [
+    "Build an anchored 180-domain tranche from the canonical frontier and the deeper 90 readout",
+    "Run a medium bounded hybrid checkpoint on the anchored tranche",
+    "Generate the diagnostic, ranked readout, and markdown export for comparison against the deeper 90 checkpoint"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_hybrid.py tests/test_mirofish_discovery.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-frontier-tranche --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_RESULT_2026-03-24.json --anchor-readout research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_90_DEEPER_2026-03-24.json --target-count 180 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_SIMULATION_TRANCHE_180_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_SIMULATION_TRANCHE_180_2026-03-24.json --rounds 8 --flagship-count-per-type 5 --ensemble-runs 4 --ensemble-count-per-type 2 --scenario-label mirofish-frontier-tranche-180-medium --output research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_180_MEDIUM_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_180_MEDIUM_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_180_MEDIUM_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_180_MEDIUM_2026-03-24.json --output research/meta/MIROFISH_HYBRID_DIAGNOSTIC_FRONTIER_TRANCHE_180_MEDIUM_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-frontier-readout --input research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_180_MEDIUM_2026-03-24.json --output research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_180_MEDIUM_2026-03-24.json --top-n 25 --watchlist-n 15 --benchmark-n 10",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-frontier-export --input research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_180_MEDIUM_2026-03-24.json --output research/meta/MIROFISH_FRONTIER_EXPORT_TRANCHE_180_MEDIUM_2026-03-24.md --title \"MiroFish Frontier Tranche 180 Medium Export\""
+    ],
+    "expected_checks": [
+      "The anchored tranche retains current frontier winners while widening domain diversity",
+      "The 180-domain medium run completes successfully",
+      "The resulting readout is directly comparable against the deeper 90 checkpoint"
+    ]
+  },
+  "guardrails": [
+    "Do not treat the anchored 180 medium run as better than the deeper 90 unless the metrics actually improve",
+    "Do not mutate frontier conversion logic in this tranche",
+    "Keep the larger tranche anchored to the saved deeper frontier readout instead of hand-picking winners"
+  ]
+}
