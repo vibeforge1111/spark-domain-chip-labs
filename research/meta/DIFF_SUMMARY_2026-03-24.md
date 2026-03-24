@@ -226,3 +226,12 @@ MiroFish portfolio rerun decision:
 - state explicitly that another deeper full-universe rerun should not be launched from the current March 24 state
 - define the minimum harness, runtime-budget, and success-criterion contract required to reopen that path
 - keep the medium checkpoint as canonical until a future rerun clearly beats it on usefulness
+
+## Batch 26
+
+MiroFish portfolio export:
+
+- add a markdown formatter for saved portfolio readout packets
+- expose a repo-local `mirofish-portfolio-export` CLI command
+- generate the medium-checkpoint markdown export under `research/meta/`
+- verify the new exporter with the focused portfolio regression suite

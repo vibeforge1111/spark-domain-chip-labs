@@ -45,6 +45,15 @@ def _write_output(output_path: str | None, data: Any) -> None:
         print(output_json)
 
 
+def _write_text_output(output_path: str | None, content: str) -> None:
+    """Write plain-text output to file path or stdout."""
+    if output_path:
+        Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+        Path(output_path).write_text(content, encoding="utf-8")
+    else:
+        print(content)
+
+
 def _get_chip_search_dir() -> str | None:
     """Get the chip search directory from environment or default."""
     return os.environ.get("SPARK_CHIP_SEARCH_DIR", None)
@@ -627,6 +636,18 @@ def cmd_mirofish_portfolio_readout(args: argparse.Namespace) -> None:
     _write_output(args.output, result)
 
 
+def cmd_mirofish_portfolio_export(args: argparse.Namespace) -> None:
+    """Export a saved portfolio readout as operator-facing markdown."""
+    from .mirofish.portfolio import format_portfolio_readout_markdown
+
+    input_data = _load_input(args.input)
+    result = format_portfolio_readout_markdown(
+        input_data,
+        title=args.title,
+    )
+    _write_text_output(args.output, result)
+
+
 # ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
@@ -920,6 +941,21 @@ def main() -> None:
         help="Number of v4 / newly added domains to include.",
     )
     p_mirofish_portfolio_readout.set_defaults(func=cmd_mirofish_portfolio_readout)
+
+    # mirofish-portfolio-export
+    p_mirofish_portfolio_export = sub.add_parser(
+        "mirofish-portfolio-export",
+        help="Export a saved MiroFish portfolio readout as operator-facing markdown.",
+    )
+    p_mirofish_portfolio_export.add_argument("--input", type=str, required=True, help="Input portfolio readout path.")
+    p_mirofish_portfolio_export.add_argument("--output", type=str, default=None, help="Output markdown file path.")
+    p_mirofish_portfolio_export.add_argument(
+        "--title",
+        type=str,
+        default="MiroFish Portfolio Export",
+        help="Document title for the markdown export.",
+    )
+    p_mirofish_portfolio_export.set_defaults(func=cmd_mirofish_portfolio_export)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")

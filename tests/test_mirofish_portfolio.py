@@ -1,6 +1,10 @@
 """Tests for the repo-local 515-domain MiroFish wrapper."""
 
-from chip_labs.mirofish.portfolio import build_portfolio_readout, load_full_domain_universe
+from chip_labs.mirofish.portfolio import (
+    build_portfolio_readout,
+    format_portfolio_readout_markdown,
+    load_full_domain_universe,
+)
 
 
 def test_load_full_domain_universe_has_expected_counts() -> None:
@@ -48,3 +52,58 @@ def test_build_portfolio_readout_filters_sections() -> None:
     assert len(readout["top_domains_overall"]) == 2
     assert readout["top_enterprise_domains"][0]["domain_id"] == "ai-security-questionnaire-copilot"
     assert readout["top_newly_discovered_domains"][0]["domain_id"] == "ai-security-questionnaire-copilot"
+
+
+def test_format_portfolio_readout_markdown_includes_sections() -> None:
+    readout = {
+        "created_at": "2026-03-24T00:00:00+00:00",
+        "source_run_created_at": "2026-03-24T00:00:00+00:00",
+        "meta": {
+            "domain_count": 515,
+            "rounds": 6,
+            "ensemble_runs": 4,
+            "bootstrap_resamples": 10,
+        },
+        "top_domains_overall": [
+            {
+                "domain_id": "defi-architect",
+                "ensemble_mean_adoption": 0.0083,
+                "agent_choice_signal": 0.0167,
+                "peak_interest_probability": 0.7667,
+                "final_adoption_rate": 0.0,
+                "diagnostic_tags": ["interest_to_choice_friction"],
+            }
+        ],
+        "top_enterprise_domains": [
+            {
+                "domain_id": "chronic-disease-mgr",
+                "ensemble_mean_adoption": 0.0,
+                "agent_choice_signal": 0.0333,
+                "peak_interest_probability": 0.45,
+                "final_adoption_rate": 0.0,
+                "diagnostic_tags": [],
+            }
+        ],
+        "top_newly_discovered_domains": [
+            {
+                "domain_id": "last-mile-delivery-ai",
+                "ensemble_mean_adoption": 0.0083,
+                "agent_choice_signal": 0.0,
+                "peak_interest_probability": 0.55,
+                "final_adoption_rate": 0.0,
+                "diagnostic_tags": ["interest_to_choice_friction"],
+            }
+        ],
+        "methodology_cautions": [
+            "Top ensemble adoption remains modest, so rank order is more trustworthy than absolute demand magnitude.",
+        ],
+        "governance_note": "exploratory_frontier",
+    }
+
+    markdown = format_portfolio_readout_markdown(readout, title="Medium Checkpoint Export")
+
+    assert "# Medium Checkpoint Export" in markdown
+    assert "## Methodology Cautions" in markdown
+    assert "`defi-architect`" in markdown
+    assert "## Top Enterprise" in markdown
+    assert "*exploratory_frontier*" in markdown

@@ -1008,3 +1008,37 @@ The repo already had a medium checkpoint, a stop-condition note, and an operator
 ### Notes
 
 - This tranche is decision logging, not another runtime or methodology mutation.
+
+## Tranche: MiroFish Portfolio Export
+
+### Files Changed
+
+- `src/chip_labs/mirofish/portfolio.py`
+- `src/chip_labs/cli.py`
+- `tests/test_mirofish_portfolio.py`
+- `research/meta/MIROFISH_PORTFOLIO_EXPORT_515_MEDIUM_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_export.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The repo could already produce raw portfolio run packets and JSON readouts, but it still lacked a clean human-facing export artifact for the current canonical medium checkpoint.
+
+### What Changed
+
+- Added `format_portfolio_readout_markdown()` so saved portfolio readouts can be rendered as operator-facing markdown
+- Added a plain-text output helper in the CLI
+- Added the `mirofish-portfolio-export` command
+- Added focused coverage for the new markdown formatter
+- Generated the medium-checkpoint markdown export artifact under `research/meta/`
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_trend_prediction.py tests/test_mirofish_portfolio.py -q`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-portfolio-export --input research/meta/MIROFISH_PORTFOLIO_READOUT_515_MEDIUM_2026-03-24.json --output research/meta/MIROFISH_PORTFOLIO_EXPORT_515_MEDIUM_2026-03-24.md --title "MiroFish Portfolio Medium Export: 2026-03-24"`
+
+### Notes
+
+- The export path is downstream of the saved readout packet and does not introduce a second ranking algorithm.
+- This tranche makes the medium checkpoint easier to consume without reopening the rerun question.

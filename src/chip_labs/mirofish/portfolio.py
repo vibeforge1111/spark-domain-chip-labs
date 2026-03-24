@@ -193,6 +193,83 @@ def build_portfolio_readout(
     }
 
 
+def format_portfolio_readout_markdown(
+    readout_packet: dict[str, Any],
+    title: str = "MiroFish Portfolio Export",
+) -> str:
+    """Format a portfolio readout packet as operator-facing markdown."""
+    meta = readout_packet.get("meta", {})
+    overall_rows = list(readout_packet.get("top_domains_overall", []))
+    enterprise_rows = list(readout_packet.get("top_enterprise_domains", []))
+    newly_discovered_rows = list(readout_packet.get("top_newly_discovered_domains", []))
+    cautions = list(readout_packet.get("methodology_cautions", []))
+
+    def _leader_line(label: str, rows: list[dict[str, Any]]) -> str:
+        if not rows:
+            return f"- {label}: none"
+        row = rows[0]
+        return (
+            f"- {label}: `{row.get('domain_id', 'unknown')}` "
+            f"(ensemble {row.get('ensemble_mean_adoption', 0.0):.2%}, "
+            f"choice {row.get('agent_choice_signal', 0.0):.2%})"
+        )
+
+    def _table_lines(rows: list[dict[str, Any]]) -> list[str]:
+        lines = [
+            "| Rank | Domain | Ensemble | Choice | Peak Interest | Final Adoption | Notes |",
+            "|------|--------|----------|--------|---------------|----------------|-------|",
+        ]
+        for idx, row in enumerate(rows, start=1):
+            notes = ", ".join(row.get("diagnostic_tags", [])) or "-"
+            lines.append(
+                f"| {idx} | `{row.get('domain_id', 'unknown')}` | "
+                f"{row.get('ensemble_mean_adoption', 0.0):.2%} | "
+                f"{row.get('agent_choice_signal', 0.0):.2%} | "
+                f"{row.get('peak_interest_probability', 0.0):.2%} | "
+                f"{row.get('final_adoption_rate', 0.0):.2%} | {notes} |"
+            )
+        if len(lines) == 2:
+            lines.append("| - | none | - | - | - | - | - |")
+        return lines
+
+    lines = [
+        f"# {title}",
+        "",
+        f"> Generated: {readout_packet.get('created_at', 'unknown')}",
+        f"> Source run: {readout_packet.get('source_run_created_at', 'unknown')}",
+        f"> Domains: {meta.get('domain_count', 'unknown')}",
+        f"> Rounds: {meta.get('rounds', 'unknown')}",
+        f"> Ensemble runs: {meta.get('ensemble_runs', 'unknown')}",
+        f"> Bootstrap resamples: {meta.get('bootstrap_resamples', 'unknown')}",
+        "",
+        "## Top Line",
+        "",
+        _leader_line("Overall leader", overall_rows),
+        _leader_line("Enterprise leader", enterprise_rows),
+        _leader_line("Newly discovered `v4` leader", newly_discovered_rows),
+    ]
+
+    if cautions:
+        lines.extend(["", "## Methodology Cautions", ""])
+        for caution in cautions:
+            lines.append(f"- {caution}")
+
+    lines.extend(["", "## Top Overall", ""])
+    lines.extend(_table_lines(overall_rows))
+
+    lines.extend(["", "## Top Enterprise", ""])
+    lines.extend(_table_lines(enterprise_rows))
+
+    lines.extend(["", "## Top Newly Discovered `v4`", ""])
+    lines.extend(_table_lines(newly_discovered_rows))
+
+    governance_note = readout_packet.get("governance_note", "")
+    if governance_note:
+        lines.extend(["", "---", "", f"*{governance_note}*"])
+
+    return "\n".join(lines)
+
+
 def build_full_portfolio_graph(
     domains: list[dict[str, Any]],
     relationships: list[dict[str, Any]],
