@@ -1,0 +1,27 @@
+{
+  "packet_kind": "agent_request_packet",
+  "created_at": "2026-03-25T00:00:00Z",
+  "request_id": "mirofish-curated-frontier-500-2026-03-25",
+  "workstream": "Frontier Scout",
+  "goal": "Replace the synthetic 1000-agent frontier as the main source set with a hand-curated 500-domain pool and restore the old graph-style localhost surface on top of that pool.",
+  "inputs": [
+    "User guidance on hot-now themes: creator growth, gaming, AI agents, startups, productivity, careers, consumer agents, crypto, X-native tools, developer distribution."
+  ],
+  "outputs": [
+    "research/meta/MIROFISH_CURATED_FRONTIER_500_2026-03-25.json",
+    "research/meta/MIROFISH_CURATED_FRONTIER_500_2026-03-25.md",
+    "research/meta/MIROFISH_CURATED_FRONTIER_VIZ_500_2026-03-25.json",
+    "research/meta/MIROFISH_CURATED_FRONTIER_VIZ_500_2026-03-25.html",
+    "research/meta/MIROFISH_CURATED_FRONTIER_500_NOTE_2026-03-25.md"
+  ],
+  "code_changes": [
+    "src/chip_labs/mirofish/curated_frontier.py",
+    "src/chip_labs/cli.py",
+    "tests/test_mirofish_discovery.py"
+  ],
+  "verification": [
+    "python -m pytest tests/test_mirofish_discovery.py tests/test_mirofish_hybrid.py -q",
+    "Invoke-WebRequest http://localhost:8890/MIROFISH_CURATED_FRONTIER_VIZ_500_2026-03-25.html"
+  ],
+  "status": "completed_with_selection_followup_pending"
+}

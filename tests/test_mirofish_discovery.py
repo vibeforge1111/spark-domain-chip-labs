@@ -17,6 +17,10 @@ from chip_labs.mirofish.discovery import (
     merge_discovery_cluster_packets,
     split_discovery_program_scaffold,
 )
+from chip_labs.mirofish.curated_frontier import (
+    build_curated_frontier_packet,
+    format_curated_frontier_markdown,
+)
 
 
 def test_canonicalize_discovery_batch_preserves_basic_counts() -> None:
@@ -304,3 +308,28 @@ def test_discovery_program_bundle_rebuilds_from_materialized_directory(tmp_path:
     assert rebuilt["cluster_packet_count"] == 10
     assert rebuilt["summary"]["agent_count"] == 100
     assert rebuilt["cluster_packets"][0]["cluster_id"] == "creator-growth-systems"
+
+
+def test_build_curated_frontier_packet_emits_500_unique_domains() -> None:
+    packet = build_curated_frontier_packet()
+
+    accepted = packet["accepted_candidates"]
+    cluster_counts = {row["cluster_id"]: row["count"] for row in packet["cluster_summary"]}
+
+    assert packet["packet_kind"] == "mirofish_curated_frontier_packet"
+    assert packet["summary"]["accepted_count"] == 500
+    assert len(accepted) == 500
+    assert len({row["domain_id"] for row in accepted}) == 500
+    assert cluster_counts["creator-growth-systems"] == 50
+    assert cluster_counts["crypto-defi-trading"] == 50
+
+
+def test_format_curated_frontier_markdown_renders_cluster_breakdown() -> None:
+    packet = build_curated_frontier_packet(target_count=20)
+
+    markdown = format_curated_frontier_markdown(packet, title="Curated Frontier")
+
+    assert "# Curated Frontier" in markdown
+    assert "## Cluster Breakdown" in markdown
+    assert "`creator-growth-systems`" in markdown
+    assert "Accepted domains" in markdown

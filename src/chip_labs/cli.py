@@ -782,6 +782,22 @@ def cmd_mirofish_discovery_program_brief(args: argparse.Namespace) -> None:
     _write_text_output(args.output, result)
 
 
+def cmd_mirofish_curated_frontier(args: argparse.Namespace) -> None:
+    """Build a hand-curated 500-domain frontier source packet."""
+    from .mirofish.curated_frontier import build_curated_frontier_packet, format_curated_frontier_markdown
+
+    result = build_curated_frontier_packet(
+        target_count=args.target_count,
+        profile=args.profile,
+    )
+    _write_output(args.output, result)
+    if args.markdown_output:
+        _write_text_output(
+            args.markdown_output,
+            format_curated_frontier_markdown(result, title=args.title),
+        )
+
+
 def cmd_mirofish_discovery_program_materialize(args: argparse.Namespace) -> None:
     """Write cluster packets into a working directory with an operator-facing index."""
     input_data = _load_input(args.input)
@@ -1276,6 +1292,38 @@ def main() -> None:
     )
     p_mirofish_discovery_program_brief.add_argument("--output", type=str, default=None, help="Output markdown file path.")
     p_mirofish_discovery_program_brief.set_defaults(func=cmd_mirofish_discovery_program_brief)
+
+    # mirofish-curated-frontier
+    p_mirofish_curated_frontier = sub.add_parser(
+        "mirofish-curated-frontier",
+        help="Build a hand-curated frontier source packet for MiroFish selection.",
+    )
+    p_mirofish_curated_frontier.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_curated_frontier.add_argument(
+        "--markdown-output",
+        type=str,
+        default=None,
+        help="Optional markdown brief path.",
+    )
+    p_mirofish_curated_frontier.add_argument(
+        "--target-count",
+        type=int,
+        default=500,
+        help="Number of curated domain ideas to keep.",
+    )
+    p_mirofish_curated_frontier.add_argument(
+        "--profile",
+        type=str,
+        default="hot_now",
+        help="Curated frontier profile to use.",
+    )
+    p_mirofish_curated_frontier.add_argument(
+        "--title",
+        type=str,
+        default="MiroFish Curated Frontier 500",
+        help="Markdown title for the optional brief.",
+    )
+    p_mirofish_curated_frontier.set_defaults(func=cmd_mirofish_curated_frontier)
 
     # mirofish-discovery-program-materialize
     p_mirofish_discovery_program_materialize = sub.add_parser(
