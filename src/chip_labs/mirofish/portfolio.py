@@ -63,6 +63,7 @@ def run_full_portfolio_evaluation(
     ensemble_count_per_type: int = 15,
     convergence_threshold: float = 0.005,
     min_runs: int = 15,
+    bootstrap_resamples: int = 1000,
 ) -> dict[str, Any]:
     """Run the current MiroFish engine against the full legacy portfolio."""
     universe = load_full_domain_universe()
@@ -103,6 +104,7 @@ def run_full_portfolio_evaluation(
         macro_events=macro_events,
         convergence_threshold=convergence_threshold,
         min_runs=min_runs,
+        bootstrap_resamples=bootstrap_resamples,
     )
     ranked_domains = _ranked_portfolio_rows(domains, result, report, ensemble)
     top_choice_row = max(
@@ -133,6 +135,7 @@ def run_full_portfolio_evaluation(
             "flagship_count_per_type": flagship_count_per_type,
             "ensemble_runs": ensemble.get("n_runs", ensemble_runs),
             "ensemble_count_per_type": ensemble_count_per_type,
+            "bootstrap_resamples": bootstrap_resamples,
             "macro_context": "march_2026",
         },
         "top_line": {

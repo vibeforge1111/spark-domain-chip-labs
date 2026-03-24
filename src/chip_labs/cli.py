@@ -604,6 +604,7 @@ def cmd_mirofish_portfolio_run(args: argparse.Namespace) -> None:
         ensemble_count_per_type=args.ensemble_count_per_type,
         convergence_threshold=args.convergence_threshold,
         min_runs=args.min_runs,
+        bootstrap_resamples=args.bootstrap_resamples,
     )
     _write_output(args.output, result)
 
@@ -894,6 +895,12 @@ def main() -> None:
         type=int,
         default=15,
         help="Minimum ensemble runs before convergence checks.",
+    )
+    p_mirofish_portfolio_run.add_argument(
+        "--bootstrap-resamples",
+        type=int,
+        default=1000,
+        help="Bootstrap resamples for ensemble confidence intervals.",
     )
     p_mirofish_portfolio_run.set_defaults(func=cmd_mirofish_portfolio_run)
 

@@ -813,6 +813,7 @@ def run_ensemble(
     macro_events: list[dict[str, Any]] | None = None,
     convergence_threshold: float = 0.005,
     min_runs: int = 15,
+    bootstrap_resamples: int = 1000,
 ) -> dict[str, Any]:
     """Run Monte Carlo ensemble of N simulations with different seeds.
 
@@ -838,6 +839,7 @@ def run_ensemble(
         macro_events: Macro events for all runs.
         convergence_threshold: Stop early if running mean changes < this.
         min_runs: Minimum runs before convergence check.
+        bootstrap_resamples: Number of bootstrap resamples for confidence intervals.
     """
     import hashlib as _hashlib
 
@@ -902,6 +904,7 @@ def run_ensemble(
         "max_rounds": max_rounds,
         "base_seed": base_seed,
         "converged_at": converged_at,
+        "bootstrap_resamples": bootstrap_resamples,
         "domains": {},
     }
 
@@ -925,9 +928,9 @@ def run_ensemble(
         std = variance ** 0.5
         cv = round(std / mean_rate, 4) if mean_rate > 0.001 else 0.0
 
-        # Bootstrap 95% CI (1000 resamples)
+        # Bootstrap 95% CI
         bootstrap_lower, bootstrap_upper = _bootstrap_ci(
-            adoption_runs[d_id], n_resamples=1000, seed=base_seed + 10000,
+            adoption_runs[d_id], n_resamples=bootstrap_resamples, seed=base_seed + 10000,
         )
 
         ensemble_results["domains"][d_id] = {
