@@ -1111,3 +1111,41 @@ The watchtower surface could already render the canonical MiroFish checkpoint, b
 
 - This snapshot keeps the observatory export inside the mutable-target contract.
 - The generated page set is a concrete review surface for the current checkpoint, not a new evaluation run.
+
+## Tranche: MiroFish Watchtower Refresh Command
+
+### Files Changed
+
+- `src/chip_labs/cli.py`
+- `research/meta/watchtower_latest/Lab Home.md`
+- `research/meta/watchtower_latest/Portfolio Dashboard.md`
+- `research/meta/watchtower_latest/MiroFish Portfolio.md`
+- `research/meta/watchtower_latest/Agent Team Status.md`
+- `research/meta/watchtower_latest/Graduation Pipeline.md`
+- `research/meta/watchtower_latest/Trend Predictions.md`
+- `research/meta/MIROFISH_WATCHTOWER_LATEST_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_WATCHTOWER_REFRESH_COMMAND_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_watchtower_refresh_command.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The watchtower surface was now correct, but refreshing it still depended on a manual packet-driven sequence. That made the surface less reusable than it should be.
+
+### What Changed
+
+- Added a dedicated `mirofish-watchtower-snapshot` CLI command
+- Used it to generate a refreshable latest surface under `research/meta/watchtower_latest`
+- Saved the page list in a latest-result packet
+- Documented the new refresh path in a dedicated note
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-watchtower-snapshot --vault-dir research/meta/watchtower_latest --output research/meta/MIROFISH_WATCHTOWER_LATEST_RESULT_2026-03-24.json`
+
+### Notes
+
+- This tranche improves regeneration ergonomics, not portfolio methodology.
+- The refresh command remains downstream of the canonical medium checkpoint export.

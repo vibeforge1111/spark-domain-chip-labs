@@ -1,0 +1,49 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_watchtower_refresh_command",
+  "created_at": "2026-03-24",
+  "scope": "Add a dedicated CLI command for regenerating the repo-local MiroFish watchtower surface",
+  "decision_context": {
+    "prior_state": "The watchtower surface and snapshot existed, but refreshing them still required a manual watchtower packet plus extra setup.",
+    "decision": "Add a `mirofish-watchtower-snapshot` command that writes a repo-local snapshot directly and records the emitted page list.",
+    "why_now": "This turns the MiroFish dashboard surface into a reusable repo-local workflow instead of a one-off manual sequence."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Adds the dedicated MiroFish watchtower snapshot command."
+    },
+    {
+      "path": "research/meta/watchtower_latest/MiroFish Portfolio.md",
+      "purpose": "Latest generated watchtower MiroFish surface."
+    },
+    {
+      "path": "research/meta/MIROFISH_WATCHTOWER_LATEST_RESULT_2026-03-24.json",
+      "purpose": "Records the generated page list for the latest watchtower refresh."
+    },
+    {
+      "path": "research/meta/MIROFISH_WATCHTOWER_REFRESH_COMMAND_NOTE_2026-03-24.md",
+      "purpose": "Documents the new refresh command and why it exists."
+    }
+  ],
+  "planned_steps": [
+    "Add a dedicated snapshot command to the repo CLI",
+    "Use that command to generate a latest watchtower surface under research/meta",
+    "Verify the command with the focused watchtower and portfolio regression slice"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-watchtower-snapshot --vault-dir research/meta/watchtower_latest --output research/meta/MIROFISH_WATCHTOWER_LATEST_RESULT_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "The new command exits successfully",
+      "The emitted result packet includes MiroFish Portfolio.md",
+      "The generated latest surface stays inside research/meta"
+    ]
+  },
+  "guardrails": [
+    "Do not reimplement watchtower page generation logic inside the new command",
+    "Keep the generated latest surface inside research/meta",
+    "Treat the latest snapshot as a refreshable surface over the canonical checkpoint"
+  ]
+}

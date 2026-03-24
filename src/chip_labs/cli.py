@@ -59,6 +59,16 @@ def _get_chip_search_dir() -> str | None:
     return os.environ.get("SPARK_CHIP_SEARCH_DIR", None)
 
 
+def _write_watchtower_pages(vault_dir: str | Path, pages: list[dict[str, Any]]) -> None:
+    """Write generated watchtower pages to the target vault directory."""
+    vault_path = Path(vault_dir)
+    vault_path.mkdir(parents=True, exist_ok=True)
+    for page in pages:
+        page_path = vault_path / page["path"]
+        page_path.parent.mkdir(parents=True, exist_ok=True)
+        page_path.write_text(page["content"], encoding="utf-8")
+
+
 # ---------------------------------------------------------------------------
 # Hook: evaluate
 # ---------------------------------------------------------------------------
@@ -125,16 +135,34 @@ def cmd_watchtower(args: argparse.Namespace) -> None:
     vault_dir = input_data.get("vault_dir", "obsidian-vault")
 
     pages = generate_watchtower_pages(mutations, chip_search_dir, vault_dir)
-
-    # Write pages to vault directory
-    vault_path = Path(vault_dir)
-    vault_path.mkdir(parents=True, exist_ok=True)
-    for page in pages:
-        page_path = vault_path / page["path"]
-        page_path.parent.mkdir(parents=True, exist_ok=True)
-        page_path.write_text(page["content"], encoding="utf-8")
+    _write_watchtower_pages(vault_dir, pages)
 
     _write_output(args.output, {"pages": [p["path"] for p in pages], "count": len(pages)})
+
+
+def cmd_mirofish_watchtower_snapshot(args: argparse.Namespace) -> None:
+    """Generate a repo-local watchtower snapshot for the current MiroFish checkpoint."""
+    mutations = {
+        "research_focus": args.research_focus,
+        "agent_workstream": args.agent_workstream,
+    }
+    chip_search_dir = args.chip_search_dir or "."
+    pages = generate_watchtower_pages(
+        mutations,
+        chip_search_dir=chip_search_dir,
+        vault_dir=args.vault_dir,
+    )
+    _write_watchtower_pages(args.vault_dir, pages)
+    _write_output(
+        args.output,
+        {
+            "pages": [p["path"] for p in pages],
+            "count": len(pages),
+            "vault_dir": args.vault_dir,
+            "chip_search_dir": chip_search_dir,
+            "mutations": mutations,
+        },
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -696,6 +724,43 @@ def main() -> None:
     p_wt.add_argument("--input", type=str, default=None, help="Input JSON file path.")
     p_wt.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_wt.set_defaults(func=cmd_watchtower)
+
+    # mirofish-watchtower-snapshot
+    p_mirofish_watchtower_snapshot = sub.add_parser(
+        "mirofish-watchtower-snapshot",
+        help="Generate a repo-local watchtower snapshot for the current MiroFish checkpoint.",
+    )
+    p_mirofish_watchtower_snapshot.add_argument(
+        "--vault-dir",
+        type=str,
+        default="research/meta/watchtower_latest",
+        help="Directory to write the generated watchtower pages into.",
+    )
+    p_mirofish_watchtower_snapshot.add_argument(
+        "--output",
+        type=str,
+        default=None,
+        help="Output JSON file path for the generated page list.",
+    )
+    p_mirofish_watchtower_snapshot.add_argument(
+        "--chip-search-dir",
+        type=str,
+        default=".",
+        help="Chip search directory for the watchtower pass.",
+    )
+    p_mirofish_watchtower_snapshot.add_argument(
+        "--research-focus",
+        type=str,
+        default="mirofish_portfolio_surface",
+        help="Research focus to display in the generated watchtower pages.",
+    )
+    p_mirofish_watchtower_snapshot.add_argument(
+        "--agent-workstream",
+        type=str,
+        default="methodology_researcher",
+        help="Agent workstream to display in the generated watchtower pages.",
+    )
+    p_mirofish_watchtower_snapshot.set_defaults(func=cmd_mirofish_watchtower_snapshot)
 
     # scaffold
     p_scaffold = sub.add_parser("scaffold", help="Scaffold a new domain chip from a brief.")

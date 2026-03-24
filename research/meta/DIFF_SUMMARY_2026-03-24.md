@@ -252,3 +252,12 @@ MiroFish watchtower snapshot:
 - generate a repo-local watchtower page set under `research/meta/`
 - save the generated page list as a result packet
 - confirm that `MiroFish Portfolio.md` resolves to the canonical medium export artifact
+
+## Batch 29
+
+MiroFish watchtower refresh command:
+
+- add a dedicated `mirofish-watchtower-snapshot` CLI command
+- generate a refreshable `research/meta/watchtower_latest` surface from that command
+- save the emitted page list as a latest-result packet
+- keep the refresh workflow repo-local and bounded
