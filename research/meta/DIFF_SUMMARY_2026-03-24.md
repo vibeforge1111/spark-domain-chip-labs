@@ -200,3 +200,12 @@ MiroFish portfolio medium checkpoint:
 - recover non-zero ensemble and choice signal after the zeroed checkpoint
 - save the medium packet and derived readout under research/meta
 - record that the result is more informative but still not the final trusted portfolio verdict
+
+## Batch 23
+
+MiroFish portfolio stop condition:
+
+- test one final simulation-side runtime optimization after the medium checkpoint
+- reject the uncommitted signal-decay precompute idea after the tiny full-universe benchmark regresses to `78.8s`
+- rerun the regression pair after reverting the failed experiment
+- record that the committed medium checkpoint remains the correct portfolio handoff

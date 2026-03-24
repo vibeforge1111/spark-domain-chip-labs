@@ -1,0 +1,46 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_portfolio_stop_condition",
+  "created_at": "2026-03-24",
+  "scope": "Record the final post-checkpoint runtime experiment result and preserve the medium portfolio checkpoint as the current best handoff",
+  "decision_context": {
+    "prior_state": "The medium-depth full-universe checkpoint was the best committed state, but there was still a question of whether one more simulation-side optimization could justify a deeper rerun.",
+    "decision": "Test the narrow signal-decay precompute idea with the tiny full-universe benchmark, reject it when runtime regresses sharply, and preserve the medium checkpoint as the best current state.",
+    "why_now": "Without a written stop condition, the session would appear to end mid-experiment even though the final optimization idea was measured and rejected."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_STOP_CONDITION_NOTE_2026-03-24.md",
+      "purpose": "Records the failed runtime experiment, the measured regression, and the resulting stop condition."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_stop_condition.json",
+      "purpose": "Captures why the final runtime experiment was tested and why it was rejected."
+    },
+    {
+      "path": "research/meta/DIFF_SUMMARY_2026-03-24.md",
+      "purpose": "Adds the stop-condition tranche to the running day-level diff log."
+    }
+  ],
+  "planned_steps": [
+    "Measure the final simulation-side optimization idea with the tiny full-universe benchmark",
+    "Revert the experiment if it regresses runtime",
+    "Rerun the focused regression suite",
+    "Write the stop-condition note and update the day-level diff summary"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -c \"from chip_labs.mirofish.portfolio import run_full_portfolio_evaluation; import time; t=time.time(); run_full_portfolio_evaluation(max_rounds=2, flagship_count_per_type=1, ensemble_runs=1, ensemble_count_per_type=1, min_runs=1, bootstrap_resamples=5); print(round(time.time()-t,2))\"",
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_trend_prediction.py tests/test_mirofish_portfolio.py -q"
+    ],
+    "expected_checks": [
+      "The benchmark makes clear whether the proposed optimization is directionally better or worse than the committed runtime path",
+      "If the optimization is rejected, the regression suite still passes after reverting it",
+      "The final note states that the medium checkpoint remains the best committed handoff"
+    ]
+  },
+  "guardrails": [
+    "Do not promote the rejected optimization into a code commit",
+    "Do not replace the committed medium checkpoint with an unvalidated deeper run",
+    "Keep the handoff anchored to the last validated artifact set"
+  ]
+}
