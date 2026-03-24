@@ -29,3 +29,11 @@ MiroFish frontier shortlist watchtower surface:
 - update the `MiroFish Frontier` watchtower page to render the saved deeper `180` shortlist before the full frontier export
 - fix the shortlist-artifact resolver so the page chooses the shortlist export instead of the similarly named shortlist note
 - refresh `research/meta/watchtower_latest/` so the repo-local dashboard shows the current frontier winners first
+
+## Batch 5
+
+MiroFish frontier localhost shortlist surface:
+
+- update the repo-local `MIROFISH_FRONTIER_CHECKPOINTS_2026-03-25.html` page to render the saved deeper `180` shortlist above the checkpoint comparison
+- keep the existing deeper `90` / medium `180` / deeper `180` comparison intact below the shortlist
+- make the local host view show the currently chosen chips immediately instead of forcing the user to scan the full checkpoint comparison first

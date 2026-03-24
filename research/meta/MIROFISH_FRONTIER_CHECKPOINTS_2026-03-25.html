@@ -59,6 +59,12 @@
     .checkpoint-grid {
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
+    .shortlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 0 0 24px;
+    }
     .card {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -177,6 +183,7 @@
     </section>
 
     <section class="summary-grid" id="summary"></section>
+    <section class="shortlist-grid" id="shortlist"></section>
     <section class="checkpoint-grid" id="checkpoints"></section>
 
     <div class="status">
@@ -207,6 +214,7 @@
         path: "./MIROFISH_FRONTIER_READOUT_TRANCHE_180_DEEPER_2026-03-25.json"
       }
     ];
+    const shortlistPath = "./MIROFISH_FRONTIER_SHORTLIST_180_DEEPER_2026-03-25.json";
 
     const pct = (value) => `${(Number(value || 0) * 100).toFixed(2)}%`;
 
@@ -228,6 +236,12 @@
       if (!response.ok) throw new Error(`Failed to load ${def.path}`);
       const data = await response.json();
       return { ...def, data };
+    }
+
+    async function loadShortlist() {
+      const response = await fetch(shortlistPath);
+      if (!response.ok) throw new Error(`Failed to load ${shortlistPath}`);
+      return response.json();
     }
 
     function renderSummary(checkpoints) {
@@ -268,6 +282,49 @@
           <div class="metric-label">Choice ${pct(bestBreadth.data.top_choice_domains[0].agent_choice_signal)}</div>
         </div>
       `;
+    }
+
+    function renderShortlist(shortlist) {
+      const root = document.getElementById("shortlist");
+      const sections = [
+        {
+          title: "Current Winners",
+          eyebrow: "Shortlist",
+          note: "Best current retained frontier chips from the deeper 180 checkpoint.",
+          rows: shortlist.winner_domains || [],
+          metricLabel: "ensemble"
+        },
+        {
+          title: "Breakouts",
+          eyebrow: "Choice Signal",
+          note: "Strong choice pull that still needs better retained conversion.",
+          rows: shortlist.breakout_domains || [],
+          metricLabel: "choice"
+        },
+        {
+          title: "Speculative",
+          eyebrow: "Watchlist",
+          note: "Interesting domains worth monitoring but weaker than the current winner set.",
+          rows: shortlist.speculative_domains || [],
+          metricLabel: "ensemble"
+        }
+      ];
+
+      root.innerHTML = sections.map((section) => `
+        <section class="card">
+          <span class="eyebrow">${section.eyebrow}</span>
+          <h2>${section.title}</h2>
+          <p class="muted">${section.note}</p>
+          <div class="list" style="margin-top:14px;">
+            ${section.rows.map((row, idx) => `
+              <div class="list-item">
+                <div>${idx + 1}. <strong>${row.domain_id}</strong></div>
+                <div class="metric-pill">${section.metricLabel === "choice" ? `choice ${pct(row.agent_choice_signal)}` : pct(row.mean_adoption)}</div>
+              </div>
+            `).join("")}
+          </div>
+        </section>
+      `).join("");
     }
 
     function renderCheckpoint(item) {
@@ -333,7 +390,11 @@
     }
 
     async function main() {
-      const checkpoints = await Promise.all(checkpointDefs.map(loadCheckpoint));
+      const [shortlist, checkpoints] = await Promise.all([
+        loadShortlist(),
+        Promise.all(checkpointDefs.map(loadCheckpoint))
+      ]);
+      renderShortlist(shortlist);
       renderSummary(checkpoints);
       checkpoints.forEach(renderCheckpoint);
     }

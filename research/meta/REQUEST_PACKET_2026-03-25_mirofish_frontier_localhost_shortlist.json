@@ -1,0 +1,40 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-25_mirofish_frontier_localhost_shortlist",
+  "created_at": "2026-03-25",
+  "scope": "Add the saved deeper 180 frontier shortlist to the repo-local localhost comparison page",
+  "decision_context": {
+    "prior_state": "The localhost frontier page compared checkpoints, but it still required the user to scan the checkpoint blocks before seeing the current top shortlist domains.",
+    "decision": "Render the shortlist winners, breakouts, and speculative domains near the top of the localhost page.",
+    "why_now": "The user asked to see which domain chips the agents have chosen right now, so the shortlist should be visible immediately in the browser."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_CHECKPOINTS_2026-03-25.html",
+      "purpose": "Localhost frontier review page updated with shortlist-first layout."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_LOCALHOST_SHORTLIST_NOTE_2026-03-25.md",
+      "purpose": "Documents the shortlist addition to the localhost frontier surface."
+    }
+  ],
+  "planned_steps": [
+    "Load the saved deeper 180 shortlist packet in the localhost page",
+    "Render winners, breakouts, and speculative domains above the checkpoint comparison",
+    "Keep the existing checkpoint comparison intact below the shortlist"
+  ],
+  "verification": {
+    "commands": [
+      "Manual review of research/meta/MIROFISH_FRONTIER_CHECKPOINTS_2026-03-25.html against the saved shortlist and checkpoint artifacts"
+    ],
+    "expected_checks": [
+      "The localhost page shows shortlist winners first",
+      "The same frontier comparison cards remain available below",
+      "The top chips shown match the saved deeper 180 shortlist artifact"
+    ]
+  },
+  "guardrails": [
+    "Do not mutate the saved frontier readouts or shortlist packet in this tranche",
+    "Keep the checkpoint comparison page available under the shortlist section",
+    "Treat this as a surface-layer improvement only"
+  ]
+}
