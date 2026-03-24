@@ -2,116 +2,121 @@
 
 ## Goal
 
-Finish the last meaningful MiroFish methodology block, then produce the first full ranked list that is trustworthy enough to drive the dashboard.
+Turn the current medium full-universe checkpoint into a decision-grade operator handoff, then decide whether one more bounded rerun is actually worth doing before touching dashboard or export.
 
 Tomorrow should focus on tasks that are:
 
-1. tightly tied to the remaining enterprise bottlenecks
-2. capable of producing a full-list artifact by the end of the session
+1. grounded in the actual March 24 checkpoint rather than the already-finished methodology plan
+2. capable of improving portfolio decision quality without reopening speculative runtime work
 3. still inside the current mutable-target rules
 
 ## Where We Stand
 
-Today established three things:
+Today established four things:
 
 1. the dashboard was not the primary problem; the methodology was
-2. the enterprise-response wedge is real, but not yet strong enough for maintained benchmark admission
-3. the remaining open methodological problem is narrower than before:
-   RFP and compliance evidence still under-convert interest into actual choice
+2. the enterprise-response wedge is real, but still not strong enough for maintained benchmark admission
+3. the repo now has a stable enterprise validation replay and a repo-local `515`-domain medium checkpoint
+4. one final runtime experiment was measured and rejected, so the medium checkpoint is the current canonical handoff
 
-Current enterprise priority order:
+Current top overall slice:
 
-1. `ai-security-questionnaire-copilot`
-2. `ai-renewal-risk-briefing-copilot`
-3. `ai-rfp-response-copilot`
-4. `ai-compliance-evidence-copilot`
+1. `defi-architect`
+2. `mcp-server-builder`
+3. `tiktok-creator`
+4. `discord-community`
+5. `last-mile-delivery-ai`
+
+Current enterprise slice:
+
+1. `chronic-disease-mgr`
+2. `legal-ops`
+3. `workplace-ai-trainer`
+4. `addiction-recovery-ai`
+5. `quality-inspection-ai`
+
+Current newly discovered `v4` slice:
+
+1. `last-mile-delivery-ai`
+2. `voice-assistant-senior`
+3. `chronic-disease-mgr`
+4. `hvac-optimizer-ai`
+5. `remote-job-matcher`
 
 ## Tomorrow: Tasks We Can Actually Finish
 
-### 1. Run explicit choice-conversion tuning for RFP and compliance evidence
+### 1. Use the medium checkpoint as the operator-facing canonical portfolio read
 
 Why this is worth doing:
 
-- Sticky-workflow tuning helped questionnaire and renewal.
-- It did not solve the earlier bottleneck for RFP and compliance evidence.
-- The remaining gap is now concentrated enough to attack directly.
+- The repo already has the first useful full-universe checkpoint.
+- The missing piece is clarity, not another blind methodology mutation.
+- This keeps the next decision anchored to a stable artifact set.
 
 Concrete deliverable:
 
-- add one narrow methodology tranche that improves `interest -> choice` conversion for:
-  - `ai-rfp-response-copilot`
-  - `ai-compliance-evidence-copilot`
-- keep retained-adoption standards unchanged
-- save the replay and diagnostic artifacts under `research/meta/`
+- one concise operator note or repo-local brief covering:
+  - top overall names
+  - top enterprise names
+  - top `v4` names
+  - choice / retention outliers
+  - the current stop condition and operating cautions
 
 Definition of done:
 
-- one replay shows whether RFP and compliance evidence were actually held back by the choice gate
-- the change does not accidentally become a generic enterprise boost
+- there is no ambiguity about which portfolio artifact is canonical right now
+- operators can use the current checkpoint without rereading the entire March 24 commit chain
 
-### 2. Run one clean enterprise validation replay after that tuning
+### 2. Decide whether one more bounded deeper rerun is justified
 
 Why this is worth doing:
 
-- We need one stable read after the last methodology tweak, not another stack of local slices.
-- This keeps the cluster verdict honest before we widen back to the full 515 domains.
+- The main unresolved question is not "can the repo rerun?"
+- The real question is whether the next marginal rerun can improve retained-adoption resolution enough to justify the runtime cost.
+- A bounded decision is better than another open-ended experiment.
 
 Concrete deliverable:
 
-- rerun the symmetric enterprise cluster playoff once more after the choice-conversion tranche
-- save one operator-readable note describing the final pre-full-run enterprise state
+- one explicit decision note or execution plan specifying:
+  - target harness depth
+  - runtime budget
+  - success criterion
+  - abort condition if the run does not improve on the medium checkpoint
 
 Definition of done:
 
-- we can say, with one stable note, which enterprise domains benefited and which still did not
+- we know whether a deeper rerun should happen at all
+- if it does happen, the run is bounded before it starts
 
-### 3. Rerun the full 515-domain MiroFish harness
+### 3. Only if step 2 clears it, run one bounded near-final rerun
 
 Why this is worth doing:
 
-- This is the main output the dashboard should eventually reflect.
-- The repo still does not have a fully trusted full-list artifact after the latest methodology work.
+- The medium checkpoint is useful, but still thin.
+- One better-bounded rerun could improve confidence if it materially sharpens retained adoption and enterprise separation.
 
 Concrete deliverable:
 
-- rerun the full `515`-domain hybrid evaluation harness
-- save the full run packet under `research/meta/`
-- produce a ranked readout that can be inspected without the dashboard
+- rerun the full `515`-domain repo-local portfolio harness once under the predeclared budget
+- save the run packet and readout under `research/meta/`
+- compare it directly against the medium checkpoint instead of treating it as automatically better
 
 Definition of done:
 
-- the repo contains one full-list artifact generated after the current methodology corrections
+- the new run either clearly beats the medium checkpoint on usefulness or is explicitly rejected
 
-### 4. Produce the first trusted full-list readout
-
-Why this is worth doing:
-
-- We need a canonical artifact before touching UI/export again.
-- This gives a trustworthy answer even if the dashboard refresh slips.
-
-Concrete deliverable:
-
-- one note or ranked summary under `research/meta/` covering:
-  - top domains overall
-  - strongest enterprise-response domains
-  - strongest newly discovered domains
-  - major methodology cautions that still remain
-
-Definition of done:
-
-- we can inspect the full list directly in repo artifacts without relying on the dashboard
-
-### 5. Only then decide the dashboard/export refresh step
+### 4. Only then decide the dashboard/export refresh step
 
 Why this is worth doing:
 
 - The dashboard should be downstream of the trusted run, not upstream of it.
-- This avoids another round of polishing the wrong thing.
+- The medium checkpoint is still not a safe excuse to polish presentation layers.
+- This keeps UI work from outrunning portfolio confidence again.
 
 Concrete deliverable:
 
 - one clear decision note:
-  - either the current repo can regenerate the dashboard/export path directly
+  - either the current repo can regenerate the dashboard/export path directly after the chosen checkpoint
   - or the remaining dashboard work must happen in the export/UI layer next
 
 Definition of done:
@@ -120,22 +125,20 @@ Definition of done:
 
 ## Not Tomorrow
 
-- another broad enterprise ranking tournament before the choice-conversion tranche
-- another generic “enterprise boost”
-- dashboard/UI polishing before the full rerun exists
-- benchmark admission for enterprise-response domains without the full rerun
+- another generic runtime tweak without a profiler-backed hypothesis
+- another blind rerun with no declared runtime budget
+- dashboard/UI polishing before the portfolio checkpoint question is settled
+- benchmark admission claims from the medium checkpoint alone
 
 ## Preferred Order
 
-1. RFP/compliance explicit choice-conversion tuning
-2. One stable enterprise validation replay
-3. Full `515`-domain rerun
-4. Full ranked readout artifact
-5. Dashboard/export decision note
+1. Publish the operator-facing handoff for the medium checkpoint
+2. Decide whether a bounded deeper rerun is justified
+3. If yes, run it once and compare against the medium checkpoint
+4. Only then make the dashboard/export decision
 
 ## Exit Criteria For Tomorrow
 
-- the last major methodological blind spot is either fixed or clearly disproven
-- one trusted post-tuning `515`-domain run exists
-- one repo-local full-list readout exists
-- the next dashboard/export step is explicitly defined
+- the canonical current portfolio artifact is obvious from the repo docs
+- the deeper-rerun question is either explicitly approved with bounds or explicitly deferred
+- the next dashboard/export step is explicitly defined from that decision

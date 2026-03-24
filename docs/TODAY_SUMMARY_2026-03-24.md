@@ -51,36 +51,32 @@ Key result:
 - no enterprise-response domain earned maintained benchmark admission yet
 - the wedge is real, but the earlier dashboard-style read was too noisy and too easy to over-interpret
 
-### 4. Landed three methodology-correction batches after the stable cluster diagnostic
+### 4. Landed the enterprise methodology corrections
 
-#### Enterprise graph fit signals
-
-- Added inferred `domain_tags` and `retention_score` to graph domain nodes.
-- This corrected an under-specified semantic layer in the simulation.
-
-Commit:
+Completed methodology tranches:
 
 - `5399b7e` `MiroFish: tune enterprise graph fit signals`
-
-#### Retention aligned with fit signals
-
-- Aligned churn and retention checks with the same fit-aware signal family used in advancement.
-- This removed a real asymmetry that was penalizing some enterprise domains after they had already won interest.
-
-Commit:
-
 - `064063d` `MiroFish: align retention with fit signals`
+- `8c93f79` `MiroFish: tune sticky workflow conversion`
+- `1f3015b` `MiroFish: add enterprise choice conversion tranche`
 
-#### Sticky workflow conversion tuning
+Key result:
 
-- Added a narrow conversion prior for sticky recurring workflow domains at the `interested -> evaluating -> trial` stages.
-- This helped the domains that behave like recurring operational loops without lowering late-stage retained-adoption gates.
+- questionnaire remains the strongest enterprise ensemble candidate
+- renewal remains the strongest sticky recurring-workflow lane
+- RFP improves materially but still sits below the benchmark median
+- compliance evidence now looks like a mixed choice-plus-retention problem rather than a pure pre-choice problem
+
+### 5. Fixed replay determinism and locked the enterprise validation read
 
 Commit:
 
-- `8c93f79` `MiroFish: tune sticky workflow conversion`
+- `ace3d87` `MiroFish: fix validation replay determinism`
 
-### 5. Reached a much cleaner current enterprise read
+Key result:
+
+- same-spec same-seed enterprise replays now match across fresh Python processes
+- the planned post-fix enterprise replay is finally stable enough to trust
 
 Current enterprise-response priorities:
 
@@ -89,20 +85,47 @@ Current enterprise-response priorities:
 3. `ai-rfp-response-copilot`
 4. `ai-compliance-evidence-copilot`
 
-Current high-level interpretation:
+### 6. Built the repo-local 515-domain portfolio path and completed the first useful full-universe checkpoint
 
-- questionnaire is the strongest ensemble-stable enterprise candidate
-- renewal is now a credible sticky recurring-workflow candidate, but still not a maintained benchmark admission
-- RFP and compliance evidence still need explicit choice-conversion work
-- `startup-yc` still beats the enterprise cluster overall on ensemble adoption
+Completed infrastructure and runtime tranches:
+
+- `fb26d81` `MiroFish: add repo-local portfolio run wrapper`
+- `4e9c226` `MiroFish: make portfolio bootstrap configurable`
+- `472e724` `MiroFish: optimize portfolio runtime path`
+- `e919056` `MiroFish: save interactive portfolio checkpoint`
+- `6eb669b` `MiroFish: save medium portfolio checkpoint`
+
+Best current full-universe artifact set:
+
+- `research/meta/MIROFISH_PORTFOLIO_RUN_515_MEDIUM_2026-03-24.json`
+- `research/meta/MIROFISH_PORTFOLIO_READOUT_515_MEDIUM_2026-03-24.json`
+- `research/meta/MIROFISH_PORTFOLIO_MEDIUM_CHECKPOINT_NOTE_2026-03-24.md`
+
+Top current slices from that checkpoint:
+
+- overall: `defi-architect`, `mcp-server-builder`, `tiktok-creator`, `discord-community`, `last-mile-delivery-ai`
+- enterprise: `chronic-disease-mgr`, `legal-ops`, `workplace-ai-trainer`, `addiction-recovery-ai`, `quality-inspection-ai`
+- newly discovered `v4`: `last-mile-delivery-ai`, `voice-assistant-senior`, `chronic-disease-mgr`, `hvac-optimizer-ai`, `remote-job-matcher`
+
+### 7. Set a real stop condition instead of chasing another speculative runtime tweak
+
+Commit:
+
+- `c5d5457` `MiroFish: record portfolio stop condition`
+
+Key result:
+
+- one final simulation-side runtime idea was measured and rejected after the tiny full-universe benchmark regressed to `78.8s`
+- the medium checkpoint remains the current canonical portfolio handoff
 
 ## What We Did Not Do Yet
 
-- We did not rerun the full `515`-domain MiroFish harness after the latest methodology work.
+- We did not produce a final trusted `515`-domain verdict with stronger retained-adoption resolution.
 - We did not refresh the dashboard/export layer yet.
 - We did not bless any dashboard view as the canonical source of truth.
+- We did not treat the medium checkpoint's absolute adoption values as decision-grade magnitude estimates.
 
-That was intentional. The methodology needed to be tightened first.
+That was intentional. The methodology needed to be tightened first, and the full-universe handoff needed to be made explicit before any presentation-layer work.
 
 ## Deliverables Created Today
 
@@ -111,15 +134,21 @@ Primary transparent logs:
 - `research/meta/CHANGE_LOG_2026-03-24.md`
 - `research/meta/DIFF_SUMMARY_2026-03-24.md`
 
-Key methodology notes from the end of day:
+Key methodology and portfolio notes from the end of day:
 
 - `research/meta/MIROFISH_ENTERPRISE_CLUSTER_GRAPH_TUNING_NOTE_2026-03-24.md`
 - `research/meta/MIROFISH_ENTERPRISE_SIGNAL_SYMMETRY_NOTE_2026-03-24.md`
 - `research/meta/MIROFISH_ENTERPRISE_CONVERSION_TUNING_NOTE_2026-03-24.md`
+- `research/meta/MIROFISH_ENTERPRISE_CHOICE_CONVERSION_NOTE_2026-03-24.md`
+- `research/meta/MIROFISH_ENTERPRISE_VALIDATION_STABILITY_NOTE_2026-03-24.md`
+- `research/meta/MIROFISH_PORTFOLIO_MEDIUM_CHECKPOINT_NOTE_2026-03-24.md`
+- `research/meta/MIROFISH_PORTFOLIO_OPERATOR_HANDOFF_2026-03-24.md`
+- `research/meta/MIROFISH_PORTFOLIO_STOP_CONDITION_NOTE_2026-03-24.md`
 
 ## End-of-Day Status
 
 - The repo-local MiroFish methodology is much more trustworthy than it was at the start of the day.
 - The enterprise cluster is now explainable in mechanism terms instead of only rank-order terms.
-- The next blocker is no longer “something is terribly broken.”
-- The next blocker is narrower: explicit choice-conversion tuning for RFP and compliance evidence, then a full rerun.
+- There is now a repo-local full-universe checkpoint that restores non-zero signal after the methodology fixes.
+- The next blocker is no longer the enterprise fix tranche or the first full rerun.
+- The next blocker is choosing whether one more explicitly budgeted deeper rerun is worth the cost, or whether the medium checkpoint should remain the operator-facing portfolio handoff for now.

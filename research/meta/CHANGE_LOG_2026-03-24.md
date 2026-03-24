@@ -932,3 +932,45 @@ The interactive full-universe checkpoint proved execution but collapsed to zero 
 - This is a better checkpoint than the earlier thin interactive readout.
 - It is still not the final trusted portfolio verdict.
 - Dashboard and export refresh should still wait for one more deeper pass.
+
+## Tranche: MiroFish Portfolio Operator Handoff
+
+### Files Changed
+
+- `docs/TODAY_SUMMARY_2026-03-24.md`
+- `docs/TOMORROW_FOCUS_2026-03-25.md`
+- `research/meta/MIROFISH_PORTFOLIO_OPERATOR_HANDOFF_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_operator_handoff.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The repo had a validated medium full-universe checkpoint and a committed stop condition, but the day-level summary docs still described the earlier pre-rerun plan. That made the actual handoff state harder to recover than it should be.
+
+### What Changed
+
+- Added one operator-facing note naming the medium checkpoint as the current canonical portfolio read
+- Preserved the current:
+  - overall watchlist
+  - choice and retention outliers
+  - enterprise watchlist
+  - newly discovered `v4` watchlist
+- Updated the March 24 summary so it records:
+  - the completed enterprise validation replay
+  - the repo-local 515-domain runtime path
+  - the interactive and medium checkpoints
+  - the final stop condition
+- Updated the March 25 focus so it starts from the medium checkpoint rather than from already-completed methodology work
+
+### Verification
+
+- Manual consistency review against:
+  - `research/meta/MIROFISH_PORTFOLIO_READOUT_515_MEDIUM_2026-03-24.json`
+  - `research/meta/MIROFISH_PORTFOLIO_MEDIUM_CHECKPOINT_NOTE_2026-03-24.md`
+  - `research/meta/MIROFISH_PORTFOLIO_STOP_CONDITION_NOTE_2026-03-24.md`
+
+### Notes
+
+- This tranche does not change MiroFish logic.
+- The main purpose is to make the current trusted handoff obvious from the repo docs.

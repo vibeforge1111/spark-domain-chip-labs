@@ -1,0 +1,59 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_portfolio_operator_handoff",
+  "created_at": "2026-03-24",
+  "scope": "Turn the medium full-universe checkpoint and stop condition into a usable operator handoff and align the day-level docs to the actual end-of-day state",
+  "decision_context": {
+    "prior_state": "The repo had a validated medium portfolio checkpoint and a committed stop condition, but the day-level summary docs still described the pre-rerun plan rather than the actual March 24 end state.",
+    "decision": "Add one operator-facing handoff note for the medium checkpoint and update the day summary and tomorrow focus docs to reflect the completed validation, runtime stop condition, and current priority slices.",
+    "why_now": "Without this tranche, the canonical portfolio state is recoverable from artifacts but not obvious from the repo's top-level day documents."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_OPERATOR_HANDOFF_2026-03-24.md",
+      "purpose": "Summarizes the current canonical portfolio checkpoint, priority slices, and operating rules."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_operator_handoff.json",
+      "purpose": "Captures why the operator handoff note and doc realignment were needed."
+    },
+    {
+      "path": "research/meta/CHANGE_LOG_2026-03-24.md",
+      "purpose": "Appends the operator handoff tranche to the transparent change log."
+    },
+    {
+      "path": "research/meta/DIFF_SUMMARY_2026-03-24.md",
+      "purpose": "Adds the operator handoff tranche to the day-level diff summary."
+    },
+    {
+      "path": "docs/TODAY_SUMMARY_2026-03-24.md",
+      "purpose": "Updates the March 24 summary to include the completed portfolio rerun and stop condition."
+    },
+    {
+      "path": "docs/TOMORROW_FOCUS_2026-03-25.md",
+      "purpose": "Realigns the next-step plan around operator use of the medium checkpoint instead of the already-finished methodology tranche."
+    }
+  ],
+  "planned_steps": [
+    "Extract the actual medium-checkpoint priority slices from the saved readout",
+    "Write a concise operator-facing handoff note for the canonical checkpoint",
+    "Update the day summary to reflect what was actually completed",
+    "Update the next-day focus doc so it starts from the current stop condition rather than the pre-rerun plan"
+  ],
+  "verification": {
+    "commands": [
+      "Manual consistency review against research/meta/MIROFISH_PORTFOLIO_READOUT_515_MEDIUM_2026-03-24.json",
+      "Manual consistency review against research/meta/MIROFISH_PORTFOLIO_MEDIUM_CHECKPOINT_NOTE_2026-03-24.md",
+      "Manual consistency review against research/meta/MIROFISH_PORTFOLIO_STOP_CONDITION_NOTE_2026-03-24.md"
+    ],
+    "expected_checks": [
+      "The operator handoff note names the medium checkpoint as canonical and preserves its top slices correctly",
+      "The day summary no longer says that the full 515-domain rerun has not happened",
+      "The next-day focus no longer tells operators to rerun already-completed methodology tranches"
+    ]
+  },
+  "guardrails": [
+    "Do not present the medium checkpoint as a final trusted portfolio verdict",
+    "Do not re-open the rejected runtime experiment inside the docs",
+    "Keep dashboard and export refresh explicitly downstream of any future deeper rerun"
+  ]
+}

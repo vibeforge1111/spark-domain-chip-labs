@@ -209,3 +209,12 @@ MiroFish portfolio stop condition:
 - reject the uncommitted signal-decay precompute idea after the tiny full-universe benchmark regresses to `78.8s`
 - rerun the regression pair after reverting the failed experiment
 - record that the committed medium checkpoint remains the correct portfolio handoff
+
+## Batch 24
+
+MiroFish portfolio operator handoff:
+
+- add an operator-facing note that names the medium checkpoint as the canonical current portfolio read
+- preserve the current overall, enterprise, and `v4` priority slices in one concise artifact
+- update the March 24 day summary to reflect the completed 515-domain rerun and stop condition
+- update the March 25 focus doc so it starts from the actual handoff instead of the already-finished methodology plan
