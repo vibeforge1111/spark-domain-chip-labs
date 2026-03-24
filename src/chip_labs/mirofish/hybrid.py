@@ -666,6 +666,154 @@ def format_frontier_readout_markdown(
     return "\n".join(lines) + "\n"
 
 
+def build_frontier_shortlist(
+    readout_packet: dict[str, Any],
+    winner_n: int = 10,
+    breakout_n: int = 8,
+    speculative_n: int = 8,
+) -> dict[str, Any]:
+    """Build an action-oriented shortlist from a saved frontier readout."""
+    overall_rows = [deepcopy(row) for row in readout_packet.get("top_domains_overall", [])]
+    choice_rows = [deepcopy(row) for row in readout_packet.get("top_choice_domains", [])]
+    watchlist_rows = [deepcopy(row) for row in readout_packet.get("watchlist_domains", [])]
+    benchmark_rows = [deepcopy(row) for row in readout_packet.get("above_benchmark_domains", [])]
+    benchmark_median = float(readout_packet.get("meta", {}).get("benchmark_median_adoption", 0.0) or 0.0)
+
+    row_map: dict[str, dict[str, Any]] = {}
+    for row in overall_rows + choice_rows + watchlist_rows + benchmark_rows:
+        domain_id = row.get("domain_id")
+        if domain_id and domain_id not in row_map:
+            row_map[domain_id] = row
+
+    def _copy_with_stage(row: dict[str, Any], stage: str) -> dict[str, Any]:
+        enriched = deepcopy(row)
+        enriched["shortlist_stage"] = stage
+        enriched["shortlist_reason"] = _shortlist_reason(enriched, benchmark_median, stage)
+        return enriched
+
+    winners: list[dict[str, Any]] = []
+    used_ids: set[str] = set()
+    for row in benchmark_rows:
+        domain_id = row.get("domain_id")
+        if not domain_id or domain_id in used_ids:
+            continue
+        if "trial_to_retention_collapse" in row.get("diagnostic_tags", []):
+            continue
+        winners.append(_copy_with_stage(row, "winner"))
+        used_ids.add(domain_id)
+        if len(winners) >= winner_n:
+            break
+    for row in benchmark_rows:
+        domain_id = row.get("domain_id")
+        if not domain_id or domain_id in used_ids:
+            continue
+        winners.append(_copy_with_stage(row, "winner"))
+        used_ids.add(domain_id)
+        if len(winners) >= winner_n:
+            break
+
+    breakouts: list[dict[str, Any]] = []
+    for row in choice_rows:
+        domain_id = row.get("domain_id")
+        if not domain_id or domain_id in used_ids:
+            continue
+        if row.get("agent_choice_signal", 0.0) < 0.1:
+            continue
+        breakouts.append(_copy_with_stage(row, "breakout"))
+        used_ids.add(domain_id)
+        if len(breakouts) >= breakout_n:
+            break
+
+    speculative: list[dict[str, Any]] = []
+    for row in watchlist_rows:
+        domain_id = row.get("domain_id")
+        if not domain_id or domain_id in used_ids:
+            continue
+        speculative.append(_copy_with_stage(row, "speculative"))
+        used_ids.add(domain_id)
+        if len(speculative) >= speculative_n:
+            break
+
+    return {
+        "packet_kind": "mirofish_frontier_shortlist",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "source_readout_created_at": readout_packet.get("created_at"),
+        "evidence_lane": readout_packet.get("evidence_lane", "exploratory_frontier"),
+        "meta": {
+            **readout_packet.get("meta", {}),
+            "winner_count": len(winners),
+            "breakout_count": len(breakouts),
+            "speculative_count": len(speculative),
+        },
+        "top_line": readout_packet.get("top_line", {}),
+        "winner_domains": winners,
+        "breakout_domains": breakouts,
+        "speculative_domains": speculative,
+        "governance_note": (
+            "Shortlists are operator-priority surfaces over saved frontier readouts. "
+            "They do not auto-promote domains or replace the underlying checkpoint artifacts."
+        ),
+    }
+
+
+def format_frontier_shortlist_markdown(
+    shortlist_packet: dict[str, Any],
+    title: str = "MiroFish Frontier Shortlist",
+) -> str:
+    """Format a frontier shortlist packet as operator-facing markdown."""
+    meta = shortlist_packet.get("meta", {})
+    top_line = shortlist_packet.get("top_line", {})
+    winner_rows = list(shortlist_packet.get("winner_domains", []))
+    breakout_rows = list(shortlist_packet.get("breakout_domains", []))
+    speculative_rows = list(shortlist_packet.get("speculative_domains", []))
+
+    def _section_rows(rows: list[dict[str, Any]]) -> list[str]:
+        lines = [
+            "| Rank | Domain | Ensemble | Choice | Peak Interest | Reason |",
+            "|------|--------|----------|--------|---------------|--------|",
+        ]
+        for idx, row in enumerate(rows, start=1):
+            lines.append(
+                f"| {idx} | `{row.get('domain_id', 'unknown')}` | "
+                f"{row.get('mean_adoption', 0.0):.2%} | "
+                f"{row.get('agent_choice_signal', 0.0):.2%} | "
+                f"{row.get('peak_interest_probability', 0.0):.2%} | "
+                f"{row.get('shortlist_reason', '-') } |"
+            )
+        if len(lines) == 2:
+            lines.append("| - | none | - | - | - | - |")
+        return lines
+
+    lines = [
+        f"# {title}",
+        "",
+        f"> Generated: {shortlist_packet.get('created_at', 'unknown')}",
+        f"> Source readout: {shortlist_packet.get('source_readout_created_at', 'unknown')}",
+        f"> Domains in source checkpoint: {meta.get('domain_count', 'unknown')}",
+        f"> Benchmark median adoption: {meta.get('benchmark_median_adoption', 0.0):.2%}",
+        "",
+        "## Current Leaders",
+        "",
+        f"- Top ensemble domain: `{top_line.get('top_ensemble_domain', 'unknown')}` ({top_line.get('top_ensemble_mean_adoption', 0.0):.2%})",
+        f"- Top retained domain: `{top_line.get('top_final_adoption_domain', 'unknown')}` ({top_line.get('top_final_adoption', 0.0):.2%})",
+        f"- Top choice domain: `{top_line.get('top_choice_signal_domain', 'unknown')}` ({top_line.get('top_choice_signal', 0.0):.2%})",
+        "",
+        "## Winners",
+        "",
+    ]
+    lines.extend(_section_rows(winner_rows))
+    lines.extend(["", "## Breakouts", ""])
+    lines.extend(_section_rows(breakout_rows))
+    lines.extend(["", "## Speculative", ""])
+    lines.extend(_section_rows(speculative_rows))
+
+    governance_note = shortlist_packet.get("governance_note", "")
+    if governance_note:
+        lines.extend(["", "## Governance", "", f"*{governance_note}*"])
+
+    return "\n".join(lines) + "\n"
+
+
 def build_frontier_simulation_tranche(
     result_packet: dict[str, Any],
     target_count: int = 180,
@@ -816,6 +964,16 @@ def _primary_tag(candidate: dict[str, Any]) -> str:
     if not tags:
         return "untagged"
     return str(tags[0])
+
+
+def _shortlist_reason(row: dict[str, Any], benchmark_median: float, stage: str) -> str:
+    if stage == "winner":
+        if row.get("mean_adoption", 0.0) >= benchmark_median:
+            return "Clears the current benchmark median on retained ensemble adoption."
+        return "Retained ensemble adoption still ranks high enough for current operator review."
+    if stage == "breakout":
+        return "Choice signal is strong enough to justify closer review even with retained-adoption friction."
+    return "Still interesting enough for monitoring, but weaker than the current winner and breakout set."
 
 
 def infer_discovery_scores(candidate: dict[str, Any]) -> dict[str, float]:

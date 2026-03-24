@@ -1,0 +1,46 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-25_mirofish_frontier_shortlist",
+  "created_at": "2026-03-25",
+  "scope": "Extract and export a fast operator shortlist from the deeper 180-domain frontier checkpoint",
+  "decision_context": {
+    "prior_state": "The deeper 180-domain frontier checkpoint became the best breadth read, but the full ranked export was still too large for quick operator inspection.",
+    "decision": "Build a shortlist layer from the deeper 180 readout instead of opening another expensive frontier run immediately.",
+    "why_now": "This makes the current simulator winners visible in a smaller, action-ready surface while preserving the broader checkpoint underneath."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_SHORTLIST_180_DEEPER_2026-03-25.json",
+      "purpose": "Structured shortlist packet split into winners, breakouts, and speculative domains."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_SHORTLIST_180_DEEPER_2026-03-25.md",
+      "purpose": "Operator-facing markdown shortlist export for the deeper 180 frontier checkpoint."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_SHORTLIST_180_DEEPER_NOTE_2026-03-25.md",
+      "purpose": "Documents why the shortlist exists and how it should be used."
+    }
+  ],
+  "planned_steps": [
+    "Build a shortlist packet from the deeper 180 frontier readout",
+    "Format the shortlist as a markdown operator export",
+    "Save the tranche note and day-level diff summary update"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_hybrid.py tests/test_watchtower.py tests/test_mirofish_discovery.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-frontier-shortlist --input research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_180_DEEPER_2026-03-25.json --output research/meta/MIROFISH_FRONTIER_SHORTLIST_180_DEEPER_2026-03-25.json --winner-n 10 --breakout-n 8 --speculative-n 8",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-frontier-shortlist-export --input research/meta/MIROFISH_FRONTIER_SHORTLIST_180_DEEPER_2026-03-25.json --output research/meta/MIROFISH_FRONTIER_SHORTLIST_180_DEEPER_2026-03-25.md --title \"MiroFish Frontier Shortlist 180 Deeper\""
+    ],
+    "expected_checks": [
+      "The shortlist cleanly separates winners, breakouts, and speculative frontier domains",
+      "The deeper 180 checkpoint has a smaller operator surface for review without changing the underlying simulation result",
+      "Top retained and top choice frontier domains remain visible without reopening another run"
+    ]
+  },
+  "guardrails": [
+    "Do not mutate frontier conversion logic in this tranche",
+    "Do not replace the underlying deeper 180 checkpoint with the shortlist",
+    "Use the shortlist as an operator layer, not as an auto-promotion decision"
+  ]
+}

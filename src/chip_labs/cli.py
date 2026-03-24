@@ -968,6 +968,32 @@ def cmd_mirofish_frontier_tranche(args: argparse.Namespace) -> None:
     _write_output(args.output, result)
 
 
+def cmd_mirofish_frontier_shortlist(args: argparse.Namespace) -> None:
+    """Build an action shortlist from a saved frontier readout."""
+    from .mirofish.hybrid import build_frontier_shortlist
+
+    input_data = _load_input(args.input)
+    result = build_frontier_shortlist(
+        input_data,
+        winner_n=args.winner_n,
+        breakout_n=args.breakout_n,
+        speculative_n=args.speculative_n,
+    )
+    _write_output(args.output, result)
+
+
+def cmd_mirofish_frontier_shortlist_export(args: argparse.Namespace) -> None:
+    """Export a saved frontier shortlist as operator-facing markdown."""
+    from .mirofish.hybrid import format_frontier_shortlist_markdown
+
+    input_data = _load_input(args.input)
+    result = format_frontier_shortlist_markdown(
+        input_data,
+        title=args.title,
+    )
+    _write_text_output(args.output, result)
+
+
 # ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
@@ -1517,6 +1543,33 @@ def main() -> None:
         help="Target number of accepted frontier domains to keep in the tranche.",
     )
     p_mirofish_frontier_tranche.set_defaults(func=cmd_mirofish_frontier_tranche)
+
+    # mirofish-frontier-shortlist
+    p_mirofish_frontier_shortlist = sub.add_parser(
+        "mirofish-frontier-shortlist",
+        help="Build an operator shortlist from a saved MiroFish frontier readout.",
+    )
+    p_mirofish_frontier_shortlist.add_argument("--input", type=str, required=True, help="Input frontier readout path.")
+    p_mirofish_frontier_shortlist.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_frontier_shortlist.add_argument("--winner-n", type=int, default=10, help="Number of winner domains to include.")
+    p_mirofish_frontier_shortlist.add_argument("--breakout-n", type=int, default=8, help="Number of breakout domains to include.")
+    p_mirofish_frontier_shortlist.add_argument("--speculative-n", type=int, default=8, help="Number of speculative domains to include.")
+    p_mirofish_frontier_shortlist.set_defaults(func=cmd_mirofish_frontier_shortlist)
+
+    # mirofish-frontier-shortlist-export
+    p_mirofish_frontier_shortlist_export = sub.add_parser(
+        "mirofish-frontier-shortlist-export",
+        help="Export a saved MiroFish frontier shortlist as operator-facing markdown.",
+    )
+    p_mirofish_frontier_shortlist_export.add_argument("--input", type=str, required=True, help="Input frontier shortlist path.")
+    p_mirofish_frontier_shortlist_export.add_argument("--output", type=str, default=None, help="Output markdown file path.")
+    p_mirofish_frontier_shortlist_export.add_argument(
+        "--title",
+        type=str,
+        default="MiroFish Frontier Shortlist",
+        help="Document title for the markdown export.",
+    )
+    p_mirofish_frontier_shortlist_export.set_defaults(func=cmd_mirofish_frontier_shortlist_export)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")

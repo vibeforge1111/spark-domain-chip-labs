@@ -13,3 +13,11 @@ MiroFish frontier watchtower surface:
 - add a dedicated `MiroFish Frontier` watchtower page alongside the existing portfolio page
 - add a local comparison HTML surface under `research/meta/` and refresh `watchtower_latest`
 - fix watchtower latest-artifact resolution so it selects the real newest frontier export by modification time instead of filename sort
+
+## Batch 3
+
+MiroFish frontier shortlist:
+
+- add a shortlist builder and markdown exporter for frontier readouts
+- extract a fast operator shortlist from the deeper `180` frontier checkpoint under `research/meta/`
+- separate the current frontier surface into `winners`, `breakouts`, and `speculative` buckets so the best domains are easier to review without reopening another simulation run

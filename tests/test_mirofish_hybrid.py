@@ -3,7 +3,9 @@
 from chip_labs.mirofish.hybrid import (
     build_frontier_simulation_tranche,
     build_frontier_readout,
+    build_frontier_shortlist,
     format_frontier_readout_markdown,
+    format_frontier_shortlist_markdown,
 )
 
 
@@ -215,3 +217,151 @@ def test_build_frontier_simulation_tranche_keeps_anchors_and_diversifies() -> No
     assert len(selected_ids) == 5
     assert tranche["selection_policy"]["anchor_count_retained"] == 3
     assert set(tranche["selection_policy"]["represented_primary_tags"]) >= {"creator", "gaming", "crypto"}
+
+
+def test_build_frontier_shortlist_splits_winners_breakouts_and_speculative() -> None:
+    readout = {
+        "created_at": "2026-03-25T00:00:00+00:00",
+        "evidence_lane": "exploratory_frontier",
+        "meta": {
+            "domain_count": 180,
+            "benchmark_median_adoption": 0.0163,
+        },
+        "top_line": {
+            "top_ensemble_domain": "alpha",
+            "top_ensemble_mean_adoption": 0.05,
+            "top_final_adoption_domain": "beta",
+            "top_final_adoption": 0.06,
+            "top_choice_signal_domain": "gamma",
+            "top_choice_signal": 0.2,
+        },
+        "top_domains_overall": [
+            {
+                "domain_id": "alpha",
+                "mean_adoption": 0.05,
+                "agent_choice_signal": 0.10,
+                "peak_interest_probability": 0.80,
+                "diagnostic_tags": [],
+            },
+            {
+                "domain_id": "beta",
+                "mean_adoption": 0.03,
+                "agent_choice_signal": 0.08,
+                "peak_interest_probability": 0.70,
+                "diagnostic_tags": ["trial_to_retention_collapse"],
+            },
+            {
+                "domain_id": "gamma",
+                "mean_adoption": 0.01,
+                "agent_choice_signal": 0.20,
+                "peak_interest_probability": 0.75,
+                "diagnostic_tags": ["strong_candidate"],
+            },
+            {
+                "domain_id": "delta",
+                "mean_adoption": 0.015,
+                "agent_choice_signal": 0.09,
+                "peak_interest_probability": 0.65,
+                "diagnostic_tags": [],
+            },
+        ],
+        "top_choice_domains": [
+            {
+                "domain_id": "gamma",
+                "mean_adoption": 0.01,
+                "agent_choice_signal": 0.20,
+                "peak_interest_probability": 0.75,
+                "diagnostic_tags": ["strong_candidate"],
+            }
+        ],
+        "watchlist_domains": [
+            {
+                "domain_id": "delta",
+                "mean_adoption": 0.015,
+                "agent_choice_signal": 0.09,
+                "peak_interest_probability": 0.65,
+                "diagnostic_tags": [],
+            }
+        ],
+        "above_benchmark_domains": [
+            {
+                "domain_id": "alpha",
+                "mean_adoption": 0.05,
+                "agent_choice_signal": 0.10,
+                "peak_interest_probability": 0.80,
+                "diagnostic_tags": [],
+            },
+            {
+                "domain_id": "beta",
+                "mean_adoption": 0.03,
+                "agent_choice_signal": 0.08,
+                "peak_interest_probability": 0.70,
+                "diagnostic_tags": ["trial_to_retention_collapse"],
+            },
+        ],
+    }
+
+    shortlist = build_frontier_shortlist(readout, winner_n=2, breakout_n=2, speculative_n=2)
+
+    assert shortlist["winner_domains"][0]["domain_id"] == "alpha"
+    assert shortlist["winner_domains"][0]["shortlist_stage"] == "winner"
+    assert shortlist["breakout_domains"][0]["domain_id"] == "gamma"
+    assert shortlist["breakout_domains"][0]["shortlist_stage"] == "breakout"
+    assert shortlist["speculative_domains"][0]["domain_id"] == "delta"
+    assert shortlist["meta"]["winner_count"] == 2
+
+
+def test_format_frontier_shortlist_markdown_includes_sections() -> None:
+    shortlist = {
+        "created_at": "2026-03-25T00:00:00+00:00",
+        "source_readout_created_at": "2026-03-25T00:00:00+00:00",
+        "meta": {
+            "domain_count": 180,
+            "benchmark_median_adoption": 0.0163,
+        },
+        "top_line": {
+            "top_ensemble_domain": "chip_ai_agent_07",
+            "top_ensemble_mean_adoption": 0.0533,
+            "top_final_adoption_domain": "governance-vote-brief-loop",
+            "top_final_adoption": 0.0667,
+            "top_choice_signal_domain": "governance-vote-brief-loop",
+            "top_choice_signal": 0.2,
+        },
+        "winner_domains": [
+            {
+                "domain_id": "chip_ai_agent_07",
+                "mean_adoption": 0.0533,
+                "agent_choice_signal": 0.10,
+                "peak_interest_probability": 0.83,
+                "shortlist_reason": "Clears the current benchmark median on retained ensemble adoption.",
+            }
+        ],
+        "breakout_domains": [
+            {
+                "domain_id": "governance-vote-brief-loop",
+                "mean_adoption": 0.0385,
+                "agent_choice_signal": 0.20,
+                "peak_interest_probability": 0.76,
+                "shortlist_reason": "Choice signal is strong enough to justify closer review even with retained-adoption friction.",
+            }
+        ],
+        "speculative_domains": [
+            {
+                "domain_id": "pricing-review-copilot",
+                "mean_adoption": 0.0311,
+                "agent_choice_signal": 0.0667,
+                "peak_interest_probability": 0.73,
+                "shortlist_reason": "Still interesting enough for monitoring, but weaker than the current winner and breakout set.",
+            }
+        ],
+        "governance_note": "exploratory_frontier",
+    }
+
+    markdown = format_frontier_shortlist_markdown(shortlist, title="Frontier Shortlist")
+
+    assert "# Frontier Shortlist" in markdown
+    assert "## Winners" in markdown
+    assert "## Breakouts" in markdown
+    assert "## Speculative" in markdown
+    assert "`chip_ai_agent_07`" in markdown
+    assert "*exploratory_frontier*" in markdown
