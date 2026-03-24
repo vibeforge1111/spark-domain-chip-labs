@@ -451,7 +451,11 @@ def test_build_frontier_viz_packet_builds_legacy_graph_shape() -> None:
 def test_render_frontier_viz_html_rewrites_template_fetch_and_title() -> None:
     template = (
         "<html><head><title>MiroFish v4 - 500 Domain Knowledge Graph</title></head>"
-        "<body><script>fetch('mirofish_500_data.json')</script></body></html>"
+        "<body><script>"
+        "const PERSONA_DATA = { investor: { label: 'Investor' } };"
+        "const PERSONA_TYPES = Object.keys(PERSONA_DATA);"
+        "async function loadData() { const resp = await fetch('mirofish_500_data.json'); DATA = await resp.json(); }"
+        "</script></body></html>"
     )
 
     html = render_frontier_viz_html(
@@ -462,3 +466,5 @@ def test_render_frontier_viz_html_rewrites_template_fetch_and_title() -> None:
 
     assert "<title>MiroFish Frontier 500 Graph</title>" in html
     assert "fetch('MIROFISH_FRONTIER_VIZ_500_2026-03-25.json')" in html
+    assert "hydratePersonaDataFromPacket" in html
+    assert "DATA = await resp.json();\n    hydratePersonaDataFromPacket();" in html

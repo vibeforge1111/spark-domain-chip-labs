@@ -315,13 +315,19 @@ def test_build_curated_frontier_packet_emits_500_unique_domains() -> None:
 
     accepted = packet["accepted_candidates"]
     cluster_counts = {row["cluster_id"]: row["count"] for row in packet["cluster_summary"]}
+    domain_ids = {row["domain_id"] for row in accepted}
 
     assert packet["packet_kind"] == "mirofish_curated_frontier_packet"
     assert packet["summary"]["accepted_count"] == 500
+    assert packet["summary"]["unique_idea_count"] == 500
     assert len(accepted) == 500
-    assert len({row["domain_id"] for row in accepted}) == 500
+    assert len(domain_ids) == 500
     assert cluster_counts["creator-growth-systems"] == 50
     assert cluster_counts["crypto-defi-trading"] == 50
+    assert not any(
+        domain_id.endswith(("-copilot", "-engine", "-loop", "-lab", "-os"))
+        for domain_id in domain_ids
+    )
 
 
 def test_format_curated_frontier_markdown_renders_cluster_breakdown() -> None:

@@ -10,6 +10,7 @@ from copy import deepcopy
 from datetime import datetime, timezone
 import math
 from pathlib import Path
+import re
 from typing import Any
 
 from ..trend_scanner import SEED_OPPORTUNITIES, rank_opportunities, score_opportunity
@@ -919,56 +920,74 @@ _FRONTIER_VIZ_PERSONAS: list[dict[str, Any]] = [
     {
         "type": "x_native_founder",
         "label": "X-Native Solo Founder",
+        "color": "#ff6b35",
         "count": 180,
         "influence_score": 0.86,
         "adoption_threshold": 0.34,
         "risk_tolerance": 0.74,
         "network_reach": 0.82,
+        "values": ["speed_to_ship", "distribution", "taste", "momentum"],
+        "pain_points": ["low_reach", "weak_positioning", "posting_fatigue"],
     },
     {
         "type": "indie_hacker_public",
         "label": "Indie Hacker Shipping in Public",
+        "color": "#06b6d4",
         "count": 170,
         "influence_score": 0.78,
         "adoption_threshold": 0.32,
         "risk_tolerance": 0.72,
         "network_reach": 0.76,
+        "values": ["speed", "leverage", "clarity", "cash_flow"],
+        "pain_points": ["solo_overload", "context_switching", "distribution_gaps"],
     },
     {
         "type": "ai_builder_leverage",
         "label": "AI Builder Chasing Leverage",
+        "color": "#6366f1",
         "count": 180,
         "influence_score": 0.84,
         "adoption_threshold": 0.30,
         "risk_tolerance": 0.77,
         "network_reach": 0.72,
+        "values": ["automation", "agent_reliability", "stack_quality", "throughput"],
+        "pain_points": ["tool_sprawl", "agent_failures", "weak_eval_coverage"],
     },
     {
         "type": "creator_attention",
         "label": "Creator Optimizing Attention",
+        "color": "#ec4899",
         "count": 170,
         "influence_score": 0.76,
         "adoption_threshold": 0.33,
         "risk_tolerance": 0.68,
         "network_reach": 0.88,
+        "values": ["reach", "retention", "voice", "community"],
+        "pain_points": ["audience_dropoff", "burnout", "format_decay"],
     },
     {
         "type": "crypto_researcher",
         "label": "Crypto-Native Trader and Researcher",
+        "color": "#10b981",
         "count": 150,
         "influence_score": 0.82,
         "adoption_threshold": 0.36,
         "risk_tolerance": 0.84,
         "network_reach": 0.79,
+        "values": ["alpha", "speed", "risk_management", "narrative_timing"],
+        "pain_points": ["information_lag", "wallet_risk", "rotation_mistakes"],
     },
     {
         "type": "career_status_optimizer",
         "label": "Career Optimizer Chasing Status",
+        "color": "#fbbf24",
         "count": 150,
         "influence_score": 0.68,
         "adoption_threshold": 0.35,
         "risk_tolerance": 0.58,
         "network_reach": 0.74,
+        "values": ["credibility", "promotion", "signal", "proof"],
+        "pain_points": ["weak_positioning", "status_confusion", "proof_gaps"],
     },
 ]
 
@@ -1171,6 +1190,19 @@ def render_frontier_viz_html(
         1,
     )
     rendered = rendered.replace("fetch('mirofish_500_data.json')", f"fetch('{data_filename}')", 1)
+    rendered = re.sub(
+        r"DATA = await resp\.json\(\);",
+        "DATA = await resp.json();\n    hydratePersonaDataFromPacket();",
+        rendered,
+        count=1,
+    )
+    rendered = re.sub(
+        r"const PERSONA_DATA = \{.*?\};\s*const PERSONA_TYPES = Object.keys\(PERSONA_DATA\);",
+        """let PERSONA_DATA = {};\nlet PERSONA_TYPES = [];\nconst PERSONA_FALLBACK_COLORS = ['#ff6b35', '#06b6d4', '#6366f1', '#ec4899', '#10b981', '#fbbf24', '#14b8a6', '#f43f5e'];\n\nfunction hydratePersonaDataFromPacket() {\n  const personas = Array.isArray(DATA?.persona_types) ? DATA.persona_types : [];\n  PERSONA_DATA = {};\n  personas.forEach((persona, index) => {\n    PERSONA_DATA[persona.type] = {\n      label: persona.label || persona.type,\n      color: persona.color || PERSONA_FALLBACK_COLORS[index % PERSONA_FALLBACK_COLORS.length],\n      values: Array.isArray(persona.values) ? persona.values : [],\n      pain_points: Array.isArray(persona.pain_points) ? persona.pain_points : [],\n      influence: persona.influence_score ?? 0.6,\n      threshold: persona.adoption_threshold ?? 0.3,\n      risk: persona.risk_tolerance ?? 0.5,\n      reach: persona.network_reach ?? 0.5,\n    };\n  });\n  PERSONA_TYPES = Object.keys(PERSONA_DATA);\n}""",
+        rendered,
+        count=1,
+        flags=re.S,
+    )
     return rendered
 
 

@@ -4,32 +4,33 @@
 - Profile: `hot_now`
 - Accepted domains: `500`
 - Clusters: `10`
+- Unique source ideas: `500`
 
 ## Cluster Breakdown
 
 - `creator-growth-systems`: 50 domains
-  Samples: `hook-angle-test-copilot`, `hook-angle-test-engine`, `hook-angle-test-loop`, `hook-angle-test-lab`, `hook-angle-test-os`
+  Samples: `hook-angle-testing`, `thumbnail-thesis-board`, `comment-funnel-builder`, `clip-ladder-planner`, `series-payoff-calendar`
 - `gaming-npc-community`: 50 domains
-  Samples: `npc-quest-memory-copilot`, `npc-quest-memory-engine`, `npc-quest-memory-loop`, `npc-quest-memory-lab`, `npc-quest-memory-os`
+  Samples: `npc-memory-rail`, `quest-branch-editor`, `guild-ritual-scheduler`, `patch-notes-translator`, `raid-prep-draftboard`
 - `agentic-builders`: 50 domains
-  Samples: `spec-to-ship-decomposition-copilot`, `spec-to-ship-decomposition-engine`, `spec-to-ship-decomposition-loop`, `spec-to-ship-decomposition-lab`, `spec-to-ship-decomposition-os`
+  Samples: `spec-breaker-workbench`, `agent-handoff-tracer`, `tool-permission-guard`, `mcp-surface-mapper`, `agent-failure-replay`
 - `startup-founder-systems`: 50 domains
-  Samples: `idea-triage-copilot`, `idea-triage-engine`, `idea-triage-loop`, `idea-triage-lab`, `idea-triage-os`
+  Samples: `idea-triage-board`, `pain-interview-cutter`, `icp-friction-mapper`, `waitlist-signal-ranker`, `founder-update-writer`
 - `productivity-builder-ops`: 50 domains
-  Samples: `deep-work-sprint-copilot`, `deep-work-sprint-engine`, `deep-work-sprint-loop`, `deep-work-sprint-lab`, `deep-work-sprint-os`
+  Samples: `deep-work-blocker`, `meeting-to-action-bridge`, `context-switch-meter`, `priority-stack-board`, `task-energy-matcher`
 - `career-status-social-proof`: 50 domains
-  Samples: `resume-refresh-copilot`, `resume-refresh-engine`, `resume-refresh-loop`, `resume-refresh-lab`, `resume-refresh-os`
+  Samples: `resume-signal-rewrite`, `portfolio-proof-grid`, `interview-story-bank`, `linkedin-positioning-audit`, `offer-comparison-desk`
 - `developer-distribution-tools`: 50 domains
-  Samples: `changelog-to-launch-copilot`, `changelog-to-launch-engine`, `changelog-to-launch-loop`, `changelog-to-launch-lab`, `changelog-to-launch-os`
+  Samples: `changelog-launch-writer`, `github-issue-digest`, `release-snippet-studio`, `devrel-feedback-router`, `open-source-proofboard`
 - `consumer-agent-utilities`: 50 domains
-  Samples: `weekend-trip-plan-copilot`, `weekend-trip-plan-engine`, `weekend-trip-plan-loop`, `weekend-trip-plan-lab`, `weekend-trip-plan-os`
+  Samples: `weekend-trip-matcher`, `grocery-price-radar`, `family-calendar-referee`, `subscription-leak-finder`, `group-dinner-decider`
 - `crypto-defi-trading`: 50 domains
-  Samples: `airdrop-hunting-copilot`, `airdrop-hunting-engine`, `airdrop-hunting-loop`, `airdrop-hunting-lab`, `airdrop-hunting-os`
+  Samples: `airdrop-route-planner`, `governance-vote-briefing`, `wallet-risk-watch`, `yield-rotation-desk`, `token-unlock-pressure`
 - `x-native-persona-tools`: 50 domains
-  Samples: `reply-ladder-copilot`, `reply-ladder-engine`, `reply-ladder-loop`, `reply-ladder-lab`, `reply-ladder-os`
+  Samples: `reply-ladder`, `quote-tweet-angle-finder`, `persona-bio-rewrite`, `thread-arc-checker`, `hot-take-calibrator`
 
 ## Next Actions
 
-- Run MiroFish selection on this curated 500-domain frontier instead of the synthetic 1000-agent frontier.
-- Use the legacy graph UI to inspect which curated domains survive choice and retention.
-- Trim or replace weak themes only after reviewing simulator outcomes on the curated set.
+- Run MiroFish selection on this curated 500-domain frontier instead of the synthetic frontier pool.
+- Keep the legacy graph UI as the primary simulator surface for reviewing which domains survive choice and retention.
+- Replace weak ideas only after inspecting the simulator output on this genuinely unique set.

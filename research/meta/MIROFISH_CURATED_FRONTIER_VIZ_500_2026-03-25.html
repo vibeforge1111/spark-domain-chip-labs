@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MiroFish Curated Frontier 500 Graph</title>
+<title>MiroFish Curated Frontier 500</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -329,101 +329,27 @@
 // ============================================================================
 // PERSONA DATA (static from personas.py)
 // ============================================================================
-const PERSONA_DATA = {
-  investor: {
-    label: 'Investor', color: '#00ff88',
-    values: ['deal_flow', 'alpha', 'portfolio_intelligence', 'roi'],
-    pain_points: ['information_overload', 'slow_due_diligence', 'missed_deals'],
-    influence: 0.9, threshold: 0.45, risk: 0.6, reach: 0.85,
-  },
-  entrepreneur: {
-    label: 'Entrepreneur', color: '#ff6b35',
-    values: ['speed_to_ship', 'idea_validation', 'mvp_quality', 'market_fit'],
-    pain_points: ['too_slow', 'feature_bloat', 'analysis_paralysis'],
-    influence: 0.75, threshold: 0.3, risk: 0.85, reach: 0.7,
-  },
-  content_creator: {
-    label: 'Content Creator', color: '#ec4899',
-    values: ['audience_growth', 'content_quality', 'distribution'],
-    pain_points: ['writer_block', 'algorithm_changes', 'audience_fatigue'],
-    influence: 0.8, threshold: 0.25, risk: 0.7, reach: 0.9,
-  },
-  solopreneur: {
-    label: 'Solopreneur', color: '#06b6d4',
-    values: ['time_leverage', 'low_cost', 'simplicity', 'all_in_one'],
-    pain_points: ['no_team', 'limited_budget', 'wearing_all_hats'],
-    influence: 0.5, threshold: 0.35, risk: 0.75, reach: 0.4,
-  },
-  ai_newcomer: {
-    label: 'AI Newcomer', color: '#fbbf24',
-    values: ['easy_start', 'low_learning_curve', 'quick_wins'],
-    pain_points: ['overwhelmed', 'dont_know_where_to_start', 'fear_of_ai'],
-    influence: 0.3, threshold: 0.2, risk: 0.5, reach: 0.3,
-  },
-  developer: {
-    label: 'Developer', color: '#3b82f6',
-    values: ['code_quality', 'productivity', 'dx', 'extensibility'],
-    pain_points: ['bad_docs', 'vendor_lock_in', 'over_engineering'],
-    influence: 0.7, threshold: 0.4, risk: 0.65, reach: 0.65,
-  },
-  marketer: {
-    label: 'Marketer', color: '#a855f7',
-    values: ['campaign_roi', 'attribution', 'conversion'],
-    pain_points: ['cant_prove_roi', 'ad_fatigue', 'channel_fragmentation'],
-    influence: 0.65, threshold: 0.3, risk: 0.6, reach: 0.75,
-  },
-  creative: {
-    label: 'Creative', color: '#f43f5e',
-    values: ['aesthetic_quality', 'creative_control', 'uniqueness'],
-    pain_points: ['ai_looks_generic', 'loss_of_style', 'commoditization'],
-    influence: 0.6, threshold: 0.25, risk: 0.8, reach: 0.55,
-  },
-  trader: {
-    label: 'Trader', color: '#10b981',
-    values: ['alpha', 'speed', 'risk_management', 'edge'],
-    pain_points: ['slow_execution', 'information_lag', 'missed_entries'],
-    influence: 0.65, threshold: 0.35, risk: 0.9, reach: 0.5,
-  },
-  tool_maker: {
-    label: 'Tool Maker', color: '#6366f1',
-    values: ['infrastructure', 'api_quality', 'developer_adoption'],
-    pain_points: ['poor_docs', 'breaking_changes', 'low_adoption'],
-    influence: 0.75, threshold: 0.5, risk: 0.7, reach: 0.7,
-  },
-  opportunity_hunter: {
-    label: 'Opp. Hunter', color: '#f97316',
-    values: ['early_access', 'trend_spotting', 'speed', 'first_mover'],
-    pain_points: ['fomo', 'too_late', 'noise_vs_signal'],
-    influence: 0.55, threshold: 0.15, risk: 0.95, reach: 0.6,
-  },
-  // v4 persona types
-  displaced_worker: {
-    label: 'Displaced Worker', color: '#ef4444',
-    values: ['career', 'reskill', 'easy_start', 'quick_wins'],
-    pain_points: ['job_loss', 'no_ai_skills', 'age_discrimination'],
-    influence: 0.35, threshold: 0.15, risk: 0.4, reach: 0.3,
-  },
-  corporate_innovator: {
-    label: 'Corp. Innovator', color: '#14b8a6',
-    values: ['roi', 'compliance', 'workflow', 'productivity'],
-    pain_points: ['bureaucracy', 'procurement_hell', 'security_concerns'],
-    influence: 0.7, threshold: 0.4, risk: 0.5, reach: 0.55,
-  },
-  student_builder: {
-    label: 'Student Builder', color: '#f472b6',
-    values: ['easy_start', 'low_cost', 'speed_to_ship', 'quick_wins'],
-    pain_points: ['no_budget', 'overwhelmed', 'no_experience'],
-    influence: 0.4, threshold: 0.1, risk: 0.9, reach: 0.35,
-  },
-  skeptic: {
-    label: 'Skeptic', color: '#78716c',
-    values: ['code_quality', 'risk_management', 'infrastructure'],
-    pain_points: ['ai_hype', 'vendor_lock_in', 'unreliable_output'],
-    influence: 0.8, threshold: 0.6, risk: 0.2, reach: 0.7,
-  },
-};
+let PERSONA_DATA = {};
+let PERSONA_TYPES = [];
+const PERSONA_FALLBACK_COLORS = ['#ff6b35', '#06b6d4', '#6366f1', '#ec4899', '#10b981', '#fbbf24', '#14b8a6', '#f43f5e'];
 
-const PERSONA_TYPES = Object.keys(PERSONA_DATA);
+function hydratePersonaDataFromPacket() {
+  const personas = Array.isArray(DATA?.persona_types) ? DATA.persona_types : [];
+  PERSONA_DATA = {};
+  personas.forEach((persona, index) => {
+    PERSONA_DATA[persona.type] = {
+      label: persona.label || persona.type,
+      color: persona.color || PERSONA_FALLBACK_COLORS[index % PERSONA_FALLBACK_COLORS.length],
+      values: Array.isArray(persona.values) ? persona.values : [],
+      pain_points: Array.isArray(persona.pain_points) ? persona.pain_points : [],
+      influence: persona.influence_score ?? 0.6,
+      threshold: persona.adoption_threshold ?? 0.3,
+      risk: persona.risk_tolerance ?? 0.5,
+      reach: persona.network_reach ?? 0.5,
+    };
+  });
+  PERSONA_TYPES = Object.keys(PERSONA_DATA);
+}
 
 // Domain category colors
 const DOMAIN_COLORS = {
@@ -476,6 +402,7 @@ async function loadData() {
   try {
     const resp = await fetch('MIROFISH_CURATED_FRONTIER_VIZ_500_2026-03-25.json');
     DATA = await resp.json();
+    hydratePersonaDataFromPacket();
   } catch(e) {
     console.error('Failed to load data:', e);
     return;
