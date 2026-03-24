@@ -1,6 +1,6 @@
 {
   "packet_kind": "mirofish_discovery_program_input",
-  "created_at": "2026-03-24T18:27:00.040252+00:00",
+  "created_at": "2026-03-24T18:31:55.906732+00:00",
   "program_id": "mirofish-discovery-program-pilot-100-viral",
   "stage_label": "pilot_100_viral",
   "target_agent_count": 100,
@@ -565,7 +565,44 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "label": "Creator Shopping Drop Copilot",
+          "description": "Plans recurring product tags, affiliate bundles, and merch drops so creators can turn content spikes into a repeatable shopping revenue system.",
+          "specialization_surface": "operating creator-led shopping and affiliate drops across tagged videos, shorts, and storefront collections",
+          "mastery_surface": "learning which product bundles, timing windows, and merchandising angles consistently convert creator attention into shopping revenue",
+          "user_value_loop": "map content themes to products, schedule tagged drops and collections, track shopping conversions, and refine the creator's commerce playbook after each campaign cycle",
+          "domain_tags": [
+            "creator-growth",
+            "shopping",
+            "affiliate",
+            "commerce"
+          ],
+          "evidence_sources": [
+            "youtube-shopping-features-2024",
+            "youtube-shopping-report-2025",
+            "youtube-partner-program-2025"
+          ],
+          "evidence_summary": "YouTube is explicitly expanding shopping infrastructure for creators through affiliate hubs, collections, and tagged video workflows, and its 2025 shopping report positions creator-led commerce as a major behavior shift. That makes creator shopping look like a repeated operating system, not a one-off monetization feature.",
+          "adjacent_domains": [
+            "creator-brand-deal-fit-copilot",
+            "creator-membership-flywheel-copilot",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [
+            "Creator Commerce Drop Copilot",
+            "Affiliate Bundle Copilot"
+          ],
+          "confidence_read": "medium",
+          "promotion_status": "candidate",
+          "raw_observation": "A lot of creator monetization is shifting toward repeatable shopping moments where the real leverage is deciding what to tag, bundle, and push each time attention spikes.",
+          "evidence_links": [
+            "https://blog.youtube/news-and-events/new-youtube-shopping-features/",
+            "https://blog.youtube/culture-and-trends/tr25-youtube-shopping-report/",
+            "https://blog.youtube/creator-and-artist-stories/youtube-partner-program-explained/"
+          ]
+        }
+      ]
     },
     {
       "agent_id": "agent-008",
@@ -596,7 +633,42 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "label": "Fan Community Prompt Copilot",
+          "description": "Designs recurring community prompts, polls, fan threads, and post-video activation loops so creators can convert passive viewers into an active discussion layer.",
+          "specialization_surface": "running creator-community prompts and discussion loops that extend content into recurring fan participation",
+          "mastery_surface": "learning which prompt formats, timing windows, and follow-up moves consistently turn viewers into replying, returning, and participating community members",
+          "user_value_loop": "draft post-video prompts and polls, run discussion sequences in community surfaces, track fan participation patterns, and refine the creator's community activation playbook after each release cycle",
+          "domain_tags": [
+            "creator-growth",
+            "community",
+            "fan-engagement",
+            "discussion"
+          ],
+          "evidence_sources": [
+            "youtube-communities-2024",
+            "youtube-creator-collective-2025"
+          ],
+          "evidence_summary": "YouTube's Communities rollout explicitly treats fan discussion as its own product surface rather than a side effect of comments, and the 2025 Creator Collective program frames community-building as part of creator growth. That suggests a repeated prompt-and-response loop worth treating as a domain chip.",
+          "adjacent_domains": [
+            "creator-membership-flywheel-copilot",
+            "audience-comment-signal-copilot",
+            "discord-community"
+          ],
+          "duplicate_aliases": [
+            "Creator Community Loop Copilot",
+            "Fan Prompt System Copilot"
+          ],
+          "confidence_read": "medium",
+          "promotion_status": "candidate",
+          "raw_observation": "For a lot of creators, growth no longer stops at the upload; the next lever is repeatedly getting fans to participate in community prompts, not just watch and leave.",
+          "evidence_links": [
+            "https://blog.youtube/news-and-events/a-new-youtube-communities-experience-for-fans-by-fans/",
+            "https://blog.youtube/news-and-events/2025-youtube-creator-collective-events/"
+          ]
+        }
+      ]
     },
     {
       "agent_id": "agent-009",
@@ -627,7 +699,42 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "label": "Creator Collab Pipeline Copilot",
+          "description": "Builds a recurring pipeline of creator collaboration targets, pitch angles, and format briefs so creators can turn occasional collabs into a compounding growth loop.",
+          "specialization_surface": "finding, packaging, and operationalizing creator-to-creator collaborations as a repeatable audience-growth channel",
+          "mastery_surface": "learning which collaborator matches, format pairings, and outreach angles consistently produce reach expansion and audience crossover",
+          "user_value_loop": "identify adjacent creators, draft the collaboration concept and pitch, track collab performance, and refine the creator's collaboration playbook after each partnership cycle",
+          "domain_tags": [
+            "creator-growth",
+            "collaboration",
+            "distribution",
+            "network-effects"
+          ],
+          "evidence_sources": [
+            "youtube-creator-collective-2025",
+            "youtube-between-two-creators-2024"
+          ],
+          "evidence_summary": "YouTube's Creator Collective program is built around creators growing through connection and knowledge-sharing, while collaboration spotlights like Steven He and Jeenie Weenie show how creator pairings create durable audience crossover. The operational gap is turning those occasional wins into a system.",
+          "adjacent_domains": [
+            "creator-brand-deal-fit-copilot",
+            "cross-platform-clip-calendar-copilot",
+            "xcontent"
+          ],
+          "duplicate_aliases": [
+            "Creator Collaboration Match Copilot",
+            "Collab Outreach Copilot"
+          ],
+          "confidence_read": "medium",
+          "promotion_status": "candidate",
+          "raw_observation": "Collabs are still one of the clearest social growth levers for creators, but most people run them opportunistically instead of as a repeatable pipeline with proven match logic.",
+          "evidence_links": [
+            "https://blog.youtube/news-and-events/2025-youtube-creator-collective-events/",
+            "https://blog.youtube/creator-and-artist-stories/steven-he-jeenie-weenie-collab/"
+          ]
+        }
+      ]
     },
     {
       "agent_id": "agent-010",

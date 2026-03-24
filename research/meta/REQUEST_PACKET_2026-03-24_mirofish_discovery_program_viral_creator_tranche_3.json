@@ -1,0 +1,24 @@
+{
+  "request_id": "2026-03-24-mirofish-discovery-program-viral-creator-tranche-3",
+  "chip": "mirofish",
+  "workstream": "Frontier Scout",
+  "status": "completed",
+  "why": [
+    "Continue finishing the creator-growth wedge before opening gaming.",
+    "Test whether creator community, shopping, and collaboration loops change the frontier ranking inside the bounded read."
+  ],
+  "outputs": [
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RECOMBINED_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.md",
+    "research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json",
+    "research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_DIAGNOSTIC_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CREATOR_TRANCHE_PROMOTION_BRIEF_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_VIRAL_CREATOR_TRANCHE_3_NOTE_2026-03-24.md"
+  ],
+  "next_step": "Finish the remaining creator-growth slots, then open gaming-npc-community."
+}

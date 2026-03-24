@@ -3,7 +3,7 @@
 - Program ID: `mirofish-discovery-program-pilot-100-viral`
 - Stage: `pilot_100_viral`
 - Participating Agents: `100` / `100`
-- Accepted: `6`
+- Accepted: `9`
 - Merged: `0`
 - Rejected: `0`
 - Recommended next stage: `run_250_agent_pilot`
@@ -16,6 +16,9 @@
 - `thumbnail-package-test-copilot`: Thumbnail Package Test Copilot (clear_domain_chip)
 - `audience-comment-signal-copilot`: Audience Comment Signal Copilot (clear_domain_chip)
 - `creator-brand-deal-fit-copilot`: Creator Brand Deal Fit Copilot (clear_domain_chip)
+- `creator-shopping-drop-copilot`: Creator Shopping Drop Copilot (clear_domain_chip)
+- `fan-community-prompt-copilot`: Fan Community Prompt Copilot (clear_domain_chip)
+- `creator-collab-pipeline-copilot`: Creator Collab Pipeline Copilot (clear_domain_chip)
 
 ## Next Actions
 
