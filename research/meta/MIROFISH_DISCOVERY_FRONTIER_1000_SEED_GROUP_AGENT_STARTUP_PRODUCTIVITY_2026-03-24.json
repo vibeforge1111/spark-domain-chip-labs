@@ -1,0 +1,113 @@
+{
+  "group_id": "agent_startup_productivity",
+  "generated_at": "2026-03-24",
+  "profile": "diverse_frontier",
+  "source": "same_persona_subagents",
+  "ideas": [
+    {
+      "domain_id": "chip_ai_agent_01",
+      "label": "Agentic Lead Triage Loop",
+      "description": "A loop for ingesting inbound lead signals, enriching context, and routing the next best follow-up action.",
+      "domain_tags": ["ai-agent", "sales", "triage", "startup"],
+      "raw_observation": "Founders and operators keep losing speed because inbound opportunities arrive noisily and get handled inconsistently."
+    },
+    {
+      "domain_id": "chip_ai_agent_02",
+      "label": "Spec-to-Ship Decomposition Loop",
+      "description": "A workflow for breaking vague product intent into scoped implementation slices, follow-up tasks, and delivery checkpoints.",
+      "domain_tags": ["ai-agent", "builders", "productivity", "shipping"],
+      "raw_observation": "Small teams routinely stall between idea and shipment because decomposition is cognitively expensive."
+    },
+    {
+      "domain_id": "chip_ai_agent_03",
+      "label": "Content Repurposing Loop",
+      "description": "A system for turning one source artifact into multiple posts, clips, summaries, and distribution formats.",
+      "domain_tags": ["content", "ai-agent", "repurposing", "growth"],
+      "raw_observation": "Builders and founders increasingly need to document and distribute continuously, not just ship silently."
+    },
+    {
+      "domain_id": "chip_ai_agent_04",
+      "label": "Daily Signal Digest Loop",
+      "description": "A loop for aggregating key updates, weak signals, and action-worthy changes into a daily operating brief.",
+      "domain_tags": ["signals", "digest", "ai-agent", "productivity"],
+      "raw_observation": "Operators drown in streams of updates and need compressed decision-ready signal, not more dashboards."
+    },
+    {
+      "domain_id": "chip_ai_agent_05",
+      "label": "Build Log to Distribution Loop",
+      "description": "A workflow for converting changelogs and internal progress into public-facing distribution assets.",
+      "domain_tags": ["distribution", "builders", "ai-agent", "content"],
+      "raw_observation": "Indie teams frequently have raw progress but do not package it into attention-generating narratives."
+    },
+    {
+      "domain_id": "chip_ai_agent_06",
+      "label": "Bug Triage and Repro Loop",
+      "description": "A loop for clustering incoming bug reports, proposing repro paths, and prioritizing fixes.",
+      "domain_tags": ["bugs", "engineering", "ai-agent", "ops"],
+      "raw_observation": "Bug intake is repetitive, interrupt-driven, and often loses critical context between report and fix."
+    },
+    {
+      "domain_id": "chip_ai_agent_07",
+      "label": "Launch Checklist Loop",
+      "description": "A system for coordinating recurring launch readiness tasks across copy, product, support, and distribution surfaces.",
+      "domain_tags": ["launch", "startup", "ops", "ai-agent"],
+      "raw_observation": "Every launch repeats the same coordination pain, especially in lean teams without dedicated operations staff."
+    },
+    {
+      "domain_id": "chip_ai_agent_08",
+      "label": "Deal Desk Loop",
+      "description": "A workflow for pricing questions, packaging tradeoffs, approval logic, and follow-up in small sales motions.",
+      "domain_tags": ["sales", "pricing", "startup", "ops"],
+      "raw_observation": "Founders repeatedly improvise deal decisions, which creates inconsistency and lost learning."
+    },
+    {
+      "domain_id": "chip_ai_agent_09",
+      "label": "Research-to-Decision Loop",
+      "description": "A loop for turning scattered research into explicit options, tradeoffs, and next decisions.",
+      "domain_tags": ["research", "decision-making", "ai-agent", "productivity"],
+      "raw_observation": "Many teams over-collect information but under-convert it into concrete decisions."
+    },
+    {
+      "domain_id": "chip_ai_agent_10",
+      "label": "Task Queue Clearing Loop",
+      "description": "A workflow for reducing backlog pressure by clustering, sequencing, and escalating the right tasks each day.",
+      "domain_tags": ["tasks", "queue", "productivity", "ai-agent"],
+      "raw_observation": "Knowledge workers often need help deciding what to clear first, not just tracking more tasks."
+    },
+    {
+      "domain_id": "chip_ai_agent_11",
+      "label": "Customer Insight Extraction Loop",
+      "description": "A system for converting user conversations into repeated product signals, objections, and growth lessons.",
+      "domain_tags": ["customer-insight", "feedback", "startup", "product"],
+      "raw_observation": "Teams talk to customers but rarely preserve the reusable patterns in a structured way."
+    },
+    {
+      "domain_id": "chip_ai_agent_12",
+      "label": "Experiment Cadence Loop",
+      "description": "A workflow for defining, running, and reviewing small experiments across growth, product, and messaging.",
+      "domain_tags": ["experiments", "growth", "productivity", "startup"],
+      "raw_observation": "Most small teams say they experiment, but their cadence breaks because setup and review are too manual."
+    },
+    {
+      "domain_id": "chip_ai_agent_13",
+      "label": "Knowledge Capture Loop",
+      "description": "A system for turning transient work outputs into reusable internal knowledge before context disappears.",
+      "domain_tags": ["knowledge", "capture", "ai-agent", "ops"],
+      "raw_observation": "Operational learning gets lost constantly because teams move faster than their documentation habits."
+    },
+    {
+      "domain_id": "chip_ai_agent_14",
+      "label": "Launch Postmortem Loop",
+      "description": "A workflow for extracting lessons from launches and feeding them back into the next cycle automatically.",
+      "domain_tags": ["postmortem", "launch", "learning", "startup"],
+      "raw_observation": "Teams often repeat launch mistakes because the feedback loop closes too slowly or not at all."
+    },
+    {
+      "domain_id": "chip_ai_agent_15",
+      "label": "Opportunity Radar Loop",
+      "description": "A system for spotting adjacent opportunities, anomalies, and collaboration openings before they fully emerge.",
+      "domain_tags": ["opportunities", "signals", "startup", "radar"],
+      "raw_observation": "Operators with good instincts still miss opportunities because the signal landscape moves faster than manual scanning."
+    }
+  ]
+}

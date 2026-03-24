@@ -1,0 +1,106 @@
+{
+  "group_id": "creator_media_social",
+  "generated_at": "2026-03-24",
+  "profile": "diverse_frontier",
+  "source": "same_persona_subagents",
+  "ideas": [
+    {
+      "domain_id": "creator-idea-sprint-loop",
+      "label": "Creator Idea Sprint Loop",
+      "description": "A rapid loop for turning creator signals into fresh post, clip, or product concepts before momentum fades.",
+      "domain_tags": ["creator", "idea-generation", "short-form", "viral"],
+      "raw_observation": "Creators on X and short-form platforms keep needing new angles faster than their manual ideation process can sustain."
+    },
+    {
+      "domain_id": "distribution-repack-loop",
+      "label": "Distribution Repack Loop",
+      "description": "A workflow for repacking one core idea into multiple distribution-native formats across X, shorts, threads, and newsletters.",
+      "domain_tags": ["creator", "distribution", "repurposing", "growth"],
+      "raw_observation": "Good creators rarely fail because of idea scarcity alone; they fail to reshape winning ideas into enough surfaces."
+    },
+    {
+      "domain_id": "audience-comment-loop",
+      "label": "Audience Comment Loop",
+      "description": "A system for mining replies and comments into future content, offers, and audience language cues.",
+      "domain_tags": ["creator", "community", "feedback", "growth"],
+      "raw_observation": "The comment section acts like an always-on demand signal, but most creators do not systematize it."
+    },
+    {
+      "domain_id": "identity-proof-loop",
+      "label": "Identity Proof Loop",
+      "description": "A creator workflow for packaging receipts, wins, and artifacts into repeated proof-of-skill moments.",
+      "domain_tags": ["creator", "identity", "social-proof", "status"],
+      "raw_observation": "X-native audiences respond strongly when creators repeatedly show evidence that they actually do the thing they talk about."
+    },
+    {
+      "domain_id": "remix-meme-loop",
+      "label": "Remix Meme Loop",
+      "description": "A loop for translating live memes and cultural formats into on-brand creator variations quickly enough to matter.",
+      "domain_tags": ["creator", "memes", "cultural-timing", "viral"],
+      "raw_observation": "The shelf life of internet meme formats is short, so creators need a lightweight remix engine instead of bespoke brainstorming."
+    },
+    {
+      "domain_id": "collab-graph-loop",
+      "label": "Collab Graph Loop",
+      "description": "A system for finding, sequencing, and operationalizing creator collaborations based on audience overlap and timing.",
+      "domain_tags": ["creator", "collaboration", "graph", "growth"],
+      "raw_observation": "Creators often know collaboration works but lack a repeatable way to map who to partner with next."
+    },
+    {
+      "domain_id": "micro-community-loop",
+      "label": "Micro-Community Loop",
+      "description": "A loop for turning loose followers into recurring ritual-based micro-communities with prompts, events, and member roles.",
+      "domain_tags": ["community", "creator", "membership", "retention"],
+      "raw_observation": "The strongest creator businesses are built on small pockets of highly engaged people, not on passive follower counts alone."
+    },
+    {
+      "domain_id": "status-signal-loop",
+      "label": "Status Signal Loop",
+      "description": "A workflow for shaping posts and artifacts that communicate taste, sharpness, and relevance to internet-native audiences.",
+      "domain_tags": ["status", "creator", "social", "viral"],
+      "raw_observation": "People on X often share content not just because it is useful, but because it upgrades how they are perceived."
+    },
+    {
+      "domain_id": "design-feedback-loop",
+      "label": "Design Feedback Loop",
+      "description": "A creator-system for collecting, clustering, and acting on aesthetic feedback across posts, pages, and product drops.",
+      "domain_tags": ["design", "creator", "feedback", "iteration"],
+      "raw_observation": "Visual taste-driven accounts iterate in public, but the signal from replies and DMs is usually lost."
+    },
+    {
+      "domain_id": "thread-to-asset-loop",
+      "label": "Thread to Asset Loop",
+      "description": "A workflow for converting high-performing threads into durable assets such as guides, templates, or lead magnets.",
+      "domain_tags": ["threads", "content", "assets", "monetization"],
+      "raw_observation": "High-performing thread ideas often vanish after the post cycle instead of being converted into compounding assets."
+    },
+    {
+      "domain_id": "launch-hype-loop",
+      "label": "Launch Hype Loop",
+      "description": "A repeated system for building anticipation, public progress, and coordinated momentum around a creator or indie launch.",
+      "domain_tags": ["launch", "hype", "creator", "distribution"],
+      "raw_observation": "Internet launches benefit from narrative buildup, but most solo operators improvise instead of running a repeatable hype loop."
+    },
+    {
+      "domain_id": "live-stream-iteration-loop",
+      "label": "Live Stream Iteration Loop",
+      "description": "A feedback loop for testing content formats, hooks, and offers live, then refining what performs in near real time.",
+      "domain_tags": ["live", "streaming", "feedback", "iteration"],
+      "raw_observation": "Live environments expose what resonates immediately, but most creators do not convert those signals into structured next actions."
+    },
+    {
+      "domain_id": "community-ritual-loop",
+      "label": "Community Ritual Loop",
+      "description": "A system for creating repeatable rituals, memes, and recurring prompts that keep an audience returning and participating.",
+      "domain_tags": ["community", "rituals", "retention", "culture"],
+      "raw_observation": "Communities get sticky when they develop their own rituals, but creators rarely design those rituals intentionally."
+    },
+    {
+      "domain_id": "trend-to-thesis-loop",
+      "label": "Trend to Thesis Loop",
+      "description": "A workflow for turning fast-moving trends into distinct creator theses, takes, and packaged contrarian positions.",
+      "domain_tags": ["trends", "thesis", "creator", "positioning"],
+      "raw_observation": "Winning accounts often turn a noisy trend into a sharp thesis before the rest of the feed catches up."
+    }
+  ]
+}

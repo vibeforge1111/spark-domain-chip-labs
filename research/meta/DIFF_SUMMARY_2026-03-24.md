@@ -396,3 +396,11 @@ MiroFish discovery diverse frontier fast path:
 - document the new operating rule: broad diverse intake first, simulation later
 - generate a full `1000`-agent diverse-frontier scaffold and materialized cluster directory
 - use same-persona sub-agents in parallel to generate the first `60` provisional domain ideas for the broad intake path
+
+## Batch 45
+
+MiroFish discovery same-persona seed groups:
+
+- persist the first `60` provisional frontier ideas into `4` grouped JSON intake artifacts
+- split them across creator/media/social, gaming/community, agent-startup-productivity, and crypto-consumer-career wedges
+- add a short note and request packet so the broad frontier can keep moving without reopening simulation

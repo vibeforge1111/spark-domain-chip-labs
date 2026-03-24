@@ -1,0 +1,106 @@
+{
+  "group_id": "crypto_consumer_career",
+  "generated_at": "2026-03-24",
+  "profile": "diverse_frontier",
+  "source": "same_persona_subagents",
+  "ideas": [
+    {
+      "domain_id": "crypto_airdrop_hunting_loop",
+      "label": "Crypto Airdrop Hunting Loop",
+      "description": "A workflow for tracking, qualifying, and executing repeated airdrop participation opportunities across ecosystems.",
+      "domain_tags": ["crypto", "airdrops", "onchain", "opportunity"],
+      "raw_observation": "Crypto users repeatedly chase fragmented airdrop opportunities with ad hoc spreadsheets and memory."
+    },
+    {
+      "domain_id": "defi_yield_rotation_loop",
+      "label": "DeFi Yield Rotation Loop",
+      "description": "A system for rotating capital across changing DeFi yield opportunities while preserving risk context and timing.",
+      "domain_tags": ["defi", "yield", "crypto", "portfolio"],
+      "raw_observation": "Yield opportunities move quickly, and the cost of slow comparison is materially lost return."
+    },
+    {
+      "domain_id": "wallet_ops_security_loop",
+      "label": "Wallet Ops Security Loop",
+      "description": "A recurring workflow for wallet hygiene, permissions review, signer discipline, and onchain safety checks.",
+      "domain_tags": ["wallet", "security", "crypto", "ops"],
+      "raw_observation": "Onchain users repeatedly perform sensitive operational steps that are easy to forget or rush."
+    },
+    {
+      "domain_id": "onchain_alpha_scan_loop",
+      "label": "Onchain Alpha Scan Loop",
+      "description": "A loop for scanning new onchain behaviors, wallets, and protocol signals for early opportunity.",
+      "domain_tags": ["onchain", "alpha", "crypto", "signals"],
+      "raw_observation": "A lot of perceived edge in crypto comes from interpreting weak signals before they become consensus."
+    },
+    {
+      "domain_id": "trade_journal_feedback_loop",
+      "label": "Trade Journal Feedback Loop",
+      "description": "A workflow for turning trading history into repeated lessons, bias detection, and next-position discipline.",
+      "domain_tags": ["trading", "journal", "feedback", "crypto"],
+      "raw_observation": "Many traders keep records, but far fewer convert them into honest recurring behavioral feedback."
+    },
+    {
+      "domain_id": "portfolio_rebalancing_loop",
+      "label": "Portfolio Rebalancing Loop",
+      "description": "A system for rebalancing dynamic portfolios across changing conviction, risk, and time horizons.",
+      "domain_tags": ["portfolio", "rebalancing", "finance", "crypto"],
+      "raw_observation": "Rebalancing is recurring but mentally expensive, especially when narratives and prices both move fast."
+    },
+    {
+      "domain_id": "crypto_tax_tracking_loop",
+      "label": "Crypto Tax Tracking Loop",
+      "description": "A workflow for continuously organizing taxable onchain activity before the end-of-year scramble.",
+      "domain_tags": ["tax", "crypto", "tracking", "ops"],
+      "raw_observation": "Crypto users know tax complexity is painful, but most postpone cleanup until it becomes much harder."
+    },
+    {
+      "domain_id": "personal_cfo_loop",
+      "label": "Personal CFO Loop",
+      "description": "A consumer utility for recurring money oversight across cash flow, subscriptions, bills, and tradeoffs.",
+      "domain_tags": ["consumer", "finance", "personal-cfo", "utilities"],
+      "raw_observation": "People want a more agentic money-ops layer, not just passive budgeting dashboards."
+    },
+    {
+      "domain_id": "money_admin_loop",
+      "label": "Money Admin Loop",
+      "description": "A workflow for clearing recurring financial chores such as renewals, reimbursements, cancellations, and bill review.",
+      "domain_tags": ["consumer", "finance", "admin", "utilities"],
+      "raw_observation": "A large share of daily money pain is mundane admin work rather than strategic planning."
+    },
+    {
+      "domain_id": "career_signal_compounding_loop",
+      "label": "Career Signal Compounding Loop",
+      "description": "A system for turning repeated work outputs into visible career signals that compound over time.",
+      "domain_tags": ["career", "signals", "status", "growth"],
+      "raw_observation": "Career progress increasingly depends on public proof and discoverable signal, not just private competence."
+    },
+    {
+      "domain_id": "creator_public_wins_loop",
+      "label": "Creator Public Wins Loop",
+      "description": "A workflow for packaging small public wins into momentum-building updates, receipts, and compounding reputation.",
+      "domain_tags": ["creator", "career", "public-proof", "status"],
+      "raw_observation": "Public momentum compounds when people repeatedly surface credible wins instead of waiting for one big milestone."
+    },
+    {
+      "domain_id": "networking_followup_loop",
+      "label": "Networking Follow-Up Loop",
+      "description": "A system for maintaining lightweight but consistent follow-up after meetings, intros, and internet interactions.",
+      "domain_tags": ["networking", "follow-up", "career", "relationships"],
+      "raw_observation": "Relationship value is often lost because follow-up discipline collapses after the first interaction."
+    },
+    {
+      "domain_id": "consumer_utility_stack",
+      "label": "Consumer Utility Stack",
+      "description": "A bundle-style utility layer for recurring personal operations such as appointments, subscriptions, errands, and reminders.",
+      "domain_tags": ["consumer", "utilities", "agents", "life-admin"],
+      "raw_observation": "Many consumers want useful agentic help for ordinary friction, not more novelty demos."
+    },
+    {
+      "domain_id": "independent_operator_brand_loop",
+      "label": "Independent Operator Brand Loop",
+      "description": "A workflow for building an internet-native solo-operator brand through repeated proof, narrative, and distribution assets.",
+      "domain_tags": ["brand", "operators", "career", "social-proof"],
+      "raw_observation": "Independent operators increasingly win through consistent public presence rather than formal institutional backing."
+    }
+  ]
+}

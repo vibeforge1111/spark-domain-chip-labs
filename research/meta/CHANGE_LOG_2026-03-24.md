@@ -1796,3 +1796,36 @@ The discovery process had slowed down because too much effort was going into han
 
 - Simulation is intentionally deferred in this path.
 - The broad frontier should be collected first, then canonicalized, then evaluated.
+
+## Tranche: MiroFish Discovery Seed Groups
+
+### Files
+
+- `research/meta/MIROFISH_DISCOVERY_FRONTIER_1000_SEED_GROUP_CREATOR_MEDIA_SOCIAL_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_FRONTIER_1000_SEED_GROUP_GAMING_COMMUNITY_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_FRONTIER_1000_SEED_GROUP_AGENT_STARTUP_PRODUCTIVITY_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_FRONTIER_1000_SEED_GROUP_CRYPTO_CONSUMER_CAREER_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_FRONTIER_1000_SEED_GROUPS_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_seed_groups.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The first same-persona discovery pool already existed conceptually, but it had not yet been persisted into repo-local intake artifacts. The broad `1000`-agent frontier path needed those seeds saved in reviewable chunks so collection can accelerate without reopening simulation.
+
+### What Changed
+
+- Packaged the first `60` provisional same-persona ideas into `4` grouped JSON seed artifacts
+- Split the ideas by natural wedge instead of one oversized file
+- Added a short tranche note and request packet for the grouped seed pool
+- Kept the operating rule unchanged: broad intake first, simulation later
+
+### Verification
+
+- Manual consistency review against the same-persona outputs referenced in the frontier fast-path note
+
+### Notes
+
+- This tranche is additive only.
+- No simulation or canonicalization was rerun here.

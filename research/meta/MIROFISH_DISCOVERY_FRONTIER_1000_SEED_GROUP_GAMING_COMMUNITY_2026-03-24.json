@@ -1,0 +1,106 @@
+{
+  "group_id": "gaming_community",
+  "generated_at": "2026-03-24",
+  "profile": "diverse_frontier",
+  "source": "same_persona_subagents",
+  "ideas": [
+    {
+      "domain_id": "live-raid-coordination-loop",
+      "label": "Live Raid Coordination Loop",
+      "description": "A system for orchestrating live raid timing, role assignment, and post-run adaptation for game communities.",
+      "domain_tags": ["gaming", "guild", "coordination", "live-ops"],
+      "raw_observation": "Players repeatedly need lightweight coordination in live events, but most communities still rely on messy chat threads."
+    },
+    {
+      "domain_id": "npc-response-loop",
+      "label": "NPC Response Loop",
+      "description": "A workflow for generating, refining, and evolving richer NPC responses based on live player behavior and session context.",
+      "domain_tags": ["gaming", "npc", "ai", "roleplay"],
+      "raw_observation": "Players increasingly expect dynamic NPC behavior, especially in roleplay-heavy or creator-led game environments."
+    },
+    {
+      "domain_id": "fandom-drop-interpretation-loop",
+      "label": "Fandom Drop Interpretation Loop",
+      "description": "A loop for decoding new drops, updates, lore clues, and rewards into community-readable breakdowns.",
+      "domain_tags": ["fandom", "gaming", "drops", "community"],
+      "raw_observation": "Communities repeatedly scramble to interpret patch notes, drops, and clues as soon as they land."
+    },
+    {
+      "domain_id": "watch-party-escalation-loop",
+      "label": "Watch Party Escalation Loop",
+      "description": "A system for turning streams, tournaments, and reveal events into higher-participation community watch experiences.",
+      "domain_tags": ["watch-party", "gaming", "community", "events"],
+      "raw_observation": "Gaming audiences want shared live moments, but most watch-party coordination is still manual and fragmented."
+    },
+    {
+      "domain_id": "guild-ops-loop",
+      "label": "Guild Ops Loop",
+      "description": "A workflow for guild logistics, member readiness, event planning, and contribution tracking.",
+      "domain_tags": ["guild", "operations", "gaming", "community"],
+      "raw_observation": "Guilds behave like small online organizations but run on tools that were never designed for recurring community ops."
+    },
+    {
+      "domain_id": "virtual-city-routine-loop",
+      "label": "Virtual City Routine Loop",
+      "description": "A loop for managing recurring tasks, errands, and social routines inside persistent virtual worlds.",
+      "domain_tags": ["virtual-worlds", "gaming", "routines", "community"],
+      "raw_observation": "Persistent online worlds create daily routine behavior that looks more like a habit system than a single-session game."
+    },
+    {
+      "domain_id": "clip-to-currency-loop",
+      "label": "Clip to Currency Loop",
+      "description": "A workflow for converting memorable gameplay clips into attention, rewards, and community status.",
+      "domain_tags": ["clips", "gaming", "creator", "status"],
+      "raw_observation": "Players increasingly treat highlight clips as social currency, not just entertainment."
+    },
+    {
+      "domain_id": "fan-lore-maintenance-loop",
+      "label": "Fan Lore Maintenance Loop",
+      "description": "A system for preserving, organizing, and extending evolving community lore around games and fictional worlds.",
+      "domain_tags": ["lore", "fandom", "community", "knowledge"],
+      "raw_observation": "Lore-heavy communities constantly create interpretations and canon debates that are hard to keep coherent over time."
+    },
+    {
+      "domain_id": "npc-economy-loop",
+      "label": "NPC Economy Loop",
+      "description": "A loop for simulating and tuning NPC-driven market or exchange behavior inside creator-led worlds and games.",
+      "domain_tags": ["npc", "economy", "gaming", "simulation"],
+      "raw_observation": "Game worlds feel more alive when non-player systems produce believable economic pressure and opportunity."
+    },
+    {
+      "domain_id": "quest-board-microloop",
+      "label": "Quest Board Microloop",
+      "description": "A workflow for generating and rotating short, repeatable quests that keep communities returning between major updates.",
+      "domain_tags": ["quests", "retention", "gaming", "community"],
+      "raw_observation": "Many games and communities need smaller loops between major content drops to keep participants engaged."
+    },
+    {
+      "domain_id": "meme-patch-cycle",
+      "label": "Meme Patch Cycle",
+      "description": "A system for tracking how patch changes create new memes, grievances, and in-group language across gaming communities.",
+      "domain_tags": ["memes", "patches", "gaming", "culture"],
+      "raw_observation": "Patch days reliably generate community humor and identity markers that travel faster than official notes."
+    },
+    {
+      "domain_id": "live-event-tribalization-loop",
+      "label": "Live Event Tribalization Loop",
+      "description": "A workflow for intensifying team identity and rivalry around live gaming events, seasons, or faction-based moments.",
+      "domain_tags": ["live-events", "tribes", "gaming", "identity"],
+      "raw_observation": "Communities become more active when events produce clear in-group and rival-group energy."
+    },
+    {
+      "domain_id": "avatar-signal-loop",
+      "label": "Avatar Signal Loop",
+      "description": "A loop for shaping avatars, loadouts, and profile markers into visible social signals inside digital communities.",
+      "domain_tags": ["avatar", "identity", "gaming", "social"],
+      "raw_observation": "Players use their visual setup as a status and belonging signal, not just a cosmetic choice."
+    },
+    {
+      "domain_id": "community-ritual-return-loop",
+      "label": "Community Ritual Return Loop",
+      "description": "A system for designing recurring gaming-community rituals that bring members back on a predictable cadence.",
+      "domain_tags": ["community", "rituals", "gaming", "retention"],
+      "raw_observation": "Communities with repeatable rituals keep people returning even when the underlying game content is between peaks."
+    }
+  ]
+}
