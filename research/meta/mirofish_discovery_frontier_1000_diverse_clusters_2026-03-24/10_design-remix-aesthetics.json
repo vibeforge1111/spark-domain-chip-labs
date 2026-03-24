@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "remix-meme-loop",
+          "label": "Remix Meme Loop",
+          "description": "A loop for translating live memes and cultural formats into on-brand creator variations quickly enough to matter.",
+          "specialization_surface": "running the repeated remix meme loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Meme Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next remix meme loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator",
+            "memes",
+            "cultural-timing",
+            "viral"
+          ],
+          "evidence_summary": "The shelf life of internet meme formats is short, so creators need a lightweight remix engine instead of bespoke brainstorming.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "The shelf life of internet meme formats is short, so creators need a lightweight remix engine instead of bespoke brainstorming."
+        }
+      ]
     },
     {
       "agent_id": "agent-672",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "design-feedback-loop",
+          "label": "Design Feedback Loop",
+          "description": "A creator-system for collecting, clustering, and acting on aesthetic feedback across posts, pages, and product drops.",
+          "specialization_surface": "running the repeated design feedback loop workflow inside the design / remix / aesthetics wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Design Feedback Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next design feedback loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "design",
+            "creator",
+            "feedback",
+            "iteration"
+          ],
+          "evidence_summary": "Visual taste-driven accounts iterate in public, but the signal from replies and DMs is usually lost.",
+          "adjacent_domains": [
+            "web-designer",
+            "meme-remix-ai",
+            "brand-kit-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Visual taste-driven accounts iterate in public, but the signal from replies and DMs is usually lost."
+        }
+      ]
     },
     {
       "agent_id": "agent-673",

@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_04",
+          "label": "Daily Signal Digest Loop",
+          "description": "A loop for aggregating key updates, weak signals, and action-worthy changes into a daily operating brief.",
+          "specialization_surface": "running the repeated daily signal digest loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Daily Signal Digest Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next daily signal digest loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "signals",
+            "digest",
+            "ai-agent",
+            "productivity"
+          ],
+          "evidence_summary": "Operators drown in streams of updates and need compressed decision-ready signal, not more dashboards.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Operators drown in streams of updates and need compressed decision-ready signal, not more dashboards."
+        }
+      ]
     },
     {
       "agent_id": "agent-342",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_05",
+          "label": "Build Log to Distribution Loop",
+          "description": "A workflow for converting changelogs and internal progress into public-facing distribution assets.",
+          "specialization_surface": "running the repeated build log to distribution loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Build Log to Distribution Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next build log to distribution loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "distribution",
+            "builders",
+            "ai-agent",
+            "content"
+          ],
+          "evidence_summary": "Indie teams frequently have raw progress but do not package it into attention-generating narratives.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Indie teams frequently have raw progress but do not package it into attention-generating narratives."
+        }
+      ]
     },
     {
       "agent_id": "agent-343",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_10",
+          "label": "Task Queue Clearing Loop",
+          "description": "A workflow for reducing backlog pressure by clustering, sequencing, and escalating the right tasks each day.",
+          "specialization_surface": "running the repeated task queue clearing loop workflow inside the builder productivity systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Clearing Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next task queue clearing loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "tasks",
+            "queue",
+            "productivity",
+            "ai-agent"
+          ],
+          "evidence_summary": "Knowledge workers often need help deciding what to clear first, not just tracking more tasks.",
+          "adjacent_domains": [
+            "cursor-copilot",
+            "web-designer",
+            "task-agent-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Knowledge workers often need help deciding what to clear first, not just tracking more tasks."
+        }
+      ]
     },
     {
       "agent_id": "agent-344",

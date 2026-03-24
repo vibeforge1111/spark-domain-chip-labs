@@ -404,3 +404,11 @@ MiroFish discovery same-persona seed groups:
 - persist the first `60` provisional frontier ideas into `4` grouped JSON intake artifacts
 - split them across creator/media/social, gaming/community, agent-startup-productivity, and crypto-consumer-career wedges
 - add a short note and request packet so the broad frontier can keep moving without reopening simulation
+
+## Batch 46
+
+MiroFish discovery frontier initial fill:
+
+- push the first frontier seed pool into the live `1000`-agent materialized cluster directory
+- fill `57` agent slots across `11` diverse clusters instead of staying in a zero-state scaffold
+- rebuild the combined cluster bundle and regenerate the frontier progress surface at `57 / 1000`

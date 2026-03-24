@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_01",
+          "label": "Agentic Lead Triage Loop",
+          "description": "A loop for ingesting inbound lead signals, enriching context, and routing the next best follow-up action.",
+          "specialization_surface": "running the repeated agentic lead triage loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Agentic Lead Triage Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next agentic lead triage loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ai-agent",
+            "sales",
+            "triage",
+            "startup"
+          ],
+          "evidence_summary": "Founders and operators keep losing speed because inbound opportunities arrive noisily and get handled inconsistently.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders and operators keep losing speed because inbound opportunities arrive noisily and get handled inconsistently."
+        }
+      ]
     },
     {
       "agent_id": "agent-182",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_02",
+          "label": "Spec-to-Ship Decomposition Loop",
+          "description": "A workflow for breaking vague product intent into scoped implementation slices, follow-up tasks, and delivery checkpoints.",
+          "specialization_surface": "running the repeated spec-to-ship decomposition loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Spec-to-Ship Decomposition Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next spec-to-ship decomposition loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "ai-agent",
+            "builders",
+            "productivity",
+            "shipping"
+          ],
+          "evidence_summary": "Small teams routinely stall between idea and shipment because decomposition is cognitively expensive.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Small teams routinely stall between idea and shipment because decomposition is cognitively expensive."
+        }
+      ]
     },
     {
       "agent_id": "agent-183",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_03",
+          "label": "Content Repurposing Loop",
+          "description": "A system for turning one source artifact into multiple posts, clips, summaries, and distribution formats.",
+          "specialization_surface": "running the repeated content repurposing loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Content Repurposing Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next content repurposing loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "content",
+            "ai-agent",
+            "repurposing",
+            "growth"
+          ],
+          "evidence_summary": "Builders and founders increasingly need to document and distribute continuously, not just ship silently.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Builders and founders increasingly need to document and distribute continuously, not just ship silently."
+        }
+      ]
     },
     {
       "agent_id": "agent-184",
@@ -156,7 +231,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_06",
+          "label": "Bug Triage and Repro Loop",
+          "description": "A loop for clustering incoming bug reports, proposing repro paths, and prioritizing fixes.",
+          "specialization_surface": "running the repeated bug triage and repro loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Bug Triage and Repro Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next bug triage and repro loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "bugs",
+            "engineering",
+            "ai-agent",
+            "ops"
+          ],
+          "evidence_summary": "Bug intake is repetitive, interrupt-driven, and often loses critical context between report and fix.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Bug intake is repetitive, interrupt-driven, and often loses critical context between report and fix."
+        }
+      ]
     },
     {
       "agent_id": "agent-185",
@@ -187,7 +287,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_09",
+          "label": "Research-to-Decision Loop",
+          "description": "A loop for turning scattered research into explicit options, tradeoffs, and next decisions.",
+          "specialization_surface": "running the repeated research-to-decision loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Research-to-Decision Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next research-to-decision loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "research",
+            "decision-making",
+            "ai-agent",
+            "productivity"
+          ],
+          "evidence_summary": "Many teams over-collect information but under-convert it into concrete decisions.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Many teams over-collect information but under-convert it into concrete decisions."
+        }
+      ]
     },
     {
       "agent_id": "agent-186",
@@ -218,7 +343,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_13",
+          "label": "Knowledge Capture Loop",
+          "description": "A system for turning transient work outputs into reusable internal knowledge before context disappears.",
+          "specialization_surface": "running the repeated knowledge capture loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Knowledge Capture Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next knowledge capture loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "knowledge",
+            "capture",
+            "ai-agent",
+            "ops"
+          ],
+          "evidence_summary": "Operational learning gets lost constantly because teams move faster than their documentation habits.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Operational learning gets lost constantly because teams move faster than their documentation habits."
+        }
+      ]
     },
     {
       "agent_id": "agent-187",

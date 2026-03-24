@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "career_signal_compounding_loop",
+          "label": "Career Signal Compounding Loop",
+          "description": "A system for turning repeated work outputs into visible career signals that compound over time.",
+          "specialization_surface": "running the repeated career signal compounding loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Career Signal Compounding Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next career signal compounding loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "career",
+            "signals",
+            "status",
+            "growth"
+          ],
+          "evidence_summary": "Career progress increasingly depends on public proof and discoverable signal, not just private competence.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Career progress increasingly depends on public proof and discoverable signal, not just private competence."
+        }
+      ]
     },
     {
       "agent_id": "agent-422",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "creator_public_wins_loop",
+          "label": "Creator Public Wins Loop",
+          "description": "A workflow for packaging small public wins into momentum-building updates, receipts, and compounding reputation.",
+          "specialization_surface": "running the repeated creator public wins loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Creator Public Wins Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next creator public wins loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator",
+            "career",
+            "public-proof",
+            "status"
+          ],
+          "evidence_summary": "Public momentum compounds when people repeatedly surface credible wins instead of waiting for one big milestone.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Public momentum compounds when people repeatedly surface credible wins instead of waiting for one big milestone."
+        }
+      ]
     },
     {
       "agent_id": "agent-423",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "networking_followup_loop",
+          "label": "Networking Follow-Up Loop",
+          "description": "A system for maintaining lightweight but consistent follow-up after meetings, intros, and internet interactions.",
+          "specialization_surface": "running the repeated networking follow-up loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Networking Follow-Up Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next networking follow-up loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "networking",
+            "follow-up",
+            "career",
+            "relationships"
+          ],
+          "evidence_summary": "Relationship value is often lost because follow-up discipline collapses after the first interaction.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Relationship value is often lost because follow-up discipline collapses after the first interaction."
+        }
+      ]
     },
     {
       "agent_id": "agent-424",
@@ -156,7 +231,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "independent_operator_brand_loop",
+          "label": "Independent Operator Brand Loop",
+          "description": "A workflow for building an internet-native solo-operator brand through repeated proof, narrative, and distribution assets.",
+          "specialization_surface": "running the repeated independent operator brand loop workflow inside the career / status / social proof wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Independent Operator Brand Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next independent operator brand loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "brand",
+            "operators",
+            "career",
+            "social-proof"
+          ],
+          "evidence_summary": "Independent operators increasingly win through consistent public presence rather than formal institutional backing.",
+          "adjacent_domains": [
+            "resume-ai",
+            "linkedin-optimizer",
+            "interview-prep-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Independent operators increasingly win through consistent public presence rather than formal institutional backing."
+        }
+      ]
     },
     {
       "agent_id": "agent-425",

@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "live-raid-coordination-loop",
+          "label": "Live Raid Coordination Loop",
+          "description": "A system for orchestrating live raid timing, role assignment, and post-run adaptation for game communities.",
+          "specialization_surface": "running the repeated live raid coordination loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Live Raid Coordination Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next live raid coordination loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming",
+            "guild",
+            "coordination",
+            "live-ops"
+          ],
+          "evidence_summary": "Players repeatedly need lightweight coordination in live events, but most communities still rely on messy chat threads.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Players repeatedly need lightweight coordination in live events, but most communities still rely on messy chat threads."
+        }
+      ]
     },
     {
       "agent_id": "agent-102",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "npc-response-loop",
+          "label": "NPC Response Loop",
+          "description": "A workflow for generating, refining, and evolving richer NPC responses based on live player behavior and session context.",
+          "specialization_surface": "running the repeated npc response loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make NPC Response Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next npc response loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming",
+            "npc",
+            "ai",
+            "roleplay"
+          ],
+          "evidence_summary": "Players increasingly expect dynamic NPC behavior, especially in roleplay-heavy or creator-led game environments.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Players increasingly expect dynamic NPC behavior, especially in roleplay-heavy or creator-led game environments."
+        }
+      ]
     },
     {
       "agent_id": "agent-103",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "fandom-drop-interpretation-loop",
+          "label": "Fandom Drop Interpretation Loop",
+          "description": "A loop for decoding new drops, updates, lore clues, and rewards into community-readable breakdowns.",
+          "specialization_surface": "running the repeated fandom drop interpretation loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Fandom Drop Interpretation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next fandom drop interpretation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "fandom",
+            "gaming",
+            "drops",
+            "community"
+          ],
+          "evidence_summary": "Communities repeatedly scramble to interpret patch notes, drops, and clues as soon as they land.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Communities repeatedly scramble to interpret patch notes, drops, and clues as soon as they land."
+        }
+      ]
     },
     {
       "agent_id": "agent-104",
@@ -156,7 +231,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "watch-party-escalation-loop",
+          "label": "Watch Party Escalation Loop",
+          "description": "A system for turning streams, tournaments, and reveal events into higher-participation community watch experiences.",
+          "specialization_surface": "running the repeated watch party escalation loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Watch Party Escalation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next watch party escalation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "watch-party",
+            "gaming",
+            "community",
+            "events"
+          ],
+          "evidence_summary": "Gaming audiences want shared live moments, but most watch-party coordination is still manual and fragmented.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming audiences want shared live moments, but most watch-party coordination is still manual and fragmented."
+        }
+      ]
     },
     {
       "agent_id": "agent-105",
@@ -187,7 +287,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-ops-loop",
+          "label": "Guild Ops Loop",
+          "description": "A workflow for guild logistics, member readiness, event planning, and contribution tracking.",
+          "specialization_surface": "running the repeated guild ops loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Ops Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild ops loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "guild",
+            "operations",
+            "gaming",
+            "community"
+          ],
+          "evidence_summary": "Guilds behave like small online organizations but run on tools that were never designed for recurring community ops.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Guilds behave like small online organizations but run on tools that were never designed for recurring community ops."
+        }
+      ]
     },
     {
       "agent_id": "agent-106",
@@ -218,7 +343,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "virtual-city-routine-loop",
+          "label": "Virtual City Routine Loop",
+          "description": "A loop for managing recurring tasks, errands, and social routines inside persistent virtual worlds.",
+          "specialization_surface": "running the repeated virtual city routine loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Virtual City Routine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next virtual city routine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "virtual-worlds",
+            "gaming",
+            "routines",
+            "community"
+          ],
+          "evidence_summary": "Persistent online worlds create daily routine behavior that looks more like a habit system than a single-session game.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Persistent online worlds create daily routine behavior that looks more like a habit system than a single-session game."
+        }
+      ]
     },
     {
       "agent_id": "agent-107",
@@ -249,7 +399,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "clip-to-currency-loop",
+          "label": "Clip to Currency Loop",
+          "description": "A workflow for converting memorable gameplay clips into attention, rewards, and community status.",
+          "specialization_surface": "running the repeated clip to currency loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Clip to Currency Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next clip to currency loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "clips",
+            "gaming",
+            "creator",
+            "status"
+          ],
+          "evidence_summary": "Players increasingly treat highlight clips as social currency, not just entertainment.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Players increasingly treat highlight clips as social currency, not just entertainment."
+        }
+      ]
     },
     {
       "agent_id": "agent-108",
@@ -280,7 +455,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "fan-lore-maintenance-loop",
+          "label": "Fan Lore Maintenance Loop",
+          "description": "A system for preserving, organizing, and extending evolving community lore around games and fictional worlds.",
+          "specialization_surface": "running the repeated fan lore maintenance loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Fan Lore Maintenance Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next fan lore maintenance loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "lore",
+            "fandom",
+            "community",
+            "knowledge"
+          ],
+          "evidence_summary": "Lore-heavy communities constantly create interpretations and canon debates that are hard to keep coherent over time.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Lore-heavy communities constantly create interpretations and canon debates that are hard to keep coherent over time."
+        }
+      ]
     },
     {
       "agent_id": "agent-109",
@@ -311,7 +511,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "npc-economy-loop",
+          "label": "NPC Economy Loop",
+          "description": "A loop for simulating and tuning NPC-driven market or exchange behavior inside creator-led worlds and games.",
+          "specialization_surface": "running the repeated npc economy loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make NPC Economy Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next npc economy loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "npc",
+            "economy",
+            "gaming",
+            "simulation"
+          ],
+          "evidence_summary": "Game worlds feel more alive when non-player systems produce believable economic pressure and opportunity.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Game worlds feel more alive when non-player systems produce believable economic pressure and opportunity."
+        }
+      ]
     },
     {
       "agent_id": "agent-110",
@@ -342,7 +567,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "quest-board-microloop",
+          "label": "Quest Board Microloop",
+          "description": "A workflow for generating and rotating short, repeatable quests that keep communities returning between major updates.",
+          "specialization_surface": "running the repeated quest board microloop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Quest Board Microloop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next quest board microloop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "quests",
+            "retention",
+            "gaming",
+            "community"
+          ],
+          "evidence_summary": "Many games and communities need smaller loops between major content drops to keep participants engaged.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Many games and communities need smaller loops between major content drops to keep participants engaged."
+        }
+      ]
     },
     {
       "agent_id": "agent-111",
@@ -373,7 +623,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "meme-patch-cycle",
+          "label": "Meme Patch Cycle",
+          "description": "A system for tracking how patch changes create new memes, grievances, and in-group language across gaming communities.",
+          "specialization_surface": "running the repeated meme patch cycle workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Meme Patch Cycle outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next meme patch cycle move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "memes",
+            "patches",
+            "gaming",
+            "culture"
+          ],
+          "evidence_summary": "Patch days reliably generate community humor and identity markers that travel faster than official notes.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Patch days reliably generate community humor and identity markers that travel faster than official notes."
+        }
+      ]
     },
     {
       "agent_id": "agent-112",
@@ -404,7 +679,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "live-event-tribalization-loop",
+          "label": "Live Event Tribalization Loop",
+          "description": "A workflow for intensifying team identity and rivalry around live gaming events, seasons, or faction-based moments.",
+          "specialization_surface": "running the repeated live event tribalization loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Live Event Tribalization Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next live event tribalization loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "live-events",
+            "tribes",
+            "gaming",
+            "identity"
+          ],
+          "evidence_summary": "Communities become more active when events produce clear in-group and rival-group energy.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Communities become more active when events produce clear in-group and rival-group energy."
+        }
+      ]
     },
     {
       "agent_id": "agent-113",
@@ -435,7 +735,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "avatar-signal-loop",
+          "label": "Avatar Signal Loop",
+          "description": "A loop for shaping avatars, loadouts, and profile markers into visible social signals inside digital communities.",
+          "specialization_surface": "running the repeated avatar signal loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Avatar Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next avatar signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "avatar",
+            "identity",
+            "gaming",
+            "social"
+          ],
+          "evidence_summary": "Players use their visual setup as a status and belonging signal, not just a cosmetic choice.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Players use their visual setup as a status and belonging signal, not just a cosmetic choice."
+        }
+      ]
     },
     {
       "agent_id": "agent-114",
@@ -466,7 +791,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "community-ritual-return-loop",
+          "label": "Community Ritual Return Loop",
+          "description": "A system for designing recurring gaming-community rituals that bring members back on a predictable cadence.",
+          "specialization_surface": "running the repeated community ritual return loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Community Ritual Return Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next community ritual return loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "community",
+            "rituals",
+            "gaming",
+            "retention"
+          ],
+          "evidence_summary": "Communities with repeatable rituals keep people returning even when the underlying game content is between peaks.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Communities with repeatable rituals keep people returning even when the underlying game content is between peaks."
+        }
+      ]
     },
     {
       "agent_id": "agent-115",

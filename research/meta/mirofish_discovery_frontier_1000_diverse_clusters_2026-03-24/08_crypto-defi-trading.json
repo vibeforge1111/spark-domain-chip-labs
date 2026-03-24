@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "crypto_airdrop_hunting_loop",
+          "label": "Crypto Airdrop Hunting Loop",
+          "description": "A workflow for tracking, qualifying, and executing repeated airdrop participation opportunities across ecosystems.",
+          "specialization_surface": "running the repeated crypto airdrop hunting loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Crypto Airdrop Hunting Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next crypto airdrop hunting loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto",
+            "airdrops",
+            "onchain",
+            "opportunity"
+          ],
+          "evidence_summary": "Crypto users repeatedly chase fragmented airdrop opportunities with ad hoc spreadsheets and memory.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto users repeatedly chase fragmented airdrop opportunities with ad hoc spreadsheets and memory."
+        }
+      ]
     },
     {
       "agent_id": "agent-542",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "defi_yield_rotation_loop",
+          "label": "DeFi Yield Rotation Loop",
+          "description": "A system for rotating capital across changing DeFi yield opportunities while preserving risk context and timing.",
+          "specialization_surface": "running the repeated defi yield rotation loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make DeFi Yield Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next defi yield rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "defi",
+            "yield",
+            "crypto",
+            "portfolio"
+          ],
+          "evidence_summary": "Yield opportunities move quickly, and the cost of slow comparison is materially lost return.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Yield opportunities move quickly, and the cost of slow comparison is materially lost return."
+        }
+      ]
     },
     {
       "agent_id": "agent-543",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet_ops_security_loop",
+          "label": "Wallet Ops Security Loop",
+          "description": "A recurring workflow for wallet hygiene, permissions review, signer discipline, and onchain safety checks.",
+          "specialization_surface": "running the repeated wallet ops security loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Ops Security Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet ops security loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "wallet",
+            "security",
+            "crypto",
+            "ops"
+          ],
+          "evidence_summary": "Onchain users repeatedly perform sensitive operational steps that are easy to forget or rush.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Onchain users repeatedly perform sensitive operational steps that are easy to forget or rush."
+        }
+      ]
     },
     {
       "agent_id": "agent-544",
@@ -156,7 +231,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "onchain_alpha_scan_loop",
+          "label": "Onchain Alpha Scan Loop",
+          "description": "A loop for scanning new onchain behaviors, wallets, and protocol signals for early opportunity.",
+          "specialization_surface": "running the repeated onchain alpha scan loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Onchain Alpha Scan Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next onchain alpha scan loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "onchain",
+            "alpha",
+            "crypto",
+            "signals"
+          ],
+          "evidence_summary": "A lot of perceived edge in crypto comes from interpreting weak signals before they become consensus.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "A lot of perceived edge in crypto comes from interpreting weak signals before they become consensus."
+        }
+      ]
     },
     {
       "agent_id": "agent-545",
@@ -187,7 +287,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "trade_journal_feedback_loop",
+          "label": "Trade Journal Feedback Loop",
+          "description": "A workflow for turning trading history into repeated lessons, bias detection, and next-position discipline.",
+          "specialization_surface": "running the repeated trade journal feedback loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Trade Journal Feedback Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next trade journal feedback loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "trading",
+            "journal",
+            "feedback",
+            "crypto"
+          ],
+          "evidence_summary": "Many traders keep records, but far fewer convert them into honest recurring behavioral feedback.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Many traders keep records, but far fewer convert them into honest recurring behavioral feedback."
+        }
+      ]
     },
     {
       "agent_id": "agent-546",
@@ -218,7 +343,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "portfolio_rebalancing_loop",
+          "label": "Portfolio Rebalancing Loop",
+          "description": "A system for rebalancing dynamic portfolios across changing conviction, risk, and time horizons.",
+          "specialization_surface": "running the repeated portfolio rebalancing loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Portfolio Rebalancing Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next portfolio rebalancing loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "portfolio",
+            "rebalancing",
+            "finance",
+            "crypto"
+          ],
+          "evidence_summary": "Rebalancing is recurring but mentally expensive, especially when narratives and prices both move fast.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Rebalancing is recurring but mentally expensive, especially when narratives and prices both move fast."
+        }
+      ]
     },
     {
       "agent_id": "agent-547",
@@ -249,7 +399,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "crypto_tax_tracking_loop",
+          "label": "Crypto Tax Tracking Loop",
+          "description": "A workflow for continuously organizing taxable onchain activity before the end-of-year scramble.",
+          "specialization_surface": "running the repeated crypto tax tracking loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Crypto Tax Tracking Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next crypto tax tracking loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "tax",
+            "crypto",
+            "tracking",
+            "ops"
+          ],
+          "evidence_summary": "Crypto users know tax complexity is painful, but most postpone cleanup until it becomes much harder.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto users know tax complexity is painful, but most postpone cleanup until it becomes much harder."
+        }
+      ]
     },
     {
       "agent_id": "agent-548",

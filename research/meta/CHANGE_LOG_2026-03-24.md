@@ -1829,3 +1829,47 @@ The first same-persona discovery pool already existed conceptually, but it had n
 
 - This tranche is additive only.
 - No simulation or canonicalization was rerun here.
+
+## Tranche: MiroFish Discovery Frontier Initial Fill
+
+### Files
+
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/01_creator-growth-systems.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/02_gaming-npc-community.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/03_agentic-builders.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/04_startup-founder-systems.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/05_productivity-builder-ops.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/06_career-status-social-proof.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/07_consumer-agent-utilities.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/08_crypto-defi-trading.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/09_x-native-persona-tools.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/10_design-remix-aesthetics.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/16_fandom-collectibles-communities.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_FRONTIER_1000_INITIAL_FILL_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_frontier_initial_fill.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The broad frontier had a scaffold and seed groups, but the live materialized directory was still mostly empty. To move faster toward the full `500`-chip / `1000`-agent intake, the first frontier seeds needed to be pushed directly into the actual cluster packets.
+
+### What Changed
+
+- Filled `57` agent slots across `11` diverse frontier clusters
+- Spread the first same-persona seed ideas across creator, gaming, agentic builders, startup, productivity, crypto, consumer, career, X-native, design, and fandom wedges
+- Rebuilt the combined frontier cluster bundle from the materialized directory
+- Regenerated the frontier progress artifacts to reflect the live fill state of `57 / 1000`
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md --title "MiroFish Discovery Frontier 1000 Diverse Progress"`
+
+### Notes
+
+- This tranche prioritizes breadth of live intake over early recommendation selectivity.
+- Simulation remains intentionally deferred.

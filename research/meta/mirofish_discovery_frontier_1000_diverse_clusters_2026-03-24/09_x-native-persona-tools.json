@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "identity-proof-loop",
+          "label": "Identity Proof Loop",
+          "description": "A creator workflow for packaging receipts, wins, and artifacts into repeated proof-of-skill moments.",
+          "specialization_surface": "running the repeated identity proof loop workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Identity Proof Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next identity proof loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator",
+            "identity",
+            "social-proof",
+            "status"
+          ],
+          "evidence_summary": "X-native audiences respond strongly when creators repeatedly show evidence that they actually do the thing they talk about.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "X-native audiences respond strongly when creators repeatedly show evidence that they actually do the thing they talk about."
+        }
+      ]
     },
     {
       "agent_id": "agent-622",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "status-signal-loop",
+          "label": "Status Signal Loop",
+          "description": "A workflow for shaping posts and artifacts that communicate taste, sharpness, and relevance to internet-native audiences.",
+          "specialization_surface": "running the repeated status signal loop workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Status Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next status signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "status",
+            "creator",
+            "social",
+            "viral"
+          ],
+          "evidence_summary": "People on X often share content not just because it is useful, but because it upgrades how they are perceived.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "People on X often share content not just because it is useful, but because it upgrades how they are perceived."
+        }
+      ]
     },
     {
       "agent_id": "agent-623",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "trend-to-thesis-loop",
+          "label": "Trend to Thesis Loop",
+          "description": "A workflow for turning fast-moving trends into distinct creator theses, takes, and packaged contrarian positions.",
+          "specialization_surface": "running the repeated trend to thesis loop workflow inside the x-native persona tools wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Trend to Thesis Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next trend to thesis loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "trends",
+            "thesis",
+            "creator",
+            "positioning"
+          ],
+          "evidence_summary": "Winning accounts often turn a noisy trend into a sharp thesis before the rest of the feed catches up.",
+          "adjacent_domains": [
+            "xcontent",
+            "personal-brand-ai",
+            "reply-guy-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Winning accounts often turn a noisy trend into a sharp thesis before the rest of the feed catches up."
+        }
+      ]
     },
     {
       "agent_id": "agent-624",

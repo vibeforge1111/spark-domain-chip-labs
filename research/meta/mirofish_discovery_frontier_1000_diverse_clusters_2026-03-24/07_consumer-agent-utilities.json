@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "personal_cfo_loop",
+          "label": "Personal CFO Loop",
+          "description": "A consumer utility for recurring money oversight across cash flow, subscriptions, bills, and tradeoffs.",
+          "specialization_surface": "running the repeated personal cfo loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Personal CFO Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next personal cfo loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer",
+            "finance",
+            "personal-cfo",
+            "utilities"
+          ],
+          "evidence_summary": "People want a more agentic money-ops layer, not just passive budgeting dashboards.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "People want a more agentic money-ops layer, not just passive budgeting dashboards."
+        }
+      ]
     },
     {
       "agent_id": "agent-482",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "money_admin_loop",
+          "label": "Money Admin Loop",
+          "description": "A workflow for clearing recurring financial chores such as renewals, reimbursements, cancellations, and bill review.",
+          "specialization_surface": "running the repeated money admin loop workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Money Admin Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next money admin loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer",
+            "finance",
+            "admin",
+            "utilities"
+          ],
+          "evidence_summary": "A large share of daily money pain is mundane admin work rather than strategic planning.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "A large share of daily money pain is mundane admin work rather than strategic planning."
+        }
+      ]
     },
     {
       "agent_id": "agent-483",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "consumer_utility_stack",
+          "label": "Consumer Utility Stack",
+          "description": "A bundle-style utility layer for recurring personal operations such as appointments, subscriptions, errands, and reminders.",
+          "specialization_surface": "running the repeated consumer utility stack workflow inside the consumer agent utilities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Consumer Utility Stack outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next consumer utility stack move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "consumer",
+            "utilities",
+            "agents",
+            "life-admin"
+          ],
+          "evidence_summary": "Many consumers want useful agentic help for ordinary friction, not more novelty demos.",
+          "adjacent_domains": [
+            "trip-planner-ai",
+            "shopping-deal-finder",
+            "family-coordinator-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Many consumers want useful agentic help for ordinary friction, not more novelty demos."
+        }
+      ]
     },
     {
       "agent_id": "agent-484",

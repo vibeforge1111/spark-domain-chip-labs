@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "community-ritual-loop",
+          "label": "Community Ritual Loop",
+          "description": "A system for creating repeatable rituals, memes, and recurring prompts that keep an audience returning and participating.",
+          "specialization_surface": "running the repeated community ritual loop workflow inside the fandom / collectibles / communities wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Community Ritual Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next community ritual loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "community",
+            "rituals",
+            "retention",
+            "culture"
+          ],
+          "evidence_summary": "Communities get sticky when they develop their own rituals, but creators rarely design those rituals intentionally.",
+          "adjacent_domains": [
+            "sports-card-community-ai",
+            "anime-fandom-ai",
+            "collectibles-pricer-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Communities get sticky when they develop their own rituals, but creators rarely design those rituals intentionally."
+        }
+      ]
     },
     {
       "agent_id": "agent-912",

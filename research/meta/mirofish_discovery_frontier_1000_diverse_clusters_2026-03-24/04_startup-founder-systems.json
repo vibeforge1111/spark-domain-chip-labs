@@ -63,7 +63,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_07",
+          "label": "Launch Checklist Loop",
+          "description": "A system for coordinating recurring launch readiness tasks across copy, product, support, and distribution surfaces.",
+          "specialization_surface": "running the repeated launch checklist loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Checklist Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch checklist loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "launch",
+            "startup",
+            "ops",
+            "ai-agent"
+          ],
+          "evidence_summary": "Every launch repeats the same coordination pain, especially in lean teams without dedicated operations staff.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Every launch repeats the same coordination pain, especially in lean teams without dedicated operations staff."
+        }
+      ]
     },
     {
       "agent_id": "agent-262",
@@ -94,7 +119,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_08",
+          "label": "Deal Desk Loop",
+          "description": "A workflow for pricing questions, packaging tradeoffs, approval logic, and follow-up in small sales motions.",
+          "specialization_surface": "running the repeated deal desk loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Deal Desk Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next deal desk loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "sales",
+            "pricing",
+            "startup",
+            "ops"
+          ],
+          "evidence_summary": "Founders repeatedly improvise deal decisions, which creates inconsistency and lost learning.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders repeatedly improvise deal decisions, which creates inconsistency and lost learning."
+        }
+      ]
     },
     {
       "agent_id": "agent-263",
@@ -125,7 +175,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_11",
+          "label": "Customer Insight Extraction Loop",
+          "description": "A system for converting user conversations into repeated product signals, objections, and growth lessons.",
+          "specialization_surface": "running the repeated customer insight extraction loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Customer Insight Extraction Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next customer insight extraction loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "customer-insight",
+            "feedback",
+            "startup",
+            "product"
+          ],
+          "evidence_summary": "Teams talk to customers but rarely preserve the reusable patterns in a structured way.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Teams talk to customers but rarely preserve the reusable patterns in a structured way."
+        }
+      ]
     },
     {
       "agent_id": "agent-264",
@@ -156,7 +231,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_12",
+          "label": "Experiment Cadence Loop",
+          "description": "A workflow for defining, running, and reviewing small experiments across growth, product, and messaging.",
+          "specialization_surface": "running the repeated experiment cadence loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Experiment Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next experiment cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "experiments",
+            "growth",
+            "productivity",
+            "startup"
+          ],
+          "evidence_summary": "Most small teams say they experiment, but their cadence breaks because setup and review are too manual.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Most small teams say they experiment, but their cadence breaks because setup and review are too manual."
+        }
+      ]
     },
     {
       "agent_id": "agent-265",
@@ -187,7 +287,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_14",
+          "label": "Launch Postmortem Loop",
+          "description": "A workflow for extracting lessons from launches and feeding them back into the next cycle automatically.",
+          "specialization_surface": "running the repeated launch postmortem loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Postmortem Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch postmortem loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "postmortem",
+            "launch",
+            "learning",
+            "startup"
+          ],
+          "evidence_summary": "Teams often repeat launch mistakes because the feedback loop closes too slowly or not at all.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Teams often repeat launch mistakes because the feedback loop closes too slowly or not at all."
+        }
+      ]
     },
     {
       "agent_id": "agent-266",
@@ -218,7 +343,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "chip_ai_agent_15",
+          "label": "Opportunity Radar Loop",
+          "description": "A system for spotting adjacent opportunities, anomalies, and collaboration openings before they fully emerge.",
+          "specialization_surface": "running the repeated opportunity radar loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Opportunity Radar Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next opportunity radar loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "opportunities",
+            "signals",
+            "startup",
+            "radar"
+          ],
+          "evidence_summary": "Operators with good instincts still miss opportunities because the signal landscape moves faster than manual scanning.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Operators with good instincts still miss opportunities because the signal landscape moves faster than manual scanning."
+        }
+      ]
     },
     {
       "agent_id": "agent-267",

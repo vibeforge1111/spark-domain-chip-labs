@@ -4,100 +4,100 @@
   "summary": {
     "cluster_count": 18,
     "total_agent_count": 1000,
-    "filled_agent_count": 0,
-    "empty_agent_count": 1000,
-    "raw_candidate_count": 0,
-    "fill_rate": 0.0
+    "filled_agent_count": 57,
+    "empty_agent_count": 943,
+    "raw_candidate_count": 57,
+    "fill_rate": 0.057
   },
   "clusters": [
     {
       "cluster_id": "creator-growth-systems",
       "cluster_label": "Creator Growth Systems",
       "target_agent_count": 100,
-      "filled_agent_count": 0,
-      "empty_agent_count": 100,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 8,
+      "empty_agent_count": 92,
+      "raw_candidate_count": 8,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\01_creator-growth-systems.json"
     },
     {
       "cluster_id": "gaming-npc-community",
       "cluster_label": "Gaming / NPC / Community Worlds",
       "target_agent_count": 80,
-      "filled_agent_count": 0,
-      "empty_agent_count": 80,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 14,
+      "empty_agent_count": 66,
+      "raw_candidate_count": 14,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\02_gaming-npc-community.json"
     },
     {
       "cluster_id": "agentic-builders",
       "cluster_label": "AI Agent Builders",
       "target_agent_count": 80,
-      "filled_agent_count": 0,
-      "empty_agent_count": 80,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 6,
+      "empty_agent_count": 74,
+      "raw_candidate_count": 6,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\03_agentic-builders.json"
     },
     {
       "cluster_id": "startup-founder-systems",
       "cluster_label": "Startup Builder Systems",
       "target_agent_count": 80,
-      "filled_agent_count": 0,
-      "empty_agent_count": 80,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 6,
+      "empty_agent_count": 74,
+      "raw_candidate_count": 6,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\04_startup-founder-systems.json"
     },
     {
       "cluster_id": "productivity-builder-ops",
       "cluster_label": "Builder Productivity Systems",
       "target_agent_count": 80,
-      "filled_agent_count": 0,
-      "empty_agent_count": 80,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 77,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\05_productivity-builder-ops.json"
     },
     {
       "cluster_id": "career-status-social-proof",
       "cluster_label": "Career / Status / Social Proof",
       "target_agent_count": 60,
-      "filled_agent_count": 0,
-      "empty_agent_count": 60,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 4,
+      "empty_agent_count": 56,
+      "raw_candidate_count": 4,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\06_career-status-social-proof.json"
     },
     {
       "cluster_id": "consumer-agent-utilities",
       "cluster_label": "Consumer Agent Utilities",
       "target_agent_count": 60,
-      "filled_agent_count": 0,
-      "empty_agent_count": 60,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 57,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\07_consumer-agent-utilities.json"
     },
     {
       "cluster_id": "crypto-defi-trading",
       "cluster_label": "Crypto / DeFi / Trading",
       "target_agent_count": 80,
-      "filled_agent_count": 0,
-      "empty_agent_count": 80,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 7,
+      "empty_agent_count": 73,
+      "raw_candidate_count": 7,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\08_crypto-defi-trading.json"
     },
     {
       "cluster_id": "x-native-persona-tools",
       "cluster_label": "X-Native Persona Tools",
       "target_agent_count": 50,
-      "filled_agent_count": 0,
-      "empty_agent_count": 50,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 3,
+      "empty_agent_count": 47,
+      "raw_candidate_count": 3,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\09_x-native-persona-tools.json"
     },
     {
       "cluster_id": "design-remix-aesthetics",
       "cluster_label": "Design / Remix / Aesthetics",
       "target_agent_count": 40,
-      "filled_agent_count": 0,
-      "empty_agent_count": 40,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 2,
+      "empty_agent_count": 38,
+      "raw_candidate_count": 2,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\10_design-remix-aesthetics.json"
     },
     {
@@ -149,9 +149,9 @@
       "cluster_id": "fandom-collectibles-communities",
       "cluster_label": "Fandom / Collectibles / Communities",
       "target_agent_count": 30,
-      "filled_agent_count": 0,
-      "empty_agent_count": 30,
-      "raw_candidate_count": 0,
+      "filled_agent_count": 1,
+      "empty_agent_count": 29,
+      "raw_candidate_count": 1,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\16_fandom-collectibles-communities.json"
     },
     {
