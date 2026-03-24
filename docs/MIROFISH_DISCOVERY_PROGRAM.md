@@ -147,6 +147,13 @@ $env:PYTHONPATH='src'
 python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json
 ```
 
+Materialize the cluster bundle into per-cluster working files:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-discovery-program-materialize --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --index-title "MiroFish Discovery Pilot 100 Clusters" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_DIRECTORY_2026-03-24.json
+```
+
 Canonicalize a filled pilot packet:
 
 ```powershell

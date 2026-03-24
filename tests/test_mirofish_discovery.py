@@ -1,5 +1,10 @@
 """Tests for MiroFish discovery batch and program canonicalization."""
 
+from argparse import Namespace
+import json
+from pathlib import Path
+
+from chip_labs.cli import cmd_mirofish_discovery_program_materialize
 from chip_labs.mirofish.discovery import (
     build_discovery_program_scaffold,
     canonicalize_discovery_batch,
@@ -188,3 +193,27 @@ def test_merge_discovery_cluster_packets_round_trips_agent_submissions() -> None
     assert result["collection_rules"]["min_candidates_per_agent"] == 1
     assert len(result["agent_submissions"]) == 100
     assert result["agent_submissions"][0]["agent_id"] == "agent-001"
+
+
+def test_materialize_discovery_program_writes_cluster_files(tmp_path: Path) -> None:
+    scaffold = build_discovery_program_scaffold()
+    cluster_bundle = split_discovery_program_scaffold(scaffold)
+    input_path = tmp_path / "cluster_bundle.json"
+    output_manifest = tmp_path / "manifest.json"
+    output_dir = tmp_path / "materialized"
+    input_path.write_text(json.dumps(cluster_bundle, indent=2), encoding="utf-8")
+
+    cmd_mirofish_discovery_program_materialize(
+        Namespace(
+            input=str(input_path),
+            output_dir=str(output_dir),
+            index_title="Pilot Cluster Directory",
+            output=str(output_manifest),
+        )
+    )
+
+    manifest = json.loads(output_manifest.read_text(encoding="utf-8"))
+    assert manifest["file_count"] == 11
+    assert (output_dir / "README.md").exists()
+    assert (output_dir / "01_security-compliance-response.json").exists()
+    assert "Pilot Cluster Directory" in (output_dir / "README.md").read_text(encoding="utf-8")

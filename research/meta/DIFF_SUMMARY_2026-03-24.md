@@ -297,3 +297,12 @@ MiroFish discovery pilot recombine:
 - preserve `cluster_plan` and `collection_rules` across the split and merge round-trip
 - generate the actual recombined pilot packet under `research/meta/`
 - tighten the discovery regression slice after fixing the first metadata-loss bug in the recombine flow
+
+## Batch 34
+
+MiroFish discovery pilot cluster directory:
+
+- add a repo-local materialization step that writes the cluster bundle into per-cluster working files
+- generate a `README.md` index plus `10` cluster packet JSON files under `research/meta/`
+- save the written-file manifest for the materialized directory
+- make the `100`-agent pilot directly assignable without editing the combined bundle by hand

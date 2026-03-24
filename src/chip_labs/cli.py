@@ -69,6 +69,39 @@ def _write_watchtower_pages(vault_dir: str | Path, pages: list[dict[str, Any]]) 
         page_path.write_text(page["content"], encoding="utf-8")
 
 
+def _write_discovery_cluster_materialization(
+    output_dir: str | Path,
+    cluster_bundle: dict[str, Any],
+    index_title: str,
+) -> dict[str, Any]:
+    """Write per-cluster discovery packet files plus an operator-facing index."""
+    from .mirofish.discovery import format_discovery_program_markdown
+
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+    cluster_packets = list(cluster_bundle.get("cluster_packets", []))
+    written_files: list[str] = []
+
+    readme_path = output_path / "README.md"
+    readme_path.write_text(
+        format_discovery_program_markdown(cluster_bundle, title=index_title),
+        encoding="utf-8",
+    )
+    written_files.append(str(readme_path))
+
+    for index, cluster_packet in enumerate(cluster_packets, start=1):
+        cluster_id = str(cluster_packet.get("cluster_id", f"cluster-{index:02d}"))
+        file_path = output_path / f"{index:02d}_{cluster_id}.json"
+        file_path.write_text(json.dumps(cluster_packet, indent=2, default=str), encoding="utf-8")
+        written_files.append(str(file_path))
+
+    return {
+        "output_dir": str(output_path),
+        "file_count": len(written_files),
+        "files": written_files,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Hook: evaluate
 # ---------------------------------------------------------------------------
@@ -609,6 +642,17 @@ def cmd_mirofish_discovery_program_brief(args: argparse.Namespace) -> None:
     _write_text_output(args.output, result)
 
 
+def cmd_mirofish_discovery_program_materialize(args: argparse.Namespace) -> None:
+    """Write cluster packets into a working directory with an operator-facing index."""
+    input_data = _load_input(args.input)
+    result = _write_discovery_cluster_materialization(
+        args.output_dir,
+        input_data,
+        index_title=args.index_title,
+    )
+    _write_output(args.output, result)
+
+
 # ---------------------------------------------------------------------------
 # Command: mirofish-hybrid-spec
 # ---------------------------------------------------------------------------
@@ -975,6 +1019,32 @@ def main() -> None:
     )
     p_mirofish_discovery_program_brief.add_argument("--output", type=str, default=None, help="Output markdown file path.")
     p_mirofish_discovery_program_brief.set_defaults(func=cmd_mirofish_discovery_program_brief)
+
+    # mirofish-discovery-program-materialize
+    p_mirofish_discovery_program_materialize = sub.add_parser(
+        "mirofish-discovery-program-materialize",
+        help="Write cluster packets into a working directory with an operator-facing index.",
+    )
+    p_mirofish_discovery_program_materialize.add_argument(
+        "--input",
+        type=str,
+        required=True,
+        help="Input cluster-packets JSON file path.",
+    )
+    p_mirofish_discovery_program_materialize.add_argument(
+        "--output-dir",
+        type=str,
+        required=True,
+        help="Directory to write the cluster packet files and README into.",
+    )
+    p_mirofish_discovery_program_materialize.add_argument(
+        "--index-title",
+        type=str,
+        default="MiroFish Discovery Program Clusters",
+        help="Markdown heading for the generated README.",
+    )
+    p_mirofish_discovery_program_materialize.add_argument("--output", type=str, default=None, help="Output JSON manifest path.")
+    p_mirofish_discovery_program_materialize.set_defaults(func=cmd_mirofish_discovery_program_materialize)
 
     # mirofish-hybrid-spec
     p_mirofish_hybrid = sub.add_parser(

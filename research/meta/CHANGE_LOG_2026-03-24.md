@@ -1301,3 +1301,47 @@ The split packet made the pilot collectible in batches, but there was still no r
 
 - This tranche completes the repo-local pilot round-trip without inventing any new discoveries.
 - The recombined packet is ready for canonicalization once the cluster packets are filled with real submissions.
+
+## Tranche: MiroFish Discovery Pilot Cluster Directory
+
+### Files Changed
+
+- `src/chip_labs/cli.py`
+- `tests/test_mirofish_discovery.py`
+- `docs/MIROFISH_DISCOVERY_PROGRAM.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_DIRECTORY_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_DIRECTORY_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_pilot_100_cluster_directory.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/README.md`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/01_security-compliance-response.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/02_healthcare-revenue-cycle.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/03_hvac-field-maintenance.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/04_insurance-claims-appeals.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/05_vendor-procurement-ops.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/06_legal-audit-evidence.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/07_workplace-training-compliance.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/08_industrial-quality-inspection.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/09_finance-reconciliation-backoffice.json`
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/10_logistics-last-mile-ops.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The pilot cluster bundle existed, but the actual collection step still needed a directory of concrete files that could be assigned and filled cluster-by-cluster.
+
+### What Changed
+
+- Added a materialization command that writes per-cluster packet files plus a README index
+- Generated the repo-local working directory for the `100`-agent pilot
+- Saved a manifest of the written files under `research/meta/`
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-materialize --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --index-title "MiroFish Discovery Pilot 100 Clusters" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_DIRECTORY_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+
+### Notes
+
+- This tranche creates the practical working surface for collection.
+- It still does not fabricate a filled pilot result.
