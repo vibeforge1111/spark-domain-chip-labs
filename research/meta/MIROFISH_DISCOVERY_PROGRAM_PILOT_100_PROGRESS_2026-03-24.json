@@ -1,0 +1,109 @@
+{
+  "packet_kind": "mirofish_discovery_program_progress",
+  "directory": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24",
+  "summary": {
+    "cluster_count": 10,
+    "total_agent_count": 100,
+    "filled_agent_count": 0,
+    "empty_agent_count": 100,
+    "raw_candidate_count": 0,
+    "fill_rate": 0.0
+  },
+  "clusters": [
+    {
+      "cluster_id": "security-compliance-response",
+      "cluster_label": "Security / Compliance Response",
+      "target_agent_count": 16,
+      "filled_agent_count": 0,
+      "empty_agent_count": 16,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\01_security-compliance-response.json"
+    },
+    {
+      "cluster_id": "healthcare-revenue-cycle",
+      "cluster_label": "Healthcare Revenue Cycle",
+      "target_agent_count": 14,
+      "filled_agent_count": 0,
+      "empty_agent_count": 14,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\02_healthcare-revenue-cycle.json"
+    },
+    {
+      "cluster_id": "hvac-field-maintenance",
+      "cluster_label": "HVAC / Field Maintenance",
+      "target_agent_count": 10,
+      "filled_agent_count": 0,
+      "empty_agent_count": 10,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\03_hvac-field-maintenance.json"
+    },
+    {
+      "cluster_id": "insurance-claims-appeals",
+      "cluster_label": "Insurance / Claims / Appeals",
+      "target_agent_count": 10,
+      "filled_agent_count": 0,
+      "empty_agent_count": 10,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\04_insurance-claims-appeals.json"
+    },
+    {
+      "cluster_id": "vendor-procurement-ops",
+      "cluster_label": "Vendor / Procurement Ops",
+      "target_agent_count": 10,
+      "filled_agent_count": 0,
+      "empty_agent_count": 10,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\05_vendor-procurement-ops.json"
+    },
+    {
+      "cluster_id": "legal-audit-evidence",
+      "cluster_label": "Legal / Audit / Evidence",
+      "target_agent_count": 10,
+      "filled_agent_count": 0,
+      "empty_agent_count": 10,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\06_legal-audit-evidence.json"
+    },
+    {
+      "cluster_id": "workplace-training-compliance",
+      "cluster_label": "Workplace Training / Compliance",
+      "target_agent_count": 8,
+      "filled_agent_count": 0,
+      "empty_agent_count": 8,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\07_workplace-training-compliance.json"
+    },
+    {
+      "cluster_id": "industrial-quality-inspection",
+      "cluster_label": "Industrial Quality / Inspection",
+      "target_agent_count": 8,
+      "filled_agent_count": 0,
+      "empty_agent_count": 8,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\08_industrial-quality-inspection.json"
+    },
+    {
+      "cluster_id": "finance-reconciliation-backoffice",
+      "cluster_label": "Finance / Reconciliation / Backoffice",
+      "target_agent_count": 8,
+      "filled_agent_count": 0,
+      "empty_agent_count": 8,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\09_finance-reconciliation-backoffice.json"
+    },
+    {
+      "cluster_id": "logistics-last-mile-ops",
+      "cluster_label": "Logistics / Last Mile Ops",
+      "target_agent_count": 6,
+      "filled_agent_count": 0,
+      "empty_agent_count": 6,
+      "raw_candidate_count": 0,
+      "file_path": "research\\meta\\mirofish_discovery_pilot_100_clusters_2026-03-24\\10_logistics-last-mile-ops.json"
+    }
+  ],
+  "next_actions": [
+    "Fill empty cluster packets with real candidate submissions.",
+    "Re-run progress after each collection tranche to track coverage.",
+    "Once collection is complete, recombine the cluster packets into one discovery-program input packet."
+  ]
+}

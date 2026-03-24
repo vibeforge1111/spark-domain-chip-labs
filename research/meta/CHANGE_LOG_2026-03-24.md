@@ -1345,3 +1345,37 @@ The pilot cluster bundle existed, but the actual collection step still needed a 
 
 - This tranche creates the practical working surface for collection.
 - It still does not fabricate a filled pilot result.
+
+## Tranche: MiroFish Discovery Pilot Progress Surface
+
+### Files Changed
+
+- `src/chip_labs/cli.py`
+- `tests/test_mirofish_discovery.py`
+- `docs/MIROFISH_DISCOVERY_PROGRAM.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_pilot_100_progress.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+Once the pilot directory existed, the next operator need was a truthful progress surface over that directory so collection could be tracked without opening every cluster packet by hand.
+
+### What Changed
+
+- Added a repo-local progress command for materialized discovery directories
+- Added markdown rendering for the progress surface
+- Generated the initial empty baseline showing `0 / 100` filled agents and `0` raw candidates
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.md --title "MiroFish Discovery Pilot 100 Progress"`
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+
+### Notes
+
+- The saved progress snapshot is intentionally empty because the pilot collection has not started yet.
+- This tranche creates the status surface needed for real collection work.

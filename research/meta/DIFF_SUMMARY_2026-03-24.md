@@ -306,3 +306,12 @@ MiroFish discovery pilot cluster directory:
 - generate a `README.md` index plus `10` cluster packet JSON files under `research/meta/`
 - save the written-file manifest for the materialized directory
 - make the `100`-agent pilot directly assignable without editing the combined bundle by hand
+
+## Batch 35
+
+MiroFish discovery pilot progress surface:
+
+- add a repo-local command that reads the materialized cluster directory and reports fill progress
+- generate JSON and markdown progress snapshots for the empty pilot baseline
+- make cluster collection status visible without opening each packet manually
+- preserve the truthful starting state of `0 / 100` filled agents before collection begins

@@ -4,7 +4,10 @@ from argparse import Namespace
 import json
 from pathlib import Path
 
-from chip_labs.cli import cmd_mirofish_discovery_program_materialize
+from chip_labs.cli import (
+    cmd_mirofish_discovery_program_materialize,
+    cmd_mirofish_discovery_program_progress,
+)
 from chip_labs.mirofish.discovery import (
     build_discovery_program_scaffold,
     canonicalize_discovery_batch,
@@ -217,3 +220,38 @@ def test_materialize_discovery_program_writes_cluster_files(tmp_path: Path) -> N
     assert (output_dir / "README.md").exists()
     assert (output_dir / "01_security-compliance-response.json").exists()
     assert "Pilot Cluster Directory" in (output_dir / "README.md").read_text(encoding="utf-8")
+
+
+def test_discovery_program_progress_reports_empty_materialized_directory(tmp_path: Path) -> None:
+    scaffold = build_discovery_program_scaffold()
+    cluster_bundle = split_discovery_program_scaffold(scaffold)
+    input_path = tmp_path / "cluster_bundle.json"
+    manifest_path = tmp_path / "manifest.json"
+    progress_path = tmp_path / "progress.json"
+    progress_md_path = tmp_path / "progress.md"
+    output_dir = tmp_path / "materialized"
+    input_path.write_text(json.dumps(cluster_bundle, indent=2), encoding="utf-8")
+
+    cmd_mirofish_discovery_program_materialize(
+        Namespace(
+            input=str(input_path),
+            output_dir=str(output_dir),
+            index_title="Pilot Cluster Directory",
+            output=str(manifest_path),
+        )
+    )
+    cmd_mirofish_discovery_program_progress(
+        Namespace(
+            input_dir=str(output_dir),
+            output=str(progress_path),
+            markdown_output=str(progress_md_path),
+            title="Pilot Progress",
+        )
+    )
+
+    progress = json.loads(progress_path.read_text(encoding="utf-8"))
+    assert progress["packet_kind"] == "mirofish_discovery_program_progress"
+    assert progress["summary"]["cluster_count"] == 10
+    assert progress["summary"]["filled_agent_count"] == 0
+    assert progress["summary"]["total_agent_count"] == 100
+    assert "Pilot Progress" in progress_md_path.read_text(encoding="utf-8")

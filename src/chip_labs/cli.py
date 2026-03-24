@@ -102,6 +102,86 @@ def _write_discovery_cluster_materialization(
     }
 
 
+def _summarize_discovery_cluster_directory(directory: str | Path) -> dict[str, Any]:
+    """Summarize fill progress for a materialized discovery cluster directory."""
+    directory_path = Path(directory)
+    cluster_paths = sorted(
+        path for path in directory_path.glob("*.json")
+        if path.name[:2].isdigit()
+    )
+    cluster_summaries: list[dict[str, Any]] = []
+    total_agents = 0
+    filled_agents = 0
+    raw_candidates = 0
+    for cluster_path in cluster_paths:
+        packet = _load_input(str(cluster_path))
+        agent_submissions = list(packet.get("agent_submissions", []))
+        cluster_total_agents = len(agent_submissions)
+        cluster_filled_agents = sum(1 for submission in agent_submissions if submission.get("raw_candidates"))
+        cluster_raw_candidates = sum(len(submission.get("raw_candidates", [])) for submission in agent_submissions)
+        total_agents += cluster_total_agents
+        filled_agents += cluster_filled_agents
+        raw_candidates += cluster_raw_candidates
+        cluster_summaries.append({
+            "cluster_id": packet.get("cluster_id", cluster_path.stem),
+            "cluster_label": packet.get("cluster_label", packet.get("cluster_id", cluster_path.stem)),
+            "target_agent_count": int(packet.get("target_agent_count", cluster_total_agents)),
+            "filled_agent_count": cluster_filled_agents,
+            "empty_agent_count": max(cluster_total_agents - cluster_filled_agents, 0),
+            "raw_candidate_count": cluster_raw_candidates,
+            "file_path": str(cluster_path),
+        })
+
+    return {
+        "packet_kind": "mirofish_discovery_program_progress",
+        "directory": str(directory_path),
+        "summary": {
+            "cluster_count": len(cluster_summaries),
+            "total_agent_count": total_agents,
+            "filled_agent_count": filled_agents,
+            "empty_agent_count": max(total_agents - filled_agents, 0),
+            "raw_candidate_count": raw_candidates,
+            "fill_rate": (filled_agents / total_agents) if total_agents else 0.0,
+        },
+        "clusters": cluster_summaries,
+        "next_actions": [
+            "Fill empty cluster packets with real candidate submissions.",
+            "Re-run progress after each collection tranche to track coverage.",
+            "Once collection is complete, recombine the cluster packets into one discovery-program input packet.",
+        ],
+    }
+
+
+def _format_discovery_progress_markdown(progress: dict[str, Any], title: str) -> str:
+    """Render a materialized discovery directory progress report as markdown."""
+    summary = progress.get("summary", {})
+    lines = [
+        f"# {title}",
+        "",
+        f"- Directory: `{progress.get('directory', 'unknown')}`",
+        f"- Clusters: `{summary.get('cluster_count', 0)}`",
+        f"- Filled agents: `{summary.get('filled_agent_count', 0)}` / `{summary.get('total_agent_count', 0)}`",
+        f"- Raw candidates: `{summary.get('raw_candidate_count', 0)}`",
+        f"- Fill rate: `{summary.get('fill_rate', 0.0):.2%}`",
+        "",
+        "## Cluster Progress",
+        "",
+    ]
+    for cluster in progress.get("clusters", []):
+        lines.append(
+            f"- `{cluster['cluster_id']}`: {cluster['filled_agent_count']} / "
+            f"{cluster['target_agent_count']} agents filled, {cluster['raw_candidate_count']} raw candidates"
+        )
+    lines.extend([
+        "",
+        "## Next Actions",
+        "",
+    ])
+    for action in progress.get("next_actions", []):
+        lines.append(f"- {action}")
+    return "\n".join(lines).rstrip() + "\n"
+
+
 # ---------------------------------------------------------------------------
 # Hook: evaluate
 # ---------------------------------------------------------------------------
@@ -653,6 +733,17 @@ def cmd_mirofish_discovery_program_materialize(args: argparse.Namespace) -> None
     _write_output(args.output, result)
 
 
+def cmd_mirofish_discovery_program_progress(args: argparse.Namespace) -> None:
+    """Summarize fill progress for a materialized discovery cluster directory."""
+    result = _summarize_discovery_cluster_directory(args.input_dir)
+    _write_output(args.output, result)
+    if args.markdown_output:
+        _write_text_output(
+            args.markdown_output,
+            _format_discovery_progress_markdown(result, title=args.title),
+        )
+
+
 # ---------------------------------------------------------------------------
 # Command: mirofish-hybrid-spec
 # ---------------------------------------------------------------------------
@@ -1045,6 +1136,32 @@ def main() -> None:
     )
     p_mirofish_discovery_program_materialize.add_argument("--output", type=str, default=None, help="Output JSON manifest path.")
     p_mirofish_discovery_program_materialize.set_defaults(func=cmd_mirofish_discovery_program_materialize)
+
+    # mirofish-discovery-program-progress
+    p_mirofish_discovery_program_progress = sub.add_parser(
+        "mirofish-discovery-program-progress",
+        help="Summarize fill progress for a materialized discovery cluster directory.",
+    )
+    p_mirofish_discovery_program_progress.add_argument(
+        "--input-dir",
+        type=str,
+        required=True,
+        help="Materialized cluster directory path.",
+    )
+    p_mirofish_discovery_program_progress.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_discovery_program_progress.add_argument(
+        "--markdown-output",
+        type=str,
+        default=None,
+        help="Optional markdown progress report path.",
+    )
+    p_mirofish_discovery_program_progress.add_argument(
+        "--title",
+        type=str,
+        default="MiroFish Discovery Pilot Progress",
+        help="Markdown heading for the progress report.",
+    )
+    p_mirofish_discovery_program_progress.set_defaults(func=cmd_mirofish_discovery_program_progress)
 
     # mirofish-hybrid-spec
     p_mirofish_hybrid = sub.add_parser(
