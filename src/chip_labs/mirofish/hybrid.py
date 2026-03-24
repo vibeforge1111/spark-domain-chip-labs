@@ -476,6 +476,196 @@ def build_run_diagnostic_brief(
     }
 
 
+def build_frontier_readout(
+    run_packet: dict[str, Any],
+    top_n: int = 25,
+    watchlist_n: int = 15,
+    benchmark_n: int = 5,
+) -> dict[str, Any]:
+    """Build a concise ranked readout from a saved frontier hybrid run."""
+    prediction_map = {
+        item.get("domain_id"): item
+        for item in run_packet.get("domain_predictions", [])
+        if item.get("domain_id")
+    }
+    ensemble_map = {
+        item.get("domain_id"): item
+        for item in run_packet.get("builder_ensemble_summary", [])
+        if item.get("domain_id")
+    }
+    discovered_ids = list(run_packet.get("discovered_domain_ids", []))
+    benchmark_ids = list(run_packet.get("benchmark_domain_ids", []))
+
+    benchmark_rows = [
+        _merged_domain_metrics(domain_id, prediction_map, ensemble_map)
+        for domain_id in benchmark_ids
+        if domain_id in prediction_map or domain_id in ensemble_map
+    ]
+    benchmark_mean_values = [row.get("mean_adoption", 0.0) for row in benchmark_rows]
+    benchmark_median = _median(benchmark_mean_values)
+
+    ranked_rows: list[dict[str, Any]] = []
+    for domain_id in discovered_ids:
+        row = _merged_domain_metrics(domain_id, prediction_map, ensemble_map)
+        if not row:
+            continue
+        row["attention_to_ensemble_gap"] = round(row.get("agent_choice_signal", 0.0) - row.get("mean_adoption", 0.0), 4)
+        row["interest_to_choice_gap"] = round(row.get("peak_interest_probability", 0.0) - row.get("agent_choice_signal", 0.0), 4)
+        row["trial_to_adoption_gap"] = round(max(0.0, row.get("mean_trial", 0.0) - row.get("mean_adoption", 0.0)), 4)
+        row["benchmark_gap"] = round(row.get("mean_adoption", 0.0) - benchmark_median, 4)
+        row["diagnostic_tags"] = _diagnostic_tags(row, benchmark_median)
+        row["benchmark_status"] = "above_benchmark_median" if row["benchmark_gap"] >= 0 else "below_benchmark_median"
+        ranked_rows.append(row)
+
+    ranked_rows.sort(
+        key=lambda item: (
+            item.get("mean_adoption", 0.0),
+            item.get("agent_choice_signal", 0.0),
+            item.get("peak_interest_probability", 0.0),
+        ),
+        reverse=True,
+    )
+
+    for index, row in enumerate(ranked_rows, start=1):
+        row["rank"] = index
+
+    above_benchmark_rows = [row for row in ranked_rows if row.get("benchmark_gap", 0.0) >= 0]
+    watchlist_rows = [
+        row for row in ranked_rows
+        if row.get("mean_adoption", 0.0) >= benchmark_median
+        or row.get("agent_choice_signal", 0.0) >= 0.1
+    ][:watchlist_n]
+    top_choice_rows = sorted(
+        ranked_rows,
+        key=lambda item: (
+            item.get("agent_choice_signal", 0.0),
+            item.get("peak_interest_probability", 0.0),
+            item.get("mean_adoption", 0.0),
+        ),
+        reverse=True,
+    )[:top_n]
+
+    cautions: list[str] = []
+    if run_packet.get("top_line", {}).get("top_final_adoption", 0.0) <= 0.0:
+        cautions.append("Frontier conversion is still too weak to trust retained adoption without a deeper or broader harness.")
+    if benchmark_median <= 0.0:
+        cautions.append("The current benchmark floor is still near zero, so this run is more useful for relative rank order than absolute demand.")
+    if any("interest_to_choice_friction" in row.get("diagnostic_tags", []) for row in ranked_rows[:top_n]):
+        cautions.append("High-interest frontier domains still lose too much between interest and actual agent choice.")
+    if any("trial_to_retention_collapse" in row.get("diagnostic_tags", []) for row in ranked_rows[:top_n]):
+        cautions.append("Several frontier domains still convert into trial without sustaining retained adoption.")
+
+    return {
+        "packet_kind": "mirofish_frontier_readout",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "source_run_created_at": run_packet.get("created_at"),
+        "evidence_lane": run_packet.get("evidence_lane", "exploratory_frontier"),
+        "meta": {
+            "domain_count": len(discovered_ids),
+            "benchmark_count": len(benchmark_rows),
+            "rounds": run_packet.get("harness", {}).get("max_rounds"),
+            "ensemble_runs": run_packet.get("harness", {}).get("ensemble_runs"),
+            "ensemble_count_per_type": run_packet.get("harness", {}).get("ensemble_count_per_type"),
+            "flagship_count_per_type": run_packet.get("harness", {}).get("flagship_count_per_type"),
+            "benchmark_median_adoption": round(benchmark_median, 4),
+        },
+        "top_line": run_packet.get("top_line", {}),
+        "top_domains_overall": ranked_rows[:top_n],
+        "top_choice_domains": top_choice_rows,
+        "watchlist_domains": watchlist_rows,
+        "above_benchmark_domains": above_benchmark_rows[:benchmark_n],
+        "methodology_cautions": cautions,
+        "governance_note": run_packet.get("governance_note", ""),
+    }
+
+
+def format_frontier_readout_markdown(
+    readout_packet: dict[str, Any],
+    title: str = "MiroFish Frontier Export",
+) -> str:
+    """Format a frontier readout packet as operator-facing markdown."""
+    meta = readout_packet.get("meta", {})
+    top_line = readout_packet.get("top_line", {})
+    overall_rows = list(readout_packet.get("top_domains_overall", []))
+    choice_rows = list(readout_packet.get("top_choice_domains", []))
+    watchlist_rows = list(readout_packet.get("watchlist_domains", []))
+    above_benchmark_rows = list(readout_packet.get("above_benchmark_domains", []))
+    cautions = list(readout_packet.get("methodology_cautions", []))
+
+    def _leader_line(label: str, row: dict[str, Any] | None, metric: str) -> str:
+        if not row:
+            return f"- {label}: none"
+        return (
+            f"- {label}: `{row.get('domain_id', 'unknown')}` "
+            f"({metric} {row.get(metric, 0.0):.2%}, "
+            f"choice {row.get('agent_choice_signal', 0.0):.2%})"
+        )
+
+    def _table_lines(rows: list[dict[str, Any]]) -> list[str]:
+        lines = [
+            "| Rank | Domain | Ensemble | Choice | Peak Interest | Adoption | Benchmark Gap | Notes |",
+            "|------|--------|----------|--------|---------------|----------|---------------|-------|",
+        ]
+        for idx, row in enumerate(rows, start=1):
+            notes = ", ".join(row.get("diagnostic_tags", [])) or "-"
+            lines.append(
+                f"| {idx} | `{row.get('domain_id', 'unknown')}` | "
+                f"{row.get('mean_adoption', 0.0):.2%} | "
+                f"{row.get('agent_choice_signal', 0.0):.2%} | "
+                f"{row.get('peak_interest_probability', 0.0):.2%} | "
+                f"{row.get('adoption_probability', 0.0):.2%} | "
+                f"{row.get('benchmark_gap', 0.0):+.2%} | {notes} |"
+            )
+        if len(lines) == 2:
+            lines.append("| - | none | - | - | - | - | - | - |")
+        return lines
+
+    overall_leader = overall_rows[0] if overall_rows else None
+    choice_leader = choice_rows[0] if choice_rows else None
+    benchmark_leader = above_benchmark_rows[0] if above_benchmark_rows else None
+
+    lines = [
+        f"# {title}",
+        "",
+        f"> Generated: {readout_packet.get('created_at', 'unknown')}",
+        f"> Source run: {readout_packet.get('source_run_created_at', 'unknown')}",
+        f"> Domains: {meta.get('domain_count', 'unknown')}",
+        f"> Rounds: {meta.get('rounds', 'unknown')}",
+        f"> Ensemble runs: {meta.get('ensemble_runs', 'unknown')}",
+        f"> Benchmark median adoption: {meta.get('benchmark_median_adoption', 0.0):.2%}",
+        "",
+        "## Top Line",
+        "",
+        _leader_line("Overall leader", overall_leader, "mean_adoption"),
+        _leader_line("Choice leader", choice_leader, "agent_choice_signal"),
+        _leader_line("Best above benchmark", benchmark_leader, "mean_adoption"),
+        f"- Top-line retained leader: `{top_line.get('top_final_adoption_domain', 'unknown')}` ({top_line.get('top_final_adoption', 0.0):.2%})",
+    ]
+
+    if cautions:
+        lines.extend(["", "## Methodology Cautions", ""])
+        for caution in cautions:
+            lines.append(f"- {caution}")
+
+    lines.extend(["", "## Top Overall", ""])
+    lines.extend(_table_lines(overall_rows))
+
+    lines.extend(["", "## Choice Leaders", ""])
+    lines.extend(_table_lines(choice_rows))
+
+    lines.extend(["", "## Watchlist", ""])
+    lines.extend(_table_lines(watchlist_rows))
+
+    lines.extend(["", "## Above Benchmark", ""])
+    lines.extend(_table_lines(above_benchmark_rows))
+
+    governance_note = readout_packet.get("governance_note", "")
+    if governance_note:
+        lines.extend(["", "## Governance", "", f"*{governance_note}*"])
+
+    return "\n".join(lines) + "\n"
+
+
 def discovery_candidate_to_opportunity(candidate: dict[str, Any]) -> dict[str, Any]:
     """Convert a canonical discovery candidate into a conservative MiroFish opportunity."""
     scores = infer_discovery_scores(candidate)

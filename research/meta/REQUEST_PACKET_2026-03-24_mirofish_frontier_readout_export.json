@@ -1,0 +1,58 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_frontier_readout_export",
+  "created_at": "2026-03-24",
+  "scope": "Add a repo-local readout and markdown export path for saved MiroFish frontier hybrid runs and use it on the deeper 90-domain checkpoint",
+  "decision_context": {
+    "prior_state": "The deeper frontier tranche was saved as a raw hybrid run and diagnostic, but there was no compact ranked surface equivalent to the portfolio readout/export workflow.",
+    "decision": "Add frontier readout and export helpers in the MiroFish CLI, then generate the actual readout and markdown export from the deeper 90-domain frontier checkpoint.",
+    "why_now": "This makes the current frontier checkpoint reviewable and gives the next scaling step a clean operator surface instead of relying on raw run packets."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/hybrid.py",
+      "purpose": "Adds frontier readout and markdown export helpers."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Exposes frontier readout and export commands."
+    },
+    {
+      "path": "tests/test_mirofish_hybrid.py",
+      "purpose": "Covers the frontier readout and markdown export helpers."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_90_DEEPER_2026-03-24.json",
+      "purpose": "Saved ranked frontier readout from the deeper checkpoint."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_EXPORT_TRANCHE_90_DEEPER_2026-03-24.md",
+      "purpose": "Operator-facing markdown export for the deeper frontier readout."
+    },
+    {
+      "path": "research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_90_DEEPER_NOTE_2026-03-24.md",
+      "purpose": "Documents the current winners and why the export exists."
+    }
+  ],
+  "planned_steps": [
+    "Add readout and export helpers for saved frontier hybrid runs",
+    "Expose the new helpers through the repo-local CLI",
+    "Generate the actual readout and markdown export from the deeper frontier tranche"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_hybrid.py tests/test_mirofish_discovery.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-frontier-readout --input research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_90_DEEPER_2026-03-24.json --output research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_90_DEEPER_2026-03-24.json --top-n 25 --watchlist-n 15 --benchmark-n 10",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-frontier-export --input research/meta/MIROFISH_FRONTIER_READOUT_TRANCHE_90_DEEPER_2026-03-24.json --output research/meta/MIROFISH_FRONTIER_EXPORT_TRANCHE_90_DEEPER_2026-03-24.md --title \"MiroFish Frontier Tranche 90 Deeper Export\""
+    ],
+    "expected_checks": [
+      "The readout packet ranks frontier domains by retained ensemble adoption with benchmark context",
+      "The markdown export renders top overall, choice leaders, watchlist, and above-benchmark sections",
+      "The current deeper frontier checkpoint is reviewable without reopening the raw run packet"
+    ]
+  },
+  "guardrails": [
+    "Do not invent a second evaluation model beyond the saved frontier run metrics",
+    "Do not treat the 90-domain frontier export as equivalent to a full 1000-domain frontier simulation",
+    "Keep the frontier export downstream of the saved run packet"
+  ]
+}

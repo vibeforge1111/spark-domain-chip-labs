@@ -928,6 +928,32 @@ def cmd_mirofish_portfolio_export(args: argparse.Namespace) -> None:
     _write_text_output(args.output, result)
 
 
+def cmd_mirofish_frontier_readout(args: argparse.Namespace) -> None:
+    """Build a ranked readout from a saved frontier hybrid run."""
+    from .mirofish.hybrid import build_frontier_readout
+
+    input_data = _load_input(args.input)
+    result = build_frontier_readout(
+        input_data,
+        top_n=args.top_n,
+        watchlist_n=args.watchlist_n,
+        benchmark_n=args.benchmark_n,
+    )
+    _write_output(args.output, result)
+
+
+def cmd_mirofish_frontier_export(args: argparse.Namespace) -> None:
+    """Export a saved frontier readout as operator-facing markdown."""
+    from .mirofish.hybrid import format_frontier_readout_markdown
+
+    input_data = _load_input(args.input)
+    result = format_frontier_readout_markdown(
+        input_data,
+        title=args.title,
+    )
+    _write_text_output(args.output, result)
+
+
 # ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
@@ -1419,6 +1445,43 @@ def main() -> None:
         help="Document title for the markdown export.",
     )
     p_mirofish_portfolio_export.set_defaults(func=cmd_mirofish_portfolio_export)
+
+    # mirofish-frontier-readout
+    p_mirofish_frontier_readout = sub.add_parser(
+        "mirofish-frontier-readout",
+        help="Build a ranked readout from a saved MiroFish frontier hybrid run.",
+    )
+    p_mirofish_frontier_readout.add_argument("--input", type=str, required=True, help="Input frontier run path.")
+    p_mirofish_frontier_readout.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_frontier_readout.add_argument("--top-n", type=int, default=25, help="Number of overall domains to include.")
+    p_mirofish_frontier_readout.add_argument(
+        "--watchlist-n",
+        type=int,
+        default=15,
+        help="Number of watchlist domains to include.",
+    )
+    p_mirofish_frontier_readout.add_argument(
+        "--benchmark-n",
+        type=int,
+        default=5,
+        help="Number of above-benchmark domains to include.",
+    )
+    p_mirofish_frontier_readout.set_defaults(func=cmd_mirofish_frontier_readout)
+
+    # mirofish-frontier-export
+    p_mirofish_frontier_export = sub.add_parser(
+        "mirofish-frontier-export",
+        help="Export a saved MiroFish frontier readout as operator-facing markdown.",
+    )
+    p_mirofish_frontier_export.add_argument("--input", type=str, required=True, help="Input frontier readout path.")
+    p_mirofish_frontier_export.add_argument("--output", type=str, default=None, help="Output markdown file path.")
+    p_mirofish_frontier_export.add_argument(
+        "--title",
+        type=str,
+        default="MiroFish Frontier Export",
+        help="Document title for the markdown export.",
+    )
+    p_mirofish_frontier_export.set_defaults(func=cmd_mirofish_frontier_export)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")
