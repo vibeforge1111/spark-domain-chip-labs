@@ -114,6 +114,7 @@ def build_graph_from_opportunities(
                 "rationale": opp.get("rationale", ""),
                 "domain_tags": _behavioral_domain_tags(opp),
                 "retention_score": _inferred_retention_score(opp),
+                "choice_score": _inferred_choice_score(opp),
             },
         )
 
@@ -292,3 +293,67 @@ def _inferred_retention_score(opportunity: dict[str, Any]) -> float:
             score += delta
 
     return round(max(0.2, min(0.85, score)), 4)
+
+
+def _inferred_choice_score(opportunity: dict[str, Any]) -> float:
+    """Infer how easy it is to justify an actual try once interest exists."""
+    candidate_context = opportunity.get("candidate_context", {})
+    source_tags = {
+        str(tag).strip().lower()
+        for tag in candidate_context.get("domain_tags", [])
+        if str(tag).strip()
+    }
+    text = " ".join([
+        opportunity.get("domain_id", ""),
+        opportunity.get("label", ""),
+        opportunity.get("description", ""),
+        opportunity.get("rationale", ""),
+        candidate_context.get("specialization_surface", ""),
+        candidate_context.get("mastery_surface", ""),
+        candidate_context.get("user_value_loop", ""),
+    ]).lower()
+
+    score = 0.34
+
+    if {"compliance", "enterprise-sales", "enterprise-ops"} & source_tags:
+        score += 0.05
+
+    proof_keywords = {
+        "rfp": 0.12,
+        "response": 0.08,
+        "questionnaire": 0.10,
+        "evidence": 0.11,
+        "artifact": 0.08,
+        "audit": 0.09,
+        "compliance": 0.08,
+        "control": 0.08,
+        "controls": 0.08,
+        "mapping": 0.06,
+        "map": 0.04,
+        "package": 0.08,
+        "packaging": 0.07,
+        "submit": 0.07,
+        "procurement": 0.09,
+        "retrieve": 0.05,
+        "reusable": 0.05,
+        "reuse": 0.05,
+        "proof": 0.08,
+        "approval": 0.06,
+    }
+    softer_keywords = {
+        "brief": -0.06,
+        "briefing": -0.06,
+        "dashboard": -0.05,
+        "synthes": -0.04,
+        "research": -0.03,
+        "idea": -0.04,
+    }
+
+    for keyword, delta in proof_keywords.items():
+        if keyword in text:
+            score += delta
+    for keyword, delta in softer_keywords.items():
+        if keyword in text:
+            score += delta
+
+    return round(max(0.2, min(0.9, score)), 4)

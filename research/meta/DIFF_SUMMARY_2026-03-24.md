@@ -153,3 +153,13 @@ MiroFish enterprise conversion tuning:
 - rerun the enterprise cluster playoff under the conversion-tuned logic
 - show that questionnaire and renewal benefit from the sticky-workflow prior
 - show that RFP and compliance evidence still need a different choice-conversion hypothesis
+
+## Batch 18
+
+MiroFish enterprise choice conversion:
+
+- infer graph-level `choice_score` from proof-heavy workflow cues
+- add a narrow choice-aware awareness boost for interested and evaluating personas
+- rerun the enterprise cluster playoff under the explicit choice-conversion logic
+- show that questionnaire and renewal stay above the benchmark median
+- show that RFP gets closer to the benchmark line while compliance evidence still fails to retain after stronger choice

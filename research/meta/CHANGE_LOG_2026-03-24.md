@@ -734,3 +734,49 @@ The signal-symmetry tranche still left the enterprise cluster heavily bottleneck
 - This tranche is useful because it separates sticky recurring workflows from pure choice-conversion problems.
 - Renewal becomes much more credible as a methodology target, but still not a maintained benchmark admission.
 - RFP and compliance evidence now need a different next hypothesis than questionnaire and renewal.
+
+## Tranche: MiroFish Enterprise Choice Conversion
+
+### Files Changed
+
+- `src/chip_labs/mirofish/graph.py`
+- `src/chip_labs/mirofish/simulation.py`
+- `research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CHOICE_CONVERSION_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_CHOICE_CONVERSION_2026-03-24.json`
+- `research/meta/MIROFISH_ENTERPRISE_CHOICE_CONVERSION_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_choice_conversion.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The sticky-workflow tranche clarified that RFP and compliance evidence still lacked a domain-specific reason for interested personas to convert into actual choice. The next narrow hypothesis was that proof-heavy enterprise workflows should stay more decisive once a persona is already in the funnel.
+
+### What Changed
+
+- Added inferred graph-level `choice_score` for proof-heavy workflows such as RFP, questionnaire, evidence, controls, audit, and procurement packaging
+- Applied that choice prior as a narrow awareness boost only for personas already at `interested` or `evaluating`
+- Reran the symmetric enterprise cluster playoff under the explicit choice-conversion logic
+- Built a fresh diagnostic brief from the replay
+- Saved a methodology note concluding that:
+  - `ai-security-questionnaire-copilot` remains the strongest enterprise ensemble domain and improves further
+  - `ai-renewal-risk-briefing-copilot` remains the strongest direct-choice enterprise lane and also improves on ensemble adoption
+  - `ai-rfp-response-copilot` moves closer to the benchmark median, but still fails to produce convincing direct-choice signal
+  - `ai-compliance-evidence-copilot` can win more direct choice without turning that into durable ensemble adoption
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CHOICE_CONVERSION_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CHOICE_CONVERSION_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_CHOICE_CONVERSION_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_trend_prediction.py -q`
+- Inspect that:
+  - questionnaire and renewal both remain above the benchmark median
+  - RFP closes part of the gap to the benchmark floor
+  - compliance evidence shows whether stronger choice alone is enough
+  - the note keeps maintained benchmark admission deferred
+
+### Notes
+
+- This tranche improves the enterprise read without becoming a broad enterprise boost.
+- The main new information is that compliance evidence is not just a pre-choice problem.
+- `startup-yc` still leads the cluster overall, so the next step remains a stable validation replay rather than admission.

@@ -154,6 +154,14 @@ def run_simulation(
                     persona, domain_id, active_signals, round_num,
                     active_macro=active_macro, domain_tags=domain_tags,
                 )
+                current_stage = persona["adoption_state"].get(domain_id, "unaware")
+                if current_stage in ("interested", "evaluating"):
+                    node = graph.nodes.get(domain_id, {})
+                    choice_score = node.get("properties", {}).get("choice_score", 0.5)
+                    awareness = _choice_ready_awareness(
+                        awareness, persona, domain_id, current_stage,
+                        choice_score=choice_score, domain_tags=domain_tags,
+                    )
                 domain_awareness.append((domain_id, awareness))
 
             # Always evaluate domains persona already has traction with
@@ -467,6 +475,29 @@ def _fit_adjusted_awareness(
     d_tags = (domain_tags or {}).get(domain_id, [])
     fit = persona_domain_fit(persona, domain_id, d_tags)
     return round(min(1.0, awareness * fit), 4)
+
+
+def _choice_ready_awareness(
+    awareness: float,
+    persona: dict[str, Any],
+    domain_id: str,
+    current_stage: str,
+    choice_score: float,
+    domain_tags: dict[str, list[str]] | None = None,
+) -> float:
+    """Nudge proof-heavy domains forward once a persona is already interested."""
+    if current_stage not in ("interested", "evaluating") or choice_score <= 0.58:
+        return awareness
+
+    d_tags = (domain_tags or {}).get(domain_id, [])
+    fit = persona_domain_fit(persona, domain_id, d_tags)
+    if fit <= 0.45:
+        return awareness
+
+    fit_gate = min(1.0, max(0.0, (fit - 0.45) / 0.35))
+    max_bonus = 0.08 if current_stage == "interested" else 0.06
+    boost = min(max_bonus, (choice_score - 0.58) * 0.22) * fit_gate
+    return round(min(1.0, awareness + boost), 4)
 
 
 def _propagate_influence(

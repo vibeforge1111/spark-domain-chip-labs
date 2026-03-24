@@ -1,0 +1,61 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_enterprise_choice_conversion",
+  "created_at": "2026-03-24",
+  "scope": "Add an explicit proof-heavy choice-conversion prior for enterprise domains, then rerun the symmetric enterprise cluster playoff",
+  "decision_context": {
+    "prior_state": "The sticky-workflow conversion tranche improved questionnaire and renewal, but RFP and compliance evidence still looked primarily stuck between interest and actual choice.",
+    "decision": "Infer a graph-level choice_score from proof-heavy workflow cues and use it only as a narrow awareness boost for personas already in interested or evaluating, then replay the enterprise cluster and rebuild the diagnostic brief.",
+    "why_now": "The remaining enterprise bottleneck was narrow enough to test directly. The next step needed to clarify whether RFP and compliance evidence were blocked before choice or whether they would still fail after winning more direct selection."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/graph.py",
+      "purpose": "Adds graph-level choice_score inference for proof-heavy enterprise workflows."
+    },
+    {
+      "path": "src/chip_labs/mirofish/simulation.py",
+      "purpose": "Applies a stage-aware awareness boost for interested and evaluating personas on high-choice-score domains."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CHOICE_CONVERSION_2026-03-24.json",
+      "purpose": "Stores the enterprise cluster replay after the explicit choice-conversion tranche."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_CHOICE_CONVERSION_2026-03-24.json",
+      "purpose": "Stores the diagnostic brief for the choice-conversion replay."
+    },
+    {
+      "path": "research/meta/MIROFISH_ENTERPRISE_CHOICE_CONVERSION_NOTE_2026-03-24.md",
+      "purpose": "Summarizes which enterprise domains improved, which did not, and what the tranche clarified."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_enterprise_choice_conversion.json",
+      "purpose": "Captures the request, verification plan, and guardrails for this tranche."
+    }
+  ],
+  "planned_steps": [
+    "Infer graph-level choice_score from proof-heavy workflow semantics",
+    "Apply the choice prior only for interested and evaluating personas",
+    "Replay the symmetric enterprise cluster playoff",
+    "Build a fresh diagnostic brief from the replay",
+    "Write the methodology note and update the transparent logs"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_ENTERPRISE_CLUSTER_PLAYOFF_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CHOICE_CONVERSION_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_ENTERPRISE_CLUSTER_CHOICE_CONVERSION_2026-03-24.json --domains ai-security-questionnaire-copilot,ai-renewal-risk-briefing-copilot,ai-compliance-evidence-copilot,ai-rfp-response-copilot --output research/meta/MIROFISH_ENTERPRISE_CLUSTER_DIAGNOSTIC_CHOICE_CONVERSION_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "Questionnaire and renewal remain above the benchmark median after the explicit choice tranche",
+      "RFP moves closer to the benchmark floor even if it still trails it",
+      "Compliance evidence reveals whether stronger direct choice is enough to survive the ensemble",
+      "The note keeps maintained benchmark admission deferred"
+    ]
+  },
+  "guardrails": [
+    "Do not lower retained-adoption gates",
+    "Do not auto-admit any enterprise domain into maintained benchmarks",
+    "Keep the change narrow to proof-heavy choice support rather than a generic enterprise uplift"
+  ]
+}
