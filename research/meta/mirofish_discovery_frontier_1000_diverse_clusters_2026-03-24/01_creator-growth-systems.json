@@ -511,7 +511,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "shortform-series-engine-loop",
+          "label": "Shortform Series Engine Loop",
+          "description": "A workflow for turning one creator theme into a repeated series format that compounds recognition and return viewership.",
+          "specialization_surface": "running the repeated shortform series engine loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Shortform Series Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next shortform series engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator",
+            "short-form",
+            "series",
+            "growth"
+          ],
+          "evidence_summary": "Many creators break through when they stop posting isolated ideas and start packaging repeatable series people know to come back for.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Many creators break through when they stop posting isolated ideas and start packaging repeatable series people know to come back for."
+        }
+      ]
     },
     {
       "agent_id": "agent-010",
@@ -542,7 +567,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "reply-to-content-loop",
+          "label": "Reply to Content Loop",
+          "description": "A system for converting high-signal replies and mentions into new posts, clips, and follow-up takes while the conversation is still hot.",
+          "specialization_surface": "running the repeated reply to content loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Reply to Content Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next reply to content loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator",
+            "x-native",
+            "replies",
+            "content"
+          ],
+          "evidence_summary": "On X, a lot of the best content opportunities arrive as replies rather than as fresh blank-page ideas.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "On X, a lot of the best content opportunities arrive as replies rather than as fresh blank-page ideas."
+        }
+      ]
     },
     {
       "agent_id": "agent-011",
@@ -573,7 +623,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "creator-offer-refresh-loop",
+          "label": "Creator Offer Refresh Loop",
+          "description": "A recurring loop for adjusting creator offers, pricing, and packaging as audience demand shifts.",
+          "specialization_surface": "running the repeated creator offer refresh loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Creator Offer Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next creator offer refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator",
+            "offers",
+            "monetization",
+            "iteration"
+          ],
+          "evidence_summary": "Creators with revenue learn faster when they repeatedly refresh the offer surface instead of waiting for a full relaunch.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Creators with revenue learn faster when they repeatedly refresh the offer surface instead of waiting for a full relaunch."
+        }
+      ]
     },
     {
       "agent_id": "agent-012",
@@ -604,7 +679,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "comment-to-community-loop",
+          "label": "Comment to Community Loop",
+          "description": "A workflow for identifying the most activated commenters and pulling them into stronger community touchpoints.",
+          "specialization_surface": "running the repeated comment to community loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Comment to Community Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next comment to community loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator",
+            "community",
+            "comments",
+            "retention"
+          ],
+          "evidence_summary": "The comment section often contains the future core community, but most creators do not operationalize that transition.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "The comment section often contains the future core community, but most creators do not operationalize that transition."
+        }
+      ]
     },
     {
       "agent_id": "agent-013",
@@ -635,7 +735,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "creator-proof-drop-loop",
+          "label": "Creator Proof Drop Loop",
+          "description": "A repeated format for posting receipts, behind-the-scenes outputs, and visible proof that strengthens audience trust.",
+          "specialization_surface": "running the repeated creator proof drop loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Creator Proof Drop Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next creator proof drop loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator",
+            "proof",
+            "trust",
+            "status"
+          ],
+          "evidence_summary": "Audiences increasingly reward builders and creators who keep dropping visible proof instead of abstract claims.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Audiences increasingly reward builders and creators who keep dropping visible proof instead of abstract claims."
+        }
+      ]
     },
     {
       "agent_id": "agent-014",
@@ -666,7 +791,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "audience-segment-content-loop",
+          "label": "Audience Segment Content Loop",
+          "description": "A system for tailoring recurring content themes to specific audience pockets without splintering the main brand.",
+          "specialization_surface": "running the repeated audience segment content loop workflow inside the creator growth systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Segment Content Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next audience segment content loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "creator",
+            "audience",
+            "segmentation",
+            "content"
+          ],
+          "evidence_summary": "Larger creator accounts often need more than one content lane, but segmenting manually gets messy fast.",
+          "adjacent_domains": [
+            "tiktok-creator",
+            "xcontent",
+            "youtube-remixer"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Larger creator accounts often need more than one content lane, but segmenting manually gets messy fast."
+        }
+      ]
     },
     {
       "agent_id": "agent-015",

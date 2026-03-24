@@ -847,7 +847,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "patch-note-hype-loop",
+          "label": "Patch Note Hype Loop",
+          "description": "A workflow for turning patch notes and update leaks into fast community breakdowns, expectations, and engagement spikes.",
+          "specialization_surface": "running the repeated patch note hype loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Note Hype Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next patch note hype loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming",
+            "patches",
+            "community",
+            "hype"
+          ],
+          "evidence_summary": "Gaming communities repeatedly light up around update drops, but the interpretation layer is usually fragmented across feeds and chats.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Gaming communities repeatedly light up around update drops, but the interpretation layer is usually fragmented across feeds and chats."
+        }
+      ]
     },
     {
       "agent_id": "agent-116",
@@ -878,7 +903,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "guild-recruitment-fit-loop",
+          "label": "Guild Recruitment Fit Loop",
+          "description": "A system for matching guild openings, play styles, and member behavior into better recurring community fit decisions.",
+          "specialization_surface": "running the repeated guild recruitment fit loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Recruitment Fit Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next guild recruitment fit loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming",
+            "guilds",
+            "recruiting",
+            "community"
+          ],
+          "evidence_summary": "Guild churn often comes from bad fit more than low interest, and communities still handle fit judgment manually.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Guild churn often comes from bad fit more than low interest, and communities still handle fit judgment manually."
+        }
+      ]
     },
     {
       "agent_id": "agent-117",
@@ -909,7 +959,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "stream-clip-escalation-loop",
+          "label": "Stream Clip Escalation Loop",
+          "description": "A repeated loop for promoting the best live stream moments into clips, memes, and return-viewer hooks.",
+          "specialization_surface": "running the repeated stream clip escalation loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Stream Clip Escalation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next stream clip escalation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming",
+            "streaming",
+            "clips",
+            "distribution"
+          ],
+          "evidence_summary": "The same communities that watch live also amplify the right clipped moments, but that promotion step is rarely systematized.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "The same communities that watch live also amplify the right clipped moments, but that promotion step is rarely systematized."
+        }
+      ]
     },
     {
       "agent_id": "agent-118",
@@ -940,7 +1015,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "mod-event-rotation-loop",
+          "label": "Mod Event Rotation Loop",
+          "description": "A workflow for cycling community-run events, mods, and limited-time twists that keep a game world feeling alive.",
+          "specialization_surface": "running the repeated mod event rotation loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Mod Event Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next mod event rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming",
+            "mods",
+            "events",
+            "retention"
+          ],
+          "evidence_summary": "Long-lived gaming communities survive on rotating events and mods, not on static worlds alone.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Long-lived gaming communities survive on rotating events and mods, not on static worlds alone."
+        }
+      ]
     },
     {
       "agent_id": "agent-119",
@@ -971,7 +1071,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "npc-lore-memory-loop",
+          "label": "NPC Lore Memory Loop",
+          "description": "A system for preserving what NPCs know, remember, and reference across repeated player interactions.",
+          "specialization_surface": "running the repeated npc lore memory loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make NPC Lore Memory Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next npc lore memory loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming",
+            "npc",
+            "memory",
+            "lore"
+          ],
+          "evidence_summary": "Players feel a world is more real when characters remember prior interactions, but that continuity is still fragile.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Players feel a world is more real when characters remember prior interactions, but that continuity is still fragile."
+        }
+      ]
     },
     {
       "agent_id": "agent-120",
@@ -1002,7 +1127,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "faction-rivalry-loop",
+          "label": "Faction Rivalry Loop",
+          "description": "A repeated community loop for escalating faction identity, rivalry moments, and social return behavior.",
+          "specialization_surface": "running the repeated faction rivalry loop workflow inside the gaming / npc / community worlds wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Faction Rivalry Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next faction rivalry loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "gaming",
+            "factions",
+            "identity",
+            "community"
+          ],
+          "evidence_summary": "Faction-based tension reliably creates return behavior in online communities because people want to defend their side.",
+          "adjacent_domains": [
+            "ai-npc-dialog",
+            "discord-community",
+            "streamer-overlay-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Faction-based tension reliably creates return behavior in online communities because people want to defend their side."
+        }
+      ]
     },
     {
       "agent_id": "agent-121",

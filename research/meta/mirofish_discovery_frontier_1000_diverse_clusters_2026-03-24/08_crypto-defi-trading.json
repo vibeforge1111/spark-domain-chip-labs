@@ -455,7 +455,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "wallet-cluster-watch-loop",
+          "label": "Wallet Cluster Watch Loop",
+          "description": "A recurring workflow for watching clusters of smart wallets and translating their moves into action-worthy signals.",
+          "specialization_surface": "running the repeated wallet cluster watch loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Cluster Watch Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next wallet cluster watch loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto",
+            "wallets",
+            "signals",
+            "trading"
+          ],
+          "evidence_summary": "Crypto-native users often track a set of wallets repeatedly, but the workflow stays fragmented and manual.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto-native users often track a set of wallets repeatedly, but the workflow stays fragmented and manual."
+        }
+      ]
     },
     {
       "agent_id": "agent-549",
@@ -486,7 +511,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "token-narrative-rotation-loop",
+          "label": "Token Narrative Rotation Loop",
+          "description": "A system for tracking when token narratives rotate, cool off, or suddenly regain energy across the market.",
+          "specialization_surface": "running the repeated token narrative rotation loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Token Narrative Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next token narrative rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto",
+            "tokens",
+            "narratives",
+            "market"
+          ],
+          "evidence_summary": "A lot of crypto movement is narrative rotation, and people struggle to keep up with those shifts early enough.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "A lot of crypto movement is narrative rotation, and people struggle to keep up with those shifts early enough."
+        }
+      ]
     },
     {
       "agent_id": "agent-550",
@@ -517,7 +567,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "perp-risk-reset-loop",
+          "label": "Perp Risk Reset Loop",
+          "description": "A workflow for recalibrating leverage, stop logic, and exposure after volatility events in perpetual markets.",
+          "specialization_surface": "running the repeated perp risk reset loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Perp Risk Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next perp risk reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto",
+            "perps",
+            "risk",
+            "trading"
+          ],
+          "evidence_summary": "Perp traders repeatedly need to reset risk after fast market shifts, but the discipline usually breaks under emotion.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Perp traders repeatedly need to reset risk after fast market shifts, but the discipline usually breaks under emotion."
+        }
+      ]
     },
     {
       "agent_id": "agent-551",
@@ -548,7 +623,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "governance-vote-brief-loop",
+          "label": "Governance Vote Brief Loop",
+          "description": "A repeated briefing workflow for summarizing protocol votes, implications, and positioning decisions.",
+          "specialization_surface": "running the repeated governance vote brief loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Governance Vote Brief Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next governance vote brief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto",
+            "governance",
+            "briefing",
+            "defi"
+          ],
+          "evidence_summary": "Onchain users increasingly need short, actionable governance context instead of raw forum reading.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Onchain users increasingly need short, actionable governance context instead of raw forum reading."
+        }
+      ]
     },
     {
       "agent_id": "agent-552",
@@ -579,7 +679,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "bridge-route-safety-loop",
+          "label": "Bridge Route Safety Loop",
+          "description": "A system for repeatedly checking route safety, bridge assumptions, and execution risk before cross-chain moves.",
+          "specialization_surface": "running the repeated bridge route safety loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Bridge Route Safety Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next bridge route safety loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto",
+            "bridges",
+            "safety",
+            "ops"
+          ],
+          "evidence_summary": "Cross-chain users keep facing avoidable execution risk because bridge choices get made too casually.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Cross-chain users keep facing avoidable execution risk because bridge choices get made too casually."
+        }
+      ]
     },
     {
       "agent_id": "agent-553",
@@ -610,7 +735,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "onchain-opportunity-arb-loop",
+          "label": "Onchain Opportunity Arb Loop",
+          "description": "A workflow for comparing onchain opportunity pockets across ecosystems and rotating attention toward the best edge.",
+          "specialization_surface": "running the repeated onchain opportunity arb loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Onchain Opportunity Arb Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next onchain opportunity arb loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto",
+            "onchain",
+            "opportunities",
+            "defi"
+          ],
+          "evidence_summary": "The edge often comes from opportunity comparison across chains and protocols, not from watching one feed in isolation.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "The edge often comes from opportunity comparison across chains and protocols, not from watching one feed in isolation."
+        }
+      ]
     },
     {
       "agent_id": "agent-554",
@@ -641,7 +791,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "treasury-allocation-loop",
+          "label": "Treasury Allocation Loop",
+          "description": "A recurring loop for deciding where protocol or team treasury capital should sit as conditions change.",
+          "specialization_surface": "running the repeated treasury allocation loop workflow inside the crypto / defi / trading wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Treasury Allocation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next treasury allocation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "crypto",
+            "treasury",
+            "allocation",
+            "defi"
+          ],
+          "evidence_summary": "Crypto teams and communities increasingly need active treasury logic rather than static idle balances.",
+          "adjacent_domains": [
+            "trading-crypto",
+            "defi-architect",
+            "onchain-research-ai"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Crypto teams and communities increasingly need active treasury logic rather than static idle balances."
+        }
+      ]
     },
     {
       "agent_id": "agent-555",

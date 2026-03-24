@@ -399,7 +399,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "agent-eval-regression-loop",
+          "label": "Agent Eval Regression Loop",
+          "description": "A workflow for rerunning agent evals, spotting regressions, and preserving what changed between prompt or tool updates.",
+          "specialization_surface": "running the repeated agent eval regression loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Agent Eval Regression Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next agent eval regression loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agents",
+            "evals",
+            "regressions",
+            "builders"
+          ],
+          "evidence_summary": "Agent builders repeatedly ship changes without a strong sense of what just regressed until users notice.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Agent builders repeatedly ship changes without a strong sense of what just regressed until users notice."
+        }
+      ]
     },
     {
       "agent_id": "agent-188",
@@ -430,7 +455,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "toolchain-wiring-loop",
+          "label": "Toolchain Wiring Loop",
+          "description": "A system for repeatedly composing tools, permissions, and fallback logic into working agent workflows.",
+          "specialization_surface": "running the repeated toolchain wiring loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Wiring Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next toolchain wiring loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agents",
+            "tooling",
+            "orchestration",
+            "builders"
+          ],
+          "evidence_summary": "A lot of agent engineering is really repeated tool wiring and refinement rather than model novelty.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "A lot of agent engineering is really repeated tool wiring and refinement rather than model novelty."
+        }
+      ]
     },
     {
       "agent_id": "agent-189",
@@ -461,7 +511,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "agent-prompt-upgrade-loop",
+          "label": "Agent Prompt Upgrade Loop",
+          "description": "A recurring loop for comparing prompt variants, preserving wins, and iterating toward more reliable agent behavior.",
+          "specialization_surface": "running the repeated agent prompt upgrade loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Agent Prompt Upgrade Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next agent prompt upgrade loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agents",
+            "prompts",
+            "iteration",
+            "reliability"
+          ],
+          "evidence_summary": "Prompting remains a living operational surface for agent builders, not a one-time setup task.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Prompting remains a living operational surface for agent builders, not a one-time setup task."
+        }
+      ]
     },
     {
       "agent_id": "agent-190",
@@ -492,7 +567,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "human-handoff-loop",
+          "label": "Human Handoff Loop",
+          "description": "A workflow for deciding when an agent should escalate, what context to transfer, and how to close the loop after human review.",
+          "specialization_surface": "running the repeated human handoff loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Human Handoff Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next human handoff loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agents",
+            "handoff",
+            "ops",
+            "reliability"
+          ],
+          "evidence_summary": "The best agent systems are not fully autonomous; they repeatedly manage human handoffs well.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "The best agent systems are not fully autonomous; they repeatedly manage human handoffs well."
+        }
+      ]
     },
     {
       "agent_id": "agent-191",
@@ -523,7 +623,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "agent-memory-curation-loop",
+          "label": "Agent Memory Curation Loop",
+          "description": "A system for deciding what agent memories to keep, reject, or compress as workflows accumulate residue.",
+          "specialization_surface": "running the repeated agent memory curation loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Agent Memory Curation Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next agent memory curation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agents",
+            "memory",
+            "curation",
+            "builders"
+          ],
+          "evidence_summary": "As agents persist longer, memory quality becomes a recurring maintenance problem rather than a one-time design choice.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "As agents persist longer, memory quality becomes a recurring maintenance problem rather than a one-time design choice."
+        }
+      ]
     },
     {
       "agent_id": "agent-192",
@@ -554,7 +679,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "agent-failure-triage-loop",
+          "label": "Agent Failure Triage Loop",
+          "description": "A workflow for clustering agent failures by root cause and choosing the next best fix surface quickly.",
+          "specialization_surface": "running the repeated agent failure triage loop workflow inside the ai agent builders wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Agent Failure Triage Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next agent failure triage loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "agents",
+            "failures",
+            "triage",
+            "debugging"
+          ],
+          "evidence_summary": "Teams using agents accumulate repeated failure modes that are hard to reason about without structured triage.",
+          "adjacent_domains": [
+            "ai-agent-builder",
+            "mcp-server-builder",
+            "cursor-copilot"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Teams using agents accumulate repeated failure modes that are hard to reason about without structured triage."
+        }
+      ]
     },
     {
       "agent_id": "agent-193",

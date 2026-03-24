@@ -1913,3 +1913,44 @@ After the initial fill, the broad frontier still had several completely empty we
 
 - All `18` frontier clusters now have at least one live candidate.
 - Simulation remains intentionally deferred.
+
+## Tranche: MiroFish Discovery Frontier Phase 2 Densification
+
+### Files
+
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/01_creator-growth-systems.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/02_gaming-npc-community.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/03_agentic-builders.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/04_startup-founder-systems.json`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/08_crypto-defi-trading.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_FRONTIER_1000_PHASE_2_DENSIFICATION_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_frontier_phase_2_densification.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+After activating every wedge, the next need was depth in the clusters most likely to matter for early user pull. A frontier with only shallow representation in creator, gaming, agentic builders, startup, and crypto would still be too thin for later selection.
+
+### What Changed
+
+- Added a second wave of seed candidates to the highest-priority interesting wedges
+- Moved creator from `8` to `14`
+- Moved gaming from `14` to `20`
+- Moved agentic builders from `6` to `12`
+- Moved startup systems from `6` to `12`
+- Moved crypto from `7` to `14`
+- Regenerated the frontier bundle and progress surface at `109 / 1000`
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md --title "MiroFish Discovery Frontier 1000 Diverse Progress"`
+
+### Notes
+
+- This tranche is about density, not evaluation.
+- Simulation remains intentionally deferred.

@@ -4,46 +4,46 @@
   "summary": {
     "cluster_count": 18,
     "total_agent_count": 1000,
-    "filled_agent_count": 78,
-    "empty_agent_count": 922,
-    "raw_candidate_count": 78,
-    "fill_rate": 0.078
+    "filled_agent_count": 109,
+    "empty_agent_count": 891,
+    "raw_candidate_count": 109,
+    "fill_rate": 0.109
   },
   "clusters": [
     {
       "cluster_id": "creator-growth-systems",
       "cluster_label": "Creator Growth Systems",
       "target_agent_count": 100,
-      "filled_agent_count": 8,
-      "empty_agent_count": 92,
-      "raw_candidate_count": 8,
+      "filled_agent_count": 14,
+      "empty_agent_count": 86,
+      "raw_candidate_count": 14,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\01_creator-growth-systems.json"
     },
     {
       "cluster_id": "gaming-npc-community",
       "cluster_label": "Gaming / NPC / Community Worlds",
       "target_agent_count": 80,
-      "filled_agent_count": 14,
-      "empty_agent_count": 66,
-      "raw_candidate_count": 14,
+      "filled_agent_count": 20,
+      "empty_agent_count": 60,
+      "raw_candidate_count": 20,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\02_gaming-npc-community.json"
     },
     {
       "cluster_id": "agentic-builders",
       "cluster_label": "AI Agent Builders",
       "target_agent_count": 80,
-      "filled_agent_count": 6,
-      "empty_agent_count": 74,
-      "raw_candidate_count": 6,
+      "filled_agent_count": 12,
+      "empty_agent_count": 68,
+      "raw_candidate_count": 12,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\03_agentic-builders.json"
     },
     {
       "cluster_id": "startup-founder-systems",
       "cluster_label": "Startup Builder Systems",
       "target_agent_count": 80,
-      "filled_agent_count": 6,
-      "empty_agent_count": 74,
-      "raw_candidate_count": 6,
+      "filled_agent_count": 12,
+      "empty_agent_count": 68,
+      "raw_candidate_count": 12,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\04_startup-founder-systems.json"
     },
     {
@@ -77,9 +77,9 @@
       "cluster_id": "crypto-defi-trading",
       "cluster_label": "Crypto / DeFi / Trading",
       "target_agent_count": 80,
-      "filled_agent_count": 7,
-      "empty_agent_count": 73,
-      "raw_candidate_count": 7,
+      "filled_agent_count": 14,
+      "empty_agent_count": 66,
+      "raw_candidate_count": 14,
       "file_path": "research\\meta\\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24\\08_crypto-defi-trading.json"
     },
     {

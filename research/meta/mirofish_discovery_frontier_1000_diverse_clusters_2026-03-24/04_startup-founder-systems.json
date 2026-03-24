@@ -399,7 +399,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "founder-observation-capture-loop",
+          "label": "Founder Observation Capture Loop",
+          "description": "A system for turning daily founder observations into reusable product, GTM, and strategy signals.",
+          "specialization_surface": "running the repeated founder observation capture loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Founder Observation Capture Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next founder observation capture loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup",
+            "founders",
+            "signals",
+            "capture"
+          ],
+          "evidence_summary": "A lot of founder edge comes from what they notice day to day, but those observations usually disappear before being reused.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "A lot of founder edge comes from what they notice day to day, but those observations usually disappear before being reused."
+        }
+      ]
     },
     {
       "agent_id": "agent-268",
@@ -430,7 +455,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "pricing-call-feedback-loop",
+          "label": "Pricing Call Feedback Loop",
+          "description": "A recurring workflow for extracting pricing objections and willingness-to-pay cues from calls and demos.",
+          "specialization_surface": "running the repeated pricing call feedback loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Call Feedback Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next pricing call feedback loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup",
+            "pricing",
+            "sales",
+            "feedback"
+          ],
+          "evidence_summary": "Founders learn pricing through repeated conversations, but the learning often remains trapped in memory.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders learn pricing through repeated conversations, but the learning often remains trapped in memory."
+        }
+      ]
     },
     {
       "agent_id": "agent-269",
@@ -461,7 +511,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "launch-window-decision-loop",
+          "label": "Launch Window Decision Loop",
+          "description": "A workflow for deciding when to launch based on product readiness, distribution energy, and timing risk.",
+          "specialization_surface": "running the repeated launch window decision loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Window Decision Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next launch window decision loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup",
+            "launch",
+            "timing",
+            "decisions"
+          ],
+          "evidence_summary": "Teams often delay or rush launches because they do not have a repeatable decision loop for timing.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Teams often delay or rush launches because they do not have a repeatable decision loop for timing."
+        }
+      ]
     },
     {
       "agent_id": "agent-270",
@@ -492,7 +567,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "user-call-to-roadmap-loop",
+          "label": "User Call to Roadmap Loop",
+          "description": "A system for converting recurring user call signals into ranked roadmap shifts and product bets.",
+          "specialization_surface": "running the repeated user call to roadmap loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make User Call to Roadmap Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next user call to roadmap loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup",
+            "users",
+            "roadmap",
+            "product"
+          ],
+          "evidence_summary": "User calls are only valuable if their patterns change what gets built next.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "User calls are only valuable if their patterns change what gets built next."
+        }
+      ]
     },
     {
       "agent_id": "agent-271",
@@ -523,7 +623,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "founder-status-update-loop",
+          "label": "Founder Status Update Loop",
+          "description": "A repeated cadence for packaging investor, advisor, and supporter updates with real momentum signals.",
+          "specialization_surface": "running the repeated founder status update loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make Founder Status Update Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next founder status update loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup",
+            "founders",
+            "updates",
+            "fundraising"
+          ],
+          "evidence_summary": "Founders benefit from regular momentum communication, but assembling those updates keeps becoming last-minute work.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Founders benefit from regular momentum communication, but assembling those updates keeps becoming last-minute work."
+        }
+      ]
     },
     {
       "agent_id": "agent-272",
@@ -554,7 +679,32 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "domain_id": "gTM-experiment-review-loop",
+          "label": "GTM Experiment Review Loop",
+          "description": "A workflow for reviewing GTM tests, comparing channels, and deciding what deserves another cycle.",
+          "specialization_surface": "running the repeated gtm experiment review loop workflow inside the startup builder systems wedge",
+          "mastery_surface": "learning which inputs, timing, and execution patterns make GTM Experiment Review Loop outperform generic or manual approaches for this audience over repeated cycles",
+          "user_value_loop": "review the next live signal, draft the next gtm experiment review loop move, execute it, measure the response, and update the working playbook for the next cycle",
+          "domain_tags": [
+            "startup",
+            "gtm",
+            "experiments",
+            "growth"
+          ],
+          "evidence_summary": "Small teams often run many acquisition tests without a strong repeatable review loop to decide what really worked.",
+          "adjacent_domains": [
+            "startup-yc",
+            "indie-hacker",
+            "agentic-marketing"
+          ],
+          "duplicate_aliases": [],
+          "confidence_read": "seed",
+          "promotion_status": "seed_candidate",
+          "raw_observation": "Small teams often run many acquisition tests without a strong repeatable review loop to decide what really worked."
+        }
+      ]
     },
     {
       "agent_id": "agent-273",

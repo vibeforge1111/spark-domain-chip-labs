@@ -2,20 +2,20 @@
 
 - Directory: `research\meta\mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24`
 - Clusters: `18`
-- Filled agents: `78` / `1000`
-- Raw candidates: `78`
-- Fill rate: `7.80%`
+- Filled agents: `109` / `1000`
+- Raw candidates: `109`
+- Fill rate: `10.90%`
 
 ## Cluster Progress
 
-- `creator-growth-systems`: 8 / 100 agents filled, 8 raw candidates
-- `gaming-npc-community`: 14 / 80 agents filled, 14 raw candidates
-- `agentic-builders`: 6 / 80 agents filled, 6 raw candidates
-- `startup-founder-systems`: 6 / 80 agents filled, 6 raw candidates
+- `creator-growth-systems`: 14 / 100 agents filled, 14 raw candidates
+- `gaming-npc-community`: 20 / 80 agents filled, 20 raw candidates
+- `agentic-builders`: 12 / 80 agents filled, 12 raw candidates
+- `startup-founder-systems`: 12 / 80 agents filled, 12 raw candidates
 - `productivity-builder-ops`: 3 / 80 agents filled, 3 raw candidates
 - `career-status-social-proof`: 4 / 60 agents filled, 4 raw candidates
 - `consumer-agent-utilities`: 3 / 60 agents filled, 3 raw candidates
-- `crypto-defi-trading`: 7 / 80 agents filled, 7 raw candidates
+- `crypto-defi-trading`: 14 / 80 agents filled, 14 raw candidates
 - `x-native-persona-tools`: 3 / 50 agents filled, 3 raw candidates
 - `design-remix-aesthetics`: 2 / 40 agents filled, 2 raw candidates
 - `education-skill-acceleration`: 3 / 40 agents filled, 3 raw candidates

@@ -744,7 +744,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "shortform-series-engine-loop",
+              "label": "Shortform Series Engine Loop",
+              "description": "A workflow for turning one creator theme into a repeated series format that compounds recognition and return viewership.",
+              "specialization_surface": "running the repeated shortform series engine loop workflow inside the creator growth systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Shortform Series Engine Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next shortform series engine loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "creator",
+                "short-form",
+                "series",
+                "growth"
+              ],
+              "evidence_summary": "Many creators break through when they stop posting isolated ideas and start packaging repeatable series people know to come back for.",
+              "adjacent_domains": [
+                "tiktok-creator",
+                "xcontent",
+                "youtube-remixer"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Many creators break through when they stop posting isolated ideas and start packaging repeatable series people know to come back for."
+            }
+          ]
         },
         {
           "agent_id": "agent-010",
@@ -775,7 +800,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "reply-to-content-loop",
+              "label": "Reply to Content Loop",
+              "description": "A system for converting high-signal replies and mentions into new posts, clips, and follow-up takes while the conversation is still hot.",
+              "specialization_surface": "running the repeated reply to content loop workflow inside the creator growth systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Reply to Content Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next reply to content loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "creator",
+                "x-native",
+                "replies",
+                "content"
+              ],
+              "evidence_summary": "On X, a lot of the best content opportunities arrive as replies rather than as fresh blank-page ideas.",
+              "adjacent_domains": [
+                "tiktok-creator",
+                "xcontent",
+                "youtube-remixer"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "On X, a lot of the best content opportunities arrive as replies rather than as fresh blank-page ideas."
+            }
+          ]
         },
         {
           "agent_id": "agent-011",
@@ -806,7 +856,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "creator-offer-refresh-loop",
+              "label": "Creator Offer Refresh Loop",
+              "description": "A recurring loop for adjusting creator offers, pricing, and packaging as audience demand shifts.",
+              "specialization_surface": "running the repeated creator offer refresh loop workflow inside the creator growth systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Creator Offer Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next creator offer refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "creator",
+                "offers",
+                "monetization",
+                "iteration"
+              ],
+              "evidence_summary": "Creators with revenue learn faster when they repeatedly refresh the offer surface instead of waiting for a full relaunch.",
+              "adjacent_domains": [
+                "tiktok-creator",
+                "xcontent",
+                "youtube-remixer"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Creators with revenue learn faster when they repeatedly refresh the offer surface instead of waiting for a full relaunch."
+            }
+          ]
         },
         {
           "agent_id": "agent-012",
@@ -837,7 +912,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "comment-to-community-loop",
+              "label": "Comment to Community Loop",
+              "description": "A workflow for identifying the most activated commenters and pulling them into stronger community touchpoints.",
+              "specialization_surface": "running the repeated comment to community loop workflow inside the creator growth systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Comment to Community Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next comment to community loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "creator",
+                "community",
+                "comments",
+                "retention"
+              ],
+              "evidence_summary": "The comment section often contains the future core community, but most creators do not operationalize that transition.",
+              "adjacent_domains": [
+                "tiktok-creator",
+                "xcontent",
+                "youtube-remixer"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "The comment section often contains the future core community, but most creators do not operationalize that transition."
+            }
+          ]
         },
         {
           "agent_id": "agent-013",
@@ -868,7 +968,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "creator-proof-drop-loop",
+              "label": "Creator Proof Drop Loop",
+              "description": "A repeated format for posting receipts, behind-the-scenes outputs, and visible proof that strengthens audience trust.",
+              "specialization_surface": "running the repeated creator proof drop loop workflow inside the creator growth systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Creator Proof Drop Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next creator proof drop loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "creator",
+                "proof",
+                "trust",
+                "status"
+              ],
+              "evidence_summary": "Audiences increasingly reward builders and creators who keep dropping visible proof instead of abstract claims.",
+              "adjacent_domains": [
+                "tiktok-creator",
+                "xcontent",
+                "youtube-remixer"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Audiences increasingly reward builders and creators who keep dropping visible proof instead of abstract claims."
+            }
+          ]
         },
         {
           "agent_id": "agent-014",
@@ -899,7 +1024,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "audience-segment-content-loop",
+              "label": "Audience Segment Content Loop",
+              "description": "A system for tailoring recurring content themes to specific audience pockets without splintering the main brand.",
+              "specialization_surface": "running the repeated audience segment content loop workflow inside the creator growth systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Segment Content Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next audience segment content loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "creator",
+                "audience",
+                "segmentation",
+                "content"
+              ],
+              "evidence_summary": "Larger creator accounts often need more than one content lane, but segmenting manually gets messy fast.",
+              "adjacent_domains": [
+                "tiktok-creator",
+                "xcontent",
+                "youtube-remixer"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Larger creator accounts often need more than one content lane, but segmenting manually gets messy fast."
+            }
+          ]
         },
         {
           "agent_id": "agent-015",
@@ -4423,7 +4573,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "patch-note-hype-loop",
+              "label": "Patch Note Hype Loop",
+              "description": "A workflow for turning patch notes and update leaks into fast community breakdowns, expectations, and engagement spikes.",
+              "specialization_surface": "running the repeated patch note hype loop workflow inside the gaming / npc / community worlds wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Patch Note Hype Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next patch note hype loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "gaming",
+                "patches",
+                "community",
+                "hype"
+              ],
+              "evidence_summary": "Gaming communities repeatedly light up around update drops, but the interpretation layer is usually fragmented across feeds and chats.",
+              "adjacent_domains": [
+                "ai-npc-dialog",
+                "discord-community",
+                "streamer-overlay-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Gaming communities repeatedly light up around update drops, but the interpretation layer is usually fragmented across feeds and chats."
+            }
+          ]
         },
         {
           "agent_id": "agent-116",
@@ -4454,7 +4629,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "guild-recruitment-fit-loop",
+              "label": "Guild Recruitment Fit Loop",
+              "description": "A system for matching guild openings, play styles, and member behavior into better recurring community fit decisions.",
+              "specialization_surface": "running the repeated guild recruitment fit loop workflow inside the gaming / npc / community worlds wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Recruitment Fit Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next guild recruitment fit loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "gaming",
+                "guilds",
+                "recruiting",
+                "community"
+              ],
+              "evidence_summary": "Guild churn often comes from bad fit more than low interest, and communities still handle fit judgment manually.",
+              "adjacent_domains": [
+                "ai-npc-dialog",
+                "discord-community",
+                "streamer-overlay-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Guild churn often comes from bad fit more than low interest, and communities still handle fit judgment manually."
+            }
+          ]
         },
         {
           "agent_id": "agent-117",
@@ -4485,7 +4685,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "stream-clip-escalation-loop",
+              "label": "Stream Clip Escalation Loop",
+              "description": "A repeated loop for promoting the best live stream moments into clips, memes, and return-viewer hooks.",
+              "specialization_surface": "running the repeated stream clip escalation loop workflow inside the gaming / npc / community worlds wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Stream Clip Escalation Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next stream clip escalation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "gaming",
+                "streaming",
+                "clips",
+                "distribution"
+              ],
+              "evidence_summary": "The same communities that watch live also amplify the right clipped moments, but that promotion step is rarely systematized.",
+              "adjacent_domains": [
+                "ai-npc-dialog",
+                "discord-community",
+                "streamer-overlay-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "The same communities that watch live also amplify the right clipped moments, but that promotion step is rarely systematized."
+            }
+          ]
         },
         {
           "agent_id": "agent-118",
@@ -4516,7 +4741,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "mod-event-rotation-loop",
+              "label": "Mod Event Rotation Loop",
+              "description": "A workflow for cycling community-run events, mods, and limited-time twists that keep a game world feeling alive.",
+              "specialization_surface": "running the repeated mod event rotation loop workflow inside the gaming / npc / community worlds wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Mod Event Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next mod event rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "gaming",
+                "mods",
+                "events",
+                "retention"
+              ],
+              "evidence_summary": "Long-lived gaming communities survive on rotating events and mods, not on static worlds alone.",
+              "adjacent_domains": [
+                "ai-npc-dialog",
+                "discord-community",
+                "streamer-overlay-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Long-lived gaming communities survive on rotating events and mods, not on static worlds alone."
+            }
+          ]
         },
         {
           "agent_id": "agent-119",
@@ -4547,7 +4797,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "npc-lore-memory-loop",
+              "label": "NPC Lore Memory Loop",
+              "description": "A system for preserving what NPCs know, remember, and reference across repeated player interactions.",
+              "specialization_surface": "running the repeated npc lore memory loop workflow inside the gaming / npc / community worlds wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make NPC Lore Memory Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next npc lore memory loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "gaming",
+                "npc",
+                "memory",
+                "lore"
+              ],
+              "evidence_summary": "Players feel a world is more real when characters remember prior interactions, but that continuity is still fragile.",
+              "adjacent_domains": [
+                "ai-npc-dialog",
+                "discord-community",
+                "streamer-overlay-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Players feel a world is more real when characters remember prior interactions, but that continuity is still fragile."
+            }
+          ]
         },
         {
           "agent_id": "agent-120",
@@ -4578,7 +4853,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "faction-rivalry-loop",
+              "label": "Faction Rivalry Loop",
+              "description": "A repeated community loop for escalating faction identity, rivalry moments, and social return behavior.",
+              "specialization_surface": "running the repeated faction rivalry loop workflow inside the gaming / npc / community worlds wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Faction Rivalry Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next faction rivalry loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "gaming",
+                "factions",
+                "identity",
+                "community"
+              ],
+              "evidence_summary": "Faction-based tension reliably creates return behavior in online communities because people want to defend their side.",
+              "adjacent_domains": [
+                "ai-npc-dialog",
+                "discord-community",
+                "streamer-overlay-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Faction-based tension reliably creates return behavior in online communities because people want to defend their side."
+            }
+          ]
         },
         {
           "agent_id": "agent-121",
@@ -6848,7 +7148,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "agent-eval-regression-loop",
+              "label": "Agent Eval Regression Loop",
+              "description": "A workflow for rerunning agent evals, spotting regressions, and preserving what changed between prompt or tool updates.",
+              "specialization_surface": "running the repeated agent eval regression loop workflow inside the ai agent builders wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Agent Eval Regression Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next agent eval regression loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "agents",
+                "evals",
+                "regressions",
+                "builders"
+              ],
+              "evidence_summary": "Agent builders repeatedly ship changes without a strong sense of what just regressed until users notice.",
+              "adjacent_domains": [
+                "ai-agent-builder",
+                "mcp-server-builder",
+                "cursor-copilot"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Agent builders repeatedly ship changes without a strong sense of what just regressed until users notice."
+            }
+          ]
         },
         {
           "agent_id": "agent-188",
@@ -6879,7 +7204,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "toolchain-wiring-loop",
+              "label": "Toolchain Wiring Loop",
+              "description": "A system for repeatedly composing tools, permissions, and fallback logic into working agent workflows.",
+              "specialization_surface": "running the repeated toolchain wiring loop workflow inside the ai agent builders wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Toolchain Wiring Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next toolchain wiring loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "agents",
+                "tooling",
+                "orchestration",
+                "builders"
+              ],
+              "evidence_summary": "A lot of agent engineering is really repeated tool wiring and refinement rather than model novelty.",
+              "adjacent_domains": [
+                "ai-agent-builder",
+                "mcp-server-builder",
+                "cursor-copilot"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "A lot of agent engineering is really repeated tool wiring and refinement rather than model novelty."
+            }
+          ]
         },
         {
           "agent_id": "agent-189",
@@ -6910,7 +7260,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "agent-prompt-upgrade-loop",
+              "label": "Agent Prompt Upgrade Loop",
+              "description": "A recurring loop for comparing prompt variants, preserving wins, and iterating toward more reliable agent behavior.",
+              "specialization_surface": "running the repeated agent prompt upgrade loop workflow inside the ai agent builders wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Agent Prompt Upgrade Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next agent prompt upgrade loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "agents",
+                "prompts",
+                "iteration",
+                "reliability"
+              ],
+              "evidence_summary": "Prompting remains a living operational surface for agent builders, not a one-time setup task.",
+              "adjacent_domains": [
+                "ai-agent-builder",
+                "mcp-server-builder",
+                "cursor-copilot"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Prompting remains a living operational surface for agent builders, not a one-time setup task."
+            }
+          ]
         },
         {
           "agent_id": "agent-190",
@@ -6941,7 +7316,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "human-handoff-loop",
+              "label": "Human Handoff Loop",
+              "description": "A workflow for deciding when an agent should escalate, what context to transfer, and how to close the loop after human review.",
+              "specialization_surface": "running the repeated human handoff loop workflow inside the ai agent builders wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Human Handoff Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next human handoff loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "agents",
+                "handoff",
+                "ops",
+                "reliability"
+              ],
+              "evidence_summary": "The best agent systems are not fully autonomous; they repeatedly manage human handoffs well.",
+              "adjacent_domains": [
+                "ai-agent-builder",
+                "mcp-server-builder",
+                "cursor-copilot"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "The best agent systems are not fully autonomous; they repeatedly manage human handoffs well."
+            }
+          ]
         },
         {
           "agent_id": "agent-191",
@@ -6972,7 +7372,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "agent-memory-curation-loop",
+              "label": "Agent Memory Curation Loop",
+              "description": "A system for deciding what agent memories to keep, reject, or compress as workflows accumulate residue.",
+              "specialization_surface": "running the repeated agent memory curation loop workflow inside the ai agent builders wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Agent Memory Curation Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next agent memory curation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "agents",
+                "memory",
+                "curation",
+                "builders"
+              ],
+              "evidence_summary": "As agents persist longer, memory quality becomes a recurring maintenance problem rather than a one-time design choice.",
+              "adjacent_domains": [
+                "ai-agent-builder",
+                "mcp-server-builder",
+                "cursor-copilot"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "As agents persist longer, memory quality becomes a recurring maintenance problem rather than a one-time design choice."
+            }
+          ]
         },
         {
           "agent_id": "agent-192",
@@ -7003,7 +7428,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "agent-failure-triage-loop",
+              "label": "Agent Failure Triage Loop",
+              "description": "A workflow for clustering agent failures by root cause and choosing the next best fix surface quickly.",
+              "specialization_surface": "running the repeated agent failure triage loop workflow inside the ai agent builders wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Agent Failure Triage Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next agent failure triage loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "agents",
+                "failures",
+                "triage",
+                "debugging"
+              ],
+              "evidence_summary": "Teams using agents accumulate repeated failure modes that are hard to reason about without structured triage.",
+              "adjacent_domains": [
+                "ai-agent-builder",
+                "mcp-server-builder",
+                "cursor-copilot"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Teams using agents accumulate repeated failure modes that are hard to reason about without structured triage."
+            }
+          ]
         },
         {
           "agent_id": "agent-193",
@@ -9521,7 +9971,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "founder-observation-capture-loop",
+              "label": "Founder Observation Capture Loop",
+              "description": "A system for turning daily founder observations into reusable product, GTM, and strategy signals.",
+              "specialization_surface": "running the repeated founder observation capture loop workflow inside the startup builder systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Founder Observation Capture Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next founder observation capture loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "startup",
+                "founders",
+                "signals",
+                "capture"
+              ],
+              "evidence_summary": "A lot of founder edge comes from what they notice day to day, but those observations usually disappear before being reused.",
+              "adjacent_domains": [
+                "startup-yc",
+                "indie-hacker",
+                "agentic-marketing"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "A lot of founder edge comes from what they notice day to day, but those observations usually disappear before being reused."
+            }
+          ]
         },
         {
           "agent_id": "agent-268",
@@ -9552,7 +10027,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "pricing-call-feedback-loop",
+              "label": "Pricing Call Feedback Loop",
+              "description": "A recurring workflow for extracting pricing objections and willingness-to-pay cues from calls and demos.",
+              "specialization_surface": "running the repeated pricing call feedback loop workflow inside the startup builder systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Pricing Call Feedback Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next pricing call feedback loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "startup",
+                "pricing",
+                "sales",
+                "feedback"
+              ],
+              "evidence_summary": "Founders learn pricing through repeated conversations, but the learning often remains trapped in memory.",
+              "adjacent_domains": [
+                "startup-yc",
+                "indie-hacker",
+                "agentic-marketing"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Founders learn pricing through repeated conversations, but the learning often remains trapped in memory."
+            }
+          ]
         },
         {
           "agent_id": "agent-269",
@@ -9583,7 +10083,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "launch-window-decision-loop",
+              "label": "Launch Window Decision Loop",
+              "description": "A workflow for deciding when to launch based on product readiness, distribution energy, and timing risk.",
+              "specialization_surface": "running the repeated launch window decision loop workflow inside the startup builder systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Window Decision Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next launch window decision loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "startup",
+                "launch",
+                "timing",
+                "decisions"
+              ],
+              "evidence_summary": "Teams often delay or rush launches because they do not have a repeatable decision loop for timing.",
+              "adjacent_domains": [
+                "startup-yc",
+                "indie-hacker",
+                "agentic-marketing"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Teams often delay or rush launches because they do not have a repeatable decision loop for timing."
+            }
+          ]
         },
         {
           "agent_id": "agent-270",
@@ -9614,7 +10139,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "user-call-to-roadmap-loop",
+              "label": "User Call to Roadmap Loop",
+              "description": "A system for converting recurring user call signals into ranked roadmap shifts and product bets.",
+              "specialization_surface": "running the repeated user call to roadmap loop workflow inside the startup builder systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make User Call to Roadmap Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next user call to roadmap loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "startup",
+                "users",
+                "roadmap",
+                "product"
+              ],
+              "evidence_summary": "User calls are only valuable if their patterns change what gets built next.",
+              "adjacent_domains": [
+                "startup-yc",
+                "indie-hacker",
+                "agentic-marketing"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "User calls are only valuable if their patterns change what gets built next."
+            }
+          ]
         },
         {
           "agent_id": "agent-271",
@@ -9645,7 +10195,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "founder-status-update-loop",
+              "label": "Founder Status Update Loop",
+              "description": "A repeated cadence for packaging investor, advisor, and supporter updates with real momentum signals.",
+              "specialization_surface": "running the repeated founder status update loop workflow inside the startup builder systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Founder Status Update Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next founder status update loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "startup",
+                "founders",
+                "updates",
+                "fundraising"
+              ],
+              "evidence_summary": "Founders benefit from regular momentum communication, but assembling those updates keeps becoming last-minute work.",
+              "adjacent_domains": [
+                "startup-yc",
+                "indie-hacker",
+                "agentic-marketing"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Founders benefit from regular momentum communication, but assembling those updates keeps becoming last-minute work."
+            }
+          ]
         },
         {
           "agent_id": "agent-272",
@@ -9676,7 +10251,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "gTM-experiment-review-loop",
+              "label": "GTM Experiment Review Loop",
+              "description": "A workflow for reviewing GTM tests, comparing channels, and deciding what deserves another cycle.",
+              "specialization_surface": "running the repeated gtm experiment review loop workflow inside the startup builder systems wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make GTM Experiment Review Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next gtm experiment review loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "startup",
+                "gtm",
+                "experiments",
+                "growth"
+              ],
+              "evidence_summary": "Small teams often run many acquisition tests without a strong repeatable review loop to decide what really worked.",
+              "adjacent_domains": [
+                "startup-yc",
+                "indie-hacker",
+                "agentic-marketing"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Small teams often run many acquisition tests without a strong repeatable review loop to decide what really worked."
+            }
+          ]
         },
         {
           "agent_id": "agent-273",
@@ -18829,7 +19429,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "wallet-cluster-watch-loop",
+              "label": "Wallet Cluster Watch Loop",
+              "description": "A recurring workflow for watching clusters of smart wallets and translating their moves into action-worthy signals.",
+              "specialization_surface": "running the repeated wallet cluster watch loop workflow inside the crypto / defi / trading wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Cluster Watch Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next wallet cluster watch loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "crypto",
+                "wallets",
+                "signals",
+                "trading"
+              ],
+              "evidence_summary": "Crypto-native users often track a set of wallets repeatedly, but the workflow stays fragmented and manual.",
+              "adjacent_domains": [
+                "trading-crypto",
+                "defi-architect",
+                "onchain-research-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Crypto-native users often track a set of wallets repeatedly, but the workflow stays fragmented and manual."
+            }
+          ]
         },
         {
           "agent_id": "agent-549",
@@ -18860,7 +19485,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "token-narrative-rotation-loop",
+              "label": "Token Narrative Rotation Loop",
+              "description": "A system for tracking when token narratives rotate, cool off, or suddenly regain energy across the market.",
+              "specialization_surface": "running the repeated token narrative rotation loop workflow inside the crypto / defi / trading wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Token Narrative Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next token narrative rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "crypto",
+                "tokens",
+                "narratives",
+                "market"
+              ],
+              "evidence_summary": "A lot of crypto movement is narrative rotation, and people struggle to keep up with those shifts early enough.",
+              "adjacent_domains": [
+                "trading-crypto",
+                "defi-architect",
+                "onchain-research-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "A lot of crypto movement is narrative rotation, and people struggle to keep up with those shifts early enough."
+            }
+          ]
         },
         {
           "agent_id": "agent-550",
@@ -18891,7 +19541,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "perp-risk-reset-loop",
+              "label": "Perp Risk Reset Loop",
+              "description": "A workflow for recalibrating leverage, stop logic, and exposure after volatility events in perpetual markets.",
+              "specialization_surface": "running the repeated perp risk reset loop workflow inside the crypto / defi / trading wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Perp Risk Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next perp risk reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "crypto",
+                "perps",
+                "risk",
+                "trading"
+              ],
+              "evidence_summary": "Perp traders repeatedly need to reset risk after fast market shifts, but the discipline usually breaks under emotion.",
+              "adjacent_domains": [
+                "trading-crypto",
+                "defi-architect",
+                "onchain-research-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Perp traders repeatedly need to reset risk after fast market shifts, but the discipline usually breaks under emotion."
+            }
+          ]
         },
         {
           "agent_id": "agent-551",
@@ -18922,7 +19597,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "governance-vote-brief-loop",
+              "label": "Governance Vote Brief Loop",
+              "description": "A repeated briefing workflow for summarizing protocol votes, implications, and positioning decisions.",
+              "specialization_surface": "running the repeated governance vote brief loop workflow inside the crypto / defi / trading wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Governance Vote Brief Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next governance vote brief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "crypto",
+                "governance",
+                "briefing",
+                "defi"
+              ],
+              "evidence_summary": "Onchain users increasingly need short, actionable governance context instead of raw forum reading.",
+              "adjacent_domains": [
+                "trading-crypto",
+                "defi-architect",
+                "onchain-research-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Onchain users increasingly need short, actionable governance context instead of raw forum reading."
+            }
+          ]
         },
         {
           "agent_id": "agent-552",
@@ -18953,7 +19653,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "bridge-route-safety-loop",
+              "label": "Bridge Route Safety Loop",
+              "description": "A system for repeatedly checking route safety, bridge assumptions, and execution risk before cross-chain moves.",
+              "specialization_surface": "running the repeated bridge route safety loop workflow inside the crypto / defi / trading wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Bridge Route Safety Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next bridge route safety loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "crypto",
+                "bridges",
+                "safety",
+                "ops"
+              ],
+              "evidence_summary": "Cross-chain users keep facing avoidable execution risk because bridge choices get made too casually.",
+              "adjacent_domains": [
+                "trading-crypto",
+                "defi-architect",
+                "onchain-research-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Cross-chain users keep facing avoidable execution risk because bridge choices get made too casually."
+            }
+          ]
         },
         {
           "agent_id": "agent-553",
@@ -18984,7 +19709,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "onchain-opportunity-arb-loop",
+              "label": "Onchain Opportunity Arb Loop",
+              "description": "A workflow for comparing onchain opportunity pockets across ecosystems and rotating attention toward the best edge.",
+              "specialization_surface": "running the repeated onchain opportunity arb loop workflow inside the crypto / defi / trading wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Onchain Opportunity Arb Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next onchain opportunity arb loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "crypto",
+                "onchain",
+                "opportunities",
+                "defi"
+              ],
+              "evidence_summary": "The edge often comes from opportunity comparison across chains and protocols, not from watching one feed in isolation.",
+              "adjacent_domains": [
+                "trading-crypto",
+                "defi-architect",
+                "onchain-research-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "The edge often comes from opportunity comparison across chains and protocols, not from watching one feed in isolation."
+            }
+          ]
         },
         {
           "agent_id": "agent-554",
@@ -19015,7 +19765,32 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "domain_id": "treasury-allocation-loop",
+              "label": "Treasury Allocation Loop",
+              "description": "A recurring loop for deciding where protocol or team treasury capital should sit as conditions change.",
+              "specialization_surface": "running the repeated treasury allocation loop workflow inside the crypto / defi / trading wedge",
+              "mastery_surface": "learning which inputs, timing, and execution patterns make Treasury Allocation Loop outperform generic or manual approaches for this audience over repeated cycles",
+              "user_value_loop": "review the next live signal, draft the next treasury allocation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+              "domain_tags": [
+                "crypto",
+                "treasury",
+                "allocation",
+                "defi"
+              ],
+              "evidence_summary": "Crypto teams and communities increasingly need active treasury logic rather than static idle balances.",
+              "adjacent_domains": [
+                "trading-crypto",
+                "defi-architect",
+                "onchain-research-ai"
+              ],
+              "duplicate_aliases": [],
+              "confidence_read": "seed",
+              "promotion_status": "seed_candidate",
+              "raw_observation": "Crypto teams and communities increasingly need active treasury logic rather than static idle balances."
+            }
+          ]
         },
         {
           "agent_id": "agent-555",
