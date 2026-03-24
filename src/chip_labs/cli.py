@@ -588,6 +588,15 @@ def cmd_mirofish_discovery_program_split(args: argparse.Namespace) -> None:
     _write_output(args.output, result)
 
 
+def cmd_mirofish_discovery_program_merge(args: argparse.Namespace) -> None:
+    """Recombine filled cluster packets into one discovery-program input packet."""
+    from .mirofish.discovery import merge_discovery_cluster_packets
+
+    input_data = _load_input(args.input)
+    result = merge_discovery_cluster_packets(input_data)
+    _write_output(args.output, result)
+
+
 def cmd_mirofish_discovery_program_brief(args: argparse.Namespace) -> None:
     """Export a discovery scaffold, cluster bundle, or result packet as markdown."""
     from .mirofish.discovery import format_discovery_program_markdown
@@ -937,6 +946,20 @@ def main() -> None:
     p_mirofish_discovery_program_split.add_argument("--input", type=str, required=True, help="Input scaffold JSON file path.")
     p_mirofish_discovery_program_split.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_discovery_program_split.set_defaults(func=cmd_mirofish_discovery_program_split)
+
+    # mirofish-discovery-program-merge
+    p_mirofish_discovery_program_merge = sub.add_parser(
+        "mirofish-discovery-program-merge",
+        help="Recombine filled cluster packets into one discovery-program input packet.",
+    )
+    p_mirofish_discovery_program_merge.add_argument(
+        "--input",
+        type=str,
+        required=True,
+        help="Input cluster-packets JSON file path.",
+    )
+    p_mirofish_discovery_program_merge.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_discovery_program_merge.set_defaults(func=cmd_mirofish_discovery_program_merge)
 
     # mirofish-discovery-program-brief
     p_mirofish_discovery_program_brief = sub.add_parser(

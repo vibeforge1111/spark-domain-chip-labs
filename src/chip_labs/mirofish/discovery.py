@@ -485,6 +485,8 @@ def split_discovery_program_scaffold(scaffold: dict[str, Any]) -> dict[str, Any]
         "program_id": scaffold.get("program_id", "mirofish-discovery-program"),
         "stage_label": scaffold.get("stage_label", "pilot"),
         "target_agent_count": int(scaffold.get("target_agent_count", 0)),
+        "cluster_plan": deepcopy(cluster_plan),
+        "collection_rules": collection_rules,
         "cluster_packet_count": len(cluster_packets),
         "summary": {
             "cluster_count": len(cluster_packets),
@@ -495,6 +497,36 @@ def split_discovery_program_scaffold(scaffold: dict[str, Any]) -> dict[str, Any]
             "Assign each cluster packet to a collection owner or agent swarm tranche.",
             "Fill the per-cluster packets with real discoveries.",
             "Recombine the filled packets into one discovery-program packet before canonicalization.",
+        ],
+    }
+
+
+def merge_discovery_cluster_packets(cluster_bundle: dict[str, Any]) -> dict[str, Any]:
+    """Recombine filled cluster packets into one discovery-program input packet."""
+    if cluster_bundle.get("packet_kind") != "mirofish_discovery_program_cluster_packets":
+        raise ValueError("Expected a `mirofish_discovery_program_cluster_packets` packet.")
+
+    now = datetime.now(timezone.utc).isoformat()
+    cluster_packets = list(cluster_bundle.get("cluster_packets", []))
+    agent_submissions: list[dict[str, Any]] = []
+    for cluster_packet in cluster_packets:
+        for submission in cluster_packet.get("agent_submissions", []):
+            agent_submissions.append(deepcopy(submission))
+    agent_submissions.sort(key=lambda item: str(item.get("agent_id", "")))
+
+    return {
+        "packet_kind": "mirofish_discovery_program_input",
+        "created_at": now,
+        "program_id": cluster_bundle.get("program_id", "mirofish-discovery-program"),
+        "stage_label": cluster_bundle.get("stage_label", "pilot"),
+        "target_agent_count": int(cluster_bundle.get("target_agent_count", len(agent_submissions))),
+        "cluster_plan": deepcopy(cluster_bundle.get("cluster_plan", [])),
+        "collection_rules": deepcopy(cluster_bundle.get("collection_rules", {})),
+        "agent_submissions": agent_submissions,
+        "next_actions": [
+            "Run this merged packet through `mirofish-discovery-program` for canonicalization.",
+            "Inspect acceptance, merge, and vague-reject rates before scaling.",
+            "Promote only the accepted subset into focused hybrid evaluation.",
         ],
     }
 
@@ -510,6 +542,8 @@ def format_discovery_program_markdown(
 
     if packet_kind == "mirofish_discovery_program_scaffold":
         lines.extend(_format_discovery_scaffold_markdown(packet))
+    elif packet_kind == "mirofish_discovery_program_input":
+        lines.extend(_format_discovery_program_input_markdown(packet))
     elif packet_kind == "mirofish_discovery_program_cluster_packets":
         lines.extend(_format_discovery_cluster_packets_markdown(packet))
     elif packet_kind == "mirofish_discovery_program":
@@ -616,6 +650,25 @@ def _format_discovery_result_markdown(result: dict[str, Any]) -> list[str]:
         "",
     ])
     for action in result.get("next_actions", []):
+        lines.append(f"- {action}")
+    return lines
+
+
+def _format_discovery_program_input_markdown(program_input: dict[str, Any]) -> list[str]:
+    agent_submissions = list(program_input.get("agent_submissions", []))
+    filled_agent_count = sum(1 for submission in agent_submissions if submission.get("raw_candidates"))
+    raw_candidate_count = sum(len(submission.get("raw_candidates", [])) for submission in agent_submissions)
+    lines = [
+        f"- Program ID: `{program_input.get('program_id', 'unknown')}`",
+        f"- Stage: `{program_input.get('stage_label', 'unknown')}`",
+        f"- Agent submissions: `{len(agent_submissions)}` / `{program_input.get('target_agent_count', 0)}`",
+        f"- Filled agents: `{filled_agent_count}`",
+        f"- Raw candidates: `{raw_candidate_count}`",
+        "",
+        "## Next Actions",
+        "",
+    ]
+    for action in program_input.get("next_actions", []):
         lines.append(f"- {action}")
     return lines
 

@@ -1,0 +1,2247 @@
+{
+  "packet_kind": "mirofish_discovery_program_input",
+  "created_at": "2026-03-24T17:23:20.385207+00:00",
+  "program_id": "mirofish-discovery-program-pilot-100",
+  "stage_label": "pilot_100",
+  "target_agent_count": 100,
+  "cluster_plan": [
+    {
+      "cluster_id": "security-compliance-response",
+      "label": "Security / Compliance Response",
+      "agent_count": 16,
+      "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+      "seed_domains": [
+        "vendor-security-review-copilot",
+        "ai-security-questionnaire-copilot",
+        "data-loss-prevention"
+      ]
+    },
+    {
+      "cluster_id": "healthcare-revenue-cycle",
+      "label": "Healthcare Revenue Cycle",
+      "agent_count": 14,
+      "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+      "seed_domains": [
+        "dental-insurance-appeals-ai",
+        "chronic-disease-mgr",
+        "continuing-ed-ai"
+      ]
+    },
+    {
+      "cluster_id": "hvac-field-maintenance",
+      "label": "HVAC / Field Maintenance",
+      "agent_count": 10,
+      "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+      "seed_domains": [
+        "hvac-maintenance-planner-ai",
+        "hvac-optimizer-ai",
+        "quality-inspection-ai"
+      ]
+    },
+    {
+      "cluster_id": "insurance-claims-appeals",
+      "label": "Insurance / Claims / Appeals",
+      "agent_count": 10,
+      "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+      "seed_domains": [
+        "dental-insurance-appeals-ai",
+        "appraisal-ai",
+        "legal-ops"
+      ]
+    },
+    {
+      "cluster_id": "vendor-procurement-ops",
+      "label": "Vendor / Procurement Ops",
+      "agent_count": 10,
+      "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+      "seed_domains": [
+        "vendor-security-review-copilot",
+        "ai-rfp-response-copilot",
+        "ai-compliance-evidence-copilot"
+      ]
+    },
+    {
+      "cluster_id": "legal-audit-evidence",
+      "label": "Legal / Audit / Evidence",
+      "agent_count": 10,
+      "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+      "seed_domains": [
+        "legal-ops",
+        "ai-compliance-evidence-copilot",
+        "patent-writer"
+      ]
+    },
+    {
+      "cluster_id": "workplace-training-compliance",
+      "label": "Workplace Training / Compliance",
+      "agent_count": 8,
+      "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+      "seed_domains": [
+        "workplace-ai-trainer",
+        "continuing-ed-ai",
+        "safety-compliance-ai"
+      ]
+    },
+    {
+      "cluster_id": "industrial-quality-inspection",
+      "label": "Industrial Quality / Inspection",
+      "agent_count": 8,
+      "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+      "seed_domains": [
+        "quality-inspection-ai",
+        "manufacturing-ai",
+        "safety-compliance-ai"
+      ]
+    },
+    {
+      "cluster_id": "finance-reconciliation-backoffice",
+      "label": "Finance / Reconciliation / Backoffice",
+      "agent_count": 8,
+      "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+      "seed_domains": [
+        "ai-renewal-risk-briefing-copilot",
+        "legal-ops",
+        "carbon-credit-ai"
+      ]
+    },
+    {
+      "cluster_id": "logistics-last-mile-ops",
+      "label": "Logistics / Last Mile Ops",
+      "agent_count": 6,
+      "focus": "Recurring route planning, delivery exception handling, and logistics coordination loops.",
+      "seed_domains": [
+        "last-mile-delivery-ai",
+        "warehouse-optimizer",
+        "inventory-tracker-ai"
+      ]
+    }
+  ],
+  "collection_rules": {
+    "max_candidates_per_agent": 3,
+    "min_candidates_per_agent": 1,
+    "required_candidate_fields": [
+      "label",
+      "description",
+      "specialization_surface",
+      "mastery_surface",
+      "user_value_loop",
+      "evidence_summary",
+      "adjacent_domains",
+      "raw_observation"
+    ],
+    "scale_gate_for_250": {
+      "min_acceptance_rate": 0.3,
+      "max_merge_rate": 0.4,
+      "max_too_vague_rate": 0.3,
+      "min_clear_count": 5,
+      "needs_hybrid_ready_cluster": true
+    }
+  },
+  "agent_submissions": [
+    {
+      "agent_id": "agent-001",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 1 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-002",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 2 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-003",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 3 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-004",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 4 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-005",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 5 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-006",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 6 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-007",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 7 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-008",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 8 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-009",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 9 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-010",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 10 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-011",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 11 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-012",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 12 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-013",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 13 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-014",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 14 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-015",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 15 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-016",
+      "cluster_id": "security-compliance-response",
+      "notes": "Pilot agent 16 for Security / Compliance Response. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Security / Compliance Response",
+        "focus": "Recurring vendor reviews, questionnaires, control mapping, and compliance-response loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-security-questionnaire-copilot",
+          "data-loss-prevention"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-017",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 1 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-018",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 2 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-019",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 3 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-020",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 4 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-021",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 5 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-022",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 6 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-023",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 7 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-024",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 8 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-025",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 9 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-026",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 10 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-027",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 11 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-028",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 12 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-029",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 13 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-030",
+      "cluster_id": "healthcare-revenue-cycle",
+      "notes": "Pilot agent 14 for Healthcare Revenue Cycle. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Healthcare Revenue Cycle",
+        "focus": "Appeals, denial management, reimbursement ops, and recurring healthcare admin loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "chronic-disease-mgr",
+          "continuing-ed-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-031",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 1 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-032",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 2 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-033",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 3 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-034",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 4 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-035",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 5 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-036",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 6 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-037",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 7 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-038",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 8 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-039",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 9 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-040",
+      "cluster_id": "hvac-field-maintenance",
+      "notes": "Pilot agent 10 for HVAC / Field Maintenance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "HVAC / Field Maintenance",
+        "focus": "Maintenance scheduling, dispatch, inspection, and recurring field-service optimization loops.",
+        "seed_domains": [
+          "hvac-maintenance-planner-ai",
+          "hvac-optimizer-ai",
+          "quality-inspection-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-041",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 1 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-042",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 2 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-043",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 3 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-044",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 4 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-045",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 5 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-046",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 6 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-047",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 7 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-048",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 8 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-049",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 9 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-050",
+      "cluster_id": "insurance-claims-appeals",
+      "notes": "Pilot agent 10 for Insurance / Claims / Appeals. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Insurance / Claims / Appeals",
+        "focus": "Claim follow-up, dispute resolution, evidence packaging, and payout recovery loops.",
+        "seed_domains": [
+          "dental-insurance-appeals-ai",
+          "appraisal-ai",
+          "legal-ops"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-051",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 1 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-052",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 2 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-053",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 3 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-054",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 4 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-055",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 5 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-056",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 6 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-057",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 7 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-058",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 8 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-059",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 9 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-060",
+      "cluster_id": "vendor-procurement-ops",
+      "notes": "Pilot agent 10 for Vendor / Procurement Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Vendor / Procurement Ops",
+        "focus": "Recurring vendor onboarding, procurement evidence, and buyer-side workflow loops.",
+        "seed_domains": [
+          "vendor-security-review-copilot",
+          "ai-rfp-response-copilot",
+          "ai-compliance-evidence-copilot"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-061",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 1 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-062",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 2 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-063",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 3 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-064",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 4 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-065",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 5 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-066",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 6 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-067",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 7 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-068",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 8 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-069",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 9 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-070",
+      "cluster_id": "legal-audit-evidence",
+      "notes": "Pilot agent 10 for Legal / Audit / Evidence. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Legal / Audit / Evidence",
+        "focus": "Document-heavy compliance, evidence compilation, audit readiness, and legal-ops loops.",
+        "seed_domains": [
+          "legal-ops",
+          "ai-compliance-evidence-copilot",
+          "patent-writer"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-071",
+      "cluster_id": "workplace-training-compliance",
+      "notes": "Pilot agent 1 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Workplace Training / Compliance",
+        "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+        "seed_domains": [
+          "workplace-ai-trainer",
+          "continuing-ed-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-072",
+      "cluster_id": "workplace-training-compliance",
+      "notes": "Pilot agent 2 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Workplace Training / Compliance",
+        "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+        "seed_domains": [
+          "workplace-ai-trainer",
+          "continuing-ed-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-073",
+      "cluster_id": "workplace-training-compliance",
+      "notes": "Pilot agent 3 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Workplace Training / Compliance",
+        "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+        "seed_domains": [
+          "workplace-ai-trainer",
+          "continuing-ed-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-074",
+      "cluster_id": "workplace-training-compliance",
+      "notes": "Pilot agent 4 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Workplace Training / Compliance",
+        "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+        "seed_domains": [
+          "workplace-ai-trainer",
+          "continuing-ed-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-075",
+      "cluster_id": "workplace-training-compliance",
+      "notes": "Pilot agent 5 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Workplace Training / Compliance",
+        "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+        "seed_domains": [
+          "workplace-ai-trainer",
+          "continuing-ed-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-076",
+      "cluster_id": "workplace-training-compliance",
+      "notes": "Pilot agent 6 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Workplace Training / Compliance",
+        "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+        "seed_domains": [
+          "workplace-ai-trainer",
+          "continuing-ed-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-077",
+      "cluster_id": "workplace-training-compliance",
+      "notes": "Pilot agent 7 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Workplace Training / Compliance",
+        "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+        "seed_domains": [
+          "workplace-ai-trainer",
+          "continuing-ed-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-078",
+      "cluster_id": "workplace-training-compliance",
+      "notes": "Pilot agent 8 for Workplace Training / Compliance. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Workplace Training / Compliance",
+        "focus": "Recurring workplace AI onboarding, reskilling, training compliance, and policy rollout loops.",
+        "seed_domains": [
+          "workplace-ai-trainer",
+          "continuing-ed-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-079",
+      "cluster_id": "industrial-quality-inspection",
+      "notes": "Pilot agent 1 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Industrial Quality / Inspection",
+        "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+        "seed_domains": [
+          "quality-inspection-ai",
+          "manufacturing-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-080",
+      "cluster_id": "industrial-quality-inspection",
+      "notes": "Pilot agent 2 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Industrial Quality / Inspection",
+        "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+        "seed_domains": [
+          "quality-inspection-ai",
+          "manufacturing-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-081",
+      "cluster_id": "industrial-quality-inspection",
+      "notes": "Pilot agent 3 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Industrial Quality / Inspection",
+        "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+        "seed_domains": [
+          "quality-inspection-ai",
+          "manufacturing-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-082",
+      "cluster_id": "industrial-quality-inspection",
+      "notes": "Pilot agent 4 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Industrial Quality / Inspection",
+        "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+        "seed_domains": [
+          "quality-inspection-ai",
+          "manufacturing-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-083",
+      "cluster_id": "industrial-quality-inspection",
+      "notes": "Pilot agent 5 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Industrial Quality / Inspection",
+        "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+        "seed_domains": [
+          "quality-inspection-ai",
+          "manufacturing-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-084",
+      "cluster_id": "industrial-quality-inspection",
+      "notes": "Pilot agent 6 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Industrial Quality / Inspection",
+        "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+        "seed_domains": [
+          "quality-inspection-ai",
+          "manufacturing-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-085",
+      "cluster_id": "industrial-quality-inspection",
+      "notes": "Pilot agent 7 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Industrial Quality / Inspection",
+        "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+        "seed_domains": [
+          "quality-inspection-ai",
+          "manufacturing-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-086",
+      "cluster_id": "industrial-quality-inspection",
+      "notes": "Pilot agent 8 for Industrial Quality / Inspection. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Industrial Quality / Inspection",
+        "focus": "Recurring inspections, defect logging, quality evidence, and plant-floor operations loops.",
+        "seed_domains": [
+          "quality-inspection-ai",
+          "manufacturing-ai",
+          "safety-compliance-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-087",
+      "cluster_id": "finance-reconciliation-backoffice",
+      "notes": "Pilot agent 1 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Finance / Reconciliation / Backoffice",
+        "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+        "seed_domains": [
+          "ai-renewal-risk-briefing-copilot",
+          "legal-ops",
+          "carbon-credit-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-088",
+      "cluster_id": "finance-reconciliation-backoffice",
+      "notes": "Pilot agent 2 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Finance / Reconciliation / Backoffice",
+        "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+        "seed_domains": [
+          "ai-renewal-risk-briefing-copilot",
+          "legal-ops",
+          "carbon-credit-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-089",
+      "cluster_id": "finance-reconciliation-backoffice",
+      "notes": "Pilot agent 3 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Finance / Reconciliation / Backoffice",
+        "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+        "seed_domains": [
+          "ai-renewal-risk-briefing-copilot",
+          "legal-ops",
+          "carbon-credit-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-090",
+      "cluster_id": "finance-reconciliation-backoffice",
+      "notes": "Pilot agent 4 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Finance / Reconciliation / Backoffice",
+        "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+        "seed_domains": [
+          "ai-renewal-risk-briefing-copilot",
+          "legal-ops",
+          "carbon-credit-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-091",
+      "cluster_id": "finance-reconciliation-backoffice",
+      "notes": "Pilot agent 5 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Finance / Reconciliation / Backoffice",
+        "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+        "seed_domains": [
+          "ai-renewal-risk-briefing-copilot",
+          "legal-ops",
+          "carbon-credit-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-092",
+      "cluster_id": "finance-reconciliation-backoffice",
+      "notes": "Pilot agent 6 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Finance / Reconciliation / Backoffice",
+        "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+        "seed_domains": [
+          "ai-renewal-risk-briefing-copilot",
+          "legal-ops",
+          "carbon-credit-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-093",
+      "cluster_id": "finance-reconciliation-backoffice",
+      "notes": "Pilot agent 7 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Finance / Reconciliation / Backoffice",
+        "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+        "seed_domains": [
+          "ai-renewal-risk-briefing-copilot",
+          "legal-ops",
+          "carbon-credit-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-094",
+      "cluster_id": "finance-reconciliation-backoffice",
+      "notes": "Pilot agent 8 for Finance / Reconciliation / Backoffice. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Finance / Reconciliation / Backoffice",
+        "focus": "Recurring reconciliation, exception review, renewal risk, and backoffice finance loops.",
+        "seed_domains": [
+          "ai-renewal-risk-briefing-copilot",
+          "legal-ops",
+          "carbon-credit-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-095",
+      "cluster_id": "logistics-last-mile-ops",
+      "notes": "Pilot agent 1 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Logistics / Last Mile Ops",
+        "focus": "Recurring route planning, delivery exception handling, and logistics coordination loops.",
+        "seed_domains": [
+          "last-mile-delivery-ai",
+          "warehouse-optimizer",
+          "inventory-tracker-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-096",
+      "cluster_id": "logistics-last-mile-ops",
+      "notes": "Pilot agent 2 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Logistics / Last Mile Ops",
+        "focus": "Recurring route planning, delivery exception handling, and logistics coordination loops.",
+        "seed_domains": [
+          "last-mile-delivery-ai",
+          "warehouse-optimizer",
+          "inventory-tracker-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-097",
+      "cluster_id": "logistics-last-mile-ops",
+      "notes": "Pilot agent 3 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Logistics / Last Mile Ops",
+        "focus": "Recurring route planning, delivery exception handling, and logistics coordination loops.",
+        "seed_domains": [
+          "last-mile-delivery-ai",
+          "warehouse-optimizer",
+          "inventory-tracker-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-098",
+      "cluster_id": "logistics-last-mile-ops",
+      "notes": "Pilot agent 4 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Logistics / Last Mile Ops",
+        "focus": "Recurring route planning, delivery exception handling, and logistics coordination loops.",
+        "seed_domains": [
+          "last-mile-delivery-ai",
+          "warehouse-optimizer",
+          "inventory-tracker-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-099",
+      "cluster_id": "logistics-last-mile-ops",
+      "notes": "Pilot agent 5 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Logistics / Last Mile Ops",
+        "focus": "Recurring route planning, delivery exception handling, and logistics coordination loops.",
+        "seed_domains": [
+          "last-mile-delivery-ai",
+          "warehouse-optimizer",
+          "inventory-tracker-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-100",
+      "cluster_id": "logistics-last-mile-ops",
+      "notes": "Pilot agent 6 for Logistics / Last Mile Ops. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Logistics / Last Mile Ops",
+        "focus": "Recurring route planning, delivery exception handling, and logistics coordination loops.",
+        "seed_domains": [
+          "last-mile-delivery-ai",
+          "warehouse-optimizer",
+          "inventory-tracker-ai"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    }
+  ],
+  "next_actions": [
+    "Run this merged packet through `mirofish-discovery-program` for canonicalization.",
+    "Inspect acceptance, merge, and vague-reject rates before scaling.",
+    "Promote only the accepted subset into focused hybrid evaluation."
+  ]
+}

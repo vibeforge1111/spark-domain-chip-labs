@@ -1265,3 +1265,39 @@ The real pilot scaffold existed, but it was still one large JSON packet. The nex
 
 - This tranche still does not fabricate a filled `100`-agent result.
 - It makes the real pilot executable in cluster-sized collection slices.
+
+## Tranche: MiroFish Discovery Pilot Recombine
+
+### Files Changed
+
+- `src/chip_labs/mirofish/discovery.py`
+- `src/chip_labs/cli.py`
+- `tests/test_mirofish_discovery.py`
+- `docs/MIROFISH_DISCOVERY_PROGRAM.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINE_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_pilot_100_recombine.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The split packet made the pilot collectible in batches, but there was still no repo-local step to merge completed cluster packets back into one program packet for canonicalization.
+
+### What Changed
+
+- Added a cluster-packet merge helper and CLI command
+- Preserved `cluster_plan` and `collection_rules` across the split and merge round-trip
+- Generated the recombined `100`-agent pilot packet under `research/meta/`
+- Tightened the regression slice after catching and fixing a metadata-loss issue in the first recombine pass
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+
+### Notes
+
+- This tranche completes the repo-local pilot round-trip without inventing any new discoveries.
+- The recombined packet is ready for canonicalization once the cluster packets are filled with real submissions.

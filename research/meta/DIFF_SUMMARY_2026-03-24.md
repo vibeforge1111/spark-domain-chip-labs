@@ -288,3 +288,12 @@ MiroFish discovery pilot cluster packets:
 - add a markdown brief generator for discovery scaffolds and cluster bundles
 - expose the new split and brief flows through repo-local CLI commands
 - generate the actual cluster bundle and readable pilot brief under `research/meta/`
+
+## Batch 33
+
+MiroFish discovery pilot recombine:
+
+- add a repo-local merge step that recombines cluster packets into one program input packet
+- preserve `cluster_plan` and `collection_rules` across the split and merge round-trip
+- generate the actual recombined pilot packet under `research/meta/`
+- tighten the discovery regression slice after fixing the first metadata-loss bug in the recombine flow

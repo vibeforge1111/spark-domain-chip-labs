@@ -5,6 +5,7 @@ from chip_labs.mirofish.discovery import (
     canonicalize_discovery_batch,
     canonicalize_discovery_program,
     format_discovery_program_markdown,
+    merge_discovery_cluster_packets,
     split_discovery_program_scaffold,
 )
 
@@ -156,6 +157,8 @@ def test_split_discovery_program_scaffold_emits_cluster_packets() -> None:
     assert result["packet_kind"] == "mirofish_discovery_program_cluster_packets"
     assert result["cluster_packet_count"] == 10
     assert result["summary"]["agent_count"] == 100
+    assert len(result["cluster_plan"]) == 10
+    assert result["collection_rules"]["max_candidates_per_agent"] == 3
     assert result["cluster_packets"][0]["packet_kind"] == "mirofish_discovery_cluster_packet"
     assert result["cluster_packets"][0]["target_agent_count"] == 16
     assert len(result["cluster_packets"][0]["agent_submissions"]) == 16
@@ -170,3 +173,18 @@ def test_format_discovery_program_markdown_renders_scaffold_summary() -> None:
     assert "## Cluster Allocation" in result
     assert "`security-compliance-response`" in result
     assert "Security / Compliance Response" in result
+
+
+def test_merge_discovery_cluster_packets_round_trips_agent_submissions() -> None:
+    scaffold = build_discovery_program_scaffold()
+    cluster_bundle = split_discovery_program_scaffold(scaffold)
+
+    result = merge_discovery_cluster_packets(cluster_bundle)
+
+    assert result["packet_kind"] == "mirofish_discovery_program_input"
+    assert result["program_id"] == scaffold["program_id"]
+    assert result["target_agent_count"] == 100
+    assert len(result["cluster_plan"]) == 10
+    assert result["collection_rules"]["min_candidates_per_agent"] == 1
+    assert len(result["agent_submissions"]) == 100
+    assert result["agent_submissions"][0]["agent_id"] == "agent-001"

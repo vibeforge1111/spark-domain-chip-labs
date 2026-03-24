@@ -140,11 +140,18 @@ $env:PYTHONPATH='src'
 python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --title "MiroFish Discovery Pilot 100 Brief" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_BRIEF_2026-03-24.md
 ```
 
+Recombine filled cluster packets back into one program packet:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json
+```
+
 Canonicalize a filled pilot packet:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json
+python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json
 ```
 
 ## Governance

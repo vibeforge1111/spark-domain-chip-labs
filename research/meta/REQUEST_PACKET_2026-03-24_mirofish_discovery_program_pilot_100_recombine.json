@@ -1,0 +1,54 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_discovery_program_pilot_100_recombine",
+  "created_at": "2026-03-24",
+  "scope": "Complete the 100-agent discovery pilot round-trip by recombining cluster packets into one program input packet",
+  "decision_context": {
+    "prior_state": "The pilot scaffold could be split into cluster packets, but there was no repo-local way to merge completed cluster tranches back into one canonicalization-ready packet.",
+    "decision": "Add a cluster-packet merge command, preserve scaffold metadata across the split and merge flow, and generate the recombined pilot packet under research/meta.",
+    "why_now": "Without recombination, the 100-agent pilot flow still stopped short of a real canonicalization handoff."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/discovery.py",
+      "purpose": "Adds cluster-packet recombination and preserves scaffold metadata in the round-trip."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Adds the mirofish-discovery-program-merge command."
+    },
+    {
+      "path": "tests/test_mirofish_discovery.py",
+      "purpose": "Covers the split/merge metadata round-trip."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json",
+      "purpose": "Stores the merged program packet ready for canonicalization after real collection."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINE_NOTE_2026-03-24.md",
+      "purpose": "Explains the completed round-trip and the metadata-preservation fix."
+    }
+  ],
+  "planned_steps": [
+    "Add a merge helper for discovery cluster packets",
+    "Preserve cluster plan and collection rules across split and merge",
+    "Generate the recombined pilot packet and rerun the focused regression suite"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The recombined packet contains all 100 agent submissions",
+      "The recombined packet preserves the cluster plan and collection rules",
+      "The focused regression suite stays green"
+    ]
+  },
+  "guardrails": [
+    "Do not fabricate discovery content while testing the round-trip",
+    "Keep the recombined packet canonicalization-ready but still exploratory",
+    "Preserve all scaffold metadata across the split/merge boundary"
+  ]
+}
