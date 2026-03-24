@@ -895,3 +895,40 @@ After the runtime-fix tranche, the immediate need was to prove the repo-local 51
 - This checkpoint proves execution, not final portfolio confidence.
 - The next meaningful step is to raise harness depth enough to recover non-zero adoption signal without reintroducing runaway runtime.
 - Dashboard and export refresh should still wait for that deeper rerun.
+
+## Tranche: MiroFish Portfolio Medium Checkpoint
+
+### Files Changed
+
+- `research/meta/MIROFISH_PORTFOLIO_RUN_515_MEDIUM_2026-03-24.json`
+- `research/meta/MIROFISH_PORTFOLIO_READOUT_515_MEDIUM_2026-03-24.json`
+- `research/meta/MIROFISH_PORTFOLIO_MEDIUM_CHECKPOINT_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_medium_checkpoint.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The interactive full-universe checkpoint proved execution but collapsed to zero on adoption and choice. The next step was to recover non-zero full-universe signal without falling back into runaway runtime.
+
+### What Changed
+
+- Ran the full 515-domain universe through the repo-local portfolio CLI with a medium-depth harness
+- Saved the medium packet and derived readout under `research/meta/`
+- Saved a note concluding that:
+  - non-zero full-universe signal is back
+  - `defi-architect` leads the medium-harness ensemble read
+  - `ai-npc-dialog` leads direct choice and flagship retained adoption
+  - enterprise and v4 slices are now more informative than the zeroed checkpoint, but still too thin for a final verdict
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-portfolio-run --rounds 6 --flagship-count-per-type 4 --ensemble-runs 4 --min-runs 4 --ensemble-count-per-type 2 --bootstrap-resamples 10 --output research/meta/MIROFISH_PORTFOLIO_RUN_515_MEDIUM_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-portfolio-readout --input research/meta/MIROFISH_PORTFOLIO_RUN_515_MEDIUM_2026-03-24.json --output research/meta/MIROFISH_PORTFOLIO_READOUT_515_MEDIUM_2026-03-24.json`
+- Inspect that the top-line ensemble read is no longer uniformly zero
+
+### Notes
+
+- This is a better checkpoint than the earlier thin interactive readout.
+- It is still not the final trusted portfolio verdict.
+- Dashboard and export refresh should still wait for one more deeper pass.

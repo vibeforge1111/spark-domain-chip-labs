@@ -1,0 +1,50 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_portfolio_medium_checkpoint",
+  "created_at": "2026-03-24",
+  "scope": "Run a medium-depth full-universe portfolio pass after the runtime fixes to recover non-zero portfolio signal without returning to runaway runtime",
+  "decision_context": {
+    "prior_state": "The first interactive full-universe checkpoint completed, but the harness was too thin and collapsed ensemble adoption and direct choice to zero across the board.",
+    "decision": "Increase depth moderately to 6 rounds, 4 flagship personas per type, 4 ensemble runs, and 2 ensemble personas per type while keeping the optimized runtime path and low bootstrap count.",
+    "why_now": "The goal was to find the first full-universe checkpoint that preserves interactive runtime while restoring at least some non-zero adoption and choice signal."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_RUN_515_MEDIUM_2026-03-24.json",
+      "purpose": "Stores the medium-depth full-universe portfolio run packet."
+    },
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_READOUT_515_MEDIUM_2026-03-24.json",
+      "purpose": "Stores the readout derived from the medium-depth full-universe portfolio packet."
+    },
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_MEDIUM_CHECKPOINT_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the recovered signal, top slices, and remaining limitations of the medium harness."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_medium_checkpoint.json",
+      "purpose": "Captures the parameter choice and limitations for the medium-depth portfolio checkpoint."
+    }
+  ],
+  "planned_steps": [
+    "Run the full 515-domain universe with a medium interactive harness",
+    "Save the portfolio packet under research/meta",
+    "Build the derived readout packet",
+    "Write the checkpoint note explaining what signal came back and what is still too thin"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-portfolio-run --rounds 6 --flagship-count-per-type 4 --ensemble-runs 4 --min-runs 4 --ensemble-count-per-type 2 --bootstrap-resamples 10 --output research/meta/MIROFISH_PORTFOLIO_RUN_515_MEDIUM_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-portfolio-readout --input research/meta/MIROFISH_PORTFOLIO_RUN_515_MEDIUM_2026-03-24.json --output research/meta/MIROFISH_PORTFOLIO_READOUT_515_MEDIUM_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "The full-universe packet completes under the medium harness",
+      "Top-line ensemble adoption is no longer uniformly zero",
+      "The note records that rank order is more trustworthy than absolute magnitude and that interest-to-choice friction remains prominent"
+    ]
+  },
+  "guardrails": [
+    "Do not treat the medium checkpoint as a maintained final portfolio verdict",
+    "Do not refresh dashboard or export from this checkpoint",
+    "Use it as the first non-zero full-universe signal recovery, not as the terminal ranking artifact"
+  ]
+}

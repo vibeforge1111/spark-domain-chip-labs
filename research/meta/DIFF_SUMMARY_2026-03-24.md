@@ -191,3 +191,12 @@ MiroFish portfolio interactive readout:
 - save the portfolio packet and derived readout under research/meta
 - record that the harness completes operationally but collapses absolute adoption and choice values to zero
 - treat the batch as an execution checkpoint rather than the final trusted portfolio verdict
+
+## Batch 22
+
+MiroFish portfolio medium checkpoint:
+
+- run the full 515-domain universe through the repo-local portfolio CLI with a medium interactive harness
+- recover non-zero ensemble and choice signal after the zeroed checkpoint
+- save the medium packet and derived readout under research/meta
+- record that the result is more informative but still not the final trusted portfolio verdict
