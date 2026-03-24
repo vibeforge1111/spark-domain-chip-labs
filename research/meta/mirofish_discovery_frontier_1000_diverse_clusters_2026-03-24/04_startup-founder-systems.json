@@ -1,0 +1,2523 @@
+{
+  "packet_kind": "mirofish_discovery_cluster_packet",
+  "created_at": "2026-03-24T18:40:03.886310+00:00",
+  "program_id": "mirofish-discovery-program-frontier-1000-diverse",
+  "stage_label": "frontier_1000_diverse",
+  "cluster_id": "startup-founder-systems",
+  "cluster_label": "Startup Builder Systems",
+  "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+  "seed_domains": [
+    "startup-yc",
+    "indie-hacker",
+    "agentic-marketing"
+  ],
+  "target_agent_count": 80,
+  "collection_rules": {
+    "max_candidates_per_agent": 3,
+    "min_candidates_per_agent": 1,
+    "required_candidate_fields": [
+      "label",
+      "description",
+      "specialization_surface",
+      "mastery_surface",
+      "user_value_loop",
+      "evidence_summary",
+      "adjacent_domains",
+      "raw_observation"
+    ],
+    "scale_gate_for_250": {
+      "min_acceptance_rate": 0.3,
+      "max_merge_rate": 0.4,
+      "max_too_vague_rate": 0.3,
+      "min_clear_count": 5,
+      "needs_hybrid_ready_cluster": true
+    }
+  },
+  "agent_submissions": [
+    {
+      "agent_id": "agent-261",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 1 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-262",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 2 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-263",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 3 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-264",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 4 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-265",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 5 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-266",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 6 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-267",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 7 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-268",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 8 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-269",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 9 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-270",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 10 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-271",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 11 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-272",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 12 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-273",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 13 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-274",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 14 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-275",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 15 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-276",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 16 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-277",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 17 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-278",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 18 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-279",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 19 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-280",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 20 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-281",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 21 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-282",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 22 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-283",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 23 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-284",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 24 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-285",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 25 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-286",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 26 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-287",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 27 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-288",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 28 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-289",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 29 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-290",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 30 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-291",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 31 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-292",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 32 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-293",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 33 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-294",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 34 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-295",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 35 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-296",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 36 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-297",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 37 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-298",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 38 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-299",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 39 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-300",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 40 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-301",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 41 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-302",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 42 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-303",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 43 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-304",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 44 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-305",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 45 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-306",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 46 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-307",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 47 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-308",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 48 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-309",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 49 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-310",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 50 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-311",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 51 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-312",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 52 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-313",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 53 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-314",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 54 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-315",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 55 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-316",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 56 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-317",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 57 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-318",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 58 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-319",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 59 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-320",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 60 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-321",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 61 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-322",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 62 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-323",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 63 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-324",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 64 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-325",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 65 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-326",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 66 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-327",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 67 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-328",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 68 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-329",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 69 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-330",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 70 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-331",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 71 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-332",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 72 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-333",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 73 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-334",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 74 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-335",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 75 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-336",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 76 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-337",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 77 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-338",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 78 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-339",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 79 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-340",
+      "cluster_id": "startup-founder-systems",
+      "notes": "Pilot agent 80 for Startup Builder Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Startup Builder Systems",
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": [
+          "startup-yc",
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    }
+  ],
+  "next_actions": [
+    "Collect 1-3 concrete candidates from each assigned agent.",
+    "Reject vague workflows, personas, and generic tooling before canonicalization.",
+    "Merge the completed cluster packets back into one filled discovery-program packet."
+  ]
+}

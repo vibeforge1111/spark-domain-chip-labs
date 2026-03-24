@@ -1,0 +1,2523 @@
+{
+  "packet_kind": "mirofish_discovery_cluster_packet",
+  "created_at": "2026-03-24T18:40:03.886310+00:00",
+  "program_id": "mirofish-discovery-program-frontier-1000-diverse",
+  "stage_label": "frontier_1000_diverse",
+  "cluster_id": "gaming-npc-community",
+  "cluster_label": "Gaming / NPC / Community Worlds",
+  "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+  "seed_domains": [
+    "ai-npc-dialog",
+    "discord-community",
+    "streamer-overlay-ai"
+  ],
+  "target_agent_count": 80,
+  "collection_rules": {
+    "max_candidates_per_agent": 3,
+    "min_candidates_per_agent": 1,
+    "required_candidate_fields": [
+      "label",
+      "description",
+      "specialization_surface",
+      "mastery_surface",
+      "user_value_loop",
+      "evidence_summary",
+      "adjacent_domains",
+      "raw_observation"
+    ],
+    "scale_gate_for_250": {
+      "min_acceptance_rate": 0.3,
+      "max_merge_rate": 0.4,
+      "max_too_vague_rate": 0.3,
+      "min_clear_count": 5,
+      "needs_hybrid_ready_cluster": true
+    }
+  },
+  "agent_submissions": [
+    {
+      "agent_id": "agent-101",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 1 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-102",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 2 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-103",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 3 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-104",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 4 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-105",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 5 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-106",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 6 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-107",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 7 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-108",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 8 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-109",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 9 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-110",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 10 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-111",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 11 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-112",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 12 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-113",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 13 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-114",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 14 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-115",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 15 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-116",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 16 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-117",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 17 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-118",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 18 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-119",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 19 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-120",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 20 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-121",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 21 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-122",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 22 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-123",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 23 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-124",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 24 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-125",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 25 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-126",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 26 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-127",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 27 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-128",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 28 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-129",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 29 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-130",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 30 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-131",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 31 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-132",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 32 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-133",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 33 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-134",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 34 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-135",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 35 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-136",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 36 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-137",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 37 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-138",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 38 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-139",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 39 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-140",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 40 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-141",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 41 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-142",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 42 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-143",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 43 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-144",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 44 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-145",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 45 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-146",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 46 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-147",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 47 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-148",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 48 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-149",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 49 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-150",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 50 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-151",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 51 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-152",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 52 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-153",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 53 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-154",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 54 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-155",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 55 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-156",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 56 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-157",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 57 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-158",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 58 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-159",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 59 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-160",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 60 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-161",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 61 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-162",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 62 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-163",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 63 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-164",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 64 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-165",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 65 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-166",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 66 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-167",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 67 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-168",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 68 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-169",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 69 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-170",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 70 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-171",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 71 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-172",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 72 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-173",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 73 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-174",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 74 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-175",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 75 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-176",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 76 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-177",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 77 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-178",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 78 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-179",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 79 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-180",
+      "cluster_id": "gaming-npc-community",
+      "notes": "Pilot agent 80 for Gaming / NPC / Community Worlds. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Gaming / NPC / Community Worlds",
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": [
+          "ai-npc-dialog",
+          "discord-community",
+          "streamer-overlay-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    }
+  ],
+  "next_actions": [
+    "Collect 1-3 concrete candidates from each assigned agent.",
+    "Reject vague workflows, personas, and generic tooling before canonicalization.",
+    "Merge the completed cluster packets back into one filled discovery-program packet."
+  ]
+}

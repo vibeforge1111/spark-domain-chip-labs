@@ -1,0 +1,2523 @@
+{
+  "packet_kind": "mirofish_discovery_cluster_packet",
+  "created_at": "2026-03-24T18:40:03.886310+00:00",
+  "program_id": "mirofish-discovery-program-frontier-1000-diverse",
+  "stage_label": "frontier_1000_diverse",
+  "cluster_id": "agentic-builders",
+  "cluster_label": "AI Agent Builders",
+  "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+  "seed_domains": [
+    "ai-agent-builder",
+    "mcp-server-builder",
+    "cursor-copilot"
+  ],
+  "target_agent_count": 80,
+  "collection_rules": {
+    "max_candidates_per_agent": 3,
+    "min_candidates_per_agent": 1,
+    "required_candidate_fields": [
+      "label",
+      "description",
+      "specialization_surface",
+      "mastery_surface",
+      "user_value_loop",
+      "evidence_summary",
+      "adjacent_domains",
+      "raw_observation"
+    ],
+    "scale_gate_for_250": {
+      "min_acceptance_rate": 0.3,
+      "max_merge_rate": 0.4,
+      "max_too_vague_rate": 0.3,
+      "min_clear_count": 5,
+      "needs_hybrid_ready_cluster": true
+    }
+  },
+  "agent_submissions": [
+    {
+      "agent_id": "agent-181",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 1 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-182",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 2 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-183",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 3 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-184",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 4 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-185",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 5 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-186",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 6 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-187",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 7 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-188",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 8 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-189",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 9 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-190",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 10 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-191",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 11 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-192",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 12 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-193",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 13 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-194",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 14 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-195",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 15 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-196",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 16 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-197",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 17 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-198",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 18 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-199",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 19 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-200",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 20 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-201",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 21 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-202",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 22 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-203",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 23 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-204",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 24 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-205",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 25 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-206",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 26 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-207",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 27 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-208",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 28 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-209",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 29 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-210",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 30 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-211",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 31 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-212",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 32 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-213",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 33 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-214",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 34 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-215",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 35 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-216",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 36 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-217",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 37 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-218",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 38 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-219",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 39 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-220",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 40 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-221",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 41 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-222",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 42 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-223",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 43 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-224",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 44 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-225",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 45 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-226",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 46 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-227",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 47 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-228",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 48 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-229",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 49 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-230",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 50 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-231",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 51 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-232",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 52 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-233",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 53 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-234",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 54 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-235",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 55 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-236",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 56 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-237",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 57 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-238",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 58 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-239",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 59 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-240",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 60 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-241",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 61 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-242",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 62 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-243",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 63 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-244",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 64 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-245",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 65 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-246",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 66 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-247",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 67 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-248",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 68 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-249",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 69 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-250",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 70 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-251",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 71 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-252",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 72 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-253",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 73 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-254",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 74 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-255",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 75 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-256",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 76 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-257",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 77 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-258",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 78 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-259",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 79 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-260",
+      "cluster_id": "agentic-builders",
+      "notes": "Pilot agent 80 for AI Agent Builders. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "AI Agent Builders",
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": [
+          "ai-agent-builder",
+          "mcp-server-builder",
+          "cursor-copilot"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    }
+  ],
+  "next_actions": [
+    "Collect 1-3 concrete candidates from each assigned agent.",
+    "Reject vague workflows, personas, and generic tooling before canonicalization.",
+    "Merge the completed cluster packets back into one filled discovery-program packet."
+  ]
+}

@@ -747,6 +747,7 @@ def cmd_mirofish_discovery_program_scaffold(args: argparse.Namespace) -> None:
         program_id=args.program_id,
         target_agent_count=args.target_agent_count,
         stage_label=args.stage_label,
+        profile=args.profile,
     )
     _write_output(args.output, result)
 
@@ -1134,6 +1135,13 @@ def main() -> None:
         type=str,
         default="pilot_100",
         help="Stage label for the scaffold packet.",
+    )
+    p_mirofish_discovery_program_scaffold.add_argument(
+        "--profile",
+        type=str,
+        choices=["viral", "diverse_frontier"],
+        default="viral",
+        help="Cluster profile to use for the scaffold packet.",
     )
     p_mirofish_discovery_program_scaffold.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_discovery_program_scaffold.set_defaults(func=cmd_mirofish_discovery_program_scaffold)

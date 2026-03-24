@@ -1750,3 +1750,49 @@ The creator wedge was still productive, but the process itself had become too sl
 ### Notes
 
 - Creator-growth is now broad enough that the remaining work should be done in wedge-sized batches rather than another chain of small tranches.
+
+## Tranche: MiroFish Discovery Diverse Frontier Fast Path
+
+### Files Changed
+
+- `src/chip_labs/mirofish/discovery.py`
+- `src/chip_labs/cli.py`
+- `tests/test_mirofish_discovery.py`
+- `docs/MIROFISH_DISCOVERY_PROGRAM.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_SCAFFOLD_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_BRIEF_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_DIRECTORY_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md`
+- `research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/README.md`
+- `research/meta/MIROFISH_DISCOVERY_DIVERSE_FRONTIER_FAST_PATH_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_diverse_frontier_fast_path.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The discovery process had slowed down because too much effort was going into hand-curating small recommendation tranches before the intake surface had been fully exercised. The right response was to broaden intake, preserve diversity, and let selection happen later.
+
+### What Changed
+
+- Added a `diverse_frontier` discovery scaffold profile that scales beyond the smaller viral pilot
+- Added scaffold profile selection to the CLI
+- Updated discovery docs to make the new rule explicit: broad intake first, simulation later
+- Generated a full `1000`-agent diverse-frontier scaffold, split bundle, brief, materialized directory, and zero-state progress surface
+- Used same-persona sub-agents in parallel to generate the first `60` provisional domain ideas as seed material for the broad intake path
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py -q`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-scaffold --profile diverse_frontier --program-id mirofish-discovery-program-frontier-1000-diverse --target-agent-count 1000 --stage-label frontier_1000_diverse --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_SCAFFOLD_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json --title "MiroFish Discovery Frontier 1000 Diverse Brief" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_BRIEF_2026-03-24.md`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-materialize --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json --output-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --index-title "MiroFish Discovery Frontier 1000 Diverse Clusters" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_DIRECTORY_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md --title "MiroFish Discovery Frontier 1000 Diverse Progress"`
+
+### Notes
+
+- Simulation is intentionally deferred in this path.
+- The broad frontier should be collected first, then canonicalized, then evaluated.

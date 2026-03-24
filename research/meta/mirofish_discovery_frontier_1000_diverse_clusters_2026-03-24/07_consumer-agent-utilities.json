@@ -1,0 +1,1903 @@
+{
+  "packet_kind": "mirofish_discovery_cluster_packet",
+  "created_at": "2026-03-24T18:40:03.886310+00:00",
+  "program_id": "mirofish-discovery-program-frontier-1000-diverse",
+  "stage_label": "frontier_1000_diverse",
+  "cluster_id": "consumer-agent-utilities",
+  "cluster_label": "Consumer Agent Utilities",
+  "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+  "seed_domains": [
+    "trip-planner-ai",
+    "shopping-deal-finder",
+    "family-coordinator-ai"
+  ],
+  "target_agent_count": 60,
+  "collection_rules": {
+    "max_candidates_per_agent": 3,
+    "min_candidates_per_agent": 1,
+    "required_candidate_fields": [
+      "label",
+      "description",
+      "specialization_surface",
+      "mastery_surface",
+      "user_value_loop",
+      "evidence_summary",
+      "adjacent_domains",
+      "raw_observation"
+    ],
+    "scale_gate_for_250": {
+      "min_acceptance_rate": 0.3,
+      "max_merge_rate": 0.4,
+      "max_too_vague_rate": 0.3,
+      "min_clear_count": 5,
+      "needs_hybrid_ready_cluster": true
+    }
+  },
+  "agent_submissions": [
+    {
+      "agent_id": "agent-481",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 1 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-482",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 2 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-483",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 3 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-484",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 4 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-485",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 5 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-486",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 6 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-487",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 7 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-488",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 8 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-489",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 9 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-490",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 10 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-491",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 11 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-492",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 12 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-493",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 13 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-494",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 14 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-495",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 15 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-496",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 16 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-497",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 17 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-498",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 18 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-499",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 19 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-500",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 20 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-501",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 21 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-502",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 22 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-503",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 23 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-504",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 24 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-505",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 25 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-506",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 26 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-507",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 27 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-508",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 28 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-509",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 29 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-510",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 30 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-511",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 31 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-512",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 32 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-513",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 33 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-514",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 34 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-515",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 35 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-516",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 36 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-517",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 37 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-518",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 38 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-519",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 39 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-520",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 40 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-521",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 41 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-522",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 42 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-523",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 43 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-524",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 44 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-525",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 45 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-526",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 46 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-527",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 47 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-528",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 48 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-529",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 49 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-530",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 50 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-531",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 51 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-532",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 52 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-533",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 53 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-534",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 54 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-535",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 55 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-536",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 56 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-537",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 57 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-538",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 58 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-539",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 59 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-540",
+      "cluster_id": "consumer-agent-utilities",
+      "notes": "Pilot agent 60 for Consumer Agent Utilities. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Consumer Agent Utilities",
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": [
+          "trip-planner-ai",
+          "shopping-deal-finder",
+          "family-coordinator-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    }
+  ],
+  "next_actions": [
+    "Collect 1-3 concrete candidates from each assigned agent.",
+    "Reject vague workflows, personas, and generic tooling before canonicalization.",
+    "Merge the completed cluster packets back into one filled discovery-program packet."
+  ]
+}

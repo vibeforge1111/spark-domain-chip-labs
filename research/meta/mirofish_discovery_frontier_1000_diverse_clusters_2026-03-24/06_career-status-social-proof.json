@@ -1,0 +1,1903 @@
+{
+  "packet_kind": "mirofish_discovery_cluster_packet",
+  "created_at": "2026-03-24T18:40:03.886310+00:00",
+  "program_id": "mirofish-discovery-program-frontier-1000-diverse",
+  "stage_label": "frontier_1000_diverse",
+  "cluster_id": "career-status-social-proof",
+  "cluster_label": "Career / Status / Social Proof",
+  "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+  "seed_domains": [
+    "resume-ai",
+    "linkedin-optimizer",
+    "interview-prep-ai"
+  ],
+  "target_agent_count": 60,
+  "collection_rules": {
+    "max_candidates_per_agent": 3,
+    "min_candidates_per_agent": 1,
+    "required_candidate_fields": [
+      "label",
+      "description",
+      "specialization_surface",
+      "mastery_surface",
+      "user_value_loop",
+      "evidence_summary",
+      "adjacent_domains",
+      "raw_observation"
+    ],
+    "scale_gate_for_250": {
+      "min_acceptance_rate": 0.3,
+      "max_merge_rate": 0.4,
+      "max_too_vague_rate": 0.3,
+      "min_clear_count": 5,
+      "needs_hybrid_ready_cluster": true
+    }
+  },
+  "agent_submissions": [
+    {
+      "agent_id": "agent-421",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 1 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-422",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 2 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-423",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 3 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-424",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 4 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-425",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 5 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-426",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 6 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-427",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 7 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-428",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 8 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-429",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 9 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-430",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 10 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-431",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 11 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-432",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 12 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-433",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 13 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-434",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 14 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-435",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 15 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-436",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 16 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-437",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 17 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-438",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 18 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-439",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 19 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-440",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 20 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-441",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 21 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-442",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 22 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-443",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 23 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-444",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 24 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-445",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 25 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-446",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 26 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-447",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 27 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-448",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 28 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-449",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 29 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-450",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 30 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-451",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 31 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-452",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 32 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-453",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 33 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-454",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 34 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-455",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 35 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-456",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 36 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-457",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 37 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-458",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 38 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-459",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 39 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-460",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 40 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-461",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 41 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-462",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 42 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-463",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 43 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-464",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 44 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-465",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 45 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-466",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 46 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-467",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 47 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-468",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 48 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-469",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 49 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-470",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 50 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-471",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 51 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-472",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 52 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-473",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 53 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-474",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 54 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-475",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 55 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-476",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 56 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-477",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 57 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-478",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 58 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-479",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 59 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-480",
+      "cluster_id": "career-status-social-proof",
+      "notes": "Pilot agent 60 for Career / Status / Social Proof. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Career / Status / Social Proof",
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": [
+          "resume-ai",
+          "linkedin-optimizer",
+          "interview-prep-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    }
+  ],
+  "next_actions": [
+    "Collect 1-3 concrete candidates from each assigned agent.",
+    "Reject vague workflows, personas, and generic tooling before canonicalization.",
+    "Merge the completed cluster packets back into one filled discovery-program packet."
+  ]
+}

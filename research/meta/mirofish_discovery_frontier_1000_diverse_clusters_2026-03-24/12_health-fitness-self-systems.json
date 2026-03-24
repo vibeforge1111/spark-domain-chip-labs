@@ -1,0 +1,1283 @@
+{
+  "packet_kind": "mirofish_discovery_cluster_packet",
+  "created_at": "2026-03-24T18:40:03.886310+00:00",
+  "program_id": "mirofish-discovery-program-frontier-1000-diverse",
+  "stage_label": "frontier_1000_diverse",
+  "cluster_id": "health-fitness-self-systems",
+  "cluster_label": "Health / Fitness / Self Systems",
+  "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+  "seed_domains": [
+    "fitness-coach-ai",
+    "habit-coach-ai",
+    "meal-plan-ai"
+  ],
+  "target_agent_count": 40,
+  "collection_rules": {
+    "max_candidates_per_agent": 3,
+    "min_candidates_per_agent": 1,
+    "required_candidate_fields": [
+      "label",
+      "description",
+      "specialization_surface",
+      "mastery_surface",
+      "user_value_loop",
+      "evidence_summary",
+      "adjacent_domains",
+      "raw_observation"
+    ],
+    "scale_gate_for_250": {
+      "min_acceptance_rate": 0.3,
+      "max_merge_rate": 0.4,
+      "max_too_vague_rate": 0.3,
+      "min_clear_count": 5,
+      "needs_hybrid_ready_cluster": true
+    }
+  },
+  "agent_submissions": [
+    {
+      "agent_id": "agent-751",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 1 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-752",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 2 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-753",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 3 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-754",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 4 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-755",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 5 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-756",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 6 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-757",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 7 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-758",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 8 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-759",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 9 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-760",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 10 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-761",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 11 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-762",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 12 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-763",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 13 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-764",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 14 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-765",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 15 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-766",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 16 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-767",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 17 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-768",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 18 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-769",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 19 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-770",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 20 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-771",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 21 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-772",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 22 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-773",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 23 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-774",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 24 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-775",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 25 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-776",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 26 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-777",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 27 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-778",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 28 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-779",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 29 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-780",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 30 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-781",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 31 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-782",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 32 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-783",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 33 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-784",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 34 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-785",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 35 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-786",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 36 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-787",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 37 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-788",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 38 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-789",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 39 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-790",
+      "cluster_id": "health-fitness-self-systems",
+      "notes": "Pilot agent 40 for Health / Fitness / Self Systems. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Health / Fitness / Self Systems",
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": [
+          "fitness-coach-ai",
+          "habit-coach-ai",
+          "meal-plan-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    }
+  ],
+  "next_actions": [
+    "Collect 1-3 concrete candidates from each assigned agent.",
+    "Reject vague workflows, personas, and generic tooling before canonicalization.",
+    "Merge the completed cluster packets back into one filled discovery-program packet."
+  ]
+}

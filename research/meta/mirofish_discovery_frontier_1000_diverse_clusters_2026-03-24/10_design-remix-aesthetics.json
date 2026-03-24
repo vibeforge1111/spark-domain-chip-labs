@@ -1,0 +1,1283 @@
+{
+  "packet_kind": "mirofish_discovery_cluster_packet",
+  "created_at": "2026-03-24T18:40:03.886310+00:00",
+  "program_id": "mirofish-discovery-program-frontier-1000-diverse",
+  "stage_label": "frontier_1000_diverse",
+  "cluster_id": "design-remix-aesthetics",
+  "cluster_label": "Design / Remix / Aesthetics",
+  "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+  "seed_domains": [
+    "web-designer",
+    "meme-remix-ai",
+    "brand-kit-ai"
+  ],
+  "target_agent_count": 40,
+  "collection_rules": {
+    "max_candidates_per_agent": 3,
+    "min_candidates_per_agent": 1,
+    "required_candidate_fields": [
+      "label",
+      "description",
+      "specialization_surface",
+      "mastery_surface",
+      "user_value_loop",
+      "evidence_summary",
+      "adjacent_domains",
+      "raw_observation"
+    ],
+    "scale_gate_for_250": {
+      "min_acceptance_rate": 0.3,
+      "max_merge_rate": 0.4,
+      "max_too_vague_rate": 0.3,
+      "min_clear_count": 5,
+      "needs_hybrid_ready_cluster": true
+    }
+  },
+  "agent_submissions": [
+    {
+      "agent_id": "agent-671",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 1 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-672",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 2 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-673",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 3 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-674",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 4 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-675",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 5 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-676",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 6 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-677",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 7 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-678",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 8 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-679",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 9 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-680",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 10 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-681",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 11 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-682",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 12 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-683",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 13 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-684",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 14 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-685",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 15 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-686",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 16 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-687",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 17 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-688",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 18 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-689",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 19 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-690",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 20 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-691",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 21 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-692",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 22 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-693",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 23 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-694",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 24 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-695",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 25 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-696",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 26 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-697",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 27 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-698",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 28 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-699",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 29 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-700",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 30 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-701",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 31 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-702",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 32 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-703",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 33 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-704",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 34 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-705",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 35 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-706",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 36 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-707",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 37 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-708",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 38 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-709",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 39 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    },
+    {
+      "agent_id": "agent-710",
+      "cluster_id": "design-remix-aesthetics",
+      "notes": "Pilot agent 40 for Design / Remix / Aesthetics. Focus on repeated domain loops, not generic tooling.",
+      "agent_brief": {
+        "cluster_label": "Design / Remix / Aesthetics",
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": [
+          "web-designer",
+          "meme-remix-ai",
+          "brand-kit-ai"
+        ],
+        "distribution_lens": "Prefer domains that ambitious online people would use, share, debate, or brag about on X.",
+        "x_persona_archetypes": [
+          "X-native solo founder",
+          "Indie hacker shipping in public",
+          "AI builder chasing leverage",
+          "Creator optimizing attention",
+          "Crypto-native trader and researcher",
+          "Career optimizer chasing status"
+        ],
+        "candidate_requirements": [
+          "Return 1-3 candidate domain chips only",
+          "Every candidate must describe a repeated specialization loop",
+          "Every candidate must describe a repeated mastery loop",
+          "Prefer domains with talkability, social spread, or obvious creator / builder pull",
+          "Reject personas, generic features, and vague workflow ideas"
+        ]
+      },
+      "raw_candidates": []
+    }
+  ],
+  "next_actions": [
+    "Collect 1-3 concrete candidates from each assigned agent.",
+    "Reject vague workflows, personas, and generic tooling before canonicalization.",
+    "Merge the completed cluster packets back into one filled discovery-program packet."
+  ]
+}

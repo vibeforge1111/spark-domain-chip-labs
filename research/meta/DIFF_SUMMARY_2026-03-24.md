@@ -387,3 +387,12 @@ MiroFish discovery viral creator tranche 4:
 - add trend-riff, virtual-creator, and interactive-format creator loops
 - refresh the viral pilot result to `12` accepted clear-domain candidates
 - mark the end of micro-tranche collection so the next step can move at wedge scale
+
+## Batch 44
+
+MiroFish discovery diverse frontier fast path:
+
+- add a scalable `diverse_frontier` discovery scaffold profile and expose it in the CLI
+- document the new operating rule: broad diverse intake first, simulation later
+- generate a full `1000`-agent diverse-frontier scaffold and materialized cluster directory
+- use same-persona sub-agents in parallel to generate the first `60` provisional domain ideas for the broad intake path

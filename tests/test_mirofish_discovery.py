@@ -151,10 +151,27 @@ def test_build_discovery_program_scaffold_creates_100_agent_plan() -> None:
     scaffold = build_discovery_program_scaffold()
 
     assert scaffold["packet_kind"] == "mirofish_discovery_program_scaffold"
+    assert scaffold["profile"] == "viral"
     assert scaffold["target_agent_count"] == 100
     assert len(scaffold["agent_submissions"]) == 100
     assert scaffold["agent_submissions"][0]["agent_id"] == "agent-001"
     assert scaffold["agent_submissions"][-1]["agent_id"] == "agent-100"
+    assert scaffold["cluster_plan"][0]["cluster_id"] == "creator-growth-systems"
+
+
+def test_build_discovery_program_scaffold_scales_diverse_frontier_to_1000() -> None:
+    scaffold = build_discovery_program_scaffold(
+        program_id="mirofish-discovery-program-frontier-1000-diverse",
+        target_agent_count=1000,
+        stage_label="frontier_1000_diverse",
+        profile="diverse_frontier",
+    )
+
+    assert scaffold["profile"] == "diverse_frontier"
+    assert scaffold["target_agent_count"] == 1000
+    assert len(scaffold["agent_submissions"]) == 1000
+    assert len(scaffold["cluster_plan"]) == 18
+    assert sum(cluster["agent_count"] for cluster in scaffold["cluster_plan"]) == 1000
     assert scaffold["cluster_plan"][0]["cluster_id"] == "creator-growth-systems"
 
 

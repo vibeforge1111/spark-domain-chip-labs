@@ -6,6 +6,14 @@ Scale open-ended MiroFish domain discovery without repeating the mistakes from t
 
 The current default pilot is intentionally `viral-first` and `X-native`. It is aimed at discovering domain chips that ambitious online users would actually use, talk about, share, or signal on X, rather than defaulting back into enterprise back-office wedges.
 
+The current operating rule is:
+
+- discovery should move fast and stay broad
+- diversity happens at intake
+- canonicalization filters the noise
+- simulation decides later
+- humans should stop hand-curating every candidate one by one once the scaffold is strong enough
+
 The rule is:
 
 - discovery scales only after intake quality is proven
@@ -51,6 +59,24 @@ The agent brief should prefer:
 - things people would debate, compare, or recommend on X
 - domains with creator, builder, agentic, crypto-native, or career/status energy
 - candidates that feel like a domain chip, not just a feature wrapper
+
+## Fast Frontier Mode
+
+When the goal is a large, diverse frontier rather than a tightly curated pilot, use the `diverse_frontier` scaffold profile.
+
+That profile is designed for fast intake across a broad mix of wedges so the agent swarm can generate a large pool and let canonicalization plus later simulation do the sorting.
+
+It intentionally trades some hand-curated precision for:
+
+- speed
+- breadth
+- cultural diversity
+- more candidate surface area before selection
+
+Recommended use:
+
+- `viral` profile for smaller focused pilots
+- `diverse_frontier` profile for the `1000`-agent / `500`-chip style collection pass
 
 ### Stage 0: Smoke Pass
 
@@ -149,6 +175,13 @@ Build a `100`-agent viral-first pilot scaffold:
 ```powershell
 $env:PYTHONPATH='src'
 python -m chip_labs.cli mirofish-discovery-program-scaffold --program-id mirofish-discovery-program-pilot-100-viral --stage-label pilot_100_viral --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_SCAFFOLD_2026-03-24.json
+```
+
+Build a `1000`-agent diverse frontier scaffold:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-discovery-program-scaffold --profile diverse_frontier --program-id mirofish-discovery-program-frontier-1000-diverse --target-agent-count 1000 --stage-label frontier_1000_diverse --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_SCAFFOLD_2026-03-24.json
 ```
 
 Split the scaffold into per-cluster collection packets:

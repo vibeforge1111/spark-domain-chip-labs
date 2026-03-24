@@ -1,0 +1,36 @@
+{
+  "request_id": "2026-03-24-mirofish-discovery-diverse-frontier-fast-path",
+  "chip": "mirofish",
+  "workstream": "Frontier Scout",
+  "status": "completed",
+  "why": [
+    "Stop over-curating tiny recommendation batches and switch discovery back to broad diverse intake.",
+    "Prepare the repo-local surface for a 1000-agent / 500-chip style frontier collection pass with simulation deferred."
+  ],
+  "files_changed": [
+    "src/chip_labs/mirofish/discovery.py",
+    "src/chip_labs/cli.py",
+    "tests/test_mirofish_discovery.py",
+    "docs/MIROFISH_DISCOVERY_PROGRAM.md",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_SCAFFOLD_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_BRIEF_2026-03-24.md",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_DIRECTORY_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md",
+    "research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24/README.md",
+    "research/meta/MIROFISH_DISCOVERY_DIVERSE_FRONTIER_FAST_PATH_NOTE_2026-03-24.md",
+    "research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_diverse_frontier_fast_path.json",
+    "research/meta/CHANGE_LOG_2026-03-24.md",
+    "research/meta/DIFF_SUMMARY_2026-03-24.md"
+  ],
+  "verification": [
+    "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py -q",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-scaffold --profile diverse_frontier --program-id mirofish-discovery-program-frontier-1000-diverse --target-agent-count 1000 --stage-label frontier_1000_diverse --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_SCAFFOLD_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json --title \"MiroFish Discovery Frontier 1000 Diverse Brief\" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_BRIEF_2026-03-24.md",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-materialize --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_PACKETS_2026-03-24.json --output-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --index-title \"MiroFish Discovery Frontier 1000 Diverse Clusters\" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_CLUSTER_DIRECTORY_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_PROGRESS_2026-03-24.md --title \"MiroFish Discovery Frontier 1000 Diverse Progress\""
+  ],
+  "next_step": "Fill the diverse frontier cluster packets quickly and postpone simulation until the broad frontier has been collected."
+}

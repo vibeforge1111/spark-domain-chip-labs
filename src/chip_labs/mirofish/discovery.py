@@ -136,6 +136,140 @@ DEFAULT_DISCOVERY_PILOT_CLUSTERS = [
     },
 ]
 
+DEFAULT_DISCOVERY_DIVERSE_FRONTIER_CLUSTERS = [
+    {
+        "cluster_id": "creator-growth-systems",
+        "label": "Creator Growth Systems",
+        "agent_count": 10,
+        "focus": "Recurring creator growth, packaging, monetization, repurposing, and audience-building loops.",
+        "seed_domains": ["tiktok-creator", "xcontent", "youtube-remixer"],
+    },
+    {
+        "cluster_id": "gaming-npc-community",
+        "label": "Gaming / NPC / Community Worlds",
+        "agent_count": 8,
+        "focus": "Recurring gaming, NPC, modding, streamer, and fan-community loops with strong social spread.",
+        "seed_domains": ["ai-npc-dialog", "discord-community", "streamer-overlay-ai"],
+    },
+    {
+        "cluster_id": "agentic-builders",
+        "label": "AI Agent Builders",
+        "agent_count": 8,
+        "focus": "Recurring agent building, orchestration, eval, workflow automation, and tool-composition loops.",
+        "seed_domains": ["ai-agent-builder", "mcp-server-builder", "cursor-copilot"],
+    },
+    {
+        "cluster_id": "startup-founder-systems",
+        "label": "Startup Builder Systems",
+        "agent_count": 8,
+        "focus": "Recurring startup validation, GTM, fundraising, and founder operating loops.",
+        "seed_domains": ["startup-yc", "indie-hacker", "agentic-marketing"],
+    },
+    {
+        "cluster_id": "productivity-builder-ops",
+        "label": "Builder Productivity Systems",
+        "agent_count": 8,
+        "focus": "Recurring shipping, planning, coordination, focus, and execution loops for ambitious builders.",
+        "seed_domains": ["cursor-copilot", "web-designer", "task-agent-ai"],
+    },
+    {
+        "cluster_id": "career-status-social-proof",
+        "label": "Career / Status / Social Proof",
+        "agent_count": 6,
+        "focus": "Recurring reputation, hiring, interview, resume, portfolio, and status-building loops.",
+        "seed_domains": ["resume-ai", "linkedin-optimizer", "interview-prep-ai"],
+    },
+    {
+        "cluster_id": "consumer-agent-utilities",
+        "label": "Consumer Agent Utilities",
+        "agent_count": 6,
+        "focus": "Recurring life-admin, shopping, travel, local decision, and personal coordination loops.",
+        "seed_domains": ["trip-planner-ai", "shopping-deal-finder", "family-coordinator-ai"],
+    },
+    {
+        "cluster_id": "crypto-defi-trading",
+        "label": "Crypto / DeFi / Trading",
+        "agent_count": 8,
+        "focus": "Recurring crypto trading, onchain research, portfolio ops, DeFi strategy, and token intelligence loops.",
+        "seed_domains": ["trading-crypto", "defi-architect", "onchain-research-ai"],
+    },
+    {
+        "cluster_id": "x-native-persona-tools",
+        "label": "X-Native Persona Tools",
+        "agent_count": 5,
+        "focus": "Recurring X-native posting, idea capture, reply games, clout loops, and identity-building tools.",
+        "seed_domains": ["xcontent", "personal-brand-ai", "reply-guy-ai"],
+    },
+    {
+        "cluster_id": "design-remix-aesthetics",
+        "label": "Design / Remix / Aesthetics",
+        "agent_count": 4,
+        "focus": "Recurring design remixing, visual identity, aesthetics, style-transfer, and show-off loops.",
+        "seed_domains": ["web-designer", "meme-remix-ai", "brand-kit-ai"],
+    },
+    {
+        "cluster_id": "education-skill-acceleration",
+        "label": "Education / Skill Acceleration",
+        "agent_count": 4,
+        "focus": "Recurring skill-building, tutoring, practice, and accelerated-learning loops.",
+        "seed_domains": ["language-tutor-ai", "interview-prep-ai", "career-pivot-ai"],
+    },
+    {
+        "cluster_id": "health-fitness-self-systems",
+        "label": "Health / Fitness / Self Systems",
+        "agent_count": 4,
+        "focus": "Recurring self-improvement, fitness, tracking, accountability, and coaching loops.",
+        "seed_domains": ["fitness-coach-ai", "habit-coach-ai", "meal-plan-ai"],
+    },
+    {
+        "cluster_id": "dating-social-signal",
+        "label": "Dating / Social Signal",
+        "agent_count": 4,
+        "focus": "Recurring dating, messaging, social confidence, and relationship-ops loops.",
+        "seed_domains": ["dating-message-ai", "social-confidence-ai", "personal-brand-ai"],
+    },
+    {
+        "cluster_id": "ecommerce-merchant-growth",
+        "label": "Ecommerce / Merchant Growth",
+        "agent_count": 4,
+        "focus": "Recurring merchant growth, merchandising, storefront optimization, and retention loops.",
+        "seed_domains": ["shopify-growth-ai", "price-optimization-ai", "ugc-ads-ai"],
+    },
+    {
+        "cluster_id": "local-discovery-experiences",
+        "label": "Local Discovery / Experiences",
+        "agent_count": 4,
+        "focus": "Recurring local recommendations, events, outings, experiences, and city-exploration loops.",
+        "seed_domains": ["trip-planner-ai", "local-deal-finder", "restaurant-decider-ai"],
+    },
+    {
+        "cluster_id": "fandom-collectibles-communities",
+        "label": "Fandom / Collectibles / Communities",
+        "agent_count": 3,
+        "focus": "Recurring fandom, collectibles, niche community, and identity-market loops.",
+        "seed_domains": ["sports-card-community-ai", "anime-fandom-ai", "collectibles-pricer-ai"],
+    },
+    {
+        "cluster_id": "finance-money-ops",
+        "label": "Finance / Money Ops",
+        "agent_count": 3,
+        "focus": "Recurring budgeting, saving, spending, and money-management loops for individuals.",
+        "seed_domains": ["budgeting-ai", "side-hustle-ai", "money-coach-ai"],
+    },
+    {
+        "cluster_id": "developer-distribution-tools",
+        "label": "Developer Distribution Tools",
+        "agent_count": 3,
+        "focus": "Recurring developer growth, launch, docs, community, and distribution loops.",
+        "seed_domains": ["github-growth-ai", "devrel-copilot", "open-source-launch-ai"],
+    },
+]
+
+DISCOVERY_CLUSTER_PROFILES = {
+    "viral": DEFAULT_DISCOVERY_PILOT_CLUSTERS,
+    "diverse_frontier": DEFAULT_DISCOVERY_DIVERSE_FRONTIER_CLUSTERS,
+}
+
 DEFAULT_DISCOVERY_X_PERSONAS = [
     "X-native solo founder",
     "Indie hacker shipping in public",
@@ -163,6 +297,34 @@ class CanonicalizationResult:
     accepted: list[dict[str, Any]]
     merged: list[dict[str, Any]]
     rejected: list[dict[str, Any]]
+
+
+def _scaled_cluster_plan(profile: str, target_agent_count: int) -> list[dict[str, Any]]:
+    """Scale a base cluster profile to the requested target agent count."""
+    if target_agent_count <= 0:
+        raise ValueError("target_agent_count must be positive.")
+    base_plan = deepcopy(DISCOVERY_CLUSTER_PROFILES.get(profile, []))
+    if not base_plan:
+        available = ", ".join(sorted(DISCOVERY_CLUSTER_PROFILES))
+        raise ValueError(f"Unknown discovery profile `{profile}`. Available profiles: {available}.")
+
+    base_total = sum(int(cluster.get("agent_count", 0)) for cluster in base_plan)
+    raw_counts = [
+        (index, int(cluster.get("agent_count", 0)) * target_agent_count / base_total)
+        for index, cluster in enumerate(base_plan)
+    ]
+    scaled_counts = [int(raw) for _, raw in raw_counts]
+    assigned_total = sum(scaled_counts)
+    remainders = sorted(
+        ((raw - int(raw), index) for index, raw in raw_counts),
+        reverse=True,
+    )
+    for _, index in remainders[: max(0, target_agent_count - assigned_total)]:
+        scaled_counts[index] += 1
+
+    for cluster, scaled_count in zip(base_plan, scaled_counts, strict=True):
+        cluster["agent_count"] = int(scaled_count)
+    return base_plan
 
 
 def slugify_domain_label(label: str) -> str:
@@ -375,15 +537,11 @@ def build_discovery_program_scaffold(
     program_id: str = "mirofish-discovery-program-pilot-100",
     target_agent_count: int = 100,
     stage_label: str = "pilot_100",
+    profile: str = "viral",
 ) -> dict[str, Any]:
     """Build a structured multi-agent discovery pilot scaffold."""
     now = datetime.now(timezone.utc).isoformat()
-    cluster_plan = deepcopy(DEFAULT_DISCOVERY_PILOT_CLUSTERS)
-    assigned_total = sum(int(cluster.get("agent_count", 0)) for cluster in cluster_plan)
-    if target_agent_count != assigned_total:
-        raise ValueError(
-            f"Pilot scaffold target_agent_count={target_agent_count} does not match cluster plan total={assigned_total}."
-        )
+    cluster_plan = _scaled_cluster_plan(profile=profile, target_agent_count=target_agent_count)
 
     agent_submissions: list[dict[str, Any]] = []
     next_agent_number = 1
@@ -423,6 +581,7 @@ def build_discovery_program_scaffold(
         "created_at": now,
         "program_id": program_id,
         "stage_label": stage_label,
+        "profile": profile,
         "target_agent_count": target_agent_count,
         "cluster_plan": cluster_plan,
         "collection_rules": {
