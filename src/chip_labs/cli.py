@@ -579,6 +579,27 @@ def cmd_mirofish_discovery_program_scaffold(args: argparse.Namespace) -> None:
     _write_output(args.output, result)
 
 
+def cmd_mirofish_discovery_program_split(args: argparse.Namespace) -> None:
+    """Split a discovery scaffold into operator-facing per-cluster packets."""
+    from .mirofish.discovery import split_discovery_program_scaffold
+
+    input_data = _load_input(args.input)
+    result = split_discovery_program_scaffold(input_data)
+    _write_output(args.output, result)
+
+
+def cmd_mirofish_discovery_program_brief(args: argparse.Namespace) -> None:
+    """Export a discovery scaffold, cluster bundle, or result packet as markdown."""
+    from .mirofish.discovery import format_discovery_program_markdown
+
+    input_data = _load_input(args.input)
+    result = format_discovery_program_markdown(
+        input_data,
+        title=args.title,
+    )
+    _write_text_output(args.output, result)
+
+
 # ---------------------------------------------------------------------------
 # Command: mirofish-hybrid-spec
 # ---------------------------------------------------------------------------
@@ -907,6 +928,30 @@ def main() -> None:
     )
     p_mirofish_discovery_program_scaffold.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_discovery_program_scaffold.set_defaults(func=cmd_mirofish_discovery_program_scaffold)
+
+    # mirofish-discovery-program-split
+    p_mirofish_discovery_program_split = sub.add_parser(
+        "mirofish-discovery-program-split",
+        help="Split a discovery scaffold into operator-facing per-cluster packets.",
+    )
+    p_mirofish_discovery_program_split.add_argument("--input", type=str, required=True, help="Input scaffold JSON file path.")
+    p_mirofish_discovery_program_split.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_discovery_program_split.set_defaults(func=cmd_mirofish_discovery_program_split)
+
+    # mirofish-discovery-program-brief
+    p_mirofish_discovery_program_brief = sub.add_parser(
+        "mirofish-discovery-program-brief",
+        help="Export a discovery scaffold, cluster bundle, or result packet as markdown.",
+    )
+    p_mirofish_discovery_program_brief.add_argument("--input", type=str, required=True, help="Input JSON file path.")
+    p_mirofish_discovery_program_brief.add_argument(
+        "--title",
+        type=str,
+        default="MiroFish Discovery Program",
+        help="Markdown heading for the exported brief.",
+    )
+    p_mirofish_discovery_program_brief.add_argument("--output", type=str, default=None, help="Output markdown file path.")
+    p_mirofish_discovery_program_brief.set_defaults(func=cmd_mirofish_discovery_program_brief)
 
     # mirofish-hybrid-spec
     p_mirofish_hybrid = sub.add_parser(

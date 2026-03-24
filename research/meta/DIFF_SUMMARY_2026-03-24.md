@@ -279,3 +279,12 @@ MiroFish discovery pilot scaffold:
 - expose it through `mirofish-discovery-program-scaffold`
 - generate the actual pilot intake packet with cluster allocation and per-agent briefs
 - keep the next-stage artifact truthful by generating a scaffold rather than a fake filled result
+
+## Batch 32
+
+MiroFish discovery pilot cluster packets:
+
+- split the real 100-agent scaffold into `10` operator-facing cluster packets
+- add a markdown brief generator for discovery scaffolds and cluster bundles
+- expose the new split and brief flows through repo-local CLI commands
+- generate the actual cluster bundle and readable pilot brief under `research/meta/`

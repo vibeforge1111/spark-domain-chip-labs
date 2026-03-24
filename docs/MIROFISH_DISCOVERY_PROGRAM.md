@@ -126,6 +126,20 @@ $env:PYTHONPATH='src'
 python -m chip_labs.cli mirofish-discovery-program-scaffold --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json
 ```
 
+Split the scaffold into per-cluster collection packets:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json
+```
+
+Export an operator-facing pilot brief:
+
+```powershell
+$env:PYTHONPATH='src'
+python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --title "MiroFish Discovery Pilot 100 Brief" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_BRIEF_2026-03-24.md
+```
+
 Canonicalize a filled pilot packet:
 
 ```powershell

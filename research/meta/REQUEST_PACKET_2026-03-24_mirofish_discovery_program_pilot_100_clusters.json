@@ -1,0 +1,54 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_discovery_program_pilot_100_clusters",
+  "created_at": "2026-03-24",
+  "scope": "Turn the 100-agent discovery pilot scaffold into operator-facing cluster packets and a readable brief",
+  "decision_context": {
+    "prior_state": "The repo already had the real 100-agent pilot scaffold, but it was still one large JSON packet that was awkward to hand off or collect against in batches.",
+    "decision": "Add a scaffold splitter and discovery markdown exporter, then generate the actual cluster packet bundle and pilot brief under research/meta.",
+    "why_now": "The next truthful step is to make the real pilot runnable in cluster-sized slices rather than pretending the collection phase has already happened."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/discovery.py",
+      "purpose": "Adds cluster-packet splitting and discovery markdown export helpers."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Adds the split and brief CLI commands."
+    },
+    {
+      "path": "tests/test_mirofish_discovery.py",
+      "purpose": "Covers cluster splitting and markdown export."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json",
+      "purpose": "Stores the actual per-cluster collection packets for the pilot."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_BRIEF_2026-03-24.md",
+      "purpose": "Provides an operator-facing summary of the cluster allocation."
+    }
+  ],
+  "planned_steps": [
+    "Split the scaffold into per-cluster collection packets",
+    "Generate a markdown brief for the operator-facing discovery surface",
+    "Verify the new split and brief flows with the focused regression suite"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --title \"MiroFish Discovery Pilot 100 Brief\" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_BRIEF_2026-03-24.md",
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The cluster bundle contains 10 cluster packets covering all 100 agents",
+      "The brief renders the cluster allocation and next actions",
+      "The focused regression suite stays green"
+    ]
+  },
+  "guardrails": [
+    "Do not fabricate filled candidate submissions for the 100-agent pilot",
+    "Preserve the same cluster allocation and collection rules from the scaffold",
+    "Keep the result operator-facing and repo-local"
+  ]
+}

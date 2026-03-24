@@ -443,6 +443,183 @@ def build_discovery_program_scaffold(
     }
 
 
+def split_discovery_program_scaffold(scaffold: dict[str, Any]) -> dict[str, Any]:
+    """Split a scaffold into operator-facing per-cluster collection packets."""
+    if scaffold.get("packet_kind") != "mirofish_discovery_program_scaffold":
+        raise ValueError("Expected a `mirofish_discovery_program_scaffold` packet.")
+
+    now = datetime.now(timezone.utc).isoformat()
+    cluster_plan = list(scaffold.get("cluster_plan", []))
+    collection_rules = deepcopy(scaffold.get("collection_rules", {}))
+    agent_submissions = list(scaffold.get("agent_submissions", []))
+    agents_by_cluster: dict[str, list[dict[str, Any]]] = {}
+    for submission in agent_submissions:
+        agents_by_cluster.setdefault(str(submission.get("cluster_id", "unassigned")), []).append(deepcopy(submission))
+
+    cluster_packets: list[dict[str, Any]] = []
+    for cluster in cluster_plan:
+        cluster_id = cluster["cluster_id"]
+        cluster_agents = agents_by_cluster.get(cluster_id, [])
+        cluster_packets.append({
+            "packet_kind": "mirofish_discovery_cluster_packet",
+            "created_at": now,
+            "program_id": scaffold.get("program_id", "mirofish-discovery-program"),
+            "stage_label": scaffold.get("stage_label", "pilot"),
+            "cluster_id": cluster_id,
+            "cluster_label": cluster["label"],
+            "focus": cluster["focus"],
+            "seed_domains": list(cluster.get("seed_domains", [])),
+            "target_agent_count": int(cluster.get("agent_count", 0)),
+            "collection_rules": deepcopy(collection_rules),
+            "agent_submissions": cluster_agents,
+            "next_actions": [
+                "Collect 1-3 concrete candidates from each assigned agent.",
+                "Reject vague workflows, personas, and generic tooling before canonicalization.",
+                "Merge the completed cluster packets back into one filled discovery-program packet.",
+            ],
+        })
+
+    return {
+        "packet_kind": "mirofish_discovery_program_cluster_packets",
+        "created_at": now,
+        "program_id": scaffold.get("program_id", "mirofish-discovery-program"),
+        "stage_label": scaffold.get("stage_label", "pilot"),
+        "target_agent_count": int(scaffold.get("target_agent_count", 0)),
+        "cluster_packet_count": len(cluster_packets),
+        "summary": {
+            "cluster_count": len(cluster_packets),
+            "agent_count": len(agent_submissions),
+        },
+        "cluster_packets": cluster_packets,
+        "next_actions": [
+            "Assign each cluster packet to a collection owner or agent swarm tranche.",
+            "Fill the per-cluster packets with real discoveries.",
+            "Recombine the filled packets into one discovery-program packet before canonicalization.",
+        ],
+    }
+
+
+def format_discovery_program_markdown(
+    packet: dict[str, Any],
+    title: str | None = None,
+) -> str:
+    """Render a scaffold, cluster split, or canonicalized program as operator-facing markdown."""
+    packet_kind = packet.get("packet_kind", "")
+    heading = title or "MiroFish Discovery Program"
+    lines = [f"# {heading}", ""]
+
+    if packet_kind == "mirofish_discovery_program_scaffold":
+        lines.extend(_format_discovery_scaffold_markdown(packet))
+    elif packet_kind == "mirofish_discovery_program_cluster_packets":
+        lines.extend(_format_discovery_cluster_packets_markdown(packet))
+    elif packet_kind == "mirofish_discovery_program":
+        lines.extend(_format_discovery_result_markdown(packet))
+    else:
+        raise ValueError(f"Unsupported discovery packet_kind for markdown export: {packet_kind}")
+
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def _format_discovery_scaffold_markdown(scaffold: dict[str, Any]) -> list[str]:
+    cluster_plan = list(scaffold.get("cluster_plan", []))
+    lines = [
+        f"- Program ID: `{scaffold.get('program_id', 'unknown')}`",
+        f"- Stage: `{scaffold.get('stage_label', 'unknown')}`",
+        f"- Target Agents: `{scaffold.get('target_agent_count', 0)}`",
+        f"- Clusters: `{len(cluster_plan)}`",
+        "",
+        "## Cluster Allocation",
+        "",
+    ]
+    for cluster in cluster_plan:
+        lines.append(
+            f"- `{cluster['cluster_id']}`: {cluster['label']} "
+            f"({int(cluster.get('agent_count', 0))} agents)"
+        )
+        lines.append(f"  Focus: {cluster['focus']}")
+        seed_domains = ", ".join(f"`{domain_id}`" for domain_id in cluster.get("seed_domains", []))
+        if seed_domains:
+            lines.append(f"  Seed domains: {seed_domains}")
+    collection_rules = scaffold.get("collection_rules", {})
+    lines.extend([
+        "",
+        "## Collection Rules",
+        "",
+        f"- Candidates per agent: `{collection_rules.get('min_candidates_per_agent', 1)}-{collection_rules.get('max_candidates_per_agent', 3)}`",
+        f"- Required fields: {', '.join(f'`{field}`' for field in collection_rules.get('required_candidate_fields', []))}",
+        "",
+        "## Next Actions",
+        "",
+    ])
+    for action in scaffold.get("next_actions", []):
+        lines.append(f"- {action}")
+    return lines
+
+
+def _format_discovery_cluster_packets_markdown(cluster_bundle: dict[str, Any]) -> list[str]:
+    cluster_packets = list(cluster_bundle.get("cluster_packets", []))
+    lines = [
+        f"- Program ID: `{cluster_bundle.get('program_id', 'unknown')}`",
+        f"- Stage: `{cluster_bundle.get('stage_label', 'unknown')}`",
+        f"- Cluster packets: `{len(cluster_packets)}`",
+        f"- Total agents: `{cluster_bundle.get('summary', {}).get('agent_count', 0)}`",
+        "",
+        "## Cluster Packets",
+        "",
+    ]
+    for packet in cluster_packets:
+        lines.append(
+            f"- `{packet['cluster_id']}`: {packet['cluster_label']} "
+            f"({int(packet.get('target_agent_count', 0))} agents)"
+        )
+        lines.append(f"  Focus: {packet['focus']}")
+        seed_domains = ", ".join(f"`{domain_id}`" for domain_id in packet.get("seed_domains", []))
+        if seed_domains:
+            lines.append(f"  Seed domains: {seed_domains}")
+    lines.extend([
+        "",
+        "## Next Actions",
+        "",
+    ])
+    for action in cluster_bundle.get("next_actions", []):
+        lines.append(f"- {action}")
+    return lines
+
+
+def _format_discovery_result_markdown(result: dict[str, Any]) -> list[str]:
+    summary = result.get("summary", {})
+    scale_readiness = result.get("scale_readiness", {})
+    accepted_candidates = list(result.get("accepted_candidates", []))
+    lines = [
+        f"- Program ID: `{result.get('program_id', 'unknown')}`",
+        f"- Stage: `{result.get('stage_label', 'unknown')}`",
+        f"- Participating Agents: `{result.get('participating_agent_count', 0)}` / `{result.get('target_agent_count', 0)}`",
+        f"- Accepted: `{summary.get('accepted_count', 0)}`",
+        f"- Merged: `{summary.get('merged_count', 0)}`",
+        f"- Rejected: `{summary.get('rejected_count', 0)}`",
+        f"- Recommended next stage: `{scale_readiness.get('next_stage', 'unknown')}`",
+        "",
+        "## Accepted Candidates",
+        "",
+    ]
+    if not accepted_candidates:
+        lines.append("- No accepted candidates yet.")
+    else:
+        for candidate in accepted_candidates[:15]:
+            lines.append(
+                f"- `{candidate['domain_id']}`: {candidate.get('label', candidate['domain_id'])} "
+                f"({candidate.get('classification', 'accepted')})"
+            )
+    lines.extend([
+        "",
+        "## Next Actions",
+        "",
+    ])
+    for action in result.get("next_actions", []):
+        lines.append(f"- {action}")
+    return lines
+
+
 def _build_alias_map(canonical_candidates: list[dict[str, Any]]) -> dict[str, str]:
     """Build an alias map for duplicates inside one intake set."""
     alias_map: dict[str, str] = {}

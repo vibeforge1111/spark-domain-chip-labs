@@ -1228,3 +1228,40 @@ After the smoke pass, the next honest artifact was the real 100-agent pilot scaf
 
 - This tranche prepares the real pilot collection surface.
 - It does not claim that the 100-agent pilot has already been run.
+
+## Tranche: MiroFish Discovery Pilot Cluster Packets
+
+### Files Changed
+
+- `src/chip_labs/mirofish/discovery.py`
+- `src/chip_labs/cli.py`
+- `tests/test_mirofish_discovery.py`
+- `docs/MIROFISH_DISCOVERY_PROGRAM.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_BRIEF_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_pilot_100_clusters.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The real pilot scaffold existed, but it was still one large JSON packet. The next operator need was to break that into workable cluster tranches and expose the allocation in a readable brief.
+
+### What Changed
+
+- Added a scaffold splitter that emits per-cluster collection packets
+- Added a markdown exporter for discovery scaffolds, cluster bundles, and canonicalized program packets
+- Added CLI commands for split and brief generation
+- Generated the actual `10`-cluster pilot packet bundle and markdown brief under `research/meta/`
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --title "MiroFish Discovery Pilot 100 Brief" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_BRIEF_2026-03-24.md`
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+
+### Notes
+
+- This tranche still does not fabricate a filled `100`-agent result.
+- It makes the real pilot executable in cluster-sized collection slices.

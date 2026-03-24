@@ -4,6 +4,8 @@ from chip_labs.mirofish.discovery import (
     build_discovery_program_scaffold,
     canonicalize_discovery_batch,
     canonicalize_discovery_program,
+    format_discovery_program_markdown,
+    split_discovery_program_scaffold,
 )
 
 
@@ -144,3 +146,27 @@ def test_build_discovery_program_scaffold_creates_100_agent_plan() -> None:
     assert scaffold["agent_submissions"][0]["agent_id"] == "agent-001"
     assert scaffold["agent_submissions"][-1]["agent_id"] == "agent-100"
     assert scaffold["cluster_plan"][0]["cluster_id"] == "security-compliance-response"
+
+
+def test_split_discovery_program_scaffold_emits_cluster_packets() -> None:
+    scaffold = build_discovery_program_scaffold()
+
+    result = split_discovery_program_scaffold(scaffold)
+
+    assert result["packet_kind"] == "mirofish_discovery_program_cluster_packets"
+    assert result["cluster_packet_count"] == 10
+    assert result["summary"]["agent_count"] == 100
+    assert result["cluster_packets"][0]["packet_kind"] == "mirofish_discovery_cluster_packet"
+    assert result["cluster_packets"][0]["target_agent_count"] == 16
+    assert len(result["cluster_packets"][0]["agent_submissions"]) == 16
+
+
+def test_format_discovery_program_markdown_renders_scaffold_summary() -> None:
+    scaffold = build_discovery_program_scaffold()
+
+    result = format_discovery_program_markdown(scaffold, title="Pilot Brief")
+
+    assert "# Pilot Brief" in result
+    assert "## Cluster Allocation" in result
+    assert "`security-compliance-response`" in result
+    assert "Security / Compliance Response" in result
