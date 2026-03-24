@@ -2,13 +2,13 @@
 
 - Directory: `research\meta\mirofish_discovery_pilot_100_clusters_2026-03-24`
 - Clusters: `10`
-- Filled agents: `6` / `100`
-- Raw candidates: `6`
-- Fill rate: `6.00%`
+- Filled agents: `9` / `100`
+- Raw candidates: `9`
+- Fill rate: `9.00%`
 
 ## Cluster Progress
 
-- `security-compliance-response`: 6 / 16 agents filled, 6 raw candidates
+- `security-compliance-response`: 9 / 16 agents filled, 9 raw candidates
 - `healthcare-revenue-cycle`: 0 / 14 agents filled, 0 raw candidates
 - `hvac-field-maintenance`: 0 / 10 agents filled, 0 raw candidates
 - `insurance-claims-appeals`: 0 / 10 agents filled, 0 raw candidates

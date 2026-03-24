@@ -1,6 +1,6 @@
 {
   "packet_kind": "mirofish_hybrid_evaluation_spec",
-  "created_at": "2026-03-24T17:49:22.096922+00:00",
+  "created_at": "2026-03-24T17:53:31.471103+00:00",
   "source_batch_id": null,
   "source_packet_kind": "mirofish_discovery_program",
   "evidence_lane": "exploratory_frontier",
@@ -10,7 +10,10 @@
     "trust-center-gap-copilot",
     "shared-responsibility-matrix-copilot",
     "compensating-control-justification-copilot",
-    "vendor-reassessment-delta-copilot"
+    "vendor-reassessment-delta-copilot",
+    "questionnaire-answer-drift-copilot",
+    "security-review-deflection-copilot",
+    "trust-document-access-workflow-copilot"
   ],
   "proposed_benchmark_domain_ids": [],
   "promotion_review_domain_ids": [],
@@ -406,6 +409,129 @@
         ],
         "promotion_status": "candidate"
       }
+    },
+    {
+      "domain_id": "questionnaire-answer-drift-copilot",
+      "label": "Questionnaire Answer Drift Copilot",
+      "description": "Maintains a governed answer library for security questionnaires and flags which prior answers need revision when policies, controls, or evidence change.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6701,
+      "rationale": "Drata says repeated questionnaires create version-control chaos and require updating many prior answers when policies change, while Vanta documents a shared knowledge base powering questionnaire automation and Trust Center resources as the source material that must stay current.",
+      "related_chips": [
+        "ai-security-questionnaire-copilot",
+        "trust-center-gap-copilot",
+        "security-control-crosswalk-copilot"
+      ],
+      "evidence_sources": [
+        "drata-questionnaire-bottlenecks",
+        "vanta-knowledge-base",
+        "drata-security-assurance"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "tracking answer-library drift across repeated customer security questionnaires",
+        "mastery_surface": "learning which policy, control, and evidence changes force answer updates, approval refreshes, or downstream questionnaire edits",
+        "user_value_loop": "monitor source-of-truth changes, detect affected approved answers, prepare revised wording and evidence references, and update the answer library after review",
+        "domain_tags": [
+          "security",
+          "questionnaire-automation",
+          "answer-library",
+          "governance"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "security-review-deflection-copilot",
+      "label": "Security Review Deflection Copilot",
+      "description": "Decides whether a prospect or customer security request can be deflected with existing trust materials or needs a custom follow-up package.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.67,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6511,
+      "rationale": "Vanta claims Trust Center can deflect a large share of reviews and speed the rest, its Trust Center FAQ says proactive sharing can avoid questionnaires altogether, and Drata positions trust-center AI search as the response layer that absorbs repeated one-off security questions.",
+      "related_chips": [
+        "trust-center-gap-copilot",
+        "ai-security-questionnaire-copilot",
+        "vendor-security-review-copilot"
+      ],
+      "evidence_sources": [
+        "vanta-calm-pliance",
+        "vanta-trust-center-faq",
+        "drata-ai-search-trust-center"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "classifying security review requests into trust-center-resolvable versus custom-response work",
+        "mastery_surface": "learning which request patterns can be safely deflected with reusable trust assets and which requests consistently require bespoke follow-up",
+        "user_value_loop": "ingest the customer ask, match it against approved trust resources and prior answers, recommend a deflection path or custom packet, and improve the playbook based on what resolved the review",
+        "domain_tags": [
+          "security",
+          "trust-center",
+          "review-deflection",
+          "pre-sales"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "trust-document-access-workflow-copilot",
+      "label": "Trust Document Access Workflow Copilot",
+      "description": "Runs the gated workflow for sharing sensitive security documents, including NDA checks, business-email verification, access approvals, and request follow-up.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6701,
+      "rationale": "Drata describes configurable trust-center access with NDAs and verified business emails, Vanta documents admin approval and NDA workflows around sensitive documentation, and customer stories position this gated sharing as part of the recurring trust process rather than a one-off task.",
+      "related_chips": [
+        "trust-center-gap-copilot",
+        "security-review-deflection-copilot",
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "drata-security-assurance",
+        "vanta-trust-center-faq",
+        "vanta-dovetail"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "managing access-controlled distribution of SOC reports, policies, and other sensitive trust-center documents",
+        "mastery_surface": "learning which access rules, requester attributes, and escalation patterns safely unblock reviews without oversharing sensitive materials",
+        "user_value_loop": "evaluate an access request, enforce NDA and requester checks, grant or deny document access, and update the access playbook after each review cycle",
+        "domain_tags": [
+          "security",
+          "trust-center",
+          "document-access",
+          "governance"
+        ],
+        "promotion_status": "candidate"
+      }
     }
   ],
   "proposed_benchmark_opportunities": [],
@@ -578,6 +704,88 @@
       }
     },
     {
+      "domain_id": "questionnaire-answer-drift-copilot",
+      "label": "Questionnaire Answer Drift Copilot",
+      "description": "Maintains a governed answer library for security questionnaires and flags which prior answers need revision when policies, controls, or evidence change.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6701,
+      "rationale": "Drata says repeated questionnaires create version-control chaos and require updating many prior answers when policies change, while Vanta documents a shared knowledge base powering questionnaire automation and Trust Center resources as the source material that must stay current.",
+      "related_chips": [
+        "ai-security-questionnaire-copilot",
+        "trust-center-gap-copilot",
+        "security-control-crosswalk-copilot"
+      ],
+      "evidence_sources": [
+        "drata-questionnaire-bottlenecks",
+        "vanta-knowledge-base",
+        "drata-security-assurance"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "tracking answer-library drift across repeated customer security questionnaires",
+        "mastery_surface": "learning which policy, control, and evidence changes force answer updates, approval refreshes, or downstream questionnaire edits",
+        "user_value_loop": "monitor source-of-truth changes, detect affected approved answers, prepare revised wording and evidence references, and update the answer library after review",
+        "domain_tags": [
+          "security",
+          "questionnaire-automation",
+          "answer-library",
+          "governance"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "trust-document-access-workflow-copilot",
+      "label": "Trust Document Access Workflow Copilot",
+      "description": "Runs the gated workflow for sharing sensitive security documents, including NDA checks, business-email verification, access approvals, and request follow-up.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6701,
+      "rationale": "Drata describes configurable trust-center access with NDAs and verified business emails, Vanta documents admin approval and NDA workflows around sensitive documentation, and customer stories position this gated sharing as part of the recurring trust process rather than a one-off task.",
+      "related_chips": [
+        "trust-center-gap-copilot",
+        "security-review-deflection-copilot",
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "drata-security-assurance",
+        "vanta-trust-center-faq",
+        "vanta-dovetail"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "managing access-controlled distribution of SOC reports, policies, and other sensitive trust-center documents",
+        "mastery_surface": "learning which access rules, requester attributes, and escalation patterns safely unblock reviews without oversharing sensitive materials",
+        "user_value_loop": "evaluate an access request, enforce NDA and requester checks, grant or deny document access, and update the access playbook after each review cycle",
+        "domain_tags": [
+          "security",
+          "trust-center",
+          "document-access",
+          "governance"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
       "domain_id": "trust-center-gap-copilot",
       "label": "Trust Center Gap Copilot",
       "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
@@ -700,6 +908,47 @@
       }
     },
     {
+      "domain_id": "security-review-deflection-copilot",
+      "label": "Security Review Deflection Copilot",
+      "description": "Decides whether a prospect or customer security request can be deflected with existing trust materials or needs a custom follow-up package.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.67,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6511,
+      "rationale": "Vanta claims Trust Center can deflect a large share of reviews and speed the rest, its Trust Center FAQ says proactive sharing can avoid questionnaires altogether, and Drata positions trust-center AI search as the response layer that absorbs repeated one-off security questions.",
+      "related_chips": [
+        "trust-center-gap-copilot",
+        "ai-security-questionnaire-copilot",
+        "vendor-security-review-copilot"
+      ],
+      "evidence_sources": [
+        "vanta-calm-pliance",
+        "vanta-trust-center-faq",
+        "drata-ai-search-trust-center"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "classifying security review requests into trust-center-resolvable versus custom-response work",
+        "mastery_surface": "learning which request patterns can be safely deflected with reusable trust assets and which requests consistently require bespoke follow-up",
+        "user_value_loop": "ingest the customer ask, match it against approved trust resources and prior answers, recommend a deflection path or custom packet, and improve the playbook based on what resolved the review",
+        "domain_tags": [
+          "security",
+          "trust-center",
+          "review-deflection",
+          "pre-sales"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
       "domain_id": "compensating-control-justification-copilot",
       "label": "Compensating Control Justification Copilot",
       "description": "Documents, packages, and maintains auditor-ready compensating control narratives when standard controls cannot be met directly.",
@@ -789,9 +1038,12 @@
       "ai-agent-builder",
       "startup-yc",
       "vendor-reassessment-delta-copilot",
+      "questionnaire-answer-drift-copilot",
+      "trust-document-access-workflow-copilot",
       "trust-center-gap-copilot",
       "security-control-crosswalk-copilot",
       "shared-responsibility-matrix-copilot",
+      "security-review-deflection-copilot",
       "compensating-control-justification-copilot",
       "vendor-assertion-evidence-verifier"
     ],
@@ -963,6 +1215,88 @@
         }
       },
       {
+        "domain_id": "questionnaire-answer-drift-copilot",
+        "label": "Questionnaire Answer Drift Copilot",
+        "description": "Maintains a governed answer library for security questionnaires and flags which prior answers need revision when policies, controls, or evidence change.",
+        "scores": {
+          "market_size": 0.788,
+          "data_availability": 0.52,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.75,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6701,
+        "rationale": "Drata says repeated questionnaires create version-control chaos and require updating many prior answers when policies change, while Vanta documents a shared knowledge base powering questionnaire automation and Trust Center resources as the source material that must stay current.",
+        "related_chips": [
+          "ai-security-questionnaire-copilot",
+          "trust-center-gap-copilot",
+          "security-control-crosswalk-copilot"
+        ],
+        "evidence_sources": [
+          "drata-questionnaire-bottlenecks",
+          "vanta-knowledge-base",
+          "drata-security-assurance"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "tracking answer-library drift across repeated customer security questionnaires",
+          "mastery_surface": "learning which policy, control, and evidence changes force answer updates, approval refreshes, or downstream questionnaire edits",
+          "user_value_loop": "monitor source-of-truth changes, detect affected approved answers, prepare revised wording and evidence references, and update the answer library after review",
+          "domain_tags": [
+            "security",
+            "questionnaire-automation",
+            "answer-library",
+            "governance"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "trust-document-access-workflow-copilot",
+        "label": "Trust Document Access Workflow Copilot",
+        "description": "Runs the gated workflow for sharing sensitive security documents, including NDA checks, business-email verification, access approvals, and request follow-up.",
+        "scores": {
+          "market_size": 0.788,
+          "data_availability": 0.52,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.75,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6701,
+        "rationale": "Drata describes configurable trust-center access with NDAs and verified business emails, Vanta documents admin approval and NDA workflows around sensitive documentation, and customer stories position this gated sharing as part of the recurring trust process rather than a one-off task.",
+        "related_chips": [
+          "trust-center-gap-copilot",
+          "security-review-deflection-copilot",
+          "legal-ops"
+        ],
+        "evidence_sources": [
+          "drata-security-assurance",
+          "vanta-trust-center-faq",
+          "vanta-dovetail"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "managing access-controlled distribution of SOC reports, policies, and other sensitive trust-center documents",
+          "mastery_surface": "learning which access rules, requester attributes, and escalation patterns safely unblock reviews without oversharing sensitive materials",
+          "user_value_loop": "evaluate an access request, enforce NDA and requester checks, grant or deny document access, and update the access playbook after each review cycle",
+          "domain_tags": [
+            "security",
+            "trust-center",
+            "document-access",
+            "governance"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
         "domain_id": "trust-center-gap-copilot",
         "label": "Trust Center Gap Copilot",
         "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
@@ -1080,6 +1414,47 @@
             "shared-responsibility",
             "compliance",
             "customer-review"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "security-review-deflection-copilot",
+        "label": "Security Review Deflection Copilot",
+        "description": "Decides whether a prospect or customer security request can be deflected with existing trust materials or needs a custom follow-up package.",
+        "scores": {
+          "market_size": 0.788,
+          "data_availability": 0.52,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.67,
+          "monetization_potential": 0.65
+        },
+        "composite_score": 0.6511,
+        "rationale": "Vanta claims Trust Center can deflect a large share of reviews and speed the rest, its Trust Center FAQ says proactive sharing can avoid questionnaires altogether, and Drata positions trust-center AI search as the response layer that absorbs repeated one-off security questions.",
+        "related_chips": [
+          "trust-center-gap-copilot",
+          "ai-security-questionnaire-copilot",
+          "vendor-security-review-copilot"
+        ],
+        "evidence_sources": [
+          "vanta-calm-pliance",
+          "vanta-trust-center-faq",
+          "drata-ai-search-trust-center"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "classifying security review requests into trust-center-resolvable versus custom-response work",
+          "mastery_surface": "learning which request patterns can be safely deflected with reusable trust assets and which requests consistently require bespoke follow-up",
+          "user_value_loop": "ingest the customer ask, match it against approved trust resources and prior answers, recommend a deflection path or custom packet, and improve the playbook based on what resolved the review",
+          "domain_tags": [
+            "security",
+            "trust-center",
+            "review-deflection",
+            "pre-sales"
           ],
           "promotion_status": "candidate"
         }
@@ -1501,6 +1876,128 @@
         }
       },
       {
+        "signal_id": "questionnaire-answer-drift-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Questionnaire Answer Drift Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "questionnaire-answer-drift-copilot-drata-questionnaire-bottlenecks",
+        "signal_type": "community_request",
+        "label": "Questionnaire Answer Drift Copilot via drata-questionnaire-bottlenecks",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "questionnaire-answer-drift-copilot-vanta-knowledge-base",
+        "signal_type": "community_request",
+        "label": "Questionnaire Answer Drift Copilot via vanta-knowledge-base",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "questionnaire-answer-drift-copilot-drata-security-assurance",
+        "signal_type": "community_request",
+        "label": "Questionnaire Answer Drift Copilot via drata-security-assurance",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "questionnaire-answer-drift-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Questionnaire Answer Drift Copilot ecosystem pull from ai-security-questionnaire-copilot, trust-center-gap-copilot, security-control-crosswalk-copilot",
+        "strength": 0.675,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "ai-security-questionnaire-copilot",
+            "trust-center-gap-copilot",
+            "security-control-crosswalk-copilot"
+          ]
+        }
+      },
+      {
+        "signal_id": "trust-document-access-workflow-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Trust Document Access Workflow Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trust-document-access-workflow-copilot-drata-security-assurance",
+        "signal_type": "community_request",
+        "label": "Trust Document Access Workflow Copilot via drata-security-assurance",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trust-document-access-workflow-copilot-vanta-trust-center-faq",
+        "signal_type": "community_request",
+        "label": "Trust Document Access Workflow Copilot via vanta-trust-center-faq",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trust-document-access-workflow-copilot-vanta-dovetail",
+        "signal_type": "community_request",
+        "label": "Trust Document Access Workflow Copilot via vanta-dovetail",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trust-document-access-workflow-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Trust Document Access Workflow Copilot ecosystem pull from trust-center-gap-copilot, security-review-deflection-copilot, legal-ops",
+        "strength": 0.675,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "trust-center-gap-copilot",
+            "security-review-deflection-copilot",
+            "legal-ops"
+          ]
+        }
+      },
+      {
         "signal_id": "trust-center-gap-copilot-community-demand",
         "signal_type": "community_request",
         "label": "Trust Center Gap Copilot community demand",
@@ -1669,6 +2166,67 @@
             "security-control-crosswalk-copilot",
             "vendor-security-review-copilot",
             "trust-center-gap-copilot"
+          ]
+        }
+      },
+      {
+        "signal_id": "security-review-deflection-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Security Review Deflection Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "security-review-deflection-copilot-vanta-calm-pliance",
+        "signal_type": "community_request",
+        "label": "Security Review Deflection Copilot via vanta-calm-pliance",
+        "strength": 0.3256,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "security-review-deflection-copilot-vanta-trust-center-faq",
+        "signal_type": "community_request",
+        "label": "Security Review Deflection Copilot via vanta-trust-center-faq",
+        "strength": 0.3256,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "security-review-deflection-copilot-drata-ai-search-trust-center",
+        "signal_type": "community_request",
+        "label": "Security Review Deflection Copilot via drata-ai-search-trust-center",
+        "strength": 0.3256,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "security-review-deflection-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Security Review Deflection Copilot ecosystem pull from trust-center-gap-copilot, ai-security-questionnaire-copilot, vendor-security-review-copilot",
+        "strength": 0.603,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "trust-center-gap-copilot",
+            "ai-security-questionnaire-copilot",
+            "vendor-security-review-copilot"
           ]
         }
       },
@@ -1877,6 +2435,72 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-extends-questionnaire-answer-drift-copilot-chip-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "questionnaire-answer-drift-copilot extends ai-security-questionnaire-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-questionnaire-answer-drift-copilot-chip-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "questionnaire-answer-drift-copilot extends trust-center-gap-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-questionnaire-answer-drift-copilot-chip-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "questionnaire-answer-drift-copilot extends security-control-crosswalk-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trust-document-access-workflow-copilot-chip-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "trust-document-access-workflow-copilot extends trust-center-gap-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trust-document-access-workflow-copilot-chip-security-review-deflection-copilot",
+        "signal_type": "competitor_chip",
+        "label": "trust-document-access-workflow-copilot extends security-review-deflection-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trust-document-access-workflow-copilot-chip-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "trust-document-access-workflow-copilot extends legal-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-extends-trust-center-gap-copilot-chip-vendor-security-review-copilot",
         "signal_type": "competitor_chip",
         "label": "trust-center-gap-copilot extends vendor-security-review-copilot",
@@ -1972,6 +2596,39 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-security-review-deflection-copilot-chip-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "security-review-deflection-copilot extends trust-center-gap-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-security-review-deflection-copilot-chip-ai-security-questionnaire-copilot",
+        "signal_type": "competitor_chip",
+        "label": "security-review-deflection-copilot extends ai-security-questionnaire-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-security-review-deflection-copilot-chip-vendor-security-review-copilot",
+        "signal_type": "competitor_chip",
+        "label": "security-review-deflection-copilot extends vendor-security-review-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
         ],
         "metadata": {}
       },
@@ -2262,6 +2919,50 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-vendor-reassessment-delta-copilot-questionnaire-answer-drift-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from questionnaire-answer-drift-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-questionnaire-answer-drift-copilot-vendor-reassessment-delta-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-reassessment-delta-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-reassessment-delta-copilot-trust-document-access-workflow-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-document-access-workflow-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-document-access-workflow-copilot-vendor-reassessment-delta-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-reassessment-delta-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-vendor-reassessment-delta-copilot-trust-center-gap-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from trust-center-gap-copilot",
@@ -2328,6 +3029,28 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-vendor-reassessment-delta-copilot-security-review-deflection-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-review-deflection-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-review-deflection-copilot-vendor-reassessment-delta-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-reassessment-delta-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-vendor-reassessment-delta-copilot-compensating-control-justification-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from compensating-control-justification-copilot",
@@ -2364,6 +3087,292 @@
         "signal_id": "graph-competes-vendor-assertion-evidence-verifier-vendor-reassessment-delta-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from vendor-reassessment-delta-copilot",
+        "strength": 0.285,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-questionnaire-answer-drift-copilot-trust-document-access-workflow-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-document-access-workflow-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-document-access-workflow-copilot-questionnaire-answer-drift-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from questionnaire-answer-drift-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-questionnaire-answer-drift-copilot-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-center-gap-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-center-gap-copilot-questionnaire-answer-drift-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from questionnaire-answer-drift-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-questionnaire-answer-drift-copilot-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-control-crosswalk-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-control-crosswalk-copilot-questionnaire-answer-drift-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from questionnaire-answer-drift-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-questionnaire-answer-drift-copilot-shared-responsibility-matrix-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from shared-responsibility-matrix-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-shared-responsibility-matrix-copilot-questionnaire-answer-drift-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from questionnaire-answer-drift-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-questionnaire-answer-drift-copilot-security-review-deflection-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-review-deflection-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-review-deflection-copilot-questionnaire-answer-drift-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from questionnaire-answer-drift-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-questionnaire-answer-drift-copilot-compensating-control-justification-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compensating-control-justification-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compensating-control-justification-copilot-questionnaire-answer-drift-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from questionnaire-answer-drift-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-questionnaire-answer-drift-copilot-vendor-assertion-evidence-verifier",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-assertion-evidence-verifier",
+        "strength": 0.285,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "questionnaire-answer-drift-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-assertion-evidence-verifier-questionnaire-answer-drift-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from questionnaire-answer-drift-copilot",
+        "strength": 0.285,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-document-access-workflow-copilot-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-center-gap-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-center-gap-copilot-trust-document-access-workflow-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-document-access-workflow-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-document-access-workflow-copilot-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-control-crosswalk-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-control-crosswalk-copilot-trust-document-access-workflow-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-document-access-workflow-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-document-access-workflow-copilot-shared-responsibility-matrix-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from shared-responsibility-matrix-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-shared-responsibility-matrix-copilot-trust-document-access-workflow-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-document-access-workflow-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-document-access-workflow-copilot-security-review-deflection-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-review-deflection-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-review-deflection-copilot-trust-document-access-workflow-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-document-access-workflow-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-document-access-workflow-copilot-compensating-control-justification-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compensating-control-justification-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compensating-control-justification-copilot-trust-document-access-workflow-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-document-access-workflow-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-document-access-workflow-copilot-vendor-assertion-evidence-verifier",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-assertion-evidence-verifier",
+        "strength": 0.285,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-document-access-workflow-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-assertion-evidence-verifier-trust-document-access-workflow-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-document-access-workflow-copilot",
         "strength": 0.285,
         "decay_per_round": 0.05,
         "affects_domains": [
@@ -2412,6 +3421,28 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-center-gap-copilot-security-review-deflection-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-review-deflection-copilot",
+        "strength": 0.285,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-review-deflection-copilot-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-center-gap-copilot",
+        "strength": 0.285,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
         ],
         "metadata": {}
       },
@@ -2482,6 +3513,28 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-security-control-crosswalk-copilot-security-review-deflection-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-review-deflection-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-review-deflection-copilot-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-control-crosswalk-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-security-control-crosswalk-copilot-compensating-control-justification-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from compensating-control-justification-copilot",
@@ -2522,6 +3575,28 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-shared-responsibility-matrix-copilot-security-review-deflection-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-review-deflection-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-review-deflection-copilot-shared-responsibility-matrix-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from shared-responsibility-matrix-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
         ],
         "metadata": {}
       },
@@ -2570,6 +3645,50 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-security-review-deflection-copilot-compensating-control-justification-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compensating-control-justification-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compensating-control-justification-copilot-security-review-deflection-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-review-deflection-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-review-deflection-copilot-vendor-assertion-evidence-verifier",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-assertion-evidence-verifier",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-review-deflection-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-assertion-evidence-verifier-security-review-deflection-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-review-deflection-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-compensating-control-justification-copilot-vendor-assertion-evidence-verifier",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from vendor-assertion-evidence-verifier",
@@ -2611,8 +3730,8 @@
           ],
           "affects_domains": [
             "vendor-reassessment-delta-copilot",
-            "trust-center-gap-copilot",
-            "security-control-crosswalk-copilot"
+            "questionnaire-answer-drift-copilot",
+            "trust-document-access-workflow-copilot"
           ],
           "inject_at_round": 4,
           "description": "A tool goes viral and creates massive awareness for the domain."
@@ -2973,6 +4092,127 @@
           "properties": {}
         },
         {
+          "id": "questionnaire-answer-drift-copilot",
+          "type": "domain",
+          "label": "Questionnaire Answer Drift Copilot",
+          "properties": {
+            "description": "Maintains a governed answer library for security questionnaires and flags which prior answers need revision when policies, controls, or evidence change.",
+            "composite_score": 0.6701,
+            "scores": {
+              "market_size": 0.788,
+              "data_availability": 0.52,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.75,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Drata says repeated questionnaires create version-control chaos and require updating many prior answers when policies change, while Vanta documents a shared knowledge base powering questionnaire automation and Trust Center resources as the source material that must stay current.",
+            "domain_tags": [
+              "answer-library",
+              "audit",
+              "compliance",
+              "governance",
+              "infrastructure",
+              "portfolio_intelligence",
+              "productivity",
+              "questionnaire-automation",
+              "quick_wins",
+              "roi",
+              "security",
+              "time_leverage"
+            ],
+            "retention_score": 0.78,
+            "choice_score": 0.77
+          }
+        },
+        {
+          "id": "chip-ai-security-questionnaire-copilot",
+          "type": "technology",
+          "label": "ai-security-questionnaire-copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-security-control-crosswalk-copilot",
+          "type": "technology",
+          "label": "security-control-crosswalk-copilot",
+          "properties": {}
+        },
+        {
+          "id": "platform-drata-questionnaire-bottlenecks",
+          "type": "platform",
+          "label": "drata-questionnaire-bottlenecks",
+          "properties": {}
+        },
+        {
+          "id": "platform-vanta-knowledge-base",
+          "type": "platform",
+          "label": "vanta-knowledge-base",
+          "properties": {}
+        },
+        {
+          "id": "platform-drata-security-assurance",
+          "type": "platform",
+          "label": "drata-security-assurance",
+          "properties": {}
+        },
+        {
+          "id": "trust-document-access-workflow-copilot",
+          "type": "domain",
+          "label": "Trust Document Access Workflow Copilot",
+          "properties": {
+            "description": "Runs the gated workflow for sharing sensitive security documents, including NDA checks, business-email verification, access approvals, and request follow-up.",
+            "composite_score": 0.6701,
+            "scores": {
+              "market_size": 0.788,
+              "data_availability": 0.52,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.75,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Drata describes configurable trust-center access with NDAs and verified business emails, Vanta documents admin approval and NDA workflows around sensitive documentation, and customer stories position this gated sharing as part of the recurring trust process rather than a one-off task.",
+            "domain_tags": [
+              "audit",
+              "compliance",
+              "document-access",
+              "governance",
+              "infrastructure",
+              "portfolio_intelligence",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "security",
+              "trust-center"
+            ],
+            "retention_score": 0.67,
+            "choice_score": 0.48
+          }
+        },
+        {
+          "id": "chip-security-review-deflection-copilot",
+          "type": "technology",
+          "label": "security-review-deflection-copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-legal-ops",
+          "type": "technology",
+          "label": "legal-ops",
+          "properties": {}
+        },
+        {
+          "id": "platform-vanta-trust-center-faq",
+          "type": "platform",
+          "label": "vanta-trust-center-faq",
+          "properties": {}
+        },
+        {
+          "id": "platform-vanta-dovetail",
+          "type": "platform",
+          "label": "vanta-dovetail",
+          "properties": {}
+        },
+        {
           "id": "trust-center-gap-copilot",
           "type": "domain",
           "label": "Trust Center Gap Copilot",
@@ -3006,18 +4246,6 @@
             "retention_score": 0.81,
             "choice_score": 0.58
           }
-        },
-        {
-          "id": "chip-ai-security-questionnaire-copilot",
-          "type": "technology",
-          "label": "ai-security-questionnaire-copilot",
-          "properties": {}
-        },
-        {
-          "id": "chip-legal-ops",
-          "type": "technology",
-          "label": "legal-ops",
-          "properties": {}
         },
         {
           "id": "platform-cyberday-trust-center",
@@ -3120,12 +4348,6 @@
           }
         },
         {
-          "id": "chip-security-control-crosswalk-copilot",
-          "type": "technology",
-          "label": "security-control-crosswalk-copilot",
-          "properties": {}
-        },
-        {
           "id": "platform-summit7-shared-responsibility",
           "type": "platform",
           "label": "summit7-shared-responsibility",
@@ -3141,6 +4363,51 @@
           "id": "platform-csa-shared-security",
           "type": "platform",
           "label": "csa-shared-security",
+          "properties": {}
+        },
+        {
+          "id": "security-review-deflection-copilot",
+          "type": "domain",
+          "label": "Security Review Deflection Copilot",
+          "properties": {
+            "description": "Decides whether a prospect or customer security request can be deflected with existing trust materials or needs a custom follow-up package.",
+            "composite_score": 0.6511,
+            "scores": {
+              "market_size": 0.788,
+              "data_availability": 0.52,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.67,
+              "monetization_potential": 0.65
+            },
+            "rationale": "Vanta claims Trust Center can deflect a large share of reviews and speed the rest, its Trust Center FAQ says proactive sharing can avoid questionnaires altogether, and Drata positions trust-center AI search as the response layer that absorbs repeated one-off security questions.",
+            "domain_tags": [
+              "audit",
+              "compliance",
+              "infrastructure",
+              "portfolio_intelligence",
+              "pre-sales",
+              "productivity",
+              "quick_wins",
+              "review-deflection",
+              "roi",
+              "security",
+              "trust-center"
+            ],
+            "retention_score": 0.72,
+            "choice_score": 0.65
+          }
+        },
+        {
+          "id": "platform-vanta-calm-pliance",
+          "type": "platform",
+          "label": "vanta-calm-pliance",
+          "properties": {}
+        },
+        {
+          "id": "platform-drata-ai-search-trust-center",
+          "type": "platform",
+          "label": "drata-ai-search-trust-center",
           "properties": {}
         },
         {
@@ -3433,6 +4700,78 @@
           "weight": 0.5
         },
         {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "chip-ai-security-questionnaire-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "chip-trust-center-gap-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "chip-security-control-crosswalk-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "platform-drata-questionnaire-bottlenecks",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "platform-vanta-knowledge-base",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "platform-drata-security-assurance",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "chip-trust-center-gap-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "chip-security-review-deflection-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "chip-legal-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "platform-drata-security-assurance",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "platform-vanta-trust-center-faq",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "platform-vanta-dovetail",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
           "source": "trust-center-gap-copilot",
           "target": "chip-vendor-security-review-copilot",
           "relationship": "EXTENDS",
@@ -3535,6 +4874,42 @@
           "weight": 0.5
         },
         {
+          "source": "security-review-deflection-copilot",
+          "target": "chip-trust-center-gap-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "security-review-deflection-copilot",
+          "target": "chip-ai-security-questionnaire-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "security-review-deflection-copilot",
+          "target": "chip-vendor-security-review-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "security-review-deflection-copilot",
+          "target": "platform-vanta-calm-pliance",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "security-review-deflection-copilot",
+          "target": "platform-vanta-trust-center-faq",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "security-review-deflection-copilot",
+          "target": "platform-drata-ai-search-trust-center",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
           "source": "compensating-control-justification-copilot",
           "target": "chip-security-control-crosswalk-copilot",
           "relationship": "EXTENDS",
@@ -3632,6 +5007,18 @@
         },
         {
           "source": "trading-crypto",
+          "target": "questionnaire-answer-drift-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.3915
+        },
+        {
+          "source": "trading-crypto",
+          "target": "trust-document-access-workflow-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.3915
+        },
+        {
+          "source": "trading-crypto",
           "target": "trust-center-gap-copilot",
           "relationship": "ENABLES",
           "weight": 0.39065
@@ -3647,6 +5034,12 @@
           "target": "shared-responsibility-matrix-copilot",
           "relationship": "ENABLES",
           "weight": 0.38485
+        },
+        {
+          "source": "trading-crypto",
+          "target": "security-review-deflection-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.379
         },
         {
           "source": "trading-crypto",
@@ -3686,6 +5079,18 @@
         },
         {
           "source": "cursor-copilot",
+          "target": "questionnaire-answer-drift-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40315
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "trust-document-access-workflow-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40315
+        },
+        {
+          "source": "cursor-copilot",
           "target": "trust-center-gap-copilot",
           "relationship": "ENABLES",
           "weight": 0.40235
@@ -3701,6 +5106,12 @@
           "target": "shared-responsibility-matrix-copilot",
           "relationship": "ENABLES",
           "weight": 0.3965
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "security-review-deflection-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39065
         },
         {
           "source": "cursor-copilot",
@@ -3734,6 +5145,18 @@
         },
         {
           "source": "mcp-server-builder",
+          "target": "questionnaire-answer-drift-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41065
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "trust-document-access-workflow-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41065
+        },
+        {
+          "source": "mcp-server-builder",
           "target": "trust-center-gap-copilot",
           "relationship": "ENABLES",
           "weight": 0.40485
@@ -3749,6 +5172,12 @@
           "target": "shared-responsibility-matrix-copilot",
           "relationship": "ENABLES",
           "weight": 0.404
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "security-review-deflection-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39815
         },
         {
           "source": "mcp-server-builder",
@@ -3776,6 +5205,18 @@
         },
         {
           "source": "ai-agent-builder",
+          "target": "questionnaire-answer-drift-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42485
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "trust-document-access-workflow-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42485
+        },
+        {
+          "source": "ai-agent-builder",
           "target": "trust-center-gap-copilot",
           "relationship": "ENABLES",
           "weight": 0.42235
@@ -3794,6 +5235,12 @@
         },
         {
           "source": "ai-agent-builder",
+          "target": "security-review-deflection-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41235
+        },
+        {
+          "source": "ai-agent-builder",
           "target": "compensating-control-justification-copilot",
           "relationship": "ENABLES",
           "weight": 0.4115
@@ -3807,6 +5254,18 @@
         {
           "source": "startup-yc",
           "target": "vendor-reassessment-delta-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42065
+        },
+        {
+          "source": "startup-yc",
+          "target": "questionnaire-answer-drift-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42065
+        },
+        {
+          "source": "startup-yc",
+          "target": "trust-document-access-workflow-copilot",
           "relationship": "ENABLES",
           "weight": 0.42065
         },
@@ -3830,6 +5289,12 @@
         },
         {
           "source": "startup-yc",
+          "target": "security-review-deflection-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40815
+        },
+        {
+          "source": "startup-yc",
           "target": "compensating-control-justification-copilot",
           "relationship": "ENABLES",
           "weight": 0.40735
@@ -3839,6 +5304,18 @@
           "target": "vendor-assertion-evidence-verifier",
           "relationship": "ENABLES",
           "weight": 0.39565
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "questionnaire-answer-drift-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "trust-document-access-workflow-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
         },
         {
           "source": "vendor-reassessment-delta-copilot",
@@ -3860,12 +5337,96 @@
         },
         {
           "source": "vendor-reassessment-delta-copilot",
+          "target": "security-review-deflection-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
           "target": "compensating-control-justification-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9733
         },
         {
           "source": "vendor-reassessment-delta-copilot",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.95
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "trust-document-access-workflow-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "trust-center-gap-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "security-control-crosswalk-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "security-review-deflection-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9733
+        },
+        {
+          "source": "questionnaire-answer-drift-copilot",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.95
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "trust-center-gap-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "security-control-crosswalk-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "security-review-deflection-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9733
+        },
+        {
+          "source": "trust-document-access-workflow-copilot",
           "target": "vendor-assertion-evidence-verifier",
           "relationship": "COMPETES_WITH",
           "weight": 0.95
@@ -3881,6 +5442,12 @@
           "target": "shared-responsibility-matrix-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9617
+        },
+        {
+          "source": "trust-center-gap-copilot",
+          "target": "security-review-deflection-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.95
         },
         {
           "source": "trust-center-gap-copilot",
@@ -3902,6 +5469,12 @@
         },
         {
           "source": "security-control-crosswalk-copilot",
+          "target": "security-review-deflection-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
           "target": "compensating-control-justification-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9867
@@ -3914,6 +5487,12 @@
         },
         {
           "source": "shared-responsibility-matrix-copilot",
+          "target": "security-review-deflection-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "shared-responsibility-matrix-copilot",
           "target": "compensating-control-justification-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9867
@@ -3925,6 +5504,18 @@
           "weight": 0.9633
         },
         {
+          "source": "security-review-deflection-copilot",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "security-review-deflection-copilot",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
           "source": "compensating-control-justification-copilot",
           "target": "vendor-assertion-evidence-verifier",
           "relationship": "COMPETES_WITH",
@@ -3932,17 +5523,17 @@
         }
       ],
       "tracked_variables": {},
-      "node_count": 54,
-      "edge_count": 114
+      "node_count": 65,
+      "edge_count": 168
     }
   },
   "summary": {
-    "discovered_count": 6,
+    "discovered_count": 9,
     "benchmark_count": 5,
     "proposed_benchmark_count": 0,
     "promotion_review_count": 0,
-    "combined_domain_count": 11,
-    "signal_count": 125,
+    "combined_domain_count": 14,
+    "signal_count": 191,
     "shock_count": 3,
     "top_ranked_domain": "trading-crypto"
   },

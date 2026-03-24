@@ -333,3 +333,12 @@ MiroFish discovery security tranche 2:
 - refresh the partial pilot result to `6` accepted clear-domain candidates
 - correct the stale parallel-generated hybrid spec by rerunning the spec and hybrid read from the updated result
 - record `compensating-control-justification-copilot` as the current top watchlist candidate inside the security frontier slice
+
+## Batch 38
+
+MiroFish discovery security tranche 3:
+
+- extend the security cluster from `6` to `9` filled agents
+- refresh the partial pilot result to `9` accepted clear-domain candidates
+- rerun the bounded hybrid read from the corrected `9`-candidate result
+- record that `trust-document-access-workflow-copilot` now also clears the benchmark median while the wedge stays in frontier/watchlist

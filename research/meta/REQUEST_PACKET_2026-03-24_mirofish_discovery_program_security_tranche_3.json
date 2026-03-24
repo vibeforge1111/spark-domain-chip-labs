@@ -1,0 +1,58 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_discovery_program_security_tranche_3",
+  "created_at": "2026-03-24",
+  "scope": "Extend the security discovery tranche from 6 to 9 collected candidates and refresh the corrected 9-domain hybrid read",
+  "decision_context": {
+    "prior_state": "The second security tranche had 6 accepted candidates and one clear watchlist leader in the bounded hybrid run.",
+    "decision": "Add three more security-review candidates, refresh the partial pilot result to 9 accepted domains, and rerun the bounded hybrid validation from the updated result.",
+    "why_now": "The security wedge was the strongest active frontier slice, so the highest-value next move was to keep collecting inside that wedge before opening another cluster."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/01_security-compliance-response.json",
+      "purpose": "Stores the next three security-cluster candidates."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json",
+      "purpose": "Updates the pilot progress to 9 filled agents."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json",
+      "purpose": "Stores the refreshed 9-candidate partial pilot result."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json",
+      "purpose": "Stores the corrected 9-domain bounded hybrid run."
+    }
+  ],
+  "planned_steps": [
+    "Fill three more security-cluster agent slots with evidence-grounded candidates",
+    "Refresh the partial pilot result and progress surface to 9 accepted candidates",
+    "Rerun the bounded hybrid validation and promotion read from the corrected 9-domain result"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.md --title \"MiroFish Discovery Pilot 100 Progress\"",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json --title \"MiroFish Discovery Pilot 100 Result\" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.md",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json --output research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --rounds 8 --flagship-count-per-type 8 --ensemble-runs 4 --ensemble-count-per-type 4 --scenario-label mirofish-discovery-pilot-100-security-tranche",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_DIAGNOSTIC_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-promotion-brief --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_PROMOTION_BRIEF_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q"
+    ],
+    "expected_checks": [
+      "The pilot progress snapshot shows 9 filled agents and 9 raw candidates",
+      "The refreshed partial pilot result accepts all 9 candidates as clear_domain_chip",
+      "The corrected hybrid read shows at least two security candidates clearing or near the benchmark median",
+      "The focused regression suite stays green"
+    ]
+  },
+  "guardrails": [
+    "Do not rely on stale markdown or spec artifacts when the JSON result has already advanced to 9 candidates",
+    "Treat the corrected 9-domain hybrid artifacts as the valid read for this tranche",
+    "Keep this as a security-cluster expansion rather than treating the overall pilot as complete"
+  ]
+}

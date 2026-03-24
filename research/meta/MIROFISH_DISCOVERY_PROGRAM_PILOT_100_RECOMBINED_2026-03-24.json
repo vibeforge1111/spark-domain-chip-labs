@@ -1,6 +1,6 @@
 {
   "packet_kind": "mirofish_discovery_program_input",
-  "created_at": "2026-03-24T17:47:59.612438+00:00",
+  "created_at": "2026-03-24T17:53:02.449780+00:00",
   "program_id": "mirofish-discovery-program-pilot-100",
   "stage_label": "pilot_100",
   "target_agent_count": 100,
@@ -501,7 +501,44 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "label": "Questionnaire Answer Drift Copilot",
+          "description": "Maintains a governed answer library for security questionnaires and flags which prior answers need revision when policies, controls, or evidence change.",
+          "specialization_surface": "tracking answer-library drift across repeated customer security questionnaires",
+          "mastery_surface": "learning which policy, control, and evidence changes force answer updates, approval refreshes, or downstream questionnaire edits",
+          "user_value_loop": "monitor source-of-truth changes, detect affected approved answers, prepare revised wording and evidence references, and update the answer library after review",
+          "domain_tags": [
+            "security",
+            "questionnaire-automation",
+            "answer-library",
+            "governance"
+          ],
+          "evidence_sources": [
+            "drata-questionnaire-bottlenecks",
+            "vanta-knowledge-base",
+            "drata-security-assurance"
+          ],
+          "evidence_summary": "Drata says repeated questionnaires create version-control chaos and require updating many prior answers when policies change, while Vanta documents a shared knowledge base powering questionnaire automation and Trust Center resources as the source material that must stay current.",
+          "adjacent_domains": [
+            "ai-security-questionnaire-copilot",
+            "trust-center-gap-copilot",
+            "security-control-crosswalk-copilot"
+          ],
+          "duplicate_aliases": [
+            "Security Answer Drift Copilot",
+            "Questionnaire Answer Library Copilot"
+          ],
+          "confidence_read": "medium",
+          "promotion_status": "candidate",
+          "raw_observation": "The real recurring pain is not just answering the next questionnaire but keeping the approved answer library aligned when policies, controls, and evidence change underneath it.",
+          "evidence_links": [
+            "https://drata.com/grc-central/security-questionnaire-ai-automation",
+            "https://help.vanta.com/en/articles/11345465-trust-center-knowledge-base",
+            "https://drata.com/security-assurance"
+          ]
+        }
+      ]
     },
     {
       "agent_id": "agent-008",
@@ -522,7 +559,44 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "label": "Security Review Deflection Copilot",
+          "description": "Decides whether a prospect or customer security request can be deflected with existing trust materials or needs a custom follow-up package.",
+          "specialization_surface": "classifying security review requests into trust-center-resolvable versus custom-response work",
+          "mastery_surface": "learning which request patterns can be safely deflected with reusable trust assets and which requests consistently require bespoke follow-up",
+          "user_value_loop": "ingest the customer ask, match it against approved trust resources and prior answers, recommend a deflection path or custom packet, and improve the playbook based on what resolved the review",
+          "domain_tags": [
+            "security",
+            "trust-center",
+            "review-deflection",
+            "pre-sales"
+          ],
+          "evidence_sources": [
+            "vanta-calm-pliance",
+            "vanta-trust-center-faq",
+            "drata-ai-search-trust-center"
+          ],
+          "evidence_summary": "Vanta claims Trust Center can deflect a large share of reviews and speed the rest, its Trust Center FAQ says proactive sharing can avoid questionnaires altogether, and Drata positions trust-center AI search as the response layer that absorbs repeated one-off security questions.",
+          "adjacent_domains": [
+            "trust-center-gap-copilot",
+            "ai-security-questionnaire-copilot",
+            "vendor-security-review-copilot"
+          ],
+          "duplicate_aliases": [
+            "Trust Center Deflection Copilot",
+            "Security Review Triage Copilot"
+          ],
+          "confidence_read": "medium",
+          "promotion_status": "candidate",
+          "raw_observation": "Teams need a repeatable way to decide when the trust center is enough and when a customer request really needs custom work, because over-answering burns resources and under-answering extends the review.",
+          "evidence_links": [
+            "https://www.vanta.com/calm-pliance",
+            "https://help.vanta.com/en/articles/11346105-frequently-asked-questions-trust-centers",
+            "https://drata.com/blog/ai-search-for-trust-center"
+          ]
+        }
+      ]
     },
     {
       "agent_id": "agent-009",
@@ -543,7 +617,44 @@
           "Reject personas, generic features, and vague workflow ideas"
         ]
       },
-      "raw_candidates": []
+      "raw_candidates": [
+        {
+          "label": "Trust Document Access Workflow Copilot",
+          "description": "Runs the gated workflow for sharing sensitive security documents, including NDA checks, business-email verification, access approvals, and request follow-up.",
+          "specialization_surface": "managing access-controlled distribution of SOC reports, policies, and other sensitive trust-center documents",
+          "mastery_surface": "learning which access rules, requester attributes, and escalation patterns safely unblock reviews without oversharing sensitive materials",
+          "user_value_loop": "evaluate an access request, enforce NDA and requester checks, grant or deny document access, and update the access playbook after each review cycle",
+          "domain_tags": [
+            "security",
+            "trust-center",
+            "document-access",
+            "governance"
+          ],
+          "evidence_sources": [
+            "drata-security-assurance",
+            "vanta-trust-center-faq",
+            "vanta-dovetail"
+          ],
+          "evidence_summary": "Drata describes configurable trust-center access with NDAs and verified business emails, Vanta documents admin approval and NDA workflows around sensitive documentation, and customer stories position this gated sharing as part of the recurring trust process rather than a one-off task.",
+          "adjacent_domains": [
+            "trust-center-gap-copilot",
+            "security-review-deflection-copilot",
+            "legal-ops"
+          ],
+          "duplicate_aliases": [
+            "Trust Center Access Copilot",
+            "Sensitive Trust Document Workflow Copilot"
+          ],
+          "confidence_read": "medium",
+          "promotion_status": "candidate",
+          "raw_observation": "Once companies centralize trust materials, they still need a repeated workflow for deciding who gets what, under which gating rules, and with what follow-up when access is denied or escalated.",
+          "evidence_links": [
+            "https://drata.com/security-assurance",
+            "https://help.vanta.com/en/articles/11346105-frequently-asked-questions-trust-centers",
+            "https://www.vanta.com/customers/dovetail"
+          ]
+        }
+      ]
     },
     {
       "agent_id": "agent-010",
