@@ -2038,3 +2038,37 @@ The full diverse frontier had been collected and merged, but it still needed to 
 ### Notes
 
 - The next correct step is a bounded hybrid evaluation pass on the accepted candidate set.
+
+## Tranche: MiroFish Frontier Simulation Tranche 90
+
+### Files
+
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_SIMULATION_TRANCHE_90_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_90_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_90_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_DIAGNOSTIC_FRONTIER_TRANCHE_90_2026-03-24.json`
+- `research/meta/MIROFISH_FRONTIER_SIMULATION_TRANCHE_90_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_frontier_simulation_tranche_90.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The full canonical frontier was ready, but a direct bounded hybrid spec on all `1000` accepted candidates expanded into an impractically large artifact and the corresponding run did not finish within the runtime budget. The next honest move was to preserve diversity while shrinking the evaluation surface enough to get a real checkpoint.
+
+### What Changed
+
+- Built a diversity-preserving simulation tranche with `5` accepted candidates per cluster (`90` total)
+- Built a bounded hybrid spec from that tranche and ran it through MiroFish
+- Saved the diagnostic brief for the tranche run
+- Recorded the full-frontier hybrid attempt as a runtime boundary rather than a successful evaluation
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_SIMULATION_TRANCHE_90_2026-03-24.json --rounds 6 --flagship-count-per-type 4 --ensemble-runs 4 --ensemble-count-per-type 2 --scenario-label mirofish-frontier-tranche-90 --output research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_90_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_90_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_90_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_90_2026-03-24.json --output research/meta/MIROFISH_HYBRID_DIAGNOSTIC_FRONTIER_TRANCHE_90_2026-03-24.json`
+
+### Notes
+
+- The practical checkpoint from this tranche is that frontier interest exists, but choice and retained adoption remain weak under the current bounded harness.

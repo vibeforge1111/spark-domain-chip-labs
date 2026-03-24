@@ -1,0 +1,4652 @@
+{
+  "packet_kind": "mirofish_hybrid_evaluation_run",
+  "created_at": "2026-03-24T19:31:04.034266+00:00",
+  "source_batch_id": null,
+  "source_spec_created_at": "2026-03-24T19:30:21.175976+00:00",
+  "evidence_lane": "exploratory_frontier",
+  "seed": 42,
+  "harness": {
+    "max_rounds": 6,
+    "flagship_count_per_type": 4,
+    "flagship_agent_count": 60,
+    "ensemble_runs": 4,
+    "ensemble_count_per_type": 2,
+    "ensemble_agent_count": 30,
+    "persona_types": 15,
+    "read_order": [
+      "agent_choice_signal",
+      "peak_interest_probability",
+      "final_adoption_rate"
+    ]
+  },
+  "scenario": {
+    "scenario_id": "scenario-mirofish-frontier-tranche-90",
+    "label": "mirofish-frontier-tranche-90",
+    "shocks": [
+      {
+        "shock_id": "shock-breakout_tool-r4",
+        "template": "breakout_tool",
+        "signal_type": "producthunt_launch",
+        "label": "Breakout Tool Launch",
+        "strength": 0.9,
+        "effect": "positive",
+        "affected_persona_types": [
+          "opportunity_hunter",
+          "developer",
+          "tool_maker",
+          "ai_newcomer"
+        ],
+        "affects_domains": [
+          "chip_ai_agent_01",
+          "chip_ai_agent_08",
+          "chip_ai_agent_03"
+        ],
+        "inject_at_round": 4,
+        "description": "A tool goes viral and creates massive awareness for the domain."
+      },
+      {
+        "shock_id": "shock-open_source_release-r7",
+        "template": "open_source_release",
+        "signal_type": "github_trending",
+        "label": "Free Open Source Model Drop",
+        "strength": 0.85,
+        "effect": "positive",
+        "affected_persona_types": [
+          "developer",
+          "tool_maker",
+          "student_builder",
+          "ai_newcomer"
+        ],
+        "affects_domains": [
+          "cursor-copilot",
+          "mcp-server-builder",
+          "ai-agent-builder",
+          "chip_ai_agent_01",
+          "chip_ai_agent_08",
+          "chip_ai_agent_03",
+          "chip_ai_agent_07",
+          "onchain_alpha_scan_loop",
+          "chip_ai_agent_06",
+          "changelog-to-launch-loop",
+          "chip_ai_agent_02",
+          "chip_ai_agent_09",
+          "personal_cfo_loop",
+          "consumer_utility_stack",
+          "devrel-reply-loop",
+          "chip_ai_agent_11",
+          "chip_ai_agent_12",
+          "chip_ai_agent_14",
+          "chip_ai_agent_04",
+          "life-admin-planner-copilot",
+          "changelog-thread-copilot",
+          "fandom-drop-interpretation-loop",
+          "chip_ai_agent_05",
+          "chip_ai_agent_10",
+          "life-admin-planner-loop",
+          "changelog-thread-loop"
+        ],
+        "inject_at_round": 7,
+        "description": "Major open source AI model released free, lowers barrier to entry.",
+        "decay_curve": "s_curve",
+        "peak_round": 4
+      },
+      {
+        "shock_id": "shock-government_subsidy-r9",
+        "template": "government_subsidy",
+        "signal_type": "regulation",
+        "label": "Government AI Retraining Subsidy",
+        "strength": 0.75,
+        "effect": "positive",
+        "affected_persona_types": [
+          "displaced_worker",
+          "ai_newcomer",
+          "corporate_innovator"
+        ],
+        "affects_domains": [
+          "sleep-recovery-feedback-loop",
+          "resume-refresh-copilot",
+          "chip_ai_agent_10",
+          "career_signal_compounding_loop"
+        ],
+        "inject_at_round": 9,
+        "description": "Government funds AI training programs, boosting reskilling domains.",
+        "decay_curve": "plateau",
+        "plateau_duration": 8
+      },
+      {
+        "shock_id": "shock-market_crash-r11",
+        "template": "market_crash",
+        "signal_type": "regulation",
+        "label": "Market Crash",
+        "strength": 0.95,
+        "effect": "negative",
+        "affected_persona_types": [
+          "investor",
+          "trader",
+          "entrepreneur"
+        ],
+        "affects_domains": [
+          "trading-crypto",
+          "crypto_airdrop_hunting_loop",
+          "onchain_alpha_scan_loop",
+          "defi_yield_rotation_loop",
+          "trade_journal_feedback_loop",
+          "chip_ai_agent_12"
+        ],
+        "inject_at_round": 11,
+        "description": "Broad market downturn reduces investment appetite."
+      }
+    ],
+    "shock_count": 4
+  },
+  "discovered_domain_ids": [
+    "creator-idea-sprint-loop",
+    "distribution-repack-loop",
+    "audience-comment-loop",
+    "collab-graph-loop",
+    "micro-community-loop",
+    "live-raid-coordination-loop",
+    "npc-response-loop",
+    "fandom-drop-interpretation-loop",
+    "watch-party-escalation-loop",
+    "guild-ops-loop",
+    "chip_ai_agent_01",
+    "chip_ai_agent_02",
+    "chip_ai_agent_03",
+    "chip_ai_agent_06",
+    "chip_ai_agent_09",
+    "chip_ai_agent_07",
+    "chip_ai_agent_08",
+    "chip_ai_agent_11",
+    "chip_ai_agent_12",
+    "chip_ai_agent_14",
+    "chip_ai_agent_04",
+    "chip_ai_agent_05",
+    "chip_ai_agent_10",
+    "task-queue-reset-copilot",
+    "task-queue-reset-loop",
+    "career_signal_compounding_loop",
+    "creator_public_wins_loop",
+    "networking_followup_loop",
+    "independent_operator_brand_loop",
+    "resume-refresh-copilot",
+    "personal_cfo_loop",
+    "money_admin_loop",
+    "consumer_utility_stack",
+    "life-admin-planner-copilot",
+    "life-admin-planner-loop",
+    "crypto_airdrop_hunting_loop",
+    "defi_yield_rotation_loop",
+    "wallet_ops_security_loop",
+    "onchain_alpha_scan_loop",
+    "trade_journal_feedback_loop",
+    "identity-proof-loop",
+    "status-signal-loop",
+    "trend-to-thesis-loop",
+    "reply-game-copilot",
+    "reply-game-workflow",
+    "remix-meme-loop",
+    "design-feedback-loop",
+    "remix-refresh-copilot",
+    "remix-refresh-loop",
+    "remix-refresh-workflow",
+    "language-output-drill-loop",
+    "tutorial-sprint-lab",
+    "interview-story-rehearsal-loop",
+    "language-sprint-copilot",
+    "language-sprint-loop",
+    "workout-streak-proof-loop",
+    "meal-prep-adherence-loop",
+    "sleep-recovery-feedback-loop",
+    "workout-streak-copilot",
+    "workout-streak-loop",
+    "opener-iteration-loop",
+    "date-debrief-loop",
+    "profile-signal-refresh-loop",
+    "opener-refresh-copilot",
+    "opener-refresh-loop",
+    "product-angle-test-loop",
+    "creator-ugc-brief-loop",
+    "merch-drop-timing-loop",
+    "product-angle-test-copilot",
+    "product-angle-test-system",
+    "city-weekend-stack-loop",
+    "restaurant-veto-resolution-loop",
+    "live-event-discovery-loop",
+    "weekend-stack-copilot",
+    "weekend-stack-system",
+    "community-ritual-loop",
+    "drop-alert-copilot",
+    "drop-alert-loop",
+    "drop-alert-system",
+    "drop-alert-workflow",
+    "paycheck-allocation-loop",
+    "subscription-prune-loop",
+    "spending-pattern-reset-loop",
+    "paycheck-allocation-copilot",
+    "paycheck-allocation-system",
+    "changelog-to-launch-loop",
+    "repo-proof-loop",
+    "devrel-reply-loop",
+    "changelog-thread-copilot",
+    "changelog-thread-loop"
+  ],
+  "proposed_benchmark_domain_ids": [],
+  "promotion_review_domain_ids": [],
+  "benchmark_domain_ids": [
+    "trading-crypto",
+    "startup-yc",
+    "cursor-copilot",
+    "mcp-server-builder",
+    "ai-agent-builder"
+  ],
+  "top_line": {
+    "top_choice_signal_domain": "defi_yield_rotation_loop",
+    "top_choice_signal": 0.1,
+    "top_final_adoption_domain": "defi_yield_rotation_loop",
+    "top_final_adoption": 0.0,
+    "top_ensemble_domain": "defi_yield_rotation_loop",
+    "top_ensemble_mean_adoption": 0.0
+  },
+  "domain_predictions": [
+    {
+      "domain_id": "defi_yield_rotation_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.1,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.1,
+      "peak_interest_probability": 0.8667,
+      "agent_choice_signal": 0.1,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5667,
+      "disagreement_score": 0.4333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption",
+        "Many agents tried it, but the funnel lost them before retention"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "fandom-drop-interpretation-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0667,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0667,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0667,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_03",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0333,
+      "peak_interest_probability": 0.7667,
+      "agent_choice_signal": 0.0333,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6333,
+      "disagreement_score": 0.3667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "changelog-to-launch-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0333,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.0333,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6667,
+      "disagreement_score": 0.3333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "personal_cfo_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0333,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.0333,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "resume-refresh-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0333,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0333,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5,
+      "disagreement_score": 0.5,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "trading-crypto",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6667,
+      "disagreement_score": 0.3333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "startup-yc",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_01",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_08",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5667,
+      "disagreement_score": 0.4333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_07",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "crypto_airdrop_hunting_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "wallet_ops_security_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6333,
+      "disagreement_score": 0.3667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "onchain_alpha_scan_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6333,
+      "disagreement_score": 0.3667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_06",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "trade_journal_feedback_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5667,
+      "disagreement_score": 0.4333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "creator-idea-sprint-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5667,
+      "disagreement_score": 0.4333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "distribution-repack-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "audience-comment-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.7,
+      "disagreement_score": 0.3,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "npc-response-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_02",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6333,
+      "disagreement_score": 0.3667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_09",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "creator_public_wins_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.7,
+      "disagreement_score": 0.3,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "money_admin_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5,
+      "disagreement_score": 0.5,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "consumer_utility_stack",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5667,
+      "disagreement_score": 0.4333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "status-signal-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "remix-meme-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "design-feedback-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6667,
+      "disagreement_score": 0.3333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "merch-drop-timing-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "paycheck-allocation-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "repo-proof-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "devrel-reply-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5667,
+      "disagreement_score": 0.4333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_11",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5667,
+      "disagreement_score": 0.4333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_12",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.8667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "high",
+      "consensus_score": 0.7333,
+      "disagreement_score": 0.2667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "High consensus indicates clear market demand",
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_14",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_04",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "task-queue-reset-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5,
+      "disagreement_score": 0.5,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "life-admin-planner-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "paycheck-allocation-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "changelog-thread-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5667,
+      "disagreement_score": 0.4333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "collab-graph-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "micro-community-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "live-raid-coordination-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "guild-ops-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_05",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6667,
+      "disagreement_score": 0.3333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "networking_followup_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "identity-proof-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3333,
+      "disagreement_score": 0.6667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "trend-to-thesis-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.4,
+      "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "tutorial-sprint-lab",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "meal-prep-adherence-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5,
+      "disagreement_score": 0.5,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "sleep-recovery-feedback-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5,
+      "disagreement_score": 0.5,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "product-angle-test-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "creator-ugc-brief-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.4,
+      "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "community-ritual-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "subscription-prune-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5,
+      "disagreement_score": 0.5,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "spending-pattern-reset-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.4,
+      "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "independent_operator_brand_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6667,
+      "disagreement_score": 0.3333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "reply-game-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6333,
+      "disagreement_score": 0.3667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "remix-refresh-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "language-sprint-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "workout-streak-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 4,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "opener-refresh-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5,
+      "disagreement_score": 0.5,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "product-angle-test-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "weekend-stack-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "drop-alert-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "watch-party-escalation-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "chip_ai_agent_10",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "career_signal_compounding_loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "language-output-drill-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 4,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "interview-story-rehearsal-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.4,
+      "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "workout-streak-proof-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.4,
+      "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "opener-iteration-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "date-debrief-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3333,
+      "disagreement_score": 0.6667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "profile-signal-refresh-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "city-weekend-stack-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3333,
+      "disagreement_score": 0.6667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "restaurant-veto-resolution-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 4,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.4,
+      "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "live-event-discovery-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5,
+      "disagreement_score": 0.5,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "task-queue-reset-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "life-admin-planner-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "paycheck-allocation-system",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.3,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "No strong adoption drivers detected yet"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "changelog-thread-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "reply-game-workflow",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "remix-refresh-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5667,
+      "disagreement_score": 0.4333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "remix-refresh-workflow",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.6,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "language-sprint-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.4,
+      "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "workout-streak-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.3333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 4,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.4,
+      "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "No strong adoption drivers detected yet"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "opener-refresh-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5333,
+      "disagreement_score": 0.4667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "product-angle-test-system",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3333,
+      "disagreement_score": 0.6667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "weekend-stack-system",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.3333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "No strong adoption drivers detected yet"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "drop-alert-loop",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.4,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3333,
+      "disagreement_score": 0.6667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "drop-alert-system",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.3667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3667,
+      "disagreement_score": 0.6333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "drop-alert-workflow",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 5,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.5,
+      "disagreement_score": 0.5,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    }
+  ],
+  "cross_domain": {
+    "portfolio_gaps": [
+      "Fewer than 2 domains show strong adoption -- portfolio concentration risk.",
+      "Weak adoption signals for: defi_yield_rotation_loop, fandom-drop-interpretation-loop, chip_ai_agent_03, changelog-to-launch-loop, personal_cfo_loop, resume-refresh-copilot, trading-crypto, cursor-copilot, mcp-server-builder, ai-agent-builder, startup-yc, chip_ai_agent_01, chip_ai_agent_08, chip_ai_agent_07, crypto_airdrop_hunting_loop, wallet_ops_security_loop, onchain_alpha_scan_loop, chip_ai_agent_06, trade_journal_feedback_loop, creator-idea-sprint-loop, distribution-repack-loop, audience-comment-loop, npc-response-loop, chip_ai_agent_02, chip_ai_agent_09, creator_public_wins_loop, money_admin_loop, consumer_utility_stack, status-signal-loop, remix-meme-loop, design-feedback-loop, merch-drop-timing-loop, paycheck-allocation-loop, repo-proof-loop, devrel-reply-loop, chip_ai_agent_11, chip_ai_agent_12, chip_ai_agent_14, chip_ai_agent_04, task-queue-reset-copilot, life-admin-planner-copilot, paycheck-allocation-copilot, changelog-thread-copilot, collab-graph-loop, micro-community-loop, live-raid-coordination-loop, guild-ops-loop, chip_ai_agent_05, networking_followup_loop, identity-proof-loop, trend-to-thesis-loop, tutorial-sprint-lab, meal-prep-adherence-loop, sleep-recovery-feedback-loop, product-angle-test-loop, creator-ugc-brief-loop, community-ritual-loop, subscription-prune-loop, spending-pattern-reset-loop, independent_operator_brand_loop, reply-game-copilot, remix-refresh-copilot, language-sprint-copilot, workout-streak-copilot, opener-refresh-copilot, product-angle-test-copilot, weekend-stack-copilot, drop-alert-copilot, watch-party-escalation-loop, chip_ai_agent_10, career_signal_compounding_loop, language-output-drill-loop, interview-story-rehearsal-loop, workout-streak-proof-loop, opener-iteration-loop, date-debrief-loop, profile-signal-refresh-loop, city-weekend-stack-loop, restaurant-veto-resolution-loop, live-event-discovery-loop, task-queue-reset-loop, life-admin-planner-loop, paycheck-allocation-system, changelog-thread-loop, reply-game-workflow, remix-refresh-loop, remix-refresh-workflow, language-sprint-loop, workout-streak-loop, opener-refresh-loop, product-angle-test-system, weekend-stack-system, drop-alert-loop, drop-alert-system, drop-alert-workflow"
+    ],
+    "synergy_opportunities": [],
+    "simulation_vs_static": [
+      {
+        "domain_id": "defi_yield_rotation_loop",
+        "simulation": 0.0,
+        "static": 0.5985,
+        "delta": -0.5985
+      },
+      {
+        "domain_id": "fandom-drop-interpretation-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "chip_ai_agent_03",
+        "simulation": 0.0,
+        "static": 0.6105,
+        "delta": -0.6105
+      },
+      {
+        "domain_id": "changelog-to-launch-loop",
+        "simulation": 0.0,
+        "static": 0.6035,
+        "delta": -0.6035
+      },
+      {
+        "domain_id": "personal_cfo_loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "resume-refresh-copilot",
+        "simulation": 0.0,
+        "static": 0.5705,
+        "delta": -0.5705
+      },
+      {
+        "domain_id": "trading-crypto",
+        "simulation": 0.0,
+        "static": 0.889,
+        "delta": -0.889
+      },
+      {
+        "domain_id": "cursor-copilot",
+        "simulation": 0.0,
+        "static": 0.8665,
+        "delta": -0.8665
+      },
+      {
+        "domain_id": "mcp-server-builder",
+        "simulation": 0.0,
+        "static": 0.852,
+        "delta": -0.852
+      },
+      {
+        "domain_id": "ai-agent-builder",
+        "simulation": 0.0,
+        "static": 0.827,
+        "delta": -0.827
+      },
+      {
+        "domain_id": "startup-yc",
+        "simulation": 0.0,
+        "static": 0.826,
+        "delta": -0.826
+      },
+      {
+        "domain_id": "chip_ai_agent_01",
+        "simulation": 0.0,
+        "static": 0.6175,
+        "delta": -0.6175
+      },
+      {
+        "domain_id": "chip_ai_agent_08",
+        "simulation": 0.0,
+        "static": 0.6175,
+        "delta": -0.6175
+      },
+      {
+        "domain_id": "chip_ai_agent_07",
+        "simulation": 0.0,
+        "static": 0.6105,
+        "delta": -0.6105
+      },
+      {
+        "domain_id": "crypto_airdrop_hunting_loop",
+        "simulation": 0.0,
+        "static": 0.6105,
+        "delta": -0.6105
+      },
+      {
+        "domain_id": "wallet_ops_security_loop",
+        "simulation": 0.0,
+        "static": 0.6105,
+        "delta": -0.6105
+      },
+      {
+        "domain_id": "onchain_alpha_scan_loop",
+        "simulation": 0.0,
+        "static": 0.6105,
+        "delta": -0.6105
+      },
+      {
+        "domain_id": "chip_ai_agent_06",
+        "simulation": 0.0,
+        "static": 0.6035,
+        "delta": -0.6035
+      },
+      {
+        "domain_id": "trade_journal_feedback_loop",
+        "simulation": 0.0,
+        "static": 0.5985,
+        "delta": -0.5985
+      },
+      {
+        "domain_id": "creator-idea-sprint-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "distribution-repack-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "audience-comment-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "npc-response-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "chip_ai_agent_02",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "chip_ai_agent_09",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "creator_public_wins_loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "money_admin_loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "consumer_utility_stack",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "status-signal-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "remix-meme-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "design-feedback-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "merch-drop-timing-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "paycheck-allocation-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "repo-proof-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "devrel-reply-loop",
+        "simulation": 0.0,
+        "static": 0.5915,
+        "delta": -0.5915
+      },
+      {
+        "domain_id": "chip_ai_agent_11",
+        "simulation": 0.0,
+        "static": 0.5865,
+        "delta": -0.5865
+      },
+      {
+        "domain_id": "chip_ai_agent_12",
+        "simulation": 0.0,
+        "static": 0.5865,
+        "delta": -0.5865
+      },
+      {
+        "domain_id": "chip_ai_agent_14",
+        "simulation": 0.0,
+        "static": 0.5865,
+        "delta": -0.5865
+      },
+      {
+        "domain_id": "chip_ai_agent_04",
+        "simulation": 0.0,
+        "static": 0.5865,
+        "delta": -0.5865
+      },
+      {
+        "domain_id": "task-queue-reset-copilot",
+        "simulation": 0.0,
+        "static": 0.5825,
+        "delta": -0.5825
+      },
+      {
+        "domain_id": "life-admin-planner-copilot",
+        "simulation": 0.0,
+        "static": 0.5825,
+        "delta": -0.5825
+      },
+      {
+        "domain_id": "paycheck-allocation-copilot",
+        "simulation": 0.0,
+        "static": 0.5825,
+        "delta": -0.5825
+      },
+      {
+        "domain_id": "changelog-thread-copilot",
+        "simulation": 0.0,
+        "static": 0.5825,
+        "delta": -0.5825
+      },
+      {
+        "domain_id": "collab-graph-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "micro-community-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "live-raid-coordination-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "guild-ops-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "chip_ai_agent_05",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "networking_followup_loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "identity-proof-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "trend-to-thesis-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "tutorial-sprint-lab",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "meal-prep-adherence-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "sleep-recovery-feedback-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "product-angle-test-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "creator-ugc-brief-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "community-ritual-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "subscription-prune-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "spending-pattern-reset-loop",
+        "simulation": 0.0,
+        "static": 0.5795,
+        "delta": -0.5795
+      },
+      {
+        "domain_id": "independent_operator_brand_loop",
+        "simulation": 0.0,
+        "static": 0.5745,
+        "delta": -0.5745
+      },
+      {
+        "domain_id": "reply-game-copilot",
+        "simulation": 0.0,
+        "static": 0.5705,
+        "delta": -0.5705
+      },
+      {
+        "domain_id": "remix-refresh-copilot",
+        "simulation": 0.0,
+        "static": 0.5705,
+        "delta": -0.5705
+      },
+      {
+        "domain_id": "language-sprint-copilot",
+        "simulation": 0.0,
+        "static": 0.5705,
+        "delta": -0.5705
+      },
+      {
+        "domain_id": "workout-streak-copilot",
+        "simulation": 0.0,
+        "static": 0.5705,
+        "delta": -0.5705
+      },
+      {
+        "domain_id": "opener-refresh-copilot",
+        "simulation": 0.0,
+        "static": 0.5705,
+        "delta": -0.5705
+      },
+      {
+        "domain_id": "product-angle-test-copilot",
+        "simulation": 0.0,
+        "static": 0.5705,
+        "delta": -0.5705
+      },
+      {
+        "domain_id": "weekend-stack-copilot",
+        "simulation": 0.0,
+        "static": 0.5705,
+        "delta": -0.5705
+      },
+      {
+        "domain_id": "drop-alert-copilot",
+        "simulation": 0.0,
+        "static": 0.5705,
+        "delta": -0.5705
+      },
+      {
+        "domain_id": "watch-party-escalation-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "chip_ai_agent_10",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "career_signal_compounding_loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "language-output-drill-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "interview-story-rehearsal-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "workout-streak-proof-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "opener-iteration-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "date-debrief-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "profile-signal-refresh-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "city-weekend-stack-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "restaurant-veto-resolution-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "live-event-discovery-loop",
+        "simulation": 0.0,
+        "static": 0.5675,
+        "delta": -0.5675
+      },
+      {
+        "domain_id": "task-queue-reset-loop",
+        "simulation": 0.0,
+        "static": 0.5635,
+        "delta": -0.5635
+      },
+      {
+        "domain_id": "life-admin-planner-loop",
+        "simulation": 0.0,
+        "static": 0.5635,
+        "delta": -0.5635
+      },
+      {
+        "domain_id": "paycheck-allocation-system",
+        "simulation": 0.0,
+        "static": 0.5635,
+        "delta": -0.5635
+      },
+      {
+        "domain_id": "changelog-thread-loop",
+        "simulation": 0.0,
+        "static": 0.5635,
+        "delta": -0.5635
+      },
+      {
+        "domain_id": "reply-game-workflow",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "remix-refresh-loop",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "remix-refresh-workflow",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "language-sprint-loop",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "workout-streak-loop",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "opener-refresh-loop",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "product-angle-test-system",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "weekend-stack-system",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "drop-alert-loop",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "drop-alert-system",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      },
+      {
+        "domain_id": "drop-alert-workflow",
+        "simulation": 0.0,
+        "static": 0.5515,
+        "delta": -0.5515
+      }
+    ],
+    "top_recommendation": "defi_yield_rotation_loop"
+  },
+  "builder_ensemble_summary": [
+    {
+      "domain_id": "defi_yield_rotation_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.02,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "personal_cfo_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0133,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "repo-proof-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0133,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "fandom-drop-interpretation-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0089,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "changelog-to-launch-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0067,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "remix-refresh-workflow",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0067,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "wallet_ops_security_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0044,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_09",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0044,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "life-admin-planner-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0044,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "startup-yc",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_03",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_07",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "creator-idea-sprint-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "npc-response-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_02",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_11",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "resume-refresh-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "workout-streak-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "live-event-discovery-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0022,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "trading-crypto",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_01",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_08",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "crypto_airdrop_hunting_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "onchain_alpha_scan_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_06",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "trade_journal_feedback_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "distribution-repack-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "audience-comment-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "creator_public_wins_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "money_admin_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "consumer_utility_stack",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "status-signal-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "remix-meme-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "design-feedback-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "merch-drop-timing-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "paycheck-allocation-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "devrel-reply-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_12",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_14",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_04",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "task-queue-reset-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "paycheck-allocation-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "changelog-thread-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "collab-graph-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "micro-community-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "live-raid-coordination-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "guild-ops-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_05",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "networking_followup_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "identity-proof-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "trend-to-thesis-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "tutorial-sprint-lab",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "meal-prep-adherence-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "sleep-recovery-feedback-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "product-angle-test-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "creator-ugc-brief-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "community-ritual-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "subscription-prune-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "spending-pattern-reset-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "independent_operator_brand_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "reply-game-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "remix-refresh-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "language-sprint-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "opener-refresh-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "product-angle-test-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "weekend-stack-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "drop-alert-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "watch-party-escalation-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "chip_ai_agent_10",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "career_signal_compounding_loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "language-output-drill-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "interview-story-rehearsal-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "workout-streak-proof-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "opener-iteration-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "date-debrief-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "profile-signal-refresh-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "city-weekend-stack-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "restaurant-veto-resolution-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "task-queue-reset-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "life-admin-planner-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "paycheck-allocation-system",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "changelog-thread-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "reply-game-workflow",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "remix-refresh-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "language-sprint-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "workout-streak-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "opener-refresh-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "product-angle-test-system",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "weekend-stack-system",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "drop-alert-loop",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "drop-alert-system",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "drop-alert-workflow",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    }
+  ],
+  "governance_note": "Hybrid evaluation output remains exploratory_frontier. Use it to compare discovered candidates against the benchmark panel, not to auto-promote them."
+}

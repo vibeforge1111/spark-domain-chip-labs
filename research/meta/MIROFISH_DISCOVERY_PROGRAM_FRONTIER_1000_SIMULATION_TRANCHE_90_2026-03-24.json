@@ -1,0 +1,3278 @@
+{
+  "packet_kind": "mirofish_discovery_program_result",
+  "created_at": "2026-03-24T19:20:21.250989+00:00",
+  "program_id": "mirofish-discovery-program-frontier-1000-diverse-simulation-tranche-90",
+  "stage_label": "frontier_1000_diverse_simulation_tranche_90",
+  "evidence_lane": "exploratory_frontier",
+  "participating_agent_count": 90,
+  "target_agent_count": 90,
+  "accepted_candidates": [
+    {
+      "domain_id": "creator-idea-sprint-loop",
+      "label": "Creator Idea Sprint Loop",
+      "description": "A rapid loop for turning creator signals into fresh post, clip, or product concepts before momentum fades.",
+      "specialization_surface": "running the repeated creator idea sprint loop workflow inside the creator growth systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Creator Idea Sprint Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next creator idea sprint loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "creator",
+        "idea-generation",
+        "short-form",
+        "viral"
+      ],
+      "evidence_summary": "Creators on X and short-form platforms keep needing new angles faster than their manual ideation process can sustain.",
+      "adjacent_domains": [
+        "tiktok-creator",
+        "xcontent",
+        "youtube-remixer"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Creators on X and short-form platforms keep needing new angles faster than their manual ideation process can sustain.",
+      "submitted_by_agent": "agent-001",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-001"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "distribution-repack-loop",
+      "label": "Distribution Repack Loop",
+      "description": "A workflow for repacking one core idea into multiple distribution-native formats across X, shorts, threads, and newsletters.",
+      "specialization_surface": "running the repeated distribution repack loop workflow inside the creator growth systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Distribution Repack Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next distribution repack loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "creator",
+        "distribution",
+        "repurposing",
+        "growth"
+      ],
+      "evidence_summary": "Good creators rarely fail because of idea scarcity alone; they fail to reshape winning ideas into enough surfaces.",
+      "adjacent_domains": [
+        "tiktok-creator",
+        "xcontent",
+        "youtube-remixer"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Good creators rarely fail because of idea scarcity alone; they fail to reshape winning ideas into enough surfaces.",
+      "submitted_by_agent": "agent-002",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-002"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "audience-comment-loop",
+      "label": "Audience Comment Loop",
+      "description": "A system for mining replies and comments into future content, offers, and audience language cues.",
+      "specialization_surface": "running the repeated audience comment loop workflow inside the creator growth systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Audience Comment Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next audience comment loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "creator",
+        "community",
+        "feedback",
+        "growth"
+      ],
+      "evidence_summary": "The comment section acts like an always-on demand signal, but most creators do not systematize it.",
+      "adjacent_domains": [
+        "tiktok-creator",
+        "xcontent",
+        "youtube-remixer"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "The comment section acts like an always-on demand signal, but most creators do not systematize it.",
+      "submitted_by_agent": "agent-003",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-003"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "collab-graph-loop",
+      "label": "Collab Graph Loop",
+      "description": "A system for finding, sequencing, and operationalizing creator collaborations based on audience overlap and timing.",
+      "specialization_surface": "running the repeated collab graph loop workflow inside the creator growth systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Collab Graph Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next collab graph loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "creator",
+        "collaboration",
+        "graph",
+        "growth"
+      ],
+      "evidence_summary": "Creators often know collaboration works but lack a repeatable way to map who to partner with next.",
+      "adjacent_domains": [
+        "tiktok-creator",
+        "xcontent",
+        "youtube-remixer"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Creators often know collaboration works but lack a repeatable way to map who to partner with next.",
+      "submitted_by_agent": "agent-004",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-004"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "micro-community-loop",
+      "label": "Micro-Community Loop",
+      "description": "A loop for turning loose followers into recurring ritual-based micro-communities with prompts, events, and member roles.",
+      "specialization_surface": "running the repeated micro-community loop workflow inside the creator growth systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Micro-Community Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next micro-community loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "community",
+        "creator",
+        "membership",
+        "retention"
+      ],
+      "evidence_summary": "The strongest creator businesses are built on small pockets of highly engaged people, not on passive follower counts alone.",
+      "adjacent_domains": [
+        "tiktok-creator",
+        "xcontent",
+        "youtube-remixer"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "The strongest creator businesses are built on small pockets of highly engaged people, not on passive follower counts alone.",
+      "submitted_by_agent": "agent-005",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-005"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "live-raid-coordination-loop",
+      "label": "Live Raid Coordination Loop",
+      "description": "A system for orchestrating live raid timing, role assignment, and post-run adaptation for game communities.",
+      "specialization_surface": "running the repeated live raid coordination loop workflow inside the gaming / npc / community worlds wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Live Raid Coordination Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next live raid coordination loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "gaming",
+        "guild",
+        "coordination",
+        "live-ops"
+      ],
+      "evidence_summary": "Players repeatedly need lightweight coordination in live events, but most communities still rely on messy chat threads.",
+      "adjacent_domains": [
+        "ai-npc-dialog",
+        "discord-community",
+        "streamer-overlay-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Players repeatedly need lightweight coordination in live events, but most communities still rely on messy chat threads.",
+      "submitted_by_agent": "agent-101",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-101"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "npc-response-loop",
+      "label": "NPC Response Loop",
+      "description": "A workflow for generating, refining, and evolving richer NPC responses based on live player behavior and session context.",
+      "specialization_surface": "running the repeated npc response loop workflow inside the gaming / npc / community worlds wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make NPC Response Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next npc response loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "gaming",
+        "npc",
+        "ai",
+        "roleplay"
+      ],
+      "evidence_summary": "Players increasingly expect dynamic NPC behavior, especially in roleplay-heavy or creator-led game environments.",
+      "adjacent_domains": [
+        "ai-npc-dialog",
+        "discord-community",
+        "streamer-overlay-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Players increasingly expect dynamic NPC behavior, especially in roleplay-heavy or creator-led game environments.",
+      "submitted_by_agent": "agent-102",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-102"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "fandom-drop-interpretation-loop",
+      "label": "Fandom Drop Interpretation Loop",
+      "description": "A loop for decoding new drops, updates, lore clues, and rewards into community-readable breakdowns.",
+      "specialization_surface": "running the repeated fandom drop interpretation loop workflow inside the gaming / npc / community worlds wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Fandom Drop Interpretation Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next fandom drop interpretation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "fandom",
+        "gaming",
+        "drops",
+        "community"
+      ],
+      "evidence_summary": "Communities repeatedly scramble to interpret patch notes, drops, and clues as soon as they land.",
+      "adjacent_domains": [
+        "ai-npc-dialog",
+        "discord-community",
+        "streamer-overlay-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Communities repeatedly scramble to interpret patch notes, drops, and clues as soon as they land.",
+      "submitted_by_agent": "agent-103",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-103"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "watch-party-escalation-loop",
+      "label": "Watch Party Escalation Loop",
+      "description": "A system for turning streams, tournaments, and reveal events into higher-participation community watch experiences.",
+      "specialization_surface": "running the repeated watch party escalation loop workflow inside the gaming / npc / community worlds wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Watch Party Escalation Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next watch party escalation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "watch-party",
+        "gaming",
+        "community",
+        "events"
+      ],
+      "evidence_summary": "Gaming audiences want shared live moments, but most watch-party coordination is still manual and fragmented.",
+      "adjacent_domains": [
+        "ai-npc-dialog",
+        "discord-community",
+        "streamer-overlay-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Gaming audiences want shared live moments, but most watch-party coordination is still manual and fragmented.",
+      "submitted_by_agent": "agent-104",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-104"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "guild-ops-loop",
+      "label": "Guild Ops Loop",
+      "description": "A workflow for guild logistics, member readiness, event planning, and contribution tracking.",
+      "specialization_surface": "running the repeated guild ops loop workflow inside the gaming / npc / community worlds wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Guild Ops Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next guild ops loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "guild",
+        "operations",
+        "gaming",
+        "community"
+      ],
+      "evidence_summary": "Guilds behave like small online organizations but run on tools that were never designed for recurring community ops.",
+      "adjacent_domains": [
+        "ai-npc-dialog",
+        "discord-community",
+        "streamer-overlay-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Guilds behave like small online organizations but run on tools that were never designed for recurring community ops.",
+      "submitted_by_agent": "agent-105",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-105"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_01",
+      "label": "Agentic Lead Triage Loop",
+      "description": "A loop for ingesting inbound lead signals, enriching context, and routing the next best follow-up action.",
+      "specialization_surface": "running the repeated agentic lead triage loop workflow inside the ai agent builders wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Agentic Lead Triage Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next agentic lead triage loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "ai-agent",
+        "sales",
+        "triage",
+        "startup"
+      ],
+      "evidence_summary": "Founders and operators keep losing speed because inbound opportunities arrive noisily and get handled inconsistently.",
+      "adjacent_domains": [
+        "ai-agent-builder",
+        "mcp-server-builder",
+        "cursor-copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Founders and operators keep losing speed because inbound opportunities arrive noisily and get handled inconsistently.",
+      "submitted_by_agent": "agent-181",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-181"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_02",
+      "label": "Spec-to-Ship Decomposition Loop",
+      "description": "A workflow for breaking vague product intent into scoped implementation slices, follow-up tasks, and delivery checkpoints.",
+      "specialization_surface": "running the repeated spec-to-ship decomposition loop workflow inside the ai agent builders wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Spec-to-Ship Decomposition Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next spec-to-ship decomposition loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "ai-agent",
+        "builders",
+        "productivity",
+        "shipping"
+      ],
+      "evidence_summary": "Small teams routinely stall between idea and shipment because decomposition is cognitively expensive.",
+      "adjacent_domains": [
+        "ai-agent-builder",
+        "mcp-server-builder",
+        "cursor-copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Small teams routinely stall between idea and shipment because decomposition is cognitively expensive.",
+      "submitted_by_agent": "agent-182",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-182"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_03",
+      "label": "Content Repurposing Loop",
+      "description": "A system for turning one source artifact into multiple posts, clips, summaries, and distribution formats.",
+      "specialization_surface": "running the repeated content repurposing loop workflow inside the ai agent builders wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Content Repurposing Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next content repurposing loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "content",
+        "ai-agent",
+        "repurposing",
+        "growth"
+      ],
+      "evidence_summary": "Builders and founders increasingly need to document and distribute continuously, not just ship silently.",
+      "adjacent_domains": [
+        "ai-agent-builder",
+        "mcp-server-builder",
+        "cursor-copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Builders and founders increasingly need to document and distribute continuously, not just ship silently.",
+      "submitted_by_agent": "agent-183",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-183"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_06",
+      "label": "Bug Triage and Repro Loop",
+      "description": "A loop for clustering incoming bug reports, proposing repro paths, and prioritizing fixes.",
+      "specialization_surface": "running the repeated bug triage and repro loop workflow inside the ai agent builders wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Bug Triage and Repro Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next bug triage and repro loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "bugs",
+        "engineering",
+        "ai-agent",
+        "ops"
+      ],
+      "evidence_summary": "Bug intake is repetitive, interrupt-driven, and often loses critical context between report and fix.",
+      "adjacent_domains": [
+        "ai-agent-builder",
+        "mcp-server-builder",
+        "cursor-copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Bug intake is repetitive, interrupt-driven, and often loses critical context between report and fix.",
+      "submitted_by_agent": "agent-184",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-184"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_09",
+      "label": "Research-to-Decision Loop",
+      "description": "A loop for turning scattered research into explicit options, tradeoffs, and next decisions.",
+      "specialization_surface": "running the repeated research-to-decision loop workflow inside the ai agent builders wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Research-to-Decision Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next research-to-decision loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "research",
+        "decision-making",
+        "ai-agent",
+        "productivity"
+      ],
+      "evidence_summary": "Many teams over-collect information but under-convert it into concrete decisions.",
+      "adjacent_domains": [
+        "ai-agent-builder",
+        "mcp-server-builder",
+        "cursor-copilot"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Many teams over-collect information but under-convert it into concrete decisions.",
+      "submitted_by_agent": "agent-185",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-185"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_07",
+      "label": "Launch Checklist Loop",
+      "description": "A system for coordinating recurring launch readiness tasks across copy, product, support, and distribution surfaces.",
+      "specialization_surface": "running the repeated launch checklist loop workflow inside the startup builder systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Checklist Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next launch checklist loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "launch",
+        "startup",
+        "ops",
+        "ai-agent"
+      ],
+      "evidence_summary": "Every launch repeats the same coordination pain, especially in lean teams without dedicated operations staff.",
+      "adjacent_domains": [
+        "startup-yc",
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Every launch repeats the same coordination pain, especially in lean teams without dedicated operations staff.",
+      "submitted_by_agent": "agent-261",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-261"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_08",
+      "label": "Deal Desk Loop",
+      "description": "A workflow for pricing questions, packaging tradeoffs, approval logic, and follow-up in small sales motions.",
+      "specialization_surface": "running the repeated deal desk loop workflow inside the startup builder systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Deal Desk Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next deal desk loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "sales",
+        "pricing",
+        "startup",
+        "ops"
+      ],
+      "evidence_summary": "Founders repeatedly improvise deal decisions, which creates inconsistency and lost learning.",
+      "adjacent_domains": [
+        "startup-yc",
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Founders repeatedly improvise deal decisions, which creates inconsistency and lost learning.",
+      "submitted_by_agent": "agent-262",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-262"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_11",
+      "label": "Customer Insight Extraction Loop",
+      "description": "A system for converting user conversations into repeated product signals, objections, and growth lessons.",
+      "specialization_surface": "running the repeated customer insight extraction loop workflow inside the startup builder systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Customer Insight Extraction Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next customer insight extraction loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "customer-insight",
+        "feedback",
+        "startup",
+        "product"
+      ],
+      "evidence_summary": "Teams talk to customers but rarely preserve the reusable patterns in a structured way.",
+      "adjacent_domains": [
+        "startup-yc",
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Teams talk to customers but rarely preserve the reusable patterns in a structured way.",
+      "submitted_by_agent": "agent-263",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-263"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_12",
+      "label": "Experiment Cadence Loop",
+      "description": "A workflow for defining, running, and reviewing small experiments across growth, product, and messaging.",
+      "specialization_surface": "running the repeated experiment cadence loop workflow inside the startup builder systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Experiment Cadence Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next experiment cadence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "experiments",
+        "growth",
+        "productivity",
+        "startup"
+      ],
+      "evidence_summary": "Most small teams say they experiment, but their cadence breaks because setup and review are too manual.",
+      "adjacent_domains": [
+        "startup-yc",
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Most small teams say they experiment, but their cadence breaks because setup and review are too manual.",
+      "submitted_by_agent": "agent-264",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-264"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_14",
+      "label": "Launch Postmortem Loop",
+      "description": "A workflow for extracting lessons from launches and feeding them back into the next cycle automatically.",
+      "specialization_surface": "running the repeated launch postmortem loop workflow inside the startup builder systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Launch Postmortem Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next launch postmortem loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "postmortem",
+        "launch",
+        "learning",
+        "startup"
+      ],
+      "evidence_summary": "Teams often repeat launch mistakes because the feedback loop closes too slowly or not at all.",
+      "adjacent_domains": [
+        "startup-yc",
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Teams often repeat launch mistakes because the feedback loop closes too slowly or not at all.",
+      "submitted_by_agent": "agent-265",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-265"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_04",
+      "label": "Daily Signal Digest Loop",
+      "description": "A loop for aggregating key updates, weak signals, and action-worthy changes into a daily operating brief.",
+      "specialization_surface": "running the repeated daily signal digest loop workflow inside the builder productivity systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Daily Signal Digest Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next daily signal digest loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "signals",
+        "digest",
+        "ai-agent",
+        "productivity"
+      ],
+      "evidence_summary": "Operators drown in streams of updates and need compressed decision-ready signal, not more dashboards.",
+      "adjacent_domains": [
+        "cursor-copilot",
+        "web-designer",
+        "task-agent-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Operators drown in streams of updates and need compressed decision-ready signal, not more dashboards.",
+      "submitted_by_agent": "agent-341",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-341"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_05",
+      "label": "Build Log to Distribution Loop",
+      "description": "A workflow for converting changelogs and internal progress into public-facing distribution assets.",
+      "specialization_surface": "running the repeated build log to distribution loop workflow inside the builder productivity systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Build Log to Distribution Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next build log to distribution loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "distribution",
+        "builders",
+        "ai-agent",
+        "content"
+      ],
+      "evidence_summary": "Indie teams frequently have raw progress but do not package it into attention-generating narratives.",
+      "adjacent_domains": [
+        "cursor-copilot",
+        "web-designer",
+        "task-agent-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Indie teams frequently have raw progress but do not package it into attention-generating narratives.",
+      "submitted_by_agent": "agent-342",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-342"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "chip_ai_agent_10",
+      "label": "Task Queue Clearing Loop",
+      "description": "A workflow for reducing backlog pressure by clustering, sequencing, and escalating the right tasks each day.",
+      "specialization_surface": "running the repeated task queue clearing loop workflow inside the builder productivity systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Clearing Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next task queue clearing loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "tasks",
+        "queue",
+        "productivity",
+        "ai-agent"
+      ],
+      "evidence_summary": "Knowledge workers often need help deciding what to clear first, not just tracking more tasks.",
+      "adjacent_domains": [
+        "cursor-copilot",
+        "web-designer",
+        "task-agent-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Knowledge workers often need help deciding what to clear first, not just tracking more tasks.",
+      "submitted_by_agent": "agent-343",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-343"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "task-queue-reset-copilot",
+      "label": "Task Queue Reset Copilot",
+      "description": "A recurring productivity builder ops workflow for task queue and reset decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated task queue reset copilot workflow inside the builder productivity systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Reset Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next task queue reset copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "productivity-builder-ops",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "cursor-copilot",
+        "web-designer",
+        "task-agent-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-344",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-344"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "task-queue-reset-loop",
+      "label": "Task Queue Reset Loop",
+      "description": "A recurring productivity builder ops workflow for task queue and reset decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated task queue reset loop workflow inside the builder productivity systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Task Queue Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next task queue reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "productivity-builder-ops",
+        "seed-generated",
+        "loop"
+      ],
+      "evidence_summary": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "cursor-copilot",
+        "web-designer",
+        "task-agent-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Builders repeatedly face task queue and reset decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-345",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-345"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "career_signal_compounding_loop",
+      "label": "Career Signal Compounding Loop",
+      "description": "A system for turning repeated work outputs into visible career signals that compound over time.",
+      "specialization_surface": "running the repeated career signal compounding loop workflow inside the career / status / social proof wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Career Signal Compounding Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next career signal compounding loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "career",
+        "signals",
+        "status",
+        "growth"
+      ],
+      "evidence_summary": "Career progress increasingly depends on public proof and discoverable signal, not just private competence.",
+      "adjacent_domains": [
+        "resume-ai",
+        "linkedin-optimizer",
+        "interview-prep-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Career progress increasingly depends on public proof and discoverable signal, not just private competence.",
+      "submitted_by_agent": "agent-421",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-421"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "creator_public_wins_loop",
+      "label": "Creator Public Wins Loop",
+      "description": "A workflow for packaging small public wins into momentum-building updates, receipts, and compounding reputation.",
+      "specialization_surface": "running the repeated creator public wins loop workflow inside the career / status / social proof wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Creator Public Wins Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next creator public wins loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "creator",
+        "career",
+        "public-proof",
+        "status"
+      ],
+      "evidence_summary": "Public momentum compounds when people repeatedly surface credible wins instead of waiting for one big milestone.",
+      "adjacent_domains": [
+        "resume-ai",
+        "linkedin-optimizer",
+        "interview-prep-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Public momentum compounds when people repeatedly surface credible wins instead of waiting for one big milestone.",
+      "submitted_by_agent": "agent-422",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-422"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "networking_followup_loop",
+      "label": "Networking Follow-Up Loop",
+      "description": "A system for maintaining lightweight but consistent follow-up after meetings, intros, and internet interactions.",
+      "specialization_surface": "running the repeated networking follow-up loop workflow inside the career / status / social proof wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Networking Follow-Up Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next networking follow-up loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "networking",
+        "follow-up",
+        "career",
+        "relationships"
+      ],
+      "evidence_summary": "Relationship value is often lost because follow-up discipline collapses after the first interaction.",
+      "adjacent_domains": [
+        "resume-ai",
+        "linkedin-optimizer",
+        "interview-prep-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Relationship value is often lost because follow-up discipline collapses after the first interaction.",
+      "submitted_by_agent": "agent-423",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-423"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "independent_operator_brand_loop",
+      "label": "Independent Operator Brand Loop",
+      "description": "A workflow for building an internet-native solo-operator brand through repeated proof, narrative, and distribution assets.",
+      "specialization_surface": "running the repeated independent operator brand loop workflow inside the career / status / social proof wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Independent Operator Brand Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next independent operator brand loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "brand",
+        "operators",
+        "career",
+        "social-proof"
+      ],
+      "evidence_summary": "Independent operators increasingly win through consistent public presence rather than formal institutional backing.",
+      "adjacent_domains": [
+        "resume-ai",
+        "linkedin-optimizer",
+        "interview-prep-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Independent operators increasingly win through consistent public presence rather than formal institutional backing.",
+      "submitted_by_agent": "agent-424",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-424"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "resume-refresh-copilot",
+      "label": "Resume Refresh Copilot",
+      "description": "A recurring career status social proof workflow for resume and refresh decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated resume refresh copilot workflow inside the career / status / social proof wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Resume Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next resume refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "career-status-social-proof",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "resume-ai",
+        "linkedin-optimizer",
+        "interview-prep-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Career-focused users repeatedly face resume and refresh decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-425",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-425"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "personal_cfo_loop",
+      "label": "Personal CFO Loop",
+      "description": "A consumer utility for recurring money oversight across cash flow, subscriptions, bills, and tradeoffs.",
+      "specialization_surface": "running the repeated personal cfo loop workflow inside the consumer agent utilities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Personal CFO Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next personal cfo loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "consumer",
+        "finance",
+        "personal-cfo",
+        "utilities"
+      ],
+      "evidence_summary": "People want a more agentic money-ops layer, not just passive budgeting dashboards.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "shopping-deal-finder",
+        "family-coordinator-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "People want a more agentic money-ops layer, not just passive budgeting dashboards.",
+      "submitted_by_agent": "agent-481",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-481"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "money_admin_loop",
+      "label": "Money Admin Loop",
+      "description": "A workflow for clearing recurring financial chores such as renewals, reimbursements, cancellations, and bill review.",
+      "specialization_surface": "running the repeated money admin loop workflow inside the consumer agent utilities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Money Admin Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next money admin loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "consumer",
+        "finance",
+        "admin",
+        "utilities"
+      ],
+      "evidence_summary": "A large share of daily money pain is mundane admin work rather than strategic planning.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "shopping-deal-finder",
+        "family-coordinator-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "A large share of daily money pain is mundane admin work rather than strategic planning.",
+      "submitted_by_agent": "agent-482",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-482"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "consumer_utility_stack",
+      "label": "Consumer Utility Stack",
+      "description": "A bundle-style utility layer for recurring personal operations such as appointments, subscriptions, errands, and reminders.",
+      "specialization_surface": "running the repeated consumer utility stack workflow inside the consumer agent utilities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Consumer Utility Stack outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next consumer utility stack move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "consumer",
+        "utilities",
+        "agents",
+        "life-admin"
+      ],
+      "evidence_summary": "Many consumers want useful agentic help for ordinary friction, not more novelty demos.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "shopping-deal-finder",
+        "family-coordinator-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Many consumers want useful agentic help for ordinary friction, not more novelty demos.",
+      "submitted_by_agent": "agent-483",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-483"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "life-admin-planner-copilot",
+      "label": "Life Admin Planner Copilot",
+      "description": "A recurring consumer agent utilities workflow for life admin and planner decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated life admin planner copilot workflow inside the consumer agent utilities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Planner Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next life admin planner copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "consumer-agent-utilities",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "shopping-deal-finder",
+        "family-coordinator-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-484",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-484"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "life-admin-planner-loop",
+      "label": "Life Admin Planner Loop",
+      "description": "A recurring consumer agent utilities workflow for life admin and planner decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated life admin planner loop workflow inside the consumer agent utilities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Life Admin Planner Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next life admin planner loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "consumer-agent-utilities",
+        "seed-generated",
+        "loop"
+      ],
+      "evidence_summary": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "shopping-deal-finder",
+        "family-coordinator-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Consumers repeatedly face life admin and planner decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-485",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-485"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "crypto_airdrop_hunting_loop",
+      "label": "Crypto Airdrop Hunting Loop",
+      "description": "A workflow for tracking, qualifying, and executing repeated airdrop participation opportunities across ecosystems.",
+      "specialization_surface": "running the repeated crypto airdrop hunting loop workflow inside the crypto / defi / trading wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Crypto Airdrop Hunting Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next crypto airdrop hunting loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "crypto",
+        "airdrops",
+        "onchain",
+        "opportunity"
+      ],
+      "evidence_summary": "Crypto users repeatedly chase fragmented airdrop opportunities with ad hoc spreadsheets and memory.",
+      "adjacent_domains": [
+        "trading-crypto",
+        "defi-architect",
+        "onchain-research-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Crypto users repeatedly chase fragmented airdrop opportunities with ad hoc spreadsheets and memory.",
+      "submitted_by_agent": "agent-541",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-541"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "defi_yield_rotation_loop",
+      "label": "DeFi Yield Rotation Loop",
+      "description": "A system for rotating capital across changing DeFi yield opportunities while preserving risk context and timing.",
+      "specialization_surface": "running the repeated defi yield rotation loop workflow inside the crypto / defi / trading wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make DeFi Yield Rotation Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next defi yield rotation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "defi",
+        "yield",
+        "crypto",
+        "portfolio"
+      ],
+      "evidence_summary": "Yield opportunities move quickly, and the cost of slow comparison is materially lost return.",
+      "adjacent_domains": [
+        "trading-crypto",
+        "defi-architect",
+        "onchain-research-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Yield opportunities move quickly, and the cost of slow comparison is materially lost return.",
+      "submitted_by_agent": "agent-542",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-542"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "wallet_ops_security_loop",
+      "label": "Wallet Ops Security Loop",
+      "description": "A recurring workflow for wallet hygiene, permissions review, signer discipline, and onchain safety checks.",
+      "specialization_surface": "running the repeated wallet ops security loop workflow inside the crypto / defi / trading wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Wallet Ops Security Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next wallet ops security loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "wallet",
+        "security",
+        "crypto",
+        "ops"
+      ],
+      "evidence_summary": "Onchain users repeatedly perform sensitive operational steps that are easy to forget or rush.",
+      "adjacent_domains": [
+        "trading-crypto",
+        "defi-architect",
+        "onchain-research-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Onchain users repeatedly perform sensitive operational steps that are easy to forget or rush.",
+      "submitted_by_agent": "agent-543",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-543"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "onchain_alpha_scan_loop",
+      "label": "Onchain Alpha Scan Loop",
+      "description": "A loop for scanning new onchain behaviors, wallets, and protocol signals for early opportunity.",
+      "specialization_surface": "running the repeated onchain alpha scan loop workflow inside the crypto / defi / trading wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Onchain Alpha Scan Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next onchain alpha scan loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "onchain",
+        "alpha",
+        "crypto",
+        "signals"
+      ],
+      "evidence_summary": "A lot of perceived edge in crypto comes from interpreting weak signals before they become consensus.",
+      "adjacent_domains": [
+        "trading-crypto",
+        "defi-architect",
+        "onchain-research-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "A lot of perceived edge in crypto comes from interpreting weak signals before they become consensus.",
+      "submitted_by_agent": "agent-544",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-544"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "trade_journal_feedback_loop",
+      "label": "Trade Journal Feedback Loop",
+      "description": "A workflow for turning trading history into repeated lessons, bias detection, and next-position discipline.",
+      "specialization_surface": "running the repeated trade journal feedback loop workflow inside the crypto / defi / trading wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Trade Journal Feedback Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next trade journal feedback loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "trading",
+        "journal",
+        "feedback",
+        "crypto"
+      ],
+      "evidence_summary": "Many traders keep records, but far fewer convert them into honest recurring behavioral feedback.",
+      "adjacent_domains": [
+        "trading-crypto",
+        "defi-architect",
+        "onchain-research-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Many traders keep records, but far fewer convert them into honest recurring behavioral feedback.",
+      "submitted_by_agent": "agent-545",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-545"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "identity-proof-loop",
+      "label": "Identity Proof Loop",
+      "description": "A creator workflow for packaging receipts, wins, and artifacts into repeated proof-of-skill moments.",
+      "specialization_surface": "running the repeated identity proof loop workflow inside the x-native persona tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Identity Proof Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next identity proof loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "creator",
+        "identity",
+        "social-proof",
+        "status"
+      ],
+      "evidence_summary": "X-native audiences respond strongly when creators repeatedly show evidence that they actually do the thing they talk about.",
+      "adjacent_domains": [
+        "xcontent",
+        "personal-brand-ai",
+        "reply-guy-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "X-native audiences respond strongly when creators repeatedly show evidence that they actually do the thing they talk about.",
+      "submitted_by_agent": "agent-621",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-621"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "status-signal-loop",
+      "label": "Status Signal Loop",
+      "description": "A workflow for shaping posts and artifacts that communicate taste, sharpness, and relevance to internet-native audiences.",
+      "specialization_surface": "running the repeated status signal loop workflow inside the x-native persona tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Status Signal Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next status signal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "status",
+        "creator",
+        "social",
+        "viral"
+      ],
+      "evidence_summary": "People on X often share content not just because it is useful, but because it upgrades how they are perceived.",
+      "adjacent_domains": [
+        "xcontent",
+        "personal-brand-ai",
+        "reply-guy-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "People on X often share content not just because it is useful, but because it upgrades how they are perceived.",
+      "submitted_by_agent": "agent-622",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-622"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "trend-to-thesis-loop",
+      "label": "Trend to Thesis Loop",
+      "description": "A workflow for turning fast-moving trends into distinct creator theses, takes, and packaged contrarian positions.",
+      "specialization_surface": "running the repeated trend to thesis loop workflow inside the x-native persona tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Trend to Thesis Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next trend to thesis loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "trends",
+        "thesis",
+        "creator",
+        "positioning"
+      ],
+      "evidence_summary": "Winning accounts often turn a noisy trend into a sharp thesis before the rest of the feed catches up.",
+      "adjacent_domains": [
+        "xcontent",
+        "personal-brand-ai",
+        "reply-guy-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Winning accounts often turn a noisy trend into a sharp thesis before the rest of the feed catches up.",
+      "submitted_by_agent": "agent-623",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-623"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "reply-game-copilot",
+      "label": "Reply Game Copilot",
+      "description": "A recurring x native persona tools workflow for reply and game decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated reply game copilot workflow inside the x-native persona tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Game Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next reply game copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "x-native-persona-tools",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "X-native users repeatedly face reply and game decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "xcontent",
+        "personal-brand-ai",
+        "reply-guy-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "X-native users repeatedly face reply and game decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-624",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-624"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "reply-game-workflow",
+      "label": "Reply Game Workflow",
+      "description": "A recurring x native persona tools workflow for reply and game decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated reply game workflow workflow inside the x-native persona tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Reply Game Workflow outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next reply game workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "x-native-persona-tools",
+        "seed-generated",
+        "workflow"
+      ],
+      "evidence_summary": "X-native users repeatedly face reply and game decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "xcontent",
+        "personal-brand-ai",
+        "reply-guy-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "X-native users repeatedly face reply and game decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-625",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-625"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "remix-meme-loop",
+      "label": "Remix Meme Loop",
+      "description": "A loop for translating live memes and cultural formats into on-brand creator variations quickly enough to matter.",
+      "specialization_surface": "running the repeated remix meme loop workflow inside the design / remix / aesthetics wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Meme Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next remix meme loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "creator",
+        "memes",
+        "cultural-timing",
+        "viral"
+      ],
+      "evidence_summary": "The shelf life of internet meme formats is short, so creators need a lightweight remix engine instead of bespoke brainstorming.",
+      "adjacent_domains": [
+        "web-designer",
+        "meme-remix-ai",
+        "brand-kit-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "The shelf life of internet meme formats is short, so creators need a lightweight remix engine instead of bespoke brainstorming.",
+      "submitted_by_agent": "agent-671",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-671"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "design-feedback-loop",
+      "label": "Design Feedback Loop",
+      "description": "A creator-system for collecting, clustering, and acting on aesthetic feedback across posts, pages, and product drops.",
+      "specialization_surface": "running the repeated design feedback loop workflow inside the design / remix / aesthetics wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Design Feedback Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next design feedback loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "design",
+        "creator",
+        "feedback",
+        "iteration"
+      ],
+      "evidence_summary": "Visual taste-driven accounts iterate in public, but the signal from replies and DMs is usually lost.",
+      "adjacent_domains": [
+        "web-designer",
+        "meme-remix-ai",
+        "brand-kit-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Visual taste-driven accounts iterate in public, but the signal from replies and DMs is usually lost.",
+      "submitted_by_agent": "agent-672",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-672"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "remix-refresh-copilot",
+      "label": "Remix Refresh Copilot",
+      "description": "A recurring design remix aesthetics workflow for remix and refresh decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated remix refresh copilot workflow inside the design / remix / aesthetics wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next remix refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "design-remix-aesthetics",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "web-designer",
+        "meme-remix-ai",
+        "brand-kit-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-673",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-673"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "remix-refresh-loop",
+      "label": "Remix Refresh Loop",
+      "description": "A recurring design remix aesthetics workflow for remix and refresh decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated remix refresh loop workflow inside the design / remix / aesthetics wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next remix refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "design-remix-aesthetics",
+        "seed-generated",
+        "loop"
+      ],
+      "evidence_summary": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "web-designer",
+        "meme-remix-ai",
+        "brand-kit-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-674",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-674"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "remix-refresh-workflow",
+      "label": "Remix Refresh Workflow",
+      "description": "A recurring design remix aesthetics workflow for remix and refresh decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated remix refresh workflow workflow inside the design / remix / aesthetics wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Remix Refresh Workflow outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next remix refresh workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "design-remix-aesthetics",
+        "seed-generated",
+        "workflow"
+      ],
+      "evidence_summary": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "web-designer",
+        "meme-remix-ai",
+        "brand-kit-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Design-native users repeatedly face remix and refresh decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-675",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-675"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "language-output-drill-loop",
+      "label": "Language Output Drill Loop",
+      "description": "A recurring practice loop that pushes language learners to produce spoken or written output in short, escalating drills.",
+      "specialization_surface": "running the repeated language output drill loop workflow inside the education / skill acceleration wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Language Output Drill Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next language output drill loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "education",
+        "language",
+        "practice",
+        "skill-building"
+      ],
+      "evidence_summary": "People improve languages faster when they repeatedly output under pressure, but most apps still overweight passive review.",
+      "adjacent_domains": [
+        "language-tutor-ai",
+        "interview-prep-ai",
+        "career-pivot-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "People improve languages faster when they repeatedly output under pressure, but most apps still overweight passive review.",
+      "submitted_by_agent": "agent-711",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-711"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "tutorial-sprint-lab",
+      "label": "Tutorial Sprint Lab",
+      "description": "A workflow for compressing a long tutorial into short build-and-test sprints that preserve momentum and visible skill gain.",
+      "specialization_surface": "running the repeated tutorial sprint lab workflow inside the education / skill acceleration wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Tutorial Sprint Lab outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next tutorial sprint lab move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "education",
+        "tutorials",
+        "builders",
+        "acceleration"
+      ],
+      "evidence_summary": "A lot of ambitious learners buy courses or bookmark tutorials but stall because the path from watching to doing is too loose.",
+      "adjacent_domains": [
+        "language-tutor-ai",
+        "interview-prep-ai",
+        "career-pivot-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "A lot of ambitious learners buy courses or bookmark tutorials but stall because the path from watching to doing is too loose.",
+      "submitted_by_agent": "agent-712",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-712"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "interview-story-rehearsal-loop",
+      "label": "Interview Story Rehearsal Loop",
+      "description": "A system for repeatedly practicing achievement stories, behavioral answers, and delivery patterns until they feel sharp and natural.",
+      "specialization_surface": "running the repeated interview story rehearsal loop workflow inside the education / skill acceleration wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Interview Story Rehearsal Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next interview story rehearsal loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "career",
+        "education",
+        "interviews",
+        "practice"
+      ],
+      "evidence_summary": "Interview performance often improves through repeated narrative rehearsal, not by collecting more generic advice.",
+      "adjacent_domains": [
+        "language-tutor-ai",
+        "interview-prep-ai",
+        "career-pivot-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Interview performance often improves through repeated narrative rehearsal, not by collecting more generic advice.",
+      "submitted_by_agent": "agent-713",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-713"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "language-sprint-copilot",
+      "label": "Language Sprint Copilot",
+      "description": "A recurring education skill acceleration workflow for language and sprint decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated language sprint copilot workflow inside the education / skill acceleration wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Language Sprint Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next language sprint copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "education-skill-acceleration",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Learners repeatedly face language and sprint decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "language-tutor-ai",
+        "interview-prep-ai",
+        "career-pivot-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Learners repeatedly face language and sprint decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-714",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-714"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "language-sprint-loop",
+      "label": "Language Sprint Loop",
+      "description": "A recurring education skill acceleration workflow for language and sprint decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated language sprint loop workflow inside the education / skill acceleration wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Language Sprint Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next language sprint loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "education-skill-acceleration",
+        "seed-generated",
+        "loop"
+      ],
+      "evidence_summary": "Learners repeatedly face language and sprint decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "language-tutor-ai",
+        "interview-prep-ai",
+        "career-pivot-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Learners repeatedly face language and sprint decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-715",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-715"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "workout-streak-proof-loop",
+      "label": "Workout Streak Proof Loop",
+      "description": "A recurring accountability system that turns workouts into visible streaks, evidence, and next-session preparation.",
+      "specialization_surface": "running the repeated workout streak proof loop workflow inside the health / fitness / self systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Workout Streak Proof Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next workout streak proof loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "fitness",
+        "accountability",
+        "streaks",
+        "self-improvement"
+      ],
+      "evidence_summary": "Fitness adherence improves when people can see and share repeated proof that they are still in motion.",
+      "adjacent_domains": [
+        "fitness-coach-ai",
+        "habit-coach-ai",
+        "meal-plan-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Fitness adherence improves when people can see and share repeated proof that they are still in motion.",
+      "submitted_by_agent": "agent-751",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-751"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "meal-prep-adherence-loop",
+      "label": "Meal Prep Adherence Loop",
+      "description": "A loop for planning, prepping, and reviewing meals around what people actually stick to rather than idealized plans.",
+      "specialization_surface": "running the repeated meal prep adherence loop workflow inside the health / fitness / self systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Meal Prep Adherence Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next meal prep adherence loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "health",
+        "nutrition",
+        "meal-prep",
+        "adherence"
+      ],
+      "evidence_summary": "Nutrition plans fail less from knowledge gaps than from the lack of a repeatable adherence loop that fits real life.",
+      "adjacent_domains": [
+        "fitness-coach-ai",
+        "habit-coach-ai",
+        "meal-plan-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Nutrition plans fail less from knowledge gaps than from the lack of a repeatable adherence loop that fits real life.",
+      "submitted_by_agent": "agent-752",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-752"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "sleep-recovery-feedback-loop",
+      "label": "Sleep Recovery Feedback Loop",
+      "description": "A workflow for adjusting bedtime, training load, and daily intensity based on repeated recovery signals.",
+      "specialization_surface": "running the repeated sleep recovery feedback loop workflow inside the health / fitness / self systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Sleep Recovery Feedback Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next sleep recovery feedback loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "sleep",
+        "recovery",
+        "health",
+        "feedback"
+      ],
+      "evidence_summary": "People increasingly treat recovery as an operating metric, but most still lack a lightweight loop that turns sleep data into action.",
+      "adjacent_domains": [
+        "fitness-coach-ai",
+        "habit-coach-ai",
+        "meal-plan-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "People increasingly treat recovery as an operating metric, but most still lack a lightweight loop that turns sleep data into action.",
+      "submitted_by_agent": "agent-753",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-753"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "workout-streak-copilot",
+      "label": "Workout Streak Copilot",
+      "description": "A recurring health fitness self systems workflow for workout and streak decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated workout streak copilot workflow inside the health / fitness / self systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Workout Streak Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next workout streak copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "health-fitness-self-systems",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Self-improvement users repeatedly face workout and streak decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "fitness-coach-ai",
+        "habit-coach-ai",
+        "meal-plan-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Self-improvement users repeatedly face workout and streak decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-754",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-754"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "workout-streak-loop",
+      "label": "Workout Streak Loop",
+      "description": "A recurring health fitness self systems workflow for workout and streak decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated workout streak loop workflow inside the health / fitness / self systems wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Workout Streak Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next workout streak loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "health-fitness-self-systems",
+        "seed-generated",
+        "loop"
+      ],
+      "evidence_summary": "Self-improvement users repeatedly face workout and streak decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "fitness-coach-ai",
+        "habit-coach-ai",
+        "meal-plan-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Self-improvement users repeatedly face workout and streak decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-755",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-755"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "opener-iteration-loop",
+      "label": "Opener Iteration Loop",
+      "description": "A dating workflow for testing message openers, reviewing response patterns, and refining the next wave quickly.",
+      "specialization_surface": "running the repeated opener iteration loop workflow inside the dating / social signal wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Iteration Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next opener iteration loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "dating",
+        "messaging",
+        "iteration",
+        "social"
+      ],
+      "evidence_summary": "People keep trying new openers in dating apps, but almost never turn that into a real feedback loop.",
+      "adjacent_domains": [
+        "dating-message-ai",
+        "social-confidence-ai",
+        "personal-brand-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "People keep trying new openers in dating apps, but almost never turn that into a real feedback loop.",
+      "submitted_by_agent": "agent-791",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-791"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "date-debrief-loop",
+      "label": "Date Debrief Loop",
+      "description": "A repeated reflection and follow-up loop for learning from dates, spotting patterns, and improving future conversations.",
+      "specialization_surface": "running the repeated date debrief loop workflow inside the dating / social signal wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Date Debrief Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next date debrief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "dating",
+        "reflection",
+        "follow-up",
+        "self-improvement"
+      ],
+      "evidence_summary": "A lot of social progress comes from honest debriefs after interactions, but most people do not preserve those lessons.",
+      "adjacent_domains": [
+        "dating-message-ai",
+        "social-confidence-ai",
+        "personal-brand-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "A lot of social progress comes from honest debriefs after interactions, but most people do not preserve those lessons.",
+      "submitted_by_agent": "agent-792",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-792"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "profile-signal-refresh-loop",
+      "label": "Profile Signal Refresh Loop",
+      "description": "A system for updating profile photos, prompts, and social cues based on repeated response quality rather than guesswork.",
+      "specialization_surface": "running the repeated profile signal refresh loop workflow inside the dating / social signal wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Profile Signal Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next profile signal refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "dating",
+        "profile",
+        "signals",
+        "optimization"
+      ],
+      "evidence_summary": "Dating profiles function like signal surfaces, and small repeated improvements can materially change outcomes.",
+      "adjacent_domains": [
+        "dating-message-ai",
+        "social-confidence-ai",
+        "personal-brand-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Dating profiles function like signal surfaces, and small repeated improvements can materially change outcomes.",
+      "submitted_by_agent": "agent-793",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-793"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "opener-refresh-copilot",
+      "label": "Opener Refresh Copilot",
+      "description": "A recurring dating social signal workflow for opener and refresh decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated opener refresh copilot workflow inside the dating / social signal wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Refresh Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next opener refresh copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "dating-social-signal",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "dating-message-ai",
+        "social-confidence-ai",
+        "personal-brand-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-794",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-794"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "opener-refresh-loop",
+      "label": "Opener Refresh Loop",
+      "description": "A recurring dating social signal workflow for opener and refresh decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated opener refresh loop workflow inside the dating / social signal wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Opener Refresh Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next opener refresh loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "dating-social-signal",
+        "seed-generated",
+        "loop"
+      ],
+      "evidence_summary": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "dating-message-ai",
+        "social-confidence-ai",
+        "personal-brand-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Dating users repeatedly face opener and refresh decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-795",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-795"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "product-angle-test-loop",
+      "label": "Product Angle Test Loop",
+      "description": "A merchant workflow for repeatedly testing new product angles, hooks, and merchandising narratives against audience response.",
+      "specialization_surface": "running the repeated product angle test loop workflow inside the ecommerce / merchant growth wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Test Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next product angle test loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "ecommerce",
+        "angles",
+        "testing",
+        "growth"
+      ],
+      "evidence_summary": "Merchants often have enough products but not enough repeatable angle testing on what to say and emphasize.",
+      "adjacent_domains": [
+        "shopify-growth-ai",
+        "price-optimization-ai",
+        "ugc-ads-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Merchants often have enough products but not enough repeatable angle testing on what to say and emphasize.",
+      "submitted_by_agent": "agent-831",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-831"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "creator-ugc-brief-loop",
+      "label": "Creator UGC Brief Loop",
+      "description": "A system for issuing, refining, and learning from repeated UGC creator briefs for ads and storefront growth.",
+      "specialization_surface": "running the repeated creator ugc brief loop workflow inside the ecommerce / merchant growth wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Creator UGC Brief Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next creator ugc brief loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "ecommerce",
+        "ugc",
+        "creators",
+        "ads"
+      ],
+      "evidence_summary": "Merchant growth is increasingly tied to how quickly teams can produce and tune creator-style ad inputs.",
+      "adjacent_domains": [
+        "shopify-growth-ai",
+        "price-optimization-ai",
+        "ugc-ads-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Merchant growth is increasingly tied to how quickly teams can produce and tune creator-style ad inputs.",
+      "submitted_by_agent": "agent-832",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-832"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "merch-drop-timing-loop",
+      "label": "Merch Drop Timing Loop",
+      "description": "A recurring workflow for planning merch drops around audience heat, inventory, and creator momentum.",
+      "specialization_surface": "running the repeated merch drop timing loop workflow inside the ecommerce / merchant growth wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Merch Drop Timing Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next merch drop timing loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "ecommerce",
+        "drops",
+        "timing",
+        "merch"
+      ],
+      "evidence_summary": "A lot of ecommerce upside depends on timing drops into the right audience moment, not just stocking more items.",
+      "adjacent_domains": [
+        "shopify-growth-ai",
+        "price-optimization-ai",
+        "ugc-ads-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "A lot of ecommerce upside depends on timing drops into the right audience moment, not just stocking more items.",
+      "submitted_by_agent": "agent-833",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-833"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "product-angle-test-copilot",
+      "label": "Product Angle Test Copilot",
+      "description": "A recurring ecommerce merchant growth workflow for product angle and test decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated product angle test copilot workflow inside the ecommerce / merchant growth wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Test Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next product angle test copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "ecommerce-merchant-growth",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "shopify-growth-ai",
+        "price-optimization-ai",
+        "ugc-ads-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-834",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-834"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "product-angle-test-system",
+      "label": "Product Angle Test System",
+      "description": "A recurring ecommerce merchant growth workflow for product angle and test decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated product angle test system workflow inside the ecommerce / merchant growth wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Product Angle Test System outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next product angle test system move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "ecommerce-merchant-growth",
+        "seed-generated",
+        "system"
+      ],
+      "evidence_summary": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "shopify-growth-ai",
+        "price-optimization-ai",
+        "ugc-ads-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Merchants repeatedly face product angle and test decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-835",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-835"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "city-weekend-stack-loop",
+      "label": "City Weekend Stack Loop",
+      "description": "A local planning loop for assembling repeatable weekend combinations of food, events, and social spots.",
+      "specialization_surface": "running the repeated city weekend stack loop workflow inside the local discovery / experiences wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make City Weekend Stack Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next city weekend stack loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "local",
+        "weekends",
+        "planning",
+        "consumer"
+      ],
+      "evidence_summary": "People keep asking the same question every weekend: what is the best stack of things to do without wasting time deciding.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "local-deal-finder",
+        "restaurant-decider-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "People keep asking the same question every weekend: what is the best stack of things to do without wasting time deciding.",
+      "submitted_by_agent": "agent-871",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-871"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "restaurant-veto-resolution-loop",
+      "label": "Restaurant Veto Resolution Loop",
+      "description": "A utility for resolving group restaurant indecision through repeated preference and veto patterns.",
+      "specialization_surface": "running the repeated restaurant veto resolution loop workflow inside the local discovery / experiences wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Restaurant Veto Resolution Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next restaurant veto resolution loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "local",
+        "restaurants",
+        "groups",
+        "consumer"
+      ],
+      "evidence_summary": "Group dining decisions are a recurring friction point that feels small but happens constantly.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "local-deal-finder",
+        "restaurant-decider-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Group dining decisions are a recurring friction point that feels small but happens constantly.",
+      "submitted_by_agent": "agent-872",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-872"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "live-event-discovery-loop",
+      "label": "Live Event Discovery Loop",
+      "description": "A system for surfacing local live events based on repeated taste patterns, mood, and social context.",
+      "specialization_surface": "running the repeated live event discovery loop workflow inside the local discovery / experiences wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Live Event Discovery Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next live event discovery loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "local",
+        "events",
+        "discovery",
+        "taste"
+      ],
+      "evidence_summary": "People want better local discovery, but the real need is a repeated taste-aware event loop rather than a generic listings feed.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "local-deal-finder",
+        "restaurant-decider-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "People want better local discovery, but the real need is a repeated taste-aware event loop rather than a generic listings feed.",
+      "submitted_by_agent": "agent-873",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-873"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "weekend-stack-copilot",
+      "label": "Weekend Stack Copilot",
+      "description": "A recurring local discovery experiences workflow for weekend and stack decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated weekend stack copilot workflow inside the local discovery / experiences wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Weekend Stack Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next weekend stack copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "local-discovery-experiences",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Local discovery users repeatedly face weekend and stack decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "local-deal-finder",
+        "restaurant-decider-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Local discovery users repeatedly face weekend and stack decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-874",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-874"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "weekend-stack-system",
+      "label": "Weekend Stack System",
+      "description": "A recurring local discovery experiences workflow for weekend and stack decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated weekend stack system workflow inside the local discovery / experiences wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Weekend Stack System outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next weekend stack system move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "local-discovery-experiences",
+        "seed-generated",
+        "system"
+      ],
+      "evidence_summary": "Local discovery users repeatedly face weekend and stack decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "trip-planner-ai",
+        "local-deal-finder",
+        "restaurant-decider-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Local discovery users repeatedly face weekend and stack decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-875",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-875"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "community-ritual-loop",
+      "label": "Community Ritual Loop",
+      "description": "A system for creating repeatable rituals, memes, and recurring prompts that keep an audience returning and participating.",
+      "specialization_surface": "running the repeated community ritual loop workflow inside the fandom / collectibles / communities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Community Ritual Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next community ritual loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "community",
+        "rituals",
+        "retention",
+        "culture"
+      ],
+      "evidence_summary": "Communities get sticky when they develop their own rituals, but creators rarely design those rituals intentionally.",
+      "adjacent_domains": [
+        "sports-card-community-ai",
+        "anime-fandom-ai",
+        "collectibles-pricer-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Communities get sticky when they develop their own rituals, but creators rarely design those rituals intentionally.",
+      "submitted_by_agent": "agent-911",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-911"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "drop-alert-copilot",
+      "label": "Drop Alert Copilot",
+      "description": "A recurring fandom collectibles communities workflow for drop and alert decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated drop alert copilot workflow inside the fandom / collectibles / communities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Alert Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next drop alert copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "fandom-collectibles-communities",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "sports-card-community-ai",
+        "anime-fandom-ai",
+        "collectibles-pricer-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-912",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-912"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "drop-alert-loop",
+      "label": "Drop Alert Loop",
+      "description": "A recurring fandom collectibles communities workflow for drop and alert decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated drop alert loop workflow inside the fandom / collectibles / communities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Alert Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next drop alert loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "fandom-collectibles-communities",
+        "seed-generated",
+        "loop"
+      ],
+      "evidence_summary": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "sports-card-community-ai",
+        "anime-fandom-ai",
+        "collectibles-pricer-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-913",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-913"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "drop-alert-system",
+      "label": "Drop Alert System",
+      "description": "A recurring fandom collectibles communities workflow for drop and alert decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated drop alert system workflow inside the fandom / collectibles / communities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Alert System outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next drop alert system move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "fandom-collectibles-communities",
+        "seed-generated",
+        "system"
+      ],
+      "evidence_summary": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "sports-card-community-ai",
+        "anime-fandom-ai",
+        "collectibles-pricer-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-914",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-914"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "drop-alert-workflow",
+      "label": "Drop Alert Workflow",
+      "description": "A recurring fandom collectibles communities workflow for drop and alert decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated drop alert workflow workflow inside the fandom / collectibles / communities wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Drop Alert Workflow outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next drop alert workflow move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "fandom-collectibles-communities",
+        "seed-generated",
+        "workflow"
+      ],
+      "evidence_summary": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "sports-card-community-ai",
+        "anime-fandom-ai",
+        "collectibles-pricer-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Fandom communities repeatedly face drop and alert decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-915",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-915"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "paycheck-allocation-loop",
+      "label": "Paycheck Allocation Loop",
+      "description": "A personal finance workflow that routes each paycheck into repeated allocations across bills, saving, and conviction bets.",
+      "specialization_surface": "running the repeated paycheck allocation loop workflow inside the finance / money ops wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Allocation Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next paycheck allocation loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "finance",
+        "paychecks",
+        "allocation",
+        "consumer"
+      ],
+      "evidence_summary": "A lot of money management pain happens right when income lands and people have to re-decide the split every time.",
+      "adjacent_domains": [
+        "budgeting-ai",
+        "side-hustle-ai",
+        "money-coach-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "A lot of money management pain happens right when income lands and people have to re-decide the split every time.",
+      "submitted_by_agent": "agent-941",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-941"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "subscription-prune-loop",
+      "label": "Subscription Prune Loop",
+      "description": "A recurring utility for surfacing stale subscriptions, low-value renewals, and easy monthly savings.",
+      "specialization_surface": "running the repeated subscription prune loop workflow inside the finance / money ops wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Subscription Prune Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next subscription prune loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "finance",
+        "subscriptions",
+        "savings",
+        "consumer"
+      ],
+      "evidence_summary": "People repeatedly leak money through neglected recurring charges that are annoying enough to ignore but frequent enough to matter.",
+      "adjacent_domains": [
+        "budgeting-ai",
+        "side-hustle-ai",
+        "money-coach-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "People repeatedly leak money through neglected recurring charges that are annoying enough to ignore but frequent enough to matter.",
+      "submitted_by_agent": "agent-942",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-942"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "spending-pattern-reset-loop",
+      "label": "Spending Pattern Reset Loop",
+      "description": "A feedback loop for identifying spending drift and resetting behavior before it compounds into financial regret.",
+      "specialization_surface": "running the repeated spending pattern reset loop workflow inside the finance / money ops wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Spending Pattern Reset Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next spending pattern reset loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "finance",
+        "spending",
+        "behavior",
+        "feedback"
+      ],
+      "evidence_summary": "Consumers usually notice bad money habits late, after they have already become normalized.",
+      "adjacent_domains": [
+        "budgeting-ai",
+        "side-hustle-ai",
+        "money-coach-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Consumers usually notice bad money habits late, after they have already become normalized.",
+      "submitted_by_agent": "agent-943",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-943"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "paycheck-allocation-copilot",
+      "label": "Paycheck Allocation Copilot",
+      "description": "A recurring finance money ops workflow for paycheck and allocation decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated paycheck allocation copilot workflow inside the finance / money ops wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Allocation Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next paycheck allocation copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "finance-money-ops",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "budgeting-ai",
+        "side-hustle-ai",
+        "money-coach-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-944",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-944"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "paycheck-allocation-system",
+      "label": "Paycheck Allocation System",
+      "description": "A recurring finance money ops workflow for paycheck and allocation decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated paycheck allocation system workflow inside the finance / money ops wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Paycheck Allocation System outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next paycheck allocation system move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "finance-money-ops",
+        "seed-generated",
+        "system"
+      ],
+      "evidence_summary": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "budgeting-ai",
+        "side-hustle-ai",
+        "money-coach-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Money-management users repeatedly face paycheck and allocation decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-945",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-945"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "changelog-to-launch-loop",
+      "label": "Changelog to Launch Loop",
+      "description": "A developer workflow for converting product changes into repeated launch posts, release notes, and distribution assets.",
+      "specialization_surface": "running the repeated changelog to launch loop workflow inside the developer distribution tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog to Launch Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next changelog to launch loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "developers",
+        "launch",
+        "distribution",
+        "changelog"
+      ],
+      "evidence_summary": "Many dev tools ship constantly but fail to translate that shipping energy into visible growth moments.",
+      "adjacent_domains": [
+        "github-growth-ai",
+        "devrel-copilot",
+        "open-source-launch-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Many dev tools ship constantly but fail to translate that shipping energy into visible growth moments.",
+      "submitted_by_agent": "agent-971",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-971"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "repo-proof-loop",
+      "label": "Repo Proof Loop",
+      "description": "A system for turning commits, stars, issues, and merged work into social proof that attracts more users and contributors.",
+      "specialization_surface": "running the repeated repo proof loop workflow inside the developer distribution tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Repo Proof Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next repo proof loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "developers",
+        "github",
+        "social-proof",
+        "open-source"
+      ],
+      "evidence_summary": "Open-source growth often depends on making momentum visible, not just improving the code privately.",
+      "adjacent_domains": [
+        "github-growth-ai",
+        "devrel-copilot",
+        "open-source-launch-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Open-source growth often depends on making momentum visible, not just improving the code privately.",
+      "submitted_by_agent": "agent-972",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-972"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "devrel-reply-loop",
+      "label": "DevRel Reply Loop",
+      "description": "A repeated response workflow for answering developer questions in public and turning those replies into durable distribution.",
+      "specialization_surface": "running the repeated devrel reply loop workflow inside the developer distribution tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make DevRel Reply Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next devrel reply loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "developers",
+        "devrel",
+        "community",
+        "distribution"
+      ],
+      "evidence_summary": "Developer trust compounds when teams answer questions publicly and consistently, but most replies disappear into the feed.",
+      "adjacent_domains": [
+        "github-growth-ai",
+        "devrel-copilot",
+        "open-source-launch-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Developer trust compounds when teams answer questions publicly and consistently, but most replies disappear into the feed.",
+      "submitted_by_agent": "agent-973",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-973"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "changelog-thread-copilot",
+      "label": "Changelog Thread Copilot",
+      "description": "A recurring developer distribution tools workflow for changelog and thread decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated changelog thread copilot workflow inside the developer distribution tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Thread Copilot outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next changelog thread copilot move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "developer-distribution-tools",
+        "seed-generated",
+        "copilot"
+      ],
+      "evidence_summary": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "github-growth-ai",
+        "devrel-copilot",
+        "open-source-launch-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-974",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-974"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "domain_id": "changelog-thread-loop",
+      "label": "Changelog Thread Loop",
+      "description": "A recurring developer distribution tools workflow for changelog and thread decisions that compounds through repeated cycles.",
+      "specialization_surface": "running the repeated changelog thread loop workflow inside the developer distribution tools wedge",
+      "mastery_surface": "learning which inputs, timing, and execution patterns make Changelog Thread Loop outperform generic or manual approaches for this audience over repeated cycles",
+      "user_value_loop": "review the next live signal, draft the next changelog thread loop move, execute it, measure the response, and update the working playbook for the next cycle",
+      "domain_tags": [
+        "developer-distribution-tools",
+        "seed-generated",
+        "loop"
+      ],
+      "evidence_summary": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually.",
+      "adjacent_domains": [
+        "github-growth-ai",
+        "devrel-copilot",
+        "open-source-launch-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "seed",
+      "promotion_status": "seed_candidate",
+      "raw_observation": "Developer teams repeatedly face changelog and thread decisions, but most still improvise them manually.",
+      "submitted_by_agent": "agent-975",
+      "submission_index": 1,
+      "evidence_sources": [],
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-975"
+      ],
+      "supporting_agent_count": 1
+    }
+  ],
+  "merged_candidates": [],
+  "rejected_candidates": [],
+  "agent_rollup": {
+    "selected_clusters": {
+      "creator-growth-systems": [
+        "creator-idea-sprint-loop",
+        "distribution-repack-loop",
+        "audience-comment-loop",
+        "collab-graph-loop",
+        "micro-community-loop"
+      ],
+      "gaming-npc-community": [
+        "live-raid-coordination-loop",
+        "npc-response-loop",
+        "fandom-drop-interpretation-loop",
+        "watch-party-escalation-loop",
+        "guild-ops-loop"
+      ],
+      "agentic-builders": [
+        "chip_ai_agent_01",
+        "chip_ai_agent_02",
+        "chip_ai_agent_03",
+        "chip_ai_agent_06",
+        "chip_ai_agent_09"
+      ],
+      "startup-founder-systems": [
+        "chip_ai_agent_07",
+        "chip_ai_agent_08",
+        "chip_ai_agent_11",
+        "chip_ai_agent_12",
+        "chip_ai_agent_14"
+      ],
+      "productivity-builder-ops": [
+        "chip_ai_agent_04",
+        "chip_ai_agent_05",
+        "chip_ai_agent_10",
+        "task-queue-reset-copilot",
+        "task-queue-reset-loop"
+      ],
+      "career-status-social-proof": [
+        "career_signal_compounding_loop",
+        "creator_public_wins_loop",
+        "networking_followup_loop",
+        "independent_operator_brand_loop",
+        "resume-refresh-copilot"
+      ],
+      "consumer-agent-utilities": [
+        "personal_cfo_loop",
+        "money_admin_loop",
+        "consumer_utility_stack",
+        "life-admin-planner-copilot",
+        "life-admin-planner-loop"
+      ],
+      "crypto-defi-trading": [
+        "crypto_airdrop_hunting_loop",
+        "defi_yield_rotation_loop",
+        "wallet_ops_security_loop",
+        "onchain_alpha_scan_loop",
+        "trade_journal_feedback_loop"
+      ],
+      "x-native-persona-tools": [
+        "identity-proof-loop",
+        "status-signal-loop",
+        "trend-to-thesis-loop",
+        "reply-game-copilot",
+        "reply-game-workflow"
+      ],
+      "design-remix-aesthetics": [
+        "remix-meme-loop",
+        "design-feedback-loop",
+        "remix-refresh-copilot",
+        "remix-refresh-loop",
+        "remix-refresh-workflow"
+      ],
+      "education-skill-acceleration": [
+        "language-output-drill-loop",
+        "tutorial-sprint-lab",
+        "interview-story-rehearsal-loop",
+        "language-sprint-copilot",
+        "language-sprint-loop"
+      ],
+      "health-fitness-self-systems": [
+        "workout-streak-proof-loop",
+        "meal-prep-adherence-loop",
+        "sleep-recovery-feedback-loop",
+        "workout-streak-copilot",
+        "workout-streak-loop"
+      ],
+      "dating-social-signal": [
+        "opener-iteration-loop",
+        "date-debrief-loop",
+        "profile-signal-refresh-loop",
+        "opener-refresh-copilot",
+        "opener-refresh-loop"
+      ],
+      "ecommerce-merchant-growth": [
+        "product-angle-test-loop",
+        "creator-ugc-brief-loop",
+        "merch-drop-timing-loop",
+        "product-angle-test-copilot",
+        "product-angle-test-system"
+      ],
+      "local-discovery-experiences": [
+        "city-weekend-stack-loop",
+        "restaurant-veto-resolution-loop",
+        "live-event-discovery-loop",
+        "weekend-stack-copilot",
+        "weekend-stack-system"
+      ],
+      "fandom-collectibles-communities": [
+        "community-ritual-loop",
+        "drop-alert-copilot",
+        "drop-alert-loop",
+        "drop-alert-system",
+        "drop-alert-workflow"
+      ],
+      "finance-money-ops": [
+        "paycheck-allocation-loop",
+        "subscription-prune-loop",
+        "spending-pattern-reset-loop",
+        "paycheck-allocation-copilot",
+        "paycheck-allocation-system"
+      ],
+      "developer-distribution-tools": [
+        "changelog-to-launch-loop",
+        "repo-proof-loop",
+        "devrel-reply-loop",
+        "changelog-thread-copilot",
+        "changelog-thread-loop"
+      ]
+    },
+    "selected_count": 90,
+    "selection_rule": "first 5 accepted candidates per frontier cluster"
+  },
+  "summary": {
+    "accepted_count": 90,
+    "merged_count": 0,
+    "rejected_count": 0,
+    "clear_count": 90,
+    "proto_count": 0
+  },
+  "next_actions": [
+    "Run a bounded hybrid evaluation on this diversity-preserving frontier tranche.",
+    "Use the result as the first simulation checkpoint before attempting a full-frontier hybrid run again."
+  ]
+}

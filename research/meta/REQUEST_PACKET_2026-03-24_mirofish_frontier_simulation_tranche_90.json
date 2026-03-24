@@ -1,0 +1,24 @@
+{
+  "request_id": "mirofish_frontier_simulation_tranche_90_2026-03-24",
+  "created_at": "2026-03-24",
+  "owner": "codex",
+  "scope": "research/meta",
+  "summary": "Translate the canonical 1000-agent frontier into a tractable diversity-preserving simulation tranche, run bounded hybrid evaluation, and record the runtime boundary for the full-frontier spec.",
+  "inputs": [
+    "MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_DIVERSE_RESULT_2026-03-24.json",
+    "mirofish_discovery_frontier_1000_diverse_clusters_2026-03-24 materialized directory"
+  ],
+  "outputs": [
+    "MIROFISH_DISCOVERY_PROGRAM_FRONTIER_1000_SIMULATION_TRANCHE_90_2026-03-24.json",
+    "MIROFISH_HYBRID_SPEC_FRONTIER_TRANCHE_90_2026-03-24.json",
+    "MIROFISH_HYBRID_RUN_FRONTIER_TRANCHE_90_2026-03-24.json",
+    "MIROFISH_HYBRID_DIAGNOSTIC_FRONTIER_TRANCHE_90_2026-03-24.json",
+    "MIROFISH_FRONTIER_SIMULATION_TRANCHE_90_NOTE_2026-03-24.md"
+  ],
+  "constraints": [
+    "Preserve cross-cluster diversity",
+    "Keep the tranche evaluation bounded enough to finish",
+    "Record the failed full-frontier spec as a runtime boundary instead of pretending it worked"
+  ],
+  "status": "completed"
+}

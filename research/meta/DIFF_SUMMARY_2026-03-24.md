@@ -444,3 +444,11 @@ MiroFish discovery frontier canonicalization:
 - run the full merged `1000`-agent frontier packet through `mirofish-discovery-program`
 - save the canonical result JSON and markdown readout
 - confirm the canonical packet currently lands at `1000` accepted, `0` merged, `0` rejected
+
+## Batch 51
+
+MiroFish frontier simulation tranche 90:
+
+- record that the direct full-frontier bounded hybrid spec became too large to evaluate practically
+- build a diversity-preserving `90`-domain simulation tranche from the canonical frontier
+- run the bounded hybrid spec and diagnostic on that tranche as the first usable simulation checkpoint
