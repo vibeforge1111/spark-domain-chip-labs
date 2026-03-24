@@ -370,7 +370,44 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Shared Responsibility Matrix Copilot",
+              "description": "Builds and maintains customer-specific shared responsibility matrices for cloud, managed security, and compliance reviews.",
+              "specialization_surface": "mapping provider-versus-customer ownership for security controls in review and audit contexts",
+              "mastery_surface": "learning recurring responsibility splits, evidence needs, and customer misunderstandings across shared-control reviews",
+              "user_value_loop": "ingest the service boundary, generate the control ownership matrix, attach supporting rationale, and refine the matrix after each customer or auditor challenge",
+              "domain_tags": [
+                "security",
+                "shared-responsibility",
+                "compliance",
+                "customer-review"
+              ],
+              "evidence_sources": [
+                "summit7-shared-responsibility",
+                "ktl-shared-responsibility",
+                "csa-shared-security"
+              ],
+              "evidence_summary": "Summit 7, KTL Solutions, and the Cloud Security Alliance all describe shared-responsibility matrices as a recurring requirement in cloud compliance work, where teams must repeatedly clarify which party owns which control and update that mapping as the engagement changes.",
+              "adjacent_domains": [
+                "security-control-crosswalk-copilot",
+                "vendor-security-review-copilot",
+                "trust-center-gap-copilot"
+              ],
+              "duplicate_aliases": [
+                "Customer Responsibility Matrix Copilot",
+                "Shared Security Responsibility Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Security teams keep rebuilding ownership matrices for the same cloud and managed-service controls whenever a customer, auditor, or regulator asks who is actually responsible.",
+              "evidence_links": [
+                "https://www.summit7.us/blog/cmmc-with-shared-responsibility-question-answer",
+                "https://www.ktlsolutions.com/shared-responsibility-matrix/",
+                "https://cloudsecurityalliance.org/blog/2024/09/27/implementing-the-shared-security-responsibility-model-in-the-cloud"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-005",
@@ -391,7 +428,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Compensating Control Justification Copilot",
+              "description": "Documents, packages, and maintains auditor-ready compensating control narratives when standard controls cannot be met directly.",
+              "specialization_surface": "turning security gaps into documented compensating-control packages with rationale, evidence, and review trails",
+              "mastery_surface": "learning which alternative safeguards, risk arguments, and review cadences actually satisfy auditors and customer reviewers",
+              "user_value_loop": "detect a control gap, draft the compensating-control package, attach validation evidence, and update the justification after review or environmental change",
+              "domain_tags": [
+                "security",
+                "compensating-controls",
+                "compliance",
+                "audit-prep"
+              ],
+              "evidence_sources": [
+                "fortinet-compensating-controls",
+                "securityinfowatch-compensating-controls"
+              ],
+              "evidence_summary": "Fortinet describes compensating controls as context-specific alternatives that need clear rationale, validation, and ongoing review, while Security Info Watch notes that teams rely on them heavily but often fail to verify they still mitigate the intended risk.",
+              "adjacent_domains": [
+                "security-control-crosswalk-copilot",
+                "legal-ops",
+                "ai-compliance-evidence-copilot"
+              ],
+              "duplicate_aliases": [
+                "Compensating Controls Copilot",
+                "Control Gap Justification Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Teams repeatedly need to explain why an alternative safeguard is sufficient, show that it addresses the original risk, and keep that justification current for auditors and customer reviews.",
+              "evidence_links": [
+                "https://www.fortinet.com/resources/cyberglossary/compensating-controls",
+                "https://www.securityinfowatch.com/cybersecurity/article/55301098/the-truth-about-compensating-controls"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-006",
@@ -412,7 +484,44 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Vendor Reassessment Delta Copilot",
+              "description": "Tracks what changed between vendor security reviews, identifies stale artifacts, and prepares the delta package for reassessment.",
+              "specialization_surface": "comparing a new vendor reassessment against the prior evidence set, scores, and control assertions",
+              "mastery_surface": "learning which vendor changes, artifact ages, and reassessment triggers actually matter for ongoing third-party risk decisions",
+              "user_value_loop": "ingest prior assessment data, detect material changes or stale evidence, request the smallest missing delta set, and update the vendor review baseline after each reassessment",
+              "domain_tags": [
+                "security",
+                "third-party-risk",
+                "vendor-reassessment",
+                "evidence-freshness"
+              ],
+              "evidence_sources": [
+                "safe-vraq-best-practices",
+                "safe-2026-tprm-guide",
+                "safe-third-party-risk-examples"
+              ],
+              "evidence_summary": "SAFE\u2019s questionnaire and TPRM guidance says high-risk vendors need periodic reassessment, recent supporting artifacts, and trigger-based review after major changes, which creates a recurring delta-analysis workflow rather than a one-time questionnaire task.",
+              "adjacent_domains": [
+                "vendor-assertion-evidence-verifier",
+                "vendor-security-review-copilot",
+                "trust-center-gap-copilot"
+              ],
+              "duplicate_aliases": [
+                "Vendor Assessment Delta Copilot",
+                "Vendor Evidence Freshness Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Third-party risk teams keep rechecking the same vendors and mainly need to know what changed, what evidence is stale, and whether a new event should force a deeper reassessment.",
+              "evidence_links": [
+                "https://safe.security/resources/blog/vendor-security-questionnaire-vraq-best-practices/",
+                "https://safe.security/resources/blog/2026-guide-to-third-party-risk-management-tprm/",
+                "https://safe.security/resources/blog/8-third-party-risk-examples-every-2026-security-team-should-know/"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-007",

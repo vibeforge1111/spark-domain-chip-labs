@@ -1,11 +1,14 @@
 {
   "packet_kind": "mirofish_run_diagnostic_brief",
-  "created_at": "2026-03-24T17:37:51.077529+00:00",
+  "created_at": "2026-03-24T17:49:54.812618+00:00",
   "source_batch_id": null,
-  "source_run_created_at": "2026-03-24T17:37:33.505090+00:00",
+  "source_run_created_at": "2026-03-24T17:49:42.627887+00:00",
   "evidence_lane": "exploratory_frontier",
   "focus_domain_ids": [
+    "compensating-control-justification-copilot",
+    "shared-responsibility-matrix-copilot",
     "vendor-assertion-evidence-verifier",
+    "vendor-reassessment-delta-copilot",
     "security-control-crosswalk-copilot",
     "trust-center-gap-copilot"
   ],
@@ -21,12 +24,12 @@
     "benchmark_top_ensemble_domains": [
       {
         "domain_id": "startup-yc",
-        "mean_adoption": 0.0145,
+        "mean_adoption": 0.0156,
         "agent_choice_signal": 0.1
       },
       {
         "domain_id": "trading-crypto",
-        "mean_adoption": 0.0111,
+        "mean_adoption": 0.0122,
         "agent_choice_signal": 0.0333
       },
       {
@@ -38,20 +41,97 @@
   },
   "focus_diagnostics": [
     {
-      "domain_id": "vendor-assertion-evidence-verifier",
+      "domain_id": "compensating-control-justification-copilot",
+      "adoption_probability": 0.0333,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.0666,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0322,
+      "mean_trial": 0.0789,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0667,
+      "attention_to_ensemble_gap": 0.0344,
+      "interest_to_choice_gap": 0.7334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0467,
+      "benchmark_gap": 0.0233,
+      "diagnostic_tags": [
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption clears the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "shared-responsibility-matrix-copilot",
       "adoption_probability": 0.0,
-      "peak_interest_probability": 0.8333,
-      "agent_choice_signal": 0.1,
-      "consensus_score": 0.5333,
-      "mean_adoption": 0.0056,
-      "mean_trial": 0.0567,
+      "peak_interest_probability": 0.7667,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5,
+      "mean_adoption": 0.0067,
+      "mean_trial": 0.0389,
       "mean_churn": 0.0,
       "confidence_width": 0.0167,
-      "attention_to_ensemble_gap": 0.0944,
-      "interest_to_choice_gap": 0.7333,
-      "flagship_retention_gap": 0.1,
-      "trial_to_adoption_gap": 0.0511,
+      "attention_to_ensemble_gap": 0.0266,
+      "interest_to_choice_gap": 0.7334,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0322,
+      "benchmark_gap": -0.0022,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "vendor-assertion-evidence-verifier",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.6667,
+      "mean_adoption": 0.0056,
+      "mean_trial": 0.05,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0167,
+      "attention_to_ensemble_gap": 0.0277,
+      "interest_to_choice_gap": 0.7667,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0444,
       "benchmark_gap": -0.0033,
+      "diagnostic_tags": [
+        "below_benchmark_median",
+        "interest_to_choice_friction",
+        "trial_to_retention_collapse"
+      ],
+      "diagnostic_summary": [
+        "Ensemble adoption is still below the current benchmark median.",
+        "Interest converts weakly into actual agent choice.",
+        "Trial behavior is not converting into retained adoption."
+      ]
+    },
+    {
+      "domain_id": "vendor-reassessment-delta-copilot",
+      "adoption_probability": 0.0,
+      "peak_interest_probability": 0.7333,
+      "agent_choice_signal": 0.0333,
+      "consensus_score": 0.5333,
+      "mean_adoption": 0.0022,
+      "mean_trial": 0.0533,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0167,
+      "attention_to_ensemble_gap": 0.0311,
+      "interest_to_choice_gap": 0.7,
+      "flagship_retention_gap": 0.0333,
+      "trial_to_adoption_gap": 0.0511,
+      "benchmark_gap": -0.0067,
       "diagnostic_tags": [
         "below_benchmark_median",
         "interest_to_choice_friction",
@@ -67,16 +147,16 @@
       "domain_id": "security-control-crosswalk-copilot",
       "adoption_probability": 0.0333,
       "peak_interest_probability": 0.8667,
-      "agent_choice_signal": 0.1333,
+      "agent_choice_signal": 0.1666,
       "consensus_score": 0.4667,
       "mean_adoption": 0.0011,
-      "mean_trial": 0.0689,
+      "mean_trial": 0.0633,
       "mean_churn": 0.0,
       "confidence_width": 0.0,
-      "attention_to_ensemble_gap": 0.1322,
-      "interest_to_choice_gap": 0.7334,
-      "flagship_retention_gap": 0.1,
-      "trial_to_adoption_gap": 0.0678,
+      "attention_to_ensemble_gap": 0.1655,
+      "interest_to_choice_gap": 0.7001,
+      "flagship_retention_gap": 0.1333,
+      "trial_to_adoption_gap": 0.0622,
       "benchmark_gap": -0.0078,
       "diagnostic_tags": [
         "below_benchmark_median",
@@ -94,17 +174,17 @@
     {
       "domain_id": "trust-center-gap-copilot",
       "adoption_probability": 0.0,
-      "peak_interest_probability": 0.8333,
+      "peak_interest_probability": 0.8,
       "agent_choice_signal": 0.0,
-      "consensus_score": 0.4333,
+      "consensus_score": 0.4,
       "mean_adoption": 0.0,
-      "mean_trial": 0.0289,
+      "mean_trial": 0.0244,
       "mean_churn": 0.0,
       "confidence_width": 0.0,
       "attention_to_ensemble_gap": 0.0,
-      "interest_to_choice_gap": 0.8333,
+      "interest_to_choice_gap": 0.8,
       "flagship_retention_gap": 0.0,
-      "trial_to_adoption_gap": 0.0289,
+      "trial_to_adoption_gap": 0.0244,
       "benchmark_gap": -0.0089,
       "diagnostic_tags": [
         "below_benchmark_median",
@@ -120,7 +200,7 @@
   ],
   "cluster_readout": {
     "strongest_attention_domain": "security-control-crosswalk-copilot",
-    "strongest_ensemble_domain": "vendor-assertion-evidence-verifier",
+    "strongest_ensemble_domain": "compensating-control-justification-copilot",
     "worst_attention_to_ensemble_gap_domain": "security-control-crosswalk-copilot",
     "largest_trial_to_adoption_gap_domain": "security-control-crosswalk-copilot"
   },

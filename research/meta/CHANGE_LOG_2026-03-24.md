@@ -1430,3 +1430,51 @@ The pilot plumbing was complete, so the next honest step was to start real colle
 
 - This tranche starts real collection, but it is still only `3 / 100` agents filled.
 - The security slice is promising enough to keep collecting, but not strong enough yet for promotion review.
+
+## Tranche: MiroFish Discovery Security Tranche 2
+
+### Files Changed
+
+- `research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24/01_security-compliance-response.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.md`
+- `research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_DIAGNOSTIC_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_PROMOTION_BRIEF_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_SECURITY_TRANCHE_2_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_security_tranche_2.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The first three collected security candidates were good enough to justify one more small expansion of the same wedge before opening a new cluster.
+
+### What Changed
+
+- Added three more evidence-grounded candidates to the security cluster
+- Refreshed the partial pilot result to `6` accepted clear-domain candidates
+- Corrected the bounded hybrid read so it evaluates all `6` discovered domains instead of the stale `3`-domain spec
+- The corrected read elevates `compensating-control-justification-copilot` to the current top security frontier candidate
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.md --title "MiroFish Discovery Pilot 100 Progress"`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json --output research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --rounds 8 --flagship-count-per-type 8 --ensemble-runs 4 --ensemble-count-per-type 4 --scenario-label mirofish-discovery-pilot-100-security-tranche`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-run-diagnostic --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_DIAGNOSTIC_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-promotion-brief --input research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SECURITY_TRANCHE_PROMOTION_BRIEF_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+
+### Notes
+
+- The corrected hybrid artifacts are the valid read for this tranche; the earlier parallel-generated `3`-domain spec should be ignored.
+- The wedge is stronger, but the current recommendation is still frontier/watchlist rather than promotion review.

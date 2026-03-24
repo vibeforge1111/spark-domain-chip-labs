@@ -1,13 +1,16 @@
 {
   "packet_kind": "mirofish_hybrid_evaluation_spec",
-  "created_at": "2026-03-24T17:37:17.502224+00:00",
+  "created_at": "2026-03-24T17:49:22.096922+00:00",
   "source_batch_id": null,
   "source_packet_kind": "mirofish_discovery_program",
   "evidence_lane": "exploratory_frontier",
   "discovered_domain_ids": [
     "security-control-crosswalk-copilot",
     "vendor-assertion-evidence-verifier",
-    "trust-center-gap-copilot"
+    "trust-center-gap-copilot",
+    "shared-responsibility-matrix-copilot",
+    "compensating-control-justification-copilot",
+    "vendor-reassessment-delta-copilot"
   ],
   "proposed_benchmark_domain_ids": [],
   "promotion_review_domain_ids": [],
@@ -281,6 +284,128 @@
         ],
         "promotion_status": "candidate"
       }
+    },
+    {
+      "domain_id": "shared-responsibility-matrix-copilot",
+      "label": "Shared Responsibility Matrix Copilot",
+      "description": "Builds and maintains customer-specific shared responsibility matrices for cloud, managed security, and compliance reviews.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.67,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6581,
+      "rationale": "Summit 7, KTL Solutions, and the Cloud Security Alliance all describe shared-responsibility matrices as a recurring requirement in cloud compliance work, where teams must repeatedly clarify which party owns which control and update that mapping as the engagement changes.",
+      "related_chips": [
+        "security-control-crosswalk-copilot",
+        "vendor-security-review-copilot",
+        "trust-center-gap-copilot"
+      ],
+      "evidence_sources": [
+        "summit7-shared-responsibility",
+        "ktl-shared-responsibility",
+        "csa-shared-security"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "mapping provider-versus-customer ownership for security controls in review and audit contexts",
+        "mastery_surface": "learning recurring responsibility splits, evidence needs, and customer misunderstandings across shared-control reviews",
+        "user_value_loop": "ingest the service boundary, generate the control ownership matrix, attach supporting rationale, and refine the matrix after each customer or auditor challenge",
+        "domain_tags": [
+          "security",
+          "shared-responsibility",
+          "compliance",
+          "customer-review"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "compensating-control-justification-copilot",
+      "label": "Compensating Control Justification Copilot",
+      "description": "Documents, packages, and maintains auditor-ready compensating control narratives when standard controls cannot be met directly.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.67,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6441,
+      "rationale": "Fortinet describes compensating controls as context-specific alternatives that need clear rationale, validation, and ongoing review, while Security Info Watch notes that teams rely on them heavily but often fail to verify they still mitigate the intended risk.",
+      "related_chips": [
+        "security-control-crosswalk-copilot",
+        "legal-ops",
+        "ai-compliance-evidence-copilot"
+      ],
+      "evidence_sources": [
+        "fortinet-compensating-controls",
+        "securityinfowatch-compensating-controls"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "turning security gaps into documented compensating-control packages with rationale, evidence, and review trails",
+        "mastery_surface": "learning which alternative safeguards, risk arguments, and review cadences actually satisfy auditors and customer reviewers",
+        "user_value_loop": "detect a control gap, draft the compensating-control package, attach validation evidence, and update the justification after review or environmental change",
+        "domain_tags": [
+          "security",
+          "compensating-controls",
+          "compliance",
+          "audit-prep"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "vendor-reassessment-delta-copilot",
+      "label": "Vendor Reassessment Delta Copilot",
+      "description": "Tracks what changed between vendor security reviews, identifies stale artifacts, and prepares the delta package for reassessment.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6701,
+      "rationale": "SAFE\u2019s questionnaire and TPRM guidance says high-risk vendors need periodic reassessment, recent supporting artifacts, and trigger-based review after major changes, which creates a recurring delta-analysis workflow rather than a one-time questionnaire task.",
+      "related_chips": [
+        "vendor-assertion-evidence-verifier",
+        "vendor-security-review-copilot",
+        "trust-center-gap-copilot"
+      ],
+      "evidence_sources": [
+        "safe-vraq-best-practices",
+        "safe-2026-tprm-guide",
+        "safe-third-party-risk-examples"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "comparing a new vendor reassessment against the prior evidence set, scores, and control assertions",
+        "mastery_surface": "learning which vendor changes, artifact ages, and reassessment triggers actually matter for ongoing third-party risk decisions",
+        "user_value_loop": "ingest prior assessment data, detect material changes or stale evidence, request the smallest missing delta set, and update the vendor review baseline after each reassessment",
+        "domain_tags": [
+          "security",
+          "third-party-risk",
+          "vendor-reassessment",
+          "evidence-freshness"
+        ],
+        "promotion_status": "candidate"
+      }
     }
   ],
   "proposed_benchmark_opportunities": [],
@@ -412,6 +537,47 @@
       "origin": "benchmark_panel"
     },
     {
+      "domain_id": "vendor-reassessment-delta-copilot",
+      "label": "Vendor Reassessment Delta Copilot",
+      "description": "Tracks what changed between vendor security reviews, identifies stale artifacts, and prepares the delta package for reassessment.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.75,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6701,
+      "rationale": "SAFE\u2019s questionnaire and TPRM guidance says high-risk vendors need periodic reassessment, recent supporting artifacts, and trigger-based review after major changes, which creates a recurring delta-analysis workflow rather than a one-time questionnaire task.",
+      "related_chips": [
+        "vendor-assertion-evidence-verifier",
+        "vendor-security-review-copilot",
+        "trust-center-gap-copilot"
+      ],
+      "evidence_sources": [
+        "safe-vraq-best-practices",
+        "safe-2026-tprm-guide",
+        "safe-third-party-risk-examples"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "comparing a new vendor reassessment against the prior evidence set, scores, and control assertions",
+        "mastery_surface": "learning which vendor changes, artifact ages, and reassessment triggers actually matter for ongoing third-party risk decisions",
+        "user_value_loop": "ingest prior assessment data, detect material changes or stale evidence, request the smallest missing delta set, and update the vendor review baseline after each reassessment",
+        "domain_tags": [
+          "security",
+          "third-party-risk",
+          "vendor-reassessment",
+          "evidence-freshness"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
       "domain_id": "trust-center-gap-copilot",
       "label": "Trust Center Gap Copilot",
       "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
@@ -493,6 +659,87 @@
       }
     },
     {
+      "domain_id": "shared-responsibility-matrix-copilot",
+      "label": "Shared Responsibility Matrix Copilot",
+      "description": "Builds and maintains customer-specific shared responsibility matrices for cloud, managed security, and compliance reviews.",
+      "scores": {
+        "market_size": 0.788,
+        "data_availability": 0.52,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.67,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6581,
+      "rationale": "Summit 7, KTL Solutions, and the Cloud Security Alliance all describe shared-responsibility matrices as a recurring requirement in cloud compliance work, where teams must repeatedly clarify which party owns which control and update that mapping as the engagement changes.",
+      "related_chips": [
+        "security-control-crosswalk-copilot",
+        "vendor-security-review-copilot",
+        "trust-center-gap-copilot"
+      ],
+      "evidence_sources": [
+        "summit7-shared-responsibility",
+        "ktl-shared-responsibility",
+        "csa-shared-security"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "mapping provider-versus-customer ownership for security controls in review and audit contexts",
+        "mastery_surface": "learning recurring responsibility splits, evidence needs, and customer misunderstandings across shared-control reviews",
+        "user_value_loop": "ingest the service boundary, generate the control ownership matrix, attach supporting rationale, and refine the matrix after each customer or auditor challenge",
+        "domain_tags": [
+          "security",
+          "shared-responsibility",
+          "compliance",
+          "customer-review"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "compensating-control-justification-copilot",
+      "label": "Compensating Control Justification Copilot",
+      "description": "Documents, packages, and maintains auditor-ready compensating control narratives when standard controls cannot be met directly.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.67,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6441,
+      "rationale": "Fortinet describes compensating controls as context-specific alternatives that need clear rationale, validation, and ongoing review, while Security Info Watch notes that teams rely on them heavily but often fail to verify they still mitigate the intended risk.",
+      "related_chips": [
+        "security-control-crosswalk-copilot",
+        "legal-ops",
+        "ai-compliance-evidence-copilot"
+      ],
+      "evidence_sources": [
+        "fortinet-compensating-controls",
+        "securityinfowatch-compensating-controls"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "turning security gaps into documented compensating-control packages with rationale, evidence, and review trails",
+        "mastery_surface": "learning which alternative safeguards, risk arguments, and review cadences actually satisfy auditors and customer reviewers",
+        "user_value_loop": "detect a control gap, draft the compensating-control package, attach validation evidence, and update the justification after review or environmental change",
+        "domain_tags": [
+          "security",
+          "compensating-controls",
+          "compliance",
+          "audit-prep"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
       "domain_id": "vendor-assertion-evidence-verifier",
       "label": "Vendor Assertion Evidence Verifier",
       "description": "Requests, validates, and tracks supporting artifacts behind vendor questionnaire claims for high-risk reviews.",
@@ -541,8 +788,11 @@
       "mcp-server-builder",
       "ai-agent-builder",
       "startup-yc",
+      "vendor-reassessment-delta-copilot",
       "trust-center-gap-copilot",
       "security-control-crosswalk-copilot",
+      "shared-responsibility-matrix-copilot",
+      "compensating-control-justification-copilot",
       "vendor-assertion-evidence-verifier"
     ],
     "opportunities": [
@@ -672,6 +922,47 @@
         "origin": "benchmark_panel"
       },
       {
+        "domain_id": "vendor-reassessment-delta-copilot",
+        "label": "Vendor Reassessment Delta Copilot",
+        "description": "Tracks what changed between vendor security reviews, identifies stale artifacts, and prepares the delta package for reassessment.",
+        "scores": {
+          "market_size": 0.788,
+          "data_availability": 0.52,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.75,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6701,
+        "rationale": "SAFE\u2019s questionnaire and TPRM guidance says high-risk vendors need periodic reassessment, recent supporting artifacts, and trigger-based review after major changes, which creates a recurring delta-analysis workflow rather than a one-time questionnaire task.",
+        "related_chips": [
+          "vendor-assertion-evidence-verifier",
+          "vendor-security-review-copilot",
+          "trust-center-gap-copilot"
+        ],
+        "evidence_sources": [
+          "safe-vraq-best-practices",
+          "safe-2026-tprm-guide",
+          "safe-third-party-risk-examples"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "comparing a new vendor reassessment against the prior evidence set, scores, and control assertions",
+          "mastery_surface": "learning which vendor changes, artifact ages, and reassessment triggers actually matter for ongoing third-party risk decisions",
+          "user_value_loop": "ingest prior assessment data, detect material changes or stale evidence, request the smallest missing delta set, and update the vendor review baseline after each reassessment",
+          "domain_tags": [
+            "security",
+            "third-party-risk",
+            "vendor-reassessment",
+            "evidence-freshness"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
         "domain_id": "trust-center-gap-copilot",
         "label": "Trust Center Gap Copilot",
         "description": "Prepares the exact missing documents, report access workflows, and follow-up answers needed when a trust center does not fully satisfy a customer security review.",
@@ -748,6 +1039,87 @@
             "compliance",
             "control-mapping",
             "multi-framework"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "shared-responsibility-matrix-copilot",
+        "label": "Shared Responsibility Matrix Copilot",
+        "description": "Builds and maintains customer-specific shared responsibility matrices for cloud, managed security, and compliance reviews.",
+        "scores": {
+          "market_size": 0.788,
+          "data_availability": 0.52,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.67,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6581,
+        "rationale": "Summit 7, KTL Solutions, and the Cloud Security Alliance all describe shared-responsibility matrices as a recurring requirement in cloud compliance work, where teams must repeatedly clarify which party owns which control and update that mapping as the engagement changes.",
+        "related_chips": [
+          "security-control-crosswalk-copilot",
+          "vendor-security-review-copilot",
+          "trust-center-gap-copilot"
+        ],
+        "evidence_sources": [
+          "summit7-shared-responsibility",
+          "ktl-shared-responsibility",
+          "csa-shared-security"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "mapping provider-versus-customer ownership for security controls in review and audit contexts",
+          "mastery_surface": "learning recurring responsibility splits, evidence needs, and customer misunderstandings across shared-control reviews",
+          "user_value_loop": "ingest the service boundary, generate the control ownership matrix, attach supporting rationale, and refine the matrix after each customer or auditor challenge",
+          "domain_tags": [
+            "security",
+            "shared-responsibility",
+            "compliance",
+            "customer-review"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "compensating-control-justification-copilot",
+        "label": "Compensating Control Justification Copilot",
+        "description": "Documents, packages, and maintains auditor-ready compensating control narratives when standard controls cannot be met directly.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.67,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6441,
+        "rationale": "Fortinet describes compensating controls as context-specific alternatives that need clear rationale, validation, and ongoing review, while Security Info Watch notes that teams rely on them heavily but often fail to verify they still mitigate the intended risk.",
+        "related_chips": [
+          "security-control-crosswalk-copilot",
+          "legal-ops",
+          "ai-compliance-evidence-copilot"
+        ],
+        "evidence_sources": [
+          "fortinet-compensating-controls",
+          "securityinfowatch-compensating-controls"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "turning security gaps into documented compensating-control packages with rationale, evidence, and review trails",
+          "mastery_surface": "learning which alternative safeguards, risk arguments, and review cadences actually satisfy auditors and customer reviewers",
+          "user_value_loop": "detect a control gap, draft the compensating-control package, attach validation evidence, and update the justification after review or environmental change",
+          "domain_tags": [
+            "security",
+            "compensating-controls",
+            "compliance",
+            "audit-prep"
           ],
           "promotion_status": "candidate"
         }
@@ -1068,6 +1440,67 @@
         }
       },
       {
+        "signal_id": "vendor-reassessment-delta-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Vendor Reassessment Delta Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "vendor-reassessment-delta-copilot-safe-vraq-best-practices",
+        "signal_type": "community_request",
+        "label": "Vendor Reassessment Delta Copilot via safe-vraq-best-practices",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "vendor-reassessment-delta-copilot-safe-2026-tprm-guide",
+        "signal_type": "community_request",
+        "label": "Vendor Reassessment Delta Copilot via safe-2026-tprm-guide",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "vendor-reassessment-delta-copilot-safe-third-party-risk-examples",
+        "signal_type": "community_request",
+        "label": "Vendor Reassessment Delta Copilot via safe-third-party-risk-examples",
+        "strength": 0.3351,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "vendor-reassessment-delta-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Vendor Reassessment Delta Copilot ecosystem pull from vendor-assertion-evidence-verifier, vendor-security-review-copilot, trust-center-gap-copilot",
+        "strength": 0.675,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "vendor-assertion-evidence-verifier",
+            "vendor-security-review-copilot",
+            "trust-center-gap-copilot"
+          ]
+        }
+      },
+      {
         "signal_id": "trust-center-gap-copilot-community-demand",
         "signal_type": "community_request",
         "label": "Trust Center Gap Copilot community demand",
@@ -1175,6 +1608,117 @@
             "ai-compliance-evidence-copilot",
             "legal-ops",
             "ai-security-questionnaire-copilot"
+          ]
+        }
+      },
+      {
+        "signal_id": "shared-responsibility-matrix-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Shared Responsibility Matrix Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "shared-responsibility-matrix-copilot-summit7-shared-responsibility",
+        "signal_type": "community_request",
+        "label": "Shared Responsibility Matrix Copilot via summit7-shared-responsibility",
+        "strength": 0.3291,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "shared-responsibility-matrix-copilot-ktl-shared-responsibility",
+        "signal_type": "community_request",
+        "label": "Shared Responsibility Matrix Copilot via ktl-shared-responsibility",
+        "strength": 0.3291,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "shared-responsibility-matrix-copilot-csa-shared-security",
+        "signal_type": "community_request",
+        "label": "Shared Responsibility Matrix Copilot via csa-shared-security",
+        "strength": 0.3291,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "shared-responsibility-matrix-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Shared Responsibility Matrix Copilot ecosystem pull from security-control-crosswalk-copilot, vendor-security-review-copilot, trust-center-gap-copilot",
+        "strength": 0.603,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "security-control-crosswalk-copilot",
+            "vendor-security-review-copilot",
+            "trust-center-gap-copilot"
+          ]
+        }
+      },
+      {
+        "signal_id": "compensating-control-justification-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Compensating Control Justification Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "compensating-control-justification-copilot-fortinet-compensating-controls",
+        "signal_type": "community_request",
+        "label": "Compensating Control Justification Copilot via fortinet-compensating-controls",
+        "strength": 0.3221,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "compensating-control-justification-copilot-securityinfowatch-compensating-controls",
+        "signal_type": "community_request",
+        "label": "Compensating Control Justification Copilot via securityinfowatch-compensating-controls",
+        "strength": 0.3221,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "compensating-control-justification-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Compensating Control Justification Copilot ecosystem pull from security-control-crosswalk-copilot, legal-ops, ai-compliance-evidence-copilot",
+        "strength": 0.603,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "security-control-crosswalk-copilot",
+            "legal-ops",
+            "ai-compliance-evidence-copilot"
           ]
         }
       },
@@ -1300,6 +1844,39 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-extends-vendor-reassessment-delta-copilot-chip-vendor-assertion-evidence-verifier",
+        "signal_type": "competitor_chip",
+        "label": "vendor-reassessment-delta-copilot extends vendor-assertion-evidence-verifier",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-vendor-reassessment-delta-copilot-chip-vendor-security-review-copilot",
+        "signal_type": "competitor_chip",
+        "label": "vendor-reassessment-delta-copilot extends vendor-security-review-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-vendor-reassessment-delta-copilot-chip-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "vendor-reassessment-delta-copilot extends trust-center-gap-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-extends-trust-center-gap-copilot-chip-vendor-security-review-copilot",
         "signal_type": "competitor_chip",
         "label": "trust-center-gap-copilot extends vendor-security-review-copilot",
@@ -1362,6 +1939,72 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-shared-responsibility-matrix-copilot-chip-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "shared-responsibility-matrix-copilot extends security-control-crosswalk-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-shared-responsibility-matrix-copilot-chip-vendor-security-review-copilot",
+        "signal_type": "competitor_chip",
+        "label": "shared-responsibility-matrix-copilot extends vendor-security-review-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-shared-responsibility-matrix-copilot-chip-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "shared-responsibility-matrix-copilot extends trust-center-gap-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-compensating-control-justification-copilot-chip-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "compensating-control-justification-copilot extends security-control-crosswalk-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-compensating-control-justification-copilot-chip-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "compensating-control-justification-copilot extends legal-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-compensating-control-justification-copilot-chip-ai-compliance-evidence-copilot",
+        "signal_type": "competitor_chip",
+        "label": "compensating-control-justification-copilot extends ai-compliance-evidence-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
         ],
         "metadata": {}
       },
@@ -1619,6 +2262,116 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-vendor-reassessment-delta-copilot-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-center-gap-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-center-gap-copilot-vendor-reassessment-delta-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-reassessment-delta-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-reassessment-delta-copilot-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-control-crosswalk-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-control-crosswalk-copilot-vendor-reassessment-delta-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-reassessment-delta-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-reassessment-delta-copilot-shared-responsibility-matrix-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from shared-responsibility-matrix-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-shared-responsibility-matrix-copilot-vendor-reassessment-delta-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-reassessment-delta-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-reassessment-delta-copilot-compensating-control-justification-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compensating-control-justification-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compensating-control-justification-copilot-vendor-reassessment-delta-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-reassessment-delta-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-reassessment-delta-copilot-vendor-assertion-evidence-verifier",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-assertion-evidence-verifier",
+        "strength": 0.285,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-reassessment-delta-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-assertion-evidence-verifier-vendor-reassessment-delta-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-reassessment-delta-copilot",
+        "strength": 0.285,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-trust-center-gap-copilot-security-control-crosswalk-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from security-control-crosswalk-copilot",
@@ -1637,6 +2390,50 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-center-gap-copilot-shared-responsibility-matrix-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from shared-responsibility-matrix-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-shared-responsibility-matrix-copilot-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-center-gap-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trust-center-gap-copilot-compensating-control-justification-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compensating-control-justification-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trust-center-gap-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compensating-control-justification-copilot-trust-center-gap-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trust-center-gap-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
         ],
         "metadata": {}
       },
@@ -1663,6 +2460,50 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-security-control-crosswalk-copilot-shared-responsibility-matrix-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from shared-responsibility-matrix-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-shared-responsibility-matrix-copilot-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-control-crosswalk-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-security-control-crosswalk-copilot-compensating-control-justification-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compensating-control-justification-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "security-control-crosswalk-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compensating-control-justification-copilot-security-control-crosswalk-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from security-control-crosswalk-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-security-control-crosswalk-copilot-vendor-assertion-evidence-verifier",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from vendor-assertion-evidence-verifier",
@@ -1678,6 +2519,72 @@
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from security-control-crosswalk-copilot",
         "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-shared-responsibility-matrix-copilot-compensating-control-justification-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compensating-control-justification-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compensating-control-justification-copilot-shared-responsibility-matrix-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from shared-responsibility-matrix-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-shared-responsibility-matrix-copilot-vendor-assertion-evidence-verifier",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-assertion-evidence-verifier",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "shared-responsibility-matrix-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-assertion-evidence-verifier-shared-responsibility-matrix-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from shared-responsibility-matrix-copilot",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-assertion-evidence-verifier"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-compensating-control-justification-copilot-vendor-assertion-evidence-verifier",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-assertion-evidence-verifier",
+        "strength": 0.285,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "compensating-control-justification-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-assertion-evidence-verifier-compensating-control-justification-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from compensating-control-justification-copilot",
+        "strength": 0.285,
         "decay_per_round": 0.05,
         "affects_domains": [
           "vendor-assertion-evidence-verifier"
@@ -1703,9 +2610,9 @@
             "ai_newcomer"
           ],
           "affects_domains": [
+            "vendor-reassessment-delta-copilot",
             "trust-center-gap-copilot",
-            "security-control-crosswalk-copilot",
-            "vendor-assertion-evidence-verifier"
+            "security-control-crosswalk-copilot"
           ],
           "inject_at_round": 4,
           "description": "A tool goes viral and creates massive awareness for the domain."
@@ -1997,6 +2904,75 @@
           "properties": {}
         },
         {
+          "id": "vendor-reassessment-delta-copilot",
+          "type": "domain",
+          "label": "Vendor Reassessment Delta Copilot",
+          "properties": {
+            "description": "Tracks what changed between vendor security reviews, identifies stale artifacts, and prepares the delta package for reassessment.",
+            "composite_score": 0.6701,
+            "scores": {
+              "market_size": 0.788,
+              "data_availability": 0.52,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.75,
+              "monetization_potential": 0.72
+            },
+            "rationale": "SAFE\u2019s questionnaire and TPRM guidance says high-risk vendors need periodic reassessment, recent supporting artifacts, and trigger-based review after major changes, which creates a recurring delta-analysis workflow rather than a one-time questionnaire task.",
+            "domain_tags": [
+              "audit",
+              "compliance",
+              "evidence-freshness",
+              "infrastructure",
+              "portfolio_intelligence",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "security",
+              "third-party-risk",
+              "vendor-reassessment"
+            ],
+            "retention_score": 0.83,
+            "choice_score": 0.79
+          }
+        },
+        {
+          "id": "chip-vendor-assertion-evidence-verifier",
+          "type": "technology",
+          "label": "vendor-assertion-evidence-verifier",
+          "properties": {}
+        },
+        {
+          "id": "chip-vendor-security-review-copilot",
+          "type": "technology",
+          "label": "vendor-security-review-copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-trust-center-gap-copilot",
+          "type": "technology",
+          "label": "trust-center-gap-copilot",
+          "properties": {}
+        },
+        {
+          "id": "platform-safe-vraq-best-practices",
+          "type": "platform",
+          "label": "safe-vraq-best-practices",
+          "properties": {}
+        },
+        {
+          "id": "platform-safe-2026-tprm-guide",
+          "type": "platform",
+          "label": "safe-2026-tprm-guide",
+          "properties": {}
+        },
+        {
+          "id": "platform-safe-third-party-risk-examples",
+          "type": "platform",
+          "label": "safe-third-party-risk-examples",
+          "properties": {}
+        },
+        {
           "id": "trust-center-gap-copilot",
           "type": "domain",
           "label": "Trust Center Gap Copilot",
@@ -2030,12 +3006,6 @@
             "retention_score": 0.81,
             "choice_score": 0.58
           }
-        },
-        {
-          "id": "chip-vendor-security-review-copilot",
-          "type": "technology",
-          "label": "vendor-security-review-copilot",
-          "properties": {}
         },
         {
           "id": "chip-ai-security-questionnaire-copilot",
@@ -2115,6 +3085,106 @@
           "id": "platform-reddit-compliance-mapping",
           "type": "platform",
           "label": "reddit-compliance-mapping",
+          "properties": {}
+        },
+        {
+          "id": "shared-responsibility-matrix-copilot",
+          "type": "domain",
+          "label": "Shared Responsibility Matrix Copilot",
+          "properties": {
+            "description": "Builds and maintains customer-specific shared responsibility matrices for cloud, managed security, and compliance reviews.",
+            "composite_score": 0.6581,
+            "scores": {
+              "market_size": 0.788,
+              "data_availability": 0.52,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.67,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Summit 7, KTL Solutions, and the Cloud Security Alliance all describe shared-responsibility matrices as a recurring requirement in cloud compliance work, where teams must repeatedly clarify which party owns which control and update that mapping as the engagement changes.",
+            "domain_tags": [
+              "audit",
+              "compliance",
+              "customer-review",
+              "infrastructure",
+              "portfolio_intelligence",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "security",
+              "shared-responsibility"
+            ],
+            "retention_score": 0.85,
+            "choice_score": 0.9
+          }
+        },
+        {
+          "id": "chip-security-control-crosswalk-copilot",
+          "type": "technology",
+          "label": "security-control-crosswalk-copilot",
+          "properties": {}
+        },
+        {
+          "id": "platform-summit7-shared-responsibility",
+          "type": "platform",
+          "label": "summit7-shared-responsibility",
+          "properties": {}
+        },
+        {
+          "id": "platform-ktl-shared-responsibility",
+          "type": "platform",
+          "label": "ktl-shared-responsibility",
+          "properties": {}
+        },
+        {
+          "id": "platform-csa-shared-security",
+          "type": "platform",
+          "label": "csa-shared-security",
+          "properties": {}
+        },
+        {
+          "id": "compensating-control-justification-copilot",
+          "type": "domain",
+          "label": "Compensating Control Justification Copilot",
+          "properties": {
+            "description": "Documents, packages, and maintains auditor-ready compensating control narratives when standard controls cannot be met directly.",
+            "composite_score": 0.6441,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.67,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Fortinet describes compensating controls as context-specific alternatives that need clear rationale, validation, and ongoing review, while Security Info Watch notes that teams rely on them heavily but often fail to verify they still mitigate the intended risk.",
+            "domain_tags": [
+              "audit",
+              "audit-prep",
+              "compensating-controls",
+              "compliance",
+              "infrastructure",
+              "portfolio_intelligence",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "security"
+            ],
+            "retention_score": 0.68,
+            "choice_score": 0.83
+          }
+        },
+        {
+          "id": "platform-fortinet-compensating-controls",
+          "type": "platform",
+          "label": "fortinet-compensating-controls",
+          "properties": {}
+        },
+        {
+          "id": "platform-securityinfowatch-compensating-controls",
+          "type": "platform",
+          "label": "securityinfowatch-compensating-controls",
           "properties": {}
         },
         {
@@ -2327,6 +3397,42 @@
           "weight": 0.5
         },
         {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "chip-vendor-assertion-evidence-verifier",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "chip-vendor-security-review-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "chip-trust-center-gap-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "platform-safe-vraq-best-practices",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "platform-safe-2026-tprm-guide",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "platform-safe-third-party-risk-examples",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
           "source": "trust-center-gap-copilot",
           "target": "chip-vendor-security-review-copilot",
           "relationship": "EXTENDS",
@@ -2393,6 +3499,72 @@
           "weight": 0.5
         },
         {
+          "source": "shared-responsibility-matrix-copilot",
+          "target": "chip-security-control-crosswalk-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "shared-responsibility-matrix-copilot",
+          "target": "chip-vendor-security-review-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "shared-responsibility-matrix-copilot",
+          "target": "chip-trust-center-gap-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "shared-responsibility-matrix-copilot",
+          "target": "platform-summit7-shared-responsibility",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "shared-responsibility-matrix-copilot",
+          "target": "platform-ktl-shared-responsibility",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "shared-responsibility-matrix-copilot",
+          "target": "platform-csa-shared-security",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "compensating-control-justification-copilot",
+          "target": "chip-security-control-crosswalk-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "compensating-control-justification-copilot",
+          "target": "chip-legal-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "compensating-control-justification-copilot",
+          "target": "chip-ai-compliance-evidence-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "compensating-control-justification-copilot",
+          "target": "platform-fortinet-compensating-controls",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "compensating-control-justification-copilot",
+          "target": "platform-securityinfowatch-compensating-controls",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
           "source": "vendor-assertion-evidence-verifier",
           "target": "chip-vendor-security-review-copilot",
           "relationship": "EXTENDS",
@@ -2454,6 +3626,12 @@
         },
         {
           "source": "trading-crypto",
+          "target": "vendor-reassessment-delta-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.3915
+        },
+        {
+          "source": "trading-crypto",
           "target": "trust-center-gap-copilot",
           "relationship": "ENABLES",
           "weight": 0.39065
@@ -2463,6 +3641,18 @@
           "target": "security-control-crosswalk-copilot",
           "relationship": "ENABLES",
           "weight": 0.38485
+        },
+        {
+          "source": "trading-crypto",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.38485
+        },
+        {
+          "source": "trading-crypto",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.37815
         },
         {
           "source": "trading-crypto",
@@ -2490,6 +3680,12 @@
         },
         {
           "source": "cursor-copilot",
+          "target": "vendor-reassessment-delta-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40315
+        },
+        {
+          "source": "cursor-copilot",
           "target": "trust-center-gap-copilot",
           "relationship": "ENABLES",
           "weight": 0.40235
@@ -2499,6 +3695,18 @@
           "target": "security-control-crosswalk-copilot",
           "relationship": "ENABLES",
           "weight": 0.3965
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.3965
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.38985
         },
         {
           "source": "cursor-copilot",
@@ -2520,6 +3728,12 @@
         },
         {
           "source": "mcp-server-builder",
+          "target": "vendor-reassessment-delta-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41065
+        },
+        {
+          "source": "mcp-server-builder",
           "target": "trust-center-gap-copilot",
           "relationship": "ENABLES",
           "weight": 0.40485
@@ -2529,6 +3743,18 @@
           "target": "security-control-crosswalk-copilot",
           "relationship": "ENABLES",
           "weight": 0.404
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.404
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39735
         },
         {
           "source": "mcp-server-builder",
@@ -2544,6 +3770,12 @@
         },
         {
           "source": "ai-agent-builder",
+          "target": "vendor-reassessment-delta-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42485
+        },
+        {
+          "source": "ai-agent-builder",
           "target": "trust-center-gap-copilot",
           "relationship": "ENABLES",
           "weight": 0.42235
@@ -2556,9 +3788,27 @@
         },
         {
           "source": "ai-agent-builder",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41815
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.4115
+        },
+        {
+          "source": "ai-agent-builder",
           "target": "vendor-assertion-evidence-verifier",
           "relationship": "ENABLES",
           "weight": 0.39985
+        },
+        {
+          "source": "startup-yc",
+          "target": "vendor-reassessment-delta-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42065
         },
         {
           "source": "startup-yc",
@@ -2574,9 +3824,51 @@
         },
         {
           "source": "startup-yc",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.414
+        },
+        {
+          "source": "startup-yc",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40735
+        },
+        {
+          "source": "startup-yc",
           "target": "vendor-assertion-evidence-verifier",
           "relationship": "ENABLES",
           "weight": 0.39565
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "trust-center-gap-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "security-control-crosswalk-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9733
+        },
+        {
+          "source": "vendor-reassessment-delta-copilot",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.95
         },
         {
           "source": "trust-center-gap-copilot",
@@ -2586,29 +3878,71 @@
         },
         {
           "source": "trust-center-gap-copilot",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9617
+        },
+        {
+          "source": "trust-center-gap-copilot",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "trust-center-gap-copilot",
           "target": "vendor-assertion-evidence-verifier",
           "relationship": "COMPETES_WITH",
           "weight": 0.925
         },
         {
           "source": "security-control-crosswalk-copilot",
+          "target": "shared-responsibility-matrix-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "security-control-crosswalk-copilot",
           "target": "vendor-assertion-evidence-verifier",
           "relationship": "COMPETES_WITH",
           "weight": 0.9633
+        },
+        {
+          "source": "shared-responsibility-matrix-copilot",
+          "target": "compensating-control-justification-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "shared-responsibility-matrix-copilot",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9633
+        },
+        {
+          "source": "compensating-control-justification-copilot",
+          "target": "vendor-assertion-evidence-verifier",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.95
         }
       ],
       "tracked_variables": {},
-      "node_count": 40,
-      "edge_count": 70
+      "node_count": 54,
+      "edge_count": 114
     }
   },
   "summary": {
-    "discovered_count": 3,
+    "discovered_count": 6,
     "benchmark_count": 5,
     "proposed_benchmark_count": 0,
     "promotion_review_count": 0,
-    "combined_domain_count": 8,
-    "signal_count": 78,
+    "combined_domain_count": 11,
+    "signal_count": 125,
     "shock_count": 3,
     "top_ranked_domain": "trading-crypto"
   },

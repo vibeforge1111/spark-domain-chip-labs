@@ -324,3 +324,12 @@ MiroFish discovery security tranche:
 - fill the first three security-cluster agents with evidence-grounded candidates
 - refresh the progress, recombined packet, and canonicalized partial pilot result
 - run a bounded hybrid validation pass plus diagnostic and promotion briefs for the first collected slice
+
+## Batch 37
+
+MiroFish discovery security tranche 2:
+
+- extend the security cluster from `3` to `6` filled agents
+- refresh the partial pilot result to `6` accepted clear-domain candidates
+- correct the stale parallel-generated hybrid spec by rerunning the spec and hybrid read from the updated result
+- record `compensating-control-justification-copilot` as the current top watchlist candidate inside the security frontier slice

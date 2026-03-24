@@ -3,18 +3,21 @@
 - Program ID: `mirofish-discovery-program-pilot-100`
 - Stage: `pilot_100`
 - Participating Agents: `100` / `100`
-- Accepted: `3`
+- Accepted: `6`
 - Merged: `0`
 - Rejected: `0`
-- Recommended next stage: `refine_contract_before_scaling`
+- Recommended next stage: `run_250_agent_pilot`
 
 ## Accepted Candidates
 
 - `security-control-crosswalk-copilot`: Security Control Crosswalk Copilot (clear_domain_chip)
 - `vendor-assertion-evidence-verifier`: Vendor Assertion Evidence Verifier (clear_domain_chip)
 - `trust-center-gap-copilot`: Trust Center Gap Copilot (clear_domain_chip)
+- `shared-responsibility-matrix-copilot`: Shared Responsibility Matrix Copilot (clear_domain_chip)
+- `compensating-control-justification-copilot`: Compensating Control Justification Copilot (clear_domain_chip)
+- `vendor-reassessment-delta-copilot`: Vendor Reassessment Delta Copilot (clear_domain_chip)
 
 ## Next Actions
 
 - Feed the clear_domain_chip set into a smaller MiroFish evaluation run.
-- Refine the intake contract and rejection reasons before scaling to a larger agent count.
+- The current pilot is strong enough to justify a 250-agent scale pass.
