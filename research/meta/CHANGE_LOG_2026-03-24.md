@@ -1149,3 +1149,47 @@ The watchtower surface was now correct, but refreshing it still depended on a ma
 
 - This tranche improves regeneration ergonomics, not portfolio methodology.
 - The refresh command remains downstream of the canonical medium checkpoint export.
+
+## Tranche: MiroFish Discovery Program
+
+### Files Changed
+
+- `src/chip_labs/mirofish/discovery.py`
+- `src/chip_labs/cli.py`
+- `tests/test_mirofish_discovery.py`
+- `docs/MIROFISH_DISCOVERY_PROGRAM.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_RESULT_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json`
+- `research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_TEMPLATE_100_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The repo already had a single-batch discovery contract, but the next strategic need was a staged path toward a large multi-agent discovery sweep. Jumping directly to a 1,000-agent run would repeat the earlier mistake of scaling before the intake surface was proven.
+
+### What Changed
+
+- Added a staged multi-agent discovery-program canonicalizer
+- Added scale-readiness metrics and next-stage recommendations
+- Added a `mirofish-discovery-program` CLI command
+- Added focused tests for the new path
+- Added a staged program doc and a 100-agent pilot template
+- Ran a smoke discovery-program trial and bridged it into one hybrid evaluation pass
+- Saved a note concluding that the correct next stage is the 100-agent pilot, not an immediate jump to 250 or 1,000 agents
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_RESULT_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_RESULT_2026-03-24.json --output research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json --rounds 8 --flagship-count-per-type 8 --ensemble-runs 4 --ensemble-count-per-type 4 --scenario-label mirofish-discovery-program-smoke`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json`
+
+### Notes
+
+- The smoke pass proves the staged intake surface, not the final quality of a 1,000-agent frontier sweep.
+- The hybrid smoke read shows that the accepted discoveries are still weak against the benchmark panel, which is why the next stage remains the 100-agent pilot.

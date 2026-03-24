@@ -1,0 +1,76 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_discovery_program",
+  "created_at": "2026-03-24",
+  "scope": "Add a staged multi-agent MiroFish discovery-program path, run a smoke trial, and define the next scale step from actual results",
+  "decision_context": {
+    "prior_state": "The repo had a single-batch discovery contract, but no explicit path for scaling to large multi-agent discovery programs such as a 100-agent pilot or a 1,000-agent frontier sweep.",
+    "decision": "Add a discovery-program packet and CLI path, run a smoke trial through canonicalization and the hybrid bridge, then use that outcome to decide the next stage.",
+    "why_now": "The user wants to begin the staged discovery trials now rather than jump straight to a full large-scale sweep."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/discovery.py",
+      "purpose": "Adds staged multi-agent discovery-program canonicalization and scale-readiness metrics."
+    },
+    {
+      "path": "src/chip_labs/cli.py",
+      "purpose": "Adds the mirofish-discovery-program CLI command."
+    },
+    {
+      "path": "tests/test_mirofish_discovery.py",
+      "purpose": "Covers the discovery-program path."
+    },
+    {
+      "path": "docs/MIROFISH_DISCOVERY_PROGRAM.md",
+      "purpose": "Documents the staged discovery program and scale gates."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json",
+      "purpose": "Stores the first smoke-trial multi-agent discovery input."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_RESULT_2026-03-24.json",
+      "purpose": "Stores the canonicalized smoke-trial program result."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json",
+      "purpose": "Stores the hybrid spec derived from the smoke trial."
+    },
+    {
+      "path": "research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json",
+      "purpose": "Stores the hybrid run derived from the smoke trial."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_TEMPLATE_100_2026-03-24.json",
+      "purpose": "Stores the template for the next 100-agent pilot."
+    },
+    {
+      "path": "research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_NOTE_2026-03-24.md",
+      "purpose": "Summarizes what the smoke trial proved and why the next stage is the 100-agent pilot."
+    }
+  ],
+  "planned_steps": [
+    "Extend discovery intake from single-batch canonicalization to staged multi-agent programs",
+    "Run a smoke trial through the new program path",
+    "Bridge the accepted smoke candidates into one hybrid evaluation pass",
+    "Use the measured outcome to decide whether the next stage should be 100 agents, 250 agents, or a full sweep"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py tests/test_watchtower.py tests/test_mirofish_portfolio.py tests/test_trend_prediction.py -q",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_RESULT_2026-03-24.json",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-spec --input research/meta/MIROFISH_DISCOVERY_PROGRAM_SMOKE_RESULT_2026-03-24.json --output research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json --rounds 8 --flagship-count-per-type 8 --ensemble-runs 4 --ensemble-count-per-type 4 --scenario-label mirofish-discovery-program-smoke",
+      "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-hybrid-run --input research/meta/MIROFISH_HYBRID_SPEC_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json --output research/meta/MIROFISH_HYBRID_RUN_DISCOVERY_PROGRAM_SMOKE_2026-03-24.json"
+    ],
+    "expected_checks": [
+      "The discovery-program smoke run emits scale-readiness metrics",
+      "The smoke packet recommends the next stage rather than jumping directly to the full sweep",
+      "The hybrid smoke run makes clear whether the accepted discoveries already threaten the benchmark panel"
+    ]
+  },
+  "guardrails": [
+    "Do not treat the smoke pass as proof that the 1,000-agent full sweep should happen immediately",
+    "Use the hybrid smoke result to judge the next stage, not just the intake acceptance rate",
+    "Keep the 100-agent pilot as the next default stage unless the smoke run clearly fails"
+  ]
+}

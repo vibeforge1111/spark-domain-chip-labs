@@ -1,0 +1,2161 @@
+{
+  "packet_kind": "mirofish_hybrid_evaluation_spec",
+  "created_at": "2026-03-24T17:04:15.767930+00:00",
+  "source_batch_id": null,
+  "source_packet_kind": "mirofish_discovery_program",
+  "evidence_lane": "exploratory_frontier",
+  "discovered_domain_ids": [
+    "vendor-security-review-copilot",
+    "dental-insurance-appeals-ai",
+    "hvac-maintenance-planner-ai"
+  ],
+  "proposed_benchmark_domain_ids": [],
+  "promotion_review_domain_ids": [],
+  "benchmark_domain_ids": [
+    "trading-crypto",
+    "startup-yc",
+    "cursor-copilot",
+    "mcp-server-builder",
+    "ai-agent-builder"
+  ],
+  "harness": {
+    "max_rounds": 8,
+    "flagship_count_per_type": 8,
+    "flagship_agent_count": 120,
+    "ensemble_runs": 4,
+    "ensemble_count_per_type": 4,
+    "ensemble_agent_count": 60,
+    "persona_types": 15,
+    "read_order": [
+      "agent_choice_signal",
+      "peak_interest_probability",
+      "final_adoption_rate"
+    ]
+  },
+  "benchmark_panel": [
+    {
+      "domain_id": "trading-crypto",
+      "label": "Crypto Trading Intelligence",
+      "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+      "scores": {
+        "market_size": 0.92,
+        "data_availability": 0.94,
+        "benchmark_feasibility": 0.9,
+        "community_demand": 0.88,
+        "spark_ecosystem_fit": 0.78,
+        "monetization_potential": 0.91
+      },
+      "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+      "related_chips": [
+        "defi-architect"
+      ],
+      "evidence_sources": [
+        "github",
+        "community",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.889,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+      "scores": {
+        "market_size": 0.83,
+        "data_availability": 0.89,
+        "benchmark_feasibility": 0.85,
+        "community_demand": 0.82,
+        "spark_ecosystem_fit": 0.95,
+        "monetization_potential": 0.76
+      },
+      "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+      "related_chips": [
+        "cursor-copilot",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.852,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "label": "AI Agent Architecture",
+      "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+      "scores": {
+        "market_size": 0.88,
+        "data_availability": 0.82,
+        "benchmark_feasibility": 0.75,
+        "community_demand": 0.9,
+        "spark_ecosystem_fit": 0.8,
+        "monetization_potential": 0.78
+      },
+      "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+      "related_chips": [],
+      "evidence_sources": [
+        "producthunt",
+        "github",
+        "arxiv"
+      ],
+      "composite_score": 0.827,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    }
+  ],
+  "discovered_opportunities": [
+    {
+      "domain_id": "vendor-security-review-copilot",
+      "label": "Vendor Security Review Copilot",
+      "description": "Helps teams answer recurring vendor security review requests.",
+      "scores": {
+        "market_size": 0.608,
+        "data_availability": 0.4,
+        "benchmark_feasibility": 0.57,
+        "community_demand": 0.56,
+        "spark_ecosystem_fit": 0.49,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.5531,
+      "rationale": "Security teams repeatedly answer the same review packets for enterprise buyers.",
+      "related_chips": [
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "security review response drafting",
+        "mastery_surface": "turning repeated vendor review work into a reusable advantage",
+        "user_value_loop": "collect controls, draft answers, reuse winning evidence",
+        "domain_tags": [
+          "security",
+          "compliance"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "dental-insurance-appeals-ai",
+      "label": "Dental Insurance Appeals AI",
+      "description": "Helps recurring insurance appeal work for dental clinics.",
+      "scores": {
+        "market_size": 0.608,
+        "data_availability": 0.4,
+        "benchmark_feasibility": 0.57,
+        "community_demand": 0.56,
+        "spark_ecosystem_fit": 0.49,
+        "monetization_potential": 0.58
+      },
+      "composite_score": 0.5391,
+      "rationale": "Dental offices repeatedly lose time and cash flow on similar appeals.",
+      "related_chips": [
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "dental insurance appeal drafting",
+        "mastery_surface": "improving recurring appeal win-rate for clinics",
+        "user_value_loop": "gather denial data, draft appeal, learn from payer responses",
+        "domain_tags": [
+          "healthcare",
+          "revenue-cycle"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "hvac-maintenance-planner-ai",
+      "label": "HVAC Maintenance Planner AI",
+      "description": "Supports recurring HVAC maintenance planning for field teams.",
+      "scores": {
+        "market_size": 0.56,
+        "data_availability": 0.4,
+        "benchmark_feasibility": 0.47,
+        "community_demand": 0.4,
+        "spark_ecosystem_fit": 0.49,
+        "monetization_potential": 0.46
+      },
+      "composite_score": 0.4655,
+      "rationale": "The work repeats but the mastery layer still needs sharper definition.",
+      "related_chips": [
+        "hvac-optimizer-ai"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "proto_domain_chip",
+      "confidence_read": "low",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "maintenance schedule planning",
+        "mastery_surface": "",
+        "user_value_loop": "plan maintenance windows and follow-up tasks",
+        "domain_tags": [
+          "hvac",
+          "operations"
+        ],
+        "promotion_status": "candidate"
+      }
+    }
+  ],
+  "proposed_benchmark_opportunities": [],
+  "promotion_review_opportunities": [],
+  "static_rankings": [
+    {
+      "domain_id": "trading-crypto",
+      "label": "Crypto Trading Intelligence",
+      "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+      "scores": {
+        "market_size": 0.92,
+        "data_availability": 0.94,
+        "benchmark_feasibility": 0.9,
+        "community_demand": 0.88,
+        "spark_ecosystem_fit": 0.78,
+        "monetization_potential": 0.91
+      },
+      "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+      "related_chips": [
+        "defi-architect"
+      ],
+      "evidence_sources": [
+        "github",
+        "community",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.889,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "label": "AI Coding Workflow",
+      "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+      "scores": {
+        "market_size": 0.87,
+        "data_availability": 0.9,
+        "benchmark_feasibility": 0.84,
+        "community_demand": 0.85,
+        "spark_ecosystem_fit": 0.93,
+        "monetization_potential": 0.8
+      },
+      "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+      "related_chips": [
+        "mcp-server-builder",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "producthunt",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.8665,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "label": "MCP Server Development",
+      "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+      "scores": {
+        "market_size": 0.83,
+        "data_availability": 0.89,
+        "benchmark_feasibility": 0.85,
+        "community_demand": 0.82,
+        "spark_ecosystem_fit": 0.95,
+        "monetization_potential": 0.76
+      },
+      "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+      "related_chips": [
+        "cursor-copilot",
+        "ai-agent-builder"
+      ],
+      "evidence_sources": [
+        "github",
+        "community"
+      ],
+      "benchmark_tier": "midfield",
+      "composite_score": 0.852,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "label": "AI Agent Architecture",
+      "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+      "scores": {
+        "market_size": 0.88,
+        "data_availability": 0.82,
+        "benchmark_feasibility": 0.75,
+        "community_demand": 0.9,
+        "spark_ecosystem_fit": 0.8,
+        "monetization_potential": 0.78
+      },
+      "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+      "related_chips": [],
+      "evidence_sources": [
+        "producthunt",
+        "github",
+        "arxiv"
+      ],
+      "composite_score": 0.827,
+      "benchmark_tier": "seed_panel",
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "startup-yc",
+      "label": "Startup YC Intelligence",
+      "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+      "scores": {
+        "market_size": 0.86,
+        "data_availability": 0.78,
+        "benchmark_feasibility": 0.74,
+        "community_demand": 0.87,
+        "spark_ecosystem_fit": 0.84,
+        "monetization_potential": 0.89
+      },
+      "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+      "related_chips": [
+        "indie-hacker",
+        "agentic-marketing"
+      ],
+      "evidence_sources": [
+        "community",
+        "producthunt",
+        "x_twitter"
+      ],
+      "benchmark_tier": "leadership",
+      "composite_score": 0.826,
+      "origin": "benchmark_panel"
+    },
+    {
+      "domain_id": "vendor-security-review-copilot",
+      "label": "Vendor Security Review Copilot",
+      "description": "Helps teams answer recurring vendor security review requests.",
+      "scores": {
+        "market_size": 0.608,
+        "data_availability": 0.4,
+        "benchmark_feasibility": 0.57,
+        "community_demand": 0.56,
+        "spark_ecosystem_fit": 0.49,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.5531,
+      "rationale": "Security teams repeatedly answer the same review packets for enterprise buyers.",
+      "related_chips": [
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "security review response drafting",
+        "mastery_surface": "turning repeated vendor review work into a reusable advantage",
+        "user_value_loop": "collect controls, draft answers, reuse winning evidence",
+        "domain_tags": [
+          "security",
+          "compliance"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "dental-insurance-appeals-ai",
+      "label": "Dental Insurance Appeals AI",
+      "description": "Helps recurring insurance appeal work for dental clinics.",
+      "scores": {
+        "market_size": 0.608,
+        "data_availability": 0.4,
+        "benchmark_feasibility": 0.57,
+        "community_demand": 0.56,
+        "spark_ecosystem_fit": 0.49,
+        "monetization_potential": 0.58
+      },
+      "composite_score": 0.5391,
+      "rationale": "Dental offices repeatedly lose time and cash flow on similar appeals.",
+      "related_chips": [
+        "legal-ops"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "dental insurance appeal drafting",
+        "mastery_surface": "improving recurring appeal win-rate for clinics",
+        "user_value_loop": "gather denial data, draft appeal, learn from payer responses",
+        "domain_tags": [
+          "healthcare",
+          "revenue-cycle"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "hvac-maintenance-planner-ai",
+      "label": "HVAC Maintenance Planner AI",
+      "description": "Supports recurring HVAC maintenance planning for field teams.",
+      "scores": {
+        "market_size": 0.56,
+        "data_availability": 0.4,
+        "benchmark_feasibility": 0.47,
+        "community_demand": 0.4,
+        "spark_ecosystem_fit": 0.49,
+        "monetization_potential": 0.46
+      },
+      "composite_score": 0.4655,
+      "rationale": "The work repeats but the mastery layer still needs sharper definition.",
+      "related_chips": [
+        "hvac-optimizer-ai"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "proto_domain_chip",
+      "confidence_read": "low",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "maintenance schedule planning",
+        "mastery_surface": "",
+        "user_value_loop": "plan maintenance windows and follow-up tasks",
+        "domain_tags": [
+          "hvac",
+          "operations"
+        ],
+        "promotion_status": "candidate"
+      }
+    }
+  ],
+  "simulation_inputs": {
+    "domain_ids": [
+      "trading-crypto",
+      "cursor-copilot",
+      "mcp-server-builder",
+      "ai-agent-builder",
+      "startup-yc",
+      "vendor-security-review-copilot",
+      "dental-insurance-appeals-ai",
+      "hvac-maintenance-planner-ai"
+    ],
+    "opportunities": [
+      {
+        "domain_id": "trading-crypto",
+        "label": "Crypto Trading Intelligence",
+        "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+        "scores": {
+          "market_size": 0.92,
+          "data_availability": 0.94,
+          "benchmark_feasibility": 0.9,
+          "community_demand": 0.88,
+          "spark_ecosystem_fit": 0.78,
+          "monetization_potential": 0.91
+        },
+        "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+        "related_chips": [
+          "defi-architect"
+        ],
+        "evidence_sources": [
+          "github",
+          "community",
+          "x_twitter"
+        ],
+        "benchmark_tier": "leadership",
+        "composite_score": 0.889,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "cursor-copilot",
+        "label": "AI Coding Workflow",
+        "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+        "scores": {
+          "market_size": 0.87,
+          "data_availability": 0.9,
+          "benchmark_feasibility": 0.84,
+          "community_demand": 0.85,
+          "spark_ecosystem_fit": 0.93,
+          "monetization_potential": 0.8
+        },
+        "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+        "related_chips": [
+          "mcp-server-builder",
+          "ai-agent-builder"
+        ],
+        "evidence_sources": [
+          "github",
+          "producthunt",
+          "community"
+        ],
+        "benchmark_tier": "midfield",
+        "composite_score": 0.8665,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "mcp-server-builder",
+        "label": "MCP Server Development",
+        "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+        "scores": {
+          "market_size": 0.83,
+          "data_availability": 0.89,
+          "benchmark_feasibility": 0.85,
+          "community_demand": 0.82,
+          "spark_ecosystem_fit": 0.95,
+          "monetization_potential": 0.76
+        },
+        "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+        "related_chips": [
+          "cursor-copilot",
+          "ai-agent-builder"
+        ],
+        "evidence_sources": [
+          "github",
+          "community"
+        ],
+        "benchmark_tier": "midfield",
+        "composite_score": 0.852,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "ai-agent-builder",
+        "label": "AI Agent Architecture",
+        "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+        "scores": {
+          "market_size": 0.88,
+          "data_availability": 0.82,
+          "benchmark_feasibility": 0.75,
+          "community_demand": 0.9,
+          "spark_ecosystem_fit": 0.8,
+          "monetization_potential": 0.78
+        },
+        "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+        "related_chips": [],
+        "evidence_sources": [
+          "producthunt",
+          "github",
+          "arxiv"
+        ],
+        "composite_score": 0.827,
+        "benchmark_tier": "seed_panel",
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "startup-yc",
+        "label": "Startup YC Intelligence",
+        "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+        "scores": {
+          "market_size": 0.86,
+          "data_availability": 0.78,
+          "benchmark_feasibility": 0.74,
+          "community_demand": 0.87,
+          "spark_ecosystem_fit": 0.84,
+          "monetization_potential": 0.89
+        },
+        "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+        "related_chips": [
+          "indie-hacker",
+          "agentic-marketing"
+        ],
+        "evidence_sources": [
+          "community",
+          "producthunt",
+          "x_twitter"
+        ],
+        "benchmark_tier": "leadership",
+        "composite_score": 0.826,
+        "origin": "benchmark_panel"
+      },
+      {
+        "domain_id": "vendor-security-review-copilot",
+        "label": "Vendor Security Review Copilot",
+        "description": "Helps teams answer recurring vendor security review requests.",
+        "scores": {
+          "market_size": 0.608,
+          "data_availability": 0.4,
+          "benchmark_feasibility": 0.57,
+          "community_demand": 0.56,
+          "spark_ecosystem_fit": 0.49,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.5531,
+        "rationale": "Security teams repeatedly answer the same review packets for enterprise buyers.",
+        "related_chips": [
+          "legal-ops"
+        ],
+        "evidence_sources": [
+          "operator-interviews"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "security review response drafting",
+          "mastery_surface": "turning repeated vendor review work into a reusable advantage",
+          "user_value_loop": "collect controls, draft answers, reuse winning evidence",
+          "domain_tags": [
+            "security",
+            "compliance"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "dental-insurance-appeals-ai",
+        "label": "Dental Insurance Appeals AI",
+        "description": "Helps recurring insurance appeal work for dental clinics.",
+        "scores": {
+          "market_size": 0.608,
+          "data_availability": 0.4,
+          "benchmark_feasibility": 0.57,
+          "community_demand": 0.56,
+          "spark_ecosystem_fit": 0.49,
+          "monetization_potential": 0.58
+        },
+        "composite_score": 0.5391,
+        "rationale": "Dental offices repeatedly lose time and cash flow on similar appeals.",
+        "related_chips": [
+          "legal-ops"
+        ],
+        "evidence_sources": [
+          "operator-interviews"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "dental insurance appeal drafting",
+          "mastery_surface": "improving recurring appeal win-rate for clinics",
+          "user_value_loop": "gather denial data, draft appeal, learn from payer responses",
+          "domain_tags": [
+            "healthcare",
+            "revenue-cycle"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "hvac-maintenance-planner-ai",
+        "label": "HVAC Maintenance Planner AI",
+        "description": "Supports recurring HVAC maintenance planning for field teams.",
+        "scores": {
+          "market_size": 0.56,
+          "data_availability": 0.4,
+          "benchmark_feasibility": 0.47,
+          "community_demand": 0.4,
+          "spark_ecosystem_fit": 0.49,
+          "monetization_potential": 0.46
+        },
+        "composite_score": 0.4655,
+        "rationale": "The work repeats but the mastery layer still needs sharper definition.",
+        "related_chips": [
+          "hvac-optimizer-ai"
+        ],
+        "evidence_sources": [
+          "operator-interviews"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "proto_domain_chip",
+        "confidence_read": "low",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "maintenance schedule planning",
+          "mastery_surface": "",
+          "user_value_loop": "plan maintenance windows and follow-up tasks",
+          "domain_tags": [
+            "hvac",
+            "operations"
+          ],
+          "promotion_status": "candidate"
+        }
+      }
+    ],
+    "signals": [
+      {
+        "signal_id": "trading-crypto-community-demand",
+        "signal_type": "community_request",
+        "label": "Crypto Trading Intelligence community demand",
+        "strength": 0.88,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-github",
+        "signal_type": "github_trending",
+        "label": "Crypto Trading Intelligence via github",
+        "strength": 0.8357,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-community",
+        "signal_type": "community_request",
+        "label": "Crypto Trading Intelligence via community",
+        "strength": 0.7823,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Crypto Trading Intelligence via x_twitter",
+        "strength": 0.7823,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trading-crypto-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Crypto Trading Intelligence ecosystem pull from defi-architect",
+        "strength": 0.702,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {
+          "related_chips": [
+            "defi-architect"
+          ]
+        }
+      },
+      {
+        "signal_id": "cursor-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow community demand",
+        "strength": 0.85,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-github",
+        "signal_type": "github_trending",
+        "label": "AI Coding Workflow via github",
+        "strength": 0.7799,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Coding Workflow via producthunt",
+        "strength": 0.7539,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-community",
+        "signal_type": "community_request",
+        "label": "AI Coding Workflow via community",
+        "strength": 0.7365,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "cursor-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "AI Coding Workflow ecosystem pull from mcp-server-builder, ai-agent-builder",
+        "strength": 0.837,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "mcp-server-builder",
+            "ai-agent-builder"
+          ]
+        }
+      },
+      {
+        "signal_id": "mcp-server-builder-community-demand",
+        "signal_type": "community_request",
+        "label": "MCP Server Development community demand",
+        "strength": 0.82,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-github",
+        "signal_type": "github_trending",
+        "label": "MCP Server Development via github",
+        "strength": 0.7583,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-community",
+        "signal_type": "community_request",
+        "label": "MCP Server Development via community",
+        "strength": 0.6986,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "mcp-server-builder-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "MCP Server Development ecosystem pull from cursor-copilot, ai-agent-builder",
+        "strength": 0.855,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {
+          "related_chips": [
+            "cursor-copilot",
+            "ai-agent-builder"
+          ]
+        }
+      },
+      {
+        "signal_id": "ai-agent-builder-community-demand",
+        "signal_type": "community_request",
+        "label": "AI Agent Architecture community demand",
+        "strength": 0.9,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "AI Agent Architecture via producthunt",
+        "strength": 0.7278,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-github",
+        "signal_type": "github_trending",
+        "label": "AI Agent Architecture via github",
+        "strength": 0.6781,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "ai-agent-builder-arxiv",
+        "signal_type": "github_trending",
+        "label": "AI Agent Architecture via arxiv",
+        "strength": 0.6202,
+        "decay_per_round": 0.08,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-community-demand",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence community demand",
+        "strength": 0.87,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-community",
+        "signal_type": "community_request",
+        "label": "Startup YC Intelligence via community",
+        "strength": 0.7186,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-producthunt",
+        "signal_type": "producthunt_launch",
+        "label": "Startup YC Intelligence via producthunt",
+        "strength": 0.7104,
+        "decay_per_round": 0.1,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-x_twitter",
+        "signal_type": "viral_tweet",
+        "label": "Startup YC Intelligence via x_twitter",
+        "strength": 0.7186,
+        "decay_per_round": 0.15,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "startup-yc-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Startup YC Intelligence ecosystem pull from indie-hacker, agentic-marketing",
+        "strength": 0.756,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {
+          "related_chips": [
+            "indie-hacker",
+            "agentic-marketing"
+          ]
+        }
+      },
+      {
+        "signal_id": "vendor-security-review-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Vendor Security Review Copilot community demand",
+        "strength": 0.56,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "vendor-security-review-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "dental-insurance-appeals-ai-community-demand",
+        "signal_type": "community_request",
+        "label": "Dental Insurance Appeals AI community demand",
+        "strength": 0.56,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "dental-insurance-appeals-ai"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trading-crypto-chip-defi-architect",
+        "signal_type": "competitor_chip",
+        "label": "trading-crypto extends defi-architect",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends mcp-server-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-cursor-copilot-chip-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "cursor-copilot extends ai-agent-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-mcp-server-builder-chip-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "mcp-server-builder extends cursor-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-mcp-server-builder-chip-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "mcp-server-builder extends ai-agent-builder",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-indie-hacker",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends indie-hacker",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-startup-yc-chip-agentic-marketing",
+        "signal_type": "competitor_chip",
+        "label": "startup-yc extends agentic-marketing",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-vendor-security-review-copilot-chip-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "vendor-security-review-copilot extends legal-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-security-review-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-dental-insurance-appeals-ai-chip-legal-ops",
+        "signal_type": "competitor_chip",
+        "label": "dental-insurance-appeals-ai extends legal-ops",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "dental-insurance-appeals-ai"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-hvac-maintenance-planner-ai-chip-hvac-optimizer-ai",
+        "signal_type": "competitor_chip",
+        "label": "hvac-maintenance-planner-ai extends hvac-optimizer-ai",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hvac-maintenance-planner-ai"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.278,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2715,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.2715,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.276,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.276,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trading-crypto-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trading-crypto"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-trading-crypto",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trading-crypto",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.281,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cursor-copilot-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cursor-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-cursor-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cursor-copilot",
+        "strength": 0.2785,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.2765,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-mcp-server-builder-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.273,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "mcp-server-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-mcp-server-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from mcp-server-builder",
+        "strength": 0.273,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-ai-agent-builder-startup-yc",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from startup-yc",
+        "strength": 0.2875,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "ai-agent-builder"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-startup-yc-ai-agent-builder",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from ai-agent-builder",
+        "strength": 0.2875,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "startup-yc"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-security-review-copilot-dental-insurance-appeals-ai",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from dental-insurance-appeals-ai",
+        "strength": 0.293,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-security-review-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-dental-insurance-appeals-ai-vendor-security-review-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-security-review-copilot",
+        "strength": 0.293,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "dental-insurance-appeals-ai"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-vendor-security-review-copilot-hvac-maintenance-planner-ai",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hvac-maintenance-planner-ai",
+        "strength": 0.2716,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "vendor-security-review-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-hvac-maintenance-planner-ai-vendor-security-review-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from vendor-security-review-copilot",
+        "strength": 0.2716,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hvac-maintenance-planner-ai"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-dental-insurance-appeals-ai-hvac-maintenance-planner-ai",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hvac-maintenance-planner-ai",
+        "strength": 0.2786,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "dental-insurance-appeals-ai"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-hvac-maintenance-planner-ai-dental-insurance-appeals-ai",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from dental-insurance-appeals-ai",
+        "strength": 0.2786,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hvac-maintenance-planner-ai"
+        ],
+        "metadata": {}
+      }
+    ],
+    "scenario": {
+      "scenario_id": "scenario-mirofish-discovery-program-smoke",
+      "label": "mirofish-discovery-program-smoke",
+      "shocks": [
+        {
+          "shock_id": "shock-breakout_tool-r4",
+          "template": "breakout_tool",
+          "signal_type": "producthunt_launch",
+          "label": "Breakout Tool Launch",
+          "strength": 0.9,
+          "effect": "positive",
+          "affected_persona_types": [
+            "opportunity_hunter",
+            "developer",
+            "tool_maker",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "vendor-security-review-copilot",
+            "dental-insurance-appeals-ai",
+            "hvac-maintenance-planner-ai"
+          ],
+          "inject_at_round": 4,
+          "description": "A tool goes viral and creates massive awareness for the domain."
+        },
+        {
+          "shock_id": "shock-open_source_release-r7",
+          "template": "open_source_release",
+          "signal_type": "github_trending",
+          "label": "Free Open Source Model Drop",
+          "strength": 0.85,
+          "effect": "positive",
+          "affected_persona_types": [
+            "developer",
+            "tool_maker",
+            "student_builder",
+            "ai_newcomer"
+          ],
+          "affects_domains": [
+            "cursor-copilot",
+            "mcp-server-builder",
+            "ai-agent-builder"
+          ],
+          "inject_at_round": 7,
+          "description": "Major open source AI model released free, lowers barrier to entry.",
+          "decay_curve": "s_curve",
+          "peak_round": 4
+        },
+        {
+          "shock_id": "shock-market_crash-r11",
+          "template": "market_crash",
+          "signal_type": "regulation",
+          "label": "Market Crash",
+          "strength": 0.95,
+          "effect": "negative",
+          "affected_persona_types": [
+            "investor",
+            "trader",
+            "entrepreneur"
+          ],
+          "affects_domains": [
+            "trading-crypto",
+            "hvac-maintenance-planner-ai"
+          ],
+          "inject_at_round": 11,
+          "description": "Broad market downturn reduces investment appetite."
+        }
+      ],
+      "shock_count": 3
+    },
+    "graph": {
+      "nodes": [
+        {
+          "id": "platform-github",
+          "type": "platform",
+          "label": "GitHub",
+          "properties": {}
+        },
+        {
+          "id": "platform-producthunt",
+          "type": "platform",
+          "label": "Product Hunt",
+          "properties": {}
+        },
+        {
+          "id": "platform-x_twitter",
+          "type": "platform",
+          "label": "X/Twitter",
+          "properties": {}
+        },
+        {
+          "id": "platform-arxiv",
+          "type": "platform",
+          "label": "arXiv",
+          "properties": {}
+        },
+        {
+          "id": "community-spark",
+          "type": "community",
+          "label": "Spark Ecosystem",
+          "properties": {}
+        },
+        {
+          "id": "community-indie",
+          "type": "community",
+          "label": "Indie Hackers",
+          "properties": {}
+        },
+        {
+          "id": "community-defi",
+          "type": "community",
+          "label": "DeFi Builders",
+          "properties": {}
+        },
+        {
+          "id": "tech-mcp",
+          "type": "technology",
+          "label": "Model Context Protocol",
+          "properties": {}
+        },
+        {
+          "id": "tech-llm",
+          "type": "technology",
+          "label": "Large Language Models",
+          "properties": {}
+        },
+        {
+          "id": "tech-agents",
+          "type": "technology",
+          "label": "AI Agents",
+          "properties": {}
+        },
+        {
+          "id": "regulation-gdpr",
+          "type": "regulation",
+          "label": "GDPR",
+          "properties": {}
+        },
+        {
+          "id": "regulation-sox",
+          "type": "regulation",
+          "label": "SOX",
+          "properties": {}
+        },
+        {
+          "id": "trading-crypto",
+          "type": "domain",
+          "label": "Crypto Trading Intelligence",
+          "properties": {
+            "description": "Crypto strategy evaluation, execution discipline, and market-adaptive trading workflows.",
+            "composite_score": 0.889,
+            "scores": {
+              "market_size": 0.92,
+              "data_availability": 0.94,
+              "benchmark_feasibility": 0.9,
+              "community_demand": 0.88,
+              "spark_ecosystem_fit": 0.78,
+              "monetization_potential": 0.91
+            },
+            "rationale": "Existing mature benchmark chip with clear strategy loops and durable market signal.",
+            "domain_tags": [
+              "productivity"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-defi-architect",
+          "type": "technology",
+          "label": "defi-architect",
+          "properties": {}
+        },
+        {
+          "id": "platform-community",
+          "type": "platform",
+          "label": "community",
+          "properties": {}
+        },
+        {
+          "id": "cursor-copilot",
+          "type": "domain",
+          "label": "AI Coding Workflow",
+          "properties": {
+            "description": "Prompt-to-code workflow acceleration, codebase navigation, and developer throughput improvement.",
+            "composite_score": 0.8665,
+            "scores": {
+              "market_size": 0.87,
+              "data_availability": 0.9,
+              "benchmark_feasibility": 0.84,
+              "community_demand": 0.85,
+              "spark_ecosystem_fit": 0.93,
+              "monetization_potential": 0.8
+            },
+            "rationale": "Strong developer workflow benchmark with clear tooling demand and visible ecosystem pull.",
+            "domain_tags": [
+              "dx",
+              "extensibility",
+              "infrastructure",
+              "productivity",
+              "quick_wins"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-mcp-server-builder",
+          "type": "technology",
+          "label": "mcp-server-builder",
+          "properties": {}
+        },
+        {
+          "id": "chip-ai-agent-builder",
+          "type": "technology",
+          "label": "ai-agent-builder",
+          "properties": {}
+        },
+        {
+          "id": "mcp-server-builder",
+          "type": "domain",
+          "label": "MCP Server Development",
+          "properties": {
+            "description": "MCP server scaffolding, packaging, testing, and integration workflows for developers.",
+            "composite_score": 0.852,
+            "scores": {
+              "market_size": 0.83,
+              "data_availability": 0.89,
+              "benchmark_feasibility": 0.85,
+              "community_demand": 0.82,
+              "spark_ecosystem_fit": 0.95,
+              "monetization_potential": 0.76
+            },
+            "rationale": "High-fit benchmark for protocol-native developer tooling in the current ecosystem.",
+            "domain_tags": [
+              "dx",
+              "extensibility",
+              "infrastructure",
+              "productivity",
+              "quick_wins"
+            ],
+            "retention_score": 0.47,
+            "choice_score": 0.41
+          }
+        },
+        {
+          "id": "chip-cursor-copilot",
+          "type": "technology",
+          "label": "cursor-copilot",
+          "properties": {}
+        },
+        {
+          "id": "ai-agent-builder",
+          "type": "domain",
+          "label": "AI Agent Architecture",
+          "properties": {
+            "description": "Agent patterns, tool selection, prompt engineering, evaluation frameworks.",
+            "composite_score": 0.827,
+            "scores": {
+              "market_size": 0.88,
+              "data_availability": 0.82,
+              "benchmark_feasibility": 0.75,
+              "community_demand": 0.9,
+              "spark_ecosystem_fit": 0.8,
+              "monetization_potential": 0.78
+            },
+            "rationale": "AI agents are #1 category on Product Hunt 2026. MCP has 10,000+ servers.",
+            "domain_tags": [],
+            "retention_score": 0.42,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "startup-yc",
+          "type": "domain",
+          "label": "Startup YC Intelligence",
+          "properties": {
+            "description": "Founder decision support around startup formation, validation, growth, and fundraising.",
+            "composite_score": 0.826,
+            "scores": {
+              "market_size": 0.86,
+              "data_availability": 0.78,
+              "benchmark_feasibility": 0.74,
+              "community_demand": 0.87,
+              "spark_ecosystem_fit": 0.84,
+              "monetization_potential": 0.89
+            },
+            "rationale": "Existing benchmark chip for startup specialization and repeated founder workflow mastery.",
+            "domain_tags": [
+              "idea_validation",
+              "market_fit",
+              "portfolio_intelligence",
+              "productivity",
+              "roi",
+              "speed_to_ship"
+            ],
+            "retention_score": 0.55,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-indie-hacker",
+          "type": "technology",
+          "label": "indie-hacker",
+          "properties": {}
+        },
+        {
+          "id": "chip-agentic-marketing",
+          "type": "technology",
+          "label": "agentic-marketing",
+          "properties": {}
+        },
+        {
+          "id": "vendor-security-review-copilot",
+          "type": "domain",
+          "label": "Vendor Security Review Copilot",
+          "properties": {
+            "description": "Helps teams answer recurring vendor security review requests.",
+            "composite_score": 0.5531,
+            "scores": {
+              "market_size": 0.608,
+              "data_availability": 0.4,
+              "benchmark_feasibility": 0.57,
+              "community_demand": 0.56,
+              "spark_ecosystem_fit": 0.49,
+              "monetization_potential": 0.72
+            },
+            "rationale": "Security teams repeatedly answer the same review packets for enterprise buyers.",
+            "domain_tags": [
+              "audit",
+              "compliance",
+              "infrastructure",
+              "productivity",
+              "quick_wins",
+              "roi",
+              "security"
+            ],
+            "retention_score": 0.76,
+            "choice_score": 0.84
+          }
+        },
+        {
+          "id": "chip-legal-ops",
+          "type": "technology",
+          "label": "legal-ops",
+          "properties": {}
+        },
+        {
+          "id": "platform-operator-interviews",
+          "type": "platform",
+          "label": "operator-interviews",
+          "properties": {}
+        },
+        {
+          "id": "dental-insurance-appeals-ai",
+          "type": "domain",
+          "label": "Dental Insurance Appeals AI",
+          "properties": {
+            "description": "Helps recurring insurance appeal work for dental clinics.",
+            "composite_score": 0.5391,
+            "scores": {
+              "market_size": 0.608,
+              "data_availability": 0.4,
+              "benchmark_feasibility": 0.57,
+              "community_demand": 0.56,
+              "spark_ecosystem_fit": 0.49,
+              "monetization_potential": 0.58
+            },
+            "rationale": "Dental offices repeatedly lose time and cash flow on similar appeals.",
+            "domain_tags": [
+              "healthcare",
+              "productivity",
+              "revenue-cycle"
+            ],
+            "retention_score": 0.58,
+            "choice_score": 0.42
+          }
+        },
+        {
+          "id": "hvac-maintenance-planner-ai",
+          "type": "domain",
+          "label": "HVAC Maintenance Planner AI",
+          "properties": {
+            "description": "Supports recurring HVAC maintenance planning for field teams.",
+            "composite_score": 0.4655,
+            "scores": {
+              "market_size": 0.56,
+              "data_availability": 0.4,
+              "benchmark_feasibility": 0.47,
+              "community_demand": 0.4,
+              "spark_ecosystem_fit": 0.49,
+              "monetization_potential": 0.46
+            },
+            "rationale": "The work repeats but the mastery layer still needs sharper definition.",
+            "domain_tags": [
+              "hvac",
+              "operations",
+              "portfolio_intelligence",
+              "productivity"
+            ],
+            "retention_score": 0.5,
+            "choice_score": 0.34
+          }
+        },
+        {
+          "id": "chip-hvac-optimizer-ai",
+          "type": "technology",
+          "label": "hvac-optimizer-ai",
+          "properties": {}
+        }
+      ],
+      "edges": [
+        {
+          "source": "tech-mcp",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.9
+        },
+        {
+          "source": "tech-llm",
+          "target": "tech-agents",
+          "relationship": "ENABLES",
+          "weight": 0.95
+        },
+        {
+          "source": "tech-agents",
+          "target": "community-spark",
+          "relationship": "SERVES",
+          "weight": 0.8
+        },
+        {
+          "source": "regulation-gdpr",
+          "target": "community-defi",
+          "relationship": "DISRUPTS",
+          "weight": 0.3
+        },
+        {
+          "source": "trading-crypto",
+          "target": "chip-defi-architect",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-mcp-server-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "chip-ai-agent-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "chip-cursor-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "chip-ai-agent-builder",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-github",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "platform-arxiv",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-indie-hacker",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "chip-agentic-marketing",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-community",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-producthunt",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "startup-yc",
+          "target": "platform-x_twitter",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "vendor-security-review-copilot",
+          "target": "chip-legal-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "vendor-security-review-copilot",
+          "target": "platform-operator-interviews",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "dental-insurance-appeals-ai",
+          "target": "chip-legal-ops",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "dental-insurance-appeals-ai",
+          "target": "platform-operator-interviews",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "hvac-maintenance-planner-ai",
+          "target": "chip-hvac-optimizer-ai",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "hvac-maintenance-planner-ai",
+          "target": "platform-operator-interviews",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trading-crypto",
+          "target": "cursor-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9267
+        },
+        {
+          "source": "trading-crypto",
+          "target": "mcp-server-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.905
+        },
+        {
+          "source": "trading-crypto",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.92
+        },
+        {
+          "source": "trading-crypto",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9217
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "mcp-server-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9367
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9283
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "ai-agent-builder",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9217
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.91
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "vendor-security-review-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.354
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "startup-yc",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9583
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "vendor-security-review-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.36815
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "dental-insurance-appeals-ai",
+          "relationship": "ENABLES",
+          "weight": 0.3565
+        },
+        {
+          "source": "startup-yc",
+          "target": "vendor-security-review-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.364
+        },
+        {
+          "source": "startup-yc",
+          "target": "dental-insurance-appeals-ai",
+          "relationship": "ENABLES",
+          "weight": 0.35235
+        },
+        {
+          "source": "vendor-security-review-copilot",
+          "target": "dental-insurance-appeals-ai",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9767
+        },
+        {
+          "source": "vendor-security-review-copilot",
+          "target": "hvac-maintenance-planner-ai",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9053
+        },
+        {
+          "source": "dental-insurance-appeals-ai",
+          "target": "hvac-maintenance-planner-ai",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9287
+        }
+      ],
+      "tracked_variables": {},
+      "node_count": 30,
+      "edge_count": 49
+    }
+  },
+  "summary": {
+    "discovered_count": 3,
+    "benchmark_count": 5,
+    "proposed_benchmark_count": 0,
+    "promotion_review_count": 0,
+    "combined_domain_count": 8,
+    "signal_count": 61,
+    "shock_count": 3,
+    "top_ranked_domain": "trading-crypto"
+  },
+  "governance_note": "Discovered candidates use conservative inferred priors. Hybrid specs are exploratory_frontier and must not auto-promote benchmark membership, including proposed benchmark members and promotion-review candidates."
+}

@@ -1,0 +1,56 @@
+{
+  "program_id": "mirofish-discovery-program-pilot-100",
+  "stage_label": "pilot_100",
+  "target_agent_count": 100,
+  "existing_domain_ids": [],
+  "collection_rules": {
+    "max_candidates_per_agent": 3,
+    "min_candidates_per_agent": 1,
+    "required_candidate_fields": [
+      "label",
+      "description",
+      "specialization_surface",
+      "mastery_surface",
+      "user_value_loop",
+      "evidence_summary",
+      "adjacent_domains",
+      "raw_observation"
+    ],
+    "success_metrics": [
+      "acceptance_rate",
+      "merge_rate",
+      "too_vague_rate",
+      "persona_only_rate",
+      "workflow_only_rate",
+      "clear_count"
+    ],
+    "scale_gate_for_250": {
+      "min_acceptance_rate": 0.3,
+      "max_merge_rate": 0.4,
+      "max_too_vague_rate": 0.3,
+      "min_clear_count": 5
+    }
+  },
+  "agent_submission_template": {
+    "agent_id": "agent-001",
+    "notes": "What cluster or wedge this agent explored.",
+    "raw_candidates": [
+      {
+        "label": "Example Domain Label",
+        "description": "Describe the repeated operating domain.",
+        "specialization_surface": "What specialization the user repeatedly builds.",
+        "mastery_surface": "What mastery loop the user repeatedly deepens.",
+        "user_value_loop": "What repeated value loop makes this a chip instead of a feature.",
+        "domain_tags": ["tag-a", "tag-b"],
+        "evidence_sources": ["operator-interviews"],
+        "evidence_summary": "Why this appears real now.",
+        "adjacent_domains": ["existing-domain"],
+        "duplicate_aliases": [],
+        "confidence_read": "medium",
+        "promotion_status": "candidate",
+        "raw_observation": "Raw observation that led the agent to propose this."
+      }
+    ]
+  },
+  "agent_submissions": []
+}

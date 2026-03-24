@@ -261,3 +261,12 @@ MiroFish watchtower refresh command:
 - generate a refreshable `research/meta/watchtower_latest` surface from that command
 - save the emitted page list as a latest-result packet
 - keep the refresh workflow repo-local and bounded
+
+## Batch 30
+
+MiroFish discovery program:
+
+- add a staged multi-agent discovery-program packet and CLI path
+- add scale-readiness metrics so smoke and pilot runs recommend the next stage explicitly
+- save a smoke-trial program packet, canonicalized result, hybrid spec, and hybrid run
+- document that the next stage is the 100-agent pilot rather than a direct jump to the full 1,000-agent sweep

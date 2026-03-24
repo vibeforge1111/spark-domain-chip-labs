@@ -1,0 +1,263 @@
+{
+  "packet_kind": "mirofish_discovery_program",
+  "evidence_lane": "exploratory_frontier",
+  "created_at": "2026-03-24T17:03:52.690535+00:00",
+  "program_id": "mirofish-discovery-program-smoke-2026-03-24",
+  "stage_label": "smoke",
+  "target_agent_count": 100,
+  "participating_agent_count": 5,
+  "summary": {
+    "raw_count": 6,
+    "accepted_count": 3,
+    "merged_count": 1,
+    "rejected_count": 2,
+    "clear_count": 2,
+    "proto_count": 1,
+    "acceptance_rate": 0.5,
+    "merge_rate": 0.1667,
+    "too_vague_rate": 0.0,
+    "persona_only_rate": 0.0,
+    "workflow_only_rate": 0.3333,
+    "duplicate_existing_count": 0
+  },
+  "scale_readiness": {
+    "participating_agent_count": 5,
+    "target_agent_count": 100,
+    "next_stage": "run_100_agent_pilot",
+    "reasons": [
+      "The program still produces too few clear_domain_chip candidates.",
+      "Acceptance rate is high enough to justify a larger intake pass.",
+      "Duplicate pressure is still manageable.",
+      "Vague-candidate rejection is under control."
+    ]
+  },
+  "agent_rollup": [
+    {
+      "agent_id": "agent-001",
+      "candidate_count": 2,
+      "notes": "Security-heavy recurring enterprise loops.",
+      "accepted_count": 1,
+      "rejected_count": 1,
+      "merged_count": 0
+    },
+    {
+      "agent_id": "agent-002",
+      "candidate_count": 1,
+      "notes": "Found a nearby alias to the security-review wedge.",
+      "merged_count": 1,
+      "accepted_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-003",
+      "candidate_count": 1,
+      "notes": "Healthcare revenue-cycle wedge.",
+      "accepted_count": 1,
+      "merged_count": 0,
+      "rejected_count": 0
+    },
+    {
+      "agent_id": "agent-004",
+      "candidate_count": 1,
+      "notes": "Persona-heavy low-quality intake sample.",
+      "rejected_count": 1,
+      "accepted_count": 0,
+      "merged_count": 0
+    },
+    {
+      "agent_id": "agent-005",
+      "candidate_count": 1,
+      "notes": "Proto candidate with partial shape.",
+      "accepted_count": 1,
+      "merged_count": 0,
+      "rejected_count": 0
+    }
+  ],
+  "accepted_candidates": [
+    {
+      "label": "Vendor Security Review Copilot",
+      "description": "Helps teams answer recurring vendor security review requests.",
+      "specialization_surface": "security review response drafting",
+      "mastery_surface": "turning repeated vendor review work into a reusable advantage",
+      "user_value_loop": "collect controls, draft answers, reuse winning evidence",
+      "domain_tags": [
+        "security",
+        "compliance"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "evidence_summary": "Security teams repeatedly answer the same review packets for enterprise buyers.",
+      "adjacent_domains": [
+        "legal-ops"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Vendor review work repeats across procurement cycles.",
+      "submitted_by_agent": "agent-001",
+      "submission_index": 1,
+      "domain_id": "vendor-security-review-copilot",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-001"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "label": "Dental Insurance Appeals AI",
+      "description": "Helps recurring insurance appeal work for dental clinics.",
+      "specialization_surface": "dental insurance appeal drafting",
+      "mastery_surface": "improving recurring appeal win-rate for clinics",
+      "user_value_loop": "gather denial data, draft appeal, learn from payer responses",
+      "domain_tags": [
+        "healthcare",
+        "revenue-cycle"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "evidence_summary": "Dental offices repeatedly lose time and cash flow on similar appeals.",
+      "adjacent_domains": [
+        "legal-ops"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Appeals look like a repeated specialty loop, not a one-off task.",
+      "submitted_by_agent": "agent-003",
+      "submission_index": 1,
+      "domain_id": "dental-insurance-appeals-ai",
+      "classification": "clear_domain_chip",
+      "classification_reasons": [
+        "Has domain shape, specialization surface, mastery surface, and evidence summary."
+      ],
+      "supporting_agent_ids": [
+        "agent-003"
+      ],
+      "supporting_agent_count": 1
+    },
+    {
+      "label": "HVAC Maintenance Planner AI",
+      "description": "Supports recurring HVAC maintenance planning for field teams.",
+      "specialization_surface": "maintenance schedule planning",
+      "mastery_surface": "",
+      "user_value_loop": "plan maintenance windows and follow-up tasks",
+      "domain_tags": [
+        "hvac",
+        "operations"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "evidence_summary": "",
+      "adjacent_domains": [
+        "hvac-optimizer-ai"
+      ],
+      "duplicate_aliases": [],
+      "confidence_read": "low",
+      "promotion_status": "candidate",
+      "raw_observation": "The work repeats but the mastery layer still needs sharper definition.",
+      "submitted_by_agent": "agent-005",
+      "submission_index": 1,
+      "domain_id": "hvac-maintenance-planner-ai",
+      "classification": "proto_domain_chip",
+      "classification_reasons": [
+        "Has specialization intent but not enough mastery definition yet."
+      ],
+      "supporting_agent_ids": [
+        "agent-005"
+      ],
+      "supporting_agent_count": 1
+    }
+  ],
+  "merged_candidates": [
+    {
+      "label": "Vendor Security Questionnaire Copilot",
+      "description": "Handles recurring vendor security questionnaire work.",
+      "specialization_surface": "security questionnaire response packaging",
+      "mastery_surface": "improving repeatable vendor questionnaire throughput",
+      "user_value_loop": "pull prior answers, draft response, update evidence set",
+      "domain_tags": [
+        "security",
+        "compliance"
+      ],
+      "evidence_sources": [
+        "operator-interviews"
+      ],
+      "evidence_summary": "The same vendor security questions recur with only small changes.",
+      "adjacent_domains": [
+        "legal-ops"
+      ],
+      "duplicate_aliases": [
+        "Vendor Security Review Copilot"
+      ],
+      "confidence_read": "medium",
+      "promotion_status": "candidate",
+      "raw_observation": "Questionnaire work repeats across vendor reviews.",
+      "submitted_by_agent": "agent-002",
+      "submission_index": 1,
+      "domain_id": "vendor-security-questionnaire-copilot",
+      "classification": "duplicate_of_existing",
+      "classification_reasons": [
+        "Duplicate of another candidate in the same batch."
+      ],
+      "duplicate_of": "vendor-security-review-copilot"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "label": "AI Prompt Library",
+      "description": "Stores prompts for teams.",
+      "raw_observation": "Teams want shared prompts.",
+      "submitted_by_agent": "agent-001",
+      "submission_index": 2,
+      "domain_id": "ai-prompt-library",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "evidence_summary": "",
+      "confidence_read": "low",
+      "promotion_status": "candidate",
+      "domain_tags": [],
+      "evidence_sources": [],
+      "adjacent_domains": [],
+      "duplicate_aliases": [],
+      "classification": "workflow_not_domain",
+      "classification_reasons": [
+        "Does not specify a specialization or mastery surface."
+      ]
+    },
+    {
+      "label": "Founders",
+      "description": "A tool for founders.",
+      "raw_observation": "Founders need help.",
+      "submitted_by_agent": "agent-004",
+      "submission_index": 1,
+      "domain_id": "founders",
+      "specialization_surface": "",
+      "mastery_surface": "",
+      "user_value_loop": "",
+      "evidence_summary": "",
+      "confidence_read": "low",
+      "promotion_status": "candidate",
+      "domain_tags": [],
+      "evidence_sources": [],
+      "adjacent_domains": [],
+      "duplicate_aliases": [],
+      "classification": "workflow_not_domain",
+      "classification_reasons": [
+        "Does not specify a specialization or mastery surface."
+      ]
+    }
+  ],
+  "next_actions": [
+    "Feed the clear_domain_chip set into a smaller MiroFish evaluation run.",
+    "Strengthen evidence summaries for proto_domain_chip candidates before evaluation.",
+    "Review rejected candidates to ensure duplicates and vague ideas were not misclassified.",
+    "Promote this smoke pass into a 100-agent pilot using the same candidate contract and review metrics."
+  ]
+}

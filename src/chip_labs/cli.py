@@ -558,6 +558,15 @@ def cmd_mirofish_discovery_batch(args: argparse.Namespace) -> None:
     _write_output(args.output, result)
 
 
+def cmd_mirofish_discovery_program(args: argparse.Namespace) -> None:
+    """Canonicalize a staged multi-agent MiroFish discovery program into a packet."""
+    from .mirofish.discovery import canonicalize_discovery_program
+
+    input_data = _load_input(args.input)
+    result = canonicalize_discovery_program(input_data)
+    _write_output(args.output, result)
+
+
 # ---------------------------------------------------------------------------
 # Command: mirofish-hybrid-spec
 # ---------------------------------------------------------------------------
@@ -851,6 +860,15 @@ def main() -> None:
     p_mirofish_discovery.add_argument("--input", type=str, required=True, help="Input JSON file path.")
     p_mirofish_discovery.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_discovery.set_defaults(func=cmd_mirofish_discovery_batch)
+
+    # mirofish-discovery-program
+    p_mirofish_discovery_program = sub.add_parser(
+        "mirofish-discovery-program",
+        help="Canonicalize a staged multi-agent discovery program into a MiroFish candidate packet.",
+    )
+    p_mirofish_discovery_program.add_argument("--input", type=str, required=True, help="Input JSON file path.")
+    p_mirofish_discovery_program.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_discovery_program.set_defaults(func=cmd_mirofish_discovery_program)
 
     # mirofish-hybrid-spec
     p_mirofish_hybrid = sub.add_parser(

@@ -1,0 +1,497 @@
+{
+  "packet_kind": "mirofish_hybrid_evaluation_run",
+  "created_at": "2026-03-24T17:04:49.862430+00:00",
+  "source_batch_id": null,
+  "source_spec_created_at": "2026-03-24T17:04:15.767930+00:00",
+  "evidence_lane": "exploratory_frontier",
+  "seed": 42,
+  "harness": {
+    "max_rounds": 8,
+    "flagship_count_per_type": 8,
+    "flagship_agent_count": 120,
+    "ensemble_runs": 4,
+    "ensemble_count_per_type": 4,
+    "ensemble_agent_count": 60,
+    "persona_types": 15,
+    "read_order": [
+      "agent_choice_signal",
+      "peak_interest_probability",
+      "final_adoption_rate"
+    ]
+  },
+  "scenario": {
+    "scenario_id": "scenario-mirofish-discovery-program-smoke",
+    "label": "mirofish-discovery-program-smoke",
+    "shocks": [
+      {
+        "shock_id": "shock-breakout_tool-r4",
+        "template": "breakout_tool",
+        "signal_type": "producthunt_launch",
+        "label": "Breakout Tool Launch",
+        "strength": 0.9,
+        "effect": "positive",
+        "affected_persona_types": [
+          "opportunity_hunter",
+          "developer",
+          "tool_maker",
+          "ai_newcomer"
+        ],
+        "affects_domains": [
+          "vendor-security-review-copilot",
+          "dental-insurance-appeals-ai",
+          "hvac-maintenance-planner-ai"
+        ],
+        "inject_at_round": 4,
+        "description": "A tool goes viral and creates massive awareness for the domain."
+      },
+      {
+        "shock_id": "shock-open_source_release-r7",
+        "template": "open_source_release",
+        "signal_type": "github_trending",
+        "label": "Free Open Source Model Drop",
+        "strength": 0.85,
+        "effect": "positive",
+        "affected_persona_types": [
+          "developer",
+          "tool_maker",
+          "student_builder",
+          "ai_newcomer"
+        ],
+        "affects_domains": [
+          "cursor-copilot",
+          "mcp-server-builder",
+          "ai-agent-builder"
+        ],
+        "inject_at_round": 7,
+        "description": "Major open source AI model released free, lowers barrier to entry.",
+        "decay_curve": "s_curve",
+        "peak_round": 4
+      },
+      {
+        "shock_id": "shock-market_crash-r11",
+        "template": "market_crash",
+        "signal_type": "regulation",
+        "label": "Market Crash",
+        "strength": 0.95,
+        "effect": "negative",
+        "affected_persona_types": [
+          "investor",
+          "trader",
+          "entrepreneur"
+        ],
+        "affects_domains": [
+          "trading-crypto",
+          "hvac-maintenance-planner-ai"
+        ],
+        "inject_at_round": 11,
+        "description": "Broad market downturn reduces investment appetite."
+      }
+    ],
+    "shock_count": 3
+  },
+  "discovered_domain_ids": [
+    "vendor-security-review-copilot",
+    "dental-insurance-appeals-ai",
+    "hvac-maintenance-planner-ai"
+  ],
+  "proposed_benchmark_domain_ids": [],
+  "promotion_review_domain_ids": [],
+  "benchmark_domain_ids": [
+    "trading-crypto",
+    "startup-yc",
+    "cursor-copilot",
+    "mcp-server-builder",
+    "ai-agent-builder"
+  ],
+  "top_line": {
+    "top_choice_signal_domain": "cursor-copilot",
+    "top_choice_signal": 0.1667,
+    "top_final_adoption_domain": "cursor-copilot",
+    "top_final_adoption": 0.1,
+    "top_ensemble_domain": "startup-yc",
+    "top_ensemble_mean_adoption": 0.0134
+  },
+  "domain_predictions": [
+    {
+      "domain_id": "cursor-copilot",
+      "adoption_probability": 0.1,
+      "final_active_probability": 0.1667,
+      "peak_adoption_probability": 0.1,
+      "peak_active_probability": 0.1667,
+      "peak_interest_probability": 0.8,
+      "agent_choice_signal": 0.1667,
+      "peak_active_round": 7,
+      "peak_interest_round": 4,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.3333,
+      "disagreement_score": 0.6667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "High disagreement across persona types signals uncertainty",
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.1,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.1
+      }
+    },
+    {
+      "domain_id": "startup-yc",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.1,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.1,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.1,
+      "peak_active_round": 7,
+      "peak_interest_round": 6,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption",
+        "Many agents tried it, but the funnel lost them before retention"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "trading-crypto",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0333,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0333,
+      "peak_interest_probability": 0.6667,
+      "agent_choice_signal": 0.0333,
+      "peak_active_round": 7,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.8333,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 7,
+      "peak_interest_round": 5,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "high",
+      "consensus_score": 0.7333,
+      "disagreement_score": 0.2667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "High consensus indicates clear market demand",
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.7,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 7,
+      "peak_interest_round": 6,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.6,
+      "disagreement_score": 0.4,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "vendor-security-review-copilot",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.5667,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 7,
+      "peak_interest_round": 6,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "low",
+      "consensus_score": 0.4,
+      "disagreement_score": 0.6,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "The domain captured broad attention during the run"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall",
+        "Attention converted poorly into durable adoption"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "dental-insurance-appeals-ai",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.3,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 7,
+      "peak_interest_round": 7,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4667,
+      "disagreement_score": 0.5333,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "No strong adoption drivers detected yet"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    },
+    {
+      "domain_id": "hvac-maintenance-planner-ai",
+      "adoption_probability": 0.0,
+      "final_active_probability": 0.0,
+      "peak_adoption_probability": 0.0,
+      "peak_active_probability": 0.0,
+      "peak_interest_probability": 0.3,
+      "agent_choice_signal": 0.0,
+      "peak_active_round": 7,
+      "peak_interest_round": 7,
+      "timeline_estimate": "uncertain (no tipping point detected)",
+      "confidence": "medium",
+      "consensus_score": 0.4333,
+      "disagreement_score": 0.5667,
+      "tipping_point_round": null,
+      "key_drivers": [
+        "No strong adoption drivers detected yet"
+      ],
+      "key_risks": [
+        "Low adoption rate indicates weak demand signal",
+        "No tipping point reached -- adoption may stall"
+      ],
+      "dual_context": {
+        "builder_adoption": 0.0,
+        "enterprise_adoption": 0.0,
+        "builder_tipping_point": null,
+        "enterprise_tipping_point": null,
+        "adoption_gap": 0.0
+      }
+    }
+  ],
+  "cross_domain": {
+    "portfolio_gaps": [
+      "Fewer than 2 domains show strong adoption -- portfolio concentration risk.",
+      "Weak adoption signals for: cursor-copilot, startup-yc, trading-crypto, mcp-server-builder, ai-agent-builder, vendor-security-review-copilot, dental-insurance-appeals-ai, hvac-maintenance-planner-ai"
+    ],
+    "synergy_opportunities": [],
+    "simulation_vs_static": [
+      {
+        "domain_id": "cursor-copilot",
+        "simulation": 0.1,
+        "static": 0.8665,
+        "delta": -0.7665
+      },
+      {
+        "domain_id": "startup-yc",
+        "simulation": 0.0,
+        "static": 0.826,
+        "delta": -0.826
+      },
+      {
+        "domain_id": "trading-crypto",
+        "simulation": 0.0,
+        "static": 0.889,
+        "delta": -0.889
+      },
+      {
+        "domain_id": "mcp-server-builder",
+        "simulation": 0.0,
+        "static": 0.852,
+        "delta": -0.852
+      },
+      {
+        "domain_id": "ai-agent-builder",
+        "simulation": 0.0,
+        "static": 0.827,
+        "delta": -0.827
+      },
+      {
+        "domain_id": "vendor-security-review-copilot",
+        "simulation": 0.0,
+        "static": 0.5531,
+        "delta": -0.5531
+      },
+      {
+        "domain_id": "dental-insurance-appeals-ai",
+        "simulation": 0.0,
+        "static": 0.5391,
+        "delta": -0.5391
+      },
+      {
+        "domain_id": "hvac-maintenance-planner-ai",
+        "simulation": 0.0,
+        "static": 0.4655,
+        "delta": -0.4655
+      }
+    ],
+    "top_recommendation": "cursor-copilot"
+  },
+  "builder_ensemble_summary": [
+    {
+      "domain_id": "startup-yc",
+      "mean_adoption": 0.0134,
+      "median_adoption": 0.0167,
+      "mean_trial": 0.0867,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0167,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "trading-crypto",
+      "mean_adoption": 0.0122,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0489,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0333,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "cursor-copilot",
+      "mean_adoption": 0.0089,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0755,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0167,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "mcp-server-builder",
+      "mean_adoption": 0.0067,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0211,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0167,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "ai-agent-builder",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0167,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "vendor-security-review-copilot",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0134,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "hvac-maintenance-planner-ai",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0056,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    },
+    {
+      "domain_id": "dental-insurance-appeals-ai",
+      "mean_adoption": 0.0,
+      "median_adoption": 0.0,
+      "mean_trial": 0.0045,
+      "mean_churn": 0.0,
+      "confidence_width": 0.0,
+      "tipping_rate": 0.0
+    }
+  ],
+  "governance_note": "Hybrid evaluation output remains exploratory_frontier. Use it to compare discovered candidates against the benchmark panel, not to auto-promote them."
+}

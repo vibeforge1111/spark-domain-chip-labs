@@ -34,6 +34,15 @@ class DiscoveryDecision:
     duplicate_of: str | None = None
 
 
+@dataclass
+class CanonicalizationResult:
+    """Shared accepted / merged / rejected outputs from discovery canonicalization."""
+
+    accepted: list[dict[str, Any]]
+    merged: list[dict[str, Any]]
+    rejected: list[dict[str, Any]]
+
+
 def slugify_domain_label(label: str) -> str:
     """Turn a free-form label into a stable domain ID."""
     text = re.sub(r"[^a-z0-9]+", "-", label.lower()).strip("-")
@@ -150,9 +159,98 @@ def canonicalize_discovery_batch(batch: dict[str, Any]) -> dict[str, Any]:
         if str(item).strip()
     }
     raw_candidates = batch.get("raw_candidates", [])
-
     canonical_candidates = [canonicalize_raw_candidate(item) for item in raw_candidates]
+    outputs = _canonicalize_candidates(canonical_candidates, existing_domain_ids=existing_domain_ids)
+    summary = _build_summary(
+        raw_count=len(raw_candidates),
+        accepted=outputs.accepted,
+        merged=outputs.merged,
+        rejected=outputs.rejected,
+    )
 
+    return {
+        "packet_kind": "mirofish_discovery_batch",
+        "evidence_lane": "exploratory_frontier",
+        "created_at": now,
+        "batch_id": batch_id,
+        "summary": summary,
+        "accepted_candidates": outputs.accepted,
+        "merged_candidates": outputs.merged,
+        "rejected_candidates": outputs.rejected,
+        "next_actions": _next_actions(outputs.accepted, outputs.rejected),
+    }
+
+
+def canonicalize_discovery_program(program: dict[str, Any]) -> dict[str, Any]:
+    """Canonicalize a staged multi-agent discovery program into one packet."""
+    now = datetime.now(timezone.utc).isoformat()
+    program_id = str(program.get("program_id", "mirofish-discovery-program")).strip() or "mirofish-discovery-program"
+    target_agent_count = int(program.get("target_agent_count", 0) or 0)
+    stage_label = str(program.get("stage_label", "pilot")).strip() or "pilot"
+    existing_domain_ids = {
+        str(item).strip()
+        for item in program.get("existing_domain_ids", [])
+        if str(item).strip()
+    }
+
+    agent_submissions = list(program.get("agent_submissions", []))
+    flattened_candidates: list[dict[str, Any]] = []
+    agent_rollup: dict[str, dict[str, Any]] = {}
+    for idx, submission in enumerate(agent_submissions, start=1):
+        agent_id = str(submission.get("agent_id") or f"agent-{idx:04d}").strip() or f"agent-{idx:04d}"
+        raw_candidates = list(submission.get("raw_candidates", []))
+        agent_rollup[agent_id] = {
+            "agent_id": agent_id,
+            "candidate_count": len(raw_candidates),
+            "notes": str(submission.get("notes", "")).strip(),
+        }
+        for candidate_index, raw_candidate in enumerate(raw_candidates, start=1):
+            enriched = deepcopy(raw_candidate)
+            enriched["submitted_by_agent"] = agent_id
+            enriched["submission_index"] = candidate_index
+            flattened_candidates.append(enriched)
+
+    canonical_candidates = [canonicalize_raw_candidate(item) for item in flattened_candidates]
+    outputs = _canonicalize_candidates(canonical_candidates, existing_domain_ids=existing_domain_ids)
+    _attach_supporting_agents(outputs.accepted, canonical_candidates)
+    _attach_agent_rollup(agent_rollup, outputs.accepted, outputs.merged, outputs.rejected)
+    summary = _build_summary(
+        raw_count=len(flattened_candidates),
+        accepted=outputs.accepted,
+        merged=outputs.merged,
+        rejected=outputs.rejected,
+    )
+    participating_agent_count = len(agent_submissions)
+    scale_readiness = _scale_readiness(
+        summary=summary,
+        participating_agent_count=participating_agent_count,
+        target_agent_count=target_agent_count,
+    )
+
+    return {
+        "packet_kind": "mirofish_discovery_program",
+        "evidence_lane": "exploratory_frontier",
+        "created_at": now,
+        "program_id": program_id,
+        "stage_label": stage_label,
+        "target_agent_count": target_agent_count,
+        "participating_agent_count": participating_agent_count,
+        "summary": summary,
+        "scale_readiness": scale_readiness,
+        "agent_rollup": list(agent_rollup.values()),
+        "accepted_candidates": outputs.accepted,
+        "merged_candidates": outputs.merged,
+        "rejected_candidates": outputs.rejected,
+        "next_actions": _program_next_actions(
+            accepted_candidates=outputs.accepted,
+            rejected_candidates=outputs.rejected,
+            scale_readiness=scale_readiness,
+        ),
+    }
+
+
+def _build_alias_map(canonical_candidates: list[dict[str, Any]]) -> dict[str, str]:
+    """Build an alias map for duplicates inside one intake set."""
     alias_map: dict[str, str] = {}
     seen_domain_ids: set[str] = set()
     label_map: dict[str, str] = {}
@@ -169,7 +267,15 @@ def canonicalize_discovery_batch(batch: dict[str, Any]) -> dict[str, Any]:
         seen_domain_ids.add(domain_id)
         if label_slug not in label_map:
             label_map[label_slug] = domain_id
+    return alias_map
 
+
+def _canonicalize_candidates(
+    canonical_candidates: list[dict[str, Any]],
+    existing_domain_ids: set[str],
+) -> CanonicalizationResult:
+    """Canonicalize already-normalized candidates into accepted / merged / rejected outputs."""
+    alias_map = _build_alias_map(canonical_candidates)
     accepted: list[dict[str, Any]] = []
     rejected: list[dict[str, Any]] = []
     merged: list[dict[str, Any]] = []
@@ -201,26 +307,174 @@ def canonicalize_discovery_batch(batch: dict[str, Any]) -> dict[str, Any]:
 
         rejected.append(output)
 
-    summary = {
-        "raw_count": len(raw_candidates),
-        "accepted_count": len(accepted),
-        "merged_count": len(merged),
-        "rejected_count": len(rejected),
+    return CanonicalizationResult(
+        accepted=accepted,
+        merged=merged,
+        rejected=rejected,
+    )
+
+
+def _build_summary(
+    raw_count: int,
+    accepted: list[dict[str, Any]],
+    merged: list[dict[str, Any]],
+    rejected: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Build discovery summary metrics used by both batch and program packets."""
+    too_vague_count = sum(1 for item in rejected if item["classification"] == "too_vague_to_keep")
+    persona_only_count = sum(1 for item in rejected if item["classification"] == "persona_only_not_domain")
+    workflow_only_count = sum(1 for item in rejected if item["classification"] == "workflow_not_domain")
+    duplicate_existing_count = sum(
+        1 for item in merged
+        if item.get("duplicate_of") == item.get("domain_id") or item.get("duplicate_of") in item.get("domain_tags", [])
+    )
+    accepted_count = len(accepted)
+    merged_count = len(merged)
+    rejected_count = len(rejected)
+    denominator = raw_count or 1
+    return {
+        "raw_count": raw_count,
+        "accepted_count": accepted_count,
+        "merged_count": merged_count,
+        "rejected_count": rejected_count,
         "clear_count": sum(1 for item in accepted if item["classification"] == "clear_domain_chip"),
         "proto_count": sum(1 for item in accepted if item["classification"] == "proto_domain_chip"),
+        "acceptance_rate": round(accepted_count / denominator, 4),
+        "merge_rate": round(merged_count / denominator, 4),
+        "too_vague_rate": round(too_vague_count / denominator, 4),
+        "persona_only_rate": round(persona_only_count / denominator, 4),
+        "workflow_only_rate": round(workflow_only_count / denominator, 4),
+        "duplicate_existing_count": duplicate_existing_count,
     }
 
+
+def _attach_supporting_agents(
+    accepted_candidates: list[dict[str, Any]],
+    canonical_candidates: list[dict[str, Any]],
+) -> None:
+    """Attach supporting-agent provenance to accepted candidates."""
+    support_map: dict[str, set[str]] = {}
+    for candidate in canonical_candidates:
+        agent_id = str(candidate.get("submitted_by_agent", "")).strip()
+        if not agent_id:
+            continue
+        support_map.setdefault(candidate["domain_id"], set()).add(agent_id)
+
+    for candidate in accepted_candidates:
+        supporting_agents = sorted(support_map.get(candidate["domain_id"], set()))
+        candidate["supporting_agent_ids"] = supporting_agents
+        candidate["supporting_agent_count"] = len(supporting_agents)
+
+
+def _attach_agent_rollup(
+    agent_rollup: dict[str, dict[str, Any]],
+    accepted_candidates: list[dict[str, Any]],
+    merged_candidates: list[dict[str, Any]],
+    rejected_candidates: list[dict[str, Any]],
+) -> None:
+    """Attach accepted / merged / rejected counts back to each agent rollup row."""
+    for row in accepted_candidates:
+        agent_id = str(row.get("submitted_by_agent", "")).strip()
+        if agent_id in agent_rollup:
+            agent_rollup[agent_id]["accepted_count"] = agent_rollup[agent_id].get("accepted_count", 0) + 1
+    for row in merged_candidates:
+        agent_id = str(row.get("submitted_by_agent", "")).strip()
+        if agent_id in agent_rollup:
+            agent_rollup[agent_id]["merged_count"] = agent_rollup[agent_id].get("merged_count", 0) + 1
+    for row in rejected_candidates:
+        agent_id = str(row.get("submitted_by_agent", "")).strip()
+        if agent_id in agent_rollup:
+            agent_rollup[agent_id]["rejected_count"] = agent_rollup[agent_id].get("rejected_count", 0) + 1
+
+    for row in agent_rollup.values():
+        row.setdefault("accepted_count", 0)
+        row.setdefault("merged_count", 0)
+        row.setdefault("rejected_count", 0)
+
+
+def _scale_readiness(
+    summary: dict[str, Any],
+    participating_agent_count: int,
+    target_agent_count: int,
+) -> dict[str, Any]:
+    """Recommend whether the discovery program is ready to scale."""
+    acceptance_rate = float(summary.get("acceptance_rate", 0.0))
+    merge_rate = float(summary.get("merge_rate", 0.0))
+    too_vague_rate = float(summary.get("too_vague_rate", 0.0))
+    clear_count = int(summary.get("clear_count", 0))
+
+    reasons: list[str] = []
+    if clear_count >= 3:
+        reasons.append("The program already produces multiple clear_domain_chip candidates.")
+    else:
+        reasons.append("The program still produces too few clear_domain_chip candidates.")
+
+    if acceptance_rate >= 0.3:
+        reasons.append("Acceptance rate is high enough to justify a larger intake pass.")
+    else:
+        reasons.append("Acceptance rate is still too weak for immediate scale-up.")
+
+    if merge_rate <= 0.35:
+        reasons.append("Duplicate pressure is still manageable.")
+    else:
+        reasons.append("Duplicate pressure is already high and should be reduced before scaling.")
+
+    if too_vague_rate <= 0.25:
+        reasons.append("Vague-candidate rejection is under control.")
+    else:
+        reasons.append("Too much of the intake is still vague.")
+
+    next_stage = "refine_contract_before_scaling"
+    if (
+        participating_agent_count < 20
+        and clear_count >= 2
+        and acceptance_rate >= 0.25
+        and merge_rate <= 0.5
+        and too_vague_rate <= 0.35
+    ):
+        next_stage = "run_100_agent_pilot"
+    elif (
+        participating_agent_count < 500
+        and clear_count >= 5
+        and acceptance_rate >= 0.3
+        and merge_rate <= 0.4
+        and too_vague_rate <= 0.3
+    ):
+        next_stage = "run_250_agent_pilot"
+    elif (
+        participating_agent_count >= 250
+        and clear_count >= 12
+        and acceptance_rate >= 0.28
+        and merge_rate <= 0.45
+        and too_vague_rate <= 0.3
+    ):
+        next_stage = "run_1000_agent_program"
+
     return {
-        "packet_kind": "mirofish_discovery_batch",
-        "evidence_lane": "exploratory_frontier",
-        "created_at": now,
-        "batch_id": batch_id,
-        "summary": summary,
-        "accepted_candidates": accepted,
-        "merged_candidates": merged,
-        "rejected_candidates": rejected,
-        "next_actions": _next_actions(accepted, rejected),
+        "participating_agent_count": participating_agent_count,
+        "target_agent_count": target_agent_count,
+        "next_stage": next_stage,
+        "reasons": reasons,
     }
+
+
+def _program_next_actions(
+    accepted_candidates: list[dict[str, Any]],
+    rejected_candidates: list[dict[str, Any]],
+    scale_readiness: dict[str, Any],
+) -> list[str]:
+    """Suggest immediate next steps for a multi-agent discovery program."""
+    actions = _next_actions(accepted_candidates, rejected_candidates)
+    next_stage = scale_readiness.get("next_stage", "refine_contract_before_scaling")
+    if next_stage == "run_100_agent_pilot":
+        actions.append("Promote this smoke pass into a 100-agent pilot using the same candidate contract and review metrics.")
+    elif next_stage == "run_250_agent_pilot":
+        actions.append("The current pilot is strong enough to justify a 250-agent scale pass.")
+    elif next_stage == "run_1000_agent_program":
+        actions.append("The discovery program is ready for the full 1,000-agent intake if the operator still wants the larger sweep.")
+    else:
+        actions.append("Refine the intake contract and rejection reasons before scaling to a larger agent count.")
+    return actions
 
 
 def _next_actions(
