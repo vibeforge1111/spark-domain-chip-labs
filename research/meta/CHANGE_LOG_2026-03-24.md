@@ -1527,3 +1527,57 @@ The security wedge was already producing the strongest frontier signal in the pi
 
 - The security cluster is now strong enough that the open question is saturation, not viability.
 - Promotion status still remains frontier/watchlist rather than formal benchmark review.
+
+## Tranche: MiroFish Discovery Program Viral Pivot
+
+### Files Changed
+
+- `src/chip_labs/mirofish/discovery.py`
+- `tests/test_mirofish_discovery.py`
+- `docs/MIROFISH_DISCOVERY_PROGRAM.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_SCAFFOLD_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_BRIEF_2026-03-24.md`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_DIRECTORY_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/README.md`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/01_creator-growth-systems.json`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/02_gaming-npc-community.json`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/03_agentic-builders.json`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/04_startup-founder-systems.json`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/05_productivity-builder-ops.json`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/06_career-status-social-proof.json`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/07_consumer-agent-utilities.json`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/08_crypto-defi-trading.json`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/09_x-native-persona-tools.json`
+- `research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/10_design-remix-aesthetics.json`
+- `research/meta/MIROFISH_DISCOVERY_PROGRAM_VIRAL_PIVOT_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_viral_pivot.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The earlier discovery pilot proved the mechanics, but it was too enterprise-adjacent for the current growth thesis. The next frontier should bias toward what ambitious online users actually care about now: creator growth, gaming/community, AI agents, startups, productivity, careers, consumer utilities, crypto, and X-native status loops.
+
+### What Changed
+
+- Replaced the default pilot cluster plan with a viral-first, X-native wedge allocation
+- Added X-native persona archetypes and social-spread guidance to the scaffolded agent brief
+- Updated tests and operator docs to match the new default scaffold
+- Generated a fresh `pilot_100_viral` scaffold, bundle, brief, materialized cluster directory, and zero-state progress snapshot without overwriting the earlier security tranche artifacts
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py -q`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-scaffold --program-id mirofish-discovery-program-pilot-100-viral --stage-label pilot_100_viral --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_SCAFFOLD_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json --title "MiroFish Discovery Pilot 100 Viral Brief" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_BRIEF_2026-03-24.md`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-materialize --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json --output-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --index-title "MiroFish Discovery Pilot 100 Viral Clusters" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_DIRECTORY_2026-03-24.json`
+- Run `$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md --title "MiroFish Discovery Pilot 100 Viral Progress"`
+
+### Notes
+
+- The earlier security-pilot artifacts remain valid historical evidence; this tranche creates a separate viral-first lane instead of overwriting them.
+- The next useful collection order is `creator-growth-systems`, then `gaming-npc-community`, then `agentic-builders`.

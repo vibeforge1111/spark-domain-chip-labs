@@ -155,7 +155,7 @@ def test_build_discovery_program_scaffold_creates_100_agent_plan() -> None:
     assert len(scaffold["agent_submissions"]) == 100
     assert scaffold["agent_submissions"][0]["agent_id"] == "agent-001"
     assert scaffold["agent_submissions"][-1]["agent_id"] == "agent-100"
-    assert scaffold["cluster_plan"][0]["cluster_id"] == "security-compliance-response"
+    assert scaffold["cluster_plan"][0]["cluster_id"] == "creator-growth-systems"
 
 
 def test_split_discovery_program_scaffold_emits_cluster_packets() -> None:
@@ -180,8 +180,8 @@ def test_format_discovery_program_markdown_renders_scaffold_summary() -> None:
 
     assert "# Pilot Brief" in result
     assert "## Cluster Allocation" in result
-    assert "`security-compliance-response`" in result
-    assert "Security / Compliance Response" in result
+    assert "`creator-growth-systems`" in result
+    assert "Creator Growth Systems" in result
 
 
 def test_merge_discovery_cluster_packets_round_trips_agent_submissions() -> None:
@@ -219,7 +219,7 @@ def test_materialize_discovery_program_writes_cluster_files(tmp_path: Path) -> N
     manifest = json.loads(output_manifest.read_text(encoding="utf-8"))
     assert manifest["file_count"] == 11
     assert (output_dir / "README.md").exists()
-    assert (output_dir / "01_security-compliance-response.json").exists()
+    assert (output_dir / "01_creator-growth-systems.json").exists()
     assert "Pilot Cluster Directory" in (output_dir / "README.md").read_text(encoding="utf-8")
 
 
@@ -286,4 +286,4 @@ def test_discovery_program_bundle_rebuilds_from_materialized_directory(tmp_path:
     assert rebuilt["packet_kind"] == "mirofish_discovery_program_cluster_packets"
     assert rebuilt["cluster_packet_count"] == 10
     assert rebuilt["summary"]["agent_count"] == 100
-    assert rebuilt["cluster_packets"][0]["cluster_id"] == "security-compliance-response"
+    assert rebuilt["cluster_packets"][0]["cluster_id"] == "creator-growth-systems"

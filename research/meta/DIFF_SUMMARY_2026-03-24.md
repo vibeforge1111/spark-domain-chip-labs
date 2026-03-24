@@ -342,3 +342,12 @@ MiroFish discovery security tranche 3:
 - refresh the partial pilot result to `9` accepted clear-domain candidates
 - rerun the bounded hybrid read from the corrected `9`-candidate result
 - record that `trust-document-access-workflow-copilot` now also clears the benchmark median while the wedge stays in frontier/watchlist
+
+## Batch 39
+
+MiroFish discovery viral pivot:
+
+- replace the default `100`-agent discovery scaffold with viral-first, X-native clusters
+- add X persona archetypes and social-spread guidance to the scaffolded agent brief
+- update the discovery-program tests and operator doc to match the new default
+- generate a fresh `pilot_100_viral` scaffold, cluster bundle, brief, materialized directory, and zero-state progress surface

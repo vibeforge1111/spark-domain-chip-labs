@@ -4,6 +4,8 @@
 
 Scale open-ended MiroFish domain discovery without repeating the mistakes from the March 24 rerun cycle.
 
+The current default pilot is intentionally `viral-first` and `X-native`. It is aimed at discovering domain chips that ambitious online users would actually use, talk about, share, or signal on X, rather than defaulting back into enterprise back-office wedges.
+
 The rule is:
 
 - discovery scales only after intake quality is proven
@@ -26,6 +28,29 @@ The rule is:
 - reruns without declared runtime budgets or success criteria
 
 ## Staged Scale Plan
+
+## Default Pilot Thesis
+
+The default `100`-agent pilot now concentrates on the wedges most likely to produce culturally alive, shareable, and builder-relevant chips:
+
+- creator growth systems
+- gaming / NPC / community worlds
+- AI agent builders
+- startup builder systems
+- builder productivity systems
+- career / status / social proof
+- consumer agent utilities
+- crypto / DeFi / trading
+- X-native persona tools
+- design / remix / aesthetics
+
+The agent brief should prefer:
+
+- repeated use loops, not one-off gimmicks
+- things public builders or creators would show off
+- things people would debate, compare, or recommend on X
+- domains with creator, builder, agentic, crypto-native, or career/status energy
+- candidates that feel like a domain chip, not just a feature wrapper
 
 ### Stage 0: Smoke Pass
 
@@ -119,60 +144,60 @@ Every program run should emit:
 
 ## Repo-Local Commands
 
-Build a `100`-agent pilot scaffold:
+Build a `100`-agent viral-first pilot scaffold:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m chip_labs.cli mirofish-discovery-program-scaffold --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json
+python -m chip_labs.cli mirofish-discovery-program-scaffold --program-id mirofish-discovery-program-pilot-100-viral --stage-label pilot_100_viral --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_SCAFFOLD_2026-03-24.json
 ```
 
 Split the scaffold into per-cluster collection packets:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json
+python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json
 ```
 
 Export an operator-facing pilot brief:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --title "MiroFish Discovery Pilot 100 Brief" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_BRIEF_2026-03-24.md
+python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json --title "MiroFish Discovery Pilot 100 Viral Brief" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_BRIEF_2026-03-24.md
 ```
 
 Recombine filled cluster packets back into one program packet:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json
+python -m chip_labs.cli mirofish-discovery-program-merge --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RECOMBINED_2026-03-24.json
 ```
 
 Materialize the cluster bundle into per-cluster working files:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m chip_labs.cli mirofish-discovery-program-materialize --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json --output-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --index-title "MiroFish Discovery Pilot 100 Clusters" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_DIRECTORY_2026-03-24.json
+python -m chip_labs.cli mirofish-discovery-program-materialize --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json --output-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --index-title "MiroFish Discovery Pilot 100 Viral Clusters" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_DIRECTORY_2026-03-24.json
 ```
 
 Track fill progress on the materialized directory:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_PROGRESS_2026-03-24.md --title "MiroFish Discovery Pilot 100 Progress"
+python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md --title "MiroFish Discovery Pilot 100 Viral Progress"
 ```
 
 Rebuild the combined cluster bundle after editing the materialized directory:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_pilot_100_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_CLUSTER_PACKETS_2026-03-24.json
+python -m chip_labs.cli mirofish-discovery-program-bundle --input-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json
 ```
 
 Canonicalize a filled pilot packet:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_RESULT_2026-03-24.json
+python -m chip_labs.cli mirofish-discovery-program --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RECOMBINED_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_RESULT_2026-03-24.json
 ```
 
 ## Governance

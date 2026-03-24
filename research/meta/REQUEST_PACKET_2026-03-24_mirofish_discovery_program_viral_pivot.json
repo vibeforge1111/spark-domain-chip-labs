@@ -1,0 +1,38 @@
+{
+  "request_id": "2026-03-24-mirofish-discovery-program-viral-pivot",
+  "chip": "mirofish",
+  "workstream": "Frontier Scout",
+  "status": "completed",
+  "why": [
+    "Pivot default discovery away from enterprise-heavy wedges toward viral, X-native, culturally alive domains.",
+    "Reflect the user's current growth thesis in the repo-local pilot scaffold and operator artifacts."
+  ],
+  "inputs": [
+    "User guidance emphasizing creator growth, gaming, AI agents, startups, productivity, careers, consumer utilities, crypto, and X-native personas."
+  ],
+  "files_changed": [
+    "src/chip_labs/mirofish/discovery.py",
+    "tests/test_mirofish_discovery.py",
+    "docs/MIROFISH_DISCOVERY_PROGRAM.md",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_SCAFFOLD_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_BRIEF_2026-03-24.md",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_DIRECTORY_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md",
+    "research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24/README.md",
+    "research/meta/MIROFISH_DISCOVERY_PROGRAM_VIRAL_PIVOT_NOTE_2026-03-24.md",
+    "research/meta/REQUEST_PACKET_2026-03-24_mirofish_discovery_program_viral_pivot.json",
+    "research/meta/CHANGE_LOG_2026-03-24.md",
+    "research/meta/DIFF_SUMMARY_2026-03-24.md"
+  ],
+  "verification": [
+    "$env:PYTHONPATH='src'; python -m pytest tests/test_mirofish_discovery.py -q",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-scaffold --program-id mirofish-discovery-program-pilot-100-viral --stage-label pilot_100_viral --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_SCAFFOLD_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-split --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_SCAFFOLD_2026-03-24.json --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-brief --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json --title \"MiroFish Discovery Pilot 100 Viral Brief\" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_BRIEF_2026-03-24.md",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-materialize --input research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_PACKETS_2026-03-24.json --output-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --index-title \"MiroFish Discovery Pilot 100 Viral Clusters\" --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_CLUSTER_DIRECTORY_2026-03-24.json",
+    "$env:PYTHONPATH='src'; python -m chip_labs.cli mirofish-discovery-program-progress --input-dir research/meta/mirofish_discovery_pilot_100_viral_clusters_2026-03-24 --output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.json --markdown-output research/meta/MIROFISH_DISCOVERY_PROGRAM_PILOT_100_VIRAL_PROGRESS_2026-03-24.md --title \"MiroFish Discovery Pilot 100 Viral Progress\""
+  ],
+  "next_step": "Begin collection in creator-growth-systems using the viral/X-native persona brief."
+}
