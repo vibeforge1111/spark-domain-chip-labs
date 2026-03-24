@@ -1,6 +1,6 @@
 {
   "packet_kind": "mirofish_hybrid_evaluation_spec",
-  "created_at": "2026-03-24T18:31:56.494903+00:00",
+  "created_at": "2026-03-24T18:35:26.233965+00:00",
   "source_batch_id": null,
   "source_packet_kind": "mirofish_discovery_program",
   "evidence_lane": "exploratory_frontier",
@@ -13,7 +13,10 @@
     "creator-brand-deal-fit-copilot",
     "creator-shopping-drop-copilot",
     "fan-community-prompt-copilot",
-    "creator-collab-pipeline-copilot"
+    "creator-collab-pipeline-copilot",
+    "trend-riff-response-copilot",
+    "virtual-creator-studio-copilot",
+    "interactive-format-lab-copilot"
   ],
   "proposed_benchmark_domain_ids": [],
   "promotion_review_domain_ids": [],
@@ -527,6 +530,126 @@
         ],
         "promotion_status": "candidate"
       }
+    },
+    {
+      "domain_id": "trend-riff-response-copilot",
+      "label": "Trend Riff Response Copilot",
+      "description": "Helps creators turn fast-moving internet trends into repeatable format responses by deciding when to jump, what angle to take, and how to package the riff for their audience.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6611,
+      "rationale": "YouTube's 2025 trend reporting shows meme and format participation increasingly works through collaborative riffing rather than isolated publishing. The official trends report explicitly frames creators and viewers as co-creating culture, which makes trend-response packaging look like a repeated domain loop instead of a generic inspiration task.",
+      "related_chips": [
+        "xcontent",
+        "hook-angle-test-copilot",
+        "creator-collab-pipeline-copilot"
+      ],
+      "evidence_sources": [
+        "youtube-trending-now-june-2025",
+        "youtube-trends-report-20th-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "converting emerging meme, format, and culture trends into creator-native response content before the attention window closes",
+        "mastery_surface": "learning which trend archetypes, timing windows, and creator-specific angles consistently generate participation, reach, and audience crossover",
+        "user_value_loop": "detect a rising trend, map it to a creator-specific riff angle, ship the response format, and refine the creator's trend-response playbook from outcome data",
+        "domain_tags": [
+          "creator-growth",
+          "trends",
+          "short-form",
+          "culture"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "virtual-creator-studio-copilot",
+      "label": "Virtual Creator Studio Copilot",
+      "description": "Runs the recurring scripting, persona, asset, and community loops needed to operate a virtual creator or avatar-led media brand consistently across videos, streams, and shorts.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6681,
+      "rationale": "YouTube's 2025 virtual-creator report presents avatar-led channels as a real and growing creator class rather than a novelty niche, and Made On YouTube continues to position new creation and business tools around evolving creator workflows. That makes virtual-creator operations a plausible domain chip with its own repeated system needs.",
+      "related_chips": [
+        "ai-npc-dialog",
+        "xcontent",
+        "creator-collab-pipeline-copilot"
+      ],
+      "evidence_sources": [
+        "youtube-virtual-creators-2025",
+        "made-on-youtube-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "operating virtual-creator publishing systems with stable character identity, content planning, and audience interaction loops",
+        "mastery_surface": "learning which persona rules, asset workflows, and interaction formats consistently maintain audience connection for avatar-led creator brands",
+        "user_value_loop": "plan the character beat, script and stage the content, update reusable assets, collect audience feedback, and refine the virtual creator playbook after each release cycle",
+        "domain_tags": [
+          "creator-growth",
+          "virtual-creators",
+          "avatar-media",
+          "character-systems"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "interactive-format-lab-copilot",
+      "label": "Interactive Format Lab Copilot",
+      "description": "Designs recurring interactive video mechanics, viewer-choice prompts, and experiment loops so creators can systematically build more participatory content formats.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6611,
+      "rationale": "YouTube's June 2025 trends note highlights a new wave of interactive game-like videos where the viewer experience depends on input and navigation rather than passive watching, while Creator Collective programming reinforces experimentation and peer-driven format learning. That suggests interactive format development is becoming a repeated creator-growth surface.",
+      "related_chips": [
+        "creator-collab-pipeline-copilot",
+        "fan-community-prompt-copilot",
+        "gaming-npc-community"
+      ],
+      "evidence_sources": [
+        "youtube-trending-now-june-2025",
+        "youtube-creator-collective-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "developing creator-native interactive video formats with game-like or viewer-participation mechanics",
+        "mastery_surface": "learning which interaction rules, branching prompts, and format structures consistently deepen participation and repeat viewing",
+        "user_value_loop": "prototype an interactive format, publish and track participation behavior, compare viewer response to alternative mechanics, and evolve the creator's interactive format library over time",
+        "domain_tags": [
+          "creator-growth",
+          "interactive-video",
+          "format-experiments",
+          "participation"
+        ],
+        "promotion_status": "candidate"
+      }
     }
   ],
   "proposed_benchmark_opportunities": [],
@@ -900,6 +1023,46 @@
       }
     },
     {
+      "domain_id": "virtual-creator-studio-copilot",
+      "label": "Virtual Creator Studio Copilot",
+      "description": "Runs the recurring scripting, persona, asset, and community loops needed to operate a virtual creator or avatar-led media brand consistently across videos, streams, and shorts.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.72
+      },
+      "composite_score": 0.6681,
+      "rationale": "YouTube's 2025 virtual-creator report presents avatar-led channels as a real and growing creator class rather than a novelty niche, and Made On YouTube continues to position new creation and business tools around evolving creator workflows. That makes virtual-creator operations a plausible domain chip with its own repeated system needs.",
+      "related_chips": [
+        "ai-npc-dialog",
+        "xcontent",
+        "creator-collab-pipeline-copilot"
+      ],
+      "evidence_sources": [
+        "youtube-virtual-creators-2025",
+        "made-on-youtube-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "operating virtual-creator publishing systems with stable character identity, content planning, and audience interaction loops",
+        "mastery_surface": "learning which persona rules, asset workflows, and interaction formats consistently maintain audience connection for avatar-led creator brands",
+        "user_value_loop": "plan the character beat, script and stage the content, update reusable assets, collect audience feedback, and refine the virtual creator playbook after each release cycle",
+        "domain_tags": [
+          "creator-growth",
+          "virtual-creators",
+          "avatar-media",
+          "character-systems"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
       "domain_id": "fan-community-prompt-copilot",
       "label": "Fan Community Prompt Copilot",
       "description": "Designs recurring community prompts, polls, fan threads, and post-video activation loops so creators can convert passive viewers into an active discussion layer.",
@@ -935,6 +1098,86 @@
           "community",
           "fan-engagement",
           "discussion"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "trend-riff-response-copilot",
+      "label": "Trend Riff Response Copilot",
+      "description": "Helps creators turn fast-moving internet trends into repeatable format responses by deciding when to jump, what angle to take, and how to package the riff for their audience.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6611,
+      "rationale": "YouTube's 2025 trend reporting shows meme and format participation increasingly works through collaborative riffing rather than isolated publishing. The official trends report explicitly frames creators and viewers as co-creating culture, which makes trend-response packaging look like a repeated domain loop instead of a generic inspiration task.",
+      "related_chips": [
+        "xcontent",
+        "hook-angle-test-copilot",
+        "creator-collab-pipeline-copilot"
+      ],
+      "evidence_sources": [
+        "youtube-trending-now-june-2025",
+        "youtube-trends-report-20th-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "converting emerging meme, format, and culture trends into creator-native response content before the attention window closes",
+        "mastery_surface": "learning which trend archetypes, timing windows, and creator-specific angles consistently generate participation, reach, and audience crossover",
+        "user_value_loop": "detect a rising trend, map it to a creator-specific riff angle, ship the response format, and refine the creator's trend-response playbook from outcome data",
+        "domain_tags": [
+          "creator-growth",
+          "trends",
+          "short-form",
+          "culture"
+        ],
+        "promotion_status": "candidate"
+      }
+    },
+    {
+      "domain_id": "interactive-format-lab-copilot",
+      "label": "Interactive Format Lab Copilot",
+      "description": "Designs recurring interactive video mechanics, viewer-choice prompts, and experiment loops so creators can systematically build more participatory content formats.",
+      "scores": {
+        "market_size": 0.748,
+        "data_availability": 0.48,
+        "benchmark_feasibility": 0.63,
+        "community_demand": 0.62,
+        "spark_ecosystem_fit": 0.83,
+        "monetization_potential": 0.65
+      },
+      "composite_score": 0.6611,
+      "rationale": "YouTube's June 2025 trends note highlights a new wave of interactive game-like videos where the viewer experience depends on input and navigation rather than passive watching, while Creator Collective programming reinforces experimentation and peer-driven format learning. That suggests interactive format development is becoming a repeated creator-growth surface.",
+      "related_chips": [
+        "creator-collab-pipeline-copilot",
+        "fan-community-prompt-copilot",
+        "gaming-npc-community"
+      ],
+      "evidence_sources": [
+        "youtube-trending-now-june-2025",
+        "youtube-creator-collective-2025"
+      ],
+      "origin": "discovered_candidate",
+      "classification": "clear_domain_chip",
+      "confidence_read": "medium",
+      "benchmark_tier": "new_candidate",
+      "candidate_context": {
+        "specialization_surface": "developing creator-native interactive video formats with game-like or viewer-participation mechanics",
+        "mastery_surface": "learning which interaction rules, branching prompts, and format structures consistently deepen participation and repeat viewing",
+        "user_value_loop": "prototype an interactive format, publish and track participation behavior, compare viewer response to alternative mechanics, and evolve the creator's interactive format library over time",
+        "domain_tags": [
+          "creator-growth",
+          "interactive-video",
+          "format-experiments",
+          "participation"
         ],
         "promotion_status": "candidate"
       }
@@ -1033,7 +1276,10 @@
       "hook-angle-test-copilot",
       "thumbnail-package-test-copilot",
       "creator-brand-deal-fit-copilot",
+      "virtual-creator-studio-copilot",
       "fan-community-prompt-copilot",
+      "trend-riff-response-copilot",
+      "interactive-format-lab-copilot",
       "audience-comment-signal-copilot",
       "creator-collab-pipeline-copilot"
     ],
@@ -1406,6 +1652,46 @@
         }
       },
       {
+        "domain_id": "virtual-creator-studio-copilot",
+        "label": "Virtual Creator Studio Copilot",
+        "description": "Runs the recurring scripting, persona, asset, and community loops needed to operate a virtual creator or avatar-led media brand consistently across videos, streams, and shorts.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.83,
+          "monetization_potential": 0.72
+        },
+        "composite_score": 0.6681,
+        "rationale": "YouTube's 2025 virtual-creator report presents avatar-led channels as a real and growing creator class rather than a novelty niche, and Made On YouTube continues to position new creation and business tools around evolving creator workflows. That makes virtual-creator operations a plausible domain chip with its own repeated system needs.",
+        "related_chips": [
+          "ai-npc-dialog",
+          "xcontent",
+          "creator-collab-pipeline-copilot"
+        ],
+        "evidence_sources": [
+          "youtube-virtual-creators-2025",
+          "made-on-youtube-2025"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "operating virtual-creator publishing systems with stable character identity, content planning, and audience interaction loops",
+          "mastery_surface": "learning which persona rules, asset workflows, and interaction formats consistently maintain audience connection for avatar-led creator brands",
+          "user_value_loop": "plan the character beat, script and stage the content, update reusable assets, collect audience feedback, and refine the virtual creator playbook after each release cycle",
+          "domain_tags": [
+            "creator-growth",
+            "virtual-creators",
+            "avatar-media",
+            "character-systems"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
         "domain_id": "fan-community-prompt-copilot",
         "label": "Fan Community Prompt Copilot",
         "description": "Designs recurring community prompts, polls, fan threads, and post-video activation loops so creators can convert passive viewers into an active discussion layer.",
@@ -1441,6 +1727,86 @@
             "community",
             "fan-engagement",
             "discussion"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "trend-riff-response-copilot",
+        "label": "Trend Riff Response Copilot",
+        "description": "Helps creators turn fast-moving internet trends into repeatable format responses by deciding when to jump, what angle to take, and how to package the riff for their audience.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.83,
+          "monetization_potential": 0.65
+        },
+        "composite_score": 0.6611,
+        "rationale": "YouTube's 2025 trend reporting shows meme and format participation increasingly works through collaborative riffing rather than isolated publishing. The official trends report explicitly frames creators and viewers as co-creating culture, which makes trend-response packaging look like a repeated domain loop instead of a generic inspiration task.",
+        "related_chips": [
+          "xcontent",
+          "hook-angle-test-copilot",
+          "creator-collab-pipeline-copilot"
+        ],
+        "evidence_sources": [
+          "youtube-trending-now-june-2025",
+          "youtube-trends-report-20th-2025"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "converting emerging meme, format, and culture trends into creator-native response content before the attention window closes",
+          "mastery_surface": "learning which trend archetypes, timing windows, and creator-specific angles consistently generate participation, reach, and audience crossover",
+          "user_value_loop": "detect a rising trend, map it to a creator-specific riff angle, ship the response format, and refine the creator's trend-response playbook from outcome data",
+          "domain_tags": [
+            "creator-growth",
+            "trends",
+            "short-form",
+            "culture"
+          ],
+          "promotion_status": "candidate"
+        }
+      },
+      {
+        "domain_id": "interactive-format-lab-copilot",
+        "label": "Interactive Format Lab Copilot",
+        "description": "Designs recurring interactive video mechanics, viewer-choice prompts, and experiment loops so creators can systematically build more participatory content formats.",
+        "scores": {
+          "market_size": 0.748,
+          "data_availability": 0.48,
+          "benchmark_feasibility": 0.63,
+          "community_demand": 0.62,
+          "spark_ecosystem_fit": 0.83,
+          "monetization_potential": 0.65
+        },
+        "composite_score": 0.6611,
+        "rationale": "YouTube's June 2025 trends note highlights a new wave of interactive game-like videos where the viewer experience depends on input and navigation rather than passive watching, while Creator Collective programming reinforces experimentation and peer-driven format learning. That suggests interactive format development is becoming a repeated creator-growth surface.",
+        "related_chips": [
+          "creator-collab-pipeline-copilot",
+          "fan-community-prompt-copilot",
+          "gaming-npc-community"
+        ],
+        "evidence_sources": [
+          "youtube-trending-now-june-2025",
+          "youtube-creator-collective-2025"
+        ],
+        "origin": "discovered_candidate",
+        "classification": "clear_domain_chip",
+        "confidence_read": "medium",
+        "benchmark_tier": "new_candidate",
+        "candidate_context": {
+          "specialization_surface": "developing creator-native interactive video formats with game-like or viewer-participation mechanics",
+          "mastery_surface": "learning which interaction rules, branching prompts, and format structures consistently deepen participation and repeat viewing",
+          "user_value_loop": "prototype an interactive format, publish and track participation behavior, compare viewer response to alternative mechanics, and evolve the creator's interactive format library over time",
+          "domain_tags": [
+            "creator-growth",
+            "interactive-video",
+            "format-experiments",
+            "participation"
           ],
           "promotion_status": "candidate"
         }
@@ -2122,6 +2488,56 @@
         }
       },
       {
+        "signal_id": "virtual-creator-studio-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Virtual Creator Studio Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "virtual-creator-studio-copilot-youtube-virtual-creators-2025",
+        "signal_type": "community_request",
+        "label": "Virtual Creator Studio Copilot via youtube-virtual-creators-2025",
+        "strength": 0.3341,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "virtual-creator-studio-copilot-made-on-youtube-2025",
+        "signal_type": "community_request",
+        "label": "Virtual Creator Studio Copilot via made-on-youtube-2025",
+        "strength": 0.3341,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "virtual-creator-studio-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Virtual Creator Studio Copilot ecosystem pull from ai-npc-dialog, xcontent, creator-collab-pipeline-copilot",
+        "strength": 0.747,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "ai-npc-dialog",
+            "xcontent",
+            "creator-collab-pipeline-copilot"
+          ]
+        }
+      },
+      {
         "signal_id": "fan-community-prompt-copilot-community-demand",
         "signal_type": "community_request",
         "label": "Fan Community Prompt Copilot community demand",
@@ -2168,6 +2584,106 @@
             "creator-membership-flywheel-copilot",
             "audience-comment-signal-copilot",
             "discord-community"
+          ]
+        }
+      },
+      {
+        "signal_id": "trend-riff-response-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Trend Riff Response Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trend-riff-response-copilot-youtube-trending-now-june-2025",
+        "signal_type": "community_request",
+        "label": "Trend Riff Response Copilot via youtube-trending-now-june-2025",
+        "strength": 0.3306,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trend-riff-response-copilot-youtube-trends-report-20th-2025",
+        "signal_type": "community_request",
+        "label": "Trend Riff Response Copilot via youtube-trends-report-20th-2025",
+        "strength": 0.3306,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "trend-riff-response-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Trend Riff Response Copilot ecosystem pull from xcontent, hook-angle-test-copilot, creator-collab-pipeline-copilot",
+        "strength": 0.747,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "xcontent",
+            "hook-angle-test-copilot",
+            "creator-collab-pipeline-copilot"
+          ]
+        }
+      },
+      {
+        "signal_id": "interactive-format-lab-copilot-community-demand",
+        "signal_type": "community_request",
+        "label": "Interactive Format Lab Copilot community demand",
+        "strength": 0.62,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "interactive-format-lab-copilot-youtube-trending-now-june-2025",
+        "signal_type": "community_request",
+        "label": "Interactive Format Lab Copilot via youtube-trending-now-june-2025",
+        "strength": 0.3306,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "interactive-format-lab-copilot-youtube-creator-collective-2025",
+        "signal_type": "community_request",
+        "label": "Interactive Format Lab Copilot via youtube-creator-collective-2025",
+        "strength": 0.3306,
+        "decay_per_round": 0.06,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "interactive-format-lab-copilot-ecosystem-pull",
+        "signal_type": "competitor_chip",
+        "label": "Interactive Format Lab Copilot ecosystem pull from creator-collab-pipeline-copilot, fan-community-prompt-copilot, gaming-npc-community",
+        "strength": 0.747,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {
+          "related_chips": [
+            "creator-collab-pipeline-copilot",
+            "fan-community-prompt-copilot",
+            "gaming-npc-community"
           ]
         }
       },
@@ -2547,6 +3063,39 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-extends-virtual-creator-studio-copilot-chip-ai-npc-dialog",
+        "signal_type": "competitor_chip",
+        "label": "virtual-creator-studio-copilot extends ai-npc-dialog",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-virtual-creator-studio-copilot-chip-xcontent",
+        "signal_type": "competitor_chip",
+        "label": "virtual-creator-studio-copilot extends xcontent",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-virtual-creator-studio-copilot-chip-creator-collab-pipeline-copilot",
+        "signal_type": "competitor_chip",
+        "label": "virtual-creator-studio-copilot extends creator-collab-pipeline-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-extends-fan-community-prompt-copilot-chip-creator-membership-flywheel-copilot",
         "signal_type": "competitor_chip",
         "label": "fan-community-prompt-copilot extends creator-membership-flywheel-copilot",
@@ -2576,6 +3125,72 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trend-riff-response-copilot-chip-xcontent",
+        "signal_type": "competitor_chip",
+        "label": "trend-riff-response-copilot extends xcontent",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trend-riff-response-copilot-chip-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "trend-riff-response-copilot extends hook-angle-test-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-trend-riff-response-copilot-chip-creator-collab-pipeline-copilot",
+        "signal_type": "competitor_chip",
+        "label": "trend-riff-response-copilot extends creator-collab-pipeline-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-interactive-format-lab-copilot-chip-creator-collab-pipeline-copilot",
+        "signal_type": "competitor_chip",
+        "label": "interactive-format-lab-copilot extends creator-collab-pipeline-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-interactive-format-lab-copilot-chip-fan-community-prompt-copilot",
+        "signal_type": "competitor_chip",
+        "label": "interactive-format-lab-copilot extends fan-community-prompt-copilot",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-extends-interactive-format-lab-copilot-chip-gaming-npc-community",
+        "signal_type": "competitor_chip",
+        "label": "interactive-format-lab-copilot extends gaming-npc-community",
+        "strength": 0.68,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
         ],
         "metadata": {}
       },
@@ -3042,6 +3657,28 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-creator-shopping-drop-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-shopping-drop-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-creator-shopping-drop-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-shopping-drop-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-creator-shopping-drop-copilot-fan-community-prompt-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from fan-community-prompt-copilot",
@@ -3060,6 +3697,50 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-shopping-drop-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-shopping-drop-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-creator-shopping-drop-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-shopping-drop-copilot",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-shopping-drop-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-shopping-drop-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-creator-shopping-drop-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-shopping-drop-copilot",
+        "strength": 0.289,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
         ],
         "metadata": {}
       },
@@ -3196,6 +3877,28 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-cross-platform-clip-calendar-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cross-platform-clip-calendar-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-fan-community-prompt-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from fan-community-prompt-copilot",
@@ -3214,6 +3917,50 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.293,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-cross-platform-clip-calendar-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cross-platform-clip-calendar-copilot",
+        "strength": 0.293,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-cross-platform-clip-calendar-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.293,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "cross-platform-clip-calendar-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-cross-platform-clip-calendar-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from cross-platform-clip-calendar-copilot",
+        "strength": 0.293,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
         ],
         "metadata": {}
       },
@@ -3328,6 +4075,28 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-creator-membership-flywheel-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-membership-flywheel-copilot",
+        "strength": 0.292,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-creator-membership-flywheel-copilot-fan-community-prompt-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from fan-community-prompt-copilot",
@@ -3346,6 +4115,50 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-membership-flywheel-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-membership-flywheel-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-membership-flywheel-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-membership-flywheel-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-creator-membership-flywheel-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-membership-flywheel-copilot",
+        "strength": 0.2885,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
         ],
         "metadata": {}
       },
@@ -3438,6 +4251,28 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-hook-angle-test-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hook-angle-test-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-hook-angle-test-copilot-fan-community-prompt-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from fan-community-prompt-copilot",
@@ -3456,6 +4291,50 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-hook-angle-test-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hook-angle-test-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-hook-angle-test-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "hook-angle-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-hook-angle-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from hook-angle-test-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
         ],
         "metadata": {}
       },
@@ -3526,6 +4405,28 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-thumbnail-package-test-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-thumbnail-package-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from thumbnail-package-test-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-thumbnail-package-test-copilot-fan-community-prompt-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from fan-community-prompt-copilot",
@@ -3544,6 +4445,50 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-thumbnail-package-test-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-thumbnail-package-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from thumbnail-package-test-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-thumbnail-package-test-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "thumbnail-package-test-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-thumbnail-package-test-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from thumbnail-package-test-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
         ],
         "metadata": {}
       },
@@ -3592,6 +4537,28 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-creator-brand-deal-fit-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-creator-brand-deal-fit-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-brand-deal-fit-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-creator-brand-deal-fit-copilot-fan-community-prompt-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from fan-community-prompt-copilot",
@@ -3610,6 +4577,50 @@
         "decay_per_round": 0.05,
         "affects_domains": [
           "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-brand-deal-fit-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-creator-brand-deal-fit-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-brand-deal-fit-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-brand-deal-fit-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-brand-deal-fit-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-creator-brand-deal-fit-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-brand-deal-fit-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
         ],
         "metadata": {}
       },
@@ -3658,6 +4669,160 @@
         "metadata": {}
       },
       {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-fan-community-prompt-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from fan-community-prompt-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-fan-community-prompt-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.2965,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-audience-comment-signal-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from audience-comment-signal-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-audience-comment-signal-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-virtual-creator-studio-copilot-creator-collab-pipeline-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-collab-pipeline-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "virtual-creator-studio-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-collab-pipeline-copilot-virtual-creator-studio-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from virtual-creator-studio-copilot",
+        "strength": 0.2925,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-collab-pipeline-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-fan-community-prompt-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-fan-community-prompt-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from fan-community-prompt-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-fan-community-prompt-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "fan-community-prompt-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-fan-community-prompt-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from fan-community-prompt-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
         "signal_id": "graph-competes-fan-community-prompt-copilot-audience-comment-signal-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from audience-comment-signal-copilot",
@@ -3694,6 +4859,116 @@
         "signal_id": "graph-competes-creator-collab-pipeline-copilot-fan-community-prompt-copilot",
         "signal_type": "competitor_chip",
         "label": "Competitive pressure from fan-community-prompt-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-collab-pipeline-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.3,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-audience-comment-signal-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from audience-comment-signal-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-audience-comment-signal-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-trend-riff-response-copilot-creator-collab-pipeline-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-collab-pipeline-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "trend-riff-response-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-collab-pipeline-copilot-trend-riff-response-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from trend-riff-response-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "creator-collab-pipeline-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-audience-comment-signal-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from audience-comment-signal-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-audience-comment-signal-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "audience-comment-signal-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-interactive-format-lab-copilot-creator-collab-pipeline-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from creator-collab-pipeline-copilot",
+        "strength": 0.296,
+        "decay_per_round": 0.05,
+        "affects_domains": [
+          "interactive-format-lab-copilot"
+        ],
+        "metadata": {}
+      },
+      {
+        "signal_id": "graph-competes-creator-collab-pipeline-copilot-interactive-format-lab-copilot",
+        "signal_type": "competitor_chip",
+        "label": "Competitive pressure from interactive-format-lab-copilot",
         "strength": 0.296,
         "decay_per_round": 0.05,
         "affects_domains": [
@@ -4340,6 +5615,58 @@
           "properties": {}
         },
         {
+          "id": "virtual-creator-studio-copilot",
+          "type": "domain",
+          "label": "Virtual Creator Studio Copilot",
+          "properties": {
+            "description": "Runs the recurring scripting, persona, asset, and community loops needed to operate a virtual creator or avatar-led media brand consistently across videos, streams, and shorts.",
+            "composite_score": 0.6681,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.83,
+              "monetization_potential": 0.72
+            },
+            "rationale": "YouTube's 2025 virtual-creator report presents avatar-led channels as a real and growing creator class rather than a novelty niche, and Made On YouTube continues to position new creation and business tools around evolving creator workflows. That makes virtual-creator operations a plausible domain chip with its own repeated system needs.",
+            "domain_tags": [
+              "avatar-media",
+              "character-systems",
+              "creator-growth",
+              "productivity",
+              "quick_wins",
+              "virtual-creators"
+            ],
+            "retention_score": 0.63,
+            "choice_score": 0.39
+          }
+        },
+        {
+          "id": "chip-ai-npc-dialog",
+          "type": "technology",
+          "label": "ai-npc-dialog",
+          "properties": {}
+        },
+        {
+          "id": "chip-creator-collab-pipeline-copilot",
+          "type": "technology",
+          "label": "creator-collab-pipeline-copilot",
+          "properties": {}
+        },
+        {
+          "id": "platform-youtube-virtual-creators-2025",
+          "type": "platform",
+          "label": "youtube-virtual-creators-2025",
+          "properties": {}
+        },
+        {
+          "id": "platform-made-on-youtube-2025",
+          "type": "platform",
+          "label": "made-on-youtube-2025",
+          "properties": {}
+        },
+        {
           "id": "fan-community-prompt-copilot",
           "type": "domain",
           "label": "Fan Community Prompt Copilot",
@@ -4389,6 +5716,86 @@
           "id": "platform-youtube-creator-collective-2025",
           "type": "platform",
           "label": "youtube-creator-collective-2025",
+          "properties": {}
+        },
+        {
+          "id": "trend-riff-response-copilot",
+          "type": "domain",
+          "label": "Trend Riff Response Copilot",
+          "properties": {
+            "description": "Helps creators turn fast-moving internet trends into repeatable format responses by deciding when to jump, what angle to take, and how to package the riff for their audience.",
+            "composite_score": 0.6611,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.83,
+              "monetization_potential": 0.65
+            },
+            "rationale": "YouTube's 2025 trend reporting shows meme and format participation increasingly works through collaborative riffing rather than isolated publishing. The official trends report explicitly frames creators and viewers as co-creating culture, which makes trend-response packaging look like a repeated domain loop instead of a generic inspiration task.",
+            "domain_tags": [
+              "creator-growth",
+              "culture",
+              "productivity",
+              "quick_wins",
+              "short-form",
+              "trends"
+            ],
+            "retention_score": 0.5,
+            "choice_score": 0.61
+          }
+        },
+        {
+          "id": "platform-youtube-trending-now-june-2025",
+          "type": "platform",
+          "label": "youtube-trending-now-june-2025",
+          "properties": {}
+        },
+        {
+          "id": "platform-youtube-trends-report-20th-2025",
+          "type": "platform",
+          "label": "youtube-trends-report-20th-2025",
+          "properties": {}
+        },
+        {
+          "id": "interactive-format-lab-copilot",
+          "type": "domain",
+          "label": "Interactive Format Lab Copilot",
+          "properties": {
+            "description": "Designs recurring interactive video mechanics, viewer-choice prompts, and experiment loops so creators can systematically build more participatory content formats.",
+            "composite_score": 0.6611,
+            "scores": {
+              "market_size": 0.748,
+              "data_availability": 0.48,
+              "benchmark_feasibility": 0.63,
+              "community_demand": 0.62,
+              "spark_ecosystem_fit": 0.83,
+              "monetization_potential": 0.65
+            },
+            "rationale": "YouTube's June 2025 trends note highlights a new wave of interactive game-like videos where the viewer experience depends on input and navigation rather than passive watching, while Creator Collective programming reinforces experimentation and peer-driven format learning. That suggests interactive format development is becoming a repeated creator-growth surface.",
+            "domain_tags": [
+              "creator-growth",
+              "format-experiments",
+              "interactive-video",
+              "participation",
+              "productivity",
+              "quick_wins"
+            ],
+            "retention_score": 0.58,
+            "choice_score": 0.42
+          }
+        },
+        {
+          "id": "chip-fan-community-prompt-copilot",
+          "type": "technology",
+          "label": "fan-community-prompt-copilot",
+          "properties": {}
+        },
+        {
+          "id": "chip-gaming-npc-community",
+          "type": "technology",
+          "label": "gaming-npc-community",
           "properties": {}
         },
         {
@@ -4818,6 +6225,36 @@
           "weight": 0.5
         },
         {
+          "source": "virtual-creator-studio-copilot",
+          "target": "chip-ai-npc-dialog",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "virtual-creator-studio-copilot",
+          "target": "chip-xcontent",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "virtual-creator-studio-copilot",
+          "target": "chip-creator-collab-pipeline-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "virtual-creator-studio-copilot",
+          "target": "platform-youtube-virtual-creators-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "virtual-creator-studio-copilot",
+          "target": "platform-made-on-youtube-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
           "source": "fan-community-prompt-copilot",
           "target": "chip-creator-membership-flywheel-copilot",
           "relationship": "EXTENDS",
@@ -4843,6 +6280,66 @@
         },
         {
           "source": "fan-community-prompt-copilot",
+          "target": "platform-youtube-creator-collective-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trend-riff-response-copilot",
+          "target": "chip-xcontent",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trend-riff-response-copilot",
+          "target": "chip-hook-angle-test-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trend-riff-response-copilot",
+          "target": "chip-creator-collab-pipeline-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "trend-riff-response-copilot",
+          "target": "platform-youtube-trending-now-june-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "trend-riff-response-copilot",
+          "target": "platform-youtube-trends-report-20th-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "interactive-format-lab-copilot",
+          "target": "chip-creator-collab-pipeline-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "interactive-format-lab-copilot",
+          "target": "chip-fan-community-prompt-copilot",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "interactive-format-lab-copilot",
+          "target": "chip-gaming-npc-community",
+          "relationship": "EXTENDS",
+          "weight": 0.8
+        },
+        {
+          "source": "interactive-format-lab-copilot",
+          "target": "platform-youtube-trending-now-june-2025",
+          "relationship": "SERVES",
+          "weight": 0.5
+        },
+        {
+          "source": "interactive-format-lab-copilot",
           "target": "platform-youtube-creator-collective-2025",
           "relationship": "SERVES",
           "weight": 0.5
@@ -4969,7 +6466,25 @@
         },
         {
           "source": "trading-crypto",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.38315
+        },
+        {
+          "source": "trading-crypto",
           "target": "fan-community-prompt-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.37735
+        },
+        {
+          "source": "trading-crypto",
+          "target": "trend-riff-response-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.37735
+        },
+        {
+          "source": "trading-crypto",
+          "target": "interactive-format-lab-copilot",
           "relationship": "ENABLES",
           "weight": 0.37735
         },
@@ -5041,7 +6556,25 @@
         },
         {
           "source": "cursor-copilot",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40315
+        },
+        {
+          "source": "cursor-copilot",
           "target": "fan-community-prompt-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39735
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "trend-riff-response-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.39735
+        },
+        {
+          "source": "cursor-copilot",
+          "target": "interactive-format-lab-copilot",
           "relationship": "ENABLES",
           "weight": 0.39735
         },
@@ -5107,7 +6640,25 @@
         },
         {
           "source": "mcp-server-builder",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41065
+        },
+        {
+          "source": "mcp-server-builder",
           "target": "fan-community-prompt-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40485
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "trend-riff-response-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.40485
+        },
+        {
+          "source": "mcp-server-builder",
+          "target": "interactive-format-lab-copilot",
           "relationship": "ENABLES",
           "weight": 0.40485
         },
@@ -5167,7 +6718,25 @@
         },
         {
           "source": "ai-agent-builder",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41985
+        },
+        {
+          "source": "ai-agent-builder",
           "target": "fan-community-prompt-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.414
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "trend-riff-response-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.414
+        },
+        {
+          "source": "ai-agent-builder",
+          "target": "interactive-format-lab-copilot",
           "relationship": "ENABLES",
           "weight": 0.414
         },
@@ -5221,7 +6790,25 @@
         },
         {
           "source": "startup-yc",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.42065
+        },
+        {
+          "source": "startup-yc",
           "target": "fan-community-prompt-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41485
+        },
+        {
+          "source": "startup-yc",
+          "target": "trend-riff-response-copilot",
+          "relationship": "ENABLES",
+          "weight": 0.41485
+        },
+        {
+          "source": "startup-yc",
+          "target": "interactive-format-lab-copilot",
           "relationship": "ENABLES",
           "weight": 0.41485
         },
@@ -5269,7 +6856,25 @@
         },
         {
           "source": "creator-shopping-drop-copilot",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "creator-shopping-drop-copilot",
           "target": "fan-community-prompt-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9633
+        },
+        {
+          "source": "creator-shopping-drop-copilot",
+          "target": "trend-riff-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9633
+        },
+        {
+          "source": "creator-shopping-drop-copilot",
+          "target": "interactive-format-lab-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9633
         },
@@ -5311,7 +6916,25 @@
         },
         {
           "source": "cross-platform-clip-calendar-copilot",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
           "target": "fan-community-prompt-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9767
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "trend-riff-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9767
+        },
+        {
+          "source": "cross-platform-clip-calendar-copilot",
+          "target": "interactive-format-lab-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9767
         },
@@ -5347,7 +6970,25 @@
         },
         {
           "source": "creator-membership-flywheel-copilot",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9733
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
           "target": "fan-community-prompt-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9617
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "trend-riff-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9617
+        },
+        {
+          "source": "creator-membership-flywheel-copilot",
+          "target": "interactive-format-lab-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9617
         },
@@ -5377,7 +7018,25 @@
         },
         {
           "source": "hook-angle-test-copilot",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "hook-angle-test-copilot",
           "target": "fan-community-prompt-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "trend-riff-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "hook-angle-test-copilot",
+          "target": "interactive-format-lab-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9883
         },
@@ -5401,7 +7060,25 @@
         },
         {
           "source": "thumbnail-package-test-copilot",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "thumbnail-package-test-copilot",
           "target": "fan-community-prompt-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "thumbnail-package-test-copilot",
+          "target": "trend-riff-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "thumbnail-package-test-copilot",
+          "target": "interactive-format-lab-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9883
         },
@@ -5419,7 +7096,25 @@
         },
         {
           "source": "creator-brand-deal-fit-copilot",
+          "target": "virtual-creator-studio-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "creator-brand-deal-fit-copilot",
           "target": "fan-community-prompt-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "creator-brand-deal-fit-copilot",
+          "target": "trend-riff-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "creator-brand-deal-fit-copilot",
+          "target": "interactive-format-lab-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9883
         },
@@ -5434,6 +7129,48 @@
           "target": "creator-collab-pipeline-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.975
+        },
+        {
+          "source": "virtual-creator-studio-copilot",
+          "target": "fan-community-prompt-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "virtual-creator-studio-copilot",
+          "target": "trend-riff-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "virtual-creator-studio-copilot",
+          "target": "interactive-format-lab-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9883
+        },
+        {
+          "source": "virtual-creator-studio-copilot",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "virtual-creator-studio-copilot",
+          "target": "creator-collab-pipeline-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.975
+        },
+        {
+          "source": "fan-community-prompt-copilot",
+          "target": "trend-riff-response-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "fan-community-prompt-copilot",
+          "target": "interactive-format-lab-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
         },
         {
           "source": "fan-community-prompt-copilot",
@@ -5443,6 +7180,36 @@
         },
         {
           "source": "fan-community-prompt-copilot",
+          "target": "creator-collab-pipeline-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "trend-riff-response-copilot",
+          "target": "interactive-format-lab-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 1.0
+        },
+        {
+          "source": "trend-riff-response-copilot",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "trend-riff-response-copilot",
+          "target": "creator-collab-pipeline-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "interactive-format-lab-copilot",
+          "target": "audience-comment-signal-copilot",
+          "relationship": "COMPETES_WITH",
+          "weight": 0.9867
+        },
+        {
+          "source": "interactive-format-lab-copilot",
           "target": "creator-collab-pipeline-copilot",
           "relationship": "COMPETES_WITH",
           "weight": 0.9867
@@ -5455,17 +7222,17 @@
         }
       ],
       "tracked_variables": {},
-      "node_count": 62,
-      "edge_count": 163
+      "node_count": 73,
+      "edge_count": 223
     }
   },
   "summary": {
-    "discovered_count": 9,
+    "discovered_count": 12,
     "benchmark_count": 5,
     "proposed_benchmark_count": 0,
     "promotion_review_count": 0,
-    "combined_domain_count": 14,
-    "signal_count": 193,
+    "combined_domain_count": 17,
+    "signal_count": 274,
     "shock_count": 3,
     "top_ranked_domain": "trading-crypto"
   },

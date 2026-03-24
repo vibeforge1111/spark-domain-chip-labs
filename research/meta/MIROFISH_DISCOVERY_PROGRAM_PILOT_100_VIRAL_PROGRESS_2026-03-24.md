@@ -2,13 +2,13 @@
 
 - Directory: `research\meta\mirofish_discovery_pilot_100_viral_clusters_2026-03-24`
 - Clusters: `10`
-- Filled agents: `9` / `100`
-- Raw candidates: `9`
-- Fill rate: `9.00%`
+- Filled agents: `12` / `100`
+- Raw candidates: `12`
+- Fill rate: `12.00%`
 
 ## Cluster Progress
 
-- `creator-growth-systems`: 9 / 16 agents filled, 9 raw candidates
+- `creator-growth-systems`: 12 / 16 agents filled, 12 raw candidates
 - `gaming-npc-community`: 0 / 14 agents filled, 0 raw candidates
 - `agentic-builders`: 0 / 12 agents filled, 0 raw candidates
 - `startup-founder-systems`: 0 / 12 agents filled, 0 raw candidates

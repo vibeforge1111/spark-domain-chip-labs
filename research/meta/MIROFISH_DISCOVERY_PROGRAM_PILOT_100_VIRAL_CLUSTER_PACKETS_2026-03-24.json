@@ -806,7 +806,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Trend Riff Response Copilot",
+              "description": "Helps creators turn fast-moving internet trends into repeatable format responses by deciding when to jump, what angle to take, and how to package the riff for their audience.",
+              "specialization_surface": "converting emerging meme, format, and culture trends into creator-native response content before the attention window closes",
+              "mastery_surface": "learning which trend archetypes, timing windows, and creator-specific angles consistently generate participation, reach, and audience crossover",
+              "user_value_loop": "detect a rising trend, map it to a creator-specific riff angle, ship the response format, and refine the creator's trend-response playbook from outcome data",
+              "domain_tags": [
+                "creator-growth",
+                "trends",
+                "short-form",
+                "culture"
+              ],
+              "evidence_sources": [
+                "youtube-trending-now-june-2025",
+                "youtube-trends-report-20th-2025"
+              ],
+              "evidence_summary": "YouTube's 2025 trend reporting shows meme and format participation increasingly works through collaborative riffing rather than isolated publishing. The official trends report explicitly frames creators and viewers as co-creating culture, which makes trend-response packaging look like a repeated domain loop instead of a generic inspiration task.",
+              "adjacent_domains": [
+                "xcontent",
+                "hook-angle-test-copilot",
+                "creator-collab-pipeline-copilot"
+              ],
+              "duplicate_aliases": [
+                "Creator Trend Response Copilot",
+                "Riff Engine Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "A lot of breakout creator growth now comes from joining the right trend at the right moment with the right angle, and most creators still do that by instinct instead of with a repeatable operating system.",
+              "evidence_links": [
+                "https://blog.youtube/culture-and-trends/trending-now-june-2025/",
+                "https://blog.youtube/culture-and-trends/trends-report-20th/"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-011",
@@ -837,7 +872,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Virtual Creator Studio Copilot",
+              "description": "Runs the recurring scripting, persona, asset, and community loops needed to operate a virtual creator or avatar-led media brand consistently across videos, streams, and shorts.",
+              "specialization_surface": "operating virtual-creator publishing systems with stable character identity, content planning, and audience interaction loops",
+              "mastery_surface": "learning which persona rules, asset workflows, and interaction formats consistently maintain audience connection for avatar-led creator brands",
+              "user_value_loop": "plan the character beat, script and stage the content, update reusable assets, collect audience feedback, and refine the virtual creator playbook after each release cycle",
+              "domain_tags": [
+                "creator-growth",
+                "virtual-creators",
+                "avatar-media",
+                "character-systems"
+              ],
+              "evidence_sources": [
+                "youtube-virtual-creators-2025",
+                "made-on-youtube-2025"
+              ],
+              "evidence_summary": "YouTube's 2025 virtual-creator report presents avatar-led channels as a real and growing creator class rather than a novelty niche, and Made On YouTube continues to position new creation and business tools around evolving creator workflows. That makes virtual-creator operations a plausible domain chip with its own repeated system needs.",
+              "adjacent_domains": [
+                "ai-npc-dialog",
+                "xcontent",
+                "creator-collab-pipeline-copilot"
+              ],
+              "duplicate_aliases": [
+                "Avatar Creator Ops Copilot",
+                "VTuber Workflow Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "Virtual creators are now large enough that the operational problem is no longer just making an avatar; it is running a stable character-led media system that keeps publishing and connecting with fans.",
+              "evidence_links": [
+                "https://blog.youtube/culture-and-trends/youtube-culture-trends-report-virtual-creators/",
+                "https://blog.youtube/news-and-events/made-on-youtube-everything-you-need-to-know/"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-012",
@@ -868,7 +938,42 @@
               "Reject personas, generic features, and vague workflow ideas"
             ]
           },
-          "raw_candidates": []
+          "raw_candidates": [
+            {
+              "label": "Interactive Format Lab Copilot",
+              "description": "Designs recurring interactive video mechanics, viewer-choice prompts, and experiment loops so creators can systematically build more participatory content formats.",
+              "specialization_surface": "developing creator-native interactive video formats with game-like or viewer-participation mechanics",
+              "mastery_surface": "learning which interaction rules, branching prompts, and format structures consistently deepen participation and repeat viewing",
+              "user_value_loop": "prototype an interactive format, publish and track participation behavior, compare viewer response to alternative mechanics, and evolve the creator's interactive format library over time",
+              "domain_tags": [
+                "creator-growth",
+                "interactive-video",
+                "format-experiments",
+                "participation"
+              ],
+              "evidence_sources": [
+                "youtube-trending-now-june-2025",
+                "youtube-creator-collective-2025"
+              ],
+              "evidence_summary": "YouTube's June 2025 trends note highlights a new wave of interactive game-like videos where the viewer experience depends on input and navigation rather than passive watching, while Creator Collective programming reinforces experimentation and peer-driven format learning. That suggests interactive format development is becoming a repeated creator-growth surface.",
+              "adjacent_domains": [
+                "creator-collab-pipeline-copilot",
+                "fan-community-prompt-copilot",
+                "gaming-npc-community"
+              ],
+              "duplicate_aliases": [
+                "Interactive Creator Format Copilot",
+                "Video Interaction Lab Copilot"
+              ],
+              "confidence_read": "medium",
+              "promotion_status": "candidate",
+              "raw_observation": "As creators search for edges beyond simple posting frequency, interactive formats are becoming a real growth lever, but the experimentation loop is still messy and largely manual.",
+              "evidence_links": [
+                "https://blog.youtube/culture-and-trends/trending-now-june-2025/",
+                "https://blog.youtube/news-and-events/2025-youtube-creator-collective-events/"
+              ]
+            }
+          ]
         },
         {
           "agent_id": "agent-013",
