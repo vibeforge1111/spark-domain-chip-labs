@@ -589,6 +589,44 @@ def cmd_mirofish_run_diagnostic(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: mirofish-portfolio-run
+# ---------------------------------------------------------------------------
+
+def cmd_mirofish_portfolio_run(args: argparse.Namespace) -> None:
+    """Run the repo-local 515-domain MiroFish portfolio harness."""
+    from .mirofish.portfolio import run_full_portfolio_evaluation
+
+    result = run_full_portfolio_evaluation(
+        seed=args.seed,
+        max_rounds=args.rounds,
+        flagship_count_per_type=args.flagship_count_per_type,
+        ensemble_runs=args.ensemble_runs,
+        ensemble_count_per_type=args.ensemble_count_per_type,
+        convergence_threshold=args.convergence_threshold,
+        min_runs=args.min_runs,
+    )
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
+# Command: mirofish-portfolio-readout
+# ---------------------------------------------------------------------------
+
+def cmd_mirofish_portfolio_readout(args: argparse.Namespace) -> None:
+    """Build a ranked readout from a saved 515-domain MiroFish portfolio run."""
+    from .mirofish.portfolio import build_portfolio_readout
+
+    input_data = _load_input(args.input)
+    result = build_portfolio_readout(
+        input_data,
+        top_n=args.top_n,
+        enterprise_n=args.enterprise_n,
+        newly_discovered_n=args.newly_discovered_n,
+    )
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
 # Command: run-mcp-server
 # ---------------------------------------------------------------------------
 
@@ -818,6 +856,63 @@ def main() -> None:
         help="Optional comma-separated domain_ids to focus on. Defaults to review candidates or discovered domains.",
     )
     p_mirofish_diagnostic.set_defaults(func=cmd_mirofish_run_diagnostic)
+
+    # mirofish-portfolio-run
+    p_mirofish_portfolio_run = sub.add_parser(
+        "mirofish-portfolio-run",
+        help="Run the repo-local 515-domain MiroFish portfolio harness.",
+    )
+    p_mirofish_portfolio_run.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_portfolio_run.add_argument("--seed", type=int, default=42, help="Base seed for the run.")
+    p_mirofish_portfolio_run.add_argument("--rounds", type=int, default=20, help="Simulation rounds.")
+    p_mirofish_portfolio_run.add_argument(
+        "--flagship-count-per-type",
+        type=int,
+        default=50,
+        help="Personas per type for the flagship run.",
+    )
+    p_mirofish_portfolio_run.add_argument(
+        "--ensemble-runs",
+        type=int,
+        default=30,
+        help="Monte Carlo runs for the ensemble.",
+    )
+    p_mirofish_portfolio_run.add_argument(
+        "--ensemble-count-per-type",
+        type=int,
+        default=15,
+        help="Personas per type per ensemble run.",
+    )
+    p_mirofish_portfolio_run.add_argument(
+        "--convergence-threshold",
+        type=float,
+        default=0.005,
+        help="Early-stop threshold for ensemble mean stabilization.",
+    )
+    p_mirofish_portfolio_run.add_argument(
+        "--min-runs",
+        type=int,
+        default=15,
+        help="Minimum ensemble runs before convergence checks.",
+    )
+    p_mirofish_portfolio_run.set_defaults(func=cmd_mirofish_portfolio_run)
+
+    # mirofish-portfolio-readout
+    p_mirofish_portfolio_readout = sub.add_parser(
+        "mirofish-portfolio-readout",
+        help="Build a ranked readout from a saved 515-domain MiroFish portfolio run.",
+    )
+    p_mirofish_portfolio_readout.add_argument("--input", type=str, required=True, help="Input portfolio run path.")
+    p_mirofish_portfolio_readout.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_portfolio_readout.add_argument("--top-n", type=int, default=30, help="Number of overall domains to include.")
+    p_mirofish_portfolio_readout.add_argument("--enterprise-n", type=int, default=15, help="Number of enterprise domains to include.")
+    p_mirofish_portfolio_readout.add_argument(
+        "--newly-discovered-n",
+        type=int,
+        default=15,
+        help="Number of v4 / newly added domains to include.",
+    )
+    p_mirofish_portfolio_readout.set_defaults(func=cmd_mirofish_portfolio_readout)
 
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")
