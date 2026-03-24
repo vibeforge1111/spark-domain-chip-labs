@@ -49,6 +49,15 @@ def _stable_pair_bucket(pid: str, domain_id: str, buckets: int = 3) -> int:
     return int(digest[:8], 16) % buckets
 
 
+def _index_signals_by_domain(signals: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    """Build a domain-to-signals map once per round to avoid repeated scans."""
+    indexed: dict[str, list[dict[str, Any]]] = {}
+    for signal in signals:
+        for domain_id in signal.get("affects_domains", []):
+            indexed.setdefault(domain_id, []).append(signal)
+    return indexed
+
+
 def run_simulation(
     graph: DomainGraph,
     domain_ids: list[str] | None = None,
@@ -144,15 +153,19 @@ def run_simulation(
         for shock in shock_list:
             if shock.get("inject_at_round", 0) == round_num:
                 active_signals.append(shock)
+        signals_by_domain = _index_signals_by_domain(active_signals)
 
         # Phase 1: Signal propagation -- each persona receives domain awareness
         # Attention budget: personas compute awareness for all domains but only
         # deeply evaluate their top-N (sorted by signal strength). This models
         # finite attention -- you can't seriously adopt 32 things at once.
         attention_budget = min(10, max(4, len(domains) // 3))
+        effective_awareness_cache: dict[str, dict[str, float]] = {}
 
         for persona in personas:
             update_persona_activity(persona, round_num)
+            pid = persona["persona_id"]
+            effective_awareness_cache[pid] = {}
 
             # Compute raw awareness for every domain, boosted by macro context
             domain_awareness: list[tuple[str, float]] = []
@@ -160,7 +173,9 @@ def run_simulation(
                 awareness = _effective_awareness(
                     persona, domain_id, active_signals, round_num,
                     active_macro=active_macro, domain_tags=domain_tags,
+                    signals_by_domain=signals_by_domain,
                 )
+                effective_awareness_cache[pid][domain_id] = awareness
                 current_stage = persona["adoption_state"].get(domain_id, "unaware")
                 if current_stage in ("interested", "evaluating"):
                     node = graph.nodes.get(domain_id, {})
@@ -181,7 +196,6 @@ def run_simulation(
             domain_awareness.sort(key=lambda x: x[1], reverse=True)
 
             evaluated = 0
-            pid = persona["persona_id"]
             for domain_id, awareness in domain_awareness:
                 in_budget = domain_id in active_domains or evaluated < attention_budget
                 prev_stage = persona["adoption_state"].get(domain_id, "unaware")
@@ -238,6 +252,7 @@ def run_simulation(
                 awareness = _fit_adjusted_awareness(
                     persona, domain_id, active_signals, round_num,
                     active_macro=active_macro, domain_tags=domain_tags,
+                    cached_awareness=effective_awareness_cache[pid].get(domain_id),
                 )
                 last_adv_round = last_advance[pid].get(domain_id, 0)
                 rounds_since = round_num - last_adv_round
@@ -256,6 +271,7 @@ def run_simulation(
                 awareness = _fit_adjusted_awareness(
                     persona, domain_id, active_signals, round_num,
                     active_macro=active_macro, domain_tags=domain_tags,
+                    cached_awareness=effective_awareness_cache[pid].get(domain_id),
                 )
                 rounds_in = time_in_stage[pid].get(domain_id, 0)
                 # Use domain retention_score from graph properties (default 0.5)
@@ -402,6 +418,7 @@ def _compute_awareness(
     domain_id: str,
     signals: list[dict[str, Any]],
     current_round: int,
+    signals_by_domain: dict[str, list[dict[str, Any]]] | None = None,
 ) -> float:
     """Compute awareness score for a persona-domain pair from active signals.
 
@@ -412,9 +429,14 @@ def _compute_awareness(
     """
     miss_probability = 1.0  # probability of NOT being reached by any signal
 
-    for signal in signals:
-        if domain_id not in signal.get("affects_domains", []):
-            continue
+    domain_signals = (signals_by_domain or {}).get(domain_id)
+    if domain_signals is None:
+        domain_signals = [
+            signal for signal in signals
+            if domain_id in signal.get("affects_domains", [])
+        ]
+
+    for signal in domain_signals:
 
         elapsed = current_round - signal.get("inject_at_round", 0)
         decayed = decay_signal(signal, max(0, elapsed))
@@ -458,9 +480,12 @@ def _effective_awareness(
     current_round: int,
     active_macro: MacroContext | None = None,
     domain_tags: dict[str, list[str]] | None = None,
+    signals_by_domain: dict[str, list[dict[str, Any]]] | None = None,
 ) -> float:
     """Compute macro-adjusted awareness used for discovery and evaluation."""
-    awareness = _compute_awareness(persona, domain_id, signals, current_round)
+    awareness = _compute_awareness(
+        persona, domain_id, signals, current_round, signals_by_domain=signals_by_domain,
+    )
     d_tags = (domain_tags or {}).get(domain_id, [])
     macro_mod = compute_macro_modifier(active_macro or MacroContext(), d_tags)
     return round(min(1.0, max(0.0, awareness + macro_mod)), 4)
@@ -473,12 +498,15 @@ def _fit_adjusted_awareness(
     current_round: int,
     active_macro: MacroContext | None = None,
     domain_tags: dict[str, list[str]] | None = None,
+    cached_awareness: float | None = None,
 ) -> float:
     """Keep retention-side checks in the same fit-aware signal family as adoption."""
-    awareness = _effective_awareness(
-        persona, domain_id, signals, current_round,
-        active_macro=active_macro, domain_tags=domain_tags,
-    )
+    awareness = cached_awareness
+    if awareness is None:
+        awareness = _effective_awareness(
+            persona, domain_id, signals, current_round,
+            active_macro=active_macro, domain_tags=domain_tags,
+        )
     d_tags = (domain_tags or {}).get(domain_id, [])
     fit = persona_domain_fit(persona, domain_id, d_tags)
     return round(min(1.0, awareness * fit), 4)

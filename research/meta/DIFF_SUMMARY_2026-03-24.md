@@ -173,3 +173,12 @@ MiroFish validation determinism fix:
 - confirm that same-spec same-seed enterprise replays match across fresh Python processes
 - show that questionnaire remains the strongest enterprise ensemble candidate
 - show that renewal stays narrowly above the benchmark median while RFP stays narrowly below it
+
+## Batch 20
+
+MiroFish portfolio runtime fix:
+
+- add adjacency indexing for graph edge lookup used during persona expertise assignment
+- index signals by domain once per round during simulation
+- cache effective awareness within a round so churn and retention reuse the same awareness family
+- confirm the tiny full-universe portfolio harness now completes in interactive time

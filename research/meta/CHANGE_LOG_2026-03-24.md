@@ -821,3 +821,41 @@ The planned stable enterprise validation replay was not actually stable. The coo
 - This is a replay-integrity fix, not another enterprise uplift.
 - The main outcome is that the next full portfolio rerun can now be trusted.
 - The correct next step is the repo-local `515`-domain rerun, not another methodology mutation.
+
+## Tranche: MiroFish Portfolio Runtime Fix
+
+### Files Changed
+
+- `src/chip_labs/mirofish/graph.py`
+- `src/chip_labs/mirofish/simulation.py`
+- `research/meta/MIROFISH_PORTFOLIO_RUNTIME_FIX_NOTE_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_runtime_fix.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The repo-local 515-domain wrapper was functionally correct but too slow to complete interactively. Profiling showed structural waste in graph edge lookup during persona expertise assignment and in repeated awareness recomputation during simulation rounds.
+
+### What Changed
+
+- Added adjacency indexing inside `DomainGraph` so `get_edges_for()` no longer scans the full edge list every call
+- Indexed signals by domain once per round inside the simulation
+- Added a round-local awareness cache so churn and retention checks reuse already-computed awareness
+- Profiled the tiny full-universe harness before and after the fixes
+- Saved a runtime note concluding that:
+  - persona edge scanning was one major hotspot
+  - repeated awareness-family recomputation was the other major hotspot
+  - the tiny full-universe harness now finishes in interactive time
+
+### Verification
+
+- Run `$env:PYTHONPATH='src'; python -m pytest tests/test_trend_prediction.py tests/test_mirofish_portfolio.py -q`
+- Run `$env:PYTHONPATH='src'; python -c "from chip_labs.mirofish.portfolio import run_full_portfolio_evaluation; import time; t=time.time(); run_full_portfolio_evaluation(max_rounds=2, flagship_count_per_type=1, ensemble_runs=1, ensemble_count_per_type=1, min_runs=1, bootstrap_resamples=5); print(round(time.time()-t,2))"`
+- Use `py-spy dump -p <tiny-run-pid>` during the timing harness to confirm the hotspot moved away from full graph scans
+
+### Notes
+
+- This tranche changes execution cost, not domain methodology.
+- The next step is still the full-universe rerun and readout.
+- The interactive harness should now be able to finish with materially less wasted CPU.

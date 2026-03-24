@@ -1,0 +1,52 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_portfolio_runtime_fix",
+  "created_at": "2026-03-24",
+  "scope": "Reduce structural runtime cost in the repo-local 515-domain portfolio harness so a full-universe interactive rerun can complete in-session",
+  "decision_context": {
+    "prior_state": "The repo-local portfolio wrapper was correct but too slow to finish interactively, even after lowering persona counts and bootstrap resamples.",
+    "decision": "Fix the two measured structural hotspots: repeated full-edge scans during persona expertise assignment and repeated full-signal awareness recomputation during simulation rounds.",
+    "why_now": "Without runtime fixes, the trusted 515-domain rerun could not complete today and the wrapper would remain operationally unusable for interactive research loops."
+  },
+  "files_expected": [
+    {
+      "path": "src/chip_labs/mirofish/graph.py",
+      "purpose": "Adds node-level edge indexing so graph edge lookup is no longer a repeated full-list scan."
+    },
+    {
+      "path": "src/chip_labs/mirofish/simulation.py",
+      "purpose": "Adds signal indexing and round-local awareness caching so simulation avoids repeated signal scans and duplicated awareness recomputation."
+    },
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_RUNTIME_FIX_NOTE_2026-03-24.md",
+      "purpose": "Summarizes the sampled hotspots, the fixes, and the measured small-harness improvement."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_runtime_fix.json",
+      "purpose": "Captures the request, profiling evidence, and verification plan for the runtime-fix tranche."
+    }
+  ],
+  "planned_steps": [
+    "Profile a tiny full-universe portfolio run to identify structural hotspots",
+    "Replace graph edge full-scans with adjacency lookup",
+    "Index signals by domain once per round and cache effective awareness within a round",
+    "Rerun the tiny full-universe benchmark to confirm the runtime shape improves",
+    "Commit the execution-surface fix before relaunching the 515-domain readout run"
+  ],
+  "verification": {
+    "commands": [
+      "$env:PYTHONPATH='src'; python -m pytest tests/test_trend_prediction.py tests/test_mirofish_portfolio.py -q",
+      "$env:PYTHONPATH='src'; python -c \"from chip_labs.mirofish.portfolio import run_full_portfolio_evaluation; import time; t=time.time(); run_full_portfolio_evaluation(max_rounds=2, flagship_count_per_type=1, ensemble_runs=1, ensemble_count_per_type=1, min_runs=1, bootstrap_resamples=5); print(round(time.time()-t,2))\"",
+      "py-spy dump -p <tiny-run-pid>"
+    ],
+    "expected_checks": [
+      "The tiny full-universe portfolio run finishes in interactive time instead of effectively stalling",
+      "The sampled hotspot moves away from persona edge scans and repeated awareness recomputation",
+      "Trend and portfolio regression tests still pass"
+    ]
+  },
+  "guardrails": [
+    "Do not change domain ranking logic or adoption semantics in this tranche",
+    "Do not alter the 515-domain universe itself",
+    "Keep the changes as execution-surface optimizations rather than methodology mutations"
+  ]
+}

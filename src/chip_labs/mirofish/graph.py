@@ -28,6 +28,7 @@ class DomainGraph:
     def __init__(self) -> None:
         self.nodes: dict[str, dict[str, Any]] = {}
         self.edges: list[dict[str, Any]] = []
+        self._edges_by_node: dict[str, list[dict[str, Any]]] = {}
         self.tracked_variables: dict[str, float] = {}
 
     def add_node(self, node_id: str, entity_type: str,
@@ -43,12 +44,15 @@ class DomainGraph:
     def add_edge(self, source: str, target: str,
                  relationship: str, weight: float = 1.0) -> None:
         """Add a directed edge between two nodes."""
-        self.edges.append({
+        edge = {
             "source": source,
             "target": target,
             "relationship": relationship,
             "weight": weight,
-        })
+        }
+        self.edges.append(edge)
+        self._edges_by_node.setdefault(source, []).append(edge)
+        self._edges_by_node.setdefault(target, []).append(edge)
 
     def get_neighbors(self, node_id: str) -> list[dict[str, Any]]:
         """Get all nodes connected to a given node."""
@@ -62,8 +66,7 @@ class DomainGraph:
 
     def get_edges_for(self, node_id: str) -> list[dict[str, Any]]:
         """Get all edges involving a node."""
-        return [e for e in self.edges
-                if e["source"] == node_id or e["target"] == node_id]
+        return list(self._edges_by_node.get(node_id, []))
 
     def track_variable(self, name: str, value: float) -> None:
         """Track a simulation variable on the graph."""
