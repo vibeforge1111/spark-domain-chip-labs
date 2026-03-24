@@ -218,3 +218,11 @@ MiroFish portfolio operator handoff:
 - preserve the current overall, enterprise, and `v4` priority slices in one concise artifact
 - update the March 24 day summary to reflect the completed 515-domain rerun and stop condition
 - update the March 25 focus doc so it starts from the actual handoff instead of the already-finished methodology plan
+
+## Batch 25
+
+MiroFish portfolio rerun decision:
+
+- state explicitly that another deeper full-universe rerun should not be launched from the current March 24 state
+- define the minimum harness, runtime-budget, and success-criterion contract required to reopen that path
+- keep the medium checkpoint as canonical until a future rerun clearly beats it on usefulness

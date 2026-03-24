@@ -974,3 +974,37 @@ The repo had a validated medium full-universe checkpoint and a committed stop co
 
 - This tranche does not change MiroFish logic.
 - The main purpose is to make the current trusted handoff obvious from the repo docs.
+
+## Tranche: MiroFish Portfolio Rerun Decision
+
+### Files Changed
+
+- `research/meta/MIROFISH_PORTFOLIO_RERUN_DECISION_2026-03-24.md`
+- `research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_rerun_decision.json`
+- `research/meta/CHANGE_LOG_2026-03-24.md`
+- `research/meta/DIFF_SUMMARY_2026-03-24.md`
+
+### Why
+
+The repo already had a medium checkpoint, a stop-condition note, and an operator handoff, but it still did not contain one explicit artifact saying whether another deeper rerun should happen now.
+
+### What Changed
+
+- Added a rerun-decision note stating that another deeper full-universe rerun should be deferred from the current March 24 state
+- Defined the minimum reopen contract:
+  - declared harness
+  - declared runtime budget
+  - declared success criterion
+  - explicit rejection rule if the new run does not beat the medium checkpoint
+- Kept dashboard and export work downstream of that decision
+
+### Verification
+
+- Manual consistency review against:
+  - `research/meta/MIROFISH_PORTFOLIO_MEDIUM_CHECKPOINT_NOTE_2026-03-24.md`
+  - `research/meta/MIROFISH_PORTFOLIO_STOP_CONDITION_NOTE_2026-03-24.md`
+  - `research/meta/MIROFISH_PORTFOLIO_OPERATOR_HANDOFF_2026-03-24.md`
+
+### Notes
+
+- This tranche is decision logging, not another runtime or methodology mutation.

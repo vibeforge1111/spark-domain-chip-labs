@@ -1,0 +1,50 @@
+{
+  "request_id": "REQUEST_PACKET_2026-03-24_mirofish_portfolio_rerun_decision",
+  "created_at": "2026-03-24",
+  "scope": "Make the deeper-rerun decision explicit after the medium checkpoint and stop condition",
+  "decision_context": {
+    "prior_state": "The repo had a canonical medium checkpoint, a committed stop-condition note, and an operator handoff, but the actual rerun decision was still distributed across notes and terminal history.",
+    "decision": "Defer any deeper full-universe rerun until it has a declared harness, runtime budget, and success criterion.",
+    "why_now": "Without an explicit rerun decision note, the next operator could still treat another blind rerun as the default next step."
+  },
+  "files_expected": [
+    {
+      "path": "research/meta/MIROFISH_PORTFOLIO_RERUN_DECISION_2026-03-24.md",
+      "purpose": "States the current decision to defer another deeper rerun and defines the contract for reopening that path."
+    },
+    {
+      "path": "research/meta/REQUEST_PACKET_2026-03-24_mirofish_portfolio_rerun_decision.json",
+      "purpose": "Captures why the rerun decision needed to become a first-class artifact."
+    },
+    {
+      "path": "research/meta/CHANGE_LOG_2026-03-24.md",
+      "purpose": "Appends the rerun-decision tranche to the transparent change log."
+    },
+    {
+      "path": "research/meta/DIFF_SUMMARY_2026-03-24.md",
+      "purpose": "Adds the rerun-decision tranche to the day-level diff summary."
+    }
+  ],
+  "planned_steps": [
+    "State whether another deeper rerun should happen from the current March 24 state",
+    "Record the reasoning from the medium checkpoint and failed runtime experiment",
+    "Define the minimum contract required before reopening the deeper-rerun path"
+  ],
+  "verification": {
+    "commands": [
+      "Manual consistency review against research/meta/MIROFISH_PORTFOLIO_MEDIUM_CHECKPOINT_NOTE_2026-03-24.md",
+      "Manual consistency review against research/meta/MIROFISH_PORTFOLIO_STOP_CONDITION_NOTE_2026-03-24.md",
+      "Manual consistency review against research/meta/MIROFISH_PORTFOLIO_OPERATOR_HANDOFF_2026-03-24.md"
+    ],
+    "expected_checks": [
+      "The note explicitly says whether another rerun should happen now",
+      "The note defines concrete reopen criteria rather than only expressing caution",
+      "The dashboard rule remains downstream of the rerun decision"
+    ]
+  },
+  "guardrails": [
+    "Do not imply that the medium checkpoint is a final trusted portfolio verdict",
+    "Do not reopen speculative runtime work without a profiler-backed hypothesis",
+    "Keep the rerun decision grounded in the actual March 24 artifact set"
+  ]
+}
