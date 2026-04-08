@@ -1,0 +1,32 @@
+{
+  "request_id": "spark_swarm_integration_handoff_2026_04_09",
+  "created_at": "2026-04-09",
+  "repo": "spark-domain-chip-labs",
+  "task_type": "documentation_handoff",
+  "goal": "Record what worked in the Spark Swarm integration pass and provide a concrete continuation plan for the next workday.",
+  "scope": [
+    "docs/TODAY_SUMMARY_2026-04-09.md",
+    "docs/TOMORROW_FOCUS_2026-04-10.md",
+    "docs/SPARK_SWARM_INTEGRATION_HANDOFF_2026-04-09.md",
+    "research/meta/CHANGE_LOG_2026-04-09_spark_swarm_integration_handoff.md"
+  ],
+  "systems_covered": [
+    "spark-researcher",
+    "spark-swarm",
+    "startup-bench",
+    "domain-chip-startup-yc",
+    "domain-chip-trading-crypto",
+    "domain-chip-xcontent"
+  ],
+  "constraints": [
+    "Document only work actually completed or directly verified.",
+    "Keep the emphasis on what should happen next rather than on broad retrospective prose.",
+    "Preserve exact repo paths, localhost endpoints, and commands where helpful."
+  ],
+  "expected_outputs": [
+    "dated today summary",
+    "dated tomorrow focus",
+    "operator handoff document",
+    "transparent change log"
+  ]
+}
