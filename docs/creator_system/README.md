@@ -57,3 +57,23 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 - `spark-intelligence-builder/docs/SWARM_AGENT_OPERABILITY_CONTRACT_V1.md`
 - `spark-telegram-bot/README.md`
 - `spawner-ui/docs/SPARK_MISSION_CONTROL_TRACE.md`
+
+## First Runnable Commands
+
+The first executable slice lives in this repo as a conservative smoke gate:
+
+```bash
+python -m chip_labs.cli creator-run-init \
+  --output-dir runs/startup-yc-creator-run \
+  --domain "Startup YC" \
+  --goal "Create a benchmarked Startup YC specialization path"
+
+python -m chip_labs.cli creator-run-smoke runs/startup-yc-creator-run
+```
+
+The smoke verdict is intentionally narrow:
+
+- `blocked`: required schema or foundation fields are invalid.
+- `prototype`: intent and adapters exist, but core chip/path/benchmark/autoloop artifacts are missing.
+- `ready_for_baseline`: core artifacts exist and the next step is benchmark execution.
+- `ready_for_swarm_packet`: reports and Swarm packet artifacts exist; review provenance, traps, privacy, and rollback before network publication.

@@ -1051,6 +1051,33 @@ def cmd_run_mcp_server(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Commands: creator-run-init / creator-run-smoke
+# ---------------------------------------------------------------------------
+
+def cmd_creator_run_init(args: argparse.Namespace) -> None:
+    """Initialize an adaptive creator-run workspace from templates."""
+    from .creator_run import init_creator_run
+
+    result = init_creator_run(
+        args.output_dir,
+        domain=args.domain,
+        goal=args.goal,
+        requested_by=args.requested_by,
+        source_channel=args.source_channel,
+        force=args.force,
+    )
+    _write_output(args.output, result)
+
+
+def cmd_creator_run_smoke(args: argparse.Namespace) -> None:
+    """Smoke-check an adaptive creator-run workspace."""
+    from .creator_run import validate_creator_run
+
+    result = validate_creator_run(args.run_dir).to_dict()
+    _write_output(args.output, result)
+
+
+# ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
 
@@ -1700,6 +1727,35 @@ def main() -> None:
     # run-mcp-server
     p_mcp = sub.add_parser("run-mcp-server", help="Start MCP server for chip intelligence.")
     p_mcp.set_defaults(func=cmd_run_mcp_server)
+
+    # creator-run-init
+    p_creator_init = sub.add_parser(
+        "creator-run-init",
+        help="Initialize an adaptive creator-run workspace from templates.",
+    )
+    p_creator_init.add_argument("--output-dir", type=str, required=True, help="Directory to create.")
+    p_creator_init.add_argument("--domain", type=str, required=True, help="Domain or tool specialization name.")
+    p_creator_init.add_argument("--goal", type=str, required=True, help="Plain-language creator-run goal.")
+    p_creator_init.add_argument("--requested-by", type=str, default="", help="Requester or operator label.")
+    p_creator_init.add_argument(
+        "--source-channel",
+        type=str,
+        default="local",
+        choices=["telegram", "builder", "spawner", "local", "swarm"],
+        help="Where the request originated.",
+    )
+    p_creator_init.add_argument("--force", action="store_true", help="Allow writing into a non-empty directory.")
+    p_creator_init.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_creator_init.set_defaults(func=cmd_creator_run_init)
+
+    # creator-run-smoke
+    p_creator_smoke = sub.add_parser(
+        "creator-run-smoke",
+        help="Validate an adaptive creator-run workspace and emit a readiness verdict.",
+    )
+    p_creator_smoke.add_argument("run_dir", type=str, help="Creator-run directory.")
+    p_creator_smoke.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_creator_smoke.set_defaults(func=cmd_creator_run_smoke)
 
     args = parser.parse_args()
     args.func(args)
