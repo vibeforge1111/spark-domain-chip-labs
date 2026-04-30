@@ -1,0 +1,19 @@
+{
+  "schema_version": "adaptive_creator_loop.autoloop_policy.v1",
+  "source_repo": "specialization-path-startup-yc",
+  "runner": "scripts/run_autoloop.py",
+  "default_rounds": 10,
+  "mutation_surface": [
+    "candidate Startup YC packets",
+    "absorption bundle wording",
+    "focused weak-case mechanisms"
+  ],
+  "frozen_surfaces": [
+    "benchmark_weights",
+    "success_metrics",
+    "trap_case_expected_outcomes"
+  ],
+  "keep_rule": "Keep benchmark-backed improvements with doctrine lineage and no trap regression.",
+  "reject_rule": "Reject no-gain, score-cosmetic, metric-mutating, or trap-regressing candidates."
+}
+

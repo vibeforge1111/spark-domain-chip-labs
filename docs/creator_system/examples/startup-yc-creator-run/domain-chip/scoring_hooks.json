@@ -1,0 +1,17 @@
+{
+  "schema_version": "adaptive_creator_loop.scoring_hooks.v1",
+  "source_repo": "domain-chip-startup-yc",
+  "hooks": [
+    "src/domain_chip_startup_yc/benchmark.py",
+    "src/domain_chip_startup_yc/doctrine_engine.py"
+  ],
+  "dimensions": [
+    "doctrine_alignment",
+    "scenario_score",
+    "risk_management",
+    "revenue_quality",
+    "trap_resistance"
+  ],
+  "notes": "The creator-run smoke gate checks presence only; the next validator should inspect these hook paths and report schemas."
+}
+

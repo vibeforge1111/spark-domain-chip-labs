@@ -1,0 +1,75 @@
+{
+  "schema_version": "adaptive_creator_loop.creator_intent.v1",
+  "run_id": "creator-run-2026-05-01-startup-yc",
+  "created_at": "2026-05-01",
+  "requested_by": "codex",
+  "source_channel": "local",
+  "domain": {
+    "name": "Startup YC",
+    "short_slug": "startup-yc",
+    "why_this_domain_matters": "Startup operators and builder agents need doctrine-grounded judgment that resists fake PMF, vanity metrics, premature hiring, and fundraising-as-validation traps.",
+    "target_operator": "Founder, startup operator, or Spark agent helping a founder make operating decisions.",
+    "target_agent": "Spark agent entering the Startup YC specialization path."
+  },
+  "goal": {
+    "plain_language_goal": "Prove the adaptive creator loop against the existing Startup YC specialization path, domain chip, benchmark, autoloop, and absorption reports.",
+    "capability_to_improve": "Fresh-agent startup operating judgment using YC doctrine, benchmark cases, weak-case diagnosis, and validated absorption packets.",
+    "expected_user_value": "A repeatable example that shows how a specialization path can move from creator docs to measurable benchmark and absorption evidence.",
+    "non_goals": [
+      "Claim full startup mastery from one benchmark family.",
+      "Mutate Startup YC benchmark weights inside the same capability-improvement loop.",
+      "Publish private workspace material to Spark Swarm without review."
+    ]
+  },
+  "constraints": {
+    "privacy_boundary": "workspace_only",
+    "network_publication_allowed": false,
+    "auth_or_secret_requirements": [],
+    "forbidden_mutations": [
+      "benchmark_weights_without_benchmark_governance",
+      "success_metric_redefinition_inside_capability_loop"
+    ],
+    "human_review_required": true
+  },
+  "success_criteria": {
+    "minimum_evidence_tier": "candidate_review",
+    "benchmark_target": "Full 20-case fresh-agent absorption proof has positive validated-pack mean delta and no hidden trap regression.",
+    "absorption_target": "Validated pack improves fresh-agent behavior on Startup YC held-out cases.",
+    "trap_regression_policy": "no_new_trap_regressions",
+    "stop_ship_conditions": [
+      "Any trap case regression hidden by aggregate score.",
+      "Benchmark weights or expected outcomes mutate during capability loop.",
+      "Swarm packet lacks provenance, rollback, or evidence tier support."
+    ]
+  },
+  "known_inputs": {
+    "source_repos": [
+      "domain-chip-startup-yc",
+      "specialization-path-startup-yc",
+      "startup-bench",
+      "spark-swarm"
+    ],
+    "docs_to_load": [
+      "specialization-path-startup-yc/docs/SPARK_CREATOR_SYSTEM_STRATEGY.md",
+      "spark-swarm/docs/SPARK_SWARM_STARTUP_YC_ABSORPTION_BENCHMARK_STANDARD.md",
+      "spark-domain-chip-labs/docs/creator_system/ADAPTIVE_CREATOR_LOOP_STANDARD.md"
+    ],
+    "existing_benchmarks": [
+      "specialization-path-startup-yc/benchmarks/startup-yc.tool_calls.json",
+      "specialization-path-startup-yc/data/absorption/startup_yc_absorption_v1.json"
+    ],
+    "existing_simulators_or_arenas": [
+      "startup-bench",
+      "Founder Arena",
+      "agentic startup simulator"
+    ],
+    "existing_domain_chips": [
+      "domain-chip-startup-yc/spark-chip.json"
+    ]
+  },
+  "open_questions": [
+    "Which simulator or arena transfer test should become the next promotion gate after fresh-agent absorption?",
+    "Which Startup YC weak cases should become permanent trap or adversarial cases?"
+  ]
+}
+

@@ -1,0 +1,10 @@
+{
+  "schema_version": "adaptive_creator_loop.report.baseline.v1",
+  "source_report": "specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json",
+  "mode": "no_pack",
+  "mean_score": 0.6803,
+  "pass_rate": 0.95,
+  "case_count": 20,
+  "notes": "Baseline is the no-pack fresh-agent mode from the full 20-case proof report."
+}
+

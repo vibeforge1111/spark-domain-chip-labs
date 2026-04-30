@@ -1,0 +1,60 @@
+{
+  "schema_version": "adaptive_creator_loop.swarm_contribution_packet.v1",
+  "packet_id": "swarm-packet-2026-05-01-startup-yc",
+  "creator_run_id": "creator-run-2026-05-01-startup-yc",
+  "source": {
+    "repo": "specialization-path-startup-yc",
+    "branch": "master",
+    "commit": "26f90b3",
+    "artifact_paths": [
+      "reports/absorption-proof-2026-04-30/proof_report.json",
+      "reports/absorption-proof-2026-04-30/proof_report.md",
+      "reports/absorption-proof-2026-04-30/weak_case_diagnosis.md"
+    ]
+  },
+  "contribution": {
+    "type": "mastery",
+    "title": "Startup YC candidate-review absorption packet",
+    "summary": "Fresh-agent validated-pack mode improved the 20-case Startup YC absorption suite by +0.0200 mean score while preserving scored trap coverage.",
+    "domain": "Startup YC",
+    "intended_consumers": [
+      "Spark agents entering the Startup YC specialization path",
+      "Builder agents creating new specialization paths",
+      "Autoloop agents evaluating mastery packet promotion"
+    ]
+  },
+  "evidence": {
+    "tier": "candidate_review",
+    "baseline_score": 0.6803,
+    "candidate_score": 0.7003,
+    "mean_delta": 0.02,
+    "trap_regressions": 0,
+    "fresh_agent_absorption_delta": 0.02,
+    "simulator_or_arena_result": null,
+    "report_paths": [
+      "reports/baseline.json",
+      "reports/candidate.json",
+      "reports/absorption_summary.json"
+    ]
+  },
+  "governance": {
+    "review_state": "workspace_fixture",
+    "reviewers": [
+      "codex"
+    ],
+    "rollback_or_deprecation_rule": "Deprecate if a full-suite repeat loses positive validated-pack mean delta or introduces trap regression.",
+    "privacy_boundary": "workspace_only",
+    "network_publication_allowed": false
+  },
+  "anti_drift": {
+    "lineage_summary": "Startup YC weak cases were diagnosed and focused patches were repeated before this fixture was created.",
+    "ghost_improvement_check": "The source report compares no-pack, pack, and validated-pack fresh-agent modes with numeric deltas rather than only style changes.",
+    "complexity_delta": "Fixture adds no runtime complexity; it packages existing evidence into the adaptive creator-run artifact contract.",
+    "known_limits": [
+      "Simulator or arena transfer remains the next broader mastery gate.",
+      "The fixture does not itself rerun Startup Bench.",
+      "The current smoke CLI checks presence before evidence semantics."
+    ]
+  }
+}
+

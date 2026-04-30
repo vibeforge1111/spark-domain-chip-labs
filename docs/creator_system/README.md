@@ -17,6 +17,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [BENCHMARK_AND_AUTOLOOP_PROTOCOL.md](BENCHMARK_AND_AUTOLOOP_PROTOCOL.md) | Benchmark types, scoring reliability rules, and autoloop promotion gates. |
 | [TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md](TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md) | How Telegram, Spark Intelligence Builder, Spawner UI, Canvas, Kanban, and Spark Swarm should work together. |
 | [templates/creator-run/](templates/creator-run/) | Fill-in templates for intent packets, adapter maps, creator run reports, Swarm packets, and standard-change proposals. |
+| [examples/startup-yc-creator-run/](examples/startup-yc-creator-run/) | Real Startup YC fixture that maps the existing domain chip, specialization path, benchmark, autoloop, absorption reports, and Swarm packet into the creator-run contract. |
 
 ## Current Architecture Decision
 
@@ -69,6 +70,12 @@ python -m chip_labs.cli creator-run-init \
   --goal "Create a benchmarked Startup YC specialization path"
 
 python -m chip_labs.cli creator-run-smoke runs/startup-yc-creator-run
+```
+
+The Startup YC reference fixture should already pass:
+
+```bash
+python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run
 ```
 
 The smoke verdict is intentionally narrow:

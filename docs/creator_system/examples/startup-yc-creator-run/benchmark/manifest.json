@@ -1,0 +1,18 @@
+{
+  "schema_version": "adaptive_creator_loop.benchmark_manifest.v1",
+  "benchmark_name": "Startup YC absorption v1",
+  "benchmark_family": "retrieval/memory + fixed-case rubric + adversarial/trap",
+  "source_repo": "specialization-path-startup-yc",
+  "case_manifest": "data/absorption/startup_yc_absorption_v1.json",
+  "tool_call_benchmark": "benchmarks/startup-yc.tool_calls.json",
+  "startup_bench_root": "startup-bench",
+  "case_count": 20,
+  "bands": [
+    "basic",
+    "intermediate",
+    "advanced",
+    "trap"
+  ],
+  "promotion_rule": "Validated-pack mean score must improve without hiding trap-case regression."
+}
+

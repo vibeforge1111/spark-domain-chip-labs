@@ -1,0 +1,14 @@
+{
+  "schema_version": "adaptive_creator_loop.specialization_path_manifest.v1",
+  "path_name": "Startup YC",
+  "source_repo": "specialization-path-startup-yc",
+  "source_files": [
+    "src/specialization_path_startup_yc/doctrine.py",
+    "src/specialization_path_startup_yc/absorption.py",
+    "src/specialization_path_startup_yc/absorption_runner.py",
+    "scripts/run_autoloop.py",
+    "scripts/run_absorption_proof_recheck.py"
+  ],
+  "role": "Composes Startup YC doctrine, benchmark cases, autoloop policy, and fresh-agent absorption validation."
+}
+

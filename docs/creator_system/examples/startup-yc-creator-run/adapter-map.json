@@ -1,0 +1,124 @@
+{
+  "schema_version": "adaptive_creator_loop.adapter_map.v1",
+  "run_id": "creator-run-2026-05-01-startup-yc",
+  "domain_adapter": {
+    "domain_name": "Startup YC",
+    "target_user_or_agent": "Spark agent advising or operating on early-stage startup decisions.",
+    "capabilities": [
+      "Diagnose demand quality and false-positive PMF.",
+      "Choose narrow wedges and concrete design-partner moves.",
+      "Separate fundraising optics from company health.",
+      "Apply default-alive/default-dead reasoning.",
+      "Avoid premature hiring and premature scaling."
+    ],
+    "doctrine_or_operating_principles": [
+      "Make something people want.",
+      "Retention beats acquisition.",
+      "Fundraising is not validation.",
+      "Do things that do not scale.",
+      "Do not hire before product-market fit.",
+      "Default alive beats default dead."
+    ],
+    "known_failure_modes": [
+      "Optimizing benchmark-score language instead of startup judgment.",
+      "Treating distribution volume as demand proof.",
+      "Recommending more discovery when the next move should be an operational follow-through.",
+      "Mistaking fundraising momentum for customer pull."
+    ],
+    "unsafe_or_out_of_scope_claims": [
+      "Guaranteed startup success.",
+      "Investment advice.",
+      "Replacing founder judgment without live customer evidence."
+    ],
+    "baseline_examples": [
+      "specialization-path-startup-yc/data/absorption/startup_yc_absorption_v1.json"
+    ]
+  },
+  "benchmark_adapter": {
+    "benchmark_family": "retrieval/memory + fixed-case rubric + adversarial/trap",
+    "case_manifest": "specialization-path-startup-yc/data/absorption/startup_yc_absorption_v1.json",
+    "scoring_dimensions": [
+      "doctrine alignment",
+      "operational specificity",
+      "risk management",
+      "revenue quality",
+      "trap resistance",
+      "fresh-agent absorption delta"
+    ],
+    "baseline_command_or_protocol": "python scripts/run_absorption_proof_recheck.py --suite data/absorption/startup_yc_absorption_v1.json",
+    "candidate_command_or_protocol": "Compare no-pack, pack, and validated-pack fresh-agent submissions across the full 20-case suite.",
+    "trap_cases": "Five trap-band cases inside startup_yc_absorption_v1.json.",
+    "calibration_notes": "Startup YC is a reference path. Full 20-case proof showed +0.0200 mean validated-pack delta with no hidden trap regression; focused repeats are useful but not standalone mastery claims.",
+    "minimum_evidence_tier": "candidate_review"
+  },
+  "tool_adapter": {
+    "allowed_tools": [
+      "local Python benchmark scripts",
+      "local repo reads",
+      "Spark Swarm packet packaging",
+      "GitHub PR path for network contribution"
+    ],
+    "protected_tools": [
+      "live network publication",
+      "benchmark weight mutation",
+      "secret or token handling"
+    ],
+    "auth_boundary": "No access tokens are required for local fixture validation.",
+    "local_vs_network_mode": "local",
+    "dry_run_mode": false,
+    "verification_command": "python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run",
+    "human_review_required_for": [
+      "network_absorbable Swarm packet",
+      "benchmark-governance changes",
+      "public claims of mastery"
+    ]
+  },
+  "autoloop_adapter": {
+    "mutation_surface": [
+      "Startup YC specialization path absorption bundle",
+      "candidate packet wording",
+      "weak-case focused mechanisms",
+      "tool-call benchmark mutation candidates"
+    ],
+    "frozen_surfaces": [
+      "benchmark_weights",
+      "success_metrics",
+      "trap_case_expected_outcomes"
+    ],
+    "candidate_generator": "specialization-path-startup-yc/scripts/run_autoloop.py",
+    "keep_rule": "Keep only benchmark-backed changes that improve scenario or absorption score without trap regression and with clear doctrine lineage.",
+    "reject_rule": "Reject score-only language inflation, changed metrics, hidden trap regressions, or no-gain mutations.",
+    "max_rounds": 10,
+    "stop_conditions": [
+      "zero keeps after diagnosis",
+      "trap regression",
+      "benchmark integrity failure",
+      "no-gain streak requires mutation-surface review"
+    ],
+    "rollback_condition": "Revert any promoted packet that fails a fresh-agent repeat, full-suite repeat, or trap integrity check.",
+    "lineage_log": "specialization-path-startup-yc/reports/absorption-proof-2026-04-30/"
+  },
+  "absorption_adapter": {
+    "bundle_inputs": [
+      "specialization-path-startup-yc/.spark-swarm/absorption/codex-full20-customer-recovery-promoted-2026-04-24",
+      "specialization-path-startup-yc/data/absorption/startup_yc_absorption_v1.json"
+    ],
+    "fresh_agent_protocol": "Run no-pack, pack, and validated-pack modes on fresh-agent Startup YC cases and compare score deltas.",
+    "held_out_cases": "20-case Startup YC absorption suite with basic, intermediate, advanced, and trap bands.",
+    "expected_behavior_change": "Agent gives more concrete, doctrine-aligned, risk-aware startup operating advice while resisting false PMF and vanity traps.",
+    "score_delta_threshold": 0.0,
+    "trap_regression_policy": "block_promotion",
+    "failure_summary_template": "specialization-path-startup-yc/reports/absorption-proof-2026-04-30/weak_case_diagnosis.md"
+  },
+  "swarm_adapter": {
+    "contribution_type": "mastery",
+    "source_repo": "specialization-path-startup-yc",
+    "commit_or_artifact_hash": "26f90b3",
+    "evidence_tier": "candidate_review",
+    "review_state": "workspace_fixture",
+    "proposed_packet": "docs/creator_system/examples/startup-yc-creator-run/swarm/contribution_packet.json",
+    "rollback_or_deprecation_rule": "Deprecate packet if full-suite repeat loses positive validated-pack mean delta or introduces trap regression.",
+    "privacy_and_security_notes": "Fixture is local/workspace-oriented and does not include auth tokens or private user data."
+  }
+}
+

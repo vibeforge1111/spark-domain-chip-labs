@@ -1,0 +1,13 @@
+{
+  "schema_version": "adaptive_creator_loop.domain_chip_manifest.v1",
+  "domain": "Startup YC",
+  "source_repo": "domain-chip-startup-yc",
+  "source_files": [
+    "spark-chip.json",
+    "src/domain_chip_startup_yc/doctrine_engine.py",
+    "src/domain_chip_startup_yc/benchmark.py",
+    "research/benchmark_grounded/benchmark_summary.json"
+  ],
+  "role": "Provides Startup YC doctrine, scoring hooks, and benchmark-alignment logic for the specialization path."
+}
+

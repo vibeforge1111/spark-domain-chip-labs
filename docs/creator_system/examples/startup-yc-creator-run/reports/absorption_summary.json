@@ -1,0 +1,21 @@
+{
+  "schema_version": "adaptive_creator_loop.report.absorption_summary.v1",
+  "source_report": "specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json",
+  "evidence_tier": "fresh_agent_absorption_candidate",
+  "mastery_readiness": "candidate_review",
+  "case_count": 20,
+  "all_modes_present": true,
+  "all_modes_scored": true,
+  "mean_validated_pack_delta": 0.02,
+  "trap_band_case_count": 5,
+  "guardrails": {
+    "schema_gate": "pass",
+    "lineage_gate": "pass",
+    "complexity_gate": "pass",
+    "memory_hygiene_gate": "pass",
+    "transfer_gate": "warn",
+    "autonomy_gate": "warn"
+  },
+  "next_gate": "Run simulator, arena, or external held-out transfer before claiming broader mastery."
+}
+
