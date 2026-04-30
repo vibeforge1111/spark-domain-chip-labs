@@ -1,0 +1,67 @@
+{
+  "schema_version": "adaptive_creator_loop.adapter_map.v1",
+  "run_id": "creator-run-YYYY-MM-DD-domain-slug",
+  "domain_adapter": {
+    "domain_name": "",
+    "target_user_or_agent": "",
+    "capabilities": [],
+    "doctrine_or_operating_principles": [],
+    "known_failure_modes": [],
+    "unsafe_or_out_of_scope_claims": [],
+    "baseline_examples": []
+  },
+  "benchmark_adapter": {
+    "benchmark_family": "",
+    "case_manifest": "",
+    "scoring_dimensions": [],
+    "baseline_command_or_protocol": "",
+    "candidate_command_or_protocol": "",
+    "trap_cases": "",
+    "calibration_notes": "",
+    "minimum_evidence_tier": "prototype"
+  },
+  "tool_adapter": {
+    "allowed_tools": [],
+    "protected_tools": [],
+    "auth_boundary": "",
+    "local_vs_network_mode": "local",
+    "dry_run_mode": true,
+    "verification_command": "",
+    "human_review_required_for": []
+  },
+  "autoloop_adapter": {
+    "mutation_surface": [],
+    "frozen_surfaces": [
+      "benchmark_weights",
+      "success_metrics",
+      "trap_case_expected_outcomes"
+    ],
+    "candidate_generator": "",
+    "keep_rule": "",
+    "reject_rule": "",
+    "max_rounds": 3,
+    "stop_conditions": [],
+    "rollback_condition": "",
+    "lineage_log": ""
+  },
+  "absorption_adapter": {
+    "bundle_inputs": [],
+    "fresh_agent_protocol": "",
+    "held_out_cases": "",
+    "expected_behavior_change": "",
+    "score_delta_threshold": 0,
+    "trap_regression_policy": "block_promotion",
+    "failure_summary_template": ""
+  },
+  "swarm_adapter": {
+    "contribution_type": "none",
+    "source_repo": "",
+    "commit_or_artifact_hash": "",
+    "evidence_tier": "prototype",
+    "review_state": "local_only",
+    "proposed_packet": "",
+    "rollback_or_deprecation_rule": "",
+    "privacy_and_security_notes": ""
+  }
+}
+

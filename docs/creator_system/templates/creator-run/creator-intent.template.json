@@ -1,0 +1,46 @@
+{
+  "schema_version": "adaptive_creator_loop.creator_intent.v1",
+  "run_id": "creator-run-YYYY-MM-DD-domain-slug",
+  "created_at": "YYYY-MM-DD",
+  "requested_by": "",
+  "source_channel": "telegram|builder|spawner|local|swarm",
+  "domain": {
+    "name": "",
+    "short_slug": "",
+    "why_this_domain_matters": "",
+    "target_operator": "",
+    "target_agent": ""
+  },
+  "goal": {
+    "plain_language_goal": "",
+    "capability_to_improve": "",
+    "expected_user_value": "",
+    "non_goals": []
+  },
+  "constraints": {
+    "privacy_boundary": "workspace_only",
+    "network_publication_allowed": false,
+    "auth_or_secret_requirements": [],
+    "forbidden_mutations": [
+      "benchmark_weights_without_benchmark_governance",
+      "success_metric_redefinition_inside_capability_loop"
+    ],
+    "human_review_required": true
+  },
+  "success_criteria": {
+    "minimum_evidence_tier": "prototype",
+    "benchmark_target": "",
+    "absorption_target": "",
+    "trap_regression_policy": "no_new_trap_regressions",
+    "stop_ship_conditions": []
+  },
+  "known_inputs": {
+    "source_repos": [],
+    "docs_to_load": [],
+    "existing_benchmarks": [],
+    "existing_simulators_or_arenas": [],
+    "existing_domain_chips": []
+  },
+  "open_questions": []
+}
+

@@ -1,0 +1,42 @@
+{
+  "schema_version": "adaptive_creator_loop.swarm_contribution_packet.v1",
+  "packet_id": "swarm-packet-YYYY-MM-DD-domain-slug",
+  "creator_run_id": "creator-run-YYYY-MM-DD-domain-slug",
+  "source": {
+    "repo": "",
+    "branch": "",
+    "commit": "",
+    "artifact_paths": []
+  },
+  "contribution": {
+    "type": "insight|mastery|upgrade|benchmark|specialization_path|domain_chip|autoloop_policy",
+    "title": "",
+    "summary": "",
+    "domain": "",
+    "intended_consumers": []
+  },
+  "evidence": {
+    "tier": "prototype",
+    "baseline_score": null,
+    "candidate_score": null,
+    "mean_delta": null,
+    "trap_regressions": null,
+    "fresh_agent_absorption_delta": null,
+    "simulator_or_arena_result": null,
+    "report_paths": []
+  },
+  "governance": {
+    "review_state": "local_only",
+    "reviewers": [],
+    "rollback_or_deprecation_rule": "",
+    "privacy_boundary": "workspace_only",
+    "network_publication_allowed": false
+  },
+  "anti_drift": {
+    "lineage_summary": "",
+    "ghost_improvement_check": "",
+    "complexity_delta": "",
+    "known_limits": []
+  }
+}
+
