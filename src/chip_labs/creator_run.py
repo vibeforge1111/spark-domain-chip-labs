@@ -1,8 +1,8 @@
-"""Creator-run scaffolding and smoke validation.
+"""Creator-run scaffolding and validation.
 
 This module turns the adaptive creator-loop docs into a small executable
 contract. It does not run benchmarks yet; it checks whether a creator run has
-enough structure to move to the next gate.
+enough structure and saved evidence to move to the next gate.
 """
 
 from __future__ import annotations
@@ -19,6 +19,13 @@ EVIDENCE_TIERS = (
     "prototype",
     "benchmark_signal",
     "focused_pattern",
+    "candidate_review",
+    "transfer_supported",
+    "network_absorbable",
+    "standard_update",
+)
+
+ELEVATED_EVIDENCE_TIERS = (
     "candidate_review",
     "transfer_supported",
     "network_absorbable",
@@ -255,9 +262,13 @@ def validate_creator_run(run_dir: str | Path) -> SmokeResult:
     baseline_missing = [path for path in READY_FOR_BASELINE_PATHS if path in missing_paths]
     swarm_missing = [path for path in READY_FOR_SWARM_PATHS if path in missing_paths]
 
+    if not swarm_missing and evidence_tier in ELEVATED_EVIDENCE_TIERS:
+        _check_elevated_evidence(run_path, evidence_tier, checks)
+        blocking_failures = [check for check in checks if check.status == "fail"]
+
     if blocking_failures:
         verdict = "blocked"
-        next_actions = ("Fix failed schema and required-field checks.",)
+        next_actions = ("Fix failed schema, required-field, or evidence-support checks.",)
     elif baseline_missing:
         verdict = "prototype"
         next_actions = (
@@ -343,6 +354,146 @@ def _check_adapter_sections(adapter_map: dict[str, Any], checks: list[SmokeCheck
             checks.append(SmokeCheck(f"{section}_section", "fail", f"{section} must be an object."))
 
 
+def _check_elevated_evidence(run_path: Path, evidence_tier: str, checks: list[SmokeCheck]) -> None:
+    baseline = _load_required_json(run_path / "reports" / "baseline.json", "baseline_report", checks)
+    candidate = _load_required_json(run_path / "reports" / "candidate.json", "candidate_report", checks)
+    absorption = _load_required_json(run_path / "reports" / "absorption_summary.json", "absorption_report", checks)
+    packet = _load_required_json(run_path / "swarm" / "contribution_packet.json", "swarm_packet", checks)
+
+    if not all((baseline, candidate, absorption, packet)):
+        return
+
+    baseline_score = _coerce_number(baseline.get("mean_score"))
+    candidate_score = _coerce_number(candidate.get("mean_score"))
+    candidate_delta = _coerce_number(candidate.get("mean_delta"))
+    absorption_delta = _coerce_number(absorption.get("mean_validated_pack_delta"))
+    packet_delta = _coerce_number(_nested(packet, "evidence", "mean_delta"))
+    packet_trap_regressions = _coerce_number(_nested(packet, "evidence", "trap_regressions"))
+
+    if baseline_score is None:
+        checks.append(SmokeCheck("baseline_score", "fail", "reports/baseline.json must include numeric mean_score."))
+    else:
+        checks.append(SmokeCheck("baseline_score", "pass", f"Baseline mean_score is {baseline_score:.4f}."))
+
+    if candidate_score is None:
+        checks.append(SmokeCheck("candidate_score", "fail", "reports/candidate.json must include numeric mean_score."))
+    else:
+        checks.append(SmokeCheck("candidate_score", "pass", f"Candidate mean_score is {candidate_score:.4f}."))
+
+    if candidate_delta is None and baseline_score is not None and candidate_score is not None:
+        candidate_delta = candidate_score - baseline_score
+        checks.append(SmokeCheck(
+            "candidate_delta_inferred",
+            "pass",
+            f"Candidate delta inferred from mean scores is {candidate_delta:.4f}.",
+        ))
+
+    if candidate_delta is None:
+        checks.append(SmokeCheck("candidate_delta", "fail", "reports/candidate.json must include numeric mean_delta."))
+    elif candidate_delta > 0:
+        checks.append(SmokeCheck("candidate_delta", "pass", f"Candidate mean_delta is positive: {candidate_delta:.4f}."))
+    else:
+        checks.append(SmokeCheck("candidate_delta", "fail", f"Candidate mean_delta must be positive; got {candidate_delta:.4f}."))
+
+    if baseline_score is not None and candidate_score is not None and candidate_score <= baseline_score:
+        checks.append(SmokeCheck(
+            "candidate_beats_baseline",
+            "fail",
+            f"Candidate score must exceed baseline score for {evidence_tier}; got {candidate_score:.4f} <= {baseline_score:.4f}.",
+        ))
+    elif baseline_score is not None and candidate_score is not None:
+        checks.append(SmokeCheck(
+            "candidate_beats_baseline",
+            "pass",
+            f"Candidate exceeds baseline by {(candidate_score - baseline_score):.4f}.",
+        ))
+
+    _check_bool(absorption.get("all_modes_present"), "absorption_all_modes_present", "Absorption report has all modes present.", checks)
+    _check_bool(absorption.get("all_modes_scored"), "absorption_all_modes_scored", "Absorption report has all modes scored.", checks)
+
+    if absorption_delta is None:
+        checks.append(SmokeCheck(
+            "absorption_delta",
+            "fail",
+            "reports/absorption_summary.json must include numeric mean_validated_pack_delta.",
+        ))
+    elif absorption_delta > 0:
+        checks.append(SmokeCheck("absorption_delta", "pass", f"Absorption delta is positive: {absorption_delta:.4f}."))
+    else:
+        checks.append(SmokeCheck("absorption_delta", "fail", f"Absorption delta must be positive; got {absorption_delta:.4f}."))
+
+    trap_count = _coerce_number(absorption.get("trap_band_case_count"))
+    if trap_count is None or trap_count <= 0:
+        checks.append(SmokeCheck("trap_coverage", "fail", "Absorption report must include positive trap_band_case_count."))
+    else:
+        checks.append(SmokeCheck("trap_coverage", "pass", f"Trap coverage includes {int(trap_count)} cases."))
+
+    packet_tier = str(_nested(packet, "evidence", "tier") or "")
+    if packet_tier == evidence_tier:
+        checks.append(SmokeCheck("swarm_packet_tier", "pass", f"Swarm packet tier matches adapter tier: {packet_tier}."))
+    else:
+        checks.append(SmokeCheck(
+            "swarm_packet_tier",
+            "fail",
+            f"Swarm packet tier must match adapter tier {evidence_tier}; got {packet_tier or 'missing'}.",
+        ))
+
+    if packet_delta is None:
+        checks.append(SmokeCheck("swarm_packet_delta", "fail", "Swarm packet evidence must include numeric mean_delta."))
+    elif candidate_delta is not None and abs(packet_delta - candidate_delta) <= 0.0001:
+        checks.append(SmokeCheck("swarm_packet_delta", "pass", "Swarm packet mean_delta matches candidate report."))
+    elif candidate_delta is not None:
+        checks.append(SmokeCheck(
+            "swarm_packet_delta",
+            "fail",
+            f"Swarm packet mean_delta {packet_delta:.4f} does not match candidate report {candidate_delta:.4f}.",
+        ))
+
+    if packet_trap_regressions is None:
+        checks.append(SmokeCheck("swarm_packet_traps", "fail", "Swarm packet must include numeric trap_regressions."))
+    elif packet_trap_regressions <= 0:
+        checks.append(SmokeCheck("swarm_packet_traps", "pass", "Swarm packet reports no trap regressions."))
+    else:
+        checks.append(SmokeCheck(
+            "swarm_packet_traps",
+            "fail",
+            f"Swarm packet reports trap regressions: {packet_trap_regressions:g}.",
+        ))
+
+    _check_non_empty(
+        _nested(packet, "source", "commit"),
+        "swarm_packet_provenance",
+        "Swarm packet includes source commit provenance.",
+        checks,
+    )
+    _check_non_empty(
+        _nested(packet, "governance", "rollback_or_deprecation_rule"),
+        "swarm_packet_rollback",
+        "Swarm packet includes rollback/deprecation rule.",
+        checks,
+    )
+
+
+def _check_bool(value: Any, name: str, pass_message: str, checks: list[SmokeCheck]) -> None:
+    if value is True:
+        checks.append(SmokeCheck(name, "pass", pass_message))
+    else:
+        checks.append(SmokeCheck(name, "fail", f"{name} must be true."))
+
+
+def _coerce_number(value: Any) -> float | None:
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    if isinstance(value, str):
+        try:
+            return float(value)
+        except ValueError:
+            return None
+    return None
+
+
 def _nested(data: dict[str, Any], *keys: str) -> Any:
     current: Any = data
     for key in keys:
@@ -350,4 +501,3 @@ def _nested(data: dict[str, Any], *keys: str) -> Any:
             return None
         current = current.get(key)
     return current
-

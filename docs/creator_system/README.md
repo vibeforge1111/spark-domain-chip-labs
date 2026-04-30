@@ -84,3 +84,13 @@ The smoke verdict is intentionally narrow:
 - `prototype`: intent and adapters exist, but core chip/path/benchmark/autoloop artifacts are missing.
 - `ready_for_baseline`: core artifacts exist and the next step is benchmark execution.
 - `ready_for_swarm_packet`: reports and Swarm packet artifacts exist; review provenance, traps, privacy, and rollback before network publication.
+
+For elevated evidence tiers such as `candidate_review`, the smoke gate also validates report semantics:
+
+- baseline and candidate reports have numeric mean scores
+- candidate delta is positive and beats baseline
+- absorption modes are present and scored
+- validated-pack absorption delta is positive
+- trap-band coverage exists
+- Swarm packet tier and delta match the reports
+- Swarm packet includes source provenance and rollback/deprecation policy
