@@ -3,7 +3,7 @@
 Run ID: `creator-run-2026-05-01-startup-yc`  
 Date: 2026-05-01  
 Domain: Startup YC  
-Evidence tier claimed: `candidate_review`  
+Evidence tier claimed: `transfer_supported`
 Verdict target: `ready_for_swarm_packet`
 
 ## Intent
@@ -21,7 +21,7 @@ This example binds the adaptive creator-loop standard to the existing Startup YC
 
 ## Current Claim
 
-This is a candidate-review Startup YC mastery packet, not a final mastery claim. The next promotion gate should add simulator, Founder Arena, or external held-out operator transfer.
+This is a transfer-supported Startup YC mastery packet, not a final mastery claim. The current transfer proof covers one fresh Startup Bench 0-to-1 activation scenario; the next promotion gate should add a broader multi-scenario Startup Bench suite, Founder Arena, or external held-out operator transfer.
 
 ## Smoke Gate
 
@@ -32,4 +32,3 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 ```
 
 Expected verdict: `ready_for_swarm_packet`.
-

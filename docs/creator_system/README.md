@@ -94,3 +94,5 @@ For elevated evidence tiers such as `candidate_review`, the smoke gate also vali
 - trap-band coverage exists
 - Swarm packet tier and delta match the reports
 - Swarm packet includes source provenance and rollback/deprecation policy
+
+For `transfer_supported` and higher, the gate also requires `reports/transfer_summary.json` and a matching `simulator_or_arena_result` in the Swarm packet, with positive transfer delta and passed constraints.

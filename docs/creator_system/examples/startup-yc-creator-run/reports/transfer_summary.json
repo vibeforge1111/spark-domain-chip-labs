@@ -1,0 +1,26 @@
+{
+  "schema_version": "adaptive_creator_loop.report.transfer_summary.v1",
+  "source": "startup-bench",
+  "scenario_id": "hidden_0to1_activation_loop_fresh_001",
+  "scenario_title": "Fresh Activation Loop Compression",
+  "scenario_count": 1,
+  "seed": 1,
+  "baseline_runner": "heuristic_resilient_operator",
+  "transfer_runner": "specialization-path-startup-yc/benchmarks/startup-yc.tool_calls.json",
+  "baseline_score": 0.6195,
+  "transfer_score": 0.6364,
+  "delta": 0.0169,
+  "constraints_passed": true,
+  "source_artifacts": {
+    "startup_bench_scenario": "startup-bench/examples/hidden_0to1_activation_loop_fresh_scenario.json",
+    "startup_yc_tool_script": "specialization-path-startup-yc/benchmarks/startup-yc.tool_calls.json",
+    "local_script_score_report": ".tmp_startup_yc_transfer/script/score_report.json",
+    "local_baseline_score_report": ".tmp_startup_yc_transfer/baseline/score_report.json"
+  },
+  "interpretation": "The Startup YC tool script transferred positively to one fresh Startup Bench 0-to-1 activation scenario, beating the resilient baseline by +0.0169 while both runs passed constraints.",
+  "limits": [
+    "This is a single-scenario transfer proof, not broad startup mastery.",
+    "The Startup YC script improved cash efficiency and revenue quality but trailed the baseline on product health and strategic coherence.",
+    "Next gate should run a multi-scenario Startup Bench suite or Founder Arena transfer."
+  ]
+}

@@ -10,13 +10,14 @@ Evidence referenced:
 - Mean no-pack score: `0.6803`.
 - Mean validated-pack score: `0.7003`.
 - Mean validated-pack delta: `+0.0200`.
+- Startup Bench fresh 0-to-1 transfer delta: `+0.0169`.
 - Case count: `20`.
 - Trap band case count: `5`.
 - Mastery readiness from source proof: `candidate_review`.
+- Creator-run evidence tier: `transfer_supported`.
 
 Known limits:
 
 - This fixture references source repos instead of copying full benchmark corpora.
 - The current smoke gate checks artifact presence and schema only.
-- The next validator should inspect report content and verify evidence-tier claims against numbers.
-
+- The transfer proof currently covers one fresh Startup Bench scenario; broader mastery needs a multi-scenario transfer run.

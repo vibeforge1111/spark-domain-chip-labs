@@ -15,7 +15,7 @@
   "contribution": {
     "type": "mastery",
     "title": "Startup YC candidate-review absorption packet",
-    "summary": "Fresh-agent validated-pack mode improved the 20-case Startup YC absorption suite by +0.0200 mean score while preserving scored trap coverage.",
+    "summary": "Fresh-agent validated-pack mode improved the 20-case Startup YC absorption suite by +0.0200 mean score, then transferred positively to a fresh Startup Bench 0-to-1 activation scenario by +0.0169 against a resilient baseline.",
     "domain": "Startup YC",
     "intended_consumers": [
       "Spark agents entering the Startup YC specialization path",
@@ -24,17 +24,28 @@
     ]
   },
   "evidence": {
-    "tier": "candidate_review",
+    "tier": "transfer_supported",
     "baseline_score": 0.6803,
     "candidate_score": 0.7003,
     "mean_delta": 0.02,
     "trap_regressions": 0,
     "fresh_agent_absorption_delta": 0.02,
-    "simulator_or_arena_result": null,
+    "simulator_or_arena_result": {
+      "source": "startup-bench",
+      "scenario_id": "hidden_0to1_activation_loop_fresh_001",
+      "scenario_count": 1,
+      "baseline_runner": "heuristic_resilient_operator",
+      "transfer_runner": "specialization-path-startup-yc/benchmarks/startup-yc.tool_calls.json",
+      "baseline_score": 0.6195,
+      "transfer_score": 0.6364,
+      "delta": 0.0169,
+      "constraints_passed": true
+    },
     "report_paths": [
       "reports/baseline.json",
       "reports/candidate.json",
-      "reports/absorption_summary.json"
+      "reports/absorption_summary.json",
+      "reports/transfer_summary.json"
     ]
   },
   "governance": {
@@ -51,10 +62,9 @@
     "ghost_improvement_check": "The source report compares no-pack, pack, and validated-pack fresh-agent modes with numeric deltas rather than only style changes.",
     "complexity_delta": "Fixture adds no runtime complexity; it packages existing evidence into the adaptive creator-run artifact contract.",
     "known_limits": [
-      "Simulator or arena transfer remains the next broader mastery gate.",
+      "Only one Startup Bench transfer scenario has been run so far.",
       "The fixture does not itself rerun Startup Bench.",
       "The current smoke CLI checks presence before evidence semantics."
     ]
   }
 }
-

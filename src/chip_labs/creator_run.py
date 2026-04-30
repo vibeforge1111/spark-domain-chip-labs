@@ -32,6 +32,12 @@ ELEVATED_EVIDENCE_TIERS = (
     "standard_update",
 )
 
+TRANSFER_EVIDENCE_TIERS = (
+    "transfer_supported",
+    "network_absorbable",
+    "standard_update",
+)
+
 TEMPLATE_FILENAMES = {
     "creator-intent.template.json": "creator-intent.json",
     "adapter-map.template.json": "adapter-map.json",
@@ -265,6 +271,9 @@ def validate_creator_run(run_dir: str | Path) -> SmokeResult:
     if not swarm_missing and evidence_tier in ELEVATED_EVIDENCE_TIERS:
         _check_elevated_evidence(run_path, evidence_tier, checks)
         blocking_failures = [check for check in checks if check.status == "fail"]
+    if not swarm_missing and evidence_tier in TRANSFER_EVIDENCE_TIERS:
+        _check_transfer_evidence(run_path, checks)
+        blocking_failures = [check for check in checks if check.status == "fail"]
 
     if blocking_failures:
         verdict = "blocked"
@@ -472,6 +481,69 @@ def _check_elevated_evidence(run_path: Path, evidence_tier: str, checks: list[Sm
         "Swarm packet includes rollback/deprecation rule.",
         checks,
     )
+
+
+def _check_transfer_evidence(run_path: Path, checks: list[SmokeCheck]) -> None:
+    transfer = _load_required_json(run_path / "reports" / "transfer_summary.json", "transfer_report", checks)
+    packet = _load_required_json(run_path / "swarm" / "contribution_packet.json", "swarm_packet_transfer", checks)
+    if not transfer or not packet:
+        return
+
+    source = str(transfer.get("source") or "")
+    if source:
+        checks.append(SmokeCheck("transfer_source", "pass", f"Transfer source is {source}."))
+    else:
+        checks.append(SmokeCheck("transfer_source", "fail", "Transfer report must name a source benchmark or simulator."))
+
+    scenario_count = _coerce_number(transfer.get("scenario_count"))
+    if scenario_count is None or scenario_count <= 0:
+        checks.append(SmokeCheck("transfer_scenario_count", "fail", "Transfer report must include positive scenario_count."))
+    else:
+        checks.append(SmokeCheck("transfer_scenario_count", "pass", f"Transfer report covers {int(scenario_count)} scenario(s)."))
+
+    transfer_score = _coerce_number(transfer.get("transfer_score"))
+    baseline_score = _coerce_number(transfer.get("baseline_score"))
+    transfer_delta = _coerce_number(transfer.get("delta"))
+    if transfer_score is None:
+        checks.append(SmokeCheck("transfer_score", "fail", "Transfer report must include numeric transfer_score."))
+    else:
+        checks.append(SmokeCheck("transfer_score", "pass", f"Transfer score is {transfer_score:.4f}."))
+    if baseline_score is None:
+        checks.append(SmokeCheck("transfer_baseline_score", "fail", "Transfer report must include numeric baseline_score."))
+    else:
+        checks.append(SmokeCheck("transfer_baseline_score", "pass", f"Transfer baseline score is {baseline_score:.4f}."))
+    if transfer_delta is None and transfer_score is not None and baseline_score is not None:
+        transfer_delta = transfer_score - baseline_score
+        checks.append(SmokeCheck("transfer_delta_inferred", "pass", f"Transfer delta inferred as {transfer_delta:.4f}."))
+    if transfer_delta is None:
+        checks.append(SmokeCheck("transfer_delta", "fail", "Transfer report must include numeric delta."))
+    elif transfer_delta > 0:
+        checks.append(SmokeCheck("transfer_delta", "pass", f"Transfer delta is positive: {transfer_delta:.4f}."))
+    else:
+        checks.append(SmokeCheck("transfer_delta", "fail", f"Transfer delta must be positive; got {transfer_delta:.4f}."))
+
+    _check_bool(transfer.get("constraints_passed"), "transfer_constraints_passed", "Transfer run passed constraints.", checks)
+
+    packet_transfer = _nested(packet, "evidence", "simulator_or_arena_result")
+    if not isinstance(packet_transfer, dict):
+        checks.append(SmokeCheck(
+            "swarm_packet_transfer_result",
+            "fail",
+            "Swarm packet evidence must include simulator_or_arena_result for transfer-supported tiers.",
+        ))
+        return
+
+    packet_transfer_delta = _coerce_number(packet_transfer.get("delta"))
+    if packet_transfer_delta is None:
+        checks.append(SmokeCheck("swarm_packet_transfer_delta", "fail", "Swarm packet transfer result must include numeric delta."))
+    elif transfer_delta is not None and abs(packet_transfer_delta - transfer_delta) <= 0.0001:
+        checks.append(SmokeCheck("swarm_packet_transfer_delta", "pass", "Swarm packet transfer delta matches transfer report."))
+    elif transfer_delta is not None:
+        checks.append(SmokeCheck(
+            "swarm_packet_transfer_delta",
+            "fail",
+            f"Swarm packet transfer delta {packet_transfer_delta:.4f} does not match transfer report {transfer_delta:.4f}.",
+        ))
 
 
 def _check_bool(value: Any, name: str, pass_message: str, checks: list[SmokeCheck]) -> None:

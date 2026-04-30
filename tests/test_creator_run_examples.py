@@ -12,6 +12,5 @@ def test_startup_yc_creator_run_fixture_is_swarm_ready() -> None:
     result = validate_creator_run(fixture_dir)
 
     assert result.verdict == "ready_for_swarm_packet"
-    assert result.evidence_tier == "candidate_review"
+    assert result.evidence_tier == "transfer_supported"
     assert result.missing_paths == ()
-

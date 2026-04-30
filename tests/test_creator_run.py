@@ -153,13 +153,42 @@ def test_candidate_review_blocks_missing_trap_coverage(tmp_path: Path) -> None:
     assert any(check.name == "trap_coverage" and check.status == "fail" for check in smoke.checks)
 
 
-def _write_candidate_review_run(tmp_path: Path) -> Path:
+def test_transfer_supported_requires_transfer_report(tmp_path: Path) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(check.name == "transfer_report" and check.status == "fail" for check in smoke.checks)
+
+
+def test_transfer_supported_blocks_negative_transfer_delta(tmp_path: Path) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    _write_transfer_report(run_dir, delta=-0.01)
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(check.name == "transfer_delta" and check.status == "fail" for check in smoke.checks)
+
+
+def test_transfer_supported_accepts_positive_transfer_report(tmp_path: Path) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    _write_transfer_report(run_dir)
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "ready_for_swarm_packet"
+    assert any(check.name == "transfer_delta" and check.status == "pass" for check in smoke.checks)
+
+
+def _write_candidate_review_run(tmp_path: Path, evidence_tier: str = "candidate_review") -> Path:
     run_dir = tmp_path / "candidate-review-run"
     init_creator_run(run_dir, domain="Startup YC", goal="Test candidate review evidence.")
 
     adapter_path = run_dir / "adapter-map.json"
     adapter_map = json.loads(adapter_path.read_text(encoding="utf-8"))
-    adapter_map["swarm_adapter"]["evidence_tier"] = "candidate_review"
+    adapter_map["swarm_adapter"]["evidence_tier"] = evidence_tier
     adapter_path.write_text(json.dumps(adapter_map), encoding="utf-8")
 
     for relative_path in (
@@ -202,7 +231,7 @@ def _write_candidate_review_run(tmp_path: Path) -> Path:
         json.dumps({
             "source": {"commit": "abc123"},
             "evidence": {
-                "tier": "candidate_review",
+                "tier": evidence_tier,
                 "mean_delta": 0.03,
                 "trap_regressions": 0,
             },
@@ -213,3 +242,26 @@ def _write_candidate_review_run(tmp_path: Path) -> Path:
         encoding="utf-8",
     )
     return run_dir
+
+
+def _write_transfer_report(run_dir: Path, delta: float = 0.02) -> None:
+    transfer_score = 0.62 + delta
+    (run_dir / "reports" / "transfer_summary.json").write_text(
+        json.dumps({
+            "source": "startup-bench",
+            "scenario_count": 1,
+            "baseline_score": 0.62,
+            "transfer_score": transfer_score,
+            "delta": delta,
+            "constraints_passed": True,
+        }),
+        encoding="utf-8",
+    )
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    packet["evidence"]["simulator_or_arena_result"] = {
+        "source": "startup-bench",
+        "scenario_count": 1,
+        "delta": delta,
+    }
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")

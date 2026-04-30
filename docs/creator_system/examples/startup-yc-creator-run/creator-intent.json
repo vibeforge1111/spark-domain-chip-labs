@@ -32,7 +32,7 @@
     "human_review_required": true
   },
   "success_criteria": {
-    "minimum_evidence_tier": "candidate_review",
+    "minimum_evidence_tier": "transfer_supported",
     "benchmark_target": "Full 20-case fresh-agent absorption proof has positive validated-pack mean delta and no hidden trap regression.",
     "absorption_target": "Validated pack improves fresh-agent behavior on Startup YC held-out cases.",
     "trap_regression_policy": "no_new_trap_regressions",
@@ -72,4 +72,3 @@
     "Which Startup YC weak cases should become permanent trap or adversarial cases?"
   ]
 }
-
