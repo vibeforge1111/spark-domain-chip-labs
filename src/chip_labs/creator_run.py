@@ -55,6 +55,19 @@ TEMPLATE_FILENAMES = {
     "standard-change-proposal.template.md": "standard-change-proposal.md",
 }
 
+TEMPLATE_REQUIRED_FILES = (
+    "creator-intent.template.json",
+    "adapter-map.template.json",
+    "autoloop-policy.template.json",
+    "benchmark-pack.template.md",
+    "creator-run-summary.template.md",
+    "evidence-ladder.template.md",
+    "specialization-path-contract.template.md",
+    "swarm-contribution-packet.template.json",
+    "standard-change-proposal.template.md",
+    "README.md",
+)
+
 READY_FOR_BASELINE_PATHS = (
     "domain-chip/chip.manifest.json",
     "domain-chip/doctrine.md",
@@ -108,10 +121,27 @@ TEMPLATE_REQUIRED_FIELDS = {
         "governance.rollback_or_deprecation_rule",
         "anti_drift.known_limits",
     ),
+    "autoloop-policy.template.json": (
+        "schema_version",
+        "loop_key",
+        "target_capability",
+        "evidence_tier_goal",
+        "mutation_surface",
+        "benchmark_manifest",
+        "keep_condition",
+        "rollback_condition",
+        "promotion_condition",
+        "lineage_required",
+        "privacy_boundary",
+        "network_publication_allowed",
+    ),
 }
 
 TEMPLATE_REQUIRED_TEXT_FILES = (
+    "benchmark-pack.template.md",
     "creator-run-summary.template.md",
+    "evidence-ladder.template.md",
+    "specialization-path-contract.template.md",
     "standard-change-proposal.template.md",
     "README.md",
 )
@@ -315,7 +345,7 @@ def validate_creator_templates(
 
     template_path = Path(template_dir) if template_dir else default_template_dir()
     checks: list[SmokeCheck] = []
-    for template_name in TEMPLATE_FILENAMES:
+    for template_name in TEMPLATE_REQUIRED_FILES:
         path = template_path / template_name
         if path.exists():
             checks.append(

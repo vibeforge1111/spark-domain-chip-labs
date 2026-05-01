@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -123,6 +124,22 @@ def test_template_check_passes_default_templates() -> None:
     assert result["schema_version"] == "adaptive_creator_loop.template_check_result.v1"
     assert result["verdict"] == "pass"
     assert result["blocking_checks"] == []
+
+
+def test_template_check_blocks_missing_required_creator_template(
+    tmp_path: Path,
+) -> None:
+    template_dir = tmp_path / "creator-run"
+    shutil.copytree(
+        Path.cwd() / "docs" / "creator_system" / "templates" / "creator-run",
+        template_dir,
+    )
+    (template_dir / "benchmark-pack.template.md").unlink()
+
+    result = validate_creator_templates(template_dir)
+
+    assert result["verdict"] == "blocked"
+    assert "template_exists:benchmark-pack.template.md" in result["blocking_checks"]
 
 
 def test_creator_system_schema_files_are_valid_json() -> None:
