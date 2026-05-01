@@ -3,6 +3,7 @@
   "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/creator-mission-status.schema.json",
   "title": "Adaptive Creator Loop Creator Mission Status",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "schema_version",
     "mission_id",
@@ -12,36 +13,212 @@
     "publication",
     "source_packets",
     "blockers",
+    "warnings",
+    "next_actions",
     "surface_adapters"
   ],
   "properties": {
     "schema_version": {
       "const": "adaptive_creator_loop.creator_mission_status.v1"
     },
-    "mission_id": {"type": "string"},
-    "read_only": {"const": true},
-    "claim_boundary": {"type": "string"},
+    "mission_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "read_only": {
+      "const": true
+    },
+    "claim_boundary": {
+      "type": "string",
+      "minLength": 1
+    },
     "canonical": {
       "type": "object",
-      "required": ["verdict", "stage_status", "evidence_tier"]
+      "additionalProperties": false,
+      "required": [
+        "verdict",
+        "stage_status",
+        "evidence_tier",
+        "automation_blocked",
+        "blocking_checks",
+        "warning_checks",
+        "missing_paths",
+        "recommended_next_command"
+      ],
+      "properties": {
+        "verdict": {
+          "enum": ["prototype", "ready_for_baseline", "ready_for_swarm_packet", "blocked"]
+        },
+        "stage_status": {
+          "enum": ["prototype", "ready_for_baseline", "review_required", "blocked", "unknown"]
+        },
+        "evidence_tier": {
+          "enum": ["local_only", "candidate_review", "transfer_supported"]
+        },
+        "automation_blocked": {
+          "type": "boolean"
+        },
+        "blocking_checks": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "warning_checks": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "missing_paths": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "recommended_next_command": {
+          "type": ["string", "null"]
+        }
+      }
     },
     "publication": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "publish_mode",
+        "local_display_allowed",
+        "github_pr_allowed",
         "swarm_shared_allowed",
         "network_absorbable",
+        "requested_network_absorption",
+        "blocked_reason",
         "required_gates",
-        "missing_gates"
-      ]
+        "missing_gates",
+        "gate_status",
+        "unsafe_claim_blocked"
+      ],
+      "properties": {
+        "publish_mode": {
+          "enum": ["local_only", "github_pr", "swarm_shared"]
+        },
+        "local_display_allowed": {
+          "const": true
+        },
+        "github_pr_allowed": {
+          "type": "boolean"
+        },
+        "swarm_shared_allowed": {
+          "const": false
+        },
+        "network_absorbable": {
+          "const": false
+        },
+        "requested_network_absorption": {
+          "type": "boolean"
+        },
+        "blocked_reason": {
+          "type": ["string", "null"]
+        },
+        "required_gates": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "missing_gates": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "gate_status": {
+          "type": "object",
+          "additionalProperties": {"type": "boolean"}
+        },
+        "unsafe_claim_blocked": {
+          "const": true
+        }
+      }
     },
-    "source_packets": {"type": "array"},
-    "blockers": {"type": "array"},
-    "warnings": {"type": "array"},
-    "next_actions": {"type": "array"},
+    "source_packets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["packet", "present", "state"],
+        "properties": {
+          "packet": {"type": "string"},
+          "present": {"type": "boolean"},
+          "state": {"enum": ["ready", "blocked", "missing"]},
+          "verdict": {"type": ["string", "null"]},
+          "blocking_checks": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "warning_count": {"type": "integer"},
+          "claim_boundary": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "warnings": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
     "surface_adapters": {
       "type": "object",
-      "required": ["builder", "telegram", "spawner", "canvas", "kanban"]
+      "additionalProperties": false,
+      "required": ["builder", "telegram", "spawner", "canvas", "kanban"],
+      "properties": {
+        "builder": {
+          "type": "object",
+          "required": ["packet_kind", "mission_id", "read_only", "may_mutate_state"],
+          "properties": {
+            "packet_kind": {"const": "builder_creator_readonly_handoff"},
+            "mission_id": {"type": "string"},
+            "read_only": {"const": true},
+            "may_mutate_state": {"const": false}
+          }
+        },
+        "telegram": {
+          "type": "object",
+          "required": ["packet_kind", "mission_id", "text", "may_request_secret_paste"],
+          "properties": {
+            "packet_kind": {"const": "telegram_creator_status_summary"},
+            "mission_id": {"type": "string"},
+            "text": {"type": "string"},
+            "show_publication_warning": {"type": "boolean"},
+            "may_request_secret_paste": {"const": false}
+          }
+        },
+        "spawner": {
+          "type": "object",
+          "required": ["packet_kind", "mission_id", "stage_status", "may_execute"],
+          "properties": {
+            "packet_kind": {"const": "spawner_creator_trace_readonly"},
+            "mission_id": {"type": "string"},
+            "stage_status": {"type": "string"},
+            "may_execute": {"const": false}
+          }
+        },
+        "canvas": {
+          "type": "object",
+          "required": ["packet_kind", "mission_id", "nodes", "edges", "may_edit_artifacts"],
+          "properties": {
+            "packet_kind": {"const": "canvas_creator_graph_readonly"},
+            "mission_id": {"type": "string"},
+            "nodes": {"type": "array"},
+            "edges": {"type": "array"},
+            "may_edit_artifacts": {"const": false}
+          }
+        },
+        "kanban": {
+          "type": "object",
+          "required": ["packet_kind", "mission_id", "columns", "may_change_verdict"],
+          "properties": {
+            "packet_kind": {"const": "kanban_creator_columns_readonly"},
+            "mission_id": {"type": "string"},
+            "columns": {"type": "object"},
+            "may_change_verdict": {"const": false}
+          }
+        }
+      }
     }
   }
 }

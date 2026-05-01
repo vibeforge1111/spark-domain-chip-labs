@@ -5,6 +5,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 from chip_labs.creator_mission_adapter import build_creator_mission_status
 
 
@@ -13,6 +15,9 @@ STARTUP_VALIDATION = Path(
 )
 PRODUCT_SURFACE_FIXTURE = Path(
     "docs/creator_system/examples/product-surface-readonly"
+)
+CREATOR_MISSION_SCHEMA = Path(
+    "docs/creator_system/schemas/creator-mission-status.schema.json"
 )
 
 
@@ -161,3 +166,26 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     assert saved["surface_adapters"]["spawner"]["may_execute"] is False
     assert saved["surface_adapters"]["canvas"]["may_edit_artifacts"] is False
     assert saved["surface_adapters"]["kanban"]["may_change_verdict"] is False
+
+
+def test_creator_mission_status_schema_enforces_read_only_boundaries() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(CREATOR_MISSION_SCHEMA.read_text(encoding="utf-8"))
+    saved = json.loads(
+        (PRODUCT_SURFACE_FIXTURE / "startup-yc-mission-status.json").read_text(encoding="utf-8")
+    )
+    validator = jsonschema.Draft202012Validator(schema)
+
+    validator.validate(saved)
+
+    unsafe_network = json.loads(json.dumps(saved))
+    unsafe_network["publication"]["network_absorbable"] = True
+    assert list(validator.iter_errors(unsafe_network))
+
+    unsafe_canvas = json.loads(json.dumps(saved))
+    unsafe_canvas["surface_adapters"]["canvas"]["may_edit_artifacts"] = True
+    assert list(validator.iter_errors(unsafe_canvas))
+
+    unsafe_telegram = json.loads(json.dumps(saved))
+    unsafe_telegram["surface_adapters"]["telegram"]["may_request_secret_paste"] = True
+    assert list(validator.iter_errors(unsafe_telegram))
