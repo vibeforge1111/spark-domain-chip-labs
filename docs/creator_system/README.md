@@ -154,6 +154,19 @@ content simulation with multi-RLM judge batches, Spark doctor adversarial
 checks, and Startup YC operator advice.
 Each generated proof remains `candidate_review` only.
 
+The first local artifact-quality scorer is available as:
+
+```bash
+python -m chip_labs.cli artifact-quality-score \
+  --input docs/creator_system/examples/artifact-quality/good_design_pr.md \
+  --artifact-kind pr_writeup \
+  --output reports/artifact-quality.json \
+  --markdown-output reports/artifact-quality.md
+```
+
+It checks evidence completeness for design docs, PR writeups, handoffs, and
+mission packets. It does not prove product correctness or replace human review.
+
 The first local content-simulation harness is available as:
 
 ```bash

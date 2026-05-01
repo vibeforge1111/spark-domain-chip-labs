@@ -1141,6 +1141,21 @@ def cmd_creator_run_template_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_artifact_quality_score(args: argparse.Namespace) -> None:
+    """Score a design doc or PR writeup for artifact-quality evidence."""
+    from .artifact_quality import (
+        format_artifact_quality_markdown,
+        score_artifact_quality_file,
+    )
+
+    result = score_artifact_quality_file(args.input, artifact_kind=args.artifact_kind)
+    _write_output(args.output, result)
+    if args.markdown_output:
+        _write_text_output(args.markdown_output, format_artifact_quality_markdown(result))
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -1932,6 +1947,34 @@ def main() -> None:
         help="Exit with status 1 when template validation is blocked.",
     )
     p_creator_template_check.set_defaults(func=cmd_creator_run_template_check)
+
+    # artifact-quality-score
+    p_artifact_quality = sub.add_parser(
+        "artifact-quality-score",
+        help="Score a design doc, PR writeup, or handoff for evidence completeness.",
+    )
+    p_artifact_quality.add_argument(
+        "--input", type=str, required=True, help="Artifact markdown/text file path."
+    )
+    p_artifact_quality.add_argument(
+        "--artifact-kind",
+        type=str,
+        default="design_doc",
+        choices=["design_doc", "pr_writeup", "implementation_handoff", "mission_packet"],
+        help="Artifact kind label to include in the report.",
+    )
+    p_artifact_quality.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_artifact_quality.add_argument(
+        "--markdown-output", type=str, default=None, help="Output markdown file path."
+    )
+    p_artifact_quality.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the artifact is blocked.",
+    )
+    p_artifact_quality.set_defaults(func=cmd_artifact_quality_score)
 
     args = parser.parse_args()
     args.func(args)

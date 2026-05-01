@@ -89,7 +89,7 @@ Phase gate:
 
 ### Phase 2: Artifact Quality For Design Docs And PRs
 
-Status: next implementation phase
+Status: active
 
 Purpose:
 
@@ -99,10 +99,10 @@ mission-control packets.
 
 Deliverables:
 
-- [ ] Fixture set of good, weak, and polished-but-unproven design/PR documents.
-- [ ] Local scoring adapter for evidence, tests, risks, rollback, and acceptance
+- [x] Fixture set of good, weak, and polished-but-unproven design/PR documents.
+- [x] Local scoring adapter for evidence, tests, risks, rollback, and acceptance
   gates.
-- [ ] Report format that can be attached to future missions.
+- [x] Report format that can be attached to future missions.
 - [ ] Baseline/candidate reports that can be recomputed.
 
 Phase gate:
@@ -293,10 +293,10 @@ mission-control packets.
 Deliverables:
 
 - [x] Generator acceptance brief for `artifact_quality`.
-- [ ] Fixture documents with known quality failures.
-- [ ] Local scoring adapter for evidence, tests, risk, rollback, and acceptance
+- [x] Fixture documents with known quality failures.
+- [x] Local scoring adapter for evidence, tests, risk, rollback, and acceptance
   gates.
-- [ ] PR/design-doc report format that can be attached to future missions.
+- [x] PR/design-doc report format that can be attached to future missions.
 - [ ] Recomputeable baseline/candidate reports.
 
 Quality gates:
@@ -415,13 +415,14 @@ Quality gates:
 
 ## Next Executable Slice
 
-Land Phase 0 and Phase 1 route mode:
+Land Phase 2 artifact-quality scorer:
 
-1. Commit the staged `task.md` plus MiroFish route-mode slice.
-2. Start Phase 2 with artifact-quality fixtures and scoring adapter.
-3. Keep Phase 3 tool-operation design close, because artifact-quality reports
+1. Verify artifact-quality fixtures, scorer, CLI, and docs.
+2. Commit the Phase 2 scorer slice.
+3. Add recomputeable baseline/candidate reports for artifact-quality fixtures.
+4. Keep Phase 3 tool-operation design close, because artifact-quality reports
    should eventually feed mission-control/tool-operation proof.
-4. Do not begin product-surface wiring until Phase 7 gates are met.
+5. Do not begin product-surface wiring until Phase 7 gates are met.
 
 ## Parking Lot
 

@@ -53,6 +53,24 @@ Acceptance cases:
 - Turn implementation notes into a concise PR-ready summary.
 - Reject a polished document that lacks runnable proof.
 
+Current executable local scorer:
+
+```bash
+python -m chip_labs.cli artifact-quality-score \
+  --input docs/creator_system/examples/artifact-quality/good_design_pr.md \
+  --artifact-kind pr_writeup \
+  --output reports/artifact-quality.json \
+  --markdown-output reports/artifact-quality.md
+```
+
+Current fixtures:
+
+- `good_design_pr.md`: review-ready report with acceptance gates, runnable
+  evidence, tests, risks, rollback, claim boundary, and mission handoff.
+- `weak_design_pr.md`: sparse note that needs repair actions.
+- `polished_unproven_trap.md`: polished prose that must block because it lacks
+  runnable proof and rollback evidence.
+
 Next real adapters:
 
 - Feed real design docs and PR notes from Spark workspaces.
