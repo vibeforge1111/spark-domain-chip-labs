@@ -142,6 +142,46 @@ Current simulator protocol:
   - fast-taste-judge
 - Aggregation rule: rank by median predicted save/share/reply intent, then inspect weak segments.
 
+Current executable local harness:
+
+```bash
+python -m chip_labs.cli mirofish-content-simulate \
+  --input content-candidates.json \
+  --output reports/mirofish-content-simulation.json \
+  --markdown-output reports/mirofish-content-simulation.md
+```
+
+Example input:
+
+```json
+{
+  "candidates": [
+    {
+      "id": "specific",
+      "text": "7 benchmark mistakes that make AI agent demos look better than they are"
+    },
+    {
+      "id": "operator",
+      "text": "How to prove an agent workflow actually improved before you ship it"
+    }
+  ],
+  "persona_segments": [
+    "founder-builders",
+    "technical-operators",
+    "creator-economy-readers",
+    "skeptical-experts"
+  ],
+  "rlm_judges": [
+    "spark-local-judge",
+    "frontier-reasoning-judge",
+    "fast-taste-judge"
+  ]
+}
+```
+
+The current harness is deterministic. The judge names represent future adapter
+slots, not live provider calls yet.
+
 Scoring dimensions:
 
 - predicted save intent
@@ -159,7 +199,7 @@ Acceptance cases:
 Next real adapters:
 
 - Accept a list of titles, hooks, post ideas, or drafts as the benchmark input.
-- Run batches across multiple model judges when available.
+- Run batches across multiple model judges when provider adapters are available.
 - Save per-persona and per-judge rows, not only aggregate scores.
 - Compare simulator predictions against actual post outcomes when available.
 - Use outcome deltas to calibrate persona weights and judge reliability.

@@ -154,6 +154,12 @@ content simulation with multi-RLM judge batches, Spark doctor adversarial
 checks, and Startup YC operator advice.
 Each generated proof remains `candidate_review` only.
 
+The first local content-simulation harness is available as:
+
+```bash
+python -m chip_labs.cli mirofish-content-simulate --input content-candidates.json
+```
+
 For `transfer_supported` and higher, the gate also requires `reports/transfer_summary.json` and a matching `simulator_or_arena_result` in the Swarm packet, with positive transfer delta and passed constraints.
 
 If a run includes `reports/broad_transfer_probe.json`, the smoke gate validates it as a claim boundary. A negative broad probe warns at `transfer_supported`, because a focused transfer can still be real and useful. The same negative broad probe blocks `network_absorbable` and `standard_update`, because other agents should not absorb broad mastery or creator-methodology changes from evidence that fails wider transfer.

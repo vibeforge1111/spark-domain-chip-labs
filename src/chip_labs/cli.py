@@ -1010,6 +1010,23 @@ def cmd_mirofish_frontier_shortlist_export(args: argparse.Namespace) -> None:
     _write_text_output(args.output, result)
 
 
+def cmd_mirofish_content_simulate(args: argparse.Namespace) -> None:
+    """Rank content candidates with local MiroFish-style simulator judges."""
+    from .mirofish.content_simulation import (
+        format_content_simulation_markdown,
+        simulate_content_selection,
+    )
+
+    input_data = _load_input(args.input)
+    result = simulate_content_selection(input_data)
+    _write_output(args.output, result)
+    if args.markdown_output:
+        _write_text_output(
+            args.markdown_output,
+            format_content_simulation_markdown(result),
+        )
+
+
 def cmd_mirofish_frontier_viz(args: argparse.Namespace) -> None:
     """Build a viz-style 500-domain frontier graph packet and optional HTML page."""
     from .mirofish.hybrid import build_frontier_viz_packet, render_frontier_viz_html
@@ -1697,6 +1714,26 @@ def main() -> None:
         help="Document title for the markdown export.",
     )
     p_mirofish_frontier_shortlist_export.set_defaults(func=cmd_mirofish_frontier_shortlist_export)
+
+    # mirofish-content-simulate
+    p_mirofish_content_simulate = sub.add_parser(
+        "mirofish-content-simulate",
+        help="Rank content ideas, titles, hooks, or drafts with a local MiroFish-style simulator.",
+    )
+    p_mirofish_content_simulate.add_argument(
+        "--input",
+        type=str,
+        required=True,
+        help="Input JSON with candidates plus optional persona_segments and rlm_judges.",
+    )
+    p_mirofish_content_simulate.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_content_simulate.add_argument(
+        "--markdown-output",
+        type=str,
+        default=None,
+        help="Optional markdown readout path.",
+    )
+    p_mirofish_content_simulate.set_defaults(func=cmd_mirofish_content_simulate)
 
     # mirofish-frontier-viz
     p_mirofish_frontier_viz = sub.add_parser(
