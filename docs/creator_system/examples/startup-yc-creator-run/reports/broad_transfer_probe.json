@@ -1,0 +1,117 @@
+{
+  "schema_version": "adaptive_creator_loop.report.broad_transfer_probe.v1",
+  "source": "startup-bench",
+  "suite": "dev_scenario_suite compatible subset",
+  "scenario_count": 10,
+  "excluded_scenario_count": 3,
+  "excluded_reason": "Startup YC tool script requires sales.pipeline.update, which is absent from the people and product dev scenarios.",
+  "baseline_runner": "heuristic_resilient_operator",
+  "transfer_runner": "specialization-path-startup-yc/benchmarks/startup-yc.tool_calls.json",
+  "baseline_score": 0.6885,
+  "transfer_score": 0.6734,
+  "delta": -0.0151,
+  "constraints_passed": true,
+  "positive_scenarios": 2,
+  "negative_scenarios": 8,
+  "flat_scenarios": 0,
+  "scenario_results": [
+    {
+      "scenario_id": "zero_to_one_design_partner_001",
+      "track": "0to1",
+      "startup_yc_score": 0.6313,
+      "baseline_score": 0.5957,
+      "delta": 0.0356,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    },
+    {
+      "scenario_id": "b2b_saas_runway_pricing_001",
+      "track": "b2b_saas",
+      "startup_yc_score": 0.6444,
+      "baseline_score": 0.651,
+      "delta": -0.0066,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    },
+    {
+      "scenario_id": "board_reforecast_pressure_001",
+      "track": "board",
+      "startup_yc_score": 0.6155,
+      "baseline_score": 0.6015,
+      "delta": 0.014,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    },
+    {
+      "scenario_id": "crisis_trust_recovery_001",
+      "track": "crisis",
+      "startup_yc_score": 0.6685,
+      "baseline_score": 0.6881,
+      "delta": -0.0196,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    },
+    {
+      "scenario_id": "scale_capacity_balance_001",
+      "track": "scale",
+      "startup_yc_score": 0.8032,
+      "baseline_score": 0.804,
+      "delta": -0.0008,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    },
+    {
+      "scenario_id": "gtm_channel_mix_reset_001",
+      "track": "gtm",
+      "startup_yc_score": 0.6428,
+      "baseline_score": 0.692,
+      "delta": -0.0492,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    },
+    {
+      "scenario_id": "gtm_launch_distribution_001",
+      "track": "gtm",
+      "startup_yc_score": 0.6608,
+      "baseline_score": 0.7134,
+      "delta": -0.0526,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    },
+    {
+      "scenario_id": "gtm_growth_experiment_002",
+      "track": "gtm",
+      "startup_yc_score": 0.6729,
+      "baseline_score": 0.6954,
+      "delta": -0.0225,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    },
+    {
+      "scenario_id": "finance_runway_treasury_tradeoff_001",
+      "track": "finance",
+      "startup_yc_score": 0.7519,
+      "baseline_score": 0.7907,
+      "delta": -0.0388,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    },
+    {
+      "scenario_id": "finance_fundraise_reset_003",
+      "track": "finance",
+      "startup_yc_score": 0.6427,
+      "baseline_score": 0.6528,
+      "delta": -0.0101,
+      "startup_yc_pass_rate": 1.0,
+      "baseline_pass_rate": 1.0
+    }
+  ],
+  "verdict": "defer_broad_transfer",
+  "interpretation": "The Startup YC script shows focused transfer but does not yet beat the resilient baseline on the compatible 10-scenario Startup Bench subset.",
+  "next_actions": [
+    "Create track-specific Startup YC tool scripts instead of reusing one 0-to-1 script everywhere.",
+    "Add product and people tool-surface adapters before claiming full-suite transfer.",
+    "Use this broad probe as weak-case guidance for Autoloop Creator and Benchmark Creator."
+  ]
+}
+

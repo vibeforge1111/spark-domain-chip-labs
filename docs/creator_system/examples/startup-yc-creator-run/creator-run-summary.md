@@ -18,10 +18,11 @@ This example binds the adaptive creator-loop standard to the existing Startup YC
 | Weak-5 repeat | n/a | n/a | +0.0053 | n/a | focused pattern only |
 | False-demand patch | n/a | n/a | +0.0092 / +0.0122 | n/a | focused mechanism improved |
 | Reliability patch | n/a | n/a | +0.0044 | n/a | focused mechanism improved |
+| Startup Bench compatible broad probe | 0.6885 | 0.6734 | -0.0151 | n/a | defer broad transfer |
 
 ## Current Claim
 
-This is a transfer-supported Startup YC mastery packet, not a final mastery claim. The current transfer proof covers one fresh Startup Bench 0-to-1 activation scenario; the next promotion gate should add a broader multi-scenario Startup Bench suite, Founder Arena, or external held-out operator transfer.
+This is a transfer-supported Startup YC mastery packet, not a final mastery claim. The current positive transfer proof covers one fresh Startup Bench 0-to-1 activation scenario. A compatible 10-scenario Startup Bench probe underperformed the resilient baseline by `-0.0151`, so broad transfer is deferred until track-specific tool scripts/adapters improve.
 
 ## Smoke Gate
 

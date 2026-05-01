@@ -11,6 +11,7 @@ Evidence referenced:
 - Mean validated-pack score: `0.7003`.
 - Mean validated-pack delta: `+0.0200`.
 - Startup Bench fresh 0-to-1 transfer delta: `+0.0169`.
+- Startup Bench compatible 10-scenario broad probe delta: `-0.0151`.
 - Case count: `20`.
 - Trap band case count: `5`.
 - Mastery readiness from source proof: `candidate_review`.
@@ -20,4 +21,4 @@ Known limits:
 
 - This fixture references source repos instead of copying full benchmark corpora.
 - The current smoke gate checks artifact presence and schema only.
-- The transfer proof currently covers one fresh Startup Bench scenario; broader mastery needs a multi-scenario transfer run.
+- Broad transfer is not proven yet. The compatible 10-scenario probe shows the current Startup YC script is too 0-to-1-specific and needs track-specific tool scripts/adapters.

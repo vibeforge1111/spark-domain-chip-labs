@@ -45,7 +45,8 @@
       "reports/baseline.json",
       "reports/candidate.json",
       "reports/absorption_summary.json",
-      "reports/transfer_summary.json"
+      "reports/transfer_summary.json",
+      "reports/broad_transfer_probe.json"
     ]
   },
   "governance": {
@@ -63,8 +64,9 @@
     "complexity_delta": "Fixture adds no runtime complexity; it packages existing evidence into the adaptive creator-run artifact contract.",
     "known_limits": [
       "Only one Startup Bench transfer scenario has been run so far.",
-      "The fixture does not itself rerun Startup Bench.",
-      "The current smoke CLI checks presence before evidence semantics."
+      "A compatible 10-scenario Startup Bench broad-transfer probe is negative overall at -0.0151.",
+      "The fixture stores Startup Bench results but does not itself rerun Startup Bench.",
+      "The current smoke CLI validates evidence semantics for claimed tiers but does not recompute source benchmark reports."
     ]
   }
 }

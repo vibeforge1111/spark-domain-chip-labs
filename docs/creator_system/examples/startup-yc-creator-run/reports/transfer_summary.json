@@ -20,6 +20,7 @@
   "interpretation": "The Startup YC tool script transferred positively to one fresh Startup Bench 0-to-1 activation scenario, beating the resilient baseline by +0.0169 while both runs passed constraints.",
   "limits": [
     "This is a single-scenario transfer proof, not broad startup mastery.",
+    "A 10-scenario compatible-suite probe underperformed the resilient baseline by -0.0151 overall.",
     "The Startup YC script improved cash efficiency and revenue quality but trailed the baseline on product health and strategic coherence.",
     "Next gate should run a multi-scenario Startup Bench suite or Founder Arena transfer."
   ]
