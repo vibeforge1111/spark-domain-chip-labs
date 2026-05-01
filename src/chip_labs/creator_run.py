@@ -46,6 +46,21 @@ BROAD_TRANSFER_BLOCKING_TIERS = (
 EVIDENCE_TIER_RANK = {tier: index for index, tier in enumerate(EVIDENCE_TIERS)}
 
 EVIDENCE_LADDER_PATH = "reports/evidence_ladder.md"
+ARTIFACT_MANIFEST_PATH = "created-artifact-manifest.json"
+ARTIFACT_MANIFEST_STATUSES = {
+    "planned",
+    "created",
+    "validated",
+    "blocked",
+    "published",
+}
+ARTIFACT_MANIFEST_KINDS = {
+    "domain_chip",
+    "specialization_path",
+    "benchmark_pack",
+    "autoloop_policy",
+    "swarm_packet",
+}
 
 TEMPLATE_FILENAMES = {
     "creator-intent.template.json": "creator-intent.json",
@@ -459,6 +474,9 @@ def validate_creator_run(run_dir: str | Path) -> SmokeResult:
     adapter_map = _load_required_json(
         run_path / "adapter-map.json", "adapter_map", checks
     )
+    artifact_manifest = _load_required_json(
+        run_path / ARTIFACT_MANIFEST_PATH, "created_artifact_manifest", checks
+    )
 
     if intent:
         _check_schema_prefix(
@@ -507,6 +525,9 @@ def validate_creator_run(run_dir: str | Path) -> SmokeResult:
                 )
             )
         _check_adapter_sections(adapter_map, checks)
+
+    if artifact_manifest:
+        _check_artifact_manifest(artifact_manifest, intent, checks)
 
     for relative_path in READY_FOR_BASELINE_PATHS:
         if not (run_path / relative_path).exists():
@@ -761,6 +782,135 @@ def _check_adapter_sections(
                     f"{section}_section", "fail", f"{section} must be an object."
                 )
             )
+
+
+def _check_artifact_manifest(
+    artifact_manifest: dict[str, Any],
+    intent: dict[str, Any] | None,
+    checks: list[SmokeCheck],
+) -> None:
+    _check_schema_prefix(
+        artifact_manifest,
+        "adaptive_creator_loop.created_artifact_manifest.",
+        "created_artifact_manifest_schema",
+        checks,
+    )
+
+    manifest_run_id = str(artifact_manifest.get("creator_run_id") or "")
+    intent_run_id = str((intent or {}).get("run_id") or "")
+    if not manifest_run_id:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_run_id",
+                "fail",
+                "created-artifact-manifest.json must include creator_run_id.",
+            )
+        )
+    elif intent_run_id and manifest_run_id != intent_run_id:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_run_id",
+                "fail",
+                f"created-artifact-manifest.json creator_run_id '{manifest_run_id}' does not match creator-intent run_id '{intent_run_id}'.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_run_id",
+                "pass",
+                "created-artifact-manifest.json creator_run_id is present and aligned.",
+            )
+        )
+
+    publication_boundary = str(artifact_manifest.get("publication_boundary") or "")
+    if publication_boundary in {"local_only", "github_pr", "swarm_shared"}:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_publication_boundary",
+                "pass",
+                f"Artifact manifest publication boundary is {publication_boundary}.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_publication_boundary",
+                "fail",
+                "Artifact manifest publication_boundary must be local_only, github_pr, or swarm_shared.",
+            )
+        )
+
+    artifacts = artifact_manifest.get("artifacts")
+    if not isinstance(artifacts, list) or not artifacts:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_artifacts",
+                "fail",
+                "Artifact manifest must include a non-empty artifacts list.",
+            )
+        )
+        return
+
+    checks.append(
+        SmokeCheck(
+            "created_artifact_manifest_artifacts",
+            "pass",
+            f"Artifact manifest declares {len(artifacts)} artifact(s).",
+        )
+    )
+
+    seen_kinds: set[str] = set()
+    invalid_entries: list[str] = []
+    for index, artifact in enumerate(artifacts):
+        if not isinstance(artifact, dict):
+            invalid_entries.append(f"artifact[{index}] is not an object")
+            continue
+        kind = str(artifact.get("kind") or "")
+        path = str(artifact.get("path") or "")
+        status = str(artifact.get("status") or "")
+        if kind:
+            seen_kinds.add(kind)
+        if not kind or not path or status not in ARTIFACT_MANIFEST_STATUSES:
+            invalid_entries.append(
+                f"artifact[{index}] must include kind, path, and valid status"
+            )
+
+    if invalid_entries:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_entries",
+                "fail",
+                "; ".join(invalid_entries),
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_entries",
+                "pass",
+                "Artifact manifest entries include kind, path, and valid status.",
+            )
+        )
+
+    missing_kinds = sorted(ARTIFACT_MANIFEST_KINDS - seen_kinds)
+    if missing_kinds:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_required_kinds",
+                "fail",
+                "Artifact manifest is missing required kinds: "
+                + ", ".join(missing_kinds),
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_required_kinds",
+                "pass",
+                "Artifact manifest includes the required creator artifact kinds.",
+            )
+        )
 
 
 def _check_elevated_evidence(

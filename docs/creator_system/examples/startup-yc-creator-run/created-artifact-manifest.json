@@ -1,0 +1,70 @@
+{
+  "schema_version": "adaptive_creator_loop.created_artifact_manifest.v1",
+  "creator_run_id": "creator-run-2026-05-01-startup-yc",
+  "repo": {
+    "path": "docs/creator_system/examples/startup-yc-creator-run",
+    "remote": "",
+    "branch": "main",
+    "commit": ""
+  },
+  "artifacts": [
+    {
+      "kind": "domain_chip",
+      "path": "domain-chip/",
+      "status": "validated",
+      "schema_version": "",
+      "evidence_tier": "transfer_supported",
+      "notes": "Reference links to domain-chip-startup-yc and local doctrine/scoring hook artifacts."
+    },
+    {
+      "kind": "specialization_path",
+      "path": "specialization-path/",
+      "status": "validated",
+      "schema_version": "",
+      "evidence_tier": "transfer_supported",
+      "notes": "Reference links to specialization-path-startup-yc and its absorption bundle."
+    },
+    {
+      "kind": "benchmark_pack",
+      "path": "benchmark/",
+      "status": "validated",
+      "schema_version": "adaptive_creator_loop.benchmark_pack_manifest.v1",
+      "evidence_tier": "transfer_supported",
+      "notes": "Backed by the 20-case absorption suite and 12-scenario fresh validation suite."
+    },
+    {
+      "kind": "autoloop_policy",
+      "path": "autoloop/",
+      "status": "validated",
+      "schema_version": "spark-autoloop-policy.v1",
+      "evidence_tier": "transfer_supported",
+      "notes": "Mutation surface and promotion rules are defined for benchmark-backed Startup YC loops."
+    },
+    {
+      "kind": "absorption_bundle",
+      "path": "reports/absorption_summary.json",
+      "status": "validated",
+      "schema_version": "",
+      "evidence_tier": "candidate_review",
+      "notes": "Fresh-agent validated-pack mode improved the full absorption suite by +0.0200."
+    },
+    {
+      "kind": "swarm_packet",
+      "path": "swarm/contribution_packet.json",
+      "status": "validated",
+      "schema_version": "adaptive_creator_loop.swarm_contribution_packet.v1",
+      "evidence_tier": "transfer_supported",
+      "notes": "Packet is ready for review but not network publication."
+    },
+    {
+      "kind": "report",
+      "path": "reports/evidence_ladder.md",
+      "status": "validated",
+      "schema_version": "",
+      "evidence_tier": "transfer_supported",
+      "notes": "Evidence ladder states safe and unsafe claims for the current fixture."
+    }
+  ],
+  "publication_boundary": "local_only",
+  "next_action": "Review provenance, privacy, rollback, and claim boundaries before publication."
+}

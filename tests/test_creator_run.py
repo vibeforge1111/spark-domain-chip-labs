@@ -36,6 +36,11 @@ def test_init_creator_run_creates_valid_prototype(tmp_path: Path) -> None:
     assert artifact_manifest["creator_run_id"] == result["run_id"]
     assert artifact_manifest["publication_boundary"] == "local_only"
     assert smoke.verdict == "prototype"
+    assert any(
+        check.name == "created_artifact_manifest_required_kinds"
+        and check.status == "pass"
+        for check in smoke.checks
+    )
     assert "benchmark/manifest.json" in smoke.missing_paths
 
 
@@ -296,6 +301,40 @@ def test_creator_run_blocks_missing_intent(tmp_path: Path) -> None:
     assert smoke.verdict == "blocked"
     assert any(
         check.name == "creator_intent" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_creator_run_blocks_missing_artifact_manifest(tmp_path: Path) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Test missing manifest.")
+    (run_dir / "created-artifact-manifest.json").unlink()
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "created_artifact_manifest" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_creator_run_blocks_artifact_manifest_run_id_mismatch(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Test manifest mismatch.")
+    manifest_path = run_dir / "created-artifact-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["creator_run_id"] = "creator-run-other"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "created_artifact_manifest_run_id"
+        and check.status == "fail"
         for check in smoke.checks
     )
 

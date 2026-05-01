@@ -132,6 +132,7 @@ Run this before changing templates or asking Builder to generate new creator-run
 
 The creator-run smoke gate enforces conservative evidence claims:
 
+- Every creator run requires `created-artifact-manifest.json` with aligned `creator_run_id`, publication boundary, required artifact kinds, and valid artifact statuses.
 - `candidate_review` requires positive candidate delta, baseline beat, positive absorption delta, trap coverage, provenance, and rollback.
 - `transfer_supported` requires a positive transfer report and matching Swarm packet transfer evidence.
 - `broad_transfer_probe.json`, when present, defines the claim boundary.
@@ -185,6 +186,7 @@ Current expected state:
 - evidence tier: `transfer_supported`
 - blockers: none
 - warnings: none
+- artifact manifest: present and aligned
 
 The fixture is now backed by the Startup YC fresh validation suite:
 
