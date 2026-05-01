@@ -277,6 +277,8 @@ Exit criteria:
 
 ### Phase 2: Creator packet schema
 
+Status: initial schema anchors added in `docs/creator_system/schemas/`.
+
 Build one shared creator request/response schema:
 
 - `creator_intent_packet`
@@ -287,7 +289,8 @@ Build one shared creator request/response schema:
 
 Exit criteria:
 
-- Telegram, Builder, and Spawner can all pass the same packet shape around
+- Telegram, Builder, and Spawner can all pass the same packet shape around.
+- Product surfaces still defer evidence truth to `creator-run-smoke` and `creator-run-doctor`.
 
 ### Phase 3: Golden Startup YC reference
 
@@ -346,4 +349,3 @@ Exit criteria:
 - No generic router keywords that hijack unrelated user messages.
 - No hidden fallback repo when an attached specialization repo exists.
 - No "mastery" label without transfer or repeat evidence.
-

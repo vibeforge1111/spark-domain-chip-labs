@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/loop-policy-manifest.schema.json",
+  "title": "Adaptive Creator Loop Policy Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "loop_key",
+    "target_capability",
+    "mutation_surface",
+    "benchmark_manifest",
+    "keep_condition",
+    "rollback_condition",
+    "promotion_condition",
+    "lineage_required"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "spark-autoloop-policy.v1"
+    },
+    "loop_key": {"type": "string"},
+    "target_capability": {"type": "string"},
+    "evidence_tier_goal": {"type": "string"},
+    "mutation_surface": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "frozen_surfaces": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "benchmark_manifest": {"type": "string"},
+    "baseline_report": {"type": "string"},
+    "candidate_report": {"type": "string"},
+    "held_out_report": {"type": "string"},
+    "absorption_report": {"type": "string"},
+    "transfer_report": {"type": "string"},
+    "max_rounds_before_review": {"type": "integer", "minimum": 1},
+    "keep_condition": {"type": "string"},
+    "rollback_condition": {"type": "string"},
+    "promotion_condition": {"type": "string"},
+    "diagnosis_when_zero_keeps": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "lineage_required": {"type": "boolean"},
+    "privacy_boundary": {"type": "string"},
+    "network_publication_allowed": {"type": "boolean"},
+    "review_required_before_network_publication": {"type": "boolean"}
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/created-artifact-manifest.schema.json",
+  "title": "Adaptive Creator Loop Created Artifact Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "creator_run_id",
+    "artifacts",
+    "publication_boundary"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.created_artifact_manifest.v1"
+    },
+    "creator_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repo": {
+      "type": "object",
+      "properties": {
+        "path": {"type": "string"},
+        "remote": {"type": "string"},
+        "branch": {"type": "string"},
+        "commit": {"type": "string"}
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path", "status"],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "domain_chip",
+              "specialization_path",
+              "benchmark_pack",
+              "autoloop_policy",
+              "absorption_bundle",
+              "swarm_packet",
+              "report",
+              "standard_change"
+            ]
+          },
+          "path": {"type": "string"},
+          "status": {
+            "type": "string",
+            "enum": ["planned", "created", "validated", "blocked", "published"]
+          },
+          "schema_version": {"type": "string"},
+          "evidence_tier": {"type": "string"},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "publication_boundary": {
+      "type": "string",
+      "enum": ["local_only", "github_pr", "swarm_shared"]
+    },
+    "next_action": {
+      "type": "string"
+    }
+  }
+}

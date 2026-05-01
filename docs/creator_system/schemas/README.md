@@ -10,6 +10,9 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | --- | --- |
 | [creator-intent.schema.json](creator-intent.schema.json) | `creator-intent.json` |
 | [adapter-map.schema.json](adapter-map.schema.json) | `adapter-map.json` |
+| [created-artifact-manifest.schema.json](created-artifact-manifest.schema.json) | Shared manifest of generated chip/path/benchmark/loop/packet artifacts |
+| [benchmark-pack-manifest.schema.json](benchmark-pack-manifest.schema.json) | Benchmark pack identity, family, lanes, scoring, anti-gaming, and promotion rules |
+| [loop-policy-manifest.schema.json](loop-policy-manifest.schema.json) | Autoloop policy, mutation surface, benchmark binding, rollback, and promotion gates |
 | [swarm-contribution-packet.schema.json](swarm-contribution-packet.schema.json) | `swarm/contribution_packet.json` |
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
 | [doctor-result.schema.json](doctor-result.schema.json) | `creator-run-doctor` output |
@@ -17,3 +20,14 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 
 The smoke validator remains stricter than these schemas where score semantics, promotion gates, transfer boundaries, and publication readiness are concerned.
 
+## Phase 2 Packet Coverage
+
+These schemas cover the shared packet layer called for by the creator master plan:
+
+- creator intent: `creator-intent.schema.json`
+- created artifacts: `created-artifact-manifest.schema.json`
+- benchmark pack: `benchmark-pack-manifest.schema.json`
+- loop policy: `loop-policy-manifest.schema.json`
+- Swarm promotion packet: `swarm-contribution-packet.schema.json`
+
+Product surfaces should pass these shapes around, then use `creator-run-smoke` and `creator-run-doctor` for the stricter evidence verdict.
