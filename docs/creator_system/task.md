@@ -226,6 +226,16 @@ Phase gate:
   independent truth.
 - No surface hides claim boundaries or publication gates.
 
+Current handoff:
+
+- Local proof domains now have executable tests and saved evidence.
+- Product wiring is still intentionally deferred until Builder, Telegram,
+  Spawner, Canvas, and Kanban can consume canonical creator-run outputs without
+  hiding claim boundaries.
+- Start this phase by designing read-only adapters over existing smoke, doctor,
+  tool-operation, content-route, artifact-quality, retrieval-memory, and Startup
+  YC validation packets.
+
 ### Phase 8: Network Absorption And Public Standard
 
 Status: future
@@ -416,15 +426,14 @@ Quality gates:
 
 ## Next Executable Slice
 
-Land Phase 6 retrieval-memory local contract:
+Next deferred phase:
 
-1. Verify correct prior decision fixture passes local memory-lane checks.
-2. Verify stale, contradicted, residue, and unreviewed network-shareable
-   fixtures block promotion.
-3. Verify `retrieval-memory-check --fail-on-blocked` exits nonzero for bad
-   fixtures.
-4. Commit the Phase 6 local-contract slice.
-5. Do not begin product-surface wiring until Phase 7 gates are met.
+1. Do not wire product surfaces until the user explicitly starts Phase 7.
+2. If Phase 7 starts, build read-only adapters over canonical creator-run
+   outputs first.
+3. Keep network absorption blocked until multi-seed validation,
+   human/operator calibration, privacy review, rollback review, and publication
+   approval pass.
 
 ## Parking Lot
 
