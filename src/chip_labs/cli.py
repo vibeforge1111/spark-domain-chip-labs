@@ -1196,6 +1196,34 @@ def cmd_retrieval_memory_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_creator_mission_status(args: argparse.Namespace) -> None:
+    """Build a read-only creator mission status for product surfaces."""
+    from .creator_mission_adapter import build_creator_mission_status, load_json_packet
+
+    result = build_creator_mission_status(
+        mission_id=args.mission_id,
+        publish_mode=args.publish_mode,
+        smoke=load_json_packet(args.smoke),
+        doctor=load_json_packet(args.doctor) if args.doctor else None,
+        tool_operation=(
+            load_json_packet(args.tool_operation) if args.tool_operation else None
+        ),
+        artifact_quality=(
+            load_json_packet(args.artifact_quality) if args.artifact_quality else None
+        ),
+        content_route=load_json_packet(args.content_route) if args.content_route else None,
+        retrieval_memory=(
+            load_json_packet(args.retrieval_memory) if args.retrieval_memory else None
+        ),
+        startup_validation=(
+            load_json_packet(args.startup_validation) if args.startup_validation else None
+        ),
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["blockers"]:
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -2082,6 +2110,51 @@ def main() -> None:
         help="Exit with status 1 when retrieval-memory promotion is blocked.",
     )
     p_retrieval_memory_check.set_defaults(func=cmd_retrieval_memory_check)
+
+    # creator-mission-status
+    p_creator_mission_status = sub.add_parser(
+        "creator-mission-status",
+        help="Build a read-only creator mission packet for Builder/Telegram/Spawner/Canvas/Kanban.",
+    )
+    p_creator_mission_status.add_argument(
+        "--smoke", type=str, required=True, help="creator-run-smoke result JSON path."
+    )
+    p_creator_mission_status.add_argument(
+        "--doctor", type=str, default=None, help="Optional creator-run-doctor result JSON path."
+    )
+    p_creator_mission_status.add_argument(
+        "--tool-operation", type=str, default=None, help="Optional tool-operation check JSON path."
+    )
+    p_creator_mission_status.add_argument(
+        "--artifact-quality", type=str, default=None, help="Optional artifact-quality report JSON path."
+    )
+    p_creator_mission_status.add_argument(
+        "--content-route", type=str, default=None, help="Optional MiroFish content route JSON path."
+    )
+    p_creator_mission_status.add_argument(
+        "--retrieval-memory", type=str, default=None, help="Optional retrieval-memory check JSON path."
+    )
+    p_creator_mission_status.add_argument(
+        "--startup-validation", type=str, default=None, help="Optional Startup YC validation plan JSON path."
+    )
+    p_creator_mission_status.add_argument(
+        "--mission-id", type=str, default="creator-mission-local", help="Mission identifier for product surfaces."
+    )
+    p_creator_mission_status.add_argument(
+        "--publish-mode",
+        choices=("local_only", "github_pr", "swarm_shared"),
+        default="local_only",
+        help="Requested product publication mode. This command stays read-only.",
+    )
+    p_creator_mission_status.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_creator_mission_status.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the mission status has blockers.",
+    )
+    p_creator_mission_status.set_defaults(func=cmd_creator_mission_status)
 
     args = parser.parse_args()
     args.func(args)

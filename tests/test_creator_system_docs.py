@@ -12,6 +12,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
 
     assert "## Current Claim Levels" in text
     assert "CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md" in text
+    assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
     assert "| Startup YC reference fixture | `transfer_supported` |" in text
     assert "`network_absorbable` is blocked" in text
     assert "| Product surfaces | Deferred |" in text
@@ -34,6 +35,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "artifact-quality-benchmark",
         "tool-operation-check",
         "retrieval-memory-check",
+        "creator-mission-status",
         "mirofish-content-simulate",
         "mirofish-content-route",
     ):

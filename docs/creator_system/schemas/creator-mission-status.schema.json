@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/creator-mission-status.schema.json",
+  "title": "Adaptive Creator Loop Creator Mission Status",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mission_id",
+    "read_only",
+    "claim_boundary",
+    "canonical",
+    "publication",
+    "source_packets",
+    "blockers",
+    "surface_adapters"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.creator_mission_status.v1"
+    },
+    "mission_id": {"type": "string"},
+    "read_only": {"const": true},
+    "claim_boundary": {"type": "string"},
+    "canonical": {
+      "type": "object",
+      "required": ["verdict", "stage_status", "evidence_tier"]
+    },
+    "publication": {
+      "type": "object",
+      "required": [
+        "publish_mode",
+        "swarm_shared_allowed",
+        "network_absorbable",
+        "required_gates",
+        "missing_gates"
+      ]
+    },
+    "source_packets": {"type": "array"},
+    "blockers": {"type": "array"},
+    "warnings": {"type": "array"},
+    "next_actions": {"type": "array"},
+    "surface_adapters": {
+      "type": "object",
+      "required": ["builder", "telegram", "spawner", "canvas", "kanban"]
+    }
+  }
+}

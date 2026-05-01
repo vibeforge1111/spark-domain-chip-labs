@@ -17,6 +17,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
 | [doctor-result.schema.json](doctor-result.schema.json) | `creator-run-doctor` output |
 | [template-check-result.schema.json](template-check-result.schema.json) | `creator-run-template-check` output |
+| [creator-mission-status.schema.json](creator-mission-status.schema.json) | Read-only product surface adapter packet |
 
 The smoke validator remains stricter than these schemas where score semantics, promotion gates, transfer boundaries, and publication readiness are concerned.
 
@@ -30,4 +31,8 @@ These schemas cover the shared packet layer called for by the creator master pla
 - loop policy: `loop-policy-manifest.schema.json`
 - Swarm promotion packet: `swarm-contribution-packet.schema.json`
 
-Product surfaces should pass these shapes around, then use `creator-run-smoke` and `creator-run-doctor` for the stricter evidence verdict.
+Product surfaces should pass these shapes around, then use `creator-run-smoke`
+and `creator-run-doctor` for the stricter evidence verdict. The
+`creator-mission-status` packet is the read-only bridge for Builder, Telegram,
+Spawner, Canvas, and Kanban; it must not replace the underlying canonical
+packets.

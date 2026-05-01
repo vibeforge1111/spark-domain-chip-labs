@@ -19,6 +19,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [CREATOR_RUN_PRODUCTION_READINESS_V1.md](CREATOR_RUN_PRODUCTION_READINESS_V1.md) | Shippable creator-run CLI contract, smoke-result schema, integration rules, and V1 ship gate. |
 | [CREATOR_RUN_GOLDEN_PATH_V1.md](CREATOR_RUN_GOLDEN_PATH_V1.md) | CLI-first golden path from user goal to creator-run validation, doctor repair plan, and strict publication check. |
 | [PROMOTION_GATES_AND_EVIDENCE_TIERS.md](PROMOTION_GATES_AND_EVIDENCE_TIERS.md) | Canonical evidence-tier ladder, promotion gates, claim boundaries, and Startup YC seeded-variance reference pattern. |
+| [PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md](PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md) | Phase 7 read-only adapter contract for Builder, Telegram, Spawner, Canvas, and Kanban. |
 | [PHASE_2_PRODUCT_FLOW_BACKLOG.md](PHASE_2_PRODUCT_FLOW_BACKLOG.md) | Deferred Builder, Telegram, Spawner UI, Canvas, and Kanban integration contract for when product surfaces are ready. |
 | [AGENT_CREATOR_PLAYBOOK.md](AGENT_CREATOR_PLAYBOOK.md) | Step-by-step operating procedure for a Spark agent creating a new chip/path/benchmark/loop. |
 | [BENCHMARK_AND_AUTOLOOP_PROTOCOL.md](BENCHMARK_AND_AUTOLOOP_PROTOCOL.md) | Benchmark types, scoring reliability rules, and autoloop promotion gates. |
@@ -98,6 +99,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Run artifact benchmark | `python -m chip_labs.cli artifact-quality-benchmark runs/<run-name>` |
 | Check tool operation packet | `python -m chip_labs.cli tool-operation-check --input operation-packet.json --fail-on-blocked` |
 | Check retrieval memory packet | `python -m chip_labs.cli retrieval-memory-check --input memory-packet.json --fail-on-blocked` |
+| Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --output reports/creator-mission-status.json` |
 | Simulate content candidates | `python -m chip_labs.cli mirofish-content-simulate --task "<task>" --candidate "<A>" --candidate "<B>"` |
 | Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |
 

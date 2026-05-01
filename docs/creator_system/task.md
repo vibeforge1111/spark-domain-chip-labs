@@ -205,7 +205,7 @@ Phase gate:
 
 ### Phase 7: Product Surface Integration
 
-Status: explicitly deferred
+Status: read-only adapter contract active, runtime wiring deferred
 
 Purpose:
 
@@ -218,6 +218,7 @@ Deliverables:
 - [ ] Telegram guided creator commands.
 - [ ] Spawner mission execution and trace storage.
 - [ ] Canvas/Kanban read-only mission visualization.
+- [x] Shared read-only creator mission status packet.
 
 Phase gate:
 
@@ -229,12 +230,13 @@ Phase gate:
 Current handoff:
 
 - Local proof domains now have executable tests and saved evidence.
-- Product wiring is still intentionally deferred until Builder, Telegram,
-  Spawner, Canvas, and Kanban can consume canonical creator-run outputs without
-  hiding claim boundaries.
-- Start this phase by designing read-only adapters over existing smoke, doctor,
-  tool-operation, content-route, artifact-quality, retrieval-memory, and Startup
-  YC validation packets.
+- Product runtime wiring is still intentionally deferred to product repos.
+- `creator-mission-status` now provides read-only adapters over existing smoke,
+  doctor, tool-operation, content-route, artifact-quality, retrieval-memory, and
+  Startup YC validation packets.
+- Builder, Telegram, Spawner, Canvas, and Kanban should consume the shared
+  status packet and preserve blocked states, missing gates, and claim
+  boundaries.
 
 ### Phase 8: Network Absorption And Public Standard
 
@@ -426,12 +428,14 @@ Quality gates:
 
 ## Next Executable Slice
 
-Next deferred phase:
+Current Phase 7 executable slice:
 
-1. Do not wire product surfaces until the user explicitly starts Phase 7.
-2. If Phase 7 starts, build read-only adapters over canonical creator-run
-   outputs first.
-3. Keep network absorption blocked until multi-seed validation,
+1. Verify `creator-mission-status` emits Builder, Telegram, Spawner, Canvas, and
+   Kanban read-only views.
+2. Verify blocked canonical packets remain blocked in product views.
+3. Verify `swarm_shared` requests are blocked without network absorption gates.
+4. Keep runtime wiring in product repos, not this methodology repo.
+5. Keep network absorption blocked until multi-seed validation,
    human/operator calibration, privacy review, rollback review, and publication
    approval pass.
 
