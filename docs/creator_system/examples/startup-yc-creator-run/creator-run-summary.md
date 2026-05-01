@@ -18,11 +18,11 @@ This example binds the adaptive creator-loop standard to the existing Startup YC
 | Weak-5 repeat | n/a | n/a | +0.0053 | n/a | focused pattern only |
 | False-demand patch | n/a | n/a | +0.0092 / +0.0122 | n/a | focused mechanism improved |
 | Reliability patch | n/a | n/a | +0.0044 | n/a | focused mechanism improved |
-| Startup Bench compatible broad probe | 0.6885 | 0.6734 | -0.0151 | n/a | defer broad transfer |
+| Startup YC fresh validation suite | 0.7139 | 0.7699 | +0.0560 | 0 negative rows | 12/12 fresh scenarios won across six tracks |
 
 ## Current Claim
 
-This is a transfer-supported Startup YC mastery packet, not a final mastery claim. The current positive transfer proof covers one fresh Startup Bench 0-to-1 activation scenario. A compatible 10-scenario Startup Bench probe underperformed the resilient baseline by `-0.0151`, so broad transfer is deferred until track-specific tool scripts/adapters improve.
+This is a transfer-supported Startup YC mastery packet, not a final mastery claim. The current positive transfer proof covers the 20-case fresh-agent absorption suite plus a 12-scenario Startup YC fresh validation suite across GTM, Finance, Product, People, Board, and Scale. It does not claim `network_absorbable` because multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval are still open gates.
 
 ## Smoke Gate
 
