@@ -8,7 +8,9 @@ from pathlib import Path
 
 from chip_labs.artifact_quality import (
     CLAIM_BOUNDARY,
+    MANIFEST_PATH,
     format_artifact_quality_markdown,
+    run_artifact_quality_benchmark,
     score_artifact_quality_file,
 )
 
@@ -87,3 +89,42 @@ def test_cli_artifact_quality_score_outputs_json_and_markdown(tmp_path: Path) ->
     assert payload["verdict"] == "review_ready"
     assert payload["artifact_kind"] == "pr_writeup"
     assert markdown_path.read_text(encoding="utf-8").startswith("# Artifact Quality Report")
+
+
+def test_run_artifact_quality_benchmark_writes_recomputeable_reports(tmp_path: Path) -> None:
+    run_dir = tmp_path / "artifact-run"
+    artifact_dir = run_dir / "benchmark" / "artifacts"
+    artifact_dir.mkdir(parents=True)
+    reports_dir = run_dir / "reports"
+    reports_dir.mkdir()
+    for fixture_name in (
+        "good_design_pr.md",
+        "weak_design_pr.md",
+        "polished_unproven_trap.md",
+    ):
+        (artifact_dir / fixture_name).write_text(
+            (FIXTURE_DIR / fixture_name).read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+    manifest_path = run_dir / MANIFEST_PATH
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.write_text(
+        json.dumps({
+            "schema_version": "artifact_quality.benchmark_manifest.v1",
+            "baseline_artifact": "benchmark/artifacts/weak_design_pr.md",
+            "candidate_artifact": "benchmark/artifacts/good_design_pr.md",
+            "trap_artifacts": ["benchmark/artifacts/polished_unproven_trap.md"],
+        }, indent=2)
+        + "\n",
+        encoding="utf-8",
+    )
+
+    result = run_artifact_quality_benchmark(run_dir)
+
+    assert result["verdict"] == "pass"
+    assert (reports_dir / "baseline.json").exists()
+    assert (reports_dir / "candidate.json").exists()
+    assert (reports_dir / "absorption_summary.json").exists()
+    assert result["candidate"]["mean_delta"] > 0
+    assert result["candidate"]["trap_regressions"] == 0
+    assert result["candidate"]["provenance"]["source"] == "artifact_quality_v1"

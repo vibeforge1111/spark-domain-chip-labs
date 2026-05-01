@@ -1156,6 +1156,16 @@ def cmd_artifact_quality_score(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_artifact_quality_benchmark(args: argparse.Namespace) -> None:
+    """Run artifact-quality baseline/candidate/trap reports for a creator run."""
+    from .artifact_quality import run_artifact_quality_benchmark
+
+    result = run_artifact_quality_benchmark(args.run_dir)
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -1975,6 +1985,22 @@ def main() -> None:
         help="Exit with status 1 when the artifact is blocked.",
     )
     p_artifact_quality.set_defaults(func=cmd_artifact_quality_score)
+
+    # artifact-quality-benchmark
+    p_artifact_quality_benchmark = sub.add_parser(
+        "artifact-quality-benchmark",
+        help="Write recomputeable artifact-quality reports for a creator run.",
+    )
+    p_artifact_quality_benchmark.add_argument("run_dir", type=str, help="Creator-run directory.")
+    p_artifact_quality_benchmark.add_argument(
+        "--output", type=str, default=None, help="Output JSON summary file path."
+    )
+    p_artifact_quality_benchmark.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the artifact-quality benchmark is blocked.",
+    )
+    p_artifact_quality_benchmark.set_defaults(func=cmd_artifact_quality_benchmark)
 
     args = parser.parse_args()
     args.func(args)

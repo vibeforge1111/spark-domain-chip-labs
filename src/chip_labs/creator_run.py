@@ -1768,7 +1768,26 @@ def _check_recomputed_evidence(run_path: Path, checks: list[SmokeCheck]) -> None
         reports[relative_path] = report
         _check_report_provenance(run_path, relative_path, report, checks)
 
-    recomputed = _recompute_creator_generator_reports(run_path, checks)
+    provenance_sources = {
+        str(_nested(report, "provenance", "source"))
+        for report in reports.values()
+        if _nested(report, "provenance", "source")
+    }
+    if provenance_sources == {"creator_generator_v1"}:
+        recomputed = _recompute_creator_generator_reports(run_path, checks)
+    elif provenance_sources == {"artifact_quality_v1"}:
+        recomputed = _recompute_artifact_quality_reports(run_path, checks)
+    else:
+        checks.append(
+            SmokeCheck(
+                "recompute_provenance_source",
+                "fail",
+                "Recompute reports must share one supported provenance source; got "
+                + ", ".join(sorted(provenance_sources or {"missing"}))
+                + ".",
+            )
+        )
+        return
     if recomputed is None:
         return
 
@@ -1826,12 +1845,13 @@ def _check_report_provenance(
             )
         )
         return
-    if provenance.get("source") == "creator_generator_v1":
+    source = provenance.get("source")
+    if source in {"creator_generator_v1", "artifact_quality_v1"}:
         checks.append(
             SmokeCheck(
                 check_prefix,
                 "pass",
-                f"{relative_path} declares creator_generator_v1 provenance.",
+                f"{relative_path} declares {source} provenance.",
             )
         )
     else:
@@ -1839,7 +1859,7 @@ def _check_report_provenance(
             SmokeCheck(
                 check_prefix,
                 "fail",
-                f"{relative_path} provenance source must be creator_generator_v1.",
+                f"{relative_path} provenance source must be supported for recompute mode.",
             )
         )
 
@@ -1965,6 +1985,38 @@ def _recompute_creator_generator_reports(
         "absorption": {
             "mean_validated_pack_delta": candidate_delta,
             "trap_band_case_count": trap_case_count,
+        },
+    }
+
+
+def _recompute_artifact_quality_reports(
+    run_path: Path, checks: list[SmokeCheck]
+) -> dict[str, dict[str, Any]] | None:
+    try:
+        from .artifact_quality import compute_artifact_quality_benchmark
+
+        result = compute_artifact_quality_benchmark(run_path)
+    except (FileNotFoundError, ValueError) as exc:
+        checks.append(SmokeCheck("recompute_inputs", "fail", str(exc)))
+        return None
+
+    checks.append(
+        SmokeCheck(
+            "recompute_inputs",
+            "pass",
+            "Recomputed artifact-quality reports from benchmark/artifact_quality_manifest.json.",
+        )
+    )
+    return {
+        "baseline": {"mean_score": result["baseline"]["mean_score"]},
+        "candidate": {
+            "mean_score": result["candidate"]["mean_score"],
+            "mean_delta": result["candidate"]["mean_delta"],
+            "trap_regressions": result["candidate"]["trap_regressions"],
+        },
+        "absorption": {
+            "mean_validated_pack_delta": result["absorption"]["mean_validated_pack_delta"],
+            "trap_band_case_count": result["absorption"]["trap_band_case_count"],
         },
     }
 

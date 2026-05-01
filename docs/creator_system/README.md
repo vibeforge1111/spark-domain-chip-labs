@@ -167,6 +167,14 @@ python -m chip_labs.cli artifact-quality-score \
 It checks evidence completeness for design docs, PR writeups, handoffs, and
 mission packets. It does not prove product correctness or replace human review.
 
+Artifact-quality reports can also be generated as creator-run benchmark
+evidence when a run includes `benchmark/artifact_quality_manifest.json`:
+
+```bash
+python -m chip_labs.cli artifact-quality-benchmark runs/<run-name>
+python -m chip_labs.cli creator-run-smoke runs/<run-name> --recompute --fail-on-blocked
+```
+
 The first local content-simulation harness is available as:
 
 ```bash

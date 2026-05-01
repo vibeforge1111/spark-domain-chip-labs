@@ -63,6 +63,14 @@ python -m chip_labs.cli artifact-quality-score \
   --markdown-output reports/artifact-quality.md
 ```
 
+Creator-run benchmark reports can be generated from
+`benchmark/artifact_quality_manifest.json`:
+
+```bash
+python -m chip_labs.cli artifact-quality-benchmark runs/<run-name>
+python -m chip_labs.cli creator-run-smoke runs/<run-name> --recompute --fail-on-blocked
+```
+
 Current fixtures:
 
 - `good_design_pr.md`: review-ready report with acceptance gates, runnable

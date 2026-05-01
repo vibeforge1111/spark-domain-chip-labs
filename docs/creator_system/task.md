@@ -103,7 +103,7 @@ Deliverables:
 - [x] Local scoring adapter for evidence, tests, risks, rollback, and acceptance
   gates.
 - [x] Report format that can be attached to future missions.
-- [ ] Baseline/candidate reports that can be recomputed.
+- [x] Baseline/candidate reports that can be recomputed.
 
 Phase gate:
 
@@ -297,7 +297,7 @@ Deliverables:
 - [x] Local scoring adapter for evidence, tests, risk, rollback, and acceptance
   gates.
 - [x] PR/design-doc report format that can be attached to future missions.
-- [ ] Recomputeable baseline/candidate reports.
+- [x] Recomputeable baseline/candidate reports.
 
 Quality gates:
 
@@ -415,11 +415,12 @@ Quality gates:
 
 ## Next Executable Slice
 
-Land Phase 2 artifact-quality scorer:
+Land Phase 2 artifact-quality recompute:
 
-1. Verify artifact-quality fixtures, scorer, CLI, and docs.
-2. Commit the Phase 2 scorer slice.
-3. Add recomputeable baseline/candidate reports for artifact-quality fixtures.
+1. Verify artifact-quality benchmark reports and recompute stale-evidence tests.
+2. Commit the Phase 2 recompute slice.
+3. Start Phase 3 tool-operation safety with safe command manifests and
+   postcondition checks.
 4. Keep Phase 3 tool-operation design close, because artifact-quality reports
    should eventually feed mission-control/tool-operation proof.
 5. Do not begin product-surface wiring until Phase 7 gates are met.

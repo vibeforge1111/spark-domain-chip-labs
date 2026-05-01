@@ -5,9 +5,14 @@ from __future__ import annotations
 import re
 from pathlib import Path
 from typing import Any
+from datetime import date
+import hashlib
+import json
 
 
 CLAIM_BOUNDARY = "artifact_quality local review only"
+PROVENANCE_SOURCE = "artifact_quality_v1"
+MANIFEST_PATH = "benchmark/artifact_quality_manifest.json"
 
 CHECKS = (
     {
@@ -123,6 +128,88 @@ def score_artifact_quality_file(path: str | Path, *, artifact_kind: str = "desig
     )
 
 
+def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
+    """Compute artifact-quality baseline/candidate/trap reports for a creator run."""
+
+    run_path = Path(run_dir)
+    manifest = _load_manifest(run_path / MANIFEST_PATH)
+    baseline_path = _resolve_run_path(run_path, manifest["baseline_artifact"])
+    candidate_path = _resolve_run_path(run_path, manifest["candidate_artifact"])
+    trap_paths = [
+        _resolve_run_path(run_path, relative_path)
+        for relative_path in manifest.get("trap_artifacts", [])
+    ]
+
+    baseline = score_artifact_quality_file(baseline_path, artifact_kind="pr_writeup")
+    candidate = score_artifact_quality_file(candidate_path, artifact_kind="pr_writeup")
+    traps = [
+        score_artifact_quality_file(path, artifact_kind="design_doc")
+        for path in trap_paths
+    ]
+    mean_delta = round(candidate["score"] - baseline["score"], 4)
+    trap_regressions = sum(
+        1 for trap in traps
+        if "polished_but_unproven" not in trap["trap_flags"] or trap["verdict"] != "blocked"
+    )
+    provenance = _benchmark_provenance(
+        run_path,
+        [
+            MANIFEST_PATH,
+            str(manifest["baseline_artifact"]),
+            str(manifest["candidate_artifact"]),
+            *[str(path) for path in manifest.get("trap_artifacts", [])],
+        ],
+    )
+    baseline_report = {
+        "schema_version": "adaptive_creator_loop.benchmark_report.v1",
+        "benchmark_family": "artifact_quality_review",
+        "mean_score": baseline["score"],
+        "case_count": 1,
+        "artifact_report": baseline,
+        "provenance": provenance,
+    }
+    candidate_report = {
+        "schema_version": "adaptive_creator_loop.benchmark_report.v1",
+        "benchmark_family": "artifact_quality_review",
+        "mean_score": candidate["score"],
+        "mean_delta": mean_delta,
+        "case_count": 1,
+        "trap_regressions": trap_regressions,
+        "artifact_report": candidate,
+        "trap_reports": traps,
+        "decision": "keep" if mean_delta > 0 and trap_regressions == 0 else "revert",
+        "provenance": provenance,
+    }
+    absorption_report = {
+        "schema_version": "adaptive_creator_loop.absorption_summary.v1",
+        "benchmark_family": "artifact_quality_review",
+        "mean_validated_pack_delta": mean_delta,
+        "trap_band_case_count": len(traps),
+        "trap_regressions": trap_regressions,
+        "all_modes_present": True,
+        "all_modes_scored": True,
+        "provenance": provenance,
+    }
+    return {
+        "schema_version": "artifact_quality.benchmark_result.v1",
+        "verdict": "pass" if candidate_report["decision"] == "keep" else "blocked",
+        "baseline": baseline_report,
+        "candidate": candidate_report,
+        "absorption": absorption_report,
+    }
+
+
+def run_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
+    """Run and save artifact-quality reports for a creator run."""
+
+    run_path = Path(run_dir)
+    result = compute_artifact_quality_benchmark(run_path)
+    _write_json(run_path / "reports" / "baseline.json", result["baseline"])
+    _write_json(run_path / "reports" / "candidate.json", result["candidate"])
+    _write_json(run_path / "reports" / "absorption_summary.json", result["absorption"])
+    return result
+
+
 def format_artifact_quality_markdown(report: dict[str, Any]) -> str:
     """Render an operator-facing artifact-quality report."""
 
@@ -186,3 +273,48 @@ def _keyword_hits(normalized: str, keywords: tuple[str, ...]) -> list[str]:
 
 def _normalize(text: str) -> str:
     return re.sub(r"\s+", " ", text.lower()).strip()
+
+
+def _load_manifest(path: Path) -> dict[str, Any]:
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        raise FileNotFoundError(f"{path} is required for artifact-quality benchmark") from None
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"{path} is not valid JSON: {exc}") from exc
+    if not isinstance(manifest, dict):
+        raise ValueError(f"{path} must contain a JSON object")
+    for key in ("baseline_artifact", "candidate_artifact"):
+        if not str(manifest.get(key, "")).strip():
+            raise ValueError(f"{path} must include {key}")
+    if not isinstance(manifest.get("trap_artifacts"), list):
+        manifest["trap_artifacts"] = []
+    return manifest
+
+
+def _resolve_run_path(run_path: Path, relative_path: str) -> Path:
+    path = run_path / relative_path
+    if not path.exists():
+        raise FileNotFoundError(f"{relative_path} does not exist in {run_path}")
+    return path
+
+
+def _benchmark_provenance(run_path: Path, relative_paths: list[str]) -> dict[str, Any]:
+    return {
+        "source": PROVENANCE_SOURCE,
+        "computed_at": date.today().isoformat(),
+        "recomputed_from": relative_paths,
+        "input_hashes": {
+            relative_path: _sha256_file(run_path / relative_path)
+            for relative_path in relative_paths
+        },
+    }
+
+
+def _sha256_file(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _write_json(path: Path, data: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")

@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 
+from chip_labs.artifact_quality import MANIFEST_PATH, run_artifact_quality_benchmark
 from chip_labs.creator_generator import generate_creator_system_from_brief
 from chip_labs.creator_run import validate_creator_run
 
@@ -348,6 +349,33 @@ def test_creator_run_recompute_blocks_stale_saved_evidence(tmp_path: Path) -> No
     )
 
 
+def test_artifact_quality_recompute_blocks_stale_saved_evidence(tmp_path: Path) -> None:
+    generated = generate_creator_system_from_brief(tmp_path, _multi_domain_briefs()[0])
+    _install_artifact_quality_benchmark(generated.run_dir)
+    benchmark_result = run_artifact_quality_benchmark(generated.run_dir)
+    _align_swarm_packet_with_artifact_quality_reports(generated.run_dir, benchmark_result)
+
+    saved_only = validate_creator_run(generated.run_dir)
+    recomputed = validate_creator_run(generated.run_dir, recompute=True)
+    assert saved_only.verdict == "ready_for_swarm_packet"
+    assert recomputed.verdict == "ready_for_swarm_packet"
+
+    candidate_path = generated.run_dir / "reports" / "candidate.json"
+    candidate = json.loads(candidate_path.read_text(encoding="utf-8"))
+    candidate["mean_score"] = candidate["mean_score"] + 0.1
+    candidate_path.write_text(json.dumps(candidate, indent=2) + "\n", encoding="utf-8")
+
+    stale_saved_only = validate_creator_run(generated.run_dir)
+    stale_recomputed = validate_creator_run(generated.run_dir, recompute=True)
+
+    assert stale_saved_only.verdict == "ready_for_swarm_packet"
+    assert stale_recomputed.verdict == "blocked"
+    assert any(
+        check.name == "recompute_candidate_score" and check.status == "fail"
+        for check in stale_recomputed.checks
+    )
+
+
 def test_cli_creator_run_smoke_recompute_accepts_generated_workspace(
     tmp_path: Path,
 ) -> None:
@@ -374,3 +402,46 @@ def test_cli_creator_run_smoke_recompute_accepts_generated_workspace(
     assert result.returncode == 0
     assert '"ready_for_swarm_packet"' in result.stdout
     assert '"recompute_candidate_delta"' in result.stdout
+
+
+def _install_artifact_quality_benchmark(run_dir: Path) -> None:
+    fixture_dir = Path("docs/creator_system/examples/artifact-quality")
+    artifact_dir = run_dir / "benchmark" / "artifacts"
+    artifact_dir.mkdir(parents=True, exist_ok=True)
+    for fixture_name in (
+        "good_design_pr.md",
+        "weak_design_pr.md",
+        "polished_unproven_trap.md",
+    ):
+        (artifact_dir / fixture_name).write_text(
+            (fixture_dir / fixture_name).read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+    (run_dir / MANIFEST_PATH).write_text(
+        json.dumps(
+            {
+                "schema_version": "artifact_quality.benchmark_manifest.v1",
+                "baseline_artifact": "benchmark/artifacts/weak_design_pr.md",
+                "candidate_artifact": "benchmark/artifacts/good_design_pr.md",
+                "trap_artifacts": ["benchmark/artifacts/polished_unproven_trap.md"],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+
+def _align_swarm_packet_with_artifact_quality_reports(
+    run_dir: Path, benchmark_result: dict[str, object]
+) -> None:
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    evidence = packet["evidence"]
+    baseline = benchmark_result["baseline"]
+    candidate = benchmark_result["candidate"]
+    evidence["baseline_score"] = baseline["mean_score"]
+    evidence["candidate_score"] = candidate["mean_score"]
+    evidence["mean_delta"] = candidate["mean_delta"]
+    evidence["trap_regressions"] = candidate["trap_regressions"]
+    packet_path.write_text(json.dumps(packet, indent=2) + "\n", encoding="utf-8")
