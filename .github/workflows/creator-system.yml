@@ -1,0 +1,71 @@
+name: Creator System
+
+on:
+  pull_request:
+    paths:
+      - "docs/creator_system/**"
+      - "src/chip_labs/**"
+      - "tests/test_creator_*.py"
+      - "tests/test_artifact_quality.py"
+      - "tests/test_mirofish_content_simulation.py"
+      - "tests/test_retrieval_memory.py"
+      - "tests/test_startup_yc_operator_validation.py"
+      - "tests/test_tool_operation.py"
+      - ".github/workflows/creator-system.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "docs/creator_system/**"
+      - "src/chip_labs/**"
+      - "tests/test_creator_*.py"
+      - "tests/test_artifact_quality.py"
+      - "tests/test_mirofish_content_simulation.py"
+      - "tests/test_retrieval_memory.py"
+      - "tests/test_startup_yc_operator_validation.py"
+      - "tests/test_tool_operation.py"
+      - ".github/workflows/creator-system.yml"
+
+jobs:
+  creator-system:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . pytest ruff jsonschema
+
+      - name: Lint creator-system surfaces
+        run: |
+          python -m ruff check \
+            src/chip_labs/creator_mission_adapter.py \
+            src/chip_labs/cli.py \
+            tests/test_creator_mission_adapter.py \
+            tests/test_creator_system_docs.py
+
+      - name: Run creator-system tests
+        run: |
+          python -m pytest \
+            tests/test_creator_mission_adapter.py \
+            tests/test_creator_system_docs.py \
+            tests/test_startup_yc_operator_validation.py \
+            tests/test_tool_operation.py \
+            tests/test_artifact_quality.py \
+            tests/test_mirofish_content_simulation.py \
+            tests/test_creator_generator_acceptance.py \
+            tests/test_creator_run.py \
+            tests/test_creator_run_examples.py \
+            tests/test_retrieval_memory.py \
+            -q
+
+      - name: Run strict Startup YC fixture checks
+        run: |
+          python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn
+          python -m chip_labs.cli creator-run-template-check --fail-on-blocked
