@@ -25,6 +25,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [schemas/](schemas/) | JSON Schema anchors for creator intent, adapter map, smoke, doctor, template-check, and Swarm packet outputs. |
 | [templates/creator-run/](templates/creator-run/) | Fill-in templates for intent packets, adapter maps, creator run reports, Swarm packets, and standard-change proposals. |
 | [examples/startup-yc-creator-run/](examples/startup-yc-creator-run/) | Real Startup YC fixture that maps the existing domain chip, specialization path, benchmark, autoloop, absorption reports, and Swarm packet into the creator-run contract. |
+| [examples/startup-yc-operator-validation/](examples/startup-yc-operator-validation/) | Startup YC held-out founder-advice cases, calibration checklist, privacy review, rollback review, and publication gate plan. |
 
 ## Current Architecture Decision
 
@@ -200,6 +201,12 @@ Doctor security fixtures live in `docs/creator_system/examples/doctor-security/`
 and cover stale saved report evidence plus unsafe `network_absorbable` packet
 claims. `creator-run-doctor --recompute` emits `repair_replay` and
 `quarantine` fields so repair advice stays tied to fresh evidence.
+
+Startup YC operator validation fixtures live in
+`docs/creator_system/examples/startup-yc-operator-validation/`. They keep the
+current claim at `transfer_supported`, add held-out founder-advice traps, and
+make multi-seed validation, human/operator calibration, privacy review, rollback
+review, and publication approval explicit before any stronger claim.
 
 The first local content-simulation harness is available as:
 

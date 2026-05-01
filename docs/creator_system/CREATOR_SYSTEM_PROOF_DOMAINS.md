@@ -368,10 +368,22 @@ Acceptance cases:
 - Suggest the narrowest useful wedge for a broad product idea.
 - Reject traction claims backed only by vanity metrics.
 
+Current validation pack:
+
+- `startup-yc-operator-validation/validation_plan.json`: promotion gates,
+  current claim, prohibited claims, and minimum multi-seed plan.
+- `startup-yc-operator-validation/held_out_founder_advice_cases.jsonl`:
+  held-out founder prompts for demand reality, vanity metrics, narrow wedge,
+  default-alive pressure, and privacy boundaries.
+- `startup-yc-operator-validation/human_operator_calibration_checklist.md`:
+  human/operator review gates.
+- `startup-yc-operator-validation/privacy_rollback_publication_review.md`:
+  privacy, rollback, and publication approval boundaries.
+
 Next real adapters:
 
-- Connect to the Startup YC golden fixture and Startup Bench-style reports.
-- Add multi-seed validation.
+- Connect held-out founder-advice cases to a scoring harness.
+- Run multi-seed validation across GTM, Finance, Product, People, Board, and Scale.
 - Add human/operator calibration on real founder advice examples.
 - Keep `transfer_supported` separate from `network_absorbable`.
 

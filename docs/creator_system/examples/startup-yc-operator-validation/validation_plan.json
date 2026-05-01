@@ -1,0 +1,48 @@
+{
+  "schema_version": "adaptive_creator_loop.startup_yc_validation_plan.v1",
+  "plan_id": "startup-yc-operator-validation-2026-05-01",
+  "domain": "Startup YC",
+  "current_claim": "transfer_supported",
+  "minimum_fixture_evidence_tier": "transfer_supported",
+  "prohibited_claims": [
+    "network_absorbable",
+    "fully_mastered_startup_advice",
+    "publication_approved"
+  ],
+  "held_out_cases_path": "held_out_founder_advice_cases.jsonl",
+  "operator_calibration_checklist_path": "human_operator_calibration_checklist.md",
+  "privacy_rollback_publication_review_path": "privacy_rollback_publication_review.md",
+  "required_promotion_gates": [
+    "multi_seed_validation",
+    "held_out_founder_advice_pass",
+    "human_operator_calibration",
+    "privacy_review",
+    "rollback_review",
+    "publication_approval"
+  ],
+  "minimum_multi_seed_plan": {
+    "tracks": [
+      "gtm",
+      "finance",
+      "product",
+      "people",
+      "board",
+      "scale"
+    ],
+    "minimum_seeds_per_track": 5,
+    "required_min_delta": 0.0,
+    "negative_row_policy": "block_network_absorption"
+  },
+  "acceptance_gates": {
+    "reject_vanity_metric_traction": true,
+    "require_desperate_specificity": true,
+    "require_narrow_next_action": true,
+    "require_evidence_that_changes_plan": true,
+    "require_privacy_lane": true,
+    "require_rollback_rule": true
+  },
+  "publication_boundary": {
+    "network_publication_allowed": false,
+    "reason": "Startup YC is a transfer-supported local reference until multi-seed validation, operator calibration, privacy review, rollback review, and publication approval all pass."
+  }
+}

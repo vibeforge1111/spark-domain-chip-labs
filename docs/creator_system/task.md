@@ -160,7 +160,7 @@ Phase gate:
 
 ### Phase 5: Startup YC Operator Validation
 
-Status: planned
+Status: active
 
 Purpose:
 
@@ -169,11 +169,11 @@ operator capability for Spark.
 
 Deliverables:
 
-- [ ] Multi-seed startup advice validation plan.
-- [ ] Held-out founder-advice examples.
-- [ ] Human/operator calibration checklist.
-- [ ] Privacy and rollback review packet.
-- [ ] Publication approval gate for any stronger claim.
+- [x] Multi-seed startup advice validation plan.
+- [x] Held-out founder-advice examples.
+- [x] Human/operator calibration checklist.
+- [x] Privacy and rollback review packet.
+- [x] Publication approval gate for any stronger claim.
 
 Phase gate:
 
@@ -360,10 +360,11 @@ Deliverables:
 
 - [x] Startup YC creator-run fixture passes strict smoke.
 - [x] Generator acceptance brief for startup founder advice.
-- [ ] Multi-seed startup advice validation plan.
-- [ ] Human/operator calibration checklist.
-- [ ] Privacy and rollback review packet.
-- [ ] Publication-approval gate for any stronger claim.
+- [x] Multi-seed startup advice validation plan.
+- [x] Held-out founder-advice examples.
+- [x] Human/operator calibration checklist.
+- [x] Privacy and rollback review packet.
+- [x] Publication-approval gate for any stronger claim.
 
 Quality gates:
 
@@ -415,13 +416,15 @@ Quality gates:
 
 ## Next Executable Slice
 
-Land Phase 4 doctor adversarial/provenance hardening:
+Land Phase 5 Startup YC operator validation pack:
 
-1. Verify stale saved-report doctor fixture blocks in recompute mode.
-2. Verify malicious network-absorption packet fixture is quarantined.
-3. Verify repair replay turns green only after rerunning recompute smoke.
-4. Commit the Phase 4 doctor hardening slice.
-5. Start Phase 5 Startup YC operator validation plan.
+1. Verify validation plan blocks `network_absorbable`.
+2. Verify held-out founder-advice cases include vanity-metric, demand reality,
+   narrow wedge, default-alive, and privacy traps.
+3. Verify calibration, privacy, rollback, and publication gates remain visible.
+4. Commit the Phase 5 validation-pack slice.
+5. Start Phase 6 retrieval and memory proof-layer design only when the memory
+   system boundary is clear.
 6. Do not begin product-surface wiring until Phase 7 gates are met.
 
 ## Parking Lot
