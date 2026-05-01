@@ -21,6 +21,8 @@
 - The README now includes current claim levels and an executable command index.
 - Creator-system CI now runs focused lint, proof-domain tests, strict Startup YC
   smoke, and template checks on relevant pushes and pull requests.
+- The handoff, master plan, production readiness, promotion gates, and Phase 2
+  backlog now point to the same CI-backed read-only product adapter boundary.
 
 ## Current Claim Boundary
 

@@ -40,6 +40,13 @@ Bot or CI validation:
 python -m chip_labs.cli creator-run-smoke runs/<run-name> --fail-on-blocked
 ```
 
+Focused repo CI:
+
+```bash
+python -m ruff check src/chip_labs/creator_mission_adapter.py src/chip_labs/cli.py tests/test_creator_mission_adapter.py tests/test_creator_system_docs.py
+python -m pytest tests/test_creator_mission_adapter.py tests/test_creator_system_docs.py tests/test_startup_yc_operator_validation.py tests/test_tool_operation.py tests/test_artifact_quality.py tests/test_mirofish_content_simulation.py tests/test_creator_generator_acceptance.py tests/test_creator_run.py tests/test_creator_run_examples.py tests/test_retrieval_memory.py -q
+```
+
 Strict publication validation:
 
 ```bash
@@ -235,10 +242,11 @@ The fixture remains `transfer_supported`, not `network_absorbable`, because mult
 
 Before shipping changes to this contract:
 
-1. Run `python -m pytest tests/test_creator_run.py tests/test_creator_run_examples.py tests/test_creator_generator_acceptance.py -q`.
-2. Run `python -m chip_labs.cli creator-run-template-check --fail-on-blocked`.
-3. Run smoke on the Startup YC fixture.
-4. Run `creator-run-smoke --fail-on-blocked` on the fixture.
+1. Run the focused creator-system ruff command from this document.
+2. Run the focused creator-system pytest command from this document.
+3. Run `python -m chip_labs.cli creator-run-template-check --fail-on-blocked`.
+4. Run strict smoke on the Startup YC fixture with `--fail-on-blocked --fail-on-warn`.
 5. Run `creator-run-doctor` on the fixture and confirm it returns publication review next steps.
 6. Confirm synthetic negative or mixed broad-transfer probes warn at `transfer_supported` and fail at `network_absorbable`.
-7. Update this document if CLI flags, result fields, verdicts, or promotion semantics change.
+7. Confirm `creator-mission-status` keeps product views read-only and preserves publication blockers.
+8. Update this document if CLI flags, result fields, verdicts, or promotion semantics change.

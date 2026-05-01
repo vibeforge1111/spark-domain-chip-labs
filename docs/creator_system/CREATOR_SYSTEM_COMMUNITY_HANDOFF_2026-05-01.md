@@ -31,7 +31,7 @@ It has:
 It does not yet have:
 
 - A polished public one-command creator product.
-- Generator acceptance tests proving Spark can create high-quality systems from scratch across many domains.
+- Multi-seed, human-calibrated generator proof across many production domains.
 - A dedicated public `spark-creator` repo decision.
 - Full product wiring into Builder, Telegram, Spawner UI, Canvas, or Kanban.
 - Multi-seed, human-calibrated, publication-reviewed evidence for network absorption.
@@ -39,6 +39,29 @@ It does not yet have:
 The honest verdict:
 
 > We have a real creator standard and one credible golden reference. We are not done proving that the creator system can reliably generate equally strong systems for every community use case.
+
+## Continuation Update
+
+After this handoff was archived, the next proof slice landed in this repo:
+
+- generator acceptance tests now create full creator-run systems from fresh
+  briefs in temporary clean workspaces;
+- `creator-run-smoke --recompute` now distinguishes coherent saved evidence
+  from freshly rerun evidence when supported provenance is present;
+- artifact-quality, tool-operation, MiroFish content simulation,
+  doctor-security, Startup YC operator, and retrieval-memory proof domains are
+  documented and covered by focused tests;
+- `creator-mission-status` now emits one canonical read-only packet for Builder,
+  Telegram, Spawner, Canvas, and Kanban;
+- product consumer branches and PRs are recorded in
+  `PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md`;
+- `.github/workflows/creator-system.yml` runs the focused creator-system lint,
+  proof-domain tests, strict Startup YC smoke check, and template check.
+
+This does not change the publication boundary: Startup YC remains
+`transfer_supported`, not `network_absorbable`, and product surfaces remain
+read-only consumers until their runtime workflows are separately implemented and
+reviewed.
 
 ## What Has Been Built
 

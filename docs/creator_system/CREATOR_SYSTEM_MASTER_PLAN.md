@@ -353,11 +353,28 @@ Expose creation from:
 - Spawner mission
 - Canvas/Kanban mission control
 
+Current bridge:
+
+- `creator-mission-status` is the canonical read-only packet for product
+  surfaces.
+- Builder, Telegram, Spawner, and Canvas consumer branches exist and are
+  recorded in `PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md`.
+- Product surfaces may render status, blockers, next actions, and publication
+  boundaries, but they must not invent verdicts or upgrade evidence tiers.
+- Runtime creation controls, Spawner execution, Canvas editing, and Kanban
+  mutation remain deferred to product repos.
+
 Exit criteria:
 
 - a user can ask for a domain chip or specialization path in normal language
 - Spark turns it into a trackable mission
 - the final output includes repo path, tests, benchmark result, and Swarm readiness
+
+CI guardrail:
+
+- `.github/workflows/creator-system.yml` runs the focused creator-system lint,
+  proof-domain tests, strict Startup YC smoke, and template check for relevant
+  changes.
 
 ## Non-Negotiable Guardrails
 

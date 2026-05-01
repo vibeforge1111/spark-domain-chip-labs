@@ -431,7 +431,7 @@ Deliverables:
 - [x] Add a "current claim level" table to the README.
 - [x] Add a focused creator-system CI workflow.
 - [x] Add a release-note style summary for the CI guardrail slice.
-- [ ] Keep handoff, master plan, readiness, promotion gates, and backlog aligned.
+- [x] Keep handoff, master plan, readiness, promotion gates, and backlog aligned.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -455,11 +455,9 @@ Current Phase 7 executable slice:
 
 Next documentation/verification slice:
 
-1. Keep handoff, master plan, readiness, promotion gates, and backlog aligned
-   with the CI-backed product-surface adapter state.
-2. Check open product PRs against the canonical
+1. Check open product PRs against the canonical
    `product-surface-readonly/startup-yc-mission-status.json` fixture.
-3. Decide whether to add saved example packets for MiroFish route mode and
+2. Decide whether to add saved example packets for MiroFish route mode and
    simulation mode.
 
 ## Parking Lot

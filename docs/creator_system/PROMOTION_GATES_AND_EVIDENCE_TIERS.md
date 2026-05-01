@@ -218,6 +218,19 @@ Every promoted packet must answer:
 
 If any answer is missing, the packet can still be useful locally, but it is not network absorbable.
 
+## Product Surface Promotion Boundary
+
+`creator-mission-status` may be consumed by Builder, Telegram, Spawner, Canvas,
+and Kanban as a read-only status packet. Product surfaces can show verdicts,
+blocking checks, missing gates, next actions, and publication boundaries, but
+they cannot upgrade an evidence tier.
+
+A product view that renders `ready_for_swarm_packet` must still preserve the
+separate publication claim. In particular, `ready_for_swarm_packet` and
+`transfer_supported` do not imply `network_absorbable`; network absorption still
+requires multi-seed validation, human/operator calibration, privacy review,
+rollback review, and publication approval.
+
 ## Startup YC Reference
 
 The Startup YC seeded-variance run is the current reference pattern.

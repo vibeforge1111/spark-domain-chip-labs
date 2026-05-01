@@ -7,6 +7,8 @@ Phase 2 should start only after Builder, memory, conversations, Telegram interac
 ## Status
 
 Deferred for runtime wiring. A read-only adapter contract now exists.
+Consumer branches and PRs for Builder, Telegram, Spawner, and Canvas are
+recorded in `PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md`.
 
 The current V1 contract is CLI and repo based:
 
@@ -137,6 +139,9 @@ Phase 2 is ready only when:
 6. Smoke and doctor outputs remain the source of truth for blockers, warnings, and next actions.
 7. Product tests prove read-only adapters preserve claim boundaries and cannot
    turn `ready_for_swarm_packet` into `network_absorbable`.
+8. Relevant product-surface changes either consume
+   `adaptive_creator_loop.creator_mission_status.v1` directly or document why
+   they are still deferred.
 
 ## Non-Goals For Current V1
 
