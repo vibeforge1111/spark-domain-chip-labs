@@ -5,17 +5,19 @@
   "source": {
     "repo": "specialization-path-startup-yc",
     "branch": "master",
-    "commit": "26f90b3",
+    "commit": "97b89c8",
     "artifact_paths": [
       "reports/absorption-proof-2026-04-30/proof_report.json",
       "reports/absorption-proof-2026-04-30/proof_report.md",
-      "reports/absorption-proof-2026-04-30/weak_case_diagnosis.md"
+      "reports/absorption-proof-2026-04-30/weak_case_diagnosis.md",
+      "docs/STARTUP_YC_FRESH_VALIDATION_SUITE_2026-05-01.md",
+      "reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json"
     ]
   },
   "contribution": {
     "type": "mastery",
-    "title": "Startup YC candidate-review absorption packet",
-    "summary": "Fresh-agent validated-pack mode improved the 20-case Startup YC absorption suite by +0.0200 mean score, then transferred positively to a fresh Startup Bench 0-to-1 activation scenario by +0.0169 against a resilient baseline.",
+    "title": "Startup YC transfer-supported fresh validation packet",
+    "summary": "Fresh-agent validated-pack mode improved the 20-case Startup YC absorption suite by +0.0200 mean score, and current Startup YC adapters won 12/12 fresh-validation Startup Bench scenarios across six tracks with mean scenario delta +0.0560.",
     "domain": "Startup YC",
     "intended_consumers": [
       "Spark agents entering the Startup YC specialization path",
@@ -32,13 +34,15 @@
     "fresh_agent_absorption_delta": 0.02,
     "simulator_or_arena_result": {
       "source": "startup-bench",
-      "scenario_id": "hidden_0to1_activation_loop_fresh_001",
-      "scenario_count": 1,
+      "suite": "startup_yc_fresh_validation_suite",
+      "scenario_count": 12,
       "baseline_runner": "heuristic_resilient_operator",
-      "transfer_runner": "specialization-path-startup-yc/benchmarks/startup-yc.tool_calls.json",
-      "baseline_score": 0.6195,
-      "transfer_score": 0.6364,
-      "delta": 0.0169,
+      "transfer_runner": "specialization-path-startup-yc adapter selector",
+      "baseline_score": 0.7139,
+      "transfer_score": 0.7699,
+      "delta": 0.056,
+      "min_delta": 0.0144,
+      "max_delta": 0.141,
       "constraints_passed": true
     },
     "report_paths": [
@@ -55,7 +59,7 @@
     "reviewers": [
       "codex"
     ],
-    "rollback_or_deprecation_rule": "Deprecate if a full-suite repeat loses positive validated-pack mean delta or introduces trap regression.",
+    "rollback_or_deprecation_rule": "Deprecate if full-suite absorption repeat loses positive validated-pack mean delta, fresh validation min delta turns negative, or trap regression appears.",
     "privacy_boundary": "workspace_only",
     "network_publication_allowed": false
   },
@@ -64,10 +68,10 @@
     "ghost_improvement_check": "The source report compares no-pack, pack, and validated-pack fresh-agent modes with numeric deltas rather than only style changes.",
     "complexity_delta": "Fixture adds no runtime complexity; it packages existing evidence into the adaptive creator-run artifact contract.",
     "known_limits": [
-      "Only one Startup Bench transfer scenario has been run so far.",
-      "A compatible 10-scenario Startup Bench broad-transfer probe is negative overall at -0.0151.",
-      "The fixture stores Startup Bench results but does not itself rerun Startup Bench.",
-      "The current smoke CLI validates evidence semantics for claimed tiers but does not recompute source benchmark reports."
+      "Fresh validation currently ran seed 0 only.",
+      "Human/operator review and calibration are still needed before network-absorbable claims.",
+      "Network publication remains disabled in this fixture.",
+      "The current smoke CLI validates saved evidence semantics but does not recompute source benchmark reports."
     ]
   }
 }

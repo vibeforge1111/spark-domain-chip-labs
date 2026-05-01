@@ -75,10 +75,12 @@ def test_cli_fail_on_blocked_exits_nonzero(tmp_path: Path) -> None:
     assert '"blocked": true' in result.stdout
 
 
-def test_cli_fail_on_warn_exits_nonzero_for_warning_fixture() -> None:
-    fixture_dir = (
-        Path.cwd() / "docs" / "creator_system" / "examples" / "startup-yc-creator-run"
+def test_cli_fail_on_warn_exits_nonzero_for_warning_fixture(tmp_path: Path) -> None:
+    fixture_dir = _write_candidate_review_run(
+        tmp_path, evidence_tier="transfer_supported"
     )
+    _write_transfer_report(fixture_dir)
+    _write_broad_transfer_probe(fixture_dir, delta=-0.01)
     env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
 
     result = subprocess.run(

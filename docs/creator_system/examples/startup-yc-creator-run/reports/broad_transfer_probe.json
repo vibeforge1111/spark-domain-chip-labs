@@ -1,117 +1,137 @@
 {
   "schema_version": "adaptive_creator_loop.report.broad_transfer_probe.v1",
   "source": "startup-bench",
-  "suite": "dev_scenario_suite compatible subset",
-  "scenario_count": 10,
-  "excluded_scenario_count": 3,
-  "excluded_reason": "Startup YC tool script requires sales.pipeline.update, which is absent from the people and product dev scenarios.",
+  "suite": "startup_yc_fresh_validation_suite",
+  "scenario_count": 12,
+  "excluded_scenario_count": 0,
+  "excluded_reason": "",
   "baseline_runner": "heuristic_resilient_operator",
-  "transfer_runner": "specialization-path-startup-yc/benchmarks/startup-yc.tool_calls.json",
-  "baseline_score": 0.6885,
-  "transfer_score": 0.6734,
-  "delta": -0.0151,
+  "transfer_runner": "specialization-path-startup-yc adapter selector",
+  "baseline_score": 0.7139,
+  "transfer_score": 0.7699,
+  "delta": 0.056,
+  "min_delta": 0.0144,
+  "max_delta": 0.141,
   "constraints_passed": true,
-  "positive_scenarios": 2,
-  "negative_scenarios": 8,
+  "positive_scenarios": 12,
+  "negative_scenarios": 0,
   "flat_scenarios": 0,
+  "skipped_scenarios": 0,
   "scenario_results": [
     {
-      "scenario_id": "zero_to_one_design_partner_001",
-      "track": "0to1",
-      "startup_yc_score": 0.6313,
-      "baseline_score": 0.5957,
-      "delta": 0.0356,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
+      "scenario_id": "hidden_gtm_pipeline_reset_fresh_001",
+      "track": "gtm",
+      "startup_yc_score": 0.7008,
+      "baseline_score": 0.6328,
+      "delta": 0.068,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
     },
     {
-      "scenario_id": "b2b_saas_runway_pricing_001",
-      "track": "b2b_saas",
-      "startup_yc_score": 0.6444,
-      "baseline_score": 0.651,
-      "delta": -0.0066,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
+      "scenario_id": "hidden_gtm_procurement_slip_fresh_001",
+      "track": "gtm",
+      "startup_yc_score": 0.7607,
+      "baseline_score": 0.7463,
+      "delta": 0.0144,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
     },
     {
-      "scenario_id": "board_reforecast_pressure_001",
+      "scenario_id": "hidden_finance_liquidity_fresh_001",
+      "track": "finance",
+      "startup_yc_score": 0.802,
+      "baseline_score": 0.7063,
+      "delta": 0.0957,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
+    },
+    {
+      "scenario_id": "hidden_finance_reforecast_drag_fresh_001",
+      "track": "finance",
+      "startup_yc_score": 0.7956,
+      "baseline_score": 0.6546,
+      "delta": 0.141,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
+    },
+    {
+      "scenario_id": "hidden_product_quality_debt_fresh_001",
+      "track": "product",
+      "startup_yc_score": 0.7352,
+      "baseline_score": 0.677,
+      "delta": 0.0582,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
+    },
+    {
+      "scenario_id": "hidden_product_migration_reliability_fresh_001",
+      "track": "product",
+      "startup_yc_score": 0.7245,
+      "baseline_score": 0.7026,
+      "delta": 0.0219,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
+    },
+    {
+      "scenario_id": "hidden_people_attrition_fresh_001",
+      "track": "people",
+      "startup_yc_score": 0.8069,
+      "baseline_score": 0.7724,
+      "delta": 0.0345,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
+    },
+    {
+      "scenario_id": "hidden_people_onboarding_manager_gap_fresh_001",
+      "track": "people",
+      "startup_yc_score": 0.8417,
+      "baseline_score": 0.7432,
+      "delta": 0.0985,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
+    },
+    {
+      "scenario_id": "hidden_board_product_launch_truth_fresh_001",
       "track": "board",
-      "startup_yc_score": 0.6155,
-      "baseline_score": 0.6015,
-      "delta": 0.014,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
+      "startup_yc_score": 0.7898,
+      "baseline_score": 0.7511,
+      "delta": 0.0387,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
     },
     {
-      "scenario_id": "crisis_trust_recovery_001",
-      "track": "crisis",
-      "startup_yc_score": 0.6685,
-      "baseline_score": 0.6881,
-      "delta": -0.0196,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
+      "scenario_id": "hidden_board_product_reference_pushback_fresh_001",
+      "track": "board",
+      "startup_yc_score": 0.7662,
+      "baseline_score": 0.7423,
+      "delta": 0.0239,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
     },
     {
-      "scenario_id": "scale_capacity_balance_001",
+      "scenario_id": "hidden_scale_enterprise_delivery_fresh_001",
       "track": "scale",
-      "startup_yc_score": 0.8032,
-      "baseline_score": 0.804,
-      "delta": -0.0008,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
+      "startup_yc_score": 0.7606,
+      "baseline_score": 0.707,
+      "delta": 0.0536,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
     },
     {
-      "scenario_id": "gtm_channel_mix_reset_001",
-      "track": "gtm",
-      "startup_yc_score": 0.6428,
-      "baseline_score": 0.692,
-      "delta": -0.0492,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
-    },
-    {
-      "scenario_id": "gtm_launch_distribution_001",
-      "track": "gtm",
-      "startup_yc_score": 0.6608,
-      "baseline_score": 0.7134,
-      "delta": -0.0526,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
-    },
-    {
-      "scenario_id": "gtm_growth_experiment_002",
-      "track": "gtm",
-      "startup_yc_score": 0.6729,
-      "baseline_score": 0.6954,
-      "delta": -0.0225,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
-    },
-    {
-      "scenario_id": "finance_runway_treasury_tradeoff_001",
-      "track": "finance",
-      "startup_yc_score": 0.7519,
-      "baseline_score": 0.7907,
-      "delta": -0.0388,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
-    },
-    {
-      "scenario_id": "finance_fundraise_reset_003",
-      "track": "finance",
-      "startup_yc_score": 0.6427,
-      "baseline_score": 0.6528,
-      "delta": -0.0101,
-      "startup_yc_pass_rate": 1.0,
-      "baseline_pass_rate": 1.0
+      "scenario_id": "hidden_scale_support_capacity_fresh_001",
+      "track": "scale",
+      "startup_yc_score": 0.7553,
+      "baseline_score": 0.7315,
+      "delta": 0.0238,
+      "startup_yc_pass_rate": 1,
+      "baseline_pass_rate": 1
     }
   ],
-  "verdict": "defer_broad_transfer",
-  "interpretation": "The Startup YC script shows focused transfer but does not yet beat the resilient baseline on the compatible 10-scenario Startup Bench subset.",
+  "verdict": "broad_fresh_transfer_supported",
+  "interpretation": "The current track-specific Startup YC adapters beat the resilient baseline across the 12-scenario fresh validation suite.",
   "next_actions": [
-    "Create track-specific Startup YC tool scripts instead of reusing one 0-to-1 script everywhere.",
-    "Add product and people tool-surface adapters before claiming full-suite transfer.",
-    "Use this broad probe as weak-case guidance for Autoloop Creator and Benchmark Creator."
+    "Add multi-seed fresh variants before network-absorbable claims.",
+    "Add human/operator calibration for score validity.",
+    "Keep publication disabled until privacy, provenance, and review gates approve network absorption."
   ]
 }
-
