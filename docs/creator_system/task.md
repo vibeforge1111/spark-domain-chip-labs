@@ -455,10 +455,18 @@ Current Phase 7 executable slice:
 
 Next documentation/verification slice:
 
-1. Check open product PRs against the canonical
-   `product-surface-readonly/startup-yc-mission-status.json` fixture.
-2. Decide whether to add saved example packets for MiroFish route mode and
+1. Decide whether to add saved example packets for MiroFish route mode and
    simulation mode.
+
+Completed product PR verification:
+
+- Builder and Telegram read-only consumer PRs were refreshed after remote CI
+  found non-creator blockers.
+- Builder now passes remote `test-and-audit` and `secret-scan`.
+- Telegram now passes remote `test-and-audit` and `secret-scan`.
+- Spawner UI and Canvas still have no remote status checks reported by GitHub;
+  their local verification commands remain recorded in the product branch
+  ledger.
 
 ## Parking Lot
 

@@ -23,6 +23,8 @@
   smoke, and template checks on relevant pushes and pull requests.
 - The handoff, master plan, production readiness, promotion gates, and Phase 2
   backlog now point to the same CI-backed read-only product adapter boundary.
+- Product consumer PR ledger now records refreshed Builder and Telegram branch
+  heads with passing remote CI.
 
 ## Current Claim Boundary
 
