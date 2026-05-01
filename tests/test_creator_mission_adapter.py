@@ -11,6 +11,9 @@ from chip_labs.creator_mission_adapter import build_creator_mission_status
 STARTUP_VALIDATION = Path(
     "docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json"
 )
+PRODUCT_SURFACE_FIXTURE = Path(
+    "docs/creator_system/examples/product-surface-readonly"
+)
 
 
 def _smoke(verdict: str = "ready_for_swarm_packet") -> dict[str, object]:
@@ -127,3 +130,34 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
     payload = json.loads(output_path.read_text(encoding="utf-8"))
     assert payload["mission_id"] == "mission-cli"
     assert payload["surface_adapters"]["telegram"]["may_request_secret_paste"] is False
+
+
+def test_product_surface_fixture_matches_current_adapter_output() -> None:
+    smoke = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-smoke.json").read_text(encoding="utf-8"))
+    doctor = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-doctor.json").read_text(encoding="utf-8"))
+    startup_validation = json.loads(STARTUP_VALIDATION.read_text(encoding="utf-8"))
+    saved = json.loads(
+        (PRODUCT_SURFACE_FIXTURE / "startup-yc-mission-status.json").read_text(encoding="utf-8")
+    )
+
+    rebuilt = build_creator_mission_status(
+        mission_id="startup-yc-product-readonly",
+        publish_mode="swarm_shared",
+        smoke=smoke,
+        doctor=doctor,
+        startup_validation=startup_validation,
+    )
+
+    assert rebuilt == saved
+    assert saved["read_only"] is True
+    assert saved["canonical"]["verdict"] == "ready_for_swarm_packet"
+    assert saved["canonical"]["stage_status"] == "review_required"
+    assert saved["canonical"]["evidence_tier"] == "transfer_supported"
+    assert saved["publication"]["publish_mode"] == "swarm_shared"
+    assert saved["publication"]["swarm_shared_allowed"] is False
+    assert saved["publication"]["network_absorbable"] is False
+    assert saved["surface_adapters"]["builder"]["may_mutate_state"] is False
+    assert saved["surface_adapters"]["telegram"]["may_request_secret_paste"] is False
+    assert saved["surface_adapters"]["spawner"]["may_execute"] is False
+    assert saved["surface_adapters"]["canvas"]["may_edit_artifacts"] is False
+    assert saved["surface_adapters"]["kanban"]["may_change_verdict"] is False

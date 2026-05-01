@@ -1,0 +1,280 @@
+{
+  "schema_version": "adaptive_creator_loop.creator_mission_status.v1",
+  "mission_id": "startup-yc-product-readonly",
+  "read_only": true,
+  "claim_boundary": "read-only product adapter over canonical creator-system outputs; product surfaces must not invent verdicts, evidence tiers, or publication state",
+  "canonical": {
+    "verdict": "ready_for_swarm_packet",
+    "stage_status": "review_required",
+    "evidence_tier": "transfer_supported",
+    "automation_blocked": false,
+    "blocking_checks": [],
+    "warning_checks": [],
+    "missing_paths": [],
+    "recommended_next_command": "Review provenance, privacy, rollback, and claim boundaries before publication."
+  },
+  "publication": {
+    "publish_mode": "swarm_shared",
+    "local_display_allowed": true,
+    "github_pr_allowed": false,
+    "swarm_shared_allowed": false,
+    "network_absorbable": false,
+    "requested_network_absorption": true,
+    "blocked_reason": "Network absorption requires multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval.",
+    "required_gates": [
+      "multi_seed_validation",
+      "human_operator_calibration",
+      "privacy_review",
+      "rollback_review",
+      "publication_approval"
+    ],
+    "missing_gates": [
+      "multi_seed_validation",
+      "human_operator_calibration",
+      "privacy_review",
+      "rollback_review",
+      "publication_approval"
+    ],
+    "gate_status": {
+      "multi_seed_validation": false,
+      "human_operator_calibration": false,
+      "privacy_review": false,
+      "rollback_review": false,
+      "publication_approval": false
+    },
+    "unsafe_claim_blocked": true
+  },
+  "source_packets": [
+    {
+      "packet": "smoke",
+      "present": true,
+      "state": "ready",
+      "verdict": "ready_for_swarm_packet",
+      "blocking_checks": [],
+      "warning_count": 0,
+      "claim_boundary": null
+    },
+    {
+      "packet": "doctor",
+      "present": true,
+      "state": "ready",
+      "verdict": "ready_for_swarm_packet",
+      "blocking_checks": [],
+      "warning_count": 0,
+      "claim_boundary": null
+    },
+    {
+      "packet": "tool_operation",
+      "present": false,
+      "state": "missing",
+      "verdict": null,
+      "blocking_checks": [],
+      "warning_count": 0,
+      "claim_boundary": null
+    },
+    {
+      "packet": "artifact_quality",
+      "present": false,
+      "state": "missing",
+      "verdict": null,
+      "blocking_checks": [],
+      "warning_count": 0,
+      "claim_boundary": null
+    },
+    {
+      "packet": "content_route",
+      "present": false,
+      "state": "missing",
+      "verdict": null,
+      "blocking_checks": [],
+      "warning_count": 0,
+      "claim_boundary": null
+    },
+    {
+      "packet": "retrieval_memory",
+      "present": false,
+      "state": "missing",
+      "verdict": null,
+      "blocking_checks": [],
+      "warning_count": 0,
+      "claim_boundary": null
+    },
+    {
+      "packet": "startup_validation",
+      "present": true,
+      "state": "ready",
+      "verdict": null,
+      "blocking_checks": [],
+      "warning_count": 0,
+      "claim_boundary": null
+    }
+  ],
+  "blockers": [
+    {
+      "source": "publication_gate",
+      "blocking_checks": [
+        "multi_seed_validation",
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval"
+      ],
+      "message": "Network absorption requires multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval."
+    }
+  ],
+  "warnings": [],
+  "next_actions": [
+    "Review provenance, privacy, rollback, trap status, and claim boundaries before publishing to Swarm.",
+    "Review provenance, privacy, rollback, and claim boundaries before publication.",
+    "Keep publication local until network absorption gates are explicitly approved."
+  ],
+  "surface_adapters": {
+    "builder": {
+      "packet_kind": "builder_creator_readonly_handoff",
+      "mission_id": "startup-yc-product-readonly",
+      "read_only": true,
+      "verdict": "ready_for_swarm_packet",
+      "stage_status": "review_required",
+      "evidence_tier": "transfer_supported",
+      "blocking_checks": [],
+      "missing_paths": [],
+      "recommended_next_command": "Review provenance, privacy, rollback, and claim boundaries before publication.",
+      "may_mutate_state": false
+    },
+    "telegram": {
+      "packet_kind": "telegram_creator_status_summary",
+      "mission_id": "startup-yc-product-readonly",
+      "text": "Creator mission `startup-yc-product-readonly` is `review_required`. Canonical verdict: `ready_for_swarm_packet`. Evidence tier: `transfer_supported`. Blocked by: publication_gate Network absorption is not approved.",
+      "show_publication_warning": true,
+      "may_request_secret_paste": false
+    },
+    "spawner": {
+      "packet_kind": "spawner_creator_trace_readonly",
+      "mission_id": "startup-yc-product-readonly",
+      "stage_status": "review_required",
+      "blockers": [
+        {
+          "source": "publication_gate",
+          "blocking_checks": [
+            "multi_seed_validation",
+            "human_operator_calibration",
+            "privacy_review",
+            "rollback_review",
+            "publication_approval"
+          ],
+          "message": "Network absorption requires multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval."
+        }
+      ],
+      "publication": {
+        "publish_mode": "swarm_shared",
+        "local_display_allowed": true,
+        "github_pr_allowed": false,
+        "swarm_shared_allowed": false,
+        "network_absorbable": false,
+        "requested_network_absorption": true,
+        "blocked_reason": "Network absorption requires multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval.",
+        "required_gates": [
+          "multi_seed_validation",
+          "human_operator_calibration",
+          "privacy_review",
+          "rollback_review",
+          "publication_approval"
+        ],
+        "missing_gates": [
+          "multi_seed_validation",
+          "human_operator_calibration",
+          "privacy_review",
+          "rollback_review",
+          "publication_approval"
+        ],
+        "gate_status": {
+          "multi_seed_validation": false,
+          "human_operator_calibration": false,
+          "privacy_review": false,
+          "rollback_review": false,
+          "publication_approval": false
+        },
+        "unsafe_claim_blocked": true
+      },
+      "may_execute": false
+    },
+    "canvas": {
+      "packet_kind": "canvas_creator_graph_readonly",
+      "mission_id": "startup-yc-product-readonly",
+      "nodes": [
+        {
+          "id": "creator_mission",
+          "label": "Creator Mission",
+          "status": "review_required",
+          "source": "adapter"
+        },
+        {
+          "id": "smoke",
+          "label": "smoke",
+          "status": "ready",
+          "source": "canonical_packet"
+        },
+        {
+          "id": "doctor",
+          "label": "doctor",
+          "status": "ready",
+          "source": "canonical_packet"
+        },
+        {
+          "id": "startup_validation",
+          "label": "startup_validation",
+          "status": "ready",
+          "source": "canonical_packet"
+        },
+        {
+          "id": "publication_gate",
+          "label": "Publication Gate",
+          "status": "blocked",
+          "source": "adapter"
+        }
+      ],
+      "edges": [
+        {
+          "from": "smoke",
+          "to": "creator_mission"
+        },
+        {
+          "from": "doctor",
+          "to": "creator_mission"
+        },
+        {
+          "from": "tool_operation",
+          "to": "creator_mission"
+        },
+        {
+          "from": "retrieval_memory",
+          "to": "creator_mission"
+        },
+        {
+          "from": "creator_mission",
+          "to": "publication_gate"
+        }
+      ],
+      "may_edit_artifacts": false
+    },
+    "kanban": {
+      "packet_kind": "kanban_creator_columns_readonly",
+      "mission_id": "startup-yc-product-readonly",
+      "columns": {
+        "prototype": [],
+        "ready_for_baseline": [],
+        "review_required": [],
+        "blocked": [
+          {
+            "mission_id": "startup-yc-product-readonly",
+            "title": "Creator mission status",
+            "verdict": "ready_for_swarm_packet",
+            "evidence_tier": "transfer_supported",
+            "blocked": true
+          }
+        ]
+      },
+      "may_change_verdict": false
+    }
+  }
+}

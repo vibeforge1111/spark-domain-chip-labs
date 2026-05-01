@@ -1,0 +1,392 @@
+{
+  "schema_version": "adaptive_creator_loop.doctor_result.v1",
+  "run_dir": "docs\\creator_system\\examples\\startup-yc-creator-run",
+  "verdict": "ready_for_swarm_packet",
+  "evidence_tier": "transfer_supported",
+  "evidence_mode": "saved",
+  "summary": "Creator run is ready for Swarm packet review.",
+  "publication_ready": true,
+  "workspace_ready": true,
+  "repair_replay": {
+    "required": false,
+    "satisfied": false,
+    "fresh_evidence": false,
+    "command": "python -m chip_labs.cli creator-run-smoke docs\\creator_system\\examples\\startup-yc-creator-run --recompute --fail-on-blocked",
+    "message": "Repair advice is not complete until this command passes."
+  },
+  "quarantine": [],
+  "repair_steps": [
+    {
+      "priority": "review",
+      "area": "publication",
+      "title": "Review publication boundaries",
+      "action": "Review provenance, privacy, rollback, trap status, and claim boundaries before publishing to Swarm.",
+      "related_checks": [],
+      "paths": []
+    }
+  ],
+  "smoke": {
+    "schema_version": "adaptive_creator_loop.smoke_result.v1",
+    "run_dir": "docs\\creator_system\\examples\\startup-yc-creator-run",
+    "verdict": "ready_for_swarm_packet",
+    "evidence_tier": "transfer_supported",
+    "status_counts": {
+      "pass": 68,
+      "warn": 0,
+      "fail": 0
+    },
+    "blocking_checks": [],
+    "warning_checks": [],
+    "automation": {
+      "blocked": false,
+      "ci_exit_code": 0,
+      "recommended_next_command": "Review provenance, privacy, rollback, and claim boundaries before publication."
+    },
+    "checks": [
+      {
+        "name": "creator_intent",
+        "status": "pass",
+        "message": "Loaded creator-intent.json."
+      },
+      {
+        "name": "adapter_map",
+        "status": "pass",
+        "message": "Loaded adapter-map.json."
+      },
+      {
+        "name": "created_artifact_manifest",
+        "status": "pass",
+        "message": "Loaded created-artifact-manifest.json."
+      },
+      {
+        "name": "creator_intent_schema",
+        "status": "pass",
+        "message": "Schema version is adaptive_creator_loop.creator_intent.v1."
+      },
+      {
+        "name": "creator_intent_run_id",
+        "status": "pass",
+        "message": "creator-intent.json has a run_id."
+      },
+      {
+        "name": "creator_intent_goal",
+        "status": "pass",
+        "message": "creator-intent.json names the user goal."
+      },
+      {
+        "name": "adapter_map_schema",
+        "status": "pass",
+        "message": "Schema version is adaptive_creator_loop.adapter_map.v1."
+      },
+      {
+        "name": "evidence_tier",
+        "status": "pass",
+        "message": "Evidence tier is 'transfer_supported'."
+      },
+      {
+        "name": "domain_adapter_section",
+        "status": "pass",
+        "message": "domain_adapter exists."
+      },
+      {
+        "name": "benchmark_adapter_section",
+        "status": "pass",
+        "message": "benchmark_adapter exists."
+      },
+      {
+        "name": "tool_adapter_section",
+        "status": "pass",
+        "message": "tool_adapter exists."
+      },
+      {
+        "name": "autoloop_adapter_section",
+        "status": "pass",
+        "message": "autoloop_adapter exists."
+      },
+      {
+        "name": "absorption_adapter_section",
+        "status": "pass",
+        "message": "absorption_adapter exists."
+      },
+      {
+        "name": "swarm_adapter_section",
+        "status": "pass",
+        "message": "swarm_adapter exists."
+      },
+      {
+        "name": "created_artifact_manifest_schema",
+        "status": "pass",
+        "message": "Schema version is adaptive_creator_loop.created_artifact_manifest.v1."
+      },
+      {
+        "name": "created_artifact_manifest_run_id",
+        "status": "pass",
+        "message": "created-artifact-manifest.json creator_run_id is present and aligned."
+      },
+      {
+        "name": "created_artifact_manifest_publication_boundary",
+        "status": "pass",
+        "message": "Artifact manifest publication boundary is local_only."
+      },
+      {
+        "name": "created_artifact_manifest_artifacts",
+        "status": "pass",
+        "message": "Artifact manifest declares 7 artifact(s)."
+      },
+      {
+        "name": "created_artifact_manifest_entries",
+        "status": "pass",
+        "message": "Artifact manifest entries include kind, path, and valid status."
+      },
+      {
+        "name": "created_artifact_manifest_required_kinds",
+        "status": "pass",
+        "message": "Artifact manifest includes the required creator artifact kinds."
+      },
+      {
+        "name": "evidence_ladder",
+        "status": "pass",
+        "message": "Loaded reports/evidence_ladder.md."
+      },
+      {
+        "name": "evidence_ladder_claimed_tier",
+        "status": "pass",
+        "message": "Evidence ladder claimed tier matches adapter tier: transfer_supported."
+      },
+      {
+        "name": "evidence_ladder_weakest_tier",
+        "status": "pass",
+        "message": "Weakest supported tier 'transfer_supported' supports claimed tier 'transfer_supported'."
+      },
+      {
+        "name": "evidence_ladder_gate_statuses",
+        "status": "pass",
+        "message": "Evidence ladder gates are marked pass, warn, or fail."
+      },
+      {
+        "name": "evidence_ladder_gate:prototype_scaffold",
+        "status": "pass",
+        "message": "Evidence ladder gate 'Prototype scaffold' passed."
+      },
+      {
+        "name": "evidence_ladder_gate:baseline_benchmark",
+        "status": "pass",
+        "message": "Evidence ladder gate 'Baseline benchmark' passed."
+      },
+      {
+        "name": "evidence_ladder_gate:candidate_benchmark",
+        "status": "pass",
+        "message": "Evidence ladder gate 'Candidate benchmark' passed."
+      },
+      {
+        "name": "evidence_ladder_gate:fresh_agent_absorption",
+        "status": "pass",
+        "message": "Evidence ladder gate 'Fresh-agent absorption' passed."
+      },
+      {
+        "name": "evidence_ladder_gate:trap_adversarial_coverage",
+        "status": "pass",
+        "message": "Evidence ladder gate 'Trap/adversarial coverage' passed."
+      },
+      {
+        "name": "evidence_ladder_gate:swarm_packet_consistency",
+        "status": "pass",
+        "message": "Evidence ladder gate 'Swarm packet consistency' passed."
+      },
+      {
+        "name": "evidence_ladder_gate:privacy_provenance_rollback",
+        "status": "pass",
+        "message": "Evidence ladder gate 'Privacy/provenance/rollback' passed."
+      },
+      {
+        "name": "evidence_ladder_gate:transfer_probe",
+        "status": "pass",
+        "message": "Evidence ladder gate 'Transfer probe' passed."
+      },
+      {
+        "name": "evidence_ladder_safe_claim",
+        "status": "pass",
+        "message": "Evidence ladder includes Safe Claim."
+      },
+      {
+        "name": "evidence_ladder_unsafe_claim",
+        "status": "pass",
+        "message": "Evidence ladder includes Unsafe Claim."
+      },
+      {
+        "name": "baseline_report",
+        "status": "pass",
+        "message": "Loaded baseline.json."
+      },
+      {
+        "name": "candidate_report",
+        "status": "pass",
+        "message": "Loaded candidate.json."
+      },
+      {
+        "name": "absorption_report",
+        "status": "pass",
+        "message": "Loaded absorption_summary.json."
+      },
+      {
+        "name": "swarm_packet",
+        "status": "pass",
+        "message": "Loaded contribution_packet.json."
+      },
+      {
+        "name": "baseline_score",
+        "status": "pass",
+        "message": "Baseline mean_score is 0.6803."
+      },
+      {
+        "name": "candidate_score",
+        "status": "pass",
+        "message": "Candidate mean_score is 0.7003."
+      },
+      {
+        "name": "candidate_delta",
+        "status": "pass",
+        "message": "Candidate mean_delta is positive: 0.0200."
+      },
+      {
+        "name": "candidate_beats_baseline",
+        "status": "pass",
+        "message": "Candidate exceeds baseline by 0.0200."
+      },
+      {
+        "name": "absorption_all_modes_present",
+        "status": "pass",
+        "message": "Absorption report has all modes present."
+      },
+      {
+        "name": "absorption_all_modes_scored",
+        "status": "pass",
+        "message": "Absorption report has all modes scored."
+      },
+      {
+        "name": "absorption_delta",
+        "status": "pass",
+        "message": "Absorption delta is positive: 0.0200."
+      },
+      {
+        "name": "trap_coverage",
+        "status": "pass",
+        "message": "Trap coverage includes 5 cases."
+      },
+      {
+        "name": "swarm_packet_tier",
+        "status": "pass",
+        "message": "Swarm packet tier matches adapter tier: transfer_supported."
+      },
+      {
+        "name": "swarm_packet_delta",
+        "status": "pass",
+        "message": "Swarm packet mean_delta matches candidate report."
+      },
+      {
+        "name": "swarm_packet_traps",
+        "status": "pass",
+        "message": "Swarm packet reports no trap regressions."
+      },
+      {
+        "name": "swarm_packet_provenance",
+        "status": "pass",
+        "message": "Swarm packet includes source commit provenance."
+      },
+      {
+        "name": "swarm_packet_rollback",
+        "status": "pass",
+        "message": "Swarm packet includes rollback/deprecation rule."
+      },
+      {
+        "name": "transfer_report",
+        "status": "pass",
+        "message": "Loaded transfer_summary.json."
+      },
+      {
+        "name": "swarm_packet_transfer",
+        "status": "pass",
+        "message": "Loaded contribution_packet.json."
+      },
+      {
+        "name": "transfer_source",
+        "status": "pass",
+        "message": "Transfer source is startup-bench."
+      },
+      {
+        "name": "transfer_scenario_count",
+        "status": "pass",
+        "message": "Transfer report covers 12 scenario(s)."
+      },
+      {
+        "name": "transfer_score",
+        "status": "pass",
+        "message": "Transfer score is 0.7699."
+      },
+      {
+        "name": "transfer_baseline_score",
+        "status": "pass",
+        "message": "Transfer baseline score is 0.7139."
+      },
+      {
+        "name": "transfer_delta",
+        "status": "pass",
+        "message": "Transfer delta is positive: 0.0560."
+      },
+      {
+        "name": "transfer_constraints_passed",
+        "status": "pass",
+        "message": "Transfer run passed constraints."
+      },
+      {
+        "name": "swarm_packet_transfer_delta",
+        "status": "pass",
+        "message": "Swarm packet transfer delta matches transfer report."
+      },
+      {
+        "name": "broad_transfer_probe",
+        "status": "pass",
+        "message": "Loaded broad_transfer_probe.json."
+      },
+      {
+        "name": "broad_transfer_source",
+        "status": "pass",
+        "message": "Broad transfer source is startup-bench."
+      },
+      {
+        "name": "broad_transfer_scenario_count",
+        "status": "pass",
+        "message": "Broad transfer probe covers 12 scenarios."
+      },
+      {
+        "name": "broad_transfer_delta",
+        "status": "pass",
+        "message": "Broad transfer probe is positive: 0.0560."
+      },
+      {
+        "name": "broad_transfer_scenario_results",
+        "status": "pass",
+        "message": "Broad transfer scenario_results covers 12 row(s)."
+      },
+      {
+        "name": "broad_transfer_no_negative_rows",
+        "status": "pass",
+        "message": "Broad transfer probe reports no negative scenario rows."
+      },
+      {
+        "name": "broad_transfer_constraints_passed",
+        "status": "pass",
+        "message": "Broad transfer probe passed constraints."
+      },
+      {
+        "name": "broad_transfer_verdict",
+        "status": "pass",
+        "message": "Broad transfer verdict is broad_fresh_transfer_supported."
+      }
+    ],
+    "missing_paths": [],
+    "next_actions": [
+      "Review provenance, trap status, rollback, and privacy boundary before network publication."
+    ]
+  }
+}
