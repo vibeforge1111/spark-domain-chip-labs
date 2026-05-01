@@ -225,6 +225,12 @@ Route mode returns `invoke` or `skip`, the reason, candidate count, claim
 boundary, and the target local command. Omit `--no-simulation` when the caller
 also wants the embedded local simulation result.
 
+Saved examples:
+
+- `examples/mirofish-content/route-invoke.json`
+- `examples/mirofish-content/simulation-result.json`
+- `examples/mirofish-content/simulation-result.md`
+
 Example input:
 
 ```json

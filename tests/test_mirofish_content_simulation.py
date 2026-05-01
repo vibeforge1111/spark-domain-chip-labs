@@ -17,6 +17,9 @@ from chip_labs.mirofish.content_simulation import (
 )
 
 
+EXAMPLE_DIR = Path("docs/creator_system/examples/mirofish-content")
+
+
 def _packet() -> dict[str, object]:
     return {
         "candidates": [
@@ -260,3 +263,23 @@ def test_cli_mirofish_content_route_outputs_route_packet(tmp_path: Path) -> None
     assert payload["verdict"] == "invoke"
     assert payload["route"] == "mirofish-content-simulate"
     assert "simulation_result" not in payload
+
+
+def test_saved_mirofish_content_examples_preserve_claim_boundary() -> None:
+    route = json.loads((EXAMPLE_DIR / "route-invoke.json").read_text(encoding="utf-8"))
+    simulation = json.loads((EXAMPLE_DIR / "simulation-result.json").read_text(encoding="utf-8"))
+    markdown = (EXAMPLE_DIR / "simulation-result.md").read_text(encoding="utf-8")
+
+    assert route["packet_kind"] == "mirofish_content_route"
+    assert route["verdict"] == "invoke"
+    assert route["claim_boundary"] == CLAIM_BOUNDARY
+    assert route["simulation_packet"]["claim_boundary"] == CLAIM_BOUNDARY
+    assert simulation["packet_kind"] == "mirofish_content_simulation_result"
+    assert simulation["verdict"] == "ranked"
+    assert simulation["claim_boundary"] == CLAIM_BOUNDARY
+    assert simulation["row_count"] == (
+        simulation["candidate_count"]
+        * len(simulation["persona_segments"])
+        * len(simulation["rlm_judges"])
+    )
+    assert "candidate_review local simulator protocol only" in markdown

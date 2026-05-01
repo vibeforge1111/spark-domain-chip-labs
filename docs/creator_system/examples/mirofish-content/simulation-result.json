@@ -1,0 +1,433 @@
+{
+  "packet_kind": "mirofish_content_simulation_result",
+  "verdict": "ranked",
+  "top_candidate_id": "candidate-1",
+  "top_candidate_text": "7 benchmark mistakes that make AI agent demos look better than they are",
+  "candidate_count": 3,
+  "persona_segments": [
+    "founder-builders",
+    "technical-operators",
+    "creator-economy-readers",
+    "skeptical-experts"
+  ],
+  "rlm_judges": [
+    "spark-local-judge",
+    "frontier-reasoning-judge",
+    "fast-taste-judge"
+  ],
+  "row_count": 36,
+  "aggregation_rule": "rank by median composite predicted save/share/reply intent, then inspect weak persona segments",
+  "rankings": [
+    {
+      "candidate_id": "candidate-1",
+      "text": "7 benchmark mistakes that make AI agent demos look better than they are",
+      "median_composite": 0.4303,
+      "mean_composite": 0.4781,
+      "weakest_persona": "founder-builders",
+      "weakest_persona_score": 0.4278,
+      "persona_scores": {
+        "founder-builders": 0.4278,
+        "technical-operators": 0.6278,
+        "creator-economy-readers": 0.4278,
+        "skeptical-experts": 0.4278
+      }
+    },
+    {
+      "candidate_id": "candidate-3",
+      "text": "How to prove an agent workflow actually improved before you ship it",
+      "median_composite": 0.3865,
+      "mean_composite": 0.4352,
+      "weakest_persona": "founder-builders",
+      "weakest_persona_score": 0.3864,
+      "persona_scores": {
+        "founder-builders": 0.3864,
+        "technical-operators": 0.5865,
+        "creator-economy-readers": 0.3864,
+        "skeptical-experts": 0.3864
+      }
+    },
+    {
+      "candidate_id": "candidate-2",
+      "text": "The ultimate secret to amazing AI content",
+      "median_composite": 0.2091,
+      "mean_composite": 0.2237,
+      "weakest_persona": "founder-builders",
+      "weakest_persona_score": 0.2077,
+      "persona_scores": {
+        "founder-builders": 0.2077,
+        "technical-operators": 0.2077,
+        "creator-economy-readers": 0.2777,
+        "skeptical-experts": 0.2077
+      }
+    }
+  ],
+  "score_rows": [
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "founder-builders",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.5814,
+      "predicted_share_intent": 0.4006,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.455,
+      "composite_score": 0.4278
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "founder-builders",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.5912,
+      "predicted_share_intent": 0.4104,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.455,
+      "composite_score": 0.4327
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "founder-builders",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.5736,
+      "predicted_share_intent": 0.3928,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.455,
+      "composite_score": 0.4239
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "technical-operators",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.7014,
+      "predicted_share_intent": 0.5606,
+      "reply_likelihood": 0.3616,
+      "audience_specificity": 0.695,
+      "composite_score": 0.6278
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "technical-operators",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.7112,
+      "predicted_share_intent": 0.5704,
+      "reply_likelihood": 0.3616,
+      "audience_specificity": 0.695,
+      "composite_score": 0.6327
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "technical-operators",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.6936,
+      "predicted_share_intent": 0.5528,
+      "reply_likelihood": 0.3616,
+      "audience_specificity": 0.695,
+      "composite_score": 0.6232
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "creator-economy-readers",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.5814,
+      "predicted_share_intent": 0.4006,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.455,
+      "composite_score": 0.4278
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "creator-economy-readers",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.5912,
+      "predicted_share_intent": 0.4104,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.455,
+      "composite_score": 0.4327
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "creator-economy-readers",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.5736,
+      "predicted_share_intent": 0.3928,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.455,
+      "composite_score": 0.4239
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "skeptical-experts",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.5814,
+      "predicted_share_intent": 0.4006,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.455,
+      "composite_score": 0.4278
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "skeptical-experts",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.5912,
+      "predicted_share_intent": 0.4104,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.455,
+      "composite_score": 0.4327
+    },
+    {
+      "candidate_id": "candidate-1",
+      "persona_segment": "skeptical-experts",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.5736,
+      "predicted_share_intent": 0.3928,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.455,
+      "composite_score": 0.4239
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "founder-builders",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.225,
+      "predicted_share_intent": 0.176,
+      "reply_likelihood": 0.1716,
+      "audience_specificity": 0.3625,
+      "composite_score": 0.2005
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "founder-builders",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.235,
+      "predicted_share_intent": 0.186,
+      "reply_likelihood": 0.1716,
+      "audience_specificity": 0.3625,
+      "composite_score": 0.2105
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "founder-builders",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.2322,
+      "predicted_share_intent": 0.1832,
+      "reply_likelihood": 0.1716,
+      "audience_specificity": 0.3625,
+      "composite_score": 0.2077
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "technical-operators",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.225,
+      "predicted_share_intent": 0.176,
+      "reply_likelihood": 0.1716,
+      "audience_specificity": 0.3625,
+      "composite_score": 0.2005
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "technical-operators",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.235,
+      "predicted_share_intent": 0.186,
+      "reply_likelihood": 0.1716,
+      "audience_specificity": 0.3625,
+      "composite_score": 0.2105
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "technical-operators",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.2322,
+      "predicted_share_intent": 0.1832,
+      "reply_likelihood": 0.1716,
+      "audience_specificity": 0.3625,
+      "composite_score": 0.2077
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "creator-economy-readers",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.285,
+      "predicted_share_intent": 0.256,
+      "reply_likelihood": 0.2216,
+      "audience_specificity": 0.4825,
+      "composite_score": 0.2705
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "creator-economy-readers",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.295,
+      "predicted_share_intent": 0.266,
+      "reply_likelihood": 0.2216,
+      "audience_specificity": 0.4825,
+      "composite_score": 0.2805
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "creator-economy-readers",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.2922,
+      "predicted_share_intent": 0.2632,
+      "reply_likelihood": 0.2216,
+      "audience_specificity": 0.4825,
+      "composite_score": 0.2777
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "skeptical-experts",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.225,
+      "predicted_share_intent": 0.176,
+      "reply_likelihood": 0.1716,
+      "audience_specificity": 0.3625,
+      "composite_score": 0.2005
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "skeptical-experts",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.235,
+      "predicted_share_intent": 0.186,
+      "reply_likelihood": 0.1716,
+      "audience_specificity": 0.3625,
+      "composite_score": 0.2105
+    },
+    {
+      "candidate_id": "candidate-2",
+      "persona_segment": "skeptical-experts",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.2322,
+      "predicted_share_intent": 0.1832,
+      "reply_likelihood": 0.1716,
+      "audience_specificity": 0.3625,
+      "composite_score": 0.2077
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "founder-builders",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.5264,
+      "predicted_share_intent": 0.3806,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.3925,
+      "composite_score": 0.3865
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "founder-builders",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.5262,
+      "predicted_share_intent": 0.3804,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.3925,
+      "composite_score": 0.3864
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "founder-builders",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.5186,
+      "predicted_share_intent": 0.3728,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.3925,
+      "composite_score": 0.3826
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "technical-operators",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.6464,
+      "predicted_share_intent": 0.5406,
+      "reply_likelihood": 0.3616,
+      "audience_specificity": 0.6325,
+      "composite_score": 0.5866
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "technical-operators",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.6462,
+      "predicted_share_intent": 0.5404,
+      "reply_likelihood": 0.3616,
+      "audience_specificity": 0.6325,
+      "composite_score": 0.5865
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "technical-operators",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.6386,
+      "predicted_share_intent": 0.5328,
+      "reply_likelihood": 0.3616,
+      "audience_specificity": 0.6325,
+      "composite_score": 0.5827
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "creator-economy-readers",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.5264,
+      "predicted_share_intent": 0.3806,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.3925,
+      "composite_score": 0.3865
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "creator-economy-readers",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.5262,
+      "predicted_share_intent": 0.3804,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.3925,
+      "composite_score": 0.3864
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "creator-economy-readers",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.5186,
+      "predicted_share_intent": 0.3728,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.3925,
+      "composite_score": 0.3826
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "skeptical-experts",
+      "rlm_judge": "spark-local-judge",
+      "predicted_save_intent": 0.5264,
+      "predicted_share_intent": 0.3806,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.3925,
+      "composite_score": 0.3865
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "skeptical-experts",
+      "rlm_judge": "frontier-reasoning-judge",
+      "predicted_save_intent": 0.5262,
+      "predicted_share_intent": 0.3804,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.3925,
+      "composite_score": 0.3864
+    },
+    {
+      "candidate_id": "candidate-3",
+      "persona_segment": "skeptical-experts",
+      "rlm_judge": "fast-taste-judge",
+      "predicted_save_intent": 0.5186,
+      "predicted_share_intent": 0.3728,
+      "reply_likelihood": 0.2616,
+      "audience_specificity": 0.3925,
+      "composite_score": 0.3826
+    }
+  ],
+  "claim_boundary": "candidate_review local simulator protocol only",
+  "requires_before_transfer": [
+    "multi-seed simulator reruns",
+    "human/operator calibration",
+    "privacy and publication review",
+    "comparison against actual content outcomes"
+  ]
+}

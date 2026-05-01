@@ -1,0 +1,49 @@
+{
+  "packet_kind": "mirofish_content_route",
+  "route": "mirofish-content-simulate",
+  "verdict": "invoke",
+  "candidate_count": 3,
+  "claim_boundary": "candidate_review local simulator protocol only",
+  "reason": "explicit candidate batch plus selection intent",
+  "requires_before_transfer": [
+    "multi-seed simulator reruns",
+    "human/operator calibration",
+    "privacy and publication review",
+    "comparison against actual content outcomes"
+  ],
+  "candidate_ids": [
+    "candidate-1",
+    "candidate-2",
+    "candidate-3"
+  ],
+  "simulation_packet": {
+    "task": "Pick the best title for a post about agent benchmark honesty.",
+    "triggered_by": "mirofish_content_simulation",
+    "candidates": [
+      {
+        "id": "candidate-1",
+        "text": "7 benchmark mistakes that make AI agent demos look better than they are"
+      },
+      {
+        "id": "candidate-2",
+        "text": "The ultimate secret to amazing AI content"
+      },
+      {
+        "id": "candidate-3",
+        "text": "How to prove an agent workflow actually improved before you ship it"
+      }
+    ],
+    "persona_segments": [
+      "founder-builders",
+      "technical-operators",
+      "creator-economy-readers",
+      "skeptical-experts"
+    ],
+    "rlm_judges": [
+      "spark-local-judge",
+      "frontier-reasoning-judge",
+      "fast-taste-judge"
+    ],
+    "claim_boundary": "candidate_review local simulator protocol only"
+  }
+}

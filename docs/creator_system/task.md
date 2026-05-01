@@ -80,7 +80,7 @@ Deliverables:
 - [x] `mirofish-content-route` route packet command.
 - [x] Route tests for invoke, skip, missing candidates, explicit candidates, and
   CLI output.
-- [ ] Optional: add saved example packets for route mode and simulation mode.
+- [x] Saved example packets for route mode and simulation mode.
 
 Phase gate:
 
@@ -455,8 +455,9 @@ Current Phase 7 executable slice:
 
 Next documentation/verification slice:
 
-1. Decide whether to add saved example packets for MiroFish route mode and
-   simulation mode.
+1. Continue monitoring product PR CI after further branch refreshes.
+2. Decide whether the MiroFish examples should be referenced by product mission
+   status packets or remain docs-only examples for now.
 
 Completed product PR verification:
 

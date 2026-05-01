@@ -25,6 +25,8 @@
   backlog now point to the same CI-backed read-only product adapter boundary.
 - Product consumer PR ledger now records refreshed Builder and Telegram branch
   heads with passing remote CI.
+- MiroFish content simulation now has saved route, JSON result, and Markdown
+  readout examples under `examples/mirofish-content/`.
 
 ## Current Claim Boundary
 
