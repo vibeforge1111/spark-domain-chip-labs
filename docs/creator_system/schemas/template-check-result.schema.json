@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/template-check-result.schema.json",
+  "title": "Adaptive Creator Loop Template Check Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "template_dir",
+    "verdict",
+    "status_counts",
+    "blocking_checks",
+    "checks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.template_check_result.v1"
+    },
+    "template_dir": {"type": "string"},
+    "verdict": {"enum": ["pass", "blocked"]},
+    "status_counts": {"type": "object"},
+    "blocking_checks": {"type": "array", "items": {"type": "string"}},
+    "checks": {"type": "array"}
+  }
+}
+

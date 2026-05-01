@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/creator-intent.schema.json",
+  "title": "Adaptive Creator Loop Creator Intent",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "source_channel",
+    "domain",
+    "goal",
+    "constraints",
+    "success_criteria"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.creator_intent.v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "requested_by": {
+      "type": "string"
+    },
+    "source_channel": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "object",
+      "required": ["name", "short_slug"],
+      "properties": {
+        "name": {"type": "string"},
+        "short_slug": {"type": "string"},
+        "why_this_domain_matters": {"type": "string"},
+        "target_operator": {"type": "string"},
+        "target_agent": {"type": "string"}
+      }
+    },
+    "goal": {
+      "type": "object",
+      "required": ["plain_language_goal"],
+      "properties": {
+        "plain_language_goal": {"type": "string"},
+        "capability_to_improve": {"type": "string"},
+        "expected_user_value": {"type": "string"},
+        "non_goals": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "required": ["privacy_boundary", "network_publication_allowed"],
+      "properties": {
+        "privacy_boundary": {"type": "string"},
+        "network_publication_allowed": {"type": "boolean"},
+        "auth_or_secret_requirements": {"type": "array"},
+        "forbidden_mutations": {"type": "array"},
+        "human_review_required": {"type": "boolean"}
+      }
+    },
+    "success_criteria": {
+      "type": "object",
+      "required": ["minimum_evidence_tier"],
+      "properties": {
+        "minimum_evidence_tier": {"type": "string"},
+        "benchmark_target": {"type": "string"},
+        "absorption_target": {"type": "string"},
+        "trap_regression_policy": {"type": "string"},
+        "stop_ship_conditions": {"type": "array"}
+      }
+    },
+    "known_inputs": {
+      "type": "object"
+    },
+    "open_questions": {
+      "type": "array"
+    }
+  }
+}
+

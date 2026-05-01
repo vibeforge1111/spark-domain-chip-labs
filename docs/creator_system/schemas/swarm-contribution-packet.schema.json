@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/swarm-contribution-packet.schema.json",
+  "title": "Adaptive Creator Loop Swarm Contribution Packet",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "packet_id",
+    "creator_run_id",
+    "source",
+    "contribution",
+    "evidence",
+    "governance",
+    "anti_drift"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.swarm_contribution_packet.v1"
+    },
+    "packet_id": {"type": "string"},
+    "creator_run_id": {"type": "string"},
+    "source": {"type": "object"},
+    "contribution": {"type": "object"},
+    "evidence": {"type": "object"},
+    "governance": {
+      "type": "object",
+      "required": ["rollback_or_deprecation_rule", "privacy_boundary"],
+      "properties": {
+        "rollback_or_deprecation_rule": {"type": "string"},
+        "privacy_boundary": {"type": "string"},
+        "network_publication_allowed": {"type": "boolean"}
+      }
+    },
+    "anti_drift": {
+      "type": "object",
+      "required": ["known_limits"],
+      "properties": {
+        "known_limits": {"type": "array"}
+      }
+    }
+  }
+}
+

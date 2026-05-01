@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/doctor-result.schema.json",
+  "title": "Adaptive Creator Loop Doctor Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_dir",
+    "verdict",
+    "evidence_tier",
+    "summary",
+    "publication_ready",
+    "workspace_ready",
+    "repair_steps",
+    "smoke"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.doctor_result.v1"
+    },
+    "run_dir": {"type": "string"},
+    "verdict": {"type": "string"},
+    "evidence_tier": {"type": "string"},
+    "summary": {"type": "string"},
+    "publication_ready": {"type": "boolean"},
+    "workspace_ready": {"type": "boolean"},
+    "repair_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["priority", "area", "title", "action", "related_checks", "paths"]
+      }
+    },
+    "smoke": {"type": "object"}
+  }
+}
+

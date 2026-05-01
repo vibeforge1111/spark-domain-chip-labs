@@ -6,6 +6,12 @@ This document defines how the user-facing creator flow should work when creation
 
 The goal is for a normal user to ask for a domain chip, benchmark, specialization path, or autoloop, then get a trackable mission with real validation and a clear path into Spark Swarm.
 
+## Current Status
+
+This is a product-flow design document, not the shipped V1 surface.
+
+The shippable V1 contract currently lives in `creator-run-init`, `creator-run-template-check`, `creator-run-smoke`, `creator-run-doctor`, the creator-run schemas, and the Startup YC reference fixture. Product wiring should be picked up from [PHASE_2_PRODUCT_FLOW_BACKLOG.md](PHASE_2_PRODUCT_FLOW_BACKLOG.md) after Builder, memory, conversations, Telegram interactions, Spawner UI, Canvas, and Kanban are ready for the surface.
+
 ## Current System Facts
 
 The current stack already has these surfaces:
@@ -265,4 +271,3 @@ User asks in Telegram
 ```
 
 Once that works, every other domain can copy the same path.
-

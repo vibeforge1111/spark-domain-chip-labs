@@ -73,6 +73,44 @@ READY_FOR_SWARM_PATHS = (
     "swarm/contribution_packet.json",
 )
 
+TEMPLATE_REQUIRED_FIELDS = {
+    "creator-intent.template.json": (
+        "schema_version",
+        "run_id",
+        "domain.name",
+        "domain.short_slug",
+        "goal.plain_language_goal",
+        "constraints.privacy_boundary",
+        "success_criteria.minimum_evidence_tier",
+    ),
+    "adapter-map.template.json": (
+        "schema_version",
+        "run_id",
+        "domain_adapter",
+        "benchmark_adapter",
+        "tool_adapter",
+        "autoloop_adapter",
+        "absorption_adapter",
+        "swarm_adapter",
+        "swarm_adapter.evidence_tier",
+    ),
+    "swarm-contribution-packet.template.json": (
+        "schema_version",
+        "creator_run_id",
+        "source",
+        "contribution",
+        "evidence",
+        "governance.rollback_or_deprecation_rule",
+        "anti_drift.known_limits",
+    ),
+}
+
+TEMPLATE_REQUIRED_TEXT_FILES = (
+    "creator-run-summary.template.md",
+    "standard-change-proposal.template.md",
+    "README.md",
+)
+
 
 @dataclass(frozen=True)
 class SmokeCheck:
@@ -245,6 +283,118 @@ def init_creator_run(
     }
 
 
+def diagnose_creator_run(run_dir: str | Path) -> dict[str, Any]:
+    """Return a concise repair plan for a creator-run directory."""
+
+    smoke = validate_creator_run(run_dir)
+    smoke_payload = smoke.to_dict()
+    repair_steps = _repair_steps_for_smoke(smoke)
+    return {
+        "schema_version": "adaptive_creator_loop.doctor_result.v1",
+        "run_dir": smoke.run_dir,
+        "verdict": smoke.verdict,
+        "evidence_tier": smoke.evidence_tier,
+        "summary": _doctor_summary(smoke),
+        "publication_ready": smoke.verdict == "ready_for_swarm_packet"
+        and not smoke_payload["warning_checks"],
+        "workspace_ready": smoke.verdict != "blocked",
+        "repair_steps": repair_steps,
+        "smoke": smoke_payload,
+    }
+
+
+def validate_creator_templates(
+    template_dir: str | Path | None = None,
+) -> dict[str, Any]:
+    """Validate creator-run templates before shipping the creator contract."""
+
+    template_path = Path(template_dir) if template_dir else default_template_dir()
+    checks: list[SmokeCheck] = []
+    for template_name in TEMPLATE_FILENAMES:
+        path = template_path / template_name
+        if path.exists():
+            checks.append(
+                SmokeCheck(
+                    f"template_exists:{template_name}",
+                    "pass",
+                    f"{template_name} exists.",
+                )
+            )
+        else:
+            checks.append(
+                SmokeCheck(
+                    f"template_exists:{template_name}",
+                    "fail",
+                    f"Missing {template_name}.",
+                )
+            )
+
+    for template_name, required_fields in TEMPLATE_REQUIRED_FIELDS.items():
+        data = _load_optional_template_json(
+            template_path / template_name, template_name, checks
+        )
+        if not data:
+            continue
+        for field_path in required_fields:
+            value = _nested_path(data, field_path)
+            if _has_template_value(value):
+                checks.append(
+                    SmokeCheck(
+                        f"template_field:{template_name}:{field_path}",
+                        "pass",
+                        f"{template_name} includes {field_path}.",
+                    )
+                )
+            else:
+                checks.append(
+                    SmokeCheck(
+                        f"template_field:{template_name}:{field_path}",
+                        "fail",
+                        f"{template_name} must include {field_path}.",
+                    )
+                )
+
+    for template_name in TEMPLATE_REQUIRED_TEXT_FILES:
+        path = template_path / template_name
+        if not path.exists():
+            checks.append(
+                SmokeCheck(
+                    f"template_text:{template_name}",
+                    "fail",
+                    f"Missing {template_name}.",
+                )
+            )
+            continue
+        text = path.read_text(encoding="utf-8").strip()
+        if text:
+            checks.append(
+                SmokeCheck(
+                    f"template_text:{template_name}",
+                    "pass",
+                    f"{template_name} has content.",
+                )
+            )
+        else:
+            checks.append(
+                SmokeCheck(
+                    f"template_text:{template_name}",
+                    "fail",
+                    f"{template_name} must not be empty.",
+                )
+            )
+
+    status_counts = _status_counts(tuple(checks))
+    blocking_checks = _check_names_by_status(tuple(checks), "fail")
+    return {
+        "schema_version": "adaptive_creator_loop.template_check_result.v1",
+        "template_dir": str(template_path),
+        "verdict": "blocked" if blocking_checks else "pass",
+        "status_counts": status_counts,
+        "blocking_checks": blocking_checks,
+        "checks": [check.to_dict() for check in checks],
+    }
+
+
 def validate_creator_run(run_dir: str | Path) -> SmokeResult:
     """Validate a creator-run directory and return a conservative readiness verdict."""
 
@@ -398,6 +548,112 @@ def _recommended_next_command(result: SmokeResult) -> str:
     if result.verdict == "ready_for_swarm_packet":
         return "Review provenance, privacy, rollback, and claim boundaries before publication."
     return f"python -m chip_labs.cli creator-run-smoke {result.run_dir}"
+
+
+def _repair_steps_for_smoke(smoke: SmokeResult) -> list[dict[str, Any]]:
+    checks_by_status = {
+        "fail": [check for check in smoke.checks if check.status == "fail"],
+        "warn": [check for check in smoke.checks if check.status == "warn"],
+    }
+    steps: list[dict[str, Any]] = []
+    if checks_by_status["fail"]:
+        steps.append(
+            {
+                "priority": "blocker",
+                "area": "validation",
+                "title": "Fix blocking smoke checks",
+                "action": "Open the failed check names and repair the referenced schema, field, or evidence artifact before continuing.",
+                "related_checks": [check.name for check in checks_by_status["fail"]],
+                "paths": [],
+            }
+        )
+    if smoke.missing_paths:
+        core_missing = [
+            path for path in smoke.missing_paths if path in READY_FOR_BASELINE_PATHS
+        ]
+        report_missing = [
+            path for path in smoke.missing_paths if path in READY_FOR_SWARM_PATHS
+        ]
+        if core_missing:
+            steps.append(
+                {
+                    "priority": "next",
+                    "area": "artifact_scaffold",
+                    "title": "Create core creator-run artifacts",
+                    "action": "Fill or link the domain chip, specialization path, benchmark, and autoloop artifacts.",
+                    "related_checks": [],
+                    "paths": core_missing,
+                }
+            )
+        if report_missing:
+            steps.append(
+                {
+                    "priority": "next",
+                    "area": "evidence_reports",
+                    "title": "Generate benchmark and absorption reports",
+                    "action": "Run baseline, candidate, and absorption checks, then save the required report files.",
+                    "related_checks": [],
+                    "paths": report_missing,
+                }
+            )
+    if checks_by_status["warn"]:
+        steps.append(
+            {
+                "priority": "publication",
+                "area": "claim_boundary",
+                "title": "Resolve warnings before network publication",
+                "action": "Warnings can be acceptable for workspace iteration, but strict publication should clear or explicitly accept them.",
+                "related_checks": [check.name for check in checks_by_status["warn"]],
+                "paths": [],
+            }
+        )
+    if not steps:
+        steps.append(
+            {
+                "priority": "review",
+                "area": "publication",
+                "title": "Review publication boundaries",
+                "action": "Review provenance, privacy, rollback, trap status, and claim boundaries before publishing to Swarm.",
+                "related_checks": [],
+                "paths": [],
+            }
+        )
+    return steps
+
+
+def _doctor_summary(smoke: SmokeResult) -> str:
+    if smoke.verdict == "blocked":
+        return "Creator run is blocked by failed checks."
+    if smoke.verdict == "prototype":
+        return "Creator run has intent/adapters and needs core artifacts."
+    if smoke.verdict == "ready_for_baseline":
+        return "Creator run has core artifacts and needs benchmark/absorption evidence."
+    if smoke.verdict == "ready_for_swarm_packet":
+        warnings = len(_check_names_by_status(smoke.checks, "warn"))
+        if warnings:
+            return "Creator run is workspace-ready with warnings; strict publication should resolve warnings first."
+        return "Creator run is ready for Swarm packet review."
+    return f"Creator run verdict is {smoke.verdict}."
+
+
+def _load_optional_template_json(
+    path: Path, template_name: str, checks: list[SmokeCheck]
+) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    try:
+        return load_json(path)
+    except ValueError as exc:
+        checks.append(SmokeCheck(f"template_json:{template_name}", "fail", str(exc)))
+        return None
+
+
+def _nested_path(data: dict[str, Any], path: str) -> Any:
+    return _nested(data, *path.split("."))
+
+
+def _has_template_value(value: Any) -> bool:
+    return value is not None
 
 
 def _check_schema_prefix(

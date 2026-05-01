@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/adapter-map.schema.json",
+  "title": "Adaptive Creator Loop Adapter Map",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "domain_adapter",
+    "benchmark_adapter",
+    "tool_adapter",
+    "autoloop_adapter",
+    "absorption_adapter",
+    "swarm_adapter"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.adapter_map.v1"
+    },
+    "run_id": {"type": "string", "minLength": 1},
+    "domain_adapter": {"type": "object"},
+    "benchmark_adapter": {"type": "object"},
+    "tool_adapter": {"type": "object"},
+    "autoloop_adapter": {"type": "object"},
+    "absorption_adapter": {"type": "object"},
+    "swarm_adapter": {
+      "type": "object",
+      "required": ["evidence_tier"],
+      "properties": {
+        "evidence_tier": {"type": "string"},
+        "review_state": {"type": "string"},
+        "proposed_packet": {"type": "string"},
+        "privacy_and_security_notes": {"type": "string"}
+      }
+    }
+  }
+}
+

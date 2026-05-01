@@ -22,6 +22,18 @@ Validate a creator run:
 python -m chip_labs.cli creator-run-smoke runs/<run-name>
 ```
 
+Validate the template set:
+
+```bash
+python -m chip_labs.cli creator-run-template-check --fail-on-blocked
+```
+
+Diagnose a run and get concrete repair steps:
+
+```bash
+python -m chip_labs.cli creator-run-doctor runs/<run-name>
+```
+
 Bot or CI validation:
 
 ```bash
@@ -75,6 +87,47 @@ Callers should treat `schema_version` as the compatibility anchor. If the schema
 
 Warnings do not block workspace iteration. Warnings should block strict publication if `--fail-on-warn` is used.
 
+## Doctor Result Contract
+
+`creator-run-doctor` wraps the smoke result with a repair plan:
+
+```json
+{
+  "schema_version": "adaptive_creator_loop.doctor_result.v1",
+  "run_dir": "runs/example",
+  "verdict": "prototype",
+  "evidence_tier": "prototype",
+  "summary": "Creator run has intent/adapters and needs core artifacts.",
+  "publication_ready": false,
+  "workspace_ready": true,
+  "repair_steps": [],
+  "smoke": {}
+}
+```
+
+Use doctor output when the caller needs human-readable next steps instead of raw check names.
+
+## Template Check Contract
+
+`creator-run-template-check` validates that the template set still contains the fields required to scaffold a usable creator run:
+
+```json
+{
+  "schema_version": "adaptive_creator_loop.template_check_result.v1",
+  "template_dir": "docs/creator_system/templates/creator-run",
+  "verdict": "pass",
+  "status_counts": {
+    "pass": 31,
+    "warn": 0,
+    "fail": 0
+  },
+  "blocking_checks": [],
+  "checks": []
+}
+```
+
+Run this before changing templates or asking Builder to generate new creator-run workspaces.
+
 ## Evidence Promotion Rules
 
 The creator-run smoke gate enforces conservative evidence claims:
@@ -86,6 +139,10 @@ The creator-run smoke gate enforces conservative evidence claims:
 - Negative broad transfer blocks `network_absorbable` and `standard_update`.
 
 ## Integration Rules
+
+These rules are the future integration contract, not a completed product-flow release.
+
+V1 is CLI and repo based. Spark Intelligence Builder, Telegram, Spawner UI, Canvas, and Kanban should wire into this contract only when their own builder, memory, conversation, and mission-control surfaces are ready.
 
 Telegram should:
 
@@ -134,7 +191,9 @@ The warning is intentional. Startup YC has focused transfer support, but broad t
 Before shipping changes to this contract:
 
 1. Run `python -m pytest tests/test_creator_run.py tests/test_creator_run_examples.py -q`.
-2. Run smoke on the Startup YC fixture.
-3. Run `creator-run-smoke --fail-on-blocked` on the fixture.
-4. Confirm the fixture still warns, rather than fails, on negative broad transfer.
-5. Update this document if CLI flags, result fields, verdicts, or promotion semantics change.
+2. Run `python -m chip_labs.cli creator-run-template-check --fail-on-blocked`.
+3. Run smoke on the Startup YC fixture.
+4. Run `creator-run-smoke --fail-on-blocked` on the fixture.
+5. Run `creator-run-doctor` on the fixture and confirm it returns publication repair steps for warnings.
+6. Confirm the fixture still warns, rather than fails, on negative broad transfer.
+7. Update this document if CLI flags, result fields, verdicts, or promotion semantics change.

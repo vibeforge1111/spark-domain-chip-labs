@@ -6,7 +6,12 @@ import subprocess
 import sys
 from pathlib import Path
 
-from chip_labs.creator_run import init_creator_run, validate_creator_run
+from chip_labs.creator_run import (
+    diagnose_creator_run,
+    init_creator_run,
+    validate_creator_run,
+    validate_creator_templates,
+)
 
 
 def test_init_creator_run_creates_valid_prototype(tmp_path: Path) -> None:
@@ -95,6 +100,81 @@ def test_cli_fail_on_warn_exits_nonzero_for_warning_fixture() -> None:
     assert result.returncode == 1
     assert '"warning_checks": [' in result.stdout
     assert '"broad_transfer_delta"' in result.stdout
+
+
+def test_creator_run_doctor_returns_repair_steps(tmp_path: Path) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Diagnose this run.")
+
+    result = diagnose_creator_run(run_dir)
+
+    assert result["schema_version"] == "adaptive_creator_loop.doctor_result.v1"
+    assert result["verdict"] == "prototype"
+    assert result["workspace_ready"] is True
+    assert result["publication_ready"] is False
+    assert any(step["area"] == "artifact_scaffold" for step in result["repair_steps"])
+
+
+def test_template_check_passes_default_templates() -> None:
+    result = validate_creator_templates()
+
+    assert result["schema_version"] == "adaptive_creator_loop.template_check_result.v1"
+    assert result["verdict"] == "pass"
+    assert result["blocking_checks"] == []
+
+
+def test_creator_system_schema_files_are_valid_json() -> None:
+    schema_dir = Path.cwd() / "docs" / "creator_system" / "schemas"
+    schema_files = sorted(schema_dir.glob("*.schema.json"))
+
+    assert schema_files
+    for schema_file in schema_files:
+        payload = json.loads(schema_file.read_text(encoding="utf-8"))
+        assert payload["$schema"].startswith("https://json-schema.org/")
+        assert payload["title"]
+        assert payload["type"] == "object"
+
+
+def test_cli_creator_run_doctor_outputs_repair_plan(tmp_path: Path) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Doctor this run.")
+    env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "creator-run-doctor",
+            str(run_dir),
+        ],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
+    assert "adaptive_creator_loop.doctor_result.v1" in result.stdout
+    assert "artifact_scaffold" in result.stdout
+
+
+def test_cli_creator_run_template_check_passes() -> None:
+    env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
+
+    result = subprocess.run(
+        [sys.executable, "-m", "chip_labs.cli", "creator-run-template-check"],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
+    assert "adaptive_creator_loop.template_check_result.v1" in result.stdout
+    assert '"verdict": "pass"' in result.stdout
 
 
 def test_creator_run_ready_for_baseline_when_core_artifacts_exist(

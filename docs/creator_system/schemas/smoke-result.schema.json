@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/smoke-result.schema.json",
+  "title": "Adaptive Creator Loop Smoke Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_dir",
+    "verdict",
+    "evidence_tier",
+    "status_counts",
+    "blocking_checks",
+    "warning_checks",
+    "automation",
+    "checks",
+    "missing_paths",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.smoke_result.v1"
+    },
+    "run_dir": {"type": "string"},
+    "verdict": {
+      "enum": ["blocked", "prototype", "ready_for_baseline", "ready_for_swarm_packet"]
+    },
+    "evidence_tier": {"type": "string"},
+    "status_counts": {"type": "object"},
+    "blocking_checks": {"type": "array", "items": {"type": "string"}},
+    "warning_checks": {"type": "array", "items": {"type": "string"}},
+    "automation": {
+      "type": "object",
+      "required": ["blocked", "ci_exit_code", "recommended_next_command"],
+      "properties": {
+        "blocked": {"type": "boolean"},
+        "ci_exit_code": {"type": "integer"},
+        "recommended_next_command": {"type": "string"}
+      }
+    },
+    "checks": {"type": "array"},
+    "missing_paths": {"type": "array", "items": {"type": "string"}},
+    "next_actions": {"type": "array", "items": {"type": "string"}}
+  }
+}
+
