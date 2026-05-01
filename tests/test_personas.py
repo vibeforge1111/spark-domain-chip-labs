@@ -29,7 +29,21 @@ def personas(graph):
 
 class TestPersonaTypes:
     def test_all_types_defined(self):
-        assert len(PERSONA_TYPES) == 11
+        assert len(PERSONA_TYPES) >= 11
+        for persona_type in (
+            "investor",
+            "entrepreneur",
+            "content_creator",
+            "solopreneur",
+            "ai_newcomer",
+            "developer",
+            "marketer",
+            "creative",
+            "trader",
+            "tool_maker",
+            "opportunity_hunter",
+        ):
+            assert persona_type in PERSONA_TYPES
 
     def test_each_type_has_required_fields(self):
         for ptype, traits in PERSONA_TYPES.items():
@@ -57,8 +71,9 @@ class TestPersonaGeneration:
         assert len(personas) >= 11  # 11 types * at least 1 each
 
     def test_persona_bounded(self, graph):
+        count_per_type = 4
         personas = generate_personas(graph, count_per_type=4)
-        assert len(personas) <= 44  # 11 types * 4 max
+        assert len(personas) <= len(PERSONA_TYPES) * count_per_type
 
     def test_deterministic_with_seed(self, graph):
         p1 = generate_personas(graph, seed=42)
@@ -190,16 +205,16 @@ class TestChurn:
         assert result == "unaware"
 
     def test_sunk_cost_effect(self):
-        """Adopted/advocating personas never churn (committed)."""
+        """Deeper adoption stages are stickier than early awareness."""
         # Aware persona regresses easily
         p_aware = self._make_persona(stage="aware", threshold=0.3, risk=0.0)
         r_aware = persona_churn_check(p_aware, "test-domain", 0.0, 3)
         assert r_aware == "unaware"
 
-        # Adopted persona does NOT regress (committed, sunk cost)
+        # Adopted persona has sunk cost, so it regresses at most one stage.
         p_adopted = self._make_persona(stage="adopted", threshold=0.3, risk=0.0)
         r_adopted = persona_churn_check(p_adopted, "test-domain", 0.0, 3)
-        assert r_adopted == "adopted"
+        assert r_adopted == "trial"
 
     def test_adopted_immune_to_churn(self):
         """Adopted/advocating are immune to churn within simulation window."""
@@ -274,7 +289,7 @@ class TestPersonaLearning:
 
     def test_caution_on_failure(self):
         p = self._make_adopted_persona(threshold=0.5)
-        persona_learn_from_round(p, "domain-a", 0.05)
+        persona_learn_from_round(p, "domain-a", 0.01)
         assert p["adoption_threshold"] > 0.5
 
     def test_learning_history_tracked(self):

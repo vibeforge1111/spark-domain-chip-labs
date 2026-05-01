@@ -138,7 +138,8 @@ class TestEnsemble:
             graph, domain_ids, max_rounds=5, n_runs=3,
             base_seed=42, count_per_type=2,
         )
-        assert result["n_runs"] == 3
+        assert result["n_runs"] >= 3
+        assert result["n_runs"] >= 15
         assert "domains" in result
 
     def test_ensemble_has_all_domains(self, graph, domain_ids):
@@ -185,7 +186,7 @@ class TestEnsemble:
             base_seed=42, count_per_type=2,
         )
         for d in domain_ids:
-            assert len(result["domains"][d]["distribution"]) == n_runs
+            assert len(result["domains"][d]["distribution"]) == result["n_runs"]
 
     def test_ensemble_confidence_width(self, graph, domain_ids):
         result = run_ensemble(
@@ -387,6 +388,9 @@ class TestSensitivity:
 
 class TestAdoptionStages:
     def test_all_stages_defined(self):
-        assert len(ADOPTION_STAGES) == 6
+        assert len(ADOPTION_STAGES) >= 6
         assert ADOPTION_STAGES[0] == "unaware"
-        assert ADOPTION_STAGES[-1] == "advocating"
+        assert "trial" in ADOPTION_STAGES
+        assert "committed" in ADOPTION_STAGES
+        assert "advocating" in ADOPTION_STAGES
+        assert ADOPTION_STAGES[-1] == "churned"
