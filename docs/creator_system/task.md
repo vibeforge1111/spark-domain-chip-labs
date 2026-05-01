@@ -126,9 +126,9 @@ Deliverables:
 - [x] Local command manifest for safe creator-run operations.
 - [x] Dry-run and postcondition checks for smoke, doctor, template check, and
   recompute flows.
-- [ ] Failure replay fixtures for blocked smoke, stale evidence, missing
+- [x] Failure replay fixtures for blocked smoke, stale evidence, missing
   artifacts, and unsafe secret handling.
-- [ ] Rollback-note output for failed operations.
+- [x] Rollback-note output for failed operations.
 
 Phase gate:
 
@@ -318,9 +318,9 @@ Deliverables:
 - [x] Local command manifest for safe creator-run operations.
 - [x] Dry-run and postcondition checks for smoke, doctor, template check, and
   recompute flows.
-- [ ] Failure replay cases for blocked smoke, stale evidence, missing artifacts,
+- [x] Failure replay cases for blocked smoke, stale evidence, missing artifacts,
   and unsafe secret handling.
-- [ ] Rollback-note output for failed operations.
+- [x] Rollback-note output for failed operations.
 
 Quality gates:
 
@@ -415,13 +415,14 @@ Quality gates:
 
 ## Next Executable Slice
 
-Land Phase 3 tool-operation safety checker:
+Land Phase 3 tool-operation replay fixtures:
 
-1. Verify the local safe command manifest and postcondition checker.
-2. Commit the Phase 3 checker slice.
-3. Add failure replay fixtures for blocked smoke, stale evidence, missing
-   artifacts, and unsafe secret handling.
-4. Add rollback-note report output for failed operations.
+1. Verify replay fixtures for blocked smoke, stale evidence, missing artifacts,
+   and unsafe secret handling.
+2. Verify rollback reports for failed operations.
+3. Commit the Phase 3 replay-fixture slice.
+4. Start Phase 4 doctor adversarial/provenance hardening with stale/malicious
+   report fixtures and repair replay.
 5. Do not begin product-surface wiring until Phase 7 gates are met.
 
 ## Parking Lot

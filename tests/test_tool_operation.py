@@ -11,7 +11,11 @@ from chip_labs.tool_operation import (
     check_tool_operation,
     default_tool_operation_manifest,
     identify_operation,
+    load_tool_operation_packet,
 )
+
+
+FIXTURE_DIR = Path("docs/creator_system/examples/tool-operation")
 
 
 def _smoke_result(verdict: str = "ready_for_swarm_packet") -> dict[str, object]:
@@ -72,6 +76,8 @@ def test_tool_operation_check_requires_rollback_note_for_failed_operation() -> N
 
     assert result["verdict"] == "blocked"
     assert "rollback_note" in result["blocking_checks"]
+    assert result["rollback_report"]["required"] is True
+    assert result["rollback_report"]["provided"] is False
 
 
 def test_tool_operation_check_rejects_protected_and_secret_workflows() -> None:
@@ -89,6 +95,51 @@ def test_tool_operation_check_rejects_protected_and_secret_workflows() -> None:
 
     assert "protected_command" in protected["blocking_checks"]
     assert "secret_boundary" in secret["blocking_checks"]
+
+
+def test_tool_operation_check_blocks_missing_expected_postconditions() -> None:
+    result = check_tool_operation({
+        "command": "python -m chip_labs.cli creator-run-smoke runs/demo",
+        "exit_code": 0,
+        "expected_postconditions": {
+            "verdict": "ready_for_swarm_packet",
+            "missing_paths_empty": True,
+            "blocking_checks_empty": True,
+            "automation_blocked": False,
+        },
+        "result": {
+            **_smoke_result("prototype"),
+            "missing_paths": ["reports/baseline.json"],
+            "blocking_checks": [],
+        },
+        "rollback_note": "Keep the mission in scaffold state until missing reports exist.",
+    })
+
+    assert result["verdict"] == "blocked"
+    assert "expected_verdict" in result["blocking_checks"]
+    assert "expected_no_missing_paths" in result["blocking_checks"]
+    assert result["rollback_report"]["required"] is True
+    assert result["rollback_report"]["provided"] is True
+
+
+def test_tool_operation_replay_fixtures_are_executable() -> None:
+    expected_blockers = {
+        "blocked_smoke_with_rollback.json": {"success_value"},
+        "stale_evidence_recompute.json": {"success_value"},
+        "missing_artifacts_expected_swarm.json": {
+            "expected_verdict",
+            "expected_no_missing_paths",
+        },
+        "unsafe_secret_request.json": {"secret_boundary"},
+    }
+
+    for fixture_name, blockers in expected_blockers.items():
+        result = check_tool_operation(load_tool_operation_packet(FIXTURE_DIR / fixture_name))
+
+        assert result["verdict"] == "blocked"
+        assert blockers.issubset(set(result["blocking_checks"]))
+        assert result["rollback_report"]["required"] is True
+        assert result["rollback_report"]["provided"] is True
 
 
 def test_cli_tool_operation_check_outputs_packet(tmp_path: Path) -> None:

@@ -1,0 +1,31 @@
+{
+  "command": "python -m chip_labs.cli creator-run-smoke runs/demo --fail-on-blocked",
+  "exit_code": 1,
+  "result": {
+    "schema_version": "adaptive_creator_loop.smoke_result.v1",
+    "run_dir": "runs/demo",
+    "verdict": "blocked",
+    "evidence_tier": "candidate_review",
+    "status_counts": {
+      "pass": 8,
+      "warn": 0,
+      "fail": 2
+    },
+    "blocking_checks": [
+      "candidate_delta",
+      "swarm_packet_delta"
+    ],
+    "warning_checks": [],
+    "automation": {
+      "blocked": true,
+      "ci_exit_code": 1,
+      "recommended_next_command": "Fix failed schema, required-field, or evidence-support checks."
+    },
+    "checks": [],
+    "missing_paths": [],
+    "next_actions": [
+      "Fix failed schema, required-field, or evidence-support checks."
+    ]
+  },
+  "rollback_note": "Do not update mission state. Keep the prior validated run active and rerun creator-run-smoke after repairing candidate and packet evidence."
+}

@@ -126,6 +126,17 @@ python -m chip_labs.cli tool-operation-check --input operation-packet.json --fai
 An operation packet includes `command`, `exit_code`, parsed JSON `result`, and
 an optional `rollback_note`. The checker blocks stdout-only evidence, protected
 commands such as `git push`, and requests to paste tokens or secrets into docs.
+It also supports `expected_postconditions` so a clean exit cannot silently move a
+mission to the wrong state.
+
+Current replay fixtures:
+
+- `blocked_smoke_with_rollback.json`: blocked smoke with rollback note.
+- `stale_evidence_recompute.json`: stale saved report caught by recompute.
+- `missing_artifacts_expected_swarm.json`: clean smoke exit that fails the
+  expected `ready_for_swarm_packet` postcondition.
+- `unsafe_secret_request.json`: secret/token paste workflow blocked before state
+  update.
 
 Next real adapters:
 

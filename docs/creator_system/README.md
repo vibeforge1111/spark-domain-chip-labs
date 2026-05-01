@@ -185,6 +185,11 @@ python -m chip_labs.cli tool-operation-check --input operation-packet.json --fai
 Tool-operation packets must include a parsed JSON `result`; stdout alone is not
 accepted as proof that a command changed the right state.
 
+Replay fixtures live in `docs/creator_system/examples/tool-operation/` and cover
+blocked smoke, stale recompute evidence, missing artifacts, and unsafe
+secret-handling requests. Blocked checks include a `rollback_report` so
+mission-control state does not advance from a failed operation.
+
 The first local content-simulation harness is available as:
 
 ```bash

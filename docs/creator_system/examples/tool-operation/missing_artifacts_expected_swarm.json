@@ -1,0 +1,38 @@
+{
+  "command": "python -m chip_labs.cli creator-run-smoke runs/demo",
+  "exit_code": 0,
+  "expected_postconditions": {
+    "verdict": "ready_for_swarm_packet",
+    "missing_paths_empty": true,
+    "blocking_checks_empty": true,
+    "automation_blocked": false
+  },
+  "result": {
+    "schema_version": "adaptive_creator_loop.smoke_result.v1",
+    "run_dir": "runs/demo",
+    "verdict": "prototype",
+    "evidence_tier": "prototype",
+    "status_counts": {
+      "pass": 7,
+      "warn": 0,
+      "fail": 0
+    },
+    "blocking_checks": [],
+    "warning_checks": [],
+    "automation": {
+      "blocked": false,
+      "ci_exit_code": 0,
+      "recommended_next_command": "Run creator-run-smoke before attempting baseline or Swarm packaging."
+    },
+    "checks": [],
+    "missing_paths": [
+      "benchmark/manifest.json",
+      "reports/baseline.json",
+      "swarm/contribution_packet.json"
+    ],
+    "next_actions": [
+      "Fill the missing domain-chip, specialization-path, benchmark, and autoloop artifacts."
+    ]
+  },
+  "rollback_note": "Keep the mission in artifact-scaffold state. Do not move it to Swarm packet review until missing paths are created and smoke is rerun."
+}

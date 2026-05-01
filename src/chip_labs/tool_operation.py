@@ -75,6 +75,7 @@ def check_tool_operation(packet: dict[str, Any]) -> dict[str, Any]:
     result = packet.get("result")
     exit_code = _coerce_int(packet.get("exit_code"))
     rollback_note = str(packet.get("rollback_note", "")).strip()
+    expected_postconditions = packet.get("expected_postconditions")
     operation_key = identify_operation(command)
     operation = SUPPORTED_OPERATIONS.get(operation_key or "")
     checks: list[dict[str, str]] = []
@@ -122,18 +123,27 @@ def check_tool_operation(packet: dict[str, Any]) -> dict[str, Any]:
         verdict = str(result.get("verdict", "")).lower()
         failed_operation = failed_operation or verdict in {"blocked", "fail", "failed"}
 
+    if operation and isinstance(result, dict):
+        _check_result_shape(operation_key or "", operation, result, checks)
+    if isinstance(result, dict) and isinstance(expected_postconditions, dict):
+        _check_expected_postconditions(expected_postconditions, result, checks)
+
+    rollback_required = failed_operation or any(
+        check["status"] == "fail" for check in checks
+    )
     _append_check(
         checks,
         "rollback_note",
-        (not failed_operation) or bool(rollback_note),
+        (not rollback_required) or bool(rollback_note),
         "Rollback note is present when required.",
         "Failed or blocked operations must include a rollback note.",
     )
 
-    if operation and isinstance(result, dict):
-        _check_result_shape(operation_key or "", operation, result, checks)
-
     verdict = "pass" if all(check["status"] == "pass" for check in checks) else "blocked"
+    blocking_checks = [
+        check["name"] for check in checks
+        if check["status"] == "fail"
+    ]
     return {
         "schema_version": "tool_operation.check_result.v1",
         "operation_key": operation_key,
@@ -141,11 +151,15 @@ def check_tool_operation(packet: dict[str, Any]) -> dict[str, Any]:
         "allowed": verdict == "pass",
         "claim_boundary": CLAIM_BOUNDARY,
         "checks": checks,
-        "blocking_checks": [
-            check["name"] for check in checks
-            if check["status"] == "fail"
-        ],
+        "blocking_checks": blocking_checks,
         "rollback_note": rollback_note,
+        "rollback_report": _rollback_report(
+            verdict=verdict,
+            rollback_note=rollback_note,
+            blocking_checks=blocking_checks,
+            operation_key=operation_key,
+            result=result if isinstance(result, dict) else None,
+        ),
         "next_actions": _next_actions(verdict, operation_key),
     }
 
@@ -232,6 +246,50 @@ def _check_result_shape(
         )
 
 
+def _check_expected_postconditions(
+    expected: dict[str, Any],
+    result: dict[str, Any],
+    checks: list[dict[str, str]],
+) -> None:
+    expected_verdict = expected.get("verdict")
+    if expected_verdict is not None:
+        actual_verdict = result.get("verdict")
+        _append_check(
+            checks,
+            "expected_verdict",
+            actual_verdict == expected_verdict,
+            f"Result verdict matches expected `{expected_verdict}`.",
+            f"Expected verdict `{expected_verdict}`; got `{actual_verdict or 'missing'}`.",
+        )
+    if expected.get("blocking_checks_empty") is True:
+        blocking_checks = result.get("blocking_checks")
+        _append_check(
+            checks,
+            "expected_no_blocking_checks",
+            blocking_checks == [] or blocking_checks is None,
+            "Result has no blocking checks.",
+            "Result still has blocking checks: " + ", ".join(blocking_checks or []),
+        )
+    if expected.get("missing_paths_empty") is True:
+        missing_paths = result.get("missing_paths")
+        _append_check(
+            checks,
+            "expected_no_missing_paths",
+            missing_paths == [] or missing_paths is None,
+            "Result has no missing paths.",
+            "Result still has missing paths: " + ", ".join(missing_paths or []),
+        )
+    if "automation_blocked" in expected:
+        actual = _nested(result, "automation", "blocked")
+        _append_check(
+            checks,
+            "expected_automation_blocked",
+            actual is expected["automation_blocked"],
+            f"automation.blocked matches expected `{expected['automation_blocked']}`.",
+            f"Expected automation.blocked `{expected['automation_blocked']}`; got `{actual}`.",
+        )
+
+
 def _protected_reason(command: str) -> str | None:
     normalized = command.lower()
     for marker in PROTECTED_COMMAND_MARKERS:
@@ -281,6 +339,40 @@ def _next_actions(verdict: str, operation_key: str | None) -> list[str]:
     if operation_key is None:
         actions.append("Choose a command from the local safe operation manifest.")
     return actions
+
+
+def _rollback_report(
+    *,
+    verdict: str,
+    rollback_note: str,
+    blocking_checks: list[str],
+    operation_key: str | None,
+    result: dict[str, Any] | None,
+) -> dict[str, Any]:
+    required = verdict == "blocked"
+    return {
+        "required": required,
+        "provided": bool(rollback_note),
+        "note": rollback_note,
+        "operation_key": operation_key,
+        "blocked_state_update": required,
+        "blocking_checks": blocking_checks,
+        "result_verdict": result.get("verdict") if result else None,
+        "recommendation": (
+            "Do not update mission-control state; repair failed checks and rerun."
+            if required
+            else "Mission trace may record this operation result."
+        ),
+    }
+
+
+def _nested(data: dict[str, Any], *keys: str) -> Any:
+    current: Any = data
+    for key in keys:
+        if not isinstance(current, dict):
+            return None
+        current = current.get(key)
+    return current
 
 
 def _coerce_int(value: Any) -> int | None:
