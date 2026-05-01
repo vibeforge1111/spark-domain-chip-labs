@@ -24,7 +24,9 @@ def test_init_creator_run_creates_valid_prototype(tmp_path: Path) -> None:
     assert "benchmark/manifest.json" in smoke.missing_paths
 
 
-def test_creator_run_ready_for_baseline_when_core_artifacts_exist(tmp_path: Path) -> None:
+def test_creator_run_ready_for_baseline_when_core_artifacts_exist(
+    tmp_path: Path,
+) -> None:
     run_dir = tmp_path / "creator-run"
     init_creator_run(run_dir, domain="Startup YC", goal="Test readiness.")
 
@@ -44,7 +46,9 @@ def test_creator_run_ready_for_baseline_when_core_artifacts_exist(tmp_path: Path
     ):
         path = run_dir / relative_path
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text("{}\n" if path.suffix == ".json" else "draft\n", encoding="utf-8")
+        path.write_text(
+            "{}\n" if path.suffix == ".json" else "draft\n", encoding="utf-8"
+        )
 
     smoke = validate_creator_run(run_dir)
 
@@ -77,7 +81,9 @@ def test_creator_run_ready_for_swarm_packet_when_reports_exist(tmp_path: Path) -
     ):
         path = run_dir / relative_path
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text("{}\n" if path.suffix == ".json" else "draft\n", encoding="utf-8")
+        path.write_text(
+            "{}\n" if path.suffix == ".json" else "draft\n", encoding="utf-8"
+        )
 
     smoke = validate_creator_run(run_dir)
 
@@ -96,7 +102,10 @@ def test_creator_run_blocks_unknown_evidence_tier(tmp_path: Path) -> None:
     smoke = validate_creator_run(run_dir)
 
     assert smoke.verdict == "blocked"
-    assert any(check.name == "evidence_tier" and check.status == "fail" for check in smoke.checks)
+    assert any(
+        check.name == "evidence_tier" and check.status == "fail"
+        for check in smoke.checks
+    )
 
 
 def test_creator_run_blocks_missing_intent(tmp_path: Path) -> None:
@@ -107,7 +116,10 @@ def test_creator_run_blocks_missing_intent(tmp_path: Path) -> None:
     smoke = validate_creator_run(run_dir)
 
     assert smoke.verdict == "blocked"
-    assert any(check.name == "creator_intent" and check.status == "fail" for check in smoke.checks)
+    assert any(
+        check.name == "creator_intent" and check.status == "fail"
+        for check in smoke.checks
+    )
 
 
 def test_candidate_review_blocks_negative_delta(tmp_path: Path) -> None:
@@ -121,8 +133,14 @@ def test_candidate_review_blocks_negative_delta(tmp_path: Path) -> None:
     smoke = validate_creator_run(run_dir)
 
     assert smoke.verdict == "blocked"
-    assert any(check.name == "candidate_delta" and check.status == "fail" for check in smoke.checks)
-    assert any(check.name == "candidate_beats_baseline" and check.status == "fail" for check in smoke.checks)
+    assert any(
+        check.name == "candidate_delta" and check.status == "fail"
+        for check in smoke.checks
+    )
+    assert any(
+        check.name == "candidate_beats_baseline" and check.status == "fail"
+        for check in smoke.checks
+    )
 
 
 def test_candidate_review_blocks_swarm_packet_mismatch(tmp_path: Path) -> None:
@@ -136,8 +154,14 @@ def test_candidate_review_blocks_swarm_packet_mismatch(tmp_path: Path) -> None:
     smoke = validate_creator_run(run_dir)
 
     assert smoke.verdict == "blocked"
-    assert any(check.name == "swarm_packet_tier" and check.status == "fail" for check in smoke.checks)
-    assert any(check.name == "swarm_packet_delta" and check.status == "fail" for check in smoke.checks)
+    assert any(
+        check.name == "swarm_packet_tier" and check.status == "fail"
+        for check in smoke.checks
+    )
+    assert any(
+        check.name == "swarm_packet_delta" and check.status == "fail"
+        for check in smoke.checks
+    )
 
 
 def test_candidate_review_blocks_missing_trap_coverage(tmp_path: Path) -> None:
@@ -150,7 +174,10 @@ def test_candidate_review_blocks_missing_trap_coverage(tmp_path: Path) -> None:
     smoke = validate_creator_run(run_dir)
 
     assert smoke.verdict == "blocked"
-    assert any(check.name == "trap_coverage" and check.status == "fail" for check in smoke.checks)
+    assert any(
+        check.name == "trap_coverage" and check.status == "fail"
+        for check in smoke.checks
+    )
 
 
 def test_transfer_supported_requires_transfer_report(tmp_path: Path) -> None:
@@ -159,7 +186,10 @@ def test_transfer_supported_requires_transfer_report(tmp_path: Path) -> None:
     smoke = validate_creator_run(run_dir)
 
     assert smoke.verdict == "blocked"
-    assert any(check.name == "transfer_report" and check.status == "fail" for check in smoke.checks)
+    assert any(
+        check.name == "transfer_report" and check.status == "fail"
+        for check in smoke.checks
+    )
 
 
 def test_transfer_supported_blocks_negative_transfer_delta(tmp_path: Path) -> None:
@@ -169,7 +199,10 @@ def test_transfer_supported_blocks_negative_transfer_delta(tmp_path: Path) -> No
     smoke = validate_creator_run(run_dir)
 
     assert smoke.verdict == "blocked"
-    assert any(check.name == "transfer_delta" and check.status == "fail" for check in smoke.checks)
+    assert any(
+        check.name == "transfer_delta" and check.status == "fail"
+        for check in smoke.checks
+    )
 
 
 def test_transfer_supported_accepts_positive_transfer_report(tmp_path: Path) -> None:
@@ -179,12 +212,47 @@ def test_transfer_supported_accepts_positive_transfer_report(tmp_path: Path) -> 
     smoke = validate_creator_run(run_dir)
 
     assert smoke.verdict == "ready_for_swarm_packet"
-    assert any(check.name == "transfer_delta" and check.status == "pass" for check in smoke.checks)
+    assert any(
+        check.name == "transfer_delta" and check.status == "pass"
+        for check in smoke.checks
+    )
 
 
-def _write_candidate_review_run(tmp_path: Path, evidence_tier: str = "candidate_review") -> Path:
+def test_transfer_supported_warns_on_negative_broad_probe(tmp_path: Path) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    _write_transfer_report(run_dir)
+    _write_broad_transfer_probe(run_dir, delta=-0.01)
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "ready_for_swarm_packet"
+    assert any(
+        check.name == "broad_transfer_delta" and check.status == "warn"
+        for check in smoke.checks
+    )
+
+
+def test_network_absorbable_blocks_negative_broad_probe(tmp_path: Path) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="network_absorbable")
+    _write_transfer_report(run_dir)
+    _write_broad_transfer_probe(run_dir, delta=-0.01)
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "broad_transfer_delta" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def _write_candidate_review_run(
+    tmp_path: Path, evidence_tier: str = "candidate_review"
+) -> Path:
     run_dir = tmp_path / "candidate-review-run"
-    init_creator_run(run_dir, domain="Startup YC", goal="Test candidate review evidence.")
+    init_creator_run(
+        run_dir, domain="Startup YC", goal="Test candidate review evidence."
+    )
 
     adapter_path = run_dir / "adapter-map.json"
     adapter_map = json.loads(adapter_path.read_text(encoding="utf-8"))
@@ -207,7 +275,9 @@ def _write_candidate_review_run(tmp_path: Path, evidence_tier: str = "candidate_
     ):
         path = run_dir / relative_path
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text("{}\n" if path.suffix == ".json" else "draft\n", encoding="utf-8")
+        path.write_text(
+            "{}\n" if path.suffix == ".json" else "draft\n", encoding="utf-8"
+        )
 
     (run_dir / "reports" / "baseline.json").write_text(
         json.dumps({"mean_score": 0.5}),
@@ -218,27 +288,33 @@ def _write_candidate_review_run(tmp_path: Path, evidence_tier: str = "candidate_
         encoding="utf-8",
     )
     (run_dir / "reports" / "absorption_summary.json").write_text(
-        json.dumps({
-            "all_modes_present": True,
-            "all_modes_scored": True,
-            "mean_validated_pack_delta": 0.03,
-            "trap_band_case_count": 2,
-        }),
+        json.dumps(
+            {
+                "all_modes_present": True,
+                "all_modes_scored": True,
+                "mean_validated_pack_delta": 0.03,
+                "trap_band_case_count": 2,
+            }
+        ),
         encoding="utf-8",
     )
-    (run_dir / "reports" / "creator_run_summary.md").write_text("summary\n", encoding="utf-8")
+    (run_dir / "reports" / "creator_run_summary.md").write_text(
+        "summary\n", encoding="utf-8"
+    )
     (run_dir / "swarm" / "contribution_packet.json").write_text(
-        json.dumps({
-            "source": {"commit": "abc123"},
-            "evidence": {
-                "tier": evidence_tier,
-                "mean_delta": 0.03,
-                "trap_regressions": 0,
-            },
-            "governance": {
-                "rollback_or_deprecation_rule": "rollback if repeat fails",
-            },
-        }),
+        json.dumps(
+            {
+                "source": {"commit": "abc123"},
+                "evidence": {
+                    "tier": evidence_tier,
+                    "mean_delta": 0.03,
+                    "trap_regressions": 0,
+                },
+                "governance": {
+                    "rollback_or_deprecation_rule": "rollback if repeat fails",
+                },
+            }
+        ),
         encoding="utf-8",
     )
     return run_dir
@@ -247,14 +323,16 @@ def _write_candidate_review_run(tmp_path: Path, evidence_tier: str = "candidate_
 def _write_transfer_report(run_dir: Path, delta: float = 0.02) -> None:
     transfer_score = 0.62 + delta
     (run_dir / "reports" / "transfer_summary.json").write_text(
-        json.dumps({
-            "source": "startup-bench",
-            "scenario_count": 1,
-            "baseline_score": 0.62,
-            "transfer_score": transfer_score,
-            "delta": delta,
-            "constraints_passed": True,
-        }),
+        json.dumps(
+            {
+                "source": "startup-bench",
+                "scenario_count": 1,
+                "baseline_score": 0.62,
+                "transfer_score": transfer_score,
+                "delta": delta,
+                "constraints_passed": True,
+            }
+        ),
         encoding="utf-8",
     )
     packet_path = run_dir / "swarm" / "contribution_packet.json"
@@ -265,3 +343,24 @@ def _write_transfer_report(run_dir: Path, delta: float = 0.02) -> None:
         "delta": delta,
     }
     packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+
+def _write_broad_transfer_probe(run_dir: Path, delta: float = 0.03) -> None:
+    baseline_score = 0.62
+    transfer_score = baseline_score + delta
+    (run_dir / "reports" / "broad_transfer_probe.json").write_text(
+        json.dumps(
+            {
+                "source": "startup-bench",
+                "scenario_count": 10,
+                "baseline_score": baseline_score,
+                "transfer_score": transfer_score,
+                "delta": delta,
+                "constraints_passed": True,
+                "verdict": (
+                    "broad_transfer_supported" if delta > 0 else "defer_broad_transfer"
+                ),
+            }
+        ),
+        encoding="utf-8",
+    )

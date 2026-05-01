@@ -194,6 +194,8 @@ Workspace contributions can be fast and local. Network contributions should go t
 
 Do not compress these tiers into one score. A high benchmark score with no absorption test is not the same as a reusable mastery packet.
 
+Focused transfer and broad transfer are also different claims. A creator run may be `transfer_supported` from a positive held-out simulator/tool scenario while still carrying a negative `broad_transfer_probe`; that should narrow the claim, not erase the useful signal. For `network_absorbable` and `standard_update`, a negative broad probe is blocking because the packet would otherwise teach other agents or future creator standards to overgeneralize.
+
 ## Startup YC Reference Numbers
 
 Startup YC is the current reference path because it has a real loop with measured fresh-agent absorption.
@@ -377,4 +379,3 @@ The goal is not to make every domain look like Startup YC. The goal is to make e
 3. Add Kanban gate states for `prototype`, `benchmark_signal`, `focused_pattern`, `candidate_review`, `transfer_supported`, and `network_absorbable`.
 4. Add Swarm packet validation that rejects unsupported evidence-tier claims.
 5. Add a standard-change proposal template so the creator methodology can improve without quiet drift.
-
