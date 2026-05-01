@@ -11,6 +11,7 @@ from chip_labs.mirofish.content_simulation import (
     build_content_simulation_packet,
     extract_content_candidates,
     format_content_simulation_markdown,
+    route_content_simulation_request,
     should_invoke_content_simulation,
     simulate_content_selection,
 )
@@ -97,6 +98,58 @@ def test_build_content_simulation_packet_from_prompt_candidates() -> None:
     assert packet["claim_boundary"] == CLAIM_BOUNDARY
 
 
+def test_route_content_simulation_request_invokes_for_prompt_candidates() -> None:
+    prompt = """Which title is strongest?
+
+1. 7 benchmark mistakes that make AI demos look better than they are
+2. How to prove an agent workflow improved before you ship it
+"""
+
+    route = route_content_simulation_request(prompt)
+
+    assert route["packet_kind"] == "mirofish_content_route"
+    assert route["verdict"] == "invoke"
+    assert route["route"] == "mirofish-content-simulate"
+    assert route["candidate_count"] == 2
+    assert route["claim_boundary"] == CLAIM_BOUNDARY
+    assert route["simulation_result"]["verdict"] == "ranked"
+
+
+def test_route_content_simulation_request_skips_unrelated_prompt() -> None:
+    route = route_content_simulation_request("Run the unit tests and summarize failures.")
+
+    assert route["verdict"] == "skip"
+    assert route["route"] is None
+    assert route["candidate_count"] == 0
+    assert "needs at least two content candidates" in route["reason"]
+    assert "simulation_result" not in route
+
+
+def test_route_content_simulation_request_skips_selection_without_candidates() -> None:
+    route = route_content_simulation_request("Pick the best title.")
+
+    assert route["verdict"] == "skip"
+    assert route["candidate_count"] == 0
+    assert "needs at least two content candidates" in route["reason"]
+
+
+def test_route_content_simulation_request_invokes_for_explicit_candidates() -> None:
+    route = route_content_simulation_request(
+        "Pick the best option.",
+        candidates=[
+            "Why most agent demos lie by accident",
+            "The ultimate secret to amazing AI content",
+        ],
+        include_simulation=False,
+    )
+
+    assert route["verdict"] == "invoke"
+    assert route["candidate_count"] == 2
+    assert route["candidate_ids"] == ["candidate-1", "candidate-2"]
+    assert "simulation_packet" in route
+    assert "simulation_result" not in route
+
+
 def test_format_content_simulation_markdown_includes_ranking() -> None:
     result = simulate_content_selection(_packet())
 
@@ -172,3 +225,38 @@ def test_cli_mirofish_content_simulate_accepts_direct_candidates(tmp_path: Path)
     payload = json.loads(output_path.read_text(encoding="utf-8"))
     assert payload["verdict"] == "ranked"
     assert payload["candidate_count"] == 2
+
+
+def test_cli_mirofish_content_route_outputs_route_packet(tmp_path: Path) -> None:
+    output_path = tmp_path / "route.json"
+    env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "mirofish-content-route",
+            "--task",
+            "Pick the best title.",
+            "--candidate",
+            "7 benchmark mistakes that make AI demos look better than they are",
+            "--candidate",
+            "The ultimate secret to amazing AI content",
+            "--no-simulation",
+            "--output",
+            str(output_path),
+        ],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert payload["packet_kind"] == "mirofish_content_route"
+    assert payload["verdict"] == "invoke"
+    assert payload["route"] == "mirofish-content-simulate"
+    assert "simulation_result" not in payload

@@ -163,6 +163,20 @@ python -m chip_labs.cli mirofish-content-simulate \
 The helper layer should evoke this simulator when a task asks Spark to choose,
 rank, compare, or test content ideas, titles, hooks, angles, or drafts.
 
+For Spark-facing routing, ask for a route packet first:
+
+```bash
+python -m chip_labs.cli mirofish-content-route \
+  --task "Pick the best post title." \
+  --candidate "7 benchmark mistakes that make AI agent demos look better than they are" \
+  --candidate "How to prove an agent workflow actually improved before you ship it" \
+  --no-simulation
+```
+
+Route mode returns `invoke` or `skip`, the reason, candidate count, claim
+boundary, and the target local command. Omit `--no-simulation` when the caller
+also wants the embedded local simulation result.
+
 Example input:
 
 ```json

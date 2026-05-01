@@ -1034,6 +1034,21 @@ def cmd_mirofish_content_simulate(args: argparse.Namespace) -> None:
         )
 
 
+def cmd_mirofish_content_route(args: argparse.Namespace) -> None:
+    """Decide whether a content task should invoke the local MiroFish simulator."""
+    from .mirofish.content_simulation import route_content_simulation_request
+
+    task = args.task or ""
+    if args.task_file:
+        task = Path(args.task_file).read_text(encoding="utf-8")
+    result = route_content_simulation_request(
+        task,
+        candidates=args.candidate,
+        include_simulation=not args.no_simulation,
+    )
+    _write_output(args.output, result)
+
+
 def cmd_mirofish_frontier_viz(args: argparse.Namespace) -> None:
     """Build a viz-style 500-domain frontier graph packet and optional HTML page."""
     from .mirofish.hybrid import build_frontier_viz_packet, render_frontier_viz_html
@@ -1753,6 +1768,37 @@ def main() -> None:
         help="Optional markdown readout path.",
     )
     p_mirofish_content_simulate.set_defaults(func=cmd_mirofish_content_simulate)
+
+    # mirofish-content-route
+    p_mirofish_content_route = sub.add_parser(
+        "mirofish-content-route",
+        help="Return a route packet for whether a content task should invoke MiroFish simulation.",
+    )
+    p_mirofish_content_route.add_argument(
+        "--task",
+        type=str,
+        default="",
+        help="Natural-language content task or prompt.",
+    )
+    p_mirofish_content_route.add_argument(
+        "--task-file",
+        type=str,
+        default=None,
+        help="Read the natural-language task from a text file.",
+    )
+    p_mirofish_content_route.add_argument(
+        "--candidate",
+        action="append",
+        default=None,
+        help="Content candidate text. Repeat to pass an explicit candidate batch.",
+    )
+    p_mirofish_content_route.add_argument(
+        "--no-simulation",
+        action="store_true",
+        help="Return only the route decision without embedding the simulation result.",
+    )
+    p_mirofish_content_route.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_content_route.set_defaults(func=cmd_mirofish_content_route)
 
     # mirofish-frontier-viz
     p_mirofish_frontier_viz = sub.add_parser(

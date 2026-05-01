@@ -156,6 +156,59 @@ def build_content_simulation_packet(
     }
 
 
+def route_content_simulation_request(
+    task: str,
+    *,
+    candidates: list[str | dict[str, Any]] | None = None,
+    include_simulation: bool = True,
+) -> dict[str, Any]:
+    """Return a local route packet for Spark content-selection requests."""
+
+    explicit_candidates = candidates is not None
+    raw_candidates = candidates if explicit_candidates else extract_content_candidates(task)
+    normalized_candidates = _normalize_candidates(raw_candidates)
+    tokens = _tokens(task)
+    has_selection_intent = bool(tokens & SELECTION_INTENT_TERMS)
+    has_content_surface = bool(tokens & CONTENT_SELECTION_TERMS)
+    has_candidate_batch = len(normalized_candidates) >= 2
+    should_invoke = has_candidate_batch and (
+        should_invoke_content_simulation(task)
+        or (explicit_candidates and has_selection_intent)
+    )
+
+    route_packet: dict[str, Any] = {
+        "packet_kind": "mirofish_content_route",
+        "route": "mirofish-content-simulate" if should_invoke else None,
+        "verdict": "invoke" if should_invoke else "skip",
+        "candidate_count": len(normalized_candidates),
+        "claim_boundary": CLAIM_BOUNDARY,
+        "reason": _content_route_reason(
+            should_invoke=should_invoke,
+            has_content_surface=has_content_surface,
+            has_selection_intent=has_selection_intent,
+            has_candidate_batch=has_candidate_batch,
+            explicit_candidates=explicit_candidates,
+        ),
+        "requires_before_transfer": [
+            "multi-seed simulator reruns",
+            "human/operator calibration",
+            "privacy and publication review",
+            "comparison against actual content outcomes",
+        ],
+    }
+    if normalized_candidates:
+        route_packet["candidate_ids"] = [candidate["id"] for candidate in normalized_candidates]
+    if should_invoke:
+        simulation_packet = build_content_simulation_packet(
+            task,
+            candidates=normalized_candidates,
+        )
+        route_packet["simulation_packet"] = simulation_packet
+        if include_simulation:
+            route_packet["simulation_result"] = simulate_content_selection(simulation_packet)
+    return route_packet
+
+
 def extract_content_candidates(text: str) -> list[str]:
     """Extract likely content options from bullets, numbered lines, or quotes."""
 
@@ -273,6 +326,27 @@ def _dedupe_preserve_order(values: list[str]) -> list[str]:
         seen.add(key)
         deduped.append(value)
     return deduped
+
+
+def _content_route_reason(
+    *,
+    should_invoke: bool,
+    has_content_surface: bool,
+    has_selection_intent: bool,
+    has_candidate_batch: bool,
+    explicit_candidates: bool,
+) -> str:
+    if should_invoke:
+        if explicit_candidates:
+            return "explicit candidate batch plus selection intent"
+        return "content-selection prompt with multiple extracted candidates"
+    if not has_candidate_batch:
+        return "needs at least two content candidates"
+    if not has_selection_intent:
+        return "candidate batch present, but no selection intent detected"
+    if not has_content_surface:
+        return "selection intent present, but no content surface detected"
+    return "no content-simulation route matched"
 
 
 def _normalize_list(value: Any, default: tuple[str, ...]) -> list[str]:
