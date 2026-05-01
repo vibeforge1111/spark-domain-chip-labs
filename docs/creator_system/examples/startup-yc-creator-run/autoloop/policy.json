@@ -1,19 +1,58 @@
 {
-  "schema_version": "adaptive_creator_loop.autoloop_policy.v1",
+  "schema_version": "spark-autoloop-policy.v1",
+  "loop_key": "startup-yc-transfer-supported-loop",
+  "target_capability": "Improve fresh-agent Startup YC operating judgment without trap regression or broad-transfer overclaiming.",
+  "evidence_tier_goal": "transfer_supported",
   "source_repo": "specialization-path-startup-yc",
   "runner": "scripts/run_autoloop.py",
   "default_rounds": 10,
   "mutation_surface": [
     "candidate Startup YC packets",
     "absorption bundle wording",
-    "focused weak-case mechanisms"
+    "focused weak-case mechanisms",
+    "track-specific Startup Bench adapter scripts"
   ],
   "frozen_surfaces": [
     "benchmark_weights",
     "success_metrics",
-    "trap_case_expected_outcomes"
+    "trap_case_expected_outcomes",
+    "privacy_boundary",
+    "network_publication_gate"
   ],
-  "keep_rule": "Keep benchmark-backed improvements with doctrine lineage and no trap regression.",
-  "reject_rule": "Reject no-gain, score-cosmetic, metric-mutating, or trap-regressing candidates."
+  "forbidden_actions": [
+    "mutate benchmark weights to create a score gain",
+    "remove or relabel trap cases",
+    "publish network-absorbable packets from focused transfer evidence",
+    "write secrets or access tokens into artifacts"
+  ],
+  "allowed_actions": [
+    "patch Startup YC packets with causal weak-case lineage",
+    "add track-specific adapter scripts",
+    "add fresh or seeded-variance benchmark scenarios",
+    "write evidence docs and Swarm packets with known limits"
+  ],
+  "benchmark_manifest": "specialization-path-startup-yc/benchmarks/startup-yc-adapter-selection.v1.json",
+  "baseline_report": "reports/baseline.json",
+  "candidate_report": "reports/candidate.json",
+  "held_out_report": "reports/absorption_summary.json",
+  "absorption_report": "reports/absorption_summary.json",
+  "transfer_report": "reports/transfer_summary.json",
+  "broad_transfer_report": "reports/broad_transfer_probe.json",
+  "max_rounds_before_review": 10,
+  "keep_condition": "Keep only benchmark-backed improvements with positive candidate delta, no trap regression, clear doctrine lineage, and no widened authority.",
+  "reject_rule": "Reject no-gain, score-cosmetic, metric-mutating, trap-regressing, or broad-claim candidates.",
+  "rollback_condition": "Revert any promoted packet or adapter if a full-suite repeat loses positive validated-pack mean delta, seeded-variance min delta turns negative, or trap regression appears.",
+  "promotion_condition": "Promote only to the weakest evidence tier supported by benchmark, absorption, trap, transfer, provenance, privacy, and rollback evidence.",
+  "diagnosis_when_zero_keeps": [
+    "report weakest component",
+    "report whether candidate generation produced causal mechanisms",
+    "report whether scoring is saturated",
+    "report whether mutation surface is too narrow",
+    "report whether benchmark cannot see the intended improvement"
+  ],
+  "lineage_required": true,
+  "lineage_log": "specialization-path-startup-yc/reports/absorption-proof-2026-04-30/",
+  "privacy_boundary": "workspace_only",
+  "network_publication_allowed": false,
+  "review_required_before_network_publication": true
 }
-

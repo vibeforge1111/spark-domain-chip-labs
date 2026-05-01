@@ -45,6 +45,7 @@
       "reports/baseline.json",
       "reports/candidate.json",
       "reports/absorption_summary.json",
+      "reports/evidence_ladder.md",
       "reports/transfer_summary.json",
       "reports/broad_transfer_probe.json"
     ]

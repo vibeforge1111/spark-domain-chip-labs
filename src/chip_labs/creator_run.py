@@ -8,6 +8,7 @@ enough structure and saved evidence to move to the next gate.
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from dataclasses import dataclass
 from datetime import date
@@ -41,6 +42,10 @@ BROAD_TRANSFER_BLOCKING_TIERS = (
     "network_absorbable",
     "standard_update",
 )
+
+EVIDENCE_TIER_RANK = {tier: index for index, tier in enumerate(EVIDENCE_TIERS)}
+
+EVIDENCE_LADDER_PATH = "reports/evidence_ladder.md"
 
 TEMPLATE_FILENAMES = {
     "creator-intent.template.json": "creator-intent.json",
@@ -473,6 +478,7 @@ def validate_creator_run(run_dir: str | Path) -> SmokeResult:
     swarm_missing = [path for path in READY_FOR_SWARM_PATHS if path in missing_paths]
 
     if not swarm_missing and evidence_tier in ELEVATED_EVIDENCE_TIERS:
+        _check_evidence_ladder(run_path, evidence_tier, checks)
         _check_elevated_evidence(run_path, evidence_tier, checks)
         blocking_failures = [check for check in checks if check.status == "fail"]
     if not swarm_missing and evidence_tier in TRANSFER_EVIDENCE_TIERS:
@@ -972,6 +978,130 @@ def _check_elevated_evidence(
     )
 
 
+def _check_evidence_ladder(
+    run_path: Path, evidence_tier: str, checks: list[SmokeCheck]
+) -> None:
+    ladder_path = run_path / EVIDENCE_LADDER_PATH
+    if not ladder_path.exists():
+        checks.append(
+            SmokeCheck(
+                "evidence_ladder",
+                "fail",
+                f"Elevated evidence tier '{evidence_tier}' requires {EVIDENCE_LADDER_PATH}.",
+            )
+        )
+        return
+
+    text = ladder_path.read_text(encoding="utf-8")
+    checks.append(
+        SmokeCheck(
+            "evidence_ladder",
+            "pass",
+            f"Loaded {EVIDENCE_LADDER_PATH}.",
+        )
+    )
+
+    claimed_tier = _extract_ladder_field(text, "Claimed tier")
+    if claimed_tier == evidence_tier:
+        checks.append(
+            SmokeCheck(
+                "evidence_ladder_claimed_tier",
+                "pass",
+                f"Evidence ladder claimed tier matches adapter tier: {claimed_tier}.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "evidence_ladder_claimed_tier",
+                "fail",
+                f"Evidence ladder claimed tier must match adapter tier {evidence_tier}; got {claimed_tier or 'missing'}.",
+            )
+        )
+
+    weakest_tier = _extract_ladder_field(text, "Weakest supported tier")
+    if weakest_tier not in EVIDENCE_TIER_RANK:
+        checks.append(
+            SmokeCheck(
+                "evidence_ladder_weakest_tier",
+                "fail",
+                f"Evidence ladder weakest supported tier is invalid: {weakest_tier or 'missing'}.",
+            )
+        )
+    elif EVIDENCE_TIER_RANK[weakest_tier] >= EVIDENCE_TIER_RANK[evidence_tier]:
+        checks.append(
+            SmokeCheck(
+                "evidence_ladder_weakest_tier",
+                "pass",
+                f"Weakest supported tier '{weakest_tier}' supports claimed tier '{evidence_tier}'.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "evidence_ladder_weakest_tier",
+                "fail",
+                f"Weakest supported tier '{weakest_tier}' does not support claimed tier '{evidence_tier}'.",
+            )
+        )
+
+    gates = _extract_ladder_gates(text)
+    if gates and all(status in {"pass", "warn", "fail"} for status in gates.values()):
+        checks.append(
+            SmokeCheck(
+                "evidence_ladder_gate_statuses",
+                "pass",
+                "Evidence ladder gates are marked pass, warn, or fail.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "evidence_ladder_gate_statuses",
+                "fail",
+                "Evidence ladder gates must be marked pass, warn, or fail instead of blank.",
+            )
+        )
+
+    required_gates = [
+        "Prototype scaffold",
+        "Baseline benchmark",
+        "Candidate benchmark",
+        "Fresh-agent absorption",
+        "Trap/adversarial coverage",
+        "Swarm packet consistency",
+        "Privacy/provenance/rollback",
+    ]
+    if evidence_tier in TRANSFER_EVIDENCE_TIERS:
+        required_gates.append("Transfer probe")
+    if evidence_tier in BROAD_TRANSFER_BLOCKING_TIERS:
+        required_gates.append("Broad transfer probe")
+
+    for gate_name in required_gates:
+        status = gates.get(_normalize_ladder_gate(gate_name))
+        if status == "pass":
+            checks.append(
+                SmokeCheck(
+                    f"evidence_ladder_gate:{_normalize_ladder_gate(gate_name)}",
+                    "pass",
+                    f"Evidence ladder gate '{gate_name}' passed.",
+                )
+            )
+        else:
+            checks.append(
+                SmokeCheck(
+                    f"evidence_ladder_gate:{_normalize_ladder_gate(gate_name)}",
+                    "fail",
+                    f"Evidence ladder gate '{gate_name}' must be marked pass for {evidence_tier}; got {status or 'missing'}.",
+                )
+            )
+
+    _check_ladder_claim_section(text, "Safe Claim", "evidence_ladder_safe_claim", checks)
+    _check_ladder_claim_section(
+        text, "Unsafe Claim", "evidence_ladder_unsafe_claim", checks
+    )
+
+
 def _check_transfer_evidence(
     run_path: Path, evidence_tier: str, checks: list[SmokeCheck]
 ) -> None:
@@ -1288,6 +1418,60 @@ def _coerce_number(value: Any) -> float | None:
         except ValueError:
             return None
     return None
+
+
+def _extract_ladder_field(text: str, field_name: str) -> str:
+    pattern = re.compile(rf"^{re.escape(field_name)}:\s*([A-Za-z0-9_-]+)", re.MULTILINE)
+    match = pattern.search(text)
+    return match.group(1).strip() if match else ""
+
+
+def _extract_ladder_gates(text: str) -> dict[str, str]:
+    section_match = re.search(
+        r"^## Gate Checklist\s*(.*?)(?=^## |\Z)",
+        text,
+        flags=re.DOTALL | re.MULTILINE,
+    )
+    if not section_match:
+        return {}
+    section = section_match.group(1)
+    gates: dict[str, str] = {}
+    for line in section.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if len(cells) < 2:
+            continue
+        gate_name = cells[0]
+        status = cells[1].strip("` ").lower()
+        if gate_name.lower() in {"gate", "---"} or set(gate_name) <= {"-"}:
+            continue
+        if set(status) <= {"-"}:
+            continue
+        gates[_normalize_ladder_gate(gate_name)] = status
+    return gates
+
+
+def _normalize_ladder_gate(gate_name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", gate_name.lower()).strip("_")
+
+
+def _check_ladder_claim_section(
+    text: str, heading: str, check_name: str, checks: list[SmokeCheck]
+) -> None:
+    pattern = re.compile(rf"^## {re.escape(heading)}\s*(.*?)(?=^## |\Z)", re.DOTALL | re.MULTILINE)
+    match = pattern.search(text)
+    section = match.group(1) if match else ""
+    cleaned = re.sub(r"```[A-Za-z0-9_-]*", "", section).replace("```", "").strip()
+    if cleaned:
+        checks.append(
+            SmokeCheck(check_name, "pass", f"Evidence ladder includes {heading}.")
+        )
+    else:
+        checks.append(
+            SmokeCheck(check_name, "fail", f"Evidence ladder must fill {heading}.")
+        )
 
 
 def _nested(data: dict[str, Any], *keys: str) -> Any:

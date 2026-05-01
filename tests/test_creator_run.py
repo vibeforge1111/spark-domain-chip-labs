@@ -296,6 +296,40 @@ def test_candidate_review_blocks_negative_delta(tmp_path: Path) -> None:
     )
 
 
+def test_candidate_review_blocks_missing_evidence_ladder(tmp_path: Path) -> None:
+    run_dir = _write_candidate_review_run(tmp_path)
+    (run_dir / "reports" / "evidence_ladder.md").unlink()
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "evidence_ladder" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_candidate_review_blocks_unsupported_evidence_ladder_tier(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    ladder_path = run_dir / "reports" / "evidence_ladder.md"
+    text = ladder_path.read_text(encoding="utf-8")
+    ladder_path.write_text(
+        text.replace("Weakest supported tier: transfer_supported", "Weakest supported tier: candidate_review"),
+        encoding="utf-8",
+    )
+    _write_transfer_report(run_dir)
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "evidence_ladder_weakest_tier" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_candidate_review_blocks_swarm_packet_mismatch(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path)
     packet_path = run_dir / "swarm" / "contribution_packet.json"
@@ -470,6 +504,7 @@ def _write_candidate_review_run(
         ),
         encoding="utf-8",
     )
+    _write_evidence_ladder(run_dir, evidence_tier)
     return run_dir
 
 
@@ -515,5 +550,79 @@ def _write_broad_transfer_probe(run_dir: Path, delta: float = 0.03) -> None:
                 ),
             }
         ),
+        encoding="utf-8",
+    )
+
+
+def _write_evidence_ladder(run_dir: Path, evidence_tier: str) -> None:
+    transfer_status = "pass" if evidence_tier in {
+        "transfer_supported",
+        "network_absorbable",
+        "standard_update",
+    } else "warn"
+    broad_status = "pass" if evidence_tier in {
+        "network_absorbable",
+        "standard_update",
+    } else "warn"
+    (run_dir / "reports" / "evidence_ladder.md").write_text(
+        f"""# Evidence Ladder
+
+Run ID: candidate-review-run
+Domain: Startup YC
+Target capability: Test evidence validation
+Claim being tested: Candidate packet improves Startup YC behavior.
+
+## Tier Claimed
+
+Claimed tier: {evidence_tier}
+
+Weakest supported tier: {evidence_tier}
+
+Reason: Test fixture supports the claimed tier.
+
+## Gate Checklist
+
+| Gate | Status | Evidence path | Notes |
+| --- | --- | --- | --- |
+| Prototype scaffold | pass | creator-intent.json | ok |
+| Baseline benchmark | pass | reports/baseline.json | ok |
+| Candidate benchmark | pass | reports/candidate.json | ok |
+| Held-out or weak-case replay | warn | reports/candidate.json | not required for this fixture |
+| Fresh-agent absorption | pass | reports/absorption_summary.json | ok |
+| Trap/adversarial coverage | pass | reports/absorption_summary.json | ok |
+| Transfer probe | {transfer_status} | reports/transfer_summary.json | tier dependent |
+| Broad transfer probe | {broad_status} | reports/broad_transfer_probe.json | tier dependent |
+| Swarm packet consistency | pass | swarm/contribution_packet.json | ok |
+| Privacy/provenance/rollback | pass | swarm/contribution_packet.json | ok |
+
+## Score Summary
+
+| Surface | Baseline | Candidate | Delta | Min Delta | Constraints | Verdict |
+| --- | ---: | ---: | ---: | ---: | --- | --- |
+| Main benchmark | 0.50 | 0.53 | +0.03 | +0.03 | pass | pass |
+
+## Failure Lineage
+
+- Weakness found: Fixture weakness.
+- Benchmark or trace that exposed it: Test report.
+- Patch or packet mechanism: Test mechanism.
+- Counterfactual if unchanged: No improvement.
+
+## Safe Claim
+
+```text
+The fixture supports {evidence_tier} inside this test boundary.
+```
+
+## Unsafe Claim
+
+```text
+The fixture proves broad mastery.
+```
+
+## Remaining Gaps
+
+- Test-only fixture.
+""",
         encoding="utf-8",
     )
