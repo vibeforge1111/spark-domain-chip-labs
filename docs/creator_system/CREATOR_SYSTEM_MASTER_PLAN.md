@@ -313,13 +313,32 @@ Exit criteria:
 
 Every creator must be benchmarked.
 
-Build acceptance tests such as:
+Initial multi-family executable proof now exists in
+`src/chip_labs/creator_generator.py` and
+`tests/test_creator_generator_acceptance.py`. It runs in temporary clean
+workspaces and proves the local creator-run contract can be generated from fresh
+briefs through `candidate_review` with recomputable provenance.
 
-- create a chip from a brief and run all hooks
-- create a benchmark pack and run baseline
-- create a specialization path and pass `swarm doctor`
-- create an autoloop policy and run one revert/keep round
-- create a Telegram mission and show the trace in Kanban
+Current proof domains:
+
+- artifact quality for design docs and PR writeups
+- tool operation for safe local creator-run CLI use
+- MiroFish-style content simulation with persona batches and multi-RLM judges
+- Spark doctor adversarial/security repair checks
+- Startup YC operator advice
+
+Build out acceptance tests such as:
+
+- add retrieval/memory proof when the memory system is ready
+- add deeper real adapters for the current proof domains
+- add transfer probes after local candidate review is stable
+- add human/operator calibration fixtures
+
+Still deferred:
+
+- Telegram mission traces
+- Spawner, Canvas, and Kanban creator surfaces
+- network absorption claims
 
 Exit criteria:
 

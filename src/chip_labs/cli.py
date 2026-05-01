@@ -1073,7 +1073,7 @@ def cmd_creator_run_smoke(args: argparse.Namespace) -> None:
     """Smoke-check an adaptive creator-run workspace."""
     from .creator_run import validate_creator_run
 
-    smoke = validate_creator_run(args.run_dir)
+    smoke = validate_creator_run(args.run_dir, recompute=args.recompute)
     result = smoke.to_dict()
     _write_output(args.output, result)
     if args.fail_on_warn and result["status_counts"].get("warn", 0) > 0:
@@ -1789,6 +1789,11 @@ def main() -> None:
         "--fail-on-warn",
         action="store_true",
         help="Exit with status 1 when any warning is present. Useful for strict publication gates.",
+    )
+    p_creator_smoke.add_argument(
+        "--recompute",
+        action="store_true",
+        help="Recompute supported benchmark reports from their source artifacts and compare them with saved evidence.",
     )
     p_creator_smoke.set_defaults(func=cmd_creator_run_smoke)
 

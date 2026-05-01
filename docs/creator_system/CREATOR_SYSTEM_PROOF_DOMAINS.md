@@ -1,0 +1,305 @@
+# Creator System Proof Domains
+
+Date: 2026-05-01
+
+This document turns the current generator acceptance domains into standardized
+examples that Spark can build out step by step.
+
+The goal is not to create disconnected demos. The goal is to prove that the
+creator-run standard can generate useful systems across different shapes of
+work, while preserving evidence boundaries, recompute provenance, rollback, and
+publication discipline.
+
+Current proof level:
+
+- Artifact verdict: `ready_for_swarm_packet`
+- Evidence tier: `candidate_review`
+- Publication boundary: `local_only`
+- Network absorption: not claimed
+
+Every domain below should move through the same ladder:
+
+1. Generate a local creator-run workspace from a brief.
+2. Pass hook smoke, benchmark baseline, specialization path, autoloop keep/revert, Swarm packet, and `creator-run-smoke --recompute`.
+3. Replace deterministic acceptance stubs with real adapters for the existing Spark system.
+4. Add transfer probes only after local candidate review is stable.
+5. Add human/operator calibration.
+6. Add privacy, rollback, malicious-packet, and publication review.
+7. Only then consider `transfer_supported` or stronger claims.
+
+## Layer 1: Artifact Quality
+
+Purpose:
+
+Help Spark improve design documents, PR descriptions, implementation handoffs,
+and mission-control packets.
+
+Current generated proof:
+
+- Domain: `Design Doc PR Quality`
+- Family: `artifact_quality`
+- Benchmark family: `artifact_quality_review`
+- Mission flow: `brief -> plan -> implementation trace -> PR review packet`
+
+Useful Spark outcomes:
+
+- Better Builder and mission-control design docs.
+- PR summaries that include evidence, tests, risk, and rollback.
+- Less polished-but-unproven documentation.
+
+Acceptance cases:
+
+- Review a design document for missing acceptance gates.
+- Turn implementation notes into a concise PR-ready summary.
+- Reject a polished document that lacks runnable proof.
+
+Next real adapters:
+
+- Feed real design docs and PR notes from Spark workspaces.
+- Score against the creator-run evidence ladder, ship checklist, and review rules.
+- Compare generated PR summaries against human-edited summaries.
+
+Do not claim:
+
+- That document polish equals product correctness.
+- That a generated PR summary replaces human review.
+
+## Layer 2: Tool Operation
+
+Purpose:
+
+Teach Spark to operate local tools safely, especially creator-run commands,
+tests, dry-runs, and verification commands.
+
+Current generated proof:
+
+- Domain: `Spark Tool Operation`
+- Family: `tool_operation`
+- Benchmark family: `tool_operation_dry_run`
+- Mission flow: `mission intent -> tool plan -> dry-run -> verification -> rollback note`
+
+Useful Spark outcomes:
+
+- Safer command selection.
+- Clear dry-run and protected-tool boundaries.
+- Tool results that are verified before mission-control state changes.
+
+Acceptance cases:
+
+- Plan a creator-run smoke command and required verification.
+- Attach rollback notes to a failed local tool operation.
+- Reject workflows that ask an operator to paste secrets into docs.
+
+Next real adapters:
+
+- Connect to local CLI command manifests.
+- Record expected postconditions for each operation.
+- Add failure replay cases for blocked smoke, failing tests, stale evidence, and missing artifacts.
+
+Do not claim:
+
+- That Spark may push, publish, or mutate network state without review.
+- That stdout alone proves a tool operation succeeded.
+
+## Layer 3: MiroFish Content Simulation
+
+Purpose:
+
+Use MiroFish-style simulation whenever Spark needs to choose among content
+ideas, titles, hooks, drafts, or angles.
+
+This is the most product-useful simulator-heavy proof domain. Instead of asking
+one model for taste, Spark can run simulated audience batches and multi-RLM judge
+panels, then explain which option is best and which audience segment resisted it.
+
+Current generated proof:
+
+- Domain: `MiroFish Content Simulation`
+- Family: `simulator_heavy`
+- Benchmark family: `mirofish_content_simulation`
+- Mission flow: `content candidates -> simulated audience batches -> multi-RLM judge aggregation -> best option with weak-row diagnosis`
+
+Invocation triggers:
+
+- content idea selection
+- title or hook ranking
+- draft comparison
+- angle testing
+
+Current simulator protocol:
+
+- Simulator name: `mirofish-content-arena`
+- Mode: `persona_batch_multi_rlm_judging`
+- Agent batch size: `24`
+- Persona segments:
+  - founder-builders
+  - technical-operators
+  - creator-economy-readers
+  - skeptical-experts
+- RLM judges:
+  - spark-local-judge
+  - frontier-reasoning-judge
+  - fast-taste-judge
+- Aggregation rule: rank by median predicted save/share/reply intent, then inspect weak segments.
+
+Scoring dimensions:
+
+- predicted save intent
+- predicted share intent
+- reply likelihood
+- audience specificity
+- weak-segment regression
+
+Acceptance cases:
+
+- Rank five post titles for expected saves, shares, and replies across simulated audience segments.
+- Choose the strongest angle from several content ideas and explain weak segment resistance.
+- Reject a viral claim based only on one RLM judge or one aggregate score.
+
+Next real adapters:
+
+- Accept a list of titles, hooks, post ideas, or drafts as the benchmark input.
+- Run batches across multiple model judges when available.
+- Save per-persona and per-judge rows, not only aggregate scores.
+- Compare simulator predictions against actual post outcomes when available.
+- Use outcome deltas to calibrate persona weights and judge reliability.
+
+Do not claim:
+
+- That simulated virality equals real distribution.
+- That one model's ranking proves content quality.
+- That high aggregate score is safe when a critical audience segment regresses.
+
+## Layer 4: Doctor Adversarial And Security
+
+Purpose:
+
+Improve Spark's doctor system so it can diagnose fake evidence, unsafe
+promotion, missing provenance, and weak repair plans.
+
+Current generated proof:
+
+- Domain: `Spark Doctor Adversarial`
+- Family: `adversarial_security`
+- Benchmark family: `doctor_security_regression`
+- Mission flow: `blocked run -> doctor diagnosis -> repair step -> re-smoke proof`
+
+Useful Spark outcomes:
+
+- Better detection of stale or fake report evidence.
+- Repair plans tied to exact failed checks.
+- Stronger refusal to promote candidate-review evidence as network absorption.
+
+Acceptance cases:
+
+- Flag a report whose saved score does not match provenance.
+- Generate repair steps tied to exact failed checks.
+- Reject network absorption from candidate-review evidence.
+
+Next real adapters:
+
+- Build fixtures from real `creator-run-doctor` outputs.
+- Add malicious packet quarantine examples.
+- Add repair replay checks: after a proposed repair, rerun smoke and prove the blocker moved.
+
+Do not claim:
+
+- That doctor pass equals publication approval.
+- That repair advice is valid without rerun evidence.
+
+## Layer 5: Startup YC Operator
+
+Purpose:
+
+Make Spark better at startup and business advice while preserving evidence
+boundaries.
+
+Startup YC remains both a golden reference and a future product capability: Spark
+should become a strong startup operator, but it must not claim broad mastery from
+local or single-seed evidence.
+
+Current generated proof:
+
+- Domain: `Startup YC Operator`
+- Family: `startup_founder_advice`
+- Benchmark family: `startup_yc_operator`
+- Mission flow: `founder question -> diagnosis -> advice packet -> follow-up benchmark`
+
+Useful Spark outcomes:
+
+- Sharper founder advice.
+- Better separation between urgent customer pain and vague interest.
+- More useful narrow-wedge suggestions.
+
+Acceptance cases:
+
+- Diagnose whether a founder has urgent customer pain.
+- Suggest the narrowest useful wedge for a broad product idea.
+- Reject traction claims backed only by vanity metrics.
+
+Next real adapters:
+
+- Connect to the Startup YC golden fixture and Startup Bench-style reports.
+- Add multi-seed validation.
+- Add human/operator calibration on real founder advice examples.
+- Keep `transfer_supported` separate from `network_absorbable`.
+
+Do not claim:
+
+- That Startup YC is network absorbable without multi-seed validation, calibration,
+  privacy review, rollback review, and publication approval.
+
+## Layer 6: Retrieval And Memory
+
+Purpose:
+
+Eventually prove that Spark can retrieve the right prior context without turning
+workflow residue into memory truth.
+
+Status:
+
+Deferred until the memory system is ready to plug into this benchmark flow.
+
+Likely acceptance cases:
+
+- Retrieve the right prior decision for a current task.
+- Refuse stale or contradicted memory.
+- Keep private, local, and network-shareable memory lanes separate.
+- Detect memory contamination from conversational residue.
+
+Next real adapters:
+
+- Connect to Spark's memory store once stable.
+- Add provenance and freshness checks for retrieved memories.
+- Add contradiction and privacy-boundary probes.
+
+Do not claim:
+
+- That retrieval success equals safe memory promotion.
+- That conversational residue is evidence.
+
+## Documentation Standard For Future Proof Domains
+
+Every new proof domain should include:
+
+- domain id, name, and family
+- mission-control flow
+- invocation triggers
+- useful-to-Spark outcomes
+- benchmark family
+- acceptance cases, including at least one trap
+- mutation axes
+- operating principles
+- unsafe claims
+- known limits
+- next real adapters
+- explicit evidence tier and publication boundary
+
+Every generated proof must pass:
+
+```bash
+python -m pytest tests/test_creator_generator_acceptance.py -q
+python -m chip_labs.cli creator-run-smoke <generated-run> --recompute --fail-on-blocked
+```
+
+Every stronger claim requires additional proof beyond this document.

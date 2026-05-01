@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import re
 import shutil
+import hashlib
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -460,7 +461,7 @@ def validate_creator_templates(
     }
 
 
-def validate_creator_run(run_dir: str | Path) -> SmokeResult:
+def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> SmokeResult:
     """Validate a creator-run directory and return a conservative readiness verdict."""
 
     run_path = Path(run_dir)
@@ -549,6 +550,9 @@ def validate_creator_run(run_dir: str | Path) -> SmokeResult:
         blocking_failures = [check for check in checks if check.status == "fail"]
     if not swarm_missing and evidence_tier in TRANSFER_EVIDENCE_TIERS:
         _check_transfer_evidence(run_path, evidence_tier, checks)
+        blocking_failures = [check for check in checks if check.status == "fail"]
+    if recompute and not swarm_missing:
+        _check_recomputed_evidence(run_path, checks)
         blocking_failures = [check for check in checks if check.status == "fail"]
 
     if blocking_failures:
@@ -1744,3 +1748,290 @@ def _nested(data: dict[str, Any], *keys: str) -> Any:
             return None
         current = current.get(key)
     return current
+
+
+def _check_recomputed_evidence(run_path: Path, checks: list[SmokeCheck]) -> None:
+    report_paths = (
+        "reports/baseline.json",
+        "reports/candidate.json",
+        "reports/absorption_summary.json",
+    )
+    reports: dict[str, dict[str, Any]] = {}
+    for relative_path in report_paths:
+        report = _load_required_json(
+            run_path / relative_path,
+            f"recompute_source:{relative_path}",
+            checks,
+        )
+        if report is None:
+            return
+        reports[relative_path] = report
+        _check_report_provenance(run_path, relative_path, report, checks)
+
+    recomputed = _recompute_creator_generator_reports(run_path, checks)
+    if recomputed is None:
+        return
+
+    _check_report_number_matches(
+        reports["reports/baseline.json"],
+        "mean_score",
+        recomputed["baseline"]["mean_score"],
+        "recompute_baseline_score",
+        checks,
+    )
+    _check_report_number_matches(
+        reports["reports/candidate.json"],
+        "mean_score",
+        recomputed["candidate"]["mean_score"],
+        "recompute_candidate_score",
+        checks,
+    )
+    _check_report_number_matches(
+        reports["reports/candidate.json"],
+        "mean_delta",
+        recomputed["candidate"]["mean_delta"],
+        "recompute_candidate_delta",
+        checks,
+    )
+    _check_report_number_matches(
+        reports["reports/absorption_summary.json"],
+        "mean_validated_pack_delta",
+        recomputed["absorption"]["mean_validated_pack_delta"],
+        "recompute_absorption_delta",
+        checks,
+    )
+    _check_report_number_matches(
+        reports["reports/absorption_summary.json"],
+        "trap_band_case_count",
+        recomputed["absorption"]["trap_band_case_count"],
+        "recompute_trap_coverage",
+        checks,
+    )
+
+
+def _check_report_provenance(
+    run_path: Path,
+    relative_path: str,
+    report: dict[str, Any],
+    checks: list[SmokeCheck],
+) -> None:
+    provenance = report.get("provenance")
+    check_prefix = "report_provenance:" + relative_path
+    if not isinstance(provenance, dict):
+        checks.append(
+            SmokeCheck(
+                check_prefix,
+                "fail",
+                f"{relative_path} must include provenance for recompute mode.",
+            )
+        )
+        return
+    if provenance.get("source") == "creator_generator_v1":
+        checks.append(
+            SmokeCheck(
+                check_prefix,
+                "pass",
+                f"{relative_path} declares creator_generator_v1 provenance.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                check_prefix,
+                "fail",
+                f"{relative_path} provenance source must be creator_generator_v1.",
+            )
+        )
+
+    input_hashes = provenance.get("input_hashes")
+    if not isinstance(input_hashes, dict) or not input_hashes:
+        checks.append(
+            SmokeCheck(
+                f"{check_prefix}:input_hashes",
+                "fail",
+                f"{relative_path} provenance must include input_hashes.",
+            )
+        )
+        return
+
+    mismatches: list[str] = []
+    for input_relative_path, expected_hash in input_hashes.items():
+        input_path = run_path / str(input_relative_path)
+        if not input_path.exists():
+            mismatches.append(f"{input_relative_path} missing")
+            continue
+        actual_hash = _sha256_file(input_path)
+        if actual_hash != expected_hash:
+            mismatches.append(f"{input_relative_path} hash mismatch")
+
+    if mismatches:
+        checks.append(
+            SmokeCheck(
+                f"{check_prefix}:input_hashes",
+                "fail",
+                "; ".join(mismatches),
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                f"{check_prefix}:input_hashes",
+                "pass",
+                f"{relative_path} provenance input hashes match current files.",
+            )
+        )
+
+
+def _recompute_creator_generator_reports(
+    run_path: Path, checks: list[SmokeCheck]
+) -> dict[str, dict[str, Any]] | None:
+    scoring_hooks_path = run_path / "domain-chip" / "scoring_hooks.json"
+    cases_path = run_path / "benchmark" / "cases.jsonl"
+    if not scoring_hooks_path.exists() or not cases_path.exists():
+        checks.append(
+            SmokeCheck(
+                "recompute_inputs",
+                "fail",
+                "Recompute mode requires domain-chip/scoring_hooks.json and benchmark/cases.jsonl.",
+            )
+        )
+        return None
+
+    try:
+        scoring_hooks = load_json(scoring_hooks_path)
+        cases = _load_jsonl(cases_path)
+    except ValueError as exc:
+        checks.append(SmokeCheck("recompute_inputs", "fail", str(exc)))
+        return None
+
+    if not cases:
+        checks.append(
+            SmokeCheck(
+                "recompute_cases",
+                "fail",
+                "benchmark/cases.jsonl must include at least one case.",
+            )
+        )
+        return None
+
+    baseline_scores: list[float] = []
+    candidate_scores: list[float] = []
+    trap_regressions = 0
+    candidate_defaults = scoring_hooks.get("candidate_mutations")
+    if not isinstance(candidate_defaults, dict):
+        candidate_defaults = {}
+
+    for case in cases:
+        if not isinstance(case, dict):
+            checks.append(
+                SmokeCheck(
+                    "recompute_cases",
+                    "fail",
+                    "Each benchmark case must be a JSON object.",
+                )
+            )
+            return None
+        baseline_mutations = case.get("baseline_mutations")
+        candidate_mutations = case.get("candidate_mutations")
+        if not isinstance(baseline_mutations, dict):
+            baseline_mutations = {}
+        if not isinstance(candidate_mutations, dict):
+            candidate_mutations = dict(candidate_defaults)
+        baseline_score = _score_generated_case(scoring_hooks, baseline_mutations)
+        candidate_score = _score_generated_case(scoring_hooks, candidate_mutations)
+        baseline_scores.append(baseline_score)
+        candidate_scores.append(candidate_score)
+        if case.get("trap") is True and candidate_score < baseline_score:
+            trap_regressions += 1
+
+    baseline_mean = sum(baseline_scores) / len(baseline_scores)
+    candidate_mean = sum(candidate_scores) / len(candidate_scores)
+    candidate_delta = candidate_mean - baseline_mean
+    trap_case_count = sum(1 for case in cases if case.get("trap") is True)
+    checks.append(
+        SmokeCheck(
+            "recompute_inputs",
+            "pass",
+            f"Recomputed reports from {len(cases)} benchmark case(s).",
+        )
+    )
+    return {
+        "baseline": {"mean_score": baseline_mean},
+        "candidate": {
+            "mean_score": candidate_mean,
+            "mean_delta": candidate_delta,
+            "trap_regressions": trap_regressions,
+        },
+        "absorption": {
+            "mean_validated_pack_delta": candidate_delta,
+            "trap_band_case_count": trap_case_count,
+        },
+    }
+
+
+def _score_generated_case(
+    scoring_hooks: dict[str, Any], mutations: dict[str, Any]
+) -> float:
+    base_score = _coerce_number(scoring_hooks.get("base_score"))
+    score = 0.5 if base_score is None else base_score
+    mutation_deltas = scoring_hooks.get("mutation_deltas")
+    if not isinstance(mutation_deltas, dict):
+        mutation_deltas = {}
+    for axis, value in mutations.items():
+        axis_deltas = mutation_deltas.get(axis)
+        if not isinstance(axis_deltas, dict):
+            continue
+        delta = _coerce_number(axis_deltas.get(value))
+        if delta is not None:
+            score += delta
+    return max(0.0, min(1.0, score))
+
+
+def _check_report_number_matches(
+    report: dict[str, Any],
+    field: str,
+    expected: float,
+    check_name: str,
+    checks: list[SmokeCheck],
+) -> None:
+    actual = _coerce_number(report.get(field))
+    if actual is None:
+        checks.append(
+            SmokeCheck(check_name, "fail", f"Report is missing numeric {field}.")
+        )
+    elif abs(actual - expected) <= 0.0001:
+        checks.append(
+            SmokeCheck(
+                check_name,
+                "pass",
+                f"Saved {field} matches recomputed value {expected:.4f}.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                check_name,
+                "fail",
+                f"Saved {field} {actual:.4f} does not match recomputed value {expected:.4f}.",
+            )
+        )
+
+
+def _load_jsonl(path: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        stripped = line.strip()
+        if not stripped:
+            continue
+        try:
+            row = json.loads(stripped)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"{path} line {line_number} is not valid JSON: {exc}") from exc
+        if not isinstance(row, dict):
+            raise ValueError(f"{path} line {line_number} must be a JSON object")
+        rows.append(row)
+    return rows
+
+
+def _sha256_file(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()

@@ -14,6 +14,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [CREATOR_SYSTEM_RESEARCH_LEDGER.md](CREATOR_SYSTEM_RESEARCH_LEDGER.md) | Practical research ledger from Startup YC, Startup Bench, agentic simulator, Founder Arena, Builder, Spawner, Telegram, and Spark Swarm. |
 | [ADAPTIVE_CREATOR_LOOP_STANDARD.md](ADAPTIVE_CREATOR_LOOP_STANDARD.md) | The adaptive loop standard: domain-specific adapters, reusable evidence gates, recursive standard evolution, and the first runnable creator-run contract. |
 | [CREATOR_SYSTEM_MASTER_PLAN.md](CREATOR_SYSTEM_MASTER_PLAN.md) | Cohesive product and architecture plan for the creator ecosystem. |
+| [CREATOR_SYSTEM_PROOF_DOMAINS.md](CREATOR_SYSTEM_PROOF_DOMAINS.md) | Multi-domain proof layers for artifact quality, tool operation, content simulation, doctor security, Startup YC, and future memory/retrieval examples. |
 | [CREATOR_RUN_PRODUCTION_READINESS_V1.md](CREATOR_RUN_PRODUCTION_READINESS_V1.md) | Shippable creator-run CLI contract, smoke-result schema, integration rules, and V1 ship gate. |
 | [CREATOR_RUN_GOLDEN_PATH_V1.md](CREATOR_RUN_GOLDEN_PATH_V1.md) | CLI-first golden path from user goal to creator-run validation, doctor repair plan, and strict publication check. |
 | [PROMOTION_GATES_AND_EVIDENCE_TIERS.md](PROMOTION_GATES_AND_EVIDENCE_TIERS.md) | Canonical evidence-tier ladder, promotion gates, claim boundaries, and Startup YC seeded-variance reference pattern. |
@@ -109,6 +110,13 @@ For strict publication gates that should also fail on warnings:
 python -m chip_labs.cli creator-run-smoke runs/startup-yc-creator-run --fail-on-blocked --fail-on-warn
 ```
 
+For generated runs that include provenance-tagged benchmark reports, recompute
+saved evidence from current source artifacts:
+
+```bash
+python -m chip_labs.cli creator-run-smoke runs/startup-yc-creator-run --recompute --fail-on-blocked
+```
+
 The smoke response emits `schema_version: adaptive_creator_loop.smoke_result.v1` and includes machine-routing fields:
 
 - `status_counts`: count of pass/warn/fail checks
@@ -134,6 +142,17 @@ For elevated evidence tiers such as `candidate_review`, the smoke gate also vali
 - trap-band coverage exists
 - Swarm packet tier and delta match the reports
 - Swarm packet includes source provenance and rollback/deprecation policy
+
+`--recompute` adds a stricter distinction: saved report evidence can be coherent
+on its own, while recomputed evidence must also match current benchmark cases and
+scoring hooks. This mode currently supports generator-produced reports with
+`creator_generator_v1` provenance.
+
+Generator acceptance currently covers several Spark-useful proof domains:
+design-doc/PR artifact quality, safe local tool operation, MiroFish-style
+content simulation with multi-RLM judge batches, Spark doctor adversarial
+checks, and Startup YC operator advice.
+Each generated proof remains `candidate_review` only.
 
 For `transfer_supported` and higher, the gate also requires `reports/transfer_summary.json` and a matching `simulator_or_arena_result` in the Swarm packet, with positive transfer delta and passed constraints.
 

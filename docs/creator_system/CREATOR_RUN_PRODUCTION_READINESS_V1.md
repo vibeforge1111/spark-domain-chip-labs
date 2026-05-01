@@ -46,6 +46,12 @@ Strict publication validation:
 python -m chip_labs.cli creator-run-smoke runs/<run-name> --fail-on-blocked --fail-on-warn
 ```
 
+Recompute saved benchmark evidence when reports include supported provenance:
+
+```bash
+python -m chip_labs.cli creator-run-smoke runs/<run-name> --recompute --fail-on-blocked
+```
+
 ## Smoke Result Contract
 
 `creator-run-smoke` emits:
@@ -140,6 +146,34 @@ The creator-run smoke gate enforces conservative evidence claims:
 - Negative broad transfer blocks `network_absorbable` and `standard_update`.
 - Positive broad transfer with hidden negative rows or non-positive `min_delta` warns at `transfer_supported` and blocks `network_absorbable` or `standard_update`.
 - Broad-transfer probes should include `scenario_results` rows so reviewers can audit the aggregate score.
+- `--recompute` requires supported report provenance and compares saved baseline, candidate, and absorption values against current benchmark source artifacts.
+
+## Generator Acceptance Proof
+
+The executable generator proof lives in `src/chip_labs/creator_generator.py`
+and is covered by `tests/test_creator_generator_acceptance.py`.
+
+It creates creator-run workspaces from fresh briefs in temporary clean
+workspaces, then verifies:
+
+- domain chip artifacts plus hook smoke
+- benchmark pack plus baseline report
+- specialization path artifacts
+- autoloop policy plus one kept and one reverted simulation round
+- Swarm contribution packet derived from reports
+- normal smoke and recompute smoke both reach `ready_for_swarm_packet`
+
+The current multi-family proof covers:
+
+- artifact quality: design docs and PR writeups for mission-control handoff
+- tool operation: safe local creator-run CLI operation with dry-run and verification boundaries
+- simulator-heavy: MiroFish-style content simulation with persona batches, multi-RLM judges, and weak-row diagnosis
+- adversarial/security: Spark doctor checks for fake evidence and unsafe promotion
+- startup/founder advice: Startup YC operator guidance with bounded evidence
+
+Generated proofs claim only `candidate_review`. They do not claim
+`transfer_supported` or `network_absorbable`. Retrieval/memory proof remains
+deferred until Spark's memory system is ready to plug into the benchmark flow.
 
 ## Integration Rules
 
@@ -201,7 +235,7 @@ The fixture remains `transfer_supported`, not `network_absorbable`, because mult
 
 Before shipping changes to this contract:
 
-1. Run `python -m pytest tests/test_creator_run.py tests/test_creator_run_examples.py -q`.
+1. Run `python -m pytest tests/test_creator_run.py tests/test_creator_run_examples.py tests/test_creator_generator_acceptance.py -q`.
 2. Run `python -m chip_labs.cli creator-run-template-check --fail-on-blocked`.
 3. Run smoke on the Startup YC fixture.
 4. Run `creator-run-smoke --fail-on-blocked` on the fixture.
