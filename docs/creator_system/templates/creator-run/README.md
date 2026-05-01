@@ -14,3 +14,13 @@ Minimum order:
 
 Do not claim `network_absorbable` unless provenance, rollback, trap status, and review state are filled.
 
+Supporting templates:
+
+| Template | Use |
+| --- | --- |
+| `evidence-ladder.template.md` | Record the weakest supported evidence tier, gate status, safe claim, unsafe claim, and remaining gaps. |
+| `benchmark-pack.template.md` | Design a benchmark pack with case lanes, scoring dimensions, calibration, anti-gaming checks, and promotion rules. |
+| `specialization-path-contract.template.md` | Define the path artifacts, mastery ladder, runtime use, benchmark binding, mutation boundary, and Swarm boundary. |
+| `autoloop-policy.template.json` | Draft the autoloop policy before converting it into the run's `autoloop/policy.json`. |
+
+Use `PROMOTION_GATES_AND_EVIDENCE_TIERS.md` as the source of truth when deciding what the run is allowed to claim.

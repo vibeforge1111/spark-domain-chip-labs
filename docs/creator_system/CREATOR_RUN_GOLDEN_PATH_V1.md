@@ -14,6 +14,7 @@ A Spark agent should be able to:
 4. validate whether the run is blocked, ready for baseline, or ready for Swarm packet review,
 5. produce concrete repair steps when the run is not ready,
 6. preserve claim boundaries so focused improvement is not overstated as broad mastery.
+7. claim only the strongest evidence tier supported by the weakest passing gate.
 
 ## Happy Path
 
@@ -57,6 +58,14 @@ Check run readiness:
 python -m chip_labs.cli creator-run-smoke runs/<run-name> --fail-on-blocked
 ```
 
+Before writing the Swarm packet, fill the evidence ladder:
+
+```text
+docs/creator_system/templates/creator-run/evidence-ladder.template.md
+```
+
+Use `PROMOTION_GATES_AND_EVIDENCE_TIERS.md` to decide the strongest safe claim.
+
 Get a repair plan:
 
 ```bash
@@ -91,9 +100,10 @@ The creator run is not only a folder shape. It is a learning loop.
 | `ready_for_baseline` | Core artifacts exist; benchmark reports are missing. | Run baseline, candidate, absorption, and trap checks. |
 | `ready_for_swarm_packet` | Reports and packet exist. | Review publication boundaries, then run strict smoke if publishing. |
 
+The smoke verdict answers artifact readiness. The evidence tier answers claim strength. A run can be `ready_for_swarm_packet` and still be unsafe to publish broadly if its evidence tier or broad-transfer probe does not support network absorption.
+
 ## V1 Boundary
 
 This path is production-useful as a local and repo-based contract.
 
 It does not finalize product integration for Spark Intelligence Builder, Telegram, Spawner UI, Canvas, or Kanban. Those surfaces should call this contract later, after their builder, memory, conversation, and mission-control interactions are polished.
-

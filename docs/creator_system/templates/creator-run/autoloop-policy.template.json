@@ -1,0 +1,31 @@
+{
+  "schema_version": "spark-autoloop-policy.v1",
+  "loop_key": "",
+  "target_capability": "",
+  "evidence_tier_goal": "benchmark_signal",
+  "mutation_surface": [],
+  "frozen_surfaces": [],
+  "forbidden_actions": [],
+  "allowed_actions": [],
+  "benchmark_manifest": "",
+  "baseline_report": "",
+  "candidate_report": "",
+  "held_out_report": "",
+  "absorption_report": "",
+  "transfer_report": "",
+  "max_rounds_before_review": 8,
+  "keep_condition": "primary score improves, held-out score does not regress, traps pass, and complexity does not rise without measured gain",
+  "rollback_condition": "revert candidate if held-out, trap, safety, or privacy checks regress",
+  "promotion_condition": "promote only to the weakest evidence tier supported by benchmark, absorption, trap, transfer, provenance, and rollback evidence",
+  "diagnosis_when_zero_keeps": [
+    "report weakest component",
+    "report whether candidate generation produced causal mechanisms",
+    "report whether scoring is saturated",
+    "report whether mutation surface is too narrow",
+    "report whether benchmark cannot see the intended improvement"
+  ],
+  "lineage_required": true,
+  "privacy_boundary": "workspace_only",
+  "network_publication_allowed": false,
+  "review_required_before_network_publication": true
+}
