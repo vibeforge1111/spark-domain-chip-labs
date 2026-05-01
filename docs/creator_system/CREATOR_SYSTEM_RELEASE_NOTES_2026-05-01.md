@@ -15,6 +15,9 @@
 - Retrieval memory has a local contract and fixtures for correct prior
   decisions, stale memory, contradicted memory, residue contamination, and
   unreviewed network-shareable context.
+- `creator-mission-status` provides a read-only product adapter packet for
+  Builder, Telegram, Spawner, Canvas, and Kanban without wiring runtime
+  publication controls.
 - The README now includes current claim levels and an executable command index.
 
 ## Current Claim Boundary
@@ -22,8 +25,8 @@
 - Startup YC remains `transfer_supported`, not `network_absorbable`.
 - Generated proof domains remain local or `candidate_review` unless a stronger
   evidence tier is explicitly proven.
-- Product surfaces remain deferred. Builder, Telegram, Spawner, Canvas, and
-  Kanban should read canonical creator-run outputs later, not invent independent
+- Product runtime wiring remains deferred. Builder, Telegram, Spawner, Canvas,
+  and Kanban should consume `creator-mission-status`, not invent independent
   truth.
 - Network absorption remains blocked until multi-seed validation,
   human/operator calibration, privacy review, rollback review, and publication
@@ -37,4 +40,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest broad suite result before push: `77 passed`.
+Latest broad suite result before push: `81 passed`.

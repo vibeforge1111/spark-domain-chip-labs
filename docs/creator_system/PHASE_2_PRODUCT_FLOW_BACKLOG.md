@@ -6,7 +6,7 @@ Phase 2 should start only after Builder, memory, conversations, Telegram interac
 
 ## Status
 
-Deferred.
+Deferred for runtime wiring. A read-only adapter contract now exists.
 
 The current V1 contract is CLI and repo based:
 
@@ -14,10 +14,16 @@ The current V1 contract is CLI and repo based:
 - `creator-run-template-check`
 - `creator-run-smoke`
 - `creator-run-doctor`
+- `creator-mission-status`
 - creator-run artifacts and schemas
 - Startup YC reference fixture
 
-Product surfaces may reference these commands as future integration points, but they should not expose a finalized creator workflow yet.
+Product surfaces may reference these commands as future integration points, but
+they should not expose a finalized creator workflow yet. Until product repos
+consume the packet directly, `creator-mission-status` is the canonical bridge:
+it converts saved smoke, doctor, artifact-quality, tool-operation,
+MiroFish-routing, retrieval-memory, and Startup YC validation packets into a
+read-only mission status for Builder, Telegram, Spawner, Canvas, and Kanban.
 
 ## Builder Integration Contract
 
@@ -40,21 +46,27 @@ sequenceDiagram
   B->>C: creator-run-smoke
   C->>B: verdict, blockers, warnings, recommended next command
   B->>C: creator-run-doctor if blocked or incomplete
+  B->>C: creator-mission-status from saved reports
   B->>U: Current state and next action
 ```
 
 Builder should read:
 
-- `automation.blocked`
-- `automation.ci_exit_code`
-- `automation.recommended_next_command`
-- `blocking_checks`
-- `warning_checks`
-- `missing_paths`
-- `evidence_tier`
-- `verdict`
+- `canonical.verdict`
+- `canonical.evidence_tier`
+- `canonical.automation.blocked`
+- `canonical.automation.ci_exit_code`
+- `canonical.automation.recommended_next_command`
+- `canonical.blocking_checks`
+- `canonical.warning_checks`
+- `canonical.missing_paths`
+- `publication.swarm_shared_allowed`
+- `publication.network_absorbable`
 
 Builder should not publish or sync to Swarm when `automation.blocked` is true.
+Builder should also block broad publication when
+`publication.swarm_shared_allowed` is false, even if the creator-run smoke
+verdict is `ready_for_swarm_packet`.
 
 ## Telegram Flow
 
@@ -66,8 +78,9 @@ Expected flow:
 flowchart TD
   U["User says what they want"] --> T["Telegram captures goal/domain"]
   T --> B["Builder creates or resumes creator run"]
-  B --> S["creator-run-smoke"]
-  S --> A["automation.recommended_next_command"]
+  B --> S["creator-run-smoke + creator-run-doctor"]
+  S --> M["creator-mission-status"]
+  M --> A["canonical next action and publication boundary"]
   A --> T
   T --> U2["Telegram shows next action, blocker, or review request"]
 ```
@@ -95,7 +108,8 @@ Creator-run verdicts should map to mission columns:
 | `ready_for_swarm_packet` | `ready_for_swarm_packet` | Evidence and packet exist; review publication boundary. |
 | `blocked` | `blocked` | Required schema, field, evidence, or claim support failed. |
 
-Canvas should eventually show the artifact graph:
+Canvas should eventually show the artifact graph from
+`surface_adapters.canvas.nodes`:
 
 - creator intent,
 - adapter map,
@@ -107,7 +121,9 @@ Canvas should eventually show the artifact graph:
 - Swarm packet,
 - GitHub PR or local repo state.
 
-Kanban should show work state, not duplicate benchmark logic. It should render the verdict and check names produced by `creator-run-smoke`.
+Kanban should show work state, not duplicate benchmark logic. It should render
+the verdict, check names, and publication blockers produced by
+`creator-mission-status`.
 
 ## Phase 2 Acceptance Criteria
 
@@ -119,6 +135,8 @@ Phase 2 is ready only when:
 4. Canvas/Kanban can render artifact and verdict state from the same trace object.
 5. Publication mode is explicit: `local_only`, `github_pr`, or `swarm_shared`.
 6. Smoke and doctor outputs remain the source of truth for blockers, warnings, and next actions.
+7. Product tests prove read-only adapters preserve claim boundaries and cannot
+   turn `ready_for_swarm_packet` into `network_absorbable`.
 
 ## Non-Goals For Current V1
 
@@ -127,4 +145,3 @@ Phase 2 is ready only when:
 - Do not route normal users through access-token paste flows.
 - Do not let Telegram or UI code redefine benchmark scores.
 - Do not let a product surface publish broad mastery when smoke warns about broad transfer.
-

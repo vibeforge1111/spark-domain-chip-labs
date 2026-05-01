@@ -12,6 +12,11 @@ This is a product-flow design document, not the shipped V1 surface.
 
 The shippable V1 contract currently lives in `creator-run-init`, `creator-run-template-check`, `creator-run-smoke`, `creator-run-doctor`, the creator-run schemas, and the Startup YC reference fixture. Product wiring should be picked up from [PHASE_2_PRODUCT_FLOW_BACKLOG.md](PHASE_2_PRODUCT_FLOW_BACKLOG.md) after Builder, memory, conversations, Telegram interactions, Spawner UI, Canvas, and Kanban are ready for the surface.
 
+The current product-safe bridge is `creator-mission-status`. It reads saved
+reports and emits a read-only mission status packet for Builder, Telegram,
+Spawner, Canvas, and Kanban. Product repos should consume that packet before
+they add runtime creator controls.
+
 ## Current System Facts
 
 The current stack already has these surfaces:
@@ -45,8 +50,8 @@ sequenceDiagram
   S->>R: Create/update repo artifacts
   S->>B: Run chip/path/benchmark readiness checks
   B->>R: Run benchmark and autoloop smoke
-  R->>W: Produce collective payload
-  B->>W: Sync if publish mode allows
+  R->>B: creator-mission-status packet
+  B->>W: Sync only if publication gates allow
   T->>U: Summary with repo path, scores, blockers, links
 ```
 
@@ -147,11 +152,13 @@ Blocked states must be explicit:
 
 ## Creator Trace Contract
 
-Every creator mission should write one trace object:
+Every creator mission should write one trace object. Until product repos own a
+runtime trace endpoint, this trace is derived from
+`adaptive_creator_loop.creator_mission_status.v1`:
 
 ```json
 {
-  "schema_version": "spark-creator-trace.v1",
+  "schema_version": "adaptive_creator_loop.creator_mission_status.v1",
   "mission_id": "",
   "request_id": "",
   "creator_mode": "domain_chip|specialization_path|benchmark|autoloop|full_path",
@@ -160,18 +167,23 @@ Every creator mission should write one trace object:
   "artifacts": [],
   "current_stage": "",
   "stage_status": "queued|running|blocked|validated|failed|published",
-  "benchmark_summary": {
-    "baseline_score": null,
-    "candidate_score": null,
-    "delta": null,
-    "held_out_pass": false
+  "canonical": {
+    "verdict": "prototype|ready_for_baseline|ready_for_swarm_packet|blocked",
+    "evidence_tier": "local_only|candidate_review|transfer_supported",
+    "automation": {}
   },
-  "swarm": {
-    "payload_ready": false,
-    "api_ready": false,
-    "publish_mode": "none"
+  "publication": {
+    "requested_mode": "local_only|github_pr|swarm_shared",
+    "swarm_shared_allowed": false,
+    "network_absorbable": false
   },
-  "blockers": [],
+  "surface_adapters": {
+    "builder": {},
+    "telegram": {},
+    "spawner": {},
+    "canvas": {},
+    "kanban": {}
+  },
   "links": {
     "canvas": "",
     "kanban": "",
@@ -181,7 +193,8 @@ Every creator mission should write one trace object:
 }
 ```
 
-Telegram, Canvas, and Kanban should read this same trace rather than each summarizing from separate state.
+Telegram, Canvas, and Kanban should read this same packet rather than each
+summarizing from separate state.
 
 ## User Experience Principles
 
@@ -243,13 +256,14 @@ The Swarm payload should contain:
 
 ## Immediate Implementation Backlog
 
-1. Add `creator plan` schema and CLI stub in Builder.
-2. Add creator mission type in Spawner UI.
-3. Add Telegram natural-language routing for creator missions.
-4. Add creator trace endpoint in Spawner UI.
-5. Add Canvas/Kanban rendering for creator artifacts and benchmark gates.
-6. Add Startup YC as the golden reference path.
-7. Add creator acceptance tests:
+1. Add `creator-mission-status` packet consumer in Builder.
+2. Add `creator plan` schema and CLI stub in Builder.
+3. Add creator mission type in Spawner UI.
+4. Add Telegram natural-language routing for creator missions.
+5. Add creator trace endpoint in Spawner UI.
+6. Add Canvas/Kanban rendering for creator artifacts and benchmark gates.
+7. Add Startup YC as the golden reference path.
+8. Add creator acceptance tests:
    - chip hooks run
    - benchmark baseline runs
    - loop keep/revert works
@@ -266,8 +280,9 @@ User asks in Telegram
 -> Spawner opens a creator mission
 -> Builder validates existing Startup YC chip/path/bench
 -> one loop runs against Startup Bench or Founder Arena
+-> creator-mission-status emits read-only surface adapters
 -> result appears in Kanban/Canvas
--> validated packet is ready for Spark Swarm
+-> validated packet is reviewed for Spark Swarm sharing
 ```
 
 Once that works, every other domain can copy the same path.
