@@ -173,7 +173,7 @@ runtime trace endpoint, this trace is derived from
     "automation": {}
   },
   "publication": {
-    "requested_mode": "local_only|github_pr|swarm_shared",
+    "publish_mode": "local_only|github_pr|swarm_shared",
     "swarm_shared_allowed": false,
     "network_absorbable": false
   },
