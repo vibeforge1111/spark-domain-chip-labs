@@ -1073,8 +1073,13 @@ def cmd_creator_run_smoke(args: argparse.Namespace) -> None:
     """Smoke-check an adaptive creator-run workspace."""
     from .creator_run import validate_creator_run
 
-    result = validate_creator_run(args.run_dir).to_dict()
+    smoke = validate_creator_run(args.run_dir)
+    result = smoke.to_dict()
     _write_output(args.output, result)
+    if args.fail_on_warn and result["status_counts"].get("warn", 0) > 0:
+        raise SystemExit(1)
+    if args.fail_on_blocked and smoke.verdict == "blocked":
+        raise SystemExit(1)
 
 
 # ---------------------------------------------------------------------------
@@ -1755,6 +1760,16 @@ def main() -> None:
     )
     p_creator_smoke.add_argument("run_dir", type=str, help="Creator-run directory.")
     p_creator_smoke.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_creator_smoke.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the creator run is blocked. Useful for CI and bot workflows.",
+    )
+    p_creator_smoke.add_argument(
+        "--fail-on-warn",
+        action="store_true",
+        help="Exit with status 1 when any warning is present. Useful for strict publication gates.",
+    )
     p_creator_smoke.set_defaults(func=cmd_creator_run_smoke)
 
     args = parser.parse_args()

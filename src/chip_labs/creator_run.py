@@ -102,10 +102,22 @@ class SmokeResult:
     next_actions: tuple[str, ...]
 
     def to_dict(self) -> dict[str, Any]:
+        status_counts = _status_counts(self.checks)
+        blocking_checks = _check_names_by_status(self.checks, "fail")
+        warning_checks = _check_names_by_status(self.checks, "warn")
         return {
+            "schema_version": "adaptive_creator_loop.smoke_result.v1",
             "run_dir": self.run_dir,
             "verdict": self.verdict,
             "evidence_tier": self.evidence_tier,
+            "status_counts": status_counts,
+            "blocking_checks": blocking_checks,
+            "warning_checks": warning_checks,
+            "automation": {
+                "blocked": self.verdict == "blocked",
+                "ci_exit_code": 1 if self.verdict == "blocked" else 0,
+                "recommended_next_command": _recommended_next_command(self),
+            },
             "checks": [check.to_dict() for check in self.checks],
             "missing_paths": list(self.missing_paths),
             "next_actions": list(self.next_actions),
@@ -363,6 +375,29 @@ def _load_required_json(
         return None
     checks.append(SmokeCheck(name, "pass", f"Loaded {path.name}."))
     return data
+
+
+def _status_counts(checks: tuple[SmokeCheck, ...]) -> dict[str, int]:
+    counts = {"pass": 0, "warn": 0, "fail": 0}
+    for check in checks:
+        counts[check.status] = counts.get(check.status, 0) + 1
+    return counts
+
+
+def _check_names_by_status(checks: tuple[SmokeCheck, ...], status: str) -> list[str]:
+    return [check.name for check in checks if check.status == status]
+
+
+def _recommended_next_command(result: SmokeResult) -> str:
+    if result.verdict == "blocked":
+        return f"python -m chip_labs.cli creator-run-smoke {result.run_dir}"
+    if result.verdict == "prototype":
+        return "Fill missing artifact paths, then rerun creator-run-smoke."
+    if result.verdict == "ready_for_baseline":
+        return "Run baseline, candidate, and absorption checks, then rerun creator-run-smoke."
+    if result.verdict == "ready_for_swarm_packet":
+        return "Review provenance, privacy, rollback, and claim boundaries before publication."
+    return f"python -m chip_labs.cli creator-run-smoke {result.run_dir}"
 
 
 def _check_schema_prefix(

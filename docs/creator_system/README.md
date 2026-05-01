@@ -13,6 +13,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [CREATOR_SYSTEM_RESEARCH_LEDGER.md](CREATOR_SYSTEM_RESEARCH_LEDGER.md) | Practical research ledger from Startup YC, Startup Bench, agentic simulator, Founder Arena, Builder, Spawner, Telegram, and Spark Swarm. |
 | [ADAPTIVE_CREATOR_LOOP_STANDARD.md](ADAPTIVE_CREATOR_LOOP_STANDARD.md) | The adaptive loop standard: domain-specific adapters, reusable evidence gates, recursive standard evolution, and the first runnable creator-run contract. |
 | [CREATOR_SYSTEM_MASTER_PLAN.md](CREATOR_SYSTEM_MASTER_PLAN.md) | Cohesive product and architecture plan for the creator ecosystem. |
+| [CREATOR_RUN_PRODUCTION_READINESS_V1.md](CREATOR_RUN_PRODUCTION_READINESS_V1.md) | Shippable creator-run CLI contract, smoke-result schema, integration rules, and V1 ship gate. |
 | [AGENT_CREATOR_PLAYBOOK.md](AGENT_CREATOR_PLAYBOOK.md) | Step-by-step operating procedure for a Spark agent creating a new chip/path/benchmark/loop. |
 | [BENCHMARK_AND_AUTOLOOP_PROTOCOL.md](BENCHMARK_AND_AUTOLOOP_PROTOCOL.md) | Benchmark types, scoring reliability rules, and autoloop promotion gates. |
 | [TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md](TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md) | How Telegram, Spark Intelligence Builder, Spawner UI, Canvas, Kanban, and Spark Swarm should work together. |
@@ -77,6 +78,27 @@ The Startup YC reference fixture should already pass:
 ```bash
 python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run
 ```
+
+For CI, bot, and UI workflows that should fail when a run is blocked:
+
+```bash
+python -m chip_labs.cli creator-run-smoke runs/startup-yc-creator-run --fail-on-blocked
+```
+
+For strict publication gates that should also fail on warnings:
+
+```bash
+python -m chip_labs.cli creator-run-smoke runs/startup-yc-creator-run --fail-on-blocked --fail-on-warn
+```
+
+The smoke response emits `schema_version: adaptive_creator_loop.smoke_result.v1` and includes machine-routing fields:
+
+- `status_counts`: count of pass/warn/fail checks
+- `blocking_checks`: failed check names
+- `warning_checks`: warning check names
+- `automation.blocked`: whether the run is blocked
+- `automation.ci_exit_code`: suggested CI status
+- `automation.recommended_next_command`: concise next command or action for builders, Telegram bot, Spawner UI, and Spark Intelligence Builder
 
 The smoke verdict is intentionally narrow:
 

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
+import sys
 from pathlib import Path
 
 from chip_labs.creator_run import init_creator_run, validate_creator_run
@@ -22,6 +25,76 @@ def test_init_creator_run_creates_valid_prototype(tmp_path: Path) -> None:
     assert (run_dir / "adapter-map.json").exists()
     assert smoke.verdict == "prototype"
     assert "benchmark/manifest.json" in smoke.missing_paths
+
+
+def test_smoke_result_exposes_machine_routing_fields(tmp_path: Path) -> None:
+    run_dir = tmp_path / "startup-yc-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Route this run.")
+
+    payload = validate_creator_run(run_dir).to_dict()
+
+    assert payload["schema_version"] == "adaptive_creator_loop.smoke_result.v1"
+    assert payload["status_counts"]["pass"] > 0
+    assert payload["status_counts"]["fail"] == 0
+    assert payload["blocking_checks"] == []
+    assert payload["warning_checks"] == []
+    assert payload["automation"]["blocked"] is False
+    assert payload["automation"]["ci_exit_code"] == 0
+    assert payload["automation"]["recommended_next_command"]
+
+
+def test_cli_fail_on_blocked_exits_nonzero(tmp_path: Path) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Test blocked CI exit.")
+    (run_dir / "creator-intent.json").unlink()
+
+    env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "creator-run-smoke",
+            str(run_dir),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 1
+    assert "adaptive_creator_loop.smoke_result.v1" in result.stdout
+    assert '"blocked": true' in result.stdout
+
+
+def test_cli_fail_on_warn_exits_nonzero_for_warning_fixture() -> None:
+    fixture_dir = (
+        Path.cwd() / "docs" / "creator_system" / "examples" / "startup-yc-creator-run"
+    )
+    env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "creator-run-smoke",
+            str(fixture_dir),
+            "--fail-on-warn",
+        ],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 1
+    assert '"warning_checks": [' in result.stdout
+    assert '"broad_transfer_delta"' in result.stdout
 
 
 def test_creator_run_ready_for_baseline_when_core_artifacts_exist(
