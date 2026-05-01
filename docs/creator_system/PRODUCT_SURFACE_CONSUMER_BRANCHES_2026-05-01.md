@@ -11,12 +11,12 @@ evidence tiers, publication state, or network absorption.
 
 ## Branches
 
-| Repo | Branch | Commit | Proof |
-| --- | --- | --- | --- |
-| `spark-intelligence-builder` | `codex/spark-live-wiki-answer-builder` | `3295f15` | Adds `validate_creator_mission_status` and `summarize_creator_mission_status`; rejects `publication.network_absorbable`; validates all read-only surface adapters. |
-| `spawner-ui` | `codex/creator-mission-status-spawner` | `cbc9d52` | Adds `creatorMissionStatusProjection`; rejects executable Spawner adapters, Canvas artifact edits, Kanban verdict mutation, and network absorption. |
-| `spark-canvas` | `codex/creator-mission-status-canvas` | `5a41b63` | Adds `creatorMissionStatusToCanvasGraph`; rejects Canvas artifact editing and network absorption. |
-| `spark-telegram-bot` | `codex/spark-live-wiki-answer-telegram` | `79b43b9` | Adds `formatCreatorMissionStatusForTelegram`; keeps publication blockers visible and rejects secret-paste or network-absorption claims. |
+| Repo | Branch | Commit | PR | Proof |
+| --- | --- | --- | --- | --- |
+| `spark-intelligence-builder` | `codex/creator-mission-status-builder` | `af34b10` | <https://github.com/vibeforge1111/spark-intelligence-builder/pull/26> | Adds `validate_creator_mission_status` and `summarize_creator_mission_status`; rejects `publication.network_absorbable`; validates all read-only surface adapters. |
+| `spawner-ui` | `codex/creator-mission-status-spawner` | `cbc9d52` | <https://github.com/vibeforge1111/vibeship-spawner-ui/pull/1> | Adds `creatorMissionStatusProjection`; rejects executable Spawner adapters, Canvas artifact edits, Kanban verdict mutation, and network absorption. |
+| `spark-canvas` | `codex/creator-mission-status-canvas` | `5a41b63` | <https://github.com/vibeforge1111/spark-canvas/pull/1> | Adds `creatorMissionStatusToCanvasGraph`; rejects Canvas artifact editing and network absorption. |
+| `spark-telegram-bot` | `codex/creator-mission-status-telegram` | `e3f2be0` | <https://github.com/vibeforge1111/spark-telegram-bot/pull/1> | Adds `formatCreatorMissionStatusForTelegram`; keeps publication blockers visible and rejects secret-paste or network-absorption claims. |
 
 ## Verification
 
@@ -50,7 +50,7 @@ node scripts/run-tests.cjs
 
 ## Still Deferred
 
-- Product branches are not merged here.
+- Product PRs are open but not merged here.
 - Telegram natural-language creator routing is still deferred.
 - Spawner runtime mission execution for creator runs is still deferred.
 - Canvas/Kanban rendering is still a read-only contract/projection, not a full

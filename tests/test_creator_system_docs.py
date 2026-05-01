@@ -79,4 +79,8 @@ def test_product_consumer_branch_ledger_preserves_deferred_runtime_boundary() ->
         assert repo in text
     assert "adaptive_creator_loop.creator_mission_status.v1" in text
     assert "`ready_for_swarm_packet` remains a review state, not `network_absorbable`." in text
-    assert "Product branches are not merged here." in text
+    assert "Product PRs are open but not merged here." in text
+    assert "https://github.com/vibeforge1111/spark-intelligence-builder/pull/26" in text
+    assert "https://github.com/vibeforge1111/vibeship-spawner-ui/pull/1" in text
+    assert "https://github.com/vibeforge1111/spark-canvas/pull/1" in text
+    assert "https://github.com/vibeforge1111/spark-telegram-bot/pull/1" in text
