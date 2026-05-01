@@ -403,8 +403,8 @@ making premature product or network claims.
 Deliverables:
 
 - [x] `CREATOR_SYSTEM_PROOF_DOMAINS.md` describes six proof layers.
-- [ ] Add example command blocks for each executable proof domain.
-- [ ] Add a "current claim level" table to the README.
+- [x] Add example command blocks for each executable proof domain.
+- [x] Add a "current claim level" table to the README.
 - [ ] Keep handoff, master plan, readiness, promotion gates, and backlog aligned.
 - [ ] Add a release-note style summary after each committed slice.
 
@@ -416,16 +416,14 @@ Quality gates:
 
 ## Next Executable Slice
 
-Land Phase 5 Startup YC operator validation pack:
+Land documentation and example standardization:
 
-1. Verify validation plan blocks `network_absorbable`.
-2. Verify held-out founder-advice cases include vanity-metric, demand reality,
-   narrow wedge, default-alive, and privacy traps.
-3. Verify calibration, privacy, rollback, and publication gates remain visible.
-4. Commit the Phase 5 validation-pack slice.
-5. Start Phase 6 retrieval and memory proof-layer design only when the memory
+1. Verify README claim-level table keeps boundaries visible.
+2. Verify README executable command index covers current proof domains.
+3. Commit the documentation-standardization slice.
+4. Start Phase 6 retrieval and memory proof-layer design only when the memory
    system boundary is clear.
-6. Do not begin product-surface wiring until Phase 7 gates are met.
+5. Do not begin product-surface wiring until Phase 7 gates are met.
 
 ## Parking Lot
 

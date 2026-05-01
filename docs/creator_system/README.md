@@ -51,6 +51,19 @@ flowchart LR
 
 Domain Chip Creator should not own Autoloop Creator. It should emit chip-specific loop metadata and hook contracts. Autoloop Creator owns loop governance, mutation windows, benchmark gates, evidence lineage, and stopping rules across all domains.
 
+## Current Claim Levels
+
+| Surface | Current Claim | Explicit Boundary |
+| --- | --- | --- |
+| Generator acceptance proof domains | `candidate_review` | Proves Spark can generate runnable local creator systems from briefs; does not prove transfer or network absorption. |
+| Startup YC reference fixture | `transfer_supported` | Strict smoke passes as `ready_for_swarm_packet`, but `network_absorbable` is blocked until multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval pass. |
+| Artifact quality domain | Local artifact-quality review | Scores design docs, PR writeups, handoffs, and mission packets; does not prove product correctness or replace human review. |
+| Tool operation domain | Local operation safety | Verifies command results, expected postconditions, rollback notes, and secret boundaries; does not allow publish, push, or network mutation. |
+| MiroFish content simulation | `candidate_review` local simulator protocol | Helps rank content candidates with deterministic simulated audiences; does not prove real virality or audience outcome. |
+| Doctor security domain | Local repair/recompute proof | Quarantines stale evidence and unsafe packet claims; does not grant publication approval. |
+| Product surfaces | Deferred | Builder, Telegram, Spawner, Canvas, and Kanban should read canonical creator outputs later, not invent independent truth now. |
+| Network absorption | Future gated claim | Requires multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval. |
+
 ## Agent Loading Rule
 
 When an agent is asked to create or improve a Spark creator system, load this folder first, then load repo-specific implementation docs only as needed:
@@ -67,6 +80,23 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 - `spark-intelligence-builder/docs/SWARM_AGENT_OPERABILITY_CONTRACT_V1.md`
 - `spark-telegram-bot/README.md`
 - `spawner-ui/docs/SPARK_MISSION_CONTROL_TRACE.md`
+
+## Executable Command Index
+
+| Purpose | Command |
+| --- | --- |
+| Initialize a creator run | `python -m chip_labs.cli creator-run-init --output-dir runs/<run-name> --domain "<domain>" --goal "<goal>"` |
+| Smoke-check a creator run | `python -m chip_labs.cli creator-run-smoke runs/<run-name>` |
+| Strict smoke for automation | `python -m chip_labs.cli creator-run-smoke runs/<run-name> --fail-on-blocked --fail-on-warn` |
+| Recompute saved evidence | `python -m chip_labs.cli creator-run-smoke runs/<run-name> --recompute --fail-on-blocked` |
+| Diagnose repair work | `python -m chip_labs.cli creator-run-doctor runs/<run-name>` |
+| Diagnose stale evidence | `python -m chip_labs.cli creator-run-doctor runs/<run-name> --recompute` |
+| Validate templates | `python -m chip_labs.cli creator-run-template-check --fail-on-blocked` |
+| Score artifact quality | `python -m chip_labs.cli artifact-quality-score --input <path> --artifact-kind pr_writeup` |
+| Run artifact benchmark | `python -m chip_labs.cli artifact-quality-benchmark runs/<run-name>` |
+| Check tool operation packet | `python -m chip_labs.cli tool-operation-check --input operation-packet.json --fail-on-blocked` |
+| Simulate content candidates | `python -m chip_labs.cli mirofish-content-simulate --task "<task>" --candidate "<A>" --candidate "<B>"` |
+| Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |
 
 ## First Runnable Commands
 
