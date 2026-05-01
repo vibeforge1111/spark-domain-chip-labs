@@ -33,6 +33,9 @@ quality.
   against freshly rerun evidence.
 - MiroFish content simulation has a deterministic local harness and a direct
   candidate CLI path.
+- `.github/workflows/creator-system.yml` now runs the focused creator-system
+  lint, proof-domain tests, strict Startup YC smoke check, and template check on
+  relevant pushes and pull requests.
 
 ## Build Phases
 
@@ -241,6 +244,9 @@ Current handoff:
   boundaries.
 - Product-side consumer branches are recorded in
   `PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md`.
+- Creator-system CI is active on `main` so future proof-domain edits must keep
+  generator acceptance, recompute/provenance checks, and Startup YC strict smoke
+  green before they can land.
 - Runtime creator controls remain deferred; these branches are validators,
   formatters, and read-only projections only.
 
@@ -423,8 +429,10 @@ Deliverables:
 - [x] `CREATOR_SYSTEM_PROOF_DOMAINS.md` describes six proof layers.
 - [x] Add example command blocks for each executable proof domain.
 - [x] Add a "current claim level" table to the README.
+- [x] Add a focused creator-system CI workflow.
+- [x] Add a release-note style summary for the CI guardrail slice.
 - [ ] Keep handoff, master plan, readiness, promotion gates, and backlog aligned.
-- [ ] Add a release-note style summary after each committed slice.
+- [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
 
@@ -444,6 +452,15 @@ Current Phase 7 executable slice:
 5. Keep network absorption blocked until multi-seed validation,
    human/operator calibration, privacy review, rollback review, and publication
    approval pass.
+
+Next documentation/verification slice:
+
+1. Keep handoff, master plan, readiness, promotion gates, and backlog aligned
+   with the CI-backed product-surface adapter state.
+2. Check open product PRs against the canonical
+   `product-surface-readonly/startup-yc-mission-status.json` fixture.
+3. Decide whether to add saved example packets for MiroFish route mode and
+   simulation mode.
 
 ## Parking Lot
 

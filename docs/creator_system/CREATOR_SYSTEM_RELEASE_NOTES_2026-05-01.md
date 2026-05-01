@@ -19,6 +19,8 @@
   Builder, Telegram, Spawner, Canvas, and Kanban without wiring runtime
   publication controls.
 - The README now includes current claim levels and an executable command index.
+- Creator-system CI now runs focused lint, proof-domain tests, strict Startup YC
+  smoke, and template checks on relevant pushes and pull requests.
 
 ## Current Claim Boundary
 
@@ -40,4 +42,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest broad suite result before push: `81 passed`.
+Latest focused creator-system suite result before CI push: `85 passed`.

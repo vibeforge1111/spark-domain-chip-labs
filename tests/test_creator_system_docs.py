@@ -51,7 +51,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "Startup YC remains `transfer_supported`, not `network_absorbable`." in text
     assert "Product runtime wiring remains deferred" in text
     assert "creator-mission-status" in text
-    assert "Latest broad suite result before push: `81 passed`." in text
+    assert "Creator-system CI now runs focused lint" in text
+    assert "Latest focused creator-system suite result before CI push: `85 passed`." in text
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:
