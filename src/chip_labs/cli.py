@@ -1183,6 +1183,19 @@ def cmd_tool_operation_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_retrieval_memory_check(args: argparse.Namespace) -> None:
+    """Check retrieval-memory fixtures for residue and promotion boundaries."""
+    from .retrieval_memory import (
+        check_retrieval_memory_packet,
+        load_retrieval_memory_packet,
+    )
+
+    result = check_retrieval_memory_packet(load_retrieval_memory_packet(args.input))
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -2051,6 +2064,24 @@ def main() -> None:
         help="Exit with status 1 when the operation check is blocked.",
     )
     p_tool_operation_check.set_defaults(func=cmd_tool_operation_check)
+
+    # retrieval-memory-check
+    p_retrieval_memory_check = sub.add_parser(
+        "retrieval-memory-check",
+        help="Check retrieved context for memory-lane and promotion safety.",
+    )
+    p_retrieval_memory_check.add_argument(
+        "--input", type=str, required=True, help="Retrieval-memory packet JSON path."
+    )
+    p_retrieval_memory_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_retrieval_memory_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when retrieval-memory promotion is blocked.",
+    )
+    p_retrieval_memory_check.set_defaults(func=cmd_retrieval_memory_check)
 
     args = parser.parse_args()
     args.func(args)

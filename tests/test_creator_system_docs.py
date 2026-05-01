@@ -14,6 +14,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "`network_absorbable` is blocked" in text
     assert "| Product surfaces | Deferred |" in text
     assert "| Network absorption | Future gated claim |" in text
+    assert "| Retrieval memory domain | Local memory-lane contract |" in text
     assert "does not prove real virality" in text
     assert "does not prove product correctness" in text
 
@@ -30,6 +31,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "artifact-quality-score",
         "artifact-quality-benchmark",
         "tool-operation-check",
+        "retrieval-memory-check",
         "mirofish-content-simulate",
         "mirofish-content-route",
     ):

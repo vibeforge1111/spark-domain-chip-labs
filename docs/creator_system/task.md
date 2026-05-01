@@ -183,7 +183,7 @@ Phase gate:
 
 ### Phase 6: Retrieval And Memory Proof Layer
 
-Status: deferred until memory system is ready
+Status: local contract active, production wiring deferred
 
 Purpose:
 
@@ -192,10 +192,10 @@ or stale conversation as memory truth.
 
 Deliverables:
 
-- [ ] Memory lane contract for local, private, and network-shareable context.
-- [ ] Retrieval fixtures for correct prior decision, stale memory,
+- [x] Memory lane contract for local, private, and network-shareable context.
+- [x] Retrieval fixtures for correct prior decision, stale memory,
   contradiction, and residue contamination.
-- [ ] Recompute/provenance checks for retrieved context.
+- [x] Recompute/provenance checks for retrieved context.
 
 Phase gate:
 
@@ -382,10 +382,10 @@ memory system is stable enough to plug into the benchmark flow.
 Deliverables:
 
 - [x] Deferred domain documented.
-- [ ] Memory lane contract for local, private, and network-shareable context.
-- [ ] Retrieval fixtures for correct prior decision, stale memory, contradiction,
+- [x] Memory lane contract for local, private, and network-shareable context.
+- [x] Retrieval fixtures for correct prior decision, stale memory, contradiction,
   and residue contamination.
-- [ ] Recompute/provenance checks for retrieved context.
+- [x] Recompute/provenance checks for retrieved context.
 
 Quality gates:
 
@@ -416,13 +416,14 @@ Quality gates:
 
 ## Next Executable Slice
 
-Land documentation and example standardization:
+Land Phase 6 retrieval-memory local contract:
 
-1. Verify README claim-level table keeps boundaries visible.
-2. Verify README executable command index covers current proof domains.
-3. Commit the documentation-standardization slice.
-4. Start Phase 6 retrieval and memory proof-layer design only when the memory
-   system boundary is clear.
+1. Verify correct prior decision fixture passes local memory-lane checks.
+2. Verify stale, contradicted, residue, and unreviewed network-shareable
+   fixtures block promotion.
+3. Verify `retrieval-memory-check --fail-on-blocked` exits nonzero for bad
+   fixtures.
+4. Commit the Phase 6 local-contract slice.
 5. Do not begin product-surface wiring until Phase 7 gates are met.
 
 ## Parking Lot

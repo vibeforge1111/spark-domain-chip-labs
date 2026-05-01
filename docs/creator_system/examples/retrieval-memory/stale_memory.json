@@ -1,0 +1,27 @@
+{
+  "schema_version": "adaptive_creator_loop.retrieval_memory_packet.v1",
+  "packet_id": "stale-memory",
+  "entries": [
+    {
+      "entry_id": "old-startup-yc-claim",
+      "memory_lane": "local_workspace",
+      "source_kind": "decision_record",
+      "summary": "Startup YC validation can be treated as complete.",
+      "source_refs": [
+        "docs/creator_system/CREATOR_SYSTEM_COMMUNITY_HANDOFF_2026-05-01.md"
+      ],
+      "freshness": "stale",
+      "revalidated": false,
+      "promotion_allowed": true,
+      "contradicted_by": [],
+      "provenance": {
+        "source_path": "docs/creator_system/CREATOR_SYSTEM_COMMUNITY_HANDOFF_2026-05-01.md",
+        "captured_at": "2026-05-01"
+      },
+      "review": {
+        "approved": false,
+        "reason": "Needs revalidation against current task ledger."
+      }
+    }
+  ]
+}

@@ -61,6 +61,7 @@ Domain Chip Creator should not own Autoloop Creator. It should emit chip-specifi
 | Tool operation domain | Local operation safety | Verifies command results, expected postconditions, rollback notes, and secret boundaries; does not allow publish, push, or network mutation. |
 | MiroFish content simulation | `candidate_review` local simulator protocol | Helps rank content candidates with deterministic simulated audiences; does not prove real virality or audience outcome. |
 | Doctor security domain | Local repair/recompute proof | Quarantines stale evidence and unsafe packet claims; does not grant publication approval. |
+| Retrieval memory domain | Local memory-lane contract | Blocks stale, contradicted, residue, and unreviewed network-shareable context; does not wire production memory runtime. |
 | Product surfaces | Deferred | Builder, Telegram, Spawner, Canvas, and Kanban should read canonical creator outputs later, not invent independent truth now. |
 | Network absorption | Future gated claim | Requires multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval. |
 
@@ -95,6 +96,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Score artifact quality | `python -m chip_labs.cli artifact-quality-score --input <path> --artifact-kind pr_writeup` |
 | Run artifact benchmark | `python -m chip_labs.cli artifact-quality-benchmark runs/<run-name>` |
 | Check tool operation packet | `python -m chip_labs.cli tool-operation-check --input operation-packet.json --fail-on-blocked` |
+| Check retrieval memory packet | `python -m chip_labs.cli retrieval-memory-check --input memory-packet.json --fail-on-blocked` |
 | Simulate content candidates | `python -m chip_labs.cli mirofish-content-simulate --task "<task>" --candidate "<A>" --candidate "<B>"` |
 | Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |
 
@@ -237,6 +239,12 @@ Startup YC operator validation fixtures live in
 current claim at `transfer_supported`, add held-out founder-advice traps, and
 make multi-seed validation, human/operator calibration, privacy review, rollback
 review, and publication approval explicit before any stronger claim.
+
+Retrieval memory fixtures live in
+`docs/creator_system/examples/retrieval-memory/`. They check the future
+memory-layer contract locally: exact source refs, provenance, lane boundaries,
+stale memory, contradictions, residue contamination, and network-shareable
+review approval.
 
 The first local content-simulation harness is available as:
 

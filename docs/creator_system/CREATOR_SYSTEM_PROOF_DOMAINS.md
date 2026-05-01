@@ -401,7 +401,8 @@ workflow residue into memory truth.
 
 Status:
 
-Deferred until the memory system is ready to plug into this benchmark flow.
+Local contract fixtures exist. Production memory wiring remains deferred until
+the memory system is ready to plug into this benchmark flow.
 
 Likely acceptance cases:
 
@@ -409,6 +410,31 @@ Likely acceptance cases:
 - Refuse stale or contradicted memory.
 - Keep private, local, and network-shareable memory lanes separate.
 - Detect memory contamination from conversational residue.
+
+Current executable local harness:
+
+```bash
+python -m chip_labs.cli retrieval-memory-check \
+  --input docs/creator_system/examples/retrieval-memory/correct_prior_decision.json \
+  --fail-on-blocked
+```
+
+Current fixtures:
+
+- `retrieval-memory/correct_prior_decision.json`: local workspace memory with
+  exact source refs and provenance.
+- `retrieval-memory/stale_memory.json`: stale context blocked until revalidated.
+- `retrieval-memory/contradicted_memory.json`: recalled context blocked by newer
+  contradictory artifacts.
+- `retrieval-memory/residue_contamination.json`: conversational residue blocked
+  from durable memory truth.
+- `retrieval-memory/network_without_review.json`: network-shareable context
+  blocked without review approval.
+
+Claim boundary:
+
+This is a local memory-lane contract only. It does not wire production memory,
+prove recall quality, or authorize network-shareable memory.
 
 Next real adapters:
 

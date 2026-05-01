@@ -1,0 +1,27 @@
+{
+  "schema_version": "adaptive_creator_loop.retrieval_memory_packet.v1",
+  "packet_id": "network-without-review",
+  "entries": [
+    {
+      "entry_id": "shareable-memory-without-approval",
+      "memory_lane": "network_shareable",
+      "source_kind": "decision_record",
+      "summary": "A creator-system rule can be shared to other agents.",
+      "source_refs": [
+        "docs/creator_system/README.md"
+      ],
+      "freshness": "fresh",
+      "revalidated": true,
+      "promotion_allowed": true,
+      "contradicted_by": [],
+      "provenance": {
+        "source_path": "docs/creator_system/README.md",
+        "captured_at": "2026-05-01"
+      },
+      "review": {
+        "approved": false,
+        "reason": "Network-shareable memory still needs publication approval."
+      }
+    }
+  ]
+}

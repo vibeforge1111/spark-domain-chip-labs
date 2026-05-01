@@ -1,0 +1,28 @@
+{
+  "schema_version": "adaptive_creator_loop.retrieval_memory_packet.v1",
+  "packet_id": "correct-prior-decision",
+  "entries": [
+    {
+      "entry_id": "phase-5-boundary",
+      "memory_lane": "local_workspace",
+      "source_kind": "decision_record",
+      "summary": "Startup YC remains transfer_supported and is not network_absorbable.",
+      "source_refs": [
+        "docs/creator_system/task.md",
+        "docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json"
+      ],
+      "freshness": "fresh",
+      "revalidated": true,
+      "promotion_allowed": true,
+      "contradicted_by": [],
+      "provenance": {
+        "source_path": "docs/creator_system/task.md",
+        "captured_at": "2026-05-01"
+      },
+      "review": {
+        "approved": false,
+        "reason": "Local workspace memory only."
+      }
+    }
+  ]
+}
