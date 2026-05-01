@@ -683,14 +683,123 @@ Doctor:
 python -m chip_labs.cli creator-run-doctor docs/creator_system/examples/startup-yc-creator-run
 ```
 
+## Archive Continuation Notes
+
+These notes exist so this chat can be archived without losing working context.
+
+### Current repo state after this handoff
+
+Last pushed creator-system commit:
+
+- `ae72f07 Document creator system community handoff`
+
+The repo also contains unrelated dirty and untracked workspace files that were intentionally not touched by this handoff. A new agent should run `git status --short` before editing and should stage only files relevant to the current task.
+
+Known unrelated dirty paths at the time this was written:
+
+- `PROJECT.md`
+- `src/chip_labs/mirofish/personas.py`
+- `src/chip_labs/mirofish/simulation.py`
+- many untracked docs/research/viz files outside `docs/creator_system`
+- an untracked `nul` path
+
+Do not revert these without explicit user approval.
+
+### Things easy to overlook
+
+1. Startup YC is stronger than it was, but it is still not a final network-wide mastery claim.
+   - Current tier: `transfer_supported`
+   - Not yet: `network_absorbable`
+   - Reason: multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval are still missing.
+
+2. `ready_for_swarm_packet` is an artifact-readiness verdict, not automatic Swarm absorption.
+   - It means the packet exists and passes local checks.
+   - It does not mean the network should absorb it without review.
+
+3. The current smoke gate validates saved evidence and claim boundaries.
+   - It does not fully rerun Startup Bench or the source benchmark reports.
+   - A recompute/provenance mode is still needed.
+
+4. The creator system validates a curated golden fixture.
+   - The next proof is generator acceptance: Spark must create valid chips, benchmarks, paths, loops, and packets from a new brief in a clean workspace.
+
+5. Product wiring is intentionally deferred.
+   - Do not finalize Spawner/Canvas/Kanban creator surfaces yet.
+   - Builder, memory, conversation, auth, and interaction surfaces need polish first.
+
+6. Community contribution should default to safer lanes.
+   - Local workspace learning is fine.
+   - Network contribution should usually go through GitHub PR/review.
+   - Raw direct packet sharing is risky until trust boundaries are complete.
+
+7. Domain Chip Creator and Autoloop Creator should stay separate but contract-bound.
+   - Domain Chip Creator can emit loop metadata and hooks.
+   - Autoloop Creator should own mutation policy, keep/revert gates, benchmark governance, and promotion rules.
+
+8. Startup YC is the reference implementation, not the universal shape.
+   - Other domains may need tool-operation, artifact-quality, simulator, memory, adversarial, or longitudinal benchmark families.
+   - The reusable standard is the loop and evidence ladder, not the specific Startup YC benchmark design.
+
+### Best next work order
+
+The next session should not start by adding more broad docs. The most useful next work is executable proof:
+
+1. Add generator acceptance tests for creator outputs.
+2. Add JSON Schema validation where practical inside `creator-run-smoke` or a companion validator.
+3. Add recompute/provenance mode for benchmark reports.
+4. Create one small second reference domain to prove the standard is not Startup-YC-only.
+5. Write a public community quickstart after the generator proof exists.
+6. Decide whether to split `spark-creator` only after the quickstart and acceptance tests are credible.
+
+### Stop/do-not-do list
+
+- Do not claim `network_absorbable` because strict smoke passes.
+- Do not wire creator flows into Spawner/Canvas/Kanban as the next immediate task.
+- Do not commit secrets, access tokens, session tokens, or local `.env` values.
+- Do not mutate benchmark scoring to make the creator system look better.
+- Do not promote packets without provenance, rollback, boundaries, and trap/regression checks.
+- Do not collapse all creator modules into Domain Chip Creator.
+
 ## Handoff Prompt For Next Agent
 
 ```text
-Read C:\Users\USER\Desktop\spark-domain-chip-labs\docs\creator_system\CREATOR_SYSTEM_COMMUNITY_HANDOFF_2026-05-01.md and the linked creator-system docs.
+I am continuing the Spark creator-system standardization work after archiving a long Codex thread.
 
-Continue the Spark creator-system standardization work. The current state is a strong alpha: creator-run CLI, schemas, templates, evidence ladder, and the Startup YC reference fixture exist. Startup YC is transfer_supported, not network_absorbable.
+Start here:
+C:\Users\USER\Desktop\spark-domain-chip-labs\docs\creator_system\CREATOR_SYSTEM_COMMUNITY_HANDOFF_2026-05-01.md
 
-Next priority: add generator acceptance tests and recompute/provenance checks so Spark can prove it can create high-quality domain chips, benchmark packs, specialization paths, autoloop policies, and Swarm packets from scratch across more than Startup YC.
+Then skim these linked docs only as needed:
+C:\Users\USER\Desktop\spark-domain-chip-labs\docs\creator_system\README.md
+C:\Users\USER\Desktop\spark-domain-chip-labs\docs\creator_system\CREATOR_SYSTEM_MASTER_PLAN.md
+C:\Users\USER\Desktop\spark-domain-chip-labs\docs\creator_system\CREATOR_RUN_PRODUCTION_READINESS_V1.md
+C:\Users\USER\Desktop\spark-domain-chip-labs\docs\creator_system\PROMOTION_GATES_AND_EVIDENCE_TIERS.md
+C:\Users\USER\Desktop\spark-domain-chip-labs\docs\creator_system\PHASE_2_PRODUCT_FLOW_BACKLOG.md
 
-Do not wire Spawner/Canvas/Kanban product surfaces yet. Product flow is intentionally deferred until Builder, memory, conversations, interactions, and auth/connection systems are polished.
+Current state:
+- Repo: C:\Users\USER\Desktop\spark-domain-chip-labs
+- Branch: main
+- Last pushed creator-system handoff commit: ae72f07
+- Creator-run CLI, schemas, templates, evidence ladder, and Startup YC reference fixture exist.
+- Startup YC fixture passes strict smoke as ready_for_swarm_packet with evidence tier transfer_supported.
+- Startup YC is not network_absorbable yet.
+- Product flow into Builder/Telegram/Spawner/Canvas/Kanban is documented but intentionally deferred.
+
+Before editing:
+- Run git status --short.
+- Do not revert unrelated dirty/untracked files.
+- Stage only files relevant to the task.
+
+Next priority:
+Add executable proof that Spark can generate creator systems from scratch, not just validate the curated Startup YC fixture. Start with generator acceptance tests in spark-domain-chip-labs:
+1. create a domain chip from a brief and run hook smoke tests
+2. create a benchmark pack and run a baseline
+3. create a specialization path and pass creator-run smoke
+4. create an autoloop policy and run one keep/revert simulation
+5. create a Swarm contribution packet from reports
+6. run the flow in a temporary clean workspace
+
+Second priority:
+Add recompute/provenance checks so creator-run-smoke can distinguish coherent saved evidence from freshly rerun evidence.
+
+Do not wire Spawner/Canvas/Kanban creator surfaces yet. Do not claim network_absorbable without multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval.
 ```
