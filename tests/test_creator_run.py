@@ -29,6 +29,12 @@ def test_init_creator_run_creates_valid_prototype(tmp_path: Path) -> None:
     assert result["run_id"].startswith("creator-run-")
     assert (run_dir / "creator-intent.json").exists()
     assert (run_dir / "adapter-map.json").exists()
+    assert (run_dir / "created-artifact-manifest.json").exists()
+    artifact_manifest = json.loads(
+        (run_dir / "created-artifact-manifest.json").read_text(encoding="utf-8")
+    )
+    assert artifact_manifest["creator_run_id"] == result["run_id"]
+    assert artifact_manifest["publication_boundary"] == "local_only"
     assert smoke.verdict == "prototype"
     assert "benchmark/manifest.json" in smoke.missing_paths
 

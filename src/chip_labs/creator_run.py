@@ -50,6 +50,7 @@ EVIDENCE_LADDER_PATH = "reports/evidence_ladder.md"
 TEMPLATE_FILENAMES = {
     "creator-intent.template.json": "creator-intent.json",
     "adapter-map.template.json": "adapter-map.json",
+    "created-artifact-manifest.template.json": "created-artifact-manifest.json",
     "creator-run-summary.template.md": "creator-run-summary.md",
     "swarm-contribution-packet.template.json": "swarm-contribution-packet.json",
     "standard-change-proposal.template.md": "standard-change-proposal.md",
@@ -60,6 +61,7 @@ TEMPLATE_REQUIRED_FILES = (
     "adapter-map.template.json",
     "autoloop-policy.template.json",
     "benchmark-pack.template.md",
+    "created-artifact-manifest.template.json",
     "creator-run-summary.template.md",
     "evidence-ladder.template.md",
     "specialization-path-contract.template.md",
@@ -134,6 +136,13 @@ TEMPLATE_REQUIRED_FIELDS = {
         "lineage_required",
         "privacy_boundary",
         "network_publication_allowed",
+    ),
+    "created-artifact-manifest.template.json": (
+        "schema_version",
+        "creator_run_id",
+        "artifacts",
+        "publication_boundary",
+        "next_action",
     ),
 }
 
@@ -300,6 +309,12 @@ def init_creator_run(
     adapter_map["run_id"] = run_id
     adapter_map["domain_adapter"]["domain_name"] = domain
     write_json(adapter_path, adapter_map)
+
+    artifact_manifest_path = output_path / "created-artifact-manifest.json"
+    artifact_manifest = load_json(artifact_manifest_path)
+    artifact_manifest["creator_run_id"] = run_id
+    artifact_manifest["repo"]["path"] = str(output_path)
+    write_json(artifact_manifest_path, artifact_manifest)
 
     packet_path = output_path / "swarm-contribution-packet.json"
     packet = load_json(packet_path)
