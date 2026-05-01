@@ -1013,11 +1013,18 @@ def cmd_mirofish_frontier_shortlist_export(args: argparse.Namespace) -> None:
 def cmd_mirofish_content_simulate(args: argparse.Namespace) -> None:
     """Rank content candidates with local MiroFish-style simulator judges."""
     from .mirofish.content_simulation import (
+        build_content_simulation_packet,
         format_content_simulation_markdown,
         simulate_content_selection,
     )
 
-    input_data = _load_input(args.input)
+    if args.input:
+        input_data = _load_input(args.input)
+    else:
+        input_data = build_content_simulation_packet(
+            args.task or "",
+            candidates=args.candidate,
+        )
     result = simulate_content_selection(input_data)
     _write_output(args.output, result)
     if args.markdown_output:
@@ -1723,8 +1730,20 @@ def main() -> None:
     p_mirofish_content_simulate.add_argument(
         "--input",
         type=str,
-        required=True,
+        default=None,
         help="Input JSON with candidates plus optional persona_segments and rlm_judges.",
+    )
+    p_mirofish_content_simulate.add_argument(
+        "--task",
+        type=str,
+        default="",
+        help="Natural-language task used when passing candidates directly.",
+    )
+    p_mirofish_content_simulate.add_argument(
+        "--candidate",
+        action="append",
+        default=None,
+        help="Content candidate text. Repeat to rank multiple candidates without an input file.",
     )
     p_mirofish_content_simulate.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_content_simulate.add_argument(

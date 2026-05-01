@@ -8,7 +8,10 @@ from pathlib import Path
 
 from chip_labs.mirofish.content_simulation import (
     CLAIM_BOUNDARY,
+    build_content_simulation_packet,
+    extract_content_candidates,
     format_content_simulation_markdown,
+    should_invoke_content_simulation,
     simulate_content_selection,
 )
 
@@ -62,6 +65,38 @@ def test_simulate_content_selection_blocks_without_candidates() -> None:
     assert "candidates_required" in result["blocking_checks"]
 
 
+def test_should_invoke_content_simulation_for_title_selection_prompt() -> None:
+    prompt = """Which title is strongest?
+
+1. 7 benchmark mistakes that make AI demos look better than they are
+2. How to prove an agent workflow improved before you ship it
+"""
+
+    assert should_invoke_content_simulation(prompt) is True
+    assert extract_content_candidates(prompt) == [
+        "7 benchmark mistakes that make AI demos look better than they are",
+        "How to prove an agent workflow improved before you ship it",
+    ]
+
+
+def test_should_not_invoke_content_simulation_for_unrelated_task() -> None:
+    assert should_invoke_content_simulation("Run the unit tests and summarize failures.") is False
+
+
+def test_build_content_simulation_packet_from_prompt_candidates() -> None:
+    prompt = """Pick the best hook:
+
+- Why most agent demos lie by accident
+- The checklist I use before trusting agent benchmarks
+"""
+
+    packet = build_content_simulation_packet(prompt)
+
+    assert packet["triggered_by"] == "mirofish_content_simulation"
+    assert len(packet["candidates"]) == 2
+    assert packet["claim_boundary"] == CLAIM_BOUNDARY
+
+
 def test_format_content_simulation_markdown_includes_ranking() -> None:
     result = simulate_content_selection(_packet())
 
@@ -105,3 +140,35 @@ def test_cli_mirofish_content_simulate_outputs_json_and_markdown(tmp_path: Path)
     assert markdown_path.read_text(encoding="utf-8").startswith(
         "# MiroFish Content Simulation"
     )
+
+
+def test_cli_mirofish_content_simulate_accepts_direct_candidates(tmp_path: Path) -> None:
+    output_path = tmp_path / "result.json"
+    env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "mirofish-content-simulate",
+            "--task",
+            "Pick the best post title.",
+            "--candidate",
+            "7 benchmark mistakes that make AI demos look better than they are",
+            "--candidate",
+            "The ultimate secret to amazing AI content",
+            "--output",
+            str(output_path),
+        ],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert payload["verdict"] == "ranked"
+    assert payload["candidate_count"] == 2

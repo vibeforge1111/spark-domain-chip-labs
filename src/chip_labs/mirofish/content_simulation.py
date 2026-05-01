@@ -27,6 +27,38 @@ DEFAULT_RLM_JUDGES = (
 
 CLAIM_BOUNDARY = "candidate_review local simulator protocol only"
 
+CONTENT_SELECTION_TERMS = {
+    "angle",
+    "angles",
+    "content",
+    "draft",
+    "drafts",
+    "hook",
+    "hooks",
+    "idea",
+    "ideas",
+    "post",
+    "posts",
+    "rank",
+    "select",
+    "title",
+    "titles",
+}
+
+SELECTION_INTENT_TERMS = {
+    "best",
+    "better",
+    "choose",
+    "compare",
+    "pick",
+    "rank",
+    "score",
+    "select",
+    "strongest",
+    "test",
+    "winner",
+}
+
 PERSONA_KEYWORDS = {
     "founder-builders": {
         "customer",
@@ -92,6 +124,53 @@ UTILITY_WORDS = {
     "proof",
     "benchmark",
 }
+
+
+def should_invoke_content_simulation(text: str) -> bool:
+    """Return true when a prompt looks like content candidate selection."""
+
+    tokens = _tokens(text)
+    has_content_surface = bool(tokens & CONTENT_SELECTION_TERMS)
+    has_selection_intent = bool(tokens & SELECTION_INTENT_TERMS)
+    has_multiple_candidates = len(extract_content_candidates(text)) >= 2
+    return has_content_surface and (has_selection_intent or has_multiple_candidates)
+
+
+def build_content_simulation_packet(
+    task: str,
+    *,
+    candidates: list[str | dict[str, Any]] | None = None,
+    persona_segments: list[str] | None = None,
+    rlm_judges: list[str] | None = None,
+) -> dict[str, Any]:
+    """Build a simulator packet from a natural-language task plus candidates."""
+
+    raw_candidates = candidates if candidates is not None else extract_content_candidates(task)
+    return {
+        "task": task,
+        "triggered_by": "mirofish_content_simulation",
+        "candidates": _normalize_candidates(raw_candidates),
+        "persona_segments": persona_segments or list(DEFAULT_PERSONA_SEGMENTS),
+        "rlm_judges": rlm_judges or list(DEFAULT_RLM_JUDGES),
+        "claim_boundary": CLAIM_BOUNDARY,
+    }
+
+
+def extract_content_candidates(text: str) -> list[str]:
+    """Extract likely content options from bullets, numbered lines, or quotes."""
+
+    candidates: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        bullet_match = re.match(r"^(?:[-*]|\d+[.)])\s+(.+)$", stripped)
+        if bullet_match:
+            candidates.append(bullet_match.group(1).strip())
+            continue
+        quoted = re.findall(r'"([^"]{8,})"', stripped)
+        candidates.extend(item.strip() for item in quoted)
+    return _dedupe_preserve_order(candidates)
 
 
 def simulate_content_selection(packet: dict[str, Any]) -> dict[str, Any]:
@@ -182,6 +261,18 @@ def _normalize_candidates(raw_candidates: Any) -> list[dict[str, str]]:
         if text.strip():
             candidates.append({"id": candidate_id, "text": text.strip()})
     return candidates
+
+
+def _dedupe_preserve_order(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    deduped = []
+    for value in values:
+        key = value.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(value)
+    return deduped
 
 
 def _normalize_list(value: Any, default: tuple[str, ...]) -> list[str]:
