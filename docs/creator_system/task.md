@@ -214,10 +214,12 @@ Kanban only after local proof domains are stable.
 
 Deliverables:
 
-- [ ] Builder intent packet handoff.
+- [x] Builder read-only mission status consumer.
 - [ ] Telegram guided creator commands.
+- [x] Telegram read-only mission status formatter.
 - [ ] Spawner mission execution and trace storage.
-- [ ] Canvas/Kanban read-only mission visualization.
+- [x] Spawner read-only mission status projection.
+- [x] Canvas/Kanban read-only mission visualization contract.
 - [x] Shared read-only creator mission status packet.
 
 Phase gate:
@@ -237,6 +239,10 @@ Current handoff:
 - Builder, Telegram, Spawner, Canvas, and Kanban should consume the shared
   status packet and preserve blocked states, missing gates, and claim
   boundaries.
+- Product-side consumer branches are recorded in
+  `PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md`.
+- Runtime creator controls remain deferred; these branches are validators,
+  formatters, and read-only projections only.
 
 ### Phase 8: Network Absorption And Public Standard
 

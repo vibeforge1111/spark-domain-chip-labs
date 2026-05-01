@@ -20,6 +20,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [CREATOR_RUN_GOLDEN_PATH_V1.md](CREATOR_RUN_GOLDEN_PATH_V1.md) | CLI-first golden path from user goal to creator-run validation, doctor repair plan, and strict publication check. |
 | [PROMOTION_GATES_AND_EVIDENCE_TIERS.md](PROMOTION_GATES_AND_EVIDENCE_TIERS.md) | Canonical evidence-tier ladder, promotion gates, claim boundaries, and Startup YC seeded-variance reference pattern. |
 | [PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md](PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md) | Phase 7 read-only adapter contract for Builder, Telegram, Spawner, Canvas, and Kanban. |
+| [PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md](PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md) | Product-side read-only consumer branches and verification commands. |
 | [PHASE_2_PRODUCT_FLOW_BACKLOG.md](PHASE_2_PRODUCT_FLOW_BACKLOG.md) | Deferred Builder, Telegram, Spawner UI, Canvas, and Kanban integration contract for when product surfaces are ready. |
 | [AGENT_CREATOR_PLAYBOOK.md](AGENT_CREATOR_PLAYBOOK.md) | Step-by-step operating procedure for a Spark agent creating a new chip/path/benchmark/loop. |
 | [BENCHMARK_AND_AUTOLOOP_PROTOCOL.md](BENCHMARK_AND_AUTOLOOP_PROTOCOL.md) | Benchmark types, scoring reliability rules, and autoloop promotion gates. |
@@ -64,7 +65,7 @@ Domain Chip Creator should not own Autoloop Creator. It should emit chip-specifi
 | MiroFish content simulation | `candidate_review` local simulator protocol | Helps rank content candidates with deterministic simulated audiences; does not prove real virality or audience outcome. |
 | Doctor security domain | Local repair/recompute proof | Quarantines stale evidence and unsafe packet claims; does not grant publication approval. |
 | Retrieval memory domain | Local memory-lane contract | Blocks stale, contradicted, residue, and unreviewed network-shareable context; does not wire production memory runtime. |
-| Product surfaces | Deferred | Builder, Telegram, Spawner, Canvas, and Kanban should read canonical creator outputs later, not invent independent truth now. |
+| Product surfaces | Read-only consumer branches | Product branches now validate/render `creator-mission-status`, but runtime creator controls remain deferred. |
 | Network absorption | Future gated claim | Requires multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval. |
 
 ## Agent Loading Rule

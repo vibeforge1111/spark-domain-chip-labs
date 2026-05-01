@@ -7,6 +7,7 @@ README = Path("docs/creator_system/README.md")
 RELEASE_NOTES = Path("docs/creator_system/CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md")
 PHASE_2_BACKLOG = Path("docs/creator_system/PHASE_2_PRODUCT_FLOW_BACKLOG.md")
 PRODUCT_FLOW = Path("docs/creator_system/TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md")
+PRODUCT_CONSUMER_BRANCHES = Path("docs/creator_system/PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md")
 
 
 def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
@@ -17,7 +18,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
     assert "| Startup YC reference fixture | `transfer_supported` |" in text
     assert "`network_absorbable` is blocked" in text
-    assert "| Product surfaces | Deferred |" in text
+    assert "| Product surfaces | Read-only consumer branches |" in text
     assert "| Network absorption | Future gated claim |" in text
     assert "| Retrieval memory domain | Local memory-lane contract |" in text
     assert "does not prove real virality" in text
@@ -64,3 +65,18 @@ def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> N
 
     assert "Product tests prove read-only adapters preserve claim boundaries" in phase_2
     assert "adaptive_creator_loop.creator_mission_status.v1" in product_flow
+
+
+def test_product_consumer_branch_ledger_preserves_deferred_runtime_boundary() -> None:
+    text = PRODUCT_CONSUMER_BRANCHES.read_text(encoding="utf-8")
+
+    for repo in (
+        "spark-intelligence-builder",
+        "spawner-ui",
+        "spark-canvas",
+        "spark-telegram-bot",
+    ):
+        assert repo in text
+    assert "adaptive_creator_loop.creator_mission_status.v1" in text
+    assert "`ready_for_swarm_packet` remains a review state, not `network_absorbable`." in text
+    assert "Product branches are not merged here." in text
