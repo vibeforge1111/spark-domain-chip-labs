@@ -14,7 +14,7 @@ import hashlib
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 EVIDENCE_TIERS = (
     "prototype",
@@ -349,10 +349,10 @@ def init_creator_run(
     }
 
 
-def diagnose_creator_run(run_dir: str | Path) -> dict[str, Any]:
+def diagnose_creator_run(run_dir: str | Path, *, recompute: bool = False) -> dict[str, Any]:
     """Return a concise repair plan for a creator-run directory."""
 
-    smoke = validate_creator_run(run_dir)
+    smoke = validate_creator_run(run_dir, recompute=recompute)
     smoke_payload = smoke.to_dict()
     repair_steps = _repair_steps_for_smoke(smoke)
     return {
@@ -360,10 +360,13 @@ def diagnose_creator_run(run_dir: str | Path) -> dict[str, Any]:
         "run_dir": smoke.run_dir,
         "verdict": smoke.verdict,
         "evidence_tier": smoke.evidence_tier,
+        "evidence_mode": "recomputed" if recompute else "saved",
         "summary": _doctor_summary(smoke),
         "publication_ready": smoke.verdict == "ready_for_swarm_packet"
         and not smoke_payload["warning_checks"],
         "workspace_ready": smoke.verdict != "blocked",
+        "repair_replay": _repair_replay(smoke, recompute=recompute),
+        "quarantine": _quarantine_findings(smoke),
         "repair_steps": repair_steps,
         "smoke": smoke_payload,
     }
@@ -633,16 +636,7 @@ def _repair_steps_for_smoke(smoke: SmokeResult) -> list[dict[str, Any]]:
     }
     steps: list[dict[str, Any]] = []
     if checks_by_status["fail"]:
-        steps.append(
-            {
-                "priority": "blocker",
-                "area": "validation",
-                "title": "Fix blocking smoke checks",
-                "action": "Open the failed check names and repair the referenced schema, field, or evidence artifact before continuing.",
-                "related_checks": [check.name for check in checks_by_status["fail"]],
-                "paths": [],
-            }
-        )
+        steps.extend(_specific_repair_steps(checks_by_status["fail"]))
     if smoke.missing_paths:
         core_missing = [
             path for path in smoke.missing_paths if path in READY_FOR_BASELINE_PATHS
@@ -695,6 +689,179 @@ def _repair_steps_for_smoke(smoke: SmokeResult) -> list[dict[str, Any]]:
             }
         )
     return steps
+
+
+def _specific_repair_steps(failed_checks: list[SmokeCheck]) -> list[dict[str, Any]]:
+    grouped: dict[str, dict[str, Any]] = {}
+    for check in failed_checks:
+        spec = _repair_spec_for_check(check.name)
+        group = grouped.setdefault(
+            spec["area"],
+            {
+                "priority": "blocker",
+                "area": spec["area"],
+                "title": spec["title"],
+                "action": spec["action"],
+                "related_checks": [],
+                "paths": [],
+            },
+        )
+        group["related_checks"].append(check.name)
+        group["paths"].extend(spec["paths"])
+
+    steps = list(grouped.values())
+    for step in steps:
+        step["related_checks"] = _dedupe_strings(step["related_checks"])
+        step["paths"] = _dedupe_strings(step["paths"])
+    return steps
+
+
+def _repair_spec_for_check(check_name: str) -> dict[str, Any]:
+    if check_name.startswith("report_provenance:") or check_name.startswith("recompute_"):
+        return {
+            "area": "recompute_provenance",
+            "title": "Regenerate stale or unsupported saved evidence",
+            "action": "Regenerate benchmark reports from current source artifacts, keep supported provenance input hashes, then rerun creator-run-smoke --recompute.",
+            "paths": _recompute_repair_paths(check_name),
+        }
+    if check_name.startswith("swarm_packet_"):
+        return {
+            "area": "swarm_packet",
+            "title": "Repair or quarantine the Swarm contribution packet",
+            "action": "Align the packet evidence tier, delta, trap status, provenance, and rollback rule with validated reports before review.",
+            "paths": ["swarm/contribution_packet.json"],
+        }
+    if check_name.startswith("evidence_ladder"):
+        return {
+            "area": "evidence_ladder",
+            "title": "Repair the evidence ladder gates",
+            "action": "Update the evidence ladder so claimed tier, weakest supported tier, gate statuses, safe claim, and unsafe claim match saved evidence.",
+            "paths": [EVIDENCE_LADDER_PATH],
+        }
+    if check_name.startswith("broad_transfer"):
+        return {
+            "area": "broad_transfer",
+            "title": "Repair broad-transfer evidence",
+            "action": "Rerun or revise the broad-transfer probe until every scenario supports the claimed broad transfer tier.",
+            "paths": ["reports/broad_transfer_probe.json"],
+        }
+    if check_name.startswith("transfer_"):
+        return {
+            "area": "transfer_evidence",
+            "title": "Repair transfer evidence",
+            "action": "Regenerate the transfer summary with source, scenario count, positive delta, and matching packet evidence.",
+            "paths": ["reports/transfer_summary.json", "swarm/contribution_packet.json"],
+        }
+    if check_name.startswith("candidate_") or check_name == "baseline_score":
+        return {
+            "area": "benchmark_evidence",
+            "title": "Repair baseline and candidate benchmark evidence",
+            "action": "Rerun baseline and candidate scoring so candidate score, mean delta, and packet delta agree.",
+            "paths": ["reports/baseline.json", "reports/candidate.json"],
+        }
+    if check_name.startswith("absorption_") or check_name == "trap_coverage":
+        return {
+            "area": "absorption_evidence",
+            "title": "Repair absorption and trap evidence",
+            "action": "Regenerate absorption evidence with all modes present, scored, positive delta, and trap coverage.",
+            "paths": ["reports/absorption_summary.json"],
+        }
+    return {
+        "area": "validation",
+        "title": "Fix blocking smoke checks",
+        "action": "Open the failed check names and repair the referenced schema, field, or evidence artifact before continuing.",
+        "paths": [],
+    }
+
+
+def _recompute_repair_paths(check_name: str) -> list[str]:
+    if check_name.startswith("report_provenance:"):
+        parts = check_name.split(":")
+        if len(parts) >= 2:
+            return [parts[1]]
+    if "candidate" in check_name:
+        return [
+            "reports/candidate.json",
+            "benchmark/cases.jsonl",
+            "domain-chip/scoring_hooks.json",
+        ]
+    if "baseline" in check_name:
+        return [
+            "reports/baseline.json",
+            "benchmark/cases.jsonl",
+            "domain-chip/scoring_hooks.json",
+        ]
+    if "absorption" in check_name or "trap" in check_name:
+        return [
+            "reports/absorption_summary.json",
+            "benchmark/cases.jsonl",
+            "domain-chip/scoring_hooks.json",
+        ]
+    return [
+        "reports/baseline.json",
+        "reports/candidate.json",
+        "reports/absorption_summary.json",
+        "benchmark/cases.jsonl",
+        "domain-chip/scoring_hooks.json",
+    ]
+
+
+def _repair_replay(smoke: SmokeResult, *, recompute: bool) -> dict[str, Any]:
+    rerun_command = f"python -m chip_labs.cli creator-run-smoke {smoke.run_dir} --recompute --fail-on-blocked"
+    return {
+        "required": smoke.verdict == "blocked",
+        "satisfied": recompute and smoke.verdict != "blocked",
+        "fresh_evidence": recompute,
+        "command": rerun_command,
+        "message": (
+            "Repair is proven by a fresh recompute smoke run."
+            if recompute and smoke.verdict != "blocked"
+            else "Repair advice is not complete until this command passes."
+        ),
+    }
+
+
+def _quarantine_findings(smoke: SmokeResult) -> list[dict[str, Any]]:
+    findings: list[dict[str, Any]] = []
+    failed_names = [check.name for check in smoke.checks if check.status == "fail"]
+    stale_checks = [
+        name for name in failed_names
+        if name.startswith("recompute_") or name.startswith("report_provenance:")
+    ]
+    packet_checks = [name for name in failed_names if name.startswith("swarm_packet_")]
+    if stale_checks:
+        findings.append(
+            {
+                "reason": "saved_evidence_not_replayable",
+                "action": "Quarantine saved reports until recompute mode passes from source artifacts.",
+                "related_checks": stale_checks,
+                "paths": _dedupe_strings(
+                    path
+                    for check_name in stale_checks
+                    for path in _recompute_repair_paths(check_name)
+                ),
+            }
+        )
+    if packet_checks:
+        findings.append(
+            {
+                "reason": "unsafe_swarm_packet_claim",
+                "action": "Do not promote or publish the contribution packet until its tier and evidence match validated reports.",
+                "related_checks": packet_checks,
+                "paths": ["swarm/contribution_packet.json"],
+            }
+        )
+    return findings
+
+
+def _dedupe_strings(values: Iterable[str]) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in values:
+        if value not in seen:
+            seen.add(value)
+            result.append(value)
+    return result
 
 
 def _doctor_summary(smoke: SmokeResult) -> str:

@@ -15,6 +15,9 @@ from chip_labs.creator_run import (
 )
 
 
+DOCTOR_FIXTURE_DIR = Path("docs/creator_system/examples/doctor-security")
+
+
 def test_init_creator_run_creates_valid_prototype(tmp_path: Path) -> None:
     run_dir = tmp_path / "startup-yc-run"
 
@@ -127,6 +130,33 @@ def test_creator_run_doctor_returns_repair_steps(tmp_path: Path) -> None:
     assert result["workspace_ready"] is True
     assert result["publication_ready"] is False
     assert any(step["area"] == "artifact_scaffold" for step in result["repair_steps"])
+
+
+def test_creator_run_doctor_quarantines_malicious_packet_fixture(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path)
+    fixture = json.loads(
+        (DOCTOR_FIXTURE_DIR / "malicious_network_absorption_packet.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    packet_path = run_dir / fixture["path"]
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    for operation in fixture["operations"]:
+        _apply_fixture_operation(packet, operation)
+    packet_path.write_text(json.dumps(packet, indent=2) + "\n", encoding="utf-8")
+
+    result = diagnose_creator_run(run_dir)
+
+    assert result["verdict"] == "blocked"
+    assert fixture["expected_blocking_checks"][0] in result["smoke"]["blocking_checks"]
+    assert any(
+        step["area"] == "swarm_packet"
+        and fixture["expected_blocking_checks"][0] in step["related_checks"]
+        for step in result["repair_steps"]
+    )
+    assert result["quarantine"][0]["reason"] == fixture["quarantine_reason"]
 
 
 def test_template_check_passes_default_templates() -> None:
@@ -669,6 +699,26 @@ def _write_broad_transfer_probe(
         ),
         encoding="utf-8",
     )
+
+
+def _apply_fixture_operation(packet: dict[str, object], operation: dict[str, object]) -> None:
+    if operation["op"] != "set_nested":
+        raise AssertionError(f"Unsupported fixture operation: {operation['op']}")
+    current = packet
+    field_path = operation["field_path"]
+    if not isinstance(field_path, list):
+        raise AssertionError("Fixture field_path must be a list")
+    for key in field_path[:-1]:
+        if not isinstance(key, str):
+            raise AssertionError("Fixture field_path entries must be strings")
+        next_value = current[key]
+        if not isinstance(next_value, dict):
+            raise AssertionError(f"Fixture path {key} does not point to an object")
+        current = next_value
+    final_key = field_path[-1]
+    if not isinstance(final_key, str):
+        raise AssertionError("Fixture final field_path entry must be a string")
+    current[final_key] = operation["value"]
 
 
 def _write_evidence_ladder(run_dir: Path, evidence_tier: str) -> None:

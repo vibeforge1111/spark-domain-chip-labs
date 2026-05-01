@@ -138,7 +138,7 @@ Phase gate:
 
 ### Phase 4: Doctor Adversarial And Provenance Hardening
 
-Status: planned
+Status: active
 
 Purpose:
 
@@ -147,10 +147,10 @@ missing provenance, stale reports, and weak repair plans.
 
 Deliverables:
 
-- [ ] Malicious or stale report fixtures.
-- [ ] Doctor checks that map blockers to exact repair steps.
-- [ ] Repair replay proof that reruns smoke after a proposed repair.
-- [ ] Quarantine examples for malicious contribution packets.
+- [x] Malicious or stale report fixtures.
+- [x] Doctor checks that map blockers to exact repair steps.
+- [x] Repair replay proof that reruns smoke after a proposed repair.
+- [x] Quarantine examples for malicious contribution packets.
 
 Phase gate:
 
@@ -338,10 +338,10 @@ missing provenance, and weak repair plans.
 Deliverables:
 
 - [x] Generator acceptance brief for `doctor_security_regression`.
-- [ ] Malicious or stale report fixtures.
-- [ ] Doctor checks that map blockers to exact repair steps.
-- [ ] Repair replay proof that reruns smoke after a proposed repair.
-- [ ] Quarantine examples for malicious contribution packets.
+- [x] Malicious or stale report fixtures.
+- [x] Doctor checks that map blockers to exact repair steps.
+- [x] Repair replay proof that reruns smoke after a proposed repair.
+- [x] Quarantine examples for malicious contribution packets.
 
 Quality gates:
 
@@ -415,15 +415,14 @@ Quality gates:
 
 ## Next Executable Slice
 
-Land Phase 3 tool-operation replay fixtures:
+Land Phase 4 doctor adversarial/provenance hardening:
 
-1. Verify replay fixtures for blocked smoke, stale evidence, missing artifacts,
-   and unsafe secret handling.
-2. Verify rollback reports for failed operations.
-3. Commit the Phase 3 replay-fixture slice.
-4. Start Phase 4 doctor adversarial/provenance hardening with stale/malicious
-   report fixtures and repair replay.
-5. Do not begin product-surface wiring until Phase 7 gates are met.
+1. Verify stale saved-report doctor fixture blocks in recompute mode.
+2. Verify malicious network-absorption packet fixture is quarantined.
+3. Verify repair replay turns green only after rerunning recompute smoke.
+4. Commit the Phase 4 doctor hardening slice.
+5. Start Phase 5 Startup YC operator validation plan.
+6. Do not begin product-surface wiring until Phase 7 gates are met.
 
 ## Parking Lot
 

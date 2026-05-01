@@ -310,11 +310,28 @@ Acceptance cases:
 - Generate repair steps tied to exact failed checks.
 - Reject network absorption from candidate-review evidence.
 
+Current executable local harness:
+
+```bash
+python -m chip_labs.cli creator-run-doctor runs/<run-name> --recompute
+```
+
+Recompute-mode doctor output includes `repair_replay` and `quarantine` fields.
+The replay command is the proof boundary: repair advice is not complete until
+`creator-run-smoke --recompute --fail-on-blocked` passes after the repair.
+
+Current adversarial fixtures:
+
+- `doctor-security/stale_candidate_report_score.json`: mutates a saved
+  candidate report so recompute mode must block and quarantine stale evidence.
+- `doctor-security/malicious_network_absorption_packet.json`: mutates a Swarm
+  packet so candidate-review evidence falsely claims `network_absorbable`.
+
 Next real adapters:
 
-- Build fixtures from real `creator-run-doctor` outputs.
-- Add malicious packet quarantine examples.
-- Add repair replay checks: after a proposed repair, rerun smoke and prove the blocker moved.
+- Build fixtures from real `creator-run-doctor` output packets.
+- Add broader malicious packet quarantine examples.
+- Add more repair replay checks across provenance, packet, and privacy failures.
 
 Do not claim:
 

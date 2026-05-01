@@ -399,7 +399,7 @@ def cmd_doctor(args: argparse.Namespace) -> None:
     final_verdict = final_result.get("verdict", "unknown")
     fixes_count = len(report.get("fixes_applied", []))
 
-    print(f"\nAfter improvement:")
+    print("\nAfter improvement:")
     print(f"Score: {report['final_score']}/100 ({final_verdict})")
     print(f"Iterations: {report.get('iterations', 0)}")
     print(f"Fixes applied: {fixes_count}")
@@ -605,7 +605,7 @@ def cmd_portfolio_v3(args: argparse.Namespace) -> None:
         sys.exit(1)
 
     summary = report.get("summary", {})
-    print(f"Portfolio V3 Deep Eval Report")
+    print("Portfolio V3 Deep Eval Report")
     print(f"Chips: {summary.get('chip_count', 0)}")
     print(f"Average: {summary.get('average_score', 0)}/100")
     print(f"Verdicts: {summary.get('verdicts', {})}")
@@ -1125,7 +1125,7 @@ def cmd_creator_run_doctor(args: argparse.Namespace) -> None:
     """Diagnose an adaptive creator-run workspace and emit repair steps."""
     from .creator_run import diagnose_creator_run
 
-    result = diagnose_creator_run(args.run_dir)
+    result = diagnose_creator_run(args.run_dir, recompute=args.recompute)
     _write_output(args.output, result)
     if args.fail_on_blocked and result["smoke"]["automation"]["blocked"]:
         raise SystemExit(1)
@@ -1954,6 +1954,11 @@ def main() -> None:
         "--fail-on-blocked",
         action="store_true",
         help="Exit with status 1 when the creator run is blocked.",
+    )
+    p_creator_doctor.add_argument(
+        "--recompute",
+        action="store_true",
+        help="Run doctor against recomputed benchmark evidence instead of saved evidence only.",
     )
     p_creator_doctor.set_defaults(func=cmd_creator_run_doctor)
 

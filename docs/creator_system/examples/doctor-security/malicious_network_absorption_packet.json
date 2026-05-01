@@ -1,0 +1,22 @@
+{
+  "schema_version": "adaptive_creator_loop.doctor_adversarial_fixture.v1",
+  "fixture_id": "malicious-network-absorption-packet",
+  "fixture_kind": "unsafe_packet_promotion",
+  "path": "swarm/contribution_packet.json",
+  "operations": [
+    {
+      "op": "set_nested",
+      "field_path": [
+        "evidence",
+        "tier"
+      ],
+      "value": "network_absorbable"
+    }
+  ],
+  "expected_blocking_checks": [
+    "swarm_packet_tier"
+  ],
+  "quarantine_reason": "unsafe_swarm_packet_claim",
+  "unsafe_claim": "Candidate-review evidence can be edited into a network_absorbable packet.",
+  "safe_boundary": "Network absorption requires multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval."
+}

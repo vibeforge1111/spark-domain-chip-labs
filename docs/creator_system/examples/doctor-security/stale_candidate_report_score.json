@@ -1,0 +1,19 @@
+{
+  "schema_version": "adaptive_creator_loop.doctor_adversarial_fixture.v1",
+  "fixture_id": "stale-candidate-report-score",
+  "fixture_kind": "stale_saved_evidence",
+  "path": "reports/candidate.json",
+  "operations": [
+    {
+      "op": "add_to_number",
+      "field": "mean_score",
+      "delta": 0.1
+    }
+  ],
+  "expected_blocking_checks": [
+    "recompute_candidate_score"
+  ],
+  "repair_replay_command": "python -m chip_labs.cli creator-run-smoke <run_dir> --recompute --fail-on-blocked",
+  "unsafe_claim": "Saved report evidence is enough even when source benchmark artifacts no longer reproduce it.",
+  "safe_boundary": "Quarantine saved evidence until recompute mode passes from source artifacts."
+}

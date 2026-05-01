@@ -10,7 +10,10 @@ import pytest
 
 from chip_labs.artifact_quality import MANIFEST_PATH, run_artifact_quality_benchmark
 from chip_labs.creator_generator import generate_creator_system_from_brief
-from chip_labs.creator_run import validate_creator_run
+from chip_labs.creator_run import diagnose_creator_run, validate_creator_run
+
+
+DOCTOR_FIXTURE_DIR = Path("docs/creator_system/examples/doctor-security")
 
 
 def _brief() -> dict[str, object]:
@@ -347,6 +350,48 @@ def test_creator_run_recompute_blocks_stale_saved_evidence(tmp_path: Path) -> No
         check.name == "recompute_candidate_score" and check.status == "fail"
         for check in recomputed.checks
     )
+
+
+def test_creator_run_doctor_recompute_requires_repair_replay(
+    tmp_path: Path,
+) -> None:
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    fixture = json.loads(
+        (DOCTOR_FIXTURE_DIR / "stale_candidate_report_score.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    candidate_path = generated.run_dir / fixture["path"]
+    original_candidate = json.loads(candidate_path.read_text(encoding="utf-8"))
+    stale_candidate = dict(original_candidate)
+    for operation in fixture["operations"]:
+        stale_candidate[operation["field"]] += operation["delta"]
+    candidate_path.write_text(
+        json.dumps(stale_candidate, indent=2) + "\n", encoding="utf-8"
+    )
+
+    diagnosis = diagnose_creator_run(generated.run_dir, recompute=True)
+
+    assert diagnosis["verdict"] == "blocked"
+    assert diagnosis["evidence_mode"] == "recomputed"
+    assert fixture["expected_blocking_checks"][0] in diagnosis["smoke"]["blocking_checks"]
+    assert diagnosis["repair_replay"]["required"] is True
+    assert diagnosis["repair_replay"]["satisfied"] is False
+    assert any(
+        step["area"] == "recompute_provenance"
+        and fixture["expected_blocking_checks"][0] in step["related_checks"]
+        for step in diagnosis["repair_steps"]
+    )
+    assert diagnosis["quarantine"][0]["reason"] == "saved_evidence_not_replayable"
+
+    candidate_path.write_text(
+        json.dumps(original_candidate, indent=2) + "\n", encoding="utf-8"
+    )
+    repaired = diagnose_creator_run(generated.run_dir, recompute=True)
+
+    assert repaired["verdict"] == "ready_for_swarm_packet"
+    assert repaired["repair_replay"]["fresh_evidence"] is True
+    assert repaired["repair_replay"]["satisfied"] is True
 
 
 def test_artifact_quality_recompute_blocks_stale_saved_evidence(tmp_path: Path) -> None:

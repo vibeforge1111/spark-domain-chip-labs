@@ -8,9 +8,12 @@
     "run_dir",
     "verdict",
     "evidence_tier",
+    "evidence_mode",
     "summary",
     "publication_ready",
     "workspace_ready",
+    "repair_replay",
+    "quarantine",
     "repair_steps",
     "smoke"
   ],
@@ -21,9 +24,12 @@
     "run_dir": {"type": "string"},
     "verdict": {"type": "string"},
     "evidence_tier": {"type": "string"},
+    "evidence_mode": {"enum": ["saved", "recomputed"]},
     "summary": {"type": "string"},
     "publication_ready": {"type": "boolean"},
     "workspace_ready": {"type": "boolean"},
+    "repair_replay": {"type": "object"},
+    "quarantine": {"type": "array"},
     "repair_steps": {
       "type": "array",
       "items": {
@@ -34,4 +40,3 @@
     "smoke": {"type": "object"}
   }
 }
-

@@ -98,6 +98,12 @@ When a run is incomplete or blocked, ask for a repair plan:
 python -m chip_labs.cli creator-run-doctor runs/startup-yc-creator-run
 ```
 
+For stale-evidence or provenance-sensitive repair, run doctor in recompute mode:
+
+```bash
+python -m chip_labs.cli creator-run-doctor runs/startup-yc-creator-run --recompute
+```
+
 For CI, bot, and UI workflows that should fail when a run is blocked:
 
 ```bash
@@ -189,6 +195,11 @@ Replay fixtures live in `docs/creator_system/examples/tool-operation/` and cover
 blocked smoke, stale recompute evidence, missing artifacts, and unsafe
 secret-handling requests. Blocked checks include a `rollback_report` so
 mission-control state does not advance from a failed operation.
+
+Doctor security fixtures live in `docs/creator_system/examples/doctor-security/`
+and cover stale saved report evidence plus unsafe `network_absorbable` packet
+claims. `creator-run-doctor --recompute` emits `repair_replay` and
+`quarantine` fields so repair advice stays tied to fresh evidence.
 
 The first local content-simulation harness is available as:
 
