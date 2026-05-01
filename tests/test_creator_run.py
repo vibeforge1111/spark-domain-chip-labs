@@ -421,6 +421,24 @@ def test_transfer_supported_warns_on_negative_broad_probe(tmp_path: Path) -> Non
     )
 
 
+def test_transfer_supported_warns_on_mixed_positive_broad_probe(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    _write_transfer_report(run_dir)
+    _write_broad_transfer_probe(
+        run_dir, delta=0.03, min_delta=-0.01, negative_scenarios=1
+    )
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "ready_for_swarm_packet"
+    assert any(
+        check.name == "broad_transfer_no_negative_rows" and check.status == "warn"
+        for check in smoke.checks
+    )
+
+
 def test_network_absorbable_blocks_negative_broad_probe(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path, evidence_tier="network_absorbable")
     _write_transfer_report(run_dir)
@@ -431,6 +449,24 @@ def test_network_absorbable_blocks_negative_broad_probe(tmp_path: Path) -> None:
     assert smoke.verdict == "blocked"
     assert any(
         check.name == "broad_transfer_delta" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_network_absorbable_blocks_mixed_positive_broad_probe(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="network_absorbable")
+    _write_transfer_report(run_dir)
+    _write_broad_transfer_probe(
+        run_dir, delta=0.03, min_delta=-0.01, negative_scenarios=1
+    )
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "broad_transfer_no_negative_rows" and check.status == "fail"
         for check in smoke.checks
     )
 
@@ -535,9 +571,20 @@ def _write_transfer_report(run_dir: Path, delta: float = 0.02) -> None:
     packet_path.write_text(json.dumps(packet), encoding="utf-8")
 
 
-def _write_broad_transfer_probe(run_dir: Path, delta: float = 0.03) -> None:
+def _write_broad_transfer_probe(
+    run_dir: Path,
+    delta: float = 0.03,
+    min_delta: float | None = None,
+    negative_scenarios: int | None = None,
+) -> None:
     baseline_score = 0.62
     transfer_score = baseline_score + delta
+    resolved_min_delta = delta if min_delta is None else min_delta
+    resolved_negative_scenarios = (
+        0 if negative_scenarios is None and resolved_min_delta > 0 else negative_scenarios
+    )
+    if resolved_negative_scenarios is None:
+        resolved_negative_scenarios = 1
     (run_dir / "reports" / "broad_transfer_probe.json").write_text(
         json.dumps(
             {
@@ -546,10 +593,16 @@ def _write_broad_transfer_probe(run_dir: Path, delta: float = 0.03) -> None:
                 "baseline_score": baseline_score,
                 "transfer_score": transfer_score,
                 "delta": delta,
+                "min_delta": resolved_min_delta,
+                "negative_scenarios": resolved_negative_scenarios,
                 "constraints_passed": True,
                 "verdict": (
                     "broad_transfer_supported" if delta > 0 else "defer_broad_transfer"
                 ),
+                "scenario_results": [
+                    {"scenario_id": f"case_{index}", "delta": resolved_min_delta}
+                    for index in range(10)
+                ],
             }
         ),
         encoding="utf-8",

@@ -1281,6 +1281,8 @@ def _check_broad_transfer_probe(
     baseline_score = _coerce_number(probe.get("baseline_score"))
     transfer_score = _coerce_number(probe.get("transfer_score"))
     delta = _coerce_number(probe.get("delta"))
+    min_delta = _coerce_number(probe.get("min_delta"))
+    negative_scenarios = _coerce_number(probe.get("negative_scenarios"))
     verdict = str(probe.get("verdict") or "")
 
     if source:
@@ -1373,6 +1375,10 @@ def _check_broad_transfer_probe(
             )
         )
 
+    _check_broad_transfer_row_consistency(
+        probe, evidence_tier, scenario_count, min_delta, negative_scenarios, checks
+    )
+
     _check_bool(
         probe.get("constraints_passed"),
         "broad_transfer_constraints_passed",
@@ -1396,6 +1402,68 @@ def _check_broad_transfer_probe(
                 "Broad transfer probe should include an explicit verdict.",
             )
         )
+
+
+def _check_broad_transfer_row_consistency(
+    probe: dict[str, Any],
+    evidence_tier: str,
+    scenario_count: float | None,
+    min_delta: float | None,
+    negative_scenarios: float | None,
+    checks: list[SmokeCheck],
+) -> None:
+    scenario_results = probe.get("scenario_results")
+    if isinstance(scenario_results, list):
+        if scenario_count is not None and len(scenario_results) != int(scenario_count):
+            checks.append(
+                SmokeCheck(
+                    "broad_transfer_scenario_results",
+                    "fail",
+                    f"Broad transfer scenario_results has {len(scenario_results)} rows but scenario_count is {int(scenario_count)}.",
+                )
+            )
+        else:
+            checks.append(
+                SmokeCheck(
+                    "broad_transfer_scenario_results",
+                    "pass",
+                    f"Broad transfer scenario_results covers {len(scenario_results)} row(s).",
+                )
+            )
+    else:
+        checks.append(
+            SmokeCheck(
+                "broad_transfer_scenario_results",
+                "warn",
+                "Broad transfer probe should include scenario_results rows for auditability.",
+            )
+        )
+
+    row_regressions: list[str] = []
+    if min_delta is not None and min_delta <= 0:
+        row_regressions.append(f"min_delta {min_delta:.4f}")
+    if negative_scenarios is not None and negative_scenarios > 0:
+        row_regressions.append(f"{int(negative_scenarios)} negative scenario(s)")
+
+    if not row_regressions:
+        checks.append(
+            SmokeCheck(
+                "broad_transfer_no_negative_rows",
+                "pass",
+                "Broad transfer probe reports no negative scenario rows.",
+            )
+        )
+        return
+
+    message = (
+        "Broad transfer probe has mixed rows ("
+        + ", ".join(row_regressions)
+        + "); keep the claim bounded until weak rows are repaired."
+    )
+    if evidence_tier in BROAD_TRANSFER_BLOCKING_TIERS:
+        checks.append(SmokeCheck("broad_transfer_no_negative_rows", "fail", message))
+    else:
+        checks.append(SmokeCheck("broad_transfer_no_negative_rows", "warn", message))
 
 
 def _check_bool(

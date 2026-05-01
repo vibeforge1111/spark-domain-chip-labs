@@ -137,6 +137,8 @@ The creator-run smoke gate enforces conservative evidence claims:
 - `broad_transfer_probe.json`, when present, defines the claim boundary.
 - Negative broad transfer warns at `transfer_supported`, because focused transfer can still be useful.
 - Negative broad transfer blocks `network_absorbable` and `standard_update`.
+- Positive broad transfer with hidden negative rows or non-positive `min_delta` warns at `transfer_supported` and blocks `network_absorbable` or `standard_update`.
+- Broad-transfer probes should include `scenario_results` rows so reviewers can audit the aggregate score.
 
 ## Integration Rules
 
@@ -182,9 +184,16 @@ Current expected state:
 - verdict: `ready_for_swarm_packet`
 - evidence tier: `transfer_supported`
 - blockers: none
-- warnings: `broad_transfer_delta`
+- warnings: none
 
-The warning is intentional. Startup YC has focused transfer support, but broad transfer is not yet proven.
+The fixture is now backed by the Startup YC fresh validation suite:
+
+- `12/12` fresh scenarios won
+- mean scenario delta: `+0.0560`
+- min scenario delta: `+0.0144`
+- broad fresh-transfer probe: positive, with no negative rows
+
+The fixture remains `transfer_supported`, not `network_absorbable`, because multi-seed validation, human/operator calibration, and publication review are still open gates.
 
 ## Ship Gate For V1
 
@@ -194,6 +203,6 @@ Before shipping changes to this contract:
 2. Run `python -m chip_labs.cli creator-run-template-check --fail-on-blocked`.
 3. Run smoke on the Startup YC fixture.
 4. Run `creator-run-smoke --fail-on-blocked` on the fixture.
-5. Run `creator-run-doctor` on the fixture and confirm it returns publication repair steps for warnings.
-6. Confirm the fixture still warns, rather than fails, on negative broad transfer.
+5. Run `creator-run-doctor` on the fixture and confirm it returns publication review next steps.
+6. Confirm synthetic negative or mixed broad-transfer probes warn at `transfer_supported` and fail at `network_absorbable`.
 7. Update this document if CLI flags, result fields, verdicts, or promotion semantics change.
