@@ -175,6 +175,16 @@ python -m chip_labs.cli artifact-quality-benchmark runs/<run-name>
 python -m chip_labs.cli creator-run-smoke runs/<run-name> --recompute --fail-on-blocked
 ```
 
+The first local tool-operation safety checker is available as:
+
+```bash
+python -m chip_labs.cli tool-operation-manifest
+python -m chip_labs.cli tool-operation-check --input operation-packet.json --fail-on-blocked
+```
+
+Tool-operation packets must include a parsed JSON `result`; stdout alone is not
+accepted as proof that a command changed the right state.
+
 The first local content-simulation harness is available as:
 
 ```bash

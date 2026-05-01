@@ -114,7 +114,7 @@ Phase gate:
 
 ### Phase 3: Tool Operation Safety
 
-Status: planned
+Status: active
 
 Purpose:
 
@@ -123,8 +123,8 @@ mission-control state change.
 
 Deliverables:
 
-- [ ] Local command manifest for safe creator-run operations.
-- [ ] Dry-run and postcondition checks for smoke, doctor, template check, and
+- [x] Local command manifest for safe creator-run operations.
+- [x] Dry-run and postcondition checks for smoke, doctor, template check, and
   recompute flows.
 - [ ] Failure replay fixtures for blocked smoke, stale evidence, missing
   artifacts, and unsafe secret handling.
@@ -315,8 +315,8 @@ mission-control state changes.
 Deliverables:
 
 - [x] Generator acceptance brief for `tool_operation`.
-- [ ] Local command manifest for safe creator-run operations.
-- [ ] Dry-run and postcondition checks for smoke, doctor, template check, and
+- [x] Local command manifest for safe creator-run operations.
+- [x] Dry-run and postcondition checks for smoke, doctor, template check, and
   recompute flows.
 - [ ] Failure replay cases for blocked smoke, stale evidence, missing artifacts,
   and unsafe secret handling.
@@ -415,14 +415,13 @@ Quality gates:
 
 ## Next Executable Slice
 
-Land Phase 2 artifact-quality recompute:
+Land Phase 3 tool-operation safety checker:
 
-1. Verify artifact-quality benchmark reports and recompute stale-evidence tests.
-2. Commit the Phase 2 recompute slice.
-3. Start Phase 3 tool-operation safety with safe command manifests and
-   postcondition checks.
-4. Keep Phase 3 tool-operation design close, because artifact-quality reports
-   should eventually feed mission-control/tool-operation proof.
+1. Verify the local safe command manifest and postcondition checker.
+2. Commit the Phase 3 checker slice.
+3. Add failure replay fixtures for blocked smoke, stale evidence, missing
+   artifacts, and unsafe secret handling.
+4. Add rollback-note report output for failed operations.
 5. Do not begin product-surface wiring until Phase 7 gates are met.
 
 ## Parking Lot

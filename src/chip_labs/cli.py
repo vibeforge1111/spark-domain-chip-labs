@@ -1166,6 +1166,23 @@ def cmd_artifact_quality_benchmark(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_tool_operation_manifest(args: argparse.Namespace) -> None:
+    """Emit the local safe command manifest for creator tool operations."""
+    from .tool_operation import default_tool_operation_manifest
+
+    _write_output(args.output, default_tool_operation_manifest())
+
+
+def cmd_tool_operation_check(args: argparse.Namespace) -> None:
+    """Check a tool operation packet against local safety postconditions."""
+    from .tool_operation import check_tool_operation, load_tool_operation_packet
+
+    result = check_tool_operation(load_tool_operation_packet(args.input))
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -2001,6 +2018,34 @@ def main() -> None:
         help="Exit with status 1 when the artifact-quality benchmark is blocked.",
     )
     p_artifact_quality_benchmark.set_defaults(func=cmd_artifact_quality_benchmark)
+
+    # tool-operation-manifest
+    p_tool_operation_manifest = sub.add_parser(
+        "tool-operation-manifest",
+        help="Emit the local safe command manifest for creator tool operations.",
+    )
+    p_tool_operation_manifest.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_tool_operation_manifest.set_defaults(func=cmd_tool_operation_manifest)
+
+    # tool-operation-check
+    p_tool_operation_check = sub.add_parser(
+        "tool-operation-check",
+        help="Check a creator tool operation packet for safe postconditions.",
+    )
+    p_tool_operation_check.add_argument(
+        "--input", type=str, required=True, help="Operation packet JSON path."
+    )
+    p_tool_operation_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_tool_operation_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the operation check is blocked.",
+    )
+    p_tool_operation_check.set_defaults(func=cmd_tool_operation_check)
 
     args = parser.parse_args()
     args.func(args)

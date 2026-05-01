@@ -116,6 +116,17 @@ Acceptance cases:
 - Attach rollback notes to a failed local tool operation.
 - Reject workflows that ask an operator to paste secrets into docs.
 
+Current executable local checker:
+
+```bash
+python -m chip_labs.cli tool-operation-manifest
+python -m chip_labs.cli tool-operation-check --input operation-packet.json --fail-on-blocked
+```
+
+An operation packet includes `command`, `exit_code`, parsed JSON `result`, and
+an optional `rollback_note`. The checker blocks stdout-only evidence, protected
+commands such as `git push`, and requests to paste tokens or secrets into docs.
+
 Next real adapters:
 
 - Connect to local CLI command manifests.
