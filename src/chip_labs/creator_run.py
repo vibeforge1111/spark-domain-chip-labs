@@ -1937,6 +1937,8 @@ def _check_recomputed_evidence(run_path: Path, checks: list[SmokeCheck]) -> None
         reports[relative_path] = report
         _check_report_provenance(run_path, relative_path, report, checks)
 
+    _check_external_absorption_recompute(run_path, reports, checks)
+
     provenance_sources = {
         str(_nested(report, "provenance", "source"))
         for report in reports.values()
@@ -2208,6 +2210,172 @@ def _score_generated_case(
     return max(0.0, min(1.0, score))
 
 
+def _check_external_absorption_recompute(
+    run_path: Path,
+    reports: dict[str, dict[str, Any]],
+    checks: list[SmokeCheck],
+) -> None:
+    baseline = reports["reports/baseline.json"]
+    candidate = reports["reports/candidate.json"]
+    absorption = reports["reports/absorption_summary.json"]
+    source_report_ref = baseline.get("source_report")
+    if not isinstance(source_report_ref, str) or not source_report_ref.strip():
+        return
+    if candidate.get("source_report") != source_report_ref:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_absorption_source",
+                "fail",
+                "Candidate report source_report must match baseline source_report.",
+            )
+        )
+        return
+    if absorption.get("source_report") != source_report_ref:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_absorption_source",
+                "fail",
+                "Absorption summary source_report must match baseline source_report.",
+            )
+        )
+        return
+
+    source_report_path = _resolve_external_artifact_path(run_path, source_report_ref)
+    if source_report_path is None:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_absorption_source",
+                "fail",
+                f"External absorption source report not found: {source_report_ref}.",
+            )
+        )
+        return
+
+    try:
+        source_report = load_json(source_report_path)
+    except ValueError as exc:
+        checks.append(SmokeCheck("external_recompute_absorption_source", "fail", str(exc)))
+        return
+
+    recomputed = _summarize_startup_yc_absorption_report(source_report)
+    if recomputed is None:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_absorption_source",
+                "fail",
+                "Startup YC absorption proof report must include summary values.",
+            )
+        )
+        return
+
+    checks.append(
+        SmokeCheck(
+            "external_recompute_absorption_source",
+            "pass",
+            f"Loaded external absorption source report: {source_report_path}.",
+        )
+    )
+    _check_report_number_matches(
+        baseline,
+        "mean_score",
+        recomputed["baseline_score"],
+        "external_recompute_absorption_baseline_score",
+        checks,
+    )
+    _check_report_number_matches(
+        baseline,
+        "pass_rate",
+        recomputed["baseline_pass_rate"],
+        "external_recompute_absorption_baseline_pass_rate",
+        checks,
+    )
+    _check_report_number_matches(
+        baseline,
+        "case_count",
+        recomputed["case_count"],
+        "external_recompute_absorption_baseline_case_count",
+        checks,
+    )
+    _check_report_number_matches(
+        candidate,
+        "mean_score",
+        recomputed["candidate_score"],
+        "external_recompute_absorption_candidate_score",
+        checks,
+    )
+    _check_report_number_matches(
+        candidate,
+        "mean_delta",
+        recomputed["candidate_delta"],
+        "external_recompute_absorption_candidate_delta",
+        checks,
+    )
+    _check_report_number_matches(
+        candidate,
+        "pass_rate",
+        recomputed["candidate_pass_rate"],
+        "external_recompute_absorption_candidate_pass_rate",
+        checks,
+    )
+    _check_report_number_matches(
+        candidate,
+        "positive_cases",
+        recomputed["positive_cases"],
+        "external_recompute_absorption_positive_cases",
+        checks,
+    )
+    _check_report_number_matches(
+        candidate,
+        "negative_cases",
+        recomputed["negative_cases"],
+        "external_recompute_absorption_negative_cases",
+        checks,
+    )
+    _check_report_number_matches(
+        candidate,
+        "flat_cases",
+        recomputed["flat_cases"],
+        "external_recompute_absorption_flat_cases",
+        checks,
+    )
+    _check_report_number_matches(
+        absorption,
+        "mean_validated_pack_delta",
+        recomputed["candidate_delta"],
+        "external_recompute_absorption_delta",
+        checks,
+    )
+    _check_report_number_matches(
+        absorption,
+        "trap_band_case_count",
+        recomputed["trap_case_count"],
+        "external_recompute_absorption_trap_count",
+        checks,
+    )
+
+    if (
+        absorption.get("all_modes_present") is True
+        and recomputed["all_modes_present"] is True
+        and absorption.get("all_modes_scored") is True
+        and recomputed["all_modes_scored"] is True
+    ):
+        checks.append(
+            SmokeCheck(
+                "external_recompute_absorption_modes",
+                "pass",
+                "External absorption source report confirms all modes are present and scored.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_absorption_modes",
+                "fail",
+                "External absorption source report or saved summary has missing or unscored modes.",
+            )
+        )
+
+
 def _check_external_transfer_recompute(
     run_path: Path, checks: list[SmokeCheck]
 ) -> None:
@@ -2396,6 +2564,49 @@ def _summarize_startup_yc_selector_report(
         "max_delta": max(deltas),
         "constraints_passed": constraints_passed,
     }
+
+
+def _summarize_startup_yc_absorption_report(
+    source_report: dict[str, Any]
+) -> dict[str, float | bool] | None:
+    summary = source_report.get("summary")
+    if not isinstance(summary, dict):
+        return None
+    score_summary = summary.get("score_summary")
+    integrity = summary.get("integrity")
+    trap_integrity = summary.get("trap_integrity")
+    if (
+        not isinstance(score_summary, dict)
+        or not isinstance(integrity, dict)
+        or not isinstance(trap_integrity, dict)
+    ):
+        return None
+    validated_buckets = score_summary.get("validated_delta_buckets")
+    pass_rates = score_summary.get("pass_rates")
+    if not isinstance(validated_buckets, dict) or not isinstance(pass_rates, dict):
+        return None
+
+    required_numbers = {
+        "case_count": summary.get("case_count"),
+        "baseline_score": score_summary.get("mean_no_pack_score"),
+        "candidate_score": score_summary.get("mean_validated_pack_score"),
+        "candidate_delta": score_summary.get("mean_validated_pack_delta"),
+        "baseline_pass_rate": pass_rates.get("no_pack"),
+        "candidate_pass_rate": pass_rates.get("validated_pack"),
+        "positive_cases": validated_buckets.get("positive"),
+        "negative_cases": validated_buckets.get("negative"),
+        "flat_cases": validated_buckets.get("flat"),
+        "trap_case_count": trap_integrity.get("trap_case_count"),
+    }
+    recomputed: dict[str, float | bool] = {}
+    for name, value in required_numbers.items():
+        number = _coerce_number(value)
+        if number is None:
+            return None
+        recomputed[name] = number
+    recomputed["all_modes_present"] = integrity.get("all_modes_present") is True
+    recomputed["all_modes_scored"] = integrity.get("all_modes_scored") is True
+    return recomputed
 
 
 def _check_report_number_matches(

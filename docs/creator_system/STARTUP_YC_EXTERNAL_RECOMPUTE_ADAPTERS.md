@@ -29,10 +29,12 @@ Supported today:
 - Partial external recompute for Startup YC transfer summaries when the
   `specialization-path-startup-yc` selector report is available next to this
   repo.
+- Partial external recompute for Startup YC absorption summaries when the
+  `specialization-path-startup-yc` absorption proof report is available next to
+  this repo.
 
 Not supported yet:
 
-- Rerunning `specialization-path-startup-yc` absorption reports.
 - Regenerating the Startup YC Swarm contribution packet from fresh external
   reports.
 - Claiming `network_absorbable`.
@@ -42,7 +44,7 @@ Not supported yet:
 | Adapter | Source Evidence | Required Fresh Output | Fixture Values Checked |
 | --- | --- | --- | --- |
 | Startup Bench transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/transfer_summary.json` plus scenario rows | implemented for scenario count, baseline score, transfer score, mean delta, min delta, max delta, and constraints |
-| Specialization-path absorption adapter | `specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json` | `reports/baseline.json`, `reports/candidate.json`, `reports/absorption_summary.json` | baseline mean, candidate mean, candidate delta, validated-pack absorption delta |
+| Specialization-path absorption adapter | `specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json` | `reports/baseline.json`, `reports/candidate.json`, `reports/absorption_summary.json` | implemented for baseline mean/pass rate/case count, candidate mean/delta/pass rate/case buckets, absorption delta, trap count, and mode integrity |
 | Broad transfer adapter | `docs/creator_system/examples/startup-yc-creator-run/reports/broad_transfer_probe.json` source equivalent | `reports/broad_transfer_probe.json` with per-scenario rows | positive mean delta, positive min delta, no hidden negative rows |
 | Swarm packet regeneration adapter | Fresh baseline, candidate, absorption, and transfer reports | `swarm/contribution_packet.json` | evidence tier, transfer summary, rollback policy, publication blockers |
 
@@ -103,7 +105,8 @@ Full external recompute is complete only when:
    to `reports/transfer_summary.json`. Done for selector-report comparison in
    `creator-run-smoke --recompute`.
 2. Add the absorption adapter and compare it to `reports/baseline.json`,
-   `reports/candidate.json`, and `reports/absorption_summary.json`.
+   `reports/candidate.json`, and `reports/absorption_summary.json`. Done for
+   proof-report comparison in `creator-run-smoke --recompute`.
 3. Add broad-transfer comparison with row-level checks.
 4. Regenerate the Swarm contribution packet from fresh reports.
 5. Teach `creator-run-smoke --recompute` to select these adapters only when the

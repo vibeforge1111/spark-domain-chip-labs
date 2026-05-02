@@ -570,6 +570,47 @@ def test_recompute_blocks_stale_external_startup_yc_transfer_source(
     )
 
 
+def test_recompute_checks_external_startup_yc_absorption_source(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "proof_report.json"
+    _write_external_absorption_report(source_report, candidate_score=0.53)
+    _attach_absorption_source_report(run_dir, source_report)
+    _write_transfer_report(run_dir)
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert any(
+        check.name == "external_recompute_absorption_candidate_score"
+        and check.status == "pass"
+        for check in smoke.checks
+    )
+    assert any(
+        check.name == "recompute_provenance_source" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_recompute_blocks_stale_external_startup_yc_absorption_source(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "proof_report.json"
+    _write_external_absorption_report(source_report, candidate_score=0.52)
+    _attach_absorption_source_report(run_dir, source_report)
+    _write_transfer_report(run_dir)
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "external_recompute_absorption_candidate_score"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_network_absorbable_blocks_negative_broad_probe(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path, evidence_tier="network_absorbable")
     _write_transfer_report(run_dir)
@@ -741,6 +782,62 @@ def _write_external_selector_report(path: Path, delta: float) -> None:
                         "verdict": "win" if delta > 0 else "loss",
                     }
                 ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
+def _attach_absorption_source_report(run_dir: Path, source_report: Path) -> None:
+    for relative_path in (
+        "reports/baseline.json",
+        "reports/candidate.json",
+        "reports/absorption_summary.json",
+    ):
+        path = run_dir / relative_path
+        report = json.loads(path.read_text(encoding="utf-8"))
+        report["source_report"] = str(source_report)
+        if relative_path.endswith("baseline.json"):
+            report["pass_rate"] = 0.95
+            report["case_count"] = 20
+        if relative_path.endswith("candidate.json"):
+            report["pass_rate"] = 0.95
+            report["case_count"] = 20
+            report["positive_cases"] = 15
+            report["negative_cases"] = 4
+            report["flat_cases"] = 1
+        path.write_text(json.dumps(report), encoding="utf-8")
+
+
+def _write_external_absorption_report(path: Path, candidate_score: float) -> None:
+    candidate_delta = candidate_score - 0.5
+    path.write_text(
+        json.dumps(
+            {
+                "summary": {
+                    "case_count": 20,
+                    "integrity": {
+                        "all_modes_present": True,
+                        "all_modes_scored": True,
+                    },
+                    "score_summary": {
+                        "mean_no_pack_score": 0.5,
+                        "mean_validated_pack_score": candidate_score,
+                        "mean_validated_pack_delta": candidate_delta,
+                        "pass_rates": {
+                            "no_pack": 0.95,
+                            "validated_pack": 0.95,
+                        },
+                        "validated_delta_buckets": {
+                            "positive": 15,
+                            "negative": 4,
+                            "flat": 1,
+                        },
+                    },
+                    "trap_integrity": {
+                        "trap_case_count": 2,
+                    },
+                },
             }
         ),
         encoding="utf-8",

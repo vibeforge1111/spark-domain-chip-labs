@@ -488,9 +488,10 @@ Completed documentation/verification:
   transfer, specialization-path absorption, broad-transfer, and Swarm packet
   regeneration adapters as future gates.
 - `creator-run-smoke --recompute` now checks Startup YC transfer summaries
-  against the external selector report when the sibling source repo is present;
-  baseline, candidate, absorption, broad-transfer, and Swarm packet regeneration
-  adapters remain future work.
+  against the external selector report and baseline/candidate/absorption
+  summaries against the external absorption proof report when the sibling source
+  repo is present; broad-transfer and Swarm packet regeneration adapters remain
+  future work.
 
 Completed product PR verification:
 
