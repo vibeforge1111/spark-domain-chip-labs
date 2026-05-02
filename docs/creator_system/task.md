@@ -578,6 +578,8 @@ Completed documentation/verification:
   remains blocked by the real multi-seed gate.
 - Raw validation-evidence shape-check outputs now include source input hashes
   so saved shape evidence can be compared with freshly checked evidence.
+- Generator acceptance tests now assert generated report input hashes match the
+  current benchmark/source artifacts and pass recompute provenance checks.
 
 Completed product PR verification:
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import hashlib
 import subprocess
 import sys
 from pathlib import Path
@@ -284,6 +285,27 @@ def test_generator_acceptance_flow_creates_swarm_ready_run_in_clean_workspace(
     for relative_path in expected_paths:
         assert (generated.run_dir / relative_path).exists()
 
+    for report_path in (
+        "reports/baseline.json",
+        "reports/candidate.json",
+        "reports/absorption_summary.json",
+    ):
+        report = json.loads((generated.run_dir / report_path).read_text(encoding="utf-8"))
+        provenance = report["provenance"]
+        assert provenance["source"] == "creator_generator_v1"
+        assert provenance["input_hashes"] == {
+            "benchmark/cases.jsonl": _sha256(
+                generated.run_dir / "benchmark" / "cases.jsonl"
+            ),
+            "domain-chip/scoring_hooks.json": _sha256(
+                generated.run_dir / "domain-chip" / "scoring_hooks.json"
+            ),
+        }
+        assert _smoke_check_status(
+            generated.recompute_smoke,
+            f"report_provenance:{report_path}:input_hashes",
+        ) == "pass"
+
 
 @pytest.mark.parametrize("brief", _multi_domain_briefs(), ids=lambda brief: brief["domain_id"])
 def test_generator_acceptance_covers_multiple_spark_useful_domain_families(
@@ -494,3 +516,17 @@ def _align_swarm_packet_with_artifact_quality_reports(
         "mean_validated_pack_delta"
     ]
     packet_path.write_text(json.dumps(packet, indent=2) + "\n", encoding="utf-8")
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _smoke_check_status(smoke: dict[str, object], name: str) -> str | None:
+    checks = smoke.get("checks", [])
+    if not isinstance(checks, list):
+        return None
+    for check in checks:
+        if isinstance(check, dict) and check.get("name") == name:
+            return str(check.get("status"))
+    return None
