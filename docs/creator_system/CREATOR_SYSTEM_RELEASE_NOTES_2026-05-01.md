@@ -63,6 +63,9 @@
   `startup_yc_external_v1` provenance hashes match.
 - `creator-run-doctor --recompute` now quarantines stale Startup YC external
   recompute failures through a dedicated adversarial fixture.
+- `creator-mission-status` now has an executable regression proving blocked
+  canonical smoke plus a `swarm_shared` request stays blocked and read-only in
+  Builder, Telegram, Spawner, Canvas, and Kanban views.
 
 ## Current Claim Boundary
 

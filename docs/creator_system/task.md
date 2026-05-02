@@ -449,12 +449,12 @@ Quality gates:
 
 Current Phase 7 executable slice:
 
-1. Verify `creator-mission-status` emits Builder, Telegram, Spawner, Canvas, and
+1. [x] Verify `creator-mission-status` emits Builder, Telegram, Spawner, Canvas, and
    Kanban read-only views.
-2. Verify blocked canonical packets remain blocked in product views.
-3. Verify `swarm_shared` requests are blocked without network absorption gates.
-4. Keep runtime wiring in product repos, not this methodology repo.
-5. Keep network absorption blocked until multi-seed validation,
+2. [x] Verify blocked canonical packets remain blocked in product views.
+3. [x] Verify `swarm_shared` requests are blocked without network absorption gates.
+4. [x] Keep runtime wiring in product repos, not this methodology repo.
+5. [x] Keep network absorption blocked until multi-seed validation,
    human/operator calibration, privacy review, rollback review, and publication
    approval pass.
 
@@ -504,6 +504,9 @@ Completed documentation/verification:
 - `creator-run-doctor --recompute` now quarantines stale Startup YC external
   recompute failures with
   `doctor-security/stale_external_startup_yc_candidate_score.json`.
+- `creator-mission-status` now has an executable regression proving blocked
+  canonical smoke plus a `swarm_shared` request stays blocked and read-only in
+  Builder, Telegram, Spawner, Canvas, and Kanban views.
 
 Completed product PR verification:
 

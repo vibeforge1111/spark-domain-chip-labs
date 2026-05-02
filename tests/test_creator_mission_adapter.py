@@ -108,6 +108,57 @@ def test_creator_mission_status_preserves_blockers_from_canonical_packets() -> N
     assert status["surface_adapters"]["kanban"]["columns"]["blocked"]
 
 
+def test_blocked_creator_mission_status_stays_blocked_across_product_views() -> None:
+    status = build_creator_mission_status(
+        mission_id="blocked-product-view",
+        publish_mode="swarm_shared",
+        smoke=_smoke("blocked"),
+        doctor={
+            "schema_version": "adaptive_creator_loop.doctor_result.v1",
+            "verdict": "blocked",
+            "repair_steps": [
+                {"action": "Regenerate stale evidence and rerun recompute smoke."}
+            ],
+            "smoke": {},
+        },
+        startup_validation=json.loads(STARTUP_VALIDATION.read_text(encoding="utf-8")),
+    )
+
+    assert status["canonical"]["stage_status"] == "blocked"
+    assert status["publication"]["requested_network_absorption"] is True
+    assert status["publication"]["swarm_shared_allowed"] is False
+    assert status["publication"]["network_absorbable"] is False
+    assert {blocker["source"] for blocker in status["blockers"]} == {
+        "doctor",
+        "smoke",
+        "publication_gate",
+    }
+
+    builder = status["surface_adapters"]["builder"]
+    telegram = status["surface_adapters"]["telegram"]
+    spawner = status["surface_adapters"]["spawner"]
+    canvas = status["surface_adapters"]["canvas"]
+    kanban = status["surface_adapters"]["kanban"]
+
+    assert builder["stage_status"] == "blocked"
+    assert builder["may_mutate_state"] is False
+    assert "Network absorption is not approved" in telegram["text"]
+    assert telegram["may_request_secret_paste"] is False
+    assert spawner["may_execute"] is False
+    assert {blocker["source"] for blocker in spawner["blockers"]} == {
+        "doctor",
+        "smoke",
+        "publication_gate",
+    }
+    assert canvas["may_edit_artifacts"] is False
+    assert any(
+        node["id"] == "creator_mission" and node["status"] == "blocked"
+        for node in canvas["nodes"]
+    )
+    assert kanban["may_change_verdict"] is False
+    assert kanban["columns"]["blocked"][0]["blocked"] is True
+
+
 def test_creator_mission_status_blocks_swarm_publication_request() -> None:
     status = build_creator_mission_status(
         smoke=_smoke(),
