@@ -589,6 +589,8 @@ Completed documentation/verification:
   input hashes from absent evidence with explicit missing-input records.
 - The same schema now rejects impossible raw-evidence verdicts, such as
   `passed` with blockers or `blocked` without blockers.
+- Creator-system CI now writes the raw validation-evidence check output and
+  validates it against the check-result schema.
 
 Completed product PR verification:
 

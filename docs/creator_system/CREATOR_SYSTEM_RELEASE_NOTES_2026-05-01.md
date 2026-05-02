@@ -128,6 +128,8 @@
   input hashes from absent evidence with explicit missing-input records.
 - The same schema now rejects impossible raw-evidence verdicts, such as
   `passed` with blockers or `blocked` without blockers.
+- Creator-system CI now writes the raw validation-evidence check output and
+  validates it against the check-result schema.
 
 ## Current Claim Boundary
 
@@ -149,4 +151,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `134 passed`.
+Latest focused creator-system suite result before CI push: `135 passed`.

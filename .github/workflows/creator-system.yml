@@ -69,6 +69,16 @@ jobs:
       - name: Run strict Startup YC fixture checks
         run: |
           python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn
-          python -m chip_labs.cli startup-yc-validation-evidence-check --evidence docs/creator_system/examples/startup-yc-operator-validation/shape_only_multi_seed_evidence.json --evidence-kind multi_seed --fail-on-blocked
+          python -m chip_labs.cli startup-yc-validation-evidence-check --evidence docs/creator_system/examples/startup-yc-operator-validation/shape_only_multi_seed_evidence.json --evidence-kind multi_seed --output /tmp/startup-yc-validation-evidence-check.json --fail-on-blocked
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          import jsonschema
+
+          schema = json.loads(Path("docs/creator_system/schemas/startup-yc-validation-evidence-check-result.schema.json").read_text())
+          payload = json.loads(Path("/tmp/startup-yc-validation-evidence-check.json").read_text())
+          jsonschema.Draft202012Validator(schema).validate(payload)
+          PY
           python -m chip_labs.cli startup-yc-validation-suite --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json
           python -m chip_labs.cli creator-run-template-check --fail-on-blocked

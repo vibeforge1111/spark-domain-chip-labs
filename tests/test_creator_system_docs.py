@@ -8,6 +8,7 @@ RELEASE_NOTES = Path("docs/creator_system/CREATOR_SYSTEM_RELEASE_NOTES_2026-05-0
 PHASE_2_BACKLOG = Path("docs/creator_system/PHASE_2_PRODUCT_FLOW_BACKLOG.md")
 PRODUCT_FLOW = Path("docs/creator_system/TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md")
 PRODUCT_CONSUMER_BRANCHES = Path("docs/creator_system/PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md")
+CREATOR_SYSTEM_WORKFLOW = Path(".github/workflows/creator-system.yml")
 STARTUP_YC_EXTERNAL_RECOMPUTE = Path(
     "docs/creator_system/STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md"
 )
@@ -82,13 +83,23 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validate saved `startup-yc-validation-evidence-check`" in text
     assert "input hashes from absent evidence with explicit missing-input records" in text
     assert "rejects impossible raw-evidence verdicts" in text
+    assert "validates it against the check-result schema" in text
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
     assert "raw-evidence input hashes" in text
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
-    assert "Latest focused creator-system suite result before CI push: `134 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `135 passed`." in text
+
+
+def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
+    text = CREATOR_SYSTEM_WORKFLOW.read_text(encoding="utf-8")
+
+    assert "startup-yc-validation-evidence-check" in text
+    assert "--output /tmp/startup-yc-validation-evidence-check.json" in text
+    assert "startup-yc-validation-evidence-check-result.schema.json" in text
+    assert "Draft202012Validator(schema).validate(payload)" in text
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:
