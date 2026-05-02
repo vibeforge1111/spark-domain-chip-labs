@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 from pathlib import Path
+
+from chip_labs.startup_yc_promotion import check_startup_yc_promotion_gates
 
 
 FIXTURE_DIR = Path("docs/creator_system/examples/startup-yc-operator-validation")
@@ -71,6 +75,52 @@ def test_startup_yc_review_docs_keep_required_gates_visible() -> None:
     assert "workspace-only" in publication
     assert "network_absorbable" in publication
     assert "private founder/customer details" in publication
+
+
+def test_startup_yc_promotion_gate_check_blocks_network_absorption() -> None:
+    result = check_startup_yc_promotion_gates(FIXTURE_DIR / "validation_plan.json")
+
+    assert result["schema_version"] == (
+        "adaptive_creator_loop.startup_yc_promotion_gate_check.v1"
+    )
+    assert result["verdict"] == "blocked"
+    assert result["network_absorbable"] is False
+    assert result["requested_claim"] == "network_absorbable"
+    assert "prohibited_claim:network_absorbable" in result["blocking_checks"]
+    assert "publication_boundary:network_publication_allowed" in result[
+        "blocking_checks"
+    ]
+    assert result["missing_gates"] == _load_plan()["required_promotion_gates"]
+    assert all(item["present"] is True for item in result["evidence_paths"])
+
+
+def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
+    tmp_path: Path,
+) -> None:
+    output_path = tmp_path / "startup-yc-promotion-gates.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-promotion-gate-check",
+            "--validation-plan",
+            str(FIXTURE_DIR / "validation_plan.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "blocked"
+    assert payload["network_absorbable"] is False
 
 
 def _load_plan() -> dict[str, object]:

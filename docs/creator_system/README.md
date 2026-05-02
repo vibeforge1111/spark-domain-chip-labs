@@ -102,6 +102,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Check tool operation packet | `python -m chip_labs.cli tool-operation-check --input operation-packet.json --fail-on-blocked` |
 | Check retrieval memory packet | `python -m chip_labs.cli retrieval-memory-check --input memory-packet.json --fail-on-blocked` |
 | Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --output reports/creator-mission-status.json` |
+| Check Startup YC promotion gates | `python -m chip_labs.cli startup-yc-promotion-gate-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Simulate content candidates | `python -m chip_labs.cli mirofish-content-simulate --task "<task>" --candidate "<A>" --candidate "<B>"` |
 | Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |
 
@@ -207,6 +208,13 @@ hashes for the baseline/candidate/absorption reports, and checks Swarm packet
 evidence plus publication boundaries against the recomputed report bundle. If
 the sibling source repo is unavailable or changed, recompute blocks instead of
 trusting saved evidence.
+
+`startup-yc-promotion-gate-check` makes the remaining network absorption gates
+executable without approving them. It reads the Startup YC validation plan,
+confirms linked gate evidence files exist, and still blocks `network_absorbable`
+until multi-seed validation, held-out founder-advice pass evidence,
+human/operator calibration, privacy review, rollback review, and publication
+approval are explicitly recorded.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style

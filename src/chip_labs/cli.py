@@ -1224,6 +1224,19 @@ def cmd_creator_mission_status(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_startup_yc_promotion_gate_check(args: argparse.Namespace) -> None:
+    """Check Startup YC promotion gates without granting stronger claims."""
+    from .startup_yc_promotion import check_startup_yc_promotion_gates
+
+    result = check_startup_yc_promotion_gates(
+        args.validation_plan,
+        requested_claim=args.requested_claim,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -2155,6 +2168,35 @@ def main() -> None:
         help="Exit with status 1 when the mission status has blockers.",
     )
     p_creator_mission_status.set_defaults(func=cmd_creator_mission_status)
+
+    # startup-yc-promotion-gate-check
+    p_startup_yc_promotion_gate_check = sub.add_parser(
+        "startup-yc-promotion-gate-check",
+        help="Check Startup YC promotion gates without approving network absorption.",
+    )
+    p_startup_yc_promotion_gate_check.add_argument(
+        "--validation-plan",
+        type=str,
+        required=True,
+        help="Startup YC validation_plan.json path.",
+    )
+    p_startup_yc_promotion_gate_check.add_argument(
+        "--requested-claim",
+        type=str,
+        default="network_absorbable",
+        help="Requested stronger claim to check.",
+    )
+    p_startup_yc_promotion_gate_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_startup_yc_promotion_gate_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the requested promotion is blocked.",
+    )
+    p_startup_yc_promotion_gate_check.set_defaults(
+        func=cmd_startup_yc_promotion_gate_check
+    )
 
     args = parser.parse_args()
     args.func(args)

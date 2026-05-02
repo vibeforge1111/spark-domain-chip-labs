@@ -410,6 +410,9 @@ Current validation pack:
   human/operator review gates.
 - `startup-yc-operator-validation/privacy_rollback_publication_review.md`:
   privacy, rollback, and publication approval boundaries.
+- `startup-yc-promotion-gate-check`: executable gate check that keeps
+  `network_absorbable` blocked until every required promotion gate has explicit
+  pass evidence.
 
 Next real adapters:
 

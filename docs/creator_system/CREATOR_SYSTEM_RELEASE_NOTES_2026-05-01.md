@@ -66,6 +66,9 @@
 - `creator-mission-status` now has an executable regression proving blocked
   canonical smoke plus a `swarm_shared` request stays blocked and read-only in
   Builder, Telegram, Spawner, Canvas, and Kanban views.
+- `startup-yc-promotion-gate-check` now emits a machine-readable blocked packet
+  for `network_absorbable` and fails with `--fail-on-blocked` until every
+  Startup YC promotion gate has explicit pass evidence.
 
 ## Current Claim Boundary
 
