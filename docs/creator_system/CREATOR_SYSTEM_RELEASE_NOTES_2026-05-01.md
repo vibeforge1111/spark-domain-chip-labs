@@ -164,6 +164,9 @@
 - `startup-yc-validation-plan.schema.json` now anchors the Startup YC
   validation plan, including the required promotion gates, multi-seed floor,
   publication boundary, and explicit `network_absorbable` prohibition.
+- Creator-system CI now validates the saved Startup YC `validation_plan.json`
+  against the validation-plan schema before running raw-evidence and suite
+  schema checks.
 
 ## Current Claim Boundary
 

@@ -80,6 +80,13 @@ jobs:
 
           import jsonschema
 
+          plan_schema = json.loads(
+              Path("docs/creator_system/schemas/startup-yc-validation-plan.schema.json").read_text()
+          )
+          plan_payload = json.loads(
+              Path("docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json").read_text()
+          )
+          jsonschema.Draft202012Validator(plan_schema).validate(plan_payload)
           raw_schema = json.loads(Path("docs/creator_system/schemas/startup-yc-validation-evidence.schema.json").read_text())
           raw_payload = json.loads(Path("docs/creator_system/examples/startup-yc-operator-validation/shape_only_multi_seed_evidence.json").read_text())
           jsonschema.Draft202012Validator(raw_schema).validate(raw_payload)

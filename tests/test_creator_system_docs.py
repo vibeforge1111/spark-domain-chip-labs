@@ -28,7 +28,10 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "does not prove real virality" in text
     assert "does not prove product correctness" in text
     assert "STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md" in text
-    assert "Startup YC validation evidence, shape-check, gate-check, and suite outputs" in text
+    assert (
+        "Startup YC validation plan, evidence, shape-check, gate-check, and suite outputs"
+        in text
+    )
     assert "shape-only raw evidence CI fixture" in text
 
 
@@ -85,6 +88,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "rejects impossible raw-evidence verdicts" in text
     assert "validates it against the check-result schema" in text
     assert "startup-yc-validation-plan.schema.json" in text
+    assert "validates the saved Startup YC `validation_plan.json`" in text
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
     assert "raw-evidence input hashes" in text
@@ -103,6 +107,8 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "startup-yc-validation-evidence.schema.json" in text
     assert "shape_only_multi_seed_evidence.json" in text
     assert "startup-yc-validation-evidence-check-result.schema.json" in text
+    assert "startup-yc-validation-plan.schema.json" in text
+    assert "Draft202012Validator(plan_schema).validate(plan_payload)" in text
     assert "Draft202012Validator(raw_schema).validate(raw_payload)" in text
     assert "Draft202012Validator(schema).validate(payload)" in text
     assert "--output /tmp/startup-yc-validation-suite.json" in text

@@ -627,6 +627,9 @@ Completed documentation/verification:
   `startup-yc-validation-plan.schema.json` and prove that removing required
   gates, lowering the multi-seed floor, enabling publication, or omitting the
   `network_absorbable` prohibition is rejected.
+- Creator-system CI now validates the saved Startup YC `validation_plan.json`
+  against the validation-plan schema before the raw-evidence and validation-suite
+  schema checks run.
 
 Completed product PR verification:
 
