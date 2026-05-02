@@ -142,6 +142,8 @@
 - Creator-system CI focused lint now includes
   `tests/test_startup_yc_operator_validation.py`, where the Startup YC
   schema/provenance regression checks live.
+- Creator-system CI now opts JavaScript actions into Node.js 24 to avoid the
+  GitHub-hosted runner Node.js 20 deprecation path.
 
 ## Current Claim Boundary
 
