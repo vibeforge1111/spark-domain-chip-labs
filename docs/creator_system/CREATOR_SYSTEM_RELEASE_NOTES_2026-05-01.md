@@ -43,6 +43,8 @@
   provenance-tagged generated runs from the curated Startup YC fixture, which
   still requires external Startup Bench/source-report rerun adapters for full
   recompute.
+- Product consumer branch ledger now records the refreshed Builder PR head
+  `6525942` with green remote CI.
 
 ## Current Claim Boundary
 

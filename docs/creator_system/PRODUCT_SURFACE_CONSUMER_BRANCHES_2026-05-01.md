@@ -13,7 +13,7 @@ evidence tiers, publication state, or network absorption.
 
 | Repo | Branch | Commit | PR | Proof |
 | --- | --- | --- | --- | --- |
-| `spark-intelligence-builder` | `codex/creator-mission-status-builder` | `1c83c11` | <https://github.com/vibeforge1111/spark-intelligence-builder/pull/26> | Adds `validate_creator_mission_status` and `summarize_creator_mission_status`; rejects `publication.network_absorbable`; validates all read-only surface adapters; refreshes CI lockfile and keeps governed local inspection modules approved. |
+| `spark-intelligence-builder` | `codex/creator-mission-status-builder` | `6525942` | <https://github.com/vibeforge1111/spark-intelligence-builder/pull/26> | Adds `validate_creator_mission_status` and `summarize_creator_mission_status`; rejects `publication.network_absorbable`; validates all read-only surface adapters; refreshes CI lockfile and keeps governed local inspection modules approved. |
 | `spawner-ui` | `codex/creator-mission-status-spawner` | `cbc9d52` | <https://github.com/vibeforge1111/vibeship-spawner-ui/pull/1> | Adds `creatorMissionStatusProjection`; rejects executable Spawner adapters, Canvas artifact edits, Kanban verdict mutation, and network absorption. |
 | `spark-canvas` | `codex/creator-mission-status-canvas` | `5a41b63` | <https://github.com/vibeforge1111/spark-canvas/pull/1> | Adds `creatorMissionStatusToCanvasGraph`; rejects Canvas artifact editing and network absorption. |
 | `spark-telegram-bot` | `codex/creator-mission-status-telegram` | `3221338` | <https://github.com/vibeforge1111/spark-telegram-bot/pull/1> | Adds `formatCreatorMissionStatusForTelegram`; keeps publication blockers visible and rejects secret-paste or network-absorption claims; fixes Windows build-path parsing under Linux CI. |
@@ -50,7 +50,8 @@ node scripts/run-tests.cjs
 
 Remote PR CI after refresh:
 
-- Builder PR #26: `test-and-audit` passed; `secret-scan` passed.
+- Builder PR #26: `test-and-audit` passed; `secret-scan` passed on head
+  `6525942`; GitHub mergeability was still recalculating at this checkpoint.
 - Telegram PR #1: `test-and-audit` passed; `secret-scan` passed.
 - Spawner UI PR #1 and Canvas PR #1 have no remote status checks reported by
   GitHub at this checkpoint; local verification commands above remain the

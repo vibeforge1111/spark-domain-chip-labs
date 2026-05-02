@@ -489,7 +489,8 @@ Completed product PR verification:
 
 - Builder and Telegram read-only consumer PRs were refreshed after remote CI
   found non-creator blockers.
-- Builder now passes remote `test-and-audit` and `secret-scan`.
+- Builder now passes remote `test-and-audit` and `secret-scan` on head
+  `6525942`.
 - Telegram now passes remote `test-and-audit` and `secret-scan`.
 - Spawner UI and Canvas still have no remote status checks reported by GitHub;
   their local verification commands remain recorded in the product branch
