@@ -33,14 +33,17 @@ RETRIEVAL_MEMORY_CHECK = Path(
 )
 
 
-def _smoke(verdict: str = "ready_for_swarm_packet") -> dict[str, object]:
+def _smoke(
+    verdict: str = "ready_for_swarm_packet",
+    evidence_mode: str = "saved",
+) -> dict[str, object]:
     blocked = verdict == "blocked"
     return {
         "schema_version": "adaptive_creator_loop.smoke_result.v1",
         "run_dir": "runs/demo",
         "verdict": verdict,
         "evidence_tier": "transfer_supported",
-        "evidence_mode": "saved",
+        "evidence_mode": evidence_mode,
         "status_counts": {"pass": 68, "warn": 0, "fail": 0 if not blocked else 1},
         "blocking_checks": [] if not blocked else ["candidate_delta"],
         "warning_checks": [],
@@ -82,13 +85,40 @@ def test_creator_mission_status_emits_read_only_surface_adapters() -> None:
     assert status["surface_adapters"]["builder"]["evidence_mode"] == "saved"
     assert "Evidence mode: `saved`." in status["surface_adapters"]["telegram"]["text"]
     assert status["surface_adapters"]["spawner"]["may_execute"] is False
+    assert status["surface_adapters"]["spawner"]["evidence_mode"] == "saved"
     assert status["surface_adapters"]["canvas"]["may_edit_artifacts"] is False
     assert status["surface_adapters"]["kanban"]["may_change_verdict"] is False
     canvas = status["surface_adapters"]["canvas"]
+    mission_node = next(node for node in canvas["nodes"] if node["id"] == "creator_mission")
+    assert mission_node["evidence_mode"] == "saved"
     node_ids = {node["id"] for node in canvas["nodes"]}
     assert {
         edge["from"] for edge in canvas["edges"] if edge["from"] != "creator_mission"
     }.issubset(node_ids)
+    assert status["surface_adapters"]["kanban"]["columns"]["review_required"][0][
+        "evidence_mode"
+    ] == "saved"
+
+
+def test_creator_mission_status_propagates_recomputed_evidence_mode() -> None:
+    status = build_creator_mission_status(
+        mission_id="mission-recomputed",
+        smoke=_smoke(evidence_mode="recomputed"),
+    )
+
+    assert status["canonical"]["evidence_mode"] == "recomputed"
+    assert status["surface_adapters"]["builder"]["evidence_mode"] == "recomputed"
+    assert status["surface_adapters"]["spawner"]["evidence_mode"] == "recomputed"
+    assert "Evidence mode: `recomputed`." in status["surface_adapters"]["telegram"]["text"]
+    mission_node = next(
+        node
+        for node in status["surface_adapters"]["canvas"]["nodes"]
+        if node["id"] == "creator_mission"
+    )
+    assert mission_node["evidence_mode"] == "recomputed"
+    assert status["surface_adapters"]["kanban"]["columns"]["review_required"][0][
+        "evidence_mode"
+    ] == "recomputed"
 
 
 def test_creator_mission_status_preserves_blockers_from_canonical_packets() -> None:
@@ -283,6 +313,7 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     assert "Evidence mode: `saved`." in saved["surface_adapters"]["telegram"]["text"]
     assert saved["surface_adapters"]["telegram"]["may_request_secret_paste"] is False
     assert saved["surface_adapters"]["spawner"]["may_execute"] is False
+    assert saved["surface_adapters"]["spawner"]["evidence_mode"] == "saved"
     assert saved["surface_adapters"]["canvas"]["may_edit_artifacts"] is False
     assert saved["surface_adapters"]["kanban"]["may_change_verdict"] is False
     tool_operation_summary = next(
@@ -343,6 +374,8 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
         ),
     }
     canvas = saved["surface_adapters"]["canvas"]
+    mission_node = next(node for node in canvas["nodes"] if node["id"] == "creator_mission")
+    assert mission_node["evidence_mode"] == "saved"
     node_ids = {node["id"] for node in canvas["nodes"]}
     assert "tool_operation" in node_ids
     assert "artifact_quality" in node_ids
@@ -355,6 +388,17 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     assert {
         edge["from"] for edge in canvas["edges"] if edge["from"] != "creator_mission"
     }.issubset(node_ids)
+    kanban_cards = [
+        card
+        for cards in saved["surface_adapters"]["kanban"]["columns"].values()
+        for card in cards
+    ]
+    kanban_card = next(
+        card
+        for card in kanban_cards
+        if card["mission_id"] == "startup-yc-product-readonly"
+    )
+    assert kanban_card["evidence_mode"] == "saved"
 
 
 def test_creator_mission_status_schema_enforces_read_only_boundaries() -> None:

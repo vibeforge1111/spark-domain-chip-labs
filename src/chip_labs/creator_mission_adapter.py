@@ -280,6 +280,7 @@ def _surface_adapters(mission: dict[str, Any]) -> dict[str, Any]:
             "packet_kind": "spawner_creator_trace_readonly",
             "mission_id": mission["mission_id"],
             "stage_status": canonical["stage_status"],
+            "evidence_mode": canonical["evidence_mode"],
             "blockers": blockers,
             "publication": publication,
             "may_execute": False,
@@ -332,6 +333,7 @@ def _canvas_nodes(mission: dict[str, Any]) -> list[dict[str, Any]]:
             "id": "creator_mission",
             "label": "Creator Mission",
             "status": canonical["stage_status"],
+            "evidence_mode": canonical["evidence_mode"],
             "source": "adapter",
         },
         *packet_nodes,
@@ -361,6 +363,7 @@ def _kanban_columns(mission: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
         "title": "Creator mission status",
         "verdict": canonical["verdict"],
         "evidence_tier": canonical["evidence_tier"],
+        "evidence_mode": canonical["evidence_mode"],
         "blocked": bool(mission["blockers"]),
     }
     columns = {

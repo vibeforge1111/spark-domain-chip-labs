@@ -200,11 +200,18 @@
         },
         "spawner": {
           "type": "object",
-          "required": ["packet_kind", "mission_id", "stage_status", "may_execute"],
+          "required": [
+            "packet_kind",
+            "mission_id",
+            "stage_status",
+            "evidence_mode",
+            "may_execute"
+          ],
           "properties": {
             "packet_kind": {"const": "spawner_creator_trace_readonly"},
             "mission_id": {"type": "string"},
             "stage_status": {"type": "string"},
+            "evidence_mode": {"enum": ["saved", "recomputed"]},
             "may_execute": {"const": false}
           }
         },

@@ -176,6 +176,9 @@
 - `creator-mission-status` now carries smoke `evidence_mode` into canonical,
   Builder, and Telegram read-only views so product surfaces can distinguish
   saved evidence from recomputed evidence without parsing raw smoke packets.
+- Spawner, Canvas, and Kanban mission-status projections now preserve the same
+  `evidence_mode`, with a recomputed-mode regression covering the full
+  read-only adapter set.
 - Creator-system CI now writes the strict Startup YC smoke packet and validates
   it against `smoke-result.schema.json`, including the saved evidence-mode
   boundary.

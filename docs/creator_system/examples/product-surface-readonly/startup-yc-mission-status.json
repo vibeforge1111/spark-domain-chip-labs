@@ -154,6 +154,7 @@
       "packet_kind": "spawner_creator_trace_readonly",
       "mission_id": "startup-yc-product-readonly",
       "stage_status": "review_required",
+      "evidence_mode": "saved",
       "blockers": [
         {
           "source": "publication_gate",
@@ -208,6 +209,7 @@
           "id": "creator_mission",
           "label": "Creator Mission",
           "status": "review_required",
+          "evidence_mode": "saved",
           "source": "adapter"
         },
         {
@@ -308,6 +310,7 @@
             "title": "Creator mission status",
             "verdict": "ready_for_swarm_packet",
             "evidence_tier": "transfer_supported",
+            "evidence_mode": "saved",
             "blocked": true
           }
         ]
