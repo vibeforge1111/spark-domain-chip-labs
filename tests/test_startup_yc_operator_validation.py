@@ -800,6 +800,17 @@ def test_startup_yc_validation_evidence_schema_checks_raw_inputs(
     del malformed_heldout["rows"][0]["privacy_lane_respected"]
     assert list(validator.iter_errors(malformed_heldout))
 
+    unsafe_multi_seed = json.loads(
+        multi_seed_evidence_path.read_text(encoding="utf-8")
+    )
+    unsafe_multi_seed["network_absorbable"] = True
+    assert list(validator.iter_errors(unsafe_multi_seed))
+
+    shape_only_fixture = json.loads(
+        SHAPE_ONLY_MULTI_SEED_EVIDENCE.read_text(encoding="utf-8")
+    )
+    validator.validate(shape_only_fixture)
+
 
 def test_startup_yc_validation_evidence_check_result_schema_blocks_network_absorption(
     tmp_path: Path,

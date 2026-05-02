@@ -147,6 +147,9 @@
 - Creator-system CI now validates the shape-only raw Startup YC evidence
   fixture against the raw validation-evidence schema before producing a
   shape-check result.
+- The raw Startup YC validation-evidence schema now rejects
+  `network_absorbable=true` while preserving the shape-only fixture's explicit
+  false boundary.
 
 ## Current Claim Boundary
 

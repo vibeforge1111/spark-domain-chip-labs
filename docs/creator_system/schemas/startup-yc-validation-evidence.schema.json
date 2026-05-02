@@ -4,6 +4,9 @@
   "title": "Adaptive Creator Loop Startup YC Validation Evidence",
   "type": "object",
   "additionalProperties": true,
+  "properties": {
+    "network_absorbable": {"const": false}
+  },
   "oneOf": [
     {"$ref": "#/$defs/multiSeedEvidence"},
     {"$ref": "#/$defs/heldoutEvidence"},
