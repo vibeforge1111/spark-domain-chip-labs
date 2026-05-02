@@ -18,6 +18,9 @@ from chip_labs.startup_yc_promotion import (
 
 
 FIXTURE_DIR = Path("docs/creator_system/examples/startup-yc-operator-validation")
+GATE_CHECK_SCHEMA = Path(
+    "docs/creator_system/schemas/startup-yc-gate-check-result.schema.json"
+)
 VALIDATION_SUITE_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-validation-suite.schema.json"
 )
@@ -548,6 +551,87 @@ def test_startup_yc_validation_suite_schema_blocks_network_absorption() -> None:
     unsafe = json.loads(json.dumps(saved))
     unsafe["network_absorbable"] = True
     assert list(validator.iter_errors(unsafe))
+
+
+def test_startup_yc_gate_check_schema_blocks_network_absorption(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(GATE_CHECK_SCHEMA.read_text(encoding="utf-8"))
+    plan_path = FIXTURE_DIR / "validation_plan.json"
+    (
+        multi_seed_evidence_path,
+        heldout_evidence_path,
+        review_gate_evidence_path,
+    ) = _write_raw_validation_evidence(tmp_path)
+    multi_seed_path = _write_gate_output(
+        tmp_path / "multi-seed.json",
+        "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
+        plan_path,
+        gate_passed=True,
+    )
+    heldout_path = _write_gate_output(
+        tmp_path / "heldout.json",
+        "adaptive_creator_loop.startup_yc_heldout_check.v1",
+        plan_path,
+        gate_passed=True,
+    )
+    review_path = _write_gate_output(
+        tmp_path / "review-gates.json",
+        "adaptive_creator_loop.startup_yc_review_gates_check.v1",
+        plan_path,
+        gate_passed=True,
+        gate_status={
+            "human_operator_calibration": True,
+            "privacy_review": True,
+            "rollback_review": True,
+            "publication_approval": True,
+        },
+    )
+    bundle_path = tmp_path / "promotion-evidence-bundle.json"
+    bundle_path.write_text(
+        json.dumps(
+            {
+                "checks": {
+                    "multi_seed_validation": str(multi_seed_path),
+                    "held_out_founder_advice_pass": str(heldout_path),
+                    "review_gates": str(review_path),
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    payloads = [
+        check_startup_yc_promotion_gates(plan_path),
+        check_startup_yc_multi_seed_validation(plan_path),
+        check_startup_yc_multi_seed_validation(
+            plan_path,
+            evidence_path=multi_seed_evidence_path,
+        ),
+        check_startup_yc_heldout_validation(plan_path),
+        check_startup_yc_heldout_validation(
+            plan_path,
+            evidence_path=heldout_evidence_path,
+        ),
+        check_startup_yc_review_gates(plan_path),
+        check_startup_yc_review_gates(
+            plan_path,
+            evidence_path=review_gate_evidence_path,
+        ),
+        check_startup_yc_promotion_evidence(plan_path),
+        check_startup_yc_promotion_evidence(
+            plan_path,
+            evidence_bundle_path=bundle_path,
+        ),
+    ]
+    validator = jsonschema.Draft202012Validator(schema)
+
+    for payload in payloads:
+        validator.validate(payload)
+        unsafe = json.loads(json.dumps(payload))
+        unsafe["network_absorbable"] = True
+        assert list(validator.iter_errors(unsafe))
 
 
 def test_startup_yc_validation_suite_keeps_final_promotion_blocked(

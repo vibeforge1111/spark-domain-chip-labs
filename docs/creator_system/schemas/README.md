@@ -18,6 +18,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [doctor-result.schema.json](doctor-result.schema.json) | `creator-run-doctor` output |
 | [template-check-result.schema.json](template-check-result.schema.json) | `creator-run-template-check` output |
 | [creator-mission-status.schema.json](creator-mission-status.schema.json) | Read-only product surface adapter packet |
+| [startup-yc-gate-check-result.schema.json](startup-yc-gate-check-result.schema.json) | Startup YC individual gate-check outputs |
 | [startup-yc-validation-suite.schema.json](startup-yc-validation-suite.schema.json) | Startup YC validation-suite output |
 
 The smoke validator remains stricter than these schemas where score semantics, promotion gates, transfer boundaries, and publication readiness are concerned.
@@ -38,7 +39,7 @@ and `creator-run-doctor` for the stricter evidence verdict. The
 Spawner, Canvas, and Kanban; it must not replace the underlying canonical
 packets.
 
-The Startup YC validation-suite schema anchors the blocked promotion-gate
-workflow. It intentionally requires `network_absorbable=false`; passing the
-schema means the packet shape is compatible, not that Startup YC is approved for
-network absorption.
+The Startup YC gate-check and validation-suite schemas anchor the blocked
+promotion workflow. They intentionally require `network_absorbable=false`;
+passing the schema means the packet shape is compatible, not that Startup YC is
+approved for network absorption.

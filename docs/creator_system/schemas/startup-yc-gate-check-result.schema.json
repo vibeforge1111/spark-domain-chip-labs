@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-gate-check-result.schema.json",
+  "title": "Adaptive Creator Loop Startup YC Gate Check Result",
+  "type": "object",
+  "additionalProperties": true,
+  "oneOf": [
+    {"$ref": "#/$defs/promotionGateCheck"},
+    {"$ref": "#/$defs/multiSeedCheck"},
+    {"$ref": "#/$defs/heldoutCheck"},
+    {"$ref": "#/$defs/reviewGatesCheck"},
+    {"$ref": "#/$defs/promotionEvidenceCheck"}
+  ],
+  "$defs": {
+    "commonStartupYcGateResult": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema_version",
+        "plan_path",
+        "plan_id",
+        "domain",
+        "current_claim",
+        "verdict",
+        "network_absorbable",
+        "blocking_checks",
+        "next_actions"
+      ],
+      "properties": {
+        "plan_path": {"type": "string", "minLength": 1},
+        "plan_id": {"type": "string", "minLength": 1},
+        "domain": {"const": "Startup YC"},
+        "current_claim": {"const": "transfer_supported"},
+        "verdict": {"enum": ["blocked", "passed", "approved"]},
+        "network_absorbable": {"const": false},
+        "blocking_checks": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "next_actions": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "promotionGateCheck": {
+      "allOf": [
+        {"$ref": "#/$defs/commonStartupYcGateResult"},
+        {
+          "required": [
+            "requested_claim",
+            "gate_status",
+            "missing_gates",
+            "evidence_paths"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "adaptive_creator_loop.startup_yc_promotion_gate_check.v1"
+            },
+            "requested_claim": {"type": "string", "minLength": 1},
+            "gate_status": {"type": "object"},
+            "missing_gates": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "evidence_paths": {
+              "type": "array",
+              "items": {"type": "object"}
+            }
+          }
+        }
+      ]
+    },
+    "multiSeedCheck": {
+      "allOf": [
+        {"$ref": "#/$defs/commonStartupYcGateResult"},
+        {
+          "required": [
+            "evidence_present",
+            "required_tracks",
+            "minimum_seeds_per_track",
+            "track_counts",
+            "underfilled_tracks",
+            "row_failures",
+            "gate_passed"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "adaptive_creator_loop.startup_yc_multi_seed_check.v1"
+            },
+            "evidence_path": {"type": ["string", "null"]},
+            "evidence_present": {"type": "boolean"},
+            "required_tracks": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "minimum_seeds_per_track": {"type": "integer", "minimum": 0},
+            "required_min_delta": {"type": "number"},
+            "track_counts": {"type": "object"},
+            "missing_tracks": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "underfilled_tracks": {
+              "type": "array",
+              "items": {"type": "object"}
+            },
+            "row_failures": {
+              "type": "array",
+              "items": {"type": "object"}
+            },
+            "gate_passed": {"type": "boolean"}
+          }
+        }
+      ]
+    },
+    "heldoutCheck": {
+      "allOf": [
+        {"$ref": "#/$defs/commonStartupYcGateResult"},
+        {
+          "required": [
+            "evidence_present",
+            "case_count",
+            "passed_case_count",
+            "missing_cases",
+            "case_failures",
+            "gate_passed"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "adaptive_creator_loop.startup_yc_heldout_check.v1"
+            },
+            "evidence_path": {"type": ["string", "null"]},
+            "evidence_present": {"type": "boolean"},
+            "case_count": {"type": "integer", "minimum": 0},
+            "passed_case_count": {"type": "integer", "minimum": 0},
+            "missing_cases": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "case_failures": {
+              "type": "array",
+              "items": {"type": "object"}
+            },
+            "gate_passed": {"type": "boolean"}
+          }
+        }
+      ]
+    },
+    "reviewGatesCheck": {
+      "allOf": [
+        {"$ref": "#/$defs/commonStartupYcGateResult"},
+        {
+          "required": [
+            "evidence_present",
+            "required_gates",
+            "gate_status",
+            "missing_gates",
+            "gate_failures",
+            "gate_passed"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "adaptive_creator_loop.startup_yc_review_gates_check.v1"
+            },
+            "evidence_path": {"type": ["string", "null"]},
+            "evidence_present": {"type": "boolean"},
+            "required_gates": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "gate_status": {"type": "object"},
+            "missing_gates": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "gate_failures": {
+              "type": "array",
+              "items": {"type": "object"}
+            },
+            "gate_passed": {"type": "boolean"}
+          }
+        }
+      ]
+    },
+    "promotionEvidenceCheck": {
+      "allOf": [
+        {"$ref": "#/$defs/commonStartupYcGateResult"},
+        {
+          "required": [
+            "evidence_bundle_present",
+            "required_gates",
+            "gate_support",
+            "missing_gates",
+            "evidence_checks",
+            "all_required_gates_supported"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "adaptive_creator_loop.startup_yc_promotion_evidence_check.v1"
+            },
+            "evidence_bundle_path": {"type": ["string", "null"]},
+            "evidence_bundle_present": {"type": "boolean"},
+            "required_gates": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "gate_support": {"type": "object"},
+            "missing_gates": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "evidence_checks": {
+              "type": "array",
+              "items": {"type": "object"}
+            },
+            "all_required_gates_supported": {"type": "boolean"}
+          }
+        }
+      ]
+    }
+  }
+}

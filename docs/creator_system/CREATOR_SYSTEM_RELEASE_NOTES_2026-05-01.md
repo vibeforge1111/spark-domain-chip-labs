@@ -92,6 +92,9 @@
   expected blocked command path.
 - `startup-yc-validation-suite.schema.json` now anchors saved validation-suite
   packets and rejects any packet claiming `network_absorbable=true`.
+- `startup-yc-gate-check-result.schema.json` now anchors individual Startup YC
+  gate-check outputs and rejects any gate packet claiming
+  `network_absorbable=true`.
 
 ## Current Claim Boundary
 
@@ -113,4 +116,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `125 passed`.
+Latest focused creator-system suite result before CI push: `126 passed`.
