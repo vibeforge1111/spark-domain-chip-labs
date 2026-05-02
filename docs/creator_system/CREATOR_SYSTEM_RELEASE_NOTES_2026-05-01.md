@@ -200,6 +200,11 @@
   anti-gaming checks.
 - `creator-run-smoke --recompute` now verifies generated lane results and blocks
   tampered benchmark manifests through report provenance hashes.
+- `run_multi_seed_generator_validation` now creates a generated 36-row
+  multi-seed matrix across six domain families, three brief variants per family,
+  and two seeds per variant.
+- Generator acceptance now proves failed seed rows block the aggregate and
+  expose blocker names instead of being hidden behind passing rows.
 - Generator acceptance now includes a retrieval/memory boundary domain and
   requires every generated domain family to emit a schema-valid recomputed
   `creator-mission-status` packet.
@@ -227,4 +232,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `143 passed`.
+Latest focused creator-system suite result before CI push: `145 passed`.

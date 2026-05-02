@@ -30,6 +30,88 @@ class GeneratedCreatorSystem:
     recompute_smoke: dict[str, Any]
 
 
+def run_multi_seed_generator_validation(
+    workspace_dir: str | Path,
+    briefs: list[dict[str, Any]],
+    *,
+    seeds: tuple[int, ...] = (1, 2),
+    variants_per_domain: int = 3,
+    weak_seed_ids: set[str] | None = None,
+) -> dict[str, Any]:
+    """Run a generated multi-seed matrix without hiding failed rows."""
+
+    workspace_path = Path(workspace_dir)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+    weak_seed_ids = weak_seed_ids or set()
+    rows: list[dict[str, Any]] = []
+    for brief in briefs:
+        base_domain_id = _slugify(str(brief.get("domain_id") or brief["domain_name"]))
+        for variant_index in range(1, variants_per_domain + 1):
+            for seed in seeds:
+                seed_id = f"{base_domain_id}:v{variant_index}:seed{seed}"
+                seeded_brief = _seeded_brief_variant(
+                    brief,
+                    variant_index=variant_index,
+                    seed=seed,
+                )
+                generated = generate_creator_system_from_brief(
+                    workspace_path / base_domain_id / f"v{variant_index}" / f"seed-{seed}",
+                    seeded_brief,
+                )
+                if seed_id in weak_seed_ids:
+                    _inject_weak_seed_failure(generated.run_dir)
+                    smoke = validate_creator_run(
+                        generated.run_dir,
+                        recompute=True,
+                    ).to_dict()
+                else:
+                    smoke = generated.recompute_smoke
+                row = _multi_seed_row(
+                    generated=generated,
+                    brief=seeded_brief,
+                    base_domain_id=base_domain_id,
+                    variant_index=variant_index,
+                    seed=seed,
+                    seed_id=seed_id,
+                    smoke=smoke,
+                )
+                rows.append(row)
+
+    failed_rows = [
+        row["seed_id"]
+        for row in rows
+        if row["verdict"] != "ready_for_swarm_packet"
+        or row["blocking_checks"]
+        or row["network_absorbable"] is not False
+    ]
+    summary = {
+        "schema_version": "adaptive_creator_loop.generated_multi_seed_validation.v1",
+        "matrix": {
+            "domain_count": len(briefs),
+            "variants_per_domain": variants_per_domain,
+            "seeds": list(seeds),
+            "target_run_count": len(briefs) * variants_per_domain * len(seeds),
+            "completed_run_count": len(rows),
+        },
+        "verdict": "candidate_review" if not failed_rows else "blocked",
+        "evidence_tier": "candidate_review" if not failed_rows else "blocked",
+        "evidence_mode": "recomputed",
+        "network_absorbable": False,
+        "aggregate_hidden_failures": False,
+        "passed_run_count": len(rows) - len(failed_rows),
+        "blocked_run_count": len(failed_rows),
+        "failed_seed_ids": failed_rows,
+        "claim_boundary": (
+            "Generated multi-seed validation supports local candidate_review only; "
+            "it does not approve network_absorbable."
+        ),
+        "rows": rows,
+        "next_actions": _multi_seed_next_actions(failed_rows),
+    }
+    write_json(workspace_path / "multi_seed_validation_summary.json", summary)
+    return summary
+
+
 def generate_creator_system_from_brief(
     workspace_dir: str | Path,
     brief: dict[str, Any],
@@ -930,6 +1012,102 @@ def _default_failure_mode(trap: bool) -> str:
     if trap:
         return "Accepts a seductive but unsupported benchmark or publication claim."
     return "Produces plausible output without measurable local evidence."
+
+
+def _seeded_brief_variant(
+    brief: dict[str, Any], *, variant_index: int, seed: int
+) -> dict[str, Any]:
+    seeded = json.loads(json.dumps(brief))
+    base_domain_id = _slugify(str(seeded.get("domain_id") or seeded["domain_name"]))
+    base_domain_name = str(seeded["domain_name"])
+    seeded["domain_id"] = f"{base_domain_id}-v{variant_index}-seed-{seed}"
+    seeded["domain_name"] = f"{base_domain_name} V{variant_index} Seed {seed}"
+    seeded["goal"] = (
+        f"{seeded['goal']} Validate generated variant {variant_index} under seed {seed}."
+    )
+    seeded["seed_metadata"] = {
+        "base_domain_id": base_domain_id,
+        "variant_index": variant_index,
+        "seed": seed,
+    }
+    benchmark_cases = seeded.get("benchmark_cases")
+    if not isinstance(benchmark_cases, list):
+        benchmark_cases = []
+    benchmark_cases = list(benchmark_cases)
+    benchmark_cases.append(
+        {
+            "case_id": f"seed-{seed}-variant-{variant_index}-boundary",
+            "case_kind": "seeded_boundary",
+            "case_lane": "held_out",
+            "prompt": (
+                "Handle a seeded adjacent case while preserving candidate_review "
+                "and local-only publication boundaries."
+            ),
+            "expected_behavior": (
+                "Keep the generated evidence local and name the seed/variant boundary."
+            ),
+            "failure_mode": (
+                "Uses seeded agreement as proof of broad transfer or network absorption."
+            ),
+        }
+    )
+    seeded["benchmark_cases"] = benchmark_cases
+    return seeded
+
+
+def _multi_seed_row(
+    *,
+    generated: GeneratedCreatorSystem,
+    brief: dict[str, Any],
+    base_domain_id: str,
+    variant_index: int,
+    seed: int,
+    seed_id: str,
+    smoke: dict[str, Any],
+) -> dict[str, Any]:
+    candidate = load_json(generated.run_dir / "reports" / "candidate.json")
+    return {
+        "seed_id": seed_id,
+        "base_domain_id": base_domain_id,
+        "domain_id": brief["domain_id"],
+        "domain_family": brief.get("domain_family", "general"),
+        "variant_index": variant_index,
+        "seed": seed,
+        "run_dir": str(generated.run_dir),
+        "verdict": smoke.get("verdict"),
+        "evidence_tier": smoke.get("evidence_tier"),
+        "evidence_mode": smoke.get("evidence_mode"),
+        "blocking_checks": list(smoke.get("blocking_checks", [])),
+        "candidate_delta": candidate.get("mean_delta"),
+        "trap_regressions": candidate.get("trap_regressions"),
+        "network_absorbable": False,
+    }
+
+
+def _inject_weak_seed_failure(run_dir: Path) -> None:
+    candidate_path = run_dir / "reports" / "candidate.json"
+    candidate = load_json(candidate_path)
+    lane_results = candidate.get("lane_results")
+    if isinstance(lane_results, dict) and lane_results:
+        first_lane = sorted(lane_results)[0]
+        lane_results[first_lane]["trap_regressions"] = (
+            int(lane_results[first_lane].get("trap_regressions", 0)) + 1
+        )
+    write_json(candidate_path, candidate)
+
+
+def _multi_seed_next_actions(failed_rows: list[str]) -> list[str]:
+    if failed_rows:
+        return [
+            "Repair or regenerate every failed seed before reading the aggregate as evidence.",
+            "Do not promote a packet when any seed row is blocked.",
+            "Keep the claim at blocked/candidate_review until recompute passes per row.",
+        ]
+    return [
+        "Record this as generated multi-seed candidate_review evidence only.",
+        "Run domain-specific calibrated benchmarks before stronger claims.",
+        "Keep network_absorbable false until human/operator, privacy, rollback, and publication gates pass.",
+    ]
 
 
 def _packet_summary(brief: dict[str, Any]) -> str:

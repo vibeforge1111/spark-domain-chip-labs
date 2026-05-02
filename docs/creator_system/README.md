@@ -62,7 +62,7 @@ Domain Chip Creator should not own Autoloop Creator. It should emit chip-specifi
 | Surface | Current Claim | Explicit Boundary |
 | --- | --- | --- |
 | Generator acceptance proof domains | `candidate_review` | Proves Spark can generate runnable local creator systems from briefs; does not prove transfer or network absorption. |
-| Multi-domain generated matrix | `candidate_review` | Covers artifact quality, tool operation, MiroFish content simulation, doctor/security, Startup YC operator, and retrieval/memory with saved/recomputed smoke, benchmark case oracles, lane results, and read-only mission status. |
+| Multi-domain generated matrix | `candidate_review` | Covers artifact quality, tool operation, MiroFish content simulation, doctor/security, Startup YC operator, and retrieval/memory with saved/recomputed smoke, benchmark case oracles, lane results, a 36-row generated multi-seed summary, and read-only mission status. |
 | Startup YC reference fixture | `transfer_supported` | Strict smoke passes as `ready_for_swarm_packet`, but `network_absorbable` is blocked until multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval pass. |
 | Artifact quality domain | Local artifact-quality review | Scores design docs, PR writeups, handoffs, and mission packets; does not prove product correctness or replace human review. |
 | Tool operation domain | Local operation safety | Verifies command results, expected postconditions, rollback notes, and secret boundaries; does not allow publish, push, or network mutation. |

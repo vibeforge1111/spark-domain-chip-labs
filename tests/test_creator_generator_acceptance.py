@@ -10,7 +10,10 @@ from pathlib import Path
 import pytest
 
 from chip_labs.artifact_quality import MANIFEST_PATH, run_artifact_quality_benchmark
-from chip_labs.creator_generator import generate_creator_system_from_brief
+from chip_labs.creator_generator import (
+    generate_creator_system_from_brief,
+    run_multi_seed_generator_validation,
+)
 from chip_labs.creator_mission_adapter import build_creator_mission_status
 from chip_labs.creator_run import diagnose_creator_run, validate_creator_run
 
@@ -525,6 +528,80 @@ def test_creator_run_recompute_blocks_tampered_lane_results(tmp_path: Path) -> N
     assert any(
         check.name == "recompute_candidate_lane_results" and check.status == "fail"
         for check in recomputed.checks
+    )
+
+
+def test_generator_multi_seed_validation_runs_full_domain_matrix(
+    tmp_path: Path,
+) -> None:
+    summary = run_multi_seed_generator_validation(
+        tmp_path,
+        _multi_domain_briefs(),
+        seeds=(1, 2),
+        variants_per_domain=3,
+    )
+
+    assert summary["schema_version"] == (
+        "adaptive_creator_loop.generated_multi_seed_validation.v1"
+    )
+    assert summary["matrix"] == {
+        "domain_count": 6,
+        "variants_per_domain": 3,
+        "seeds": [1, 2],
+        "target_run_count": 36,
+        "completed_run_count": 36,
+    }
+    assert summary["verdict"] == "candidate_review"
+    assert summary["evidence_tier"] == "candidate_review"
+    assert summary["evidence_mode"] == "recomputed"
+    assert summary["network_absorbable"] is False
+    assert summary["aggregate_hidden_failures"] is False
+    assert summary["passed_run_count"] == 36
+    assert summary["blocked_run_count"] == 0
+    assert summary["failed_seed_ids"] == []
+    assert len(summary["rows"]) == 36
+    assert all(row["evidence_mode"] == "recomputed" for row in summary["rows"])
+    assert all(row["evidence_tier"] == "candidate_review" for row in summary["rows"])
+    assert all(row["network_absorbable"] is False for row in summary["rows"])
+    assert {
+        row["base_domain_id"] for row in summary["rows"]
+    } == {
+        "design-doc-pr-quality",
+        "spark-tool-operation",
+        "mirofish-content-simulation",
+        "spark-doctor-adversarial",
+        "startup-yc-operator",
+        "retrieval-memory-boundary",
+    }
+    assert (tmp_path / "multi_seed_validation_summary.json").exists()
+
+
+def test_generator_multi_seed_validation_exposes_failed_seed_rows(
+    tmp_path: Path,
+) -> None:
+    summary = run_multi_seed_generator_validation(
+        tmp_path,
+        [_multi_domain_briefs()[0]],
+        seeds=(1, 2),
+        variants_per_domain=1,
+        weak_seed_ids={"design-doc-pr-quality:v1:seed2"},
+    )
+
+    assert summary["verdict"] == "blocked"
+    assert summary["evidence_tier"] == "blocked"
+    assert summary["aggregate_hidden_failures"] is False
+    assert summary["passed_run_count"] == 1
+    assert summary["blocked_run_count"] == 1
+    assert summary["failed_seed_ids"] == ["design-doc-pr-quality:v1:seed2"]
+    failed_row = [
+        row
+        for row in summary["rows"]
+        if row["seed_id"] == "design-doc-pr-quality:v1:seed2"
+    ][0]
+    assert failed_row["verdict"] == "blocked"
+    assert "recompute_candidate_lane_results" in failed_row["blocking_checks"]
+    assert "Do not promote a packet when any seed row is blocked." in (
+        summary["next_actions"]
     )
 
 

@@ -101,6 +101,17 @@ Target matrix:
 - 6 domain families.
 - 36 generated runs total.
 
+Current executable status:
+
+- `run_multi_seed_generator_validation` creates the 36-row generated matrix
+  from six domain families, three generated brief variants per family, and two
+  seeds per variant.
+- The summary is written to `multi_seed_validation_summary.json`.
+- The summary reports every seed row, keeps `network_absorbable` false, and
+  sets `aggregate_hidden_failures` to false.
+- A forced weak-seed regression proves a failed row blocks the aggregate and
+  exposes its blocker names instead of disappearing behind the passing rows.
+
 Success criteria:
 
 - Strong seeds converge on coherent evidence.
@@ -112,8 +123,16 @@ Success criteria:
 
 Suggested execution mode:
 
-- Keep PR CI on the fast representative matrix.
-- Run multi-seed as a manual or scheduled heavier job.
+- Keep PR CI on the representative matrix plus the executable 36-row generated
+  multi-seed acceptance test while it remains fast enough.
+- Move heavier domain-calibrated multi-seed runs to manual or scheduled jobs
+  when real outcome adapters are added.
+
+Current executable anchor:
+
+```bash
+python -m pytest tests/test_creator_generator_acceptance.py -q
+```
 
 ## Phase 3: Evidence And Provenance Hardening
 

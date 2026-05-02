@@ -663,6 +663,11 @@ Completed documentation/verification:
   oracle metadata.
 - `creator-run-smoke --recompute` now blocks tampered generated benchmark
   manifests and tampered saved lane results.
+- `run_multi_seed_generator_validation` now creates the 36-row generated
+  multi-seed matrix across six domain families, three brief variants per family,
+  and two seeds per variant.
+- Generator acceptance now proves failed seed rows block the aggregate and
+  expose blocker names instead of being hidden behind passing rows.
 - Generator acceptance now includes a retrieval/memory boundary domain and
   requires every generated domain family to emit a schema-valid recomputed
   `creator-mission-status` packet.
