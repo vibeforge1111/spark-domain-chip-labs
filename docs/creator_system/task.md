@@ -560,6 +560,8 @@ Completed documentation/verification:
 - Startup YC multi-seed, held-out, review-gate, and promotion-evidence outputs
   now record raw-input hashes, and promotion evidence bundles reject stale saved
   gate outputs whose hashes no longer match the source evidence files.
+- Startup YC CLI tests now run the gate-output generation, evidence bundle, and
+  stale-evidence rejection path end to end.
 
 Completed product PR verification:
 

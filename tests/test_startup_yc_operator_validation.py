@@ -919,6 +919,119 @@ def test_cli_startup_yc_promotion_evidence_check_fails_on_blocked(
     assert payload["network_absorbable"] is False
 
 
+def test_cli_startup_yc_gate_outputs_bundle_with_provenance(
+    tmp_path: Path,
+) -> None:
+    plan_path = FIXTURE_DIR / "validation_plan.json"
+    (
+        multi_seed_evidence_path,
+        heldout_evidence_path,
+        review_gate_evidence_path,
+    ) = _write_raw_validation_evidence(tmp_path)
+    multi_seed_output = tmp_path / "multi-seed-output.json"
+    heldout_output = tmp_path / "heldout-output.json"
+    review_output = tmp_path / "review-output.json"
+
+    for command, evidence_path, output_path in (
+        ("startup-yc-multi-seed-check", multi_seed_evidence_path, multi_seed_output),
+        ("startup-yc-heldout-check", heldout_evidence_path, heldout_output),
+        ("startup-yc-review-gates-check", review_gate_evidence_path, review_output),
+    ):
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "chip_labs.cli",
+                command,
+                "--validation-plan",
+                str(plan_path),
+                "--evidence",
+                str(evidence_path),
+                "--output",
+                str(output_path),
+                "--fail-on-blocked",
+            ],
+            cwd=Path.cwd(),
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        payload = json.loads(output_path.read_text(encoding="utf-8"))
+        assert result.returncode == 0
+        assert payload["gate_passed"] is True
+        assert payload["network_absorbable"] is False
+        assert payload["provenance"]["input_hashes"]
+
+    bundle_path = tmp_path / "promotion-evidence-bundle.json"
+    bundle_path.write_text(
+        json.dumps(
+            {
+                "checks": {
+                    "multi_seed_validation": str(multi_seed_output),
+                    "held_out_founder_advice_pass": str(heldout_output),
+                    "review_gates": str(review_output),
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    promotion_output = tmp_path / "promotion-output.json"
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-promotion-evidence-check",
+            "--validation-plan",
+            str(plan_path),
+            "--evidence-bundle",
+            str(bundle_path),
+            "--output",
+            str(promotion_output),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    payload = json.loads(promotion_output.read_text(encoding="utf-8"))
+    assert result.returncode == 0
+    assert payload["all_required_gates_supported"] is True
+    assert payload["network_absorbable"] is False
+
+    heldout_evidence_path.write_text(
+        json.dumps({"rows": []}, indent=2),
+        encoding="utf-8",
+    )
+    stale_output = tmp_path / "stale-promotion-output.json"
+    stale_result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-promotion-evidence-check",
+            "--validation-plan",
+            str(plan_path),
+            "--evidence-bundle",
+            str(bundle_path),
+            "--output",
+            str(stale_output),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    stale_payload = json.loads(stale_output.read_text(encoding="utf-8"))
+    assert stale_result.returncode == 1
+    assert "provenance_mismatch:held_out_founder_advice_pass" in stale_payload[
+        "blocking_checks"
+    ]
+
+
 def test_cli_startup_yc_validation_suite_fails_on_blocked(tmp_path: Path) -> None:
     output_path = tmp_path / "startup-yc-validation-suite.json"
 

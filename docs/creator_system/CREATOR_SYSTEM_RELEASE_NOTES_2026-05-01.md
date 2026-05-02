@@ -98,6 +98,9 @@
 - Startup YC gate-check outputs now include raw-evidence input hashes, and
   promotion evidence bundles block when saved gate outputs are stale against
   their source evidence files.
+- Startup YC CLI coverage now generates gate outputs, bundles them, verifies
+  the coherent bundle, and then proves the same bundle blocks after raw evidence
+  changes.
 
 ## Current Claim Boundary
 
@@ -119,4 +122,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `127 passed`.
+Latest focused creator-system suite result before CI push: `128 passed`.
