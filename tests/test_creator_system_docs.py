@@ -186,6 +186,8 @@ def test_startup_yc_external_recompute_adapter_contract_blocks_stronger_claims()
         "implemented for baseline mean",
         "implemented for aggregate scores",
         "implemented for packet evidence",
+        "absent or stale source reports",
+        "standalone external rerun provenance packets",
         "startup_yc_external_v1",
         "not `network_absorbable`",
         "multi-seed validation",

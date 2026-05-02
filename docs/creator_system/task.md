@@ -669,4 +669,4 @@ Completed product PR verification:
 - Product wiring for Builder, Telegram, Spawner UI, Canvas, and Kanban.
 - Public `spark-creator` repo decision.
 - Network absorption review packet.
-- Startup YC external recompute adapter implementation.
+- Standalone Startup YC external rerun provenance packets.

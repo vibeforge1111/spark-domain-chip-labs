@@ -2,8 +2,9 @@
 
 Date: 2026-05-02
 
-This document defines the missing adapter layer between the curated Startup YC
-creator-run fixture and a full fresh rerun of its external evidence.
+This document defines the external recompute adapter boundary between the
+curated Startup YC creator-run fixture and a full fresh rerun of its external
+evidence.
 
 ## Purpose
 
@@ -121,11 +122,14 @@ Full external recompute is complete only when:
 4. Compare the Swarm contribution packet to fresh reports.
    Done for packet/report comparison in `creator-run-smoke --recompute`.
 5. Teach `creator-run-smoke --recompute` to select these adapters only when the
-   external repos are explicitly available.
+   external repos are explicitly available. Done: absent or stale source reports
+   block recompute instead of trusting saved evidence.
 6. Add provenance packets for baseline, candidate, and absorption reports.
    Done with `startup_yc_external_v1` source hashes.
 7. Add doctor quarantine fixtures for stale external Startup YC evidence.
    Done with `doctor-security/stale_external_startup_yc_candidate_score.json`.
 
-Until the remaining steps pass, the curated Startup YC fixture remains strict
+Remaining work is standalone external rerun provenance packets plus the
+separate multi-seed, calibration, privacy, rollback, and publication approval
+gates. Until those pass, the curated Startup YC fixture remains strict
 `transfer_supported` proof with clear claim boundaries.
