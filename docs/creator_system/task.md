@@ -286,6 +286,8 @@ Deliverables:
   blocked command and lints the promotion-gate module.
 - [x] JSON Schema anchor for individual Startup YC gate-check packets.
 - [x] JSON Schema anchor for Startup YC validation-suite packets.
+- [x] Raw-evidence hash provenance on Startup YC gate outputs, with promotion
+  bundle checks that reject stale saved gate evidence.
 
 Phase gate:
 
@@ -555,6 +557,9 @@ Completed documentation/verification:
 - `startup-yc-gate-check-result.schema.json` now validates individual Startup
   YC gate-check outputs and rejects any gate packet claiming
   `network_absorbable=true`.
+- Startup YC multi-seed, held-out, review-gate, and promotion-evidence outputs
+  now record raw-input hashes, and promotion evidence bundles reject stale saved
+  gate outputs whose hashes no longer match the source evidence files.
 
 Completed product PR verification:
 

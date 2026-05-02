@@ -241,7 +241,9 @@ separate gate-status decision.
 `startup-yc-promotion-evidence-check` ties the individual gate outputs together
 as saved evidence. It blocks stale or mismatched outputs unless every bundled
 check has the expected schema, matches the same validation plan, and reports its
-gate as passed. Even a coherent bundle is evidence support, not final promotion.
+gate as passed. Bundled gate outputs also carry raw-evidence input hashes, so a
+bundle blocks if saved gate evidence no longer matches the source evidence file.
+Even a coherent bundle is evidence support, not final promotion.
 
 `startup-yc-gate-check-result.schema.json` anchors the individual Startup YC
 gate-check packets and rejects any individual gate output that claims

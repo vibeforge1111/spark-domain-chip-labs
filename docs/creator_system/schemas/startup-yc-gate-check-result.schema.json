@@ -82,7 +82,8 @@
             "track_counts",
             "underfilled_tracks",
             "row_failures",
-            "gate_passed"
+            "gate_passed",
+            "provenance"
           ],
           "properties": {
             "schema_version": {
@@ -109,7 +110,8 @@
               "type": "array",
               "items": {"type": "object"}
             },
-            "gate_passed": {"type": "boolean"}
+            "gate_passed": {"type": "boolean"},
+            "provenance": {"$ref": "#/$defs/inputProvenance"}
           }
         }
       ]
@@ -124,7 +126,8 @@
             "passed_case_count",
             "missing_cases",
             "case_failures",
-            "gate_passed"
+            "gate_passed",
+            "provenance"
           ],
           "properties": {
             "schema_version": {
@@ -142,7 +145,8 @@
               "type": "array",
               "items": {"type": "object"}
             },
-            "gate_passed": {"type": "boolean"}
+            "gate_passed": {"type": "boolean"},
+            "provenance": {"$ref": "#/$defs/inputProvenance"}
           }
         }
       ]
@@ -157,7 +161,8 @@
             "gate_status",
             "missing_gates",
             "gate_failures",
-            "gate_passed"
+            "gate_passed",
+            "provenance"
           ],
           "properties": {
             "schema_version": {
@@ -178,7 +183,8 @@
               "type": "array",
               "items": {"type": "object"}
             },
-            "gate_passed": {"type": "boolean"}
+            "gate_passed": {"type": "boolean"},
+            "provenance": {"$ref": "#/$defs/inputProvenance"}
           }
         }
       ]
@@ -193,7 +199,8 @@
             "gate_support",
             "missing_gates",
             "evidence_checks",
-            "all_required_gates_supported"
+            "all_required_gates_supported",
+            "provenance"
           ],
           "properties": {
             "schema_version": {
@@ -214,10 +221,24 @@
               "type": "array",
               "items": {"type": "object"}
             },
-            "all_required_gates_supported": {"type": "boolean"}
+            "all_required_gates_supported": {"type": "boolean"},
+            "provenance": {"$ref": "#/$defs/inputProvenance"}
           }
         }
       ]
+    },
+    "inputProvenance": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["source", "input_hashes", "missing_inputs"],
+      "properties": {
+        "source": {"const": "startup_yc_operator_validation_v1"},
+        "input_hashes": {"type": "object"},
+        "missing_inputs": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
     }
   }
 }

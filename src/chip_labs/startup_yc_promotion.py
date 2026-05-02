@@ -7,6 +7,7 @@ plan explicitly removes prohibitions and records every required gate as passed.
 
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -113,6 +114,7 @@ def check_startup_yc_multi_seed_validation(
     blocking_checks: list[str] = []
     rows: list[dict[str, Any]] = []
     evidence_present = False
+    evidence_file: Path | None = None
     evidence_display_path = (
         evidence_reference if isinstance(evidence_reference, str) else None
     )
@@ -177,6 +179,7 @@ def check_startup_yc_multi_seed_validation(
         "verdict": "passed" if gate_passed else "blocked",
         "gate_passed": gate_passed,
         "network_absorbable": False,
+        "provenance": _input_provenance(evidence_file, evidence_display_path),
         "blocking_checks": blocking_checks,
         "next_actions": _multi_seed_next_actions(
             gate_passed=gate_passed,
@@ -204,6 +207,7 @@ def check_startup_yc_heldout_validation(
     )
     evidence_rows: list[dict[str, Any]] = []
     evidence_present = False
+    evidence_file: Path | None = None
     evidence_display_path = (
         evidence_reference if isinstance(evidence_reference, str) else None
     )
@@ -249,6 +253,7 @@ def check_startup_yc_heldout_validation(
         "verdict": "passed" if gate_passed else "blocked",
         "gate_passed": gate_passed,
         "network_absorbable": False,
+        "provenance": _input_provenance(evidence_file, evidence_display_path),
         "blocking_checks": blocking_checks,
         "next_actions": _heldout_next_actions(gate_passed=gate_passed),
     }
@@ -272,6 +277,7 @@ def check_startup_yc_review_gates(
         str(evidence_path) if evidence_path else plan.get("review_gate_evidence_path")
     )
     evidence_present = False
+    evidence_file: Path | None = None
     evidence_rows: list[dict[str, Any]] = []
     evidence_display_path = (
         evidence_reference if isinstance(evidence_reference, str) else None
@@ -316,6 +322,7 @@ def check_startup_yc_review_gates(
         "verdict": "passed" if gate_passed else "blocked",
         "gate_passed": gate_passed,
         "network_absorbable": False,
+        "provenance": _input_provenance(evidence_file, evidence_display_path),
         "blocking_checks": blocking_checks,
         "next_actions": _review_gates_next_actions(gate_passed=gate_passed),
     }
@@ -338,6 +345,7 @@ def check_startup_yc_promotion_evidence(
     )
     blocking_checks: list[str] = []
     bundle_present = False
+    bundle_file: Path | None = None
     bundle: dict[str, Any] = {}
     bundle_display_path = bundle_reference if isinstance(bundle_reference, str) else None
 
@@ -378,6 +386,7 @@ def check_startup_yc_promotion_evidence(
         "verdict": "passed" if all_supported and not blocking_checks else "blocked",
         "all_required_gates_supported": all_supported and not blocking_checks,
         "network_absorbable": False,
+        "provenance": _input_provenance(bundle_file, bundle_display_path),
         "blocking_checks": blocking_checks,
         "next_actions": _promotion_evidence_next_actions(
             all_supported=all_supported and not blocking_checks
@@ -729,16 +738,56 @@ def _check_output_passes(
     schema_ok = output.get("schema_version") == expected_schema
     plan_match = output.get("plan_path") == str(plan_path)
     gate_passed = output.get("gate_passed") is True
+    provenance_ok = _check_output_provenance(
+        output,
+        key=key,
+        plan_path=plan_path,
+        blocking_checks=blocking_checks,
+    )
     check["schema_ok"] = schema_ok
     check["plan_match"] = plan_match
     check["gate_passed"] = gate_passed
+    check["provenance_ok"] = provenance_ok
     if not schema_ok:
         blocking_checks.append(f"schema_mismatch:{key}")
     if not plan_match:
         blocking_checks.append(f"plan_mismatch:{key}")
     if not gate_passed:
         blocking_checks.append(f"gate_not_passed:{key}")
-    return schema_ok and plan_match and gate_passed
+    return schema_ok and plan_match and gate_passed and provenance_ok
+
+
+def _check_output_provenance(
+    output: dict[str, Any],
+    *,
+    key: str,
+    plan_path: Path,
+    blocking_checks: list[str],
+) -> bool:
+    provenance = output.get("provenance")
+    if not isinstance(provenance, dict):
+        blocking_checks.append(f"missing_provenance:{key}")
+        return False
+    input_hashes = provenance.get("input_hashes")
+    if not isinstance(input_hashes, dict) or not input_hashes:
+        blocking_checks.append(f"missing_provenance_hash:{key}")
+        return False
+
+    provenance_ok = True
+    for reference, expected_digest in input_hashes.items():
+        if not isinstance(reference, str) or not isinstance(expected_digest, str):
+            blocking_checks.append(f"invalid_provenance_hash:{key}")
+            provenance_ok = False
+            continue
+        input_path = _resolve_related_path(plan_path, reference)
+        if not input_path.exists():
+            blocking_checks.append(f"missing_provenance_input:{key}")
+            provenance_ok = False
+            continue
+        if _file_sha256(input_path) != expected_digest:
+            blocking_checks.append(f"provenance_mismatch:{key}")
+            provenance_ok = False
+    return provenance_ok
 
 
 def _evaluate_multi_seed_rows(
@@ -892,6 +941,25 @@ def _load_json(path: Path) -> dict[str, Any]:
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
+
+
+def _input_provenance(path: Path | None, display_path: str | None) -> dict[str, Any]:
+    provenance: dict[str, Any] = {
+        "source": "startup_yc_operator_validation_v1",
+        "input_hashes": {},
+        "missing_inputs": [],
+    }
+    if path is None or display_path is None:
+        return provenance
+    if not path.exists():
+        provenance["missing_inputs"] = [display_path]
+        return provenance
+    provenance["input_hashes"] = {display_path: _file_sha256(path)}
+    return provenance
+
+
+def _file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def _resolve_related_path(base_path: Path, related_path: str) -> Path:

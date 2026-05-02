@@ -40,6 +40,8 @@ Spawner, Canvas, and Kanban; it must not replace the underlying canonical
 packets.
 
 The Startup YC gate-check and validation-suite schemas anchor the blocked
-promotion workflow. They intentionally require `network_absorbable=false`;
-passing the schema means the packet shape is compatible, not that Startup YC is
-approved for network absorption.
+promotion workflow. Individual gate-check outputs include raw-evidence
+provenance hashes so promotion bundles can reject stale saved evidence. These
+schemas intentionally require `network_absorbable=false`; passing the schema
+means the packet shape is compatible, not that Startup YC is approved for
+network absorption.

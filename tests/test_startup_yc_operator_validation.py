@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import subprocess
 import sys
 from pathlib import Path
@@ -408,23 +409,31 @@ def test_startup_yc_promotion_evidence_check_passes_only_evidence_support(
     tmp_path: Path,
 ) -> None:
     plan_path = FIXTURE_DIR / "validation_plan.json"
+    (
+        multi_seed_evidence_path,
+        heldout_evidence_path,
+        review_gate_evidence_path,
+    ) = _write_raw_validation_evidence(tmp_path)
     multi_seed_output_path = _write_gate_output(
         tmp_path / "multi-seed.json",
         "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
         plan_path,
         gate_passed=True,
+        evidence_path=multi_seed_evidence_path,
     )
     heldout_output_path = _write_gate_output(
         tmp_path / "heldout.json",
         "adaptive_creator_loop.startup_yc_heldout_check.v1",
         plan_path,
         gate_passed=True,
+        evidence_path=heldout_evidence_path,
     )
     review_output_path = _write_gate_output(
         tmp_path / "review-gates.json",
         "adaptive_creator_loop.startup_yc_review_gates_check.v1",
         plan_path,
         gate_passed=True,
+        evidence_path=review_gate_evidence_path,
         gate_status={
             "human_operator_calibration": True,
             "privacy_review": True,
@@ -458,6 +467,71 @@ def test_startup_yc_promotion_evidence_check_passes_only_evidence_support(
     assert result["missing_gates"] == []
     assert result["blocking_checks"] == []
     assert all(result["gate_support"].values())
+
+
+def test_startup_yc_promotion_evidence_blocks_stale_gate_provenance(
+    tmp_path: Path,
+) -> None:
+    plan_path = FIXTURE_DIR / "validation_plan.json"
+    (
+        multi_seed_evidence_path,
+        heldout_evidence_path,
+        review_gate_evidence_path,
+    ) = _write_raw_validation_evidence(tmp_path)
+    multi_seed_output_path = _write_gate_output(
+        tmp_path / "multi-seed.json",
+        "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
+        plan_path,
+        gate_passed=True,
+        evidence_path=multi_seed_evidence_path,
+    )
+    heldout_output_path = _write_gate_output(
+        tmp_path / "heldout.json",
+        "adaptive_creator_loop.startup_yc_heldout_check.v1",
+        plan_path,
+        gate_passed=True,
+        evidence_path=heldout_evidence_path,
+    )
+    review_output_path = _write_gate_output(
+        tmp_path / "review-gates.json",
+        "adaptive_creator_loop.startup_yc_review_gates_check.v1",
+        plan_path,
+        gate_passed=True,
+        evidence_path=review_gate_evidence_path,
+        gate_status={
+            "human_operator_calibration": True,
+            "privacy_review": True,
+            "rollback_review": True,
+            "publication_approval": True,
+        },
+    )
+    bundle_path = tmp_path / "promotion-evidence-bundle.json"
+    bundle_path.write_text(
+        json.dumps(
+            {
+                "checks": {
+                    "multi_seed_validation": str(multi_seed_output_path),
+                    "held_out_founder_advice_pass": str(heldout_output_path),
+                    "review_gates": str(review_output_path),
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    multi_seed_evidence_path.write_text(
+        json.dumps({"rows": []}, indent=2),
+        encoding="utf-8",
+    )
+
+    result = check_startup_yc_promotion_evidence(
+        plan_path,
+        evidence_bundle_path=bundle_path,
+    )
+
+    assert result["verdict"] == "blocked"
+    assert "provenance_mismatch:multi_seed_validation" in result["blocking_checks"]
+    assert result["gate_support"]["multi_seed_validation"] is False
 
 
 def test_startup_yc_promotion_evidence_check_blocks_stale_plan_output(
@@ -569,18 +643,21 @@ def test_startup_yc_gate_check_schema_blocks_network_absorption(
         "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
         plan_path,
         gate_passed=True,
+        evidence_path=multi_seed_evidence_path,
     )
     heldout_path = _write_gate_output(
         tmp_path / "heldout.json",
         "adaptive_creator_loop.startup_yc_heldout_check.v1",
         plan_path,
         gate_passed=True,
+        evidence_path=heldout_evidence_path,
     )
     review_path = _write_gate_output(
         tmp_path / "review-gates.json",
         "adaptive_creator_loop.startup_yc_review_gates_check.v1",
         plan_path,
         gate_passed=True,
+        evidence_path=review_gate_evidence_path,
         gate_status={
             "human_operator_calibration": True,
             "privacy_review": True,
@@ -648,18 +725,21 @@ def test_startup_yc_validation_suite_keeps_final_promotion_blocked(
         "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
         plan_path,
         gate_passed=True,
+        evidence_path=multi_seed_evidence_path,
     )
     heldout_path = _write_gate_output(
         tmp_path / "heldout.json",
         "adaptive_creator_loop.startup_yc_heldout_check.v1",
         plan_path,
         gate_passed=True,
+        evidence_path=heldout_evidence_path,
     )
     review_path = _write_gate_output(
         tmp_path / "review-gates.json",
         "adaptive_creator_loop.startup_yc_review_gates_check.v1",
         plan_path,
         gate_passed=True,
+        evidence_path=review_gate_evidence_path,
         gate_status={
             "human_operator_calibration": True,
             "privacy_review": True,
@@ -884,6 +964,7 @@ def _write_gate_output(
     plan_path: Path,
     *,
     gate_passed: bool,
+    evidence_path: Path | None = None,
     gate_status: dict[str, bool] | None = None,
 ) -> Path:
     payload: dict[str, object] = {
@@ -892,6 +973,17 @@ def _write_gate_output(
         "gate_passed": gate_passed,
         "network_absorbable": False,
     }
+    if evidence_path is not None:
+        payload["evidence_path"] = str(evidence_path)
+        payload["provenance"] = {
+            "source": "startup_yc_operator_validation_v1",
+            "input_hashes": {
+                str(evidence_path): hashlib.sha256(
+                    evidence_path.read_bytes()
+                ).hexdigest()
+            },
+            "missing_inputs": [],
+        }
     if gate_status is not None:
         payload["gate_status"] = gate_status
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")

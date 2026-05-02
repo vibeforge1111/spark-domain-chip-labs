@@ -95,6 +95,9 @@
 - `startup-yc-gate-check-result.schema.json` now anchors individual Startup YC
   gate-check outputs and rejects any gate packet claiming
   `network_absorbable=true`.
+- Startup YC gate-check outputs now include raw-evidence input hashes, and
+  promotion evidence bundles block when saved gate outputs are stale against
+  their source evidence files.
 
 ## Current Claim Boundary
 
@@ -116,4 +119,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `126 passed`.
+Latest focused creator-system suite result before CI push: `127 passed`.
