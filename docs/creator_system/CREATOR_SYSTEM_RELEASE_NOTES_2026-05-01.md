@@ -173,6 +173,9 @@
 - `creator-run-smoke` output now includes `evidence_mode` (`saved` or
   `recomputed`), and tool-operation checks reject `--recompute` command packets
   whose parsed smoke result still claims saved evidence.
+- `creator-mission-status` now carries smoke `evidence_mode` into canonical,
+  Builder, and Telegram read-only views so product surfaces can distinguish
+  saved evidence from recomputed evidence without parsing raw smoke packets.
 - Creator-system CI now writes the strict Startup YC smoke packet and validates
   it against `smoke-result.schema.json`, including the saved evidence-mode
   boundary.

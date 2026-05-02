@@ -68,6 +68,7 @@ def test_creator_mission_status_emits_read_only_surface_adapters() -> None:
     assert status["read_only"] is True
     assert status["canonical"]["verdict"] == "ready_for_swarm_packet"
     assert status["canonical"]["stage_status"] == "review_required"
+    assert status["canonical"]["evidence_mode"] == "saved"
     assert status["publication"]["network_absorbable"] is False
     assert status["publication"]["swarm_shared_allowed"] is False
     assert set(status["surface_adapters"]) == {
@@ -78,6 +79,8 @@ def test_creator_mission_status_emits_read_only_surface_adapters() -> None:
         "kanban",
     }
     assert status["surface_adapters"]["builder"]["may_mutate_state"] is False
+    assert status["surface_adapters"]["builder"]["evidence_mode"] == "saved"
+    assert "Evidence mode: `saved`." in status["surface_adapters"]["telegram"]["text"]
     assert status["surface_adapters"]["spawner"]["may_execute"] is False
     assert status["surface_adapters"]["canvas"]["may_edit_artifacts"] is False
     assert status["surface_adapters"]["kanban"]["may_change_verdict"] is False
@@ -271,10 +274,13 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     assert saved["canonical"]["verdict"] == "ready_for_swarm_packet"
     assert saved["canonical"]["stage_status"] == "review_required"
     assert saved["canonical"]["evidence_tier"] == "transfer_supported"
+    assert saved["canonical"]["evidence_mode"] == "saved"
     assert saved["publication"]["publish_mode"] == "swarm_shared"
     assert saved["publication"]["swarm_shared_allowed"] is False
     assert saved["publication"]["network_absorbable"] is False
     assert saved["surface_adapters"]["builder"]["may_mutate_state"] is False
+    assert saved["surface_adapters"]["builder"]["evidence_mode"] == "saved"
+    assert "Evidence mode: `saved`." in saved["surface_adapters"]["telegram"]["text"]
     assert saved["surface_adapters"]["telegram"]["may_request_secret_paste"] is False
     assert saved["surface_adapters"]["spawner"]["may_execute"] is False
     assert saved["surface_adapters"]["canvas"]["may_edit_artifacts"] is False

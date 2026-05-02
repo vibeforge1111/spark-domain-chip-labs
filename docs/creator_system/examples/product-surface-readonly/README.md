@@ -22,6 +22,8 @@ surfaces keep publication blockers visible. It remains read-only:
 
 - `canonical.verdict` is `ready_for_swarm_packet`.
 - `canonical.evidence_tier` is `transfer_supported`.
+- `canonical.evidence_mode` is `saved`, and Builder/Telegram read-only views
+  expose that same saved-evidence boundary.
 - `canonical.stage_status` is `review_required`.
 - `source_packets.tool_operation` references a parsed postcondition check for a
   safe local `creator-run-smoke` command.

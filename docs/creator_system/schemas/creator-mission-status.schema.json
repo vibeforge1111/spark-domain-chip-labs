@@ -39,6 +39,7 @@
         "verdict",
         "stage_status",
         "evidence_tier",
+        "evidence_mode",
         "automation_blocked",
         "blocking_checks",
         "warning_checks",
@@ -54,6 +55,9 @@
         },
         "evidence_tier": {
           "enum": ["local_only", "candidate_review", "transfer_supported"]
+        },
+        "evidence_mode": {
+          "enum": ["saved", "recomputed"]
         },
         "automation_blocked": {
           "type": "boolean"
@@ -168,11 +172,18 @@
       "properties": {
         "builder": {
           "type": "object",
-          "required": ["packet_kind", "mission_id", "read_only", "may_mutate_state"],
+          "required": [
+            "packet_kind",
+            "mission_id",
+            "read_only",
+            "evidence_mode",
+            "may_mutate_state"
+          ],
           "properties": {
             "packet_kind": {"const": "builder_creator_readonly_handoff"},
             "mission_id": {"type": "string"},
             "read_only": {"const": true},
+            "evidence_mode": {"enum": ["saved", "recomputed"]},
             "may_mutate_state": {"const": false}
           }
         },

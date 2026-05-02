@@ -7,6 +7,7 @@
     "verdict": "ready_for_swarm_packet",
     "stage_status": "review_required",
     "evidence_tier": "transfer_supported",
+    "evidence_mode": "saved",
     "automation_blocked": false,
     "blocking_checks": [],
     "warning_checks": [],
@@ -136,6 +137,7 @@
       "verdict": "ready_for_swarm_packet",
       "stage_status": "review_required",
       "evidence_tier": "transfer_supported",
+      "evidence_mode": "saved",
       "blocking_checks": [],
       "missing_paths": [],
       "recommended_next_command": "Review provenance, privacy, rollback, and claim boundaries before publication.",
@@ -144,7 +146,7 @@
     "telegram": {
       "packet_kind": "telegram_creator_status_summary",
       "mission_id": "startup-yc-product-readonly",
-      "text": "Creator mission `startup-yc-product-readonly` is `review_required`. Canonical verdict: `ready_for_swarm_packet`. Evidence tier: `transfer_supported`. Blocked by: publication_gate Network absorption is not approved.",
+      "text": "Creator mission `startup-yc-product-readonly` is `review_required`. Canonical verdict: `ready_for_swarm_packet`. Evidence tier: `transfer_supported`. Evidence mode: `saved`. Blocked by: publication_gate Network absorption is not approved.",
       "show_publication_warning": true,
       "may_request_secret_paste": false
     },

@@ -66,6 +66,7 @@ def build_creator_mission_status(
     ]
     smoke_verdict = str(smoke.get("verdict") or "unknown")
     evidence_tier = str(smoke.get("evidence_tier") or "prototype")
+    evidence_mode = str(smoke.get("evidence_mode") or "saved")
     stage_status = _stage_status(smoke_verdict, bool(blocking_sources))
     publication = _publication_gate(
         publish_mode=publish_mode,
@@ -83,6 +84,7 @@ def build_creator_mission_status(
             "verdict": smoke_verdict,
             "stage_status": stage_status,
             "evidence_tier": evidence_tier,
+            "evidence_mode": evidence_mode,
             "automation_blocked": bool(_nested(smoke, "automation", "blocked")),
             "blocking_checks": list(smoke.get("blocking_checks") or []),
             "warning_checks": list(smoke.get("warning_checks") or []),
@@ -261,6 +263,7 @@ def _surface_adapters(mission: dict[str, Any]) -> dict[str, Any]:
             "verdict": canonical["verdict"],
             "stage_status": canonical["stage_status"],
             "evidence_tier": canonical["evidence_tier"],
+            "evidence_mode": canonical["evidence_mode"],
             "blocking_checks": canonical["blocking_checks"],
             "missing_paths": canonical["missing_paths"],
             "recommended_next_command": canonical["recommended_next_command"],
@@ -303,6 +306,7 @@ def _telegram_text(mission: dict[str, Any]) -> str:
         f"Creator mission `{mission['mission_id']}` is `{canonical['stage_status']}`.",
         f"Canonical verdict: `{canonical['verdict']}`.",
         f"Evidence tier: `{canonical['evidence_tier']}`.",
+        f"Evidence mode: `{canonical['evidence_mode']}`.",
     ]
     if mission["blockers"]:
         parts.append("Blocked by: " + ", ".join(blocker["source"] for blocker in mission["blockers"]))
