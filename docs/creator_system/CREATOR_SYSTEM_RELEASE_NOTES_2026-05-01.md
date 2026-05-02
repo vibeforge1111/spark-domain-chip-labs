@@ -57,6 +57,9 @@
 - `creator-run-smoke --recompute` now compares Startup YC broad-transfer
   aggregates and scenario rows to the external selector report when that source
   report is locally available.
+- `creator-run-smoke --recompute` now compares Startup YC Swarm packet evidence
+  and publication-boundary fields to the recomputed report bundle; full
+  recompute still blocks until report provenance packets exist.
 
 ## Current Claim Boundary
 

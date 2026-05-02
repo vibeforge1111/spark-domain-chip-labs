@@ -401,6 +401,7 @@ def create_swarm_contribution_packet_from_reports(
                 "reports/baseline.json",
                 "reports/candidate.json",
                 "reports/absorption_summary.json",
+                "reports/evidence_ladder.md",
             ],
         },
         "governance": {

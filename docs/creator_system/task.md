@@ -493,7 +493,10 @@ Completed documentation/verification:
   repo is present.
 - `creator-run-smoke --recompute` now checks Startup YC broad-transfer aggregate
   values and scenario rows against the external selector report when the sibling
-  source repo is present; Swarm packet regeneration remains future work.
+  source repo is present.
+- `creator-run-smoke --recompute` now checks Startup YC Swarm packet evidence,
+  transfer fields, report paths, and network-publication blockers against the
+  recomputed report bundle; report provenance packets remain future work.
 
 Completed product PR verification:
 

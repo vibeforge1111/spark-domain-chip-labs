@@ -485,8 +485,12 @@ def _align_swarm_packet_with_artifact_quality_reports(
     evidence = packet["evidence"]
     baseline = benchmark_result["baseline"]
     candidate = benchmark_result["candidate"]
+    absorption = benchmark_result["absorption"]
     evidence["baseline_score"] = baseline["mean_score"]
     evidence["candidate_score"] = candidate["mean_score"]
     evidence["mean_delta"] = candidate["mean_delta"]
     evidence["trap_regressions"] = candidate["trap_regressions"]
+    evidence["fresh_agent_absorption_delta"] = absorption[
+        "mean_validated_pack_delta"
+    ]
     packet_path.write_text(json.dumps(packet, indent=2) + "\n", encoding="utf-8")

@@ -203,7 +203,9 @@ source selector report and compares baseline/candidate/absorption summaries to
 the source absorption proof report when `specialization-path-startup-yc` is
 available next to this repo. It also compares `reports/broad_transfer_probe.json`
 to selector-report scenario rows. Full Startup YC recompute remains blocked
-until Swarm packet regeneration and provenance packets exist.
+until baseline, candidate, and absorption provenance packets exist. Swarm packet
+evidence and publication-boundary comparison is already checked in recompute
+mode.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style

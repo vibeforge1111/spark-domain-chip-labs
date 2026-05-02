@@ -252,8 +252,10 @@ Swarm packet regeneration adapters defined in
 `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.
 The Startup Bench transfer, absorption, and broad-transfer comparisons are
 implemented as partial recompute checks, but `creator-run-smoke --recompute`
-still blocks the fixture until the remaining adapters provide full provenance
-and Swarm packet regeneration.
+still blocks the fixture until the remaining adapters provide full report
+provenance. Swarm packet evidence, transfer fields, report paths, and
+network-publication boundaries are already compared against the recomputed
+report bundle.
 
 ## Ship Gate For V1
 

@@ -1939,6 +1939,7 @@ def _check_recomputed_evidence(run_path: Path, checks: list[SmokeCheck]) -> None
         _check_report_provenance(run_path, relative_path, report, checks)
 
     _check_external_absorption_recompute(run_path, reports, checks)
+    _check_external_swarm_packet_recompute(run_path, reports, checks)
 
     provenance_sources = {
         str(_nested(report, "provenance", "source"))
@@ -2492,6 +2493,150 @@ def _check_external_transfer_recompute(
                 "fail",
                 "External transfer source report or saved transfer summary has failing constraints.",
             )
+    )
+
+
+def _check_external_swarm_packet_recompute(
+    run_path: Path,
+    reports: dict[str, dict[str, Any]],
+    checks: list[SmokeCheck],
+) -> None:
+    packet_path = run_path / "swarm" / "contribution_packet.json"
+    if not packet_path.exists():
+        return
+    try:
+        packet = load_json(packet_path)
+    except ValueError as exc:
+        checks.append(SmokeCheck("external_recompute_swarm_packet", "fail", str(exc)))
+        return
+
+    baseline = reports["reports/baseline.json"]
+    candidate = reports["reports/candidate.json"]
+    absorption = reports["reports/absorption_summary.json"]
+    transfer_path = run_path / "reports" / "transfer_summary.json"
+    transfer: dict[str, Any] = {}
+    if transfer_path.exists():
+        try:
+            transfer = load_json(transfer_path)
+        except ValueError as exc:
+            checks.append(
+                SmokeCheck("external_recompute_swarm_transfer", "fail", str(exc))
+            )
+
+    _check_nested_number_matches(
+        packet,
+        ("evidence", "baseline_score"),
+        _coerce_number(baseline.get("mean_score")),
+        "external_recompute_swarm_baseline_score",
+        checks,
+    )
+    _check_nested_number_matches(
+        packet,
+        ("evidence", "candidate_score"),
+        _coerce_number(candidate.get("mean_score")),
+        "external_recompute_swarm_candidate_score",
+        checks,
+    )
+    _check_nested_number_matches(
+        packet,
+        ("evidence", "mean_delta"),
+        _coerce_number(candidate.get("mean_delta")),
+        "external_recompute_swarm_mean_delta",
+        checks,
+    )
+    _check_nested_number_matches(
+        packet,
+        ("evidence", "fresh_agent_absorption_delta"),
+        _coerce_number(absorption.get("mean_validated_pack_delta")),
+        "external_recompute_swarm_absorption_delta",
+        checks,
+    )
+
+    if transfer:
+        transfer_fields = (
+            ("scenario_count", "external_recompute_swarm_transfer_scenario_count"),
+            ("baseline_score", "external_recompute_swarm_transfer_baseline_score"),
+            ("transfer_score", "external_recompute_swarm_transfer_score"),
+            ("delta", "external_recompute_swarm_transfer_delta"),
+            ("min_delta", "external_recompute_swarm_transfer_min_delta"),
+            ("max_delta", "external_recompute_swarm_transfer_max_delta"),
+        )
+        for field, check_name in transfer_fields:
+            _check_nested_number_matches(
+                packet,
+                ("evidence", "simulator_or_arena_result", field),
+                _coerce_number(transfer.get(field)),
+                check_name,
+                checks,
+            )
+        saved_constraints = _nested(
+            packet, "evidence", "simulator_or_arena_result", "constraints_passed"
+        )
+        if saved_constraints is True and transfer.get("constraints_passed") is True:
+            checks.append(
+                SmokeCheck(
+                    "external_recompute_swarm_transfer_constraints",
+                    "pass",
+                    "Swarm packet transfer constraints match transfer report.",
+                )
+            )
+        else:
+            checks.append(
+                SmokeCheck(
+                    "external_recompute_swarm_transfer_constraints",
+                    "fail",
+                    "Swarm packet transfer constraints must match transfer report.",
+                )
+            )
+
+    report_paths = _nested(packet, "evidence", "report_paths")
+    candidate_report_paths = {
+        "reports/baseline.json",
+        "reports/candidate.json",
+        "reports/absorption_summary.json",
+        "reports/evidence_ladder.md",
+        "reports/transfer_summary.json",
+        "reports/broad_transfer_probe.json",
+    }
+    required_report_paths = {
+        relative_path
+        for relative_path in candidate_report_paths
+        if (run_path / relative_path).exists()
+    }
+    if isinstance(report_paths, list) and required_report_paths.issubset(
+        {str(path) for path in report_paths}
+    ):
+        checks.append(
+            SmokeCheck(
+                "external_recompute_swarm_report_paths",
+                "pass",
+                "Swarm packet report paths cover the recomputed report bundle.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_swarm_report_paths",
+                "fail",
+                "Swarm packet report paths must cover the recomputed report bundle.",
+            )
+        )
+
+    if _nested(packet, "governance", "network_publication_allowed") is False:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_swarm_publication_boundary",
+                "pass",
+                "Swarm packet keeps network publication disabled.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_swarm_publication_boundary",
+                "fail",
+                "Swarm packet must keep network publication disabled for Startup YC.",
+            )
         )
 
 
@@ -2833,6 +2978,42 @@ def _check_broad_transfer_rows(
                 "external_recompute_broad_transfer_rows",
                 "pass",
                 f"External broad-transfer source rows match {len(saved_rows)} saved scenario row(s).",
+            )
+        )
+
+
+def _check_nested_number_matches(
+    data: dict[str, Any],
+    keys: tuple[str, ...],
+    expected: float | None,
+    check_name: str,
+    checks: list[SmokeCheck],
+) -> None:
+    if expected is None:
+        checks.append(
+            SmokeCheck(check_name, "fail", "Expected recomputed value is missing.")
+        )
+        return
+    actual = _coerce_number(_nested(data, *keys))
+    path = ".".join(keys)
+    if actual is None:
+        checks.append(
+            SmokeCheck(check_name, "fail", f"Packet is missing numeric {path}.")
+        )
+    elif abs(actual - expected) <= 0.0001:
+        checks.append(
+            SmokeCheck(
+                check_name,
+                "pass",
+                f"Packet {path} matches recomputed value {expected:.4f}.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                check_name,
+                "fail",
+                f"Packet {path} {actual:.4f} does not match recomputed value {expected:.4f}.",
             )
         )
 

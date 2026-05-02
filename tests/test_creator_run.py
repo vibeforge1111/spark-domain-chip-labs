@@ -652,6 +652,50 @@ def test_recompute_blocks_stale_external_startup_yc_broad_transfer_source(
     )
 
 
+def test_recompute_checks_external_startup_yc_swarm_packet(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    _write_transfer_report(run_dir)
+    _write_broad_transfer_probe(run_dir)
+    _write_complete_swarm_packet_evidence(run_dir)
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert any(
+        check.name == "external_recompute_swarm_mean_delta"
+        and check.status == "pass"
+        for check in smoke.checks
+    )
+    assert any(
+        check.name == "external_recompute_swarm_publication_boundary"
+        and check.status == "pass"
+        for check in smoke.checks
+    )
+
+
+def test_recompute_blocks_stale_external_startup_yc_swarm_packet(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    _write_transfer_report(run_dir)
+    _write_broad_transfer_probe(run_dir)
+    _write_complete_swarm_packet_evidence(run_dir)
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    packet["evidence"]["candidate_score"] = 0.99
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "external_recompute_swarm_candidate_score"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_network_absorbable_blocks_negative_broad_probe(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path, evidence_tier="network_absorbable")
     _write_transfer_report(run_dir)
@@ -786,6 +830,52 @@ def _write_transfer_report(
         "scenario_count": 1,
         "delta": delta,
     }
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+
+def _write_complete_swarm_packet_evidence(run_dir: Path) -> None:
+    baseline = json.loads(
+        (run_dir / "reports" / "baseline.json").read_text(encoding="utf-8")
+    )
+    candidate = json.loads(
+        (run_dir / "reports" / "candidate.json").read_text(encoding="utf-8")
+    )
+    absorption = json.loads(
+        (run_dir / "reports" / "absorption_summary.json").read_text(encoding="utf-8")
+    )
+    transfer = json.loads(
+        (run_dir / "reports" / "transfer_summary.json").read_text(encoding="utf-8")
+    )
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    packet["evidence"].update(
+        {
+            "baseline_score": baseline["mean_score"],
+            "candidate_score": candidate["mean_score"],
+            "mean_delta": candidate["mean_delta"],
+            "fresh_agent_absorption_delta": absorption[
+                "mean_validated_pack_delta"
+            ],
+            "simulator_or_arena_result": {
+                "scenario_count": transfer["scenario_count"],
+                "baseline_score": transfer["baseline_score"],
+                "transfer_score": transfer["transfer_score"],
+                "delta": transfer["delta"],
+                "min_delta": transfer["min_delta"],
+                "max_delta": transfer["max_delta"],
+                "constraints_passed": transfer["constraints_passed"],
+            },
+            "report_paths": [
+                "reports/baseline.json",
+                "reports/candidate.json",
+                "reports/absorption_summary.json",
+                "reports/evidence_ladder.md",
+                "reports/transfer_summary.json",
+                "reports/broad_transfer_probe.json",
+            ],
+        }
+    )
+    packet["governance"]["network_publication_allowed"] = False
     packet_path.write_text(json.dumps(packet), encoding="utf-8")
 
 

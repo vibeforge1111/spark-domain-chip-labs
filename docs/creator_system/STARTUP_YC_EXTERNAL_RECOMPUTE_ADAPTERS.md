@@ -35,11 +35,14 @@ Supported today:
 - Partial external recompute for Startup YC broad-transfer probes when the
   `specialization-path-startup-yc` selector report is available next to this
   repo.
+- Partial Swarm packet regeneration checks that compare packet evidence,
+  transfer fields, report paths, and network-publication governance against the
+  recomputed report bundle.
 
 Not supported yet:
 
-- Regenerating the Startup YC Swarm contribution packet from fresh external
-  reports.
+- Passing full recompute without provenance packets for baseline, candidate, and
+  absorption reports.
 - Claiming `network_absorbable`.
 
 ## Adapter Matrix
@@ -49,7 +52,7 @@ Not supported yet:
 | Startup Bench transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/transfer_summary.json` plus scenario rows | implemented for scenario count, baseline score, transfer score, mean delta, min delta, max delta, and constraints |
 | Specialization-path absorption adapter | `specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json` | `reports/baseline.json`, `reports/candidate.json`, `reports/absorption_summary.json` | implemented for baseline mean/pass rate/case count, candidate mean/delta/pass rate/case buckets, absorption delta, trap count, and mode integrity |
 | Broad transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/broad_transfer_probe.json` with per-scenario rows | implemented for aggregate scores, scenario buckets, constraints, and row-level scenario results |
-| Swarm packet regeneration adapter | Fresh baseline, candidate, absorption, and transfer reports | `swarm/contribution_packet.json` | evidence tier, transfer summary, rollback policy, publication blockers |
+| Swarm packet regeneration adapter | Fresh baseline, candidate, absorption, and transfer reports | `swarm/contribution_packet.json` | implemented for packet evidence scores/deltas, transfer fields, report paths, and network-publication blocker |
 
 ## Required Output Contract
 
@@ -112,10 +115,12 @@ Full external recompute is complete only when:
    proof-report comparison in `creator-run-smoke --recompute`.
 3. Add broad-transfer comparison with row-level checks. Done for selector-report
    comparison in `creator-run-smoke --recompute`.
-4. Regenerate the Swarm contribution packet from fresh reports.
+4. Compare the Swarm contribution packet to fresh reports.
+   Done for packet/report comparison in `creator-run-smoke --recompute`.
 5. Teach `creator-run-smoke --recompute` to select these adapters only when the
    external repos are explicitly available.
-6. Add doctor quarantine fixtures for stale external Startup YC evidence.
+6. Add provenance packets for baseline, candidate, and absorption reports.
+7. Add doctor quarantine fixtures for stale external Startup YC evidence.
 
 Until those steps pass, the curated Startup YC fixture remains strict
 saved-evidence proof with clear claim boundaries.
