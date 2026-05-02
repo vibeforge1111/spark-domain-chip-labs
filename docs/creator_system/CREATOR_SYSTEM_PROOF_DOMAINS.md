@@ -411,8 +411,8 @@ Current validation pack:
 Next real adapters:
 
 - Connect held-out founder-advice cases to a scoring harness.
-- Extend the partial external recompute adapters beyond Startup Bench transfer
-  and specialization-path absorption into broad transfer and Swarm packet
+- Extend the partial external recompute adapters beyond Startup Bench transfer,
+  specialization-path absorption, and broad transfer into Swarm packet
   regeneration as defined in
   `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.
 - Run multi-seed validation across GTM, Finance, Product, People, Board, and Scale.

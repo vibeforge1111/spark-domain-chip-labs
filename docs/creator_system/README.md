@@ -196,12 +196,14 @@ repos still need source-specific rerun adapters before they can claim full
 external recompute. The Startup YC adapter boundary is tracked in
 `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.
 
-Startup YC transfer and absorption summaries have partial external checks:
+Startup YC transfer, absorption, and broad-transfer summaries have partial
+external checks:
 `creator-run-smoke --recompute` compares `reports/transfer_summary.json` to the
 source selector report and compares baseline/candidate/absorption summaries to
 the source absorption proof report when `specialization-path-startup-yc` is
-available next to this repo. Full Startup YC recompute remains blocked until
-broad-transfer and Swarm packet regeneration adapters exist.
+available next to this repo. It also compares `reports/broad_transfer_probe.json`
+to selector-report scenario rows. Full Startup YC recompute remains blocked
+until Swarm packet regeneration and provenance packets exist.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style

@@ -611,6 +611,47 @@ def test_recompute_blocks_stale_external_startup_yc_absorption_source(
     )
 
 
+def test_recompute_checks_external_startup_yc_broad_transfer_source(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "adapter_selector_report.json"
+    _write_external_selector_report(source_report, delta=0.02, scenario_id="case_0")
+    _write_transfer_report(run_dir, selector_report=source_report)
+    _write_broad_transfer_probe(run_dir, delta=0.02, scenario_count=1)
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert any(
+        check.name == "external_recompute_broad_transfer_rows"
+        and check.status == "pass"
+        for check in smoke.checks
+    )
+    assert any(
+        check.name == "recompute_provenance_source" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_recompute_blocks_stale_external_startup_yc_broad_transfer_source(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "adapter_selector_report.json"
+    _write_external_selector_report(source_report, delta=0.02, scenario_id="case_0")
+    _write_transfer_report(run_dir, selector_report=source_report)
+    _write_broad_transfer_probe(run_dir, delta=0.03, scenario_count=1)
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "external_recompute_broad_transfer_delta"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_network_absorbable_blocks_negative_broad_probe(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path, evidence_tier="network_absorbable")
     _write_transfer_report(run_dir)
@@ -748,7 +789,9 @@ def _write_transfer_report(
     packet_path.write_text(json.dumps(packet), encoding="utf-8")
 
 
-def _write_external_selector_report(path: Path, delta: float) -> None:
+def _write_external_selector_report(
+    path: Path, delta: float, scenario_id: str = "external_case"
+) -> None:
     path.write_text(
         json.dumps(
             {
@@ -764,6 +807,12 @@ def _write_external_selector_report(path: Path, delta: float) -> None:
                 "results": [
                     {
                         "status": "ok",
+                        "selection": {
+                            "scenario": {
+                                "scenario_id": scenario_id,
+                                "track": "gtm",
+                            }
+                        },
                         "runs": {
                             "candidate": {
                                 "score": {
@@ -849,6 +898,7 @@ def _write_broad_transfer_probe(
     delta: float = 0.03,
     min_delta: float | None = None,
     negative_scenarios: int | None = None,
+    scenario_count: int = 10,
 ) -> None:
     baseline_score = 0.62
     transfer_score = baseline_score + delta
@@ -862,7 +912,7 @@ def _write_broad_transfer_probe(
         json.dumps(
             {
                 "source": "startup-bench",
-                "scenario_count": 10,
+                "scenario_count": scenario_count,
                 "baseline_score": baseline_score,
                 "transfer_score": transfer_score,
                 "delta": delta,
@@ -873,8 +923,16 @@ def _write_broad_transfer_probe(
                     "broad_transfer_supported" if delta > 0 else "defer_broad_transfer"
                 ),
                 "scenario_results": [
-                    {"scenario_id": f"case_{index}", "delta": resolved_min_delta}
-                    for index in range(10)
+                    {
+                        "scenario_id": f"case_{index}",
+                        "track": "gtm",
+                        "startup_yc_score": baseline_score + resolved_min_delta,
+                        "baseline_score": baseline_score,
+                        "delta": resolved_min_delta,
+                        "startup_yc_pass_rate": 1,
+                        "baseline_pass_rate": 1,
+                    }
+                    for index in range(scenario_count)
                 ],
             }
         ),

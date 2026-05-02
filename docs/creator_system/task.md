@@ -490,8 +490,10 @@ Completed documentation/verification:
 - `creator-run-smoke --recompute` now checks Startup YC transfer summaries
   against the external selector report and baseline/candidate/absorption
   summaries against the external absorption proof report when the sibling source
-  repo is present; broad-transfer and Swarm packet regeneration adapters remain
-  future work.
+  repo is present.
+- `creator-run-smoke --recompute` now checks Startup YC broad-transfer aggregate
+  values and scenario rows against the external selector report when the sibling
+  source repo is present; Swarm packet regeneration remains future work.
 
 Completed product PR verification:
 

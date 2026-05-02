@@ -62,9 +62,10 @@ python -m chip_labs.cli creator-run-smoke runs/<run-name> --recompute --fail-on-
 For curated fixtures that reference external source repos, full recompute also
 requires source-specific rerun adapters. The Startup YC adapter contract is
 tracked in `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.
-The first partial Startup YC external checks compare transfer summaries against
-the `specialization-path-startup-yc` selector report and absorption summaries
-against the source proof report when that source repo is available.
+The first partial Startup YC external checks compare transfer summaries and
+broad-transfer rows against the `specialization-path-startup-yc` selector report,
+and absorption summaries against the source proof report when that source repo
+is available.
 
 ## Smoke Result Contract
 
@@ -249,10 +250,10 @@ The fixture is strict saved-evidence proof today. Full external recompute needs
 the Startup Bench transfer, specialization-path absorption, broad-transfer, and
 Swarm packet regeneration adapters defined in
 `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.
-The Startup Bench transfer and absorption comparisons are implemented as partial
-recompute checks, but `creator-run-smoke --recompute` still blocks the fixture
-until the remaining source-report adapters provide full provenance and Swarm
-packet regeneration.
+The Startup Bench transfer, absorption, and broad-transfer comparisons are
+implemented as partial recompute checks, but `creator-run-smoke --recompute`
+still blocks the fixture until the remaining adapters provide full provenance
+and Swarm packet regeneration.
 
 ## Ship Gate For V1
 

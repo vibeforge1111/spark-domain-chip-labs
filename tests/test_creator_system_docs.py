@@ -103,6 +103,7 @@ def test_startup_yc_external_recompute_adapter_contract_blocks_stronger_claims()
         "creator-run-smoke --recompute --fail-on-blocked",
         "creator-run-doctor --recompute",
         "implemented for baseline mean",
+        "implemented for aggregate scores",
         "not `network_absorbable`",
         "multi-seed validation",
         "publication approval",

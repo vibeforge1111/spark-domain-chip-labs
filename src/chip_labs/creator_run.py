@@ -1919,6 +1919,7 @@ def _nested(data: dict[str, Any], *keys: str) -> Any:
 
 def _check_recomputed_evidence(run_path: Path, checks: list[SmokeCheck]) -> None:
     _check_external_transfer_recompute(run_path, checks)
+    _check_external_broad_transfer_recompute(run_path, checks)
 
     report_paths = (
         "reports/baseline.json",
@@ -2494,6 +2495,164 @@ def _check_external_transfer_recompute(
         )
 
 
+def _check_external_broad_transfer_recompute(
+    run_path: Path, checks: list[SmokeCheck]
+) -> None:
+    probe_path = run_path / "reports" / "broad_transfer_probe.json"
+    if not probe_path.exists():
+        return
+
+    try:
+        probe = load_json(probe_path)
+    except ValueError as exc:
+        checks.append(SmokeCheck("external_recompute_broad_transfer", "fail", str(exc)))
+        return
+
+    selector_report_ref = _nested(probe, "source_artifacts", "selector_report")
+    if not isinstance(selector_report_ref, str) or not selector_report_ref.strip():
+        try:
+            transfer = load_json(run_path / "reports" / "transfer_summary.json")
+        except (FileNotFoundError, ValueError):
+            transfer = {}
+        selector_report_ref = _nested(
+            transfer, "source_artifacts", "selector_report"
+        )
+    if not isinstance(selector_report_ref, str) or not selector_report_ref.strip():
+        return
+
+    selector_report_path = _resolve_external_artifact_path(
+        run_path, selector_report_ref
+    )
+    if selector_report_path is None:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_broad_transfer_source",
+                "fail",
+                f"External broad-transfer source report not found: {selector_report_ref}.",
+            )
+        )
+        return
+
+    try:
+        selector_report = load_json(selector_report_path)
+    except ValueError as exc:
+        checks.append(
+            SmokeCheck("external_recompute_broad_transfer_source", "fail", str(exc))
+        )
+        return
+
+    recomputed = _summarize_startup_yc_selector_report(selector_report)
+    if recomputed is None:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_broad_transfer_source",
+                "fail",
+                "Startup YC broad-transfer source report must include scored results.",
+            )
+        )
+        return
+
+    checks.append(
+        SmokeCheck(
+            "external_recompute_broad_transfer_source",
+            "pass",
+            f"Loaded external broad-transfer source report: {selector_report_path}.",
+        )
+    )
+    _check_report_number_matches(
+        probe,
+        "scenario_count",
+        recomputed["scenario_count"],
+        "external_recompute_broad_transfer_scenario_count",
+        checks,
+    )
+    _check_report_number_matches(
+        probe,
+        "baseline_score",
+        recomputed["baseline_score"],
+        "external_recompute_broad_transfer_baseline_score",
+        checks,
+    )
+    _check_report_number_matches(
+        probe,
+        "transfer_score",
+        recomputed["transfer_score"],
+        "external_recompute_broad_transfer_score",
+        checks,
+    )
+    _check_report_number_matches(
+        probe,
+        "delta",
+        recomputed["delta"],
+        "external_recompute_broad_transfer_delta",
+        checks,
+    )
+    _check_report_number_matches(
+        probe,
+        "min_delta",
+        recomputed["min_delta"],
+        "external_recompute_broad_transfer_min_delta",
+        checks,
+    )
+    _check_report_number_matches(
+        probe,
+        "max_delta",
+        recomputed["max_delta"],
+        "external_recompute_broad_transfer_max_delta",
+        checks,
+    )
+    _check_report_number_matches(
+        probe,
+        "positive_scenarios",
+        recomputed["positive_scenarios"],
+        "external_recompute_broad_transfer_positive_scenarios",
+        checks,
+    )
+    _check_report_number_matches(
+        probe,
+        "negative_scenarios",
+        recomputed["negative_scenarios"],
+        "external_recompute_broad_transfer_negative_scenarios",
+        checks,
+    )
+    _check_report_number_matches(
+        probe,
+        "flat_scenarios",
+        recomputed["flat_scenarios"],
+        "external_recompute_broad_transfer_flat_scenarios",
+        checks,
+    )
+    _check_report_number_matches(
+        probe,
+        "skipped_scenarios",
+        recomputed["skipped_scenarios"],
+        "external_recompute_broad_transfer_skipped_scenarios",
+        checks,
+    )
+
+    if probe.get("constraints_passed") is True and recomputed["constraints_passed"] is True:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_broad_transfer_constraints",
+                "pass",
+                "External broad-transfer source report confirms all rows passed constraints.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_broad_transfer_constraints",
+                "fail",
+                "External broad-transfer source report or saved probe has failing constraints.",
+            )
+        )
+    _check_broad_transfer_rows(
+        probe.get("scenario_results"),
+        recomputed["scenario_results"],
+        checks,
+    )
+
+
 def _resolve_external_artifact_path(run_path: Path, reference: str) -> Path | None:
     reference_path = Path(reference)
     run_base = run_path.resolve()
@@ -2522,7 +2681,7 @@ def _find_repo_root(start: Path) -> Path | None:
 
 def _summarize_startup_yc_selector_report(
     selector_report: dict[str, Any]
-) -> dict[str, float | bool] | None:
+) -> dict[str, Any] | None:
     results = selector_report.get("results")
     if not isinstance(results, list) or not results:
         return None
@@ -2530,10 +2689,15 @@ def _summarize_startup_yc_selector_report(
     baseline_scores: list[float] = []
     transfer_scores: list[float] = []
     deltas: list[float] = []
+    scenario_results: list[dict[str, Any]] = []
     constraints_passed = True
+    skipped_scenarios = 0
     for result in results:
         if not isinstance(result, dict):
             return None
+        if result.get("status") == "skipped":
+            skipped_scenarios += 1
+            continue
         baseline_score = _coerce_number(
             _nested(result, "runs", "baseline", "score", "scenario_score")
         )
@@ -2548,13 +2712,39 @@ def _summarize_startup_yc_selector_report(
         baseline_scores.append(baseline_score)
         transfer_scores.append(transfer_score)
         deltas.append(delta)
+        scenario = _nested(result, "selection", "scenario")
+        if not isinstance(scenario, dict):
+            scenario = {}
+        scenario_results.append(
+            {
+                "scenario_id": str(
+                    scenario.get("scenario_id") or result.get("scenario_id") or ""
+                ),
+                "track": str(scenario.get("track") or result.get("track") or ""),
+                "startup_yc_score": transfer_score,
+                "baseline_score": baseline_score,
+                "delta": delta,
+                "startup_yc_pass_rate": (
+                    1
+                    if _nested(result, "runs", "candidate", "score", "pass") is True
+                    else 0
+                ),
+                "baseline_pass_rate": (
+                    1
+                    if _nested(result, "runs", "baseline", "score", "pass") is True
+                    else 0
+                ),
+            }
+        )
         constraints_passed = constraints_passed and (
             _nested(result, "runs", "baseline", "score", "pass") is True
             and _nested(result, "runs", "candidate", "score", "pass") is True
             and result.get("status") == "ok"
         )
 
-    scenario_count = float(len(results))
+    if not deltas:
+        return None
+    scenario_count = float(len(deltas))
     return {
         "scenario_count": scenario_count,
         "baseline_score": sum(baseline_scores) / scenario_count,
@@ -2562,8 +2752,89 @@ def _summarize_startup_yc_selector_report(
         "delta": sum(deltas) / scenario_count,
         "min_delta": min(deltas),
         "max_delta": max(deltas),
+        "positive_scenarios": float(sum(1 for delta in deltas if delta > 0)),
+        "negative_scenarios": float(sum(1 for delta in deltas if delta < 0)),
+        "flat_scenarios": float(sum(1 for delta in deltas if delta == 0)),
+        "skipped_scenarios": float(skipped_scenarios),
+        "scenario_results": scenario_results,
         "constraints_passed": constraints_passed,
     }
+
+
+def _check_broad_transfer_rows(
+    saved_rows: Any, recomputed_rows: Any, checks: list[SmokeCheck]
+) -> None:
+    if not isinstance(saved_rows, list):
+        checks.append(
+            SmokeCheck(
+                "external_recompute_broad_transfer_rows",
+                "fail",
+                "Broad-transfer probe must include scenario_results rows.",
+            )
+        )
+        return
+    if not isinstance(recomputed_rows, list):
+        checks.append(
+            SmokeCheck(
+                "external_recompute_broad_transfer_rows",
+                "fail",
+                "External broad-transfer source report did not produce scenario rows.",
+            )
+        )
+        return
+    saved_by_id = {
+        str(row.get("scenario_id")): row for row in saved_rows if isinstance(row, dict)
+    }
+    recomputed_by_id = {
+        str(row.get("scenario_id")): row
+        for row in recomputed_rows
+        if isinstance(row, dict)
+    }
+    if set(saved_by_id) != set(recomputed_by_id):
+        checks.append(
+            SmokeCheck(
+                "external_recompute_broad_transfer_rows",
+                "fail",
+                "Saved broad-transfer scenario ids do not match external source rows.",
+            )
+        )
+        return
+
+    mismatches: list[str] = []
+    fields = (
+        "startup_yc_score",
+        "baseline_score",
+        "delta",
+        "startup_yc_pass_rate",
+        "baseline_pass_rate",
+    )
+    for scenario_id, saved in saved_by_id.items():
+        recomputed = recomputed_by_id[scenario_id]
+        for field in fields:
+            saved_number = _coerce_number(saved.get(field))
+            recomputed_number = _coerce_number(recomputed.get(field))
+            if (
+                saved_number is None
+                or recomputed_number is None
+                or abs(saved_number - recomputed_number) > 0.0001
+            ):
+                mismatches.append(f"{scenario_id}:{field}")
+    if mismatches:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_broad_transfer_rows",
+                "fail",
+                "Broad-transfer row mismatches: " + ", ".join(mismatches[:5]),
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_broad_transfer_rows",
+                "pass",
+                f"External broad-transfer source rows match {len(saved_rows)} saved scenario row(s).",
+            )
+        )
 
 
 def _summarize_startup_yc_absorption_report(

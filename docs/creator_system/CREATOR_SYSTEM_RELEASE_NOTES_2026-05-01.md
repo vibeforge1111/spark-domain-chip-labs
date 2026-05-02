@@ -54,6 +54,9 @@
 - `creator-run-smoke --recompute` also compares Startup YC baseline, candidate,
   and absorption summaries to the external absorption proof report when that
   source report is locally available.
+- `creator-run-smoke --recompute` now compares Startup YC broad-transfer
+  aggregates and scenario rows to the external selector report when that source
+  report is locally available.
 
 ## Current Claim Boundary
 
