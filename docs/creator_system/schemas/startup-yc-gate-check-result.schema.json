@@ -41,7 +41,31 @@
           "type": "array",
           "items": {"type": "string"}
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"verdict": {"const": "blocked"}},
+            "required": ["verdict"]
+          },
+          "then": {
+            "properties": {
+              "blocking_checks": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"verdict": {"enum": ["passed", "approved"]}},
+            "required": ["verdict"]
+          },
+          "then": {
+            "properties": {
+              "blocking_checks": {"maxItems": 0}
+            }
+          }
+        }
+      ]
     },
     "promotionGateCheck": {
       "allOf": [

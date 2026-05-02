@@ -80,6 +80,30 @@
       "items": {"type": "string"}
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"minItems": 1}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "passed"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"maxItems": 0}
+        }
+      }
+    }
+  ],
   "$defs": {
     "gateCheckResult": {
       "$ref": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-gate-check-result.schema.json"

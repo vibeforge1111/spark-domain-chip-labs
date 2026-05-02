@@ -593,6 +593,8 @@ Completed documentation/verification:
   validates it against the check-result schema.
 - Creator-system CI now also writes `startup-yc-validation-suite` output and
   validates it against the validation-suite schema plus gate-check schema refs.
+- Startup YC gate-check and validation-suite schemas now reject incoherent
+  verdict packets such as `passed` with blockers or `blocked` with no blockers.
 
 Completed product PR verification:
 

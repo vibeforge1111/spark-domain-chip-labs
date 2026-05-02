@@ -654,6 +654,14 @@ def test_startup_yc_validation_suite_schema_blocks_network_absorption() -> None:
     unsafe["network_absorbable"] = True
     assert list(validator.iter_errors(unsafe))
 
+    blocked_without_blockers = json.loads(json.dumps(saved))
+    blocked_without_blockers["blocking_checks"] = []
+    assert list(validator.iter_errors(blocked_without_blockers))
+
+    passed_with_blockers = json.loads(json.dumps(saved))
+    passed_with_blockers["verdict"] = "passed"
+    assert list(validator.iter_errors(passed_with_blockers))
+
     malformed_subcheck = json.loads(json.dumps(saved))
     del malformed_subcheck["subchecks"]["multi_seed_validation"]["provenance"]
     assert list(validator.iter_errors(malformed_subcheck))
@@ -741,6 +749,16 @@ def test_startup_yc_gate_check_schema_blocks_network_absorption(
         unsafe = json.loads(json.dumps(payload))
         unsafe["network_absorbable"] = True
         assert list(validator.iter_errors(unsafe))
+
+        blocked_without_blockers = json.loads(json.dumps(payload))
+        blocked_without_blockers["verdict"] = "blocked"
+        blocked_without_blockers["blocking_checks"] = []
+        assert list(validator.iter_errors(blocked_without_blockers))
+
+        passed_with_blockers = json.loads(json.dumps(payload))
+        passed_with_blockers["verdict"] = "passed"
+        passed_with_blockers["blocking_checks"] = ["unexpected_blocker"]
+        assert list(validator.iter_errors(passed_with_blockers))
 
 
 def test_startup_yc_validation_evidence_schema_checks_raw_inputs(
