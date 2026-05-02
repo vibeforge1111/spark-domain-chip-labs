@@ -1040,6 +1040,10 @@ def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
 def test_cli_startup_yc_validation_evidence_check_fails_on_malformed_input(
     tmp_path: Path,
 ) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(
+        VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA.read_text(encoding="utf-8")
+    )
     _, heldout_evidence_path, _ = _write_raw_validation_evidence(tmp_path)
     malformed = json.loads(heldout_evidence_path.read_text(encoding="utf-8"))
     del malformed["rows"][0]["privacy_lane_respected"]
@@ -1071,6 +1075,7 @@ def test_cli_startup_yc_validation_evidence_check_fails_on_malformed_input(
     assert result.returncode == 1
     assert payload["verdict"] == "blocked"
     assert payload["evidence_kind"] == "heldout"
+    jsonschema.Draft202012Validator(schema).validate(payload)
 
 
 def test_cli_startup_yc_validation_evidence_check_output_matches_result_schema(

@@ -620,6 +620,8 @@ Completed documentation/verification:
   referenced validation-suite and gate-check schema pair in its CLI regression.
 - Startup YC individual gate-check CLI regressions now validate their JSON
   outputs against `startup-yc-gate-check-result.schema.json`.
+- Startup YC malformed raw-evidence CLI regression now validates its blocked
+  shape-check output against the shape-check result schema.
 
 Completed product PR verification:
 
