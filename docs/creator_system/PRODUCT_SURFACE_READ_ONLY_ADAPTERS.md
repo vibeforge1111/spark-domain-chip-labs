@@ -4,7 +4,8 @@
 
 Phase 7 starts with a read-only adapter contract. Builder, Telegram, Spawner,
 Canvas, and Kanban can display creator-system state, but they must not invent
-verdicts, evidence tiers, publication readiness, or network absorption.
+verdicts, evidence tiers, evidence modes, publication readiness, or network
+absorption.
 
 The canonical source of truth remains:
 
@@ -36,17 +37,24 @@ mission state.
 The adapter emits:
 
 - `builder`: handoff fields for Builder, including canonical verdict,
-  evidence tier, missing paths, blockers, and recommended next command.
+  evidence tier, evidence mode, missing paths, blockers, and recommended next
+  command.
 - `telegram`: a short user-facing summary that keeps publication warnings
-  visible and never asks for token-paste workflows.
-- `spawner`: read-only mission trace fields for status display.
-- `canvas`: artifact and validation graph nodes derived from source packets.
-- `kanban`: read-only columns derived from canonical status.
+  visible, names saved vs recomputed evidence mode, and never asks for
+  token-paste workflows.
+- `spawner`: read-only mission trace fields for status display, including
+  evidence mode.
+- `canvas`: artifact and validation graph nodes derived from source packets,
+  including evidence mode on the creator-mission node.
+- `kanban`: read-only columns derived from canonical status, including evidence
+  mode on the mission card.
 
 ## Hard Boundaries
 
 - Product surfaces must render `blocked`, warnings, missing gates, and claim
   boundaries.
+- Product surfaces must preserve `evidence_mode` (`saved` vs `recomputed`)
+  instead of parsing raw smoke packets independently.
 - Product surfaces must not convert `ready_for_swarm_packet` into
   `network_absorbable`.
 - Product surfaces must not allow `swarm_shared` until multi-seed validation,

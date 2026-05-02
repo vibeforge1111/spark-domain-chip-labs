@@ -269,6 +269,6 @@ Before shipping changes to this contract:
 4. Run strict smoke on the Startup YC fixture with `--fail-on-blocked --fail-on-warn`.
 5. Run `creator-run-doctor` on the fixture and confirm it returns publication review next steps.
 6. Confirm synthetic negative or mixed broad-transfer probes warn at `transfer_supported` and fail at `network_absorbable`.
-7. Confirm `creator-mission-status` keeps product views read-only and preserves publication blockers.
+7. Confirm `creator-mission-status` keeps product views read-only and preserves publication blockers plus `evidence_mode`.
    Covered by `test_blocked_creator_mission_status_stays_blocked_across_product_views`.
 8. Update this document if CLI flags, result fields, verdicts, or promotion semantics change.

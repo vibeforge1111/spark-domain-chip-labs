@@ -222,8 +222,9 @@ If any answer is missing, the packet can still be useful locally, but it is not 
 
 `creator-mission-status` may be consumed by Builder, Telegram, Spawner, Canvas,
 and Kanban as a read-only status packet. Product surfaces can show verdicts,
-blocking checks, missing gates, next actions, and publication boundaries, but
-they cannot upgrade an evidence tier.
+evidence mode, blocking checks, missing gates, next actions, and publication
+boundaries, but they cannot upgrade an evidence tier or treat saved evidence as
+fresh recompute evidence.
 
 A product view that renders `ready_for_swarm_packet` must still preserve the
 separate publication claim. In particular, `ready_for_swarm_packet` and

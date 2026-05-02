@@ -26,6 +26,9 @@ consume the packet directly, `creator-mission-status` is the canonical bridge:
 it converts saved smoke, doctor, artifact-quality, tool-operation,
 MiroFish-routing, retrieval-memory, and Startup YC validation packets into a
 read-only mission status for Builder, Telegram, Spawner, Canvas, and Kanban.
+That packet carries `canonical.evidence_mode` plus read-only surface projection
+fields so product UIs can distinguish saved evidence from recomputed evidence
+without inventing their own smoke parser.
 
 ## Builder Integration Contract
 
@@ -56,9 +59,9 @@ Builder should read:
 
 - `canonical.verdict`
 - `canonical.evidence_tier`
-- `canonical.automation.blocked`
-- `canonical.automation.ci_exit_code`
-- `canonical.automation.recommended_next_command`
+- `canonical.evidence_mode`
+- `canonical.automation_blocked`
+- `canonical.recommended_next_command`
 - `canonical.blocking_checks`
 - `canonical.warning_checks`
 - `canonical.missing_paths`
@@ -92,6 +95,7 @@ Telegram should show the next action in plain language:
 - what Spark is building,
 - what has passed,
 - what is blocked,
+- whether the current evidence mode is saved or recomputed,
 - what needs user approval,
 - whether publication is local-only, GitHub PR, or Swarm-shared.
 
@@ -124,7 +128,7 @@ Canvas should eventually show the artifact graph from
 - GitHub PR or local repo state.
 
 Kanban should show work state, not duplicate benchmark logic. It should render
-the verdict, check names, and publication blockers produced by
+the verdict, evidence mode, check names, and publication blockers produced by
 `creator-mission-status`.
 
 ## Phase 2 Acceptance Criteria

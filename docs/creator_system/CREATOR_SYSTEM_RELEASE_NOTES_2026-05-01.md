@@ -181,6 +181,9 @@
 - Spawner, Canvas, and Kanban mission-status projections now preserve the same
   `evidence_mode`, with a recomputed-mode regression covering the full
   read-only adapter set.
+- Product-flow docs now require downstream surfaces to preserve
+  `evidence_mode` rather than parsing raw smoke or treating saved evidence as a
+  fresh recompute.
 - Creator-system CI now writes the strict Startup YC smoke packet and validates
   it against `smoke-result.schema.json`, including the saved evidence-mode
   boundary.

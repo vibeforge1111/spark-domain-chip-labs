@@ -16,6 +16,9 @@ The current product-safe bridge is `creator-mission-status`. It reads saved
 reports and emits a read-only mission status packet for Builder, Telegram,
 Spawner, Canvas, and Kanban. Product repos should consume that packet before
 they add runtime creator controls.
+The packet also preserves smoke `evidence_mode`, so product surfaces can show
+whether status came from saved evidence or a fresh recompute without parsing raw
+smoke output.
 
 ## Current System Facts
 
