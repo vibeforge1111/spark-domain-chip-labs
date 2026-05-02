@@ -591,6 +591,8 @@ Completed documentation/verification:
   `passed` with blockers or `blocked` without blockers.
 - Creator-system CI now writes the raw validation-evidence check output and
   validates it against the check-result schema.
+- Creator-system CI now also writes `startup-yc-validation-suite` output and
+  validates it against the validation-suite schema plus gate-check schema refs.
 
 Completed product PR verification:
 
