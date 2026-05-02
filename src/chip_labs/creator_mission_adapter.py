@@ -285,7 +285,7 @@ def _surface_adapters(mission: dict[str, Any]) -> dict[str, Any]:
             "packet_kind": "canvas_creator_graph_readonly",
             "mission_id": mission["mission_id"],
             "nodes": _canvas_nodes(mission),
-            "edges": _canvas_edges(),
+            "edges": _canvas_edges(mission),
             "may_edit_artifacts": False,
         },
         "kanban": {
@@ -340,14 +340,14 @@ def _canvas_nodes(mission: dict[str, Any]) -> list[dict[str, Any]]:
     ]
 
 
-def _canvas_edges() -> list[dict[str, str]]:
-    return [
-        {"from": "smoke", "to": "creator_mission"},
-        {"from": "doctor", "to": "creator_mission"},
-        {"from": "tool_operation", "to": "creator_mission"},
-        {"from": "retrieval_memory", "to": "creator_mission"},
-        {"from": "creator_mission", "to": "publication_gate"},
+def _canvas_edges(mission: dict[str, Any]) -> list[dict[str, str]]:
+    edges = [
+        {"from": summary["packet"], "to": "creator_mission"}
+        for summary in mission["source_packets"]
+        if summary["present"]
     ]
+    edges.append({"from": "creator_mission", "to": "publication_gate"})
+    return edges
 
 
 def _kanban_columns(mission: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:

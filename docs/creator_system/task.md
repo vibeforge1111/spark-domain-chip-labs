@@ -432,6 +432,7 @@ Deliverables:
 - [x] Add a focused creator-system CI workflow.
 - [x] Add a release-note style summary for the CI guardrail slice.
 - [x] Keep handoff, master plan, readiness, promotion gates, and backlog aligned.
+- [x] Add release-note summary for MiroFish mission-status evidence slice.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -456,8 +457,15 @@ Current Phase 7 executable slice:
 Next documentation/verification slice:
 
 1. Continue monitoring product PR CI after further branch refreshes.
-2. Decide whether the MiroFish examples should be referenced by product mission
-   status packets or remain docs-only examples for now.
+2. Add the next read-only source packet fixture only when its executable proof
+   domain has stable saved evidence.
+
+Completed documentation/verification:
+
+- MiroFish examples are referenced by the product mission-status fixture as a
+  read-only `content_route` source packet.
+- Canvas mission-status edges now point only to source packets that are present
+  in the canonical mission packet.
 
 Completed product PR verification:
 

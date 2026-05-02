@@ -7,6 +7,7 @@ Source reports:
 
 - `startup-yc-smoke.json`
 - `startup-yc-doctor.json`
+- `../mirofish-content/route-invoke.json`
 - `../startup-yc-operator-validation/validation_plan.json`
 
 Derived packet:
@@ -19,6 +20,8 @@ surfaces keep publication blockers visible. It remains read-only:
 - `canonical.verdict` is `ready_for_swarm_packet`.
 - `canonical.evidence_tier` is `transfer_supported`.
 - `canonical.stage_status` is `review_required`.
+- `source_packets.content_route` references a local MiroFish route packet with
+  `candidate_review` claim boundaries.
 - `publication.swarm_shared_allowed` is `false`.
 - `publication.network_absorbable` is `false`.
 - Builder, Telegram, Spawner, Canvas, and Kanban adapters all expose read-only
@@ -29,5 +32,5 @@ Regenerate with:
 ```bash
 python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn --output docs/creator_system/examples/product-surface-readonly/startup-yc-smoke.json
 python -m chip_labs.cli creator-run-doctor docs/creator_system/examples/startup-yc-creator-run --output docs/creator_system/examples/product-surface-readonly/startup-yc-doctor.json
-python -m chip_labs.cli creator-mission-status --smoke docs/creator_system/examples/product-surface-readonly/startup-yc-smoke.json --doctor docs/creator_system/examples/product-surface-readonly/startup-yc-doctor.json --startup-validation docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --publish-mode swarm_shared --mission-id startup-yc-product-readonly --output docs/creator_system/examples/product-surface-readonly/startup-yc-mission-status.json
+python -m chip_labs.cli creator-mission-status --smoke docs/creator_system/examples/product-surface-readonly/startup-yc-smoke.json --doctor docs/creator_system/examples/product-surface-readonly/startup-yc-doctor.json --startup-validation docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --content-route docs/creator_system/examples/mirofish-content/route-invoke.json --publish-mode swarm_shared --mission-id startup-yc-product-readonly --output docs/creator_system/examples/product-surface-readonly/startup-yc-mission-status.json
 ```

@@ -231,6 +231,11 @@ Saved examples:
 - `examples/mirofish-content/simulation-result.json`
 - `examples/mirofish-content/simulation-result.md`
 
+The read-only product-surface fixture also references
+`examples/mirofish-content/route-invoke.json` as a `content_route` source
+packet. This makes the Canvas adapter show the content simulator as evidence
+without granting Builder, Telegram, Spawner, Canvas, or Kanban runtime authority.
+
 Example input:
 
 ```json

@@ -19,6 +19,9 @@ PRODUCT_SURFACE_FIXTURE = Path(
 CREATOR_MISSION_SCHEMA = Path(
     "docs/creator_system/schemas/creator-mission-status.schema.json"
 )
+MIROFISH_CONTENT_ROUTE = Path(
+    "docs/creator_system/examples/mirofish-content/route-invoke.json"
+)
 
 
 def _smoke(verdict: str = "ready_for_swarm_packet") -> dict[str, object]:
@@ -68,6 +71,11 @@ def test_creator_mission_status_emits_read_only_surface_adapters() -> None:
     assert status["surface_adapters"]["spawner"]["may_execute"] is False
     assert status["surface_adapters"]["canvas"]["may_edit_artifacts"] is False
     assert status["surface_adapters"]["kanban"]["may_change_verdict"] is False
+    canvas = status["surface_adapters"]["canvas"]
+    node_ids = {node["id"] for node in canvas["nodes"]}
+    assert {
+        edge["from"] for edge in canvas["edges"] if edge["from"] != "creator_mission"
+    }.issubset(node_ids)
 
 
 def test_creator_mission_status_preserves_blockers_from_canonical_packets() -> None:
@@ -120,6 +128,8 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
             str(smoke_path),
             "--startup-validation",
             str(STARTUP_VALIDATION),
+            "--content-route",
+            str(MIROFISH_CONTENT_ROUTE),
             "--mission-id",
             "mission-cli",
             "--output",
@@ -135,12 +145,20 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
     payload = json.loads(output_path.read_text(encoding="utf-8"))
     assert payload["mission_id"] == "mission-cli"
     assert payload["surface_adapters"]["telegram"]["may_request_secret_paste"] is False
+    content_route_summary = next(
+        summary
+        for summary in payload["source_packets"]
+        if summary["packet"] == "content_route"
+    )
+    assert content_route_summary["present"] is True
+    assert content_route_summary["state"] == "ready"
 
 
 def test_product_surface_fixture_matches_current_adapter_output() -> None:
     smoke = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-smoke.json").read_text(encoding="utf-8"))
     doctor = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-doctor.json").read_text(encoding="utf-8"))
     startup_validation = json.loads(STARTUP_VALIDATION.read_text(encoding="utf-8"))
+    content_route = json.loads(MIROFISH_CONTENT_ROUTE.read_text(encoding="utf-8"))
     saved = json.loads(
         (PRODUCT_SURFACE_FIXTURE / "startup-yc-mission-status.json").read_text(encoding="utf-8")
     )
@@ -150,6 +168,7 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
         publish_mode="swarm_shared",
         smoke=smoke,
         doctor=doctor,
+        content_route=content_route,
         startup_validation=startup_validation,
     )
 
@@ -166,6 +185,25 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     assert saved["surface_adapters"]["spawner"]["may_execute"] is False
     assert saved["surface_adapters"]["canvas"]["may_edit_artifacts"] is False
     assert saved["surface_adapters"]["kanban"]["may_change_verdict"] is False
+    content_route_summary = next(
+        summary for summary in saved["source_packets"] if summary["packet"] == "content_route"
+    )
+    assert content_route_summary == {
+        "packet": "content_route",
+        "present": True,
+        "state": "ready",
+        "verdict": "invoke",
+        "blocking_checks": [],
+        "warning_count": 0,
+        "claim_boundary": "candidate_review local simulator protocol only",
+    }
+    canvas = saved["surface_adapters"]["canvas"]
+    node_ids = {node["id"] for node in canvas["nodes"]}
+    assert "content_route" in node_ids
+    assert {"from": "content_route", "to": "creator_mission"} in canvas["edges"]
+    assert {
+        edge["from"] for edge in canvas["edges"] if edge["from"] != "creator_mission"
+    }.issubset(node_ids)
 
 
 def test_creator_mission_status_schema_enforces_read_only_boundaries() -> None:

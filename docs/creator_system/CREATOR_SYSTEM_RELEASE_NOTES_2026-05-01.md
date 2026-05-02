@@ -27,6 +27,9 @@
   heads with passing remote CI.
 - MiroFish content simulation now has saved route, JSON result, and Markdown
   readout examples under `examples/mirofish-content/`.
+- The product-surface mission-status fixture now references the saved MiroFish
+  content route as read-only evidence and emits Canvas edges only for present
+  packets.
 
 ## Current Claim Boundary
 
