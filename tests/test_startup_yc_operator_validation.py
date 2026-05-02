@@ -1034,6 +1034,7 @@ def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
     assert result.returncode == 1
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
+    _validate_gate_check_payload(payload)
 
 
 def test_cli_startup_yc_validation_evidence_check_fails_on_malformed_input(
@@ -1133,6 +1134,7 @@ def test_cli_startup_yc_multi_seed_check_fails_on_blocked(tmp_path: Path) -> Non
     assert result.returncode == 1
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
+    _validate_gate_check_payload(payload)
 
 
 def test_cli_startup_yc_heldout_check_fails_on_blocked(tmp_path: Path) -> None:
@@ -1160,6 +1162,7 @@ def test_cli_startup_yc_heldout_check_fails_on_blocked(tmp_path: Path) -> None:
     assert result.returncode == 1
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
+    _validate_gate_check_payload(payload)
 
 
 def test_cli_startup_yc_review_gates_check_fails_on_blocked(tmp_path: Path) -> None:
@@ -1187,6 +1190,7 @@ def test_cli_startup_yc_review_gates_check_fails_on_blocked(tmp_path: Path) -> N
     assert result.returncode == 1
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
+    _validate_gate_check_payload(payload)
 
 
 def test_cli_startup_yc_promotion_evidence_check_fails_on_blocked(
@@ -1216,6 +1220,7 @@ def test_cli_startup_yc_promotion_evidence_check_fails_on_blocked(
     assert result.returncode == 1
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
+    _validate_gate_check_payload(payload)
 
 
 def test_cli_startup_yc_gate_outputs_bundle_with_provenance(
@@ -1260,6 +1265,7 @@ def test_cli_startup_yc_gate_outputs_bundle_with_provenance(
         assert payload["gate_passed"] is True
         assert payload["network_absorbable"] is False
         assert payload["provenance"]["input_hashes"]
+        _validate_gate_check_payload(payload)
 
     bundle_path = tmp_path / "promotion-evidence-bundle.json"
     bundle_path.write_text(
@@ -1299,6 +1305,7 @@ def test_cli_startup_yc_gate_outputs_bundle_with_provenance(
     assert result.returncode == 0
     assert payload["all_required_gates_supported"] is True
     assert payload["network_absorbable"] is False
+    _validate_gate_check_payload(payload)
 
     heldout_evidence_path.write_text(
         json.dumps({"rows": []}, indent=2),
@@ -1329,6 +1336,7 @@ def test_cli_startup_yc_gate_outputs_bundle_with_provenance(
     assert "provenance_mismatch:held_out_founder_advice_pass" in stale_payload[
         "blocking_checks"
     ]
+    _validate_gate_check_payload(stale_payload)
 
 
 def test_cli_startup_yc_validation_suite_fails_on_blocked(tmp_path: Path) -> None:
@@ -1369,6 +1377,12 @@ def test_cli_startup_yc_validation_suite_fails_on_blocked(tmp_path: Path) -> Non
 
 def _load_plan() -> dict[str, object]:
     return json.loads((FIXTURE_DIR / "validation_plan.json").read_text(encoding="utf-8"))
+
+
+def _validate_gate_check_payload(payload: dict[str, object]) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(GATE_CHECK_SCHEMA.read_text(encoding="utf-8"))
+    jsonschema.Draft202012Validator(schema).validate(payload)
 
 
 def _normalize_path_separators(value: object) -> object:

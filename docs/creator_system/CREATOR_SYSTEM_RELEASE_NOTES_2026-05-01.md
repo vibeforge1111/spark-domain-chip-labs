@@ -157,6 +157,8 @@
   Schemas are valid Draft 2020-12 schemas before payload validation.
 - Startup YC validation-suite CLI output is now validated against the
   referenced validation-suite and gate-check schema pair in its CLI regression.
+- Startup YC individual gate-check CLI regressions now validate their JSON
+  outputs against `startup-yc-gate-check-result.schema.json`.
 
 ## Current Claim Boundary
 
