@@ -102,4 +102,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `85 passed`.
+Latest focused creator-system suite result before CI push: `120 passed`.
