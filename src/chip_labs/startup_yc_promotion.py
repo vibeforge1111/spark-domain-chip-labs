@@ -82,6 +82,7 @@ def check_startup_yc_validation_evidence_shape(
         "evidence_kind": evidence_kind,
         "evidence_present": evidence_present,
         "verdict": "blocked" if blocking_checks else "passed",
+        "provenance": _input_provenance(path, str(path)),
         "blocking_checks": blocking_checks,
         "next_actions": _validation_evidence_next_actions(
             evidence_kind=evidence_kind,

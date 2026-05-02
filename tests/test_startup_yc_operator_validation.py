@@ -816,6 +816,9 @@ def test_startup_yc_validation_evidence_shape_check_blocks_malformed_raw_input(
         assert result["schema_path"].endswith(
             "startup-yc-validation-evidence.schema.json"
         )
+        assert result["provenance"]["input_hashes"] == {
+            str(evidence_path): hashlib.sha256(evidence_path.read_bytes()).hexdigest()
+        }
 
     malformed = json.loads(heldout_evidence_path.read_text(encoding="utf-8"))
     del malformed["rows"][0]["privacy_lane_respected"]

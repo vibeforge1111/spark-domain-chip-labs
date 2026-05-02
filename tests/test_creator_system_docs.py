@@ -75,6 +75,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "startup-yc-validation-evidence-check" in text
     assert "shape_only_multi_seed_evidence.json" in text
     assert "does not count as Startup YC multi-seed validation" in text
+    assert "Raw validation-evidence shape-check outputs now include source input hashes" in text
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
     assert "raw-evidence input hashes" in text

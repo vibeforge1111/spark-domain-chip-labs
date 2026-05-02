@@ -115,6 +115,8 @@
   evidence.
 - Startup YC operator-validation tests now prove that the shape-only fixture
   remains blocked by the real multi-seed gate.
+- Raw validation-evidence shape-check outputs now include source input hashes
+  so saved shape evidence can be compared with freshly checked evidence.
 
 ## Current Claim Boundary
 

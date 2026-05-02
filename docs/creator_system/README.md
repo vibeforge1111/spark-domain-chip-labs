@@ -252,7 +252,9 @@ gate-check outputs. `startup-yc-validation-evidence-check` is the executable
 shape gate for those raw inputs. The
 `startup-yc-operator-validation/shape_only_multi_seed_evidence.json` fixture is
 used by CI to prove the command path only; it is not Startup YC multi-seed
-validation evidence and cannot support `network_absorbable`.
+validation evidence and cannot support `network_absorbable`. Shape-check
+outputs include raw input hashes so saved shape evidence can be compared with
+the evidence file that produced it.
 
 `startup-yc-gate-check-result.schema.json` anchors the individual Startup YC
 gate-check packets and rejects any individual gate output that claims
