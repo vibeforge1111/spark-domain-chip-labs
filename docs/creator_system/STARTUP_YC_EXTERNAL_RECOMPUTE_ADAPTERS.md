@@ -26,23 +26,25 @@ Supported today:
 - Recompute for generated creator runs with `creator_generator_v1` provenance.
 - Recompute for artifact-quality benchmark reports with `artifact_quality_v1`
   provenance.
-- Partial external recompute for Startup YC transfer summaries when the
+- External recompute for Startup YC transfer summaries when the
   `specialization-path-startup-yc` selector report is available next to this
   repo.
-- Partial external recompute for Startup YC absorption summaries when the
+- External recompute for Startup YC absorption summaries when the
   `specialization-path-startup-yc` absorption proof report is available next to
   this repo.
-- Partial external recompute for Startup YC broad-transfer probes when the
+- External recompute for Startup YC broad-transfer probes when the
   `specialization-path-startup-yc` selector report is available next to this
   repo.
-- Partial Swarm packet regeneration checks that compare packet evidence,
+- Swarm packet comparison checks that compare packet evidence,
   transfer fields, report paths, and network-publication governance against the
   recomputed report bundle.
+- `startup_yc_external_v1` report provenance checks for baseline, candidate,
+  and absorption reports.
 
 Not supported yet:
 
-- Passing full recompute without provenance packets for baseline, candidate, and
-  absorption reports.
+- Passing recompute when the sibling external source repo is unavailable or the
+  source report hash changed.
 - Claiming `network_absorbable`.
 
 ## Adapter Matrix
@@ -53,6 +55,7 @@ Not supported yet:
 | Specialization-path absorption adapter | `specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json` | `reports/baseline.json`, `reports/candidate.json`, `reports/absorption_summary.json` | implemented for baseline mean/pass rate/case count, candidate mean/delta/pass rate/case buckets, absorption delta, trap count, and mode integrity |
 | Broad transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/broad_transfer_probe.json` with per-scenario rows | implemented for aggregate scores, scenario buckets, constraints, and row-level scenario results |
 | Swarm packet regeneration adapter | Fresh baseline, candidate, absorption, and transfer reports | `swarm/contribution_packet.json` | implemented for packet evidence scores/deltas, transfer fields, report paths, and network-publication blocker |
+| Report provenance adapter | SHA-256 hash of `specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json` | `reports/baseline.json`, `reports/candidate.json`, `reports/absorption_summary.json` provenance | implemented for `startup_yc_external_v1` source and input hash checks |
 
 ## Required Output Contract
 
@@ -120,7 +123,8 @@ Full external recompute is complete only when:
 5. Teach `creator-run-smoke --recompute` to select these adapters only when the
    external repos are explicitly available.
 6. Add provenance packets for baseline, candidate, and absorption reports.
+   Done with `startup_yc_external_v1` source hashes.
 7. Add doctor quarantine fixtures for stale external Startup YC evidence.
 
-Until those steps pass, the curated Startup YC fixture remains strict
-saved-evidence proof with clear claim boundaries.
+Until the remaining steps pass, the curated Startup YC fixture remains strict
+`transfer_supported` proof with clear claim boundaries.

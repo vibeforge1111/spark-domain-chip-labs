@@ -246,16 +246,17 @@ The fixture is now backed by the Startup YC fresh validation suite:
 
 The fixture remains `transfer_supported`, not `network_absorbable`, because multi-seed validation, human/operator calibration, and publication review are still open gates.
 
-The fixture is strict saved-evidence proof today. Full external recompute needs
-the Startup Bench transfer, specialization-path absorption, broad-transfer, and
-Swarm packet regeneration adapters defined in
+The fixture is strict saved-evidence proof today. External recompute uses the
+Startup Bench transfer, specialization-path absorption, broad-transfer, and
+Swarm packet comparison adapters defined in
 `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.
 The Startup Bench transfer, absorption, and broad-transfer comparisons are
-implemented as partial recompute checks, but `creator-run-smoke --recompute`
-still blocks the fixture until the remaining adapters provide full report
-provenance. Swarm packet evidence, transfer fields, report paths, and
-network-publication boundaries are already compared against the recomputed
-report bundle.
+implemented as recompute checks. `creator-run-smoke --recompute` also verifies
+`startup_yc_external_v1` provenance hashes for the baseline/candidate/absorption
+reports and compares Swarm packet evidence, transfer fields, report paths, and
+network-publication boundaries against the recomputed report bundle. If the
+external source repo is unavailable or changed, recompute blocks instead of
+trusting saved evidence.
 
 ## Ship Gate For V1
 

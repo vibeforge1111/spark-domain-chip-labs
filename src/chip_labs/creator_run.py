@@ -1950,6 +1950,8 @@ def _check_recomputed_evidence(run_path: Path, checks: list[SmokeCheck]) -> None
         recomputed = _recompute_creator_generator_reports(run_path, checks)
     elif provenance_sources == {"artifact_quality_v1"}:
         recomputed = _recompute_artifact_quality_reports(run_path, checks)
+    elif provenance_sources == {"startup_yc_external_v1"}:
+        recomputed = _recompute_startup_yc_external_reports(run_path, reports, checks)
     else:
         checks.append(
             SmokeCheck(
@@ -2019,7 +2021,11 @@ def _check_report_provenance(
         )
         return
     source = provenance.get("source")
-    if source in {"creator_generator_v1", "artifact_quality_v1"}:
+    if source in {
+        "creator_generator_v1",
+        "artifact_quality_v1",
+        "startup_yc_external_v1",
+    }:
         checks.append(
             SmokeCheck(
                 check_prefix,
@@ -2049,8 +2055,10 @@ def _check_report_provenance(
 
     mismatches: list[str] = []
     for input_relative_path, expected_hash in input_hashes.items():
-        input_path = run_path / str(input_relative_path)
-        if not input_path.exists():
+        input_path = _resolve_external_artifact_path(
+            run_path, str(input_relative_path)
+        )
+        if input_path is None:
             mismatches.append(f"{input_relative_path} missing")
             continue
         actual_hash = _sha256_file(input_path)
@@ -2190,6 +2198,90 @@ def _recompute_artifact_quality_reports(
         "absorption": {
             "mean_validated_pack_delta": result["absorption"]["mean_validated_pack_delta"],
             "trap_band_case_count": result["absorption"]["trap_band_case_count"],
+        },
+    }
+
+
+def _recompute_startup_yc_external_reports(
+    run_path: Path,
+    reports: dict[str, dict[str, Any]],
+    checks: list[SmokeCheck],
+) -> dict[str, dict[str, Any]] | None:
+    baseline = reports["reports/baseline.json"]
+    candidate = reports["reports/candidate.json"]
+    absorption = reports["reports/absorption_summary.json"]
+    source_report_ref = baseline.get("source_report")
+    if not isinstance(source_report_ref, str) or not source_report_ref.strip():
+        checks.append(
+            SmokeCheck(
+                "recompute_inputs",
+                "fail",
+                "Startup YC external recompute requires baseline source_report.",
+            )
+        )
+        return None
+    if candidate.get("source_report") != source_report_ref:
+        checks.append(
+            SmokeCheck(
+                "recompute_inputs",
+                "fail",
+                "Startup YC candidate source_report must match baseline.",
+            )
+        )
+        return None
+    if absorption.get("source_report") != source_report_ref:
+        checks.append(
+            SmokeCheck(
+                "recompute_inputs",
+                "fail",
+                "Startup YC absorption source_report must match baseline.",
+            )
+        )
+        return None
+
+    source_report_path = _resolve_external_artifact_path(run_path, source_report_ref)
+    if source_report_path is None:
+        checks.append(
+            SmokeCheck(
+                "recompute_inputs",
+                "fail",
+                f"Startup YC external source report not found: {source_report_ref}.",
+            )
+        )
+        return None
+    try:
+        source_report = load_json(source_report_path)
+    except ValueError as exc:
+        checks.append(SmokeCheck("recompute_inputs", "fail", str(exc)))
+        return None
+
+    recomputed = _summarize_startup_yc_absorption_report(source_report)
+    if recomputed is None:
+        checks.append(
+            SmokeCheck(
+                "recompute_inputs",
+                "fail",
+                "Startup YC source report must include absorption summary values.",
+            )
+        )
+        return None
+
+    checks.append(
+        SmokeCheck(
+            "recompute_inputs",
+            "pass",
+            f"Recomputed Startup YC reports from {source_report_path}.",
+        )
+    )
+    return {
+        "baseline": {"mean_score": recomputed["baseline_score"]},
+        "candidate": {
+            "mean_score": recomputed["candidate_score"],
+            "mean_delta": recomputed["candidate_delta"],
+        },
+        "absorption": {
+            "mean_validated_pack_delta": recomputed["candidate_delta"],
+            "trap_band_case_count": recomputed["trap_case_count"],
         },
     }
 

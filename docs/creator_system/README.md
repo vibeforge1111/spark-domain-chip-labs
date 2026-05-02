@@ -202,10 +202,11 @@ external checks:
 source selector report and compares baseline/candidate/absorption summaries to
 the source absorption proof report when `specialization-path-startup-yc` is
 available next to this repo. It also compares `reports/broad_transfer_probe.json`
-to selector-report scenario rows. Full Startup YC recompute remains blocked
-until baseline, candidate, and absorption provenance packets exist. Swarm packet
-evidence and publication-boundary comparison is already checked in recompute
-mode.
+to selector-report scenario rows, verifies `startup_yc_external_v1` provenance
+hashes for the baseline/candidate/absorption reports, and checks Swarm packet
+evidence plus publication boundaries against the recomputed report bundle. If
+the sibling source repo is unavailable or changed, recompute blocks instead of
+trusting saved evidence.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style

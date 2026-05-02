@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import shutil
@@ -592,6 +593,47 @@ def test_recompute_checks_external_startup_yc_absorption_source(
     )
 
 
+def test_recompute_accepts_startup_yc_external_provenance(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "proof_report.json"
+    _write_external_absorption_report(source_report, candidate_score=0.53)
+    _attach_absorption_source_report(run_dir, source_report)
+    _attach_startup_yc_external_provenance(run_dir, source_report)
+    _write_transfer_report(run_dir)
+    _write_complete_swarm_packet_evidence(run_dir)
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert smoke.verdict == "ready_for_swarm_packet"
+    assert any(
+        check.name == "recompute_inputs" and check.status == "pass"
+        for check in smoke.checks
+    )
+
+
+def test_recompute_blocks_stale_startup_yc_external_provenance_hash(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "proof_report.json"
+    _write_external_absorption_report(source_report, candidate_score=0.53)
+    _attach_absorption_source_report(run_dir, source_report)
+    _attach_startup_yc_external_provenance(run_dir, source_report, digest="stale")
+    _write_transfer_report(run_dir)
+    _write_complete_swarm_packet_evidence(run_dir)
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "report_provenance:reports/baseline.json:input_hashes"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_recompute_blocks_stale_external_startup_yc_absorption_source(
     tmp_path: Path,
 ) -> None:
@@ -945,6 +987,24 @@ def _attach_absorption_source_report(run_dir: Path, source_report: Path) -> None
             report["positive_cases"] = 15
             report["negative_cases"] = 4
             report["flat_cases"] = 1
+        path.write_text(json.dumps(report), encoding="utf-8")
+
+
+def _attach_startup_yc_external_provenance(
+    run_dir: Path, source_report: Path, digest: str | None = None
+) -> None:
+    resolved_digest = digest or hashlib.sha256(source_report.read_bytes()).hexdigest()
+    for relative_path in (
+        "reports/baseline.json",
+        "reports/candidate.json",
+        "reports/absorption_summary.json",
+    ):
+        path = run_dir / relative_path
+        report = json.loads(path.read_text(encoding="utf-8"))
+        report["provenance"] = {
+            "source": "startup_yc_external_v1",
+            "input_hashes": {str(source_report): resolved_digest},
+        }
         path.write_text(json.dumps(report), encoding="utf-8")
 
 

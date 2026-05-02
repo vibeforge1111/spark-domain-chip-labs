@@ -482,11 +482,11 @@ Completed documentation/verification:
 - Canvas mission-status edges now point only to source packets that are present
   in the canonical mission packet.
 - Recompute/provenance docs now distinguish supported generated/artifact-quality
-  reruns from the curated Startup YC fixture, which still needs external source
-  rerun adapters before a full external recompute claim.
-- `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md` records the missing Startup Bench
-  transfer, specialization-path absorption, broad-transfer, and Swarm packet
-  regeneration adapters as future gates.
+  reruns from the curated Startup YC fixture, which requires matching external
+  source reports and hashes for recompute to pass.
+- `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md` records the Startup Bench
+  transfer, specialization-path absorption, broad-transfer, Swarm packet, and
+  report-provenance adapters plus remaining future gates.
 - `creator-run-smoke --recompute` now checks Startup YC transfer summaries
   against the external selector report and baseline/candidate/absorption
   summaries against the external absorption proof report when the sibling source
@@ -496,7 +496,11 @@ Completed documentation/verification:
   source repo is present.
 - `creator-run-smoke --recompute` now checks Startup YC Swarm packet evidence,
   transfer fields, report paths, and network-publication blockers against the
-  recomputed report bundle; report provenance packets remain future work.
+  recomputed report bundle.
+- `creator-run-smoke --recompute --fail-on-blocked` now passes for the Startup
+  YC fixture when the sibling external source repo is present and the
+  `startup_yc_external_v1` provenance hashes match; if the source is absent or
+  changed, recompute blocks instead of trusting saved evidence.
 
 Completed product PR verification:
 

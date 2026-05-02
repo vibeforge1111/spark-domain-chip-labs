@@ -16,5 +16,11 @@
     "transfer_gate": "warn",
     "autonomy_gate": "warn"
   },
+  "provenance": {
+    "source": "startup_yc_external_v1",
+    "input_hashes": {
+      "specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json": "12d7820055f795eabae8f0952d697db33afe8292976db42acc26bd4dd6b3551a"
+    }
+  },
   "next_gate": "Run broader Startup Bench, Founder Arena, or agentic startup simulator transfer before claiming broader mastery."
 }

@@ -48,9 +48,8 @@
 - Startup YC external recompute work is now split into explicit adapter gates
   for Startup Bench transfer, specialization-path absorption, broad transfer,
   and Swarm packet regeneration.
-- `creator-run-smoke --recompute` now performs the first partial Startup YC
-  external transfer check when the source selector report is locally available,
-  while full Startup YC recompute remains blocked.
+- `creator-run-smoke --recompute` now performs the Startup YC external transfer
+  check when the source selector report is locally available.
 - `creator-run-smoke --recompute` also compares Startup YC baseline, candidate,
   and absorption summaries to the external absorption proof report when that
   source report is locally available.
@@ -58,8 +57,10 @@
   aggregates and scenario rows to the external selector report when that source
   report is locally available.
 - `creator-run-smoke --recompute` now compares Startup YC Swarm packet evidence
-  and publication-boundary fields to the recomputed report bundle; full
-  recompute still blocks until report provenance packets exist.
+  and publication-boundary fields to the recomputed report bundle.
+- `creator-run-smoke --recompute --fail-on-blocked` now passes for the Startup
+  YC fixture when the sibling external source repo is present and the
+  `startup_yc_external_v1` provenance hashes match.
 
 ## Current Claim Boundary
 

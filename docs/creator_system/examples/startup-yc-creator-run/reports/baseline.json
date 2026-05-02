@@ -5,6 +5,11 @@
   "mean_score": 0.6803,
   "pass_rate": 0.95,
   "case_count": 20,
+  "provenance": {
+    "source": "startup_yc_external_v1",
+    "input_hashes": {
+      "specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json": "12d7820055f795eabae8f0952d697db33afe8292976db42acc26bd4dd6b3551a"
+    }
+  },
   "notes": "Baseline is the no-pack fresh-agent mode from the full 20-case proof report."
 }
-

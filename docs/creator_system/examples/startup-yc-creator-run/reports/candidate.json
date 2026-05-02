@@ -9,6 +9,11 @@
   "positive_cases": 15,
   "negative_cases": 4,
   "flat_cases": 1,
+  "provenance": {
+    "source": "startup_yc_external_v1",
+    "input_hashes": {
+      "specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json": "12d7820055f795eabae8f0952d697db33afe8292976db42acc26bd4dd6b3551a"
+    }
+  },
   "notes": "Candidate is the validated-pack fresh-agent mode from the full 20-case proof report."
 }
-
