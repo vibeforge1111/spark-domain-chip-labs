@@ -39,6 +39,10 @@
 - Tool operation now has a saved pass check for a safe local
   `creator-run-smoke` operation, and product mission status references it as
   read-only `tool_operation` evidence without granting execution authority.
+- Recompute/provenance documentation now distinguishes supported
+  provenance-tagged generated runs from the curated Startup YC fixture, which
+  still requires external Startup Bench/source-report rerun adapters for full
+  recompute.
 
 ## Current Claim Boundary
 

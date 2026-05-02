@@ -488,7 +488,7 @@ This keeps community contribution safer than direct raw network sharing.
 | Phase 1: Canonical creator docs | Mostly complete | PRD, flowcharts, research ledger, playbook, protocol, golden path, production readiness, and backlog docs exist. |
 | Phase 2: Creator packet/schema anchors | Initial complete | Core schemas and templates exist. Need downstream adoption and stricter JSON Schema validation in the CLI. |
 | Phase 3: Golden Startup YC reference | Strong alpha | Fixture passes current smoke and strict smoke. Needs multi-seed/human review before network absorption. |
-| Phase 4: Generator acceptance tests | Not done | Need tests that prove Spark can generate working systems from scratch, not only validate a curated fixture. |
+| Phase 4: Generator acceptance tests | Initial complete | Tests now create working creator-run systems from fresh briefs in temporary workspaces, including recompute smoke. |
 | Phase 5: Product flow | Deferred | Builder, Telegram, Spawner, Canvas, and Kanban integration documented but intentionally not finalized. |
 | Phase 6: Community publication | Not done | Need public quickstart, repo decision, packaging, contribution model, and security/trust docs. |
 
@@ -496,9 +496,9 @@ This keeps community contribution safer than direct raw network sharing.
 
 ### Gap 1: Generator proof
 
-We can validate a creator-run workspace, but we still need to prove Spark can reliably generate one from a brief.
+Status: initial executable proof exists.
 
-Needed acceptance tests:
+Covered acceptance tests:
 
 - create a domain chip from a brief and run hook smoke tests
 - create a benchmark pack and run baseline
@@ -507,16 +507,26 @@ Needed acceptance tests:
 - create a Swarm contribution packet from reports
 - run the full flow in a temporary clean checkout
 
+Remaining work:
+
+- add more generated domains beyond the current proof fixtures
+- add multi-seed validation before any network-absorbable claim
+
 ### Gap 2: Recompute mode
 
-The smoke gate validates artifact and evidence consistency. It does not fully recompute source benchmark reports.
+Status: initial supported-provenance mode exists.
 
-Needed:
+`creator-run-smoke --recompute` now checks saved baseline, candidate, and
+absorption reports against current source artifacts when reports carry supported
+`creator_generator_v1` or `artifact_quality_v1` provenance and input hashes.
+The curated Startup YC fixture still references external source reports and is
+therefore strict-smoke/saved-evidence validation, not a full external rerun.
 
-- optional `--recompute` mode
-- adapters that rerun benchmark reports from source repos
-- checksum or provenance checks for report files
-- ability to distinguish "saved evidence is coherent" from "freshly rerun evidence still passes"
+Remaining work:
+
+- source-repo adapters that rerun Startup Bench and specialization-path reports
+- broader provider-specific provenance adapters
+- multi-seed recompute and calibration before stronger claims
 
 ### Gap 3: Multi-domain proof
 
@@ -739,12 +749,13 @@ Do not revert these without explicit user approval.
    - It means the packet exists and passes local checks.
    - It does not mean the network should absorb it without review.
 
-3. The current smoke gate validates saved evidence and claim boundaries.
-   - It does not fully rerun Startup Bench or the source benchmark reports.
-   - A recompute/provenance mode is still needed.
+3. The current smoke gate separates saved-evidence validation from supported recompute.
+   - Normal smoke validates saved evidence and claim boundaries.
+   - `--recompute` reruns supported provenance-tagged generated reports.
+   - It still does not fully rerun external Startup Bench or specialization-path source reports.
 
-4. The creator system validates a curated golden fixture.
-   - The next proof is generator acceptance: Spark must create valid chips, benchmarks, paths, loops, and packets from a new brief in a clean workspace.
+4. The creator system validates a curated golden fixture and generated clean-workspace runs.
+   - The next proof is breadth: more domains, more seeds, and more calibrated operators.
 
 5. Product wiring is intentionally deferred.
    - Do not finalize Spawner/Canvas/Kanban creator surfaces yet.

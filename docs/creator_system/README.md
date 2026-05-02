@@ -189,7 +189,10 @@ For elevated evidence tiers such as `candidate_review`, the smoke gate also vali
 `--recompute` adds a stricter distinction: saved report evidence can be coherent
 on its own, while recomputed evidence must also match current benchmark cases and
 scoring hooks. This mode currently supports generator-produced reports with
-`creator_generator_v1` provenance.
+`creator_generator_v1` provenance and artifact-quality benchmark reports with
+`artifact_quality_v1` provenance. Curated fixtures that point at external source
+repos still need source-specific rerun adapters before they can claim full
+external recompute.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style

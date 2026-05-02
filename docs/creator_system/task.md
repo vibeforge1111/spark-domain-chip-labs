@@ -436,6 +436,7 @@ Deliverables:
 - [x] Add release-note summary for artifact-quality mission-status evidence slice.
 - [x] Add release-note summary for retrieval-memory mission-status evidence slice.
 - [x] Add release-note summary for tool-operation mission-status evidence slice.
+- [x] Add release-note summary for recompute/provenance doc alignment slice.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -480,6 +481,9 @@ Completed documentation/verification:
   product mission-status fixture as a read-only `tool_operation` source packet.
 - Canvas mission-status edges now point only to source packets that are present
   in the canonical mission packet.
+- Recompute/provenance docs now distinguish supported generated/artifact-quality
+  reruns from the curated Startup YC fixture, which still needs external source
+  rerun adapters before a full external recompute claim.
 
 Completed product PR verification:
 

@@ -23,6 +23,6 @@
     "This is a fresh validation suite, not a reviewed public network-absorption decision.",
     "The suite currently ran seed 0; seeded fresh variants should be added for multi-seed fresh validation.",
     "Human/operator review and calibration are still needed before broad public mastery claims.",
-    "The current smoke CLI validates saved evidence semantics but does not recompute source benchmark reports."
+    "Normal smoke validates saved evidence semantics. Recompute mode exists for supported provenance-tagged generated runs, but this curated fixture does not yet rerun external Startup Bench or specialization-path source reports."
   ]
 }

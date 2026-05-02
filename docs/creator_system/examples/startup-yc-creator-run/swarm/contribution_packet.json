@@ -71,7 +71,7 @@
       "Fresh validation currently ran seed 0 only.",
       "Human/operator review and calibration are still needed before network-absorbable claims.",
       "Network publication remains disabled in this fixture.",
-      "The current smoke CLI validates saved evidence semantics but does not recompute source benchmark reports."
+      "Normal smoke validates saved evidence semantics. Recompute mode exists for supported provenance-tagged generated runs, but this curated fixture does not yet rerun external Startup Bench or specialization-path source reports."
     ]
   }
 }

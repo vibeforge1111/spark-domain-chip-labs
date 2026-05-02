@@ -21,5 +21,8 @@ Evidence referenced:
 Known limits:
 
 - This fixture references source repos instead of copying full benchmark corpora.
-- The current smoke gate validates saved evidence and claim boundaries, but it does not fully recompute source benchmark reports.
+- Normal smoke validates saved evidence and claim boundaries. Recompute mode
+  exists for supported provenance-tagged generated runs, but this curated
+  Startup YC fixture does not yet fully rerun external Startup Bench or
+  specialization-path source reports.
 - Network absorption is not approved yet. The fixture still needs multi-seed fresh validation, human/operator calibration, privacy review, rollback review, and publication approval.
