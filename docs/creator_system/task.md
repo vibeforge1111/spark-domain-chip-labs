@@ -580,6 +580,9 @@ Completed documentation/verification:
   so saved shape evidence can be compared with freshly checked evidence.
 - Generator acceptance tests now assert generated report input hashes match the
   current benchmark/source artifacts and pass recompute provenance checks.
+- `startup-yc-validation-evidence-check-result.schema.json` now anchors raw
+  evidence shape-check outputs and rejects accidental `network_absorbable=true`
+  claims.
 
 Completed product PR verification:
 

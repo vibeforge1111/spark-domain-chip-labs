@@ -19,6 +19,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [template-check-result.schema.json](template-check-result.schema.json) | `creator-run-template-check` output |
 | [creator-mission-status.schema.json](creator-mission-status.schema.json) | Read-only product surface adapter packet |
 | [startup-yc-validation-evidence.schema.json](startup-yc-validation-evidence.schema.json) | Startup YC raw validation evidence inputs and promotion bundles |
+| [startup-yc-validation-evidence-check-result.schema.json](startup-yc-validation-evidence-check-result.schema.json) | Startup YC raw validation-evidence shape-check output |
 | [startup-yc-gate-check-result.schema.json](startup-yc-gate-check-result.schema.json) | Startup YC individual gate-check outputs |
 | [startup-yc-validation-suite.schema.json](startup-yc-validation-suite.schema.json) | Startup YC validation-suite output |
 
@@ -40,12 +41,14 @@ and `creator-run-doctor` for the stricter evidence verdict. The
 Spawner, Canvas, and Kanban; it must not replace the underlying canonical
 packets.
 
-The Startup YC validation-evidence, gate-check, and validation-suite schemas
-anchor the blocked promotion workflow. Raw validation evidence is shape-checked
-before it becomes a gate output. Individual gate-check outputs include
-raw-evidence provenance hashes so promotion bundles can reject stale saved
-evidence. These schemas intentionally require `network_absorbable=false`;
-passing the schema means the packet shape is compatible, not that Startup YC is
-approved for network absorption. The validation-suite schema references the
-gate-check schema for every subcheck, so a saved suite cannot hide malformed
-gate evidence inside a generic object field.
+The Startup YC validation-evidence, validation-evidence-check, gate-check, and
+validation-suite schemas anchor the blocked promotion workflow. Raw validation
+evidence is shape-checked before it becomes a gate output. Shape-check and
+individual gate-check outputs include raw-evidence provenance hashes so saved
+evidence can be compared with fresh inputs and promotion bundles can reject
+stale saved evidence. These schemas intentionally require
+`network_absorbable=false` when that field is present; passing the schema means
+the packet shape is compatible, not that Startup YC is approved for network
+absorption. The validation-suite schema references the gate-check schema for
+every subcheck, so a saved suite cannot hide malformed gate evidence inside a
+generic object field.

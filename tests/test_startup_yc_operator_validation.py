@@ -27,6 +27,9 @@ GATE_CHECK_SCHEMA = Path(
 VALIDATION_EVIDENCE_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-validation-evidence.schema.json"
 )
+VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA = Path(
+    "docs/creator_system/schemas/startup-yc-validation-evidence-check-result.schema.json"
+)
 VALIDATION_SUITE_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-validation-suite.schema.json"
 )
@@ -777,6 +780,31 @@ def test_startup_yc_validation_evidence_schema_checks_raw_inputs(
     malformed_heldout = json.loads(heldout_evidence_path.read_text(encoding="utf-8"))
     del malformed_heldout["rows"][0]["privacy_lane_respected"]
     assert list(validator.iter_errors(malformed_heldout))
+
+
+def test_startup_yc_validation_evidence_check_result_schema_blocks_network_absorption(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(
+        VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA.read_text(encoding="utf-8")
+    )
+    multi_seed_evidence_path, _, _ = _write_raw_validation_evidence(tmp_path)
+    payload = check_startup_yc_validation_evidence_shape(
+        multi_seed_evidence_path,
+        evidence_kind="multi_seed",
+    )
+    validator = jsonschema.Draft202012Validator(schema)
+
+    validator.validate(payload)
+
+    unsafe = json.loads(json.dumps(payload))
+    unsafe["network_absorbable"] = True
+    assert list(validator.iter_errors(unsafe))
+
+    missing_provenance = json.loads(json.dumps(payload))
+    del missing_provenance["provenance"]
+    assert list(validator.iter_errors(missing_provenance))
 
 
 def test_startup_yc_validation_evidence_shape_check_blocks_malformed_raw_input(

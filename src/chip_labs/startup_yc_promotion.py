@@ -29,6 +29,9 @@ VALIDATION_EVIDENCE_CHECK_SCHEMA_VERSION = (
 VALIDATION_EVIDENCE_SCHEMA_PATH = (
     "docs/creator_system/schemas/startup-yc-validation-evidence.schema.json"
 )
+VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA_PATH = (
+    "docs/creator_system/schemas/startup-yc-validation-evidence-check-result.schema.json"
+)
 
 _REVIEW_GATE_REQUIREMENTS = {
     "human_operator_calibration": ("reviewer", "evidence_ref", "calibration_notes"),
@@ -78,6 +81,7 @@ def check_startup_yc_validation_evidence_shape(
     return {
         "schema_version": VALIDATION_EVIDENCE_CHECK_SCHEMA_VERSION,
         "schema_path": VALIDATION_EVIDENCE_SCHEMA_PATH,
+        "result_schema_path": VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA_PATH,
         "evidence_path": str(path),
         "evidence_kind": evidence_kind,
         "evidence_present": evidence_present,

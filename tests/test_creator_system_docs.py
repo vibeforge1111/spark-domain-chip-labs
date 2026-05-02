@@ -27,7 +27,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "does not prove real virality" in text
     assert "does not prove product correctness" in text
     assert "STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md" in text
-    assert "Startup YC validation evidence, gate-check, and suite outputs" in text
+    assert "Startup YC validation evidence, shape-check, gate-check, and suite outputs" in text
     assert "shape-only raw evidence CI fixture" in text
 
 
@@ -72,18 +72,20 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "startup-yc-validation-suite" in text
     assert "validation_suite_blocked.json" in text
     assert "startup-yc-validation-evidence.schema.json" in text
+    assert "startup-yc-validation-evidence-check-result.schema.json" in text
     assert "startup-yc-validation-evidence-check" in text
     assert "shape_only_multi_seed_evidence.json" in text
     assert "does not count as Startup YC multi-seed validation" in text
     assert "Raw validation-evidence shape-check outputs now include source input hashes" in text
     assert "Generator acceptance tests now assert generated report input hashes" in text
+    assert "evidence shape-check outputs and rejects accidental" in text
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
     assert "raw-evidence input hashes" in text
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
-    assert "Latest focused creator-system suite result before CI push: `132 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `133 passed`." in text
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:

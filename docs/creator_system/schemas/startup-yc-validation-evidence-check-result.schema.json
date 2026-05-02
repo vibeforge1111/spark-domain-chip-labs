@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-validation-evidence-check-result.schema.json",
+  "title": "Adaptive Creator Loop Startup YC Validation Evidence Check Result",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "schema_path",
+    "result_schema_path",
+    "evidence_path",
+    "evidence_kind",
+    "evidence_present",
+    "verdict",
+    "provenance",
+    "blocking_checks",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.startup_yc_validation_evidence_check.v1"
+    },
+    "schema_path": {
+      "const": "docs/creator_system/schemas/startup-yc-validation-evidence.schema.json"
+    },
+    "result_schema_path": {
+      "const": "docs/creator_system/schemas/startup-yc-validation-evidence-check-result.schema.json"
+    },
+    "evidence_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_kind": {
+      "enum": [
+        "multi_seed",
+        "heldout",
+        "review_gates",
+        "promotion_evidence_bundle"
+      ]
+    },
+    "evidence_present": {
+      "type": "boolean"
+    },
+    "verdict": {
+      "enum": ["passed", "blocked"]
+    },
+    "network_absorbable": {
+      "const": false
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["source", "input_hashes", "missing_inputs"],
+      "properties": {
+        "source": {
+          "const": "startup_yc_operator_validation_v1"
+        },
+        "input_hashes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "missing_inputs": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}
