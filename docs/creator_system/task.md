@@ -655,6 +655,14 @@ Completed documentation/verification:
 - `CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md` now defines the long-running
   matrix for generated artifact-quality, tool-operation, MiroFish content,
   doctor/security, Startup YC operator, and retrieval/memory creator systems.
+- `BENCHMARK_GENERATION_HONESTY_STANDARD.md` now defines the generated benchmark
+  honesty contract for case oracles, failure modes, lane results, anti-gaming
+  checks, provenance hashes, and Swarm claim boundaries.
+- Generator acceptance now requires generated benchmark packs to expose target
+  capability, lane counts, promotion rules, aggregation policy, and case-level
+  oracle metadata.
+- `creator-run-smoke --recompute` now blocks tampered generated benchmark
+  manifests and tampered saved lane results.
 - Generator acceptance now includes a retrieval/memory boundary domain and
   requires every generated domain family to emit a schema-valid recomputed
   `creator-mission-status` packet.

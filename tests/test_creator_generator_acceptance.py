@@ -340,6 +340,9 @@ def test_generator_acceptance_flow_creates_swarm_ready_run_in_clean_workspace(
         provenance = report["provenance"]
         assert provenance["source"] == "creator_generator_v1"
         assert provenance["input_hashes"] == {
+            "benchmark/manifest.json": _sha256(
+                generated.run_dir / "benchmark" / "manifest.json"
+            ),
             "benchmark/cases.jsonl": _sha256(
                 generated.run_dir / "benchmark" / "cases.jsonl"
             ),
@@ -388,9 +391,48 @@ def test_generator_acceptance_covers_multiple_spark_useful_domain_families(
     assert chip_manifest["domain_family"] == brief["domain_family"]
     assert chip_manifest["mission_control_flow"] == brief["mission_control_flow"]
     assert benchmark_manifest["benchmark_family"] == brief["benchmark_family"]
+    assert benchmark_manifest["target_capability"] == brief["goal"]
+    assert benchmark_manifest["case_lanes"]["adversarial"] >= 1
+    assert benchmark_manifest["aggregation_policy"] == {
+        "aggregate_mean_allowed": True,
+        "lane_breakdown_required": True,
+        "failed_lane_blocks_stronger_claim": True,
+        "failed_seed_blocks_aggregate": True,
+    }
+    assert "Every case carries an oracle expectation and failure mode." in (
+        benchmark_manifest["anti_gaming_checks"]
+    )
     assert packet["evidence"]["tier"] == "candidate_review"
     assert packet["governance"]["network_publication_allowed"] is False
     assert brief["domain_family"] in packet["contribution"]["summary"]
+
+    cases = [
+        json.loads(line)
+        for line in (generated.run_dir / "benchmark" / "cases.jsonl")
+        .read_text(encoding="utf-8")
+        .splitlines()
+        if line.strip()
+    ]
+    assert all(case["case_lane"] for case in cases)
+    assert all(case["oracle"]["expected_behavior"] for case in cases)
+    assert all(case["oracle"]["failure_mode"] for case in cases)
+    assert all(case["calibration_status"] == "generated_uncalibrated" for case in cases)
+    assert any(case["trap"] is True and case["hallucination_risk"] == "high" for case in cases)
+
+    candidate_report = json.loads(
+        (generated.run_dir / "reports" / "candidate.json").read_text(encoding="utf-8")
+    )
+    absorption_report = json.loads(
+        (generated.run_dir / "reports" / "absorption_summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert "adversarial" in candidate_report["lane_results"]
+    assert candidate_report["lane_results"] == absorption_report["lane_results"]
+    assert _smoke_check_status(
+        generated.recompute_smoke,
+        "recompute_candidate_lane_results",
+    ) == "pass"
 
     mission_status = build_creator_mission_status(
         mission_id=f"{brief['domain_id']}-generated",
@@ -445,6 +487,43 @@ def test_creator_run_recompute_blocks_stale_saved_evidence(tmp_path: Path) -> No
     assert recomputed.verdict == "blocked"
     assert any(
         check.name == "recompute_candidate_score" and check.status == "fail"
+        for check in recomputed.checks
+    )
+
+
+def test_creator_run_recompute_blocks_tampered_benchmark_manifest(
+    tmp_path: Path,
+) -> None:
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    manifest_path = generated.run_dir / "benchmark" / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["promotion_rules"]["minimum_delta"] = -1
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+
+    recomputed = validate_creator_run(generated.run_dir, recompute=True)
+
+    assert recomputed.verdict == "blocked"
+    assert any(
+        check.name.startswith("report_provenance:")
+        and check.name.endswith(":input_hashes")
+        and check.status == "fail"
+        and "benchmark/manifest.json hash mismatch" in check.message
+        for check in recomputed.checks
+    )
+
+
+def test_creator_run_recompute_blocks_tampered_lane_results(tmp_path: Path) -> None:
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    candidate_path = generated.run_dir / "reports" / "candidate.json"
+    candidate = json.loads(candidate_path.read_text(encoding="utf-8"))
+    candidate["lane_results"]["adversarial"]["trap_regressions"] = 1
+    candidate_path.write_text(json.dumps(candidate, indent=2) + "\n", encoding="utf-8")
+
+    recomputed = validate_creator_run(generated.run_dir, recompute=True)
+
+    assert recomputed.verdict == "blocked"
+    assert any(
+        check.name == "recompute_candidate_lane_results" and check.status == "fail"
         for check in recomputed.checks
     )
 

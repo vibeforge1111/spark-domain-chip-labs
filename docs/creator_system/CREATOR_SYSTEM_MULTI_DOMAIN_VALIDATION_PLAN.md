@@ -60,6 +60,14 @@ recompute provenance, and Swarm packet consistency. They are not yet enough to
 claim domain mastery, real content virality, production memory safety, or
 network absorption.
 
+The benchmark honesty contract now lives in
+`BENCHMARK_GENERATION_HONESTY_STANDARD.md`. Generated packs must include case oracles,
+failure modes, lane counts, lane-level report results, anti-gaming checks,
+aggregation policy, and report provenance hashes for the benchmark manifest,
+cases, and scoring hooks. This makes aggregate scores easier to inspect and
+harder to use as a cover for failed traps, stale benchmark rules, or unsupported
+Swarm claims.
+
 ## Phase 1: Multi-Domain Generator Matrix
 
 The first phase is the fast CI-safe matrix. It uses one representative generated
@@ -114,9 +122,11 @@ recompute evidence.
 
 Checks:
 
+- Changed benchmark manifests block recompute.
 - Changed benchmark cases block recompute.
 - Changed scoring hooks block recompute.
 - Changed saved report values block recompute.
+- Changed saved lane results block recompute.
 - Swarm packet summaries must match current reports.
 - Tool-operation packets must match command mode and `evidence_mode`.
 - Mission-status packets must preserve `evidence_mode` across canonical,

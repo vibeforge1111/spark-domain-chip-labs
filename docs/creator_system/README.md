@@ -16,6 +16,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [CREATOR_SYSTEM_MASTER_PLAN.md](CREATOR_SYSTEM_MASTER_PLAN.md) | Cohesive product and architecture plan for the creator ecosystem. |
 | [CREATOR_SYSTEM_PROOF_DOMAINS.md](CREATOR_SYSTEM_PROOF_DOMAINS.md) | Multi-domain proof layers for artifact quality, tool operation, content simulation, doctor security, Startup YC, and future memory/retrieval examples. |
 | [CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md](CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md) | Long-running validation matrix for generated creator systems across artifact quality, tool operation, MiroFish content simulation, doctor/security, Startup YC operator, and retrieval/memory domains. |
+| [BENCHMARK_GENERATION_HONESTY_STANDARD.md](BENCHMARK_GENERATION_HONESTY_STANDARD.md) | Minimum honesty contract for generated benchmark packs: case oracles, lane results, anti-gaming checks, provenance hashes, and Swarm claim boundaries. |
 | [STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md](STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md) | Missing external rerun adapter contract for Startup Bench, specialization-path absorption, broad transfer, and Startup YC Swarm packet regeneration. |
 | [CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md](CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md) | Release-note summary for the current creator-system standardization continuation. |
 | [CREATOR_RUN_PRODUCTION_READINESS_V1.md](CREATOR_RUN_PRODUCTION_READINESS_V1.md) | Shippable creator-run CLI contract, smoke-result schema, integration rules, and V1 ship gate. |
@@ -61,7 +62,7 @@ Domain Chip Creator should not own Autoloop Creator. It should emit chip-specifi
 | Surface | Current Claim | Explicit Boundary |
 | --- | --- | --- |
 | Generator acceptance proof domains | `candidate_review` | Proves Spark can generate runnable local creator systems from briefs; does not prove transfer or network absorption. |
-| Multi-domain generated matrix | `candidate_review` | Covers artifact quality, tool operation, MiroFish content simulation, doctor/security, Startup YC operator, and retrieval/memory with saved/recomputed smoke and read-only mission status. |
+| Multi-domain generated matrix | `candidate_review` | Covers artifact quality, tool operation, MiroFish content simulation, doctor/security, Startup YC operator, and retrieval/memory with saved/recomputed smoke, benchmark case oracles, lane results, and read-only mission status. |
 | Startup YC reference fixture | `transfer_supported` | Strict smoke passes as `ready_for_swarm_packet`, but `network_absorbable` is blocked until multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval pass. |
 | Artifact quality domain | Local artifact-quality review | Scores design docs, PR writeups, handoffs, and mission packets; does not prove product correctness or replace human review. |
 | Tool operation domain | Local operation safety | Verifies command results, expected postconditions, rollback notes, and secret boundaries; does not allow publish, push, or network mutation. |

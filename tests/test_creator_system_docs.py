@@ -12,6 +12,9 @@ CREATOR_SYSTEM_WORKFLOW = Path(".github/workflows/creator-system.yml")
 MULTI_DOMAIN_VALIDATION = Path(
     "docs/creator_system/CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md"
 )
+BENCHMARK_HONESTY_STANDARD = Path(
+    "docs/creator_system/BENCHMARK_GENERATION_HONESTY_STANDARD.md"
+)
 STARTUP_YC_EXTERNAL_RECOMPUTE = Path(
     "docs/creator_system/STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md"
 )
@@ -24,6 +27,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
     assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
+    assert "BENCHMARK_GENERATION_HONESTY_STANDARD.md" in text
     assert "| Startup YC reference fixture | `transfer_supported` |" in text
     assert "| Multi-domain generated matrix | `candidate_review` |" in text
     assert "`network_absorbable` is blocked" in text
@@ -100,6 +104,10 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "Product-flow docs now require downstream surfaces to preserve" in text
     assert "`creator-mission-status.schema.json` now rejects Canvas and Kanban" in text
     assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
+    assert "BENCHMARK_GENERATION_HONESTY_STANDARD.md" in text
+    assert "case oracles" in text
+    assert "lane results" in text
+    assert "tampered benchmark manifests" in text
     assert "Generator acceptance now includes a retrieval/memory boundary domain" in text
     assert "evidence shape-check outputs and rejects accidental" in text
     assert "validate saved `startup-yc-validation-evidence-check`" in text
@@ -116,7 +124,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "tests/test_creator_mission_adapter.py" in text
-    assert "Latest focused creator-system suite result before CI push: `140 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `143 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -219,7 +227,37 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "Startup operator",
         "Retrieval/memory",
         "schema-valid `creator-mission-status` packet",
+        "BENCHMARK_GENERATION_HONESTY_STANDARD.md",
+        "case oracles",
+        "failure modes",
+        "lane-level report results",
+        "Changed benchmark manifests block recompute",
+        "Changed saved lane results block recompute",
         "36 generated runs total",
         "does not approve `network_absorbable`",
+    ):
+        assert phrase in text
+
+
+def test_benchmark_generation_honesty_standard_keeps_swarm_boundary_visible() -> None:
+    text = BENCHMARK_HONESTY_STANDARD.read_text(encoding="utf-8")
+
+    for phrase in (
+        "Required Case Contract",
+        "oracle.expected_behavior",
+        "oracle.failure_mode",
+        "hallucination_risk",
+        "calibration_status",
+        "Required Manifest Contract",
+        "anti-gaming checks",
+        "failed seeds cannot be hidden",
+        "Required Report Contract",
+        "lane_results",
+        "benchmark/manifest.json",
+        "benchmark/cases.jsonl",
+        "domain-chip/scoring_hooks.json",
+        "`network_absorbable`",
+        "multi-seed validation",
+        "publication approval",
     ):
         assert phrase in text

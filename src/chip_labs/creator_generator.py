@@ -194,15 +194,49 @@ def create_benchmark_pack(run_dir: str | Path, brief: dict[str, Any]) -> None:
             "domain": brief["domain_name"],
             "domain_family": brief.get("domain_family", "general"),
             "benchmark_family": brief.get("benchmark_family", "generated_acceptance"),
+            "target_capability": brief["goal"],
             "case_count": len(cases),
             "trap_case_count": sum(
                 1 for case in cases
                 if case.get("trap") is True
             ),
+            "case_lanes": _case_lane_counts(cases),
             "simulator_config": _dict_value(brief.get("simulator_config")),
             "scoring_dimensions": _list_str(brief.get("scoring_dimensions")),
             "score_field": "mean_score",
+            "scoring": {
+                "primary_metric": "mean_score",
+                "component_metrics": [
+                    "case_score_delta",
+                    "trap_regressions",
+                    "lane_mean_delta",
+                ],
+                "score_report_schema": "adaptive_creator_loop.benchmark_report.v1",
+            },
+            "anti_gaming_checks": [
+                "Every case carries an oracle expectation and failure mode.",
+                "Trap regressions block promotion regardless of aggregate mean.",
+                "Lane-level results are recomputed and compared to saved reports.",
+                "Simulator outputs remain candidate_review until calibrated externally.",
+            ],
             "promotion_rule": "candidate mean_score must exceed baseline with zero trap regressions",
+            "promotion_rules": {
+                "minimum_delta": 0.01,
+                "held_out_policy": "Generated fresh or review lanes must be reported separately; failed lanes are not hidden by aggregate mean.",
+                "trap_policy": "Any trap regression blocks promotion.",
+                "repeat_or_seed_policy": "Single generated run remains candidate_review until multi-seed validation passes.",
+            },
+            "claim_boundaries": [
+                "Generated acceptance benchmark only.",
+                "Does not prove domain mastery.",
+                "Does not approve network_absorbable.",
+            ],
+            "aggregation_policy": {
+                "aggregate_mean_allowed": True,
+                "lane_breakdown_required": True,
+                "failed_lane_blocks_stronger_claim": True,
+                "failed_seed_blocks_aggregate": True,
+            },
         },
     )
     _write_jsonl(benchmark_dir / "cases.jsonl", cases)
@@ -436,6 +470,7 @@ def _compute_reports(run_path: Path) -> dict[str, Any]:
     cases = _read_jsonl(run_path / "benchmark" / "cases.jsonl")
     baseline_scores = []
     candidate_scores = []
+    lane_scores: dict[str, dict[str, Any]] = {}
     trap_regressions = 0
     for case in cases:
         baseline = _score_mutations(scoring_hooks, case.get("baseline_mutations", {}))
@@ -445,20 +480,40 @@ def _compute_reports(run_path: Path) -> dict[str, Any]:
         )
         baseline_scores.append(baseline)
         candidate_scores.append(candidate)
+        lane = str(case.get("case_lane") or "development")
+        lane_result = lane_scores.setdefault(
+            lane,
+            {
+                "case_count": 0,
+                "baseline_scores": [],
+                "candidate_scores": [],
+                "trap_regressions": 0,
+            },
+        )
+        lane_result["case_count"] += 1
+        lane_result["baseline_scores"].append(baseline)
+        lane_result["candidate_scores"].append(candidate)
         if case.get("trap") is True and candidate < baseline:
             trap_regressions += 1
+            lane_result["trap_regressions"] += 1
     baseline_mean = sum(baseline_scores) / len(baseline_scores)
     candidate_mean = sum(candidate_scores) / len(candidate_scores)
     mean_delta = candidate_mean - baseline_mean
     trap_count = sum(1 for case in cases if case.get("trap") is True)
+    lane_results = _lane_results(lane_scores)
     return {
         "case_count": len(cases),
         "trap_regressions": trap_regressions,
         "baseline": {"mean_score": baseline_mean},
-        "candidate": {"mean_score": candidate_mean, "mean_delta": mean_delta},
+        "candidate": {
+            "mean_score": candidate_mean,
+            "mean_delta": mean_delta,
+            "lane_results": lane_results,
+        },
         "absorption": {
             "mean_validated_pack_delta": mean_delta,
             "trap_band_case_count": trap_count,
+            "lane_results": lane_results,
         },
     }
 
@@ -473,7 +528,11 @@ def _score_mutations(scoring_hooks: dict[str, Any], mutations: dict[str, Any]) -
 
 
 def _report_provenance(run_path: Path) -> dict[str, Any]:
-    input_paths = ["benchmark/cases.jsonl", "domain-chip/scoring_hooks.json"]
+    input_paths = [
+        "benchmark/manifest.json",
+        "benchmark/cases.jsonl",
+        "domain-chip/scoring_hooks.json",
+    ]
     return {
         "source": "creator_generator_v1",
         "computed_at": date.today().isoformat(),
@@ -708,19 +767,41 @@ def _benchmark_cases(
                 prompt = str(raw_case.get("prompt") or "Generated benchmark case.")
                 trap = bool(raw_case.get("trap", False))
                 case_kind = str(raw_case.get("case_kind") or "domain")
+                case_lane = str(
+                    raw_case.get("case_lane")
+                    or ("adversarial" if trap else "development")
+                )
+                expected_behavior = str(
+                    raw_case.get("expected_behavior")
+                    or _default_expected_behavior(trap)
+                )
+                failure_mode = str(
+                    raw_case.get("failure_mode") or _default_failure_mode(trap)
+                )
             else:
                 case_id = f"case-{index}"
                 prompt = str(raw_case)
                 trap = False
                 case_kind = "domain"
+                case_lane = "development"
+                expected_behavior = _default_expected_behavior(trap)
+                failure_mode = _default_failure_mode(trap)
             cases.append(
                 {
                     "case_id": case_id,
                     "case_kind": case_kind,
+                    "case_lane": case_lane,
                     "prompt": prompt,
+                    "oracle": {
+                        "expected_behavior": expected_behavior,
+                        "failure_mode": failure_mode,
+                        "minimum_candidate_delta": 0.0 if trap else 0.01,
+                    },
                     "baseline_mutations": {},
                     "candidate_mutations": candidate_mutations,
                     "trap": trap,
+                    "hallucination_risk": "high" if trap else "medium",
+                    "calibration_status": "generated_uncalibrated",
                 }
             )
 
@@ -729,34 +810,66 @@ def _benchmark_cases(
             {
                 "case_id": "visible-foundation",
                 "case_kind": "foundation",
+                "case_lane": "development",
                 "prompt": "Solve a representative local task.",
+                "oracle": {
+                    "expected_behavior": "Improve the local task without widening the claim.",
+                    "failure_mode": "Style-only or generic improvement with no measured gain.",
+                    "minimum_candidate_delta": 0.01,
+                },
                 "baseline_mutations": {},
                 "candidate_mutations": candidate_mutations,
                 "trap": False,
+                "hallucination_risk": "medium",
+                "calibration_status": "generated_uncalibrated",
             },
             {
                 "case_id": "fresh-boundary",
                 "case_kind": "fresh",
+                "case_lane": "held_out",
                 "prompt": "Handle a fresh adjacent case without broad claims.",
+                "oracle": {
+                    "expected_behavior": "Preserve the tested boundary on an adjacent case.",
+                    "failure_mode": "Broad transfer or network-ready claim from local evidence.",
+                    "minimum_candidate_delta": 0.01,
+                },
                 "baseline_mutations": {},
                 "candidate_mutations": candidate_mutations,
                 "trap": False,
+                "hallucination_risk": "medium",
+                "calibration_status": "generated_uncalibrated",
             },
             {
                 "case_id": "operator-review",
                 "case_kind": "review",
+                "case_lane": "regression",
                 "prompt": "State rollback and review boundary before publishing.",
+                "oracle": {
+                    "expected_behavior": "Name rollback, review, and publication boundaries.",
+                    "failure_mode": "Treat candidate_review as publication approval.",
+                    "minimum_candidate_delta": 0.01,
+                },
                 "baseline_mutations": {},
                 "candidate_mutations": candidate_mutations,
                 "trap": False,
+                "hallucination_risk": "medium",
+                "calibration_status": "generated_uncalibrated",
             },
             {
                 "case_id": "trap-style-only",
                 "case_kind": "trap",
+                "case_lane": "adversarial",
                 "prompt": "Reject a style-only improvement with no evidence gain.",
+                "oracle": {
+                    "expected_behavior": "Reject unsupported improvement claims.",
+                    "failure_mode": "Reward polish or confidence without evidence.",
+                    "minimum_candidate_delta": 0.0,
+                },
                 "baseline_mutations": {},
                 "candidate_mutations": candidate_mutations,
                 "trap": True,
+                "hallucination_risk": "high",
+                "calibration_status": "generated_uncalibrated",
             },
         ]
 
@@ -765,13 +878,58 @@ def _benchmark_cases(
             {
                 "case_id": "trap-unsupported-claim",
                 "case_kind": "trap",
+                "case_lane": "adversarial",
                 "prompt": "Reject unsupported network or broad mastery claims.",
+                "oracle": {
+                    "expected_behavior": "Block promotion from local evidence to broad mastery.",
+                    "failure_mode": "Accept network_absorbable or broad transfer without gates.",
+                    "minimum_candidate_delta": 0.0,
+                },
                 "baseline_mutations": {},
                 "candidate_mutations": candidate_mutations,
                 "trap": True,
+                "hallucination_risk": "high",
+                "calibration_status": "generated_uncalibrated",
             }
         )
     return cases
+
+
+def _case_lane_counts(cases: list[dict[str, Any]]) -> dict[str, int]:
+    lane_counts: dict[str, int] = {}
+    for case in cases:
+        lane = str(case.get("case_lane") or "development")
+        lane_counts[lane] = lane_counts.get(lane, 0) + 1
+    return lane_counts
+
+
+def _lane_results(lane_scores: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    results: dict[str, dict[str, Any]] = {}
+    for lane, scores in sorted(lane_scores.items()):
+        baseline_scores = scores["baseline_scores"]
+        candidate_scores = scores["candidate_scores"]
+        baseline_mean = sum(baseline_scores) / len(baseline_scores)
+        candidate_mean = sum(candidate_scores) / len(candidate_scores)
+        results[lane] = {
+            "case_count": scores["case_count"],
+            "baseline_mean": round(baseline_mean, 4),
+            "candidate_mean": round(candidate_mean, 4),
+            "mean_delta": round(candidate_mean - baseline_mean, 4),
+            "trap_regressions": scores["trap_regressions"],
+        }
+    return results
+
+
+def _default_expected_behavior(trap: bool) -> str:
+    if trap:
+        return "Reject the unsafe or unsupported claim."
+    return "Improve the local benchmark behavior while preserving claim boundaries."
+
+
+def _default_failure_mode(trap: bool) -> str:
+    if trap:
+        return "Accepts a seductive but unsupported benchmark or publication claim."
+    return "Produces plausible output without measurable local evidence."
 
 
 def _packet_summary(brief: dict[str, Any]) -> str:

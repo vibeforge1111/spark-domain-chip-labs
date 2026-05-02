@@ -2023,6 +2023,21 @@ def _check_recomputed_evidence(run_path: Path, checks: list[SmokeCheck]) -> None
         "recompute_trap_coverage",
         checks,
     )
+    if provenance_sources == {"creator_generator_v1"}:
+        _check_report_json_matches(
+            reports["reports/candidate.json"],
+            "lane_results",
+            recomputed["candidate"].get("lane_results", {}),
+            "recompute_candidate_lane_results",
+            checks,
+        )
+        _check_report_json_matches(
+            reports["reports/absorption_summary.json"],
+            "lane_results",
+            recomputed["absorption"].get("lane_results", {}),
+            "recompute_absorption_lane_results",
+            checks,
+        )
 
 
 def _check_report_provenance(
@@ -2139,6 +2154,7 @@ def _recompute_creator_generator_reports(
 
     baseline_scores: list[float] = []
     candidate_scores: list[float] = []
+    lane_scores: dict[str, dict[str, Any]] = {}
     trap_regressions = 0
     candidate_defaults = scoring_hooks.get("candidate_mutations")
     if not isinstance(candidate_defaults, dict):
@@ -2164,13 +2180,28 @@ def _recompute_creator_generator_reports(
         candidate_score = _score_generated_case(scoring_hooks, candidate_mutations)
         baseline_scores.append(baseline_score)
         candidate_scores.append(candidate_score)
+        lane = str(case.get("case_lane") or "development")
+        lane_result = lane_scores.setdefault(
+            lane,
+            {
+                "case_count": 0,
+                "baseline_scores": [],
+                "candidate_scores": [],
+                "trap_regressions": 0,
+            },
+        )
+        lane_result["case_count"] += 1
+        lane_result["baseline_scores"].append(baseline_score)
+        lane_result["candidate_scores"].append(candidate_score)
         if case.get("trap") is True and candidate_score < baseline_score:
             trap_regressions += 1
+            lane_result["trap_regressions"] += 1
 
     baseline_mean = sum(baseline_scores) / len(baseline_scores)
     candidate_mean = sum(candidate_scores) / len(candidate_scores)
     candidate_delta = candidate_mean - baseline_mean
     trap_case_count = sum(1 for case in cases if case.get("trap") is True)
+    lane_results = _generated_lane_results(lane_scores)
     checks.append(
         SmokeCheck(
             "recompute_inputs",
@@ -2184,10 +2215,12 @@ def _recompute_creator_generator_reports(
             "mean_score": candidate_mean,
             "mean_delta": candidate_delta,
             "trap_regressions": trap_regressions,
+            "lane_results": lane_results,
         },
         "absorption": {
             "mean_validated_pack_delta": candidate_delta,
             "trap_band_case_count": trap_case_count,
+            "lane_results": lane_results,
         },
     }
 
@@ -2324,6 +2357,25 @@ def _score_generated_case(
         if delta is not None:
             score += delta
     return max(0.0, min(1.0, score))
+
+
+def _generated_lane_results(
+    lane_scores: dict[str, dict[str, Any]]
+) -> dict[str, dict[str, Any]]:
+    results: dict[str, dict[str, Any]] = {}
+    for lane, scores in sorted(lane_scores.items()):
+        baseline_scores = scores["baseline_scores"]
+        candidate_scores = scores["candidate_scores"]
+        baseline_mean = sum(baseline_scores) / len(baseline_scores)
+        candidate_mean = sum(candidate_scores) / len(candidate_scores)
+        results[lane] = {
+            "case_count": scores["case_count"],
+            "baseline_mean": round(baseline_mean, 4),
+            "candidate_mean": round(candidate_mean, 4),
+            "mean_delta": round(candidate_mean - baseline_mean, 4),
+            "trap_regressions": scores["trap_regressions"],
+        }
+    return results
 
 
 def _check_external_absorption_recompute(
@@ -3201,6 +3253,32 @@ def _check_report_number_matches(
                 check_name,
                 "fail",
                 f"Saved {field} {actual:.4f} does not match recomputed value {expected:.4f}.",
+            )
+        )
+
+
+def _check_report_json_matches(
+    report: dict[str, Any],
+    field: str,
+    expected: Any,
+    check_name: str,
+    checks: list[SmokeCheck],
+) -> None:
+    actual = report.get(field)
+    if actual == expected:
+        checks.append(
+            SmokeCheck(
+                check_name,
+                "pass",
+                f"Saved {field} matches recomputed structured value.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                check_name,
+                "fail",
+                f"Saved {field} does not match recomputed structured value.",
             )
         )
 

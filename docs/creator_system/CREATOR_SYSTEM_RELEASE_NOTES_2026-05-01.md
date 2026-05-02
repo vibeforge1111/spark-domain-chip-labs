@@ -192,6 +192,14 @@
 - `CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md` now defines the long-running
   matrix for generated artifact-quality, tool-operation, MiroFish content,
   doctor/security, Startup YC operator, and retrieval/memory creator systems.
+- `BENCHMARK_GENERATION_HONESTY_STANDARD.md` now defines the generated benchmark
+  honesty contract: case oracles, failure modes, lane results, anti-gaming
+  checks, provenance hashes, and explicit Swarm claim boundaries.
+- Generator acceptance now requires generated benchmark manifests to expose
+  target capability, lane counts, promotion rules, aggregation policy, and
+  anti-gaming checks.
+- `creator-run-smoke --recompute` now verifies generated lane results and blocks
+  tampered benchmark manifests through report provenance hashes.
 - Generator acceptance now includes a retrieval/memory boundary domain and
   requires every generated domain family to emit a schema-valid recomputed
   `creator-mission-status` packet.
@@ -219,4 +227,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `140 passed`.
+Latest focused creator-system suite result before CI push: `143 passed`.
