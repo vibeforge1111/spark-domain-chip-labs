@@ -632,7 +632,7 @@ def test_saved_startup_yc_validation_suite_fixture_matches_current_blockers() ->
         name: result["verdict"]
         for name, result in current["subchecks"].items()
     }
-    assert saved == current
+    assert _normalize_path_separators(saved) == _normalize_path_separators(current)
 
 
 def test_startup_yc_validation_suite_schema_blocks_network_absorption() -> None:
@@ -1331,6 +1331,19 @@ def test_cli_startup_yc_validation_suite_fails_on_blocked(tmp_path: Path) -> Non
 
 def _load_plan() -> dict[str, object]:
     return json.loads((FIXTURE_DIR / "validation_plan.json").read_text(encoding="utf-8"))
+
+
+def _normalize_path_separators(value: object) -> object:
+    if isinstance(value, dict):
+        return {
+            key: _normalize_path_separators(item)
+            for key, item in value.items()
+        }
+    if isinstance(value, list):
+        return [_normalize_path_separators(item) for item in value]
+    if isinstance(value, str):
+        return value.replace("\\", "/")
+    return value
 
 
 def _load_jsonl(path: Path) -> list[dict[str, object]]:
