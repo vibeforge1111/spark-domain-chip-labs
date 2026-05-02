@@ -11,6 +11,7 @@ from chip_labs.startup_yc_promotion import (
     check_startup_yc_promotion_evidence,
     check_startup_yc_promotion_gates,
     check_startup_yc_review_gates,
+    run_startup_yc_validation_suite,
 )
 
 
@@ -399,19 +400,19 @@ def test_startup_yc_promotion_evidence_check_passes_only_evidence_support(
     tmp_path: Path,
 ) -> None:
     plan_path = FIXTURE_DIR / "validation_plan.json"
-    multi_seed_path = _write_gate_output(
+    multi_seed_output_path = _write_gate_output(
         tmp_path / "multi-seed.json",
         "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
         plan_path,
         gate_passed=True,
     )
-    heldout_path = _write_gate_output(
+    heldout_output_path = _write_gate_output(
         tmp_path / "heldout.json",
         "adaptive_creator_loop.startup_yc_heldout_check.v1",
         plan_path,
         gate_passed=True,
     )
-    review_path = _write_gate_output(
+    review_output_path = _write_gate_output(
         tmp_path / "review-gates.json",
         "adaptive_creator_loop.startup_yc_review_gates_check.v1",
         plan_path,
@@ -426,14 +427,14 @@ def test_startup_yc_promotion_evidence_check_passes_only_evidence_support(
     bundle_path = tmp_path / "promotion-evidence-bundle.json"
     bundle_path.write_text(
         json.dumps(
-            {
-                "checks": {
-                    "multi_seed_validation": str(multi_seed_path),
-                    "held_out_founder_advice_pass": str(heldout_path),
-                    "review_gates": str(review_path),
-                }
-            },
-            indent=2,
+                {
+                    "checks": {
+                        "multi_seed_validation": str(multi_seed_output_path),
+                        "held_out_founder_advice_pass": str(heldout_output_path),
+                        "review_gates": str(review_output_path),
+                    }
+                },
+                indent=2,
         ),
         encoding="utf-8",
     )
@@ -484,6 +485,91 @@ def test_startup_yc_promotion_evidence_check_blocks_stale_plan_output(
         "blocking_checks"
     ]
     assert "missing_check_output:review_gates" in result["blocking_checks"]
+
+
+def test_startup_yc_validation_suite_blocks_without_evidence() -> None:
+    result = run_startup_yc_validation_suite(FIXTURE_DIR / "validation_plan.json")
+
+    assert result["schema_version"] == (
+        "adaptive_creator_loop.startup_yc_validation_suite.v1"
+    )
+    assert result["verdict"] == "blocked"
+    assert result["required_subchecks_passed"] is False
+    assert result["final_promotion_ready"] is False
+    assert result["network_absorbable"] is False
+    assert "subcheck_blocked:promotion_gates" in result["blocking_checks"]
+    assert "subcheck_blocked:multi_seed_validation" in result["blocking_checks"]
+    assert "subcheck_blocked:held_out_founder_advice_pass" in result[
+        "blocking_checks"
+    ]
+    assert "subcheck_blocked:review_gates" in result["blocking_checks"]
+    assert "subcheck_blocked:promotion_evidence_bundle" in result["blocking_checks"]
+
+
+def test_startup_yc_validation_suite_keeps_final_promotion_blocked(
+    tmp_path: Path,
+) -> None:
+    plan_path = FIXTURE_DIR / "validation_plan.json"
+    (
+        multi_seed_evidence_path,
+        heldout_evidence_path,
+        review_gate_evidence_path,
+    ) = _write_raw_validation_evidence(tmp_path)
+    multi_seed_path = _write_gate_output(
+        tmp_path / "multi-seed.json",
+        "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
+        plan_path,
+        gate_passed=True,
+    )
+    heldout_path = _write_gate_output(
+        tmp_path / "heldout.json",
+        "adaptive_creator_loop.startup_yc_heldout_check.v1",
+        plan_path,
+        gate_passed=True,
+    )
+    review_path = _write_gate_output(
+        tmp_path / "review-gates.json",
+        "adaptive_creator_loop.startup_yc_review_gates_check.v1",
+        plan_path,
+        gate_passed=True,
+        gate_status={
+            "human_operator_calibration": True,
+            "privacy_review": True,
+            "rollback_review": True,
+            "publication_approval": True,
+        },
+    )
+    bundle_path = tmp_path / "promotion-evidence-bundle.json"
+    bundle_path.write_text(
+        json.dumps(
+            {
+                "checks": {
+                    "multi_seed_validation": str(multi_seed_path),
+                    "held_out_founder_advice_pass": str(heldout_path),
+                    "review_gates": str(review_path),
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    result = run_startup_yc_validation_suite(
+        plan_path,
+        multi_seed_evidence_path=multi_seed_evidence_path,
+        heldout_evidence_path=heldout_evidence_path,
+        review_gate_evidence_path=review_gate_evidence_path,
+        promotion_evidence_bundle_path=bundle_path,
+    )
+
+    assert result["verdict"] == "blocked"
+    assert result["required_subchecks_passed"] is True
+    assert result["final_promotion_ready"] is False
+    assert result["network_absorbable"] is False
+    assert result["subchecks"]["promotion_gates"]["verdict"] == "blocked"
+    assert "promotion_gates:prohibited_claim:network_absorbable" in result[
+        "blocking_checks"
+    ]
 
 
 def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
@@ -625,6 +711,33 @@ def test_cli_startup_yc_promotion_evidence_check_fails_on_blocked(
     assert payload["network_absorbable"] is False
 
 
+def test_cli_startup_yc_validation_suite_fails_on_blocked(tmp_path: Path) -> None:
+    output_path = tmp_path / "startup-yc-validation-suite.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-validation-suite",
+            "--validation-plan",
+            str(FIXTURE_DIR / "validation_plan.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "blocked"
+    assert payload["network_absorbable"] is False
+
+
 def _load_plan() -> dict[str, object]:
     return json.loads((FIXTURE_DIR / "validation_plan.json").read_text(encoding="utf-8"))
 
@@ -655,3 +768,90 @@ def _write_gate_output(
         payload["gate_status"] = gate_status
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     return path
+
+
+def _write_raw_validation_evidence(tmp_path: Path) -> tuple[Path, Path, Path]:
+    plan = _load_plan()
+    tracks = plan["minimum_multi_seed_plan"]["tracks"]
+    multi_seed_evidence_path = tmp_path / "multi-seed-evidence.json"
+    multi_seed_evidence_path.write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "seed_id": f"{track}-{index}",
+                        "track": track,
+                        "baseline_score": 0.4,
+                        "candidate_score": 0.6,
+                        "constraints_passed": True,
+                        "held_out_passed": True,
+                    }
+                    for track in tracks
+                    for index in range(1, 6)
+                ]
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    cases = _load_jsonl(FIXTURE_DIR / plan["held_out_cases_path"])
+    heldout_evidence_path = tmp_path / "heldout-evidence.json"
+    heldout_evidence_path.write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "case_id": case["case_id"],
+                        "passed": True,
+                        "operator_moves_covered": True,
+                        "reject_claims_avoided": True,
+                        "success_gate_met": True,
+                        "privacy_lane_respected": True,
+                    }
+                    for case in cases
+                ]
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    review_gate_evidence_path = tmp_path / "review-gate-evidence.json"
+    review_gate_evidence_path.write_text(
+        json.dumps(
+            {
+                "gates": {
+                    "human_operator_calibration": {
+                        "passed": True,
+                        "reviewer": "operator",
+                        "evidence_ref": "calibration-review-1",
+                        "calibration_notes": "Reviewed held-out advice quality.",
+                    },
+                    "privacy_review": {
+                        "passed": True,
+                        "reviewer": "operator",
+                        "evidence_ref": "privacy-review-1",
+                        "privacy_lane_decision": "No private founder details leave local lane.",
+                    },
+                    "rollback_review": {
+                        "passed": True,
+                        "reviewer": "operator",
+                        "evidence_ref": "rollback-review-1",
+                        "rollback_rule": "Revoke promotion on stale or negative evidence.",
+                    },
+                    "publication_approval": {
+                        "passed": True,
+                        "reviewer": "operator",
+                        "evidence_ref": "publication-review-1",
+                        "publication_decision": "Approved for network_absorbable only after all gates pass.",
+                        "approved_claim": "network_absorbable",
+                        "network_publication_allowed": True,
+                    },
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    return multi_seed_evidence_path, heldout_evidence_path, review_gate_evidence_path

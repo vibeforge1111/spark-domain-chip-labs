@@ -81,6 +81,9 @@
 - `startup-yc-promotion-evidence-check` now makes saved promotion evidence
   coherent: bundled gate outputs must have expected schemas, match the same
   validation plan, and report passed gates before final review can use them.
+- `startup-yc-validation-suite` now runs all Startup YC gate checks together and
+  still blocks final promotion unless the validation plan explicitly records
+  approved gates, claim removal, and publication permission.
 
 ## Current Claim Boundary
 
@@ -102,4 +105,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `120 passed`.
+Latest focused creator-system suite result before CI push: `123 passed`.

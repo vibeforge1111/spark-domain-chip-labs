@@ -1289,6 +1289,23 @@ def cmd_startup_yc_promotion_evidence_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_startup_yc_validation_suite(args: argparse.Namespace) -> None:
+    """Run all Startup YC validation checks as a read-only suite."""
+    from .startup_yc_promotion import run_startup_yc_validation_suite
+
+    result = run_startup_yc_validation_suite(
+        args.validation_plan,
+        multi_seed_evidence_path=args.multi_seed_evidence,
+        heldout_evidence_path=args.heldout_evidence,
+        review_gate_evidence_path=args.review_gate_evidence,
+        promotion_evidence_bundle_path=args.promotion_evidence_bundle,
+        requested_claim=args.requested_claim,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -2361,6 +2378,57 @@ def main() -> None:
     p_startup_yc_promotion_evidence_check.set_defaults(
         func=cmd_startup_yc_promotion_evidence_check
     )
+
+    # startup-yc-validation-suite
+    p_startup_yc_validation_suite = sub.add_parser(
+        "startup-yc-validation-suite",
+        help="Run all Startup YC validation checks as a read-only suite.",
+    )
+    p_startup_yc_validation_suite.add_argument(
+        "--validation-plan",
+        type=str,
+        required=True,
+        help="Startup YC validation_plan.json path.",
+    )
+    p_startup_yc_validation_suite.add_argument(
+        "--multi-seed-evidence",
+        type=str,
+        default=None,
+        help="Optional multi-seed evidence JSON or JSONL path.",
+    )
+    p_startup_yc_validation_suite.add_argument(
+        "--heldout-evidence",
+        type=str,
+        default=None,
+        help="Optional held-out evidence JSON or JSONL path.",
+    )
+    p_startup_yc_validation_suite.add_argument(
+        "--review-gate-evidence",
+        type=str,
+        default=None,
+        help="Optional review gate evidence JSON or JSONL path.",
+    )
+    p_startup_yc_validation_suite.add_argument(
+        "--promotion-evidence-bundle",
+        type=str,
+        default=None,
+        help="Optional promotion evidence bundle JSON path.",
+    )
+    p_startup_yc_validation_suite.add_argument(
+        "--requested-claim",
+        type=str,
+        default="network_absorbable",
+        help="Requested stronger claim to check.",
+    )
+    p_startup_yc_validation_suite.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_startup_yc_validation_suite.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the validation suite is blocked.",
+    )
+    p_startup_yc_validation_suite.set_defaults(func=cmd_startup_yc_validation_suite)
 
     args = parser.parse_args()
     args.func(args)

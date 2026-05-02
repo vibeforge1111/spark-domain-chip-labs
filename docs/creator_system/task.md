@@ -278,6 +278,8 @@ Deliverables:
   calibration, privacy review, rollback review, and publication approval.
 - [x] Executable Startup YC promotion evidence bundle checker that blocks stale,
   mismatched, or incomplete saved gate outputs.
+- [x] Executable Startup YC validation suite that runs all gate checks together
+  while keeping final promotion blocked by the validation plan.
 
 Phase gate:
 
@@ -533,6 +535,9 @@ Completed documentation/verification:
 - `startup-yc-promotion-evidence-check` now verifies that saved multi-seed,
   held-out, and review-gate outputs match the same validation plan and have
   passed before final promotion review can use them.
+- `startup-yc-validation-suite` now runs the promotion, multi-seed, held-out,
+  review-gate, and promotion-evidence checks together without granting final
+  network absorption.
 
 Completed product PR verification:
 

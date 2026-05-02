@@ -19,6 +19,9 @@ REVIEW_GATES_SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_review_gates_che
 PROMOTION_EVIDENCE_SCHEMA_VERSION = (
     "adaptive_creator_loop.startup_yc_promotion_evidence_check.v1"
 )
+VALIDATION_SUITE_SCHEMA_VERSION = (
+    "adaptive_creator_loop.startup_yc_validation_suite.v1"
+)
 
 _REVIEW_GATE_REQUIREMENTS = {
     "human_operator_calibration": ("reviewer", "evidence_ref", "calibration_notes"),
@@ -382,6 +385,74 @@ def check_startup_yc_promotion_evidence(
     }
 
 
+def run_startup_yc_validation_suite(
+    validation_plan_path: str | Path,
+    *,
+    multi_seed_evidence_path: str | Path | None = None,
+    heldout_evidence_path: str | Path | None = None,
+    review_gate_evidence_path: str | Path | None = None,
+    promotion_evidence_bundle_path: str | Path | None = None,
+    requested_claim: str = "network_absorbable",
+) -> dict[str, Any]:
+    """Run all Startup YC validation checks as one read-only suite."""
+
+    plan_path = Path(validation_plan_path)
+    plan = _load_json(plan_path)
+    subchecks = {
+        "promotion_gates": check_startup_yc_promotion_gates(
+            plan_path,
+            requested_claim=requested_claim,
+        ),
+        "multi_seed_validation": check_startup_yc_multi_seed_validation(
+            plan_path,
+            evidence_path=multi_seed_evidence_path,
+        ),
+        "held_out_founder_advice_pass": check_startup_yc_heldout_validation(
+            plan_path,
+            evidence_path=heldout_evidence_path,
+        ),
+        "review_gates": check_startup_yc_review_gates(
+            plan_path,
+            evidence_path=review_gate_evidence_path,
+        ),
+        "promotion_evidence_bundle": check_startup_yc_promotion_evidence(
+            plan_path,
+            evidence_bundle_path=promotion_evidence_bundle_path,
+        ),
+    }
+    blocking_checks = _suite_blocking_checks(subchecks)
+    required_subchecks_passed = all(
+        subchecks[key]["verdict"] == "passed"
+        for key in (
+            "multi_seed_validation",
+            "held_out_founder_advice_pass",
+            "review_gates",
+            "promotion_evidence_bundle",
+        )
+    )
+    final_promotion_ready = (
+        required_subchecks_passed and subchecks["promotion_gates"]["verdict"] == "approved"
+    )
+    return {
+        "schema_version": VALIDATION_SUITE_SCHEMA_VERSION,
+        "plan_path": str(plan_path),
+        "plan_id": plan.get("plan_id"),
+        "domain": plan.get("domain"),
+        "current_claim": plan.get("current_claim"),
+        "requested_claim": requested_claim,
+        "verdict": "passed" if final_promotion_ready else "blocked",
+        "required_subchecks_passed": required_subchecks_passed,
+        "final_promotion_ready": final_promotion_ready,
+        "network_absorbable": False,
+        "subchecks": subchecks,
+        "blocking_checks": blocking_checks,
+        "next_actions": _validation_suite_next_actions(
+            required_subchecks_passed=required_subchecks_passed,
+            final_promotion_ready=final_promotion_ready,
+        ),
+    }
+
+
 def _evidence_paths(plan_path: Path, plan: dict[str, Any]) -> list[dict[str, Any]]:
     base = plan_path.parent
     path_fields = (
@@ -600,6 +671,19 @@ def _evaluate_promotion_evidence_bundle(
     return gate_support, evidence_checks
 
 
+def _suite_blocking_checks(subchecks: dict[str, dict[str, Any]]) -> list[str]:
+    blocking_checks: list[str] = []
+    for name, result in subchecks.items():
+        verdict = result.get("verdict")
+        if verdict not in ("passed", "approved"):
+            blocking_checks.append(f"subcheck_blocked:{name}")
+        blocking_checks.extend(
+            f"{name}:{check}"
+            for check in _list_str(result.get("blocking_checks"))
+        )
+    return _dedupe(blocking_checks)
+
+
 def _load_bundle_check(
     plan_path: Path,
     checks: dict[str, Any],
@@ -777,6 +861,29 @@ def _promotion_evidence_next_actions(*, all_supported: bool) -> list[str]:
         "Regenerate or repair the individual gate check outputs before final promotion review.",
         "Every bundled check must match the validation plan path, expected schema, and gate_passed=true.",
         "Do not infer network absorption from partial or stale saved evidence.",
+    ]
+
+
+def _validation_suite_next_actions(
+    *,
+    required_subchecks_passed: bool,
+    final_promotion_ready: bool,
+) -> list[str]:
+    if final_promotion_ready:
+        return [
+            "Treat this as validation-suite readiness only.",
+            "Complete any external governance process before publication or network absorption.",
+        ]
+    if required_subchecks_passed:
+        return [
+            "Saved evidence subchecks are coherent, but final promotion is still blocked by the validation plan.",
+            "Update gate_status, prohibited claims, and publication boundary only after explicit human approval.",
+            "Do not claim network_absorbable from subcheck evidence alone.",
+        ]
+    return [
+        "Repair blocked validation subchecks before final promotion review.",
+        "Run the individual Startup YC gate commands to regenerate fresh evidence.",
+        "Keep Startup YC at transfer_supported while suite blockers remain.",
     ]
 
 

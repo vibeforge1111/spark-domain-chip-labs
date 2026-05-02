@@ -430,6 +430,9 @@ Current validation pack:
   saved multi-seed, held-out, and review-gate outputs have the expected schemas,
   match the same validation plan, and report their gates as passed before a
   final promotion review can even begin.
+- `startup-yc-validation-suite`: read-only orchestration check that runs the
+  individual Startup YC validation checks together and keeps final promotion
+  blocked unless the validation plan itself records explicit gate approval.
 
 Next real adapters:
 

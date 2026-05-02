@@ -107,6 +107,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Check Startup YC held-out advice evidence | `python -m chip_labs.cli startup-yc-heldout-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC review gates | `python -m chip_labs.cli startup-yc-review-gates-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC promotion evidence bundle | `python -m chip_labs.cli startup-yc-promotion-evidence-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
+| Run Startup YC validation suite | `python -m chip_labs.cli startup-yc-validation-suite --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Simulate content candidates | `python -m chip_labs.cli mirofish-content-simulate --task "<task>" --candidate "<A>" --candidate "<B>"` |
 | Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |
 
@@ -241,6 +242,11 @@ separate gate-status decision.
 as saved evidence. It blocks stale or mismatched outputs unless every bundled
 check has the expected schema, matches the same validation plan, and reports its
 gate as passed. Even a coherent bundle is evidence support, not final promotion.
+
+`startup-yc-validation-suite` runs the promotion gate, multi-seed, held-out,
+review-gate, and promotion-evidence checks together. It can show that all
+subchecks are coherent while still blocking final promotion when the validation
+plan has not explicitly removed prohibited claims and publication blockers.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style
