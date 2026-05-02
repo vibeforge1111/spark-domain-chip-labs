@@ -49,7 +49,8 @@ jobs:
             src/chip_labs/startup_yc_promotion.py \
             src/chip_labs/cli.py \
             tests/test_creator_mission_adapter.py \
-            tests/test_creator_system_docs.py
+            tests/test_creator_system_docs.py \
+            tests/test_startup_yc_operator_validation.py
 
       - name: Run creator-system tests
         run: |

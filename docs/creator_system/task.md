@@ -600,6 +600,9 @@ Completed documentation/verification:
   covering provenance drift.
 - Creator-system CI now validates both freshly generated and saved blocked
   Startup YC validation-suite packets against the referenced schema pair.
+- Creator-system CI focused lint now includes
+  `tests/test_startup_yc_operator_validation.py`, where the Startup YC
+  schema/provenance regression checks live.
 
 Completed product PR verification:
 
