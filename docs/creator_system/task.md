@@ -587,6 +587,8 @@ Completed documentation/verification:
   output against that result schema.
 - The raw evidence check-result schema now distinguishes present evidence with
   input hashes from absent evidence with explicit missing-input records.
+- The same schema now rejects impossible raw-evidence verdicts, such as
+  `passed` with blockers or `blocked` without blockers.
 
 Completed product PR verification:
 

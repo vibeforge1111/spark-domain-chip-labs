@@ -111,6 +111,31 @@
           }
         }
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "verdict": {"const": "passed"}
+        }
+      },
+      "then": {
+        "properties": {
+          "evidence_present": {"const": true},
+          "blocking_checks": {"maxItems": 0}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "verdict": {"const": "blocked"}
+        }
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"minItems": 1}
+        }
+      }
     }
   ]
 }
