@@ -90,6 +90,8 @@
 - Creator-system CI now lints `startup_yc_promotion.py` and explicitly runs the
   Startup YC validation suite without `--fail-on-blocked`, preserving the
   expected blocked command path.
+- `startup-yc-validation-suite.schema.json` now anchors saved validation-suite
+  packets and rejects any packet claiming `network_absorbable=true`.
 
 ## Current Claim Boundary
 
@@ -111,4 +113,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `124 passed`.
+Latest focused creator-system suite result before CI push: `125 passed`.

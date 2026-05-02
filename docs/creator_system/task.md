@@ -284,6 +284,7 @@ Deliverables:
   for critical blocker drift.
 - [x] Creator-system CI explicitly runs the Startup YC validation suite as a
   blocked command and lints the promotion-gate module.
+- [x] JSON Schema anchor for Startup YC validation-suite packets.
 
 Phase gate:
 
@@ -548,6 +549,8 @@ Completed documentation/verification:
 - Creator-system CI now lints `startup_yc_promotion.py` and runs
   `startup-yc-validation-suite` without `--fail-on-blocked` so the expected
   blocked suite command remains exercised on every relevant push.
+- `startup-yc-validation-suite.schema.json` now validates saved suite packets
+  and rejects any packet claiming `network_absorbable=true`.
 
 Completed product PR verification:
 

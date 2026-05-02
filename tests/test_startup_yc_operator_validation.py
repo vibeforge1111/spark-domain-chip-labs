@@ -5,6 +5,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 from chip_labs.startup_yc_promotion import (
     check_startup_yc_heldout_validation,
     check_startup_yc_multi_seed_validation,
@@ -16,6 +18,9 @@ from chip_labs.startup_yc_promotion import (
 
 
 FIXTURE_DIR = Path("docs/creator_system/examples/startup-yc-operator-validation")
+VALIDATION_SUITE_SCHEMA = Path(
+    "docs/creator_system/schemas/startup-yc-validation-suite.schema.json"
+)
 
 
 def test_startup_yc_validation_plan_blocks_network_absorption() -> None:
@@ -528,6 +533,21 @@ def test_saved_startup_yc_validation_suite_fixture_matches_current_blockers() ->
         name: result["verdict"]
         for name, result in current["subchecks"].items()
     }
+
+
+def test_startup_yc_validation_suite_schema_blocks_network_absorption() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(VALIDATION_SUITE_SCHEMA.read_text(encoding="utf-8"))
+    saved = json.loads(
+        (FIXTURE_DIR / "validation_suite_blocked.json").read_text(encoding="utf-8")
+    )
+    validator = jsonschema.Draft202012Validator(schema)
+
+    validator.validate(saved)
+
+    unsafe = json.loads(json.dumps(saved))
+    unsafe["network_absorbable"] = True
+    assert list(validator.iter_errors(unsafe))
 
 
 def test_startup_yc_validation_suite_keeps_final_promotion_blocked(

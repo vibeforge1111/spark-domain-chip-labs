@@ -27,6 +27,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "does not prove real virality" in text
     assert "does not prove product correctness" in text
     assert "STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md" in text
+    assert "Startup YC validation-suite outputs" in text
 
 
 def test_creator_system_readme_keeps_command_index_visible() -> None:
@@ -68,8 +69,9 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "startup-yc-promotion-evidence-check" in text
     assert "startup-yc-validation-suite" in text
     assert "validation_suite_blocked.json" in text
+    assert "startup-yc-validation-suite.schema.json" in text
     assert "Creator-system CI now runs focused lint" in text
-    assert "Latest focused creator-system suite result before CI push: `124 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `125 passed`." in text
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:

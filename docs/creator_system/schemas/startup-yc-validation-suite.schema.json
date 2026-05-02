@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-validation-suite.schema.json",
+  "title": "Adaptive Creator Loop Startup YC Validation Suite",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "plan_path",
+    "plan_id",
+    "domain",
+    "current_claim",
+    "requested_claim",
+    "verdict",
+    "required_subchecks_passed",
+    "final_promotion_ready",
+    "network_absorbable",
+    "subchecks",
+    "blocking_checks",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.startup_yc_validation_suite.v1"
+    },
+    "plan_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "const": "Startup YC"
+    },
+    "current_claim": {
+      "const": "transfer_supported"
+    },
+    "requested_claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verdict": {
+      "enum": ["blocked", "passed"]
+    },
+    "required_subchecks_passed": {
+      "type": "boolean"
+    },
+    "final_promotion_ready": {
+      "type": "boolean"
+    },
+    "network_absorbable": {
+      "const": false
+    },
+    "subchecks": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "promotion_gates",
+        "multi_seed_validation",
+        "held_out_founder_advice_pass",
+        "review_gates",
+        "promotion_evidence_bundle"
+      ],
+      "properties": {
+        "promotion_gates": {"type": "object"},
+        "multi_seed_validation": {"type": "object"},
+        "held_out_founder_advice_pass": {"type": "object"},
+        "review_gates": {"type": "object"},
+        "promotion_evidence_bundle": {"type": "object"}
+      }
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}
