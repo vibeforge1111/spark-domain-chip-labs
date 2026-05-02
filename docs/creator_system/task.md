@@ -606,6 +606,8 @@ Completed documentation/verification:
   schema/provenance regression checks live.
 - Creator-system CI now opts JavaScript actions into Node.js 24 to avoid the
   GitHub-hosted runner Node.js 20 deprecation path.
+- Creator-system CI now uses Node.js 24-native `actions/checkout@v6` and
+  `actions/setup-python@v6` instead of relying on the forced-runtime workaround.
 - Creator-system CI now validates the shape-only raw Startup YC evidence
   fixture against the raw validation-evidence schema before producing a
   shape-check result.

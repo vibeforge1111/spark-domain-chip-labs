@@ -107,7 +107,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "tests/test_creator_mission_adapter.py" in text
-    assert "Latest focused creator-system suite result before CI push: `137 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `138 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -131,7 +131,9 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "validation_suite_blocked.json" in text
     assert "validator.validate(payload)" in text
     assert "tests/test_startup_yc_operator_validation.py" in text
-    assert "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24" in text
+    assert "actions/checkout@v6" in text
+    assert "actions/setup-python@v6" in text
+    assert "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24" not in text
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:
