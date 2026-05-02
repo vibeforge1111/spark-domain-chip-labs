@@ -633,6 +633,9 @@ Completed documentation/verification:
 - Startup YC saved fixture notes now distinguish source-report recompute checks
   from full external benchmark reruns, matching the current
   `startup_yc_external_v1` provenance boundary.
+- `creator-run-smoke` packets now expose `evidence_mode` (`saved` or
+  `recomputed`), and tool-operation checks block mismatches between
+  `--recompute` commands and saved-mode smoke packets.
 
 Completed product PR verification:
 

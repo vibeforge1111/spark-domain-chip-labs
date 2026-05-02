@@ -6,6 +6,7 @@
     "run_dir": "runs/demo",
     "verdict": "blocked",
     "evidence_tier": "candidate_review",
+    "evidence_mode": "recomputed",
     "status_counts": {
       "pass": 20,
       "warn": 0,

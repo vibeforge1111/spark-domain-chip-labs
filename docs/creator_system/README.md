@@ -171,6 +171,7 @@ python -m chip_labs.cli creator-run-smoke runs/startup-yc-creator-run --recomput
 The smoke response emits `schema_version: adaptive_creator_loop.smoke_result.v1` and includes machine-routing fields:
 
 - `status_counts`: count of pass/warn/fail checks
+- `evidence_mode`: `saved` for normal smoke, `recomputed` for `--recompute`
 - `blocking_checks`: failed check names
 - `warning_checks`: warning check names
 - `automation.blocked`: whether the run is blocked
@@ -196,9 +197,12 @@ For elevated evidence tiers such as `candidate_review`, the smoke gate also vali
 
 `--recompute` adds a stricter distinction: saved report evidence can be coherent
 on its own, while recomputed evidence must also match current benchmark cases and
-scoring hooks. This mode currently supports generator-produced reports with
-`creator_generator_v1` provenance and artifact-quality benchmark reports with
-`artifact_quality_v1` provenance. Curated fixtures that point at external source
+scoring hooks. The smoke packet records this distinction in `evidence_mode`,
+and tool-operation checks reject a `creator-run-smoke --recompute` command whose
+parsed result still says `saved`. This mode currently supports
+generator-produced reports with `creator_generator_v1` provenance and
+artifact-quality benchmark reports with `artifact_quality_v1` provenance.
+Curated fixtures that point at external source
 repos still need source-specific rerun adapters before they can claim full
 external recompute. The Startup YC adapter boundary is tracked in
 `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.

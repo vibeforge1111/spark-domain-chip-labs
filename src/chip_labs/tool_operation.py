@@ -13,7 +13,7 @@ SUPPORTED_OPERATIONS = {
     "creator-run-smoke": {
         "fragments": ("creator-run-smoke",),
         "packet_kind": "adaptive_creator_loop.smoke_result.v1",
-        "required_fields": ("verdict", "automation", "status_counts"),
+        "required_fields": ("verdict", "evidence_mode", "automation", "status_counts"),
         "success_field": "verdict",
         "success_values": ("prototype", "ready_for_baseline", "ready_for_swarm_packet"),
     },
@@ -124,7 +124,7 @@ def check_tool_operation(packet: dict[str, Any]) -> dict[str, Any]:
         failed_operation = failed_operation or verdict in {"blocked", "fail", "failed"}
 
     if operation and isinstance(result, dict):
-        _check_result_shape(operation_key or "", operation, result, checks)
+        _check_result_shape(operation_key or "", operation, command, result, checks)
     if isinstance(result, dict) and isinstance(expected_postconditions, dict):
         _check_expected_postconditions(expected_postconditions, result, checks)
 
@@ -207,6 +207,7 @@ def default_tool_operation_manifest() -> dict[str, Any]:
 def _check_result_shape(
     operation_key: str,
     operation: dict[str, Any],
+    command: str,
     result: dict[str, Any],
     checks: list[dict[str, str]],
 ) -> None:
@@ -243,6 +244,17 @@ def _check_result_shape(
             f"{success_field} is an allowed success value.",
             f"{success_field} must be one of {sorted(success_values)}; "
             f"got {actual_value or 'missing'}.",
+        )
+    if operation_key == "creator-run-smoke":
+        expected_mode = "recomputed" if "--recompute" in command.lower() else "saved"
+        actual_mode = result.get("evidence_mode")
+        _append_check(
+            checks,
+            "evidence_mode",
+            actual_mode == expected_mode,
+            f"Smoke result evidence_mode matches command mode `{expected_mode}`.",
+            f"Expected evidence_mode `{expected_mode}` for this command; "
+            f"got `{actual_mode or 'missing'}`.",
         )
 
 

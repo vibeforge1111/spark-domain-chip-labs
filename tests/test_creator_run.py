@@ -8,6 +8,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 from chip_labs.creator_run import (
     diagnose_creator_run,
     init_creator_run,
@@ -17,6 +19,7 @@ from chip_labs.creator_run import (
 
 
 DOCTOR_FIXTURE_DIR = Path("docs/creator_system/examples/doctor-security")
+SMOKE_RESULT_SCHEMA = Path("docs/creator_system/schemas/smoke-result.schema.json")
 
 
 def test_init_creator_run_creates_valid_prototype(tmp_path: Path) -> None:
@@ -49,12 +52,16 @@ def test_init_creator_run_creates_valid_prototype(tmp_path: Path) -> None:
 
 
 def test_smoke_result_exposes_machine_routing_fields(tmp_path: Path) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
     run_dir = tmp_path / "startup-yc-run"
     init_creator_run(run_dir, domain="Startup YC", goal="Route this run.")
 
     payload = validate_creator_run(run_dir).to_dict()
+    schema = json.loads(SMOKE_RESULT_SCHEMA.read_text(encoding="utf-8"))
 
+    jsonschema.Draft202012Validator(schema).validate(payload)
     assert payload["schema_version"] == "adaptive_creator_loop.smoke_result.v1"
+    assert payload["evidence_mode"] == "saved"
     assert payload["status_counts"]["pass"] > 0
     assert payload["status_counts"]["fail"] == 0
     assert payload["blocking_checks"] == []
@@ -62,6 +69,10 @@ def test_smoke_result_exposes_machine_routing_fields(tmp_path: Path) -> None:
     assert payload["automation"]["blocked"] is False
     assert payload["automation"]["ci_exit_code"] == 0
     assert payload["automation"]["recommended_next_command"]
+
+    recomputed_payload = validate_creator_run(run_dir, recompute=True).to_dict()
+    jsonschema.Draft202012Validator(schema).validate(recomputed_payload)
+    assert recomputed_payload["evidence_mode"] == "recomputed"
 
 
 def test_cli_fail_on_blocked_exits_nonzero(tmp_path: Path) -> None:

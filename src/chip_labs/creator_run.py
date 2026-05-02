@@ -198,6 +198,7 @@ class SmokeResult:
     checks: tuple[SmokeCheck, ...]
     missing_paths: tuple[str, ...]
     next_actions: tuple[str, ...]
+    evidence_mode: str = "saved"
 
     def to_dict(self) -> dict[str, Any]:
         status_counts = _status_counts(self.checks)
@@ -208,6 +209,7 @@ class SmokeResult:
             "run_dir": self.run_dir,
             "verdict": self.verdict,
             "evidence_tier": self.evidence_tier,
+            "evidence_mode": self.evidence_mode,
             "status_counts": status_counts,
             "blocking_checks": blocking_checks,
             "warning_checks": warning_checks,
@@ -588,6 +590,7 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
         checks=tuple(checks),
         missing_paths=tuple(missing_paths),
         next_actions=next_actions,
+        evidence_mode="recomputed" if recompute else "saved",
     )
 
 

@@ -267,6 +267,8 @@ def test_generator_acceptance_flow_creates_swarm_ready_run_in_clean_workspace(
     assert generated.smoke["verdict"] == "ready_for_swarm_packet"
     assert generated.smoke["evidence_tier"] == "candidate_review"
     assert generated.recompute_smoke["verdict"] == "ready_for_swarm_packet"
+    assert generated.smoke["evidence_mode"] == "saved"
+    assert generated.recompute_smoke["evidence_mode"] == "recomputed"
     assert generated.recompute_smoke["blocking_checks"] == []
 
     expected_paths = [

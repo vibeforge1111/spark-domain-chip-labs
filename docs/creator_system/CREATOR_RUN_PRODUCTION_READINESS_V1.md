@@ -77,6 +77,7 @@ is available.
   "run_dir": "runs/example",
   "verdict": "prototype",
   "evidence_tier": "prototype",
+  "evidence_mode": "saved",
   "status_counts": {
     "pass": 0,
     "warn": 0,

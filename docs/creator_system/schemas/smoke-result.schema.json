@@ -8,6 +8,7 @@
     "run_dir",
     "verdict",
     "evidence_tier",
+    "evidence_mode",
     "status_counts",
     "blocking_checks",
     "warning_checks",
@@ -25,6 +26,9 @@
       "enum": ["blocked", "prototype", "ready_for_baseline", "ready_for_swarm_packet"]
     },
     "evidence_tier": {"type": "string"},
+    "evidence_mode": {
+      "enum": ["saved", "recomputed"]
+    },
     "status_counts": {"type": "object"},
     "blocking_checks": {"type": "array", "items": {"type": "string"}},
     "warning_checks": {"type": "array", "items": {"type": "string"}},
@@ -42,4 +46,3 @@
     "next_actions": {"type": "array", "items": {"type": "string"}}
   }
 }
-

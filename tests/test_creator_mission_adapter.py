@@ -40,6 +40,7 @@ def _smoke(verdict: str = "ready_for_swarm_packet") -> dict[str, object]:
         "run_dir": "runs/demo",
         "verdict": verdict,
         "evidence_tier": "transfer_supported",
+        "evidence_mode": "saved",
         "status_counts": {"pass": 68, "warn": 0, "fail": 0 if not blocked else 1},
         "blocking_checks": [] if not blocked else ["candidate_delta"],
         "warning_checks": [],

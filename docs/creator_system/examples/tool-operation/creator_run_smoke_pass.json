@@ -12,6 +12,7 @@
     "run_dir": "docs/creator_system/examples/startup-yc-creator-run",
     "verdict": "ready_for_swarm_packet",
     "evidence_tier": "transfer_supported",
+    "evidence_mode": "recomputed",
     "status_counts": {
       "pass": 68,
       "warn": 0,

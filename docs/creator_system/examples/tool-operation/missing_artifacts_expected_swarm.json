@@ -12,6 +12,7 @@
     "run_dir": "runs/demo",
     "verdict": "prototype",
     "evidence_tier": "prototype",
+    "evidence_mode": "saved",
     "status_counts": {
       "pass": 7,
       "warn": 0,

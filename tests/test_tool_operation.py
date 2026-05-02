@@ -18,11 +18,16 @@ from chip_labs.tool_operation import (
 FIXTURE_DIR = Path("docs/creator_system/examples/tool-operation")
 
 
-def _smoke_result(verdict: str = "ready_for_swarm_packet") -> dict[str, object]:
+def _smoke_result(
+    verdict: str = "ready_for_swarm_packet",
+    *,
+    evidence_mode: str = "saved",
+) -> dict[str, object]:
     blocked = verdict == "blocked"
     return {
         "schema_version": "adaptive_creator_loop.smoke_result.v1",
         "verdict": verdict,
+        "evidence_mode": evidence_mode,
         "status_counts": {"pass": 3, "warn": 0, "fail": 1 if blocked else 0},
         "automation": {"blocked": blocked, "ci_exit_code": 1 if blocked else 0},
         "checks": [],
@@ -48,7 +53,7 @@ def test_tool_operation_check_passes_with_parsed_postconditions() -> None:
     result = check_tool_operation({
         "command": "python -m chip_labs.cli creator-run-smoke runs/demo --recompute",
         "exit_code": 0,
-        "result": _smoke_result(),
+        "result": _smoke_result(evidence_mode="recomputed"),
     })
 
     assert result["verdict"] == "pass"
@@ -79,6 +84,18 @@ def test_tool_operation_check_rejects_stdout_only_success() -> None:
 
     assert result["verdict"] == "blocked"
     assert "parsed_result" in result["blocking_checks"]
+
+
+def test_tool_operation_check_rejects_recompute_mode_mismatch() -> None:
+    result = check_tool_operation({
+        "command": "python -m chip_labs.cli creator-run-smoke runs/demo --recompute",
+        "exit_code": 0,
+        "result": _smoke_result(evidence_mode="saved"),
+        "rollback_note": "Rerun with --recompute and record the recomputed smoke packet.",
+    })
+
+    assert result["verdict"] == "blocked"
+    assert "evidence_mode" in result["blocking_checks"]
 
 
 def test_tool_operation_check_requires_rollback_note_for_failed_operation() -> None:
@@ -164,7 +181,7 @@ def test_cli_tool_operation_check_outputs_packet(tmp_path: Path) -> None:
         json.dumps({
             "command": "python -m chip_labs.cli creator-run-smoke runs/demo --recompute",
             "exit_code": 0,
-            "result": _smoke_result(),
+            "result": _smoke_result(evidence_mode="recomputed"),
         }),
         encoding="utf-8",
     )

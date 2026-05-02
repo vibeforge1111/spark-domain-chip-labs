@@ -170,6 +170,9 @@
 - Startup YC saved fixture notes now distinguish source-report recompute checks
   from full external benchmark reruns, so the artifact text matches the current
   `startup_yc_external_v1` provenance boundary.
+- `creator-run-smoke` output now includes `evidence_mode` (`saved` or
+  `recomputed`), and tool-operation checks reject `--recompute` command packets
+  whose parsed smoke result still claims saved evidence.
 
 ## Current Claim Boundary
 
@@ -191,4 +194,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `136 passed`.
+Latest focused creator-system suite result before CI push: `137 passed`.

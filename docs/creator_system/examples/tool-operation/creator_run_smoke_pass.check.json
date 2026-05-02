@@ -46,6 +46,11 @@
       "message": "verdict is an allowed success value."
     },
     {
+      "name": "evidence_mode",
+      "status": "pass",
+      "message": "Smoke result evidence_mode matches command mode `recomputed`."
+    },
+    {
       "name": "expected_verdict",
       "status": "pass",
       "message": "Result verdict matches expected `ready_for_swarm_packet`."

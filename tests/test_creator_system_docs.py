@@ -33,6 +33,10 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
         in text
     )
     assert "shape-only raw evidence CI fixture" in text
+    assert (
+        "`evidence_mode`: `saved` for normal smoke, `recomputed` for `--recompute`"
+        in text
+    )
 
 
 def test_creator_system_readme_keeps_command_index_visible() -> None:
@@ -82,6 +86,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "does not count as Startup YC multi-seed validation" in text
     assert "Raw validation-evidence shape-check outputs now include source input hashes" in text
     assert "Generator acceptance tests now assert generated report input hashes" in text
+    assert "`creator-run-smoke` output now includes `evidence_mode`" in text
     assert "evidence shape-check outputs and rejects accidental" in text
     assert "validate saved `startup-yc-validation-evidence-check`" in text
     assert "input hashes from absent evidence with explicit missing-input records" in text
@@ -97,7 +102,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "tests/test_creator_mission_adapter.py" in text
-    assert "Latest focused creator-system suite result before CI push: `136 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `137 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
