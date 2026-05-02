@@ -53,4 +53,5 @@ match the blocker state. These schemas intentionally require
 the packet shape is compatible, not that Startup YC is approved for network
 absorption. The validation-suite schema references the gate-check schema for
 every subcheck, so a saved suite cannot hide malformed gate evidence inside a
-generic object field.
+generic object field. Creator-system CI validates both freshly generated suite
+output and the saved blocked suite fixture against that referenced schema pair.

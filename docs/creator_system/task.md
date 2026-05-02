@@ -598,6 +598,8 @@ Completed documentation/verification:
 - The saved blocked Startup YC validation-suite fixture now has a
   path-normalized full-payload equality regression against a fresh suite run,
   covering provenance drift.
+- Creator-system CI now validates both freshly generated and saved blocked
+  Startup YC validation-suite packets against the referenced schema pair.
 
 Completed product PR verification:
 

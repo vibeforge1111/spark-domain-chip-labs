@@ -103,7 +103,8 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "--output /tmp/startup-yc-validation-suite.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
     assert "startup-yc-gate-check-result.schema.json" in text
-    assert "Draft202012Validator(schema, registry=registry).validate(payload)" in text
+    assert "validation_suite_blocked.json" in text
+    assert "validator.validate(payload)" in text
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:

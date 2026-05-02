@@ -94,7 +94,12 @@ jobs:
               gate_schema["$id"],
               referencing.Resource.from_contents(gate_schema),
           )
-          payload = json.loads(Path("/tmp/startup-yc-validation-suite.json").read_text())
-          jsonschema.Draft202012Validator(schema, registry=registry).validate(payload)
+          validator = jsonschema.Draft202012Validator(schema, registry=registry)
+          for payload_path in (
+              Path("/tmp/startup-yc-validation-suite.json"),
+              Path("docs/creator_system/examples/startup-yc-operator-validation/validation_suite_blocked.json"),
+          ):
+              payload = json.loads(payload_path.read_text())
+              validator.validate(payload)
           PY
           python -m chip_labs.cli creator-run-template-check --fail-on-blocked
