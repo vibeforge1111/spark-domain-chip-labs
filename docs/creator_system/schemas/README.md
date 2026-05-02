@@ -44,4 +44,6 @@ promotion workflow. Individual gate-check outputs include raw-evidence
 provenance hashes so promotion bundles can reject stale saved evidence. These
 schemas intentionally require `network_absorbable=false`; passing the schema
 means the packet shape is compatible, not that Startup YC is approved for
-network absorption.
+network absorption. The validation-suite schema references the gate-check
+schema for every subcheck, so a saved suite cannot hide malformed gate evidence
+inside a generic object field.

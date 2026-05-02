@@ -562,6 +562,9 @@ Completed documentation/verification:
   gate outputs whose hashes no longer match the source evidence files.
 - Startup YC CLI tests now run the gate-output generation, evidence bundle, and
   stale-evidence rejection path end to end.
+- Startup YC validation-suite schemas now validate each subcheck through the
+  individual gate-check schema, and the saved blocked fixture includes
+  provenance-bearing subcheck packets.
 
 Completed product PR verification:
 

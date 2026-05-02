@@ -614,17 +614,27 @@ def test_saved_startup_yc_validation_suite_fixture_matches_current_blockers() ->
 
 def test_startup_yc_validation_suite_schema_blocks_network_absorption() -> None:
     jsonschema = pytest.importorskip("jsonschema")
+    referencing = pytest.importorskip("referencing")
     schema = json.loads(VALIDATION_SUITE_SCHEMA.read_text(encoding="utf-8"))
+    gate_schema = json.loads(GATE_CHECK_SCHEMA.read_text(encoding="utf-8"))
     saved = json.loads(
         (FIXTURE_DIR / "validation_suite_blocked.json").read_text(encoding="utf-8")
     )
-    validator = jsonschema.Draft202012Validator(schema)
+    registry = referencing.Registry().with_resource(
+        gate_schema["$id"],
+        referencing.Resource.from_contents(gate_schema),
+    )
+    validator = jsonschema.Draft202012Validator(schema, registry=registry)
 
     validator.validate(saved)
 
     unsafe = json.loads(json.dumps(saved))
     unsafe["network_absorbable"] = True
     assert list(validator.iter_errors(unsafe))
+
+    malformed_subcheck = json.loads(json.dumps(saved))
+    del malformed_subcheck["subchecks"]["multi_seed_validation"]["provenance"]
+    assert list(validator.iter_errors(malformed_subcheck))
 
 
 def test_startup_yc_gate_check_schema_blocks_network_absorption(

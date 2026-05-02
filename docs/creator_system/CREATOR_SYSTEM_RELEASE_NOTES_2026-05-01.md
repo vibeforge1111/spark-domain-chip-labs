@@ -101,6 +101,9 @@
 - Startup YC CLI coverage now generates gate outputs, bundles them, verifies
   the coherent bundle, and then proves the same bundle blocks after raw evidence
   changes.
+- `startup-yc-validation-suite.schema.json` now validates each saved subcheck
+  through the individual gate-check schema, and the blocked suite fixture was
+  regenerated with provenance-bearing subcheck packets.
 
 ## Current Claim Boundary
 

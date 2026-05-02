@@ -141,6 +141,11 @@
       "verdict": "blocked",
       "gate_passed": false,
       "network_absorbable": false,
+      "provenance": {
+        "source": "startup_yc_operator_validation_v1",
+        "input_hashes": {},
+        "missing_inputs": []
+      },
       "blocking_checks": [
         "missing_evidence_path:multi_seed_evidence_path",
         "missing_track:gtm",
@@ -204,6 +209,11 @@
       "verdict": "blocked",
       "gate_passed": false,
       "network_absorbable": false,
+      "provenance": {
+        "source": "startup_yc_operator_validation_v1",
+        "input_hashes": {},
+        "missing_inputs": []
+      },
       "blocking_checks": [
         "missing_evidence_path:held_out_evidence_path",
         "case_failure:urgent-pain-or-politeness:missing_evidence",
@@ -265,6 +275,11 @@
       "verdict": "blocked",
       "gate_passed": false,
       "network_absorbable": false,
+      "provenance": {
+        "source": "startup_yc_operator_validation_v1",
+        "input_hashes": {},
+        "missing_inputs": []
+      },
       "blocking_checks": [
         "missing_evidence_path:review_gate_evidence_path",
         "gate_failure:human_operator_calibration:missing_evidence",
@@ -314,6 +329,11 @@
       "verdict": "blocked",
       "all_required_gates_supported": false,
       "network_absorbable": false,
+      "provenance": {
+        "source": "startup_yc_operator_validation_v1",
+        "input_hashes": {},
+        "missing_inputs": []
+      },
       "blocking_checks": [
         "missing_evidence_path:promotion_evidence_bundle_path",
         "missing_bundle_checks"

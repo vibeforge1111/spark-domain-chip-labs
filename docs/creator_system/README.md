@@ -247,7 +247,9 @@ Even a coherent bundle is evidence support, not final promotion.
 
 `startup-yc-gate-check-result.schema.json` anchors the individual Startup YC
 gate-check packets and rejects any individual gate output that claims
-`network_absorbable=true`.
+`network_absorbable=true`. The validation-suite schema references this
+gate-check schema for each subcheck, so saved suite packets must preserve the
+same gate-output contract.
 
 `startup-yc-validation-suite` runs the promotion gate, multi-seed, held-out,
 review-gate, and promotion-evidence checks together. It can show that all

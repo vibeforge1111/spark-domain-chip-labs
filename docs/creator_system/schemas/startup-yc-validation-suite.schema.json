@@ -64,11 +64,11 @@
         "promotion_evidence_bundle"
       ],
       "properties": {
-        "promotion_gates": {"type": "object"},
-        "multi_seed_validation": {"type": "object"},
-        "held_out_founder_advice_pass": {"type": "object"},
-        "review_gates": {"type": "object"},
-        "promotion_evidence_bundle": {"type": "object"}
+        "promotion_gates": {"$ref": "#/$defs/gateCheckResult"},
+        "multi_seed_validation": {"$ref": "#/$defs/gateCheckResult"},
+        "held_out_founder_advice_pass": {"$ref": "#/$defs/gateCheckResult"},
+        "review_gates": {"$ref": "#/$defs/gateCheckResult"},
+        "promotion_evidence_bundle": {"$ref": "#/$defs/gateCheckResult"}
       }
     },
     "blocking_checks": {
@@ -78,6 +78,11 @@
     "next_actions": {
       "type": "array",
       "items": {"type": "string"}
+    }
+  },
+  "$defs": {
+    "gateCheckResult": {
+      "$ref": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-gate-check-result.schema.json"
     }
   }
 }

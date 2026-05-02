@@ -73,6 +73,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "startup-yc-validation-suite.schema.json" in text
     assert "raw-evidence input hashes" in text
     assert "CLI coverage now generates gate outputs" in text
+    assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "Latest focused creator-system suite result before CI push: `128 passed`." in text
 
