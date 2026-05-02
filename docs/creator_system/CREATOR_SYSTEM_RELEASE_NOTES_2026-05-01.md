@@ -187,6 +187,8 @@
 - Startup YC external recompute docs now mark adapter selection as implemented
   and leave standalone rerun provenance packets plus promotion gates as the
   remaining work.
+- `creator-mission-status.schema.json` now rejects Canvas and Kanban
+  projections that drop `evidence_mode` from their read-only mission views.
 - Creator-system CI now writes the strict Startup YC smoke packet and validates
   it against `smoke-result.schema.json`, including the saved evidence-mode
   boundary.

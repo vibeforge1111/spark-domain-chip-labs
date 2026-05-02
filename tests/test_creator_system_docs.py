@@ -93,6 +93,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "Spawner, Canvas, and Kanban mission-status projections" in text
     assert "recomputed-mode regression" in text
     assert "Product-flow docs now require downstream surfaces to preserve" in text
+    assert "`creator-mission-status.schema.json` now rejects Canvas and Kanban" in text
     assert "evidence shape-check outputs and rejects accidental" in text
     assert "validate saved `startup-yc-validation-evidence-check`" in text
     assert "input hashes from absent evidence with explicit missing-input records" in text

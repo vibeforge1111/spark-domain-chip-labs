@@ -650,6 +650,8 @@ Completed documentation/verification:
 - Product-flow docs now require downstream surfaces to preserve
   `evidence_mode` rather than parsing raw smoke or treating saved evidence as a
   fresh recompute.
+- `creator-mission-status.schema.json` now rejects Canvas and Kanban
+  projections that drop `evidence_mode` from their read-only mission views.
 
 Completed product PR verification:
 

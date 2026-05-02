@@ -422,3 +422,21 @@ def test_creator_mission_status_schema_enforces_read_only_boundaries() -> None:
     unsafe_telegram = json.loads(json.dumps(saved))
     unsafe_telegram["surface_adapters"]["telegram"]["may_request_secret_paste"] = True
     assert list(validator.iter_errors(unsafe_telegram))
+
+    missing_canvas_mode = json.loads(json.dumps(saved))
+    mission_node = next(
+        node
+        for node in missing_canvas_mode["surface_adapters"]["canvas"]["nodes"]
+        if node["id"] == "creator_mission"
+    )
+    del mission_node["evidence_mode"]
+    assert list(validator.iter_errors(missing_canvas_mode))
+
+    missing_kanban_mode = json.loads(json.dumps(saved))
+    kanban_card = next(
+        card
+        for cards in missing_kanban_mode["surface_adapters"]["kanban"]["columns"].values()
+        for card in cards
+    )
+    del kanban_card["evidence_mode"]
+    assert list(validator.iter_errors(missing_kanban_mode))

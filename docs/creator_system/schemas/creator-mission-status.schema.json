@@ -221,7 +221,17 @@
           "properties": {
             "packet_kind": {"const": "canvas_creator_graph_readonly"},
             "mission_id": {"type": "string"},
-            "nodes": {"type": "array"},
+            "nodes": {
+              "type": "array",
+              "contains": {
+                "type": "object",
+                "required": ["id", "evidence_mode"],
+                "properties": {
+                  "id": {"const": "creator_mission"},
+                  "evidence_mode": {"enum": ["saved", "recomputed"]}
+                }
+              }
+            },
             "edges": {"type": "array"},
             "may_edit_artifacts": {"const": false}
           }
@@ -232,10 +242,54 @@
           "properties": {
             "packet_kind": {"const": "kanban_creator_columns_readonly"},
             "mission_id": {"type": "string"},
-            "columns": {"type": "object"},
+            "columns": {
+              "type": "object",
+              "required": ["prototype", "ready_for_baseline", "review_required", "blocked"],
+              "properties": {
+                "prototype": {
+                  "type": "array",
+                  "items": {"$ref": "#/$defs/kanbanCard"}
+                },
+                "ready_for_baseline": {
+                  "type": "array",
+                  "items": {"$ref": "#/$defs/kanbanCard"}
+                },
+                "review_required": {
+                  "type": "array",
+                  "items": {"$ref": "#/$defs/kanbanCard"}
+                },
+                "blocked": {
+                  "type": "array",
+                  "items": {"$ref": "#/$defs/kanbanCard"}
+                }
+              }
+            },
             "may_change_verdict": {"const": false}
           }
         }
+      }
+    }
+  },
+  "$defs": {
+    "kanbanCard": {
+      "type": "object",
+      "required": [
+        "mission_id",
+        "title",
+        "verdict",
+        "evidence_tier",
+        "evidence_mode",
+        "blocked"
+      ],
+      "properties": {
+        "mission_id": {"type": "string"},
+        "title": {"type": "string"},
+        "verdict": {"type": "string"},
+        "evidence_tier": {
+          "enum": ["local_only", "candidate_review", "transfer_supported"]
+        },
+        "evidence_mode": {"enum": ["saved", "recomputed"]},
+        "blocked": {"type": "boolean"}
       }
     }
   }
