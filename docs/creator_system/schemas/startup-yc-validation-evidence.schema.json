@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-validation-evidence.schema.json",
+  "title": "Adaptive Creator Loop Startup YC Validation Evidence",
+  "type": "object",
+  "additionalProperties": true,
+  "oneOf": [
+    {"$ref": "#/$defs/multiSeedEvidence"},
+    {"$ref": "#/$defs/heldoutEvidence"},
+    {"$ref": "#/$defs/reviewGateEvidence"},
+    {"$ref": "#/$defs/promotionEvidenceBundle"}
+  ],
+  "$defs": {
+    "multiSeedEvidence": {
+      "type": "object",
+      "required": ["rows"],
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "seed_id",
+              "track",
+              "baseline_score",
+              "candidate_score",
+              "constraints_passed",
+              "held_out_passed"
+            ],
+            "properties": {
+              "seed_id": {"type": "string", "minLength": 1},
+              "track": {"type": "string", "minLength": 1},
+              "baseline_score": {"type": "number"},
+              "candidate_score": {"type": "number"},
+              "constraints_passed": {"type": "boolean"},
+              "held_out_passed": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    },
+    "heldoutEvidence": {
+      "type": "object",
+      "required": ["rows"],
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "case_id",
+              "passed",
+              "operator_moves_covered",
+              "reject_claims_avoided",
+              "success_gate_met",
+              "privacy_lane_respected"
+            ],
+            "properties": {
+              "case_id": {"type": "string", "minLength": 1},
+              "passed": {"type": "boolean"},
+              "operator_moves_covered": {"type": "boolean"},
+              "reject_claims_avoided": {"type": "boolean"},
+              "success_gate_met": {"type": "boolean"},
+              "privacy_lane_respected": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    },
+    "reviewGateEvidence": {
+      "type": "object",
+      "required": ["gates"],
+      "properties": {
+        "gates": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "human_operator_calibration",
+            "privacy_review",
+            "rollback_review",
+            "publication_approval"
+          ],
+          "properties": {
+            "human_operator_calibration": {
+              "$ref": "#/$defs/reviewGateWithCalibrationNotes"
+            },
+            "privacy_review": {
+              "$ref": "#/$defs/reviewGateWithPrivacyDecision"
+            },
+            "rollback_review": {
+              "$ref": "#/$defs/reviewGateWithRollbackRule"
+            },
+            "publication_approval": {
+              "$ref": "#/$defs/publicationApprovalGate"
+            }
+          }
+        }
+      }
+    },
+    "reviewGateBase": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["passed", "reviewer", "evidence_ref"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "reviewer": {"type": "string", "minLength": 1},
+        "evidence_ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "reviewGateWithCalibrationNotes": {
+      "allOf": [
+        {"$ref": "#/$defs/reviewGateBase"},
+        {
+          "required": ["calibration_notes"],
+          "properties": {
+            "calibration_notes": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "reviewGateWithPrivacyDecision": {
+      "allOf": [
+        {"$ref": "#/$defs/reviewGateBase"},
+        {
+          "required": ["privacy_lane_decision"],
+          "properties": {
+            "privacy_lane_decision": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "reviewGateWithRollbackRule": {
+      "allOf": [
+        {"$ref": "#/$defs/reviewGateBase"},
+        {
+          "required": ["rollback_rule"],
+          "properties": {
+            "rollback_rule": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "publicationApprovalGate": {
+      "allOf": [
+        {"$ref": "#/$defs/reviewGateBase"},
+        {
+          "required": [
+            "publication_decision",
+            "approved_claim",
+            "network_publication_allowed"
+          ],
+          "properties": {
+            "publication_decision": {"type": "string", "minLength": 1},
+            "approved_claim": {"const": "network_absorbable"},
+            "network_publication_allowed": {"type": "boolean"}
+          }
+        }
+      ]
+    },
+    "promotionEvidenceBundle": {
+      "type": "object",
+      "required": ["checks"],
+      "properties": {
+        "checks": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "multi_seed_validation",
+            "held_out_founder_advice_pass",
+            "review_gates"
+          ],
+          "properties": {
+            "multi_seed_validation": {"type": "string", "minLength": 1},
+            "held_out_founder_advice_pass": {
+              "type": "string",
+              "minLength": 1
+            },
+            "review_gates": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    }
+  }
+}

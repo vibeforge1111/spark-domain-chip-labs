@@ -104,6 +104,9 @@
 - `startup-yc-validation-suite.schema.json` now validates each saved subcheck
   through the individual gate-check schema, and the blocked suite fixture was
   regenerated with provenance-bearing subcheck packets.
+- `startup-yc-validation-evidence.schema.json` now anchors raw Startup YC
+  multi-seed, held-out, review-gate, and promotion-bundle inputs before they
+  become gate-check outputs.
 
 ## Current Claim Boundary
 
@@ -125,4 +128,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `128 passed`.
+Latest focused creator-system suite result before CI push: `129 passed`.

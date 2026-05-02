@@ -565,6 +565,9 @@ Completed documentation/verification:
 - Startup YC validation-suite schemas now validate each subcheck through the
   individual gate-check schema, and the saved blocked fixture includes
   provenance-bearing subcheck packets.
+- Startup YC raw validation evidence now has a schema anchor for multi-seed,
+  held-out, review-gate, and promotion-bundle inputs before gate outputs are
+  produced.
 
 Completed product PR verification:
 

@@ -22,6 +22,9 @@ FIXTURE_DIR = Path("docs/creator_system/examples/startup-yc-operator-validation"
 GATE_CHECK_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-gate-check-result.schema.json"
 )
+VALIDATION_EVIDENCE_SCHEMA = Path(
+    "docs/creator_system/schemas/startup-yc-validation-evidence.schema.json"
+)
 VALIDATION_SUITE_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-validation-suite.schema.json"
 )
@@ -719,6 +722,45 @@ def test_startup_yc_gate_check_schema_blocks_network_absorption(
         unsafe = json.loads(json.dumps(payload))
         unsafe["network_absorbable"] = True
         assert list(validator.iter_errors(unsafe))
+
+
+def test_startup_yc_validation_evidence_schema_checks_raw_inputs(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(VALIDATION_EVIDENCE_SCHEMA.read_text(encoding="utf-8"))
+    (
+        multi_seed_evidence_path,
+        heldout_evidence_path,
+        review_gate_evidence_path,
+    ) = _write_raw_validation_evidence(tmp_path)
+    bundle_path = tmp_path / "promotion-evidence-bundle.json"
+    bundle_path.write_text(
+        json.dumps(
+            {
+                "checks": {
+                    "multi_seed_validation": "multi-seed-output.json",
+                    "held_out_founder_advice_pass": "heldout-output.json",
+                    "review_gates": "review-output.json",
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    validator = jsonschema.Draft202012Validator(schema)
+
+    for path in (
+        multi_seed_evidence_path,
+        heldout_evidence_path,
+        review_gate_evidence_path,
+        bundle_path,
+    ):
+        validator.validate(json.loads(path.read_text(encoding="utf-8")))
+
+    malformed_heldout = json.loads(heldout_evidence_path.read_text(encoding="utf-8"))
+    del malformed_heldout["rows"][0]["privacy_lane_respected"]
+    assert list(validator.iter_errors(malformed_heldout))
 
 
 def test_startup_yc_validation_suite_keeps_final_promotion_blocked(
