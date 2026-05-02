@@ -998,6 +998,42 @@ def test_cli_startup_yc_validation_evidence_check_fails_on_malformed_input(
     assert payload["evidence_kind"] == "heldout"
 
 
+def test_cli_startup_yc_validation_evidence_check_output_matches_result_schema(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(
+        VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA.read_text(encoding="utf-8")
+    )
+    multi_seed_evidence_path, _, _ = _write_raw_validation_evidence(tmp_path)
+    output_path = tmp_path / "validation-evidence-shape.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-validation-evidence-check",
+            "--evidence",
+            str(multi_seed_evidence_path),
+            "--evidence-kind",
+            "multi_seed",
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 0
+    assert payload["verdict"] == "passed"
+    jsonschema.Draft202012Validator(schema).validate(payload)
+
+
 def test_cli_startup_yc_multi_seed_check_fails_on_blocked(tmp_path: Path) -> None:
     output_path = tmp_path / "startup-yc-multi-seed.json"
 

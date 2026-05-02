@@ -583,6 +583,8 @@ Completed documentation/verification:
 - `startup-yc-validation-evidence-check-result.schema.json` now anchors raw
   evidence shape-check outputs and rejects accidental `network_absorbable=true`
   claims.
+- Startup YC CLI tests now validate saved `startup-yc-validation-evidence-check`
+  output against that result schema.
 
 Completed product PR verification:
 

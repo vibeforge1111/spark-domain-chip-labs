@@ -122,6 +122,8 @@
 - `startup-yc-validation-evidence-check-result.schema.json` now anchors raw
   evidence shape-check outputs and rejects accidental `network_absorbable=true`
   claims.
+- Startup YC CLI tests now validate saved `startup-yc-validation-evidence-check`
+  output against that result schema.
 
 ## Current Claim Boundary
 
@@ -143,4 +145,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `133 passed`.
+Latest focused creator-system suite result before CI push: `134 passed`.
