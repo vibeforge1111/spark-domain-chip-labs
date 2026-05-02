@@ -460,8 +460,11 @@ Current Phase 7 executable slice:
 Next documentation/verification slice:
 
 1. Continue monitoring product PR CI after further branch refreshes.
-2. Add the next read-only source packet fixture only when its executable proof
-   domain has stable saved evidence.
+2. Keep the product mission-status fixture as read-only evidence aggregation;
+   do not add product runtime controls here.
+3. Treat network absorption gates as deferred until multi-seed validation,
+   human/operator calibration, privacy review, rollback review, and publication
+   approval are complete.
 
 Completed documentation/verification:
 
