@@ -442,6 +442,8 @@ Current fixtures:
 
 - `retrieval-memory/correct_prior_decision.json`: local workspace memory with
   exact source refs and provenance.
+- `retrieval-memory/correct_prior_decision.check.json`: saved pass result for
+  the correct prior decision fixture, with `network_absorbable=false`.
 - `retrieval-memory/stale_memory.json`: stale context blocked until revalidated.
 - `retrieval-memory/contradicted_memory.json`: recalled context blocked by newer
   contradictory artifacts.
@@ -454,6 +456,11 @@ Claim boundary:
 
 This is a local memory-lane contract only. It does not wire production memory,
 prove recall quality, or authorize network-shareable memory.
+
+The read-only product-surface fixture references
+`correct_prior_decision.check.json` as a `retrieval_memory` source packet. This
+shows local memory-context coherence in Canvas without granting product surfaces
+permission to write to memory or publish recalled context.
 
 Next real adapters:
 

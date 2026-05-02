@@ -92,12 +92,12 @@
     },
     {
       "packet": "retrieval_memory",
-      "present": false,
-      "state": "missing",
-      "verdict": null,
+      "present": true,
+      "state": "ready",
+      "verdict": "pass",
       "blocking_checks": [],
       "warning_count": 0,
-      "claim_boundary": null
+      "claim_boundary": "local retrieval-memory contract only; no production memory runtime or network-shareable recall claim"
     },
     {
       "packet": "startup_validation",
@@ -233,6 +233,12 @@
           "source": "canonical_packet"
         },
         {
+          "id": "retrieval_memory",
+          "label": "retrieval_memory",
+          "status": "ready",
+          "source": "canonical_packet"
+        },
+        {
           "id": "startup_validation",
           "label": "startup_validation",
           "status": "ready",
@@ -260,6 +266,10 @@
         },
         {
           "from": "content_route",
+          "to": "creator_mission"
+        },
+        {
+          "from": "retrieval_memory",
           "to": "creator_mission"
         },
         {

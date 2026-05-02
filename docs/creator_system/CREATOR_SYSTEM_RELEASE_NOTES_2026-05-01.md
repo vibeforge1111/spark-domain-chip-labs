@@ -33,6 +33,9 @@
 - Artifact quality now has saved JSON and Markdown reports for the review-ready
   design/PR fixture, and product mission status references that report as
   read-only `artifact_quality` evidence.
+- Retrieval memory now has a saved pass check for the correct-prior-decision
+  fixture, and product mission status references it as read-only
+  `retrieval_memory` evidence with network absorption still blocked.
 
 ## Current Claim Boundary
 

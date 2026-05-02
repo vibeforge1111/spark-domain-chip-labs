@@ -1,0 +1,75 @@
+{
+  "schema_version": "adaptive_creator_loop.retrieval_memory_check.v1",
+  "verdict": "pass",
+  "claim_boundary": "local retrieval-memory contract only; no production memory runtime or network-shareable recall claim",
+  "status_counts": {
+    "pass": 8,
+    "warn": 0,
+    "fail": 0
+  },
+  "blocking_checks": [],
+  "checks": [
+    {
+      "name": "entries_present",
+      "status": "pass",
+      "message": "Packet includes memory entries.",
+      "paths": []
+    },
+    {
+      "name": "entry:0:lane",
+      "status": "pass",
+      "message": "Memory lane `local_workspace` is supported.",
+      "paths": []
+    },
+    {
+      "name": "entry:0:provenance",
+      "status": "pass",
+      "message": "Entry includes source provenance.",
+      "paths": []
+    },
+    {
+      "name": "entry:0:source_refs",
+      "status": "pass",
+      "message": "Entry includes exact source refs.",
+      "paths": []
+    },
+    {
+      "name": "entry:0:residue_boundary",
+      "status": "pass",
+      "message": "Workflow residue is not promoted as memory truth.",
+      "paths": [
+        "docs/creator_system/task.md",
+        "docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json"
+      ]
+    },
+    {
+      "name": "entry:0:freshness",
+      "status": "pass",
+      "message": "Stale memory is revalidated before promotion.",
+      "paths": [
+        "docs/creator_system/task.md",
+        "docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json"
+      ]
+    },
+    {
+      "name": "entry:0:contradiction",
+      "status": "pass",
+      "message": "Contradicted memory is blocked from promotion.",
+      "paths": []
+    },
+    {
+      "name": "entry:0:network_review",
+      "status": "pass",
+      "message": "Network-shareable memory has explicit review.",
+      "paths": []
+    }
+  ],
+  "promotion": {
+    "allowed": true,
+    "network_absorbable": false,
+    "reason": "Local memory retrieval contract is coherent."
+  },
+  "next_actions": [
+    "Use retrieved context locally with the declared privacy lane."
+  ]
+}

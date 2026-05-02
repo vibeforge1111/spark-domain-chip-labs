@@ -25,6 +25,9 @@ ARTIFACT_QUALITY_REPORT = Path(
 MIROFISH_CONTENT_ROUTE = Path(
     "docs/creator_system/examples/mirofish-content/route-invoke.json"
 )
+RETRIEVAL_MEMORY_CHECK = Path(
+    "docs/creator_system/examples/retrieval-memory/correct_prior_decision.check.json"
+)
 
 
 def _smoke(verdict: str = "ready_for_swarm_packet") -> dict[str, object]:
@@ -135,6 +138,8 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
             str(ARTIFACT_QUALITY_REPORT),
             "--content-route",
             str(MIROFISH_CONTENT_ROUTE),
+            "--retrieval-memory",
+            str(RETRIEVAL_MEMORY_CHECK),
             "--mission-id",
             "mission-cli",
             "--output",
@@ -164,6 +169,13 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
     )
     assert artifact_quality_summary["present"] is True
     assert artifact_quality_summary["state"] == "ready"
+    retrieval_memory_summary = next(
+        summary
+        for summary in payload["source_packets"]
+        if summary["packet"] == "retrieval_memory"
+    )
+    assert retrieval_memory_summary["present"] is True
+    assert retrieval_memory_summary["state"] == "ready"
 
 
 def test_product_surface_fixture_matches_current_adapter_output() -> None:
@@ -172,6 +184,7 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     startup_validation = json.loads(STARTUP_VALIDATION.read_text(encoding="utf-8"))
     artifact_quality = json.loads(ARTIFACT_QUALITY_REPORT.read_text(encoding="utf-8"))
     content_route = json.loads(MIROFISH_CONTENT_ROUTE.read_text(encoding="utf-8"))
+    retrieval_memory = json.loads(RETRIEVAL_MEMORY_CHECK.read_text(encoding="utf-8"))
     saved = json.loads(
         (PRODUCT_SURFACE_FIXTURE / "startup-yc-mission-status.json").read_text(encoding="utf-8")
     )
@@ -183,6 +196,7 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
         doctor=doctor,
         artifact_quality=artifact_quality,
         content_route=content_route,
+        retrieval_memory=retrieval_memory,
         startup_validation=startup_validation,
     )
 
@@ -225,12 +239,31 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
         "warning_count": 0,
         "claim_boundary": "candidate_review local simulator protocol only",
     }
+    retrieval_memory_summary = next(
+        summary
+        for summary in saved["source_packets"]
+        if summary["packet"] == "retrieval_memory"
+    )
+    assert retrieval_memory_summary == {
+        "packet": "retrieval_memory",
+        "present": True,
+        "state": "ready",
+        "verdict": "pass",
+        "blocking_checks": [],
+        "warning_count": 0,
+        "claim_boundary": (
+            "local retrieval-memory contract only; no production memory runtime or "
+            "network-shareable recall claim"
+        ),
+    }
     canvas = saved["surface_adapters"]["canvas"]
     node_ids = {node["id"] for node in canvas["nodes"]}
     assert "artifact_quality" in node_ids
     assert "content_route" in node_ids
+    assert "retrieval_memory" in node_ids
     assert {"from": "artifact_quality", "to": "creator_mission"} in canvas["edges"]
     assert {"from": "content_route", "to": "creator_mission"} in canvas["edges"]
+    assert {"from": "retrieval_memory", "to": "creator_mission"} in canvas["edges"]
     assert {
         edge["from"] for edge in canvas["edges"] if edge["from"] != "creator_mission"
     }.issubset(node_ids)
