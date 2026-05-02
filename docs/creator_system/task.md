@@ -484,6 +484,9 @@ Completed documentation/verification:
 - Recompute/provenance docs now distinguish supported generated/artifact-quality
   reruns from the curated Startup YC fixture, which still needs external source
   rerun adapters before a full external recompute claim.
+- `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md` records the missing Startup Bench
+  transfer, specialization-path absorption, broad-transfer, and Swarm packet
+  regeneration adapters as future gates.
 
 Completed product PR verification:
 
@@ -503,3 +506,4 @@ Completed product PR verification:
 - Product wiring for Builder, Telegram, Spawner UI, Canvas, and Kanban.
 - Public `spark-creator` repo decision.
 - Network absorption review packet.
+- Startup YC external recompute adapter implementation.

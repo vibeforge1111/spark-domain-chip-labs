@@ -8,6 +8,9 @@ RELEASE_NOTES = Path("docs/creator_system/CREATOR_SYSTEM_RELEASE_NOTES_2026-05-0
 PHASE_2_BACKLOG = Path("docs/creator_system/PHASE_2_PRODUCT_FLOW_BACKLOG.md")
 PRODUCT_FLOW = Path("docs/creator_system/TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md")
 PRODUCT_CONSUMER_BRANCHES = Path("docs/creator_system/PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md")
+STARTUP_YC_EXTERNAL_RECOMPUTE = Path(
+    "docs/creator_system/STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md"
+)
 
 
 def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
@@ -23,6 +26,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "| Retrieval memory domain | Local memory-lane contract |" in text
     assert "does not prove real virality" in text
     assert "does not prove product correctness" in text
+    assert "STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md" in text
 
 
 def test_creator_system_readme_keeps_command_index_visible() -> None:
@@ -85,3 +89,21 @@ def test_product_consumer_branch_ledger_preserves_deferred_runtime_boundary() ->
     assert "https://github.com/vibeforge1111/vibeship-spawner-ui/pull/1" in text
     assert "https://github.com/vibeforge1111/spark-canvas/pull/1" in text
     assert "https://github.com/vibeforge1111/spark-telegram-bot/pull/1" in text
+
+
+def test_startup_yc_external_recompute_adapter_contract_blocks_stronger_claims() -> None:
+    text = STARTUP_YC_EXTERNAL_RECOMPUTE.read_text(encoding="utf-8")
+
+    for phrase in (
+        "Startup Bench transfer adapter",
+        "Specialization-path absorption adapter",
+        "Broad transfer adapter",
+        "Swarm packet regeneration adapter",
+        "adaptive_creator_loop.external_recompute.v1",
+        "creator-run-smoke --recompute --fail-on-blocked",
+        "creator-run-doctor --recompute",
+        "not `network_absorbable`",
+        "multi-seed validation",
+        "publication approval",
+    ):
+        assert phrase in text

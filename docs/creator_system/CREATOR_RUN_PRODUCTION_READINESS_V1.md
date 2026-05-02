@@ -59,6 +59,10 @@ Recompute saved benchmark evidence when reports include supported provenance:
 python -m chip_labs.cli creator-run-smoke runs/<run-name> --recompute --fail-on-blocked
 ```
 
+For curated fixtures that reference external source repos, full recompute also
+requires source-specific rerun adapters. The Startup YC adapter contract is
+tracked in `STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.
+
 ## Smoke Result Contract
 
 `creator-run-smoke` emits:
@@ -237,6 +241,11 @@ The fixture is now backed by the Startup YC fresh validation suite:
 - broad fresh-transfer probe: positive, with no negative rows
 
 The fixture remains `transfer_supported`, not `network_absorbable`, because multi-seed validation, human/operator calibration, and publication review are still open gates.
+
+The fixture is strict saved-evidence proof today. Full external recompute needs
+the Startup Bench transfer, specialization-path absorption, broad-transfer, and
+Swarm packet regeneration adapters defined in
+`STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.
 
 ## Ship Gate For V1
 

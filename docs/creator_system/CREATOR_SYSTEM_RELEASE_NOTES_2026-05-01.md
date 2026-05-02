@@ -45,6 +45,9 @@
   recompute.
 - Product consumer branch ledger now records the refreshed Builder PR head
   `6525942` with green remote CI.
+- Startup YC external recompute work is now split into explicit adapter gates
+  for Startup Bench transfer, specialization-path absorption, broad transfer,
+  and Swarm packet regeneration.
 
 ## Current Claim Boundary
 

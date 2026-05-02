@@ -15,6 +15,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [ADAPTIVE_CREATOR_LOOP_STANDARD.md](ADAPTIVE_CREATOR_LOOP_STANDARD.md) | The adaptive loop standard: domain-specific adapters, reusable evidence gates, recursive standard evolution, and the first runnable creator-run contract. |
 | [CREATOR_SYSTEM_MASTER_PLAN.md](CREATOR_SYSTEM_MASTER_PLAN.md) | Cohesive product and architecture plan for the creator ecosystem. |
 | [CREATOR_SYSTEM_PROOF_DOMAINS.md](CREATOR_SYSTEM_PROOF_DOMAINS.md) | Multi-domain proof layers for artifact quality, tool operation, content simulation, doctor security, Startup YC, and future memory/retrieval examples. |
+| [STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md](STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md) | Missing external rerun adapter contract for Startup Bench, specialization-path absorption, broad transfer, and Startup YC Swarm packet regeneration. |
 | [CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md](CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md) | Release-note summary for the current creator-system standardization continuation. |
 | [CREATOR_RUN_PRODUCTION_READINESS_V1.md](CREATOR_RUN_PRODUCTION_READINESS_V1.md) | Shippable creator-run CLI contract, smoke-result schema, integration rules, and V1 ship gate. |
 | [CREATOR_RUN_GOLDEN_PATH_V1.md](CREATOR_RUN_GOLDEN_PATH_V1.md) | CLI-first golden path from user goal to creator-run validation, doctor repair plan, and strict publication check. |
@@ -192,7 +193,8 @@ scoring hooks. This mode currently supports generator-produced reports with
 `creator_generator_v1` provenance and artifact-quality benchmark reports with
 `artifact_quality_v1` provenance. Curated fixtures that point at external source
 repos still need source-specific rerun adapters before they can claim full
-external recompute.
+external recompute. The Startup YC adapter boundary is tracked in
+`STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md`.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style
