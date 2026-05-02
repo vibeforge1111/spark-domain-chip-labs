@@ -272,6 +272,8 @@ Deliverables:
 - [x] Executable Startup YC multi-seed gate checker that blocks absent,
   underfilled, or negative-row evidence while keeping `network_absorbable`
   false.
+- [x] Executable Startup YC held-out founder-advice checker that blocks absent
+  or failed case evidence while keeping `network_absorbable` false.
 
 Phase gate:
 
@@ -518,6 +520,9 @@ Completed documentation/verification:
 - `startup-yc-multi-seed-check` now enforces the Startup YC validation plan's
   required tracks, minimum seeds per track, held-out pass flags, constraint
   pass flags, and minimum delta without approving network absorption.
+- `startup-yc-heldout-check` now enforces one evaluated response row per
+  held-out founder-advice case, including operator moves, rejected claims,
+  success gate, and privacy-lane pass flags.
 
 Completed product PR verification:
 

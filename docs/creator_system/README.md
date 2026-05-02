@@ -104,6 +104,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --output reports/creator-mission-status.json` |
 | Check Startup YC promotion gates | `python -m chip_labs.cli startup-yc-promotion-gate-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC multi-seed evidence | `python -m chip_labs.cli startup-yc-multi-seed-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
+| Check Startup YC held-out advice evidence | `python -m chip_labs.cli startup-yc-heldout-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Simulate content candidates | `python -m chip_labs.cli mirofish-content-simulate --task "<task>" --candidate "<A>" --candidate "<B>"` |
 | Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |
 
@@ -222,6 +223,11 @@ the validation plan's required tracks, minimum seeds per track, held-out pass
 flags, constraint pass flags, and minimum delta. Passing this command proves
 only the `multi_seed_validation` gate; `network_absorbable` remains false until
 every other promotion gate also passes.
+
+`startup-yc-heldout-check` makes the held-out founder-advice gate concrete. It
+requires evaluated response evidence for every held-out case, with explicit
+pass flags for operator moves, rejected claims, success gate, and privacy lane.
+Passing it proves only `held_out_founder_advice_pass`.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style

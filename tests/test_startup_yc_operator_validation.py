@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 from chip_labs.startup_yc_promotion import (
+    check_startup_yc_heldout_validation,
     check_startup_yc_multi_seed_validation,
     check_startup_yc_promotion_gates,
 )
@@ -180,6 +181,92 @@ def test_startup_yc_multi_seed_check_blocks_negative_rows(tmp_path: Path) -> Non
     assert "row_failure:gtm-negative-1:negative_delta" in result["blocking_checks"]
 
 
+def test_startup_yc_heldout_check_blocks_without_evidence() -> None:
+    result = check_startup_yc_heldout_validation(FIXTURE_DIR / "validation_plan.json")
+
+    assert result["schema_version"] == (
+        "adaptive_creator_loop.startup_yc_heldout_check.v1"
+    )
+    assert result["verdict"] == "blocked"
+    assert result["gate_passed"] is False
+    assert result["network_absorbable"] is False
+    assert result["case_count"] >= 5
+    assert "missing_evidence_path:held_out_evidence_path" in result[
+        "blocking_checks"
+    ]
+    assert result["missing_cases"]
+
+
+def test_startup_yc_heldout_check_passes_only_the_heldout_gate(
+    tmp_path: Path,
+) -> None:
+    plan = _load_plan()
+    cases = _load_jsonl(FIXTURE_DIR / plan["held_out_cases_path"])
+    rows = [
+        {
+            "case_id": case["case_id"],
+            "passed": True,
+            "operator_moves_covered": True,
+            "reject_claims_avoided": True,
+            "success_gate_met": True,
+            "privacy_lane_respected": True,
+        }
+        for case in cases
+    ]
+    evidence_path = tmp_path / "heldout_evidence.json"
+    evidence_path.write_text(json.dumps({"rows": rows}, indent=2), encoding="utf-8")
+
+    result = check_startup_yc_heldout_validation(
+        FIXTURE_DIR / "validation_plan.json",
+        evidence_path=evidence_path,
+    )
+
+    assert result["verdict"] == "passed"
+    assert result["gate_passed"] is True
+    assert result["network_absorbable"] is False
+    assert result["blocking_checks"] == []
+    assert result["passed_case_count"] == len(cases)
+
+
+def test_startup_yc_heldout_check_blocks_failed_claim_rejection(
+    tmp_path: Path,
+) -> None:
+    evidence_path = tmp_path / "heldout_evidence.json"
+    evidence_path.write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "case_id": "vanity-growth-trap",
+                        "passed": False,
+                        "operator_moves_covered": True,
+                        "reject_claims_avoided": False,
+                        "success_gate_met": False,
+                        "privacy_lane_respected": True,
+                    }
+                ]
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    result = check_startup_yc_heldout_validation(
+        FIXTURE_DIR / "validation_plan.json",
+        evidence_path=evidence_path,
+    )
+
+    assert result["verdict"] == "blocked"
+    assert result["gate_passed"] is False
+    assert {
+        "case_id": "vanity-growth-trap",
+        "reason": "reject_claims_avoided_failed",
+    } in result["case_failures"]
+    assert "case_failure:vanity-growth-trap:reject_claims_avoided_failed" in result[
+        "blocking_checks"
+    ]
+
+
 def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
     tmp_path: Path,
 ) -> None:
@@ -218,6 +305,33 @@ def test_cli_startup_yc_multi_seed_check_fails_on_blocked(tmp_path: Path) -> Non
             "-m",
             "chip_labs.cli",
             "startup-yc-multi-seed-check",
+            "--validation-plan",
+            str(FIXTURE_DIR / "validation_plan.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "blocked"
+    assert payload["network_absorbable"] is False
+
+
+def test_cli_startup_yc_heldout_check_fails_on_blocked(tmp_path: Path) -> None:
+    output_path = tmp_path / "startup-yc-heldout.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-heldout-check",
             "--validation-plan",
             str(FIXTURE_DIR / "validation_plan.json"),
             "--output",

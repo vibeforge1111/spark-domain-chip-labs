@@ -72,6 +72,9 @@
 - `startup-yc-multi-seed-check` now makes the multi-seed validation gate
   executable: required tracks, seed counts, held-out pass flags, constraint pass
   flags, and minimum delta are checked while `network_absorbable` remains false.
+- `startup-yc-heldout-check` now makes the held-out founder-advice gate
+  executable: every held-out case needs evaluated response evidence for
+  operator moves, rejected claims, success gate, and privacy lane.
 
 ## Current Claim Boundary
 

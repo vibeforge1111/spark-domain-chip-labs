@@ -417,6 +417,10 @@ Current validation pack:
   enforces required tracks, minimum seeds per track, held-out pass flags,
   constraint pass flags, and minimum delta while keeping `network_absorbable`
   false because this is only one promotion gate.
+- `startup-yc-heldout-check`: executable check for held-out founder-advice
+  evidence. It requires one evaluated response row per held-out case and blocks
+  if operator moves, rejected claims, success gate, or privacy lane evidence is
+  absent or failed.
 
 Next real adapters:
 

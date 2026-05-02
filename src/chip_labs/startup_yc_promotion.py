@@ -14,6 +14,7 @@ from typing import Any
 
 SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_promotion_gate_check.v1"
 MULTI_SEED_SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_multi_seed_check.v1"
+HELDOUT_SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_heldout_check.v1"
 
 
 def check_startup_yc_promotion_gates(
@@ -171,6 +172,74 @@ def check_startup_yc_multi_seed_validation(
     }
 
 
+def check_startup_yc_heldout_validation(
+    validation_plan_path: str | Path,
+    *,
+    evidence_path: str | Path | None = None,
+) -> dict[str, Any]:
+    """Check held-out Startup YC founder-advice evidence."""
+
+    plan_path = Path(validation_plan_path)
+    plan = _load_json(plan_path)
+    blocking_checks: list[str] = []
+    case_failures: list[dict[str, Any]] = []
+    cases = _load_heldout_cases(plan_path, plan, blocking_checks)
+
+    evidence_reference = (
+        str(evidence_path) if evidence_path else plan.get("held_out_evidence_path")
+    )
+    evidence_rows: list[dict[str, Any]] = []
+    evidence_present = False
+    evidence_display_path = (
+        evidence_reference if isinstance(evidence_reference, str) else None
+    )
+    if not isinstance(evidence_reference, str) or not evidence_reference.strip():
+        blocking_checks.append("missing_evidence_path:held_out_evidence_path")
+    else:
+        evidence_file = _resolve_related_path(plan_path, evidence_reference)
+        evidence_present = evidence_file.exists()
+        if not evidence_present:
+            blocking_checks.append(f"missing_evidence:{evidence_reference}")
+        else:
+            evidence_rows = _load_rows(evidence_file)
+
+    case_failures.extend(_evaluate_heldout_rows(cases, evidence_rows))
+    blocking_checks.extend(
+        f"case_failure:{failure['case_id']}:{failure['reason']}"
+        for failure in case_failures
+    )
+    blocking_checks = _dedupe(blocking_checks)
+    passed_case_ids = {
+        row.get("case_id")
+        for row in evidence_rows
+        if isinstance(row.get("case_id"), str)
+        and all(row.get(field) is True for field in _HELDOUT_PASS_FIELDS)
+    }
+    required_case_ids = [str(case.get("case_id")) for case in cases]
+    gate_passed = not blocking_checks and bool(required_case_ids)
+
+    return {
+        "schema_version": HELDOUT_SCHEMA_VERSION,
+        "plan_path": str(plan_path),
+        "plan_id": plan.get("plan_id"),
+        "domain": plan.get("domain"),
+        "current_claim": plan.get("current_claim"),
+        "evidence_path": evidence_display_path,
+        "evidence_present": evidence_present,
+        "case_count": len(required_case_ids),
+        "passed_case_count": len(passed_case_ids.intersection(required_case_ids)),
+        "missing_cases": [
+            case_id for case_id in required_case_ids if case_id not in passed_case_ids
+        ],
+        "case_failures": case_failures,
+        "verdict": "passed" if gate_passed else "blocked",
+        "gate_passed": gate_passed,
+        "network_absorbable": False,
+        "blocking_checks": blocking_checks,
+        "next_actions": _heldout_next_actions(gate_passed=gate_passed),
+    }
+
+
 def _evidence_paths(plan_path: Path, plan: dict[str, Any]) -> list[dict[str, Any]]:
     base = plan_path.parent
     path_fields = (
@@ -195,7 +264,7 @@ def _evidence_paths(plan_path: Path, plan: dict[str, Any]) -> list[dict[str, Any
     return evidence
 
 
-def _load_multi_seed_rows(path: Path) -> list[dict[str, Any]]:
+def _load_rows(path: Path) -> list[dict[str, Any]]:
     if path.suffix == ".jsonl":
         rows = [
             json.loads(line)
@@ -213,6 +282,65 @@ def _load_multi_seed_rows(path: Path) -> list[dict[str, Any]]:
     if not all(isinstance(row, dict) for row in rows):
         raise ValueError(f"{path} rows must be JSON objects")
     return rows
+
+
+def _load_multi_seed_rows(path: Path) -> list[dict[str, Any]]:
+    return _load_rows(path)
+
+
+_HELDOUT_PASS_FIELDS = (
+    "passed",
+    "operator_moves_covered",
+    "reject_claims_avoided",
+    "success_gate_met",
+    "privacy_lane_respected",
+)
+
+
+def _load_heldout_cases(
+    plan_path: Path,
+    plan: dict[str, Any],
+    blocking_checks: list[str],
+) -> list[dict[str, Any]]:
+    cases_reference = plan.get("held_out_cases_path")
+    if not isinstance(cases_reference, str) or not cases_reference.strip():
+        blocking_checks.append("missing_cases_path:held_out_cases_path")
+        return []
+    cases_file = _resolve_related_path(plan_path, cases_reference)
+    if not cases_file.exists():
+        blocking_checks.append(f"missing_cases:{cases_reference}")
+        return []
+    return _load_rows(cases_file)
+
+
+def _evaluate_heldout_rows(
+    cases: list[dict[str, Any]],
+    evidence_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    failures: list[dict[str, Any]] = []
+    required_case_ids = [str(case.get("case_id")) for case in cases]
+    required_case_id_set = set(required_case_ids)
+    evidence_by_case = {
+        str(row.get("case_id")): row
+        for row in evidence_rows
+        if isinstance(row.get("case_id"), str)
+    }
+
+    for case_id in required_case_ids:
+        row = evidence_by_case.get(case_id)
+        if row is None:
+            failures.append({"case_id": case_id, "reason": "missing_evidence"})
+            continue
+        for field in _HELDOUT_PASS_FIELDS:
+            if row.get(field) is not True:
+                failures.append({"case_id": case_id, "reason": f"{field}_failed"})
+
+    for row in evidence_rows:
+        case_id = str(row.get("case_id") or "unknown")
+        if case_id not in required_case_id_set:
+            failures.append({"case_id": case_id, "reason": "unknown_case"})
+
+    return failures
 
 
 def _evaluate_multi_seed_rows(
@@ -295,6 +423,19 @@ def _multi_seed_next_actions(
         "Each required track needs at least "
         f"{minimum_seeds_per_track} eligible seeds: {', '.join(required_tracks)}.",
         "Every row must pass held-out constraints and meet the minimum delta.",
+    ]
+
+
+def _heldout_next_actions(*, gate_passed: bool) -> list[str]:
+    if gate_passed:
+        return [
+            "Record this as held_out_founder_advice_pass evidence only.",
+            "Keep Startup YC below network_absorbable until multi-seed, calibration, privacy, rollback, and publication gates also pass.",
+        ]
+    return [
+        "Evaluate every held-out founder-advice case before promotion.",
+        "Each case needs explicit pass flags for operator moves, rejected claims, success gate, and privacy lane.",
+        "Keep Startup YC at transfer_supported while held-out evidence is absent or incomplete.",
     ]
 
 
