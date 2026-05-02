@@ -247,6 +247,9 @@ gate as passed. Even a coherent bundle is evidence support, not final promotion.
 review-gate, and promotion-evidence checks together. It can show that all
 subchecks are coherent while still blocking final promotion when the validation
 plan has not explicitly removed prohibited claims and publication blockers.
+The saved `startup-yc-operator-validation/validation_suite_blocked.json` packet
+records the current blocked suite output and is recomputed in tests so stale
+saved blockers are visible.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style

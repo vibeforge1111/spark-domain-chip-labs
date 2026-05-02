@@ -1,0 +1,374 @@
+{
+  "schema_version": "adaptive_creator_loop.startup_yc_validation_suite.v1",
+  "plan_path": "docs\\creator_system\\examples\\startup-yc-operator-validation\\validation_plan.json",
+  "plan_id": "startup-yc-operator-validation-2026-05-01",
+  "domain": "Startup YC",
+  "current_claim": "transfer_supported",
+  "requested_claim": "network_absorbable",
+  "verdict": "blocked",
+  "required_subchecks_passed": false,
+  "final_promotion_ready": false,
+  "network_absorbable": false,
+  "subchecks": {
+    "promotion_gates": {
+      "schema_version": "adaptive_creator_loop.startup_yc_promotion_gate_check.v1",
+      "plan_path": "docs\\creator_system\\examples\\startup-yc-operator-validation\\validation_plan.json",
+      "plan_id": "startup-yc-operator-validation-2026-05-01",
+      "domain": "Startup YC",
+      "current_claim": "transfer_supported",
+      "requested_claim": "network_absorbable",
+      "verdict": "blocked",
+      "network_absorbable": false,
+      "gate_status": {
+        "multi_seed_validation": false,
+        "held_out_founder_advice_pass": false,
+        "human_operator_calibration": false,
+        "privacy_review": false,
+        "rollback_review": false,
+        "publication_approval": false
+      },
+      "missing_gates": [
+        "multi_seed_validation",
+        "held_out_founder_advice_pass",
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval"
+      ],
+      "blocking_checks": [
+        "missing_gate:multi_seed_validation",
+        "missing_gate:held_out_founder_advice_pass",
+        "missing_gate:human_operator_calibration",
+        "missing_gate:privacy_review",
+        "missing_gate:rollback_review",
+        "missing_gate:publication_approval",
+        "prohibited_claim:network_absorbable",
+        "publication_boundary:network_publication_allowed"
+      ],
+      "evidence_paths": [
+        {
+          "kind": "held_out_cases",
+          "path": "held_out_founder_advice_cases.jsonl",
+          "present": true,
+          "claim_boundary": "presence only; gate still needs explicit pass evidence"
+        },
+        {
+          "kind": "operator_calibration",
+          "path": "human_operator_calibration_checklist.md",
+          "present": true,
+          "claim_boundary": "presence only; gate still needs explicit pass evidence"
+        },
+        {
+          "kind": "privacy_rollback_publication",
+          "path": "privacy_rollback_publication_review.md",
+          "present": true,
+          "claim_boundary": "presence only; gate still needs explicit pass evidence"
+        }
+      ],
+      "next_actions": [
+        "Keep Startup YC at transfer_supported until promotion gates pass.",
+        "Do not publish or network-absorb this packet without multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval.",
+        "Complete and record explicit pass evidence for: multi_seed_validation, held_out_founder_advice_pass, human_operator_calibration, privacy_review, rollback_review, publication_approval."
+      ]
+    },
+    "multi_seed_validation": {
+      "schema_version": "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
+      "plan_path": "docs\\creator_system\\examples\\startup-yc-operator-validation\\validation_plan.json",
+      "plan_id": "startup-yc-operator-validation-2026-05-01",
+      "domain": "Startup YC",
+      "current_claim": "transfer_supported",
+      "evidence_path": null,
+      "evidence_present": false,
+      "required_tracks": [
+        "gtm",
+        "finance",
+        "product",
+        "people",
+        "board",
+        "scale"
+      ],
+      "minimum_seeds_per_track": 5,
+      "required_min_delta": 0.0,
+      "track_counts": {
+        "gtm": 0,
+        "finance": 0,
+        "product": 0,
+        "people": 0,
+        "board": 0,
+        "scale": 0
+      },
+      "missing_tracks": [
+        "gtm",
+        "finance",
+        "product",
+        "people",
+        "board",
+        "scale"
+      ],
+      "underfilled_tracks": [
+        {
+          "track": "gtm",
+          "count": 0,
+          "minimum": 5
+        },
+        {
+          "track": "finance",
+          "count": 0,
+          "minimum": 5
+        },
+        {
+          "track": "product",
+          "count": 0,
+          "minimum": 5
+        },
+        {
+          "track": "people",
+          "count": 0,
+          "minimum": 5
+        },
+        {
+          "track": "board",
+          "count": 0,
+          "minimum": 5
+        },
+        {
+          "track": "scale",
+          "count": 0,
+          "minimum": 5
+        }
+      ],
+      "row_failures": [],
+      "verdict": "blocked",
+      "gate_passed": false,
+      "network_absorbable": false,
+      "blocking_checks": [
+        "missing_evidence_path:multi_seed_evidence_path",
+        "missing_track:gtm",
+        "missing_track:finance",
+        "missing_track:product",
+        "missing_track:people",
+        "missing_track:board",
+        "missing_track:scale",
+        "underfilled_track:gtm:0/5",
+        "underfilled_track:finance:0/5",
+        "underfilled_track:product:0/5",
+        "underfilled_track:people:0/5",
+        "underfilled_track:board:0/5",
+        "underfilled_track:scale:0/5"
+      ],
+      "next_actions": [
+        "Collect complete Startup YC multi-seed evidence before considering network absorption.",
+        "Each required track needs at least 5 eligible seeds: gtm, finance, product, people, board, scale.",
+        "Every row must pass held-out constraints and meet the minimum delta."
+      ]
+    },
+    "held_out_founder_advice_pass": {
+      "schema_version": "adaptive_creator_loop.startup_yc_heldout_check.v1",
+      "plan_path": "docs\\creator_system\\examples\\startup-yc-operator-validation\\validation_plan.json",
+      "plan_id": "startup-yc-operator-validation-2026-05-01",
+      "domain": "Startup YC",
+      "current_claim": "transfer_supported",
+      "evidence_path": null,
+      "evidence_present": false,
+      "case_count": 5,
+      "passed_case_count": 0,
+      "missing_cases": [
+        "urgent-pain-or-politeness",
+        "vanity-growth-trap",
+        "narrow-wedge-choice",
+        "default-alive-pressure",
+        "privacy-boundary-case"
+      ],
+      "case_failures": [
+        {
+          "case_id": "urgent-pain-or-politeness",
+          "reason": "missing_evidence"
+        },
+        {
+          "case_id": "vanity-growth-trap",
+          "reason": "missing_evidence"
+        },
+        {
+          "case_id": "narrow-wedge-choice",
+          "reason": "missing_evidence"
+        },
+        {
+          "case_id": "default-alive-pressure",
+          "reason": "missing_evidence"
+        },
+        {
+          "case_id": "privacy-boundary-case",
+          "reason": "missing_evidence"
+        }
+      ],
+      "verdict": "blocked",
+      "gate_passed": false,
+      "network_absorbable": false,
+      "blocking_checks": [
+        "missing_evidence_path:held_out_evidence_path",
+        "case_failure:urgent-pain-or-politeness:missing_evidence",
+        "case_failure:vanity-growth-trap:missing_evidence",
+        "case_failure:narrow-wedge-choice:missing_evidence",
+        "case_failure:default-alive-pressure:missing_evidence",
+        "case_failure:privacy-boundary-case:missing_evidence"
+      ],
+      "next_actions": [
+        "Evaluate every held-out founder-advice case before promotion.",
+        "Each case needs explicit pass flags for operator moves, rejected claims, success gate, and privacy lane.",
+        "Keep Startup YC at transfer_supported while held-out evidence is absent or incomplete."
+      ]
+    },
+    "review_gates": {
+      "schema_version": "adaptive_creator_loop.startup_yc_review_gates_check.v1",
+      "plan_path": "docs\\creator_system\\examples\\startup-yc-operator-validation\\validation_plan.json",
+      "plan_id": "startup-yc-operator-validation-2026-05-01",
+      "domain": "Startup YC",
+      "current_claim": "transfer_supported",
+      "evidence_path": null,
+      "evidence_present": false,
+      "required_gates": [
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval"
+      ],
+      "gate_status": {
+        "human_operator_calibration": false,
+        "privacy_review": false,
+        "rollback_review": false,
+        "publication_approval": false
+      },
+      "missing_gates": [
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval"
+      ],
+      "gate_failures": [
+        {
+          "gate": "human_operator_calibration",
+          "reason": "missing_evidence"
+        },
+        {
+          "gate": "privacy_review",
+          "reason": "missing_evidence"
+        },
+        {
+          "gate": "rollback_review",
+          "reason": "missing_evidence"
+        },
+        {
+          "gate": "publication_approval",
+          "reason": "missing_evidence"
+        }
+      ],
+      "verdict": "blocked",
+      "gate_passed": false,
+      "network_absorbable": false,
+      "blocking_checks": [
+        "missing_evidence_path:review_gate_evidence_path",
+        "gate_failure:human_operator_calibration:missing_evidence",
+        "gate_failure:privacy_review:missing_evidence",
+        "gate_failure:rollback_review:missing_evidence",
+        "gate_failure:publication_approval:missing_evidence"
+      ],
+      "next_actions": [
+        "Collect structured evidence for human/operator calibration, privacy review, rollback review, and publication approval.",
+        "Publication approval must explicitly name network_absorbable and set network_publication_allowed=true.",
+        "Keep Startup YC at transfer_supported while review evidence is absent or incomplete."
+      ]
+    },
+    "promotion_evidence_bundle": {
+      "schema_version": "adaptive_creator_loop.startup_yc_promotion_evidence_check.v1",
+      "plan_path": "docs\\creator_system\\examples\\startup-yc-operator-validation\\validation_plan.json",
+      "plan_id": "startup-yc-operator-validation-2026-05-01",
+      "domain": "Startup YC",
+      "current_claim": "transfer_supported",
+      "evidence_bundle_path": null,
+      "evidence_bundle_present": false,
+      "required_gates": [
+        "multi_seed_validation",
+        "held_out_founder_advice_pass",
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval"
+      ],
+      "gate_support": {
+        "multi_seed_validation": false,
+        "held_out_founder_advice_pass": false,
+        "human_operator_calibration": false,
+        "privacy_review": false,
+        "rollback_review": false,
+        "publication_approval": false
+      },
+      "missing_gates": [
+        "multi_seed_validation",
+        "held_out_founder_advice_pass",
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval"
+      ],
+      "evidence_checks": [],
+      "verdict": "blocked",
+      "all_required_gates_supported": false,
+      "network_absorbable": false,
+      "blocking_checks": [
+        "missing_evidence_path:promotion_evidence_bundle_path",
+        "missing_bundle_checks"
+      ],
+      "next_actions": [
+        "Regenerate or repair the individual gate check outputs before final promotion review.",
+        "Every bundled check must match the validation plan path, expected schema, and gate_passed=true.",
+        "Do not infer network absorption from partial or stale saved evidence."
+      ]
+    }
+  },
+  "blocking_checks": [
+    "subcheck_blocked:promotion_gates",
+    "promotion_gates:missing_gate:multi_seed_validation",
+    "promotion_gates:missing_gate:held_out_founder_advice_pass",
+    "promotion_gates:missing_gate:human_operator_calibration",
+    "promotion_gates:missing_gate:privacy_review",
+    "promotion_gates:missing_gate:rollback_review",
+    "promotion_gates:missing_gate:publication_approval",
+    "promotion_gates:prohibited_claim:network_absorbable",
+    "promotion_gates:publication_boundary:network_publication_allowed",
+    "subcheck_blocked:multi_seed_validation",
+    "multi_seed_validation:missing_evidence_path:multi_seed_evidence_path",
+    "multi_seed_validation:missing_track:gtm",
+    "multi_seed_validation:missing_track:finance",
+    "multi_seed_validation:missing_track:product",
+    "multi_seed_validation:missing_track:people",
+    "multi_seed_validation:missing_track:board",
+    "multi_seed_validation:missing_track:scale",
+    "multi_seed_validation:underfilled_track:gtm:0/5",
+    "multi_seed_validation:underfilled_track:finance:0/5",
+    "multi_seed_validation:underfilled_track:product:0/5",
+    "multi_seed_validation:underfilled_track:people:0/5",
+    "multi_seed_validation:underfilled_track:board:0/5",
+    "multi_seed_validation:underfilled_track:scale:0/5",
+    "subcheck_blocked:held_out_founder_advice_pass",
+    "held_out_founder_advice_pass:missing_evidence_path:held_out_evidence_path",
+    "held_out_founder_advice_pass:case_failure:urgent-pain-or-politeness:missing_evidence",
+    "held_out_founder_advice_pass:case_failure:vanity-growth-trap:missing_evidence",
+    "held_out_founder_advice_pass:case_failure:narrow-wedge-choice:missing_evidence",
+    "held_out_founder_advice_pass:case_failure:default-alive-pressure:missing_evidence",
+    "held_out_founder_advice_pass:case_failure:privacy-boundary-case:missing_evidence",
+    "subcheck_blocked:review_gates",
+    "review_gates:missing_evidence_path:review_gate_evidence_path",
+    "review_gates:gate_failure:human_operator_calibration:missing_evidence",
+    "review_gates:gate_failure:privacy_review:missing_evidence",
+    "review_gates:gate_failure:rollback_review:missing_evidence",
+    "review_gates:gate_failure:publication_approval:missing_evidence",
+    "subcheck_blocked:promotion_evidence_bundle",
+    "promotion_evidence_bundle:missing_evidence_path:promotion_evidence_bundle_path",
+    "promotion_evidence_bundle:missing_bundle_checks"
+  ],
+  "next_actions": [
+    "Repair blocked validation subchecks before final promotion review.",
+    "Run the individual Startup YC gate commands to regenerate fresh evidence.",
+    "Keep Startup YC at transfer_supported while suite blockers remain."
+  ]
+}

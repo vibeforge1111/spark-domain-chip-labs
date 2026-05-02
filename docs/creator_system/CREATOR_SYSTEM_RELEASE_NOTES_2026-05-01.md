@@ -84,6 +84,9 @@
 - `startup-yc-validation-suite` now runs all Startup YC gate checks together and
   still blocks final promotion unless the validation plan explicitly records
   approved gates, claim removal, and publication permission.
+- `startup-yc-operator-validation/validation_suite_blocked.json` now preserves
+  the current blocked validation-suite packet, with tests that recompute the
+  critical blockers from the validation plan.
 
 ## Current Claim Boundary
 
@@ -105,4 +108,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `123 passed`.
+Latest focused creator-system suite result before CI push: `124 passed`.

@@ -67,8 +67,9 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "startup-yc-review-gates-check" in text
     assert "startup-yc-promotion-evidence-check" in text
     assert "startup-yc-validation-suite" in text
+    assert "validation_suite_blocked.json" in text
     assert "Creator-system CI now runs focused lint" in text
-    assert "Latest focused creator-system suite result before CI push: `123 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `124 passed`." in text
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:

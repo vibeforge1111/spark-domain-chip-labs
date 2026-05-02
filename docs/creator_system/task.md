@@ -280,6 +280,8 @@ Deliverables:
   mismatched, or incomplete saved gate outputs.
 - [x] Executable Startup YC validation suite that runs all gate checks together
   while keeping final promotion blocked by the validation plan.
+- [x] Saved blocked Startup YC validation-suite packet with recompute coverage
+  for critical blocker drift.
 
 Phase gate:
 
@@ -538,6 +540,9 @@ Completed documentation/verification:
 - `startup-yc-validation-suite` now runs the promotion, multi-seed, held-out,
   review-gate, and promotion-evidence checks together without granting final
   network absorption.
+- `startup-yc-operator-validation/validation_suite_blocked.json` now stores the
+  current blocked validation-suite packet and tests compare it to a fresh suite
+  run for critical blocker drift.
 
 Completed product PR verification:
 

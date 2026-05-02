@@ -506,6 +506,30 @@ def test_startup_yc_validation_suite_blocks_without_evidence() -> None:
     assert "subcheck_blocked:promotion_evidence_bundle" in result["blocking_checks"]
 
 
+def test_saved_startup_yc_validation_suite_fixture_matches_current_blockers() -> None:
+    saved = json.loads(
+        (FIXTURE_DIR / "validation_suite_blocked.json").read_text(encoding="utf-8")
+    )
+    current = run_startup_yc_validation_suite(FIXTURE_DIR / "validation_plan.json")
+
+    assert saved["schema_version"] == current["schema_version"]
+    assert saved["plan_id"] == current["plan_id"]
+    assert saved["current_claim"] == "transfer_supported"
+    assert saved["requested_claim"] == "network_absorbable"
+    assert saved["verdict"] == current["verdict"] == "blocked"
+    assert saved["required_subchecks_passed"] is False
+    assert saved["final_promotion_ready"] is False
+    assert saved["network_absorbable"] is False
+    assert saved["blocking_checks"] == current["blocking_checks"]
+    assert {
+        name: result["verdict"]
+        for name, result in saved["subchecks"].items()
+    } == {
+        name: result["verdict"]
+        for name, result in current["subchecks"].items()
+    }
+
+
 def test_startup_yc_validation_suite_keeps_final_promotion_blocked(
     tmp_path: Path,
 ) -> None:

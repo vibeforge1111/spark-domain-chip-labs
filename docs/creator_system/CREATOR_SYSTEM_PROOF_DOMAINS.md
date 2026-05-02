@@ -433,6 +433,9 @@ Current validation pack:
 - `startup-yc-validation-suite`: read-only orchestration check that runs the
   individual Startup YC validation checks together and keeps final promotion
   blocked unless the validation plan itself records explicit gate approval.
+- `startup-yc-operator-validation/validation_suite_blocked.json`: saved current
+  validation-suite output. Tests recompute the suite and compare critical
+  blockers so stale saved validation evidence is caught.
 
 Next real adapters:
 
