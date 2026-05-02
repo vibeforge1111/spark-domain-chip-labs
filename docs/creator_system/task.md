@@ -568,6 +568,8 @@ Completed documentation/verification:
 - Startup YC raw validation evidence now has a schema anchor for multi-seed,
   held-out, review-gate, and promotion-bundle inputs before gate outputs are
   produced.
+- `startup-yc-validation-evidence-check` now gives operators an executable
+  raw-evidence shape gate before running Startup YC gate commands.
 
 Completed product PR verification:
 

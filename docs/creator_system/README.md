@@ -103,6 +103,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Check retrieval memory packet | `python -m chip_labs.cli retrieval-memory-check --input memory-packet.json --fail-on-blocked` |
 | Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --output reports/creator-mission-status.json` |
 | Check Startup YC promotion gates | `python -m chip_labs.cli startup-yc-promotion-gate-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
+| Check Startup YC raw validation evidence | `python -m chip_labs.cli startup-yc-validation-evidence-check --evidence <evidence.json> --evidence-kind multi_seed --fail-on-blocked` |
 | Check Startup YC multi-seed evidence | `python -m chip_labs.cli startup-yc-multi-seed-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC held-out advice evidence | `python -m chip_labs.cli startup-yc-heldout-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC review gates | `python -m chip_labs.cli startup-yc-review-gates-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
@@ -247,7 +248,8 @@ Even a coherent bundle is evidence support, not final promotion.
 
 `startup-yc-validation-evidence.schema.json` anchors the raw multi-seed,
 held-out, review-gate, and promotion-bundle inputs before they become
-gate-check outputs.
+gate-check outputs. `startup-yc-validation-evidence-check` is the executable
+shape gate for those raw inputs.
 
 `startup-yc-gate-check-result.schema.json` anchors the individual Startup YC
 gate-check packets and rejects any individual gate output that claims

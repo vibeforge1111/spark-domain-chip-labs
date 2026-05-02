@@ -23,6 +23,12 @@ PROMOTION_EVIDENCE_SCHEMA_VERSION = (
 VALIDATION_SUITE_SCHEMA_VERSION = (
     "adaptive_creator_loop.startup_yc_validation_suite.v1"
 )
+VALIDATION_EVIDENCE_CHECK_SCHEMA_VERSION = (
+    "adaptive_creator_loop.startup_yc_validation_evidence_check.v1"
+)
+VALIDATION_EVIDENCE_SCHEMA_PATH = (
+    "docs/creator_system/schemas/startup-yc-validation-evidence.schema.json"
+)
 
 _REVIEW_GATE_REQUIREMENTS = {
     "human_operator_calibration": ("reviewer", "evidence_ref", "calibration_notes"),
@@ -30,6 +36,58 @@ _REVIEW_GATE_REQUIREMENTS = {
     "rollback_review": ("reviewer", "evidence_ref", "rollback_rule"),
     "publication_approval": ("reviewer", "evidence_ref", "publication_decision"),
 }
+
+_VALIDATION_EVIDENCE_KINDS = {
+    "multi_seed",
+    "heldout",
+    "review_gates",
+    "promotion_evidence_bundle",
+}
+
+
+def check_startup_yc_validation_evidence_shape(
+    evidence_path: str | Path,
+    *,
+    evidence_kind: str,
+) -> dict[str, Any]:
+    """Check raw Startup YC validation evidence before it becomes gate output."""
+
+    path = Path(evidence_path)
+    blocking_checks: list[str] = []
+    if evidence_kind not in _VALIDATION_EVIDENCE_KINDS:
+        blocking_checks.append(f"unknown_evidence_kind:{evidence_kind}")
+
+    evidence_present = path.exists()
+    payload: dict[str, Any] = {}
+    if not evidence_present:
+        blocking_checks.append(f"missing_evidence:{path}")
+    else:
+        payload = _load_json(path)
+
+    if payload:
+        if evidence_kind == "multi_seed":
+            blocking_checks.extend(_validate_multi_seed_evidence_payload(payload))
+        elif evidence_kind == "heldout":
+            blocking_checks.extend(_validate_heldout_evidence_payload(payload))
+        elif evidence_kind == "review_gates":
+            blocking_checks.extend(_validate_review_gate_evidence_payload(payload))
+        elif evidence_kind == "promotion_evidence_bundle":
+            blocking_checks.extend(_validate_promotion_evidence_bundle_payload(payload))
+
+    blocking_checks = _dedupe(blocking_checks)
+    return {
+        "schema_version": VALIDATION_EVIDENCE_CHECK_SCHEMA_VERSION,
+        "schema_path": VALIDATION_EVIDENCE_SCHEMA_PATH,
+        "evidence_path": str(path),
+        "evidence_kind": evidence_kind,
+        "evidence_present": evidence_present,
+        "verdict": "blocked" if blocking_checks else "passed",
+        "blocking_checks": blocking_checks,
+        "next_actions": _validation_evidence_next_actions(
+            evidence_kind=evidence_kind,
+            blocked=bool(blocking_checks),
+        ),
+    }
 
 
 def check_startup_yc_promotion_gates(
@@ -841,6 +899,106 @@ def _evaluate_multi_seed_rows(
     return failures, eligible_counts
 
 
+def _validate_multi_seed_evidence_payload(payload: dict[str, Any]) -> list[str]:
+    rows = payload.get("rows")
+    failures = _validate_non_empty_rows(rows, "multi_seed")
+    if failures or not isinstance(rows, list):
+        return failures
+    required_fields = {
+        "seed_id": str,
+        "track": str,
+        "baseline_score": (int, float),
+        "candidate_score": (int, float),
+        "constraints_passed": bool,
+        "held_out_passed": bool,
+    }
+    return failures + _validate_row_fields(rows, required_fields)
+
+
+def _validate_heldout_evidence_payload(payload: dict[str, Any]) -> list[str]:
+    rows = payload.get("rows")
+    failures = _validate_non_empty_rows(rows, "heldout")
+    if failures or not isinstance(rows, list):
+        return failures
+    required_fields = {
+        "case_id": str,
+        "passed": bool,
+        "operator_moves_covered": bool,
+        "reject_claims_avoided": bool,
+        "success_gate_met": bool,
+        "privacy_lane_respected": bool,
+    }
+    return failures + _validate_row_fields(rows, required_fields)
+
+
+def _validate_review_gate_evidence_payload(payload: dict[str, Any]) -> list[str]:
+    gates = payload.get("gates")
+    if not isinstance(gates, dict):
+        return ["missing_gates_object"]
+    failures: list[str] = []
+    for gate, fields in _REVIEW_GATE_REQUIREMENTS.items():
+        value = gates.get(gate)
+        if not isinstance(value, dict):
+            failures.append(f"missing_gate:{gate}")
+            continue
+        if value.get("passed") is not True:
+            failures.append(f"gate_field_invalid:{gate}:passed")
+        for field in fields:
+            if not isinstance(value.get(field), str) or not value.get(field, "").strip():
+                failures.append(f"gate_field_invalid:{gate}:{field}")
+        if gate == "publication_approval":
+            if value.get("approved_claim") != "network_absorbable":
+                failures.append("gate_field_invalid:publication_approval:approved_claim")
+            if not isinstance(value.get("network_publication_allowed"), bool):
+                failures.append(
+                    "gate_field_invalid:publication_approval:network_publication_allowed"
+                )
+    return failures
+
+
+def _validate_promotion_evidence_bundle_payload(payload: dict[str, Any]) -> list[str]:
+    checks = payload.get("checks")
+    if not isinstance(checks, dict):
+        return ["missing_checks_object"]
+    failures: list[str] = []
+    for key in (
+        "multi_seed_validation",
+        "held_out_founder_advice_pass",
+        "review_gates",
+    ):
+        if not isinstance(checks.get(key), str) or not checks.get(key, "").strip():
+            failures.append(f"missing_check_path:{key}")
+    return failures
+
+
+def _validate_non_empty_rows(value: Any, kind: str) -> list[str]:
+    if not isinstance(value, list):
+        return [f"missing_rows:{kind}"]
+    if not value:
+        return [f"empty_rows:{kind}"]
+    if not all(isinstance(row, dict) for row in value):
+        return [f"invalid_rows:{kind}"]
+    return []
+
+
+def _validate_row_fields(
+    rows: list[dict[str, Any]],
+    required_fields: dict[str, type | tuple[type, ...]],
+) -> list[str]:
+    failures: list[str] = []
+    for index, row in enumerate(rows):
+        row_id = str(row.get("seed_id") or row.get("case_id") or f"row_{index + 1}")
+        for field, expected_type in required_fields.items():
+            value = row.get(field)
+            if isinstance(value, bool) and expected_type in ((int, float), int, float):
+                failures.append(f"row_field_invalid:{row_id}:{field}")
+            elif not isinstance(value, expected_type):
+                failures.append(f"row_field_invalid:{row_id}:{field}")
+            elif isinstance(value, str) and not value.strip():
+                failures.append(f"row_field_invalid:{row_id}:{field}")
+    return failures
+
+
 def _next_actions(missing_gates: list[str], requested_claim: str) -> list[str]:
     actions = [
         "Keep Startup YC at transfer_supported until promotion gates pass.",
@@ -910,6 +1068,23 @@ def _promotion_evidence_next_actions(*, all_supported: bool) -> list[str]:
         "Regenerate or repair the individual gate check outputs before final promotion review.",
         "Every bundled check must match the validation plan path, expected schema, and gate_passed=true.",
         "Do not infer network absorption from partial or stale saved evidence.",
+    ]
+
+
+def _validation_evidence_next_actions(
+    *,
+    evidence_kind: str,
+    blocked: bool,
+) -> list[str]:
+    if not blocked:
+        return [
+            f"Use this {evidence_kind} packet as raw input for its Startup YC gate command.",
+            "Keep final promotion blocked until gate outputs, bundle checks, and review gates pass.",
+        ]
+    return [
+        "Repair the raw Startup YC evidence shape before running gate checks.",
+        "Use startup-yc-validation-evidence.schema.json as the packet contract.",
+        "Do not convert malformed raw evidence into promotion support.",
     ]
 
 

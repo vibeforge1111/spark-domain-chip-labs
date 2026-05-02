@@ -107,6 +107,8 @@
 - `startup-yc-validation-evidence.schema.json` now anchors raw Startup YC
   multi-seed, held-out, review-gate, and promotion-bundle inputs before they
   become gate-check outputs.
+- `startup-yc-validation-evidence-check` now gives operators an executable
+  raw-evidence shape gate before running Startup YC gate commands.
 
 ## Current Claim Boundary
 
@@ -128,4 +130,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `129 passed`.
+Latest focused creator-system suite result before CI push: `131 passed`.

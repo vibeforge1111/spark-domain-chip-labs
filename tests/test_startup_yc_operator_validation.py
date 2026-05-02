@@ -14,6 +14,7 @@ from chip_labs.startup_yc_promotion import (
     check_startup_yc_promotion_evidence,
     check_startup_yc_promotion_gates,
     check_startup_yc_review_gates,
+    check_startup_yc_validation_evidence_shape,
     run_startup_yc_validation_suite,
 )
 
@@ -763,6 +764,60 @@ def test_startup_yc_validation_evidence_schema_checks_raw_inputs(
     assert list(validator.iter_errors(malformed_heldout))
 
 
+def test_startup_yc_validation_evidence_shape_check_blocks_malformed_raw_input(
+    tmp_path: Path,
+) -> None:
+    (
+        multi_seed_evidence_path,
+        heldout_evidence_path,
+        review_gate_evidence_path,
+    ) = _write_raw_validation_evidence(tmp_path)
+    bundle_path = tmp_path / "promotion-evidence-bundle.json"
+    bundle_path.write_text(
+        json.dumps(
+            {
+                "checks": {
+                    "multi_seed_validation": "multi-seed-output.json",
+                    "held_out_founder_advice_pass": "heldout-output.json",
+                    "review_gates": "review-output.json",
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    for evidence_kind, evidence_path in (
+        ("multi_seed", multi_seed_evidence_path),
+        ("heldout", heldout_evidence_path),
+        ("review_gates", review_gate_evidence_path),
+        ("promotion_evidence_bundle", bundle_path),
+    ):
+        result = check_startup_yc_validation_evidence_shape(
+            evidence_path,
+            evidence_kind=evidence_kind,
+        )
+        assert result["verdict"] == "passed"
+        assert result["schema_path"].endswith(
+            "startup-yc-validation-evidence.schema.json"
+        )
+
+    malformed = json.loads(heldout_evidence_path.read_text(encoding="utf-8"))
+    del malformed["rows"][0]["privacy_lane_respected"]
+    malformed_path = tmp_path / "malformed-heldout-evidence.json"
+    malformed_path.write_text(json.dumps(malformed, indent=2), encoding="utf-8")
+
+    result = check_startup_yc_validation_evidence_shape(
+        malformed_path,
+        evidence_kind="heldout",
+    )
+
+    assert result["verdict"] == "blocked"
+    assert "row_field_invalid:urgent-pain-or-politeness:privacy_lane_respected" in (
+        result["blocking_checks"]
+    )
+
+
 def test_startup_yc_validation_suite_keeps_final_promotion_blocked(
     tmp_path: Path,
 ) -> None:
@@ -859,6 +914,42 @@ def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
     assert result.returncode == 1
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
+
+
+def test_cli_startup_yc_validation_evidence_check_fails_on_malformed_input(
+    tmp_path: Path,
+) -> None:
+    _, heldout_evidence_path, _ = _write_raw_validation_evidence(tmp_path)
+    malformed = json.loads(heldout_evidence_path.read_text(encoding="utf-8"))
+    del malformed["rows"][0]["privacy_lane_respected"]
+    malformed_path = tmp_path / "malformed-heldout-evidence.json"
+    malformed_path.write_text(json.dumps(malformed, indent=2), encoding="utf-8")
+    output_path = tmp_path / "validation-evidence-shape.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-validation-evidence-check",
+            "--evidence",
+            str(malformed_path),
+            "--evidence-kind",
+            "heldout",
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "blocked"
+    assert payload["evidence_kind"] == "heldout"
 
 
 def test_cli_startup_yc_multi_seed_check_fails_on_blocked(tmp_path: Path) -> None:

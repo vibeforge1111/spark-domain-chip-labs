@@ -1237,6 +1237,19 @@ def cmd_startup_yc_promotion_gate_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_startup_yc_validation_evidence_check(args: argparse.Namespace) -> None:
+    """Check raw Startup YC validation evidence shape."""
+    from .startup_yc_promotion import check_startup_yc_validation_evidence_shape
+
+    result = check_startup_yc_validation_evidence_shape(
+        args.evidence,
+        evidence_kind=args.evidence_kind,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_startup_yc_multi_seed_check(args: argparse.Namespace) -> None:
     """Check Startup YC multi-seed validation evidence."""
     from .startup_yc_promotion import check_startup_yc_multi_seed_validation
@@ -2265,6 +2278,41 @@ def main() -> None:
     )
     p_startup_yc_promotion_gate_check.set_defaults(
         func=cmd_startup_yc_promotion_gate_check
+    )
+
+    # startup-yc-validation-evidence-check
+    p_startup_yc_validation_evidence_check = sub.add_parser(
+        "startup-yc-validation-evidence-check",
+        help="Check raw Startup YC validation evidence before gate commands.",
+    )
+    p_startup_yc_validation_evidence_check.add_argument(
+        "--evidence",
+        type=str,
+        required=True,
+        help="Raw Startup YC validation evidence JSON path.",
+    )
+    p_startup_yc_validation_evidence_check.add_argument(
+        "--evidence-kind",
+        type=str,
+        required=True,
+        choices=(
+            "multi_seed",
+            "heldout",
+            "review_gates",
+            "promotion_evidence_bundle",
+        ),
+        help="Expected raw evidence packet kind.",
+    )
+    p_startup_yc_validation_evidence_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_startup_yc_validation_evidence_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when raw evidence shape is blocked.",
+    )
+    p_startup_yc_validation_evidence_check.set_defaults(
+        func=cmd_startup_yc_validation_evidence_check
     )
 
     # startup-yc-multi-seed-check
