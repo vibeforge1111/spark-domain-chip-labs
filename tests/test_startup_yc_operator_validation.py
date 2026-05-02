@@ -20,6 +20,7 @@ from chip_labs.startup_yc_promotion import (
 
 
 FIXTURE_DIR = Path("docs/creator_system/examples/startup-yc-operator-validation")
+SHAPE_ONLY_MULTI_SEED_EVIDENCE = FIXTURE_DIR / "shape_only_multi_seed_evidence.json"
 GATE_CHECK_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-gate-check-result.schema.json"
 )
@@ -127,6 +128,20 @@ def test_startup_yc_multi_seed_check_blocks_without_evidence() -> None:
         "blocking_checks"
     ]
     assert result["underfilled_tracks"]
+
+
+def test_startup_yc_shape_only_fixture_does_not_pass_multi_seed_gate() -> None:
+    result = check_startup_yc_multi_seed_validation(
+        FIXTURE_DIR / "validation_plan.json",
+        evidence_path=SHAPE_ONLY_MULTI_SEED_EVIDENCE.resolve(),
+    )
+
+    assert result["verdict"] == "blocked"
+    assert result["gate_passed"] is False
+    assert result["network_absorbable"] is False
+    assert result["track_counts"]["gtm"] == 1
+    assert "missing_track:finance" in result["blocking_checks"]
+    assert "underfilled_track:gtm:1/5" in result["blocking_checks"]
 
 
 def test_startup_yc_multi_seed_check_passes_only_the_multi_seed_gate(

@@ -81,7 +81,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
-    assert "Latest focused creator-system suite result before CI push: `131 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `132 passed`." in text
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:

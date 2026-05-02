@@ -113,6 +113,8 @@
   `shape_only_multi_seed_evidence.json`, a bounded command-path fixture that
   does not count as Startup YC multi-seed validation or network absorption
   evidence.
+- Startup YC operator-validation tests now prove that the shape-only fixture
+  remains blocked by the real multi-seed gate.
 
 ## Current Claim Boundary
 
@@ -134,4 +136,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `131 passed`.
+Latest focused creator-system suite result before CI push: `132 passed`.

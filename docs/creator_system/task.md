@@ -574,6 +574,8 @@ Completed documentation/verification:
   `shape_only_multi_seed_evidence.json`, which is explicitly scoped as a
   command-path fixture rather than Startup YC multi-seed validation or network
   absorption evidence.
+- Startup YC operator-validation tests now prove that the shape-only fixture
+  remains blocked by the real multi-seed gate.
 
 Completed product PR verification:
 
