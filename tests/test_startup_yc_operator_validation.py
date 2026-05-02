@@ -632,6 +632,7 @@ def test_saved_startup_yc_validation_suite_fixture_matches_current_blockers() ->
         name: result["verdict"]
         for name, result in current["subchecks"].items()
     }
+    assert saved == current
 
 
 def test_startup_yc_validation_suite_schema_blocks_network_absorption() -> None:

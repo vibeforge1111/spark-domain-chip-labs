@@ -134,6 +134,8 @@
   validates it against the validation-suite schema plus gate-check schema refs.
 - Startup YC gate-check and validation-suite schemas now reject incoherent
   verdict packets such as `passed` with blockers or `blocked` with no blockers.
+- The saved blocked Startup YC validation-suite fixture now has a full-payload
+  equality regression against a fresh suite run, covering provenance drift.
 
 ## Current Claim Boundary
 
