@@ -616,6 +616,8 @@ Completed documentation/verification:
   review-gate, and promotion-bundle raw inputs.
 - Startup YC operator-validation tests now check the four Startup YC JSON
   Schemas are valid Draft 2020-12 schemas before payload validation.
+- Startup YC validation-suite CLI output is now validated against the
+  referenced validation-suite and gate-check schema pair in its CLI regression.
 
 Completed product PR verification:
 

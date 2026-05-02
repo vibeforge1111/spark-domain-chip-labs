@@ -1332,6 +1332,14 @@ def test_cli_startup_yc_gate_outputs_bundle_with_provenance(
 
 
 def test_cli_startup_yc_validation_suite_fails_on_blocked(tmp_path: Path) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    referencing = pytest.importorskip("referencing")
+    schema = json.loads(VALIDATION_SUITE_SCHEMA.read_text(encoding="utf-8"))
+    gate_schema = json.loads(GATE_CHECK_SCHEMA.read_text(encoding="utf-8"))
+    registry = referencing.Registry().with_resource(
+        gate_schema["$id"],
+        referencing.Resource.from_contents(gate_schema),
+    )
     output_path = tmp_path / "startup-yc-validation-suite.json"
 
     result = subprocess.run(
@@ -1356,6 +1364,7 @@ def test_cli_startup_yc_validation_suite_fails_on_blocked(tmp_path: Path) -> Non
     assert result.returncode == 1
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
+    jsonschema.Draft202012Validator(schema, registry=registry).validate(payload)
 
 
 def _load_plan() -> dict[str, object]:
