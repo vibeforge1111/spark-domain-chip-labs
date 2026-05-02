@@ -161,6 +161,9 @@
   outputs against `startup-yc-gate-check-result.schema.json`.
 - Startup YC malformed raw-evidence CLI regression now validates its blocked
   shape-check output against the shape-check result schema.
+- `startup-yc-validation-plan.schema.json` now anchors the Startup YC
+  validation plan, including the required promotion gates, multi-seed floor,
+  publication boundary, and explicit `network_absorbable` prohibition.
 
 ## Current Claim Boundary
 

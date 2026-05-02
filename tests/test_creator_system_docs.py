@@ -84,6 +84,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "input hashes from absent evidence with explicit missing-input records" in text
     assert "rejects impossible raw-evidence verdicts" in text
     assert "validates it against the check-result schema" in text
+    assert "startup-yc-validation-plan.schema.json" in text
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
     assert "raw-evidence input hashes" in text

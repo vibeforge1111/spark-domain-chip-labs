@@ -18,6 +18,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [doctor-result.schema.json](doctor-result.schema.json) | `creator-run-doctor` output |
 | [template-check-result.schema.json](template-check-result.schema.json) | `creator-run-template-check` output |
 | [creator-mission-status.schema.json](creator-mission-status.schema.json) | Read-only product surface adapter packet |
+| [startup-yc-validation-plan.schema.json](startup-yc-validation-plan.schema.json) | Startup YC validation plan and network-absorption gate list |
 | [startup-yc-validation-evidence.schema.json](startup-yc-validation-evidence.schema.json) | Startup YC raw validation evidence inputs and promotion bundles |
 | [startup-yc-validation-evidence-check-result.schema.json](startup-yc-validation-evidence-check-result.schema.json) | Startup YC raw validation-evidence shape-check output |
 | [startup-yc-gate-check-result.schema.json](startup-yc-gate-check-result.schema.json) | Startup YC individual gate-check outputs |
@@ -41,17 +42,19 @@ and `creator-run-doctor` for the stricter evidence verdict. The
 Spawner, Canvas, and Kanban; it must not replace the underlying canonical
 packets.
 
-The Startup YC validation-evidence, validation-evidence-check, gate-check, and
-validation-suite schemas anchor the blocked promotion workflow. Raw validation
-evidence is shape-checked before it becomes a gate output. Shape-check and
-individual gate-check outputs include raw-evidence provenance hashes so saved
-evidence can be compared with fresh inputs and promotion bundles can reject
-stale saved evidence. The shape-check result schema requires hashes when
-evidence is present, missing-input records when it is absent, and verdicts that
-match the blocker state. These schemas intentionally require
-`network_absorbable=false` when that field is present; passing the schema means
-the packet shape is compatible, not that Startup YC is approved for network
-absorption. The validation-suite schema references the gate-check schema for
-every subcheck, so a saved suite cannot hide malformed gate evidence inside a
-generic object field. Creator-system CI validates both freshly generated suite
+The Startup YC validation-plan, validation-evidence, validation-evidence-check,
+gate-check, and validation-suite schemas anchor the blocked promotion workflow.
+The validation-plan schema keeps the current `transfer_supported` claim, the
+required human/review gates, the multi-seed floor, and the publication boundary
+machine-checkable. Raw validation evidence is shape-checked before it becomes a
+gate output. Shape-check and individual gate-check outputs include raw-evidence
+provenance hashes so saved evidence can be compared with fresh inputs and
+promotion bundles can reject stale saved evidence. The shape-check result schema
+requires hashes when evidence is present, missing-input records when it is
+absent, and verdicts that match the blocker state. These schemas intentionally
+require `network_absorbable=false` when that field is present; passing the
+schema means the packet shape is compatible, not that Startup YC is approved for
+network absorption. The validation-suite schema references the gate-check schema
+for every subcheck, so a saved suite cannot hide malformed gate evidence inside
+a generic object field. Creator-system CI validates both freshly generated suite
 output and the saved blocked suite fixture against that referenced schema pair.

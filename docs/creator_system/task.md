@@ -284,6 +284,7 @@ Deliverables:
   for critical blocker drift.
 - [x] Creator-system CI explicitly runs the Startup YC validation suite as a
   blocked command and lints the promotion-gate module.
+- [x] JSON Schema anchor for the Startup YC validation plan.
 - [x] JSON Schema anchor for individual Startup YC gate-check packets.
 - [x] JSON Schema anchor for Startup YC validation-suite packets.
 - [x] Raw-evidence hash provenance on Startup YC gate outputs, with promotion
@@ -622,6 +623,10 @@ Completed documentation/verification:
   outputs against `startup-yc-gate-check-result.schema.json`.
 - Startup YC malformed raw-evidence CLI regression now validates its blocked
   shape-check output against the shape-check result schema.
+- Startup YC validation-plan tests now validate `validation_plan.json` against
+  `startup-yc-validation-plan.schema.json` and prove that removing required
+  gates, lowering the multi-seed floor, enabling publication, or omitting the
+  `network_absorbable` prohibition is rejected.
 
 Completed product PR verification:
 

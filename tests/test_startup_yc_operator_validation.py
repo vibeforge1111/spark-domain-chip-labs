@@ -21,6 +21,9 @@ from chip_labs.startup_yc_promotion import (
 
 FIXTURE_DIR = Path("docs/creator_system/examples/startup-yc-operator-validation")
 SHAPE_ONLY_MULTI_SEED_EVIDENCE = FIXTURE_DIR / "shape_only_multi_seed_evidence.json"
+VALIDATION_PLAN_SCHEMA = Path(
+    "docs/creator_system/schemas/startup-yc-validation-plan.schema.json"
+)
 GATE_CHECK_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-gate-check-result.schema.json"
 )
@@ -34,6 +37,7 @@ VALIDATION_SUITE_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-validation-suite.schema.json"
 )
 STARTUP_YC_SCHEMAS = (
+    VALIDATION_PLAN_SCHEMA,
     VALIDATION_EVIDENCE_SCHEMA,
     VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA,
     GATE_CHECK_SCHEMA,
@@ -42,8 +46,12 @@ STARTUP_YC_SCHEMAS = (
 
 
 def test_startup_yc_validation_plan_blocks_network_absorption() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
     plan = _load_plan()
+    schema = json.loads(VALIDATION_PLAN_SCHEMA.read_text(encoding="utf-8"))
+    validator = jsonschema.Draft202012Validator(schema)
 
+    validator.validate(plan)
     assert plan["current_claim"] == "transfer_supported"
     assert "network_absorbable" in plan["prohibited_claims"]
     assert plan["publication_boundary"]["network_publication_allowed"] is False
@@ -59,6 +67,22 @@ def test_startup_yc_validation_plan_blocks_network_absorption() -> None:
     assert plan["minimum_multi_seed_plan"]["negative_row_policy"] == (
         "block_network_absorption"
     )
+
+    missing_network_absorption_block = _copy_json(plan)
+    missing_network_absorption_block["prohibited_claims"].remove("network_absorbable")
+    assert list(validator.iter_errors(missing_network_absorption_block))
+
+    lowered_seed_floor = _copy_json(plan)
+    lowered_seed_floor["minimum_multi_seed_plan"]["minimum_seeds_per_track"] = 1
+    assert list(validator.iter_errors(lowered_seed_floor))
+
+    missing_privacy_review = _copy_json(plan)
+    missing_privacy_review["required_promotion_gates"].remove("privacy_review")
+    assert list(validator.iter_errors(missing_privacy_review))
+
+    premature_publication = _copy_json(plan)
+    premature_publication["publication_boundary"]["network_publication_allowed"] = True
+    assert list(validator.iter_errors(premature_publication))
 
 
 def test_startup_yc_schemas_are_valid_draft_2020_12() -> None:
@@ -1382,6 +1406,10 @@ def test_cli_startup_yc_validation_suite_fails_on_blocked(tmp_path: Path) -> Non
 
 def _load_plan() -> dict[str, object]:
     return json.loads((FIXTURE_DIR / "validation_plan.json").read_text(encoding="utf-8"))
+
+
+def _copy_json(value: dict[str, object]) -> dict[str, object]:
+    return json.loads(json.dumps(value))
 
 
 def _validate_gate_check_payload(payload: dict[str, object]) -> None:

@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-validation-plan.schema.json",
+  "title": "Adaptive Creator Loop Startup YC Validation Plan",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "plan_id",
+    "domain",
+    "current_claim",
+    "minimum_fixture_evidence_tier",
+    "prohibited_claims",
+    "held_out_cases_path",
+    "operator_calibration_checklist_path",
+    "privacy_rollback_publication_review_path",
+    "required_promotion_gates",
+    "minimum_multi_seed_plan",
+    "acceptance_gates",
+    "publication_boundary"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.startup_yc_validation_plan.v1"
+    },
+    "plan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "const": "Startup YC"
+    },
+    "current_claim": {
+      "const": "transfer_supported"
+    },
+    "minimum_fixture_evidence_tier": {
+      "const": "transfer_supported"
+    },
+    "network_absorbable": {
+      "const": false
+    },
+    "prohibited_claims": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string"},
+      "contains": {"const": "network_absorbable"}
+    },
+    "held_out_cases_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operator_calibration_checklist_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "privacy_rollback_publication_review_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "required_promotion_gates": {
+      "type": "array",
+      "minItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "multi_seed_validation",
+          "held_out_founder_advice_pass",
+          "human_operator_calibration",
+          "privacy_review",
+          "rollback_review",
+          "publication_approval"
+        ]
+      },
+      "allOf": [
+        {"contains": {"const": "multi_seed_validation"}},
+        {"contains": {"const": "held_out_founder_advice_pass"}},
+        {"contains": {"const": "human_operator_calibration"}},
+        {"contains": {"const": "privacy_review"}},
+        {"contains": {"const": "rollback_review"}},
+        {"contains": {"const": "publication_approval"}}
+      ]
+    },
+    "minimum_multi_seed_plan": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "tracks",
+        "minimum_seeds_per_track",
+        "required_min_delta",
+        "negative_row_policy"
+      ],
+      "properties": {
+        "tracks": {
+          "type": "array",
+          "minItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["gtm", "finance", "product", "people", "board", "scale"]
+          },
+          "allOf": [
+            {"contains": {"const": "gtm"}},
+            {"contains": {"const": "finance"}},
+            {"contains": {"const": "product"}},
+            {"contains": {"const": "people"}},
+            {"contains": {"const": "board"}},
+            {"contains": {"const": "scale"}}
+          ]
+        },
+        "minimum_seeds_per_track": {
+          "type": "integer",
+          "minimum": 5
+        },
+        "required_min_delta": {
+          "type": "number",
+          "minimum": 0
+        },
+        "negative_row_policy": {
+          "const": "block_network_absorption"
+        }
+      }
+    },
+    "acceptance_gates": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "reject_vanity_metric_traction",
+        "require_desperate_specificity",
+        "require_narrow_next_action",
+        "require_evidence_that_changes_plan",
+        "require_privacy_lane",
+        "require_rollback_rule"
+      ],
+      "properties": {
+        "reject_vanity_metric_traction": {"const": true},
+        "require_desperate_specificity": {"const": true},
+        "require_narrow_next_action": {"const": true},
+        "require_evidence_that_changes_plan": {"const": true},
+        "require_privacy_lane": {"const": true},
+        "require_rollback_rule": {"const": true}
+      }
+    },
+    "publication_boundary": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["network_publication_allowed", "reason"],
+      "properties": {
+        "network_publication_allowed": {"const": false},
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
