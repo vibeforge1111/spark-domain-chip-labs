@@ -65,12 +65,12 @@
     },
     {
       "packet": "tool_operation",
-      "present": false,
-      "state": "missing",
-      "verdict": null,
+      "present": true,
+      "state": "ready",
+      "verdict": "pass",
       "blocking_checks": [],
       "warning_count": 0,
-      "claim_boundary": null
+      "claim_boundary": "tool_operation local postcondition check only"
     },
     {
       "packet": "artifact_quality",
@@ -221,6 +221,12 @@
           "source": "canonical_packet"
         },
         {
+          "id": "tool_operation",
+          "label": "tool_operation",
+          "status": "ready",
+          "source": "canonical_packet"
+        },
+        {
           "id": "artifact_quality",
           "label": "artifact_quality",
           "status": "ready",
@@ -258,6 +264,10 @@
         },
         {
           "from": "doctor",
+          "to": "creator_mission"
+        },
+        {
+          "from": "tool_operation",
           "to": "creator_mission"
         },
         {

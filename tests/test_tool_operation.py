@@ -56,6 +56,20 @@ def test_tool_operation_check_passes_with_parsed_postconditions() -> None:
     assert result["blocking_checks"] == []
 
 
+def test_tool_operation_pass_fixture_is_executable() -> None:
+    result = check_tool_operation(
+        load_tool_operation_packet(FIXTURE_DIR / "creator_run_smoke_pass.json")
+    )
+    saved = json.loads(
+        (FIXTURE_DIR / "creator_run_smoke_pass.check.json").read_text(encoding="utf-8")
+    )
+
+    assert result == saved
+    assert saved["verdict"] == "pass"
+    assert saved["allowed"] is True
+    assert saved["blocking_checks"] == []
+
+
 def test_tool_operation_check_rejects_stdout_only_success() -> None:
     result = check_tool_operation({
         "command": "python -m chip_labs.cli creator-run-smoke runs/demo",
@@ -124,6 +138,7 @@ def test_tool_operation_check_blocks_missing_expected_postconditions() -> None:
 
 def test_tool_operation_replay_fixtures_are_executable() -> None:
     expected_blockers = {
+        "creator_run_smoke_pass.json": set(),
         "blocked_smoke_with_rollback.json": {"success_value"},
         "stale_evidence_recompute.json": {"success_value"},
         "missing_artifacts_expected_swarm.json": {
@@ -136,10 +151,10 @@ def test_tool_operation_replay_fixtures_are_executable() -> None:
     for fixture_name, blockers in expected_blockers.items():
         result = check_tool_operation(load_tool_operation_packet(FIXTURE_DIR / fixture_name))
 
-        assert result["verdict"] == "blocked"
+        assert result["verdict"] == ("pass" if not blockers else "blocked")
         assert blockers.issubset(set(result["blocking_checks"]))
-        assert result["rollback_report"]["required"] is True
-        assert result["rollback_report"]["provided"] is True
+        assert result["rollback_report"]["required"] is bool(blockers)
+        assert result["rollback_report"]["provided"] is bool(blockers)
 
 
 def test_cli_tool_operation_check_outputs_packet(tmp_path: Path) -> None:

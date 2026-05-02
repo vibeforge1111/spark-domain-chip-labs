@@ -36,6 +36,9 @@
 - Retrieval memory now has a saved pass check for the correct-prior-decision
   fixture, and product mission status references it as read-only
   `retrieval_memory` evidence with network absorption still blocked.
+- Tool operation now has a saved pass check for a safe local
+  `creator-run-smoke` operation, and product mission status references it as
+  read-only `tool_operation` evidence without granting execution authority.
 
 ## Current Claim Boundary
 

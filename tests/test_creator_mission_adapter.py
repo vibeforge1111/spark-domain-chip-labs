@@ -22,6 +22,9 @@ CREATOR_MISSION_SCHEMA = Path(
 ARTIFACT_QUALITY_REPORT = Path(
     "docs/creator_system/examples/artifact-quality/good_design_pr.report.json"
 )
+TOOL_OPERATION_CHECK = Path(
+    "docs/creator_system/examples/tool-operation/creator_run_smoke_pass.check.json"
+)
 MIROFISH_CONTENT_ROUTE = Path(
     "docs/creator_system/examples/mirofish-content/route-invoke.json"
 )
@@ -134,6 +137,8 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
             str(smoke_path),
             "--startup-validation",
             str(STARTUP_VALIDATION),
+            "--tool-operation",
+            str(TOOL_OPERATION_CHECK),
             "--artifact-quality",
             str(ARTIFACT_QUALITY_REPORT),
             "--content-route",
@@ -155,6 +160,13 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
     payload = json.loads(output_path.read_text(encoding="utf-8"))
     assert payload["mission_id"] == "mission-cli"
     assert payload["surface_adapters"]["telegram"]["may_request_secret_paste"] is False
+    tool_operation_summary = next(
+        summary
+        for summary in payload["source_packets"]
+        if summary["packet"] == "tool_operation"
+    )
+    assert tool_operation_summary["present"] is True
+    assert tool_operation_summary["state"] == "ready"
     content_route_summary = next(
         summary
         for summary in payload["source_packets"]
@@ -182,6 +194,7 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     smoke = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-smoke.json").read_text(encoding="utf-8"))
     doctor = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-doctor.json").read_text(encoding="utf-8"))
     startup_validation = json.loads(STARTUP_VALIDATION.read_text(encoding="utf-8"))
+    tool_operation = json.loads(TOOL_OPERATION_CHECK.read_text(encoding="utf-8"))
     artifact_quality = json.loads(ARTIFACT_QUALITY_REPORT.read_text(encoding="utf-8"))
     content_route = json.loads(MIROFISH_CONTENT_ROUTE.read_text(encoding="utf-8"))
     retrieval_memory = json.loads(RETRIEVAL_MEMORY_CHECK.read_text(encoding="utf-8"))
@@ -194,6 +207,7 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
         publish_mode="swarm_shared",
         smoke=smoke,
         doctor=doctor,
+        tool_operation=tool_operation,
         artifact_quality=artifact_quality,
         content_route=content_route,
         retrieval_memory=retrieval_memory,
@@ -213,6 +227,20 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     assert saved["surface_adapters"]["spawner"]["may_execute"] is False
     assert saved["surface_adapters"]["canvas"]["may_edit_artifacts"] is False
     assert saved["surface_adapters"]["kanban"]["may_change_verdict"] is False
+    tool_operation_summary = next(
+        summary
+        for summary in saved["source_packets"]
+        if summary["packet"] == "tool_operation"
+    )
+    assert tool_operation_summary == {
+        "packet": "tool_operation",
+        "present": True,
+        "state": "ready",
+        "verdict": "pass",
+        "blocking_checks": [],
+        "warning_count": 0,
+        "claim_boundary": "tool_operation local postcondition check only",
+    }
     artifact_quality_summary = next(
         summary
         for summary in saved["source_packets"]
@@ -258,9 +286,11 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     }
     canvas = saved["surface_adapters"]["canvas"]
     node_ids = {node["id"] for node in canvas["nodes"]}
+    assert "tool_operation" in node_ids
     assert "artifact_quality" in node_ids
     assert "content_route" in node_ids
     assert "retrieval_memory" in node_ids
+    assert {"from": "tool_operation", "to": "creator_mission"} in canvas["edges"]
     assert {"from": "artifact_quality", "to": "creator_mission"} in canvas["edges"]
     assert {"from": "content_route", "to": "creator_mission"} in canvas["edges"]
     assert {"from": "retrieval_memory", "to": "creator_mission"} in canvas["edges"]

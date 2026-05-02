@@ -435,6 +435,7 @@ Deliverables:
 - [x] Add release-note summary for MiroFish mission-status evidence slice.
 - [x] Add release-note summary for artifact-quality mission-status evidence slice.
 - [x] Add release-note summary for retrieval-memory mission-status evidence slice.
+- [x] Add release-note summary for tool-operation mission-status evidence slice.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -472,6 +473,8 @@ Completed documentation/verification:
 - Retrieval-memory examples include a saved pass check and are referenced by the
   product mission-status fixture as a read-only `retrieval_memory` source
   packet.
+- Tool-operation examples include a saved pass check and are referenced by the
+  product mission-status fixture as a read-only `tool_operation` source packet.
 - Canvas mission-status edges now point only to source packets that are present
   in the canonical mission packet.
 

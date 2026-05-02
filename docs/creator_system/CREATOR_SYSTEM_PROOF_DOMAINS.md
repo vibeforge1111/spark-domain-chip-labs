@@ -139,12 +139,21 @@ mission to the wrong state.
 
 Current replay fixtures:
 
+- `creator_run_smoke_pass.json`: safe parsed-result example for
+  `creator-run-smoke --recompute`.
+- `creator_run_smoke_pass.check.json`: saved pass result for the safe operation
+  fixture.
 - `blocked_smoke_with_rollback.json`: blocked smoke with rollback note.
 - `stale_evidence_recompute.json`: stale saved report caught by recompute.
 - `missing_artifacts_expected_swarm.json`: clean smoke exit that fails the
   expected `ready_for_swarm_packet` postcondition.
 - `unsafe_secret_request.json`: secret/token paste workflow blocked before state
   update.
+
+The read-only product-surface fixture references
+`creator_run_smoke_pass.check.json` as a `tool_operation` source packet. This
+allows product surfaces to display verified local postconditions without
+receiving permission to execute tools.
 
 Next real adapters:
 
