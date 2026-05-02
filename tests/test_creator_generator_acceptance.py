@@ -13,6 +13,7 @@ from chip_labs.artifact_quality import MANIFEST_PATH, run_artifact_quality_bench
 from chip_labs.creator_generator import (
     generate_creator_system_from_brief,
     run_multi_seed_generator_validation,
+    validate_multi_seed_generator_summary,
 )
 from chip_labs.creator_mission_adapter import build_creator_mission_status
 from chip_labs.creator_run import diagnose_creator_run, validate_creator_run
@@ -574,6 +575,12 @@ def test_generator_multi_seed_validation_runs_full_domain_matrix(
         "retrieval-memory-boundary",
     }
     assert (tmp_path / "multi_seed_validation_summary.json").exists()
+    checked = validate_multi_seed_generator_summary(
+        tmp_path / "multi_seed_validation_summary.json"
+    )
+    assert checked["verdict"] == "pass"
+    assert checked["blocking_checks"] == []
+    assert checked["row_count"] == 36
 
 
 def test_generator_multi_seed_validation_exposes_failed_seed_rows(
@@ -603,6 +610,55 @@ def test_generator_multi_seed_validation_exposes_failed_seed_rows(
     assert "Do not promote a packet when any seed row is blocked." in (
         summary["next_actions"]
     )
+
+
+def test_multi_seed_summary_validation_blocks_tampered_saved_rows(
+    tmp_path: Path,
+) -> None:
+    run_multi_seed_generator_validation(
+        tmp_path,
+        [_multi_domain_briefs()[0]],
+        seeds=(1, 2),
+        variants_per_domain=1,
+    )
+    summary_path = tmp_path / "multi_seed_validation_summary.json"
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    summary["rows"][0]["verdict"] = "ready_for_swarm_packet_but_fake"
+    summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+
+    checked = validate_multi_seed_generator_summary(summary_path)
+
+    assert checked["verdict"] == "blocked"
+    assert "row:design-doc-pr-quality:v1:seed1:verdict_mismatch" in (
+        checked["blocking_checks"]
+    )
+
+
+def test_multi_seed_summary_validation_blocks_stale_underlying_run(
+    tmp_path: Path,
+) -> None:
+    run_multi_seed_generator_validation(
+        tmp_path,
+        [_multi_domain_briefs()[0]],
+        seeds=(1, 2),
+        variants_per_domain=1,
+    )
+    summary_path = tmp_path / "multi_seed_validation_summary.json"
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    first_run_dir = Path(summary["rows"][0]["run_dir"])
+    candidate_path = first_run_dir / "reports" / "candidate.json"
+    candidate = json.loads(candidate_path.read_text(encoding="utf-8"))
+    candidate["lane_results"]["adversarial"]["trap_regressions"] = 1
+    candidate_path.write_text(json.dumps(candidate, indent=2) + "\n", encoding="utf-8")
+
+    checked = validate_multi_seed_generator_summary(summary_path)
+
+    assert checked["verdict"] == "blocked"
+    assert summary["rows"][0]["seed_id"] in checked["failed_seed_ids"]
+    assert "row:design-doc-pr-quality:v1:seed1:verdict_mismatch" in (
+        checked["blocking_checks"]
+    )
+    assert "summary:verdict_mismatch" in checked["blocking_checks"]
 
 
 def test_creator_run_doctor_recompute_requires_repair_replay(

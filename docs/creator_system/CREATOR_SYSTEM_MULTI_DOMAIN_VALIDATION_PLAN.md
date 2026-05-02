@@ -111,6 +111,9 @@ Current executable status:
   sets `aggregate_hidden_failures` to false.
 - A forced weak-seed regression proves a failed row blocks the aggregate and
   exposes its blocker names instead of disappearing behind the passing rows.
+- `validate_multi_seed_generator_summary` recomputes every saved row from its
+  run directory and blocks tampered summary fields or stale underlying run
+  reports.
 
 Success criteria:
 
@@ -146,6 +149,8 @@ Checks:
 - Changed scoring hooks block recompute.
 - Changed saved report values block recompute.
 - Changed saved lane results block recompute.
+- Changed generated multi-seed summary rows block summary validation.
+- Changed underlying run reports block generated multi-seed summary validation.
 - Swarm packet summaries must match current reports.
 - Tool-operation packets must match command mode and `evidence_mode`.
 - Mission-status packets must preserve `evidence_mode` across canonical,

@@ -112,6 +112,93 @@ def run_multi_seed_generator_validation(
     return summary
 
 
+def validate_multi_seed_generator_summary(summary_path: str | Path) -> dict[str, Any]:
+    """Validate a saved generated multi-seed summary against current run dirs."""
+
+    path = Path(summary_path)
+    summary = load_json(path)
+    rows = summary.get("rows")
+    if not isinstance(rows, list):
+        rows = []
+
+    blocking_checks: list[str] = []
+    recomputed_rows: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            blocking_checks.append(f"row:{index}:not_object")
+            continue
+        run_dir = row.get("run_dir")
+        if not isinstance(run_dir, str) or not run_dir:
+            blocking_checks.append(f"row:{index}:missing_run_dir")
+            continue
+        run_path = Path(run_dir)
+        if not run_path.exists():
+            blocking_checks.append(f"row:{index}:missing_run_dir")
+            continue
+        smoke = validate_creator_run(run_path, recompute=True).to_dict()
+        recomputed = _summary_validation_row(row, smoke=smoke)
+        recomputed_rows.append(recomputed)
+        for field in (
+            "verdict",
+            "evidence_tier",
+            "evidence_mode",
+            "blocking_checks",
+            "candidate_delta",
+            "trap_regressions",
+            "network_absorbable",
+        ):
+            if row.get(field) != recomputed.get(field):
+                blocking_checks.append(f"row:{row.get('seed_id', index)}:{field}_mismatch")
+
+    expected_failed_seed_ids = [
+        row["seed_id"]
+        for row in recomputed_rows
+        if row["verdict"] != "ready_for_swarm_packet"
+        or row["blocking_checks"]
+        or row["network_absorbable"] is not False
+    ]
+    expected_verdict = "candidate_review" if not expected_failed_seed_ids else "blocked"
+    expected_passed = len(recomputed_rows) - len(expected_failed_seed_ids)
+    expected_blocked = len(expected_failed_seed_ids)
+    expected_completed = len(recomputed_rows)
+
+    matrix = summary.get("matrix")
+    if not isinstance(matrix, dict):
+        matrix = {}
+    matrix_checks = {
+        "completed_run_count": expected_completed,
+        "target_run_count": expected_completed,
+    }
+    for field, expected in matrix_checks.items():
+        if matrix.get(field) != expected:
+            blocking_checks.append(f"matrix:{field}_mismatch")
+
+    summary_checks = {
+        "verdict": expected_verdict,
+        "evidence_tier": expected_verdict,
+        "evidence_mode": "recomputed",
+        "network_absorbable": False,
+        "aggregate_hidden_failures": False,
+        "passed_run_count": expected_passed,
+        "blocked_run_count": expected_blocked,
+        "failed_seed_ids": expected_failed_seed_ids,
+    }
+    for field, expected in summary_checks.items():
+        if summary.get(field) != expected:
+            blocking_checks.append(f"summary:{field}_mismatch")
+
+    return {
+        "schema_version": "adaptive_creator_loop.generated_multi_seed_summary_check.v1",
+        "summary_path": str(path),
+        "verdict": "pass" if not blocking_checks else "blocked",
+        "evidence_mode": "recomputed",
+        "row_count": len(recomputed_rows),
+        "blocking_checks": blocking_checks,
+        "failed_seed_ids": expected_failed_seed_ids,
+        "network_absorbable": False,
+    }
+
+
 def generate_creator_system_from_brief(
     workspace_dir: str | Path,
     brief: dict[str, Any],
@@ -1074,6 +1161,20 @@ def _multi_seed_row(
         "variant_index": variant_index,
         "seed": seed,
         "run_dir": str(generated.run_dir),
+        "verdict": smoke.get("verdict"),
+        "evidence_tier": smoke.get("evidence_tier"),
+        "evidence_mode": smoke.get("evidence_mode"),
+        "blocking_checks": list(smoke.get("blocking_checks", [])),
+        "candidate_delta": candidate.get("mean_delta"),
+        "trap_regressions": candidate.get("trap_regressions"),
+        "network_absorbable": False,
+    }
+
+
+def _summary_validation_row(row: dict[str, Any], *, smoke: dict[str, Any]) -> dict[str, Any]:
+    candidate = load_json(Path(str(row["run_dir"])) / "reports" / "candidate.json")
+    return {
+        "seed_id": row.get("seed_id"),
         "verdict": smoke.get("verdict"),
         "evidence_tier": smoke.get("evidence_tier"),
         "evidence_mode": smoke.get("evidence_mode"),

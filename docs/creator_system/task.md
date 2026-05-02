@@ -668,6 +668,9 @@ Completed documentation/verification:
   and two seeds per variant.
 - Generator acceptance now proves failed seed rows block the aggregate and
   expose blocker names instead of being hidden behind passing rows.
+- `validate_multi_seed_generator_summary` now recomputes saved generated
+  multi-seed summaries and blocks tampered summary rows or stale underlying run
+  reports.
 - Generator acceptance now includes a retrieval/memory boundary domain and
   requires every generated domain family to emit a schema-valid recomputed
   `creator-mission-status` packet.

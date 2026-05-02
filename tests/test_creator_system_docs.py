@@ -30,7 +30,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "BENCHMARK_GENERATION_HONESTY_STANDARD.md" in text
     assert "| Startup YC reference fixture | `transfer_supported` |" in text
     assert "| Multi-domain generated matrix | `candidate_review` |" in text
-    assert "36-row generated multi-seed summary" in text
+    assert "validated 36-row generated multi-seed summary" in text
     assert "`network_absorbable` is blocked" in text
     assert "| Product surfaces | Read-only consumer branches |" in text
     assert "| Network absorption | Future gated claim |" in text
@@ -112,6 +112,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "run_multi_seed_generator_validation" in text
     assert "36-row" in text
     assert "failed seed rows block the aggregate" in text
+    assert "validate_multi_seed_generator_summary" in text
+    assert "tampered summary rows" in text
     assert "Generator acceptance now includes a retrieval/memory boundary domain" in text
     assert "evidence shape-check outputs and rejects accidental" in text
     assert "validate saved `startup-yc-validation-evidence-check`" in text
@@ -128,7 +130,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "tests/test_creator_mission_adapter.py" in text
-    assert "Latest focused creator-system suite result before CI push: `145 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `147 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -238,9 +240,12 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "Changed benchmark manifests block recompute",
         "Changed saved lane results block recompute",
         "run_multi_seed_generator_validation",
+        "validate_multi_seed_generator_summary",
         "multi_seed_validation_summary.json",
         "`aggregate_hidden_failures` to false",
         "forced weak-seed regression",
+        "Changed generated multi-seed summary rows block summary validation",
+        "Changed underlying run reports block generated multi-seed summary validation",
         "36 generated runs total",
         "does not approve `network_absorbable`",
     ):
