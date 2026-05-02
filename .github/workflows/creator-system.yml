@@ -72,7 +72,7 @@ jobs:
 
       - name: Run strict Startup YC fixture checks
         run: |
-          python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn
+          python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --output /tmp/startup-yc-smoke.json --fail-on-blocked --fail-on-warn
           python -m chip_labs.cli startup-yc-validation-evidence-check --evidence docs/creator_system/examples/startup-yc-operator-validation/shape_only_multi_seed_evidence.json --evidence-kind multi_seed --output /tmp/startup-yc-validation-evidence-check.json --fail-on-blocked
           python - <<'PY'
           import json
@@ -80,6 +80,12 @@ jobs:
 
           import jsonschema
 
+          smoke_schema = json.loads(
+              Path("docs/creator_system/schemas/smoke-result.schema.json").read_text()
+          )
+          smoke_payload = json.loads(Path("/tmp/startup-yc-smoke.json").read_text())
+          jsonschema.Draft202012Validator(smoke_schema).validate(smoke_payload)
+          assert smoke_payload["evidence_mode"] == "saved"
           plan_schema = json.loads(
               Path("docs/creator_system/schemas/startup-yc-validation-plan.schema.json").read_text()
           )

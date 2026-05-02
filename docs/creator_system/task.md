@@ -636,6 +636,9 @@ Completed documentation/verification:
 - `creator-run-smoke` packets now expose `evidence_mode` (`saved` or
   `recomputed`), and tool-operation checks block mismatches between
   `--recompute` commands and saved-mode smoke packets.
+- Creator-system CI now writes the strict Startup YC smoke packet and validates
+  it against `smoke-result.schema.json`, including the saved evidence-mode
+  boundary.
 
 Completed product PR verification:
 

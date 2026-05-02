@@ -109,6 +109,9 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     text = CREATOR_SYSTEM_WORKFLOW.read_text(encoding="utf-8")
 
     assert "startup-yc-validation-evidence-check" in text
+    assert "--output /tmp/startup-yc-smoke.json" in text
+    assert "smoke-result.schema.json" in text
+    assert 'assert smoke_payload["evidence_mode"] == "saved"' in text
     assert "--output /tmp/startup-yc-validation-evidence-check.json" in text
     assert "startup-yc-validation-evidence.schema.json" in text
     assert "shape_only_multi_seed_evidence.json" in text

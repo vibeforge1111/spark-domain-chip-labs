@@ -173,6 +173,9 @@
 - `creator-run-smoke` output now includes `evidence_mode` (`saved` or
   `recomputed`), and tool-operation checks reject `--recompute` command packets
   whose parsed smoke result still claims saved evidence.
+- Creator-system CI now writes the strict Startup YC smoke packet and validates
+  it against `smoke-result.schema.json`, including the saved evidence-mode
+  boundary.
 
 ## Current Claim Boundary
 
