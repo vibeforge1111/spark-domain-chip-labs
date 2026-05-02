@@ -124,6 +124,8 @@
   claims.
 - Startup YC CLI tests now validate saved `startup-yc-validation-evidence-check`
   output against that result schema.
+- The raw evidence check-result schema now distinguishes present evidence with
+  input hashes from absent evidence with explicit missing-input records.
 
 ## Current Claim Boundary
 

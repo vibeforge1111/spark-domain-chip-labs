@@ -76,5 +76,41 @@
       "type": "array",
       "items": {"type": "string"}
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidence_present": {"const": true}
+        }
+      },
+      "then": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "input_hashes": {"minProperties": 1},
+              "missing_inputs": {"maxItems": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_present": {"const": false}
+        }
+      },
+      "then": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "input_hashes": {"maxProperties": 0},
+              "missing_inputs": {"minItems": 1}
+            }
+          }
+        }
+      }
+    }
+  ]
 }

@@ -806,6 +806,20 @@ def test_startup_yc_validation_evidence_check_result_schema_blocks_network_absor
     del missing_provenance["provenance"]
     assert list(validator.iter_errors(missing_provenance))
 
+    missing_hash = json.loads(json.dumps(payload))
+    missing_hash["provenance"]["input_hashes"] = {}
+    assert list(validator.iter_errors(missing_hash))
+
+    missing_evidence = check_startup_yc_validation_evidence_shape(
+        tmp_path / "missing-multi-seed.json",
+        evidence_kind="multi_seed",
+    )
+    validator.validate(missing_evidence)
+
+    missing_input_record = json.loads(json.dumps(missing_evidence))
+    missing_input_record["provenance"]["missing_inputs"] = []
+    assert list(validator.iter_errors(missing_input_record))
+
 
 def test_startup_yc_validation_evidence_shape_check_blocks_malformed_raw_input(
     tmp_path: Path,

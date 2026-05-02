@@ -46,7 +46,9 @@ validation-suite schemas anchor the blocked promotion workflow. Raw validation
 evidence is shape-checked before it becomes a gate output. Shape-check and
 individual gate-check outputs include raw-evidence provenance hashes so saved
 evidence can be compared with fresh inputs and promotion bundles can reject
-stale saved evidence. These schemas intentionally require
+stale saved evidence. The shape-check result schema requires hashes when
+evidence is present and missing-input records when it is absent. These schemas
+intentionally require
 `network_absorbable=false` when that field is present; passing the schema means
 the packet shape is compatible, not that Startup YC is approved for network
 absorption. The validation-suite schema references the gate-check schema for
