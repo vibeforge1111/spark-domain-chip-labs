@@ -1918,6 +1918,8 @@ def _nested(data: dict[str, Any], *keys: str) -> Any:
 
 
 def _check_recomputed_evidence(run_path: Path, checks: list[SmokeCheck]) -> None:
+    _check_external_transfer_recompute(run_path, checks)
+
     report_paths = (
         "reports/baseline.json",
         "reports/candidate.json",
@@ -2204,6 +2206,196 @@ def _score_generated_case(
         if delta is not None:
             score += delta
     return max(0.0, min(1.0, score))
+
+
+def _check_external_transfer_recompute(
+    run_path: Path, checks: list[SmokeCheck]
+) -> None:
+    transfer_path = run_path / "reports" / "transfer_summary.json"
+    if not transfer_path.exists():
+        return
+
+    try:
+        transfer = load_json(transfer_path)
+    except ValueError as exc:
+        checks.append(SmokeCheck("external_recompute_transfer", "fail", str(exc)))
+        return
+
+    selector_report_ref = _nested(
+        transfer, "source_artifacts", "selector_report"
+    )
+    if not isinstance(selector_report_ref, str) or not selector_report_ref.strip():
+        return
+
+    selector_report_path = _resolve_external_artifact_path(
+        run_path, selector_report_ref
+    )
+    if selector_report_path is None:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_transfer_source",
+                "fail",
+                f"External transfer source report not found: {selector_report_ref}.",
+            )
+        )
+        return
+
+    try:
+        selector_report = load_json(selector_report_path)
+    except ValueError as exc:
+        checks.append(SmokeCheck("external_recompute_transfer_source", "fail", str(exc)))
+        return
+
+    recomputed = _summarize_startup_yc_selector_report(selector_report)
+    if recomputed is None:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_transfer_source",
+                "fail",
+                "Startup YC selector report must include scored results.",
+            )
+        )
+        return
+
+    checks.append(
+        SmokeCheck(
+            "external_recompute_transfer_source",
+            "pass",
+            f"Loaded external transfer source report: {selector_report_path}.",
+        )
+    )
+    _check_report_number_matches(
+        transfer,
+        "scenario_count",
+        recomputed["scenario_count"],
+        "external_recompute_transfer_scenario_count",
+        checks,
+    )
+    _check_report_number_matches(
+        transfer,
+        "baseline_score",
+        recomputed["baseline_score"],
+        "external_recompute_transfer_baseline_score",
+        checks,
+    )
+    _check_report_number_matches(
+        transfer,
+        "transfer_score",
+        recomputed["transfer_score"],
+        "external_recompute_transfer_score",
+        checks,
+    )
+    _check_report_number_matches(
+        transfer,
+        "delta",
+        recomputed["delta"],
+        "external_recompute_transfer_delta",
+        checks,
+    )
+    _check_report_number_matches(
+        transfer,
+        "min_delta",
+        recomputed["min_delta"],
+        "external_recompute_transfer_min_delta",
+        checks,
+    )
+    _check_report_number_matches(
+        transfer,
+        "max_delta",
+        recomputed["max_delta"],
+        "external_recompute_transfer_max_delta",
+        checks,
+    )
+
+    constraints_passed = transfer.get("constraints_passed")
+    if constraints_passed is True and recomputed["constraints_passed"] is True:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_transfer_constraints",
+                "pass",
+                "External transfer source report confirms all rows passed constraints.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "external_recompute_transfer_constraints",
+                "fail",
+                "External transfer source report or saved transfer summary has failing constraints.",
+            )
+        )
+
+
+def _resolve_external_artifact_path(run_path: Path, reference: str) -> Path | None:
+    reference_path = Path(reference)
+    run_base = run_path.resolve()
+    candidates: list[Path] = []
+    if reference_path.is_absolute():
+        candidates.append(reference_path)
+    candidates.append(run_base / reference_path)
+
+    repo_root = _find_repo_root(run_base)
+    if repo_root is not None:
+        candidates.append(repo_root / reference_path)
+        candidates.append(repo_root.parent / reference_path)
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def _find_repo_root(start: Path) -> Path | None:
+    for path in (start, *start.parents):
+        if (path / ".git").exists():
+            return path
+    return None
+
+
+def _summarize_startup_yc_selector_report(
+    selector_report: dict[str, Any]
+) -> dict[str, float | bool] | None:
+    results = selector_report.get("results")
+    if not isinstance(results, list) or not results:
+        return None
+
+    baseline_scores: list[float] = []
+    transfer_scores: list[float] = []
+    deltas: list[float] = []
+    constraints_passed = True
+    for result in results:
+        if not isinstance(result, dict):
+            return None
+        baseline_score = _coerce_number(
+            _nested(result, "runs", "baseline", "score", "scenario_score")
+        )
+        transfer_score = _coerce_number(
+            _nested(result, "runs", "candidate", "score", "scenario_score")
+        )
+        delta = _coerce_number(_nested(result, "delta", "scenario_score"))
+        if baseline_score is None or transfer_score is None:
+            return None
+        if delta is None:
+            delta = transfer_score - baseline_score
+        baseline_scores.append(baseline_score)
+        transfer_scores.append(transfer_score)
+        deltas.append(delta)
+        constraints_passed = constraints_passed and (
+            _nested(result, "runs", "baseline", "score", "pass") is True
+            and _nested(result, "runs", "candidate", "score", "pass") is True
+            and result.get("status") == "ok"
+        )
+
+    scenario_count = float(len(results))
+    return {
+        "scenario_count": scenario_count,
+        "baseline_score": sum(baseline_scores) / scenario_count,
+        "transfer_score": sum(transfer_scores) / scenario_count,
+        "delta": sum(deltas) / scenario_count,
+        "min_delta": min(deltas),
+        "max_delta": max(deltas),
+        "constraints_passed": constraints_passed,
+    }
 
 
 def _check_report_number_matches(

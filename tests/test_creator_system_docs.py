@@ -102,6 +102,7 @@ def test_startup_yc_external_recompute_adapter_contract_blocks_stronger_claims()
         "adaptive_creator_loop.external_recompute.v1",
         "creator-run-smoke --recompute --fail-on-blocked",
         "creator-run-doctor --recompute",
+        "implemented for scenario count",
         "not `network_absorbable`",
         "multi-seed validation",
         "publication approval",

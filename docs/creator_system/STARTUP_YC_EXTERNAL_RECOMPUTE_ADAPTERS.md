@@ -26,10 +26,12 @@ Supported today:
 - Recompute for generated creator runs with `creator_generator_v1` provenance.
 - Recompute for artifact-quality benchmark reports with `artifact_quality_v1`
   provenance.
+- Partial external recompute for Startup YC transfer summaries when the
+  `specialization-path-startup-yc` selector report is available next to this
+  repo.
 
 Not supported yet:
 
-- Rerunning external Startup Bench reports from the Startup YC source repos.
 - Rerunning `specialization-path-startup-yc` absorption reports.
 - Regenerating the Startup YC Swarm contribution packet from fresh external
   reports.
@@ -39,7 +41,7 @@ Not supported yet:
 
 | Adapter | Source Evidence | Required Fresh Output | Fixture Values Checked |
 | --- | --- | --- | --- |
-| Startup Bench transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/transfer_summary.json` plus scenario rows | scenario wins, mean delta, min delta, no skips |
+| Startup Bench transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/transfer_summary.json` plus scenario rows | implemented for scenario count, baseline score, transfer score, mean delta, min delta, max delta, and constraints |
 | Specialization-path absorption adapter | `specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json` | `reports/baseline.json`, `reports/candidate.json`, `reports/absorption_summary.json` | baseline mean, candidate mean, candidate delta, validated-pack absorption delta |
 | Broad transfer adapter | `docs/creator_system/examples/startup-yc-creator-run/reports/broad_transfer_probe.json` source equivalent | `reports/broad_transfer_probe.json` with per-scenario rows | positive mean delta, positive min delta, no hidden negative rows |
 | Swarm packet regeneration adapter | Fresh baseline, candidate, absorption, and transfer reports | `swarm/contribution_packet.json` | evidence tier, transfer summary, rollback policy, publication blockers |
@@ -98,7 +100,8 @@ Full external recompute is complete only when:
 ## Implementation Order
 
 1. Add a read-only adapter for the Startup Bench transfer report and compare it
-   to `reports/transfer_summary.json`.
+   to `reports/transfer_summary.json`. Done for selector-report comparison in
+   `creator-run-smoke --recompute`.
 2. Add the absorption adapter and compare it to `reports/baseline.json`,
    `reports/candidate.json`, and `reports/absorption_summary.json`.
 3. Add broad-transfer comparison with row-level checks.

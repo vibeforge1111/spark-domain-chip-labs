@@ -48,6 +48,9 @@
 - Startup YC external recompute work is now split into explicit adapter gates
   for Startup Bench transfer, specialization-path absorption, broad transfer,
   and Swarm packet regeneration.
+- `creator-run-smoke --recompute` now performs the first partial Startup YC
+  external transfer check when the source selector report is locally available,
+  while full Startup YC recompute remains blocked.
 
 ## Current Claim Boundary
 

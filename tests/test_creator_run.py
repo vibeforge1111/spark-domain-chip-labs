@@ -531,6 +531,45 @@ def test_transfer_supported_warns_on_mixed_positive_broad_probe(
     )
 
 
+def test_recompute_checks_external_startup_yc_transfer_source(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "adapter_selector_report.json"
+    _write_external_selector_report(source_report, delta=0.02)
+    _write_transfer_report(run_dir, delta=0.02, selector_report=source_report)
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert any(
+        check.name == "external_recompute_transfer_delta"
+        and check.status == "pass"
+        for check in smoke.checks
+    )
+    assert any(
+        check.name == "recompute_provenance_source" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_recompute_blocks_stale_external_startup_yc_transfer_source(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "adapter_selector_report.json"
+    _write_external_selector_report(source_report, delta=0.02)
+    _write_transfer_report(run_dir, delta=0.03, selector_report=source_report)
+
+    smoke = validate_creator_run(run_dir, recompute=True)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "external_recompute_transfer_delta"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_network_absorbable_blocks_negative_broad_probe(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path, evidence_tier="network_absorbable")
     _write_transfer_report(run_dir)
@@ -638,19 +677,24 @@ def _write_candidate_review_run(
     return run_dir
 
 
-def _write_transfer_report(run_dir: Path, delta: float = 0.02) -> None:
+def _write_transfer_report(
+    run_dir: Path, delta: float = 0.02, selector_report: Path | None = None
+) -> None:
     transfer_score = 0.62 + delta
+    transfer = {
+        "source": "startup-bench",
+        "scenario_count": 1,
+        "baseline_score": 0.62,
+        "transfer_score": transfer_score,
+        "delta": delta,
+        "min_delta": delta,
+        "max_delta": delta,
+        "constraints_passed": True,
+    }
+    if selector_report is not None:
+        transfer["source_artifacts"] = {"selector_report": str(selector_report)}
     (run_dir / "reports" / "transfer_summary.json").write_text(
-        json.dumps(
-            {
-                "source": "startup-bench",
-                "scenario_count": 1,
-                "baseline_score": 0.62,
-                "transfer_score": transfer_score,
-                "delta": delta,
-                "constraints_passed": True,
-            }
-        ),
+        json.dumps(transfer),
         encoding="utf-8",
     )
     packet_path = run_dir / "swarm" / "contribution_packet.json"
@@ -661,6 +705,46 @@ def _write_transfer_report(run_dir: Path, delta: float = 0.02) -> None:
         "delta": delta,
     }
     packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+
+def _write_external_selector_report(path: Path, delta: float) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "schema_version": "startup_yc.adapter_selector_report.v1",
+                "summary": {
+                    "scenario_count": 1,
+                    "win_count": 1 if delta > 0 else 0,
+                    "skipped_count": 0,
+                    "mean_delta": delta,
+                    "min_delta": delta,
+                    "max_delta": delta,
+                },
+                "results": [
+                    {
+                        "status": "ok",
+                        "runs": {
+                            "candidate": {
+                                "score": {
+                                    "scenario_score": 0.62 + delta,
+                                    "pass": True,
+                                }
+                            },
+                            "baseline": {
+                                "score": {
+                                    "scenario_score": 0.62,
+                                    "pass": True,
+                                }
+                            },
+                        },
+                        "delta": {"scenario_score": delta},
+                        "verdict": "win" if delta > 0 else "loss",
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
 
 
 def _write_broad_transfer_probe(
