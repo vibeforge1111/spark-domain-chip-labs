@@ -33,6 +33,12 @@ VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA = Path(
 VALIDATION_SUITE_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-validation-suite.schema.json"
 )
+STARTUP_YC_SCHEMAS = (
+    VALIDATION_EVIDENCE_SCHEMA,
+    VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA,
+    GATE_CHECK_SCHEMA,
+    VALIDATION_SUITE_SCHEMA,
+)
 
 
 def test_startup_yc_validation_plan_blocks_network_absorption() -> None:
@@ -53,6 +59,14 @@ def test_startup_yc_validation_plan_blocks_network_absorption() -> None:
     assert plan["minimum_multi_seed_plan"]["negative_row_policy"] == (
         "block_network_absorption"
     )
+
+
+def test_startup_yc_schemas_are_valid_draft_2020_12() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+
+    for schema_path in STARTUP_YC_SCHEMAS:
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        jsonschema.Draft202012Validator.check_schema(schema)
 
 
 def test_startup_yc_held_out_cases_cover_operator_traps() -> None:

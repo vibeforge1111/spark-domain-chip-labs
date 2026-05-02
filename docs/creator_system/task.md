@@ -611,6 +611,8 @@ Completed documentation/verification:
 - The raw Startup YC validation-evidence schema now rejects
   `network_absorbable=true` while preserving the shape-only fixture's explicit
   false boundary.
+- Startup YC operator-validation tests now check the four Startup YC JSON
+  Schemas are valid Draft 2020-12 schemas before payload validation.
 
 Completed product PR verification:
 
