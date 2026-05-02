@@ -29,7 +29,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [schemas/](schemas/) | JSON Schema anchors for creator intent, adapter map, smoke, doctor, template-check, Swarm packet, mission-status, and Startup YC validation evidence, gate-check, and suite outputs. |
 | [templates/creator-run/](templates/creator-run/) | Fill-in templates for intent packets, adapter maps, creator run reports, Swarm packets, and standard-change proposals. |
 | [examples/startup-yc-creator-run/](examples/startup-yc-creator-run/) | Real Startup YC fixture that maps the existing domain chip, specialization path, benchmark, autoloop, absorption reports, and Swarm packet into the creator-run contract. |
-| [examples/startup-yc-operator-validation/](examples/startup-yc-operator-validation/) | Startup YC held-out founder-advice cases, calibration checklist, privacy review, rollback review, and publication gate plan. |
+| [examples/startup-yc-operator-validation/](examples/startup-yc-operator-validation/) | Startup YC held-out founder-advice cases, calibration checklist, privacy review, rollback review, publication gate plan, and shape-only raw evidence CI fixture. |
 
 ## Current Architecture Decision
 
@@ -249,7 +249,10 @@ Even a coherent bundle is evidence support, not final promotion.
 `startup-yc-validation-evidence.schema.json` anchors the raw multi-seed,
 held-out, review-gate, and promotion-bundle inputs before they become
 gate-check outputs. `startup-yc-validation-evidence-check` is the executable
-shape gate for those raw inputs.
+shape gate for those raw inputs. The
+`startup-yc-operator-validation/shape_only_multi_seed_evidence.json` fixture is
+used by CI to prove the command path only; it is not Startup YC multi-seed
+validation evidence and cannot support `network_absorbable`.
 
 `startup-yc-gate-check-result.schema.json` anchors the individual Startup YC
 gate-check packets and rejects any individual gate output that claims

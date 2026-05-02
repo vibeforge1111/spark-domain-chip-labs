@@ -109,6 +109,10 @@
   become gate-check outputs.
 - `startup-yc-validation-evidence-check` now gives operators an executable
   raw-evidence shape gate before running Startup YC gate commands.
+- Creator-system CI now runs that raw-evidence shape gate against
+  `shape_only_multi_seed_evidence.json`, a bounded command-path fixture that
+  does not count as Startup YC multi-seed validation or network absorption
+  evidence.
 
 ## Current Claim Boundary
 

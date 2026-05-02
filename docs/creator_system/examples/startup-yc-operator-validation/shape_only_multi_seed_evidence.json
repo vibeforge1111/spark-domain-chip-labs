@@ -1,0 +1,16 @@
+{
+  "fixture_purpose": "shape_only_ci_fixture",
+  "domain": "Startup YC",
+  "claim_boundary": "This file proves only raw multi-seed evidence shape for CI. It is not multi-seed validation, transfer support, publication approval, or network absorption evidence.",
+  "network_absorbable": false,
+  "rows": [
+    {
+      "seed_id": "shape-only-seed-001",
+      "track": "gtm",
+      "baseline_score": 0.41,
+      "candidate_score": 0.46,
+      "constraints_passed": true,
+      "held_out_passed": true
+    }
+  ]
+}

@@ -28,6 +28,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "does not prove product correctness" in text
     assert "STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md" in text
     assert "Startup YC validation evidence, gate-check, and suite outputs" in text
+    assert "shape-only raw evidence CI fixture" in text
 
 
 def test_creator_system_readme_keeps_command_index_visible() -> None:
@@ -72,6 +73,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validation_suite_blocked.json" in text
     assert "startup-yc-validation-evidence.schema.json" in text
     assert "startup-yc-validation-evidence-check" in text
+    assert "shape_only_multi_seed_evidence.json" in text
+    assert "does not count as Startup YC multi-seed validation" in text
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
     assert "raw-evidence input hashes" in text
