@@ -61,6 +61,8 @@
 - `creator-run-smoke --recompute --fail-on-blocked` now passes for the Startup
   YC fixture when the sibling external source repo is present and the
   `startup_yc_external_v1` provenance hashes match.
+- `creator-run-doctor --recompute` now quarantines stale Startup YC external
+  recompute failures through a dedicated adversarial fixture.
 
 ## Current Claim Boundary
 

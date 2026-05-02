@@ -634,6 +634,42 @@ def test_recompute_blocks_stale_startup_yc_external_provenance_hash(
     )
 
 
+def test_creator_run_doctor_quarantines_stale_external_startup_yc_fixture(
+    tmp_path: Path,
+) -> None:
+    fixture = json.loads(
+        (
+            DOCTOR_FIXTURE_DIR / "stale_external_startup_yc_candidate_score.json"
+        ).read_text(encoding="utf-8")
+    )
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "proof_report.json"
+    _write_external_absorption_report(source_report, candidate_score=0.53)
+    _attach_absorption_source_report(run_dir, source_report)
+    _attach_startup_yc_external_provenance(run_dir, source_report)
+    _write_transfer_report(run_dir)
+    _write_complete_swarm_packet_evidence(run_dir)
+
+    report_path = run_dir / fixture["path"]
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    for operation in fixture["operations"]:
+        report[operation["field"]] += operation["delta"]
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+
+    diagnosis = diagnose_creator_run(run_dir, recompute=True)
+
+    expected_check = fixture["expected_blocking_checks"][0]
+    assert diagnosis["verdict"] == "blocked"
+    assert expected_check in diagnosis["smoke"]["blocking_checks"]
+    assert diagnosis["quarantine"][0]["reason"] == "saved_evidence_not_replayable"
+    assert expected_check in diagnosis["quarantine"][0]["related_checks"]
+    assert any(
+        step["area"] == "recompute_provenance"
+        and expected_check in step["related_checks"]
+        for step in diagnosis["repair_steps"]
+    )
+
+
 def test_recompute_blocks_stale_external_startup_yc_absorption_source(
     tmp_path: Path,
 ) -> None:

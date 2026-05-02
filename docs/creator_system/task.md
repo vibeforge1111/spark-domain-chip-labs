@@ -501,6 +501,9 @@ Completed documentation/verification:
   YC fixture when the sibling external source repo is present and the
   `startup_yc_external_v1` provenance hashes match; if the source is absent or
   changed, recompute blocks instead of trusting saved evidence.
+- `creator-run-doctor --recompute` now quarantines stale Startup YC external
+  recompute failures with
+  `doctor-security/stale_external_startup_yc_candidate_score.json`.
 
 Completed product PR verification:
 

@@ -100,6 +100,7 @@ def test_startup_yc_external_recompute_adapter_contract_blocks_stronger_claims()
         "Broad transfer adapter",
         "Swarm packet regeneration adapter",
         "Report provenance adapter",
+        "stale_external_startup_yc_candidate_score.json",
         "adaptive_creator_loop.external_recompute.v1",
         "creator-run-smoke --recompute --fail-on-blocked",
         "creator-run-doctor --recompute",

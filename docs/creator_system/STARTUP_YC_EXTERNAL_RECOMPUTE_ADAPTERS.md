@@ -125,6 +125,7 @@ Full external recompute is complete only when:
 6. Add provenance packets for baseline, candidate, and absorption reports.
    Done with `startup_yc_external_v1` source hashes.
 7. Add doctor quarantine fixtures for stale external Startup YC evidence.
+   Done with `doctor-security/stale_external_startup_yc_candidate_score.json`.
 
 Until the remaining steps pass, the curated Startup YC fixture remains strict
 `transfer_supported` proof with clear claim boundaries.

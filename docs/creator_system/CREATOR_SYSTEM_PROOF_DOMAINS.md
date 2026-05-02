@@ -352,6 +352,9 @@ Current adversarial fixtures:
 
 - `doctor-security/stale_candidate_report_score.json`: mutates a saved
   candidate report so recompute mode must block and quarantine stale evidence.
+- `doctor-security/stale_external_startup_yc_candidate_score.json`: mutates a
+  Startup YC report backed by an external proof source so the doctor must
+  quarantine stale external recompute evidence.
 - `doctor-security/malicious_network_absorption_packet.json`: mutates a Swarm
   packet so candidate-review evidence falsely claims `network_absorbable`.
 

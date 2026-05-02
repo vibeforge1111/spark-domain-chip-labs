@@ -717,7 +717,11 @@ def _specific_repair_steps(failed_checks: list[SmokeCheck]) -> list[dict[str, An
 
 
 def _repair_spec_for_check(check_name: str) -> dict[str, Any]:
-    if check_name.startswith("report_provenance:") or check_name.startswith("recompute_"):
+    if (
+        check_name.startswith("report_provenance:")
+        or check_name.startswith("recompute_")
+        or check_name.startswith("external_recompute_")
+    ):
         return {
             "area": "recompute_provenance",
             "title": "Regenerate stale or unsupported saved evidence",
@@ -779,6 +783,19 @@ def _recompute_repair_paths(check_name: str) -> list[str]:
         parts = check_name.split(":")
         if len(parts) >= 2:
             return [parts[1]]
+    if check_name.startswith("external_recompute_"):
+        paths = [
+            "reports/baseline.json",
+            "reports/candidate.json",
+            "reports/absorption_summary.json",
+        ]
+        if "transfer" in check_name:
+            paths.extend(
+                ["reports/transfer_summary.json", "swarm/contribution_packet.json"]
+            )
+        if "broad_transfer" in check_name:
+            paths.append("reports/broad_transfer_probe.json")
+        return paths
     if "candidate" in check_name:
         return [
             "reports/candidate.json",
@@ -826,7 +843,9 @@ def _quarantine_findings(smoke: SmokeResult) -> list[dict[str, Any]]:
     failed_names = [check.name for check in smoke.checks if check.status == "fail"]
     stale_checks = [
         name for name in failed_names
-        if name.startswith("recompute_") or name.startswith("report_provenance:")
+        if name.startswith("recompute_")
+        or name.startswith("report_provenance:")
+        or name.startswith("external_recompute_")
     ]
     packet_checks = [name for name in failed_names if name.startswith("swarm_packet_")]
     if stale_checks:

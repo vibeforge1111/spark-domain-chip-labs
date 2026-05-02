@@ -1,0 +1,19 @@
+{
+  "schema_version": "adaptive_creator_loop.doctor_adversarial_fixture.v1",
+  "fixture_id": "stale-external-startup-yc-candidate-score",
+  "fixture_kind": "stale_external_saved_evidence",
+  "path": "reports/candidate.json",
+  "operations": [
+    {
+      "op": "add_to_number",
+      "field": "mean_score",
+      "delta": 0.1
+    }
+  ],
+  "expected_blocking_checks": [
+    "external_recompute_absorption_candidate_score"
+  ],
+  "repair_replay_command": "python -m chip_labs.cli creator-run-smoke <run_dir> --recompute --fail-on-blocked",
+  "unsafe_claim": "Startup YC saved report evidence is enough even when the external proof report no longer reproduces it.",
+  "safe_boundary": "Quarantine saved Startup YC evidence until external recompute and provenance hash checks pass from source artifacts."
+}
