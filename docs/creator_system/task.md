@@ -433,6 +433,7 @@ Deliverables:
 - [x] Add a release-note style summary for the CI guardrail slice.
 - [x] Keep handoff, master plan, readiness, promotion gates, and backlog aligned.
 - [x] Add release-note summary for MiroFish mission-status evidence slice.
+- [x] Add release-note summary for artifact-quality mission-status evidence slice.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -464,6 +465,9 @@ Completed documentation/verification:
 
 - MiroFish examples are referenced by the product mission-status fixture as a
   read-only `content_route` source packet.
+- Artifact-quality examples include saved JSON/Markdown reports and are
+  referenced by the product mission-status fixture as a read-only
+  `artifact_quality` source packet.
 - Canvas mission-status edges now point only to source packets that are present
   in the canonical mission packet.
 

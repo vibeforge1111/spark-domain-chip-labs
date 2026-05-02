@@ -1,0 +1,70 @@
+{
+  "packet_kind": "artifact_quality_report",
+  "artifact_id": "good_design_pr",
+  "artifact_kind": "pr_writeup",
+  "source_path": "docs/creator_system/examples/artifact-quality/good_design_pr.md",
+  "verdict": "review_ready",
+  "score": 1.0,
+  "status_counts": {
+    "pass": 7,
+    "fail": 0
+  },
+  "checks": [
+    {
+      "id": "acceptance_gates",
+      "label": "Acceptance gates",
+      "status": "pass",
+      "message": "Found: acceptance.",
+      "repair": "Add explicit acceptance gates or success criteria."
+    },
+    {
+      "id": "runnable_evidence",
+      "label": "Runnable evidence",
+      "status": "pass",
+      "message": "Found: pytest, creator-run-smoke, command.",
+      "repair": "Name the exact verification command or recompute path."
+    },
+    {
+      "id": "test_evidence",
+      "label": "Test evidence",
+      "status": "pass",
+      "message": "Found: tests, passed.",
+      "repair": "Add test evidence and current pass/fail state."
+    },
+    {
+      "id": "risk_boundary",
+      "label": "Risk boundary",
+      "status": "pass",
+      "message": "Found: risk.",
+      "repair": "Name the main risks, known limits, or blockers."
+    },
+    {
+      "id": "rollback_plan",
+      "label": "Rollback plan",
+      "status": "pass",
+      "message": "Found: rollback, revert.",
+      "repair": "Add rollback or deprecation steps."
+    },
+    {
+      "id": "claim_boundary",
+      "label": "Claim boundary",
+      "status": "pass",
+      "message": "Found: claim boundary, do not claim.",
+      "repair": "State what the artifact proves and what it does not prove."
+    },
+    {
+      "id": "mission_handoff",
+      "label": "Mission handoff",
+      "status": "pass",
+      "message": "Found: mission, handoff, next action.",
+      "repair": "Add owner, next action, or mission-control handoff details."
+    }
+  ],
+  "trap_flags": [],
+  "polish_hits": [],
+  "missing_checks": [],
+  "repair_actions": [],
+  "claim_boundary": "artifact_quality local review only",
+  "safe_claim": "This artifact is locally reviewable for evidence completeness.",
+  "unsafe_claim": "This artifact quality score does not prove product correctness or replace human review."
+}

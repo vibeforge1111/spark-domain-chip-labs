@@ -30,6 +30,9 @@
 - The product-surface mission-status fixture now references the saved MiroFish
   content route as read-only evidence and emits Canvas edges only for present
   packets.
+- Artifact quality now has saved JSON and Markdown reports for the review-ready
+  design/PR fixture, and product mission status references that report as
+  read-only `artifact_quality` evidence.
 
 ## Current Claim Boundary
 

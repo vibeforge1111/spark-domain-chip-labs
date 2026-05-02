@@ -19,6 +19,9 @@ PRODUCT_SURFACE_FIXTURE = Path(
 CREATOR_MISSION_SCHEMA = Path(
     "docs/creator_system/schemas/creator-mission-status.schema.json"
 )
+ARTIFACT_QUALITY_REPORT = Path(
+    "docs/creator_system/examples/artifact-quality/good_design_pr.report.json"
+)
 MIROFISH_CONTENT_ROUTE = Path(
     "docs/creator_system/examples/mirofish-content/route-invoke.json"
 )
@@ -128,6 +131,8 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
             str(smoke_path),
             "--startup-validation",
             str(STARTUP_VALIDATION),
+            "--artifact-quality",
+            str(ARTIFACT_QUALITY_REPORT),
             "--content-route",
             str(MIROFISH_CONTENT_ROUTE),
             "--mission-id",
@@ -152,12 +157,20 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
     )
     assert content_route_summary["present"] is True
     assert content_route_summary["state"] == "ready"
+    artifact_quality_summary = next(
+        summary
+        for summary in payload["source_packets"]
+        if summary["packet"] == "artifact_quality"
+    )
+    assert artifact_quality_summary["present"] is True
+    assert artifact_quality_summary["state"] == "ready"
 
 
 def test_product_surface_fixture_matches_current_adapter_output() -> None:
     smoke = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-smoke.json").read_text(encoding="utf-8"))
     doctor = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-doctor.json").read_text(encoding="utf-8"))
     startup_validation = json.loads(STARTUP_VALIDATION.read_text(encoding="utf-8"))
+    artifact_quality = json.loads(ARTIFACT_QUALITY_REPORT.read_text(encoding="utf-8"))
     content_route = json.loads(MIROFISH_CONTENT_ROUTE.read_text(encoding="utf-8"))
     saved = json.loads(
         (PRODUCT_SURFACE_FIXTURE / "startup-yc-mission-status.json").read_text(encoding="utf-8")
@@ -168,6 +181,7 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
         publish_mode="swarm_shared",
         smoke=smoke,
         doctor=doctor,
+        artifact_quality=artifact_quality,
         content_route=content_route,
         startup_validation=startup_validation,
     )
@@ -185,6 +199,20 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     assert saved["surface_adapters"]["spawner"]["may_execute"] is False
     assert saved["surface_adapters"]["canvas"]["may_edit_artifacts"] is False
     assert saved["surface_adapters"]["kanban"]["may_change_verdict"] is False
+    artifact_quality_summary = next(
+        summary
+        for summary in saved["source_packets"]
+        if summary["packet"] == "artifact_quality"
+    )
+    assert artifact_quality_summary == {
+        "packet": "artifact_quality",
+        "present": True,
+        "state": "ready",
+        "verdict": "review_ready",
+        "blocking_checks": [],
+        "warning_count": 0,
+        "claim_boundary": "artifact_quality local review only",
+    }
     content_route_summary = next(
         summary for summary in saved["source_packets"] if summary["packet"] == "content_route"
     )
@@ -199,7 +227,9 @@ def test_product_surface_fixture_matches_current_adapter_output() -> None:
     }
     canvas = saved["surface_adapters"]["canvas"]
     node_ids = {node["id"] for node in canvas["nodes"]}
+    assert "artifact_quality" in node_ids
     assert "content_route" in node_ids
+    assert {"from": "artifact_quality", "to": "creator_mission"} in canvas["edges"]
     assert {"from": "content_route", "to": "creator_mission"} in canvas["edges"]
     assert {
         edge["from"] for edge in canvas["edges"] if edge["from"] != "creator_mission"

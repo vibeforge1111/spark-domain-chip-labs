@@ -91,6 +91,24 @@ def test_cli_artifact_quality_score_outputs_json_and_markdown(tmp_path: Path) ->
     assert markdown_path.read_text(encoding="utf-8").startswith("# Artifact Quality Report")
 
 
+def test_saved_good_artifact_quality_report_matches_current_scorer() -> None:
+    saved = json.loads(
+        (FIXTURE_DIR / "good_design_pr.report.json").read_text(encoding="utf-8")
+    )
+    regenerated = score_artifact_quality_file(
+        FIXTURE_DIR / "good_design_pr.md",
+        artifact_kind="pr_writeup",
+    )
+    saved_markdown = (FIXTURE_DIR / "good_design_pr.report.md").read_text(
+        encoding="utf-8"
+    )
+
+    assert regenerated == saved
+    assert saved["verdict"] == "review_ready"
+    assert saved["claim_boundary"] == CLAIM_BOUNDARY
+    assert saved_markdown == format_artifact_quality_markdown(saved)
+
+
 def test_run_artifact_quality_benchmark_writes_recomputeable_reports(tmp_path: Path) -> None:
     run_dir = tmp_path / "artifact-run"
     artifact_dir = run_dir / "benchmark" / "artifacts"

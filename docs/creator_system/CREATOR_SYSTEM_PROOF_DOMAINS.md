@@ -75,9 +75,17 @@ Current fixtures:
 
 - `good_design_pr.md`: review-ready report with acceptance gates, runnable
   evidence, tests, risks, rollback, claim boundary, and mission handoff.
+- `good_design_pr.report.json`: saved artifact-quality report generated from
+  the review-ready fixture.
+- `good_design_pr.report.md`: operator-facing Markdown readout for the saved
+  report.
 - `weak_design_pr.md`: sparse note that needs repair actions.
 - `polished_unproven_trap.md`: polished prose that must block because it lacks
   runnable proof and rollback evidence.
+
+The read-only product-surface fixture references `good_design_pr.report.json`
+as an `artifact_quality` source packet. This is evidence for local review
+readiness only, not proof of product correctness.
 
 Next real adapters:
 

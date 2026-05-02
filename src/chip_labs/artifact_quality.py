@@ -124,7 +124,7 @@ def score_artifact_quality_file(path: str | Path, *, artifact_kind: str = "desig
         source.read_text(encoding="utf-8"),
         artifact_id=source.stem,
         artifact_kind=artifact_kind,
-        source_path=str(source),
+        source_path=source.as_posix(),
     )
 
 

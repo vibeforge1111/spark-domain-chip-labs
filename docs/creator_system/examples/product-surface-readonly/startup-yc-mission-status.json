@@ -74,12 +74,12 @@
     },
     {
       "packet": "artifact_quality",
-      "present": false,
-      "state": "missing",
-      "verdict": null,
+      "present": true,
+      "state": "ready",
+      "verdict": "review_ready",
       "blocking_checks": [],
       "warning_count": 0,
-      "claim_boundary": null
+      "claim_boundary": "artifact_quality local review only"
     },
     {
       "packet": "content_route",
@@ -221,6 +221,12 @@
           "source": "canonical_packet"
         },
         {
+          "id": "artifact_quality",
+          "label": "artifact_quality",
+          "status": "ready",
+          "source": "canonical_packet"
+        },
+        {
           "id": "content_route",
           "label": "content_route",
           "status": "ready",
@@ -246,6 +252,10 @@
         },
         {
           "from": "doctor",
+          "to": "creator_mission"
+        },
+        {
+          "from": "artifact_quality",
           "to": "creator_mission"
         },
         {
