@@ -98,7 +98,10 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
 
     assert "startup-yc-validation-evidence-check" in text
     assert "--output /tmp/startup-yc-validation-evidence-check.json" in text
+    assert "startup-yc-validation-evidence.schema.json" in text
+    assert "shape_only_multi_seed_evidence.json" in text
     assert "startup-yc-validation-evidence-check-result.schema.json" in text
+    assert "Draft202012Validator(raw_schema).validate(raw_payload)" in text
     assert "Draft202012Validator(schema).validate(payload)" in text
     assert "--output /tmp/startup-yc-validation-suite.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
