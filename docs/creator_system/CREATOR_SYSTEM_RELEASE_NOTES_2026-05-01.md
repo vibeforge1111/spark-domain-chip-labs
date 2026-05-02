@@ -69,6 +69,9 @@
 - `startup-yc-promotion-gate-check` now emits a machine-readable blocked packet
   for `network_absorbable` and fails with `--fail-on-blocked` until every
   Startup YC promotion gate has explicit pass evidence.
+- `startup-yc-multi-seed-check` now makes the multi-seed validation gate
+  executable: required tracks, seed counts, held-out pass flags, constraint pass
+  flags, and minimum delta are checked while `network_absorbable` remains false.
 
 ## Current Claim Boundary
 

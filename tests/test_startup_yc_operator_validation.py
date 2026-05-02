@@ -5,7 +5,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-from chip_labs.startup_yc_promotion import check_startup_yc_promotion_gates
+from chip_labs.startup_yc_promotion import (
+    check_startup_yc_multi_seed_validation,
+    check_startup_yc_promotion_gates,
+)
 
 
 FIXTURE_DIR = Path("docs/creator_system/examples/startup-yc-operator-validation")
@@ -94,6 +97,89 @@ def test_startup_yc_promotion_gate_check_blocks_network_absorption() -> None:
     assert all(item["present"] is True for item in result["evidence_paths"])
 
 
+def test_startup_yc_multi_seed_check_blocks_without_evidence() -> None:
+    result = check_startup_yc_multi_seed_validation(FIXTURE_DIR / "validation_plan.json")
+
+    assert result["schema_version"] == (
+        "adaptive_creator_loop.startup_yc_multi_seed_check.v1"
+    )
+    assert result["verdict"] == "blocked"
+    assert result["gate_passed"] is False
+    assert result["network_absorbable"] is False
+    assert "missing_evidence_path:multi_seed_evidence_path" in result[
+        "blocking_checks"
+    ]
+    assert result["underfilled_tracks"]
+
+
+def test_startup_yc_multi_seed_check_passes_only_the_multi_seed_gate(
+    tmp_path: Path,
+) -> None:
+    plan = _load_plan()
+    tracks = plan["minimum_multi_seed_plan"]["tracks"]
+    rows = [
+        {
+            "seed_id": f"{track}-{index}",
+            "track": track,
+            "baseline_score": 0.5,
+            "candidate_score": 0.6,
+            "constraints_passed": True,
+            "held_out_passed": True,
+        }
+        for track in tracks
+        for index in range(1, 6)
+    ]
+    evidence_path = tmp_path / "multi_seed_evidence.json"
+    evidence_path.write_text(json.dumps({"rows": rows}, indent=2), encoding="utf-8")
+
+    result = check_startup_yc_multi_seed_validation(
+        FIXTURE_DIR / "validation_plan.json",
+        evidence_path=evidence_path,
+    )
+
+    assert result["verdict"] == "passed"
+    assert result["gate_passed"] is True
+    assert result["network_absorbable"] is False
+    assert result["blocking_checks"] == []
+    assert result["track_counts"] == {track: 5 for track in tracks}
+
+
+def test_startup_yc_multi_seed_check_blocks_negative_rows(tmp_path: Path) -> None:
+    evidence_path = tmp_path / "multi_seed_evidence.json"
+    evidence_path.write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "seed_id": "gtm-negative-1",
+                        "track": "gtm",
+                        "baseline_score": 0.7,
+                        "candidate_score": 0.5,
+                        "constraints_passed": True,
+                        "held_out_passed": True,
+                    }
+                ]
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    result = check_startup_yc_multi_seed_validation(
+        FIXTURE_DIR / "validation_plan.json",
+        evidence_path=evidence_path,
+    )
+
+    assert result["verdict"] == "blocked"
+    assert result["gate_passed"] is False
+    assert {
+        "seed_id": "gtm-negative-1",
+        "track": "gtm",
+        "reason": "negative_delta",
+    } in result["row_failures"]
+    assert "row_failure:gtm-negative-1:negative_delta" in result["blocking_checks"]
+
+
 def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
     tmp_path: Path,
 ) -> None:
@@ -105,6 +191,33 @@ def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
             "-m",
             "chip_labs.cli",
             "startup-yc-promotion-gate-check",
+            "--validation-plan",
+            str(FIXTURE_DIR / "validation_plan.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "blocked"
+    assert payload["network_absorbable"] is False
+
+
+def test_cli_startup_yc_multi_seed_check_fails_on_blocked(tmp_path: Path) -> None:
+    output_path = tmp_path / "startup-yc-multi-seed.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-multi-seed-check",
             "--validation-plan",
             str(FIXTURE_DIR / "validation_plan.json"),
             "--output",

@@ -1237,6 +1237,19 @@ def cmd_startup_yc_promotion_gate_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_startup_yc_multi_seed_check(args: argparse.Namespace) -> None:
+    """Check Startup YC multi-seed validation evidence."""
+    from .startup_yc_promotion import check_startup_yc_multi_seed_validation
+
+    result = check_startup_yc_multi_seed_validation(
+        args.validation_plan,
+        evidence_path=args.evidence,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -2197,6 +2210,33 @@ def main() -> None:
     p_startup_yc_promotion_gate_check.set_defaults(
         func=cmd_startup_yc_promotion_gate_check
     )
+
+    # startup-yc-multi-seed-check
+    p_startup_yc_multi_seed_check = sub.add_parser(
+        "startup-yc-multi-seed-check",
+        help="Check Startup YC multi-seed validation evidence.",
+    )
+    p_startup_yc_multi_seed_check.add_argument(
+        "--validation-plan",
+        type=str,
+        required=True,
+        help="Startup YC validation_plan.json path.",
+    )
+    p_startup_yc_multi_seed_check.add_argument(
+        "--evidence",
+        type=str,
+        default=None,
+        help="Optional multi-seed evidence JSON or JSONL path.",
+    )
+    p_startup_yc_multi_seed_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_startup_yc_multi_seed_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when multi-seed evidence is blocked.",
+    )
+    p_startup_yc_multi_seed_check.set_defaults(func=cmd_startup_yc_multi_seed_check)
 
     args = parser.parse_args()
     args.func(args)

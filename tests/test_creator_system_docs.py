@@ -44,6 +44,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "retrieval-memory-check",
         "creator-mission-status",
         "startup-yc-promotion-gate-check",
+        "startup-yc-multi-seed-check",
         "mirofish-content-simulate",
         "mirofish-content-route",
     ):
@@ -57,6 +58,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "Product runtime wiring remains deferred" in text
     assert "creator-mission-status" in text
     assert "startup-yc-promotion-gate-check" in text
+    assert "startup-yc-multi-seed-check" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "Latest focused creator-system suite result before CI push: `85 passed`." in text
 

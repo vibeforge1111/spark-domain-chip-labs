@@ -269,6 +269,9 @@ Deliverables:
 - [ ] Public `spark-creator` repo decision.
 - [x] Executable Startup YC promotion gate check that blocks
   `network_absorbable` until the above gates have explicit pass evidence.
+- [x] Executable Startup YC multi-seed gate checker that blocks absent,
+  underfilled, or negative-row evidence while keeping `network_absorbable`
+  false.
 
 Phase gate:
 
@@ -512,6 +515,9 @@ Completed documentation/verification:
 - `startup-yc-promotion-gate-check` now emits a machine-readable blocked packet
   for `network_absorbable` and fails with `--fail-on-blocked` until every
   Startup YC promotion gate has explicit pass evidence.
+- `startup-yc-multi-seed-check` now enforces the Startup YC validation plan's
+  required tracks, minimum seeds per track, held-out pass flags, constraint
+  pass flags, and minimum delta without approving network absorption.
 
 Completed product PR verification:
 

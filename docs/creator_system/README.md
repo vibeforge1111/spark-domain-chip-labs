@@ -103,6 +103,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Check retrieval memory packet | `python -m chip_labs.cli retrieval-memory-check --input memory-packet.json --fail-on-blocked` |
 | Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --output reports/creator-mission-status.json` |
 | Check Startup YC promotion gates | `python -m chip_labs.cli startup-yc-promotion-gate-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
+| Check Startup YC multi-seed evidence | `python -m chip_labs.cli startup-yc-multi-seed-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Simulate content candidates | `python -m chip_labs.cli mirofish-content-simulate --task "<task>" --candidate "<A>" --candidate "<B>"` |
 | Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |
 
@@ -215,6 +216,12 @@ confirms linked gate evidence files exist, and still blocks `network_absorbable`
 until multi-seed validation, held-out founder-advice pass evidence,
 human/operator calibration, privacy review, rollback review, and publication
 approval are explicitly recorded.
+
+`startup-yc-multi-seed-check` makes one of those gates concrete. It enforces
+the validation plan's required tracks, minimum seeds per track, held-out pass
+flags, constraint pass flags, and minimum delta. Passing this command proves
+only the `multi_seed_validation` gate; `network_absorbable` remains false until
+every other promotion gate also passes.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style

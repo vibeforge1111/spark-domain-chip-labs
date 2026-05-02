@@ -413,6 +413,10 @@ Current validation pack:
 - `startup-yc-promotion-gate-check`: executable gate check that keeps
   `network_absorbable` blocked until every required promotion gate has explicit
   pass evidence.
+- `startup-yc-multi-seed-check`: executable check for the multi-seed gate. It
+  enforces required tracks, minimum seeds per track, held-out pass flags,
+  constraint pass flags, and minimum delta while keeping `network_absorbable`
+  false because this is only one promotion gate.
 
 Next real adapters:
 
