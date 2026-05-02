@@ -630,6 +630,9 @@ Completed documentation/verification:
 - Creator-system CI now validates the saved Startup YC `validation_plan.json`
   against the validation-plan schema before the raw-evidence and validation-suite
   schema checks run.
+- Startup YC saved fixture notes now distinguish source-report recompute checks
+  from full external benchmark reruns, matching the current
+  `startup_yc_external_v1` provenance boundary.
 
 Completed product PR verification:
 

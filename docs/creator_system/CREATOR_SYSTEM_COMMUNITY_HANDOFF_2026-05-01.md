@@ -519,12 +519,16 @@ Status: initial supported-provenance mode exists.
 `creator-run-smoke --recompute` now checks saved baseline, candidate, and
 absorption reports against current source artifacts when reports carry supported
 `creator_generator_v1` or `artifact_quality_v1` provenance and input hashes.
-The curated Startup YC fixture still references external source reports and is
-therefore strict-smoke/saved-evidence validation, not a full external rerun.
+The curated Startup YC fixture also has `startup_yc_external_v1` source-report
+checks for transfer, absorption, broad-transfer, and Swarm packet evidence when
+the referenced external reports are locally available. These checks compare
+saved evidence to source reports; they do not yet rerun the external benchmark
+systems end to end.
 
 Remaining work:
 
-- source-repo adapters that rerun Startup Bench and specialization-path reports
+- end-to-end source-repo rerunners for Startup Bench and specialization-path
+  reports
 - broader provider-specific provenance adapters
 - multi-seed recompute and calibration before stronger claims
 

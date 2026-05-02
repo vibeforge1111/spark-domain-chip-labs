@@ -22,7 +22,7 @@ Known limits:
 
 - This fixture references source repos instead of copying full benchmark corpora.
 - Normal smoke validates saved evidence and claim boundaries. Recompute mode
-  exists for supported provenance-tagged generated runs, but this curated
-  Startup YC fixture does not yet fully rerun external Startup Bench or
-  specialization-path source reports.
+  can compare this curated Startup YC fixture against supported external Startup
+  Bench and specialization-path source reports when those reports are locally
+  available; full external benchmark reruns remain outside this fixture.
 - Network absorption is not approved yet. The fixture still needs multi-seed fresh validation, human/operator calibration, privacy review, rollback review, and publication approval.

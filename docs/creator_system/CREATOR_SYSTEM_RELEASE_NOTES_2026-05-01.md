@@ -167,6 +167,9 @@
 - Creator-system CI now validates the saved Startup YC `validation_plan.json`
   against the validation-plan schema before running raw-evidence and suite
   schema checks.
+- Startup YC saved fixture notes now distinguish source-report recompute checks
+  from full external benchmark reruns, so the artifact text matches the current
+  `startup_yc_external_v1` provenance boundary.
 
 ## Current Claim Boundary
 

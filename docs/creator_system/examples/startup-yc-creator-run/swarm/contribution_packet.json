@@ -71,7 +71,7 @@
       "Fresh validation currently ran seed 0 only.",
       "Human/operator review and calibration are still needed before network-absorbable claims.",
       "Network publication remains disabled in this fixture.",
-      "Normal smoke validates saved evidence semantics. Recompute mode exists for supported provenance-tagged generated runs, but this curated fixture does not yet rerun external Startup Bench or specialization-path source reports."
+      "Normal smoke validates saved evidence semantics. Recompute mode can compare this curated fixture against supported external Startup Bench and specialization-path source reports when those reports are locally available; full external benchmark reruns remain outside this fixture."
     ]
   }
 }

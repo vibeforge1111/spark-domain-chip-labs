@@ -89,6 +89,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validates it against the check-result schema" in text
     assert "startup-yc-validation-plan.schema.json" in text
     assert "validates the saved Startup YC `validation_plan.json`" in text
+    assert "source-report recompute checks" in text
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
     assert "raw-evidence input hashes" in text
