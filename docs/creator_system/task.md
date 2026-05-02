@@ -282,6 +282,8 @@ Deliverables:
   while keeping final promotion blocked by the validation plan.
 - [x] Saved blocked Startup YC validation-suite packet with recompute coverage
   for critical blocker drift.
+- [x] Creator-system CI explicitly runs the Startup YC validation suite as a
+  blocked command and lints the promotion-gate module.
 
 Phase gate:
 
@@ -543,6 +545,9 @@ Completed documentation/verification:
 - `startup-yc-operator-validation/validation_suite_blocked.json` now stores the
   current blocked validation-suite packet and tests compare it to a fresh suite
   run for critical blocker drift.
+- Creator-system CI now lints `startup_yc_promotion.py` and runs
+  `startup-yc-validation-suite` without `--fail-on-blocked` so the expected
+  blocked suite command remains exercised on every relevant push.
 
 Completed product PR verification:
 

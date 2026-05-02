@@ -87,6 +87,9 @@
 - `startup-yc-operator-validation/validation_suite_blocked.json` now preserves
   the current blocked validation-suite packet, with tests that recompute the
   critical blockers from the validation plan.
+- Creator-system CI now lints `startup_yc_promotion.py` and explicitly runs the
+  Startup YC validation suite without `--fail-on-blocked`, preserving the
+  expected blocked command path.
 
 ## Current Claim Boundary
 
