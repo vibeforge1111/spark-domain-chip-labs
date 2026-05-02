@@ -426,6 +426,10 @@ Current validation pack:
   blocks missing review evidence and requires publication evidence to
   explicitly approve `network_absorbable` while still keeping the checker output
   below network absorption.
+- `startup-yc-promotion-evidence-check`: executable bundle check that verifies
+  saved multi-seed, held-out, and review-gate outputs have the expected schemas,
+  match the same validation plan, and report their gates as passed before a
+  final promotion review can even begin.
 
 Next real adapters:
 

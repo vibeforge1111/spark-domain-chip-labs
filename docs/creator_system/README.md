@@ -106,6 +106,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Check Startup YC multi-seed evidence | `python -m chip_labs.cli startup-yc-multi-seed-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC held-out advice evidence | `python -m chip_labs.cli startup-yc-heldout-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC review gates | `python -m chip_labs.cli startup-yc-review-gates-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
+| Check Startup YC promotion evidence bundle | `python -m chip_labs.cli startup-yc-promotion-evidence-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Simulate content candidates | `python -m chip_labs.cli mirofish-content-simulate --task "<task>" --candidate "<A>" --candidate "<B>"` |
 | Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |
 
@@ -235,6 +236,11 @@ rollback, and publication-approval gates. Publication evidence must explicitly
 name `network_absorbable` and set `network_publication_allowed=true`, but the
 checker still reports `network_absorbable=false`; final promotion remains a
 separate gate-status decision.
+
+`startup-yc-promotion-evidence-check` ties the individual gate outputs together
+as saved evidence. It blocks stale or mismatched outputs unless every bundled
+check has the expected schema, matches the same validation plan, and reports its
+gate as passed. Even a coherent bundle is evidence support, not final promotion.
 
 Generator acceptance currently covers several Spark-useful proof domains:
 design-doc/PR artifact quality, safe local tool operation, MiroFish-style

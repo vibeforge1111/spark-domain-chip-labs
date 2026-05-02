@@ -47,6 +47,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "startup-yc-multi-seed-check",
         "startup-yc-heldout-check",
         "startup-yc-review-gates-check",
+        "startup-yc-promotion-evidence-check",
         "mirofish-content-simulate",
         "mirofish-content-route",
     ):
@@ -63,6 +64,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "startup-yc-multi-seed-check" in text
     assert "startup-yc-heldout-check" in text
     assert "startup-yc-review-gates-check" in text
+    assert "startup-yc-promotion-evidence-check" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "Latest focused creator-system suite result before CI push: `85 passed`." in text
 

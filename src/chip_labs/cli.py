@@ -1276,6 +1276,19 @@ def cmd_startup_yc_review_gates_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_startup_yc_promotion_evidence_check(args: argparse.Namespace) -> None:
+    """Check coherent Startup YC promotion evidence bundles."""
+    from .startup_yc_promotion import check_startup_yc_promotion_evidence
+
+    result = check_startup_yc_promotion_evidence(
+        args.validation_plan,
+        evidence_bundle_path=args.evidence_bundle,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -2318,6 +2331,35 @@ def main() -> None:
     )
     p_startup_yc_review_gates_check.set_defaults(
         func=cmd_startup_yc_review_gates_check
+    )
+
+    # startup-yc-promotion-evidence-check
+    p_startup_yc_promotion_evidence_check = sub.add_parser(
+        "startup-yc-promotion-evidence-check",
+        help="Check coherent Startup YC promotion evidence bundles.",
+    )
+    p_startup_yc_promotion_evidence_check.add_argument(
+        "--validation-plan",
+        type=str,
+        required=True,
+        help="Startup YC validation_plan.json path.",
+    )
+    p_startup_yc_promotion_evidence_check.add_argument(
+        "--evidence-bundle",
+        type=str,
+        default=None,
+        help="Optional promotion evidence bundle JSON path.",
+    )
+    p_startup_yc_promotion_evidence_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_startup_yc_promotion_evidence_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when promotion evidence is blocked.",
+    )
+    p_startup_yc_promotion_evidence_check.set_defaults(
+        func=cmd_startup_yc_promotion_evidence_check
     )
 
     args = parser.parse_args()

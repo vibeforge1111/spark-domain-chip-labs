@@ -8,6 +8,7 @@ from pathlib import Path
 from chip_labs.startup_yc_promotion import (
     check_startup_yc_heldout_validation,
     check_startup_yc_multi_seed_validation,
+    check_startup_yc_promotion_evidence,
     check_startup_yc_promotion_gates,
     check_startup_yc_review_gates,
 )
@@ -379,6 +380,112 @@ def test_startup_yc_review_gates_check_blocks_unsafe_publication(
     ]
 
 
+def test_startup_yc_promotion_evidence_check_blocks_without_bundle() -> None:
+    result = check_startup_yc_promotion_evidence(FIXTURE_DIR / "validation_plan.json")
+
+    assert result["schema_version"] == (
+        "adaptive_creator_loop.startup_yc_promotion_evidence_check.v1"
+    )
+    assert result["verdict"] == "blocked"
+    assert result["all_required_gates_supported"] is False
+    assert result["network_absorbable"] is False
+    assert "missing_evidence_path:promotion_evidence_bundle_path" in result[
+        "blocking_checks"
+    ]
+    assert result["missing_gates"] == _load_plan()["required_promotion_gates"]
+
+
+def test_startup_yc_promotion_evidence_check_passes_only_evidence_support(
+    tmp_path: Path,
+) -> None:
+    plan_path = FIXTURE_DIR / "validation_plan.json"
+    multi_seed_path = _write_gate_output(
+        tmp_path / "multi-seed.json",
+        "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
+        plan_path,
+        gate_passed=True,
+    )
+    heldout_path = _write_gate_output(
+        tmp_path / "heldout.json",
+        "adaptive_creator_loop.startup_yc_heldout_check.v1",
+        plan_path,
+        gate_passed=True,
+    )
+    review_path = _write_gate_output(
+        tmp_path / "review-gates.json",
+        "adaptive_creator_loop.startup_yc_review_gates_check.v1",
+        plan_path,
+        gate_passed=True,
+        gate_status={
+            "human_operator_calibration": True,
+            "privacy_review": True,
+            "rollback_review": True,
+            "publication_approval": True,
+        },
+    )
+    bundle_path = tmp_path / "promotion-evidence-bundle.json"
+    bundle_path.write_text(
+        json.dumps(
+            {
+                "checks": {
+                    "multi_seed_validation": str(multi_seed_path),
+                    "held_out_founder_advice_pass": str(heldout_path),
+                    "review_gates": str(review_path),
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    result = check_startup_yc_promotion_evidence(
+        plan_path,
+        evidence_bundle_path=bundle_path,
+    )
+
+    assert result["verdict"] == "passed"
+    assert result["all_required_gates_supported"] is True
+    assert result["network_absorbable"] is False
+    assert result["missing_gates"] == []
+    assert result["blocking_checks"] == []
+    assert all(result["gate_support"].values())
+
+
+def test_startup_yc_promotion_evidence_check_blocks_stale_plan_output(
+    tmp_path: Path,
+) -> None:
+    multi_seed_path = _write_gate_output(
+        tmp_path / "multi-seed.json",
+        "adaptive_creator_loop.startup_yc_multi_seed_check.v1",
+        Path("other-plan.json"),
+        gate_passed=True,
+    )
+    bundle_path = tmp_path / "promotion-evidence-bundle.json"
+    bundle_path.write_text(
+        json.dumps(
+            {
+                "checks": {
+                    "multi_seed_validation": str(multi_seed_path),
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    result = check_startup_yc_promotion_evidence(
+        FIXTURE_DIR / "validation_plan.json",
+        evidence_bundle_path=bundle_path,
+    )
+
+    assert result["verdict"] == "blocked"
+    assert "plan_mismatch:multi_seed_validation" in result["blocking_checks"]
+    assert "missing_check_output:held_out_founder_advice_pass" in result[
+        "blocking_checks"
+    ]
+    assert "missing_check_output:review_gates" in result["blocking_checks"]
+
+
 def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
     tmp_path: Path,
 ) -> None:
@@ -489,6 +596,35 @@ def test_cli_startup_yc_review_gates_check_fails_on_blocked(tmp_path: Path) -> N
     assert payload["network_absorbable"] is False
 
 
+def test_cli_startup_yc_promotion_evidence_check_fails_on_blocked(
+    tmp_path: Path,
+) -> None:
+    output_path = tmp_path / "startup-yc-promotion-evidence.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-promotion-evidence-check",
+            "--validation-plan",
+            str(FIXTURE_DIR / "validation_plan.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "blocked"
+    assert payload["network_absorbable"] is False
+
+
 def _load_plan() -> dict[str, object]:
     return json.loads((FIXTURE_DIR / "validation_plan.json").read_text(encoding="utf-8"))
 
@@ -499,3 +635,23 @@ def _load_jsonl(path: Path) -> list[dict[str, object]]:
         for line in path.read_text(encoding="utf-8").splitlines()
         if line.strip()
     ]
+
+
+def _write_gate_output(
+    path: Path,
+    schema_version: str,
+    plan_path: Path,
+    *,
+    gate_passed: bool,
+    gate_status: dict[str, bool] | None = None,
+) -> Path:
+    payload: dict[str, object] = {
+        "schema_version": schema_version,
+        "plan_path": str(plan_path),
+        "gate_passed": gate_passed,
+        "network_absorbable": False,
+    }
+    if gate_status is not None:
+        payload["gate_status"] = gate_status
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    return path

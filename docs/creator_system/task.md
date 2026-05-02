@@ -276,6 +276,8 @@ Deliverables:
   or failed case evidence while keeping `network_absorbable` false.
 - [x] Executable Startup YC review-gates checker for human/operator
   calibration, privacy review, rollback review, and publication approval.
+- [x] Executable Startup YC promotion evidence bundle checker that blocks stale,
+  mismatched, or incomplete saved gate outputs.
 
 Phase gate:
 
@@ -528,6 +530,9 @@ Completed documentation/verification:
 - `startup-yc-review-gates-check` now enforces structured human/operator,
   privacy, rollback, and publication approval evidence while keeping final
   promotion separate from the individual review-gate check.
+- `startup-yc-promotion-evidence-check` now verifies that saved multi-seed,
+  held-out, and review-gate outputs match the same validation plan and have
+  passed before final promotion review can use them.
 
 Completed product PR verification:
 

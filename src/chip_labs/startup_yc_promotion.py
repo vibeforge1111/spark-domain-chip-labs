@@ -16,6 +16,9 @@ SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_promotion_gate_check.v1"
 MULTI_SEED_SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_multi_seed_check.v1"
 HELDOUT_SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_heldout_check.v1"
 REVIEW_GATES_SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_review_gates_check.v1"
+PROMOTION_EVIDENCE_SCHEMA_VERSION = (
+    "adaptive_creator_loop.startup_yc_promotion_evidence_check.v1"
+)
 
 _REVIEW_GATE_REQUIREMENTS = {
     "human_operator_calibration": ("reviewer", "evidence_ref", "calibration_notes"),
@@ -315,6 +318,70 @@ def check_startup_yc_review_gates(
     }
 
 
+def check_startup_yc_promotion_evidence(
+    validation_plan_path: str | Path,
+    *,
+    evidence_bundle_path: str | Path | None = None,
+) -> dict[str, Any]:
+    """Check that saved gate evidence outputs coherently support the plan."""
+
+    plan_path = Path(validation_plan_path)
+    plan = _load_json(plan_path)
+    required_gates = _list_str(plan.get("required_promotion_gates"))
+    bundle_reference = (
+        str(evidence_bundle_path)
+        if evidence_bundle_path
+        else plan.get("promotion_evidence_bundle_path")
+    )
+    blocking_checks: list[str] = []
+    bundle_present = False
+    bundle: dict[str, Any] = {}
+    bundle_display_path = bundle_reference if isinstance(bundle_reference, str) else None
+
+    if not isinstance(bundle_reference, str) or not bundle_reference.strip():
+        blocking_checks.append("missing_evidence_path:promotion_evidence_bundle_path")
+    else:
+        bundle_file = _resolve_related_path(plan_path, bundle_reference)
+        bundle_present = bundle_file.exists()
+        if not bundle_present:
+            blocking_checks.append(f"missing_evidence:{bundle_reference}")
+        else:
+            bundle = _load_json(bundle_file)
+
+    gate_support, evidence_checks = _evaluate_promotion_evidence_bundle(
+        plan_path,
+        bundle,
+        required_gates,
+        blocking_checks,
+    )
+    blocking_checks = _dedupe(blocking_checks)
+    all_supported = bool(required_gates) and all(
+        gate_support.get(gate) is True for gate in required_gates
+    )
+    return {
+        "schema_version": PROMOTION_EVIDENCE_SCHEMA_VERSION,
+        "plan_path": str(plan_path),
+        "plan_id": plan.get("plan_id"),
+        "domain": plan.get("domain"),
+        "current_claim": plan.get("current_claim"),
+        "evidence_bundle_path": bundle_display_path,
+        "evidence_bundle_present": bundle_present,
+        "required_gates": required_gates,
+        "gate_support": gate_support,
+        "missing_gates": [
+            gate for gate in required_gates if gate_support.get(gate) is not True
+        ],
+        "evidence_checks": evidence_checks,
+        "verdict": "passed" if all_supported and not blocking_checks else "blocked",
+        "all_required_gates_supported": all_supported and not blocking_checks,
+        "network_absorbable": False,
+        "blocking_checks": blocking_checks,
+        "next_actions": _promotion_evidence_next_actions(
+            all_supported=all_supported and not blocking_checks
+        ),
+    }
+
+
 def _evidence_paths(plan_path: Path, plan: dict[str, Any]) -> list[dict[str, Any]]:
     base = plan_path.parent
     path_fields = (
@@ -481,6 +548,115 @@ def _evaluate_review_gate_rows(
     return failures, gate_status
 
 
+def _evaluate_promotion_evidence_bundle(
+    plan_path: Path,
+    bundle: dict[str, Any],
+    required_gates: list[str],
+    blocking_checks: list[str],
+) -> tuple[dict[str, bool], list[dict[str, Any]]]:
+    gate_support = {gate: False for gate in required_gates}
+    evidence_checks: list[dict[str, Any]] = []
+    checks = bundle.get("checks") if isinstance(bundle, dict) else None
+    if not isinstance(checks, dict):
+        blocking_checks.append("missing_bundle_checks")
+        return gate_support, evidence_checks
+
+    multi_seed = _load_bundle_check(plan_path, checks, "multi_seed_validation")
+    evidence_checks.append(multi_seed)
+    if _check_output_passes(
+        multi_seed,
+        expected_schema=MULTI_SEED_SCHEMA_VERSION,
+        plan_path=plan_path,
+        blocking_checks=blocking_checks,
+    ):
+        gate_support["multi_seed_validation"] = True
+
+    heldout = _load_bundle_check(plan_path, checks, "held_out_founder_advice_pass")
+    evidence_checks.append(heldout)
+    if _check_output_passes(
+        heldout,
+        expected_schema=HELDOUT_SCHEMA_VERSION,
+        plan_path=plan_path,
+        blocking_checks=blocking_checks,
+    ):
+        gate_support["held_out_founder_advice_pass"] = True
+
+    review = _load_bundle_check(plan_path, checks, "review_gates")
+    evidence_checks.append(review)
+    if _check_output_passes(
+        review,
+        expected_schema=REVIEW_GATES_SCHEMA_VERSION,
+        plan_path=plan_path,
+        blocking_checks=blocking_checks,
+    ):
+        output = review.get("output")
+        gate_status = output.get("gate_status") if isinstance(output, dict) else None
+        if isinstance(gate_status, dict):
+            for gate in _REVIEW_GATE_REQUIREMENTS:
+                gate_support[gate] = gate_status.get(gate) is True
+                if gate in required_gates and gate_status.get(gate) is not True:
+                    blocking_checks.append(f"unsupported_gate:{gate}")
+
+    return gate_support, evidence_checks
+
+
+def _load_bundle_check(
+    plan_path: Path,
+    checks: dict[str, Any],
+    key: str,
+) -> dict[str, Any]:
+    reference = checks.get(key)
+    result: dict[str, Any] = {
+        "key": key,
+        "path": reference if isinstance(reference, str) else None,
+        "present": False,
+        "schema_ok": False,
+        "plan_match": False,
+        "gate_passed": False,
+    }
+    if not isinstance(reference, str) or not reference.strip():
+        result["error"] = "missing_check_path"
+        return result
+    output_path = _resolve_related_path(plan_path, reference)
+    result["present"] = output_path.exists()
+    if not result["present"]:
+        result["error"] = "missing_check_output"
+        return result
+    output = _load_json(output_path)
+    result["output"] = output
+    return result
+
+
+def _check_output_passes(
+    check: dict[str, Any],
+    *,
+    expected_schema: str,
+    plan_path: Path,
+    blocking_checks: list[str],
+) -> bool:
+    key = str(check.get("key"))
+    if check.get("present") is not True:
+        blocking_checks.append(f"missing_check_output:{key}")
+        return False
+    output = check.get("output")
+    if not isinstance(output, dict):
+        blocking_checks.append(f"invalid_check_output:{key}")
+        return False
+    schema_ok = output.get("schema_version") == expected_schema
+    plan_match = output.get("plan_path") == str(plan_path)
+    gate_passed = output.get("gate_passed") is True
+    check["schema_ok"] = schema_ok
+    check["plan_match"] = plan_match
+    check["gate_passed"] = gate_passed
+    if not schema_ok:
+        blocking_checks.append(f"schema_mismatch:{key}")
+    if not plan_match:
+        blocking_checks.append(f"plan_mismatch:{key}")
+    if not gate_passed:
+        blocking_checks.append(f"gate_not_passed:{key}")
+    return schema_ok and plan_match and gate_passed
+
+
 def _evaluate_multi_seed_rows(
     rows: list[dict[str, Any]],
     *,
@@ -587,6 +763,20 @@ def _review_gates_next_actions(*, gate_passed: bool) -> list[str]:
         "Collect structured evidence for human/operator calibration, privacy review, rollback review, and publication approval.",
         "Publication approval must explicitly name network_absorbable and set network_publication_allowed=true.",
         "Keep Startup YC at transfer_supported while review evidence is absent or incomplete.",
+    ]
+
+
+def _promotion_evidence_next_actions(*, all_supported: bool) -> list[str]:
+    if all_supported:
+        return [
+            "Treat this as coherent promotion evidence, not final promotion.",
+            "Run startup-yc-promotion-gate-check after the validation plan records explicit gate_status values.",
+            "Keep Startup YC below network_absorbable until the plan removes prohibited claims and publication boundary blocks.",
+        ]
+    return [
+        "Regenerate or repair the individual gate check outputs before final promotion review.",
+        "Every bundled check must match the validation plan path, expected schema, and gate_passed=true.",
+        "Do not infer network absorption from partial or stale saved evidence.",
     ]
 
 

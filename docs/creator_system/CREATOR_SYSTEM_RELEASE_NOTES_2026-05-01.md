@@ -78,6 +78,9 @@
 - `startup-yc-review-gates-check` now makes the remaining human review gates
   executable: operator calibration, privacy review, rollback review, and
   publication approval require structured evidence before final promotion.
+- `startup-yc-promotion-evidence-check` now makes saved promotion evidence
+  coherent: bundled gate outputs must have expected schemas, match the same
+  validation plan, and report passed gates before final review can use them.
 
 ## Current Claim Boundary
 
