@@ -652,6 +652,12 @@ Completed documentation/verification:
   fresh recompute.
 - `creator-mission-status.schema.json` now rejects Canvas and Kanban
   projections that drop `evidence_mode` from their read-only mission views.
+- `CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md` now defines the long-running
+  matrix for generated artifact-quality, tool-operation, MiroFish content,
+  doctor/security, Startup YC operator, and retrieval/memory creator systems.
+- Generator acceptance now includes a retrieval/memory boundary domain and
+  requires every generated domain family to emit a schema-valid recomputed
+  `creator-mission-status` packet.
 
 Completed product PR verification:
 

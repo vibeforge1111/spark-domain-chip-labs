@@ -189,6 +189,12 @@
   remaining work.
 - `creator-mission-status.schema.json` now rejects Canvas and Kanban
   projections that drop `evidence_mode` from their read-only mission views.
+- `CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md` now defines the long-running
+  matrix for generated artifact-quality, tool-operation, MiroFish content,
+  doctor/security, Startup YC operator, and retrieval/memory creator systems.
+- Generator acceptance now includes a retrieval/memory boundary domain and
+  requires every generated domain family to emit a schema-valid recomputed
+  `creator-mission-status` packet.
 - Creator-system CI now writes the strict Startup YC smoke packet and validates
   it against `smoke-result.schema.json`, including the saved evidence-mode
   boundary.
@@ -213,4 +219,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `138 passed`.
+Latest focused creator-system suite result before CI push: `140 passed`.

@@ -9,6 +9,9 @@ PHASE_2_BACKLOG = Path("docs/creator_system/PHASE_2_PRODUCT_FLOW_BACKLOG.md")
 PRODUCT_FLOW = Path("docs/creator_system/TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md")
 PRODUCT_CONSUMER_BRANCHES = Path("docs/creator_system/PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md")
 CREATOR_SYSTEM_WORKFLOW = Path(".github/workflows/creator-system.yml")
+MULTI_DOMAIN_VALIDATION = Path(
+    "docs/creator_system/CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md"
+)
 STARTUP_YC_EXTERNAL_RECOMPUTE = Path(
     "docs/creator_system/STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md"
 )
@@ -20,7 +23,9 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "## Current Claim Levels" in text
     assert "CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
+    assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
     assert "| Startup YC reference fixture | `transfer_supported` |" in text
+    assert "| Multi-domain generated matrix | `candidate_review` |" in text
     assert "`network_absorbable` is blocked" in text
     assert "| Product surfaces | Read-only consumer branches |" in text
     assert "| Network absorption | Future gated claim |" in text
@@ -94,6 +99,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "recomputed-mode regression" in text
     assert "Product-flow docs now require downstream surfaces to preserve" in text
     assert "`creator-mission-status.schema.json` now rejects Canvas and Kanban" in text
+    assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
+    assert "Generator acceptance now includes a retrieval/memory boundary domain" in text
     assert "evidence shape-check outputs and rejects accidental" in text
     assert "validate saved `startup-yc-validation-evidence-check`" in text
     assert "input hashes from absent evidence with explicit missing-input records" in text
@@ -109,7 +116,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "tests/test_creator_mission_adapter.py" in text
-    assert "Latest focused creator-system suite result before CI push: `138 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `140 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -193,5 +200,26 @@ def test_startup_yc_external_recompute_adapter_contract_blocks_stronger_claims()
         "not `network_absorbable`",
         "multi-seed validation",
         "publication approval",
+    ):
+        assert phrase in text
+
+
+def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
+    text = MULTI_DOMAIN_VALIDATION.read_text(encoding="utf-8")
+
+    for phrase in (
+        "Domain Matrix",
+        "Benchmark Maturity",
+        "Generated acceptance benchmark packs",
+        "Domain-specific benchmark systems",
+        "Artifact quality",
+        "Tool operation",
+        "Content simulation",
+        "Doctor/security",
+        "Startup operator",
+        "Retrieval/memory",
+        "schema-valid `creator-mission-status` packet",
+        "36 generated runs total",
+        "does not approve `network_absorbable`",
     ):
         assert phrase in text

@@ -1,0 +1,207 @@
+# Creator System Multi-Domain Validation Plan
+
+Date: 2026-05-02
+
+This plan turns the creator-system standard into a repeatable validation
+program. The goal is to prove Spark can generate many kinds of domain-chip lab
+systems from scratch, not only validate a curated Startup YC fixture.
+
+## Current Proof
+
+The executable generator acceptance harness already creates fresh creator-run
+workspaces in temporary directories. Each generated run builds:
+
+- domain chip artifacts
+- benchmark pack and cases
+- baseline, candidate, and absorption reports
+- specialization path
+- autoloop policy and keep/revert simulation
+- Swarm contribution packet
+- saved smoke and recompute smoke
+
+Generated runs currently claim `candidate_review`. They do not claim
+`transfer_supported` or `network_absorbable`.
+
+## Domain Matrix
+
+| Domain family | Example domain | Current executable proof | Claim boundary |
+| --- | --- | --- | --- |
+| Artifact quality | Design Doc PR Quality | Generated brief, reports, recompute smoke, mission-status packet | Local review quality only |
+| Tool operation | Spark Tool Operation | Safe command planning, dry-run/postcondition checks, recompute smoke, mission-status packet | No push, publish, or secret-paste workflow |
+| Content simulation | MiroFish Content Simulation | Persona-batch simulator metadata, multi-RLM judge shape, recompute smoke, mission-status packet | Candidate-review simulator protocol only |
+| Doctor/security | Spark Doctor Adversarial | Stale/fake evidence and unsafe promotion traps, recompute smoke, mission-status packet | Doctor pass is not publication approval |
+| Startup operator | Startup YC Operator | Founder-advice benchmark cases, recompute smoke, mission-status packet | Not Startup YC network mastery |
+| Retrieval/memory | Retrieval Memory Boundary | Source-aware memory, stale/contradicted/residue traps, recompute smoke, mission-status packet | No production memory runtime or network-shareable recall claim |
+
+## Benchmark Maturity
+
+There are two benchmark layers today:
+
+1. **Generated acceptance benchmark packs** prove that Spark can create the
+   correct benchmark structure from a fresh brief. These are deterministic,
+   small, and CI-safe.
+2. **Domain-specific benchmark systems** prove deeper quality for a domain.
+   These are stronger but heavier and should grow domain by domain.
+
+Current maturity by domain:
+
+| Domain family | Generated benchmark pack | Domain-specific benchmark depth | Next benchmark upgrade |
+| --- | --- | --- | --- |
+| Artifact quality | Yes: cases, traps, recompute reports | Good local fixture set for strong, weak, and polished-but-unproven docs | Add more PR/design-doc genres and reviewer calibration rows |
+| Tool operation | Yes: safe command, rollback, token trap | Good local operation packets for dry-run, postconditions, stale recompute, missing artifacts, and secret handling | Add more real command families and postcondition adapters |
+| Content simulation | Yes: title/angle cases and simulator metadata | Local MiroFish simulation and route examples exist, but real outcome calibration is not done | Add multi-seed simulator batches and compare against actual content outcomes |
+| Doctor/security | Yes: fake evidence, repair specificity, unsafe promotion trap | Good stale/malicious fixture coverage and doctor quarantine proof | Add adversarial packet mutations across every schema family |
+| Startup operator | Yes: generated founder-advice benchmark cases | Strongest curated reference fixture plus Startup YC gate checks and external recompute comparisons | Add real multi-seed evaluated founder-advice evidence before stronger claims |
+| Retrieval/memory | Yes: correct prior, stale memory, residue trap | Local memory-lane contract and fixtures exist, but production memory runtime is deferred | Add real memory-system adapter checks when Spark memory is ready |
+
+The generated benchmark packs are the right first benchmark systems for
+factory-proof. They prove artifact creation, scoring hooks, trap coverage,
+recompute provenance, and Swarm packet consistency. They are not yet enough to
+claim domain mastery, real content virality, production memory safety, or
+network absorption.
+
+## Phase 1: Multi-Domain Generator Matrix
+
+The first phase is the fast CI-safe matrix. It uses one representative generated
+brief per domain family.
+
+Success criteria:
+
+- Each domain starts from a brief.
+- Each creates chip, benchmark, specialization path, autoloop policy, reports,
+  and Swarm packet.
+- Each passes normal smoke as saved evidence.
+- Each passes recompute smoke when supported provenance is present.
+- Each produces a schema-valid `creator-mission-status` packet from recomputed
+  smoke.
+- Each remains below `network_absorbable`.
+
+Current executable anchor:
+
+```bash
+python -m pytest tests/test_creator_generator_acceptance.py -q
+```
+
+## Phase 2: Multi-Seed Validation
+
+This phase proves the generator is not brittle to one handpicked brief.
+
+Target matrix:
+
+- 3 briefs per domain family.
+- 2 seeds per brief.
+- 6 domain families.
+- 36 generated runs total.
+
+Success criteria:
+
+- Strong seeds converge on coherent evidence.
+- Weak seeds fail honestly with blocker names.
+- Doctor output gives exact repair steps.
+- No failed seed is hidden behind a passing aggregate.
+- All successful seeds stay at `candidate_review` unless stronger evidence is
+  explicitly proven.
+
+Suggested execution mode:
+
+- Keep PR CI on the fast representative matrix.
+- Run multi-seed as a manual or scheduled heavier job.
+
+## Phase 3: Evidence And Provenance Hardening
+
+This phase makes stale saved evidence impossible to confuse with fresh
+recompute evidence.
+
+Checks:
+
+- Changed benchmark cases block recompute.
+- Changed scoring hooks block recompute.
+- Changed saved report values block recompute.
+- Swarm packet summaries must match current reports.
+- Tool-operation packets must match command mode and `evidence_mode`.
+- Mission-status packets must preserve `evidence_mode` across canonical,
+  Builder, Telegram, Spawner, Canvas, and Kanban views.
+
+Success criteria:
+
+- Saved evidence can be coherent but marked `saved`.
+- Fresh evidence is marked `recomputed`.
+- Stale saved reports block recompute.
+- Product projections cannot drop `evidence_mode`.
+
+## Phase 4: Cross-Domain Mission Status
+
+Every generated domain must produce a read-only mission packet that product
+surfaces can consume without parsing raw smoke.
+
+Required packet fields:
+
+- canonical verdict
+- evidence tier
+- evidence mode
+- blockers and warnings
+- next actions
+- publication boundary
+- Builder, Telegram, Spawner, Canvas, and Kanban read-only projections
+
+Success criteria:
+
+- Product surfaces never invent verdicts.
+- Product surfaces never upgrade evidence tiers.
+- `ready_for_swarm_packet` remains a review state, not publication approval.
+- `network_absorbable` remains false without the separate promotion gates.
+
+## Phase 5: Human And Operator Review Packets
+
+Generated systems can become stronger only after review evidence exists.
+
+Each domain needs:
+
+- operator calibration checklist
+- privacy boundary
+- rollback plan
+- publication approval placeholder
+- known limits
+- forbidden claims
+
+Success criteria:
+
+- Every stronger claim has a missing gate unless explicitly reviewed.
+- Subcheck evidence alone cannot approve `network_absorbable`.
+- Publication approval must name the claim being approved.
+
+## Phase 6: CI Expansion
+
+CI should grow in layers.
+
+Fast PR CI:
+
+- representative generated matrix
+- strict Startup YC saved smoke
+- Startup YC shape-only raw evidence check
+- validation-suite schema checks
+- mission-status schema checks
+
+Manual or scheduled CI:
+
+- 36-run multi-seed matrix
+- external recompute checks when sibling source repos are available
+- stale-evidence mutation sweeps
+
+Success criteria:
+
+- PR CI remains fast enough for normal development.
+- Heavy validation is available without turning every commit into a long run.
+- CI proves claim boundaries, not only happy-path generation.
+
+## Promotion Boundary
+
+This plan does not approve `network_absorbable`.
+
+Network absorption still requires:
+
+- multi-seed validation
+- human/operator calibration
+- privacy review
+- rollback review
+- publication approval

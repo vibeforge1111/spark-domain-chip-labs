@@ -11,10 +11,14 @@ import pytest
 
 from chip_labs.artifact_quality import MANIFEST_PATH, run_artifact_quality_benchmark
 from chip_labs.creator_generator import generate_creator_system_from_brief
+from chip_labs.creator_mission_adapter import build_creator_mission_status
 from chip_labs.creator_run import diagnose_creator_run, validate_creator_run
 
 
 DOCTOR_FIXTURE_DIR = Path("docs/creator_system/examples/doctor-security")
+CREATOR_MISSION_SCHEMA = Path(
+    "docs/creator_system/schemas/creator-mission-status.schema.json"
+)
 
 
 def _brief() -> dict[str, object]:
@@ -252,6 +256,46 @@ def _multi_domain_briefs() -> list[dict[str, object]]:
             ],
             "known_limits": ["Not a network_absorbable Startup YC mastery claim."],
         },
+        {
+            "domain_id": "retrieval-memory-boundary",
+            "domain_name": "Retrieval Memory Boundary",
+            "domain_family": "retrieval_memory",
+            "goal": "Keep Spark memory recall source-aware, privacy-bounded, and resistant to stale or contradicted context.",
+            "benchmark_family": "retrieval_memory_contract",
+            "mission_control_flow": "prior context -> source check -> freshness check -> promotion boundary",
+            "useful_to_spark": [
+                "separate correct prior decisions from stale or contradicted memory",
+                "block conversational residue before it becomes promoted evidence",
+            ],
+            "mutation_axes": [
+                {"name": "recall_policy", "values": ["source-aware", "residue-trusting"]},
+                {"name": "privacy_lane", "values": ["explicit-boundary", "implicit-share"]},
+            ],
+            "benchmark_cases": [
+                {
+                    "case_id": "correct-prior-decision",
+                    "case_kind": "retrieval_memory",
+                    "prompt": "Accept a prior decision only when source, freshness, and scope are explicit.",
+                },
+                {
+                    "case_id": "stale-memory-block",
+                    "case_kind": "retrieval_memory",
+                    "prompt": "Block stale context whose newer source contradicts the old memory.",
+                },
+                {
+                    "case_id": "trap-conversation-residue",
+                    "case_kind": "trap",
+                    "prompt": "Reject chat residue as evidence unless it has a reviewed source lane.",
+                    "trap": True,
+                },
+            ],
+            "known_limits": [
+                "Local retrieval-memory contract only; no production memory runtime wiring.",
+            ],
+            "unsafe_claims": [
+                "Treat private or conversational residue as network-shareable memory.",
+            ],
+        },
     ]
 
 
@@ -313,6 +357,7 @@ def test_generator_acceptance_flow_creates_swarm_ready_run_in_clean_workspace(
 def test_generator_acceptance_covers_multiple_spark_useful_domain_families(
     tmp_path: Path, brief: dict[str, object]
 ) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
     generated = generate_creator_system_from_brief(
         tmp_path / str(brief["domain_id"]),
         brief,
@@ -320,6 +365,8 @@ def test_generator_acceptance_covers_multiple_spark_useful_domain_families(
 
     assert generated.smoke["verdict"] == "ready_for_swarm_packet"
     assert generated.smoke["evidence_tier"] == "candidate_review"
+    assert generated.smoke["evidence_mode"] == "saved"
+    assert generated.recompute_smoke["evidence_mode"] == "recomputed"
     assert generated.recompute_smoke["blocking_checks"] == []
 
     chip_manifest = json.loads(
@@ -344,6 +391,32 @@ def test_generator_acceptance_covers_multiple_spark_useful_domain_families(
     assert packet["evidence"]["tier"] == "candidate_review"
     assert packet["governance"]["network_publication_allowed"] is False
     assert brief["domain_family"] in packet["contribution"]["summary"]
+
+    mission_status = build_creator_mission_status(
+        mission_id=f"{brief['domain_id']}-generated",
+        smoke=generated.recompute_smoke,
+    )
+    schema = json.loads(CREATOR_MISSION_SCHEMA.read_text(encoding="utf-8"))
+    jsonschema.Draft202012Validator(schema).validate(mission_status)
+    assert mission_status["canonical"]["evidence_mode"] == "recomputed"
+    assert mission_status["publication"]["network_absorbable"] is False
+    assert mission_status["surface_adapters"]["builder"]["evidence_mode"] == (
+        "recomputed"
+    )
+    assert "Evidence mode: `recomputed`." in mission_status["surface_adapters"][
+        "telegram"
+    ]["text"]
+    assert any(
+        node.get("id") == "creator_mission"
+        and node.get("evidence_mode") == "recomputed"
+        for node in mission_status["surface_adapters"]["canvas"]["nodes"]
+    )
+    kanban_cards = [
+        card
+        for cards in mission_status["surface_adapters"]["kanban"]["columns"].values()
+        for card in cards
+    ]
+    assert kanban_cards[0]["evidence_mode"] == "recomputed"
 
     if brief["domain_id"] == "mirofish-content-simulation":
         simulator_result = packet["evidence"]["simulator_or_arena_result"]
