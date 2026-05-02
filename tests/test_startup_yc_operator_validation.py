@@ -9,6 +9,7 @@ from chip_labs.startup_yc_promotion import (
     check_startup_yc_heldout_validation,
     check_startup_yc_multi_seed_validation,
     check_startup_yc_promotion_gates,
+    check_startup_yc_review_gates,
 )
 
 
@@ -267,6 +268,117 @@ def test_startup_yc_heldout_check_blocks_failed_claim_rejection(
     ]
 
 
+def test_startup_yc_review_gates_check_blocks_without_evidence() -> None:
+    result = check_startup_yc_review_gates(FIXTURE_DIR / "validation_plan.json")
+
+    assert result["schema_version"] == (
+        "adaptive_creator_loop.startup_yc_review_gates_check.v1"
+    )
+    assert result["verdict"] == "blocked"
+    assert result["gate_passed"] is False
+    assert result["network_absorbable"] is False
+    assert set(result["missing_gates"]) == {
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval",
+    }
+    assert "missing_evidence_path:review_gate_evidence_path" in result[
+        "blocking_checks"
+    ]
+
+
+def test_startup_yc_review_gates_check_passes_only_review_gates(
+    tmp_path: Path,
+) -> None:
+    evidence_path = tmp_path / "review_gate_evidence.json"
+    evidence_path.write_text(
+        json.dumps(
+            {
+                "gates": {
+                    "human_operator_calibration": {
+                        "passed": True,
+                        "reviewer": "operator",
+                        "evidence_ref": "calibration-review-1",
+                        "calibration_notes": "Reviewed held-out advice quality.",
+                    },
+                    "privacy_review": {
+                        "passed": True,
+                        "reviewer": "operator",
+                        "evidence_ref": "privacy-review-1",
+                        "privacy_lane_decision": "No private founder details leave local lane.",
+                    },
+                    "rollback_review": {
+                        "passed": True,
+                        "reviewer": "operator",
+                        "evidence_ref": "rollback-review-1",
+                        "rollback_rule": "Revoke promotion on stale or negative evidence.",
+                    },
+                    "publication_approval": {
+                        "passed": True,
+                        "reviewer": "operator",
+                        "evidence_ref": "publication-review-1",
+                        "publication_decision": "Approved for network_absorbable only after all gates pass.",
+                        "approved_claim": "network_absorbable",
+                        "network_publication_allowed": True,
+                    },
+                }
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    result = check_startup_yc_review_gates(
+        FIXTURE_DIR / "validation_plan.json",
+        evidence_path=evidence_path,
+    )
+
+    assert result["verdict"] == "passed"
+    assert result["gate_passed"] is True
+    assert result["network_absorbable"] is False
+    assert result["blocking_checks"] == []
+    assert all(result["gate_status"].values())
+
+
+def test_startup_yc_review_gates_check_blocks_unsafe_publication(
+    tmp_path: Path,
+) -> None:
+    evidence_path = tmp_path / "review_gate_evidence.json"
+    evidence_path.write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "gate": "publication_approval",
+                        "passed": True,
+                        "reviewer": "operator",
+                        "evidence_ref": "publication-review-1",
+                        "publication_decision": "Do not publish.",
+                        "approved_claim": "transfer_supported",
+                        "network_publication_allowed": False,
+                    }
+                ]
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    result = check_startup_yc_review_gates(
+        FIXTURE_DIR / "validation_plan.json",
+        evidence_path=evidence_path,
+    )
+
+    assert result["verdict"] == "blocked"
+    assert "gate_failure:publication_approval:network_publication_not_allowed" in result[
+        "blocking_checks"
+    ]
+    assert "gate_failure:publication_approval:approved_claim_missing" in result[
+        "blocking_checks"
+    ]
+
+
 def test_cli_startup_yc_promotion_gate_check_fails_on_blocked(
     tmp_path: Path,
 ) -> None:
@@ -332,6 +444,33 @@ def test_cli_startup_yc_heldout_check_fails_on_blocked(tmp_path: Path) -> None:
             "-m",
             "chip_labs.cli",
             "startup-yc-heldout-check",
+            "--validation-plan",
+            str(FIXTURE_DIR / "validation_plan.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "blocked"
+    assert payload["network_absorbable"] is False
+
+
+def test_cli_startup_yc_review_gates_check_fails_on_blocked(tmp_path: Path) -> None:
+    output_path = tmp_path / "startup-yc-review-gates.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-review-gates-check",
             "--validation-plan",
             str(FIXTURE_DIR / "validation_plan.json"),
             "--output",

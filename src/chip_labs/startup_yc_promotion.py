@@ -15,6 +15,14 @@ from typing import Any
 SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_promotion_gate_check.v1"
 MULTI_SEED_SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_multi_seed_check.v1"
 HELDOUT_SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_heldout_check.v1"
+REVIEW_GATES_SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_review_gates_check.v1"
+
+_REVIEW_GATE_REQUIREMENTS = {
+    "human_operator_calibration": ("reviewer", "evidence_ref", "calibration_notes"),
+    "privacy_review": ("reviewer", "evidence_ref", "privacy_lane_decision"),
+    "rollback_review": ("reviewer", "evidence_ref", "rollback_rule"),
+    "publication_approval": ("reviewer", "evidence_ref", "publication_decision"),
+}
 
 
 def check_startup_yc_promotion_gates(
@@ -240,6 +248,73 @@ def check_startup_yc_heldout_validation(
     }
 
 
+def check_startup_yc_review_gates(
+    validation_plan_path: str | Path,
+    *,
+    evidence_path: str | Path | None = None,
+) -> dict[str, Any]:
+    """Check human review gates without granting network absorption."""
+
+    plan_path = Path(validation_plan_path)
+    plan = _load_json(plan_path)
+    required_gates = [
+        gate
+        for gate in _list_str(plan.get("required_promotion_gates"))
+        if gate in _REVIEW_GATE_REQUIREMENTS
+    ]
+    evidence_reference = (
+        str(evidence_path) if evidence_path else plan.get("review_gate_evidence_path")
+    )
+    evidence_present = False
+    evidence_rows: list[dict[str, Any]] = []
+    evidence_display_path = (
+        evidence_reference if isinstance(evidence_reference, str) else None
+    )
+    blocking_checks: list[str] = []
+
+    if not isinstance(evidence_reference, str) or not evidence_reference.strip():
+        blocking_checks.append("missing_evidence_path:review_gate_evidence_path")
+    else:
+        evidence_file = _resolve_related_path(plan_path, evidence_reference)
+        evidence_present = evidence_file.exists()
+        if not evidence_present:
+            blocking_checks.append(f"missing_evidence:{evidence_reference}")
+        else:
+            evidence_rows = _load_review_gate_rows(evidence_file)
+
+    gate_failures, gate_status = _evaluate_review_gate_rows(
+        required_gates,
+        evidence_rows,
+    )
+    blocking_checks.extend(
+        f"gate_failure:{failure['gate']}:{failure['reason']}"
+        for failure in gate_failures
+    )
+    blocking_checks = _dedupe(blocking_checks)
+    gate_passed = not blocking_checks and bool(required_gates)
+
+    return {
+        "schema_version": REVIEW_GATES_SCHEMA_VERSION,
+        "plan_path": str(plan_path),
+        "plan_id": plan.get("plan_id"),
+        "domain": plan.get("domain"),
+        "current_claim": plan.get("current_claim"),
+        "evidence_path": evidence_display_path,
+        "evidence_present": evidence_present,
+        "required_gates": required_gates,
+        "gate_status": gate_status,
+        "missing_gates": [
+            gate for gate in required_gates if gate_status.get(gate) is not True
+        ],
+        "gate_failures": gate_failures,
+        "verdict": "passed" if gate_passed else "blocked",
+        "gate_passed": gate_passed,
+        "network_absorbable": False,
+        "blocking_checks": blocking_checks,
+        "next_actions": _review_gates_next_actions(gate_passed=gate_passed),
+    }
+
+
 def _evidence_paths(plan_path: Path, plan: dict[str, Any]) -> list[dict[str, Any]]:
     base = plan_path.parent
     path_fields = (
@@ -286,6 +361,27 @@ def _load_rows(path: Path) -> list[dict[str, Any]]:
 
 def _load_multi_seed_rows(path: Path) -> list[dict[str, Any]]:
     return _load_rows(path)
+
+
+def _load_review_gate_rows(path: Path) -> list[dict[str, Any]]:
+    if path.suffix == ".jsonl":
+        return _load_rows(path)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(data, dict) and isinstance(data.get("gates"), dict):
+        return [
+            {"gate": gate, **details}
+            for gate, details in data["gates"].items()
+            if isinstance(details, dict)
+        ]
+    if isinstance(data, dict) and isinstance(data.get("rows"), list):
+        rows = data["rows"]
+    else:
+        rows = data
+    if not isinstance(rows, list):
+        raise ValueError(f"{path} must contain review rows or a gates object")
+    if not all(isinstance(row, dict) for row in rows):
+        raise ValueError(f"{path} rows must be JSON objects")
+    return rows
 
 
 _HELDOUT_PASS_FIELDS = (
@@ -341,6 +437,48 @@ def _evaluate_heldout_rows(
             failures.append({"case_id": case_id, "reason": "unknown_case"})
 
     return failures
+
+
+def _evaluate_review_gate_rows(
+    required_gates: list[str],
+    evidence_rows: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], dict[str, bool]]:
+    failures: list[dict[str, Any]] = []
+    gate_status = {gate: False for gate in required_gates}
+    required_gate_set = set(required_gates)
+    rows_by_gate = {
+        str(row.get("gate")): row
+        for row in evidence_rows
+        if isinstance(row.get("gate"), str)
+    }
+
+    for gate in required_gates:
+        row = rows_by_gate.get(gate)
+        if row is None:
+            failures.append({"gate": gate, "reason": "missing_evidence"})
+            continue
+        row_reasons: list[str] = []
+        if row.get("passed") is not True:
+            row_reasons.append("passed_flag_missing")
+        for field in _REVIEW_GATE_REQUIREMENTS[gate]:
+            if not isinstance(row.get(field), str) or not row.get(field, "").strip():
+                row_reasons.append(f"{field}_missing")
+        if gate == "publication_approval":
+            if row.get("network_publication_allowed") is not True:
+                row_reasons.append("network_publication_not_allowed")
+            if row.get("approved_claim") != "network_absorbable":
+                row_reasons.append("approved_claim_missing")
+        if row_reasons:
+            failures.extend({"gate": gate, "reason": reason} for reason in row_reasons)
+        else:
+            gate_status[gate] = True
+
+    for row in evidence_rows:
+        gate = str(row.get("gate") or "unknown")
+        if gate not in required_gate_set:
+            failures.append({"gate": gate, "reason": "unknown_gate"})
+
+    return failures, gate_status
 
 
 def _evaluate_multi_seed_rows(
@@ -436,6 +574,19 @@ def _heldout_next_actions(*, gate_passed: bool) -> list[str]:
         "Evaluate every held-out founder-advice case before promotion.",
         "Each case needs explicit pass flags for operator moves, rejected claims, success gate, and privacy lane.",
         "Keep Startup YC at transfer_supported while held-out evidence is absent or incomplete.",
+    ]
+
+
+def _review_gates_next_actions(*, gate_passed: bool) -> list[str]:
+    if gate_passed:
+        return [
+            "Record this as human review gate evidence only.",
+            "Keep Startup YC below network_absorbable until promotion-gate status explicitly records every required gate as passed.",
+        ]
+    return [
+        "Collect structured evidence for human/operator calibration, privacy review, rollback review, and publication approval.",
+        "Publication approval must explicitly name network_absorbable and set network_publication_allowed=true.",
+        "Keep Startup YC at transfer_supported while review evidence is absent or incomplete.",
     ]
 
 

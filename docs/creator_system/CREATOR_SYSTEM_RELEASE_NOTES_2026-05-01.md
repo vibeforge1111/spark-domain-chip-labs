@@ -75,6 +75,9 @@
 - `startup-yc-heldout-check` now makes the held-out founder-advice gate
   executable: every held-out case needs evaluated response evidence for
   operator moves, rejected claims, success gate, and privacy lane.
+- `startup-yc-review-gates-check` now makes the remaining human review gates
+  executable: operator calibration, privacy review, rollback review, and
+  publication approval require structured evidence before final promotion.
 
 ## Current Claim Boundary
 

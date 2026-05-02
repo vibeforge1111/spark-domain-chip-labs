@@ -1263,6 +1263,19 @@ def cmd_startup_yc_heldout_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_startup_yc_review_gates_check(args: argparse.Namespace) -> None:
+    """Check Startup YC human review gate evidence."""
+    from .startup_yc_promotion import check_startup_yc_review_gates
+
+    result = check_startup_yc_review_gates(
+        args.validation_plan,
+        evidence_path=args.evidence,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -2277,6 +2290,35 @@ def main() -> None:
         help="Exit with status 1 when held-out evidence is blocked.",
     )
     p_startup_yc_heldout_check.set_defaults(func=cmd_startup_yc_heldout_check)
+
+    # startup-yc-review-gates-check
+    p_startup_yc_review_gates_check = sub.add_parser(
+        "startup-yc-review-gates-check",
+        help="Check Startup YC human review gate evidence.",
+    )
+    p_startup_yc_review_gates_check.add_argument(
+        "--validation-plan",
+        type=str,
+        required=True,
+        help="Startup YC validation_plan.json path.",
+    )
+    p_startup_yc_review_gates_check.add_argument(
+        "--evidence",
+        type=str,
+        default=None,
+        help="Optional review gate evidence JSON or JSONL path.",
+    )
+    p_startup_yc_review_gates_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_startup_yc_review_gates_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when review gate evidence is blocked.",
+    )
+    p_startup_yc_review_gates_check.set_defaults(
+        func=cmd_startup_yc_review_gates_check
+    )
 
     args = parser.parse_args()
     args.func(args)

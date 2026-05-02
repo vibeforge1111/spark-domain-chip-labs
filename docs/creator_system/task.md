@@ -274,6 +274,8 @@ Deliverables:
   false.
 - [x] Executable Startup YC held-out founder-advice checker that blocks absent
   or failed case evidence while keeping `network_absorbable` false.
+- [x] Executable Startup YC review-gates checker for human/operator
+  calibration, privacy review, rollback review, and publication approval.
 
 Phase gate:
 
@@ -523,6 +525,9 @@ Completed documentation/verification:
 - `startup-yc-heldout-check` now enforces one evaluated response row per
   held-out founder-advice case, including operator moves, rejected claims,
   success gate, and privacy-lane pass flags.
+- `startup-yc-review-gates-check` now enforces structured human/operator,
+  privacy, rollback, and publication approval evidence while keeping final
+  promotion separate from the individual review-gate check.
 
 Completed product PR verification:
 

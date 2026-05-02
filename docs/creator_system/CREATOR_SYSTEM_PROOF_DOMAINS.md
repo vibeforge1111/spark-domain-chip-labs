@@ -421,6 +421,11 @@ Current validation pack:
   evidence. It requires one evaluated response row per held-out case and blocks
   if operator moves, rejected claims, success gate, or privacy lane evidence is
   absent or failed.
+- `startup-yc-review-gates-check`: executable check for human/operator
+  calibration, privacy review, rollback review, and publication approval. It
+  blocks missing review evidence and requires publication evidence to
+  explicitly approve `network_absorbable` while still keeping the checker output
+  below network absorption.
 
 Next real adapters:
 
