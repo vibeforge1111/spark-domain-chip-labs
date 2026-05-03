@@ -1,0 +1,58 @@
+{
+  "command": "python -m chip_labs.cli mirofish-content-multi-seed --task \"Pick the best title\" --candidate \"7 benchmark mistakes that make AI demos look better than they are\" --candidate \"Generic AI content tips for busy creators\" --candidate \"How to prove an agent workflow actually improved before you ship it\" --seed 1 --seed 2 --seed 3 --fail-on-blocked",
+  "exit_code": 0,
+  "expected_postconditions": {
+    "verdict": "candidate_review",
+    "blocking_checks_empty": true,
+    "calibration_verdict": "pass",
+    "network_absorbable": false,
+    "minimum_seed_count": 3,
+    "stable_top_candidate_required": true
+  },
+  "result": {
+    "packet_kind": "mirofish_content_multi_seed_result",
+    "verdict": "candidate_review",
+    "calibration_verdict": "pass",
+    "claim_boundary": "candidate_review local simulator protocol only",
+    "seed_count": 3,
+    "seeds": [1, 2, 3],
+    "stability_threshold": 1.0,
+    "top_candidate_counts": {
+      "candidate-1": 3
+    },
+    "stable_top_candidate_ids": ["candidate-1"],
+    "seed_results": [
+      {
+        "seed": 1,
+        "verdict": "ranked",
+        "calibration_verdict": "pass",
+        "top_candidate_id": "candidate-1",
+        "row_count": 36,
+        "blocking_checks": []
+      },
+      {
+        "seed": 2,
+        "verdict": "ranked",
+        "calibration_verdict": "pass",
+        "top_candidate_id": "candidate-1",
+        "row_count": 36,
+        "blocking_checks": []
+      },
+      {
+        "seed": 3,
+        "verdict": "ranked",
+        "calibration_verdict": "pass",
+        "top_candidate_id": "candidate-1",
+        "row_count": 36,
+        "blocking_checks": []
+      }
+    ],
+    "blocking_checks": [],
+    "network_absorbable": false,
+    "requires_before_transfer": [
+      "human/operator calibration",
+      "privacy and publication review",
+      "comparison against actual content outcomes"
+    ]
+  }
+}

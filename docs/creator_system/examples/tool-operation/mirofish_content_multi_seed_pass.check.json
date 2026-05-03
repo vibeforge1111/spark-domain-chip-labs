@@ -1,0 +1,104 @@
+{
+  "schema_version": "tool_operation.check_result.v1",
+  "operation_key": "mirofish-content-multi-seed",
+  "verdict": "pass",
+  "allowed": true,
+  "claim_boundary": "tool_operation local postcondition check only",
+  "checks": [
+    {
+      "name": "command_present",
+      "status": "pass",
+      "message": "Command is present."
+    },
+    {
+      "name": "protected_command",
+      "status": "pass",
+      "message": "Command is allowed by the local manifest."
+    },
+    {
+      "name": "secret_boundary",
+      "status": "pass",
+      "message": "No secret/token handling request detected."
+    },
+    {
+      "name": "operation_supported",
+      "status": "pass",
+      "message": "Operation `mirofish-content-multi-seed` is supported."
+    },
+    {
+      "name": "parsed_result",
+      "status": "pass",
+      "message": "Parsed JSON result is present."
+    },
+    {
+      "name": "packet_kind",
+      "status": "pass",
+      "message": "mirofish-content-multi-seed result has expected packet kind."
+    },
+    {
+      "name": "required_fields",
+      "status": "pass",
+      "message": "Required result fields are present."
+    },
+    {
+      "name": "success_value",
+      "status": "pass",
+      "message": "verdict is an allowed success value."
+    },
+    {
+      "name": "expected_postconditions_present",
+      "status": "pass",
+      "message": "Expected postconditions are declared."
+    },
+    {
+      "name": "expected_verdict",
+      "status": "pass",
+      "message": "Result verdict matches expected `candidate_review`."
+    },
+    {
+      "name": "expected_no_blocking_checks",
+      "status": "pass",
+      "message": "Result has no blocking checks."
+    },
+    {
+      "name": "expected_calibration_verdict",
+      "status": "pass",
+      "message": "calibration_verdict matches expected `pass`."
+    },
+    {
+      "name": "expected_network_absorbable",
+      "status": "pass",
+      "message": "network_absorbable matches expected `False`."
+    },
+    {
+      "name": "expected_minimum_seed_count",
+      "status": "pass",
+      "message": "seed_count is at least expected `3`."
+    },
+    {
+      "name": "expected_stable_top_candidate",
+      "status": "pass",
+      "message": "Stable top candidate is present."
+    },
+    {
+      "name": "rollback_note",
+      "status": "pass",
+      "message": "Rollback note is present when required."
+    }
+  ],
+  "blocking_checks": [],
+  "rollback_note": "",
+  "rollback_report": {
+    "required": false,
+    "provided": false,
+    "note": "",
+    "operation_key": "mirofish-content-multi-seed",
+    "blocked_state_update": false,
+    "blocking_checks": [],
+    "result_verdict": "candidate_review",
+    "recommendation": "Mission trace may record this operation result."
+  },
+  "next_actions": [
+    "Record the parsed result and postcondition check with the mission trace."
+  ]
+}

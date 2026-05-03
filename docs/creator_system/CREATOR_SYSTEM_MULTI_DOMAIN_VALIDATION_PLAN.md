@@ -48,7 +48,7 @@ Current maturity by domain:
 | Domain family | Generated benchmark pack | Domain-specific benchmark depth | Next benchmark upgrade |
 | --- | --- | --- | --- |
 | Artifact quality | Yes: cases, traps, recompute reports | Good local fixture set for strong, weak, and polished-but-unproven docs | Add more PR/design-doc genres and reviewer calibration rows |
-| Tool operation | Yes: safe command, rollback, token trap | Good local operation packets for dry-run, postconditions, stale recompute, missing artifacts, and secret handling | Add more real command families and postcondition adapters |
+| Tool operation | Yes: safe command, rollback, token trap | Good local operation packets for dry-run, postconditions, stale recompute, missing artifacts, secret handling, and MiroFish content multi-seed commands | Add more real command families and postcondition adapters |
 | Content simulation | Yes: title/angle cases and simulator metadata | Local MiroFish simulation and route examples exist, but real outcome calibration is not done | Add multi-seed simulator batches and compare against actual content outcomes |
 | Doctor/security | Yes: fake evidence, repair specificity, unsafe promotion trap | Good stale/malicious fixture coverage and doctor quarantine proof | Add adversarial packet mutations across every schema family |
 | Startup operator | Yes: generated founder-advice benchmark cases | Strongest curated reference fixture plus Startup YC gate checks and external recompute comparisons | Add real multi-seed evaluated founder-advice evidence before stronger claims |
@@ -87,6 +87,9 @@ successful parsed operations. A command result can no longer pass only because
 the parsed packet looks successful; it must also declare the intended verdict,
 blocking-check, missing-path, or automation state expectations that mission
 control is allowed to trust.
+It now also supports `mirofish-content-multi-seed` command packets with
+postconditions for `calibration_verdict`, `network_absorbable=false`, minimum
+seed count, and stable top-candidate evidence.
 
 The doctor/security layer now emits `repair_calibration` in doctor results. It
 checks that blocking smoke checks are covered by specific repair steps or

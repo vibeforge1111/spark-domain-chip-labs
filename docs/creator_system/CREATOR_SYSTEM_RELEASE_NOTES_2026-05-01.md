@@ -262,6 +262,10 @@
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.
+- Tool-operation checks now support `mirofish-content-multi-seed` packets and
+  verify calibration verdict, minimum seed count, stable top-candidate evidence,
+  and `network_absorbable=false` before mission-control state can trust the
+  result.
 - `creator-run-doctor` now emits `repair_calibration`, which verifies that
   blocking smoke checks are covered by specific repair steps or quarantine
   findings and that blocked runs require recompute replay before repair advice
@@ -301,4 +305,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `168 passed`.
+Latest focused creator-system suite result before CI push: `170 passed`.

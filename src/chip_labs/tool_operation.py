@@ -45,6 +45,20 @@ SUPPORTED_OPERATIONS = {
         "success_field": "verdict",
         "success_values": ("review_ready", "needs_revision"),
     },
+    "mirofish-content-multi-seed": {
+        "fragments": ("mirofish-content-multi-seed",),
+        "packet_kind": "mirofish_content_multi_seed_result",
+        "required_fields": (
+            "verdict",
+            "calibration_verdict",
+            "seed_count",
+            "seed_results",
+            "blocking_checks",
+            "network_absorbable",
+        ),
+        "success_field": "verdict",
+        "success_values": ("candidate_review",),
+    },
 }
 
 PROTECTED_COMMAND_MARKERS = (
@@ -306,6 +320,48 @@ def _check_expected_postconditions(
             actual is expected["automation_blocked"],
             f"automation.blocked matches expected `{expected['automation_blocked']}`.",
             f"Expected automation.blocked `{expected['automation_blocked']}`; got `{actual}`.",
+        )
+    if "calibration_verdict" in expected:
+        actual = result.get("calibration_verdict")
+        _append_check(
+            checks,
+            "expected_calibration_verdict",
+            actual == expected["calibration_verdict"],
+            f"calibration_verdict matches expected `{expected['calibration_verdict']}`.",
+            (
+                f"Expected calibration_verdict `{expected['calibration_verdict']}`; "
+                f"got `{actual or 'missing'}`."
+            ),
+        )
+    if "network_absorbable" in expected:
+        actual = result.get("network_absorbable")
+        _append_check(
+            checks,
+            "expected_network_absorbable",
+            actual is expected["network_absorbable"],
+            f"network_absorbable matches expected `{expected['network_absorbable']}`.",
+            f"Expected network_absorbable `{expected['network_absorbable']}`; got `{actual}`.",
+        )
+    if "minimum_seed_count" in expected:
+        seed_count = _coerce_int(result.get("seed_count"))
+        minimum_seed_count = _coerce_int(expected.get("minimum_seed_count"))
+        _append_check(
+            checks,
+            "expected_minimum_seed_count",
+            seed_count is not None
+            and minimum_seed_count is not None
+            and seed_count >= minimum_seed_count,
+            f"seed_count is at least expected `{minimum_seed_count}`.",
+            f"Expected seed_count >= `{minimum_seed_count}`; got `{seed_count}`.",
+        )
+    if expected.get("stable_top_candidate_required") is True:
+        stable_candidates = result.get("stable_top_candidate_ids")
+        _append_check(
+            checks,
+            "expected_stable_top_candidate",
+            isinstance(stable_candidates, list) and bool(stable_candidates),
+            "Stable top candidate is present.",
+            "Expected at least one stable top candidate.",
         )
 
 

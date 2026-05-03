@@ -34,12 +34,40 @@ def _smoke_result(
     }
 
 
+def _content_multi_seed_result(
+    *,
+    seed_count: int = 3,
+    stable_top_candidate_ids: list[str] | None = None,
+) -> dict[str, object]:
+    stable = stable_top_candidate_ids if stable_top_candidate_ids is not None else ["candidate-1"]
+    return {
+        "packet_kind": "mirofish_content_multi_seed_result",
+        "verdict": "candidate_review",
+        "calibration_verdict": "pass",
+        "seed_count": seed_count,
+        "seed_results": [
+            {
+                "seed": seed,
+                "verdict": "ranked",
+                "calibration_verdict": "pass",
+                "top_candidate_id": stable[0] if stable else None,
+                "blocking_checks": [],
+            }
+            for seed in range(1, seed_count + 1)
+        ],
+        "blocking_checks": [],
+        "stable_top_candidate_ids": stable,
+        "network_absorbable": False,
+    }
+
+
 def test_tool_operation_manifest_lists_safe_creator_commands() -> None:
     manifest = default_tool_operation_manifest()
 
     assert manifest["schema_version"] == "tool_operation.manifest.v1"
     assert manifest["claim_boundary"] == CLAIM_BOUNDARY
     assert "creator-run-smoke" in manifest["supported_operations"]
+    assert "mirofish-content-multi-seed" in manifest["supported_operations"]
     assert "git push" in manifest["protected_command_markers"]
 
 
@@ -170,9 +198,57 @@ def test_tool_operation_check_blocks_missing_expected_postconditions() -> None:
     assert result["rollback_report"]["provided"] is True
 
 
+def test_tool_operation_check_passes_content_multi_seed_postconditions() -> None:
+    result = check_tool_operation({
+        "command": (
+            "python -m chip_labs.cli mirofish-content-multi-seed "
+            "--task title --candidate A --candidate B --seed 1 --seed 2 --seed 3"
+        ),
+        "exit_code": 0,
+        "expected_postconditions": {
+            "verdict": "candidate_review",
+            "blocking_checks_empty": True,
+            "calibration_verdict": "pass",
+            "network_absorbable": False,
+            "minimum_seed_count": 3,
+            "stable_top_candidate_required": True,
+        },
+        "result": _content_multi_seed_result(),
+    })
+
+    assert result["verdict"] == "pass"
+    assert result["operation_key"] == "mirofish-content-multi-seed"
+    assert result["blocking_checks"] == []
+
+
+def test_tool_operation_check_blocks_unstable_content_multi_seed() -> None:
+    result = check_tool_operation({
+        "command": (
+            "python -m chip_labs.cli mirofish-content-multi-seed "
+            "--task title --candidate A --candidate B --seed 1"
+        ),
+        "exit_code": 0,
+        "expected_postconditions": {
+            "verdict": "candidate_review",
+            "blocking_checks_empty": True,
+            "calibration_verdict": "pass",
+            "network_absorbable": False,
+            "minimum_seed_count": 3,
+            "stable_top_candidate_required": True,
+        },
+        "result": _content_multi_seed_result(seed_count=1, stable_top_candidate_ids=[]),
+        "rollback_note": "Do not update mission state until seeded content simulation is stable.",
+    })
+
+    assert result["verdict"] == "blocked"
+    assert "expected_minimum_seed_count" in result["blocking_checks"]
+    assert "expected_stable_top_candidate" in result["blocking_checks"]
+
+
 def test_tool_operation_replay_fixtures_are_executable() -> None:
     expected_blockers = {
         "creator_run_smoke_pass.json": set(),
+        "mirofish_content_multi_seed_pass.json": set(),
         "blocked_smoke_with_rollback.json": {"success_value"},
         "stale_evidence_recompute.json": {"success_value"},
         "missing_artifacts_expected_swarm.json": {

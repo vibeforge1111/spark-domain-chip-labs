@@ -727,6 +727,9 @@ Completed documentation/verification:
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`, so mission-control state updates cannot rely on
   stdout or plausible success packets alone.
+- Tool-operation checks now support `mirofish-content-multi-seed` command
+  packets with calibration verdict, minimum seed count, stable top-candidate,
+  and `network_absorbable=false` postconditions.
 - `creator-run-doctor` now emits `repair_calibration` to prove every blocking
   smoke check is tied to repair or quarantine guidance and blocked runs require
   recompute replay.
