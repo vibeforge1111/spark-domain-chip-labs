@@ -295,6 +295,9 @@ def check_startup_yc_heldout_validation(
         for row in evidence_rows
         if isinstance(row.get("case_id"), str)
         and all(row.get(field) is True for field in _HELDOUT_PASS_FIELDS)
+        and not any(
+            failure["case_id"] == row.get("case_id") for failure in case_failures
+        )
     }
     required_case_ids = [str(case.get("case_id")) for case in cases]
     gate_passed = not blocking_checks and bool(required_case_ids)
@@ -626,6 +629,7 @@ def _evaluate_heldout_rows(
     failures: list[dict[str, Any]] = []
     required_case_ids = [str(case.get("case_id")) for case in cases]
     required_case_id_set = set(required_case_ids)
+    cases_by_id = {str(case.get("case_id")): case for case in cases}
     evidence_by_case = {
         str(row.get("case_id")): row
         for row in evidence_rows
@@ -633,6 +637,7 @@ def _evaluate_heldout_rows(
     }
 
     for case_id in required_case_ids:
+        case = cases_by_id.get(case_id, {})
         row = evidence_by_case.get(case_id)
         if row is None:
             failures.append({"case_id": case_id, "reason": "missing_evidence"})
@@ -640,12 +645,42 @@ def _evaluate_heldout_rows(
         for field in _HELDOUT_PASS_FIELDS:
             if row.get(field) is not True:
                 failures.append({"case_id": case_id, "reason": f"{field}_failed"})
+        for reason in _heldout_case_contract_failures(case, row):
+            failures.append({"case_id": case_id, "reason": reason})
 
     for row in evidence_rows:
         case_id = str(row.get("case_id") or "unknown")
         if case_id not in required_case_id_set:
             failures.append({"case_id": case_id, "reason": "unknown_case"})
 
+    return failures
+
+
+def _heldout_case_contract_failures(
+    case: dict[str, Any],
+    row: dict[str, Any],
+) -> list[str]:
+    failures: list[str] = []
+    covered_moves = set(_list_str(row.get("covered_operator_moves")))
+    for move in _list_str(case.get("expected_operator_moves")):
+        if move not in covered_moves:
+            failures.append("expected_operator_move_missing")
+            break
+
+    avoided_claims = set(_list_str(row.get("avoided_reject_claims")))
+    for claim in _list_str(case.get("reject_claims")):
+        if claim not in avoided_claims:
+            failures.append("reject_claim_missing")
+            break
+
+    if row.get("observed_privacy_lane") != case.get("privacy_lane"):
+        failures.append("privacy_lane_mismatch")
+    if row.get("promotion_tier_ceiling") != case.get("promotion_tier_ceiling"):
+        failures.append("promotion_tier_ceiling_mismatch")
+    if not isinstance(row.get("advice_artifact_ref"), str) or not row[
+        "advice_artifact_ref"
+    ].strip():
+        failures.append("advice_artifact_ref_missing")
     return failures
 
 
@@ -932,6 +967,11 @@ def _validate_heldout_evidence_payload(payload: dict[str, Any]) -> list[str]:
         "reject_claims_avoided": bool,
         "success_gate_met": bool,
         "privacy_lane_respected": bool,
+        "covered_operator_moves": list,
+        "avoided_reject_claims": list,
+        "observed_privacy_lane": str,
+        "promotion_tier_ceiling": str,
+        "advice_artifact_ref": str,
     }
     return failures + _validate_row_fields(rows, required_fields)
 

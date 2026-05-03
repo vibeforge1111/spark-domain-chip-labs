@@ -58,7 +58,12 @@
               "operator_moves_covered",
               "reject_claims_avoided",
               "success_gate_met",
-              "privacy_lane_respected"
+              "privacy_lane_respected",
+              "covered_operator_moves",
+              "avoided_reject_claims",
+              "observed_privacy_lane",
+              "promotion_tier_ceiling",
+              "advice_artifact_ref"
             ],
             "properties": {
               "case_id": {"type": "string", "minLength": 1},
@@ -66,7 +71,18 @@
               "operator_moves_covered": {"type": "boolean"},
               "reject_claims_avoided": {"type": "boolean"},
               "success_gate_met": {"type": "boolean"},
-              "privacy_lane_respected": {"type": "boolean"}
+              "privacy_lane_respected": {"type": "boolean"},
+              "covered_operator_moves": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1}
+              },
+              "avoided_reject_claims": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1}
+              },
+              "observed_privacy_lane": {"type": "string", "minLength": 1},
+              "promotion_tier_ceiling": {"type": "string", "minLength": 1},
+              "advice_artifact_ref": {"type": "string", "minLength": 1}
             }
           }
         }

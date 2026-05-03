@@ -264,6 +264,9 @@
 - Retrieval-memory checks now emit `calibration_verdict` and block packets when
   `provenance.source_path` is not one of the exact `source_refs`, so coherent
   saved recall cannot hide a source-path mismatch.
+- Startup YC held-out founder-advice evidence now must list covered operator moves,
+  avoided rejected claims, observed privacy lane, promotion tier ceiling, and an
+  advice artifact reference. Boolean pass flags alone cannot pass.
 
 ## Current Claim Boundary
 
@@ -285,4 +288,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `163 passed`.
+Latest focused creator-system suite result before CI push: `164 passed`.

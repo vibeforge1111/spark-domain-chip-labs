@@ -95,6 +95,11 @@ entry's `provenance.source_path` to appear in its exact `source_refs`. A memory
 packet can no longer pass by citing plausible nearby documentation while
 recalling from a different saved source.
 
+The Startup YC held-out founder-advice checker now requires concrete case
+contracts: covered operator moves, avoided rejected claims, observed privacy
+lane, promotion tier ceiling, and an advice artifact reference. Boolean pass
+flags alone are not enough to pass the held-out gate.
+
 ## Phase 1: Multi-Domain Generator Matrix
 
 The first phase is the fast CI-safe matrix. It uses one representative generated

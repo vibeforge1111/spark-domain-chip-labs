@@ -723,6 +723,10 @@ Completed documentation/verification:
 - Retrieval-memory checks now emit `calibration_verdict` and require
   `provenance.source_path` to match one of the exact `source_refs`, blocking
   source-aware recall packets with mismatched provenance.
+- Startup YC held-out founder-advice evidence now requires concrete case
+  contracts: covered operator moves, avoided rejected claims, observed privacy
+  lane, promotion tier ceiling, and an advice artifact reference. Boolean pass
+  flags alone cannot pass the held-out gate.
 
 Completed product PR verification:
 

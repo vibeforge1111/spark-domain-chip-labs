@@ -282,6 +282,11 @@ def test_startup_yc_heldout_check_passes_only_the_heldout_gate(
             "reject_claims_avoided": True,
             "success_gate_met": True,
             "privacy_lane_respected": True,
+            "covered_operator_moves": case["expected_operator_moves"],
+            "avoided_reject_claims": case["reject_claims"],
+            "observed_privacy_lane": case["privacy_lane"],
+            "promotion_tier_ceiling": case["promotion_tier_ceiling"],
+            "advice_artifact_ref": f"heldout-advice/{case['case_id']}.md",
         }
         for case in cases
     ]
@@ -337,6 +342,44 @@ def test_startup_yc_heldout_check_blocks_failed_claim_rejection(
     assert "case_failure:vanity-growth-trap:reject_claims_avoided_failed" in result[
         "blocking_checks"
     ]
+
+
+def test_startup_yc_heldout_check_requires_concrete_case_contract(
+    tmp_path: Path,
+) -> None:
+    plan = _load_plan()
+    cases = _load_jsonl(FIXTURE_DIR / plan["held_out_cases_path"])
+    rows = [
+        {
+            "case_id": case["case_id"],
+            "passed": True,
+            "operator_moves_covered": True,
+            "reject_claims_avoided": True,
+            "success_gate_met": True,
+            "privacy_lane_respected": True,
+        }
+        for case in cases
+    ]
+    evidence_path = tmp_path / "heldout_evidence.json"
+    evidence_path.write_text(json.dumps({"rows": rows}, indent=2), encoding="utf-8")
+
+    result = check_startup_yc_heldout_validation(
+        FIXTURE_DIR / "validation_plan.json",
+        evidence_path=evidence_path,
+    )
+
+    assert result["verdict"] == "blocked"
+    assert result["gate_passed"] is False
+    assert result["passed_case_count"] == 0
+    assert "case_failure:urgent-pain-or-politeness:expected_operator_move_missing" in (
+        result["blocking_checks"]
+    )
+    assert "case_failure:urgent-pain-or-politeness:reject_claim_missing" in result[
+        "blocking_checks"
+    ]
+    assert "case_failure:urgent-pain-or-politeness:advice_artifact_ref_missing" in (
+        result["blocking_checks"]
+    )
 
 
 def test_startup_yc_review_gates_check_blocks_without_evidence() -> None:
@@ -1509,6 +1552,11 @@ def _write_raw_validation_evidence(tmp_path: Path) -> tuple[Path, Path, Path]:
                         "reject_claims_avoided": True,
                         "success_gate_met": True,
                         "privacy_lane_respected": True,
+                        "covered_operator_moves": case["expected_operator_moves"],
+                        "avoided_reject_claims": case["reject_claims"],
+                        "observed_privacy_lane": case["privacy_lane"],
+                        "promotion_tier_ceiling": case["promotion_tier_ceiling"],
+                        "advice_artifact_ref": f"heldout-advice/{case['case_id']}.md",
                     }
                     for case in cases
                 ]
