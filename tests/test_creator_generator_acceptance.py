@@ -336,6 +336,7 @@ def test_generator_acceptance_flow_creates_swarm_ready_run_in_clean_workspace(
         "reports/baseline.json",
         "reports/candidate.json",
         "reports/absorption_summary.json",
+        "reports/operator_review_packet.json",
         "swarm/contribution_packet.json",
     ]
     for relative_path in expected_paths:
@@ -415,6 +416,14 @@ def test_generator_acceptance_covers_multiple_spark_useful_domain_families(
     assert packet["evidence"]["tier"] == "candidate_review"
     assert packet["governance"]["network_publication_allowed"] is False
     assert brief["domain_family"] in packet["contribution"]["summary"]
+    operator_review = json.loads(
+        (generated.run_dir / "reports" / "operator_review_packet.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert operator_review["network_absorbable"] is False
+    assert operator_review["gate_status"]["publication_approval"] is False
+    assert "network_absorbable" in operator_review["forbidden_claims"]
 
     cases = [
         json.loads(line)

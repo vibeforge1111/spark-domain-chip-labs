@@ -218,6 +218,13 @@
   multi-seed summaries into read-only Builder, Telegram, Spawner, Canvas, and
   Kanban views, including row counts, failed seed IDs, hidden-failure status,
   and the explicit `network_absorbable=false` boundary.
+- Generated runs now emit `reports/operator_review_packet.json`, and
+  `operator-review-check` blocks incomplete or unsafe human/operator
+  calibration, privacy, rollback, and publication review evidence while keeping
+  `network_absorbable=false`.
+- `operator-review-packet.schema.json` and `operator-review-check.schema.json`
+  now anchor the generic Phase 5 generated-domain review packet and check
+  shapes.
 - Creator-system CI now writes the strict Startup YC smoke packet and validates
   it against `smoke-result.schema.json`, including the saved evidence-mode
   boundary.
@@ -242,4 +249,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `150 passed`.
+Latest focused creator-system suite result before CI push: `155 passed`.

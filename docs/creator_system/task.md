@@ -681,6 +681,14 @@ Completed documentation/verification:
   multi-seed summary evidence into Builder, Telegram, Spawner, Canvas, and
   Kanban read-only views without giving product surfaces mutation or
   publication authority.
+- Generated creator runs now emit `reports/operator_review_packet.json` as an
+  open Phase 5 human/operator review packet with calibration, privacy,
+  rollback, publication, known-limit, and forbidden-claim fields.
+- `operator-review-check` blocks incomplete or unsafe generic review packets
+  and keeps `network_absorbable=false` even when a review packet is otherwise
+  complete, because review evidence alone is not the full promotion bundle.
+- `operator-review-packet.schema.json` and `operator-review-check.schema.json`
+  now anchor the generic generated-domain review packet and check shapes.
 
 Completed product PR verification:
 

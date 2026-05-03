@@ -207,6 +207,16 @@ Each domain needs:
 - known limits
 - forbidden claims
 
+Current executable status:
+
+- Generated runs now emit `reports/operator_review_packet.json` with open
+  human/operator calibration, privacy, rollback, and publication gates.
+- `operator-review-check` blocks incomplete or unsafe review packets and keeps
+  `network_absorbable` false even when review gates are otherwise complete.
+- `operator-review-packet.schema.json` and
+  `operator-review-check.schema.json` anchor the generic generated-domain
+  review packet and check shapes.
+
 Success criteria:
 
 - Every stronger claim has a missing gate unless explicitly reviewed.

@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from .creator_run import init_creator_run, load_json, validate_creator_run, write_json
+from .operator_review import build_operator_review_packet
 
 
 @dataclass(frozen=True)
@@ -227,6 +228,7 @@ def generate_creator_system_from_brief(
     create_autoloop_policy(run_dir, brief)
     autoloop_simulation = run_keep_revert_simulation(run_dir)
     create_swarm_contribution_packet_from_reports(run_dir, brief)
+    create_operator_review_packet(run_dir, brief)
 
     smoke = validate_creator_run(run_dir).to_dict()
     recompute_smoke = validate_creator_run(run_dir, recompute=True).to_dict()
@@ -631,6 +633,31 @@ def create_swarm_contribution_packet_from_reports(
     _write_evidence_ladder(run_path, brief, candidate)
     _update_adapter_map(run_path, brief, evidence_tier="candidate_review")
     _mark_artifacts(run_path, evidence_tier="candidate_review", report_status="validated")
+    return packet
+
+
+def create_operator_review_packet(run_dir: str | Path, brief: dict[str, Any]) -> dict[str, Any]:
+    """Create the open human/operator review packet for a generated run."""
+
+    run_path = Path(run_dir)
+    intent = load_json(run_path / "creator-intent.json")
+    packet = build_operator_review_packet(
+        review_id=f"operator-review-{_slugify(str(brief['domain_name']))}",
+        creator_run_id=str(intent["run_id"]),
+        domain=str(brief["domain_name"]),
+        evidence_tier="candidate_review",
+        known_limits=[
+            "Generated acceptance evidence is not domain mastery.",
+            "No network publication approval has been recorded.",
+            *_list_str(brief.get("known_limits")),
+        ],
+        forbidden_claims=[
+            "network_absorbable",
+            "standard_update",
+            *_list_str(brief.get("unsafe_claims")),
+        ],
+    )
+    write_json(run_path / "reports" / "operator_review_packet.json", packet)
     return packet
 
 

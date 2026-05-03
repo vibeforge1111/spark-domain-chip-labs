@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/operator-review-packet.schema.json",
+  "title": "Adaptive Creator Loop Operator Review Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_id",
+    "creator_run_id",
+    "domain",
+    "requested_claim",
+    "evidence_tier",
+    "network_absorbable",
+    "gate_status",
+    "gates",
+    "known_limits",
+    "forbidden_claims",
+    "claim_boundary",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.operator_review_packet.v1"
+    },
+    "review_id": {"type": "string", "minLength": 1},
+    "creator_run_id": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
+    "requested_claim": {"type": "string", "minLength": 1},
+    "evidence_tier": {
+      "enum": ["candidate_review", "transfer_supported", "network_absorbable"]
+    },
+    "network_absorbable": {"const": false},
+    "gate_status": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"},
+      "required": [
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval"
+      ]
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval"
+      ],
+      "properties": {
+        "human_operator_calibration": {"$ref": "#/$defs/reviewGate"},
+        "privacy_review": {"$ref": "#/$defs/reviewGate"},
+        "rollback_review": {"$ref": "#/$defs/reviewGate"},
+        "publication_approval": {"$ref": "#/$defs/reviewGate"}
+      }
+    },
+    "known_limits": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "forbidden_claims": {
+      "type": "array",
+      "contains": {"const": "network_absorbable"},
+      "items": {"type": "string"}
+    },
+    "claim_boundary": {"type": "string", "minLength": 1},
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "$defs": {
+    "reviewGate": {
+      "type": "object",
+      "required": ["status", "reviewer", "evidence_ref"],
+      "properties": {
+        "status": {"enum": ["missing", "passed", "failed"]},
+        "reviewer": {"type": ["string", "null"]},
+        "evidence_ref": {"type": ["string", "null"]},
+        "calibration_notes": {"type": "string"},
+        "privacy_boundary": {"type": "string"},
+        "privacy_decision": {"type": "string"},
+        "rollback_rule": {"type": "string"},
+        "approved_claim": {"type": ["string", "null"]},
+        "network_publication_allowed": {"type": "boolean"},
+        "publication_decision": {"type": "string"}
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/operator-review-check.schema.json",
+  "title": "Adaptive Creator Loop Operator Review Check",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_id",
+    "creator_run_id",
+    "domain",
+    "requested_claim",
+    "verdict",
+    "gate_status",
+    "missing_gates",
+    "blocking_checks",
+    "network_absorbable",
+    "claim_boundary",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.operator_review_check.v1"
+    },
+    "review_id": {"type": ["string", "null"]},
+    "creator_run_id": {"type": ["string", "null"]},
+    "domain": {"type": ["string", "null"]},
+    "requested_claim": {"type": "string", "minLength": 1},
+    "verdict": {"enum": ["pass", "blocked"]},
+    "gate_status": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"},
+      "required": [
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval"
+      ]
+    },
+    "missing_gates": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "network_absorbable": {"const": false},
+    "claim_boundary": {"type": "string", "minLength": 1},
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "pass"}}
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"maxItems": 0},
+          "missing_gates": {"maxItems": 0}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}}
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"minItems": 1}
+        }
+      }
+    }
+  ]
+}

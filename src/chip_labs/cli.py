@@ -1196,6 +1196,19 @@ def cmd_retrieval_memory_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_operator_review_check(args: argparse.Namespace) -> None:
+    """Check a generic operator-review packet for promotion-gate completeness."""
+    from .operator_review import (
+        check_operator_review_packet,
+        load_operator_review_packet,
+    )
+
+    result = check_operator_review_packet(load_operator_review_packet(args.input))
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_creator_mission_status(args: argparse.Namespace) -> None:
     """Build a read-only creator mission status for product surfaces."""
     from .creator_mission_adapter import build_creator_mission_status, load_json_packet
@@ -2210,6 +2223,24 @@ def main() -> None:
         help="Exit with status 1 when retrieval-memory promotion is blocked.",
     )
     p_retrieval_memory_check.set_defaults(func=cmd_retrieval_memory_check)
+
+    # operator-review-check
+    p_operator_review_check = sub.add_parser(
+        "operator-review-check",
+        help="Check a generic generated-domain operator-review packet.",
+    )
+    p_operator_review_check.add_argument(
+        "--input", type=str, required=True, help="Operator review packet JSON path."
+    )
+    p_operator_review_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_operator_review_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when operator review is incomplete or unsafe.",
+    )
+    p_operator_review_check.set_defaults(func=cmd_operator_review_check)
 
     # creator-mission-status
     p_creator_mission_status = sub.add_parser(

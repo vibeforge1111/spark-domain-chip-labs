@@ -64,6 +64,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "artifact-quality-benchmark",
         "tool-operation-check",
         "retrieval-memory-check",
+        "operator-review-check",
         "creator-mission-status",
         "startup-yc-promotion-gate-check",
         "startup-yc-validation-evidence-check",
@@ -120,6 +121,9 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "generated-multi-seed-summary-check.schema.json" in text
     assert "creator-mission-status --generated-multi-seed" in text
     assert "hidden-failure status" in text
+    assert "operator-review-check" in text
+    assert "operator-review-packet.schema.json" in text
+    assert "operator-review-check.schema.json" in text
     assert "Generator acceptance now includes a retrieval/memory boundary domain" in text
     assert "evidence shape-check outputs and rejects accidental" in text
     assert "validate saved `startup-yc-validation-evidence-check`" in text
@@ -136,7 +140,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "tests/test_creator_mission_adapter.py" in text
-    assert "Latest focused creator-system suite result before CI push: `150 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `155 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -251,6 +255,9 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "generated-multi-seed-summary-check.schema.json",
         "creator-mission-status --generated-multi-seed",
         "failed seed IDs",
+        "operator-review-check",
+        "operator-review-packet.schema.json",
+        "operator-review-check.schema.json",
         "multi_seed_validation_summary.json",
         "`aggregate_hidden_failures` to false",
         "forced weak-seed regression",
@@ -274,6 +281,10 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "no hidden aggregate failures",
         "tampered summary rows",
         "stale underlying run reports",
+        "operator-review-packet.schema.json",
+        "operator-review-check.schema.json",
+        "human/operator calibration",
+        "review evidence only",
     ):
         assert phrase in text
 

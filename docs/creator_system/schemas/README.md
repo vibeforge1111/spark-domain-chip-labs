@@ -18,6 +18,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [doctor-result.schema.json](doctor-result.schema.json) | `creator-run-doctor` output |
 | [template-check-result.schema.json](template-check-result.schema.json) | `creator-run-template-check` output |
 | [creator-mission-status.schema.json](creator-mission-status.schema.json) | Read-only product surface adapter packet |
+| [operator-review-packet.schema.json](operator-review-packet.schema.json) | Generic generated-domain human/operator review packet |
+| [operator-review-check.schema.json](operator-review-check.schema.json) | Generic generated-domain human/operator review check output |
 | [startup-yc-validation-plan.schema.json](startup-yc-validation-plan.schema.json) | Startup YC validation plan and network-absorption gate list |
 | [startup-yc-validation-evidence.schema.json](startup-yc-validation-evidence.schema.json) | Startup YC raw validation evidence inputs and promotion bundles |
 | [startup-yc-validation-evidence-check-result.schema.json](startup-yc-validation-evidence-check-result.schema.json) | Startup YC raw validation-evidence shape-check output |
@@ -65,3 +67,8 @@ The generated multi-seed summary schemas anchor the generic domain-generator
 matrix separately from the Startup YC promotion gate. They require recomputed
 evidence mode, `network_absorbable=false`, visible failed seed ids, no hidden aggregate failures, and a check packet that blocks tampered summary rows or
 stale underlying run reports.
+
+The generic operator-review schemas anchor Phase 5 for generated domains. They
+require explicit human/operator calibration, privacy review, rollback review,
+publication approval, known limits, forbidden claims, and
+`network_absorbable=false`. A passing operator-review check is review evidence only; it does not replace multi-seed validation or the full promotion bundle.
