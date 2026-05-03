@@ -28,7 +28,7 @@
     "domain": {"type": "string", "minLength": 1},
     "requested_claim": {"type": "string", "minLength": 1},
     "evidence_tier": {
-      "enum": ["candidate_review", "transfer_supported", "network_absorbable"]
+      "enum": ["candidate_review", "transfer_supported"]
     },
     "network_absorbable": {"const": false},
     "gate_status": {

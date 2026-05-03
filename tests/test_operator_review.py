@@ -156,6 +156,26 @@ def test_operator_review_schemas_reject_network_absorbable_true() -> None:
     assert list(jsonschema.Draft202012Validator(check_schema).iter_errors(unsafe_check))
 
 
+def test_operator_review_rejects_network_absorbable_evidence_tier() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    packet = build_operator_review_packet(
+        review_id="operator-review-tier",
+        creator_run_id="creator-run-1",
+        domain="Schema Review",
+        evidence_tier="network_absorbable",
+    )
+    packet_schema = json.loads(PACKET_SCHEMA.read_text(encoding="utf-8"))
+
+    assert list(jsonschema.Draft202012Validator(packet_schema).iter_errors(packet))
+    checked = check_operator_review_packet(packet)
+    assert checked["verdict"] == "blocked"
+    assert (
+        "evidence_tier_must_not_be_network_absorbable"
+        in checked["blocking_checks"]
+    )
+    assert checked["network_absorbable"] is False
+
+
 def test_cli_operator_review_check_fails_on_open_packet(tmp_path: Path) -> None:
     packet_path = tmp_path / "operator-review.json"
     output_path = tmp_path / "operator-review.check.json"

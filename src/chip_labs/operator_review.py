@@ -99,6 +99,8 @@ def check_operator_review_packet(packet: dict[str, Any]) -> dict[str, Any]:
     if packet.get("schema_version") != PACKET_SCHEMA_VERSION:
         blocking_checks.append("schema_version")
     requested_claim = str(packet.get("requested_claim") or "network_absorbable")
+    if packet.get("evidence_tier") == "network_absorbable":
+        blocking_checks.append("evidence_tier_must_not_be_network_absorbable")
     if packet.get("network_absorbable") is not False:
         blocking_checks.append("network_absorbable_must_be_false")
 

@@ -107,7 +107,11 @@ mutations. The result schema requires visible row outcomes and
 The generic operator-review schemas anchor Phase 5 for generated domains. They
 require explicit human/operator calibration, privacy review, rollback review,
 publication approval, known limits, forbidden claims, and
-`network_absorbable=false`. A passing operator-review check is review evidence only; it does not replace multi-seed validation or the full promotion bundle.
+`network_absorbable=false`. Their evidence tier remains bounded to
+`candidate_review` or `transfer_supported`; `network_absorbable` may be the
+requested claim under review, but never the packet's own evidence tier. A
+passing operator-review check is review evidence only; it does not replace
+multi-seed validation or the full promotion bundle.
 
 The retrieval-memory schemas anchor the local memory-lane contract while the
 production memory runtime remains deferred. Packet inputs require explicit
