@@ -214,6 +214,10 @@
 - Generator acceptance now includes a retrieval/memory boundary domain and
   requires every generated domain family to emit a schema-valid recomputed
   `creator-mission-status` packet.
+- `creator-mission-status --generated-multi-seed` now projects generated
+  multi-seed summaries into read-only Builder, Telegram, Spawner, Canvas, and
+  Kanban views, including row counts, failed seed IDs, hidden-failure status,
+  and the explicit `network_absorbable=false` boundary.
 - Creator-system CI now writes the strict Startup YC smoke packet and validates
   it against `smoke-result.schema.json`, including the saved evidence-mode
   boundary.
@@ -238,4 +242,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `148 passed`.
+Latest focused creator-system suite result before CI push: `150 passed`.

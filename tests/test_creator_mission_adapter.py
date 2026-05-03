@@ -60,6 +60,34 @@ def _smoke(
     }
 
 
+def _generated_multi_seed_summary(verdict: str = "candidate_review") -> dict[str, object]:
+    blocked = verdict == "blocked"
+    return {
+        "schema_version": "adaptive_creator_loop.generated_multi_seed_validation.v1",
+        "matrix": {
+            "domain_family_count": 6,
+            "variants_per_domain": 3,
+            "seed_count": 2,
+        },
+        "verdict": verdict,
+        "evidence_tier": "candidate_review",
+        "evidence_mode": "recomputed",
+        "network_absorbable": False,
+        "aggregate_hidden_failures": False,
+        "run_count": 36,
+        "passed_run_count": 35 if blocked else 36,
+        "blocked_run_count": 1 if blocked else 0,
+        "failed_seed_ids": ["doctor_security_variant_2_seed_2"] if blocked else [],
+        "blocking_checks": ["unsafe_promotion_trap"] if blocked else [],
+        "warning_checks": [],
+        "claim_boundary": (
+            "generated multi-seed factory proof only; does not approve network absorption"
+        ),
+        "rows": [],
+        "next_actions": [],
+    }
+
+
 def test_creator_mission_status_emits_read_only_surface_adapters() -> None:
     status = build_creator_mission_status(
         mission_id="mission-1",
@@ -119,6 +147,65 @@ def test_creator_mission_status_propagates_recomputed_evidence_mode() -> None:
     assert status["surface_adapters"]["kanban"]["columns"]["review_required"][0][
         "evidence_mode"
     ] == "recomputed"
+
+
+def test_creator_mission_status_projects_generated_multi_seed_evidence() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(CREATOR_MISSION_SCHEMA.read_text(encoding="utf-8"))
+    status = build_creator_mission_status(
+        mission_id="mission-generated-matrix",
+        smoke=_smoke(evidence_mode="recomputed"),
+        generated_multi_seed=_generated_multi_seed_summary(),
+    )
+
+    jsonschema.Draft202012Validator(schema).validate(status)
+    source = next(
+        summary
+        for summary in status["source_packets"]
+        if summary["packet"] == "generated_multi_seed"
+    )
+    assert source["state"] == "ready"
+    assert source["run_count"] == 36
+    assert source["passed_run_count"] == 36
+    assert source["aggregate_hidden_failures"] is False
+    assert source["network_absorbable"] is False
+    assert "Generated multi-seed: `36/36` rows passed." in status[
+        "surface_adapters"
+    ]["telegram"]["text"]
+    assert status["surface_adapters"]["builder"]["generated_multi_seed"] == {
+        "state": "ready",
+        "verdict": "candidate_review",
+        "run_count": 36,
+        "passed_run_count": 36,
+        "blocked_run_count": 0,
+        "failed_seed_ids": [],
+        "aggregate_hidden_failures": False,
+        "evidence_mode": "recomputed",
+        "network_absorbable": False,
+    }
+    assert status["surface_adapters"]["spawner"]["may_execute"] is False
+    assert "generated_multi_seed" in {
+        edge["from"] for edge in status["surface_adapters"]["canvas"]["edges"]
+    }
+    kanban_card = status["surface_adapters"]["kanban"]["columns"]["review_required"][0]
+    assert kanban_card["generated_multi_seed"]["run_count"] == 36
+
+
+def test_creator_mission_status_blocks_failed_generated_multi_seed_evidence() -> None:
+    status = build_creator_mission_status(
+        mission_id="mission-generated-matrix-blocked",
+        smoke=_smoke(evidence_mode="recomputed"),
+        generated_multi_seed=_generated_multi_seed_summary("blocked"),
+    )
+
+    assert status["canonical"]["stage_status"] == "blocked"
+    assert "generated_multi_seed" in {blocker["source"] for blocker in status["blockers"]}
+    assert status["surface_adapters"]["builder"]["generated_multi_seed"][
+        "failed_seed_ids"
+    ] == ["doctor_security_variant_2_seed_2"]
+    assert "Generated multi-seed: `35/36` rows passed." in status[
+        "surface_adapters"
+    ]["telegram"]["text"]
 
 
 def test_creator_mission_status_preserves_blockers_from_canonical_packets() -> None:
@@ -209,8 +296,13 @@ def test_creator_mission_status_blocks_swarm_publication_request() -> None:
 
 def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> None:
     smoke_path = tmp_path / "smoke.json"
+    generated_multi_seed_path = tmp_path / "generated-multi-seed.json"
     output_path = tmp_path / "mission.json"
     smoke_path.write_text(json.dumps(_smoke(), indent=2) + "\n", encoding="utf-8")
+    generated_multi_seed_path.write_text(
+        json.dumps(_generated_multi_seed_summary(), indent=2) + "\n",
+        encoding="utf-8",
+    )
 
     result = subprocess.run(
         [
@@ -230,6 +322,8 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
             str(MIROFISH_CONTENT_ROUTE),
             "--retrieval-memory",
             str(RETRIEVAL_MEMORY_CHECK),
+            "--generated-multi-seed",
+            str(generated_multi_seed_path),
             "--mission-id",
             "mission-cli",
             "--output",
@@ -273,6 +367,16 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
     )
     assert retrieval_memory_summary["present"] is True
     assert retrieval_memory_summary["state"] == "ready"
+    generated_multi_seed_summary = next(
+        summary
+        for summary in payload["source_packets"]
+        if summary["packet"] == "generated_multi_seed"
+    )
+    assert generated_multi_seed_summary["present"] is True
+    assert generated_multi_seed_summary["run_count"] == 36
+    assert "Generated multi-seed: `36/36` rows passed." in payload[
+        "surface_adapters"
+    ]["telegram"]["text"]
 
 
 def test_product_surface_fixture_matches_current_adapter_output() -> None:

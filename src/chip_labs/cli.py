@@ -1218,6 +1218,11 @@ def cmd_creator_mission_status(args: argparse.Namespace) -> None:
         startup_validation=(
             load_json_packet(args.startup_validation) if args.startup_validation else None
         ),
+        generated_multi_seed=(
+            load_json_packet(args.generated_multi_seed)
+            if args.generated_multi_seed
+            else None
+        ),
     )
     _write_output(args.output, result)
     if args.fail_on_blocked and result["blockers"]:
@@ -2231,6 +2236,12 @@ def main() -> None:
     )
     p_creator_mission_status.add_argument(
         "--startup-validation", type=str, default=None, help="Optional Startup YC validation plan JSON path."
+    )
+    p_creator_mission_status.add_argument(
+        "--generated-multi-seed",
+        type=str,
+        default=None,
+        help="Optional generated multi-seed summary JSON path.",
     )
     p_creator_mission_status.add_argument(
         "--mission-id", type=str, default="creator-mission-local", help="Mission identifier for product surfaces."

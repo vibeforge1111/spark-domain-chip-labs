@@ -677,6 +677,10 @@ Completed documentation/verification:
 - Generator acceptance now includes a retrieval/memory boundary domain and
   requires every generated domain family to emit a schema-valid recomputed
   `creator-mission-status` packet.
+- `creator-mission-status --generated-multi-seed` now projects generated
+  multi-seed summary evidence into Builder, Telegram, Spawner, Canvas, and
+  Kanban read-only views without giving product surfaces mutation or
+  publication authority.
 
 Completed product PR verification:
 

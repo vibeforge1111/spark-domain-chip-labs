@@ -117,6 +117,10 @@ Current executable status:
 - `generated-multi-seed-summary.schema.json` and
   `generated-multi-seed-summary-check.schema.json` anchor the saved summary and
   recomputed check packet shapes.
+- `creator-mission-status --generated-multi-seed` can now project that
+  generated matrix into Builder, Telegram, Spawner, Canvas, and Kanban
+  read-only summaries without requiring product surfaces to parse raw generator
+  internals.
 
 Success criteria:
 
@@ -185,6 +189,8 @@ Success criteria:
 
 - Product surfaces never invent verdicts.
 - Product surfaces never upgrade evidence tiers.
+- Product surfaces can show generated multi-seed row counts, failed seed IDs,
+  and hidden-failure status from the canonical summary.
 - `ready_for_swarm_packet` remains a review state, not publication approval.
 - `network_absorbable` remains false without the separate promotion gates.
 

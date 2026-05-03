@@ -104,7 +104,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Run artifact benchmark | `python -m chip_labs.cli artifact-quality-benchmark runs/<run-name>` |
 | Check tool operation packet | `python -m chip_labs.cli tool-operation-check --input operation-packet.json --fail-on-blocked` |
 | Check retrieval memory packet | `python -m chip_labs.cli retrieval-memory-check --input memory-packet.json --fail-on-blocked` |
-| Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --output reports/creator-mission-status.json` |
+| Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --generated-multi-seed reports/multi_seed_validation_summary.json --output reports/creator-mission-status.json` |
 | Check Startup YC promotion gates | `python -m chip_labs.cli startup-yc-promotion-gate-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC raw validation evidence | `python -m chip_labs.cli startup-yc-validation-evidence-check --evidence <evidence.json> --evidence-kind multi_seed --fail-on-blocked` |
 | Check Startup YC multi-seed evidence | `python -m chip_labs.cli startup-yc-multi-seed-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |

@@ -45,6 +45,7 @@ def build_creator_mission_status(
     content_route: dict[str, Any] | None = None,
     retrieval_memory: dict[str, Any] | None = None,
     startup_validation: dict[str, Any] | None = None,
+    generated_multi_seed: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a read-only mission status from canonical packet outputs."""
 
@@ -57,6 +58,8 @@ def build_creator_mission_status(
         "retrieval_memory": retrieval_memory,
         "startup_validation": startup_validation,
     }
+    if generated_multi_seed is not None:
+        packets["generated_multi_seed"] = generated_multi_seed
     packet_summaries = _packet_summaries(packets)
     blocking_sources = [
         summary for summary in packet_summaries if summary["state"] == "blocked"
@@ -119,7 +122,7 @@ def _packet_summaries(packets: dict[str, dict[str, Any] | None]) -> list[dict[st
             continue
         blocking_checks = list(packet.get("blocking_checks") or [])
         state = _packet_state(packet)
-        summaries.append({
+        summary = {
             "packet": name,
             "present": True,
             "state": state,
@@ -127,7 +130,10 @@ def _packet_summaries(packets: dict[str, dict[str, Any] | None]) -> list[dict[st
             "blocking_checks": blocking_checks,
             "warning_count": len(packet.get("warning_checks") or []),
             "claim_boundary": packet.get("claim_boundary"),
-        })
+        }
+        if name == "generated_multi_seed":
+            summary.update(_generated_multi_seed_summary(packet))
+        summaries.append(summary)
     return summaries
 
 
@@ -255,20 +261,34 @@ def _surface_adapters(mission: dict[str, Any]) -> dict[str, Any]:
     canonical = mission["canonical"]
     publication = mission["publication"]
     blockers = mission["blockers"]
+    generated_multi_seed = _generated_multi_seed_from_mission(mission)
+    builder = {
+        "packet_kind": "builder_creator_readonly_handoff",
+        "mission_id": mission["mission_id"],
+        "read_only": True,
+        "verdict": canonical["verdict"],
+        "stage_status": canonical["stage_status"],
+        "evidence_tier": canonical["evidence_tier"],
+        "evidence_mode": canonical["evidence_mode"],
+        "blocking_checks": canonical["blocking_checks"],
+        "missing_paths": canonical["missing_paths"],
+        "recommended_next_command": canonical["recommended_next_command"],
+        "may_mutate_state": False,
+    }
+    spawner = {
+        "packet_kind": "spawner_creator_trace_readonly",
+        "mission_id": mission["mission_id"],
+        "stage_status": canonical["stage_status"],
+        "evidence_mode": canonical["evidence_mode"],
+        "blockers": blockers,
+        "publication": publication,
+        "may_execute": False,
+    }
+    if generated_multi_seed:
+        builder["generated_multi_seed"] = generated_multi_seed
+        spawner["generated_multi_seed"] = generated_multi_seed
     return {
-        "builder": {
-            "packet_kind": "builder_creator_readonly_handoff",
-            "mission_id": mission["mission_id"],
-            "read_only": True,
-            "verdict": canonical["verdict"],
-            "stage_status": canonical["stage_status"],
-            "evidence_tier": canonical["evidence_tier"],
-            "evidence_mode": canonical["evidence_mode"],
-            "blocking_checks": canonical["blocking_checks"],
-            "missing_paths": canonical["missing_paths"],
-            "recommended_next_command": canonical["recommended_next_command"],
-            "may_mutate_state": False,
-        },
+        "builder": builder,
         "telegram": {
             "packet_kind": "telegram_creator_status_summary",
             "mission_id": mission["mission_id"],
@@ -276,15 +296,7 @@ def _surface_adapters(mission: dict[str, Any]) -> dict[str, Any]:
             "show_publication_warning": bool(publication["missing_gates"]),
             "may_request_secret_paste": False,
         },
-        "spawner": {
-            "packet_kind": "spawner_creator_trace_readonly",
-            "mission_id": mission["mission_id"],
-            "stage_status": canonical["stage_status"],
-            "evidence_mode": canonical["evidence_mode"],
-            "blockers": blockers,
-            "publication": publication,
-            "may_execute": False,
-        },
+        "spawner": spawner,
         "canvas": {
             "packet_kind": "canvas_creator_graph_readonly",
             "mission_id": mission["mission_id"],
@@ -303,12 +315,19 @@ def _surface_adapters(mission: dict[str, Any]) -> dict[str, Any]:
 
 def _telegram_text(mission: dict[str, Any]) -> str:
     canonical = mission["canonical"]
+    generated_multi_seed = _generated_multi_seed_from_mission(mission)
     parts = [
         f"Creator mission `{mission['mission_id']}` is `{canonical['stage_status']}`.",
         f"Canonical verdict: `{canonical['verdict']}`.",
         f"Evidence tier: `{canonical['evidence_tier']}`.",
         f"Evidence mode: `{canonical['evidence_mode']}`.",
     ]
+    if generated_multi_seed:
+        parts.append(
+            "Generated multi-seed: "
+            f"`{generated_multi_seed['passed_run_count']}/{generated_multi_seed['run_count']}` "
+            "rows passed."
+        )
     if mission["blockers"]:
         parts.append("Blocked by: " + ", ".join(blocker["source"] for blocker in mission["blockers"]))
     if mission["publication"]["missing_gates"]:
@@ -366,6 +385,9 @@ def _kanban_columns(mission: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
         "evidence_mode": canonical["evidence_mode"],
         "blocked": bool(mission["blockers"]),
     }
+    generated_multi_seed = _generated_multi_seed_from_mission(mission)
+    if generated_multi_seed:
+        card["generated_multi_seed"] = generated_multi_seed
     columns = {
         "prototype": [],
         "ready_for_baseline": [],
@@ -386,6 +408,44 @@ def _nested(data: dict[str, Any], *keys: str) -> Any:
             return None
         current = current.get(key)
     return current
+
+
+def _generated_multi_seed_summary(packet: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "run_count": int(packet.get("run_count") or 0),
+        "passed_run_count": int(packet.get("passed_run_count") or 0),
+        "blocked_run_count": int(packet.get("blocked_run_count") or 0),
+        "failed_seed_ids": list(packet.get("failed_seed_ids") or []),
+        "aggregate_hidden_failures": bool(packet.get("aggregate_hidden_failures")),
+        "evidence_mode": packet.get("evidence_mode"),
+        "network_absorbable": bool(packet.get("network_absorbable")),
+    }
+
+
+def _generated_multi_seed_from_mission(
+    mission: dict[str, Any],
+) -> dict[str, Any] | None:
+    summary = next(
+        (
+            source
+            for source in mission["source_packets"]
+            if source["packet"] == "generated_multi_seed" and source["present"]
+        ),
+        None,
+    )
+    if not summary:
+        return None
+    return {
+        "state": summary["state"],
+        "verdict": summary["verdict"],
+        "run_count": summary.get("run_count", 0),
+        "passed_run_count": summary.get("passed_run_count", 0),
+        "blocked_run_count": summary.get("blocked_run_count", 0),
+        "failed_seed_ids": list(summary.get("failed_seed_ids") or []),
+        "aggregate_hidden_failures": summary.get("aggregate_hidden_failures") is True,
+        "evidence_mode": summary.get("evidence_mode"),
+        "network_absorbable": summary.get("network_absorbable") is True,
+    }
 
 
 def _dedupe(values: list[str]) -> list[str]:
