@@ -6,6 +6,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 from chip_labs.artifact_quality import (
     CLAIM_BOUNDARY,
     MANIFEST_PATH,
@@ -16,6 +18,72 @@ from chip_labs.artifact_quality import (
 
 
 FIXTURE_DIR = Path("docs/creator_system/examples/artifact-quality")
+REPORT_SCHEMA = Path("docs/creator_system/schemas/artifact-quality-report.schema.json")
+MANIFEST_SCHEMA = Path(
+    "docs/creator_system/schemas/artifact-quality-benchmark-manifest.schema.json"
+)
+BENCHMARK_RESULT_SCHEMA = Path(
+    "docs/creator_system/schemas/artifact-quality-benchmark-result.schema.json"
+)
+
+
+def _benchmark_manifest() -> dict[str, object]:
+    return {
+        "schema_version": "artifact_quality.benchmark_manifest.v1",
+        "baseline_artifact": "benchmark/artifacts/weak_design_pr.md",
+        "candidate_artifact": "benchmark/artifacts/good_design_pr.md",
+        "trap_artifacts": ["benchmark/artifacts/polished_unproven_trap.md"],
+        "case_expectations": {
+            "baseline": {"max_score": 0.85},
+            "candidate": {"verdict": "review_ready", "min_score": 0.85},
+            "traps": {
+                "verdict": "blocked",
+                "required_trap_flags": ["polished_but_unproven"],
+            },
+        },
+        "reviewer_calibration_cases": [
+            {
+                "case_id": "pr-writeup-ready",
+                "artifact_path": "benchmark/artifacts/good_design_pr.md",
+                "artifact_kind": "pr_writeup",
+                "reviewer_verdict": "review_ready",
+                "min_score": 0.85,
+            },
+            {
+                "case_id": "polished-trap",
+                "artifact_path": "benchmark/artifacts/polished_unproven_trap.md",
+                "artifact_kind": "design_doc",
+                "reviewer_verdict": "blocked",
+                "required_trap_flags": ["polished_but_unproven"],
+                "required_missing_checks": ["runnable_evidence", "rollback_plan"],
+            },
+        ],
+    }
+
+
+def _artifact_run(tmp_path: Path, manifest: dict[str, object] | None = None) -> Path:
+    run_dir = tmp_path / "artifact-run"
+    artifact_dir = run_dir / "benchmark" / "artifacts"
+    artifact_dir.mkdir(parents=True)
+    (run_dir / "reports").mkdir()
+    for fixture_name in (
+        "good_design_pr.md",
+        "weak_design_pr.md",
+        "polished_unproven_trap.md",
+        "design_decision_record_ready.md",
+        "mission_handoff_ready.md",
+    ):
+        (artifact_dir / fixture_name).write_text(
+            (FIXTURE_DIR / fixture_name).read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+    manifest_path = run_dir / MANIFEST_PATH
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.write_text(
+        json.dumps(manifest or _benchmark_manifest(), indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return run_dir
 
 
 def test_artifact_quality_scores_good_fixture_review_ready() -> None:
@@ -296,3 +364,62 @@ def test_artifact_quality_benchmark_blocks_failed_reviewer_calibration(
         check["check_id"] == "verdict" and check["status"] == "fail"
         for check in result["candidate"]["reviewer_calibration_rows"][0]["checks"]
     )
+
+
+def test_artifact_quality_schemas_validate_reports_and_benchmark(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    referencing = pytest.importorskip("referencing")
+    report_schema = json.loads(REPORT_SCHEMA.read_text(encoding="utf-8"))
+    manifest_schema = json.loads(MANIFEST_SCHEMA.read_text(encoding="utf-8"))
+    benchmark_schema = json.loads(BENCHMARK_RESULT_SCHEMA.read_text(encoding="utf-8"))
+    registry = referencing.Registry().with_resources([
+        (
+            report_schema["$id"],
+            referencing.Resource.from_contents(report_schema),
+        ),
+        (
+            "https://sparkswarm.ai/schemas/adaptive_creator_loop/artifact-quality-report.schema.json",
+            referencing.Resource.from_contents(report_schema),
+        ),
+    ])
+
+    saved_report = json.loads(
+        (FIXTURE_DIR / "good_design_pr.report.json").read_text(encoding="utf-8")
+    )
+    manifest = _benchmark_manifest()
+    run_dir = _artifact_run(tmp_path, manifest)
+    result = run_artifact_quality_benchmark(run_dir)
+
+    jsonschema.Draft202012Validator(report_schema).validate(saved_report)
+    jsonschema.Draft202012Validator(manifest_schema).validate(manifest)
+    jsonschema.Draft202012Validator(benchmark_schema, registry=registry).validate(result)
+
+
+def test_artifact_quality_schemas_reject_unsafe_shapes(tmp_path: Path) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    referencing = pytest.importorskip("referencing")
+    report_schema = json.loads(REPORT_SCHEMA.read_text(encoding="utf-8"))
+    benchmark_schema = json.loads(BENCHMARK_RESULT_SCHEMA.read_text(encoding="utf-8"))
+    registry = referencing.Registry().with_resources([
+        (
+            report_schema["$id"],
+            referencing.Resource.from_contents(report_schema),
+        ),
+        (
+            "https://sparkswarm.ai/schemas/adaptive_creator_loop/artifact-quality-report.schema.json",
+            referencing.Resource.from_contents(report_schema),
+        ),
+    ])
+    report = score_artifact_quality_file(FIXTURE_DIR / "good_design_pr.md")
+    run_dir = _artifact_run(tmp_path)
+    result = run_artifact_quality_benchmark(run_dir)
+
+    report["unsafe_claim"] = "This proves everything."
+    result["candidate"]["calibration_verdict"] = "blocked"
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(report_schema).validate(report)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(benchmark_schema, registry=registry).validate(result)

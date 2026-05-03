@@ -254,6 +254,13 @@
   `reviewer_calibration_cases` across PR writeups, design docs, mission
   handoffs, and traps. Failed reviewer rows block calibration and the
   calibration source files are included in benchmark provenance hashes.
+- `artifact-quality-report.schema.json`,
+  `artifact-quality-benchmark-manifest.schema.json`, and
+  `artifact-quality-benchmark-result.schema.json` now anchor the local
+  design-doc/PR reviewer contract. Saved reports must keep the local
+  review-only claim boundary and unsafe-claim caveat, while benchmark pass
+  results must align with calibration pass, zero trap regressions, and a `keep`
+  decision.
 - MiroFish content simulation results now emit calibration checks for
   multi-RLM judge coverage, persona-segment coverage, row-count coherence,
   weak-segment inspection, and optional expected-winner oracles. Single-judge

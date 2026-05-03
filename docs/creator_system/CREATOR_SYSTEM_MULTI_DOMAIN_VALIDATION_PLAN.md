@@ -47,7 +47,7 @@ Current maturity by domain:
 
 | Domain family | Generated benchmark pack | Domain-specific benchmark depth | Next benchmark upgrade |
 | --- | --- | --- | --- |
-| Artifact quality | Yes: cases, traps, recompute reports | Good local fixture set for strong, weak, polished-but-unproven, design-decision, and mission-handoff docs with reviewer calibration rows | Add real human-edited PR/design-doc examples and disagreement rows |
+| Artifact quality | Yes: cases, traps, recompute reports | Good local fixture set for strong, weak, polished-but-unproven, design-decision, and mission-handoff docs with reviewer calibration rows plus schema-anchored reports and benchmark bundles | Add real human-edited PR/design-doc examples and disagreement rows |
 | Tool operation | Yes: safe command, rollback, token trap | Good local operation packets for dry-run, postconditions, stale recompute, missing artifacts, secret handling, MiroFish content multi-seed, doctor adversarial sweep commands, and schema-anchored packet/check contracts | Add more real command families and postcondition adapters |
 | Content simulation | Yes: title/angle cases and simulator metadata | Local MiroFish simulation and route examples exist, but real outcome calibration is not done | Add multi-seed simulator batches and compare against actual content outcomes |
 | Doctor/security | Yes: fake evidence, repair specificity, unsafe promotion trap | Good stale/malicious fixture coverage, repair calibration, schema-family adversarial sweep coverage, and schema anchors for malformed sweep packets | Add broader generated mutation manifests |
@@ -77,6 +77,10 @@ It now also accepts `reviewer_calibration_cases`, which rescore reviewer-labeled
 PR writeups, design docs, mission handoffs, and traps. Failed reviewer rows
 block `calibration_verdict`, and their source artifacts are included in the
 benchmark provenance hashes so stale calibration examples cannot silently drift.
+The artifact-quality report, benchmark-manifest, and benchmark-result schemas
+now anchor that local reviewer contract. A saved report must keep the local
+review-only claim boundary and unsafe-claim caveat, while benchmark pass results
+must align with calibration pass, zero trap regressions, and a `keep` decision.
 
 The MiroFish content simulator now emits its own calibration checks. Ranked
 results must prove multi-RLM judge coverage, persona-segment coverage, row-count

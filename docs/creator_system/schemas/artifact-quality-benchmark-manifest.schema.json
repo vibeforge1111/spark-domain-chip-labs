@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/artifact-quality-benchmark-manifest.schema.json",
+  "title": "Adaptive Creator Loop Artifact Quality Benchmark Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "baseline_artifact",
+    "candidate_artifact",
+    "trap_artifacts"
+  ],
+  "properties": {
+    "schema_version": {"const": "artifact_quality.benchmark_manifest.v1"},
+    "baseline_artifact": {"type": "string", "minLength": 1},
+    "candidate_artifact": {"type": "string", "minLength": 1},
+    "trap_artifacts": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "case_expectations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseline": {"$ref": "#/$defs/expectation"},
+        "candidate": {"$ref": "#/$defs/expectation"},
+        "traps": {"$ref": "#/$defs/expectation"}
+      }
+    },
+    "reviewer_calibration_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "artifact_path", "artifact_kind", "reviewer_verdict"],
+        "properties": {
+          "case_id": {"type": "string", "minLength": 1},
+          "artifact_path": {"type": "string", "minLength": 1},
+          "artifact_kind": {"type": "string", "minLength": 1},
+          "reviewer_verdict": {"enum": ["review_ready", "needs_revision", "blocked"]},
+          "min_score": {"type": "number", "minimum": 0, "maximum": 1},
+          "max_score": {"type": "number", "minimum": 0, "maximum": 1},
+          "required_trap_flags": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "required_missing_checks": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "verdict": {"enum": ["review_ready", "needs_revision", "blocked"]},
+        "min_score": {"type": "number", "minimum": 0, "maximum": 1},
+        "max_score": {"type": "number", "minimum": 0, "maximum": 1},
+        "required_trap_flags": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

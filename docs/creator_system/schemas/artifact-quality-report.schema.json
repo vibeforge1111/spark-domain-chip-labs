@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/artifact-quality-report.schema.json",
+  "title": "Adaptive Creator Loop Artifact Quality Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_kind",
+    "artifact_id",
+    "artifact_kind",
+    "source_path",
+    "verdict",
+    "score",
+    "status_counts",
+    "checks",
+    "trap_flags",
+    "polish_hits",
+    "missing_checks",
+    "repair_actions",
+    "claim_boundary",
+    "safe_claim",
+    "unsafe_claim"
+  ],
+  "properties": {
+    "packet_kind": {"const": "artifact_quality_report"},
+    "artifact_id": {"type": "string"},
+    "artifact_kind": {"type": "string", "minLength": 1},
+    "source_path": {"type": "string"},
+    "verdict": {"enum": ["review_ready", "needs_revision", "blocked"]},
+    "score": {"type": "number", "minimum": 0, "maximum": 1},
+    "status_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pass", "fail"],
+      "properties": {
+        "pass": {"type": "integer", "minimum": 0},
+        "fail": {"type": "integer", "minimum": 0}
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "status", "message", "repair"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "label": {"type": "string", "minLength": 1},
+          "status": {"enum": ["pass", "fail"]},
+          "message": {"type": "string", "minLength": 1},
+          "repair": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "trap_flags": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "polish_hits": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "missing_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "repair_actions": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "claim_boundary": {"const": "artifact_quality local review only"},
+    "safe_claim": {"type": "string", "minLength": 1},
+    "unsafe_claim": {
+      "type": "string",
+      "pattern": "product correctness|human review"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "review_ready"}}
+      },
+      "then": {
+        "properties": {
+          "trap_flags": {"maxItems": 0},
+          "repair_actions": {"maxItems": 0}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}}
+      },
+      "then": {
+        "anyOf": [
+          {"properties": {"trap_flags": {"minItems": 1}}},
+          {"properties": {"repair_actions": {"minItems": 1}}}
+        ]
+      }
+    }
+  ]
+}

@@ -12,6 +12,9 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [adapter-map.schema.json](adapter-map.schema.json) | `adapter-map.json` |
 | [created-artifact-manifest.schema.json](created-artifact-manifest.schema.json) | Shared manifest of generated chip/path/benchmark/loop/packet artifacts |
 | [benchmark-pack-manifest.schema.json](benchmark-pack-manifest.schema.json) | Benchmark pack identity, family, lanes, scoring, anti-gaming, and promotion rules |
+| [artifact-quality-report.schema.json](artifact-quality-report.schema.json) | Local artifact-quality score report |
+| [artifact-quality-benchmark-manifest.schema.json](artifact-quality-benchmark-manifest.schema.json) | Artifact-quality benchmark manifest |
+| [artifact-quality-benchmark-result.schema.json](artifact-quality-benchmark-result.schema.json) | Artifact-quality benchmark result bundle |
 | [loop-policy-manifest.schema.json](loop-policy-manifest.schema.json) | Autoloop policy, mutation surface, benchmark binding, rollback, and promotion gates |
 | [swarm-contribution-packet.schema.json](swarm-contribution-packet.schema.json) | `swarm/contribution_packet.json` |
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
@@ -98,3 +101,9 @@ They describe the supported command manifest, the parsed operation packet shape,
 and the check output that product or mission traces may read. Passing checks
 must have `allowed=true` and no blockers; blocked checks must have
 `allowed=false`, visible blockers, and rollback-state protection.
+
+The artifact-quality schemas anchor the local design-doc and PR evidence reviewer.
+They keep artifact reports tied to the local review-only claim boundary, require
+unsafe claims to say the score does not prove product correctness or replace
+human review, and keep benchmark pass results aligned with reviewer calibration,
+trap regression, and keep/revert decisions.

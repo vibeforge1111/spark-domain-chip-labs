@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/artifact-quality-benchmark-result.schema.json",
+  "title": "Adaptive Creator Loop Artifact Quality Benchmark Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "verdict", "baseline", "candidate", "absorption"],
+  "properties": {
+    "schema_version": {"const": "artifact_quality.benchmark_result.v1"},
+    "verdict": {"enum": ["pass", "blocked"]},
+    "baseline": {"$ref": "#/$defs/report"},
+    "candidate": {
+      "allOf": [
+        {"$ref": "#/$defs/report"},
+        {
+          "type": "object",
+          "required": [
+            "mean_delta",
+            "trap_regressions",
+            "trap_reports",
+            "expectation_checks",
+            "reviewer_calibration_rows",
+            "reviewer_calibration_case_count",
+            "calibration_verdict",
+            "decision"
+          ],
+          "properties": {
+            "mean_delta": {"type": "number"},
+            "trap_regressions": {"type": "integer", "minimum": 0},
+            "trap_reports": {
+              "type": "array",
+              "items": {"$ref": "artifact-quality-report.schema.json"}
+            },
+            "expectation_checks": {"$ref": "#/$defs/checkRows"},
+            "reviewer_calibration_rows": {"type": "array"},
+            "reviewer_calibration_case_count": {"type": "integer", "minimum": 0},
+            "calibration_verdict": {"enum": ["pass", "blocked"]},
+            "decision": {"enum": ["keep", "revert"]}
+          }
+        }
+      ]
+    },
+    "absorption": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema_version",
+        "benchmark_family",
+        "mean_validated_pack_delta",
+        "trap_band_case_count",
+        "trap_regressions",
+        "calibration_verdict",
+        "all_modes_present",
+        "all_modes_scored",
+        "provenance"
+      ],
+      "properties": {
+        "schema_version": {"const": "adaptive_creator_loop.absorption_summary.v1"},
+        "benchmark_family": {"const": "artifact_quality_review"},
+        "mean_validated_pack_delta": {"type": "number"},
+        "trap_band_case_count": {"type": "integer", "minimum": 0},
+        "trap_regressions": {"type": "integer", "minimum": 0},
+        "calibration_verdict": {"enum": ["pass", "blocked"]},
+        "all_modes_present": {"type": "boolean"},
+        "all_modes_scored": {"type": "boolean"},
+        "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "pass"}}
+      },
+      "then": {
+        "properties": {
+          "candidate": {
+            "properties": {
+              "decision": {"const": "keep"},
+              "calibration_verdict": {"const": "pass"},
+              "trap_regressions": {"const": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}}
+      },
+      "then": {
+        "properties": {
+          "candidate": {
+            "properties": {"decision": {"const": "revert"}}
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "report": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema_version",
+        "benchmark_family",
+        "mean_score",
+        "case_count",
+        "artifact_report",
+        "provenance"
+      ],
+      "properties": {
+        "schema_version": {"const": "adaptive_creator_loop.benchmark_report.v1"},
+        "benchmark_family": {"const": "artifact_quality_review"},
+        "mean_score": {"type": "number", "minimum": 0, "maximum": 1},
+        "case_count": {"type": "integer", "minimum": 1},
+        "artifact_report": {"$ref": "artifact-quality-report.schema.json"},
+        "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "computed_at", "recomputed_from", "input_hashes"],
+      "properties": {
+        "source": {"const": "artifact_quality_v1"},
+        "computed_at": {"type": "string", "minLength": 1},
+        "recomputed_from": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "input_hashes": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"type": "string", "minLength": 64}
+        }
+      }
+    },
+    "checkRows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_role", "check_id", "status", "message"],
+        "properties": {
+          "case_role": {"type": "string", "minLength": 1},
+          "check_id": {"type": "string", "minLength": 1},
+          "status": {"enum": ["pass", "fail"]},
+          "message": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
