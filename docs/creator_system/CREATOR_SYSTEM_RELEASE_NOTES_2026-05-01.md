@@ -363,6 +363,12 @@
 - Adapter-map, smoke-result, and doctor-result schemas now constrain
   `evidence_tier` to the executable creator-run tier ladder, so fake tiers are
   rejected by both runtime smoke and saved schema validation.
+- Creator-intent, autoloop policy, and created-artifact manifest schemas now
+  constrain local creator-run tier fields to known evidence tiers and reject
+  fake tier names.
+- Those local-only schemas now cap tier claims at `transfer_supported`, blocking
+  `network_absorbable` and `standard_update` claims until a future network
+  publication schema is explicitly introduced with the required promotion gates.
 
 ## Current Claim Boundary
 

@@ -464,6 +464,8 @@ Deliverables:
 - [x] Add release-note summary for recompute/provenance doc alignment slice.
 - [x] Add release-note summary for operator-review evidence-tier hardening.
 - [x] Add release-note summary for core evidence-tier schema enums.
+- [x] Add release-note summary for local creator artifact tier enums.
+- [x] Add release-note summary for local-only network-tier ceiling.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -751,6 +753,10 @@ Completed documentation/verification:
 - Adapter-map, smoke-result, and doctor-result schemas now constrain
   `evidence_tier` to the executable creator-run tier ladder and reject fake
   tier names such as `magic_mastery`.
+- Creator-intent, autoloop policy, and created-artifact manifest schemas now
+  reject fake tier names and cap local-only artifact claims at
+  `transfer_supported`, leaving `network_absorbable` and `standard_update`
+  blocked until a future publication schema and gate bundle exist.
 
 Completed product PR verification:
 
