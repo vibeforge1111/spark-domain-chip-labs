@@ -488,6 +488,40 @@ def test_creator_run_blocks_unknown_evidence_tier(tmp_path: Path) -> None:
     )
 
 
+def test_creator_run_blocks_network_tiers_in_local_artifacts(tmp_path: Path) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Test local tier ceiling.")
+
+    intent_path = run_dir / "creator-intent.json"
+    intent = json.loads(intent_path.read_text(encoding="utf-8"))
+    intent["success_criteria"]["minimum_evidence_tier"] = "network_absorbable"
+    intent_path.write_text(json.dumps(intent), encoding="utf-8")
+
+    manifest_path = run_dir / "created-artifact-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["artifacts"][0]["evidence_tier"] = "network_absorbable"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    policy_path = run_dir / "autoloop" / "policy.json"
+    policy_path.parent.mkdir(parents=True, exist_ok=True)
+    policy = {
+        "schema_version": "spark-autoloop-policy.v1",
+        "evidence_tier_goal": "network_absorbable",
+    }
+    policy_path.write_text(json.dumps(policy), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    failed_checks = {
+        check.name for check in smoke.checks
+        if check.status == "fail"
+    }
+    assert "creator_intent_minimum_evidence_tier" in failed_checks
+    assert "created_artifact_manifest_entries" in failed_checks
+    assert "autoloop_policy_evidence_tier_goal" in failed_checks
+
+
 def test_creator_run_blocks_missing_intent(tmp_path: Path) -> None:
     run_dir = tmp_path / "creator-run"
     init_creator_run(run_dir, domain="Startup YC", goal="Test missing intent.")

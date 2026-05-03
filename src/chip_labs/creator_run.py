@@ -45,6 +45,14 @@ BROAD_TRANSFER_BLOCKING_TIERS = (
     "standard_update",
 )
 
+LOCAL_CREATOR_ARTIFACT_TIERS = (
+    "prototype",
+    "benchmark_signal",
+    "focused_pattern",
+    "candidate_review",
+    "transfer_supported",
+)
+
 EVIDENCE_TIER_RANK = {tier: index for index, tier in enumerate(EVIDENCE_TIERS)}
 
 EVIDENCE_LADDER_PATH = "reports/evidence_ladder.md"
@@ -583,6 +591,9 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
     artifact_manifest = _load_required_json(
         run_path / ARTIFACT_MANIFEST_PATH, "created_artifact_manifest", checks
     )
+    autoloop_policy = _load_optional_json(
+        run_path / "autoloop" / "policy.json", "autoloop_policy", checks
+    )
 
     if intent:
         _check_schema_prefix(
@@ -602,6 +613,13 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
             "creator_intent_goal",
             "creator-intent.json names the user goal.",
             checks,
+        )
+        _check_local_creator_artifact_tier(
+            _nested(intent, "success_criteria", "minimum_evidence_tier"),
+            "creator_intent_minimum_evidence_tier",
+            "creator-intent.json success_criteria.minimum_evidence_tier",
+            checks,
+            required=True,
         )
 
     if adapter_map:
@@ -634,6 +652,14 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
 
     if artifact_manifest:
         _check_artifact_manifest(artifact_manifest, intent, checks)
+
+    if autoloop_policy:
+        _check_local_creator_artifact_tier(
+            autoloop_policy.get("evidence_tier_goal"),
+            "autoloop_policy_evidence_tier_goal",
+            "autoloop/policy.json evidence_tier_goal",
+            checks,
+        )
 
     for relative_path in READY_FOR_BASELINE_PATHS:
         if not (run_path / relative_path).exists():
@@ -699,6 +725,20 @@ def _load_required_json(
 ) -> dict[str, Any] | None:
     if not path.exists():
         checks.append(SmokeCheck(name, "fail", f"Missing {path.name}."))
+        return None
+    try:
+        data = load_json(path)
+    except ValueError as exc:
+        checks.append(SmokeCheck(name, "fail", str(exc)))
+        return None
+    checks.append(SmokeCheck(name, "pass", f"Loaded {path.name}."))
+    return data
+
+
+def _load_optional_json(
+    path: Path, name: str, checks: list[SmokeCheck]
+) -> dict[str, Any] | None:
+    if not path.exists():
         return None
     try:
         data = load_json(path)
@@ -1210,6 +1250,33 @@ def _check_non_empty(
     checks.append(SmokeCheck(name, "fail", f"{name} is required."))
 
 
+def _check_local_creator_artifact_tier(
+    value: Any,
+    name: str,
+    label: str,
+    checks: list[SmokeCheck],
+    *,
+    required: bool = False,
+) -> None:
+    tier = str(value or "")
+    if not tier:
+        if required:
+            checks.append(SmokeCheck(name, "fail", f"{label} is required."))
+        return
+    if tier in LOCAL_CREATOR_ARTIFACT_TIERS:
+        checks.append(
+            SmokeCheck(name, "pass", f"{label} is bounded to local tier '{tier}'.")
+        )
+        return
+    checks.append(
+        SmokeCheck(
+            name,
+            "fail",
+            f"{label} must stay at or below transfer_supported for local creator artifacts; got {tier}.",
+        )
+    )
+
+
 def _check_adapter_sections(
     adapter_map: dict[str, Any], checks: list[SmokeCheck]
 ) -> None:
@@ -1325,6 +1392,11 @@ def _check_artifact_manifest(
         if not kind or not path or status not in ARTIFACT_MANIFEST_STATUSES:
             invalid_entries.append(
                 f"artifact[{index}] must include kind, path, and valid status"
+            )
+        tier = str(artifact.get("evidence_tier") or "")
+        if tier and tier not in LOCAL_CREATOR_ARTIFACT_TIERS:
+            invalid_entries.append(
+                f"artifact[{index}] evidence_tier must stay at or below transfer_supported"
             )
 
     if invalid_entries:
