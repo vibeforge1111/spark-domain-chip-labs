@@ -182,6 +182,8 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "creator-mission-status" in text
     assert "generated-mission-status.json" in text
     assert "creator-mission-status.schema.json" in text
+    assert "Generated matrix:" in text
+    assert "mission_run_count" in text
     assert "tests/test_startup_yc_operator_validation.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text

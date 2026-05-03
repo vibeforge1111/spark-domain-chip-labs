@@ -215,4 +215,14 @@ jobs:
               schema = json.loads(Path(schema_path).read_text())
               payload = json.loads(Path(payload_path).read_text())
               jsonschema.Draft202012Validator(schema).validate(payload)
+          summary = json.loads(Path("/tmp/generated-multi-seed-summary.json").read_text())
+          mission = json.loads(Path("/tmp/generated-mission-status.json").read_text())
+          mission_matrix = mission["surface_adapters"]["builder"]["generated_multi_seed"]
+          print(
+              "Generated matrix: "
+              f"verdict={summary['verdict']} "
+              f"passed={summary['passed_run_count']}/{summary['matrix']['target_run_count']} "
+              f"mission_run_count={mission_matrix['run_count']} "
+              f"network_absorbable={summary['network_absorbable']}"
+          )
           PY

@@ -243,6 +243,9 @@
 - The same manual path now emits a product-safe
   `creator-mission-status --generated-multi-seed` packet for the generated
   matrix and validates it against `creator-mission-status.schema.json`.
+- Manual generated-matrix workflow logs now include a compact verdict,
+  passed-run count, mission-status run count, and `network_absorbable=false`
+  readout for operators.
 
 ## Current Claim Boundary
 

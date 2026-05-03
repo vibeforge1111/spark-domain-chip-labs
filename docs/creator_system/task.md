@@ -704,6 +704,9 @@ Completed documentation/verification:
 - The manual generated-matrix path now also emits and schema-validates a
   product-safe `creator-mission-status --generated-multi-seed` readout without
   wiring Builder, Telegram, Spawner, Canvas, or Kanban creator controls.
+- The manual generated-matrix path prints a compact Actions-log readout with
+  verdict, passed-run count, mission-status run count, and
+  `network_absorbable=false`.
 
 Completed product PR verification:
 
