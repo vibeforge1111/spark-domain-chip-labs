@@ -36,6 +36,12 @@ DOMAIN_CHIP_MANIFEST_SCHEMA = Path(
     "docs/creator_system/schemas/domain-chip-manifest.schema.json"
 )
 HOOK_SMOKE_SCHEMA = Path("docs/creator_system/schemas/hook-smoke-result.schema.json")
+SPECIALIZATION_PATH_SCHEMA = Path(
+    "docs/creator_system/schemas/specialization-path-manifest.schema.json"
+)
+AUTOLOOP_SIMULATION_SCHEMA = Path(
+    "docs/creator_system/schemas/autoloop-simulation-result.schema.json"
+)
 
 
 def _brief() -> dict[str, object]:
@@ -416,6 +422,64 @@ def test_generated_domain_chip_contract_schemas_reject_unsafe_shapes(
         jsonschema.Draft202012Validator(domain_schema).validate(chip_manifest)
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(hook_schema).validate(hook_smoke)
+
+
+def test_generated_path_and_autoloop_contract_schemas_validate(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    path_manifest = json.loads(
+        (generated.run_dir / "specialization-path" / "path.manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    startup_yc_path = json.loads(
+        Path(
+            "docs/creator_system/examples/startup-yc-creator-run/specialization-path/path.manifest.json"
+        ).read_text(encoding="utf-8")
+    )
+    path_schema = json.loads(SPECIALIZATION_PATH_SCHEMA.read_text(encoding="utf-8"))
+    autoloop_schema = json.loads(
+        AUTOLOOP_SIMULATION_SCHEMA.read_text(encoding="utf-8")
+    )
+
+    jsonschema.Draft202012Validator(path_schema).validate(path_manifest)
+    jsonschema.Draft202012Validator(path_schema).validate(startup_yc_path)
+    jsonschema.Draft202012Validator(autoloop_schema).validate(
+        generated.autoloop_simulation
+    )
+
+
+def test_generated_path_and_autoloop_contract_schemas_reject_unsafe_shapes(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    path_manifest = json.loads(
+        (generated.run_dir / "specialization-path" / "path.manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    autoloop_simulation = dict(generated.autoloop_simulation)
+    path_schema = json.loads(SPECIALIZATION_PATH_SCHEMA.read_text(encoding="utf-8"))
+    autoloop_schema = json.loads(
+        AUTOLOOP_SIMULATION_SCHEMA.read_text(encoding="utf-8")
+    )
+
+    path_manifest["benchmark_gate"] = "network_absorption"
+    autoloop_simulation["rounds"] = [
+        {**round_, "decision": "keep", "mean_delta": 0.01, "trap_regressions": 0}
+        for round_ in autoloop_simulation["rounds"]
+    ]
+    autoloop_simulation["reverted_rounds"] = 0
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(path_schema).validate(path_manifest)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(autoloop_schema).validate(
+            autoloop_simulation
+        )
 
 
 @pytest.mark.parametrize("brief", _multi_domain_briefs(), ids=lambda brief: brief["domain_id"])

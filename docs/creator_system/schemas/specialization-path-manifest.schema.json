@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/specialization-path-manifest.schema.json",
+  "title": "Adaptive Creator Loop Specialization Path Manifest",
+  "type": "object",
+  "required": [
+    "schema_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": [
+        "adaptive_creator_loop.specialization_path.v1",
+        "adaptive_creator_loop.specialization_path_manifest.v1"
+      ]
+    },
+    "path_id": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
+    "domain_family": {"type": "string", "minLength": 1},
+    "source_repo": {"type": "string", "minLength": 1},
+    "path_name": {"type": "string", "minLength": 1},
+    "source_files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "role": {"type": "string", "minLength": 1},
+    "mission_control_flow": {"type": "string"},
+    "invocation_triggers": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "benchmark_gate": {
+      "type": "string",
+      "minLength": 1
+    },
+    "absorption_bundle": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "domain",
+        "path_id",
+        "domain_family",
+        "stages",
+        "benchmark_gate",
+        "absorption_bundle"
+      ],
+      "properties": {
+        "schema_version": {"const": "adaptive_creator_loop.specialization_path.v1"},
+        "benchmark_gate": {"const": "candidate_review"},
+        "absorption_bundle": {"const": "specialization-path/absorption_bundle.md"}
+      }
+    },
+    {
+      "required": ["path_name", "source_repo", "source_files", "role"],
+      "properties": {
+        "schema_version": {
+          "const": "adaptive_creator_loop.specialization_path_manifest.v1"
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}

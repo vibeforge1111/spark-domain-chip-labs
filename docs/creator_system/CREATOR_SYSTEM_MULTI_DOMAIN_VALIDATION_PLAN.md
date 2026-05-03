@@ -157,6 +157,8 @@ Success criteria:
 - Each creates schema-valid chip, benchmark, specialization path, autoloop
   policy, reports, and Swarm packet.
 - Each produces a schema-valid generated hook-smoke packet.
+- Each produces schema-valid specialization-path and keep/revert autoloop
+  simulation packets.
 - Each passes normal smoke as saved evidence.
 - Each passes recompute smoke when supported provenance is present.
 - Each produces a schema-valid `creator-mission-status` packet from recomputed

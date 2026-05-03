@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/autoloop-simulation-result.schema.json",
+  "title": "Adaptive Creator Loop Autoloop Simulation Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "rounds",
+    "kept_rounds",
+    "reverted_rounds"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.autoloop_simulation.v1"
+    },
+    "rounds": {
+      "type": "array",
+      "minItems": 2,
+      "contains": {
+        "type": "object",
+        "required": ["decision"],
+        "properties": {"decision": {"const": "revert"}}
+      },
+      "items": {
+        "type": "object",
+        "required": [
+          "round_id",
+          "decision",
+          "mean_delta",
+          "trap_regressions"
+        ],
+        "properties": {
+          "round_id": {"type": "string", "minLength": 1},
+          "decision": {"enum": ["keep", "revert"]},
+          "mean_delta": {"type": "number"},
+          "trap_regressions": {"type": "integer", "minimum": 0}
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {"decision": {"const": "keep"}},
+              "required": ["decision"]
+            },
+            "then": {
+              "properties": {
+                "mean_delta": {"exclusiveMinimum": 0},
+                "trap_regressions": {"const": 0}
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {"decision": {"const": "revert"}},
+              "required": ["decision"]
+            },
+            "then": {
+              "anyOf": [
+                {"properties": {"mean_delta": {"maximum": 0}}},
+                {"properties": {"trap_regressions": {"minimum": 1}}}
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "kept_rounds": {"type": "integer", "minimum": 1},
+    "reverted_rounds": {"type": "integer", "minimum": 1}
+  },
+  "additionalProperties": true
+}

@@ -202,6 +202,10 @@
   anchor the generated domain-chip contract. Generated chip manifests must keep
   a local-only publication boundary, while hook-smoke pass packets require all
   four generated hook surfaces to pass.
+- `specialization-path-manifest.schema.json` and
+  `autoloop-simulation-result.schema.json` now anchor generated path and
+  keep/revert loop evidence. Generated paths stay gated at candidate review,
+  and autoloop simulations must include both keep and revert proof.
 - `creator-run-smoke --recompute` now verifies generated lane results and blocks
   tampered benchmark manifests through report provenance hashes.
 - `run_multi_seed_generator_validation` now creates a generated 36-row
