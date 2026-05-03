@@ -369,6 +369,9 @@
 - Those local-only schemas now cap tier claims at `transfer_supported`, blocking
   `network_absorbable` and `standard_update` claims until a future network
   publication schema is explicitly introduced with the required promotion gates.
+- `creator-run-smoke` now enforces the same local tier ceiling without requiring
+  runtime JSON Schema dependencies, blocking local intent, created-artifact, and
+  autoloop policy fields that try to claim `network_absorbable`.
 
 ## Current Claim Boundary
 
@@ -390,4 +393,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `203 passed`.
+Latest focused creator-system suite result before CI push: `204 passed`.

@@ -466,6 +466,7 @@ Deliverables:
 - [x] Add release-note summary for core evidence-tier schema enums.
 - [x] Add release-note summary for local creator artifact tier enums.
 - [x] Add release-note summary for local-only network-tier ceiling.
+- [x] Add release-note summary for runtime smoke local-tier ceiling checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -757,6 +758,10 @@ Completed documentation/verification:
   reject fake tier names and cap local-only artifact claims at
   `transfer_supported`, leaving `network_absorbable` and `standard_update`
   blocked until a future publication schema and gate bundle exist.
+- `creator-run-smoke` now enforces the same local-tier ceiling directly for
+  intent, created-artifact manifest, and autoloop policy files, so runtime
+  validation blocks premature `network_absorbable` claims even without
+  JSON Schema dependencies.
 
 Completed product PR verification:
 
