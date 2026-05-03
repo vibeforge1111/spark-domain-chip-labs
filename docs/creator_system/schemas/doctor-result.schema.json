@@ -23,7 +23,17 @@
     },
     "run_dir": {"type": "string"},
     "verdict": {"type": "string"},
-    "evidence_tier": {"type": "string"},
+    "evidence_tier": {
+      "enum": [
+        "prototype",
+        "benchmark_signal",
+        "focused_pattern",
+        "candidate_review",
+        "transfer_supported",
+        "network_absorbable",
+        "standard_update"
+      ]
+    },
     "evidence_mode": {"enum": ["saved", "recomputed"]},
     "summary": {"type": "string"},
     "publication_ready": {"type": "boolean"},

@@ -27,7 +27,17 @@
       "type": "object",
       "required": ["evidence_tier"],
       "properties": {
-        "evidence_tier": {"type": "string"},
+        "evidence_tier": {
+          "enum": [
+            "prototype",
+            "benchmark_signal",
+            "focused_pattern",
+            "candidate_review",
+            "transfer_supported",
+            "network_absorbable",
+            "standard_update"
+          ]
+        },
         "review_state": {"type": "string"},
         "proposed_packet": {"type": "string"},
         "privacy_and_security_notes": {"type": "string"}
@@ -35,4 +45,3 @@
     }
   }
 }
-

@@ -20,7 +20,9 @@ from chip_labs.creator_run import (
 
 
 DOCTOR_FIXTURE_DIR = Path("docs/creator_system/examples/doctor-security")
+ADAPTER_MAP_SCHEMA = Path("docs/creator_system/schemas/adapter-map.schema.json")
 SMOKE_RESULT_SCHEMA = Path("docs/creator_system/schemas/smoke-result.schema.json")
+DOCTOR_RESULT_SCHEMA = Path("docs/creator_system/schemas/doctor-result.schema.json")
 DOCTOR_SWEEP_MANIFEST_SCHEMA = Path(
     "docs/creator_system/schemas/doctor-adversarial-sweep-manifest.schema.json"
 )
@@ -80,6 +82,33 @@ def test_smoke_result_exposes_machine_routing_fields(tmp_path: Path) -> None:
     recomputed_payload = validate_creator_run(run_dir, recompute=True).to_dict()
     jsonschema.Draft202012Validator(schema).validate(recomputed_payload)
     assert recomputed_payload["evidence_mode"] == "recomputed"
+
+
+def test_core_schemas_reject_unknown_evidence_tier(tmp_path: Path) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    run_dir = tmp_path / "startup-yc-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Reject fake tiers.")
+
+    adapter_map = json.loads((run_dir / "adapter-map.json").read_text(encoding="utf-8"))
+    smoke = validate_creator_run(run_dir).to_dict()
+    doctor = diagnose_creator_run(run_dir)
+
+    schema_payloads = [
+        (ADAPTER_MAP_SCHEMA, adapter_map, ("swarm_adapter", "evidence_tier")),
+        (SMOKE_RESULT_SCHEMA, smoke, ("evidence_tier",)),
+        (DOCTOR_RESULT_SCHEMA, doctor, ("evidence_tier",)),
+    ]
+    for schema_path, payload, field_path in schema_payloads:
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        validator = jsonschema.Draft202012Validator(schema)
+        validator.validate(payload)
+
+        unsafe = json.loads(json.dumps(payload))
+        target = unsafe
+        for field in field_path[:-1]:
+            target = target[field]
+        target[field_path[-1]] = "magic_mastery"
+        assert list(validator.iter_errors(unsafe))
 
 
 def test_cli_fail_on_blocked_exits_nonzero(tmp_path: Path) -> None:
