@@ -206,6 +206,10 @@
   `autoloop-simulation-result.schema.json` now anchor generated path and
   keep/revert loop evidence. Generated paths stay gated at candidate review,
   and autoloop simulations must include both keep and revert proof.
+- `benchmark-report.schema.json` and `absorption-summary.schema.json` now
+  anchor generated and source-linked saved evidence reports. The schemas require
+  visible provenance sources and input hashes so saved reports stay separable
+  from freshly recomputed evidence.
 - `creator-run-smoke --recompute` now verifies generated lane results and blocks
   tampered benchmark manifests through report provenance hashes.
 - `run_multi_seed_generator_validation` now creates a generated 36-row

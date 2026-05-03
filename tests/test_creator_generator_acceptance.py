@@ -42,6 +42,12 @@ SPECIALIZATION_PATH_SCHEMA = Path(
 AUTOLOOP_SIMULATION_SCHEMA = Path(
     "docs/creator_system/schemas/autoloop-simulation-result.schema.json"
 )
+BENCHMARK_REPORT_SCHEMA = Path(
+    "docs/creator_system/schemas/benchmark-report.schema.json"
+)
+ABSORPTION_SUMMARY_SCHEMA = Path(
+    "docs/creator_system/schemas/absorption-summary.schema.json"
+)
 
 
 def _brief() -> dict[str, object]:
@@ -480,6 +486,75 @@ def test_generated_path_and_autoloop_contract_schemas_reject_unsafe_shapes(
         jsonschema.Draft202012Validator(autoloop_schema).validate(
             autoloop_simulation
         )
+
+
+def test_generated_report_contract_schemas_validate_saved_evidence(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    report_schema = json.loads(BENCHMARK_REPORT_SCHEMA.read_text(encoding="utf-8"))
+    absorption_schema = json.loads(
+        ABSORPTION_SUMMARY_SCHEMA.read_text(encoding="utf-8")
+    )
+
+    for report_name in ("baseline.json", "candidate.json"):
+        report = json.loads(
+            (generated.run_dir / "reports" / report_name).read_text(encoding="utf-8")
+        )
+        jsonschema.Draft202012Validator(report_schema).validate(report)
+
+    absorption = json.loads(
+        (generated.run_dir / "reports" / "absorption_summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    jsonschema.Draft202012Validator(absorption_schema).validate(absorption)
+
+
+def test_report_contract_schemas_validate_startup_yc_source_linked_evidence() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    run_dir = Path("docs/creator_system/examples/startup-yc-creator-run")
+    report_schema = json.loads(BENCHMARK_REPORT_SCHEMA.read_text(encoding="utf-8"))
+    absorption_schema = json.loads(
+        ABSORPTION_SUMMARY_SCHEMA.read_text(encoding="utf-8")
+    )
+
+    for report_name in ("baseline.json", "candidate.json"):
+        report = json.loads((run_dir / "reports" / report_name).read_text(encoding="utf-8"))
+        jsonschema.Draft202012Validator(report_schema).validate(report)
+
+    absorption = json.loads(
+        (run_dir / "reports" / "absorption_summary.json").read_text(encoding="utf-8")
+    )
+    jsonschema.Draft202012Validator(absorption_schema).validate(absorption)
+
+
+def test_generated_report_contract_schemas_reject_stale_or_unbounded_evidence(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    candidate = json.loads(
+        (generated.run_dir / "reports" / "candidate.json").read_text(encoding="utf-8")
+    )
+    absorption = json.loads(
+        (generated.run_dir / "reports" / "absorption_summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    report_schema = json.loads(BENCHMARK_REPORT_SCHEMA.read_text(encoding="utf-8"))
+    absorption_schema = json.loads(
+        ABSORPTION_SUMMARY_SCHEMA.read_text(encoding="utf-8")
+    )
+
+    candidate["provenance"]["source"] = "unknown"
+    absorption["all_modes_scored"] = False
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(report_schema).validate(candidate)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(absorption_schema).validate(absorption)
 
 
 @pytest.mark.parametrize("brief", _multi_domain_briefs(), ids=lambda brief: brief["domain_id"])

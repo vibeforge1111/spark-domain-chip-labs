@@ -346,6 +346,8 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "domain-chip-manifest.schema.json",
         "hook-smoke-result.schema.json",
         "Generated domain-chip hook smoke output",
+        "benchmark-report.schema.json",
+        "absorption-summary.schema.json",
         "specialization-path-manifest.schema.json",
         "autoloop-simulation-result.schema.json",
         "Generated keep/revert autoloop simulation output",

@@ -14,6 +14,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [domain-chip-manifest.schema.json](domain-chip-manifest.schema.json) | `domain-chip/chip.manifest.json` |
 | [hook-smoke-result.schema.json](hook-smoke-result.schema.json) | Generated domain-chip hook smoke output |
 | [benchmark-pack-manifest.schema.json](benchmark-pack-manifest.schema.json) | Benchmark pack identity, family, lanes, scoring, anti-gaming, and promotion rules |
+| [benchmark-report.schema.json](benchmark-report.schema.json) | Generated and source-linked baseline/candidate benchmark reports |
+| [absorption-summary.schema.json](absorption-summary.schema.json) | Generated and source-linked absorption summary reports |
 | [specialization-path-manifest.schema.json](specialization-path-manifest.schema.json) | `specialization-path/path.manifest.json` |
 | [autoloop-simulation-result.schema.json](autoloop-simulation-result.schema.json) | Generated keep/revert autoloop simulation output |
 | [artifact-quality-report.schema.json](artifact-quality-report.schema.json) | Local artifact-quality score report |
@@ -56,6 +58,8 @@ These schemas cover the shared packet layer called for by the creator master pla
 - domain chip: `domain-chip-manifest.schema.json`
 - generated hook smoke: `hook-smoke-result.schema.json`
 - benchmark pack: `benchmark-pack-manifest.schema.json`
+- benchmark reports: `benchmark-report.schema.json`
+- absorption summary: `absorption-summary.schema.json`
 - specialization path: `specialization-path-manifest.schema.json`
 - loop policy: `loop-policy-manifest.schema.json`
 - autoloop simulation: `autoloop-simulation-result.schema.json`

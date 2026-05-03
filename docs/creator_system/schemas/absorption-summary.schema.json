@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/absorption-summary.schema.json",
+  "title": "Adaptive Creator Loop Absorption Summary",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "all_modes_present",
+    "all_modes_scored",
+    "mean_validated_pack_delta",
+    "trap_band_case_count",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": [
+        "adaptive_creator_loop.absorption_summary.v1",
+        "adaptive_creator_loop.report.absorption_summary.v1"
+      ]
+    },
+    "source_report": {"type": "string", "minLength": 1},
+    "evidence_tier": {"type": "string", "minLength": 1},
+    "mastery_readiness": {"type": "string", "minLength": 1},
+    "case_count": {"type": "integer", "minimum": 1},
+    "all_modes_present": {"type": "boolean"},
+    "all_modes_scored": {"type": "boolean"},
+    "mean_validated_pack_delta": {"type": "number"},
+    "trap_band_case_count": {"type": "integer", "minimum": 0},
+    "trap_regressions": {"type": "integer", "minimum": 0},
+    "lane_results": {
+      "type": "object",
+      "additionalProperties": {"type": "object"}
+    },
+    "guardrails": {"type": "object"},
+    "provenance": {
+      "type": "object",
+      "required": ["source", "input_hashes"],
+      "properties": {
+        "source": {"enum": ["creator_generator_v1", "startup_yc_external_v1"]},
+        "computed_at": {"type": "string", "minLength": 1},
+        "recomputed_from": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "input_hashes": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"type": "string", "minLength": 64}
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "required": ["trap_regressions", "lane_results"],
+      "properties": {
+        "schema_version": {"const": "adaptive_creator_loop.absorption_summary.v1"},
+        "provenance": {
+          "properties": {"source": {"const": "creator_generator_v1"}}
+        }
+      }
+    },
+    {
+      "required": ["source_report", "evidence_tier", "mastery_readiness", "case_count"],
+      "properties": {
+        "schema_version": {
+          "const": "adaptive_creator_loop.report.absorption_summary.v1"
+        },
+        "provenance": {
+          "properties": {"source": {"const": "startup_yc_external_v1"}}
+        }
+      }
+    }
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {"all_modes_present": {"const": true}},
+        "required": ["all_modes_present"]
+      },
+      "then": {
+        "properties": {"all_modes_scored": {"const": true}}
+      }
+    }
+  ],
+  "additionalProperties": true
+}
