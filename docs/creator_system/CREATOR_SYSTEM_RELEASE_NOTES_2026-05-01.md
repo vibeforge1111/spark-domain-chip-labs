@@ -250,6 +250,10 @@
   baseline, candidate, and trap artifacts. Benchmark reports emit expectation
   checks plus `calibration_verdict`, and failed expectations force `revert`
   rather than letting a positive score delta hide calibration drift.
+- MiroFish content simulation results now emit calibration checks for
+  multi-RLM judge coverage, persona-segment coverage, row-count coherence,
+  weak-segment inspection, and optional expected-winner oracles. Single-judge
+  or wrong-winner runs remain ranked but carry `calibration_verdict=blocked`.
 
 ## Current Claim Boundary
 
@@ -271,4 +275,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `159 passed`.
+Latest focused creator-system suite result before CI push: `161 passed`.

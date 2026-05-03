@@ -710,6 +710,10 @@ Completed documentation/verification:
 - Artifact-quality benchmark manifests now support baseline, candidate, and
   trap `case_expectations`; benchmark reports emit expectation checks and
   `calibration_verdict`, and failed expectations force `decision=revert`.
+- MiroFish content simulation now emits calibration checks for multi-RLM judge
+  coverage, persona-segment coverage, row-count coherence, weak-segment
+  inspection, and expected-winner drift; failed calibration marks the simulator
+  result `calibration_verdict=blocked` without claiming real content outcomes.
 
 Completed product PR verification:
 

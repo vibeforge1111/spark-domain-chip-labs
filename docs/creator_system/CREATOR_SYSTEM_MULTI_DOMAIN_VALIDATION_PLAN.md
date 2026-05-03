@@ -74,6 +74,11 @@ trap artifacts. The benchmark report emits expectation checks and a
 `calibration_verdict`; failed expectations force a revert even when the raw
 score delta looks positive.
 
+The MiroFish content simulator now emits its own calibration checks. Ranked
+results must prove multi-RLM judge coverage, persona-segment coverage, row-count
+coherence, weak-segment inspection, and any optional expected-winner oracle
+before their `calibration_verdict` can pass.
+
 ## Phase 1: Multi-Domain Generator Matrix
 
 The first phase is the fast CI-safe matrix. It uses one representative generated

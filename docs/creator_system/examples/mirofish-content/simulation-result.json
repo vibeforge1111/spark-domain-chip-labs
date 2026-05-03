@@ -1,6 +1,8 @@
 {
   "packet_kind": "mirofish_content_simulation_result",
   "verdict": "ranked",
+  "calibration_verdict": "pass",
+  "blocking_checks": [],
   "top_candidate_id": "candidate-1",
   "top_candidate_text": "7 benchmark mistakes that make AI agent demos look better than they are",
   "candidate_count": 3,
@@ -421,6 +423,33 @@
       "reply_likelihood": 0.2616,
       "audience_specificity": 0.3925,
       "composite_score": 0.3826
+    }
+  ],
+  "calibration_checks": [
+    {
+      "check_id": "candidate_batch",
+      "status": "pass",
+      "message": "at least two candidates required for comparative simulation"
+    },
+    {
+      "check_id": "multi_rlm_judge_panel",
+      "status": "pass",
+      "message": "at least two RLM judges required before trusting aggregate taste"
+    },
+    {
+      "check_id": "persona_segment_coverage",
+      "status": "pass",
+      "message": "at least three persona segments required for weak-segment inspection"
+    },
+    {
+      "check_id": "row_count_coherence",
+      "status": "pass",
+      "message": "expected 36 score rows, got 36"
+    },
+    {
+      "check_id": "weak_segment_inspection",
+      "status": "pass",
+      "message": "each ranking must name its weakest persona segment"
     }
   ],
   "claim_boundary": "candidate_review local simulator protocol only",

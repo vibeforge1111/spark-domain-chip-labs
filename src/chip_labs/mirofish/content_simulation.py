@@ -252,9 +252,24 @@ def simulate_content_selection(packet: dict[str, Any]) -> dict[str, Any]:
 
     rankings = _aggregate_rankings(candidates, rows, persona_segments)
     top = rankings[0]
+    calibration_checks = _calibration_checks(
+        packet,
+        candidates=candidates,
+        persona_segments=persona_segments,
+        rlm_judges=rlm_judges,
+        rows=rows,
+        rankings=rankings,
+    )
+    blocking_checks = [
+        check["check_id"]
+        for check in calibration_checks
+        if check["status"] == "fail"
+    ]
     return {
         "packet_kind": "mirofish_content_simulation_result",
         "verdict": "ranked",
+        "calibration_verdict": "blocked" if blocking_checks else "pass",
+        "blocking_checks": blocking_checks,
         "top_candidate_id": top["candidate_id"],
         "top_candidate_text": top["text"],
         "candidate_count": len(candidates),
@@ -267,6 +282,7 @@ def simulate_content_selection(packet: dict[str, Any]) -> dict[str, Any]:
         ),
         "rankings": rankings,
         "score_rows": rows,
+        "calibration_checks": calibration_checks,
         "claim_boundary": CLAIM_BOUNDARY,
         "requires_before_transfer": [
             "multi-seed simulator reruns",
@@ -454,6 +470,69 @@ def _aggregate_rankings(
         ),
         reverse=True,
     )
+
+
+def _calibration_checks(
+    packet: dict[str, Any],
+    *,
+    candidates: list[dict[str, str]],
+    persona_segments: list[str],
+    rlm_judges: list[str],
+    rows: list[dict[str, Any]],
+    rankings: list[dict[str, Any]],
+) -> list[dict[str, str]]:
+    expected_row_count = len(candidates) * len(persona_segments) * len(rlm_judges)
+    top_candidate_ids = {
+        str(candidate_id)
+        for candidate_id in packet.get("expected_top_candidate_ids", [])
+    }
+    checks = [
+        _calibration_check(
+            "candidate_batch",
+            len(candidates) >= 2,
+            "at least two candidates required for comparative simulation",
+        ),
+        _calibration_check(
+            "multi_rlm_judge_panel",
+            len(rlm_judges) >= 2,
+            "at least two RLM judges required before trusting aggregate taste",
+        ),
+        _calibration_check(
+            "persona_segment_coverage",
+            len(persona_segments) >= 3,
+            "at least three persona segments required for weak-segment inspection",
+        ),
+        _calibration_check(
+            "row_count_coherence",
+            len(rows) == expected_row_count,
+            f"expected {expected_row_count} score rows, got {len(rows)}",
+        ),
+        _calibration_check(
+            "weak_segment_inspection",
+            all(ranking.get("weakest_persona") for ranking in rankings),
+            "each ranking must name its weakest persona segment",
+        ),
+    ]
+    if top_candidate_ids:
+        checks.append(
+            _calibration_check(
+                "expected_top_candidate",
+                rankings[0]["candidate_id"] in top_candidate_ids,
+                (
+                    "expected top candidate in "
+                    f"{sorted(top_candidate_ids)}, got {rankings[0]['candidate_id']}"
+                ),
+            )
+        )
+    return checks
+
+
+def _calibration_check(check_id: str, passed: bool, message: str) -> dict[str, str]:
+    return {
+        "check_id": check_id,
+        "status": "pass" if passed else "fail",
+        "message": message,
+    }
 
 
 def _tokens(text: str) -> set[str]:

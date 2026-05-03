@@ -55,11 +55,19 @@ def test_simulate_content_selection_ranks_candidates_with_rows() -> None:
 
     assert result["packet_kind"] == "mirofish_content_simulation_result"
     assert result["verdict"] == "ranked"
+    assert result["calibration_verdict"] == "pass"
+    assert result["blocking_checks"] == []
     assert result["claim_boundary"] == CLAIM_BOUNDARY
     assert result["row_count"] == 36
     assert result["top_candidate_id"] in {"specific", "operator"}
     assert result["rankings"][0]["median_composite"] > result["rankings"][-1]["median_composite"]
     assert result["rankings"][0]["weakest_persona"] in result["persona_segments"]
+    assert {check["check_id"] for check in result["calibration_checks"]} >= {
+        "multi_rlm_judge_panel",
+        "persona_segment_coverage",
+        "row_count_coherence",
+        "weak_segment_inspection",
+    }
 
 
 def test_simulate_content_selection_blocks_without_candidates() -> None:
@@ -67,6 +75,27 @@ def test_simulate_content_selection_blocks_without_candidates() -> None:
 
     assert result["verdict"] == "blocked"
     assert "candidates_required" in result["blocking_checks"]
+
+
+def test_simulate_content_selection_marks_single_judge_calibration_blocked() -> None:
+    packet = _packet()
+    packet["rlm_judges"] = ["spark-local-judge"]
+
+    result = simulate_content_selection(packet)
+
+    assert result["verdict"] == "ranked"
+    assert result["calibration_verdict"] == "blocked"
+    assert "multi_rlm_judge_panel" in result["blocking_checks"]
+
+
+def test_simulate_content_selection_blocks_failed_expected_winner() -> None:
+    packet = _packet()
+    packet["expected_top_candidate_ids"] = ["generic"]
+
+    result = simulate_content_selection(packet)
+
+    assert result["calibration_verdict"] == "blocked"
+    assert "expected_top_candidate" in result["blocking_checks"]
 
 
 def test_should_invoke_content_simulation_for_title_selection_prompt() -> None:
@@ -276,10 +305,16 @@ def test_saved_mirofish_content_examples_preserve_claim_boundary() -> None:
     assert route["simulation_packet"]["claim_boundary"] == CLAIM_BOUNDARY
     assert simulation["packet_kind"] == "mirofish_content_simulation_result"
     assert simulation["verdict"] == "ranked"
+    assert simulation["calibration_verdict"] == "pass"
+    assert simulation["blocking_checks"] == []
     assert simulation["claim_boundary"] == CLAIM_BOUNDARY
     assert simulation["row_count"] == (
         simulation["candidate_count"]
         * len(simulation["persona_segments"])
         * len(simulation["rlm_judges"])
+    )
+    assert any(
+        check["check_id"] == "multi_rlm_judge_panel"
+        for check in simulation["calibration_checks"]
     )
     assert "candidate_review local simulator protocol only" in markdown
