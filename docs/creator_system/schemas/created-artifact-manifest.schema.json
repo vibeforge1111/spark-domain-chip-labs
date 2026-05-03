@@ -48,7 +48,7 @@
           "path": {"type": "string"},
           "status": {
             "type": "string",
-            "enum": ["planned", "created", "validated", "blocked", "published"]
+            "enum": ["planned", "created", "validated", "blocked"]
           },
           "schema_version": {"type": "string"},
           "evidence_tier": {"type": "string"},
@@ -57,8 +57,7 @@
       }
     },
     "publication_boundary": {
-      "type": "string",
-      "enum": ["local_only", "github_pr", "swarm_shared"]
+      "const": "local_only"
     },
     "next_action": {
       "type": "string"

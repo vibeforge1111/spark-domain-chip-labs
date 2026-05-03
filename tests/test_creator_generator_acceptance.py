@@ -58,6 +58,9 @@ SWARM_PACKET_SCHEMA = Path(
 )
 LOOP_POLICY_SCHEMA = Path("docs/creator_system/schemas/loop-policy-manifest.schema.json")
 CREATOR_INTENT_SCHEMA = Path("docs/creator_system/schemas/creator-intent.schema.json")
+CREATED_ARTIFACT_MANIFEST_SCHEMA = Path(
+    "docs/creator_system/schemas/created-artifact-manifest.schema.json"
+)
 
 
 def _brief() -> dict[str, object]:
@@ -732,6 +735,35 @@ def test_creator_intent_contract_schema_blocks_network_publication_claim(
 
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(schema).validate(generated_intent)
+
+
+def test_created_artifact_manifest_schema_blocks_publication_boundary_drift(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    generated_manifest = json.loads(
+        (generated.run_dir / "created-artifact-manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    startup_yc_manifest = json.loads(
+        Path(
+            "docs/creator_system/examples/startup-yc-creator-run/created-artifact-manifest.json"
+        ).read_text(encoding="utf-8")
+    )
+    schema = json.loads(
+        CREATED_ARTIFACT_MANIFEST_SCHEMA.read_text(encoding="utf-8")
+    )
+
+    jsonschema.Draft202012Validator(schema).validate(generated_manifest)
+    jsonschema.Draft202012Validator(schema).validate(startup_yc_manifest)
+
+    generated_manifest["publication_boundary"] = "swarm_shared"
+    generated_manifest["artifacts"][0]["status"] = "published"
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(schema).validate(generated_manifest)
 
 
 @pytest.mark.parametrize("brief", _multi_domain_briefs(), ids=lambda brief: brief["domain_id"])

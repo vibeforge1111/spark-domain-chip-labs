@@ -157,6 +157,8 @@ Success criteria:
 - Each produces a schema-valid creator intent with network publication disabled.
 - Each creates schema-valid chip, benchmark, specialization path, autoloop
   policy, reports, and Swarm packet.
+- Each keeps the created-artifact manifest local-only with no published
+  artifact statuses.
 - Generated benchmark manifests expose lane and seed failure-blocking policy.
 - Each produces schema-valid scoring hooks and generated benchmark case rows.
 - Each produces a schema-valid generated hook-smoke packet.
