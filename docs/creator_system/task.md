@@ -707,6 +707,9 @@ Completed documentation/verification:
 - The manual generated-matrix path prints a compact Actions-log readout with
   verdict, passed-run count, mission-status run count, and
   `network_absorbable=false`.
+- Artifact-quality benchmark manifests now support baseline, candidate, and
+  trap `case_expectations`; benchmark reports emit expectation checks and
+  `calibration_verdict`, and failed expectations force `decision=revert`.
 
 Completed product PR verification:
 

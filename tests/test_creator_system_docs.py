@@ -149,7 +149,10 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
-    assert "Latest focused creator-system suite result before CI push: `158 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `159 passed`." in text
+    assert "case_expectations" in text
+    assert "calibration_verdict" in text
+    assert "failed expectations force `revert`" in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -268,6 +271,9 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "schema-valid `creator-mission-status` packet",
         "BENCHMARK_GENERATION_HONESTY_STANDARD.md",
         "case oracles",
+        "case_expectations",
+        "`calibration_verdict`",
+        "failed expectations force a revert",
         "failure modes",
         "lane-level report results",
         "Changed benchmark manifests block recompute",

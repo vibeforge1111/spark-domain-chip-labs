@@ -146,11 +146,18 @@ def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
         score_artifact_quality_file(path, artifact_kind="design_doc")
         for path in trap_paths
     ]
+    expectation_checks = _evaluate_case_expectations(
+        manifest,
+        baseline=baseline,
+        candidate=candidate,
+        traps=traps,
+    )
     mean_delta = round(candidate["score"] - baseline["score"], 4)
     trap_regressions = sum(
         1 for trap in traps
         if "polished_but_unproven" not in trap["trap_flags"] or trap["verdict"] != "blocked"
     )
+    calibration_passed = all(check["status"] == "pass" for check in expectation_checks)
     provenance = _benchmark_provenance(
         run_path,
         [
@@ -166,6 +173,9 @@ def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
         "mean_score": baseline["score"],
         "case_count": 1,
         "artifact_report": baseline,
+        "expectation_checks": [
+            check for check in expectation_checks if check["case_role"] == "baseline"
+        ],
         "provenance": provenance,
     }
     candidate_report = {
@@ -177,7 +187,13 @@ def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
         "trap_regressions": trap_regressions,
         "artifact_report": candidate,
         "trap_reports": traps,
-        "decision": "keep" if mean_delta > 0 and trap_regressions == 0 else "revert",
+        "expectation_checks": expectation_checks,
+        "calibration_verdict": "pass" if calibration_passed else "blocked",
+        "decision": (
+            "keep"
+            if mean_delta > 0 and trap_regressions == 0 and calibration_passed
+            else "revert"
+        ),
         "provenance": provenance,
     }
     absorption_report = {
@@ -186,6 +202,8 @@ def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
         "mean_validated_pack_delta": mean_delta,
         "trap_band_case_count": len(traps),
         "trap_regressions": trap_regressions,
+        "expectation_checks": expectation_checks,
+        "calibration_verdict": "pass" if calibration_passed else "blocked",
         "all_modes_present": True,
         "all_modes_scored": True,
         "provenance": provenance,
@@ -289,7 +307,96 @@ def _load_manifest(path: Path) -> dict[str, Any]:
             raise ValueError(f"{path} must include {key}")
     if not isinstance(manifest.get("trap_artifacts"), list):
         manifest["trap_artifacts"] = []
+    if manifest.get("case_expectations") is not None and not isinstance(
+        manifest["case_expectations"],
+        dict,
+    ):
+        raise ValueError(f"{path} case_expectations must be an object")
     return manifest
+
+
+def _evaluate_case_expectations(
+    manifest: dict[str, Any],
+    *,
+    baseline: dict[str, Any],
+    candidate: dict[str, Any],
+    traps: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    expectations = manifest.get("case_expectations") or {}
+    if not expectations:
+        return []
+    checks: list[dict[str, Any]] = []
+    for case_role, report in (
+        ("baseline", baseline),
+        ("candidate", candidate),
+    ):
+        expected = expectations.get(case_role)
+        if isinstance(expected, dict):
+            checks.extend(_expectation_checks(case_role, report, expected))
+    trap_expectations = expectations.get("traps")
+    if isinstance(trap_expectations, dict):
+        for index, report in enumerate(traps, start=1):
+            checks.extend(_expectation_checks(f"trap:{index}", report, trap_expectations))
+    return checks
+
+
+def _expectation_checks(
+    case_role: str,
+    report: dict[str, Any],
+    expected: dict[str, Any],
+) -> list[dict[str, Any]]:
+    checks: list[dict[str, Any]] = []
+    if "verdict" in expected:
+        checks.append(
+            _expectation_check(
+                case_role,
+                "verdict",
+                report["verdict"] == expected["verdict"],
+                f"expected {expected['verdict']}, got {report['verdict']}",
+            )
+        )
+    if "min_score" in expected:
+        checks.append(
+            _expectation_check(
+                case_role,
+                "min_score",
+                report["score"] >= float(expected["min_score"]),
+                f"expected score >= {expected['min_score']}, got {report['score']}",
+            )
+        )
+    if "max_score" in expected:
+        checks.append(
+            _expectation_check(
+                case_role,
+                "max_score",
+                report["score"] <= float(expected["max_score"]),
+                f"expected score <= {expected['max_score']}, got {report['score']}",
+            )
+        )
+    for trap_flag in expected.get("required_trap_flags", []):
+        checks.append(
+            _expectation_check(
+                case_role,
+                f"required_trap_flag:{trap_flag}",
+                trap_flag in report["trap_flags"],
+                f"expected trap flag {trap_flag}",
+            )
+        )
+    return checks
+
+
+def _expectation_check(
+    case_role: str,
+    check_id: str,
+    passed: bool,
+    message: str,
+) -> dict[str, str]:
+    return {
+        "case_role": case_role,
+        "check_id": check_id,
+        "status": "pass" if passed else "fail",
+        "message": message,
+    }
 
 
 def _resolve_run_path(run_path: Path, relative_path: str) -> Path:

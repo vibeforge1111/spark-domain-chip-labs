@@ -68,6 +68,12 @@ cases, and scoring hooks. This makes aggregate scores easier to inspect and
 harder to use as a cover for failed traps, stale benchmark rules, or unsupported
 Swarm claims.
 
+The artifact-quality benchmark has started the deeper domain-calibrated layer:
+its manifest can now declare `case_expectations` for baseline, candidate, and
+trap artifacts. The benchmark report emits expectation checks and a
+`calibration_verdict`; failed expectations force a revert even when the raw
+score delta looks positive.
+
 ## Phase 1: Multi-Domain Generator Matrix
 
 The first phase is the fast CI-safe matrix. It uses one representative generated

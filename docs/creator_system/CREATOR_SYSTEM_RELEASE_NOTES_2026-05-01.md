@@ -246,6 +246,10 @@
 - Manual generated-matrix workflow logs now include a compact verdict,
   passed-run count, mission-status run count, and `network_absorbable=false`
   readout for operators.
+- Artifact-quality benchmark manifests now support `case_expectations` for
+  baseline, candidate, and trap artifacts. Benchmark reports emit expectation
+  checks plus `calibration_verdict`, and failed expectations force `revert`
+  rather than letting a positive score delta hide calibration drift.
 
 ## Current Claim Boundary
 
@@ -267,4 +271,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `158 passed`.
+Latest focused creator-system suite result before CI push: `159 passed`.
