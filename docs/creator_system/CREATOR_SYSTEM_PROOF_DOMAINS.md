@@ -75,6 +75,10 @@ Current fixtures:
 
 - `good_design_pr.md`: review-ready report with acceptance gates, runnable
   evidence, tests, risks, rollback, claim boundary, and mission handoff.
+- `design_decision_record_ready.md`: review-ready design decision record with
+  explicit schema, command, evidence-mode, rollback, and claim-boundary checks.
+- `mission_handoff_ready.md`: review-ready mission handoff for the
+  artifact-quality calibration slice.
 - `good_design_pr.report.json`: saved artifact-quality report generated from
   the review-ready fixture.
 - `good_design_pr.report.md`: operator-facing Markdown readout for the saved
@@ -82,6 +86,12 @@ Current fixtures:
 - `weak_design_pr.md`: sparse note that needs repair actions.
 - `polished_unproven_trap.md`: polished prose that must block because it lacks
   runnable proof and rollback evidence.
+
+Benchmark manifests can also declare `reviewer_calibration_cases`. These rows
+compare the scorer against reviewer-labeled examples across PR writeups, design
+docs, mission handoffs, and traps. Any failed reviewer row blocks
+`calibration_verdict` and forces the benchmark decision to `revert`, even when
+the raw candidate score beats the baseline.
 
 The read-only product-surface fixture references `good_design_pr.report.json`
 as an `artifact_quality` source packet. This is evidence for local review

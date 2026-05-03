@@ -119,6 +119,8 @@ def test_run_artifact_quality_benchmark_writes_recomputeable_reports(tmp_path: P
         "good_design_pr.md",
         "weak_design_pr.md",
         "polished_unproven_trap.md",
+        "design_decision_record_ready.md",
+        "mission_handoff_ready.md",
     ):
         (artifact_dir / fixture_name).write_text(
             (FIXTURE_DIR / fixture_name).read_text(encoding="utf-8"),
@@ -140,6 +142,37 @@ def test_run_artifact_quality_benchmark_writes_recomputeable_reports(tmp_path: P
                     "required_trap_flags": ["polished_but_unproven"],
                 },
             },
+            "reviewer_calibration_cases": [
+                {
+                    "case_id": "pr-writeup-ready",
+                    "artifact_path": "benchmark/artifacts/good_design_pr.md",
+                    "artifact_kind": "pr_writeup",
+                    "reviewer_verdict": "review_ready",
+                    "min_score": 0.85,
+                },
+                {
+                    "case_id": "design-decision-ready",
+                    "artifact_path": "benchmark/artifacts/design_decision_record_ready.md",
+                    "artifact_kind": "design_doc",
+                    "reviewer_verdict": "review_ready",
+                    "min_score": 0.85,
+                },
+                {
+                    "case_id": "handoff-ready",
+                    "artifact_path": "benchmark/artifacts/mission_handoff_ready.md",
+                    "artifact_kind": "mission_handoff",
+                    "reviewer_verdict": "review_ready",
+                    "min_score": 0.85,
+                },
+                {
+                    "case_id": "polished-trap",
+                    "artifact_path": "benchmark/artifacts/polished_unproven_trap.md",
+                    "artifact_kind": "design_doc",
+                    "reviewer_verdict": "blocked",
+                    "required_trap_flags": ["polished_but_unproven"],
+                    "required_missing_checks": ["runnable_evidence", "rollback_plan"],
+                },
+            ],
         }, indent=2)
         + "\n",
         encoding="utf-8",
@@ -154,11 +187,23 @@ def test_run_artifact_quality_benchmark_writes_recomputeable_reports(tmp_path: P
     assert result["candidate"]["mean_delta"] > 0
     assert result["candidate"]["trap_regressions"] == 0
     assert result["candidate"]["calibration_verdict"] == "pass"
+    assert result["candidate"]["reviewer_calibration_case_count"] == 4
+    assert {
+        row["artifact_kind"] for row in result["candidate"]["reviewer_calibration_rows"]
+    } == {"pr_writeup", "design_doc", "mission_handoff"}
+    assert all(
+        row["status"] == "pass"
+        for row in result["candidate"]["reviewer_calibration_rows"]
+    )
     assert all(
         check["status"] == "pass"
         for check in result["candidate"]["expectation_checks"]
     )
     assert result["candidate"]["provenance"]["source"] == "artifact_quality_v1"
+    assert (
+        "benchmark/artifacts/design_decision_record_ready.md"
+        in result["candidate"]["provenance"]["input_hashes"]
+    )
 
 
 def test_artifact_quality_benchmark_blocks_failed_case_expectations(
@@ -202,4 +247,52 @@ def test_artifact_quality_benchmark_blocks_failed_case_expectations(
         and check["check_id"] == "verdict"
         and check["status"] == "fail"
         for check in result["candidate"]["expectation_checks"]
+    )
+
+
+def test_artifact_quality_benchmark_blocks_failed_reviewer_calibration(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "artifact-run"
+    artifact_dir = run_dir / "benchmark" / "artifacts"
+    artifact_dir.mkdir(parents=True)
+    for fixture_name in (
+        "good_design_pr.md",
+        "weak_design_pr.md",
+        "polished_unproven_trap.md",
+    ):
+        (artifact_dir / fixture_name).write_text(
+            (FIXTURE_DIR / fixture_name).read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+    manifest_path = run_dir / MANIFEST_PATH
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.write_text(
+        json.dumps({
+            "schema_version": "artifact_quality.benchmark_manifest.v1",
+            "baseline_artifact": "benchmark/artifacts/weak_design_pr.md",
+            "candidate_artifact": "benchmark/artifacts/good_design_pr.md",
+            "trap_artifacts": ["benchmark/artifacts/polished_unproven_trap.md"],
+            "reviewer_calibration_cases": [
+                {
+                    "case_id": "miscalibrated-good-pr",
+                    "artifact_path": "benchmark/artifacts/good_design_pr.md",
+                    "artifact_kind": "pr_writeup",
+                    "reviewer_verdict": "blocked",
+                },
+            ],
+        }, indent=2)
+        + "\n",
+        encoding="utf-8",
+    )
+
+    result = run_artifact_quality_benchmark(run_dir)
+
+    assert result["verdict"] == "blocked"
+    assert result["candidate"]["decision"] == "revert"
+    assert result["candidate"]["calibration_verdict"] == "blocked"
+    assert result["candidate"]["reviewer_calibration_rows"][0]["status"] == "fail"
+    assert any(
+        check["check_id"] == "verdict" and check["status"] == "fail"
+        for check in result["candidate"]["reviewer_calibration_rows"][0]["checks"]
     )

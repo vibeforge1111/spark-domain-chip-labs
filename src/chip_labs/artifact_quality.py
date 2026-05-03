@@ -152,12 +152,19 @@ def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
         candidate=candidate,
         traps=traps,
     )
+    reviewer_calibration_rows = _evaluate_reviewer_calibration(
+        run_path,
+        manifest.get("reviewer_calibration_cases", []),
+    )
     mean_delta = round(candidate["score"] - baseline["score"], 4)
     trap_regressions = sum(
         1 for trap in traps
         if "polished_but_unproven" not in trap["trap_flags"] or trap["verdict"] != "blocked"
     )
-    calibration_passed = all(check["status"] == "pass" for check in expectation_checks)
+    calibration_passed = (
+        all(check["status"] == "pass" for check in expectation_checks)
+        and all(row["status"] == "pass" for row in reviewer_calibration_rows)
+    )
     provenance = _benchmark_provenance(
         run_path,
         [
@@ -165,6 +172,15 @@ def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
             str(manifest["baseline_artifact"]),
             str(manifest["candidate_artifact"]),
             *[str(path) for path in manifest.get("trap_artifacts", [])],
+            *[
+                str(case["artifact_path"])
+                for case in manifest.get("reviewer_calibration_cases", [])
+                if (
+                    isinstance(case, dict)
+                    and case.get("artifact_path")
+                    and (run_path / str(case["artifact_path"])).exists()
+                )
+            ],
         ],
     )
     baseline_report = {
@@ -188,6 +204,8 @@ def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
         "artifact_report": candidate,
         "trap_reports": traps,
         "expectation_checks": expectation_checks,
+        "reviewer_calibration_rows": reviewer_calibration_rows,
+        "reviewer_calibration_case_count": len(reviewer_calibration_rows),
         "calibration_verdict": "pass" if calibration_passed else "blocked",
         "decision": (
             "keep"
@@ -203,6 +221,8 @@ def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
         "trap_band_case_count": len(traps),
         "trap_regressions": trap_regressions,
         "expectation_checks": expectation_checks,
+        "reviewer_calibration_rows": reviewer_calibration_rows,
+        "reviewer_calibration_case_count": len(reviewer_calibration_rows),
         "calibration_verdict": "pass" if calibration_passed else "blocked",
         "all_modes_present": True,
         "all_modes_scored": True,
@@ -312,6 +332,11 @@ def _load_manifest(path: Path) -> dict[str, Any]:
         dict,
     ):
         raise ValueError(f"{path} case_expectations must be an object")
+    if manifest.get("reviewer_calibration_cases") is not None and not isinstance(
+        manifest["reviewer_calibration_cases"],
+        list,
+    ):
+        raise ValueError(f"{path} reviewer_calibration_cases must be a list")
     return manifest
 
 
@@ -338,6 +363,84 @@ def _evaluate_case_expectations(
         for index, report in enumerate(traps, start=1):
             checks.extend(_expectation_checks(f"trap:{index}", report, trap_expectations))
     return checks
+
+
+def _evaluate_reviewer_calibration(
+    run_path: Path,
+    cases: list[Any],
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for index, case in enumerate(cases, start=1):
+        if not isinstance(case, dict):
+            rows.append(_blocked_calibration_row(index, "case must be an object"))
+            continue
+        artifact_path = str(case.get("artifact_path", "")).strip()
+        if not artifact_path:
+            rows.append(_blocked_calibration_row(index, "artifact_path is required"))
+            continue
+        try:
+            report = score_artifact_quality_file(
+                _resolve_run_path(run_path, artifact_path),
+                artifact_kind=str(case.get("artifact_kind", "design_doc")),
+            )
+        except FileNotFoundError as exc:
+            rows.append(_blocked_calibration_row(index, str(exc), artifact_path=artifact_path))
+            continue
+        expected = {
+            key: case[key]
+            for key in ("min_score", "max_score", "required_trap_flags")
+            if key in case
+        }
+        if "reviewer_verdict" in case:
+            expected["verdict"] = case["reviewer_verdict"]
+        checks = _expectation_checks(f"reviewer_calibration:{index}", report, expected)
+        expected_missing = case.get("required_missing_checks", [])
+        if isinstance(expected_missing, list):
+            for missing_check in expected_missing:
+                checks.append(
+                    _expectation_check(
+                        f"reviewer_calibration:{index}",
+                        f"required_missing_check:{missing_check}",
+                        missing_check in report["missing_checks"],
+                        f"expected missing check {missing_check}",
+                    )
+                )
+        rows.append({
+            "case_id": str(case.get("case_id", f"reviewer-calibration-{index}")),
+            "artifact_path": artifact_path,
+            "artifact_kind": report["artifact_kind"],
+            "reviewer_verdict": str(case.get("reviewer_verdict", "")),
+            "scorer_verdict": report["verdict"],
+            "score": report["score"],
+            "status": "pass" if all(check["status"] == "pass" for check in checks) else "fail",
+            "checks": checks,
+        })
+    return rows
+
+
+def _blocked_calibration_row(
+    index: int,
+    message: str,
+    *,
+    artifact_path: str = "",
+) -> dict[str, Any]:
+    return {
+        "case_id": f"reviewer-calibration-{index}",
+        "artifact_path": artifact_path,
+        "artifact_kind": "unknown",
+        "reviewer_verdict": "",
+        "scorer_verdict": "blocked",
+        "score": 0.0,
+        "status": "fail",
+        "checks": [
+            _expectation_check(
+                f"reviewer_calibration:{index}",
+                "case_shape",
+                False,
+                message,
+            )
+        ],
+    }
 
 
 def _expectation_checks(

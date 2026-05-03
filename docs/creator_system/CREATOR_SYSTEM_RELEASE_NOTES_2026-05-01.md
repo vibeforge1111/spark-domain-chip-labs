@@ -250,6 +250,10 @@
   baseline, candidate, and trap artifacts. Benchmark reports emit expectation
   checks plus `calibration_verdict`, and failed expectations force `revert`
   rather than letting a positive score delta hide calibration drift.
+- Artifact-quality benchmark manifests now support
+  `reviewer_calibration_cases` across PR writeups, design docs, mission
+  handoffs, and traps. Failed reviewer rows block calibration and the
+  calibration source files are included in benchmark provenance hashes.
 - MiroFish content simulation results now emit calibration checks for
   multi-RLM judge coverage, persona-segment coverage, row-count coherence,
   weak-segment inspection, and optional expected-winner oracles. Single-judge

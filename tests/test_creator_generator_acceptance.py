@@ -961,6 +961,8 @@ def _install_artifact_quality_benchmark(run_dir: Path) -> None:
         "good_design_pr.md",
         "weak_design_pr.md",
         "polished_unproven_trap.md",
+        "design_decision_record_ready.md",
+        "mission_handoff_ready.md",
     ):
         (artifact_dir / fixture_name).write_text(
             (fixture_dir / fixture_name).read_text(encoding="utf-8"),
@@ -973,6 +975,37 @@ def _install_artifact_quality_benchmark(run_dir: Path) -> None:
                 "baseline_artifact": "benchmark/artifacts/weak_design_pr.md",
                 "candidate_artifact": "benchmark/artifacts/good_design_pr.md",
                 "trap_artifacts": ["benchmark/artifacts/polished_unproven_trap.md"],
+                "reviewer_calibration_cases": [
+                    {
+                        "case_id": "pr-writeup-ready",
+                        "artifact_path": "benchmark/artifacts/good_design_pr.md",
+                        "artifact_kind": "pr_writeup",
+                        "reviewer_verdict": "review_ready",
+                        "min_score": 0.85,
+                    },
+                    {
+                        "case_id": "design-decision-ready",
+                        "artifact_path": "benchmark/artifacts/design_decision_record_ready.md",
+                        "artifact_kind": "design_doc",
+                        "reviewer_verdict": "review_ready",
+                        "min_score": 0.85,
+                    },
+                    {
+                        "case_id": "handoff-ready",
+                        "artifact_path": "benchmark/artifacts/mission_handoff_ready.md",
+                        "artifact_kind": "mission_handoff",
+                        "reviewer_verdict": "review_ready",
+                        "min_score": 0.85,
+                    },
+                    {
+                        "case_id": "polished-trap",
+                        "artifact_path": "benchmark/artifacts/polished_unproven_trap.md",
+                        "artifact_kind": "design_doc",
+                        "reviewer_verdict": "blocked",
+                        "required_trap_flags": ["polished_but_unproven"],
+                        "required_missing_checks": ["runnable_evidence", "rollback_plan"],
+                    },
+                ],
             },
             indent=2,
         )
