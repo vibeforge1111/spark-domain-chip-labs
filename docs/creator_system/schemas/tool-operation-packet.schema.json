@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/tool-operation-packet.schema.json",
+  "title": "Adaptive Creator Loop Tool Operation Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["command", "exit_code", "result"],
+  "properties": {
+    "command": {"type": "string", "minLength": 1},
+    "operator_request": {"type": "string"},
+    "notes": {"type": "string"},
+    "stdout": {"type": "string"},
+    "stderr": {"type": "string"},
+    "exit_code": {"type": "integer"},
+    "expected_postconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "verdict": {"type": "string", "minLength": 1},
+        "blocking_checks_empty": {"type": "boolean"},
+        "missing_paths_empty": {"type": "boolean"},
+        "automation_blocked": {"type": "boolean"},
+        "calibration_verdict": {"type": "string", "minLength": 1},
+        "network_absorbable": {"const": false},
+        "minimum_seed_count": {"type": "integer", "minimum": 1},
+        "stable_top_candidate_required": {"type": "boolean"},
+        "minimum_case_count": {"type": "integer", "minimum": 1},
+        "failed_case_ids_empty": {"type": "boolean"},
+        "schema_families_include": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "result": {"type": "object"},
+    "rollback_note": {"type": "string"}
+  }
+}

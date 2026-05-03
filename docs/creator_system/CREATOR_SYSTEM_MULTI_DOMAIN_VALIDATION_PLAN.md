@@ -48,7 +48,7 @@ Current maturity by domain:
 | Domain family | Generated benchmark pack | Domain-specific benchmark depth | Next benchmark upgrade |
 | --- | --- | --- | --- |
 | Artifact quality | Yes: cases, traps, recompute reports | Good local fixture set for strong, weak, polished-but-unproven, design-decision, and mission-handoff docs with reviewer calibration rows | Add real human-edited PR/design-doc examples and disagreement rows |
-| Tool operation | Yes: safe command, rollback, token trap | Good local operation packets for dry-run, postconditions, stale recompute, missing artifacts, secret handling, MiroFish content multi-seed, and doctor adversarial sweep commands | Add more real command families and postcondition adapters |
+| Tool operation | Yes: safe command, rollback, token trap | Good local operation packets for dry-run, postconditions, stale recompute, missing artifacts, secret handling, MiroFish content multi-seed, doctor adversarial sweep commands, and schema-anchored packet/check contracts | Add more real command families and postcondition adapters |
 | Content simulation | Yes: title/angle cases and simulator metadata | Local MiroFish simulation and route examples exist, but real outcome calibration is not done | Add multi-seed simulator batches and compare against actual content outcomes |
 | Doctor/security | Yes: fake evidence, repair specificity, unsafe promotion trap | Good stale/malicious fixture coverage, repair calibration, schema-family adversarial sweep coverage, and schema anchors for malformed sweep packets | Add broader generated mutation manifests |
 | Startup operator | Yes: generated founder-advice benchmark cases | Strongest curated reference fixture plus Startup YC gate checks and external recompute comparisons | Add real multi-seed evaluated founder-advice evidence before stronger claims |
@@ -97,6 +97,11 @@ seed count, and stable top-candidate evidence.
 It also supports `creator-run-doctor-adversarial-sweep` packets with
 postconditions for minimum case count, empty failed case ids, required
 schema-family coverage, and `network_absorbable=false`.
+The tool-operation manifest, input packet, and check-result schemas now anchor
+the local mission-control safety boundary. Saved operation fixtures and fresh
+check outputs validate against those schemas, while incoherent blocked/allowed
+states and `network_absorbable=true` postconditions are rejected before a
+mission trace can treat the packet as evidence.
 
 The doctor/security layer now emits `repair_calibration` in doctor results. It
 checks that blocking smoke checks are covered by specific repair steps or

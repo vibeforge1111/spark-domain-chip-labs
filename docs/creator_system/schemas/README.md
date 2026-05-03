@@ -24,6 +24,9 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [operator-review-check.schema.json](operator-review-check.schema.json) | Generic generated-domain human/operator review check output |
 | [retrieval-memory-packet.schema.json](retrieval-memory-packet.schema.json) | Local retrieval-memory packet input |
 | [retrieval-memory-check.schema.json](retrieval-memory-check.schema.json) | Local retrieval-memory check output |
+| [tool-operation-manifest.schema.json](tool-operation-manifest.schema.json) | Local safe tool-operation manifest |
+| [tool-operation-packet.schema.json](tool-operation-packet.schema.json) | Local tool-operation packet input |
+| [tool-operation-check.schema.json](tool-operation-check.schema.json) | Local tool-operation safety check output |
 | [startup-yc-validation-plan.schema.json](startup-yc-validation-plan.schema.json) | Startup YC validation plan and network-absorption gate list |
 | [startup-yc-validation-evidence.schema.json](startup-yc-validation-evidence.schema.json) | Startup YC raw validation evidence inputs and promotion bundles |
 | [startup-yc-validation-evidence-check-result.schema.json](startup-yc-validation-evidence-check-result.schema.json) | Startup YC raw validation-evidence shape-check output |
@@ -89,3 +92,9 @@ production memory runtime remains deferred. Packet inputs require explicit
 lanes, source refs, freshness, provenance, contradiction fields, and review
 metadata. Check outputs require `network_absorbable=false`, visible blockers for
 blocked packets, and calibration verdicts that match the blocker state.
+
+The tool-operation schemas anchor the local mission-control safety boundary.
+They describe the supported command manifest, the parsed operation packet shape,
+and the check output that product or mission traces may read. Passing checks
+must have `allowed=true` and no blockers; blocked checks must have
+`allowed=false`, visible blockers, and rollback-state protection.

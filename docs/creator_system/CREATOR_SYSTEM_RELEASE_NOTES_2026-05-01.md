@@ -274,6 +274,11 @@
   packets and verify minimum case count, empty failed case ids, required
   schema-family coverage, and `network_absorbable=false` before a mission trace
   can trust the sweep result.
+- `tool-operation-manifest.schema.json`, `tool-operation-packet.schema.json`,
+  and `tool-operation-check.schema.json` now anchor the local mission-control
+  safety boundary. Saved fixtures and fresh check outputs validate against the
+  schemas, while incoherent blocked/allowed states and
+  `network_absorbable=true` postconditions are rejected.
 - `creator-run-doctor` now emits `repair_calibration`, which verifies that
   blocking smoke checks are covered by specific repair steps or quarantine
   findings and that blocked runs require recompute replay before repair advice

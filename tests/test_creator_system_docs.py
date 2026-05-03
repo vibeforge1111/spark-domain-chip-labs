@@ -353,8 +353,12 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "doctor-adversarial-sweep-result.schema.json",
         "retrieval-memory-packet.schema.json",
         "retrieval-memory-check.schema.json",
+        "tool-operation-manifest.schema.json",
+        "tool-operation-packet.schema.json",
+        "tool-operation-check.schema.json",
         "schema-family mutation",
         "production memory runtime remains deferred",
+        "mission-control safety boundary",
         "human/operator calibration",
         "review evidence only",
     ):

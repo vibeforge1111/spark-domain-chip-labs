@@ -6,6 +6,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 from chip_labs.tool_operation import (
     CLAIM_BOUNDARY,
     check_tool_operation,
@@ -16,6 +18,9 @@ from chip_labs.tool_operation import (
 
 
 FIXTURE_DIR = Path("docs/creator_system/examples/tool-operation")
+MANIFEST_SCHEMA = Path("docs/creator_system/schemas/tool-operation-manifest.schema.json")
+PACKET_SCHEMA = Path("docs/creator_system/schemas/tool-operation-packet.schema.json")
+CHECK_SCHEMA = Path("docs/creator_system/schemas/tool-operation-check.schema.json")
 
 
 def _smoke_result(
@@ -396,3 +401,39 @@ def test_cli_tool_operation_check_outputs_packet(tmp_path: Path) -> None:
     payload = json.loads(output_path.read_text(encoding="utf-8"))
     assert payload["schema_version"] == "tool_operation.check_result.v1"
     assert payload["verdict"] == "pass"
+
+
+def test_tool_operation_schemas_validate_fixture_suite() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    manifest_schema = json.loads(MANIFEST_SCHEMA.read_text(encoding="utf-8"))
+    packet_schema = json.loads(PACKET_SCHEMA.read_text(encoding="utf-8"))
+    check_schema = json.loads(CHECK_SCHEMA.read_text(encoding="utf-8"))
+
+    jsonschema.Draft202012Validator(manifest_schema).validate(
+        default_tool_operation_manifest()
+    )
+    for fixture_path in sorted(FIXTURE_DIR.glob("*.json")):
+        if fixture_path.name.endswith(".check.json"):
+            packet = json.loads(fixture_path.read_text(encoding="utf-8"))
+        else:
+            packet = load_tool_operation_packet(fixture_path)
+            jsonschema.Draft202012Validator(packet_schema).validate(packet)
+            packet = check_tool_operation(packet)
+        jsonschema.Draft202012Validator(check_schema).validate(packet)
+
+
+def test_tool_operation_schemas_reject_unsafe_shapes() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    packet_schema = json.loads(PACKET_SCHEMA.read_text(encoding="utf-8"))
+    check_schema = json.loads(CHECK_SCHEMA.read_text(encoding="utf-8"))
+    packet = load_tool_operation_packet(FIXTURE_DIR / "creator_run_smoke_pass.json")
+    check = check_tool_operation(packet)
+
+    packet["expected_postconditions"]["network_absorbable"] = True
+    check["verdict"] = "blocked"
+    check["allowed"] = True
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(packet_schema).validate(packet)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(check_schema).validate(check)

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/tool-operation-manifest.schema.json",
+  "title": "Adaptive Creator Loop Tool Operation Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "claim_boundary",
+    "supported_operations",
+    "protected_command_markers",
+    "secret_markers"
+  ],
+  "properties": {
+    "schema_version": {"const": "tool_operation.manifest.v1"},
+    "claim_boundary": {"const": "tool_operation local postcondition check only"},
+    "supported_operations": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "required_fragments",
+          "packet_kind",
+          "required_fields",
+          "success_field",
+          "success_values"
+        ],
+        "properties": {
+          "required_fragments": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "packet_kind": {"type": "string", "minLength": 1},
+          "required_fields": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "success_field": {
+            "anyOf": [
+              {"type": "string", "minLength": 1},
+              {"type": "null"}
+            ]
+          },
+          "success_values": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "protected_command_markers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "secret_markers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}
