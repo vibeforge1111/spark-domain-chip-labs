@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/generated-multi-seed-summary-check.schema.json",
+  "title": "Adaptive Creator Loop Generated Multi-Seed Summary Check",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "summary_path",
+    "verdict",
+    "evidence_mode",
+    "row_count",
+    "blocking_checks",
+    "failed_seed_ids",
+    "network_absorbable"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.generated_multi_seed_summary_check.v1"
+    },
+    "summary_path": {"type": "string", "minLength": 1},
+    "verdict": {"enum": ["pass", "blocked"]},
+    "evidence_mode": {"const": "recomputed"},
+    "row_count": {"type": "integer", "minimum": 0},
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "failed_seed_ids": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "network_absorbable": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "pass"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"maxItems": 0},
+          "failed_seed_ids": {"maxItems": 0}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"minItems": 1}
+        }
+      }
+    }
+  ]
+}

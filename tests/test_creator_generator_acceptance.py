@@ -23,6 +23,12 @@ DOCTOR_FIXTURE_DIR = Path("docs/creator_system/examples/doctor-security")
 CREATOR_MISSION_SCHEMA = Path(
     "docs/creator_system/schemas/creator-mission-status.schema.json"
 )
+GENERATED_MULTI_SEED_SUMMARY_SCHEMA = Path(
+    "docs/creator_system/schemas/generated-multi-seed-summary.schema.json"
+)
+GENERATED_MULTI_SEED_SUMMARY_CHECK_SCHEMA = Path(
+    "docs/creator_system/schemas/generated-multi-seed-summary-check.schema.json"
+)
 
 
 def _brief() -> dict[str, object]:
@@ -535,6 +541,7 @@ def test_creator_run_recompute_blocks_tampered_lane_results(tmp_path: Path) -> N
 def test_generator_multi_seed_validation_runs_full_domain_matrix(
     tmp_path: Path,
 ) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
     summary = run_multi_seed_generator_validation(
         tmp_path,
         _multi_domain_briefs(),
@@ -575,9 +582,17 @@ def test_generator_multi_seed_validation_runs_full_domain_matrix(
         "retrieval-memory-boundary",
     }
     assert (tmp_path / "multi_seed_validation_summary.json").exists()
+    summary_schema = json.loads(
+        GENERATED_MULTI_SEED_SUMMARY_SCHEMA.read_text(encoding="utf-8")
+    )
+    jsonschema.Draft202012Validator(summary_schema).validate(summary)
     checked = validate_multi_seed_generator_summary(
         tmp_path / "multi_seed_validation_summary.json"
     )
+    check_schema = json.loads(
+        GENERATED_MULTI_SEED_SUMMARY_CHECK_SCHEMA.read_text(encoding="utf-8")
+    )
+    jsonschema.Draft202012Validator(check_schema).validate(checked)
     assert checked["verdict"] == "pass"
     assert checked["blocking_checks"] == []
     assert checked["row_count"] == 36
@@ -586,6 +601,7 @@ def test_generator_multi_seed_validation_runs_full_domain_matrix(
 def test_generator_multi_seed_validation_exposes_failed_seed_rows(
     tmp_path: Path,
 ) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
     summary = run_multi_seed_generator_validation(
         tmp_path,
         [_multi_domain_briefs()[0]],
@@ -610,6 +626,10 @@ def test_generator_multi_seed_validation_exposes_failed_seed_rows(
     assert "Do not promote a packet when any seed row is blocked." in (
         summary["next_actions"]
     )
+    summary_schema = json.loads(
+        GENERATED_MULTI_SEED_SUMMARY_SCHEMA.read_text(encoding="utf-8")
+    )
+    jsonschema.Draft202012Validator(summary_schema).validate(summary)
 
 
 def test_multi_seed_summary_validation_blocks_tampered_saved_rows(
@@ -627,6 +647,11 @@ def test_multi_seed_summary_validation_blocks_tampered_saved_rows(
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
 
     checked = validate_multi_seed_generator_summary(summary_path)
+    jsonschema = pytest.importorskip("jsonschema")
+    check_schema = json.loads(
+        GENERATED_MULTI_SEED_SUMMARY_CHECK_SCHEMA.read_text(encoding="utf-8")
+    )
+    jsonschema.Draft202012Validator(check_schema).validate(checked)
 
     assert checked["verdict"] == "blocked"
     assert "row:design-doc-pr-quality:v1:seed1:verdict_mismatch" in (
@@ -652,6 +677,11 @@ def test_multi_seed_summary_validation_blocks_stale_underlying_run(
     candidate_path.write_text(json.dumps(candidate, indent=2) + "\n", encoding="utf-8")
 
     checked = validate_multi_seed_generator_summary(summary_path)
+    jsonschema = pytest.importorskip("jsonschema")
+    check_schema = json.loads(
+        GENERATED_MULTI_SEED_SUMMARY_CHECK_SCHEMA.read_text(encoding="utf-8")
+    )
+    jsonschema.Draft202012Validator(check_schema).validate(checked)
 
     assert checked["verdict"] == "blocked"
     assert summary["rows"][0]["seed_id"] in checked["failed_seed_ids"]

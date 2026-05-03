@@ -18,6 +18,7 @@ BENCHMARK_HONESTY_STANDARD = Path(
 STARTUP_YC_EXTERNAL_RECOMPUTE = Path(
     "docs/creator_system/STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md"
 )
+SCHEMA_README = Path("docs/creator_system/schemas/README.md")
 
 
 def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
@@ -39,7 +40,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "does not prove product correctness" in text
     assert "STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md" in text
     assert (
-        "Startup YC validation plan, evidence, shape-check, gate-check, and suite outputs"
+        "generated multi-seed summaries, and Startup YC validation plan, evidence, shape-check, gate-check, and suite outputs"
         in text
     )
     assert "shape-only raw evidence CI fixture" in text
@@ -114,6 +115,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "failed seed rows block the aggregate" in text
     assert "validate_multi_seed_generator_summary" in text
     assert "tampered summary rows" in text
+    assert "generated-multi-seed-summary.schema.json" in text
+    assert "generated-multi-seed-summary-check.schema.json" in text
     assert "Generator acceptance now includes a retrieval/memory boundary domain" in text
     assert "evidence shape-check outputs and rejects accidental" in text
     assert "validate saved `startup-yc-validation-evidence-check`" in text
@@ -130,7 +133,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "tests/test_creator_mission_adapter.py" in text
-    assert "Latest focused creator-system suite result before CI push: `147 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `148 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -241,6 +244,8 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "Changed saved lane results block recompute",
         "run_multi_seed_generator_validation",
         "validate_multi_seed_generator_summary",
+        "generated-multi-seed-summary.schema.json",
+        "generated-multi-seed-summary-check.schema.json",
         "multi_seed_validation_summary.json",
         "`aggregate_hidden_failures` to false",
         "forced weak-seed regression",
@@ -248,6 +253,22 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "Changed underlying run reports block generated multi-seed summary validation",
         "36 generated runs total",
         "does not approve `network_absorbable`",
+    ):
+        assert phrase in text
+
+
+def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
+    text = SCHEMA_README.read_text(encoding="utf-8")
+
+    for phrase in (
+        "generated-multi-seed-summary.schema.json",
+        "generated-multi-seed-summary-check.schema.json",
+        "Generated multi-domain multi-seed summary output",
+        "Recomputed generated multi-seed summary check output",
+        "`network_absorbable=false`",
+        "no hidden aggregate failures",
+        "tampered summary rows",
+        "stale underlying run reports",
     ):
         assert phrase in text
 

@@ -671,6 +671,9 @@ Completed documentation/verification:
 - `validate_multi_seed_generator_summary` now recomputes saved generated
   multi-seed summaries and blocks tampered summary rows or stale underlying run
   reports.
+- `generated-multi-seed-summary.schema.json` and
+  `generated-multi-seed-summary-check.schema.json` now anchor the generic
+  generated multi-seed summary and recompute-check packet shapes.
 - Generator acceptance now includes a retrieval/memory boundary domain and
   requires every generated domain family to emit a schema-valid recomputed
   `creator-mission-status` packet.

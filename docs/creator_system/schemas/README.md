@@ -23,6 +23,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [startup-yc-validation-evidence-check-result.schema.json](startup-yc-validation-evidence-check-result.schema.json) | Startup YC raw validation-evidence shape-check output |
 | [startup-yc-gate-check-result.schema.json](startup-yc-gate-check-result.schema.json) | Startup YC individual gate-check outputs |
 | [startup-yc-validation-suite.schema.json](startup-yc-validation-suite.schema.json) | Startup YC validation-suite output |
+| [generated-multi-seed-summary.schema.json](generated-multi-seed-summary.schema.json) | Generated multi-domain multi-seed summary output |
+| [generated-multi-seed-summary-check.schema.json](generated-multi-seed-summary-check.schema.json) | Recomputed generated multi-seed summary check output |
 
 The smoke validator remains stricter than these schemas where score semantics, promotion gates, transfer boundaries, and publication readiness are concerned.
 
@@ -58,3 +60,8 @@ network absorption. The validation-suite schema references the gate-check schema
 for every subcheck, so a saved suite cannot hide malformed gate evidence inside
 a generic object field. Creator-system CI validates both freshly generated suite
 output and the saved blocked suite fixture against that referenced schema pair.
+
+The generated multi-seed summary schemas anchor the generic domain-generator
+matrix separately from the Startup YC promotion gate. They require recomputed
+evidence mode, `network_absorbable=false`, visible failed seed ids, no hidden aggregate failures, and a check packet that blocks tampered summary rows or
+stale underlying run reports.

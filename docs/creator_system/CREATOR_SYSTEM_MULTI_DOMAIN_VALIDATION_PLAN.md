@@ -114,6 +114,9 @@ Current executable status:
 - `validate_multi_seed_generator_summary` recomputes every saved row from its
   run directory and blocks tampered summary fields or stale underlying run
   reports.
+- `generated-multi-seed-summary.schema.json` and
+  `generated-multi-seed-summary-check.schema.json` anchor the saved summary and
+  recomputed check packet shapes.
 
 Success criteria:
 

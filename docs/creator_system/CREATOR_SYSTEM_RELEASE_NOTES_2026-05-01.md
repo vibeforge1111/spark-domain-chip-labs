@@ -208,6 +208,9 @@
 - `validate_multi_seed_generator_summary` now recomputes saved generated
   multi-seed summaries and blocks tampered summary rows or stale underlying run
   reports.
+- `generated-multi-seed-summary.schema.json` and
+  `generated-multi-seed-summary-check.schema.json` now anchor the generic
+  generated multi-seed summary and recompute-check packet shapes.
 - Generator acceptance now includes a retrieval/memory boundary domain and
   requires every generated domain family to emit a schema-valid recomputed
   `creator-mission-status` packet.
@@ -235,4 +238,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `147 passed`.
+Latest focused creator-system suite result before CI push: `148 passed`.
