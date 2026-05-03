@@ -55,7 +55,7 @@
       "required": ["privacy_boundary", "network_publication_allowed"],
       "properties": {
         "privacy_boundary": {"type": "string"},
-        "network_publication_allowed": {"type": "boolean"},
+        "network_publication_allowed": {"const": false},
         "auth_or_secret_requirements": {"type": "array"},
         "forbidden_mutations": {"type": "array"},
         "human_review_required": {"type": "boolean"}
@@ -80,4 +80,3 @@
     }
   }
 }
-

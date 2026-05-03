@@ -154,6 +154,7 @@ brief per domain family.
 Success criteria:
 
 - Each domain starts from a brief.
+- Each produces a schema-valid creator intent with network publication disabled.
 - Each creates schema-valid chip, benchmark, specialization path, autoloop
   policy, reports, and Swarm packet.
 - Generated benchmark manifests expose lane and seed failure-blocking policy.

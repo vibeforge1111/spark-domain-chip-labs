@@ -224,6 +224,9 @@
 - `loop-policy-manifest.schema.json` now requires
   `network_publication_allowed=false`, so autoloop policies cannot silently
   become network publication policies.
+- `creator-intent.schema.json` now requires
+  `constraints.network_publication_allowed=false`, so generated creator runs
+  start below the network publication boundary at the intent layer.
 - `creator-run-smoke --recompute` now verifies generated lane results and blocks
   tampered benchmark manifests through report provenance hashes.
 - `run_multi_seed_generator_validation` now creates a generated 36-row
