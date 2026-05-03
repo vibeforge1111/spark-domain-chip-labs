@@ -1209,6 +1209,16 @@ def cmd_operator_review_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_generated_multi_seed_summary_check(args: argparse.Namespace) -> None:
+    """Recompute-check a generated multi-seed summary packet."""
+    from .creator_generator import validate_multi_seed_generator_summary
+
+    result = validate_multi_seed_generator_summary(args.summary)
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_creator_mission_status(args: argparse.Namespace) -> None:
     """Build a read-only creator mission status for product surfaces."""
     from .creator_mission_adapter import build_creator_mission_status, load_json_packet
@@ -2241,6 +2251,29 @@ def main() -> None:
         help="Exit with status 1 when operator review is incomplete or unsafe.",
     )
     p_operator_review_check.set_defaults(func=cmd_operator_review_check)
+
+    # generated-multi-seed-summary-check
+    p_generated_multi_seed_summary_check = sub.add_parser(
+        "generated-multi-seed-summary-check",
+        help="Recompute-check a generated multi-domain multi-seed summary.",
+    )
+    p_generated_multi_seed_summary_check.add_argument(
+        "--summary",
+        type=str,
+        required=True,
+        help="Generated multi-seed summary JSON path.",
+    )
+    p_generated_multi_seed_summary_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_generated_multi_seed_summary_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the generated summary check is blocked.",
+    )
+    p_generated_multi_seed_summary_check.set_defaults(
+        func=cmd_generated_multi_seed_summary_check
+    )
 
     # creator-mission-status
     p_creator_mission_status = sub.add_parser(

@@ -700,6 +700,70 @@ def test_multi_seed_summary_validation_blocks_stale_underlying_run(
     assert "summary:verdict_mismatch" in checked["blocking_checks"]
 
 
+def test_cli_generated_multi_seed_summary_check_recomputes_saved_summary(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    run_multi_seed_generator_validation(
+        tmp_path,
+        [_multi_domain_briefs()[0]],
+        seeds=(1, 2),
+        variants_per_domain=1,
+    )
+    summary_path = tmp_path / "multi_seed_validation_summary.json"
+    output_path = tmp_path / "multi_seed_validation_summary.check.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "generated-multi-seed-summary-check",
+            "--summary",
+            str(summary_path),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    check_schema = json.loads(
+        GENERATED_MULTI_SEED_SUMMARY_CHECK_SCHEMA.read_text(encoding="utf-8")
+    )
+    jsonschema.Draft202012Validator(check_schema).validate(payload)
+    assert payload["verdict"] == "pass"
+    assert payload["row_count"] == 2
+    assert payload["network_absorbable"] is False
+
+    tampered = json.loads(summary_path.read_text(encoding="utf-8"))
+    tampered["rows"][0]["network_absorbable"] = True
+    summary_path.write_text(json.dumps(tampered, indent=2) + "\n", encoding="utf-8")
+    blocked = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "generated-multi-seed-summary-check",
+            "--summary",
+            str(summary_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert blocked.returncode == 1
+    assert "network_absorbable_mismatch" in blocked.stdout
+
+
 def test_creator_run_doctor_recompute_requires_repair_replay(
     tmp_path: Path,
 ) -> None:

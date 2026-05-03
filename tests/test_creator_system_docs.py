@@ -65,6 +65,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "tool-operation-check",
         "retrieval-memory-check",
         "operator-review-check",
+        "generated-multi-seed-summary-check",
         "creator-mission-status",
         "startup-yc-promotion-gate-check",
         "startup-yc-validation-evidence-check",
@@ -119,6 +120,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "tampered summary rows" in text
     assert "generated-multi-seed-summary.schema.json" in text
     assert "generated-multi-seed-summary-check.schema.json" in text
+    assert "generated-multi-seed-summary-check" in text
     assert "creator-mission-status --generated-multi-seed" in text
     assert "hidden-failure status" in text
     assert "operator-review-check" in text
@@ -142,7 +144,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
-    assert "Latest focused creator-system suite result before CI push: `155 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `156 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -257,6 +259,7 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "validate_multi_seed_generator_summary",
         "generated-multi-seed-summary.schema.json",
         "generated-multi-seed-summary-check.schema.json",
+        "generated-multi-seed-summary-check --fail-on-blocked",
         "creator-mission-status --generated-multi-seed",
         "failed seed IDs",
         "operator-review-check",

@@ -114,6 +114,8 @@ Current executable status:
 - `validate_multi_seed_generator_summary` recomputes every saved row from its
   run directory and blocks tampered summary fields or stale underlying run
   reports.
+- `generated-multi-seed-summary-check` exposes that recompute check as a CLI
+  command for manual or scheduled validation jobs.
 - `generated-multi-seed-summary.schema.json` and
   `generated-multi-seed-summary-check.schema.json` anchor the saved summary and
   recomputed check packet shapes.
@@ -245,6 +247,8 @@ Current executable status:
 Manual or scheduled CI:
 
 - 36-run multi-seed matrix
+- `generated-multi-seed-summary-check --fail-on-blocked` against saved or
+  freshly generated matrix summaries
 - external recompute checks when sibling source repos are available
 - stale-evidence mutation sweeps
 
