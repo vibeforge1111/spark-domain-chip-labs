@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/benchmark-case.schema.json",
+  "title": "Adaptive Creator Loop Generated Benchmark Case",
+  "type": "object",
+  "required": [
+    "case_id",
+    "case_kind",
+    "case_lane",
+    "prompt",
+    "oracle",
+    "baseline_mutations",
+    "candidate_mutations",
+    "trap",
+    "hallucination_risk",
+    "calibration_status"
+  ],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "case_kind": {"type": "string", "minLength": 1},
+    "case_lane": {
+      "enum": ["development", "held_out", "regression", "adversarial"]
+    },
+    "prompt": {"type": "string", "minLength": 1},
+    "oracle": {
+      "type": "object",
+      "required": [
+        "expected_behavior",
+        "failure_mode",
+        "minimum_candidate_delta"
+      ],
+      "properties": {
+        "expected_behavior": {"type": "string", "minLength": 1},
+        "failure_mode": {"type": "string", "minLength": 1},
+        "minimum_candidate_delta": {"type": "number", "minimum": 0}
+      },
+      "additionalProperties": true
+    },
+    "baseline_mutations": {"type": "object"},
+    "candidate_mutations": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "trap": {"type": "boolean"},
+    "hallucination_risk": {"enum": ["low", "medium", "high"]},
+    "calibration_status": {"const": "generated_uncalibrated"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"trap": {"const": true}},
+        "required": ["trap"]
+      },
+      "then": {
+        "properties": {
+          "case_lane": {"const": "adversarial"},
+          "hallucination_risk": {"const": "high"},
+          "oracle": {
+            "properties": {
+              "minimum_candidate_delta": {"const": 0}
+            }
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}

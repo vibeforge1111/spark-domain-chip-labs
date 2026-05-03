@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/scoring-hooks.schema.json",
+  "title": "Adaptive Creator Loop Scoring Hooks",
+  "type": "object",
+  "required": ["schema_version"],
+  "properties": {
+    "schema_version": {"const": "adaptive_creator_loop.scoring_hooks.v1"},
+    "base_score": {"type": "number", "minimum": 0, "maximum": 1},
+    "candidate_mutations": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "mutation_deltas": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": {"type": "number"}
+      }
+    },
+    "trap_regression_policy": {"const": "block_promotion"},
+    "source_repo": {"type": "string", "minLength": 1},
+    "hooks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "base_score",
+        "candidate_mutations",
+        "mutation_deltas",
+        "trap_regression_policy"
+      ]
+    },
+    {
+      "required": ["source_repo", "hooks", "dimensions"]
+    }
+  ],
+  "additionalProperties": true
+}

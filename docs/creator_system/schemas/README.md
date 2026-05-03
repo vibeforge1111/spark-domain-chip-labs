@@ -12,8 +12,10 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [adapter-map.schema.json](adapter-map.schema.json) | `adapter-map.json` |
 | [created-artifact-manifest.schema.json](created-artifact-manifest.schema.json) | Shared manifest of generated chip/path/benchmark/loop/packet artifacts |
 | [domain-chip-manifest.schema.json](domain-chip-manifest.schema.json) | `domain-chip/chip.manifest.json` |
+| [scoring-hooks.schema.json](scoring-hooks.schema.json) | `domain-chip/scoring_hooks.json` |
 | [hook-smoke-result.schema.json](hook-smoke-result.schema.json) | Generated domain-chip hook smoke output |
 | [benchmark-pack-manifest.schema.json](benchmark-pack-manifest.schema.json) | Benchmark pack identity, family, lanes, scoring, anti-gaming, and promotion rules |
+| [benchmark-case.schema.json](benchmark-case.schema.json) | Generated benchmark JSONL case rows |
 | [benchmark-report.schema.json](benchmark-report.schema.json) | Generated and source-linked baseline/candidate benchmark reports |
 | [absorption-summary.schema.json](absorption-summary.schema.json) | Generated and source-linked absorption summary reports |
 | [specialization-path-manifest.schema.json](specialization-path-manifest.schema.json) | `specialization-path/path.manifest.json` |
@@ -56,8 +58,10 @@ These schemas cover the shared packet layer called for by the creator master pla
 - creator intent: `creator-intent.schema.json`
 - created artifacts: `created-artifact-manifest.schema.json`
 - domain chip: `domain-chip-manifest.schema.json`
+- scoring hooks: `scoring-hooks.schema.json`
 - generated hook smoke: `hook-smoke-result.schema.json`
 - benchmark pack: `benchmark-pack-manifest.schema.json`
+- benchmark cases: `benchmark-case.schema.json`
 - benchmark reports: `benchmark-report.schema.json`
 - absorption summary: `absorption-summary.schema.json`
 - specialization path: `specialization-path-manifest.schema.json`

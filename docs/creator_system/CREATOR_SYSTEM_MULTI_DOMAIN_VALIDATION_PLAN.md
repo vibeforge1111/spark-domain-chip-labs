@@ -156,6 +156,7 @@ Success criteria:
 - Each domain starts from a brief.
 - Each creates schema-valid chip, benchmark, specialization path, autoloop
   policy, reports, and Swarm packet.
+- Each produces schema-valid scoring hooks and generated benchmark case rows.
 - Each produces a schema-valid generated hook-smoke packet.
 - Each produces schema-valid benchmark and absorption reports with provenance
   source and input-hash fields.

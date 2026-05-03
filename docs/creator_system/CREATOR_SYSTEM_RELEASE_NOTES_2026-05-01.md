@@ -210,6 +210,10 @@
   anchor generated and source-linked saved evidence reports. The schemas require
   visible provenance sources and input hashes so saved reports stay separable
   from freshly recomputed evidence.
+- `scoring-hooks.schema.json` and `benchmark-case.schema.json` now anchor the
+  generated benchmark input side. Scoring hooks must either be deterministic
+  generated hooks with trap regression blocking or source-linked hook paths,
+  and generated trap cases must stay adversarial, high-risk, and uncalibrated.
 - `creator-run-smoke --recompute` now verifies generated lane results and blocks
   tampered benchmark manifests through report provenance hashes.
 - `run_multi_seed_generator_validation` now creates a generated 36-row

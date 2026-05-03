@@ -48,6 +48,8 @@ BENCHMARK_REPORT_SCHEMA = Path(
 ABSORPTION_SUMMARY_SCHEMA = Path(
     "docs/creator_system/schemas/absorption-summary.schema.json"
 )
+SCORING_HOOKS_SCHEMA = Path("docs/creator_system/schemas/scoring-hooks.schema.json")
+BENCHMARK_CASE_SCHEMA = Path("docs/creator_system/schemas/benchmark-case.schema.json")
 
 
 def _brief() -> dict[str, object]:
@@ -555,6 +557,60 @@ def test_generated_report_contract_schemas_reject_stale_or_unbounded_evidence(
         jsonschema.Draft202012Validator(report_schema).validate(candidate)
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(absorption_schema).validate(absorption)
+
+
+def test_generated_scoring_hooks_and_case_contract_schemas_validate(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    scoring_hooks = json.loads(
+        (generated.run_dir / "domain-chip" / "scoring_hooks.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    startup_yc_hooks = json.loads(
+        Path(
+            "docs/creator_system/examples/startup-yc-creator-run/domain-chip/scoring_hooks.json"
+        ).read_text(encoding="utf-8")
+    )
+    hooks_schema = json.loads(SCORING_HOOKS_SCHEMA.read_text(encoding="utf-8"))
+    case_schema = json.loads(BENCHMARK_CASE_SCHEMA.read_text(encoding="utf-8"))
+
+    jsonschema.Draft202012Validator(hooks_schema).validate(scoring_hooks)
+    jsonschema.Draft202012Validator(hooks_schema).validate(startup_yc_hooks)
+    for line in (generated.run_dir / "benchmark" / "cases.jsonl").read_text(
+        encoding="utf-8"
+    ).splitlines():
+        jsonschema.Draft202012Validator(case_schema).validate(json.loads(line))
+
+
+def test_generated_scoring_hooks_and_case_contract_schemas_reject_unsafe_shapes(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    scoring_hooks = json.loads(
+        (generated.run_dir / "domain-chip" / "scoring_hooks.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    case = json.loads(
+        (generated.run_dir / "benchmark" / "cases.jsonl")
+        .read_text(encoding="utf-8")
+        .splitlines()[-1]
+    )
+    hooks_schema = json.loads(SCORING_HOOKS_SCHEMA.read_text(encoding="utf-8"))
+    case_schema = json.loads(BENCHMARK_CASE_SCHEMA.read_text(encoding="utf-8"))
+
+    scoring_hooks["trap_regression_policy"] = "allow_promotion"
+    case["trap"] = True
+    case["case_lane"] = "development"
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(hooks_schema).validate(scoring_hooks)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(case_schema).validate(case)
 
 
 @pytest.mark.parametrize("brief", _multi_domain_briefs(), ids=lambda brief: brief["domain_id"])
