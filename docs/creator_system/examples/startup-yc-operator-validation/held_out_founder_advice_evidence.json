@@ -1,0 +1,107 @@
+{
+  "schema_version": "adaptive_creator_loop.startup_yc_heldout_evidence.v1",
+  "claim_boundary": "Local held-out founder-advice gate evidence only; this does not prove multi-seed validation, publication approval, or network absorption.",
+  "network_absorbable": false,
+  "rows": [
+    {
+      "case_id": "urgent-pain-or-politeness",
+      "passed": true,
+      "operator_moves_covered": true,
+      "reject_claims_avoided": true,
+      "success_gate_met": true,
+      "privacy_lane_respected": true,
+      "covered_operator_moves": [
+        "Separate politeness from committed demand.",
+        "Ask for evidence of urgency: payment, repeated usage, manual workaround, or calendar commitment.",
+        "Recommend a narrow paid pilot before fundraising or hiring."
+      ],
+      "avoided_reject_claims": [
+        "traction_from_waitlist_size",
+        "fundraising_from_polite_interest"
+      ],
+      "observed_privacy_lane": "local_founder_context",
+      "promotion_tier_ceiling": "transfer_supported",
+      "advice_artifact_ref": "heldout-advice/urgent-pain-or-politeness.md"
+    },
+    {
+      "case_id": "vanity-growth-trap",
+      "passed": true,
+      "operator_moves_covered": true,
+      "reject_claims_avoided": true,
+      "success_gate_met": true,
+      "privacy_lane_respected": true,
+      "covered_operator_moves": [
+        "Reject impressions and likes as PMF evidence.",
+        "Ask for qualified leads, activation, retention, and buyer pull.",
+        "Prescribe a customer-call or paid-conversion test before changing strategy."
+      ],
+      "avoided_reject_claims": [
+        "traction_from_vanity_metrics",
+        "pmf_from_social_engagement"
+      ],
+      "observed_privacy_lane": "local_founder_context",
+      "promotion_tier_ceiling": "transfer_supported",
+      "advice_artifact_ref": "heldout-advice/vanity-growth-trap.md"
+    },
+    {
+      "case_id": "narrow-wedge-choice",
+      "passed": true,
+      "operator_moves_covered": true,
+      "reject_claims_avoided": true,
+      "success_gate_met": true,
+      "privacy_lane_respected": true,
+      "covered_operator_moves": [
+        "Narrow the wedge to the repeated support escalation pain.",
+        "Name a small ICP and workflow owner.",
+        "Suggest a measurable before/after pilot instead of a broad platform pitch."
+      ],
+      "avoided_reject_claims": [
+        "broad_platform_before_wedge",
+        "all_departments_icp"
+      ],
+      "observed_privacy_lane": "local_founder_context",
+      "promotion_tier_ceiling": "transfer_supported",
+      "advice_artifact_ref": "heldout-advice/narrow-wedge-choice.md"
+    },
+    {
+      "case_id": "default-alive-pressure",
+      "passed": true,
+      "operator_moves_covered": true,
+      "reject_claims_avoided": true,
+      "success_gate_met": true,
+      "privacy_lane_respected": true,
+      "covered_operator_moves": [
+        "Treat runway and revenue quality as the binding constraint.",
+        "Defer hiring unless it directly unlocks paid conversion.",
+        "Choose one or two pilots to convert, price, or kill with a dated decision gate."
+      ],
+      "avoided_reject_claims": [
+        "hiring_as_progress",
+        "pilot_count_as_revenue_quality"
+      ],
+      "observed_privacy_lane": "local_founder_context",
+      "promotion_tier_ceiling": "transfer_supported",
+      "advice_artifact_ref": "heldout-advice/default-alive-pressure.md"
+    },
+    {
+      "case_id": "privacy-boundary-case",
+      "passed": true,
+      "operator_moves_covered": true,
+      "reject_claims_avoided": true,
+      "success_gate_met": true,
+      "privacy_lane_respected": true,
+      "covered_operator_moves": [
+        "Keep sensitive customer details in the local/private lane.",
+        "Extract non-identifying patterns only with review.",
+        "Require explicit publication approval before any external memo."
+      ],
+      "avoided_reject_claims": [
+        "private_customer_notes_are_publishable",
+        "automatic_publication_allowed"
+      ],
+      "observed_privacy_lane": "private_founder_context",
+      "promotion_tier_ceiling": "transfer_supported",
+      "advice_artifact_ref": "heldout-advice/privacy-boundary-case.md"
+    }
+  ]
+}

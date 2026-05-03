@@ -100,6 +100,11 @@ contracts: covered operator moves, avoided rejected claims, observed privacy
 lane, promotion tier ceiling, and an advice artifact reference. Boolean pass
 flags alone are not enough to pass the held-out gate.
 
+Startup YC also has saved held-out founder-advice evidence wired into its
+validation plan. This lets the held-out gate pass locally without changing the
+overall claim boundary: multi-seed validation, review gates, publication
+approval, and promotion evidence still block network absorption.
+
 ## Phase 1: Multi-Domain Generator Matrix
 
 The first phase is the fast CI-safe matrix. It uses one representative generated

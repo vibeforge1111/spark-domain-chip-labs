@@ -12,6 +12,7 @@
   "held_out_cases_path": "held_out_founder_advice_cases.jsonl",
   "operator_calibration_checklist_path": "human_operator_calibration_checklist.md",
   "privacy_rollback_publication_review_path": "privacy_rollback_publication_review.md",
+  "held_out_evidence_path": "held_out_founder_advice_evidence.json",
   "required_promotion_gates": [
     "multi_seed_validation",
     "held_out_founder_advice_pass",

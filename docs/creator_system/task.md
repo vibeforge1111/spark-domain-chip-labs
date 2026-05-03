@@ -416,7 +416,8 @@ Quality gates:
 
 - Keep `transfer_supported` separate from `network_absorbable`.
 - Reject vanity-metric traction claims.
-- Add held-out founder-advice examples before any stronger claim.
+- Held-out founder-advice examples are now saved as local evidence before any
+  stronger claim.
 
 ### F. Retrieval And Memory Domain
 
@@ -727,6 +728,10 @@ Completed documentation/verification:
   contracts: covered operator moves, avoided rejected claims, observed privacy
   lane, promotion tier ceiling, and an advice artifact reference. Boolean pass
   flags alone cannot pass the held-out gate.
+- Startup YC now has saved held-out founder-advice evidence wired into the
+  validation plan. The held-out gate passes locally, while the validation suite
+  remains blocked by multi-seed, human/operator, privacy, rollback, publication,
+  and promotion-evidence gates.
 
 Completed product PR verification:
 

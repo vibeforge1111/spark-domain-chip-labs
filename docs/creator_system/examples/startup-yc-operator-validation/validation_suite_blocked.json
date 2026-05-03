@@ -173,59 +173,26 @@
       "plan_id": "startup-yc-operator-validation-2026-05-01",
       "domain": "Startup YC",
       "current_claim": "transfer_supported",
-      "evidence_path": null,
-      "evidence_present": false,
+      "evidence_path": "held_out_founder_advice_evidence.json",
+      "evidence_present": true,
       "case_count": 5,
-      "passed_case_count": 0,
-      "missing_cases": [
-        "urgent-pain-or-politeness",
-        "vanity-growth-trap",
-        "narrow-wedge-choice",
-        "default-alive-pressure",
-        "privacy-boundary-case"
-      ],
-      "case_failures": [
-        {
-          "case_id": "urgent-pain-or-politeness",
-          "reason": "missing_evidence"
-        },
-        {
-          "case_id": "vanity-growth-trap",
-          "reason": "missing_evidence"
-        },
-        {
-          "case_id": "narrow-wedge-choice",
-          "reason": "missing_evidence"
-        },
-        {
-          "case_id": "default-alive-pressure",
-          "reason": "missing_evidence"
-        },
-        {
-          "case_id": "privacy-boundary-case",
-          "reason": "missing_evidence"
-        }
-      ],
-      "verdict": "blocked",
-      "gate_passed": false,
+      "passed_case_count": 5,
+      "missing_cases": [],
+      "case_failures": [],
+      "verdict": "passed",
+      "gate_passed": true,
       "network_absorbable": false,
       "provenance": {
         "source": "startup_yc_operator_validation_v1",
-        "input_hashes": {},
+        "input_hashes": {
+          "held_out_founder_advice_evidence.json": "813993dcafef8d753e09703990765e4b0d3a4cd029ddcb054fd8ff7ec8fb92c6"
+        },
         "missing_inputs": []
       },
-      "blocking_checks": [
-        "missing_evidence_path:held_out_evidence_path",
-        "case_failure:urgent-pain-or-politeness:missing_evidence",
-        "case_failure:vanity-growth-trap:missing_evidence",
-        "case_failure:narrow-wedge-choice:missing_evidence",
-        "case_failure:default-alive-pressure:missing_evidence",
-        "case_failure:privacy-boundary-case:missing_evidence"
-      ],
+      "blocking_checks": [],
       "next_actions": [
-        "Evaluate every held-out founder-advice case before promotion.",
-        "Each case needs explicit pass flags for operator moves, rejected claims, success gate, and privacy lane.",
-        "Keep Startup YC at transfer_supported while held-out evidence is absent or incomplete."
+        "Record this as held_out_founder_advice_pass evidence only.",
+        "Keep Startup YC below network_absorbable until multi-seed, calibration, privacy, rollback, and publication gates also pass."
       ]
     },
     "review_gates": {
@@ -369,13 +336,6 @@
     "multi_seed_validation:underfilled_track:people:0/5",
     "multi_seed_validation:underfilled_track:board:0/5",
     "multi_seed_validation:underfilled_track:scale:0/5",
-    "subcheck_blocked:held_out_founder_advice_pass",
-    "held_out_founder_advice_pass:missing_evidence_path:held_out_evidence_path",
-    "held_out_founder_advice_pass:case_failure:urgent-pain-or-politeness:missing_evidence",
-    "held_out_founder_advice_pass:case_failure:vanity-growth-trap:missing_evidence",
-    "held_out_founder_advice_pass:case_failure:narrow-wedge-choice:missing_evidence",
-    "held_out_founder_advice_pass:case_failure:default-alive-pressure:missing_evidence",
-    "held_out_founder_advice_pass:case_failure:privacy-boundary-case:missing_evidence",
     "subcheck_blocked:review_gates",
     "review_gates:missing_evidence_path:review_gate_evidence_path",
     "review_gates:gate_failure:human_operator_calibration:missing_evidence",

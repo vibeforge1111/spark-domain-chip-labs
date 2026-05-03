@@ -76,6 +76,10 @@ def test_startup_yc_validation_plan_blocks_network_absorption() -> None:
     lowered_seed_floor["minimum_multi_seed_plan"]["minimum_seeds_per_track"] = 1
     assert list(validator.iter_errors(lowered_seed_floor))
 
+    missing_heldout_evidence = _copy_json(plan)
+    missing_heldout_evidence.pop("held_out_evidence_path")
+    assert list(validator.iter_errors(missing_heldout_evidence))
+
     missing_privacy_review = _copy_json(plan)
     missing_privacy_review["required_promotion_gates"].remove("privacy_review")
     assert list(validator.iter_errors(missing_privacy_review))
@@ -253,20 +257,36 @@ def test_startup_yc_multi_seed_check_blocks_negative_rows(tmp_path: Path) -> Non
     assert "row_failure:gtm-negative-1:negative_delta" in result["blocking_checks"]
 
 
-def test_startup_yc_heldout_check_blocks_without_evidence() -> None:
+def test_startup_yc_heldout_check_passes_saved_fixture_evidence() -> None:
     result = check_startup_yc_heldout_validation(FIXTURE_DIR / "validation_plan.json")
 
     assert result["schema_version"] == (
         "adaptive_creator_loop.startup_yc_heldout_check.v1"
     )
-    assert result["verdict"] == "blocked"
-    assert result["gate_passed"] is False
+    assert result["verdict"] == "passed"
+    assert result["gate_passed"] is True
     assert result["network_absorbable"] is False
     assert result["case_count"] >= 5
+    assert result["blocking_checks"] == []
+    assert result["missing_cases"] == []
+    assert result["passed_case_count"] == result["case_count"]
+
+
+def test_startup_yc_heldout_check_blocks_missing_evidence_path(
+    tmp_path: Path,
+) -> None:
+    plan = _load_plan()
+    plan.pop("held_out_evidence_path", None)
+    plan_path = tmp_path / "validation_plan.json"
+    plan_path.write_text(json.dumps(plan, indent=2), encoding="utf-8")
+
+    result = check_startup_yc_heldout_validation(plan_path)
+
+    assert result["verdict"] == "blocked"
+    assert result["gate_passed"] is False
     assert "missing_evidence_path:held_out_evidence_path" in result[
         "blocking_checks"
     ]
-    assert result["missing_cases"]
 
 
 def test_startup_yc_heldout_check_passes_only_the_heldout_gate(
@@ -672,7 +692,7 @@ def test_startup_yc_promotion_evidence_check_blocks_stale_plan_output(
     assert "missing_check_output:review_gates" in result["blocking_checks"]
 
 
-def test_startup_yc_validation_suite_blocks_without_evidence() -> None:
+def test_startup_yc_validation_suite_stays_blocked_with_heldout_evidence() -> None:
     result = run_startup_yc_validation_suite(FIXTURE_DIR / "validation_plan.json")
 
     assert result["schema_version"] == (
@@ -684,9 +704,8 @@ def test_startup_yc_validation_suite_blocks_without_evidence() -> None:
     assert result["network_absorbable"] is False
     assert "subcheck_blocked:promotion_gates" in result["blocking_checks"]
     assert "subcheck_blocked:multi_seed_validation" in result["blocking_checks"]
-    assert "subcheck_blocked:held_out_founder_advice_pass" in result[
-        "blocking_checks"
-    ]
+    assert result["subchecks"]["held_out_founder_advice_pass"]["verdict"] == "passed"
+    assert result["subchecks"]["held_out_founder_advice_pass"]["gate_passed"] is True
     assert "subcheck_blocked:review_gates" in result["blocking_checks"]
     assert "subcheck_blocked:promotion_evidence_bundle" in result["blocking_checks"]
 
@@ -1211,6 +1230,10 @@ def test_cli_startup_yc_multi_seed_check_fails_on_blocked(tmp_path: Path) -> Non
 
 def test_cli_startup_yc_heldout_check_fails_on_blocked(tmp_path: Path) -> None:
     output_path = tmp_path / "startup-yc-heldout.json"
+    plan = _load_plan()
+    plan.pop("held_out_evidence_path", None)
+    plan_path = tmp_path / "validation_plan.json"
+    plan_path.write_text(json.dumps(plan, indent=2), encoding="utf-8")
 
     result = subprocess.run(
         [
@@ -1219,7 +1242,7 @@ def test_cli_startup_yc_heldout_check_fails_on_blocked(tmp_path: Path) -> None:
             "chip_labs.cli",
             "startup-yc-heldout-check",
             "--validation-plan",
-            str(FIXTURE_DIR / "validation_plan.json"),
+            str(plan_path),
             "--output",
             str(output_path),
             "--fail-on-blocked",

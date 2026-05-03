@@ -12,6 +12,7 @@
     "minimum_fixture_evidence_tier",
     "prohibited_claims",
     "held_out_cases_path",
+    "held_out_evidence_path",
     "operator_calibration_checklist_path",
     "privacy_rollback_publication_review_path",
     "required_promotion_gates",
@@ -47,6 +48,10 @@
       "contains": {"const": "network_absorbable"}
     },
     "held_out_cases_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "held_out_evidence_path": {
       "type": "string",
       "minLength": 1
     },

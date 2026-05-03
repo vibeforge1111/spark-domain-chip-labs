@@ -267,6 +267,10 @@
 - Startup YC held-out founder-advice evidence now must list covered operator moves,
   avoided rejected claims, observed privacy lane, promotion tier ceiling, and an
   advice artifact reference. Boolean pass flags alone cannot pass.
+- Startup YC now includes saved held-out founder-advice evidence in
+  `held_out_founder_advice_evidence.json`, wired through `validation_plan.json`.
+  The held-out gate can pass locally while the validation suite remains blocked
+  by the remaining promotion gates.
 
 ## Current Claim Boundary
 
@@ -288,4 +292,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `164 passed`.
+Latest focused creator-system suite result before CI push: `165 passed`.

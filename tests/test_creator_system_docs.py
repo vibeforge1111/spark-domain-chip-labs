@@ -149,7 +149,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
-    assert "Latest focused creator-system suite result before CI push: `164 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `165 passed`." in text
     assert "case_expectations" in text
     assert "calibration_verdict" in text
     assert "failed expectations force `revert`" in text
@@ -164,6 +164,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "covered operator moves" in text
     assert "advice artifact reference" in text
     assert "Boolean pass flags alone" in text
+    assert "held_out_founder_advice_evidence.json" in text
+    assert "held-out gate can pass locally" in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
