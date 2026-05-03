@@ -570,6 +570,30 @@ def test_creator_run_blocks_artifact_manifest_run_id_mismatch(
     )
 
 
+def test_creator_run_blocks_nonlocal_artifact_manifest_publication_boundary(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test artifact publication boundary.",
+    )
+    manifest_path = run_dir / "created-artifact-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["publication_boundary"] = "swarm_shared"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "created_artifact_manifest_publication_boundary"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_candidate_review_blocks_negative_delta(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path)
     candidate_path = run_dir / "reports" / "candidate.json"

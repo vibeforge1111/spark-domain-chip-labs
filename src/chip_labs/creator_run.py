@@ -1342,7 +1342,7 @@ def _check_artifact_manifest(
         )
 
     publication_boundary = str(artifact_manifest.get("publication_boundary") or "")
-    if publication_boundary in {"local_only", "github_pr", "swarm_shared"}:
+    if publication_boundary == "local_only":
         checks.append(
             SmokeCheck(
                 "created_artifact_manifest_publication_boundary",
@@ -1355,7 +1355,7 @@ def _check_artifact_manifest(
             SmokeCheck(
                 "created_artifact_manifest_publication_boundary",
                 "fail",
-                "Artifact manifest publication_boundary must be local_only, github_pr, or swarm_shared.",
+                "Artifact manifest publication_boundary must be local_only.",
             )
         )
 
