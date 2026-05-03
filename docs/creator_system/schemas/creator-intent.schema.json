@@ -65,7 +65,17 @@
       "type": "object",
       "required": ["minimum_evidence_tier"],
       "properties": {
-        "minimum_evidence_tier": {"type": "string"},
+        "minimum_evidence_tier": {
+          "enum": [
+            "prototype",
+            "benchmark_signal",
+            "focused_pattern",
+            "candidate_review",
+            "transfer_supported",
+            "network_absorbable",
+            "standard_update"
+          ]
+        },
         "benchmark_target": {"type": "string"},
         "absorption_target": {"type": "string"},
         "trap_regression_policy": {"type": "string"},

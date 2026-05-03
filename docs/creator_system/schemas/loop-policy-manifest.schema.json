@@ -21,7 +21,17 @@
     },
     "loop_key": {"type": "string"},
     "target_capability": {"type": "string"},
-    "evidence_tier_goal": {"type": "string"},
+    "evidence_tier_goal": {
+      "enum": [
+        "prototype",
+        "benchmark_signal",
+        "focused_pattern",
+        "candidate_review",
+        "transfer_supported",
+        "network_absorbable",
+        "standard_update"
+      ]
+    },
     "mutation_surface": {
       "type": "array",
       "items": {"type": "string"}

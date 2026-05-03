@@ -51,7 +51,17 @@
             "enum": ["planned", "created", "validated", "blocked"]
           },
           "schema_version": {"type": "string"},
-          "evidence_tier": {"type": "string"},
+          "evidence_tier": {
+            "enum": [
+              "prototype",
+              "benchmark_signal",
+              "focused_pattern",
+              "candidate_review",
+              "transfer_supported",
+              "network_absorbable",
+              "standard_update"
+            ]
+          },
           "notes": {"type": "string"}
         }
       }

@@ -712,6 +712,12 @@ def test_loop_policy_contract_schema_blocks_network_publication_claim(
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(schema).validate(generated_policy)
 
+    generated_policy["network_publication_allowed"] = False
+    generated_policy["evidence_tier_goal"] = "magic_mastery"
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(schema).validate(generated_policy)
+
 
 def test_creator_intent_contract_schema_blocks_network_publication_claim(
     tmp_path: Path,
@@ -732,6 +738,12 @@ def test_creator_intent_contract_schema_blocks_network_publication_claim(
     jsonschema.Draft202012Validator(schema).validate(startup_yc_intent)
 
     generated_intent["constraints"]["network_publication_allowed"] = True
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(schema).validate(generated_intent)
+
+    generated_intent["constraints"]["network_publication_allowed"] = False
+    generated_intent["success_criteria"]["minimum_evidence_tier"] = "magic_mastery"
 
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(schema).validate(generated_intent)
@@ -761,6 +773,13 @@ def test_created_artifact_manifest_schema_blocks_publication_boundary_drift(
 
     generated_manifest["publication_boundary"] = "swarm_shared"
     generated_manifest["artifacts"][0]["status"] = "published"
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(schema).validate(generated_manifest)
+
+    generated_manifest["publication_boundary"] = "local_only"
+    generated_manifest["artifacts"][0]["status"] = "validated"
+    generated_manifest["artifacts"][0]["evidence_tier"] = "magic_mastery"
 
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(schema).validate(generated_manifest)
