@@ -149,12 +149,14 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
-    assert "Latest focused creator-system suite result before CI push: `161 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `162 passed`." in text
     assert "case_expectations" in text
     assert "calibration_verdict" in text
     assert "failed expectations force `revert`" in text
     assert "multi-RLM judge coverage" in text
     assert "expected-winner oracles" in text
+    assert "expected_postconditions" in text
+    assert "plausible success packets" in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -278,6 +280,8 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "failed expectations force a revert",
         "multi-RLM judge coverage",
         "expected-winner oracle",
+        "expected postconditions",
+        "control is allowed to trust",
         "failure modes",
         "lane-level report results",
         "Changed benchmark manifests block recompute",

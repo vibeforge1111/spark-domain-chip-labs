@@ -53,6 +53,11 @@ def test_tool_operation_check_passes_with_parsed_postconditions() -> None:
     result = check_tool_operation({
         "command": "python -m chip_labs.cli creator-run-smoke runs/demo --recompute",
         "exit_code": 0,
+        "expected_postconditions": {
+            "verdict": "ready_for_swarm_packet",
+            "blocking_checks_empty": True,
+            "automation_blocked": False,
+        },
         "result": _smoke_result(evidence_mode="recomputed"),
     })
 
@@ -84,6 +89,18 @@ def test_tool_operation_check_rejects_stdout_only_success() -> None:
 
     assert result["verdict"] == "blocked"
     assert "parsed_result" in result["blocking_checks"]
+
+
+def test_tool_operation_check_requires_expected_postconditions_for_success() -> None:
+    result = check_tool_operation({
+        "command": "python -m chip_labs.cli creator-run-smoke runs/demo",
+        "exit_code": 0,
+        "result": _smoke_result(),
+        "rollback_note": "Add expected postconditions before updating mission state.",
+    })
+
+    assert result["verdict"] == "blocked"
+    assert "expected_postconditions_present" in result["blocking_checks"]
 
 
 def test_tool_operation_check_rejects_recompute_mode_mismatch() -> None:
@@ -181,6 +198,11 @@ def test_cli_tool_operation_check_outputs_packet(tmp_path: Path) -> None:
         json.dumps({
             "command": "python -m chip_labs.cli creator-run-smoke runs/demo --recompute",
             "exit_code": 0,
+            "expected_postconditions": {
+                "verdict": "ready_for_swarm_packet",
+                "blocking_checks_empty": True,
+                "automation_blocked": False,
+            },
             "result": _smoke_result(evidence_mode="recomputed"),
         }),
         encoding="utf-8",

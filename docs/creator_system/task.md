@@ -714,6 +714,9 @@ Completed documentation/verification:
   coverage, persona-segment coverage, row-count coherence, weak-segment
   inspection, and expected-winner drift; failed calibration marks the simulator
   result `calibration_verdict=blocked` without claiming real content outcomes.
+- Tool-operation checks now require successful parsed operations to declare
+  `expected_postconditions`, so mission-control state updates cannot rely on
+  stdout or plausible success packets alone.
 
 Completed product PR verification:
 

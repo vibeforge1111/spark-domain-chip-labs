@@ -51,6 +51,11 @@
       "message": "Smoke result evidence_mode matches command mode `recomputed`."
     },
     {
+      "name": "expected_postconditions_present",
+      "status": "pass",
+      "message": "Expected postconditions are declared."
+    },
+    {
       "name": "expected_verdict",
       "status": "pass",
       "message": "Result verdict matches expected `ready_for_swarm_packet`."

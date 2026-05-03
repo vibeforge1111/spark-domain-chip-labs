@@ -79,6 +79,12 @@ results must prove multi-RLM judge coverage, persona-segment coverage, row-count
 coherence, weak-segment inspection, and any optional expected-winner oracle
 before their `calibration_verdict` can pass.
 
+The tool-operation checker now requires explicit expected postconditions for
+successful parsed operations. A command result can no longer pass only because
+the parsed packet looks successful; it must also declare the intended verdict,
+blocking-check, missing-path, or automation state expectations that mission
+control is allowed to trust.
+
 ## Phase 1: Multi-Domain Generator Matrix
 
 The first phase is the fast CI-safe matrix. It uses one representative generated

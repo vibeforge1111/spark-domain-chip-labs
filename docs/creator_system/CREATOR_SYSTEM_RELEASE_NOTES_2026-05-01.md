@@ -254,6 +254,9 @@
   multi-RLM judge coverage, persona-segment coverage, row-count coherence,
   weak-segment inspection, and optional expected-winner oracles. Single-judge
   or wrong-winner runs remain ranked but carry `calibration_verdict=blocked`.
+- Tool-operation checks now require successful parsed operations to declare
+  `expected_postconditions`; stdout and plausible success packets are not
+  enough for mission-control state updates.
 
 ## Current Claim Boundary
 
@@ -275,4 +278,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `161 passed`.
+Latest focused creator-system suite result before CI push: `162 passed`.

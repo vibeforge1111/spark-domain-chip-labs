@@ -125,6 +125,13 @@ def check_tool_operation(packet: dict[str, Any]) -> dict[str, Any]:
 
     if operation and isinstance(result, dict):
         _check_result_shape(operation_key or "", operation, command, result, checks)
+        _append_check(
+            checks,
+            "expected_postconditions_present",
+            isinstance(expected_postconditions, dict) and bool(expected_postconditions),
+            "Expected postconditions are declared.",
+            "Mission-control tool operations must declare expected postconditions.",
+        )
     if isinstance(result, dict) and isinstance(expected_postconditions, dict):
         _check_expected_postconditions(expected_postconditions, result, checks)
 
