@@ -163,6 +163,8 @@ Success criteria:
   source and input-hash fields.
 - Each produces schema-valid specialization-path and keep/revert autoloop
   simulation packets.
+- Each produces a schema-valid autoloop policy with network publication
+  disabled.
 - Each produces a schema-valid Swarm contribution packet that keeps network
   publication disabled.
 - Each passes normal smoke as saved evidence.

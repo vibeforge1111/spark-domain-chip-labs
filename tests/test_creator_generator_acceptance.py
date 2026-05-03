@@ -56,6 +56,7 @@ BENCHMARK_PACK_SCHEMA = Path(
 SWARM_PACKET_SCHEMA = Path(
     "docs/creator_system/schemas/swarm-contribution-packet.schema.json"
 )
+LOOP_POLICY_SCHEMA = Path("docs/creator_system/schemas/loop-policy-manifest.schema.json")
 
 
 def _brief() -> dict[str, object]:
@@ -682,6 +683,30 @@ def test_swarm_packet_contract_schema_blocks_network_publication_claim(
 
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(schema).validate(generated_packet)
+
+
+def test_loop_policy_contract_schema_blocks_network_publication_claim(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    generated_policy = json.loads(
+        (generated.run_dir / "autoloop" / "policy.json").read_text(encoding="utf-8")
+    )
+    startup_yc_policy = json.loads(
+        Path(
+            "docs/creator_system/examples/startup-yc-creator-run/autoloop/policy.json"
+        ).read_text(encoding="utf-8")
+    )
+    schema = json.loads(LOOP_POLICY_SCHEMA.read_text(encoding="utf-8"))
+
+    jsonschema.Draft202012Validator(schema).validate(generated_policy)
+    jsonschema.Draft202012Validator(schema).validate(startup_yc_policy)
+
+    generated_policy["network_publication_allowed"] = True
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(schema).validate(generated_policy)
 
 
 @pytest.mark.parametrize("brief", _multi_domain_briefs(), ids=lambda brief: brief["domain_id"])

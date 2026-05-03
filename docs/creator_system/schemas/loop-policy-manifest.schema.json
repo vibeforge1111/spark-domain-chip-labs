@@ -12,7 +12,8 @@
     "keep_condition",
     "rollback_condition",
     "promotion_condition",
-    "lineage_required"
+    "lineage_required",
+    "network_publication_allowed"
   ],
   "properties": {
     "schema_version": {
@@ -53,7 +54,7 @@
     },
     "lineage_required": {"type": "boolean"},
     "privacy_boundary": {"type": "string"},
-    "network_publication_allowed": {"type": "boolean"},
-    "review_required_before_network_publication": {"type": "boolean"}
+    "network_publication_allowed": {"const": false},
+    "review_required_before_network_publication": {"const": true}
   }
 }

@@ -221,6 +221,9 @@
 - `swarm-contribution-packet.schema.json` now requires report-backed evidence
   fields and keeps `network_publication_allowed=false` as a schema-level
   invariant for generated and Startup YC contribution packets.
+- `loop-policy-manifest.schema.json` now requires
+  `network_publication_allowed=false`, so autoloop policies cannot silently
+  become network publication policies.
 - `creator-run-smoke --recompute` now verifies generated lane results and blocks
   tampered benchmark manifests through report provenance hashes.
 - `run_multi_seed_generator_validation` now creates a generated 36-row
