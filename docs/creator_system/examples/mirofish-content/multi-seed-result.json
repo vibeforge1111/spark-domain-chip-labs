@@ -1,0 +1,184 @@
+{
+  "packet_kind": "mirofish_content_multi_seed_result",
+  "verdict": "candidate_review",
+  "calibration_verdict": "pass",
+  "claim_boundary": "candidate_review local simulator protocol only",
+  "seed_count": 3,
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "stability_threshold": 1.0,
+  "top_candidate_counts": {
+    "candidate-1": 3
+  },
+  "stable_top_candidate_ids": [
+    "candidate-1"
+  ],
+  "seed_results": [
+    {
+      "seed": 1,
+      "verdict": "ranked",
+      "calibration_verdict": "pass",
+      "top_candidate_id": "candidate-1",
+      "row_count": 36,
+      "blocking_checks": [],
+      "rankings": [
+        {
+          "candidate_id": "candidate-1",
+          "text": "7 benchmark mistakes that make AI agent demos look better than they are",
+          "median_composite": 0.4336,
+          "mean_composite": 0.477,
+          "weakest_persona": "skeptical-experts",
+          "weakest_persona_score": 0.4225,
+          "persona_scores": {
+            "founder-builders": 0.4278,
+            "technical-operators": 0.622,
+            "creator-economy-readers": 0.4315,
+            "skeptical-experts": 0.4225
+          }
+        },
+        {
+          "candidate_id": "candidate-3",
+          "text": "How to prove an agent workflow actually improved before you ship it",
+          "median_composite": 0.3853,
+          "mean_composite": 0.4348,
+          "weakest_persona": "founder-builders",
+          "weakest_persona_score": 0.3834,
+          "persona_scores": {
+            "founder-builders": 0.3834,
+            "technical-operators": 0.5864,
+            "creator-economy-readers": 0.3834,
+            "skeptical-experts": 0.3857
+          }
+        },
+        {
+          "candidate_id": "candidate-2",
+          "text": "The ultimate secret to amazing AI content",
+          "median_composite": 0.2151,
+          "mean_composite": 0.2269,
+          "weakest_persona": "technical-operators",
+          "weakest_persona_score": 0.209,
+          "persona_scores": {
+            "founder-builders": 0.2152,
+            "technical-operators": 0.209,
+            "creator-economy-readers": 0.2805,
+            "skeptical-experts": 0.215
+          }
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "verdict": "ranked",
+      "calibration_verdict": "pass",
+      "top_candidate_id": "candidate-1",
+      "row_count": 36,
+      "blocking_checks": [],
+      "rankings": [
+        {
+          "candidate_id": "candidate-1",
+          "text": "7 benchmark mistakes that make AI agent demos look better than they are",
+          "median_composite": 0.4304,
+          "mean_composite": 0.4768,
+          "weakest_persona": "skeptical-experts",
+          "weakest_persona_score": 0.4233,
+          "persona_scores": {
+            "founder-builders": 0.4267,
+            "technical-operators": 0.6235,
+            "creator-economy-readers": 0.4323,
+            "skeptical-experts": 0.4233
+          }
+        },
+        {
+          "candidate_id": "candidate-3",
+          "text": "How to prove an agent workflow actually improved before you ship it",
+          "median_composite": 0.386,
+          "mean_composite": 0.4356,
+          "weakest_persona": "founder-builders",
+          "weakest_persona_score": 0.3841,
+          "persona_scores": {
+            "founder-builders": 0.3841,
+            "technical-operators": 0.5872,
+            "creator-economy-readers": 0.3842,
+            "skeptical-experts": 0.3864
+          }
+        },
+        {
+          "candidate_id": "candidate-2",
+          "text": "The ultimate secret to amazing AI content",
+          "median_composite": 0.2166,
+          "mean_composite": 0.2284,
+          "weakest_persona": "technical-operators",
+          "weakest_persona_score": 0.2105,
+          "persona_scores": {
+            "founder-builders": 0.2167,
+            "technical-operators": 0.2105,
+            "creator-economy-readers": 0.282,
+            "skeptical-experts": 0.2165
+          }
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "verdict": "ranked",
+      "calibration_verdict": "pass",
+      "top_candidate_id": "candidate-1",
+      "row_count": 36,
+      "blocking_checks": [],
+      "rankings": [
+        {
+          "candidate_id": "candidate-1",
+          "text": "7 benchmark mistakes that make AI agent demos look better than they are",
+          "median_composite": 0.4284,
+          "mean_composite": 0.4766,
+          "weakest_persona": "skeptical-experts",
+          "weakest_persona_score": 0.424,
+          "persona_scores": {
+            "founder-builders": 0.4274,
+            "technical-operators": 0.6248,
+            "creator-economy-readers": 0.433,
+            "skeptical-experts": 0.424
+          }
+        },
+        {
+          "candidate_id": "candidate-3",
+          "text": "How to prove an agent workflow actually improved before you ship it",
+          "median_composite": 0.3868,
+          "mean_composite": 0.4363,
+          "weakest_persona": "founder-builders",
+          "weakest_persona_score": 0.3849,
+          "persona_scores": {
+            "founder-builders": 0.3849,
+            "technical-operators": 0.5879,
+            "creator-economy-readers": 0.3849,
+            "skeptical-experts": 0.3872
+          }
+        },
+        {
+          "candidate_id": "candidate-2",
+          "text": "The ultimate secret to amazing AI content",
+          "median_composite": 0.2152,
+          "mean_composite": 0.2257,
+          "weakest_persona": "technical-operators",
+          "weakest_persona_score": 0.1987,
+          "persona_scores": {
+            "founder-builders": 0.2182,
+            "technical-operators": 0.1987,
+            "creator-economy-readers": 0.2835,
+            "skeptical-experts": 0.2125
+          }
+        }
+      ]
+    }
+  ],
+  "blocking_checks": [],
+  "network_absorbable": false,
+  "requires_before_transfer": [
+    "human/operator calibration",
+    "privacy and publication review",
+    "comparison against actual content outcomes"
+  ]
+}

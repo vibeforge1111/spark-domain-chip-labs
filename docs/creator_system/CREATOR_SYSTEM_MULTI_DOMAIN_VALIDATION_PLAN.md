@@ -78,6 +78,9 @@ The MiroFish content simulator now emits its own calibration checks. Ranked
 results must prove multi-RLM judge coverage, persona-segment coverage, row-count
 coherence, weak-segment inspection, and any optional expected-winner oracle
 before their `calibration_verdict` can pass.
+It also has a local `mirofish-content-multi-seed` batch command. The batch keeps
+the claim at `candidate_review`, requires multiple deterministic seeds, and
+blocks calibration unless a top candidate is stable across the seeded reruns.
 
 The tool-operation checker now requires explicit expected postconditions for
 successful parsed operations. A command result can no longer pass only because

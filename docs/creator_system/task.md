@@ -81,6 +81,8 @@ Deliverables:
 - [x] Route tests for invoke, skip, missing candidates, explicit candidates, and
   CLI output.
 - [x] Saved example packets for route mode and simulation mode.
+- [x] `mirofish-content-multi-seed` deterministic rerun batch with saved
+  stability example.
 
 Phase gate:
 
@@ -718,6 +720,10 @@ Completed documentation/verification:
   coverage, persona-segment coverage, row-count coherence, weak-segment
   inspection, and expected-winner drift; failed calibration marks the simulator
   result `calibration_verdict=blocked` without claiming real content outcomes.
+- `mirofish-content-multi-seed` now proves local seeded-rerun stability and
+  blocks calibration when fewer than two seeds or no stable top candidate are
+  present. The saved example remains `candidate_review` and
+  `network_absorbable=false`.
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`, so mission-control state updates cannot rely on
   stdout or plausible success packets alone.

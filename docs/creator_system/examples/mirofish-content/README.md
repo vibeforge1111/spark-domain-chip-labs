@@ -12,6 +12,8 @@ Files:
   from the same candidate batch.
 - `simulation-result.md`: operator-facing readout generated from the simulation
   result.
+- `multi-seed-result.json`: deterministic three-seed simulator batch proving
+  that the local top candidate is stable across seeded reruns.
 
 Claim boundary:
 
@@ -40,4 +42,15 @@ python -m chip_labs.cli mirofish-content-simulate \
   --candidate "How to prove an agent workflow actually improved before you ship it" \
   --output docs/creator_system/examples/mirofish-content/simulation-result.json \
   --markdown-output docs/creator_system/examples/mirofish-content/simulation-result.md
+
+python -m chip_labs.cli mirofish-content-multi-seed \
+  --task "Pick the best title for a post about agent benchmark honesty." \
+  --candidate "7 benchmark mistakes that make AI agent demos look better than they are" \
+  --candidate "The ultimate secret to amazing AI content" \
+  --candidate "How to prove an agent workflow actually improved before you ship it" \
+  --seed 1 \
+  --seed 2 \
+  --seed 3 \
+  --output docs/creator_system/examples/mirofish-content/multi-seed-result.json \
+  --fail-on-blocked
 ```

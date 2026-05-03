@@ -254,6 +254,11 @@
   multi-RLM judge coverage, persona-segment coverage, row-count coherence,
   weak-segment inspection, and optional expected-winner oracles. Single-judge
   or wrong-winner runs remain ranked but carry `calibration_verdict=blocked`.
+- `mirofish-content-multi-seed` now runs deterministic local simulator reruns
+  across explicit seeds, records top-candidate stability, and blocks calibration
+  when the batch has fewer than two seeds or no stable top candidate. The saved
+  `examples/mirofish-content/multi-seed-result.json` remains
+  `candidate_review` and `network_absorbable=false`.
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.
@@ -296,4 +301,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `165 passed`.
+Latest focused creator-system suite result before CI push: `168 passed`.

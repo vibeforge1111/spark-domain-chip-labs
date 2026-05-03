@@ -245,10 +245,18 @@ def simulate_content_selection(packet: dict[str, Any]) -> dict[str, Any]:
         }
 
     rows = []
+    simulation_seed = packet.get("simulation_seed")
     for candidate in candidates:
         for persona in persona_segments:
             for judge in rlm_judges:
-                rows.append(_score_candidate_row(candidate, persona, judge))
+                rows.append(
+                    _score_candidate_row(
+                        candidate,
+                        persona,
+                        judge,
+                        simulation_seed=simulation_seed,
+                    )
+                )
 
     rankings = _aggregate_rankings(candidates, rows, persona_segments)
     top = rankings[0]
@@ -286,6 +294,68 @@ def simulate_content_selection(packet: dict[str, Any]) -> dict[str, Any]:
         "claim_boundary": CLAIM_BOUNDARY,
         "requires_before_transfer": [
             "multi-seed simulator reruns",
+            "human/operator calibration",
+            "privacy and publication review",
+            "comparison against actual content outcomes",
+        ],
+    }
+
+
+def simulate_content_multi_seed(
+    packet: dict[str, Any],
+    *,
+    seeds: list[int] | None = None,
+    stability_threshold: float = 1.0,
+) -> dict[str, Any]:
+    """Run local content simulation across deterministic seeds."""
+
+    seed_values = seeds or [1, 2, 3]
+    seed_results = []
+    for seed in seed_values:
+        seeded_packet = dict(packet)
+        seeded_packet["simulation_seed"] = seed
+        result = simulate_content_selection(seeded_packet)
+        seed_results.append(
+            {
+                "seed": seed,
+                "verdict": result.get("verdict"),
+                "calibration_verdict": result.get("calibration_verdict", "blocked"),
+                "top_candidate_id": result.get("top_candidate_id"),
+                "row_count": result.get("row_count", 0),
+                "blocking_checks": result.get("blocking_checks", []),
+                "rankings": result.get("rankings", []),
+            }
+        )
+
+    top_counts: dict[str, int] = {}
+    for result in seed_results:
+        top_candidate_id = result.get("top_candidate_id")
+        if isinstance(top_candidate_id, str) and top_candidate_id:
+            top_counts[top_candidate_id] = top_counts.get(top_candidate_id, 0) + 1
+    stable_top_candidate_ids = [
+        candidate_id
+        for candidate_id, count in sorted(top_counts.items())
+        if seed_values and count / len(seed_values) >= stability_threshold
+    ]
+    blocking_checks = _multi_seed_blocking_checks(
+        seed_values=seed_values,
+        seed_results=seed_results,
+        stable_top_candidate_ids=stable_top_candidate_ids,
+    )
+    return {
+        "packet_kind": "mirofish_content_multi_seed_result",
+        "verdict": "candidate_review" if not blocking_checks else "blocked",
+        "calibration_verdict": "pass" if not blocking_checks else "blocked",
+        "claim_boundary": CLAIM_BOUNDARY,
+        "seed_count": len(seed_values),
+        "seeds": seed_values,
+        "stability_threshold": stability_threshold,
+        "top_candidate_counts": top_counts,
+        "stable_top_candidate_ids": stable_top_candidate_ids,
+        "seed_results": seed_results,
+        "blocking_checks": blocking_checks,
+        "network_absorbable": False,
+        "requires_before_transfer": [
             "human/operator calibration",
             "privacy and publication review",
             "comparison against actual content outcomes",
@@ -374,7 +444,11 @@ def _normalize_list(value: Any, default: tuple[str, ...]) -> list[str]:
 
 
 def _score_candidate_row(
-    candidate: dict[str, str], persona: str, judge: str
+    candidate: dict[str, str],
+    persona: str,
+    judge: str,
+    *,
+    simulation_seed: Any = None,
 ) -> dict[str, Any]:
     text = candidate["text"]
     tokens = _tokens(text)
@@ -384,6 +458,12 @@ def _score_candidate_row(
     specificity = _specificity_score(text, tokens)
     curiosity = _curiosity_score(text)
     judge_bias = _judge_bias(judge, specificity, curiosity, utility_match)
+    seed_bias = _seed_bias(
+        simulation_seed,
+        candidate_id=candidate["id"],
+        persona=persona,
+        judge=judge,
+    )
 
     save_intent = _clamp(
         0.35
@@ -391,6 +471,7 @@ def _score_candidate_row(
         + utility_match * 0.08
         + persona_match * 0.06
         + judge_bias
+        + seed_bias
         - vague_penalty
     )
     share_intent = _clamp(
@@ -399,6 +480,7 @@ def _score_candidate_row(
         + persona_match * 0.08
         + specificity * 0.08
         + judge_bias
+        + seed_bias
         - vague_penalty
     )
     reply_likelihood = _clamp(
@@ -406,6 +488,7 @@ def _score_candidate_row(
         + (0.12 if "?" in text else 0.0)
         + curiosity * 0.12
         + persona_match * 0.05
+        + seed_bias / 2
         - vague_penalty / 2
     )
     audience_specificity = _clamp(0.30 + persona_match * 0.12 + specificity * 0.25)
@@ -535,6 +618,25 @@ def _calibration_check(check_id: str, passed: bool, message: str) -> dict[str, s
     }
 
 
+def _multi_seed_blocking_checks(
+    *,
+    seed_values: list[int],
+    seed_results: list[dict[str, Any]],
+    stable_top_candidate_ids: list[str],
+) -> list[str]:
+    blocking_checks: list[str] = []
+    if len(seed_values) < 2:
+        blocking_checks.append("multi_seed_required")
+    for result in seed_results:
+        if result.get("verdict") != "ranked":
+            blocking_checks.append(f"seed:{result.get('seed')}:not_ranked")
+        if result.get("calibration_verdict") != "pass":
+            blocking_checks.append(f"seed:{result.get('seed')}:calibration_blocked")
+    if not stable_top_candidate_ids:
+        blocking_checks.append("stable_top_candidate_required")
+    return blocking_checks
+
+
 def _tokens(text: str) -> set[str]:
     return set(re.findall(r"[a-z0-9-]+", text.lower()))
 
@@ -566,6 +668,20 @@ def _judge_bias(
     if judge == "spark-local-judge":
         return min(utility_match * 0.015, 0.045)
     return 0.0
+
+
+def _seed_bias(
+    simulation_seed: Any,
+    *,
+    candidate_id: str,
+    persona: str,
+    judge: str,
+) -> float:
+    if simulation_seed is None:
+        return 0.0
+    key = f"{simulation_seed}:{candidate_id}:{persona}:{judge}"
+    value = sum((index + 1) * ord(char) for index, char in enumerate(key)) % 17
+    return (value - 8) * 0.0015
 
 
 def _clamp(value: float) -> float:

@@ -1049,6 +1049,30 @@ def cmd_mirofish_content_route(args: argparse.Namespace) -> None:
     _write_output(args.output, result)
 
 
+def cmd_mirofish_content_multi_seed(args: argparse.Namespace) -> None:
+    """Run local MiroFish-style content simulation across deterministic seeds."""
+    from .mirofish.content_simulation import (
+        build_content_simulation_packet,
+        simulate_content_multi_seed,
+    )
+
+    if args.input:
+        input_data = _load_input(args.input)
+    else:
+        input_data = build_content_simulation_packet(
+            args.task or "",
+            candidates=args.candidate,
+        )
+    result = simulate_content_multi_seed(
+        input_data,
+        seeds=args.seed,
+        stability_threshold=args.stability_threshold,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result.get("verdict") == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_mirofish_frontier_viz(args: argparse.Namespace) -> None:
     """Build a viz-style 500-domain frontier graph packet and optional HTML page."""
     from .mirofish.hybrid import build_frontier_viz_packet, render_frontier_viz_html
@@ -2031,6 +2055,50 @@ def main() -> None:
     )
     p_mirofish_content_route.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_content_route.set_defaults(func=cmd_mirofish_content_route)
+
+    # mirofish-content-multi-seed
+    p_mirofish_content_multi_seed = sub.add_parser(
+        "mirofish-content-multi-seed",
+        help="Run local MiroFish content simulation across deterministic seeds.",
+    )
+    p_mirofish_content_multi_seed.add_argument(
+        "--input",
+        type=str,
+        default=None,
+        help="Input JSON with candidates plus optional persona_segments and rlm_judges.",
+    )
+    p_mirofish_content_multi_seed.add_argument(
+        "--task",
+        type=str,
+        default="",
+        help="Natural-language task used when passing candidates directly.",
+    )
+    p_mirofish_content_multi_seed.add_argument(
+        "--candidate",
+        action="append",
+        default=None,
+        help="Content candidate text. Repeat to rank multiple candidates without an input file.",
+    )
+    p_mirofish_content_multi_seed.add_argument(
+        "--seed",
+        action="append",
+        type=int,
+        default=None,
+        help="Deterministic simulation seed. Repeat to run multiple seeds.",
+    )
+    p_mirofish_content_multi_seed.add_argument(
+        "--stability-threshold",
+        type=float,
+        default=1.0,
+        help="Minimum top-candidate seed share required for calibration pass.",
+    )
+    p_mirofish_content_multi_seed.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_mirofish_content_multi_seed.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit nonzero when multi-seed calibration is blocked.",
+    )
+    p_mirofish_content_multi_seed.set_defaults(func=cmd_mirofish_content_multi_seed)
 
     # mirofish-frontier-viz
     p_mirofish_frontier_viz = sub.add_parser(

@@ -76,6 +76,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "startup-yc-promotion-evidence-check",
         "startup-yc-validation-suite",
         "mirofish-content-simulate",
+        "mirofish-content-multi-seed",
         "mirofish-content-route",
     ):
         assert command in text
@@ -149,12 +150,15 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
-    assert "Latest focused creator-system suite result before CI push: `165 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `168 passed`." in text
     assert "case_expectations" in text
     assert "calibration_verdict" in text
     assert "failed expectations force `revert`" in text
     assert "multi-RLM judge coverage" in text
     assert "expected-winner oracles" in text
+    assert "mirofish-content-multi-seed" in text
+    assert "top-candidate stability" in text
+    assert "multi-seed-result.json" in text
     assert "expected_postconditions" in text
     assert "plausible success packets" in text
     assert "repair_calibration" in text
