@@ -16,6 +16,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [swarm-contribution-packet.schema.json](swarm-contribution-packet.schema.json) | `swarm/contribution_packet.json` |
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
 | [doctor-result.schema.json](doctor-result.schema.json) | `creator-run-doctor` output |
+| [doctor-adversarial-sweep-manifest.schema.json](doctor-adversarial-sweep-manifest.schema.json) | `creator-run-doctor-adversarial-sweep` mutation manifest |
+| [doctor-adversarial-sweep-result.schema.json](doctor-adversarial-sweep-result.schema.json) | `creator-run-doctor-adversarial-sweep` output |
 | [template-check-result.schema.json](template-check-result.schema.json) | `creator-run-template-check` output |
 | [creator-mission-status.schema.json](creator-mission-status.schema.json) | Read-only product surface adapter packet |
 | [operator-review-packet.schema.json](operator-review-packet.schema.json) | Generic generated-domain human/operator review packet |
@@ -67,6 +69,13 @@ The generated multi-seed summary schemas anchor the generic domain-generator
 matrix separately from the Startup YC promotion gate. They require recomputed
 evidence mode, `network_absorbable=false`, visible failed seed ids, no hidden aggregate failures, and a check packet that blocks tampered summary rows or
 stale underlying run reports.
+
+The doctor adversarial sweep schemas anchor the local schema-family mutation
+suite. The manifest requires explicit unsafe claims, safe boundaries, expected
+blocking checks, and expected quarantine reasons for adapter-map,
+candidate-report, absorption-summary, Swarm-packet, and evidence-ladder
+mutations. The result schema requires visible row outcomes and
+`network_absorbable=false`; a passing result cannot hide failed case ids.
 
 The generic operator-review schemas anchor Phase 5 for generated domains. They
 require explicit human/operator calibration, privacy review, rollback review,

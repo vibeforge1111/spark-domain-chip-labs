@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/doctor-adversarial-sweep-manifest.schema.json",
+  "title": "Adaptive Creator Loop Doctor Adversarial Sweep Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sweep_id",
+    "claim_boundary",
+    "cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.doctor_adversarial_sweep_manifest.v1"
+    },
+    "sweep_id": {"type": "string", "minLength": 1},
+    "claim_boundary": {"type": "string", "minLength": 1},
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "schema_family",
+          "fixture_kind",
+          "path",
+          "operations",
+          "expected_blocking_checks",
+          "expected_quarantine_reasons",
+          "unsafe_claim",
+          "safe_boundary"
+        ],
+        "properties": {
+          "case_id": {"type": "string", "minLength": 1},
+          "schema_family": {
+            "enum": [
+              "adapter_map",
+              "candidate_report",
+              "absorption_summary",
+              "swarm_packet",
+              "evidence_ladder"
+            ]
+          },
+          "fixture_kind": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "operations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["op"],
+              "properties": {
+                "op": {
+                  "enum": [
+                    "set_nested",
+                    "delete_nested",
+                    "add_to_number",
+                    "replace_text",
+                    "replace_line_prefix"
+                  ]
+                },
+                "path": {"type": "string", "minLength": 1},
+                "field": {"type": "string", "minLength": 1},
+                "field_path": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"type": "string", "minLength": 1}
+                },
+                "value": {},
+                "delta": {"type": "number"},
+                "old": {"type": "string"},
+                "new": {"type": "string"},
+                "prefix": {"type": "string"},
+                "replacement": {"type": "string"}
+              }
+            }
+          },
+          "expected_blocking_checks": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "expected_quarantine_reasons": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "unsafe_claim": {"type": "string", "minLength": 1},
+          "safe_boundary": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

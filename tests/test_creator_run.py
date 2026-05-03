@@ -21,6 +21,12 @@ from chip_labs.creator_run import (
 
 DOCTOR_FIXTURE_DIR = Path("docs/creator_system/examples/doctor-security")
 SMOKE_RESULT_SCHEMA = Path("docs/creator_system/schemas/smoke-result.schema.json")
+DOCTOR_SWEEP_MANIFEST_SCHEMA = Path(
+    "docs/creator_system/schemas/doctor-adversarial-sweep-manifest.schema.json"
+)
+DOCTOR_SWEEP_RESULT_SCHEMA = Path(
+    "docs/creator_system/schemas/doctor-adversarial-sweep-result.schema.json"
+)
 
 
 def test_init_creator_run_creates_valid_prototype(tmp_path: Path) -> None:
@@ -205,6 +211,57 @@ def test_creator_run_doctor_adversarial_sweep_covers_schema_families(
         and row["observed_quarantine_reasons"] == ["unsafe_swarm_packet_claim"]
         for row in result["rows"]
     )
+
+
+def test_creator_run_doctor_adversarial_sweep_schemas_validate_fixture_and_result(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    run_dir = _write_candidate_review_run(tmp_path)
+    manifest = json.loads(
+        (DOCTOR_FIXTURE_DIR / "adversarial_schema_sweep.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    result = run_doctor_adversarial_sweep(
+        run_dir,
+        manifest_path=DOCTOR_FIXTURE_DIR / "adversarial_schema_sweep.json",
+    )
+    manifest_schema = json.loads(
+        DOCTOR_SWEEP_MANIFEST_SCHEMA.read_text(encoding="utf-8")
+    )
+    result_schema = json.loads(DOCTOR_SWEEP_RESULT_SCHEMA.read_text(encoding="utf-8"))
+
+    jsonschema.Draft202012Validator(manifest_schema).validate(manifest)
+    jsonschema.Draft202012Validator(result_schema).validate(result)
+
+
+def test_creator_run_doctor_adversarial_sweep_schemas_reject_unsafe_shapes(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    run_dir = _write_candidate_review_run(tmp_path)
+    manifest = json.loads(
+        (DOCTOR_FIXTURE_DIR / "adversarial_schema_sweep.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    result = run_doctor_adversarial_sweep(
+        run_dir,
+        manifest_path=DOCTOR_FIXTURE_DIR / "adversarial_schema_sweep.json",
+    )
+    manifest_schema = json.loads(
+        DOCTOR_SWEEP_MANIFEST_SCHEMA.read_text(encoding="utf-8")
+    )
+    result_schema = json.loads(DOCTOR_SWEEP_RESULT_SCHEMA.read_text(encoding="utf-8"))
+
+    manifest["cases"][0]["expected_blocking_checks"] = []
+    result["network_absorbable"] = True
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(manifest_schema).validate(manifest)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(result_schema).validate(result)
 
 
 def test_cli_creator_run_doctor_adversarial_sweep_outputs_pass(

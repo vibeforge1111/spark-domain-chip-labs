@@ -349,6 +349,9 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "stale underlying run reports",
         "operator-review-packet.schema.json",
         "operator-review-check.schema.json",
+        "doctor-adversarial-sweep-manifest.schema.json",
+        "doctor-adversarial-sweep-result.schema.json",
+        "schema-family mutation",
         "human/operator calibration",
         "review evidence only",
     ):

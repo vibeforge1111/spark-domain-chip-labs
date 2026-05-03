@@ -283,6 +283,10 @@
   mutations from `examples/doctor-security/adversarial_schema_sweep.json`, and
   requires the doctor to block with calibrated repair or quarantine coverage
   while keeping `network_absorbable=false`.
+- `doctor-adversarial-sweep-manifest.schema.json` and
+  `doctor-adversarial-sweep-result.schema.json` now anchor the sweep manifest
+  and result packets, rejecting malformed mutation evidence and
+  `network_absorbable=true` sweep outputs.
 - Retrieval-memory checks now emit `calibration_verdict` and block packets when
   `provenance.source_path` is not one of the exact `source_refs`, so coherent
   saved recall cannot hide a source-path mismatch.

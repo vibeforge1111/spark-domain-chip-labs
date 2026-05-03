@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/doctor-adversarial-sweep-result.schema.json",
+  "title": "Adaptive Creator Loop Doctor Adversarial Sweep Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_dir",
+    "manifest_path",
+    "verdict",
+    "case_count",
+    "passed_case_count",
+    "failed_case_ids",
+    "schema_families",
+    "network_absorbable",
+    "claim_boundary",
+    "rows"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.doctor_adversarial_sweep.v1"
+    },
+    "run_dir": {"type": "string", "minLength": 1},
+    "manifest_path": {"type": "string", "minLength": 1},
+    "verdict": {"enum": ["pass", "blocked"]},
+    "case_count": {"type": "integer", "minimum": 0},
+    "passed_case_count": {"type": "integer", "minimum": 0},
+    "failed_case_ids": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "schema_families": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "adapter_map",
+          "candidate_report",
+          "absorption_summary",
+          "swarm_packet",
+          "evidence_ladder",
+          "unknown"
+        ]
+      }
+    },
+    "network_absorbable": {"const": false},
+    "claim_boundary": {"type": "string", "minLength": 1},
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "schema_family",
+          "fixture_kind",
+          "status",
+          "doctor_verdict",
+          "expected_blocking_checks",
+          "observed_blocking_checks",
+          "missing_blocking_checks",
+          "expected_quarantine_reasons",
+          "observed_quarantine_reasons",
+          "missing_quarantine_reasons",
+          "repair_calibration_verdict",
+          "mutation_errors",
+          "unsafe_claim",
+          "safe_boundary"
+        ],
+        "properties": {
+          "case_id": {"type": "string", "minLength": 1},
+          "schema_family": {"type": "string", "minLength": 1},
+          "fixture_kind": {"type": "string", "minLength": 1},
+          "status": {"enum": ["pass", "fail"]},
+          "doctor_verdict": {
+            "enum": [
+              "blocked",
+              "prototype",
+              "ready_for_baseline",
+              "ready_for_swarm_packet"
+            ]
+          },
+          "expected_blocking_checks": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "observed_blocking_checks": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "missing_blocking_checks": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "expected_quarantine_reasons": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "observed_quarantine_reasons": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "missing_quarantine_reasons": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "repair_calibration_verdict": {"enum": ["pass", "blocked"]},
+          "mutation_errors": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "unsafe_claim": {"type": "string"},
+          "safe_boundary": {"type": "string"}
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "pass"}}
+      },
+      "then": {
+        "properties": {
+          "failed_case_ids": {"maxItems": 0}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}}
+      },
+      "then": {
+        "properties": {
+          "failed_case_ids": {"minItems": 1}
+        }
+      }
+    }
+  ]
+}

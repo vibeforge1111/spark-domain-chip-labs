@@ -50,7 +50,7 @@ Current maturity by domain:
 | Artifact quality | Yes: cases, traps, recompute reports | Good local fixture set for strong, weak, polished-but-unproven, design-decision, and mission-handoff docs with reviewer calibration rows | Add real human-edited PR/design-doc examples and disagreement rows |
 | Tool operation | Yes: safe command, rollback, token trap | Good local operation packets for dry-run, postconditions, stale recompute, missing artifacts, secret handling, MiroFish content multi-seed, and doctor adversarial sweep commands | Add more real command families and postcondition adapters |
 | Content simulation | Yes: title/angle cases and simulator metadata | Local MiroFish simulation and route examples exist, but real outcome calibration is not done | Add multi-seed simulator batches and compare against actual content outcomes |
-| Doctor/security | Yes: fake evidence, repair specificity, unsafe promotion trap | Good stale/malicious fixture coverage, repair calibration, and schema-family adversarial sweep coverage | Add broader generated mutation manifests and malformed JSON/schema cases |
+| Doctor/security | Yes: fake evidence, repair specificity, unsafe promotion trap | Good stale/malicious fixture coverage, repair calibration, schema-family adversarial sweep coverage, and schema anchors for malformed sweep packets | Add broader generated mutation manifests |
 | Startup operator | Yes: generated founder-advice benchmark cases | Strongest curated reference fixture plus Startup YC gate checks and external recompute comparisons | Add real multi-seed evaluated founder-advice evidence before stronger claims |
 | Retrieval/memory | Yes: correct prior, stale memory, residue trap | Local memory-lane contract and fixtures exist, but production memory runtime is deferred | Add real memory-system adapter checks when Spark memory is ready |
 
@@ -108,6 +108,10 @@ candidate-report, absorption-summary, Swarm-packet, and evidence-ladder
 families, and requires the doctor to block with the expected repair or
 quarantine evidence. The sweep keeps `network_absorbable=false`; it is a local
 doctor-security benchmark, not a publication approval.
+Its manifest and result packets are now anchored by JSON Schemas, so malformed
+mutation manifests, empty expected blockers, hidden failed case ids, or
+`network_absorbable=true` sweep results are rejected before they can be used as
+operator evidence.
 
 The retrieval/memory checker now emits `calibration_verdict` and requires each
 entry's `provenance.source_path` to appear in its exact `source_refs`. A memory
