@@ -57,9 +57,7 @@
               "benchmark_signal",
               "focused_pattern",
               "candidate_review",
-              "transfer_supported",
-              "network_absorbable",
-              "standard_update"
+              "transfer_supported"
             ]
           },
           "notes": {"type": "string"}
