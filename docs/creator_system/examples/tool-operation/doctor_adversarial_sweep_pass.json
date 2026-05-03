@@ -1,0 +1,33 @@
+{
+  "command": "python -m chip_labs.cli creator-run-doctor-adversarial-sweep docs/creator_system/examples/startup-yc-creator-run --manifest docs/creator_system/examples/doctor-security/adversarial_schema_sweep.json --fail-on-blocked",
+  "exit_code": 0,
+  "expected_postconditions": {
+    "verdict": "pass",
+    "network_absorbable": false,
+    "minimum_case_count": 5,
+    "failed_case_ids_empty": true,
+    "schema_families_include": [
+      "adapter_map",
+      "candidate_report",
+      "absorption_summary",
+      "swarm_packet",
+      "evidence_ladder"
+    ]
+  },
+  "result": {
+    "schema_version": "adaptive_creator_loop.doctor_adversarial_sweep.v1",
+    "verdict": "pass",
+    "case_count": 5,
+    "passed_case_count": 5,
+    "failed_case_ids": [],
+    "schema_families": [
+      "absorption_summary",
+      "adapter_map",
+      "candidate_report",
+      "evidence_ladder",
+      "swarm_packet"
+    ],
+    "network_absorbable": false,
+    "rows": []
+  }
+}

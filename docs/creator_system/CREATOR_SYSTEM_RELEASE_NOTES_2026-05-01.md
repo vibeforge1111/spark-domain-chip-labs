@@ -270,6 +270,10 @@
   verify calibration verdict, minimum seed count, stable top-candidate evidence,
   and `network_absorbable=false` before mission-control state can trust the
   result.
+- Tool-operation checks now support `creator-run-doctor-adversarial-sweep`
+  packets and verify minimum case count, empty failed case ids, required
+  schema-family coverage, and `network_absorbable=false` before a mission trace
+  can trust the sweep result.
 - `creator-run-doctor` now emits `repair_calibration`, which verifies that
   blocking smoke checks are covered by specific repair steps or quarantine
   findings and that blocked runs require recompute replay before repair advice

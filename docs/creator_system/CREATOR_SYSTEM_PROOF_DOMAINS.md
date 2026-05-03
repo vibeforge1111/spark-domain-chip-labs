@@ -153,6 +153,10 @@ Current replay fixtures:
   `creator-run-smoke --recompute`.
 - `creator_run_smoke_pass.check.json`: saved pass result for the safe operation
   fixture.
+- `mirofish_content_multi_seed_pass.json`: safe parsed-result example for the
+  local content multi-seed simulator command.
+- `doctor_adversarial_sweep_pass.json`: safe parsed-result example for the
+  doctor adversarial schema-family sweep command.
 - `blocked_smoke_with_rollback.json`: blocked smoke with rollback note.
 - `stale_evidence_recompute.json`: stale saved report caught by recompute.
 - `missing_artifacts_expected_swarm.json`: clean smoke exit that fails the
@@ -170,6 +174,8 @@ Next real adapters:
 - Connect to local CLI command manifests.
 - Record expected postconditions for each operation.
 - Add failure replay cases for blocked smoke, failing tests, stale evidence, and missing artifacts.
+- Add more command families only when they have parsed-result packets and
+  explicit postconditions.
 
 Do not claim:
 

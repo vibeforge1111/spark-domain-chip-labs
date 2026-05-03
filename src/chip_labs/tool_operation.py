@@ -24,6 +24,21 @@ SUPPORTED_OPERATIONS = {
         "success_field": None,
         "success_values": (),
     },
+    "creator-run-doctor-adversarial-sweep": {
+        "fragments": ("creator-run-doctor-adversarial-sweep",),
+        "packet_kind": "adaptive_creator_loop.doctor_adversarial_sweep.v1",
+        "required_fields": (
+            "verdict",
+            "case_count",
+            "passed_case_count",
+            "failed_case_ids",
+            "schema_families",
+            "network_absorbable",
+            "rows",
+        ),
+        "success_field": "verdict",
+        "success_values": ("pass",),
+    },
     "creator-run-template-check": {
         "fragments": ("creator-run-template-check",),
         "packet_kind": "adaptive_creator_loop.template_check_result.v1",
@@ -198,7 +213,12 @@ def identify_operation(command: str) -> str | None:
     """Return the supported operation key for a command string."""
 
     normalized = command.lower()
-    for key, operation in SUPPORTED_OPERATIONS.items():
+    ordered_operations = sorted(
+        SUPPORTED_OPERATIONS.items(),
+        key=lambda item: len(" ".join(item[1]["fragments"])),
+        reverse=True,
+    )
+    for key, operation in ordered_operations:
         if all(fragment in normalized for fragment in operation["fragments"]):
             return key
     return None
@@ -362,6 +382,47 @@ def _check_expected_postconditions(
             isinstance(stable_candidates, list) and bool(stable_candidates),
             "Stable top candidate is present.",
             "Expected at least one stable top candidate.",
+        )
+    if "minimum_case_count" in expected:
+        case_count = _coerce_int(result.get("case_count"))
+        minimum_case_count = _coerce_int(expected.get("minimum_case_count"))
+        _append_check(
+            checks,
+            "expected_minimum_case_count",
+            case_count is not None
+            and minimum_case_count is not None
+            and case_count >= minimum_case_count,
+            f"case_count is at least expected `{minimum_case_count}`.",
+            f"Expected case_count >= `{minimum_case_count}`; got `{case_count}`.",
+        )
+    if expected.get("failed_case_ids_empty") is True:
+        failed_case_ids = result.get("failed_case_ids")
+        _append_check(
+            checks,
+            "expected_no_failed_case_ids",
+            failed_case_ids == [],
+            "No failed case ids are present.",
+            "Result still has failed case ids: " + ", ".join(failed_case_ids or []),
+        )
+    required_schema_families = expected.get("schema_families_include")
+    if isinstance(required_schema_families, list):
+        actual_families = result.get("schema_families")
+        actual_set = (
+            {str(family) for family in actual_families}
+            if isinstance(actual_families, list)
+            else set()
+        )
+        missing = [
+            str(family)
+            for family in required_schema_families
+            if str(family) not in actual_set
+        ]
+        _append_check(
+            checks,
+            "expected_schema_families",
+            not missing,
+            "Schema-family coverage includes expected families.",
+            "Missing schema families: " + ", ".join(missing),
         )
 
 
