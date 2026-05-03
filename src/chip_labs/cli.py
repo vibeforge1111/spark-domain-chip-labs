@@ -1155,6 +1155,20 @@ def cmd_creator_run_doctor(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_creator_run_doctor_adversarial_sweep(args: argparse.Namespace) -> None:
+    """Run doctor against isolated adversarial creator-run mutations."""
+    from .creator_run import run_doctor_adversarial_sweep
+
+    result = run_doctor_adversarial_sweep(
+        args.run_dir,
+        manifest_path=args.manifest,
+        recompute=args.recompute,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_creator_run_template_check(args: argparse.Namespace) -> None:
     """Validate creator-run templates."""
     from .creator_run import validate_creator_templates
@@ -2219,6 +2233,35 @@ def main() -> None:
         help="Run doctor against recomputed benchmark evidence instead of saved evidence only.",
     )
     p_creator_doctor.set_defaults(func=cmd_creator_run_doctor)
+
+    # creator-run-doctor-adversarial-sweep
+    p_creator_doctor_sweep = sub.add_parser(
+        "creator-run-doctor-adversarial-sweep",
+        help="Run creator-run-doctor against isolated adversarial packet mutations.",
+    )
+    p_creator_doctor_sweep.add_argument(
+        "run_dir", type=str, help="Clean creator-run directory to copy for mutations."
+    )
+    p_creator_doctor_sweep.add_argument(
+        "--manifest",
+        type=str,
+        default=None,
+        help="Doctor adversarial sweep manifest JSON path.",
+    )
+    p_creator_doctor_sweep.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_creator_doctor_sweep.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when any sweep row fails.",
+    )
+    p_creator_doctor_sweep.add_argument(
+        "--recompute",
+        action="store_true",
+        help="Run doctor against recomputed benchmark evidence for each mutation.",
+    )
+    p_creator_doctor_sweep.set_defaults(func=cmd_creator_run_doctor_adversarial_sweep)
 
     # creator-run-template-check
     p_creator_template_check = sub.add_parser(

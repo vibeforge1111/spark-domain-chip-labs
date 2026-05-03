@@ -100,6 +100,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Recompute saved evidence | `python -m chip_labs.cli creator-run-smoke runs/<run-name> --recompute --fail-on-blocked` |
 | Diagnose repair work | `python -m chip_labs.cli creator-run-doctor runs/<run-name>` |
 | Diagnose stale evidence | `python -m chip_labs.cli creator-run-doctor runs/<run-name> --recompute` |
+| Run doctor adversarial sweep | `python -m chip_labs.cli creator-run-doctor-adversarial-sweep runs/<run-name> --manifest docs/creator_system/examples/doctor-security/adversarial_schema_sweep.json --fail-on-blocked` |
 | Validate templates | `python -m chip_labs.cli creator-run-template-check --fail-on-blocked` |
 | Score artifact quality | `python -m chip_labs.cli artifact-quality-score --input <path> --artifact-kind pr_writeup` |
 | Run artifact benchmark | `python -m chip_labs.cli artifact-quality-benchmark runs/<run-name>` |

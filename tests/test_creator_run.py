@@ -13,6 +13,7 @@ import pytest
 from chip_labs.creator_run import (
     diagnose_creator_run,
     init_creator_run,
+    run_doctor_adversarial_sweep,
     validate_creator_run,
     validate_creator_templates,
 )
@@ -173,6 +174,70 @@ def test_creator_run_doctor_quarantines_malicious_packet_fixture(
     assert result["quarantine"][0]["reason"] == fixture["quarantine_reason"]
     assert result["repair_calibration"]["verdict"] == "pass"
     assert result["repair_calibration"]["uncovered_smoke_checks"] == []
+
+
+def test_creator_run_doctor_adversarial_sweep_covers_schema_families(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path)
+
+    result = run_doctor_adversarial_sweep(
+        run_dir,
+        manifest_path=DOCTOR_FIXTURE_DIR / "adversarial_schema_sweep.json",
+    )
+
+    assert result["schema_version"] == "adaptive_creator_loop.doctor_adversarial_sweep.v1"
+    assert result["verdict"] == "pass"
+    assert result["case_count"] == 5
+    assert result["passed_case_count"] == 5
+    assert result["network_absorbable"] is False
+    assert set(result["schema_families"]) == {
+        "adapter_map",
+        "absorption_summary",
+        "candidate_report",
+        "evidence_ladder",
+        "swarm_packet",
+    }
+    assert all(row["doctor_verdict"] == "blocked" for row in result["rows"])
+    assert all(row["repair_calibration_verdict"] == "pass" for row in result["rows"])
+    assert any(
+        row["case_id"] == "swarm-packet-tier-escalation"
+        and row["observed_quarantine_reasons"] == ["unsafe_swarm_packet_claim"]
+        for row in result["rows"]
+    )
+
+
+def test_cli_creator_run_doctor_adversarial_sweep_outputs_pass(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path)
+    output_path = tmp_path / "doctor-sweep.json"
+    env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "creator-run-doctor-adversarial-sweep",
+            str(run_dir),
+            "--manifest",
+            str(DOCTOR_FIXTURE_DIR / "adversarial_schema_sweep.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert payload["verdict"] == "pass"
+    assert payload["failed_case_ids"] == []
 
 
 def test_template_check_passes_default_templates() -> None:

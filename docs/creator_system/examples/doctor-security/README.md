@@ -9,6 +9,18 @@ These fixtures are executable adversarial inputs for `creator-run-doctor`.
   external recompute evidence.
 - `malicious_network_absorption_packet.json` mutates a contribution packet so
   candidate-review evidence tries to masquerade as `network_absorbable`.
+- `adversarial_schema_sweep.json` runs isolated mutations across adapter-map,
+  candidate-report, absorption-summary, Swarm-packet, and evidence-ladder
+  schema families. Each row must make `creator-run-doctor` block with the
+  expected checks and calibrated repair coverage.
+
+Run the sweep:
+
+```bash
+python -m chip_labs.cli creator-run-doctor-adversarial-sweep <run_dir> \
+  --manifest docs/creator_system/examples/doctor-security/adversarial_schema_sweep.json \
+  --fail-on-blocked
+```
 
 They do not grant publication or network absorption. They exist to prove that
 doctor repair advice stays tied to fresh smoke/recompute evidence.

@@ -274,6 +274,11 @@
   blocking smoke checks are covered by specific repair steps or quarantine
   findings and that blocked runs require recompute replay before repair advice
   is complete.
+- `creator-run-doctor-adversarial-sweep` now runs isolated adapter-map,
+  candidate-report, absorption-summary, Swarm-packet, and evidence-ladder
+  mutations from `examples/doctor-security/adversarial_schema_sweep.json`, and
+  requires the doctor to block with calibrated repair or quarantine coverage
+  while keeping `network_absorbable=false`.
 - Retrieval-memory checks now emit `calibration_verdict` and block packets when
   `provenance.source_path` is not one of the exact `source_refs`, so coherent
   saved recall cannot hide a source-path mismatch.

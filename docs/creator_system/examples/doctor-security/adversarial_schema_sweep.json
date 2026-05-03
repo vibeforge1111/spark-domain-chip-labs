@@ -1,0 +1,92 @@
+{
+  "schema_version": "adaptive_creator_loop.doctor_adversarial_sweep_manifest.v1",
+  "sweep_id": "creator-run-doctor-schema-family-sweep",
+  "claim_boundary": "Local doctor adversarial quarantine only; not publication or network absorption approval.",
+  "cases": [
+    {
+      "case_id": "adapter-map-network-absorbable-escalation",
+      "schema_family": "adapter_map",
+      "fixture_kind": "unsafe_evidence_tier_escalation",
+      "path": "adapter-map.json",
+      "operations": [
+        {
+          "op": "set_nested",
+          "field_path": ["swarm_adapter", "evidence_tier"],
+          "value": "network_absorbable"
+        }
+      ],
+      "expected_blocking_checks": ["swarm_packet_tier"],
+      "expected_quarantine_reasons": [],
+      "unsafe_claim": "An adapter-map edit can promote candidate-review evidence to network_absorbable.",
+      "safe_boundary": "Network absorption still requires multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval."
+    },
+    {
+      "case_id": "candidate-report-regresses-below-baseline",
+      "schema_family": "candidate_report",
+      "fixture_kind": "stale_or_incomplete_benchmark_evidence",
+      "path": "reports/candidate.json",
+      "operations": [
+        {
+          "op": "set_nested",
+          "field": "mean_score",
+          "value": 0.49
+        }
+      ],
+      "expected_blocking_checks": ["candidate_beats_baseline"],
+      "expected_quarantine_reasons": [],
+      "unsafe_claim": "A candidate report can regress below baseline while keeping stale positive summary language.",
+      "safe_boundary": "Candidate evidence must still beat baseline and be repairable from benchmark reports."
+    },
+    {
+      "case_id": "absorption-summary-loses-trap-coverage",
+      "schema_family": "absorption_summary",
+      "fixture_kind": "trap_coverage_erasure",
+      "path": "reports/absorption_summary.json",
+      "operations": [
+        {
+          "op": "set_nested",
+          "field": "trap_band_case_count",
+          "value": 0
+        }
+      ],
+      "expected_blocking_checks": ["trap_coverage"],
+      "expected_quarantine_reasons": [],
+      "unsafe_claim": "A benchmark can pass after trap coverage is erased.",
+      "safe_boundary": "Trap/adversarial coverage remains a required local promotion gate."
+    },
+    {
+      "case_id": "swarm-packet-tier-escalation",
+      "schema_family": "swarm_packet",
+      "fixture_kind": "unsafe_packet_promotion",
+      "path": "swarm/contribution_packet.json",
+      "operations": [
+        {
+          "op": "set_nested",
+          "field_path": ["evidence", "tier"],
+          "value": "network_absorbable"
+        }
+      ],
+      "expected_blocking_checks": ["swarm_packet_tier"],
+      "expected_quarantine_reasons": ["unsafe_swarm_packet_claim"],
+      "unsafe_claim": "Candidate-review evidence can be edited into a network_absorbable packet.",
+      "safe_boundary": "The doctor must quarantine packet tier drift instead of treating the packet as publishable."
+    },
+    {
+      "case_id": "evidence-ladder-tier-drift",
+      "schema_family": "evidence_ladder",
+      "fixture_kind": "claim_boundary_drift",
+      "path": "reports/evidence_ladder.md",
+      "operations": [
+        {
+          "op": "replace_line_prefix",
+          "prefix": "Weakest supported tier:",
+          "replacement": "Weakest supported tier: prototype"
+        }
+      ],
+      "expected_blocking_checks": ["evidence_ladder_weakest_tier"],
+      "expected_quarantine_reasons": [],
+      "unsafe_claim": "The evidence ladder can weaken its own support tier while leaving the packet in place.",
+      "safe_boundary": "Claim boundaries must stay aligned with the adapter tier and saved evidence."
+    }
+  ]
+}

@@ -11,6 +11,7 @@ import json
 import re
 import shutil
 import hashlib
+import tempfile
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -382,6 +383,86 @@ def diagnose_creator_run(run_dir: str | Path, *, recompute: bool = False) -> dic
     }
 
 
+def run_doctor_adversarial_sweep(
+    run_dir: str | Path,
+    *,
+    manifest_path: str | Path | None = None,
+    recompute: bool = False,
+) -> dict[str, Any]:
+    """Run doctor against isolated adversarial packet mutations."""
+
+    source_run = Path(run_dir)
+    manifest = _load_doctor_sweep_manifest(manifest_path)
+    rows = []
+    with tempfile.TemporaryDirectory(prefix="creator-doctor-sweep-") as scratch:
+        scratch_path = Path(scratch)
+        for index, case in enumerate(manifest["cases"], start=1):
+            case_run = scratch_path / f"case-{index}"
+            shutil.copytree(source_run, case_run)
+            mutation_errors = _apply_doctor_sweep_case(case_run, case)
+            diagnosis = diagnose_creator_run(case_run, recompute=recompute)
+            expected_blocking = [str(value) for value in case.get("expected_blocking_checks", [])]
+            expected_quarantine = [
+                str(value) for value in case.get("expected_quarantine_reasons", [])
+            ]
+            actual_blocking = set(diagnosis["smoke"]["blocking_checks"])
+            actual_quarantine = {
+                str(finding.get("reason")) for finding in diagnosis["quarantine"]
+            }
+            missing_blocking = [
+                check for check in expected_blocking if check not in actual_blocking
+            ]
+            missing_quarantine = [
+                reason for reason in expected_quarantine if reason not in actual_quarantine
+            ]
+            status = (
+                "pass"
+                if (
+                    not mutation_errors
+                    and diagnosis["verdict"] == "blocked"
+                    and not missing_blocking
+                    and not missing_quarantine
+                    and diagnosis["repair_calibration"]["verdict"] == "pass"
+                )
+                else "fail"
+            )
+            rows.append({
+                "case_id": str(case.get("case_id", f"case-{index}")),
+                "schema_family": str(case.get("schema_family", "unknown")),
+                "fixture_kind": str(case.get("fixture_kind", "adversarial_mutation")),
+                "status": status,
+                "doctor_verdict": diagnosis["verdict"],
+                "expected_blocking_checks": expected_blocking,
+                "observed_blocking_checks": diagnosis["smoke"]["blocking_checks"],
+                "missing_blocking_checks": missing_blocking,
+                "expected_quarantine_reasons": expected_quarantine,
+                "observed_quarantine_reasons": sorted(actual_quarantine),
+                "missing_quarantine_reasons": missing_quarantine,
+                "repair_calibration_verdict": diagnosis["repair_calibration"]["verdict"],
+                "mutation_errors": mutation_errors,
+                "unsafe_claim": str(case.get("unsafe_claim", "")),
+                "safe_boundary": str(case.get("safe_boundary", "")),
+            })
+
+    failed_rows = [row["case_id"] for row in rows if row["status"] != "pass"]
+    return {
+        "schema_version": "adaptive_creator_loop.doctor_adversarial_sweep.v1",
+        "run_dir": str(source_run),
+        "manifest_path": str(manifest_path or default_doctor_sweep_manifest_path()),
+        "verdict": "blocked" if failed_rows else "pass",
+        "case_count": len(rows),
+        "passed_case_count": len(rows) - len(failed_rows),
+        "failed_case_ids": failed_rows,
+        "schema_families": sorted({row["schema_family"] for row in rows}),
+        "network_absorbable": False,
+        "claim_boundary": (
+            "Doctor adversarial sweeps prove local quarantine behavior only; "
+            "they do not approve publication or network absorption."
+        ),
+        "rows": rows,
+    }
+
+
 def validate_creator_templates(
     template_dir: str | Path | None = None,
 ) -> dict[str, Any]:
@@ -472,6 +553,17 @@ def validate_creator_templates(
         "blocking_checks": blocking_checks,
         "checks": [check.to_dict() for check in checks],
     }
+
+
+def default_doctor_sweep_manifest_path() -> Path:
+    return (
+        repo_root()
+        / "docs"
+        / "creator_system"
+        / "examples"
+        / "doctor-security"
+        / "adversarial_schema_sweep.json"
+    )
 
 
 def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> SmokeResult:
@@ -615,6 +707,110 @@ def _load_required_json(
         return None
     checks.append(SmokeCheck(name, "pass", f"Loaded {path.name}."))
     return data
+
+
+def _load_doctor_sweep_manifest(manifest_path: str | Path | None) -> dict[str, Any]:
+    path = Path(manifest_path) if manifest_path else default_doctor_sweep_manifest_path()
+    manifest = load_json(path)
+    if manifest.get("schema_version") != "adaptive_creator_loop.doctor_adversarial_sweep_manifest.v1":
+        raise ValueError(f"{path} must be a doctor adversarial sweep manifest")
+    cases = manifest.get("cases")
+    if not isinstance(cases, list) or not cases:
+        raise ValueError(f"{path} must include non-empty cases")
+    return manifest
+
+
+def _apply_doctor_sweep_case(run_path: Path, case: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    for operation in case.get("operations", []):
+        if not isinstance(operation, dict):
+            errors.append("operation must be an object")
+            continue
+        relative_path = str(operation.get("path") or case.get("path") or "").strip()
+        if not relative_path:
+            errors.append("operation path is required")
+            continue
+        target = run_path / relative_path
+        try:
+            _apply_doctor_sweep_operation(target, operation)
+        except (KeyError, TypeError, ValueError, FileNotFoundError) as exc:
+            errors.append(f"{relative_path}: {exc}")
+    return errors
+
+
+def _apply_doctor_sweep_operation(path: Path, operation: dict[str, Any]) -> None:
+    op = operation.get("op")
+    if op == "replace_text":
+        text = path.read_text(encoding="utf-8")
+        old = str(operation.get("old", ""))
+        new = str(operation.get("new", ""))
+        if old not in text:
+            raise ValueError(f"text not found: {old}")
+        path.write_text(text.replace(old, new), encoding="utf-8")
+        return
+    if op == "replace_line_prefix":
+        text = path.read_text(encoding="utf-8")
+        prefix = str(operation.get("prefix", ""))
+        replacement = str(operation.get("replacement", ""))
+        lines = text.splitlines()
+        replaced = False
+        for index, line in enumerate(lines):
+            if line.startswith(prefix):
+                lines[index] = replacement
+                replaced = True
+        if not replaced:
+            raise ValueError(f"line prefix not found: {prefix}")
+        path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        return
+
+    data = load_json(path)
+    if op == "set_nested":
+        _set_nested(data, _operation_field_path(operation), operation.get("value"))
+    elif op == "delete_nested":
+        _delete_nested(data, _operation_field_path(operation))
+    elif op == "add_to_number":
+        field_path = _operation_field_path(operation)
+        current = _nested(data, *field_path)
+        number = _coerce_number(current)
+        delta = _coerce_number(operation.get("delta"))
+        if number is None or delta is None:
+            raise ValueError("add_to_number requires numeric target and delta")
+        _set_nested(data, field_path, number + delta)
+    else:
+        raise ValueError(f"unsupported operation {op}")
+    write_json(path, data)
+
+
+def _operation_field_path(operation: dict[str, Any]) -> tuple[str, ...]:
+    field_path = operation.get("field_path")
+    if isinstance(field_path, list) and field_path:
+        return tuple(str(part) for part in field_path)
+    field = operation.get("field")
+    if isinstance(field, str) and field.strip():
+        return tuple(field.split("."))
+    raise ValueError("operation requires field_path or field")
+
+
+def _set_nested(data: dict[str, Any], field_path: tuple[str, ...], value: Any) -> None:
+    current = data
+    for key in field_path[:-1]:
+        next_value = current.get(key)
+        if not isinstance(next_value, dict):
+            raise KeyError(".".join(field_path))
+        current = next_value
+    current[field_path[-1]] = value
+
+
+def _delete_nested(data: dict[str, Any], field_path: tuple[str, ...]) -> None:
+    current = data
+    for key in field_path[:-1]:
+        next_value = current.get(key)
+        if not isinstance(next_value, dict):
+            raise KeyError(".".join(field_path))
+        current = next_value
+    if field_path[-1] not in current:
+        raise KeyError(".".join(field_path))
+    del current[field_path[-1]]
 
 
 def _status_counts(checks: tuple[SmokeCheck, ...]) -> dict[str, int]:
