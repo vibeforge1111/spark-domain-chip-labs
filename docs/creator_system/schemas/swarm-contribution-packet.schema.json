@@ -21,14 +21,41 @@
     "creator_run_id": {"type": "string"},
     "source": {"type": "object"},
     "contribution": {"type": "object"},
-    "evidence": {"type": "object"},
+    "evidence": {
+      "type": "object",
+      "required": [
+        "tier",
+        "baseline_score",
+        "candidate_score",
+        "mean_delta",
+        "trap_regressions",
+        "report_paths"
+      ],
+      "properties": {
+        "tier": {"type": "string", "minLength": 1},
+        "baseline_score": {"type": "number", "minimum": 0, "maximum": 1},
+        "candidate_score": {"type": "number", "minimum": 0, "maximum": 1},
+        "mean_delta": {"type": "number"},
+        "trap_regressions": {"type": "integer", "minimum": 0},
+        "fresh_agent_absorption_delta": {"type": "number"},
+        "report_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
     "governance": {
       "type": "object",
-      "required": ["rollback_or_deprecation_rule", "privacy_boundary"],
+      "required": [
+        "rollback_or_deprecation_rule",
+        "privacy_boundary",
+        "network_publication_allowed"
+      ],
       "properties": {
         "rollback_or_deprecation_rule": {"type": "string"},
         "privacy_boundary": {"type": "string"},
-        "network_publication_allowed": {"type": "boolean"}
+        "network_publication_allowed": {"const": false}
       }
     },
     "anti_drift": {
@@ -38,6 +65,28 @@
         "known_limits": {"type": "array"}
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "governance": {
+            "properties": {"network_publication_allowed": {"const": false}},
+            "required": ["network_publication_allowed"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "anti_drift": {
+            "properties": {
+              "known_limits": {
+                "contains": {"type": "string", "pattern": "network|publication|multi-seed|calibration"}
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
-

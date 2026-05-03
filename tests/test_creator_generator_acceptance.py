@@ -53,6 +53,9 @@ BENCHMARK_CASE_SCHEMA = Path("docs/creator_system/schemas/benchmark-case.schema.
 BENCHMARK_PACK_SCHEMA = Path(
     "docs/creator_system/schemas/benchmark-pack-manifest.schema.json"
 )
+SWARM_PACKET_SCHEMA = Path(
+    "docs/creator_system/schemas/swarm-contribution-packet.schema.json"
+)
 
 
 def _brief() -> dict[str, object]:
@@ -653,6 +656,32 @@ def test_benchmark_pack_contract_schema_rejects_hidden_lane_failures(
 
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(schema).validate(manifest)
+
+
+def test_swarm_packet_contract_schema_blocks_network_publication_claim(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    generated_packet = json.loads(
+        (generated.run_dir / "swarm" / "contribution_packet.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    startup_yc_packet = json.loads(
+        Path(
+            "docs/creator_system/examples/startup-yc-creator-run/swarm/contribution_packet.json"
+        ).read_text(encoding="utf-8")
+    )
+    schema = json.loads(SWARM_PACKET_SCHEMA.read_text(encoding="utf-8"))
+
+    jsonschema.Draft202012Validator(schema).validate(generated_packet)
+    jsonschema.Draft202012Validator(schema).validate(startup_yc_packet)
+
+    generated_packet["governance"]["network_publication_allowed"] = True
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(schema).validate(generated_packet)
 
 
 @pytest.mark.parametrize("brief", _multi_domain_briefs(), ids=lambda brief: brief["domain_id"])
