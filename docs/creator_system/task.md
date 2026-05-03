@@ -696,6 +696,11 @@ Completed documentation/verification:
 - Creator-system CI now includes `tests/test_operator_review.py` plus focused
   lint for `src/chip_labs/operator_review.py`, keeping the Phase 5 generic
   review packet/check contract under PR and push coverage.
+- Creator-system CI now has a manual `workflow_dispatch` path with
+  `run_generated_multi_seed=true` that runs the checked-in
+  `examples/generated-multi-domain-briefs.json` matrix through
+  `generated-multi-seed-run`, recompute-checks the saved summary, and validates
+  both generated summary schemas.
 
 Completed product PR verification:
 

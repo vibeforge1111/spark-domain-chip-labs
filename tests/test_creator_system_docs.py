@@ -143,10 +143,13 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
+    assert "workflow_dispatch" in text
+    assert "run_generated_multi_seed" in text
+    assert "generated-multi-domain-briefs.json" in text
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
-    assert "Latest focused creator-system suite result before CI push: `157 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `158 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -169,6 +172,13 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "validation_suite_blocked.json" in text
     assert "validator.validate(payload)" in text
+    assert "workflow_dispatch" in text
+    assert "run_generated_multi_seed" in text
+    assert "generated-multi-seed-run" in text
+    assert "generated-multi-domain-briefs.json" in text
+    assert "generated-multi-seed-summary-check" in text
+    assert "generated-multi-seed-summary.schema.json" in text
+    assert "generated-multi-seed-summary-check.schema.json" in text
     assert "tests/test_startup_yc_operator_validation.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
@@ -259,6 +269,9 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "Changed saved lane results block recompute",
         "run_multi_seed_generator_validation",
         "generated-multi-seed-run --briefs <briefs.json> --workspace-dir <dir>",
+        "workflow_dispatch",
+        "run_generated_multi_seed",
+        "generated-multi-domain-briefs.json",
         "validate_multi_seed_generator_summary",
         "generated-multi-seed-summary.schema.json",
         "generated-multi-seed-summary-check.schema.json",

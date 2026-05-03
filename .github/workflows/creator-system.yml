@@ -1,6 +1,16 @@
 name: Creator System
 
 on:
+  workflow_dispatch:
+    inputs:
+      run_generated_multi_seed:
+        description: "Run generated 36-row multi-seed matrix after normal checks"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
   pull_request:
     paths:
       - "docs/creator_system/**"
@@ -125,3 +135,36 @@ jobs:
               validator.validate(payload)
           PY
           python -m chip_labs.cli creator-run-template-check --fail-on-blocked
+
+      - name: Run manual generated multi-seed matrix
+        if: github.event_name == 'workflow_dispatch' && inputs.run_generated_multi_seed == 'true'
+        run: |
+          python -m chip_labs.cli generated-multi-seed-run \
+            --briefs docs/creator_system/examples/generated-multi-domain-briefs.json \
+            --workspace-dir /tmp/generated-creator-matrix \
+            --output /tmp/generated-multi-seed-summary.json \
+            --fail-on-blocked
+          python -m chip_labs.cli generated-multi-seed-summary-check \
+            --summary /tmp/generated-creator-matrix/multi_seed_validation_summary.json \
+            --output /tmp/generated-multi-seed-summary-check.json \
+            --fail-on-blocked
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          import jsonschema
+
+          for schema_path, payload_path in (
+              (
+                  "docs/creator_system/schemas/generated-multi-seed-summary.schema.json",
+                  "/tmp/generated-multi-seed-summary.json",
+              ),
+              (
+                  "docs/creator_system/schemas/generated-multi-seed-summary-check.schema.json",
+                  "/tmp/generated-multi-seed-summary-check.json",
+              ),
+          ):
+              schema = json.loads(Path(schema_path).read_text())
+              payload = json.loads(Path(payload_path).read_text())
+              jsonschema.Draft202012Validator(schema).validate(payload)
+          PY

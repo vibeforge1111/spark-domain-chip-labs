@@ -109,6 +109,8 @@ Current executable status:
 - `generated-multi-seed-run` exposes that matrix runner as a CLI command from a
   briefs JSON file, so manual or scheduled jobs do not need to import test
   helpers.
+- `docs/creator_system/examples/generated-multi-domain-briefs.json` is the
+  checked-in operator input for that generated matrix.
 - The summary is written to `multi_seed_validation_summary.json`.
 - The summary reports every seed row, keeps `network_absorbable` false, and
   sets `aggregate_hidden_failures` to false.
@@ -253,6 +255,8 @@ Manual or scheduled CI:
 - `generated-multi-seed-run --briefs <briefs.json> --workspace-dir <dir>`
 - `generated-multi-seed-summary-check --fail-on-blocked` against saved or
   freshly generated matrix summaries
+- `workflow_dispatch` with `run_generated_multi_seed=true` runs the checked-in
+  generated brief matrix and validates both generated summary schemas.
 - external recompute checks when sibling source repos are available
 - stale-evidence mutation sweeps
 

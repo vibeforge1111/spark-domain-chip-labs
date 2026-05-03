@@ -30,6 +30,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md](TELEGRAM_BUILDER_SPAWNER_CREATOR_FLOW.md) | How Telegram, Spark Intelligence Builder, Spawner UI, Canvas, Kanban, and Spark Swarm should work together. |
 | [schemas/](schemas/) | JSON Schema anchors for creator intent, adapter map, smoke, doctor, template-check, Swarm packet, mission-status, generated multi-seed summaries, and Startup YC validation plan, evidence, shape-check, gate-check, and suite outputs. |
 | [templates/creator-run/](templates/creator-run/) | Fill-in templates for intent packets, adapter maps, creator run reports, Swarm packets, and standard-change proposals. |
+| [examples/generated-multi-domain-briefs.json](examples/generated-multi-domain-briefs.json) | Manual CI input for the generated multi-domain, multi-seed matrix across artifact quality, tool operation, MiroFish content simulation, doctor/security, Startup YC operator, and retrieval/memory. |
 | [examples/startup-yc-creator-run/](examples/startup-yc-creator-run/) | Real Startup YC fixture that maps the existing domain chip, specialization path, benchmark, autoloop, absorption reports, and Swarm packet into the creator-run contract. |
 | [examples/startup-yc-operator-validation/](examples/startup-yc-operator-validation/) | Startup YC held-out founder-advice cases, calibration checklist, privacy review, rollback review, publication gate plan, and shape-only raw evidence CI fixture. |
 
@@ -105,7 +106,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Check tool operation packet | `python -m chip_labs.cli tool-operation-check --input operation-packet.json --fail-on-blocked` |
 | Check retrieval memory packet | `python -m chip_labs.cli retrieval-memory-check --input memory-packet.json --fail-on-blocked` |
 | Check generated operator review packet | `python -m chip_labs.cli operator-review-check --input reports/operator_review_packet.json --fail-on-blocked` |
-| Run generated multi-seed matrix | `python -m chip_labs.cli generated-multi-seed-run --briefs briefs.json --workspace-dir /tmp/generated-creator-matrix --fail-on-blocked` |
+| Run generated multi-seed matrix | `python -m chip_labs.cli generated-multi-seed-run --briefs docs/creator_system/examples/generated-multi-domain-briefs.json --workspace-dir /tmp/generated-creator-matrix --fail-on-blocked` |
 | Recompute-check generated multi-seed summary | `python -m chip_labs.cli generated-multi-seed-summary-check --summary reports/multi_seed_validation_summary.json --fail-on-blocked` |
 | Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --generated-multi-seed reports/multi_seed_validation_summary.json --output reports/creator-mission-status.json` |
 | Check Startup YC promotion gates | `python -m chip_labs.cli startup-yc-promotion-gate-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |

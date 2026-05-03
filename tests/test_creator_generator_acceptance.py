@@ -29,6 +29,9 @@ GENERATED_MULTI_SEED_SUMMARY_SCHEMA = Path(
 GENERATED_MULTI_SEED_SUMMARY_CHECK_SCHEMA = Path(
     "docs/creator_system/schemas/generated-multi-seed-summary-check.schema.json"
 )
+GENERATED_MULTI_DOMAIN_BRIEFS = Path(
+    "docs/creator_system/examples/generated-multi-domain-briefs.json"
+)
 
 
 def _brief() -> dict[str, object]:
@@ -605,6 +608,27 @@ def test_generator_multi_seed_validation_runs_full_domain_matrix(
     assert checked["verdict"] == "pass"
     assert checked["blocking_checks"] == []
     assert checked["row_count"] == 36
+
+
+def test_generated_multi_domain_briefs_file_is_operator_matrix_input() -> None:
+    payload = json.loads(GENERATED_MULTI_DOMAIN_BRIEFS.read_text(encoding="utf-8"))
+    briefs = payload["briefs"]
+
+    assert len(briefs) == 6
+    assert {brief["domain_family"] for brief in briefs} == {
+        "artifact_quality",
+        "tool_operation",
+        "simulator_heavy",
+        "adversarial_security",
+        "startup_founder_advice",
+        "retrieval_memory",
+    }
+    assert all("network_absorbable" not in brief.get("goal", "") for brief in briefs)
+    assert all(brief["mutation_axes"] for brief in briefs)
+    assert all(
+        any(case.get("trap") is True for case in brief["benchmark_cases"])
+        for brief in briefs
+    )
 
 
 def test_generator_multi_seed_validation_exposes_failed_seed_rows(

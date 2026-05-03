@@ -236,6 +236,10 @@
 - Creator-system CI now writes the strict Startup YC smoke packet and validates
   it against `smoke-result.schema.json`, including the saved evidence-mode
   boundary.
+- Creator-system CI now has a manual `workflow_dispatch` path with
+  `run_generated_multi_seed=true` that runs `generated-multi-seed-run` against
+  `docs/creator_system/examples/generated-multi-domain-briefs.json`, then
+  recompute-checks and schema-validates the generated multi-seed summary.
 
 ## Current Claim Boundary
 
@@ -257,4 +261,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `157 passed`.
+Latest focused creator-system suite result before CI push: `158 passed`.
