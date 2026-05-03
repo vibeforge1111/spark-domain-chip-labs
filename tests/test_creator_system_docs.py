@@ -166,6 +166,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "Boolean pass flags alone" in text
     assert "held_out_founder_advice_evidence.json" in text
     assert "held-out gate can pass locally" in text
+    assert "weekly scheduled generated-matrix run" in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -188,6 +189,9 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "validation_suite_blocked.json" in text
     assert "validator.validate(payload)" in text
+    assert "schedule:" in text
+    assert "17 3 * * 1" in text
+    assert "github.event_name == 'schedule'" in text
     assert "workflow_dispatch" in text
     assert "run_generated_multi_seed" in text
     assert "generated-multi-seed-run" in text

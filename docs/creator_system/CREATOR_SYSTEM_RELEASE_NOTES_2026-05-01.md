@@ -271,6 +271,10 @@
   `held_out_founder_advice_evidence.json`, wired through `validation_plan.json`.
   The held-out gate can pass locally while the validation suite remains blocked
   by the remaining promotion gates.
+- Creator-system CI now has a weekly scheduled generated-matrix run in addition
+  to `workflow_dispatch run_generated_multi_seed=true`, keeping heavy
+  multi-domain drift checks out of normal push CI while still making them
+  executable.
 
 ## Current Claim Boundary
 

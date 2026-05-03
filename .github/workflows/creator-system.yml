@@ -1,6 +1,8 @@
 name: Creator System
 
 on:
+  schedule:
+    - cron: "17 3 * * 1"
   workflow_dispatch:
     inputs:
       run_generated_multi_seed:
@@ -137,7 +139,7 @@ jobs:
           python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 
       - name: Run manual generated multi-seed matrix
-        if: github.event_name == 'workflow_dispatch' && inputs.run_generated_multi_seed == 'true'
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_generated_multi_seed == 'true')
         run: |
           python -m chip_labs.cli generated-multi-seed-run \
             --briefs docs/creator_system/examples/generated-multi-domain-briefs.json \
