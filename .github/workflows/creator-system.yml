@@ -223,6 +223,6 @@ jobs:
               f"verdict={summary['verdict']} "
               f"passed={summary['passed_run_count']}/{summary['matrix']['target_run_count']} "
               f"mission_run_count={mission_matrix['run_count']} "
-              f"network_absorbable={summary['network_absorbable']}"
+              f"network_absorbable={str(summary['network_absorbable']).lower()}"
           )
           PY
