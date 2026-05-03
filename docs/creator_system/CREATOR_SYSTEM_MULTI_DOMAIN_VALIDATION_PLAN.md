@@ -85,6 +85,11 @@ the parsed packet looks successful; it must also declare the intended verdict,
 blocking-check, missing-path, or automation state expectations that mission
 control is allowed to trust.
 
+The doctor/security layer now emits `repair_calibration` in doctor results. It
+checks that blocking smoke checks are covered by specific repair steps or
+quarantine findings, and that blocked runs require a recompute replay command
+before repair advice can be treated as complete.
+
 ## Phase 1: Multi-Domain Generator Matrix
 
 The first phase is the fast CI-safe matrix. It uses one representative generated

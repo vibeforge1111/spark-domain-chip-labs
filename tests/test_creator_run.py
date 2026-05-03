@@ -141,6 +141,8 @@ def test_creator_run_doctor_returns_repair_steps(tmp_path: Path) -> None:
     assert result["verdict"] == "prototype"
     assert result["workspace_ready"] is True
     assert result["publication_ready"] is False
+    assert result["repair_calibration"]["verdict"] == "pass"
+    assert result["repair_calibration"]["uncovered_smoke_checks"] == []
     assert any(step["area"] == "artifact_scaffold" for step in result["repair_steps"])
 
 
@@ -169,6 +171,8 @@ def test_creator_run_doctor_quarantines_malicious_packet_fixture(
         for step in result["repair_steps"]
     )
     assert result["quarantine"][0]["reason"] == fixture["quarantine_reason"]
+    assert result["repair_calibration"]["verdict"] == "pass"
+    assert result["repair_calibration"]["uncovered_smoke_checks"] == []
 
 
 def test_template_check_passes_default_templates() -> None:
@@ -679,6 +683,8 @@ def test_creator_run_doctor_quarantines_stale_external_startup_yc_fixture(
         and expected_check in step["related_checks"]
         for step in diagnosis["repair_steps"]
     )
+    assert diagnosis["repair_calibration"]["verdict"] == "pass"
+    assert diagnosis["repair_calibration"]["uncovered_smoke_checks"] == []
 
 
 def test_recompute_blocks_stale_external_startup_yc_absorption_source(

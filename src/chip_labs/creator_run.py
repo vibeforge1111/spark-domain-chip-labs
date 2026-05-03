@@ -357,6 +357,8 @@ def diagnose_creator_run(run_dir: str | Path, *, recompute: bool = False) -> dic
     smoke = validate_creator_run(run_dir, recompute=recompute)
     smoke_payload = smoke.to_dict()
     repair_steps = _repair_steps_for_smoke(smoke)
+    quarantine = _quarantine_findings(smoke)
+    repair_replay = _repair_replay(smoke, recompute=recompute)
     return {
         "schema_version": "adaptive_creator_loop.doctor_result.v1",
         "run_dir": smoke.run_dir,
@@ -367,9 +369,15 @@ def diagnose_creator_run(run_dir: str | Path, *, recompute: bool = False) -> dic
         "publication_ready": smoke.verdict == "ready_for_swarm_packet"
         and not smoke_payload["warning_checks"],
         "workspace_ready": smoke.verdict != "blocked",
-        "repair_replay": _repair_replay(smoke, recompute=recompute),
-        "quarantine": _quarantine_findings(smoke),
+        "repair_replay": repair_replay,
+        "quarantine": quarantine,
         "repair_steps": repair_steps,
+        "repair_calibration": _repair_calibration(
+            smoke,
+            repair_steps=repair_steps,
+            quarantine=quarantine,
+            repair_replay=repair_replay,
+        ),
         "smoke": smoke_payload,
     }
 
@@ -838,6 +846,60 @@ def _repair_replay(smoke: SmokeResult, *, recompute: bool) -> dict[str, Any]:
             if recompute and smoke.verdict != "blocked"
             else "Repair advice is not complete until this command passes."
         ),
+    }
+
+
+def _repair_calibration(
+    smoke: SmokeResult,
+    *,
+    repair_steps: list[dict[str, Any]],
+    quarantine: list[dict[str, Any]],
+    repair_replay: dict[str, Any],
+) -> dict[str, Any]:
+    blocking_checks = [check.name for check in smoke.checks if check.status == "fail"]
+    covered_checks = {
+        str(check)
+        for step in repair_steps
+        for check in step.get("related_checks", [])
+    }
+    covered_checks.update(
+        str(check)
+        for finding in quarantine
+        for check in finding.get("related_checks", [])
+    )
+    missing_coverage = [
+        check for check in blocking_checks if check not in covered_checks
+    ]
+    checks = [
+        {
+            "name": "blocking_checks_have_repair_or_quarantine",
+            "status": "pass" if not missing_coverage else "fail",
+            "message": (
+                "Every blocking check is tied to repair or quarantine guidance."
+                if not missing_coverage
+                else "Missing repair coverage for: " + ", ".join(missing_coverage)
+            ),
+        },
+        {
+            "name": "blocked_runs_require_recompute_replay",
+            "status": (
+                "pass"
+                if (smoke.verdict != "blocked" or repair_replay.get("required") is True)
+                else "fail"
+            ),
+            "message": (
+                "Blocked runs require a recompute replay command."
+                if smoke.verdict == "blocked"
+                else "Run is not blocked; recompute replay is optional."
+            ),
+        },
+    ]
+    failed = [check["name"] for check in checks if check["status"] == "fail"]
+    return {
+        "verdict": "blocked" if failed else "pass",
+        "blocking_checks": failed,
+        "checks": checks,
+        "uncovered_smoke_checks": missing_coverage,
     }
 
 

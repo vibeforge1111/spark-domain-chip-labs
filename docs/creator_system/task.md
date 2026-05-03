@@ -717,6 +717,9 @@ Completed documentation/verification:
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`, so mission-control state updates cannot rely on
   stdout or plausible success packets alone.
+- `creator-run-doctor` now emits `repair_calibration` to prove every blocking
+  smoke check is tied to repair or quarantine guidance and blocked runs require
+  recompute replay.
 
 Completed product PR verification:
 

@@ -257,6 +257,10 @@
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.
+- `creator-run-doctor` now emits `repair_calibration`, which verifies that
+  blocking smoke checks are covered by specific repair steps or quarantine
+  findings and that blocked runs require recompute replay before repair advice
+  is complete.
 
 ## Current Claim Boundary
 

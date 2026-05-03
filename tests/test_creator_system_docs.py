@@ -157,6 +157,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "expected-winner oracles" in text
     assert "expected_postconditions" in text
     assert "plausible success packets" in text
+    assert "repair_calibration" in text
+    assert "recompute replay" in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -282,6 +284,8 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "expected-winner oracle",
         "expected postconditions",
         "control is allowed to trust",
+        "`repair_calibration`",
+        "quarantine findings",
         "failure modes",
         "lane-level report results",
         "Changed benchmark manifests block recompute",

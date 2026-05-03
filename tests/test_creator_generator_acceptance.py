@@ -879,6 +879,8 @@ def test_creator_run_doctor_recompute_requires_repair_replay(
     assert fixture["expected_blocking_checks"][0] in diagnosis["smoke"]["blocking_checks"]
     assert diagnosis["repair_replay"]["required"] is True
     assert diagnosis["repair_replay"]["satisfied"] is False
+    assert diagnosis["repair_calibration"]["verdict"] == "pass"
+    assert diagnosis["repair_calibration"]["uncovered_smoke_checks"] == []
     assert any(
         step["area"] == "recompute_provenance"
         and fixture["expected_blocking_checks"][0] in step["related_checks"]
