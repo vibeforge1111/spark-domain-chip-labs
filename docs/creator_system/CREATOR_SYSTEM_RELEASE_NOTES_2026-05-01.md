@@ -356,6 +356,13 @@
   to `workflow_dispatch run_generated_multi_seed=true`, keeping heavy
   multi-domain drift checks out of normal push CI while still making them
   executable.
+- Generic operator-review packet schemas now reject
+  `evidence_tier=network_absorbable`. The requested claim can still be
+  `network_absorbable`, and publication approval can still be recorded as one
+  review gate, but the packet itself remains review evidence only.
+- Adapter-map, smoke-result, and doctor-result schemas now constrain
+  `evidence_tier` to the executable creator-run tier ladder, so fake tiers are
+  rejected by both runtime smoke and saved schema validation.
 
 ## Current Claim Boundary
 
@@ -377,4 +384,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `170 passed`.
+Latest focused creator-system suite result before CI push: `203 passed`.

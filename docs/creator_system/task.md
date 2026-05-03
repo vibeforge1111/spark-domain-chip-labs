@@ -462,6 +462,8 @@ Deliverables:
 - [x] Add release-note summary for retrieval-memory mission-status evidence slice.
 - [x] Add release-note summary for tool-operation mission-status evidence slice.
 - [x] Add release-note summary for recompute/provenance doc alignment slice.
+- [x] Add release-note summary for operator-review evidence-tier hardening.
+- [x] Add release-note summary for core evidence-tier schema enums.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -744,6 +746,11 @@ Completed documentation/verification:
   validation plan. The held-out gate passes locally, while the validation suite
   remains blocked by multi-seed, human/operator, privacy, rollback, publication,
   and promotion-evidence gates.
+- Operator-review packets now reject `evidence_tier=network_absorbable` while
+  still allowing `network_absorbable` to be the requested claim under review.
+- Adapter-map, smoke-result, and doctor-result schemas now constrain
+  `evidence_tier` to the executable creator-run tier ladder and reject fake
+  tier names such as `magic_mastery`.
 
 Completed product PR verification:
 
