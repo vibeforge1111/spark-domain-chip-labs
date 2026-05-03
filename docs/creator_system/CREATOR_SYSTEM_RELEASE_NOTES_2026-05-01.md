@@ -240,6 +240,9 @@
   `run_generated_multi_seed=true` that runs `generated-multi-seed-run` against
   `docs/creator_system/examples/generated-multi-domain-briefs.json`, then
   recompute-checks and schema-validates the generated multi-seed summary.
+- The same manual path now emits a product-safe
+  `creator-mission-status --generated-multi-seed` packet for the generated
+  matrix and validates it against `creator-mission-status.schema.json`.
 
 ## Current Claim Boundary
 

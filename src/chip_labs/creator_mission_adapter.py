@@ -411,8 +411,16 @@ def _nested(data: dict[str, Any], *keys: str) -> Any:
 
 
 def _generated_multi_seed_summary(packet: dict[str, Any]) -> dict[str, Any]:
+    matrix = packet.get("matrix") if isinstance(packet.get("matrix"), dict) else {}
+    rows = packet.get("rows") if isinstance(packet.get("rows"), list) else []
+    run_count = (
+        packet.get("run_count")
+        or matrix.get("completed_run_count")
+        or matrix.get("target_run_count")
+        or len(rows)
+    )
     return {
-        "run_count": int(packet.get("run_count") or 0),
+        "run_count": int(run_count or 0),
         "passed_run_count": int(packet.get("passed_run_count") or 0),
         "blocked_run_count": int(packet.get("blocked_run_count") or 0),
         "failed_seed_ids": list(packet.get("failed_seed_ids") or []),

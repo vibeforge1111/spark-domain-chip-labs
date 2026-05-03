@@ -257,6 +257,9 @@ Manual or scheduled CI:
   freshly generated matrix summaries
 - `workflow_dispatch` with `run_generated_multi_seed=true` runs the checked-in
   generated brief matrix and validates both generated summary schemas.
+- The same manual path also emits a generated matrix mission-status packet from
+  `creator-mission-status --generated-multi-seed` and validates it against the
+  product-safe mission-status schema.
 - external recompute checks when sibling source repos are available
 - stale-evidence mutation sweeps
 

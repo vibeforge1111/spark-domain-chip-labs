@@ -152,6 +152,50 @@ jobs:
           import json
           from pathlib import Path
 
+          summary = json.loads(Path("/tmp/generated-multi-seed-summary.json").read_text())
+          blocked = summary["verdict"] == "blocked"
+          blocking_checks = sorted(
+              {
+                  check
+                  for row in summary["rows"]
+                  for check in row.get("blocking_checks", [])
+              }
+          )
+          smoke = {
+              "schema_version": "adaptive_creator_loop.smoke_result.v1",
+              "run_dir": "/tmp/generated-creator-matrix",
+              "verdict": "blocked" if blocked else "ready_for_swarm_packet",
+              "evidence_tier": summary["evidence_tier"],
+              "evidence_mode": summary["evidence_mode"],
+              "status_counts": {
+                  "pass": summary["passed_run_count"],
+                  "warn": 0,
+                  "fail": summary["blocked_run_count"],
+              },
+              "blocking_checks": blocking_checks,
+              "warning_checks": [],
+              "automation": {
+                  "blocked": blocked,
+                  "ci_exit_code": 1 if blocked else 0,
+                  "recommended_next_command": "Review generated matrix rows, failed seeds, and operator review packets before stronger claims.",
+              },
+              "checks": [],
+              "missing_paths": [],
+              "next_actions": summary["next_actions"],
+          }
+          Path("/tmp/generated-matrix-smoke.json").write_text(
+              json.dumps(smoke, indent=2) + "\n"
+          )
+          PY
+          python -m chip_labs.cli creator-mission-status \
+            --smoke /tmp/generated-matrix-smoke.json \
+            --generated-multi-seed /tmp/generated-multi-seed-summary.json \
+            --mission-id generated-multi-seed-manual \
+            --output /tmp/generated-mission-status.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
           import jsonschema
 
           for schema_path, payload_path in (
@@ -162,6 +206,10 @@ jobs:
               (
                   "docs/creator_system/schemas/generated-multi-seed-summary-check.schema.json",
                   "/tmp/generated-multi-seed-summary-check.json",
+              ),
+              (
+                  "docs/creator_system/schemas/creator-mission-status.schema.json",
+                  "/tmp/generated-mission-status.json",
               ),
           ):
               schema = json.loads(Path(schema_path).read_text())

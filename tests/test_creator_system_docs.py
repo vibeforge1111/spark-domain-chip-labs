@@ -179,6 +179,9 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "generated-multi-seed-summary-check" in text
     assert "generated-multi-seed-summary.schema.json" in text
     assert "generated-multi-seed-summary-check.schema.json" in text
+    assert "creator-mission-status" in text
+    assert "generated-mission-status.json" in text
+    assert "creator-mission-status.schema.json" in text
     assert "tests/test_startup_yc_operator_validation.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
@@ -277,6 +280,7 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "generated-multi-seed-summary-check.schema.json",
         "generated-multi-seed-summary-check --fail-on-blocked",
         "creator-mission-status --generated-multi-seed",
+        "generated matrix mission-status packet",
         "failed seed IDs",
         "operator-review-check",
         "operator-review-packet.schema.json",

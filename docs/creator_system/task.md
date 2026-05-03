@@ -701,6 +701,9 @@ Completed documentation/verification:
   `examples/generated-multi-domain-briefs.json` matrix through
   `generated-multi-seed-run`, recompute-checks the saved summary, and validates
   both generated summary schemas.
+- The manual generated-matrix path now also emits and schema-validates a
+  product-safe `creator-mission-status --generated-multi-seed` readout without
+  wiring Builder, Telegram, Spawner, Canvas, or Kanban creator controls.
 
 Completed product PR verification:
 
