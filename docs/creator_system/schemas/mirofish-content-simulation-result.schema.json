@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/mirofish-content-simulation-result.schema.json",
+  "title": "Adaptive Creator Loop MiroFish Content Simulation Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_kind",
+    "verdict",
+    "blocking_checks",
+    "rankings",
+    "claim_boundary"
+  ],
+  "properties": {
+    "packet_kind": {"const": "mirofish_content_simulation_result"},
+    "verdict": {"enum": ["ranked", "blocked"]},
+    "calibration_verdict": {"enum": ["pass", "blocked"]},
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "top_candidate_id": {"type": "string", "minLength": 1},
+    "top_candidate_text": {"type": "string", "minLength": 1},
+    "candidate_count": {"type": "integer", "minimum": 0},
+    "persona_segments": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "rlm_judges": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "row_count": {"type": "integer", "minimum": 0},
+    "aggregation_rule": {"type": "string", "minLength": 1},
+    "rankings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/ranking"}
+    },
+    "score_rows": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "calibration_checks": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/calibrationCheck"}
+    },
+    "claim_boundary": {"const": "candidate_review local simulator protocol only"},
+    "requires_before_transfer": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "ranked"}}
+      },
+      "then": {
+        "required": [
+          "calibration_verdict",
+          "top_candidate_id",
+          "top_candidate_text",
+          "candidate_count",
+          "persona_segments",
+          "rlm_judges",
+          "row_count",
+          "aggregation_rule",
+          "score_rows",
+          "calibration_checks",
+          "requires_before_transfer"
+        ],
+        "properties": {
+          "candidate_count": {"minimum": 1},
+          "rankings": {"minItems": 1}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"calibration_verdict": {"const": "pass"}}
+      },
+      "then": {
+        "properties": {"blocking_checks": {"maxItems": 0}}
+      }
+    },
+    {
+      "if": {
+        "properties": {"calibration_verdict": {"const": "blocked"}}
+      },
+      "then": {
+        "properties": {"blocking_checks": {"minItems": 1}}
+      }
+    }
+  ],
+  "$defs": {
+    "ranking": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "text",
+        "median_composite",
+        "mean_composite",
+        "weakest_persona",
+        "weakest_persona_score",
+        "persona_scores"
+      ],
+      "properties": {
+        "candidate_id": {"type": "string", "minLength": 1},
+        "text": {"type": "string", "minLength": 1},
+        "median_composite": {"type": "number", "minimum": 0, "maximum": 1},
+        "mean_composite": {"type": "number", "minimum": 0, "maximum": 1},
+        "weakest_persona": {"type": "string", "minLength": 1},
+        "weakest_persona_score": {"type": "number", "minimum": 0, "maximum": 1},
+        "persona_scores": {
+          "type": "object",
+          "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "calibrationCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_id", "status", "message"],
+      "properties": {
+        "check_id": {"type": "string", "minLength": 1},
+        "status": {"enum": ["pass", "fail"]},
+        "message": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

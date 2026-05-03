@@ -49,7 +49,7 @@ Current maturity by domain:
 | --- | --- | --- | --- |
 | Artifact quality | Yes: cases, traps, recompute reports | Good local fixture set for strong, weak, polished-but-unproven, design-decision, and mission-handoff docs with reviewer calibration rows plus schema-anchored reports and benchmark bundles | Add real human-edited PR/design-doc examples and disagreement rows |
 | Tool operation | Yes: safe command, rollback, token trap | Good local operation packets for dry-run, postconditions, stale recompute, missing artifacts, secret handling, MiroFish content multi-seed, doctor adversarial sweep commands, and schema-anchored packet/check contracts | Add more real command families and postcondition adapters |
-| Content simulation | Yes: title/angle cases and simulator metadata | Local MiroFish simulation and route examples exist, but real outcome calibration is not done | Add multi-seed simulator batches and compare against actual content outcomes |
+| Content simulation | Yes: title/angle cases and simulator metadata | Local MiroFish simulation, route examples, multi-seed stability, and schema-anchored packets exist, but real outcome calibration is not done | Add multi-seed simulator batches and compare against actual content outcomes |
 | Doctor/security | Yes: fake evidence, repair specificity, unsafe promotion trap | Good stale/malicious fixture coverage, repair calibration, schema-family adversarial sweep coverage, and schema anchors for malformed sweep packets | Add broader generated mutation manifests |
 | Startup operator | Yes: generated founder-advice benchmark cases | Strongest curated reference fixture plus Startup YC gate checks and external recompute comparisons | Add real multi-seed evaluated founder-advice evidence before stronger claims |
 | Retrieval/memory | Yes: correct prior, stale memory, residue trap | Local memory-lane contract, fixture-suite validation, and schema anchors exist, but production memory runtime is deferred | Add real memory-system adapter checks when Spark memory is ready |
@@ -89,6 +89,10 @@ before their `calibration_verdict` can pass.
 It also has a local `mirofish-content-multi-seed` batch command. The batch keeps
 the claim at `candidate_review`, requires multiple deterministic seeds, and
 blocks calibration unless a top candidate is stable across the seeded reruns.
+The MiroFish content route, simulation-result, and multi-seed result schemas now
+anchor the local simulator contract. They preserve the candidate-review claim
+boundary, expose calibration blockers, and reject any accidental
+`network_absorbable=true` multi-seed result before real outcome calibration.
 
 The tool-operation checker now requires explicit expected postconditions for
 successful parsed operations. A command result can no longer pass only because

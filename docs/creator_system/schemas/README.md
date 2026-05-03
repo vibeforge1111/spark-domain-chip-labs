@@ -15,6 +15,9 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [artifact-quality-report.schema.json](artifact-quality-report.schema.json) | Local artifact-quality score report |
 | [artifact-quality-benchmark-manifest.schema.json](artifact-quality-benchmark-manifest.schema.json) | Artifact-quality benchmark manifest |
 | [artifact-quality-benchmark-result.schema.json](artifact-quality-benchmark-result.schema.json) | Artifact-quality benchmark result bundle |
+| [mirofish-content-route.schema.json](mirofish-content-route.schema.json) | Local MiroFish content route packet |
+| [mirofish-content-simulation-result.schema.json](mirofish-content-simulation-result.schema.json) | Local MiroFish content simulation result |
+| [mirofish-content-multi-seed-result.schema.json](mirofish-content-multi-seed-result.schema.json) | Local MiroFish content multi-seed result |
 | [loop-policy-manifest.schema.json](loop-policy-manifest.schema.json) | Autoloop policy, mutation surface, benchmark binding, rollback, and promotion gates |
 | [swarm-contribution-packet.schema.json](swarm-contribution-packet.schema.json) | `swarm/contribution_packet.json` |
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
@@ -107,3 +110,9 @@ They keep artifact reports tied to the local review-only claim boundary, require
 unsafe claims to say the score does not prove product correctness or replace
 human review, and keep benchmark pass results aligned with reviewer calibration,
 trap regression, and keep/revert decisions.
+
+The MiroFish content schemas anchor the local content-routing and simulator
+contract. Route packets must preserve the candidate-review claim boundary,
+simulation results must expose calibration blockers, and multi-seed packets
+must keep `network_absorbable=false` until real outcome calibration, review,
+privacy, rollback, and publication gates exist.

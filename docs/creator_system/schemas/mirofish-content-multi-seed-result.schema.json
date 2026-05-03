@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/mirofish-content-multi-seed-result.schema.json",
+  "title": "Adaptive Creator Loop MiroFish Content Multi-Seed Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_kind",
+    "verdict",
+    "calibration_verdict",
+    "claim_boundary",
+    "seed_count",
+    "seeds",
+    "stability_threshold",
+    "top_candidate_counts",
+    "stable_top_candidate_ids",
+    "seed_results",
+    "blocking_checks",
+    "network_absorbable",
+    "requires_before_transfer"
+  ],
+  "properties": {
+    "packet_kind": {"const": "mirofish_content_multi_seed_result"},
+    "verdict": {"enum": ["candidate_review", "blocked"]},
+    "calibration_verdict": {"enum": ["pass", "blocked"]},
+    "claim_boundary": {"const": "candidate_review local simulator protocol only"},
+    "seed_count": {"type": "integer", "minimum": 1},
+    "seeds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "integer"}
+    },
+    "stability_threshold": {"type": "number", "minimum": 0, "maximum": 1},
+    "top_candidate_counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 1}
+    },
+    "stable_top_candidate_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "seed_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "seed",
+          "verdict",
+          "calibration_verdict",
+          "top_candidate_id",
+          "row_count",
+          "blocking_checks",
+          "rankings"
+        ],
+        "properties": {
+          "seed": {"type": "integer"},
+          "verdict": {"enum": ["ranked", "blocked"]},
+          "calibration_verdict": {"enum": ["pass", "blocked"]},
+          "top_candidate_id": {
+            "anyOf": [
+              {"type": "string", "minLength": 1},
+              {"type": "null"}
+            ]
+          },
+          "row_count": {"type": "integer", "minimum": 0},
+          "blocking_checks": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "rankings": {
+            "type": "array",
+            "items": {"type": "object"}
+          }
+        }
+      }
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "network_absorbable": {"const": false},
+    "requires_before_transfer": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "candidate_review"}}
+      },
+      "then": {
+        "properties": {
+          "calibration_verdict": {"const": "pass"},
+          "blocking_checks": {"maxItems": 0},
+          "stable_top_candidate_ids": {"minItems": 1}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}}
+      },
+      "then": {
+        "properties": {
+          "calibration_verdict": {"const": "blocked"},
+          "blocking_checks": {"minItems": 1}
+        }
+      }
+    }
+  ]
+}

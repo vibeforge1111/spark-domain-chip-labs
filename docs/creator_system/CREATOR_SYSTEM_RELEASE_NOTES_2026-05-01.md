@@ -270,6 +270,12 @@
   when the batch has fewer than two seeds or no stable top candidate. The saved
   `examples/mirofish-content/multi-seed-result.json` remains
   `candidate_review` and `network_absorbable=false`.
+- `mirofish-content-route.schema.json`,
+  `mirofish-content-simulation-result.schema.json`, and
+  `mirofish-content-multi-seed-result.schema.json` now anchor the local content
+  simulator contract. Route packets preserve the candidate-review boundary,
+  simulation results expose calibration blockers, and multi-seed results reject
+  accidental `network_absorbable=true` claims before real outcome calibration.
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.

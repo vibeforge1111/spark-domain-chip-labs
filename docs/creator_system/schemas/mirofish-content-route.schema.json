@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/mirofish-content-route.schema.json",
+  "title": "Adaptive Creator Loop MiroFish Content Route",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_kind",
+    "route",
+    "verdict",
+    "candidate_count",
+    "claim_boundary",
+    "reason",
+    "requires_before_transfer"
+  ],
+  "properties": {
+    "packet_kind": {"const": "mirofish_content_route"},
+    "route": {
+      "anyOf": [
+        {"const": "mirofish-content-simulate"},
+        {"type": "null"}
+      ]
+    },
+    "verdict": {"enum": ["invoke", "skip"]},
+    "candidate_count": {"type": "integer", "minimum": 0},
+    "claim_boundary": {"const": "candidate_review local simulator protocol only"},
+    "reason": {"type": "string", "minLength": 1},
+    "requires_before_transfer": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "candidate_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "simulation_packet": {"$ref": "#/$defs/simulationPacket"},
+    "simulation_result": {"$ref": "mirofish-content-simulation-result.schema.json"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "invoke"}}
+      },
+      "then": {
+        "required": ["candidate_ids", "simulation_packet"],
+        "properties": {
+          "route": {"const": "mirofish-content-simulate"},
+          "candidate_count": {"minimum": 2}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "skip"}}
+      },
+      "then": {
+        "properties": {"route": {"type": "null"}}
+      }
+    }
+  ],
+  "$defs": {
+    "simulationPacket": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "task",
+        "triggered_by",
+        "candidates",
+        "persona_segments",
+        "rlm_judges",
+        "claim_boundary"
+      ],
+      "properties": {
+        "task": {"type": "string"},
+        "triggered_by": {"const": "mirofish_content_simulation"},
+        "candidates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "text": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "persona_segments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "rlm_judges": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "claim_boundary": {"const": "candidate_review local simulator protocol only"}
+      }
+    }
+  }
+}

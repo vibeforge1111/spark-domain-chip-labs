@@ -6,6 +6,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 from chip_labs.mirofish.content_simulation import (
     CLAIM_BOUNDARY,
     build_content_simulation_packet,
@@ -19,6 +21,13 @@ from chip_labs.mirofish.content_simulation import (
 
 
 EXAMPLE_DIR = Path("docs/creator_system/examples/mirofish-content")
+ROUTE_SCHEMA = Path("docs/creator_system/schemas/mirofish-content-route.schema.json")
+SIMULATION_SCHEMA = Path(
+    "docs/creator_system/schemas/mirofish-content-simulation-result.schema.json"
+)
+MULTI_SEED_SCHEMA = Path(
+    "docs/creator_system/schemas/mirofish-content-multi-seed-result.schema.json"
+)
 
 
 def _packet() -> dict[str, object]:
@@ -382,3 +391,57 @@ def test_saved_mirofish_content_examples_preserve_claim_boundary() -> None:
         for check in simulation["calibration_checks"]
     )
     assert "candidate_review local simulator protocol only" in markdown
+
+
+def test_mirofish_content_schemas_validate_saved_examples() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    referencing = pytest.importorskip("referencing")
+    route_schema = json.loads(ROUTE_SCHEMA.read_text(encoding="utf-8"))
+    simulation_schema = json.loads(SIMULATION_SCHEMA.read_text(encoding="utf-8"))
+    multi_seed_schema = json.loads(MULTI_SEED_SCHEMA.read_text(encoding="utf-8"))
+    registry = referencing.Registry().with_resources([
+        (
+            simulation_schema["$id"],
+            referencing.Resource.from_contents(simulation_schema),
+        ),
+        (
+            "https://sparkswarm.ai/schemas/adaptive_creator_loop/mirofish-content-simulation-result.schema.json",
+            referencing.Resource.from_contents(simulation_schema),
+        ),
+    ])
+
+    route = json.loads((EXAMPLE_DIR / "route-invoke.json").read_text(encoding="utf-8"))
+    simulation = json.loads(
+        (EXAMPLE_DIR / "simulation-result.json").read_text(encoding="utf-8")
+    )
+    multi_seed = json.loads(
+        (EXAMPLE_DIR / "multi-seed-result.json").read_text(encoding="utf-8")
+    )
+
+    jsonschema.Draft202012Validator(route_schema, registry=registry).validate(route)
+    jsonschema.Draft202012Validator(simulation_schema).validate(simulation)
+    jsonschema.Draft202012Validator(multi_seed_schema).validate(multi_seed)
+
+
+def test_mirofish_content_schemas_reject_unsafe_shapes() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    route_schema = json.loads(ROUTE_SCHEMA.read_text(encoding="utf-8"))
+    multi_seed_schema = json.loads(MULTI_SEED_SCHEMA.read_text(encoding="utf-8"))
+    route = route_content_simulation_request(
+        "Pick the best title.",
+        candidates=[
+            "7 benchmark mistakes that make AI demos look better than they are",
+            "The ultimate secret to amazing AI content",
+        ],
+        include_simulation=False,
+    )
+    multi_seed = simulate_content_multi_seed(_packet(), seeds=[1, 2, 3])
+
+    route["verdict"] = "invoke"
+    route["route"] = None
+    multi_seed["network_absorbable"] = True
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(route_schema).validate(route)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(multi_seed_schema).validate(multi_seed)
