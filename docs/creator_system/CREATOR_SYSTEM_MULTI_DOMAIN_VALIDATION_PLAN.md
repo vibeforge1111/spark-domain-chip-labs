@@ -230,10 +230,17 @@ CI should grow in layers.
 Fast PR CI:
 
 - representative generated matrix
+- generic operator-review packet/check regressions
 - strict Startup YC saved smoke
 - Startup YC shape-only raw evidence check
 - validation-suite schema checks
 - mission-status schema checks
+
+Current executable status:
+
+- Creator-system CI now runs `tests/test_operator_review.py` and focused lint
+  for `src/chip_labs/operator_review.py`, so Phase 5 packet/check regressions
+  are covered on relevant pushes and pull requests.
 
 Manual or scheduled CI:
 

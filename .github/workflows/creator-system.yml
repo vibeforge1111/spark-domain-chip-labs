@@ -8,6 +8,7 @@ on:
       - "tests/test_creator_*.py"
       - "tests/test_artifact_quality.py"
       - "tests/test_mirofish_content_simulation.py"
+      - "tests/test_operator_review.py"
       - "tests/test_retrieval_memory.py"
       - "tests/test_startup_yc_operator_validation.py"
       - "tests/test_tool_operation.py"
@@ -20,6 +21,7 @@ on:
       - "tests/test_creator_*.py"
       - "tests/test_artifact_quality.py"
       - "tests/test_mirofish_content_simulation.py"
+      - "tests/test_operator_review.py"
       - "tests/test_retrieval_memory.py"
       - "tests/test_startup_yc_operator_validation.py"
       - "tests/test_tool_operation.py"
@@ -46,10 +48,12 @@ jobs:
         run: |
           python -m ruff check \
             src/chip_labs/creator_mission_adapter.py \
+            src/chip_labs/operator_review.py \
             src/chip_labs/startup_yc_promotion.py \
             src/chip_labs/cli.py \
             tests/test_creator_mission_adapter.py \
             tests/test_creator_system_docs.py \
+            tests/test_operator_review.py \
             tests/test_startup_yc_operator_validation.py
 
       - name: Run creator-system tests
@@ -61,6 +65,7 @@ jobs:
             tests/test_tool_operation.py \
             tests/test_artifact_quality.py \
             tests/test_mirofish_content_simulation.py \
+            tests/test_operator_review.py \
             tests/test_creator_generator_acceptance.py \
             tests/test_creator_run.py \
             tests/test_creator_run_examples.py \

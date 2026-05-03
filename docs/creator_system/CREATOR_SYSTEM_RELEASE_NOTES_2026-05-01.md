@@ -225,6 +225,9 @@
 - `operator-review-packet.schema.json` and `operator-review-check.schema.json`
   now anchor the generic Phase 5 generated-domain review packet and check
   shapes.
+- Creator-system CI now includes `tests/test_operator_review.py` and focused
+  lint for `src/chip_labs/operator_review.py`, keeping the generic review
+  packet/check boundary under automated coverage.
 - Creator-system CI now writes the strict Startup YC smoke packet and validates
   it against `smoke-result.schema.json`, including the saved evidence-mode
   boundary.
@@ -244,7 +247,7 @@
 ## Verification
 
 ```bash
-python -m pytest tests/test_creator_mission_adapter.py tests/test_creator_system_docs.py tests/test_startup_yc_operator_validation.py tests/test_tool_operation.py tests/test_artifact_quality.py tests/test_mirofish_content_simulation.py tests/test_creator_generator_acceptance.py tests/test_creator_run.py tests/test_creator_run_examples.py tests/test_retrieval_memory.py -q
+python -m pytest tests/test_creator_mission_adapter.py tests/test_creator_system_docs.py tests/test_startup_yc_operator_validation.py tests/test_tool_operation.py tests/test_artifact_quality.py tests/test_mirofish_content_simulation.py tests/test_operator_review.py tests/test_creator_generator_acceptance.py tests/test_creator_run.py tests/test_creator_run_examples.py tests/test_retrieval_memory.py -q
 python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```

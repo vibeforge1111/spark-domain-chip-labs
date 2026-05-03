@@ -689,6 +689,9 @@ Completed documentation/verification:
   complete, because review evidence alone is not the full promotion bundle.
 - `operator-review-packet.schema.json` and `operator-review-check.schema.json`
   now anchor the generic generated-domain review packet and check shapes.
+- Creator-system CI now includes `tests/test_operator_review.py` plus focused
+  lint for `src/chip_labs/operator_review.py`, keeping the Phase 5 generic
+  review packet/check contract under PR and push coverage.
 
 Completed product PR verification:
 

@@ -140,6 +140,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text
     assert "tests/test_creator_mission_adapter.py" in text
+    assert "tests/test_operator_review.py" in text
+    assert "src/chip_labs/operator_review.py" in text
     assert "Latest focused creator-system suite result before CI push: `155 passed`." in text
 
 
@@ -164,6 +166,8 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "validation_suite_blocked.json" in text
     assert "validator.validate(payload)" in text
     assert "tests/test_startup_yc_operator_validation.py" in text
+    assert "tests/test_operator_review.py" in text
+    assert "src/chip_labs/operator_review.py" in text
     assert "actions/checkout@v6" in text
     assert "actions/setup-python@v6" in text
     assert "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24" not in text
@@ -258,6 +262,8 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "operator-review-check",
         "operator-review-packet.schema.json",
         "operator-review-check.schema.json",
+        "tests/test_operator_review.py",
+        "src/chip_labs/operator_review.py",
         "multi_seed_validation_summary.json",
         "`aggregate_hidden_failures` to false",
         "forced weak-seed regression",
