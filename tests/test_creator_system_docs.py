@@ -65,6 +65,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "tool-operation-check",
         "retrieval-memory-check",
         "operator-review-check",
+        "generated-multi-seed-run",
         "generated-multi-seed-summary-check",
         "creator-mission-status",
         "startup-yc-promotion-gate-check",
@@ -114,6 +115,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "lane results" in text
     assert "tampered benchmark manifests" in text
     assert "run_multi_seed_generator_validation" in text
+    assert "generated-multi-seed-run" in text
     assert "36-row" in text
     assert "failed seed rows block the aggregate" in text
     assert "validate_multi_seed_generator_summary" in text
@@ -144,7 +146,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
-    assert "Latest focused creator-system suite result before CI push: `156 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `157 passed`." in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -256,6 +258,7 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "Changed benchmark manifests block recompute",
         "Changed saved lane results block recompute",
         "run_multi_seed_generator_validation",
+        "generated-multi-seed-run --briefs <briefs.json> --workspace-dir <dir>",
         "validate_multi_seed_generator_summary",
         "generated-multi-seed-summary.schema.json",
         "generated-multi-seed-summary-check.schema.json",

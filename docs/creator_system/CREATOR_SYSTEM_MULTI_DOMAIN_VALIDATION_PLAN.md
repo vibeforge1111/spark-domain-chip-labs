@@ -106,6 +106,9 @@ Current executable status:
 - `run_multi_seed_generator_validation` creates the 36-row generated matrix
   from six domain families, three generated brief variants per family, and two
   seeds per variant.
+- `generated-multi-seed-run` exposes that matrix runner as a CLI command from a
+  briefs JSON file, so manual or scheduled jobs do not need to import test
+  helpers.
 - The summary is written to `multi_seed_validation_summary.json`.
 - The summary reports every seed row, keeps `network_absorbable` false, and
   sets `aggregate_hidden_failures` to false.
@@ -247,6 +250,7 @@ Current executable status:
 Manual or scheduled CI:
 
 - 36-run multi-seed matrix
+- `generated-multi-seed-run --briefs <briefs.json> --workspace-dir <dir>`
 - `generated-multi-seed-summary-check --fail-on-blocked` against saved or
   freshly generated matrix summaries
 - external recompute checks when sibling source repos are available

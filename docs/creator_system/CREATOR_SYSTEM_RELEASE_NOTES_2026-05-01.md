@@ -203,6 +203,8 @@
 - `run_multi_seed_generator_validation` now creates a generated 36-row
   multi-seed matrix across six domain families, three brief variants per family,
   and two seeds per variant.
+- `generated-multi-seed-run` now exposes the generated matrix runner as a CLI
+  command from a briefs JSON file for manual or scheduled validation jobs.
 - Generator acceptance now proves failed seed rows block the aggregate and
   expose blocker names instead of being hidden behind passing rows.
 - `validate_multi_seed_generator_summary` now recomputes saved generated
@@ -255,4 +257,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `156 passed`.
+Latest focused creator-system suite result before CI push: `157 passed`.

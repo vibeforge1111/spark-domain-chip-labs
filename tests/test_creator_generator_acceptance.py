@@ -764,6 +764,72 @@ def test_cli_generated_multi_seed_summary_check_recomputes_saved_summary(
     assert "network_absorbable_mismatch" in blocked.stdout
 
 
+def test_cli_generated_multi_seed_run_writes_summary_and_workspace(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    briefs_path = tmp_path / "briefs.json"
+    workspace_dir = tmp_path / "generated-matrix"
+    output_path = tmp_path / "generated-summary.json"
+    briefs_path.write_text(
+        json.dumps({"briefs": [_multi_domain_briefs()[0]]}, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "generated-multi-seed-run",
+            "--briefs",
+            str(briefs_path),
+            "--workspace-dir",
+            str(workspace_dir),
+            "--variants-per-domain",
+            "1",
+            "--seeds",
+            "1,2",
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
+    summary = json.loads(output_path.read_text(encoding="utf-8"))
+    summary_schema = json.loads(
+        GENERATED_MULTI_SEED_SUMMARY_SCHEMA.read_text(encoding="utf-8")
+    )
+    jsonschema.Draft202012Validator(summary_schema).validate(summary)
+    assert summary["verdict"] == "candidate_review"
+    assert summary["matrix"]["completed_run_count"] == 2
+    assert summary["network_absorbable"] is False
+    assert (workspace_dir / "multi_seed_validation_summary.json").exists()
+
+    check_result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "generated-multi-seed-summary-check",
+            "--summary",
+            str(workspace_dir / "multi_seed_validation_summary.json"),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert check_result.returncode == 0
+    assert '"verdict": "pass"' in check_result.stdout
+
+
 def test_creator_run_doctor_recompute_requires_repair_replay(
     tmp_path: Path,
 ) -> None:

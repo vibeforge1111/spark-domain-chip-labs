@@ -1219,6 +1219,32 @@ def cmd_generated_multi_seed_summary_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_generated_multi_seed_run(args: argparse.Namespace) -> None:
+    """Run generated multi-domain multi-seed validation from a briefs file."""
+    from .creator_generator import run_multi_seed_generator_validation
+
+    briefs_payload = json.loads(Path(args.briefs).read_text(encoding="utf-8"))
+    briefs = briefs_payload.get("briefs") if isinstance(briefs_payload, dict) else briefs_payload
+    if not isinstance(briefs, list) or not briefs:
+        raise SystemExit("--briefs must contain a non-empty JSON list or {'briefs': [...]}")
+    seeds = tuple(
+        int(item.strip())
+        for item in args.seeds.split(",")
+        if item.strip()
+    )
+    if not seeds:
+        raise SystemExit("--seeds must include at least one integer seed")
+    result = run_multi_seed_generator_validation(
+        args.workspace_dir,
+        briefs,
+        seeds=seeds,
+        variants_per_domain=args.variants_per_domain,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_creator_mission_status(args: argparse.Namespace) -> None:
     """Build a read-only creator mission status for product surfaces."""
     from .creator_mission_adapter import build_creator_mission_status, load_json_packet
@@ -2274,6 +2300,45 @@ def main() -> None:
     p_generated_multi_seed_summary_check.set_defaults(
         func=cmd_generated_multi_seed_summary_check
     )
+
+    # generated-multi-seed-run
+    p_generated_multi_seed_run = sub.add_parser(
+        "generated-multi-seed-run",
+        help="Run generated multi-domain multi-seed validation from a briefs JSON file.",
+    )
+    p_generated_multi_seed_run.add_argument(
+        "--briefs",
+        type=str,
+        required=True,
+        help="JSON file containing a briefs list or an object with a briefs list.",
+    )
+    p_generated_multi_seed_run.add_argument(
+        "--workspace-dir",
+        type=str,
+        required=True,
+        help="Temporary or persistent workspace directory for generated runs.",
+    )
+    p_generated_multi_seed_run.add_argument(
+        "--seeds",
+        type=str,
+        default="1,2",
+        help="Comma-separated integer seeds. Defaults to 1,2.",
+    )
+    p_generated_multi_seed_run.add_argument(
+        "--variants-per-domain",
+        type=int,
+        default=3,
+        help="Generated brief variants per domain. Defaults to 3.",
+    )
+    p_generated_multi_seed_run.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_generated_multi_seed_run.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the generated multi-seed summary is blocked.",
+    )
+    p_generated_multi_seed_run.set_defaults(func=cmd_generated_multi_seed_run)
 
     # creator-mission-status
     p_creator_mission_status = sub.add_parser(
