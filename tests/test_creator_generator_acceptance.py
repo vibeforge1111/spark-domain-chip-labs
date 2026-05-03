@@ -50,6 +50,9 @@ ABSORPTION_SUMMARY_SCHEMA = Path(
 )
 SCORING_HOOKS_SCHEMA = Path("docs/creator_system/schemas/scoring-hooks.schema.json")
 BENCHMARK_CASE_SCHEMA = Path("docs/creator_system/schemas/benchmark-case.schema.json")
+BENCHMARK_PACK_SCHEMA = Path(
+    "docs/creator_system/schemas/benchmark-pack-manifest.schema.json"
+)
 
 
 def _brief() -> dict[str, object]:
@@ -611,6 +614,45 @@ def test_generated_scoring_hooks_and_case_contract_schemas_reject_unsafe_shapes(
         jsonschema.Draft202012Validator(hooks_schema).validate(scoring_hooks)
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(case_schema).validate(case)
+
+
+def test_benchmark_pack_contract_schema_validates_generated_and_source_manifests(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    generated_manifest = json.loads(
+        (generated.run_dir / "benchmark" / "manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    startup_yc_manifest = json.loads(
+        Path(
+            "docs/creator_system/examples/startup-yc-creator-run/benchmark/manifest.json"
+        ).read_text(encoding="utf-8")
+    )
+    schema = json.loads(BENCHMARK_PACK_SCHEMA.read_text(encoding="utf-8"))
+
+    jsonschema.Draft202012Validator(schema).validate(generated_manifest)
+    jsonschema.Draft202012Validator(schema).validate(startup_yc_manifest)
+
+
+def test_benchmark_pack_contract_schema_rejects_hidden_lane_failures(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    manifest = json.loads(
+        (generated.run_dir / "benchmark" / "manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    schema = json.loads(BENCHMARK_PACK_SCHEMA.read_text(encoding="utf-8"))
+
+    manifest["aggregation_policy"]["failed_lane_blocks_stronger_claim"] = False
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(schema).validate(manifest)
 
 
 @pytest.mark.parametrize("brief", _multi_domain_briefs(), ids=lambda brief: brief["domain_id"])

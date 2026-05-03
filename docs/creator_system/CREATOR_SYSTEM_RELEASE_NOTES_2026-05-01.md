@@ -214,6 +214,10 @@
   generated benchmark input side. Scoring hooks must either be deterministic
   generated hooks with trap regression blocking or source-linked hook paths,
   and generated trap cases must stay adversarial, high-risk, and uncalibrated.
+- `benchmark-pack-manifest.schema.json` now accepts both generated proof-domain
+  benchmark families and the source-linked Startup YC manifest shape while
+  requiring generated aggregation policies to expose lane and seed failure
+  blocking.
 - `creator-run-smoke --recompute` now verifies generated lane results and blocks
   tampered benchmark manifests through report provenance hashes.
 - `run_multi_seed_generator_validation` now creates a generated 36-row

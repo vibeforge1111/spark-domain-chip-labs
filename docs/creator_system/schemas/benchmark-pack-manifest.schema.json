@@ -3,18 +3,13 @@
   "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/benchmark-pack-manifest.schema.json",
   "title": "Adaptive Creator Loop Benchmark Pack Manifest",
   "type": "object",
-  "required": [
-    "schema_version",
-    "benchmark_id",
-    "benchmark_family",
-    "target_capability",
-    "case_lanes",
-    "scoring",
-    "promotion_rules"
-  ],
+  "required": ["schema_version", "benchmark_family"],
   "properties": {
     "schema_version": {
-      "const": "adaptive_creator_loop.benchmark_pack_manifest.v1"
+      "enum": [
+        "adaptive_creator_loop.benchmark_pack_manifest.v1",
+        "adaptive_creator_loop.benchmark_manifest.v1"
+      ]
     },
     "benchmark_id": {
       "type": "string",
@@ -23,16 +18,31 @@
     "benchmark_family": {
       "type": "string",
       "enum": [
+        "generated_acceptance",
         "fixed_case_rubric",
         "simulator",
         "tool_operation",
         "artifact_quality",
+        "artifact_quality_review",
+        "tool_operation_dry_run",
+        "mirofish_content_simulation",
+        "doctor_security_regression",
+        "startup_yc_operator",
+        "retrieval_memory_contract",
         "retrieval_memory",
         "adversarial",
         "longitudinal",
-        "collective"
+        "collective",
+        "retrieval/memory + fixed-case rubric + adversarial/trap"
       ]
     },
+    "benchmark_name": {"type": "string", "minLength": 1},
+    "source_repo": {"type": "string", "minLength": 1},
+    "case_manifest": {"type": "string", "minLength": 1},
+    "tool_call_benchmark": {"type": "string", "minLength": 1},
+    "startup_bench_root": {"type": "string", "minLength": 1},
+    "case_count": {"type": "integer", "minimum": 1},
+    "trap_case_count": {"type": "integer", "minimum": 0},
     "target_capability": {
       "type": "string",
       "minLength": 1
@@ -74,6 +84,54 @@
     "claim_boundaries": {
       "type": "array",
       "items": {"type": "string"}
+    },
+    "aggregation_policy": {
+      "type": "object",
+      "properties": {
+        "aggregate_mean_allowed": {"type": "boolean"},
+        "lane_breakdown_required": {"type": "boolean"},
+        "failed_lane_blocks_stronger_claim": {"type": "boolean"},
+        "failed_seed_blocks_aggregate": {"type": "boolean"}
+      }
     }
-  }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "benchmark_id",
+        "target_capability",
+        "case_lanes",
+        "scoring",
+        "promotion_rules",
+        "claim_boundaries",
+        "aggregation_policy"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "adaptive_creator_loop.benchmark_pack_manifest.v1"
+        },
+        "aggregation_policy": {
+          "properties": {
+            "lane_breakdown_required": {"const": true},
+            "failed_lane_blocks_stronger_claim": {"const": true},
+            "failed_seed_blocks_aggregate": {"const": true}
+          }
+        }
+      }
+    },
+    {
+      "required": [
+        "benchmark_name",
+        "source_repo",
+        "case_manifest",
+        "case_count",
+        "promotion_rule"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "adaptive_creator_loop.benchmark_manifest.v1"
+        }
+      }
+    }
+  ]
 }
