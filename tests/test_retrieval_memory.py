@@ -5,6 +5,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 from chip_labs.retrieval_memory import (
     check_retrieval_memory_packet,
     load_retrieval_memory_packet,
@@ -12,6 +14,8 @@ from chip_labs.retrieval_memory import (
 
 
 FIXTURE_DIR = Path("docs/creator_system/examples/retrieval-memory")
+PACKET_SCHEMA = Path("docs/creator_system/schemas/retrieval-memory-packet.schema.json")
+CHECK_SCHEMA = Path("docs/creator_system/schemas/retrieval-memory-check.schema.json")
 
 
 def test_retrieval_memory_accepts_correct_prior_decision() -> None:
@@ -67,6 +71,44 @@ def test_retrieval_memory_blocks_provenance_not_in_source_refs() -> None:
 
     assert result["verdict"] == "blocked"
     assert "entry:0:provenance_source_ref" in result["blocking_checks"]
+
+
+def test_retrieval_memory_schemas_validate_fixture_suite() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    packet_schema = json.loads(PACKET_SCHEMA.read_text(encoding="utf-8"))
+    check_schema = json.loads(CHECK_SCHEMA.read_text(encoding="utf-8"))
+
+    expected_verdicts = {
+        "correct_prior_decision.json": "pass",
+        "stale_memory.json": "blocked",
+        "contradicted_memory.json": "blocked",
+        "residue_contamination.json": "blocked",
+        "network_without_review.json": "blocked",
+    }
+    for fixture_name, expected_verdict in expected_verdicts.items():
+        packet = load_retrieval_memory_packet(FIXTURE_DIR / fixture_name)
+        result = check_retrieval_memory_packet(packet)
+
+        jsonschema.Draft202012Validator(packet_schema).validate(packet)
+        jsonschema.Draft202012Validator(check_schema).validate(result)
+        assert result["verdict"] == expected_verdict
+        assert result["promotion"]["network_absorbable"] is False
+
+
+def test_retrieval_memory_schemas_reject_unsafe_shapes() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    packet_schema = json.loads(PACKET_SCHEMA.read_text(encoding="utf-8"))
+    check_schema = json.loads(CHECK_SCHEMA.read_text(encoding="utf-8"))
+    packet = load_retrieval_memory_packet(FIXTURE_DIR / "correct_prior_decision.json")
+    result = check_retrieval_memory_packet(packet)
+
+    packet["entries"][0]["source_refs"] = []
+    result["promotion"]["network_absorbable"] = True
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(packet_schema).validate(packet)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(check_schema).validate(result)
 
 
 def test_cli_retrieval_memory_check_blocks_bad_fixture() -> None:

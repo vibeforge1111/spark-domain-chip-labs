@@ -22,6 +22,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [creator-mission-status.schema.json](creator-mission-status.schema.json) | Read-only product surface adapter packet |
 | [operator-review-packet.schema.json](operator-review-packet.schema.json) | Generic generated-domain human/operator review packet |
 | [operator-review-check.schema.json](operator-review-check.schema.json) | Generic generated-domain human/operator review check output |
+| [retrieval-memory-packet.schema.json](retrieval-memory-packet.schema.json) | Local retrieval-memory packet input |
+| [retrieval-memory-check.schema.json](retrieval-memory-check.schema.json) | Local retrieval-memory check output |
 | [startup-yc-validation-plan.schema.json](startup-yc-validation-plan.schema.json) | Startup YC validation plan and network-absorption gate list |
 | [startup-yc-validation-evidence.schema.json](startup-yc-validation-evidence.schema.json) | Startup YC raw validation evidence inputs and promotion bundles |
 | [startup-yc-validation-evidence-check-result.schema.json](startup-yc-validation-evidence-check-result.schema.json) | Startup YC raw validation-evidence shape-check output |
@@ -81,3 +83,9 @@ The generic operator-review schemas anchor Phase 5 for generated domains. They
 require explicit human/operator calibration, privacy review, rollback review,
 publication approval, known limits, forbidden claims, and
 `network_absorbable=false`. A passing operator-review check is review evidence only; it does not replace multi-seed validation or the full promotion bundle.
+
+The retrieval-memory schemas anchor the local memory-lane contract while the
+production memory runtime remains deferred. Packet inputs require explicit
+lanes, source refs, freshness, provenance, contradiction fields, and review
+metadata. Check outputs require `network_absorbable=false`, visible blockers for
+blocked packets, and calibration verdicts that match the blocker state.

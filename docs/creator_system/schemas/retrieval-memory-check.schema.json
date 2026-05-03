@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/retrieval-memory-check.schema.json",
+  "title": "Adaptive Creator Loop Retrieval Memory Check",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "verdict",
+    "calibration_verdict",
+    "claim_boundary",
+    "status_counts",
+    "blocking_checks",
+    "checks",
+    "promotion",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.retrieval_memory_check.v1"
+    },
+    "verdict": {"enum": ["pass", "blocked"]},
+    "calibration_verdict": {"enum": ["pass", "blocked"]},
+    "claim_boundary": {"type": "string", "minLength": 1},
+    "status_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pass", "warn", "fail"],
+      "properties": {
+        "pass": {"type": "integer", "minimum": 0},
+        "warn": {"type": "integer", "minimum": 0},
+        "fail": {"type": "integer", "minimum": 0}
+      }
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status", "message", "paths"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "status": {"enum": ["pass", "warn", "fail"]},
+          "message": {"type": "string", "minLength": 1},
+          "paths": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "network_absorbable", "reason"],
+      "properties": {
+        "allowed": {"type": "boolean"},
+        "network_absorbable": {"const": false},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "pass"}}
+      },
+      "then": {
+        "properties": {
+          "calibration_verdict": {"const": "pass"},
+          "blocking_checks": {"maxItems": 0},
+          "promotion": {
+            "properties": {"allowed": {"const": true}}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}}
+      },
+      "then": {
+        "properties": {
+          "calibration_verdict": {"const": "blocked"},
+          "blocking_checks": {"minItems": 1},
+          "promotion": {
+            "properties": {"allowed": {"const": false}}
+          }
+        }
+      }
+    }
+  ]
+}

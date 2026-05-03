@@ -290,6 +290,12 @@
 - Retrieval-memory checks now emit `calibration_verdict` and block packets when
   `provenance.source_path` is not one of the exact `source_refs`, so coherent
   saved recall cannot hide a source-path mismatch.
+- `retrieval-memory-packet.schema.json` and
+  `retrieval-memory-check.schema.json` now anchor the local memory-lane adapter
+  boundary. The fixture suite validates correct prior recall, stale memory,
+  contradiction, residue, network-review, and malformed
+  `network_absorbable=true` packet shapes without wiring a production memory
+  runtime.
 - Startup YC held-out founder-advice evidence now must list covered operator moves,
   avoided rejected claims, observed privacy lane, promotion tier ceiling, and an
   advice artifact reference. Boolean pass flags alone cannot pass.
