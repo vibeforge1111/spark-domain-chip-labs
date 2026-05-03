@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/hook-smoke-result.schema.json",
+  "title": "Adaptive Creator Loop Hook Smoke Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "verdict",
+    "baseline_score",
+    "candidate_score",
+    "checks"
+  ],
+  "properties": {
+    "schema_version": {"const": "adaptive_creator_loop.hook_smoke_result.v1"},
+    "verdict": {"enum": ["pass", "blocked"]},
+    "baseline_score": {"type": "number", "minimum": 0, "maximum": 1},
+    "candidate_score": {"type": "number", "minimum": 0, "maximum": 1},
+    "checks": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status", "message"],
+        "properties": {
+          "name": {"enum": ["evaluate", "suggest", "packets", "watchtower"]},
+          "status": {"enum": ["pass", "fail"]},
+          "message": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"verdict": {"const": "pass"}}},
+      "then": {
+        "properties": {
+          "checks": {
+            "items": {"properties": {"status": {"const": "pass"}}}
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"verdict": {"const": "blocked"}}},
+      "then": {
+        "properties": {
+          "checks": {
+            "contains": {
+              "type": "object",
+              "properties": {"status": {"const": "fail"}},
+              "required": ["status"]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

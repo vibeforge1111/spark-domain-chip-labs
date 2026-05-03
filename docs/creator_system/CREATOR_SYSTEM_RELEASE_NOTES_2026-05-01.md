@@ -198,6 +198,10 @@
 - Generator acceptance now requires generated benchmark manifests to expose
   target capability, lane counts, promotion rules, aggregation policy, and
   anti-gaming checks.
+- `domain-chip-manifest.schema.json` and `hook-smoke-result.schema.json` now
+  anchor the generated domain-chip contract. Generated chip manifests must keep
+  a local-only publication boundary, while hook-smoke pass packets require all
+  four generated hook surfaces to pass.
 - `creator-run-smoke --recompute` now verifies generated lane results and blocks
   tampered benchmark manifests through report provenance hashes.
 - `run_multi_seed_generator_validation` now creates a generated 36-row

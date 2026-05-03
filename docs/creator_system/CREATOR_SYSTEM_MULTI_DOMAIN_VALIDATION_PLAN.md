@@ -154,8 +154,9 @@ brief per domain family.
 Success criteria:
 
 - Each domain starts from a brief.
-- Each creates chip, benchmark, specialization path, autoloop policy, reports,
-  and Swarm packet.
+- Each creates schema-valid chip, benchmark, specialization path, autoloop
+  policy, reports, and Swarm packet.
+- Each produces a schema-valid generated hook-smoke packet.
 - Each passes normal smoke as saved evidence.
 - Each passes recompute smoke when supported provenance is present.
 - Each produces a schema-valid `creator-mission-status` packet from recomputed

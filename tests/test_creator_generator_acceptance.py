@@ -32,6 +32,10 @@ GENERATED_MULTI_SEED_SUMMARY_CHECK_SCHEMA = Path(
 GENERATED_MULTI_DOMAIN_BRIEFS = Path(
     "docs/creator_system/examples/generated-multi-domain-briefs.json"
 )
+DOMAIN_CHIP_MANIFEST_SCHEMA = Path(
+    "docs/creator_system/schemas/domain-chip-manifest.schema.json"
+)
+HOOK_SMOKE_SCHEMA = Path("docs/creator_system/schemas/hook-smoke-result.schema.json")
 
 
 def _brief() -> dict[str, object]:
@@ -368,6 +372,50 @@ def test_generator_acceptance_flow_creates_swarm_ready_run_in_clean_workspace(
             generated.recompute_smoke,
             f"report_provenance:{report_path}:input_hashes",
         ) == "pass"
+
+
+def test_generated_domain_chip_contract_schemas_validate(tmp_path: Path) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    chip_manifest = json.loads(
+        (generated.run_dir / "domain-chip" / "chip.manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    startup_yc_manifest = json.loads(
+        Path(
+            "docs/creator_system/examples/startup-yc-creator-run/domain-chip/chip.manifest.json"
+        ).read_text(encoding="utf-8")
+    )
+    domain_schema = json.loads(DOMAIN_CHIP_MANIFEST_SCHEMA.read_text(encoding="utf-8"))
+    hook_schema = json.loads(HOOK_SMOKE_SCHEMA.read_text(encoding="utf-8"))
+
+    jsonschema.Draft202012Validator(domain_schema).validate(chip_manifest)
+    jsonschema.Draft202012Validator(domain_schema).validate(startup_yc_manifest)
+    jsonschema.Draft202012Validator(hook_schema).validate(generated.hook_smoke)
+
+
+def test_generated_domain_chip_contract_schemas_reject_unsafe_shapes(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    chip_manifest = json.loads(
+        (generated.run_dir / "domain-chip" / "chip.manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    hook_smoke = dict(generated.hook_smoke)
+    domain_schema = json.loads(DOMAIN_CHIP_MANIFEST_SCHEMA.read_text(encoding="utf-8"))
+    hook_schema = json.loads(HOOK_SMOKE_SCHEMA.read_text(encoding="utf-8"))
+
+    chip_manifest["publication_boundary"] = "network_absorbable"
+    hook_smoke["checks"][0]["status"] = "fail"
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(domain_schema).validate(chip_manifest)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(hook_schema).validate(hook_smoke)
 
 
 @pytest.mark.parametrize("brief", _multi_domain_briefs(), ids=lambda brief: brief["domain_id"])

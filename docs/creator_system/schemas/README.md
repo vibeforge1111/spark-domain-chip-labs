@@ -11,6 +11,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [creator-intent.schema.json](creator-intent.schema.json) | `creator-intent.json` |
 | [adapter-map.schema.json](adapter-map.schema.json) | `adapter-map.json` |
 | [created-artifact-manifest.schema.json](created-artifact-manifest.schema.json) | Shared manifest of generated chip/path/benchmark/loop/packet artifacts |
+| [domain-chip-manifest.schema.json](domain-chip-manifest.schema.json) | `domain-chip/chip.manifest.json` |
+| [hook-smoke-result.schema.json](hook-smoke-result.schema.json) | Generated domain-chip hook smoke output |
 | [benchmark-pack-manifest.schema.json](benchmark-pack-manifest.schema.json) | Benchmark pack identity, family, lanes, scoring, anti-gaming, and promotion rules |
 | [artifact-quality-report.schema.json](artifact-quality-report.schema.json) | Local artifact-quality score report |
 | [artifact-quality-benchmark-manifest.schema.json](artifact-quality-benchmark-manifest.schema.json) | Artifact-quality benchmark manifest |
@@ -49,6 +51,8 @@ These schemas cover the shared packet layer called for by the creator master pla
 
 - creator intent: `creator-intent.schema.json`
 - created artifacts: `created-artifact-manifest.schema.json`
+- domain chip: `domain-chip-manifest.schema.json`
+- generated hook smoke: `hook-smoke-result.schema.json`
 - benchmark pack: `benchmark-pack-manifest.schema.json`
 - loop policy: `loop-policy-manifest.schema.json`
 - Swarm promotion packet: `swarm-contribution-packet.schema.json`
