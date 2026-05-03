@@ -19,7 +19,7 @@ Supporting templates:
 
 | Template | Use |
 | --- | --- |
-| `created-artifact-manifest.template.json` | Track planned, created, validated, blocked, and published artifacts for product surfaces and agents. |
+| `created-artifact-manifest.template.json` | Track planned, created, validated, and blocked local artifacts for product surfaces and agents. |
 | `evidence-ladder.template.md` | Record the weakest supported evidence tier, gate status, safe claim, unsafe claim, and remaining gaps. |
 | `benchmark-pack.template.md` | Design a benchmark pack with case lanes, scoring dimensions, calibration, anti-gaming checks, and promotion rules. |
 | `specialization-path-contract.template.md` | Define the path artifacts, mastery ladder, runtime use, benchmark binding, mutation boundary, and Swarm boundary. |

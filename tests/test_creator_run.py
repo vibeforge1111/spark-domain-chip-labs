@@ -522,6 +522,31 @@ def test_creator_run_blocks_network_tiers_in_local_artifacts(tmp_path: Path) -> 
     assert "autoloop_policy_evidence_tier_goal" in failed_checks
 
 
+def test_creator_run_blocks_published_artifact_manifest_status(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test local artifact status boundary.",
+    )
+
+    manifest_path = run_dir / "created-artifact-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["artifacts"][0]["status"] = "published"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "created_artifact_manifest_entries"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_creator_run_blocks_missing_intent(tmp_path: Path) -> None:
     run_dir = tmp_path / "creator-run"
     init_creator_run(run_dir, domain="Startup YC", goal="Test missing intent.")

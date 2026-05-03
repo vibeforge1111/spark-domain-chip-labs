@@ -62,7 +62,6 @@ ARTIFACT_MANIFEST_STATUSES = {
     "created",
     "validated",
     "blocked",
-    "published",
 }
 ARTIFACT_MANIFEST_KINDS = {
     "domain_chip",
