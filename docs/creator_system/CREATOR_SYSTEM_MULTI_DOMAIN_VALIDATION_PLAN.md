@@ -90,6 +90,11 @@ checks that blocking smoke checks are covered by specific repair steps or
 quarantine findings, and that blocked runs require a recompute replay command
 before repair advice can be treated as complete.
 
+The retrieval/memory checker now emits `calibration_verdict` and requires each
+entry's `provenance.source_path` to appear in its exact `source_refs`. A memory
+packet can no longer pass by citing plausible nearby documentation while
+recalling from a different saved source.
+
 ## Phase 1: Multi-Domain Generator Matrix
 
 The first phase is the fast CI-safe matrix. It uses one representative generated

@@ -720,6 +720,9 @@ Completed documentation/verification:
 - `creator-run-doctor` now emits `repair_calibration` to prove every blocking
   smoke check is tied to repair or quarantine guidance and blocked runs require
   recompute replay.
+- Retrieval-memory checks now emit `calibration_verdict` and require
+  `provenance.source_path` to match one of the exact `source_refs`, blocking
+  source-aware recall packets with mismatched provenance.
 
 Completed product PR verification:
 

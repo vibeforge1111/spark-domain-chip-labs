@@ -77,6 +77,7 @@ def check_retrieval_memory_packet(packet: dict[str, Any]) -> dict[str, Any]:
     return {
         "schema_version": "adaptive_creator_loop.retrieval_memory_check.v1",
         "verdict": verdict,
+        "calibration_verdict": "blocked" if blocking_checks else "pass",
         "claim_boundary": CLAIM_BOUNDARY,
         "status_counts": _status_counts(checks),
         "blocking_checks": blocking_checks,
@@ -133,6 +134,16 @@ def _check_entry(
         "Entry includes exact source refs.",
         "Retrieved summaries need exact source refs before promotion.",
         paths=[],
+    )
+    _append_check(
+        checks,
+        f"{prefix}:provenance_source_ref",
+        isinstance(provenance, dict)
+        and isinstance(source_refs, list)
+        and provenance.get("source_path") in source_refs,
+        "Provenance source path is present in exact source refs.",
+        "provenance.source_path must be one of the exact source_refs.",
+        paths=list(source_refs or []),
     )
     _append_check(
         checks,

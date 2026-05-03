@@ -1,9 +1,10 @@
 {
   "schema_version": "adaptive_creator_loop.retrieval_memory_check.v1",
   "verdict": "pass",
+  "calibration_verdict": "pass",
   "claim_boundary": "local retrieval-memory contract only; no production memory runtime or network-shareable recall claim",
   "status_counts": {
-    "pass": 8,
+    "pass": 9,
     "warn": 0,
     "fail": 0
   },
@@ -32,6 +33,15 @@
       "status": "pass",
       "message": "Entry includes exact source refs.",
       "paths": []
+    },
+    {
+      "name": "entry:0:provenance_source_ref",
+      "status": "pass",
+      "message": "Provenance source path is present in exact source refs.",
+      "paths": [
+        "docs/creator_system/task.md",
+        "docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json"
+      ]
     },
     {
       "name": "entry:0:residue_boundary",

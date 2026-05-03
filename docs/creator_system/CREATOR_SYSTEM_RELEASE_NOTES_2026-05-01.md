@@ -261,6 +261,9 @@
   blocking smoke checks are covered by specific repair steps or quarantine
   findings and that blocked runs require recompute replay before repair advice
   is complete.
+- Retrieval-memory checks now emit `calibration_verdict` and block packets when
+  `provenance.source_path` is not one of the exact `source_refs`, so coherent
+  saved recall cannot hide a source-path mismatch.
 
 ## Current Claim Boundary
 
@@ -282,4 +285,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `162 passed`.
+Latest focused creator-system suite result before CI push: `163 passed`.
