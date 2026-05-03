@@ -467,6 +467,7 @@ Deliverables:
 - [x] Add release-note summary for local creator artifact tier enums.
 - [x] Add release-note summary for local-only network-tier ceiling.
 - [x] Add release-note summary for runtime smoke local-tier ceiling checks.
+- [x] Add release-note summary for runtime smoke local publication-boundary checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -762,6 +763,9 @@ Completed documentation/verification:
   intent, created-artifact manifest, and autoloop policy files, so runtime
   validation blocks premature `network_absorbable` claims even without
   JSON Schema dependencies.
+- `creator-run-smoke` now also requires created-artifact manifests to keep
+  `publication_boundary=local_only`, leaving `github_pr` and `swarm_shared` as
+  downstream product/mission-status request modes rather than artifact claims.
 
 Completed product PR verification:
 

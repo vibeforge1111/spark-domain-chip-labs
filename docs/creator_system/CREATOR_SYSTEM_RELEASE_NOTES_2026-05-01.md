@@ -372,6 +372,9 @@
 - `creator-run-smoke` now enforces the same local tier ceiling without requiring
   runtime JSON Schema dependencies, blocking local intent, created-artifact, and
   autoloop policy fields that try to claim `network_absorbable`.
+- `creator-run-smoke` now also enforces the created-artifact manifest's
+  `local_only` publication boundary, so `github_pr` and `swarm_shared` remain
+  product/mission-status request modes rather than created-artifact claims.
 
 ## Current Claim Boundary
 
@@ -393,4 +396,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `204 passed`.
+Latest focused creator-system suite result before CI push: `205 passed`.
