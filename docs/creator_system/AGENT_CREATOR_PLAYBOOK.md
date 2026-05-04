@@ -6,6 +6,32 @@ This is the procedure a Spark agent should follow when a user asks to create or 
 
 The playbook is intentionally concrete. It is meant to be loaded by an agent before it starts creating files or running loops.
 
+## Fresh Agent Boot Sequence
+
+When you enter this repo cold, do this before creating artifacts:
+
+1. Load `docs/creator_system/README.md`, `USER_QUICKSTART_BETA.md`,
+   `CREATOR_RUN_GOLDEN_PATH_V1.md`, and this playbook.
+2. Run `git status --short` and do not stage or overwrite unrelated dirty or
+   untracked files.
+3. Verify the local creator-system contract:
+
+   ```bash
+   python -m chip_labs.cli creator-run-template-check --fail-on-blocked
+   python -m chip_labs.cli creator-system-beta-check --fail-on-blocked
+   python -m chip_labs.cli creator-system-production-readiness --fail-on-blocked
+   ```
+
+4. Treat `ready_for_swarm_packet` as an artifact-review state, not as network
+   publication approval.
+5. Keep `network_absorbable=false` unless the separate promotion bundle passes
+   multi-seed validation, human/operator calibration, privacy review, rollback
+   review, publication approval, and product runtime review.
+
+This beta is designed so agents can understand the repo by following executable
+contracts instead of reading every historical design note. If a doc and a CLI
+result disagree, trust the CLI result and update the doc.
+
 ## Creator Modes
 
 | User intent | Creator mode | Primary owner |
@@ -14,34 +40,53 @@ The playbook is intentionally concrete. It is meant to be loaded by an agent bef
 | "Make a learning path for X" | specialization path | Specialization Path Creator |
 | "Make sure it is actually improving" | benchmark + validation | Benchmark Creator |
 | "Let it self-improve safely" | autoloop policy | Autoloop Creator |
-| "Let me run this from Telegram" | gateway flow | Telegram + Builder |
-| "Track the work visually" | mission flow | Spawner UI + Canvas/Kanban |
-| "Share this with other agents" | collective sync | Spark Swarm |
+| "Let me run this from Telegram" | read-only mission-status projection for now | Telegram + Builder |
+| "Track the work visually" | read-only mission-status projection for now | Spawner UI + Canvas/Kanban |
+| "Share this with other agents" | local Swarm contribution packet, not network absorption | Spark Swarm |
 
 ## Step 1: Convert User Intent Into A Creator Intent Packet
 
-Before creating artifacts, produce this packet:
+Before creating artifacts, produce an `adaptive_creator_loop.creator_intent.v1`
+packet. Prefer `creator-run-init` and then fill the generated file:
+
+```bash
+python -m chip_labs.cli creator-run-init \
+  --output-dir runs/<run-name> \
+  --domain "<domain>" \
+  --goal "<goal>" \
+  --source-channel local
+```
+
+Minimum intent shape:
 
 ```json
 {
-  "schema_version": "spark-creator-intent.v1",
-  "user_goal": "",
-  "target_domain": "",
-  "target_operator_surface": "",
-  "expected_agent_capability": "",
-  "success_examples": [],
-  "failure_examples": [],
-  "tools_in_scope": [],
-  "data_sources_allowed": [],
-  "risk_level": "low|medium|high",
-  "privacy_mode": "local_only|github_pr|swarm_shared",
-  "desired_outputs": {
-    "domain_chip": true,
-    "specialization_path": true,
-    "benchmark_pack": true,
-    "autoloop_policy": true,
-    "telegram_flow": true,
-    "spawner_mission": true
+  "schema_version": "adaptive_creator_loop.creator_intent.v1",
+  "run_id": "creator-run-YYYY-MM-DD-domain-slug",
+  "source_channel": "telegram|builder|spawner|local|swarm",
+  "domain": {
+    "name": "",
+    "short_slug": "",
+    "target_operator": "",
+    "target_agent": ""
+  },
+  "goal": {
+    "plain_language_goal": "",
+    "capability_to_improve": "",
+    "expected_user_value": "",
+    "non_goals": []
+  },
+  "constraints": {
+    "privacy_boundary": "workspace_only",
+    "network_publication_allowed": false,
+    "auth_or_secret_requirements": [],
+    "human_review_required": true
+  },
+  "success_criteria": {
+    "minimum_evidence_tier": "prototype",
+    "benchmark_target": "",
+    "trap_regression_policy": "no_new_trap_regressions",
+    "stop_ship_conditions": []
   }
 }
 ```
@@ -64,8 +109,8 @@ Use this decision table:
 | Better domain reasoning only | domain chip + packet docs + smoke benchmark |
 | Better tool operation | domain chip + tool-operation benchmark + trace checks |
 | Real specialization/mastery | domain chip + benchmark + specialization path + autoloop policy |
-| Network contribution | all above + Swarm promotion packet + GitHub path |
-| UI/user-facing workflow | all above + Spawner mission + Canvas/Kanban trace |
+| Network contribution | all above + local Swarm contribution packet + GitHub review path |
+| UI/user-facing workflow | all above + read-only mission-status packet; product wiring stays deferred |
 
 ## Step 3: Create The Domain Chip
 
@@ -194,17 +239,44 @@ Minimum loop policy:
    - status file is written
    - no forbidden file changed
 
-4. Runtime validation:
-   - Builder can attach the chip
-   - `swarm doctor` or equivalent readiness passes
-   - Telegram can invoke the relevant action
-   - Spawner trace shows mission state if the workflow is UI-driven
+4. Product-surface validation:
+   - produce `creator-mission-status` from saved smoke/recompute evidence
+   - preserve `publication.network_absorbable=false`
+   - keep Telegram, Builder, Spawner, Canvas, and Kanban read-only unless a
+     separate product-runtime review explicitly approves more
+   - do not wire live runtime controls from this repo-local beta
 
 5. Swarm validation:
    - collective payload validates
    - evidence lane is correct
    - insight/mastery boundaries are present
-   - GitHub PR or local publish mode is explicit
+   - GitHub PR or local review mode is explicit
+   - network publication remains blocked without the promotion bundle
+
+## Standard Agent Creation Workflow
+
+For a new user-requested domain, a helpful agent should usually execute this
+path:
+
+1. Create a local run with `creator-run-init`.
+2. Fill intent, adapter map, benchmark pack, specialization path, autoloop
+   policy, artifact manifest, and evidence ladder from the templates in
+   `docs/creator_system/templates/creator-run/`.
+3. Run `creator-run-smoke`; if blocked, run `creator-run-doctor` and repair the
+   reported paths.
+4. Run at least one benchmark baseline and one keep/revert autoloop simulation.
+5. Create a Swarm contribution packet only after the evidence tier supports it.
+6. Run strict smoke:
+
+   ```bash
+   python -m chip_labs.cli creator-run-smoke runs/<run-name> --fail-on-blocked --fail-on-warn
+   ```
+
+7. Summarize what was created, what passed, what remains blocked, and the
+   weakest honest evidence tier.
+
+If the user asks for a broad domain, narrow the first benchmark. A small
+truthful creator system is better than a large system with vague evidence.
 
 ## Step 8: Emit The Final Creator Report
 
@@ -223,6 +295,7 @@ Every creator run should end with:
     "api_ready": false,
     "publish_mode": "none"
   },
+  "network_absorbable": false,
   "remaining_blockers": [],
   "recommended_next_run": ""
 }
@@ -247,4 +320,3 @@ A bad creator output is:
 - a chip with generic router keywords
 - a Swarm packet with no reproducible evidence
 - a UI flow that hides blocked states
-

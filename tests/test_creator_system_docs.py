@@ -22,6 +22,7 @@ SCHEMA_README = Path("docs/creator_system/schemas/README.md")
 ROOT_README = Path("README.md")
 PYPROJECT = Path("pyproject.toml")
 USER_QUICKSTART = Path("docs/creator_system/USER_QUICKSTART_BETA.md")
+AGENT_CREATOR_PLAYBOOK = Path("docs/creator_system/AGENT_CREATOR_PLAYBOOK.md")
 RELEASE_CHECKLIST = Path("docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md")
 BETA_RELEASE = Path("docs/creator_system/CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md")
 PUBLIC_BETA_HANDOFF = Path(
@@ -102,6 +103,26 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "mirofish-outcome-calibration-check",
     ):
         assert command in text
+
+
+def test_agent_creator_playbook_keeps_fresh_agent_boot_path_safe() -> None:
+    text = AGENT_CREATOR_PLAYBOOK.read_text(encoding="utf-8")
+
+    for phrase in (
+        "## Fresh Agent Boot Sequence",
+        "git status --short",
+        "creator-run-template-check --fail-on-blocked",
+        "creator-system-beta-check --fail-on-blocked",
+        "creator-system-production-readiness --fail-on-blocked",
+        "adaptive_creator_loop.creator_intent.v1",
+        "network_publication_allowed\": false",
+        "read-only mission-status packet",
+        "product wiring stays deferred",
+        "creator-run-smoke runs/<run-name> --fail-on-blocked --fail-on-warn",
+        "\"network_absorbable\": false",
+        "trust the CLI result",
+    ):
+        assert phrase in text
 
 
 def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
