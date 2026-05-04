@@ -488,6 +488,61 @@ def test_creator_run_blocks_unknown_evidence_tier(tmp_path: Path) -> None:
     )
 
 
+def test_creator_run_blocks_wrong_adapter_map_schema_version(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Test adapter schema.")
+    adapter_path = run_dir / "adapter-map.json"
+    adapter_map = json.loads(adapter_path.read_text(encoding="utf-8"))
+    adapter_map["schema_version"] = "adaptive_creator_loop.adapter_map.v2"
+    adapter_path.write_text(json.dumps(adapter_map), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "adapter_map_schema" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_creator_run_blocks_missing_adapter_map_run_id(tmp_path: Path) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Test adapter run id.")
+    adapter_path = run_dir / "adapter-map.json"
+    adapter_map = json.loads(adapter_path.read_text(encoding="utf-8"))
+    adapter_map["run_id"] = ""
+    adapter_path.write_text(json.dumps(adapter_map), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "adapter_map_run_id" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_creator_run_blocks_missing_adapter_map_evidence_tier(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(run_dir, domain="Startup YC", goal="Test required evidence tier.")
+    adapter_path = run_dir / "adapter-map.json"
+    adapter_map = json.loads(adapter_path.read_text(encoding="utf-8"))
+    del adapter_map["swarm_adapter"]["evidence_tier"]
+    adapter_path.write_text(json.dumps(adapter_map), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "evidence_tier" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_creator_run_blocks_wrong_creator_intent_schema_version(
     tmp_path: Path,
 ) -> None:

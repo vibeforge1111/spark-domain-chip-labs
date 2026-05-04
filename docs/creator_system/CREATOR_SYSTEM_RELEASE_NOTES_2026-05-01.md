@@ -399,6 +399,9 @@
 - `creator-run-smoke` now validates creator-intent required source/domain/privacy
   fields and `network_publication_allowed=false`, blocking local intent packets
   that try to behave like publication approvals.
+- `creator-run-smoke` now validates adapter-map evidence against the exact
+  schema version, non-empty `run_id`, and required `swarm_adapter.evidence_tier`
+  instead of defaulting absent adapter evidence to a passing prototype claim.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -445,4 +448,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `231 passed`.
+Latest focused creator-system suite result before CI push: `234 passed`.

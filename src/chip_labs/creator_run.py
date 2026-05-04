@@ -56,6 +56,7 @@ LOCAL_CREATOR_ARTIFACT_TIERS = (
 EVIDENCE_TIER_RANK = {tier: index for index, tier in enumerate(EVIDENCE_TIERS)}
 
 CREATOR_INTENT_SCHEMA_VERSION = "adaptive_creator_loop.creator_intent.v1"
+ADAPTER_MAP_SCHEMA_VERSION = "adaptive_creator_loop.adapter_map.v1"
 AUTOLOOP_POLICY_SCHEMA_VERSION = "spark-autoloop-policy.v1"
 AUTOLOOP_POLICY_REQUIRED_STRING_FIELDS = (
     "loop_key",
@@ -626,16 +627,29 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
         _check_creator_intent(intent, checks)
 
     if adapter_map:
-        _check_schema_prefix(
+        _check_schema_version(
             adapter_map,
-            "adaptive_creator_loop.adapter_map.",
+            ADAPTER_MAP_SCHEMA_VERSION,
             "adapter_map_schema",
             checks,
         )
-        evidence_tier = str(
-            _nested(adapter_map, "swarm_adapter", "evidence_tier") or "prototype"
+        _check_non_empty(
+            adapter_map.get("run_id"),
+            "adapter_map_run_id",
+            "adapter-map.json has a run_id.",
+            checks,
         )
-        if evidence_tier not in EVIDENCE_TIERS:
+        evidence_tier_value = _nested(adapter_map, "swarm_adapter", "evidence_tier")
+        if not evidence_tier_value:
+            checks.append(
+                SmokeCheck(
+                    "evidence_tier",
+                    "fail",
+                    "adapter-map.json swarm_adapter.evidence_tier is required.",
+                )
+            )
+        elif str(evidence_tier_value) not in EVIDENCE_TIERS:
+            evidence_tier = str(evidence_tier_value)
             checks.append(
                 SmokeCheck(
                     "evidence_tier",
@@ -644,6 +658,7 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
                 )
             )
         else:
+            evidence_tier = str(evidence_tier_value)
             checks.append(
                 SmokeCheck(
                     "evidence_tier",
