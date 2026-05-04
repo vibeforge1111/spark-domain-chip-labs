@@ -10,7 +10,7 @@ contribution packets from a repo checkout.
 - Repo: `https://github.com/vibeforge1111/spark-domain-chip-labs`
 - Branch: `main`
 - Recommended tag: `creator-system-beta-2026-05-04`
-- Latest verified commit at handoff: `06153f2`
+- Latest verified hardening baseline: `01bc6de`
 - Release type: local creator-system technical beta
 - Network claim: not `network_absorbable`
 
@@ -66,6 +66,13 @@ Expected result:
 - Extended local generated matrix output: `passed=54/54`, `check=pass`,
   `row_count=54`, `network_absorbable=false`, from
   `C:\Users\USER\AppData\Local\Temp\generated-creator-matrix-54-0c2bd9886a154f27977a6108fa71ccc9`.
+- Creator System CI for hardening baseline `01bc6de`: passed as run
+  `25336050060`.
+- Fresh clone plus isolated virtualenv beta check for hardening baseline
+  `01bc6de`: passed from
+  `C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-beta-fresh-20260504223056`.
+  The aggregate beta check included the Startup YC production-gate workbench
+  subcheck and kept `network_absorbable=false`.
 
 ## Release Shape Decision
 

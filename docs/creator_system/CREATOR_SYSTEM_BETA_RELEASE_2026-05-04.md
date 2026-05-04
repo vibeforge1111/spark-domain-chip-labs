@@ -5,6 +5,7 @@ This is the release artifact for the creator-system technical beta.
 ## Release Identity
 
 - Release tag: `creator-system-beta-2026-05-04`
+- Latest verified hardening baseline: `01bc6de`
 - Release type: technical beta for local and repo-based creator-run workflows.
 - Release boundary: not a Spark Swarm network-publication approval.
 - Primary quickstart: [USER_QUICKSTART_BETA.md](USER_QUICKSTART_BETA.md)
@@ -55,6 +56,14 @@ This is the release artifact for the creator-system technical beta.
   does not upgrade any domain or Startup YC to `network_absorbable`.
 - Full `src/chip_labs` and `tests` lint cleanup passed locally on 2026-05-04,
   and Creator-system CI now enforces that full ruff surface on relevant pushes.
+- Creator System CI passed on 2026-05-04 for hardening baseline `01bc6de`
+  as run `25336050060`.
+- Fresh clone plus isolated virtualenv beta check passed on 2026-05-04 from
+  `C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-beta-fresh-20260504223056`.
+  That beta check included the fresh Startup YC production-gate workbench
+  subcheck with `verdict=blocked`, `workspace_was_clean=true`,
+  held-out evidence passing, multi-seed still blocked, and
+  `network_absorbable=false`.
 
 ## Local Workspace Handling
 

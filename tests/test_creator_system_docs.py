@@ -133,6 +133,8 @@ def test_creator_system_beta_quickstart_is_user_runnable() -> None:
         "generated-multi-seed-run",
         "Startup YC",
         "`network_absorbable`",
+        "Startup YC production-gate workbench subcheck",
+        "expected blocked rehearsal state",
         "does not publish to Spark Swarm automatically",
     ):
         assert phrase in text
@@ -151,6 +153,8 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "Release tag selected: `creator-system-beta-2026-05-04`",
         "chip-labs creator-system-beta-check --fail-on-blocked",
         "spark-domain-chip-labs-beta-check-20260504190038",
+        "spark-domain-chip-labs-beta-fresh-20260504223056",
+        "Startup YC production-gate workbench beta subcheck",
         "saved blocked fixture",
         "recomputes it before any stronger release claim",
         "Manual generated multi-seed matrix workflow dispatch passed",
@@ -170,6 +174,7 @@ def test_creator_system_beta_release_artifact_preserves_production_boundary() ->
 
     for phrase in (
         "creator-system-beta-2026-05-04",
+        "Latest verified hardening baseline: `01bc6de`",
         "technical beta for local and repo-based creator-run workflows",
         "not a Spark Swarm network-publication approval",
         "Fresh clone install: passed on 2026-05-04",
@@ -184,6 +189,10 @@ def test_creator_system_beta_release_artifact_preserves_production_boundary() ->
         "Broader local creator-system suite before release: `262 passed`",
         "Post-Tag Hardening Evidence",
         "run_generated_multi_seed=true",
+        "25336050060",
+        "spark-domain-chip-labs-beta-fresh-20260504223056",
+        "fresh Startup YC production-gate workbench",
+        "`workspace_was_clean=true`",
         "`passed=36/36`",
         "Extended local generated matrix passed on 2026-05-04",
         "`passed=54/54`",
@@ -206,7 +215,7 @@ def test_public_beta_handoff_preserves_release_shape_and_boundaries() -> None:
     for phrase in (
         "Spark Creator System Public Beta Handoff",
         "creator-system-beta-2026-05-04",
-        "06153f2",
+        "01bc6de",
         "chip-labs creator-system-beta-check --fail-on-blocked",
         "`network_absorbable`: `false`",
         "Startup YC evidence tier: `transfer_supported`",
@@ -216,6 +225,9 @@ def test_public_beta_handoff_preserves_release_shape_and_boundaries() -> None:
         "passed=54/54",
         "row_count=54",
         "generated-creator-matrix-54-0c2bd9886a154f27977a6108fa71ccc9",
+        "25336050060",
+        "spark-domain-chip-labs-beta-fresh-20260504223056",
+        "Startup YC production-gate workbench",
         "Keep this beta inside `spark-domain-chip-labs` for now",
         "Do not extract a separate `spark-creator` repo",
         "Product runtime review evidence",

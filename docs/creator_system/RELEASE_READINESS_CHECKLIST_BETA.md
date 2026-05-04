@@ -26,6 +26,10 @@ and
 `C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-beta-check-20260504190038`.
 The second checkout used an isolated virtual environment and passed
 `chip-labs creator-system-beta-check --fail-on-blocked`.
+Latest fresh clone plus isolated virtualenv verification also passed on
+2026-05-04 from
+`C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-beta-fresh-20260504223056`;
+that run included the Startup YC production-gate workbench beta subcheck.
 
 ## Creator-Run Proof
 
@@ -51,6 +55,8 @@ The second checkout used an isolated virtual environment and passed
   recomputes it before any stronger release claim.
 - [x] Local beta readiness aggregate proves usable local creator workflows while
   keeping stronger release gates blocked.
+- [x] Local beta readiness aggregate now includes the fresh Startup YC
+  production-gate workbench rehearsal.
 - [x] Broad-transfer aggregate counts are checked against row deltas.
 - [x] Tool-operation checks block protected commands, missing postconditions,
   unsafe secrets, and rollback-less failures.

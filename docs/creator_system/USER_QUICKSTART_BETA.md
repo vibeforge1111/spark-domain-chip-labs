@@ -44,7 +44,9 @@ chip-labs creator-system-beta-check --fail-on-blocked
 ```
 
 Expected result: `verdict` is `pass`, while `network_absorbable` remains
-`false` and stronger network/product release claims stay blocked.
+`false`, the Startup YC production-gate workbench subcheck passes by preserving
+the expected blocked rehearsal state, and stronger network/product release
+claims stay blocked.
 
 ## Create A Creator Run
 
