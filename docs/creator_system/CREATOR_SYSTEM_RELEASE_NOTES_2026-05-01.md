@@ -426,6 +426,9 @@
 - The Startup YC transfer summary now pins hashes for its external Startup
   Bench suite, selector report, and evidence doc so provenance packets do not
   have to treat those available sources as unpinned.
+- The external provenance packet schema now rejects forged `passed` packets
+  that hide missing, stale, or unpinned source inputs behind an empty blocker
+  list.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.

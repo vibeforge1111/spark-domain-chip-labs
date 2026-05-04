@@ -144,6 +144,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "startup-yc-external-provenance-packet" in text
     assert "external source hashes" in text
     assert "Startup YC transfer summary now pins hashes" in text
+    assert "rejects forged `passed` packets" in text
     assert "raw-evidence input hashes" in text
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text

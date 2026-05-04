@@ -1476,6 +1476,11 @@ def test_startup_yc_external_provenance_packet_passes_with_hashed_sources(
     assert packet["linked_smoke"]["verdict"] == "ready_for_swarm_packet"
     assert {record["status"] for record in packet["source_inputs"]} == {"hash_match"}
 
+    unsafe = json.loads(json.dumps(packet))
+    unsafe["source_inputs"][0]["status"] = "present_unpinned"
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(schema).validate(unsafe)
+
 
 def test_creator_run_doctor_quarantines_stale_external_startup_yc_fixture(
     tmp_path: Path,

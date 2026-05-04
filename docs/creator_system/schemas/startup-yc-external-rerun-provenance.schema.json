@@ -125,7 +125,16 @@
         "properties": {"verdict": {"const": "passed"}}
       },
       "then": {
-        "properties": {"blockers": {"maxItems": 0}}
+        "properties": {
+          "blockers": {"maxItems": 0},
+          "source_inputs": {
+            "items": {
+              "properties": {
+                "status": {"const": "hash_match"}
+              }
+            }
+          }
+        }
       }
     },
     {

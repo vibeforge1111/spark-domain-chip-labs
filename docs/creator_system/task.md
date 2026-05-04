@@ -493,6 +493,7 @@ Deliverables:
 - [x] Add release-note summary for broad-transfer positive/flat row counts.
 - [x] Add release-note summary for Startup YC external provenance packets.
 - [x] Add release-note summary for pinned Startup YC transfer source hashes.
+- [x] Add release-note summary for external provenance schema anti-forgery.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -798,6 +799,8 @@ Completed documentation/verification:
 - Startup YC `reports/transfer_summary.json` now pins hashes for its external
   Startup Bench suite, selector report, and evidence doc, with fixture coverage
   proving every named transfer source has a shaped SHA-256 digest.
+- The external provenance schema now rejects `passed` packets unless every
+  source input is hash-matched and the blocker list is empty.
 
 Completed product PR verification:
 
