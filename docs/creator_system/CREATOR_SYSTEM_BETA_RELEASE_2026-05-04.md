@@ -5,7 +5,8 @@ This is the release artifact for the creator-system technical beta.
 ## Release Identity
 
 - Release tag: `creator-system-beta-2026-05-04`
-- Latest verified hardening baseline: `01bc6de`
+- Latest verified hardening baseline: `6ead089`
+- Latest hardening tag: `creator-system-beta-2026-05-04-hardening-2`
 - Release type: technical beta for local and repo-based creator-run workflows.
 - Release boundary: not a Spark Swarm network-publication approval.
 - Primary quickstart: [USER_QUICKSTART_BETA.md](USER_QUICKSTART_BETA.md)
@@ -64,6 +65,11 @@ This is the release artifact for the creator-system technical beta.
   subcheck with `verdict=blocked`, `workspace_was_clean=true`,
   held-out evidence passing, multi-seed still blocked, and
   `network_absorbable=false`.
+- Creator System CI passed on 2026-05-04 for hardening baseline `6ead089`
+  as run `25337256803`, including the uploaded
+  `creator-system-release-evidence` workflow artifact.
+- Pushed hardening tag `creator-system-beta-2026-05-04-hardening-2` points to
+  commit `6ead089b7b3d31a8f9b4304f59e63d156c40ae63`.
 
 ## Local Workspace Handling
 
