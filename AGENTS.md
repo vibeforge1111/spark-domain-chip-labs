@@ -4,6 +4,30 @@
 
 External agents working on this repo must follow these rules.
 
+## Creator-System Fresh Agent Path
+
+When working on Spark creator systems, domain chips, benchmark packs,
+specialization paths, autoloop policies, creator-run reports, local Swarm
+packets, mission status, or release evidence, start here:
+
+1. Read `docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md`.
+2. Read `docs/creator_system/AGENT_CREATOR_PLAYBOOK.md`.
+3. Read `docs/creator_system/USER_QUICKSTART_BETA.md`.
+4. Run `git status --short` before edits.
+5. Verify the local creator-system contract before stronger claims:
+
+   ```bash
+   python -m chip_labs.cli creator-run-template-check --fail-on-blocked
+   python -m chip_labs.cli creator-system-beta-check --fail-on-blocked
+   python -m chip_labs.cli creator-system-production-readiness --fail-on-blocked
+   ```
+
+Treat `ready_for_swarm_packet` as local artifact readiness only.
+Do not claim `network_absorbable`, publish to Spark Swarm, or wire Builder,
+Telegram, Spawner, Canvas, or Kanban runtime creator controls from this repo
+unless the separate promotion bundle and product-runtime reviews explicitly
+approve that stronger release.
+
 ## Allowed Actions
 
 1. Edit files only within `mutable_targets` defined in `spark-researcher.project.json`:

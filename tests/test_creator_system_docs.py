@@ -20,6 +20,7 @@ STARTUP_YC_EXTERNAL_RECOMPUTE = Path(
 )
 SCHEMA_README = Path("docs/creator_system/schemas/README.md")
 ROOT_README = Path("README.md")
+AGENTS = Path("AGENTS.md")
 PYPROJECT = Path("pyproject.toml")
 USER_QUICKSTART = Path("docs/creator_system/USER_QUICKSTART_BETA.md")
 AGENT_CREATOR_PLAYBOOK = Path("docs/creator_system/AGENT_CREATOR_PLAYBOOK.md")
@@ -192,11 +193,31 @@ def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
     assert "source .venv/bin/activate  # Windows: .venv\\Scripts\\activate" in text
     assert "chip-labs creator-run-template-check --fail-on-blocked" in text
     assert "chip-labs creator-system-beta-check --fail-on-blocked" in text
+    assert "docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md" in text
     assert "docs/creator_system/USER_QUICKSTART_BETA.md" in text
     assert "docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md" in text
     assert "docs/creator_system/PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md" in text
     assert "docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md" in text
     assert "does not approve `network_absorbable`" in text
+
+
+def test_repo_agents_file_points_fresh_agents_to_creator_system_contract() -> None:
+    text = AGENTS.read_text(encoding="utf-8")
+
+    for phrase in (
+        "## Creator-System Fresh Agent Path",
+        "docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md",
+        "docs/creator_system/AGENT_CREATOR_PLAYBOOK.md",
+        "docs/creator_system/USER_QUICKSTART_BETA.md",
+        "git status --short",
+        "creator-run-template-check --fail-on-blocked",
+        "creator-system-beta-check --fail-on-blocked",
+        "creator-system-production-readiness --fail-on-blocked",
+        "ready_for_swarm_packet",
+        "Do not claim `network_absorbable`",
+        "runtime creator controls",
+    ):
+        assert phrase in text
 
 
 def test_pyproject_exposes_chip_labs_console_entrypoint() -> None:
