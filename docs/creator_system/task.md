@@ -485,6 +485,7 @@ Deliverables:
 - [x] Add release-note summary for autoloop policy schema/safety checks.
 - [x] Add release-note summary for creator-intent required-field/safety checks.
 - [x] Add release-note summary for adapter-map exact schema/evidence checks.
+- [x] Add release-note summary for Swarm packet schema/provenance checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:

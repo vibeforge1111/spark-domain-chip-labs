@@ -1073,6 +1073,62 @@ def test_candidate_review_blocks_swarm_packet_mismatch(tmp_path: Path) -> None:
     )
 
 
+def test_candidate_review_blocks_wrong_swarm_packet_schema_version(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path)
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    packet["schema_version"] = "adaptive_creator_loop.swarm_contribution_packet.v2"
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "swarm_packet_schema" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_candidate_review_blocks_swarm_packet_creator_run_mismatch(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path)
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    packet["creator_run_id"] = "creator-run-other"
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "swarm_packet_creator_run_alignment"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_candidate_review_blocks_swarm_packet_network_publication(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path)
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    packet["governance"]["network_publication_allowed"] = True
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "swarm_packet_network_publication_allowed"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_candidate_review_blocks_missing_trap_coverage(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path)
     absorption_path = run_dir / "reports" / "absorption_summary.json"
@@ -1439,7 +1495,7 @@ def _write_candidate_review_run(
     tmp_path: Path, evidence_tier: str = "candidate_review"
 ) -> Path:
     run_dir = tmp_path / "candidate-review-run"
-    init_creator_run(
+    result = init_creator_run(
         run_dir, domain="Startup YC", goal="Test candidate review evidence."
     )
 
@@ -1494,14 +1550,31 @@ def _write_candidate_review_run(
     (run_dir / "swarm" / "contribution_packet.json").write_text(
         json.dumps(
             {
+                "schema_version": "adaptive_creator_loop.swarm_contribution_packet.v1",
+                "packet_id": "swarm-packet-test",
+                "creator_run_id": result["run_id"],
                 "source": {"commit": "abc123"},
                 "evidence": {
                     "tier": evidence_tier,
+                    "baseline_score": 0.5,
+                    "candidate_score": 0.53,
                     "mean_delta": 0.03,
                     "trap_regressions": 0,
+                    "report_paths": [
+                        "reports/baseline.json",
+                        "reports/candidate.json",
+                        "reports/absorption_summary.json",
+                    ],
                 },
                 "governance": {
                     "rollback_or_deprecation_rule": "rollback if repeat fails",
+                    "privacy_boundary": "workspace_only",
+                    "network_publication_allowed": False,
+                },
+                "anti_drift": {
+                    "known_limits": [
+                        "Local test fixture only; network publication disabled."
+                    ]
                 },
             }
         ),

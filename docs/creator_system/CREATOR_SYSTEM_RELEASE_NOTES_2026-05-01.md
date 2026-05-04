@@ -402,6 +402,10 @@
 - `creator-run-smoke` now validates adapter-map evidence against the exact
   schema version, non-empty `run_id`, and required `swarm_adapter.evidence_tier`
   instead of defaulting absent adapter evidence to a passing prototype claim.
+- `creator-run-smoke` now validates Swarm contribution packets against the exact
+  packet schema, creator-run lineage, disabled network publication, report-path
+  evidence, and numeric packet baseline/candidate scores before accepting
+  elevated saved evidence.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -448,4 +452,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `234 passed`.
+Latest focused creator-system suite result before CI push: `237 passed`.

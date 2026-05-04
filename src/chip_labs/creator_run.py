@@ -57,6 +57,7 @@ EVIDENCE_TIER_RANK = {tier: index for index, tier in enumerate(EVIDENCE_TIERS)}
 
 CREATOR_INTENT_SCHEMA_VERSION = "adaptive_creator_loop.creator_intent.v1"
 ADAPTER_MAP_SCHEMA_VERSION = "adaptive_creator_loop.adapter_map.v1"
+SWARM_PACKET_SCHEMA_VERSION = "adaptive_creator_loop.swarm_contribution_packet.v1"
 AUTOLOOP_POLICY_SCHEMA_VERSION = "spark-autoloop-policy.v1"
 AUTOLOOP_POLICY_REQUIRED_STRING_FIELDS = (
     "loop_key",
@@ -690,7 +691,7 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
 
     if not swarm_missing and evidence_tier in ELEVATED_EVIDENCE_TIERS:
         _check_evidence_ladder(run_path, evidence_tier, checks)
-        _check_elevated_evidence(run_path, evidence_tier, checks)
+        _check_elevated_evidence(run_path, evidence_tier, checks, intent)
         blocking_failures = [check for check in checks if check.status == "fail"]
     if not swarm_missing and evidence_tier in TRANSFER_EVIDENCE_TIERS:
         _check_transfer_evidence(run_path, evidence_tier, checks)
@@ -1688,8 +1689,112 @@ def _check_autoloop_policy(
         )
 
 
+def _check_swarm_packet(
+    packet: dict[str, Any],
+    intent: dict[str, Any] | None,
+    checks: list[SmokeCheck],
+) -> None:
+    _check_schema_version(
+        packet,
+        SWARM_PACKET_SCHEMA_VERSION,
+        "swarm_packet_schema",
+        checks,
+    )
+    _check_non_empty(
+        packet.get("packet_id"),
+        "swarm_packet_id",
+        "Swarm packet includes packet_id.",
+        checks,
+    )
+    packet_run_id = packet.get("creator_run_id")
+    _check_non_empty(
+        packet_run_id,
+        "swarm_packet_creator_run_id",
+        "Swarm packet includes creator_run_id.",
+        checks,
+    )
+    intent_run_id = intent.get("run_id") if intent else None
+    if intent_run_id and packet_run_id == intent_run_id:
+        checks.append(
+            SmokeCheck(
+                "swarm_packet_creator_run_alignment",
+                "pass",
+                "Swarm packet creator_run_id matches creator-intent.json.",
+            )
+        )
+    elif intent_run_id:
+        checks.append(
+            SmokeCheck(
+                "swarm_packet_creator_run_alignment",
+                "fail",
+                "Swarm packet creator_run_id must match creator-intent.json run_id.",
+            )
+        )
+    _check_non_empty(
+        _nested(packet, "governance", "privacy_boundary"),
+        "swarm_packet_privacy_boundary",
+        "Swarm packet declares a privacy boundary.",
+        checks,
+    )
+    if _nested(packet, "governance", "network_publication_allowed") is False:
+        checks.append(
+            SmokeCheck(
+                "swarm_packet_network_publication_allowed",
+                "pass",
+                "Swarm packet keeps network publication disabled.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "swarm_packet_network_publication_allowed",
+                "fail",
+                "Swarm packet governance.network_publication_allowed must be false.",
+            )
+        )
+    report_paths = _nested(packet, "evidence", "report_paths")
+    if isinstance(report_paths, list) and report_paths and all(
+        isinstance(path, str) and path.strip() for path in report_paths
+    ):
+        checks.append(
+            SmokeCheck(
+                "swarm_packet_report_paths",
+                "pass",
+                "Swarm packet evidence names report paths.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "swarm_packet_report_paths",
+                "fail",
+                "Swarm packet evidence.report_paths must be a non-empty list of paths.",
+            )
+        )
+    for field_name in ("baseline_score", "candidate_score"):
+        if _coerce_number(_nested(packet, "evidence", field_name)) is None:
+            checks.append(
+                SmokeCheck(
+                    f"swarm_packet_{field_name}",
+                    "fail",
+                    f"Swarm packet evidence.{field_name} must be numeric.",
+                )
+            )
+        else:
+            checks.append(
+                SmokeCheck(
+                    f"swarm_packet_{field_name}",
+                    "pass",
+                    f"Swarm packet evidence.{field_name} is numeric.",
+                )
+            )
+
+
 def _check_elevated_evidence(
-    run_path: Path, evidence_tier: str, checks: list[SmokeCheck]
+    run_path: Path,
+    evidence_tier: str,
+    checks: list[SmokeCheck],
+    intent: dict[str, Any] | None,
 ) -> None:
     baseline = _load_required_json(
         run_path / "reports" / "baseline.json", "baseline_report", checks
@@ -1706,6 +1811,8 @@ def _check_elevated_evidence(
 
     if not all((baseline, candidate, absorption, packet)):
         return
+
+    _check_swarm_packet(packet, intent, checks)
 
     baseline_score = _coerce_number(baseline.get("mean_score"))
     candidate_score = _coerce_number(candidate.get("mean_score"))
