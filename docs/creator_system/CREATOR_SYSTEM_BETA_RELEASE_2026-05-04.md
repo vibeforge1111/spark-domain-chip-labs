@@ -5,10 +5,10 @@ This is the release artifact for the creator-system technical beta.
 ## Release Identity
 
 - Release tag: `creator-system-beta-2026-05-04`
-- Latest verified hardening baseline: `9f5d961`
-- Latest hardening tag: `creator-system-beta-2026-05-04-hardening-2`
+- Latest verified hardening baseline: `34411b0`
+- Latest hardening tag: `creator-system-beta-2026-05-05-hardening-3`
 - Latest hardening prerelease:
-  `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-04-hardening-2`
+  `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-05-hardening-3`
 - Release type: technical beta for local and repo-based creator-run workflows.
 - Release boundary: not a Spark Swarm network-publication approval.
 - Primary quickstart: [USER_QUICKSTART_BETA.md](USER_QUICKSTART_BETA.md)
@@ -99,6 +99,24 @@ This is the release artifact for the creator-system technical beta.
   `production_grade_creator_system_standard=100`,
   `network_absorption_publication=blocked`, and
   `network_absorbable=false`.
+- Creator System CI passed on 2026-05-04 for hardening baseline `34411b0`
+  as run `25343638510`, including uploaded
+  `creator-system-release-evidence` and `creator-system-production-readiness`
+  artifacts. The release-evidence packet reported `release_ready=true`,
+  repo commit `34411b0c08e2d9d1cec9fe053f96ccc9f4c8d608`,
+  `production_readiness_summary.verdict=pass`,
+  `repo_user_beta_readiness=100`,
+  `production_grade_creator_system_standard=100`,
+  `network_absorption_publication=blocked`, and
+  `network_absorbable=false`.
+- Pushed hardening tag `creator-system-beta-2026-05-05-hardening-3` points to
+  commit `34411b0c08e2d9d1cec9fe053f96ccc9f4c8d608`.
+- GitHub prerelease `Spark Creator System Beta Hardening 3` is published for
+  the hardening tag and includes `creator-system-release-evidence.json` with
+  digest
+  `sha256:0f5ed09420e08e253f26cc1f12690d9b187b53422e53aeff1f1bc820c872c409`
+  and `creator-system-production-readiness.json` with digest
+  `sha256:abc01895015136c1cc34143d5892b6c7a62e9aa812d9b08e0bd2b5db696745ea`.
 
 ## Local Workspace Handling
 
