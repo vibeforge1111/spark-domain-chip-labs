@@ -287,6 +287,9 @@ Deliverables:
 - [x] Executable stronger-release gate aggregate that combines generated
   multi-seed validation, Startup YC network-absorption review, and product
   runtime review evidence while keeping `network_absorbable=false`.
+- [x] Product runtime review packet/check contract for Builder, Telegram,
+  Spawner, Canvas, and Kanban review evidence without wiring product controls
+  in this repo.
 - [x] Creator-system CI explicitly runs the Startup YC validation suite as a
   blocked command and lints the promotion-gate module.
 - [x] JSON Schema anchor for the Startup YC validation plan.
@@ -814,6 +817,11 @@ Completed documentation/verification:
   product runtime integration review. Missing generated summary or product
   runtime review evidence remains a blocker, and the packet cannot claim
   `network_absorbable`.
+- `product-runtime-review-template` and `product-runtime-review-check` now
+  define the product-review evidence shape for Builder, Telegram, Spawner,
+  Canvas, and Kanban. Passing review evidence must preserve read-only adapters,
+  blocked states, `evidence_mode`, rollback refs, and disabled creator controls
+  in this methodology repo.
 - Full `src/chip_labs` and `tests` ruff cleanup is now committed, and
   Creator-system CI enforces `python -m ruff check src/chip_labs tests`
   instead of only linting a narrow creator-system file list.

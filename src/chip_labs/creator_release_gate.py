@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from .creator_generator import validate_multi_seed_generator_summary
+from .product_runtime_review import check_product_runtime_review_packet
 from .startup_yc_promotion import build_startup_yc_network_absorption_review
 
 
@@ -184,25 +185,10 @@ def _product_runtime_phase(
         )
 
     packet = _load_json(path)
-    surfaces = packet.get("surfaces")
-    if not isinstance(surfaces, dict):
-        surfaces = {}
-    blocking_checks: list[str] = []
-    for surface in DEFAULT_REQUIRED_PRODUCT_SURFACES:
-        row = surfaces.get(surface)
-        if not isinstance(row, dict):
-            blocking_checks.append(f"surface_missing:{surface}")
-            continue
-        if row.get("runtime_wiring_reviewed") is not True:
-            blocking_checks.append(f"surface_not_reviewed:{surface}")
-        if row.get("network_publication_allowed") is not True:
-            blocking_checks.append(f"surface_publication_not_allowed:{surface}")
-        if not isinstance(row.get("rollback_plan_ref"), str) or not row[
-            "rollback_plan_ref"
-        ].strip():
-            blocking_checks.append(f"surface_missing_rollback:{surface}")
-    if packet.get("network_absorbable") is not False:
-        blocking_checks.append("product_review_claimed_absorbable")
+    check = check_product_runtime_review_packet(packet)
+    blocking_checks = list(check.get("blocking_checks") or [])
+    if check.get("verdict") != "pass":
+        blocking_checks.append(f"product_runtime_review_verdict:{check.get('verdict')}")
     return _phase(
         phase,
         passed=not blocking_checks,
@@ -210,10 +196,10 @@ def _product_runtime_phase(
         evidence_mode="saved",
         blocking_checks=_dedupe(blocking_checks),
         detail={
-            "review_schema_version": packet.get("schema_version"),
-            "review_id": packet.get("review_id"),
-            "surface_count": len(surfaces),
-            "network_absorbable": packet.get("network_absorbable"),
+            "review_schema_version": check.get("schema_version"),
+            "review_id": check.get("review_id"),
+            "surface_status": check.get("surface_status", {}),
+            "network_absorbable": check.get("network_absorbable"),
         },
     )
 

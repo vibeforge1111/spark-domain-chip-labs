@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/product-runtime-review-check.schema.json",
+  "title": "Adaptive Creator Loop Product Runtime Review Check",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_id",
+    "requested_release",
+    "verdict",
+    "surface_status",
+    "missing_surfaces",
+    "blocking_checks",
+    "network_absorbable",
+    "claim_boundary",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.product_runtime_review_check.v1"
+    },
+    "review_id": {"type": ["string", "null"]},
+    "requested_release": {"type": "string", "minLength": 1},
+    "verdict": {"enum": ["pass", "blocked"]},
+    "surface_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["builder", "telegram", "spawner", "canvas", "kanban"],
+      "properties": {
+        "builder": {"type": "boolean"},
+        "telegram": {"type": "boolean"},
+        "spawner": {"type": "boolean"},
+        "canvas": {"type": "boolean"},
+        "kanban": {"type": "boolean"}
+      }
+    },
+    "missing_surfaces": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "network_absorbable": {"const": false},
+    "claim_boundary": {
+      "type": "string",
+      "pattern": "not network absorption"
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "pass"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"maxItems": 0},
+          "missing_surfaces": {"maxItems": 0}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"minItems": 1}
+        }
+      }
+    }
+  ]
+}

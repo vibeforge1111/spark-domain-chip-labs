@@ -72,6 +72,8 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "tool-operation-check",
         "retrieval-memory-check",
         "operator-review-check",
+        "product-runtime-review-template",
+        "product-runtime-review-check",
         "generated-multi-seed-run",
         "generated-multi-seed-summary-check",
         "creator-mission-status",
@@ -484,6 +486,8 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "operator-review-packet.schema.json",
         "operator-review-check.schema.json",
         "creator-release-gate.schema.json",
+        "product-runtime-review-packet.schema.json",
+        "product-runtime-review-check.schema.json",
         "doctor-adversarial-sweep-manifest.schema.json",
         "doctor-adversarial-sweep-result.schema.json",
         "retrieval-memory-packet.schema.json",
@@ -512,6 +516,7 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "human/operator calibration",
         "review evidence only",
         "stronger-release evidence",
+        "disabled creator controls",
     ):
         assert phrase in text
 

@@ -41,6 +41,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [creator-release-gate.schema.json](creator-release-gate.schema.json) | Stronger-release gate aggregate for multi-seed, Startup YC review, and product runtime review evidence |
 | [operator-review-packet.schema.json](operator-review-packet.schema.json) | Generic generated-domain human/operator review packet |
 | [operator-review-check.schema.json](operator-review-check.schema.json) | Generic generated-domain human/operator review check output |
+| [product-runtime-review-packet.schema.json](product-runtime-review-packet.schema.json) | Product runtime review packet for Builder, Telegram, Spawner, Canvas, and Kanban |
+| [product-runtime-review-check.schema.json](product-runtime-review-check.schema.json) | Product runtime review check output |
 | [retrieval-memory-packet.schema.json](retrieval-memory-packet.schema.json) | Local retrieval-memory packet input |
 | [retrieval-memory-check.schema.json](retrieval-memory-check.schema.json) | Local retrieval-memory check output |
 | [tool-operation-manifest.schema.json](tool-operation-manifest.schema.json) | Local safe tool-operation manifest |
@@ -114,6 +116,13 @@ generated multi-seed matrix, Startup YC network-absorption review, and product
 runtime integration review. It also records source hashes for supplied inputs
 and keeps `network_absorbable=false` even when a future packet reaches
 `review_ready`.
+The product-runtime review schemas define the evidence packet that can satisfy
+the release gate's product phase. They require Builder, Telegram, Spawner,
+Canvas, and Kanban to preserve read-only adapters, blocked-state visibility,
+`evidence_mode`, reviewer evidence, rollback references, and disabled creator
+controls in this methodology repo. In short: disabled creator controls remain
+part of the product review evidence until product repos pass separate runtime
+reviews.
 
 The generated multi-seed summary schemas anchor the generic domain-generator
 matrix separately from the Startup YC promotion gate. They require recomputed

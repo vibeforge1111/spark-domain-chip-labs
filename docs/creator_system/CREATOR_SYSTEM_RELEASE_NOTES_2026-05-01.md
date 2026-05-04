@@ -499,6 +499,11 @@
   review, and product runtime integration review evidence. Missing phase
   evidence is a blocker, supplied inputs are hashed, and the schema keeps
   `network_absorbable=false`.
+- `product-runtime-review-template` and `product-runtime-review-check` now
+  define the product runtime review evidence packet for Builder, Telegram,
+  Spawner, Canvas, and Kanban. The check requires reviewer evidence,
+  blocked-state visibility, `evidence_mode` preservation, rollback refs, and
+  disabled creator controls in this methodology repo.
 
 ## Current Claim Boundary
 
@@ -516,7 +521,7 @@
 
 ```bash
 python -m ruff check src/chip_labs tests
-python -m pytest tests/test_creator_release_gate.py -q
+python -m pytest tests/test_creator_release_gate.py tests/test_product_runtime_review.py -q
 python -m pytest tests/test_creator_mission_adapter.py tests/test_creator_system_docs.py tests/test_startup_yc_operator_validation.py tests/test_tool_operation.py tests/test_artifact_quality.py tests/test_mirofish_content_simulation.py tests/test_operator_review.py tests/test_creator_generator_acceptance.py tests/test_creator_run.py tests/test_creator_run_examples.py tests/test_retrieval_memory.py -q
 python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked

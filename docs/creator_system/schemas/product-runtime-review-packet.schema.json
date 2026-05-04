@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/product-runtime-review-packet.schema.json",
+  "title": "Adaptive Creator Loop Product Runtime Review Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_id",
+    "requested_release",
+    "network_absorbable",
+    "product_runtime_controls_wired",
+    "surfaces",
+    "claim_boundary",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.product_runtime_review_packet.v1"
+    },
+    "review_id": {"type": "string", "minLength": 1},
+    "requested_release": {"type": "string", "minLength": 1},
+    "network_absorbable": {"const": false},
+    "product_runtime_controls_wired": {"const": false},
+    "surfaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["builder", "telegram", "spawner", "canvas", "kanban"],
+      "properties": {
+        "builder": {"$ref": "#/$defs/surfaceReview"},
+        "telegram": {"$ref": "#/$defs/surfaceReview"},
+        "spawner": {"$ref": "#/$defs/surfaceReview"},
+        "canvas": {"$ref": "#/$defs/surfaceReview"},
+        "kanban": {"$ref": "#/$defs/surfaceReview"}
+      }
+    },
+    "claim_boundary": {
+      "type": "string",
+      "pattern": "does not wire product surfaces or approve network_absorbable"
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "$defs": {
+    "surfaceReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reviewer",
+        "evidence_ref",
+        "runtime_wiring_reviewed",
+        "read_only_adapter_preserved",
+        "blocked_states_visible",
+        "evidence_mode_preserved",
+        "creator_controls_enabled",
+        "network_publication_allowed",
+        "rollback_plan_ref"
+      ],
+      "properties": {
+        "status": {"enum": ["missing", "passed"]},
+        "reviewer": {"type": ["string", "null"]},
+        "evidence_ref": {"type": ["string", "null"]},
+        "runtime_wiring_reviewed": {"type": "boolean"},
+        "read_only_adapter_preserved": {"type": "boolean"},
+        "blocked_states_visible": {"type": "boolean"},
+        "evidence_mode_preserved": {"type": "boolean"},
+        "creator_controls_enabled": {"const": false},
+        "network_publication_allowed": {"type": "boolean"},
+        "rollback_plan_ref": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

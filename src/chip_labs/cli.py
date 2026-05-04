@@ -1285,6 +1285,32 @@ def cmd_operator_review_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_product_runtime_review_template(args: argparse.Namespace) -> None:
+    """Emit an open product runtime review packet."""
+    from .product_runtime_review import build_open_product_runtime_review_packet
+
+    result = build_open_product_runtime_review_packet(
+        review_id=args.review_id,
+        requested_release=args.requested_release,
+    )
+    _write_output(args.output, result)
+
+
+def cmd_product_runtime_review_check(args: argparse.Namespace) -> None:
+    """Check product runtime review evidence without wiring product controls."""
+    from .product_runtime_review import (
+        check_product_runtime_review_packet,
+        load_product_runtime_review_packet,
+    )
+
+    result = check_product_runtime_review_packet(
+        load_product_runtime_review_packet(args.input)
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_generated_multi_seed_summary_check(args: argparse.Namespace) -> None:
     """Recompute-check a generated multi-seed summary packet."""
     from .creator_generator import validate_multi_seed_generator_summary
@@ -2523,6 +2549,48 @@ def main() -> None:
         help="Exit with status 1 when operator review is incomplete or unsafe.",
     )
     p_operator_review_check.set_defaults(func=cmd_operator_review_check)
+
+    # product-runtime-review-template
+    p_product_runtime_review_template = sub.add_parser(
+        "product-runtime-review-template",
+        help="Emit an open product runtime review packet.",
+    )
+    p_product_runtime_review_template.add_argument(
+        "--review-id",
+        type=str,
+        required=True,
+        help="Product runtime review id.",
+    )
+    p_product_runtime_review_template.add_argument(
+        "--requested-release",
+        type=str,
+        default="network_absorption",
+        help="Requested stronger release claim to evaluate.",
+    )
+    p_product_runtime_review_template.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_product_runtime_review_template.set_defaults(
+        func=cmd_product_runtime_review_template
+    )
+
+    # product-runtime-review-check
+    p_product_runtime_review_check = sub.add_parser(
+        "product-runtime-review-check",
+        help="Check product runtime review evidence without wiring controls.",
+    )
+    p_product_runtime_review_check.add_argument(
+        "--input", type=str, required=True, help="Product runtime review packet JSON path."
+    )
+    p_product_runtime_review_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_product_runtime_review_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when product runtime review is incomplete.",
+    )
+    p_product_runtime_review_check.set_defaults(func=cmd_product_runtime_review_check)
 
     # generated-multi-seed-summary-check
     p_generated_multi_seed_summary_check = sub.add_parser(
