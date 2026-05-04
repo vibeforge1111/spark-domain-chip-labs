@@ -115,6 +115,7 @@ jobs:
           jsonschema.Draft202012Validator(schema).validate(payload)
           PY
           python -m chip_labs.cli startup-yc-validation-suite --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --output /tmp/startup-yc-validation-suite.json
+          python -m chip_labs.cli startup-yc-network-absorption-review --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --validation-suite docs/creator_system/examples/startup-yc-operator-validation/validation_suite_blocked.json --output /tmp/startup-yc-network-absorption-review.json
           python - <<'PY'
           import json
           from pathlib import Path
@@ -135,6 +136,17 @@ jobs:
           ):
               payload = json.loads(payload_path.read_text())
               validator.validate(payload)
+          review_schema = json.loads(Path("docs/creator_system/schemas/startup-yc-network-absorption-review.schema.json").read_text())
+          review_validator = jsonschema.Draft202012Validator(review_schema)
+          for payload_path in (
+              Path("/tmp/startup-yc-network-absorption-review.json"),
+              Path("docs/creator_system/examples/startup-yc-operator-validation/network_absorption_review_blocked.json"),
+          ):
+              payload = json.loads(payload_path.read_text())
+              review_validator.validate(payload)
+              assert payload["verdict"] == "blocked"
+              assert payload["network_absorbable"] is False
+              assert "external_provenance:missing" in payload["blocking_checks"]
           PY
           python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 

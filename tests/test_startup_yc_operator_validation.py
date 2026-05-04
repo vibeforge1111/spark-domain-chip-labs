@@ -40,6 +40,9 @@ VALIDATION_SUITE_SCHEMA = Path(
 NETWORK_ABSORPTION_REVIEW_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-network-absorption-review.schema.json"
 )
+NETWORK_ABSORPTION_REVIEW_BLOCKED = (
+    FIXTURE_DIR / "network_absorption_review_blocked.json"
+)
 STARTUP_YC_SCHEMAS = (
     VALIDATION_PLAN_SCHEMA,
     VALIDATION_EVIDENCE_SCHEMA,
@@ -799,6 +802,24 @@ def test_startup_yc_network_absorption_review_stays_blocked() -> None:
     assert result["review_inputs"]["external_provenance"]["present"] is False
 
 
+def test_saved_startup_yc_network_absorption_review_matches_current_blockers() -> None:
+    saved = json.loads(NETWORK_ABSORPTION_REVIEW_BLOCKED.read_text(encoding="utf-8"))
+    current = build_startup_yc_network_absorption_review(
+        FIXTURE_DIR / "validation_plan.json",
+        validation_suite_path=FIXTURE_DIR / "validation_suite_blocked.json",
+    )
+
+    assert saved["schema_version"] == current["schema_version"]
+    assert saved["plan_id"] == current["plan_id"]
+    assert saved["current_claim"] == "transfer_supported"
+    assert saved["requested_claim"] == "network_absorbable"
+    assert saved["verdict"] == current["verdict"] == "blocked"
+    assert saved["network_absorbable"] is False
+    assert saved["blocking_checks"] == current["blocking_checks"]
+    assert "external_provenance:missing" in saved["blocking_checks"]
+    assert _normalize_path_separators(saved) == _normalize_path_separators(current)
+
+
 def test_startup_yc_network_absorption_review_schema_blocks_claims() -> None:
     jsonschema = pytest.importorskip("jsonschema")
     schema = json.loads(NETWORK_ABSORPTION_REVIEW_SCHEMA.read_text(encoding="utf-8"))
@@ -806,9 +827,11 @@ def test_startup_yc_network_absorption_review_schema_blocks_claims() -> None:
         FIXTURE_DIR / "validation_plan.json",
         validation_suite_path=FIXTURE_DIR / "validation_suite_blocked.json",
     )
+    saved = json.loads(NETWORK_ABSORPTION_REVIEW_BLOCKED.read_text(encoding="utf-8"))
     validator = jsonschema.Draft202012Validator(schema)
 
     validator.validate(result)
+    validator.validate(saved)
 
     unsafe = json.loads(json.dumps(result))
     unsafe["network_absorbable"] = True

@@ -344,7 +344,10 @@ Startup YC operator validation fixtures live in
 `docs/creator_system/examples/startup-yc-operator-validation/`. They keep the
 current claim at `transfer_supported`, add held-out founder-advice traps, and
 make multi-seed validation, human/operator calibration, privacy review, rollback
-review, and publication approval explicit before any stronger claim.
+review, and publication approval explicit before any stronger claim. The saved
+`network_absorption_review_blocked.json` fixture records the current aggregate
+network-absorption review state and remains blocked while external provenance or
+required approval evidence is missing.
 
 Retrieval memory fixtures live in
 `docs/creator_system/examples/retrieval-memory/`. They check the future

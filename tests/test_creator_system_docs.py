@@ -156,7 +156,9 @@ def test_creator_system_beta_release_artifact_preserves_production_boundary() ->
         "Template check: `57 pass / 0 warn / 0 fail`",
         "Strict Startup YC smoke",
         "`transfer_supported`",
-        "Broader local creator-system suite before release: `261 passed`",
+        "network_absorption_review_blocked.json",
+        "`external_provenance:missing`",
+        "Broader local creator-system suite before release: `262 passed`",
         "left untouched and unstaged",
         "does not approve `network_absorbable`",
         "does not wire live Builder, Telegram, Spawner, Canvas, or Kanban",
@@ -233,6 +235,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "rejects forged `passed` packets" in text
     assert "startup-yc-network-absorption-review" in text
     assert "startup-yc-network-absorption-review.schema.json" in text
+    assert "network_absorption_review_blocked.json" in text
     assert "raw-evidence input hashes" in text
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text
@@ -297,6 +300,10 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "startup-yc-validation-suite.schema.json" in text
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "validation_suite_blocked.json" in text
+    assert "--output /tmp/startup-yc-network-absorption-review.json" in text
+    assert "startup-yc-network-absorption-review.schema.json" in text
+    assert "network_absorption_review_blocked.json" in text
+    assert 'assert payload["network_absorbable"] is False' in text
     assert "validator.validate(payload)" in text
     assert "schedule:" in text
     assert "17 3 * * 1" in text

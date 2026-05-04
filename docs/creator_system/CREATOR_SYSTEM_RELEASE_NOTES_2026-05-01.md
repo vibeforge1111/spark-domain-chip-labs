@@ -330,6 +330,11 @@
   and pre-release gates explicit.
 - The package now exposes a `chip-labs` console entrypoint for fresh-clone
   users in addition to `python -m chip_labs.cli`.
+- Startup YC operator-validation examples now include a saved
+  `network_absorption_review_blocked.json` aggregate review packet. CI validates
+  that the saved packet and freshly generated packet remain blocked with
+  `network_absorbable=false` while external provenance or required approval
+  evidence is missing.
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.

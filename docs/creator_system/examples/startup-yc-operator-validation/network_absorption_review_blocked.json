@@ -1,0 +1,115 @@
+{
+  "schema_version": "adaptive_creator_loop.startup_yc_network_absorption_review.v1",
+  "plan_path": "docs\\creator_system\\examples\\startup-yc-operator-validation\\validation_plan.json",
+  "plan_id": "startup-yc-operator-validation-2026-05-01",
+  "domain": "Startup YC",
+  "current_claim": "transfer_supported",
+  "requested_claim": "network_absorbable",
+  "verdict": "blocked",
+  "network_absorbable": false,
+  "claim_boundary": "review packet only; does not approve network absorption",
+  "required_approvals": [
+    "multi_seed_validation",
+    "human_operator_calibration",
+    "privacy_review",
+    "rollback_review",
+    "publication_approval"
+  ],
+  "approval_status": [
+    {
+      "gate": "multi_seed_validation",
+      "passed": false,
+      "evidence_ref": null
+    },
+    {
+      "gate": "human_operator_calibration",
+      "passed": false,
+      "evidence_ref": null
+    },
+    {
+      "gate": "privacy_review",
+      "passed": false,
+      "evidence_ref": null
+    },
+    {
+      "gate": "rollback_review",
+      "passed": false,
+      "evidence_ref": null
+    },
+    {
+      "gate": "publication_approval",
+      "passed": false,
+      "evidence_ref": null
+    }
+  ],
+  "review_inputs": {
+    "validation_suite": {
+      "path": "docs\\creator_system\\examples\\startup-yc-operator-validation\\validation_suite_blocked.json",
+      "evidence_mode": "saved",
+      "schema_version": "adaptive_creator_loop.startup_yc_validation_suite.v1",
+      "verdict": "blocked",
+      "final_promotion_ready": false,
+      "network_absorbable": false,
+      "blocking_check_count": 32
+    },
+    "external_provenance": {
+      "path": null,
+      "required": true,
+      "present": false,
+      "schema_version": null,
+      "verdict": null,
+      "evidence_mode": null,
+      "network_absorbable": false,
+      "source_status_counts": {}
+    }
+  },
+  "blocking_checks": [
+    "plan_prohibits_claim:network_absorbable",
+    "publication_boundary:network_publication_allowed",
+    "validation_suite:blocked",
+    "validation_suite:final_promotion_not_ready",
+    "validation_suite:subcheck_blocked:promotion_gates",
+    "validation_suite:promotion_gates:missing_gate:multi_seed_validation",
+    "validation_suite:promotion_gates:missing_gate:held_out_founder_advice_pass",
+    "validation_suite:promotion_gates:missing_gate:human_operator_calibration",
+    "validation_suite:promotion_gates:missing_gate:privacy_review",
+    "validation_suite:promotion_gates:missing_gate:rollback_review",
+    "validation_suite:promotion_gates:missing_gate:publication_approval",
+    "validation_suite:promotion_gates:prohibited_claim:network_absorbable",
+    "validation_suite:promotion_gates:publication_boundary:network_publication_allowed",
+    "validation_suite:subcheck_blocked:multi_seed_validation",
+    "validation_suite:multi_seed_validation:missing_evidence_path:multi_seed_evidence_path",
+    "validation_suite:multi_seed_validation:missing_track:gtm",
+    "validation_suite:multi_seed_validation:missing_track:finance",
+    "validation_suite:multi_seed_validation:missing_track:product",
+    "validation_suite:multi_seed_validation:missing_track:people",
+    "validation_suite:multi_seed_validation:missing_track:board",
+    "validation_suite:multi_seed_validation:missing_track:scale",
+    "validation_suite:multi_seed_validation:underfilled_track:gtm:0/5",
+    "validation_suite:multi_seed_validation:underfilled_track:finance:0/5",
+    "validation_suite:multi_seed_validation:underfilled_track:product:0/5",
+    "validation_suite:multi_seed_validation:underfilled_track:people:0/5",
+    "validation_suite:multi_seed_validation:underfilled_track:board:0/5",
+    "validation_suite:multi_seed_validation:underfilled_track:scale:0/5",
+    "validation_suite:subcheck_blocked:review_gates",
+    "validation_suite:review_gates:missing_evidence_path:review_gate_evidence_path",
+    "validation_suite:review_gates:gate_failure:human_operator_calibration:missing_evidence",
+    "validation_suite:review_gates:gate_failure:privacy_review:missing_evidence",
+    "validation_suite:review_gates:gate_failure:rollback_review:missing_evidence",
+    "validation_suite:review_gates:gate_failure:publication_approval:missing_evidence",
+    "validation_suite:subcheck_blocked:promotion_evidence_bundle",
+    "validation_suite:promotion_evidence_bundle:missing_evidence_path:promotion_evidence_bundle_path",
+    "validation_suite:promotion_evidence_bundle:missing_bundle_checks",
+    "approval_missing:multi_seed_validation",
+    "approval_missing:human_operator_calibration",
+    "approval_missing:privacy_review",
+    "approval_missing:rollback_review",
+    "approval_missing:publication_approval",
+    "external_provenance:missing"
+  ],
+  "next_actions": [
+    "Keep Startup YC at transfer_supported; this packet does not approve network absorption.",
+    "Resolve every validation-suite and external provenance blocker before requesting publication.",
+    "Required approval gates: multi_seed_validation, human_operator_calibration, privacy_review, rollback_review, publication_approval."
+  ]
+}

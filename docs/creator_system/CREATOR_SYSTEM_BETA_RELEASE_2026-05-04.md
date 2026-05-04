@@ -29,8 +29,11 @@ This is the release artifact for the creator-system technical beta.
 - Template check: `57 pass / 0 warn / 0 fail`.
 - Strict Startup YC smoke: `ready_for_swarm_packet`,
   `transfer_supported`, `101 pass / 0 warn / 0 fail`.
+- Saved Startup YC network-absorption review fixture:
+  `network_absorption_review_blocked.json`, with `network_absorbable=false` and
+  `external_provenance:missing` still blocking publication.
 - Focused creator-system docs test: `14 passed`.
-- Broader local creator-system suite before release: `261 passed`.
+- Broader local creator-system suite before release: `262 passed`.
 - GitHub `Creator System` CI on `main`: passed for the release-hardening
   commits before tagging.
 
