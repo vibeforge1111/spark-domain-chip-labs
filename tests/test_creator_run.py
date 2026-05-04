@@ -1296,6 +1296,27 @@ def test_transfer_supported_blocks_broad_transfer_row_mismatch(
     )
 
 
+def test_transfer_supported_blocks_broad_transfer_positive_row_mismatch(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    _write_transfer_report(run_dir)
+    _write_broad_transfer_probe(run_dir, delta=0.03, scenario_count=3)
+    probe_path = run_dir / "reports" / "broad_transfer_probe.json"
+    probe = json.loads(probe_path.read_text(encoding="utf-8"))
+    probe["positive_scenarios"] = 2
+    probe_path.write_text(json.dumps(probe), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "broad_transfer_row_positive_count"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_recompute_checks_external_startup_yc_transfer_source(
     tmp_path: Path,
 ) -> None:
@@ -1917,6 +1938,8 @@ def _write_broad_transfer_probe(
         resolved_min_delta if index < resolved_negative_scenarios else delta
         for index in range(scenario_count)
     ]
+    positive_scenarios = sum(1 for row_delta in row_deltas if row_delta > 0)
+    flat_scenarios = sum(1 for row_delta in row_deltas if row_delta == 0)
     (run_dir / "reports" / "broad_transfer_probe.json").write_text(
         json.dumps(
             {
@@ -1926,7 +1949,9 @@ def _write_broad_transfer_probe(
                 "transfer_score": transfer_score,
                 "delta": delta,
                 "min_delta": resolved_min_delta,
+                "positive_scenarios": positive_scenarios,
                 "negative_scenarios": resolved_negative_scenarios,
+                "flat_scenarios": flat_scenarios,
                 "constraints_passed": True,
                 "verdict": (
                     "broad_transfer_supported" if delta > 0 else "defer_broad_transfer"

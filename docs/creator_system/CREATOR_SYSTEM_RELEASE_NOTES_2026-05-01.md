@@ -417,6 +417,9 @@
 - `creator-run-smoke` now checks broad-transfer `scenario_results` against
   top-level `min_delta` and `negative_scenarios`, blocking aggregate summaries
   that no longer match row-level saved evidence.
+- Broad-transfer saved evidence now also cross-checks positive and flat scenario
+  counts against row-level deltas, so broad-transfer summaries cannot inflate
+  wins while the underlying rows disagree.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -463,4 +466,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `241 passed`.
+Latest focused creator-system suite result before CI push: `242 passed`.

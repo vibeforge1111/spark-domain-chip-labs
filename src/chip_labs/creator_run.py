@@ -2463,7 +2463,9 @@ def _check_broad_transfer_probe(
     transfer_score = _coerce_number(probe.get("transfer_score"))
     delta = _coerce_number(probe.get("delta"))
     min_delta = _coerce_number(probe.get("min_delta"))
+    positive_scenarios = _coerce_number(probe.get("positive_scenarios"))
     negative_scenarios = _coerce_number(probe.get("negative_scenarios"))
+    flat_scenarios = _coerce_number(probe.get("flat_scenarios"))
     verdict = str(probe.get("verdict") or "")
 
     if source:
@@ -2557,7 +2559,14 @@ def _check_broad_transfer_probe(
         )
 
     _check_broad_transfer_row_consistency(
-        probe, evidence_tier, scenario_count, min_delta, negative_scenarios, checks
+        probe,
+        evidence_tier,
+        scenario_count,
+        min_delta,
+        positive_scenarios,
+        negative_scenarios,
+        flat_scenarios,
+        checks,
     )
 
     _check_bool(
@@ -2590,7 +2599,9 @@ def _check_broad_transfer_row_consistency(
     evidence_tier: str,
     scenario_count: float | None,
     min_delta: float | None,
+    positive_scenarios: float | None,
     negative_scenarios: float | None,
+    flat_scenarios: float | None,
     checks: list[SmokeCheck],
 ) -> None:
     scenario_results = probe.get("scenario_results")
@@ -2629,7 +2640,9 @@ def _check_broad_transfer_row_consistency(
         else:
             numeric_deltas = [delta for delta in row_deltas if delta is not None]
             row_min_delta = min(numeric_deltas) if numeric_deltas else None
+            row_positive_count = sum(1 for delta in numeric_deltas if delta > 0)
             row_negative_count = sum(1 for delta in numeric_deltas if delta < 0)
+            row_flat_count = sum(1 for delta in numeric_deltas if delta == 0)
             if min_delta is not None and row_min_delta is not None:
                 if abs(row_min_delta - min_delta) <= 0.0001:
                     checks.append(
@@ -2647,6 +2660,23 @@ def _check_broad_transfer_row_consistency(
                             f"Broad transfer min_delta {min_delta:.4f} does not match row minimum {row_min_delta:.4f}.",
                         )
                     )
+            if positive_scenarios is not None:
+                if row_positive_count == int(positive_scenarios):
+                    checks.append(
+                        SmokeCheck(
+                            "broad_transfer_row_positive_count",
+                            "pass",
+                            "Broad transfer positive_scenarios matches scenario rows.",
+                        )
+                    )
+                else:
+                    checks.append(
+                        SmokeCheck(
+                            "broad_transfer_row_positive_count",
+                            "fail",
+                            f"Broad transfer positive_scenarios {int(positive_scenarios)} does not match {row_positive_count} positive row(s).",
+                        )
+                    )
             if negative_scenarios is not None:
                 if row_negative_count == int(negative_scenarios):
                     checks.append(
@@ -2662,6 +2692,23 @@ def _check_broad_transfer_row_consistency(
                             "broad_transfer_row_negative_count",
                             "fail",
                             f"Broad transfer negative_scenarios {int(negative_scenarios)} does not match {row_negative_count} negative row(s).",
+                        )
+                    )
+            if flat_scenarios is not None:
+                if row_flat_count == int(flat_scenarios):
+                    checks.append(
+                        SmokeCheck(
+                            "broad_transfer_row_flat_count",
+                            "pass",
+                            "Broad transfer flat_scenarios matches scenario rows.",
+                        )
+                    )
+                else:
+                    checks.append(
+                        SmokeCheck(
+                            "broad_transfer_row_flat_count",
+                            "fail",
+                            f"Broad transfer flat_scenarios {int(flat_scenarios)} does not match {row_flat_count} flat row(s).",
                         )
                     )
     else:
