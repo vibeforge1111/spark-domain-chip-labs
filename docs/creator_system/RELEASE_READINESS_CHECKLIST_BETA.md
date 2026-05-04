@@ -39,6 +39,16 @@ Latest fresh clone plus isolated virtualenv verification also passed on
 2026-05-04 from
 `C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-beta-fresh-20260504223056`;
 that run included the Startup YC production-gate workbench beta subcheck.
+Hardening 3 fresh clone verification passed on 2026-05-05 from
+`C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-hardening3-fresh-20260505012347`
+with generated release packets written outside the checkout at
+`C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-hardening3-fresh-outputs-20260505012347`.
+That run used an isolated virtual environment, passed
+`creator-run-template-check`, `creator-system-beta-check`,
+`creator-system-production-readiness`, and `creator-system-release-evidence`,
+and reported `release_ready=true`, `repo.worktree_clean=true`,
+`repo_user_beta_readiness=100`, `production_grade_creator_system_standard=100`,
+`network_absorption_publication=blocked`, and `network_absorbable=false`.
 
 ## Creator-Run Proof
 

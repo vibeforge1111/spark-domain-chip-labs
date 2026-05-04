@@ -125,6 +125,17 @@ Expected result:
   `repo_user_beta_readiness=100`,
   `production_grade_creator_system_standard=100`,
   `network_absorption_publication=blocked`, and `network_absorbable=false`.
+- Fresh clone verification for Hardening 3 passed on 2026-05-05 from
+  `C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-hardening3-fresh-20260505012347`
+  with generated release packets written outside the checkout at
+  `C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-hardening3-fresh-outputs-20260505012347`.
+  The isolated virtualenv install succeeded, `creator-run-template-check` and
+  `creator-system-beta-check` passed, and the clean-checkout release evidence
+  reported `verdict=pass`, `release_ready=true`, `repo.worktree_clean=true`,
+  `production_readiness_summary.verdict=pass`,
+  `repo_user_beta_readiness=100`,
+  `production_grade_creator_system_standard=100`,
+  `network_absorption_publication=blocked`, and `network_absorbable=false`.
 
 ## Release Shape Decision
 
