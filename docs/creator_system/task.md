@@ -284,6 +284,9 @@ Deliverables:
   while keeping final promotion blocked by the validation plan.
 - [x] Saved blocked Startup YC validation-suite packet with recompute coverage
   for critical blocker drift.
+- [x] Executable stronger-release gate aggregate that combines generated
+  multi-seed validation, Startup YC network-absorption review, and product
+  runtime review evidence while keeping `network_absorbable=false`.
 - [x] Creator-system CI explicitly runs the Startup YC validation suite as a
   blocked command and lints the promotion-gate module.
 - [x] JSON Schema anchor for the Startup YC validation plan.
@@ -806,6 +809,11 @@ Completed documentation/verification:
   proving every named transfer source has a shaped SHA-256 digest.
 - The external provenance schema now rejects `passed` packets unless every
   source input is hash-matched and the blocker list is empty.
+- `creator-release-gate` now aggregates stronger-release phase evidence across
+  generated multi-seed validation, Startup YC network-absorption review, and
+  product runtime integration review. Missing generated summary or product
+  runtime review evidence remains a blocker, and the packet cannot claim
+  `network_absorbable`.
 - Full `src/chip_labs` and `tests` ruff cleanup is now committed, and
   Creator-system CI enforces `python -m ruff check src/chip_labs tests`
   instead of only linting a narrow creator-system file list.

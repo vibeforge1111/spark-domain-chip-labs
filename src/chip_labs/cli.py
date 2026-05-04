@@ -1321,6 +1321,22 @@ def cmd_generated_multi_seed_run(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_creator_release_gate(args: argparse.Namespace) -> None:
+    """Aggregate stronger-release gate evidence without approving publication."""
+    from .creator_release_gate import build_creator_release_gate
+
+    result = build_creator_release_gate(
+        validation_plan_path=args.validation_plan,
+        generated_summary_path=args.generated_summary,
+        startup_network_review_path=args.startup_network_review,
+        product_runtime_review_path=args.product_runtime_review,
+        requested_release=args.requested_release,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_creator_mission_status(args: argparse.Namespace) -> None:
     """Build a read-only creator mission status for product surfaces."""
     from .creator_mission_adapter import build_creator_mission_status, load_json_packet
@@ -2569,6 +2585,51 @@ def main() -> None:
         help="Exit with status 1 when the generated multi-seed summary is blocked.",
     )
     p_generated_multi_seed_run.set_defaults(func=cmd_generated_multi_seed_run)
+
+    # creator-release-gate
+    p_creator_release_gate = sub.add_parser(
+        "creator-release-gate",
+        help="Aggregate stronger-release gate evidence without approving publication.",
+    )
+    p_creator_release_gate.add_argument(
+        "--validation-plan",
+        type=str,
+        required=True,
+        help="Startup YC validation_plan.json path.",
+    )
+    p_creator_release_gate.add_argument(
+        "--generated-summary",
+        type=str,
+        default=None,
+        help="Optional generated multi-seed summary JSON path.",
+    )
+    p_creator_release_gate.add_argument(
+        "--startup-network-review",
+        type=str,
+        default=None,
+        help="Optional Startup YC network absorption review JSON path.",
+    )
+    p_creator_release_gate.add_argument(
+        "--product-runtime-review",
+        type=str,
+        default=None,
+        help="Optional product runtime review JSON path.",
+    )
+    p_creator_release_gate.add_argument(
+        "--requested-release",
+        type=str,
+        default="network_absorption",
+        help="Requested stronger release claim to evaluate.",
+    )
+    p_creator_release_gate.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_creator_release_gate.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the release gate is blocked.",
+    )
+    p_creator_release_gate.set_defaults(func=cmd_creator_release_gate)
 
     # creator-mission-status
     p_creator_mission_status = sub.add_parser(

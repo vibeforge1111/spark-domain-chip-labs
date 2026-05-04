@@ -75,6 +75,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "generated-multi-seed-run",
         "generated-multi-seed-summary-check",
         "creator-mission-status",
+        "creator-release-gate",
         "startup-yc-promotion-gate-check",
         "startup-yc-validation-evidence-check",
         "startup-yc-multi-seed-check",
@@ -482,6 +483,7 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "stale underlying run reports",
         "operator-review-packet.schema.json",
         "operator-review-check.schema.json",
+        "creator-release-gate.schema.json",
         "doctor-adversarial-sweep-manifest.schema.json",
         "doctor-adversarial-sweep-result.schema.json",
         "retrieval-memory-packet.schema.json",
@@ -509,6 +511,7 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "mission-control safety boundary",
         "human/operator calibration",
         "review evidence only",
+        "stronger-release evidence",
     ):
         assert phrase in text
 

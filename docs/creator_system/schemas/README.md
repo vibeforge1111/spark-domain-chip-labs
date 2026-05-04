@@ -38,6 +38,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [doctor-adversarial-sweep-result.schema.json](doctor-adversarial-sweep-result.schema.json) | `creator-run-doctor-adversarial-sweep` output |
 | [template-check-result.schema.json](template-check-result.schema.json) | `creator-run-template-check` output |
 | [creator-mission-status.schema.json](creator-mission-status.schema.json) | Read-only product surface adapter packet |
+| [creator-release-gate.schema.json](creator-release-gate.schema.json) | Stronger-release gate aggregate for multi-seed, Startup YC review, and product runtime review evidence |
 | [operator-review-packet.schema.json](operator-review-packet.schema.json) | Generic generated-domain human/operator review packet |
 | [operator-review-check.schema.json](operator-review-check.schema.json) | Generic generated-domain human/operator review check output |
 | [retrieval-memory-packet.schema.json](retrieval-memory-packet.schema.json) | Local retrieval-memory packet input |
@@ -106,6 +107,13 @@ required approval gates, and optional external provenance packet into a single
 review artifact. It still requires `network_absorbable=false`; a
 `review_ready` packet only means blockers are absent for human review, not that
 Spark may publish or network-absorb Startup YC.
+
+The creator-release-gate schema aggregates stronger-release evidence without
+turning it into publication approval. It requires visible phase rows for the
+generated multi-seed matrix, Startup YC network-absorption review, and product
+runtime integration review. It also records source hashes for supplied inputs
+and keeps `network_absorbable=false` even when a future packet reaches
+`review_ready`.
 
 The generated multi-seed summary schemas anchor the generic domain-generator
 matrix separately from the Startup YC promotion gate. They require recomputed

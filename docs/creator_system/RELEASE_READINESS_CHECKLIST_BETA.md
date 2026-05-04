@@ -86,3 +86,5 @@ chip-labs creator-run-smoke docs/creator_system/examples/startup-yc-creator-run 
   provenance, transfer evidence, and product read-only contracts stabilize.
 - Review live product runtime wiring separately before exposing creator controls
   in Builder, Telegram, Spawner, Canvas, or Kanban.
+- Run `creator-release-gate` with generated multi-seed, Startup YC review, and
+  product runtime review evidence before considering any stronger release claim.
