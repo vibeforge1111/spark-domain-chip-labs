@@ -1169,6 +1169,16 @@ def cmd_creator_run_doctor_adversarial_sweep(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_startup_yc_external_provenance_packet(args: argparse.Namespace) -> None:
+    """Emit standalone Startup YC external recompute provenance."""
+    from .creator_run import build_startup_yc_external_provenance_packet
+
+    result = build_startup_yc_external_provenance_packet(args.run_dir)
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_creator_run_template_check(args: argparse.Namespace) -> None:
     """Validate creator-run templates."""
     from .creator_run import validate_creator_templates
@@ -2262,6 +2272,26 @@ def main() -> None:
         help="Run doctor against recomputed benchmark evidence for each mutation.",
     )
     p_creator_doctor_sweep.set_defaults(func=cmd_creator_run_doctor_adversarial_sweep)
+
+    # startup-yc-external-provenance-packet
+    p_startup_yc_external_provenance = sub.add_parser(
+        "startup-yc-external-provenance-packet",
+        help="Emit standalone Startup YC external recompute provenance.",
+    )
+    p_startup_yc_external_provenance.add_argument(
+        "run_dir", type=str, help="Creator-run directory."
+    )
+    p_startup_yc_external_provenance.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_startup_yc_external_provenance.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when external provenance is blocked.",
+    )
+    p_startup_yc_external_provenance.set_defaults(
+        func=cmd_startup_yc_external_provenance_packet
+    )
 
     # creator-run-template-check
     p_creator_template_check = sub.add_parser(

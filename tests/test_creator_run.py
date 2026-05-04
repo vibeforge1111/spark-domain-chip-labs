@@ -11,6 +11,7 @@ from pathlib import Path
 import pytest
 
 from chip_labs.creator_run import (
+    build_startup_yc_external_provenance_packet,
     diagnose_creator_run,
     init_creator_run,
     run_doctor_adversarial_sweep,
@@ -28,6 +29,9 @@ DOCTOR_SWEEP_MANIFEST_SCHEMA = Path(
 )
 DOCTOR_SWEEP_RESULT_SCHEMA = Path(
     "docs/creator_system/schemas/doctor-adversarial-sweep-result.schema.json"
+)
+STARTUP_YC_EXTERNAL_PROVENANCE_SCHEMA = Path(
+    "docs/creator_system/schemas/startup-yc-external-rerun-provenance.schema.json"
 )
 
 
@@ -1417,6 +1421,60 @@ def test_recompute_blocks_stale_startup_yc_external_provenance_hash(
         and check.status == "fail"
         for check in smoke.checks
     )
+
+
+def test_startup_yc_external_provenance_packet_requires_pinned_sources(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "proof_report.json"
+    selector_report = tmp_path / "adapter_selector_report.json"
+    _write_external_absorption_report(source_report, candidate_score=0.53)
+    _write_external_selector_report(selector_report, delta=0.02, scenario_id="case_0")
+    _attach_absorption_source_report(run_dir, source_report)
+    _attach_startup_yc_external_provenance(run_dir, source_report)
+    _write_transfer_report(run_dir, delta=0.02, selector_report=selector_report)
+    _write_complete_swarm_packet_evidence(run_dir)
+
+    packet = build_startup_yc_external_provenance_packet(run_dir)
+
+    assert packet["verdict"] == "blocked"
+    assert packet["network_absorbable"] is False
+    assert any(
+        record["reference"] == str(selector_report)
+        and record["status"] == "present_unpinned"
+        for record in packet["source_inputs"]
+    )
+    assert any("present_unpinned" in blocker for blocker in packet["blockers"])
+
+
+def test_startup_yc_external_provenance_packet_passes_with_hashed_sources(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    source_report = tmp_path / "proof_report.json"
+    selector_report = tmp_path / "adapter_selector_report.json"
+    _write_external_absorption_report(source_report, candidate_score=0.53)
+    _write_external_selector_report(selector_report, delta=0.02, scenario_id="case_0")
+    _attach_absorption_source_report(run_dir, source_report)
+    _attach_startup_yc_external_provenance(run_dir, source_report)
+    _write_transfer_report(run_dir, delta=0.02, selector_report=selector_report)
+    transfer_path = run_dir / "reports" / "transfer_summary.json"
+    transfer = json.loads(transfer_path.read_text(encoding="utf-8"))
+    transfer["source_artifact_hashes"] = {
+        str(selector_report): hashlib.sha256(selector_report.read_bytes()).hexdigest()
+    }
+    transfer_path.write_text(json.dumps(transfer), encoding="utf-8")
+    _write_complete_swarm_packet_evidence(run_dir)
+
+    packet = build_startup_yc_external_provenance_packet(run_dir)
+    schema = json.loads(STARTUP_YC_EXTERNAL_PROVENANCE_SCHEMA.read_text(encoding="utf-8"))
+
+    jsonschema.Draft202012Validator(schema).validate(packet)
+    assert packet["verdict"] == "passed"
+    assert packet["linked_smoke"]["verdict"] == "ready_for_swarm_packet"
+    assert {record["status"] for record in packet["source_inputs"]} == {"hash_match"}
 
 
 def test_creator_run_doctor_quarantines_stale_external_startup_yc_fixture(

@@ -491,6 +491,7 @@ Deliverables:
 - [x] Add release-note summary for Swarm packet transfer-result cross-checks.
 - [x] Add release-note summary for broad-transfer row/aggregate checks.
 - [x] Add release-note summary for broad-transfer positive/flat row counts.
+- [x] Add release-note summary for Startup YC external provenance packets.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -789,6 +790,10 @@ Completed documentation/verification:
 - `creator-run-smoke` now also requires created-artifact manifests to keep
   `publication_boundary=local_only`, leaving `github_pr` and `swarm_shared` as
   downstream product/mission-status request modes rather than artifact claims.
+- `startup-yc-external-provenance-packet` now emits a standalone recompute
+  provenance packet with linked smoke verdict, hashed external source inputs,
+  visible blockers for missing/stale/unpinned sources, and
+  `network_absorbable=false`.
 
 Completed product PR verification:
 
@@ -808,4 +813,3 @@ Completed product PR verification:
 - Product wiring for Builder, Telegram, Spawner UI, Canvas, and Kanban.
 - Public `spark-creator` repo decision.
 - Network absorption review packet.
-- Standalone Startup YC external rerun provenance packets.

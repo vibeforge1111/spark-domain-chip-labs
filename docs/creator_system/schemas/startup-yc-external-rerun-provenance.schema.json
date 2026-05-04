@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-external-rerun-provenance.schema.json",
+  "title": "Startup YC External Rerun Provenance Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_dir",
+    "source",
+    "evidence_mode",
+    "verdict",
+    "network_absorbable",
+    "claim_boundary",
+    "recompute_command",
+    "linked_smoke",
+    "source_inputs",
+    "blockers",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.startup_yc_external_rerun_provenance.v1"
+    },
+    "run_dir": {"type": "string", "minLength": 1},
+    "source": {"const": "startup_yc_external_v1"},
+    "evidence_mode": {"const": "recomputed"},
+    "verdict": {"enum": ["passed", "blocked"]},
+    "network_absorbable": {"const": false},
+    "claim_boundary": {
+      "type": "string",
+      "pattern": "does not approve network absorption"
+    },
+    "recompute_command": {
+      "type": "string",
+      "pattern": "creator-run-smoke .+ --recompute"
+    },
+    "linked_smoke": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verdict",
+        "evidence_tier",
+        "evidence_mode",
+        "status_counts",
+        "blocking_checks"
+      ],
+      "properties": {
+        "verdict": {"type": "string", "minLength": 1},
+        "evidence_tier": {
+          "enum": [
+            "prototype",
+            "benchmark_signal",
+            "focused_pattern",
+            "candidate_review",
+            "transfer_supported",
+            "network_absorbable",
+            "standard_update"
+          ]
+        },
+        "evidence_mode": {"const": "recomputed"},
+        "status_counts": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "blocking_checks": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "source_inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reference",
+          "roles",
+          "expected_hashes",
+          "resolved_path",
+          "sha256",
+          "status"
+        ],
+        "properties": {
+          "reference": {"type": "string", "minLength": 1},
+          "roles": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "expected_hashes": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "resolved_path": {"type": "string"},
+          "sha256": {"type": "string"},
+          "status": {
+            "enum": [
+              "hash_match",
+              "hash_mismatch",
+              "missing",
+              "present_unpinned"
+            ]
+          }
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "next_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "passed"}}
+      },
+      "then": {
+        "properties": {"blockers": {"maxItems": 0}}
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}}
+      },
+      "then": {
+        "properties": {"blockers": {"minItems": 1}}
+      }
+    }
+  ]
+}

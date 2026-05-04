@@ -46,6 +46,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [startup-yc-validation-evidence-check-result.schema.json](startup-yc-validation-evidence-check-result.schema.json) | Startup YC raw validation-evidence shape-check output |
 | [startup-yc-gate-check-result.schema.json](startup-yc-gate-check-result.schema.json) | Startup YC individual gate-check outputs |
 | [startup-yc-validation-suite.schema.json](startup-yc-validation-suite.schema.json) | Startup YC validation-suite output |
+| [startup-yc-external-rerun-provenance.schema.json](startup-yc-external-rerun-provenance.schema.json) | Startup YC external recompute provenance packet |
 | [generated-multi-seed-summary.schema.json](generated-multi-seed-summary.schema.json) | Generated multi-domain multi-seed summary output |
 | [generated-multi-seed-summary-check.schema.json](generated-multi-seed-summary-check.schema.json) | Recomputed generated multi-seed summary check output |
 
@@ -91,6 +92,10 @@ network absorption. The validation-suite schema references the gate-check schema
 for every subcheck, so a saved suite cannot hide malformed gate evidence inside
 a generic object field. Creator-system CI validates both freshly generated suite
 output and the saved blocked suite fixture against that referenced schema pair.
+The external rerun provenance schema anchors a standalone packet for Startup YC
+recompute runs. It requires recomputed smoke linkage, source input paths,
+source hashes, `network_absorbable=false`, and visible blockers when any
+external source is missing, stale, or present without a hash.
 
 The generated multi-seed summary schemas anchor the generic domain-generator
 matrix separately from the Startup YC promotion gate. They require recomputed

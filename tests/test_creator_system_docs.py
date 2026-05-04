@@ -60,6 +60,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "creator-run-smoke",
         "creator-run-doctor",
         "creator-run-template-check",
+        "startup-yc-external-provenance-packet",
         "artifact-quality-score",
         "artifact-quality-benchmark",
         "tool-operation-check",
@@ -140,6 +141,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "source-report recompute checks" in text
     assert "startup-yc-gate-check-result.schema.json" in text
     assert "startup-yc-validation-suite.schema.json" in text
+    assert "startup-yc-external-provenance-packet" in text
+    assert "external source hashes" in text
     assert "raw-evidence input hashes" in text
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text
@@ -150,7 +153,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
-    assert "Latest focused creator-system suite result before CI push: `242 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `244 passed`." in text
     assert "case_expectations" in text
     assert "calibration_verdict" in text
     assert "failed expectations force `revert`" in text
@@ -268,7 +271,9 @@ def test_startup_yc_external_recompute_adapter_contract_blocks_stronger_claims()
         "implemented for aggregate scores",
         "implemented for packet evidence",
         "absent or stale source reports",
-        "standalone external rerun provenance packets",
+        "startup-yc-external-provenance-packet",
+        "startup-yc-external-rerun-provenance.schema.json",
+        "per-adapter rerun packets",
         "startup_yc_external_v1",
         "not `network_absorbable`",
         "multi-seed validation",
@@ -369,6 +374,9 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "mirofish-content-route.schema.json",
         "mirofish-content-simulation-result.schema.json",
         "mirofish-content-multi-seed-result.schema.json",
+        "startup-yc-external-rerun-provenance.schema.json",
+        "Startup YC external recompute provenance packet",
+        "present without a hash",
         "tool-operation-manifest.schema.json",
         "tool-operation-packet.schema.json",
         "tool-operation-check.schema.json",

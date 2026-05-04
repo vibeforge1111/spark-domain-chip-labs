@@ -420,6 +420,9 @@
 - Broad-transfer saved evidence now also cross-checks positive and flat scenario
   counts against row-level deltas, so broad-transfer summaries cannot inflate
   wins while the underlying rows disagree.
+- `startup-yc-external-provenance-packet` now emits a standalone recompute
+  provenance packet with linked smoke verdict, external source hashes, visible
+  blockers for missing/stale/unpinned inputs, and `network_absorbable=false`.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -466,4 +469,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `242 passed`.
+Latest focused creator-system suite result before CI push: `244 passed`.

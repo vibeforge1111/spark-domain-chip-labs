@@ -41,6 +41,9 @@ Supported today:
   recomputed report bundle.
 - `startup_yc_external_v1` report provenance checks for baseline, candidate,
   and absorption reports.
+- `startup-yc-external-provenance-packet`, which emits a standalone
+  recompute provenance packet with linked smoke status, external source hashes,
+  and visible blockers for missing, stale, or unpinned source inputs.
 
 Not supported yet:
 
@@ -57,11 +60,19 @@ Not supported yet:
 | Broad transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/broad_transfer_probe.json` with per-scenario rows | implemented for aggregate scores, scenario buckets, constraints, and row-level scenario results |
 | Swarm packet regeneration adapter | Fresh baseline, candidate, absorption, and transfer reports | `swarm/contribution_packet.json` | implemented for packet evidence scores/deltas, transfer fields, report paths, and network-publication blocker |
 | Report provenance adapter | SHA-256 hash of `specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json` | `reports/baseline.json`, `reports/candidate.json`, `reports/absorption_summary.json` provenance | implemented for `startup_yc_external_v1` source and input hash checks |
+| Standalone provenance packet | All external source artifacts named by recompute reports | `startup-yc-external-rerun-provenance.schema.json` packet | implemented for linked smoke status, source hashes, unpinned-source blockers, and `network_absorbable=false` |
 
 ## Required Output Contract
 
 Each external rerun adapter must emit a small provenance packet next to the
-regenerated report:
+regenerated report. The repo-local aggregate packet uses
+`startup-yc-external-rerun-provenance.schema.json` and is emitted with:
+
+```bash
+python -m chip_labs.cli startup-yc-external-provenance-packet docs/creator_system/examples/startup-yc-creator-run --output reports/startup-yc-external-provenance.json
+```
+
+Future per-adapter packets should keep the same spirit:
 
 ```json
 {
@@ -128,8 +139,11 @@ Full external recompute is complete only when:
    Done with `startup_yc_external_v1` source hashes.
 7. Add doctor quarantine fixtures for stale external Startup YC evidence.
    Done with `doctor-security/stale_external_startup_yc_candidate_score.json`.
+8. Add a standalone aggregate provenance packet for external recompute.
+   Done with `startup-yc-external-provenance-packet` and
+   `startup-yc-external-rerun-provenance.schema.json`.
 
-Remaining work is standalone external rerun provenance packets plus the
-separate multi-seed, calibration, privacy, rollback, and publication approval
-gates. Until those pass, the curated Startup YC fixture remains strict
+Remaining work is per-adapter rerun packets from the external source repos plus
+the separate multi-seed, calibration, privacy, rollback, and publication
+approval gates. Until those pass, the curated Startup YC fixture remains strict
 `transfer_supported` proof with clear claim boundaries.

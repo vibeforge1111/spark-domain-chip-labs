@@ -100,6 +100,9 @@ ARTIFACT_MANIFEST_KINDS = {
     "autoloop_policy",
     "swarm_packet",
 }
+STARTUP_YC_EXTERNAL_PROVENANCE_SCHEMA_VERSION = (
+    "adaptive_creator_loop.startup_yc_external_rerun_provenance.v1"
+)
 
 TEMPLATE_FILENAMES = {
     "creator-intent.template.json": "creator-intent.json",
@@ -2931,6 +2934,173 @@ def _check_recomputed_evidence(run_path: Path, checks: list[SmokeCheck]) -> None
             "recompute_absorption_lane_results",
             checks,
         )
+
+
+def build_startup_yc_external_provenance_packet(run_dir: str | Path) -> dict[str, Any]:
+    """Emit standalone provenance for Startup YC external recompute evidence."""
+    run_path = Path(run_dir)
+    smoke = validate_creator_run(run_path, recompute=True)
+    source_inputs = _collect_startup_yc_external_source_inputs(run_path)
+    source_blockers = [
+        f"{record['reference']}:{record['status']}"
+        for record in source_inputs
+        if record["status"] != "hash_match"
+    ]
+    smoke_blockers = _check_names_by_status(smoke.checks, "fail")
+    blockers = list(smoke_blockers)
+    if not source_inputs:
+        blockers.append("startup_yc_external_sources_missing")
+    blockers.extend(source_blockers)
+    verdict = "passed" if not blockers else "blocked"
+    return {
+        "schema_version": STARTUP_YC_EXTERNAL_PROVENANCE_SCHEMA_VERSION,
+        "run_dir": str(run_path),
+        "source": "startup_yc_external_v1",
+        "evidence_mode": "recomputed",
+        "verdict": verdict,
+        "network_absorbable": False,
+        "claim_boundary": (
+            "Standalone external rerun provenance only; this does not approve "
+            "network absorption or publication."
+        ),
+        "recompute_command": (
+            f"python -m chip_labs.cli creator-run-smoke {run_path} "
+            "--recompute --fail-on-blocked"
+        ),
+        "linked_smoke": {
+            "verdict": smoke.verdict,
+            "evidence_tier": smoke.evidence_tier,
+            "evidence_mode": smoke.evidence_mode,
+            "status_counts": _status_counts(smoke.checks),
+            "blocking_checks": smoke_blockers,
+        },
+        "source_inputs": source_inputs,
+        "blockers": blockers,
+        "next_actions": _startup_yc_external_provenance_next_actions(blockers),
+    }
+
+
+def _collect_startup_yc_external_source_inputs(
+    run_path: Path,
+) -> list[dict[str, Any]]:
+    records: dict[str, dict[str, Any]] = {}
+
+    def add_record(reference: str, role: str, expected_hash: str | None = None) -> None:
+        cleaned_reference = reference.strip()
+        if not cleaned_reference:
+            return
+        record = records.setdefault(
+            cleaned_reference,
+            {
+                "reference": cleaned_reference,
+                "roles": [],
+                "expected_hashes": [],
+            },
+        )
+        if role not in record["roles"]:
+            record["roles"].append(role)
+        if expected_hash and expected_hash not in record["expected_hashes"]:
+            record["expected_hashes"].append(expected_hash)
+
+    for relative_path in (
+        "reports/baseline.json",
+        "reports/candidate.json",
+        "reports/absorption_summary.json",
+    ):
+        report = _load_json_if_present(run_path / relative_path)
+        if report is None:
+            continue
+        source_report = report.get("source_report")
+        if isinstance(source_report, str):
+            add_record(source_report, f"{relative_path}:source_report")
+        provenance = report.get("provenance")
+        input_hashes = (
+            provenance.get("input_hashes") if isinstance(provenance, dict) else None
+        )
+        if isinstance(input_hashes, dict):
+            for reference, expected_hash in input_hashes.items():
+                add_record(
+                    str(reference),
+                    f"{relative_path}:provenance",
+                    str(expected_hash),
+                )
+
+    for relative_path in (
+        "reports/transfer_summary.json",
+        "reports/broad_transfer_probe.json",
+    ):
+        report = _load_json_if_present(run_path / relative_path)
+        if report is None:
+            continue
+        source_artifacts = report.get("source_artifacts")
+        source_hashes = report.get("source_artifact_hashes")
+        if not isinstance(source_artifacts, dict):
+            continue
+        if not isinstance(source_hashes, dict):
+            source_hashes = {}
+        for role, reference in source_artifacts.items():
+            if not isinstance(reference, str):
+                continue
+            expected_hash = source_hashes.get(reference) or source_hashes.get(role)
+            add_record(
+                reference,
+                f"{relative_path}:source_artifacts.{role}",
+                str(expected_hash) if expected_hash else None,
+            )
+
+    return [_finalize_source_input_record(run_path, record) for record in records.values()]
+
+
+def _load_json_if_present(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    try:
+        payload = load_json(path)
+    except ValueError:
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def _finalize_source_input_record(
+    run_path: Path, record: dict[str, Any]
+) -> dict[str, Any]:
+    reference = str(record["reference"])
+    expected_hashes = list(record["expected_hashes"])
+    resolved_path = _resolve_external_artifact_path(run_path, reference)
+    finalized = {
+        "reference": reference,
+        "roles": sorted(record["roles"]),
+        "expected_hashes": expected_hashes,
+        "resolved_path": str(resolved_path) if resolved_path is not None else "",
+        "sha256": "",
+        "status": "missing",
+    }
+    if resolved_path is None:
+        return finalized
+    actual_hash = _sha256_file(resolved_path)
+    finalized["sha256"] = actual_hash
+    if not expected_hashes:
+        finalized["status"] = "present_unpinned"
+    elif actual_hash in expected_hashes:
+        finalized["status"] = "hash_match"
+    else:
+        finalized["status"] = "hash_mismatch"
+    return finalized
+
+
+def _startup_yc_external_provenance_next_actions(blockers: list[str]) -> list[str]:
+    if not blockers:
+        return [
+            "Use this packet as recomputed provenance evidence only; continue to require multi-seed validation, human/operator calibration, privacy review, rollback review, and publication approval before network absorption."
+        ]
+    actions = [
+        "Rerun creator-run-smoke with --recompute and repair any blocking checks before using this packet.",
+        "Add source_artifact_hashes or provenance.input_hashes for every external source artifact.",
+        "Keep network_absorbable=false until the full promotion gate bundle passes.",
+    ]
+    if any(blocker.endswith(":missing") for blocker in blockers):
+        actions.insert(1, "Restore missing external source artifacts or refresh saved reports from available sources.")
+    return actions
 
 
 def _check_report_provenance(

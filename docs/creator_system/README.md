@@ -17,7 +17,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [CREATOR_SYSTEM_PROOF_DOMAINS.md](CREATOR_SYSTEM_PROOF_DOMAINS.md) | Multi-domain proof layers for artifact quality, tool operation, content simulation, doctor security, Startup YC, and future memory/retrieval examples. |
 | [CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md](CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md) | Long-running validation matrix for generated creator systems across artifact quality, tool operation, MiroFish content simulation, doctor/security, Startup YC operator, and retrieval/memory domains. |
 | [BENCHMARK_GENERATION_HONESTY_STANDARD.md](BENCHMARK_GENERATION_HONESTY_STANDARD.md) | Minimum honesty contract for generated benchmark packs: case oracles, lane results, anti-gaming checks, provenance hashes, and Swarm claim boundaries. |
-| [STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md](STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md) | Missing external rerun adapter contract for Startup Bench, specialization-path absorption, broad transfer, and Startup YC Swarm packet regeneration. |
+| [STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md](STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md) | External rerun adapter contract for Startup Bench, specialization-path absorption, broad transfer, Startup YC Swarm packet comparison, and provenance packets. |
 | [CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md](CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md) | Release-note summary for the current creator-system standardization continuation. |
 | [CREATOR_RUN_PRODUCTION_READINESS_V1.md](CREATOR_RUN_PRODUCTION_READINESS_V1.md) | Shippable creator-run CLI contract, smoke-result schema, integration rules, and V1 ship gate. |
 | [CREATOR_RUN_GOLDEN_PATH_V1.md](CREATOR_RUN_GOLDEN_PATH_V1.md) | CLI-first golden path from user goal to creator-run validation, doctor repair plan, and strict publication check. |
@@ -101,6 +101,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Diagnose repair work | `python -m chip_labs.cli creator-run-doctor runs/<run-name>` |
 | Diagnose stale evidence | `python -m chip_labs.cli creator-run-doctor runs/<run-name> --recompute` |
 | Run doctor adversarial sweep | `python -m chip_labs.cli creator-run-doctor-adversarial-sweep runs/<run-name> --manifest docs/creator_system/examples/doctor-security/adversarial_schema_sweep.json --fail-on-blocked` |
+| Emit Startup YC external provenance packet | `python -m chip_labs.cli startup-yc-external-provenance-packet docs/creator_system/examples/startup-yc-creator-run --output reports/startup-yc-external-provenance.json` |
 | Validate templates | `python -m chip_labs.cli creator-run-template-check --fail-on-blocked` |
 | Score artifact quality | `python -m chip_labs.cli artifact-quality-score --input <path> --artifact-kind pr_writeup` |
 | Run artifact benchmark | `python -m chip_labs.cli artifact-quality-benchmark runs/<run-name>` |
