@@ -36,6 +36,7 @@ REVIEWER_CALIBRATION_REQUIRED_FIELDS = {
     "artifact_kind",
     "reviewer_verdict",
 }
+ARTIFACT_QUALITY_VERDICTS = {"review_ready", "needs_revision", "blocked"}
 
 CHECKS = (
     {
@@ -401,6 +402,11 @@ def _load_manifest(path: Path) -> dict[str, Any]:
                     f"{path} reviewer_calibration_cases[{index}] is missing "
                     "required field(s): "
                     + ", ".join(missing_fields)
+                )
+            if str(case["reviewer_verdict"]) not in ARTIFACT_QUALITY_VERDICTS:
+                raise ValueError(
+                    f"{path} reviewer_calibration_cases[{index}] has invalid "
+                    "reviewer_verdict"
                 )
     return manifest
 

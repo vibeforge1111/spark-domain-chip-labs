@@ -394,6 +394,9 @@
   row to include `case_id`, `artifact_path`, `artifact_kind`, and
   `reviewer_verdict`, matching the schema before any benchmark report is
   generated.
+- Artifact-quality benchmark manifests now reject invalid `reviewer_verdict`
+  values at parse time instead of converting malformed human calibration input
+  into ordinary failed benchmark rows.
 
 ## Current Claim Boundary
 
@@ -415,4 +418,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `211 passed`.
+Latest focused creator-system suite result before CI push: `212 passed`.
