@@ -335,6 +335,9 @@
   that the saved packet and freshly generated packet remain blocked with
   `network_absorbable=false` while external provenance or required approval
   evidence is missing.
+- Manual `Creator System` workflow dispatch with `run_generated_multi_seed=true`
+  passed the generated multi-domain matrix in CI: `verdict=candidate_review`,
+  `passed=36/36`, `mission_run_count=36`, and `network_absorbable=false`.
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.

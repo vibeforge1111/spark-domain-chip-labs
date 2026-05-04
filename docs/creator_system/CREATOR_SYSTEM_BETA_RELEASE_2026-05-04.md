@@ -37,6 +37,14 @@ This is the release artifact for the creator-system technical beta.
 - GitHub `Creator System` CI on `main`: passed for the release-hardening
   commits before tagging.
 
+## Post-Tag Hardening Evidence
+
+- Manual `Creator System` workflow dispatch with `run_generated_multi_seed=true`
+  passed on 2026-05-04: `verdict=candidate_review`, `passed=36/36`,
+  `mission_run_count=36`, and `network_absorbable=false`.
+- This proves the current generated multi-domain matrix can run in CI, but it
+  does not upgrade any domain or Startup YC to `network_absorbable`.
+
 ## Local Workspace Handling
 
 The release tag is cut from the clean pushed `main` commit, not from the local

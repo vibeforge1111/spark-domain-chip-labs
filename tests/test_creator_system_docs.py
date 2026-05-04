@@ -139,6 +139,8 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "Release tag selected: `creator-system-beta-2026-05-04`",
         "saved blocked fixture",
         "recomputes it before any stronger release claim",
+        "Manual generated multi-seed matrix workflow dispatch passed",
+        "`36/36`",
         "dirty local",
         "unstaged",
         "MiroFish outcome calibration blocks insufficient or vanity-only",
@@ -161,6 +163,9 @@ def test_creator_system_beta_release_artifact_preserves_production_boundary() ->
         "network_absorption_review_blocked.json",
         "`external_provenance:missing`",
         "Broader local creator-system suite before release: `262 passed`",
+        "Post-Tag Hardening Evidence",
+        "run_generated_multi_seed=true",
+        "`passed=36/36`",
         "left untouched and unstaged",
         "does not approve `network_absorbable`",
         "does not wire live Builder, Telegram, Spawner, Canvas, or Kanban",
@@ -239,6 +244,9 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "startup-yc-network-absorption-review.schema.json" in text
     assert "network_absorption_review_blocked.json" in text
     assert "raw-evidence input hashes" in text
+    assert "run_generated_multi_seed=true" in text
+    assert "`passed=36/36`" in text
+    assert "`mission_run_count=36`" in text
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text
     assert "Creator-system CI now runs focused lint" in text

@@ -31,6 +31,8 @@ Verified on 2026-05-04 from a clean temp checkout at
 - [x] Generator acceptance creates domain chip, benchmark pack, specialization
   path, autoloop policy, and Swarm packet artifacts from briefs.
 - [x] Generated multi-domain matrix has CI coverage.
+- [x] Manual generated multi-seed matrix workflow dispatch passed on
+  2026-05-04 with `36/36` runs and `network_absorbable=false`.
 
 ## Evidence And Safety
 
