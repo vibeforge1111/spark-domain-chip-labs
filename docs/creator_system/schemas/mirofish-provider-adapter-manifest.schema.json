@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/mirofish-provider-adapter-manifest.schema.json",
+  "title": "MiroFish Content Provider Adapter Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "domain",
+    "claim_boundary",
+    "network_calls_allowed",
+    "live_credentials_allowed",
+    "rlm_judges",
+    "required_runtime_guards",
+    "forbidden_claims",
+    "output_contract"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "mirofish_content.provider_adapter_manifest.v1"
+    },
+    "domain": {"const": "MiroFish Content Simulation"},
+    "claim_boundary": {
+      "const": "provider adapter contract only; does not call providers or calibrate real outcomes"
+    },
+    "network_calls_allowed": {"const": false},
+    "live_credentials_allowed": {"const": false},
+    "rlm_judges": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "provider",
+          "model_family",
+          "mode",
+          "enabled",
+          "calibration_status"
+        ],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "provider": {"type": "string", "minLength": 1},
+          "model_family": {"type": "string", "minLength": 1},
+          "mode": {
+            "enum": ["deterministic_shadow", "configured_provider"]
+          },
+          "enabled": {"type": "boolean"},
+          "calibration_status": {
+            "enum": [
+              "uncalibrated",
+              "shadow_calibrated",
+              "outcome_calibrated"
+            ]
+          },
+          "calibration_evidence_ref": {"type": "string", "minLength": 1}
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {"calibration_status": {"const": "outcome_calibrated"}},
+              "required": ["calibration_status"]
+            },
+            "then": {
+              "required": ["calibration_evidence_ref"]
+            }
+          }
+        ]
+      }
+    },
+    "required_runtime_guards": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "allOf": [
+        {"contains": {"const": "no_secret_material"}},
+        {"contains": {"const": "no_live_calls_by_default"}},
+        {"contains": {"const": "per_judge_rows"}},
+        {"contains": {"const": "saved_prompt_hashes"}},
+        {"contains": {"const": "outcome_calibration_before_trust"}}
+      ]
+    },
+    "forbidden_claims": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "allOf": [
+        {"contains": {"const": "real_virality_proven"}},
+        {"contains": {"const": "calibrated_provider_reliability"}},
+        {"contains": {"const": "network_absorbable"}}
+      ]
+    },
+    "output_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "per_judge_rows",
+        "per_persona_rows",
+        "aggregate_disagreement_report"
+      ],
+      "properties": {
+        "per_judge_rows": {"const": true},
+        "per_persona_rows": {"const": true},
+        "aggregate_disagreement_report": {"const": true}
+      }
+    }
+  }
+}

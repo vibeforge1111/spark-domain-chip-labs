@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/mirofish-provider-adapter-check.schema.json",
+  "title": "MiroFish Content Provider Adapter Check",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "verdict",
+    "allowed_for_local_simulation",
+    "network_absorbable",
+    "claim_boundary",
+    "judge_count",
+    "enabled_judge_count",
+    "checks",
+    "blocking_checks",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {"const": "mirofish_content.provider_adapter_check.v1"},
+    "verdict": {"enum": ["pass", "blocked"]},
+    "allowed_for_local_simulation": {"type": "boolean"},
+    "network_absorbable": {"const": false},
+    "claim_boundary": {
+      "const": "provider adapter contract only; does not call providers or calibrate real outcomes"
+    },
+    "judge_count": {"type": "integer", "minimum": 0},
+    "enabled_judge_count": {"type": "integer", "minimum": 0},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check_id", "status", "message"],
+        "properties": {
+          "check_id": {"type": "string", "minLength": 1},
+          "status": {"enum": ["pass", "fail"]},
+          "message": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "next_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "pass"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "allowed_for_local_simulation": {"const": true},
+          "blocking_checks": {"maxItems": 0},
+          "enabled_judge_count": {"minimum": 2}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "allowed_for_local_simulation": {"const": false},
+          "blocking_checks": {"minItems": 1}
+        }
+      }
+    }
+  ]
+}

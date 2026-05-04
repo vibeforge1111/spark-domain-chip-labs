@@ -1,0 +1,50 @@
+{
+  "schema_version": "mirofish_content.provider_adapter_manifest.v1",
+  "domain": "MiroFish Content Simulation",
+  "claim_boundary": "provider adapter contract only; does not call providers or calibrate real outcomes",
+  "network_calls_allowed": false,
+  "live_credentials_allowed": false,
+  "rlm_judges": [
+    {
+      "id": "spark-local-judge",
+      "provider": "local",
+      "model_family": "deterministic-shadow",
+      "mode": "deterministic_shadow",
+      "enabled": true,
+      "calibration_status": "shadow_calibrated"
+    },
+    {
+      "id": "frontier-reasoning-judge",
+      "provider": "future-provider-slot",
+      "model_family": "reasoning",
+      "mode": "configured_provider",
+      "enabled": true,
+      "calibration_status": "uncalibrated"
+    },
+    {
+      "id": "fast-taste-judge",
+      "provider": "future-provider-slot",
+      "model_family": "fast-taste",
+      "mode": "configured_provider",
+      "enabled": true,
+      "calibration_status": "uncalibrated"
+    }
+  ],
+  "required_runtime_guards": [
+    "no_secret_material",
+    "no_live_calls_by_default",
+    "per_judge_rows",
+    "saved_prompt_hashes",
+    "outcome_calibration_before_trust"
+  ],
+  "forbidden_claims": [
+    "real_virality_proven",
+    "calibrated_provider_reliability",
+    "network_absorbable"
+  ],
+  "output_contract": {
+    "per_judge_rows": true,
+    "per_persona_rows": true,
+    "aggregate_disagreement_report": true
+  }
+}

@@ -307,6 +307,12 @@
   simulator contract. Route packets preserve the candidate-review boundary,
   simulation results expose calibration blockers, and multi-seed results reject
   accidental `network_absorbable=true` claims before real outcome calibration.
+- `mirofish-provider-adapter-check` now validates future MiroFish RLM judge
+  adapter slots without making live provider calls or accepting credentials.
+- `mirofish-provider-adapter-manifest.schema.json` and
+  `mirofish-provider-adapter-check.schema.json` now require disabled network
+  calls, disabled live credentials, row-level output contracts, explicit
+  forbidden claims, and `network_absorbable=false`.
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.
@@ -480,4 +486,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `248 passed`.
+Latest focused creator-system suite result before CI push: `252 passed`.

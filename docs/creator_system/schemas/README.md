@@ -26,6 +26,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [mirofish-content-route.schema.json](mirofish-content-route.schema.json) | Local MiroFish content route packet |
 | [mirofish-content-simulation-result.schema.json](mirofish-content-simulation-result.schema.json) | Local MiroFish content simulation result |
 | [mirofish-content-multi-seed-result.schema.json](mirofish-content-multi-seed-result.schema.json) | Local MiroFish content multi-seed result |
+| [mirofish-provider-adapter-manifest.schema.json](mirofish-provider-adapter-manifest.schema.json) | Local MiroFish provider-adapter manifest |
+| [mirofish-provider-adapter-check.schema.json](mirofish-provider-adapter-check.schema.json) | Local MiroFish provider-adapter check output |
 | [loop-policy-manifest.schema.json](loop-policy-manifest.schema.json) | Autoloop policy, mutation surface, benchmark binding, rollback, and promotion gates |
 | [swarm-contribution-packet.schema.json](swarm-contribution-packet.schema.json) | `swarm/contribution_packet.json` |
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
@@ -147,3 +149,8 @@ contract. Route packets must preserve the candidate-review claim boundary,
 simulation results must expose calibration blockers, and multi-seed packets
 must keep `network_absorbable=false` until real outcome calibration, review,
 privacy, rollback, and publication gates exist.
+The provider-adapter schemas add future RLM judge slots without wiring live
+provider calls. Manifests must keep network calls and live credentials disabled,
+require per-judge/per-persona rows plus prompt hashes, and forbid real virality,
+calibrated reliability, and network absorption claims until outcome evidence
+exists.

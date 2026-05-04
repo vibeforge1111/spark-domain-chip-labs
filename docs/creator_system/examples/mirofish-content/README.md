@@ -14,6 +14,8 @@ Files:
   result.
 - `multi-seed-result.json`: deterministic three-seed simulator batch proving
   that the local top candidate is stable across seeded reruns.
+- `provider-adapters.json`: future RLM judge adapter slots that are safe for
+  local simulation metadata only; no live calls or credentials are enabled.
 
 Claim boundary:
 
@@ -52,5 +54,9 @@ python -m chip_labs.cli mirofish-content-multi-seed \
   --seed 2 \
   --seed 3 \
   --output docs/creator_system/examples/mirofish-content/multi-seed-result.json \
+  --fail-on-blocked
+
+python -m chip_labs.cli mirofish-provider-adapter-check \
+  --input docs/creator_system/examples/mirofish-content/provider-adapters.json \
   --fail-on-blocked
 ```

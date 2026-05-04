@@ -79,6 +79,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "mirofish-content-simulate",
         "mirofish-content-multi-seed",
         "mirofish-content-route",
+        "mirofish-provider-adapter-check",
     ):
         assert command in text
 
@@ -157,7 +158,10 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
     assert "src/chip_labs/operator_review.py" in text
-    assert "Latest focused creator-system suite result before CI push: `248 passed`." in text
+    assert "mirofish-provider-adapter-check" in text
+    assert "mirofish-provider-adapter-manifest.schema.json" in text
+    assert "mirofish-provider-adapter-check.schema.json" in text
+    assert "Latest focused creator-system suite result before CI push: `252 passed`." in text
     assert "case_expectations" in text
     assert "calibration_verdict" in text
     assert "failed expectations force `revert`" in text
@@ -378,6 +382,8 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "mirofish-content-route.schema.json",
         "mirofish-content-simulation-result.schema.json",
         "mirofish-content-multi-seed-result.schema.json",
+        "mirofish-provider-adapter-manifest.schema.json",
+        "mirofish-provider-adapter-check.schema.json",
         "startup-yc-external-rerun-provenance.schema.json",
         "Startup YC external recompute provenance packet",
         "present without a hash",

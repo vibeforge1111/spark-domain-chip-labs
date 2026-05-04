@@ -18,6 +18,9 @@ from chip_labs.mirofish.content_simulation import (
     simulate_content_multi_seed,
     simulate_content_selection,
 )
+from chip_labs.mirofish_provider_adapters import (
+    check_mirofish_provider_adapters,
+)
 
 
 EXAMPLE_DIR = Path("docs/creator_system/examples/mirofish-content")
@@ -27,6 +30,12 @@ SIMULATION_SCHEMA = Path(
 )
 MULTI_SEED_SCHEMA = Path(
     "docs/creator_system/schemas/mirofish-content-multi-seed-result.schema.json"
+)
+PROVIDER_ADAPTER_MANIFEST_SCHEMA = Path(
+    "docs/creator_system/schemas/mirofish-provider-adapter-manifest.schema.json"
+)
+PROVIDER_ADAPTER_CHECK_SCHEMA = Path(
+    "docs/creator_system/schemas/mirofish-provider-adapter-check.schema.json"
 )
 
 
@@ -445,3 +454,91 @@ def test_mirofish_content_schemas_reject_unsafe_shapes() -> None:
         jsonschema.Draft202012Validator(route_schema).validate(route)
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(multi_seed_schema).validate(multi_seed)
+
+
+def test_mirofish_provider_adapter_manifest_passes_local_contract() -> None:
+    manifest = json.loads(
+        (EXAMPLE_DIR / "provider-adapters.json").read_text(encoding="utf-8")
+    )
+
+    result = check_mirofish_provider_adapters(manifest)
+
+    assert result["schema_version"] == "mirofish_content.provider_adapter_check.v1"
+    assert result["verdict"] == "pass"
+    assert result["allowed_for_local_simulation"] is True
+    assert result["network_absorbable"] is False
+    assert result["enabled_judge_count"] == 3
+    assert result["blocking_checks"] == []
+
+
+def test_mirofish_provider_adapter_manifest_blocks_live_claims() -> None:
+    manifest = json.loads(
+        (EXAMPLE_DIR / "provider-adapters.json").read_text(encoding="utf-8")
+    )
+    manifest["network_calls_allowed"] = True
+    manifest["live_credentials_allowed"] = True
+    manifest["forbidden_claims"].remove("network_absorbable")
+    manifest["rlm_judges"] = manifest["rlm_judges"][:1]
+
+    result = check_mirofish_provider_adapters(manifest)
+
+    assert result["verdict"] == "blocked"
+    assert result["allowed_for_local_simulation"] is False
+    assert "network_calls_disabled" in result["blocking_checks"]
+    assert "credentials_disabled" in result["blocking_checks"]
+    assert "multi_judge_panel" in result["blocking_checks"]
+    assert "forbidden_claims" in result["blocking_checks"]
+
+
+def test_mirofish_provider_adapter_schemas_validate_saved_manifest() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    manifest_schema = json.loads(
+        PROVIDER_ADAPTER_MANIFEST_SCHEMA.read_text(encoding="utf-8")
+    )
+    check_schema = json.loads(PROVIDER_ADAPTER_CHECK_SCHEMA.read_text(encoding="utf-8"))
+    manifest = json.loads(
+        (EXAMPLE_DIR / "provider-adapters.json").read_text(encoding="utf-8")
+    )
+    result = check_mirofish_provider_adapters(manifest)
+
+    jsonschema.Draft202012Validator(manifest_schema).validate(manifest)
+    jsonschema.Draft202012Validator(check_schema).validate(result)
+
+    unsafe = json.loads(json.dumps(manifest))
+    unsafe["network_calls_allowed"] = True
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(manifest_schema).validate(unsafe)
+
+    unsafe_result = json.loads(json.dumps(result))
+    unsafe_result["network_absorbable"] = True
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(check_schema).validate(unsafe_result)
+
+
+def test_cli_mirofish_provider_adapter_check_outputs_json(tmp_path: Path) -> None:
+    output_path = tmp_path / "provider-adapter-check.json"
+    env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "mirofish-provider-adapter-check",
+            "--input",
+            str(EXAMPLE_DIR / "provider-adapters.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 0
+    assert payload["verdict"] == "pass"
+    assert payload["allowed_for_local_simulation"] is True

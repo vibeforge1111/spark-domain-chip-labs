@@ -1073,6 +1073,20 @@ def cmd_mirofish_content_multi_seed(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_mirofish_provider_adapter_check(args: argparse.Namespace) -> None:
+    """Check MiroFish content provider-adapter metadata without live calls."""
+    from .mirofish_provider_adapters import (
+        check_mirofish_provider_adapters,
+        load_mirofish_provider_adapter_manifest,
+    )
+
+    manifest = load_mirofish_provider_adapter_manifest(args.input)
+    result = check_mirofish_provider_adapters(manifest)
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_mirofish_frontier_viz(args: argparse.Namespace) -> None:
     """Build a viz-style 500-domain frontier graph packet and optional HTML page."""
     from .mirofish.hybrid import build_frontier_viz_packet, render_frontier_viz_html
@@ -2138,6 +2152,29 @@ def main() -> None:
         help="Exit nonzero when multi-seed calibration is blocked.",
     )
     p_mirofish_content_multi_seed.set_defaults(func=cmd_mirofish_content_multi_seed)
+
+    # mirofish-provider-adapter-check
+    p_mirofish_provider_adapter_check = sub.add_parser(
+        "mirofish-provider-adapter-check",
+        help="Check MiroFish content provider-adapter metadata without live calls.",
+    )
+    p_mirofish_provider_adapter_check.add_argument(
+        "--input",
+        type=str,
+        required=True,
+        help="Provider-adapter manifest JSON path.",
+    )
+    p_mirofish_provider_adapter_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_mirofish_provider_adapter_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit nonzero when provider-adapter metadata is blocked.",
+    )
+    p_mirofish_provider_adapter_check.set_defaults(
+        func=cmd_mirofish_provider_adapter_check
+    )
 
     # mirofish-frontier-viz
     p_mirofish_frontier_viz = sub.add_parser(

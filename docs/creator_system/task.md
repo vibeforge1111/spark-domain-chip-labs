@@ -495,6 +495,7 @@ Deliverables:
 - [x] Add release-note summary for pinned Startup YC transfer source hashes.
 - [x] Add release-note summary for external provenance schema anti-forgery.
 - [x] Add release-note summary for Startup YC network absorption review packets.
+- [x] Add release-note summary for MiroFish provider-adapter manifest checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -816,7 +817,7 @@ Completed product PR verification:
 
 ## Parking Lot
 
-- Multi-RLM provider adapters for content simulation.
+- [x] Multi-RLM provider adapter manifest/check for content simulation.
 - Real content outcome calibration.
 - Product wiring for Builder, Telegram, Spawner UI, Canvas, and Kanban.
 - Public `spark-creator` repo decision.
