@@ -126,8 +126,9 @@ and keeps `network_absorbable=false` even when a future packet reaches
 `review_ready`.
 The creator-system beta check schema is the user/operator-facing aggregate for
 this technical beta. It proves templates, strict Startup YC smoke, raw evidence
-shape, network-absorption blockers, and stronger-release blockers in one packet
-while still keeping `network_absorbable=false`.
+shape, network-absorption blockers, the fresh Startup YC production-gate
+workbench rehearsal, and stronger-release blockers in one packet while still
+keeping `network_absorbable=false`.
 The product-runtime review schemas define the evidence packet that can satisfy
 the release gate's product phase. They require Builder, Telegram, Spawner,
 Canvas, and Kanban to preserve read-only adapters, blocked-state visibility,

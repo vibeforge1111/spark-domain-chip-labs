@@ -535,6 +535,9 @@
   Startup YC path and validates the summary against
   `startup-yc-production-gate-workbench.schema.json`, so the rehearsal cannot
   drift out of release evidence.
+- `creator-system-beta-check` now also runs the fresh Startup YC production-gate
+  workbench in a temporary clean workspace and requires the expected blocked
+  rehearsal state before returning `pass`.
 
 ## Current Claim Boundary
 

@@ -855,6 +855,9 @@ Completed documentation/verification:
 - Creator System CI now runs the Startup YC production-gate workbench in the
   strict Startup YC path and schema-validates its summary, keeping the
   end-to-end production rehearsal under release evidence.
+- `creator-system-beta-check` now includes the fresh Startup YC
+  production-gate workbench rehearsal as a required passing beta-readiness
+  subcheck, while still expecting the rehearsal verdict itself to be blocked.
 - Full `src/chip_labs` and `tests` ruff cleanup is now committed, and
   Creator-system CI enforces `python -m ruff check src/chip_labs tests`
   instead of only linting a narrow creator-system file list.

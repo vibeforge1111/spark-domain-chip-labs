@@ -26,7 +26,7 @@
     },
     "checks": {
       "type": "array",
-      "minItems": 5,
+      "minItems": 6,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -46,6 +46,7 @@
         {"contains": {"properties": {"name": {"const": "startup_yc_strict_smoke"}}}},
         {"contains": {"properties": {"name": {"const": "startup_yc_raw_evidence_shape"}}}},
         {"contains": {"properties": {"name": {"const": "startup_yc_network_absorption_boundary"}}}},
+        {"contains": {"properties": {"name": {"const": "startup_yc_production_gate_workbench"}}}},
         {"contains": {"properties": {"name": {"const": "stronger_release_gate_boundary"}}}}
       ]
     },

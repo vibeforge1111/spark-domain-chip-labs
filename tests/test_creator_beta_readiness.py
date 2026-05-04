@@ -45,6 +45,15 @@ def test_creator_system_beta_check_passes_local_beta_boundary() -> None:
     assert checks["creator_run_templates"]["status"] == "pass"
     assert checks["startup_yc_strict_smoke"]["detail"]["evidence_tier"] == "transfer_supported"
     assert checks["startup_yc_network_absorption_boundary"]["detail"]["verdict"] == "blocked"
+    assert checks["startup_yc_production_gate_workbench"]["status"] == "pass"
+    assert checks["startup_yc_production_gate_workbench"]["detail"]["verdict"] == "blocked"
+    assert checks["startup_yc_production_gate_workbench"]["detail"]["workspace_was_clean"] is True
+    assert checks["startup_yc_production_gate_workbench"]["detail"]["gate_verdicts"][
+        "held_out_founder_advice_pass"
+    ] == "passed"
+    assert checks["startup_yc_production_gate_workbench"]["detail"]["gate_verdicts"][
+        "multi_seed_validation"
+    ] == "blocked"
     assert checks["stronger_release_gate_boundary"]["detail"]["generated_phase_passed"] is False
     assert checks["stronger_release_gate_boundary"]["detail"]["product_phase_passed"] is False
 

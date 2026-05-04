@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from typing import Any
 
 from .creator_release_gate import build_creator_release_gate
@@ -11,6 +12,7 @@ from .creator_run import repo_root, validate_creator_run, validate_creator_templ
 from .startup_yc_promotion import (
     build_startup_yc_network_absorption_review,
     check_startup_yc_validation_evidence_shape,
+    run_startup_yc_production_gate_workbench,
 )
 
 
@@ -48,6 +50,11 @@ def build_creator_system_beta_check(
         validation_plan,
         validation_suite_path=saved_suite_path,
     )
+    with TemporaryDirectory(prefix="creator-system-beta-workbench-") as workspace:
+        production_workbench = run_startup_yc_production_gate_workbench(
+            validation_plan,
+            Path(workspace),
+        )
     release_gate = build_creator_release_gate(
         validation_plan_path=validation_plan,
         generated_summary_path=generated_summary_path,
@@ -60,6 +67,7 @@ def build_creator_system_beta_check(
         _check_strict_startup_smoke(smoke),
         _check_raw_evidence(raw_evidence_check),
         _check_network_review(network_review),
+        _check_production_workbench(production_workbench),
         _check_release_gate(
             release_gate,
             generated_summary_path=generated_summary_path,
@@ -163,6 +171,39 @@ def _check_network_review(review: dict[str, Any]) -> dict[str, Any]:
             "verdict": review.get("verdict"),
             "network_absorbable": review.get("network_absorbable"),
             "blocking_check_count": len(review.get("blocking_checks") or []),
+        },
+    )
+
+
+def _check_production_workbench(workbench: dict[str, Any]) -> dict[str, Any]:
+    blocking: list[str] = []
+    if workbench.get("verdict") != "blocked":
+        blocking.append(f"workbench_verdict:{workbench.get('verdict')}")
+    if workbench.get("network_absorbable") is not False:
+        blocking.append("workbench_claimed_absorbable")
+    if workbench.get("workspace_was_clean") is not True:
+        blocking.append("workbench_workspace_not_clean")
+    gate_verdicts = workbench.get("gate_verdicts")
+    if not isinstance(gate_verdicts, dict):
+        gate_verdicts = {}
+    if gate_verdicts.get("held_out_founder_advice_pass") != "passed":
+        blocking.append("workbench_heldout_gate_not_passing")
+    if gate_verdicts.get("multi_seed_validation") != "blocked":
+        blocking.append("workbench_multi_seed_gate_not_blocked")
+    if "external_provenance:missing" not in list(
+        workbench.get("blocking_checks") or []
+    ):
+        blocking.append("workbench_missing_external_provenance_blocker")
+    return _check(
+        "startup_yc_production_gate_workbench",
+        blocking=blocking,
+        detail={
+            "verdict": workbench.get("verdict"),
+            "network_absorbable": workbench.get("network_absorbable"),
+            "workspace_was_clean": workbench.get("workspace_was_clean"),
+            "required_subchecks_passed": workbench.get("required_subchecks_passed"),
+            "final_promotion_ready": workbench.get("final_promotion_ready"),
+            "gate_verdicts": gate_verdicts,
         },
     )
 

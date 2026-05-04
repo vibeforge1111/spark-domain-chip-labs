@@ -304,6 +304,9 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "/tmp/generated-release-gate.json" in text
     assert "creator-system-beta-check" in text
     assert "creator-system-beta-check.schema.json" in text
+    assert "fresh Startup YC production-gate" in text
+    assert "expected blocked" in text
+    assert "rehearsal state before returning `pass`" in text
     assert "generated-multi-domain-briefs.json" in text
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
