@@ -13,11 +13,14 @@ or handing it to Spark agents as a repo-local creator workflow.
 
 ## Fresh Clone Install
 
-- [ ] Fresh clone succeeds.
-- [ ] `python -m pip install -e .` succeeds.
-- [ ] `chip-labs --help` shows the console entrypoint.
-- [ ] `chip-labs creator-run-template-check --fail-on-blocked` passes.
-- [ ] Strict Startup YC saved-evidence smoke passes.
+- [x] Fresh clone succeeds.
+- [x] `python -m pip install -e .` succeeds.
+- [x] `chip-labs --help` shows the console entrypoint.
+- [x] `chip-labs creator-run-template-check --fail-on-blocked` passes.
+- [x] Strict Startup YC saved-evidence smoke passes.
+
+Verified on 2026-05-04 from a clean temp checkout at
+`C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-release-smoke-20260504162044`.
 
 ## Creator-Run Proof
 
@@ -61,8 +64,6 @@ chip-labs creator-run-smoke docs/creator_system/examples/startup-yc-creator-run 
 
 ## Remaining Before A Stronger Release
 
-- Replace the remaining unchecked fresh-clone boxes above with a dated passing
-  verification note.
 - Decide how to handle unrelated local/untracked research files before tagging.
 - Add a stable release tag after CI passes on the release commit.
 - Do not upgrade claims to `network_absorbable` without the full promotion gate
