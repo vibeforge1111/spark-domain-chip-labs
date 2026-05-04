@@ -408,6 +408,42 @@ def test_artifact_quality_benchmark_rejects_invalid_reviewer_calibration_verdict
         run_artifact_quality_benchmark(run_dir)
 
 
+def test_artifact_quality_benchmark_rejects_invalid_reviewer_calibration_score(
+    tmp_path: Path,
+) -> None:
+    manifest = _benchmark_manifest()
+    assert isinstance(manifest["reviewer_calibration_cases"], list)
+    manifest["reviewer_calibration_cases"][0]["min_score"] = -0.1
+    run_dir = _artifact_run(tmp_path, manifest)
+
+    with pytest.raises(ValueError, match="min_score"):
+        run_artifact_quality_benchmark(run_dir)
+
+
+def test_artifact_quality_benchmark_rejects_invalid_reviewer_calibration_trap_list(
+    tmp_path: Path,
+) -> None:
+    manifest = _benchmark_manifest()
+    assert isinstance(manifest["reviewer_calibration_cases"], list)
+    manifest["reviewer_calibration_cases"][1]["required_trap_flags"] = "polished"
+    run_dir = _artifact_run(tmp_path, manifest)
+
+    with pytest.raises(ValueError, match="required_trap_flags"):
+        run_artifact_quality_benchmark(run_dir)
+
+
+def test_artifact_quality_benchmark_rejects_invalid_reviewer_calibration_missing_list(
+    tmp_path: Path,
+) -> None:
+    manifest = _benchmark_manifest()
+    assert isinstance(manifest["reviewer_calibration_cases"], list)
+    manifest["reviewer_calibration_cases"][1]["required_missing_checks"] = "rollback_plan"
+    run_dir = _artifact_run(tmp_path, manifest)
+
+    with pytest.raises(ValueError, match="required_missing_checks"):
+        run_artifact_quality_benchmark(run_dir)
+
+
 def test_artifact_quality_benchmark_blocks_failed_reviewer_calibration(
     tmp_path: Path,
 ) -> None:

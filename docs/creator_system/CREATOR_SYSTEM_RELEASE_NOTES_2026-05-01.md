@@ -400,6 +400,9 @@
 - Artifact-quality benchmark manifests now validate `case_expectations`
   score bounds and trap-flag list shapes at parse time, so malformed benchmark
   oracles cannot be evaluated as ordinary passing or failing checks.
+- Artifact-quality benchmark manifests now validate reviewer calibration score
+  bounds plus trap-flag and missing-check list shapes at parse time, keeping
+  human/operator calibration rows schema-coherent before reports are generated.
 
 ## Current Claim Boundary
 
@@ -421,4 +424,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `214 passed`.
+Latest focused creator-system suite result before CI push: `217 passed`.

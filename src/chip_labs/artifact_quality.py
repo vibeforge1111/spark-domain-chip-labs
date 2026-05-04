@@ -413,6 +413,22 @@ def _load_manifest(path: Path) -> dict[str, Any]:
                     f"{path} reviewer_calibration_cases[{index}] has invalid "
                     "reviewer_verdict"
                 )
+            _validate_expectation_shape(
+                path,
+                f"reviewer_calibration_cases[{index}]",
+                {
+                    key: case[key]
+                    for key in ("min_score", "max_score", "required_trap_flags")
+                    if key in case
+                },
+            )
+            if "required_missing_checks" in case and not _is_string_list(
+                case["required_missing_checks"]
+            ):
+                raise ValueError(
+                    f"{path} reviewer_calibration_cases[{index}]."
+                    "required_missing_checks must be a string list"
+                )
     return manifest
 
 
