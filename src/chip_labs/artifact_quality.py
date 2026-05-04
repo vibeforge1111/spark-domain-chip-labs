@@ -13,6 +13,7 @@ import json
 CLAIM_BOUNDARY = "artifact_quality local review only"
 PROVENANCE_SOURCE = "artifact_quality_v1"
 MANIFEST_PATH = "benchmark/artifact_quality_manifest.json"
+CASE_EXPECTATION_ROLES = {"baseline", "candidate", "traps"}
 
 CHECKS = (
     {
@@ -332,6 +333,15 @@ def _load_manifest(path: Path) -> dict[str, Any]:
         dict,
     ):
         raise ValueError(f"{path} case_expectations must be an object")
+    if isinstance(manifest.get("case_expectations"), dict):
+        unknown_roles = sorted(
+            set(manifest["case_expectations"]) - CASE_EXPECTATION_ROLES
+        )
+        if unknown_roles:
+            raise ValueError(
+                f"{path} case_expectations has unknown role(s): "
+                + ", ".join(unknown_roles)
+            )
     if manifest.get("reviewer_calibration_cases") is not None and not isinstance(
         manifest["reviewer_calibration_cases"],
         list,
