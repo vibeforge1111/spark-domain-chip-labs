@@ -7,6 +7,8 @@ This is the release artifact for the creator-system technical beta.
 - Release tag: `creator-system-beta-2026-05-04`
 - Latest verified hardening baseline: `6ead089`
 - Latest hardening tag: `creator-system-beta-2026-05-04-hardening-2`
+- Latest hardening prerelease:
+  `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-04-hardening-2`
 - Release type: technical beta for local and repo-based creator-run workflows.
 - Release boundary: not a Spark Swarm network-publication approval.
 - Primary quickstart: [USER_QUICKSTART_BETA.md](USER_QUICKSTART_BETA.md)
@@ -70,6 +72,10 @@ This is the release artifact for the creator-system technical beta.
   `creator-system-release-evidence` workflow artifact.
 - Pushed hardening tag `creator-system-beta-2026-05-04-hardening-2` points to
   commit `6ead089b7b3d31a8f9b4304f59e63d156c40ae63`.
+- GitHub prerelease `Spark Creator System Beta Hardening 2` is published for
+  the hardening tag and includes `creator-system-release-evidence.json` as a
+  release asset with digest
+  `sha256:b7fb79142196c70b06b21689ae5ffffd7dca9d1a317b3581428d2341baac210c`.
 
 ## Local Workspace Handling
 
