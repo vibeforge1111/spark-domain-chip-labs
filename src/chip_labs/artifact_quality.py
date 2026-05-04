@@ -376,6 +376,11 @@ def _load_manifest(path: Path) -> dict[str, Any]:
                     f"{path} case_expectations.{role} has unknown field(s): "
                     + ", ".join(unknown_fields)
                 )
+            _validate_expectation_shape(
+                path,
+                f"case_expectations.{role}",
+                expectation,
+            )
     if manifest.get("reviewer_calibration_cases") is not None and not isinstance(
         manifest["reviewer_calibration_cases"],
         list,
@@ -409,6 +414,38 @@ def _load_manifest(path: Path) -> dict[str, Any]:
                     "reviewer_verdict"
                 )
     return manifest
+
+
+def _validate_expectation_shape(
+    path: Path,
+    label: str,
+    expectation: dict[str, Any],
+) -> None:
+    verdict = expectation.get("verdict")
+    if verdict is not None and str(verdict) not in ARTIFACT_QUALITY_VERDICTS:
+        raise ValueError(f"{path} {label}.verdict is invalid")
+    for score_field in ("min_score", "max_score"):
+        if score_field in expectation and not _is_unit_score(expectation[score_field]):
+            raise ValueError(f"{path} {label}.{score_field} must be a number from 0 to 1")
+    if "required_trap_flags" in expectation and not _is_string_list(
+        expectation["required_trap_flags"]
+    ):
+        raise ValueError(f"{path} {label}.required_trap_flags must be a string list")
+
+
+def _is_unit_score(value: Any) -> bool:
+    return (
+        isinstance(value, int | float)
+        and not isinstance(value, bool)
+        and 0 <= value <= 1
+    )
+
+
+def _is_string_list(value: Any) -> bool:
+    return isinstance(value, list) and all(
+        isinstance(item, str) and item.strip()
+        for item in value
+    )
 
 
 def _evaluate_case_expectations(

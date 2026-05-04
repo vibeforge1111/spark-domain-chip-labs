@@ -475,6 +475,7 @@ Deliverables:
 - [x] Add release-note summary for artifact-quality calibration-field checks.
 - [x] Add release-note summary for artifact-quality calibration-required-field checks.
 - [x] Add release-note summary for artifact-quality calibration-verdict checks.
+- [x] Add release-note summary for artifact-quality expectation-shape checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:

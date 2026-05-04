@@ -346,6 +346,32 @@ def test_artifact_quality_benchmark_rejects_unknown_case_expectation_field(
         run_artifact_quality_benchmark(run_dir)
 
 
+def test_artifact_quality_benchmark_rejects_invalid_case_expectation_score(
+    tmp_path: Path,
+) -> None:
+    manifest = _benchmark_manifest()
+    assert isinstance(manifest["case_expectations"], dict)
+    assert isinstance(manifest["case_expectations"]["candidate"], dict)
+    manifest["case_expectations"]["candidate"]["min_score"] = 1.2
+    run_dir = _artifact_run(tmp_path, manifest)
+
+    with pytest.raises(ValueError, match="min_score"):
+        run_artifact_quality_benchmark(run_dir)
+
+
+def test_artifact_quality_benchmark_rejects_invalid_case_expectation_list(
+    tmp_path: Path,
+) -> None:
+    manifest = _benchmark_manifest()
+    assert isinstance(manifest["case_expectations"], dict)
+    assert isinstance(manifest["case_expectations"]["traps"], dict)
+    manifest["case_expectations"]["traps"]["required_trap_flags"] = "polished"
+    run_dir = _artifact_run(tmp_path, manifest)
+
+    with pytest.raises(ValueError, match="required_trap_flags"):
+        run_artifact_quality_benchmark(run_dir)
+
+
 def test_artifact_quality_benchmark_rejects_unknown_reviewer_calibration_field(
     tmp_path: Path,
 ) -> None:
