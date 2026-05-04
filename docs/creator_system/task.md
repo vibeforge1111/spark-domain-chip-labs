@@ -488,6 +488,7 @@ Deliverables:
 - [x] Add release-note summary for Swarm packet schema/provenance checks.
 - [x] Add release-note summary for Swarm packet/report score cross-checks.
 - [x] Add release-note summary for Swarm packet report-path existence checks.
+- [x] Add release-note summary for Swarm packet transfer-result cross-checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:

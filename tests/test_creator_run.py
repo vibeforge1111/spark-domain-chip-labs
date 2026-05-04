@@ -1221,6 +1221,26 @@ def test_transfer_supported_accepts_positive_transfer_report(tmp_path: Path) -> 
     )
 
 
+def test_transfer_supported_blocks_swarm_packet_transfer_mismatch(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    _write_transfer_report(run_dir)
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    packet["evidence"]["simulator_or_arena_result"]["transfer_score"] = 0.99
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "swarm_packet_transfer_transfer_score"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_transfer_supported_warns_on_negative_broad_probe(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
     _write_transfer_report(run_dir)
@@ -1671,7 +1691,12 @@ def _write_transfer_report(
     packet["evidence"]["simulator_or_arena_result"] = {
         "source": "startup-bench",
         "scenario_count": 1,
+        "baseline_score": 0.62,
+        "transfer_score": transfer_score,
         "delta": delta,
+        "min_delta": delta,
+        "max_delta": delta,
+        "constraints_passed": True,
     }
     packet_path.write_text(json.dumps(packet), encoding="utf-8")
 

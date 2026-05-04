@@ -2379,6 +2379,41 @@ def _check_transfer_evidence(
         )
         return
 
+    for field_name, expected in (
+        ("scenario_count", scenario_count),
+        ("baseline_score", baseline_score),
+        ("transfer_score", transfer_score),
+        ("min_delta", _coerce_number(transfer.get("min_delta"))),
+        ("max_delta", _coerce_number(transfer.get("max_delta"))),
+    ):
+        _check_nested_number_matches(
+            packet,
+            ("evidence", "simulator_or_arena_result", field_name),
+            expected,
+            f"swarm_packet_transfer_{field_name}",
+            checks,
+        )
+    if (
+        _nested(packet, "evidence", "simulator_or_arena_result", "constraints_passed")
+        is True
+        and transfer.get("constraints_passed") is True
+    ):
+        checks.append(
+            SmokeCheck(
+                "swarm_packet_transfer_constraints",
+                "pass",
+                "Swarm packet transfer constraints match transfer report.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "swarm_packet_transfer_constraints",
+                "fail",
+                "Swarm packet transfer constraints must match transfer report.",
+            )
+        )
+
     packet_transfer_delta = _coerce_number(packet_transfer.get("delta"))
     if packet_transfer_delta is None:
         checks.append(
