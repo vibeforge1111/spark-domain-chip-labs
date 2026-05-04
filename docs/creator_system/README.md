@@ -117,8 +117,8 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Emit product runtime review template | `python -m chip_labs.cli product-runtime-review-template --review-id product-runtime-review --output reports/product-runtime-review.json` |
 | Check product runtime review packet | `python -m chip_labs.cli product-runtime-review-check --input reports/product-runtime-review.json --fail-on-blocked` |
 | Run generated multi-seed matrix | `python -m chip_labs.cli generated-multi-seed-run --briefs docs/creator_system/examples/generated-multi-domain-briefs.json --workspace-dir /tmp/generated-creator-matrix --fail-on-blocked` |
-| Recompute-check generated multi-seed summary | `python -m chip_labs.cli generated-multi-seed-summary-check --summary reports/multi_seed_validation_summary.json --fail-on-blocked` |
-| Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --generated-multi-seed reports/multi_seed_validation_summary.json --output reports/creator-mission-status.json` |
+| Recompute-check generated multi-seed summary | `python -m chip_labs.cli generated-multi-seed-summary-check --summary /tmp/generated-creator-matrix/multi_seed_validation_summary.json --fail-on-blocked` |
+| Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --generated-multi-seed /tmp/generated-creator-matrix/multi_seed_validation_summary.json --output reports/creator-mission-status.json` |
 | Check local beta readiness, including Startup YC production rehearsal | `python -m chip_labs.cli creator-system-beta-check --fail-on-blocked` |
 | Emit clean-checkout release evidence | `python -m chip_labs.cli creator-system-release-evidence --fail-on-blocked --output /tmp/creator-system-release-evidence.json` |
 | Check honest 100% repo/user beta and creator-system standard readiness | `python -m chip_labs.cli creator-system-production-readiness --fail-on-blocked --output /tmp/creator-system-production-readiness.json` |

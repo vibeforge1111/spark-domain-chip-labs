@@ -36,6 +36,8 @@ Install from a fresh clone:
 ```bash
 git clone https://github.com/vibeforge1111/spark-domain-chip-labs.git
 cd spark-domain-chip-labs
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 python -m pip install -e .
 chip-labs creator-run-template-check --fail-on-blocked
 chip-labs creator-system-beta-check --fail-on-blocked

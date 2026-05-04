@@ -43,7 +43,10 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "| Startup YC reference fixture | `transfer_supported` |" in text
     assert "| Multi-domain generated matrix | `candidate_review` |" in text
     assert "validated 36-row generated multi-seed summary" in text
-    assert "--generated-multi-seed reports/multi_seed_validation_summary.json" in text
+    assert (
+        "--generated-multi-seed /tmp/generated-creator-matrix/multi_seed_validation_summary.json"
+        in text
+    )
     assert "`network_absorbable` is blocked" in text
     assert "| Product surfaces | Read-only consumer branches |" in text
     assert "| Network absorption | Future gated claim |" in text
@@ -105,6 +108,8 @@ def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
     text = ROOT_README.read_text(encoding="utf-8")
 
     assert "## Creator-System Beta Quickstart" in text
+    assert "python -m venv .venv" in text
+    assert "source .venv/bin/activate  # Windows: .venv\\Scripts\\activate" in text
     assert "chip-labs creator-run-template-check --fail-on-blocked" in text
     assert "chip-labs creator-system-beta-check --fail-on-blocked" in text
     assert "docs/creator_system/USER_QUICKSTART_BETA.md" in text

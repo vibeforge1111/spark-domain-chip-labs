@@ -26,6 +26,8 @@ and Swarm contribution packets from a repo checkout.
 ```bash
 git clone https://github.com/vibeforge1111/spark-domain-chip-labs.git
 cd spark-domain-chip-labs
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 python -m pip install -e .
 ```
 
@@ -120,7 +122,7 @@ Then recompute-check the summary if you saved it:
 
 ```bash
 chip-labs generated-multi-seed-summary-check \
-  --summary reports/multi_seed_validation_summary.json \
+  --summary /tmp/generated-creator-matrix/multi_seed_validation_summary.json \
   --fail-on-blocked
 ```
 
