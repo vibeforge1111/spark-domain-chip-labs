@@ -117,6 +117,15 @@ This is the release artifact for the creator-system technical beta.
   `sha256:0f5ed09420e08e253f26cc1f12690d9b187b53422e53aeff1f1bc820c872c409`
   and `creator-system-production-readiness.json` with digest
   `sha256:abc01895015136c1cc34143d5892b6c7a62e9aa812d9b08e0bd2b5db696745ea`.
+- Downloaded the Hardening 3 release assets from GitHub Releases on
+  2026-05-05 and rechecked both SHA-256 digests. The downloaded release
+  evidence reported `release_ready=true`, repo commit
+  `34411b0c08e2d9d1cec9fe053f96ccc9f4c8d608`,
+  `production_readiness_summary.verdict=pass`,
+  `repo_user_beta_readiness=100`,
+  `production_grade_creator_system_standard=100`,
+  `network_absorption_publication=blocked`, and
+  `network_absorbable=false`.
 
 ## Local Workspace Handling
 
