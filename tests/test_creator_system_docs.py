@@ -155,6 +155,8 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "recomputes it before any stronger release claim",
         "Manual generated multi-seed matrix workflow dispatch passed",
         "`36/36`",
+        "Extended local generated matrix passed on 2026-05-04",
+        "`54/54`",
         "dirty local",
         "unstaged",
         "MiroFish outcome calibration blocks insufficient or vanity-only",
@@ -183,6 +185,9 @@ def test_creator_system_beta_release_artifact_preserves_production_boundary() ->
         "Post-Tag Hardening Evidence",
         "run_generated_multi_seed=true",
         "`passed=36/36`",
+        "Extended local generated matrix passed on 2026-05-04",
+        "`passed=54/54`",
+        "`row_count=54`",
         "left untouched and unstaged",
         "does not approve `network_absorbable`",
         "does not wire live Builder, Telegram, Spawner, Canvas, or Kanban",
@@ -208,6 +213,9 @@ def test_public_beta_handoff_preserves_release_shape_and_boundaries() -> None:
         "stronger-release gate: still blocked",
         "passed=36/36",
         "release_gate=blocked",
+        "passed=54/54",
+        "row_count=54",
+        "generated-creator-matrix-54-0c2bd9886a154f27977a6108fa71ccc9",
         "Keep this beta inside `spark-domain-chip-labs` for now",
         "Do not extract a separate `spark-creator` repo",
         "Product runtime review evidence",
@@ -336,6 +344,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "Saved product runtime review fixtures" in text
     assert "read-only review-complete packet" in text
     assert "product runtime phase of `creator-release-gate`" in text
+    assert "Extended generated-domain validation now has a recorded 54-row local run" in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:

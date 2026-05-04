@@ -38,6 +38,8 @@ The second checkout used an isolated virtual environment and passed
 - [x] Generated multi-domain matrix has CI coverage.
 - [x] Manual generated multi-seed matrix workflow dispatch passed on
   2026-05-04 with `36/36` runs and `network_absorbable=false`.
+- [x] Extended local generated matrix passed on 2026-05-04 with `54/54`
+  runs, `check=pass`, and `network_absorbable=false`.
 - [x] Creator-system CI enforces full `src/chip_labs` and `tests` ruff lint on
   relevant pushes and pull requests.
 

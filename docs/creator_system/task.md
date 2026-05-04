@@ -843,6 +843,9 @@ Completed documentation/verification:
   the product runtime phase of `creator-release-gate`; generated multi-seed,
   Startup YC network-absorption, publication, and `network_absorbable` remain
   blocked.
+- Extended generated-domain validation now has a recorded 54-row local run:
+  three seeds across the six proof-domain families, recompute check `pass`, and
+  `network_absorbable=false`.
 - Full `src/chip_labs` and `tests` ruff cleanup is now committed, and
   Creator-system CI enforces `python -m ruff check src/chip_labs tests`
   instead of only linting a narrow creator-system file list.

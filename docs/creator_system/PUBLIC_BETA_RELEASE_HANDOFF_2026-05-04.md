@@ -63,6 +63,9 @@ Expected result:
 - Manual generated matrix output: `passed=36/36`,
   `mission_run_count=36`, `release_gate=blocked`,
   `network_absorbable=false`.
+- Extended local generated matrix output: `passed=54/54`, `check=pass`,
+  `row_count=54`, `network_absorbable=false`, from
+  `C:\Users\USER\AppData\Local\Temp\generated-creator-matrix-54-0c2bd9886a154f27977a6108fa71ccc9`.
 
 ## Release Shape Decision
 
