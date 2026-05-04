@@ -531,6 +531,10 @@
   network-absorption review packet together, then emits a schema-anchored
   summary that records clean-workspace status and preserves
   `network_absorbable=false`.
+- Creator System CI now runs that production-gate workbench during the strict
+  Startup YC path and validates the summary against
+  `startup-yc-production-gate-workbench.schema.json`, so the rehearsal cannot
+  drift out of release evidence.
 
 ## Current Claim Boundary
 

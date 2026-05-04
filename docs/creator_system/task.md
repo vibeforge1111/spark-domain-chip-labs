@@ -852,6 +852,9 @@ Completed documentation/verification:
   suite, and a network-absorption review packet. It is deliberately a rehearsal
   command, records whether the workspace was clean before the run, and keeps
   `network_absorbable=false`.
+- Creator System CI now runs the Startup YC production-gate workbench in the
+  strict Startup YC path and schema-validates its summary, keeping the
+  end-to-end production rehearsal under release evidence.
 - Full `src/chip_labs` and `tests` ruff cleanup is now committed, and
   Creator-system CI enforces `python -m ruff check src/chip_labs tests`
   instead of only linting a narrow creator-system file list.

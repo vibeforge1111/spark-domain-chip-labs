@@ -354,6 +354,9 @@ Manual or scheduled CI:
 - The same manual path also emits a generated matrix mission-status packet from
   `creator-mission-status --generated-multi-seed` and validates it against the
   product-safe mission-status schema.
+- Normal push CI now also runs `startup-yc-production-gate-workbench` in a
+  clean `/tmp` workspace, validates its summary schema, and asserts the
+  expected beta-state blockers remain visible.
 - external recompute checks when sibling source repos are available
 - stale-evidence mutation sweeps
 

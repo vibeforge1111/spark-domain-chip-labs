@@ -369,6 +369,12 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "--output /tmp/startup-yc-network-absorption-review.json" in text
     assert "startup-yc-network-absorption-review.schema.json" in text
     assert "network_absorption_review_blocked.json" in text
+    assert "startup-yc-production-gate-workbench" in text
+    assert "--workspace-dir /tmp/startup-yc-production-gate-workbench" in text
+    assert "--output /tmp/startup-yc-production-gate-workbench.json" in text
+    assert "startup-yc-production-gate-workbench.schema.json" in text
+    assert 'assert workbench_payload["workspace_was_clean"] is True' in text
+    assert 'assert workbench_payload["gate_verdicts"]["held_out_founder_advice_pass"] == "passed"' in text
     assert 'assert payload["network_absorbable"] is False' in text
     assert "--output /tmp/creator-release-gate.json" in text
     assert "creator-release-gate.schema.json" in text
