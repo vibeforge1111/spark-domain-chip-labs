@@ -60,7 +60,11 @@ def build_creator_system_beta_check(
         _check_strict_startup_smoke(smoke),
         _check_raw_evidence(raw_evidence_check),
         _check_network_review(network_review),
-        _check_release_gate(release_gate, generated_summary_path=generated_summary_path),
+        _check_release_gate(
+            release_gate,
+            generated_summary_path=generated_summary_path,
+            product_runtime_review_path=product_runtime_review_path,
+        ),
     ]
     blocking_checks = [
         f"{check['name']}:{blocker}"
@@ -167,6 +171,7 @@ def _check_release_gate(
     release_gate: dict[str, Any],
     *,
     generated_summary_path: str | Path | None,
+    product_runtime_review_path: str | Path | None,
 ) -> dict[str, Any]:
     blocking: list[str] = []
     if release_gate.get("verdict") != "blocked":
@@ -191,7 +196,10 @@ def _check_release_gate(
         blocking.append("release_gate_generated_summary_not_passing")
     if startup_phase.get("passed") is not False:
         blocking.append("release_gate_startup_phase_not_blocked")
-    if product_phase.get("passed") is not False:
+    if product_runtime_review_path is None:
+        if product_phase.get("passed") is not False:
+            blocking.append("release_gate_product_phase_not_blocked")
+    elif product_phase.get("passed") is not True:
         blocking.append("release_gate_product_phase_not_blocked")
 
     return _check(

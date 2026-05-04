@@ -12,6 +12,9 @@ from chip_labs.creator_generator import run_multi_seed_generator_validation
 
 
 SCHEMA = Path("docs/creator_system/schemas/creator-system-beta-check.schema.json")
+PRODUCT_READ_ONLY_REVIEW = Path(
+    "docs/creator_system/examples/product-runtime-review/review-complete-read-only.json"
+)
 
 
 def _validate_schema(payload: dict[str, object]) -> None:
@@ -66,6 +69,20 @@ def test_creator_system_beta_check_accepts_generated_summary_without_absorption(
     assert checks["stronger_release_gate_boundary"]["detail"]["generated_phase_passed"] is True
     assert checks["stronger_release_gate_boundary"]["detail"]["startup_phase_passed"] is False
     assert checks["stronger_release_gate_boundary"]["detail"]["product_phase_passed"] is False
+
+
+def test_creator_system_beta_check_accepts_product_review_without_absorption() -> None:
+    result = build_creator_system_beta_check(
+        product_runtime_review_path=PRODUCT_READ_ONLY_REVIEW,
+    )
+
+    _validate_schema(result)
+    assert result["verdict"] == "pass"
+    assert result["network_absorbable"] is False
+    checks = {check["name"]: check for check in result["checks"]}
+    assert checks["stronger_release_gate_boundary"]["detail"]["generated_phase_passed"] is False
+    assert checks["stronger_release_gate_boundary"]["detail"]["startup_phase_passed"] is False
+    assert checks["stronger_release_gate_boundary"]["detail"]["product_phase_passed"] is True
 
 
 def test_creator_system_beta_check_blocks_broken_startup_fixture(tmp_path: Path) -> None:
