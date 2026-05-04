@@ -10,7 +10,7 @@ contribution packets from a repo checkout.
 - Repo: `https://github.com/vibeforge1111/spark-domain-chip-labs`
 - Branch: `main`
 - Recommended tag: `creator-system-beta-2026-05-04`
-- Latest verified hardening baseline: `6ead089`
+- Latest verified hardening baseline: `9f5d961`
 - Latest hardening tag: `creator-system-beta-2026-05-04-hardening-2`
 - Latest hardening prerelease:
   `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-04-hardening-2`
@@ -96,6 +96,12 @@ Expected result:
   `network_absorption_publication=blocked:0`, `release_gate=blocked`,
   generated and product phases passing, Startup YC network absorption blocked,
   and `network_absorbable=false`.
+- Creator System CI for hardening baseline `9f5d961`: passed as run
+  `25343419805`. The uploaded `creator-system-release-evidence` artifact now
+  includes `production_readiness_summary.verdict=pass`,
+  `repo_user_beta_readiness=100`,
+  `production_grade_creator_system_standard=100`,
+  `network_absorption_publication=blocked`, and `network_absorbable=false`.
 
 ## Release Shape Decision
 

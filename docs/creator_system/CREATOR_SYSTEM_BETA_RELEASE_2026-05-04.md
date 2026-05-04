@@ -5,7 +5,7 @@ This is the release artifact for the creator-system technical beta.
 ## Release Identity
 
 - Release tag: `creator-system-beta-2026-05-04`
-- Latest verified hardening baseline: `6ead089`
+- Latest verified hardening baseline: `9f5d961`
 - Latest hardening tag: `creator-system-beta-2026-05-04-hardening-2`
 - Latest hardening prerelease:
   `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-04-hardening-2`
@@ -90,6 +90,15 @@ This is the release artifact for the creator-system technical beta.
   `network_absorption_publication=blocked:0`, `release_gate=blocked`,
   generated and product phases passing, Startup YC network absorption blocked,
   and `network_absorbable=false`.
+- Creator System CI passed on 2026-05-04 for hardening baseline `9f5d961`
+  as run `25343419805`. Its uploaded `creator-system-release-evidence`
+  artifact reported `release_ready=true`, repo commit
+  `9f5d9618b3e29f45f1c904bd8e69373dd0fde2d2`,
+  `production_readiness_summary.verdict=pass`,
+  `repo_user_beta_readiness=100`,
+  `production_grade_creator_system_standard=100`,
+  `network_absorption_publication=blocked`, and
+  `network_absorbable=false`.
 
 ## Local Workspace Handling
 
