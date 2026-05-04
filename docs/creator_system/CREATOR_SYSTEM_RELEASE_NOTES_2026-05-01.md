@@ -390,6 +390,10 @@
 - Artifact-quality benchmark manifests now reject unknown fields inside
   `reviewer_calibration_cases`, so human/operator calibration rows cannot hide
   misspelled expectation keys.
+- Artifact-quality benchmark manifests now require every reviewer calibration
+  row to include `case_id`, `artifact_path`, `artifact_kind`, and
+  `reviewer_verdict`, matching the schema before any benchmark report is
+  generated.
 
 ## Current Claim Boundary
 
@@ -411,4 +415,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `210 passed`.
+Latest focused creator-system suite result before CI push: `211 passed`.

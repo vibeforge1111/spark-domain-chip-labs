@@ -358,6 +358,18 @@ def test_artifact_quality_benchmark_rejects_unknown_reviewer_calibration_field(
         run_artifact_quality_benchmark(run_dir)
 
 
+def test_artifact_quality_benchmark_rejects_missing_reviewer_calibration_field(
+    tmp_path: Path,
+) -> None:
+    manifest = _benchmark_manifest()
+    assert isinstance(manifest["reviewer_calibration_cases"], list)
+    del manifest["reviewer_calibration_cases"][0]["reviewer_verdict"]
+    run_dir = _artifact_run(tmp_path, manifest)
+
+    with pytest.raises(ValueError, match="missing required field"):
+        run_artifact_quality_benchmark(run_dir)
+
+
 def test_artifact_quality_benchmark_blocks_failed_reviewer_calibration(
     tmp_path: Path,
 ) -> None:

@@ -30,6 +30,12 @@ REVIEWER_CALIBRATION_FIELDS = {
     "required_trap_flags",
     "required_missing_checks",
 }
+REVIEWER_CALIBRATION_REQUIRED_FIELDS = {
+    "case_id",
+    "artifact_path",
+    "artifact_kind",
+    "reviewer_verdict",
+}
 
 CHECKS = (
     {
@@ -385,6 +391,16 @@ def _load_manifest(path: Path) -> dict[str, Any]:
                 raise ValueError(
                     f"{path} reviewer_calibration_cases[{index}] has unknown field(s): "
                     + ", ".join(unknown_fields)
+                )
+            missing_fields = sorted(
+                field for field in REVIEWER_CALIBRATION_REQUIRED_FIELDS
+                if not str(case.get(field, "")).strip()
+            )
+            if missing_fields:
+                raise ValueError(
+                    f"{path} reviewer_calibration_cases[{index}] is missing "
+                    "required field(s): "
+                    + ", ".join(missing_fields)
                 )
     return manifest
 
