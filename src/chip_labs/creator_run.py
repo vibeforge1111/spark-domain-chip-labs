@@ -56,6 +56,15 @@ LOCAL_CREATOR_ARTIFACT_TIERS = (
 EVIDENCE_TIER_RANK = {tier: index for index, tier in enumerate(EVIDENCE_TIERS)}
 
 CREATOR_INTENT_SCHEMA_VERSION = "adaptive_creator_loop.creator_intent.v1"
+AUTOLOOP_POLICY_SCHEMA_VERSION = "spark-autoloop-policy.v1"
+AUTOLOOP_POLICY_REQUIRED_STRING_FIELDS = (
+    "loop_key",
+    "target_capability",
+    "benchmark_manifest",
+    "keep_condition",
+    "rollback_condition",
+    "promotion_condition",
+)
 EVIDENCE_LADDER_PATH = "reports/evidence_ladder.md"
 ARTIFACT_MANIFEST_PATH = "created-artifact-manifest.json"
 ARTIFACT_MANIFEST_SCHEMA_VERSION = "adaptive_creator_loop.created_artifact_manifest.v1"
@@ -666,12 +675,7 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
         _check_artifact_manifest(artifact_manifest, intent, checks)
 
     if autoloop_policy:
-        _check_local_creator_artifact_tier(
-            autoloop_policy.get("evidence_tier_goal"),
-            "autoloop_policy_evidence_tier_goal",
-            "autoloop/policy.json evidence_tier_goal",
-            checks,
-        )
+        _check_autoloop_policy(autoloop_policy, checks)
 
     for relative_path in READY_FOR_BASELINE_PATHS:
         if not (run_path / relative_path).exists():
@@ -1539,6 +1543,84 @@ def _check_artifact_manifest(
                 "created_artifact_manifest_required_kinds",
                 "pass",
                 "Artifact manifest includes the required creator artifact kinds.",
+            )
+        )
+
+
+def _check_autoloop_policy(
+    autoloop_policy: dict[str, Any],
+    checks: list[SmokeCheck],
+) -> None:
+    _check_schema_version(
+        autoloop_policy,
+        AUTOLOOP_POLICY_SCHEMA_VERSION,
+        "autoloop_policy_schema",
+        checks,
+    )
+    missing_string_fields = [
+        field
+        for field in AUTOLOOP_POLICY_REQUIRED_STRING_FIELDS
+        if not isinstance(autoloop_policy.get(field), str)
+        or not autoloop_policy[field].strip()
+    ]
+    mutation_surface = autoloop_policy.get("mutation_surface")
+    if not isinstance(mutation_surface, list) or not all(
+        isinstance(item, str) for item in mutation_surface
+    ):
+        missing_string_fields.append("mutation_surface")
+    if missing_string_fields:
+        checks.append(
+            SmokeCheck(
+                "autoloop_policy_required_fields",
+                "fail",
+                "autoloop/policy.json is missing or mis-shaping required field(s): "
+                + ", ".join(sorted(missing_string_fields)),
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "autoloop_policy_required_fields",
+                "pass",
+                "autoloop/policy.json required fields are shaped.",
+            )
+        )
+    _check_local_creator_artifact_tier(
+        autoloop_policy.get("evidence_tier_goal"),
+        "autoloop_policy_evidence_tier_goal",
+        "autoloop/policy.json evidence_tier_goal",
+        checks,
+    )
+    if autoloop_policy.get("lineage_required") is True:
+        checks.append(
+            SmokeCheck(
+                "autoloop_policy_lineage_required",
+                "pass",
+                "autoloop/policy.json requires lineage.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "autoloop_policy_lineage_required",
+                "fail",
+                "autoloop/policy.json lineage_required must be true.",
+            )
+        )
+    if autoloop_policy.get("network_publication_allowed") is False:
+        checks.append(
+            SmokeCheck(
+                "autoloop_policy_network_publication_allowed",
+                "pass",
+                "autoloop/policy.json keeps network publication disabled.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "autoloop_policy_network_publication_allowed",
+                "fail",
+                "autoloop/policy.json network_publication_allowed must be false.",
             )
         )
 

@@ -545,6 +545,77 @@ def test_creator_run_blocks_network_tiers_in_local_artifacts(tmp_path: Path) -> 
     assert "autoloop_policy_evidence_tier_goal" in failed_checks
 
 
+def test_creator_run_blocks_wrong_autoloop_policy_schema_version(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test autoloop policy schema boundary.",
+    )
+    policy_path = _write_autoloop_policy(run_dir)
+    policy = json.loads(policy_path.read_text(encoding="utf-8"))
+    policy["schema_version"] = "spark-autoloop-policy.v2"
+    policy_path.write_text(json.dumps(policy), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "autoloop_policy_schema" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_creator_run_blocks_missing_autoloop_policy_required_field(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test autoloop policy required fields.",
+    )
+    policy_path = _write_autoloop_policy(run_dir)
+    policy = json.loads(policy_path.read_text(encoding="utf-8"))
+    policy["keep_condition"] = ""
+    policy_path.write_text(json.dumps(policy), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "autoloop_policy_required_fields"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_creator_run_blocks_autoloop_policy_network_publication(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test autoloop policy network boundary.",
+    )
+    policy_path = _write_autoloop_policy(run_dir)
+    policy = json.loads(policy_path.read_text(encoding="utf-8"))
+    policy["network_publication_allowed"] = True
+    policy_path.write_text(json.dumps(policy), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "autoloop_policy_network_publication_allowed"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_creator_run_blocks_published_artifact_manifest_status(
     tmp_path: Path,
 ) -> None:
@@ -1293,6 +1364,7 @@ def _write_candidate_review_run(
         path.write_text(
             "{}\n" if path.suffix == ".json" else "draft\n", encoding="utf-8"
         )
+    _write_autoloop_policy(run_dir)
 
     (run_dir / "reports" / "baseline.json").write_text(
         json.dumps({"mean_score": 0.5}),
@@ -1334,6 +1406,30 @@ def _write_candidate_review_run(
     )
     _write_evidence_ladder(run_dir, evidence_tier)
     return run_dir
+
+
+def _write_autoloop_policy(run_dir: Path) -> Path:
+    policy_path = run_dir / "autoloop" / "policy.json"
+    policy_path.parent.mkdir(parents=True, exist_ok=True)
+    policy_path.write_text(
+        json.dumps({
+            "schema_version": "spark-autoloop-policy.v1",
+            "loop_key": "test-loop",
+            "target_capability": "Improve test creator-run behavior.",
+            "evidence_tier_goal": "candidate_review",
+            "mutation_surface": ["test artifacts"],
+            "benchmark_manifest": "benchmark/manifest.json",
+            "keep_condition": "keep if candidate improves without regressions",
+            "rollback_condition": "rollback on regression",
+            "promotion_condition": "promote only to supported local evidence tier",
+            "lineage_required": True,
+            "privacy_boundary": "workspace_only",
+            "network_publication_allowed": False,
+            "review_required_before_network_publication": True,
+        }),
+        encoding="utf-8",
+    )
+    return policy_path
 
 
 def _write_transfer_report(

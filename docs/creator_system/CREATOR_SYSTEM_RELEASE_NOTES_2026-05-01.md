@@ -393,6 +393,9 @@
 - `creator-run-smoke` now requires the exact
   `adaptive_creator_loop.creator_intent.v1` creator-intent schema version
   instead of accepting future-looking prefix matches.
+- `creator-run-smoke` now validates autoloop policy schema version, required
+  loop fields, lineage requirement, and `network_publication_allowed=false`
+  before treating saved loop policy evidence as coherent.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -439,4 +442,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `226 passed`.
+Latest focused creator-system suite result before CI push: `229 passed`.
