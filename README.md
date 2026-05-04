@@ -45,6 +45,7 @@ Start with:
 
 - [docs/creator_system/USER_QUICKSTART_BETA.md](docs/creator_system/USER_QUICKSTART_BETA.md)
 - [docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md](docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md)
+- [docs/creator_system/PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md](docs/creator_system/PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md)
 - [docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md](docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md)
 
 Release boundary: this beta is for local and repo-based creator-run workflows.

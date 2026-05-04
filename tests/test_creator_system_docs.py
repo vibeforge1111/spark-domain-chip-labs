@@ -24,6 +24,9 @@ PYPROJECT = Path("pyproject.toml")
 USER_QUICKSTART = Path("docs/creator_system/USER_QUICKSTART_BETA.md")
 RELEASE_CHECKLIST = Path("docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md")
 BETA_RELEASE = Path("docs/creator_system/CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md")
+PUBLIC_BETA_HANDOFF = Path(
+    "docs/creator_system/PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md"
+)
 
 
 def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
@@ -32,6 +35,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "## Current Claim Levels" in text
     assert "CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md" in text
     assert "CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md" in text
+    assert "PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
     assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
     assert "BENCHMARK_GENERATION_HONESTY_STANDARD.md" in text
@@ -103,6 +107,7 @@ def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
     assert "chip-labs creator-system-beta-check --fail-on-blocked" in text
     assert "docs/creator_system/USER_QUICKSTART_BETA.md" in text
     assert "docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md" in text
+    assert "docs/creator_system/PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md" in text
     assert "docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md" in text
     assert "does not approve `network_absorbable`" in text
 
@@ -185,6 +190,27 @@ def test_creator_system_beta_release_artifact_preserves_production_boundary() ->
         "Privacy review",
         "Rollback review",
         "Publication approval",
+    ):
+        assert phrase in text
+
+
+def test_public_beta_handoff_preserves_release_shape_and_boundaries() -> None:
+    text = PUBLIC_BETA_HANDOFF.read_text(encoding="utf-8")
+
+    for phrase in (
+        "Spark Creator System Public Beta Handoff",
+        "creator-system-beta-2026-05-04",
+        "06153f2",
+        "chip-labs creator-system-beta-check --fail-on-blocked",
+        "`network_absorbable`: `false`",
+        "Startup YC evidence tier: `transfer_supported`",
+        "stronger-release gate: still blocked",
+        "passed=36/36",
+        "release_gate=blocked",
+        "Keep this beta inside `spark-domain-chip-labs` for now",
+        "Do not extract a separate `spark-creator` repo",
+        "Product runtime review evidence",
+        "publication authority explicitly approves that claim",
     ):
         assert phrase in text
 
