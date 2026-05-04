@@ -10,10 +10,10 @@ contribution packets from a repo checkout.
 - Repo: `https://github.com/vibeforge1111/spark-domain-chip-labs`
 - Branch: `main`
 - Recommended tag: `creator-system-beta-2026-05-04`
-- Latest verified hardening baseline: `34411b0`
-- Latest hardening tag: `creator-system-beta-2026-05-05-hardening-3`
+- Latest verified hardening baseline: `a2420c4`
+- Latest hardening tag: `creator-system-beta-2026-05-05-hardening-4`
 - Latest hardening prerelease:
-  `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-05-hardening-3`
+  `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-05-hardening-4`
 - Release type: local creator-system technical beta
 - Network claim: not `network_absorbable`
 
@@ -141,6 +141,21 @@ Expected result:
   `25344407537`, including uploaded `creator-system-release-evidence` and
   `creator-system-production-readiness` artifacts. The release evidence packet
   reported `verdict=pass`, `release_ready=true`, `repo.worktree_clean=true`,
+  `production_readiness_summary.verdict=pass`,
+  `repo_user_beta_readiness=100`,
+  `production_grade_creator_system_standard=100`,
+  `network_absorption_publication=blocked`, and `network_absorbable=false`.
+- Pushed hardening tag `creator-system-beta-2026-05-05-hardening-4` points to
+  commit `a2420c4291700301524d3540ea2dce81a0503889`.
+- GitHub prerelease `Spark Creator System Beta Hardening 4` is published with
+  `creator-system-release-evidence.json` digest
+  `sha256:452eee808cca7fbaa4d74599d5b13dc68c6876169190a1f98afd1392b1c27ba1`
+  and `creator-system-production-readiness.json` digest
+  `sha256:abc01895015136c1cc34143d5892b6c7a62e9aa812d9b08e0bd2b5db696745ea`.
+- Downloaded the Hardening 4 release assets from GitHub Releases on
+  2026-05-05 and rechecked both SHA-256 digests. The downloaded release
+  evidence reported `verdict=pass`, `release_ready=true`,
+  `repo.worktree_clean=true`,
   `production_readiness_summary.verdict=pass`,
   `repo_user_beta_readiness=100`,
   `production_grade_creator_system_standard=100`,

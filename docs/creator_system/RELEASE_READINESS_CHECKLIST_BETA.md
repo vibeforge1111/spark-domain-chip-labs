@@ -49,6 +49,17 @@ That run used an isolated virtual environment, passed
 and reported `release_ready=true`, `repo.worktree_clean=true`,
 `repo_user_beta_readiness=100`, `production_grade_creator_system_standard=100`,
 `network_absorption_publication=blocked`, and `network_absorbable=false`.
+Hardening 4 public prerelease verification passed on 2026-05-05 for
+`creator-system-beta-2026-05-05-hardening-4`. The public release assets
+downloaded from GitHub Releases matched
+`creator-system-release-evidence.json`
+`sha256:452eee808cca7fbaa4d74599d5b13dc68c6876169190a1f98afd1392b1c27ba1`
+and `creator-system-production-readiness.json`
+`sha256:abc01895015136c1cc34143d5892b6c7a62e9aa812d9b08e0bd2b5db696745ea`,
+and the release evidence reported `release_ready=true`,
+`repo.worktree_clean=true`, `repo_user_beta_readiness=100`,
+`production_grade_creator_system_standard=100`,
+`network_absorption_publication=blocked`, and `network_absorbable=false`.
 
 ## Creator-Run Proof
 
