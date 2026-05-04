@@ -249,7 +249,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "`mission_run_count=36`" in text
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text
-    assert "Creator-system CI now runs focused lint" in text
+    assert "Full `src/chip_labs` and `tests` ruff cleanup is now committed" in text
+    assert "python -m ruff check src/chip_labs tests" in text
     assert "workflow_dispatch" in text
     assert "run_generated_multi_seed" in text
     assert "generated-multi-domain-briefs.json" in text
@@ -266,7 +267,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "USER_QUICKSTART_BETA.md" in text
     assert "RELEASE_READINESS_CHECKLIST_BETA.md" in text
     assert "`chip-labs` console entrypoint" in text
-    assert "Latest focused creator-system suite result before CI push: `256 passed`." in text
+    assert "Latest focused creator-system suite result before CI push: `262 passed`." in text
     assert "case_expectations" in text
     assert "calibration_verdict" in text
     assert "failed expectations force `revert`" in text
@@ -332,7 +333,7 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "mission_run_count" in text
     assert "tests/test_startup_yc_operator_validation.py" in text
     assert "tests/test_operator_review.py" in text
-    assert "src/chip_labs/operator_review.py" in text
+    assert "python -m ruff check src/chip_labs tests" in text
     assert "actions/checkout@v6" in text
     assert "actions/setup-python@v6" in text
     assert "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24" not in text

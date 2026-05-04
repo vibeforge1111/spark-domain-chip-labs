@@ -44,6 +44,8 @@ This is the release artifact for the creator-system technical beta.
   `mission_run_count=36`, and `network_absorbable=false`.
 - This proves the current generated multi-domain matrix can run in CI, but it
   does not upgrade any domain or Startup YC to `network_absorbable`.
+- Full `src/chip_labs` and `tests` lint cleanup passed locally on 2026-05-04,
+  and Creator-system CI now enforces that full ruff surface on relevant pushes.
 
 ## Local Workspace Handling
 

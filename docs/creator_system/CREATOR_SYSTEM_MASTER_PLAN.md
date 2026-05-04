@@ -372,9 +372,9 @@ Exit criteria:
 
 CI guardrail:
 
-- `.github/workflows/creator-system.yml` runs the focused creator-system lint,
-  proof-domain tests, strict Startup YC smoke, and template check for relevant
-  changes.
+- `.github/workflows/creator-system.yml` runs full `src/chip_labs` and `tests`
+  lint, proof-domain tests, strict Startup YC smoke, and template check for
+  relevant changes.
 
 ## Non-Negotiable Guardrails
 

@@ -33,6 +33,8 @@ Verified on 2026-05-04 from a clean temp checkout at
 - [x] Generated multi-domain matrix has CI coverage.
 - [x] Manual generated multi-seed matrix workflow dispatch passed on
   2026-05-04 with `36/36` runs and `network_absorbable=false`.
+- [x] Creator-system CI enforces full `src/chip_labs` and `tests` ruff lint on
+  relevant pushes and pull requests.
 
 ## Evidence And Safety
 

@@ -55,8 +55,8 @@ After this handoff was archived, the next proof slice landed in this repo:
   Telegram, Spawner, Canvas, and Kanban;
 - product consumer branches and PRs are recorded in
   `PRODUCT_SURFACE_CONSUMER_BRANCHES_2026-05-01.md`;
-- `.github/workflows/creator-system.yml` runs the focused creator-system lint,
-  proof-domain tests, strict Startup YC smoke check, and template check.
+- `.github/workflows/creator-system.yml` runs full `src/chip_labs` and `tests`
+  lint, proof-domain tests, strict Startup YC smoke check, and template check.
 
 This does not change the publication boundary: Startup YC remains
 `transfer_supported`, not `network_absorbable`, and product surfaces remain

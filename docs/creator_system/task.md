@@ -33,9 +33,9 @@ quality.
   against freshly rerun evidence.
 - MiroFish content simulation has a deterministic local harness and a direct
   candidate CLI path.
-- `.github/workflows/creator-system.yml` now runs the focused creator-system
-  lint, proof-domain tests, strict Startup YC smoke check, and template check on
-  relevant pushes and pull requests.
+- `.github/workflows/creator-system.yml` now runs full `src/chip_labs` and
+  `tests` lint, proof-domain tests, strict Startup YC smoke check, and template
+  check on relevant pushes and pull requests.
 
 ## Build Phases
 
@@ -498,6 +498,7 @@ Deliverables:
 - [x] Add release-note summary for MiroFish provider-adapter manifest checks.
 - [x] Add release-note summary for MiroFish outcome calibration checks.
 - [x] Add release-note summary for public `spark-creator` repo decision.
+- [x] Add release-note summary for full repo lint debt cleanup and CI expansion.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -805,6 +806,9 @@ Completed documentation/verification:
   proving every named transfer source has a shaped SHA-256 digest.
 - The external provenance schema now rejects `passed` packets unless every
   source input is hash-matched and the blocker list is empty.
+- Full `src/chip_labs` and `tests` ruff cleanup is now committed, and
+  Creator-system CI enforces `python -m ruff check src/chip_labs tests`
+  instead of only linting a narrow creator-system file list.
 
 Completed product PR verification:
 

@@ -490,6 +490,10 @@
 - Artifact-quality benchmark manifests now reject invalid `schema_version`
   values and unknown top-level fields at runtime, matching the strict
   `additionalProperties: false` schema boundary.
+- Full `src/chip_labs` and `tests` ruff cleanup is now committed. The Creator
+  System workflow enforces `python -m ruff check src/chip_labs tests` on
+  relevant pushes and pull requests instead of relying on a narrow focused lint
+  list.
 
 ## Current Claim Boundary
 
@@ -506,9 +510,10 @@
 ## Verification
 
 ```bash
+python -m ruff check src/chip_labs tests
 python -m pytest tests/test_creator_mission_adapter.py tests/test_creator_system_docs.py tests/test_startup_yc_operator_validation.py tests/test_tool_operation.py tests/test_artifact_quality.py tests/test_mirofish_content_simulation.py tests/test_operator_review.py tests/test_creator_generator_acceptance.py tests/test_creator_run.py tests/test_creator_run_examples.py tests/test_retrieval_memory.py -q
 python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `256 passed`.
+Latest focused creator-system suite result before CI push: `262 passed`.

@@ -43,7 +43,7 @@ python -m chip_labs.cli creator-run-smoke runs/<run-name> --fail-on-blocked
 Focused repo CI:
 
 ```bash
-python -m ruff check src/chip_labs/creator_mission_adapter.py src/chip_labs/cli.py tests/test_creator_mission_adapter.py tests/test_creator_system_docs.py
+python -m ruff check src/chip_labs tests
 python -m pytest tests/test_creator_mission_adapter.py tests/test_creator_system_docs.py tests/test_startup_yc_operator_validation.py tests/test_tool_operation.py tests/test_artifact_quality.py tests/test_mirofish_content_simulation.py tests/test_creator_generator_acceptance.py tests/test_creator_run.py tests/test_creator_run_examples.py tests/test_retrieval_memory.py -q
 ```
 

@@ -56,17 +56,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e . pytest ruff jsonschema
 
-      - name: Lint creator-system surfaces
+      - name: Lint chip-labs package and tests
         run: |
-          python -m ruff check \
-            src/chip_labs/creator_mission_adapter.py \
-            src/chip_labs/operator_review.py \
-            src/chip_labs/startup_yc_promotion.py \
-            src/chip_labs/cli.py \
-            tests/test_creator_mission_adapter.py \
-            tests/test_creator_system_docs.py \
-            tests/test_operator_review.py \
-            tests/test_startup_yc_operator_validation.py
+          python -m ruff check src/chip_labs tests
 
       - name: Run creator-system tests
         run: |
