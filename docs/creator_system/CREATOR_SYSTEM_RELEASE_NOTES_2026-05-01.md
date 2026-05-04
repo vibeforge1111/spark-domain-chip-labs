@@ -313,6 +313,13 @@
   `mirofish-provider-adapter-check.schema.json` now require disabled network
   calls, disabled live credentials, row-level output contracts, explicit
   forbidden claims, and `network_absorbable=false`.
+- `mirofish-outcome-calibration-check` now blocks insufficient or vanity-only
+  real content outcome evidence as `inconclusive` instead of treating likes or
+  impressions as calibration support.
+- `mirofish-outcome-calibration-evidence.schema.json` and
+  `mirofish-outcome-calibration-check.schema.json` now anchor denominator,
+  downstream-signal, qualitative-review, forbidden-claim, and
+  `network_absorbable=false` requirements for real outcome calibration.
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.
@@ -486,4 +493,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `252 passed`.
+Latest focused creator-system suite result before CI push: `256 passed`.

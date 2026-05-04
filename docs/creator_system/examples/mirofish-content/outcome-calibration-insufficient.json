@@ -1,0 +1,77 @@
+{
+  "schema_version": "mirofish_content.outcome_calibration_evidence.v1",
+  "domain": "MiroFish Content Simulation",
+  "claim_boundary": "real content outcome calibration evidence; does not prove network absorption",
+  "network_absorbable": false,
+  "minimum_rows_required": 20,
+  "forbidden_claims": [
+    "real_virality_proven",
+    "calibrated_provider_reliability",
+    "network_absorbable"
+  ],
+  "rows": [
+    {
+      "candidate_id": "specific",
+      "content_id": "post-001",
+      "platform": "x",
+      "published_at": "2026-05-01T12:00:00Z",
+      "impression_count": 1800,
+      "like_count": 95,
+      "reply_count": 0,
+      "repost_count": 3,
+      "bookmark_count": 0,
+      "click_count": 0,
+      "follower_delta": 0,
+      "downstream_signal": "none",
+      "qualitative_review": {
+        "audience_fit": "mixed",
+        "reply_quality": "fail",
+        "proof_quality": "mixed",
+        "novelty_quality": "mixed"
+      },
+      "simulator_rank": 1
+    },
+    {
+      "candidate_id": "generic",
+      "content_id": "post-002",
+      "platform": "x",
+      "published_at": "2026-05-02T12:00:00Z",
+      "impression_count": 2200,
+      "like_count": 120,
+      "reply_count": 0,
+      "repost_count": 2,
+      "bookmark_count": 0,
+      "click_count": 0,
+      "follower_delta": 0,
+      "downstream_signal": "none",
+      "qualitative_review": {
+        "audience_fit": "fail",
+        "reply_quality": "fail",
+        "proof_quality": "fail",
+        "novelty_quality": "mixed"
+      },
+      "simulator_rank": 3
+    },
+    {
+      "candidate_id": "operator",
+      "content_id": "post-003",
+      "platform": "x",
+      "published_at": "2026-05-03T12:00:00Z",
+      "impression_count": 1500,
+      "like_count": 80,
+      "reply_count": 0,
+      "repost_count": 1,
+      "bookmark_count": 0,
+      "click_count": 0,
+      "follower_delta": 0,
+      "downstream_signal": "none",
+      "qualitative_review": {
+        "audience_fit": "mixed",
+        "reply_quality": "fail",
+        "proof_quality": "pass",
+        "novelty_quality": "pass"
+      },
+      "simulator_rank": 2
+    }
+  ]
+}

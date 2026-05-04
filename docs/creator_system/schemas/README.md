@@ -28,6 +28,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [mirofish-content-multi-seed-result.schema.json](mirofish-content-multi-seed-result.schema.json) | Local MiroFish content multi-seed result |
 | [mirofish-provider-adapter-manifest.schema.json](mirofish-provider-adapter-manifest.schema.json) | Local MiroFish provider-adapter manifest |
 | [mirofish-provider-adapter-check.schema.json](mirofish-provider-adapter-check.schema.json) | Local MiroFish provider-adapter check output |
+| [mirofish-outcome-calibration-evidence.schema.json](mirofish-outcome-calibration-evidence.schema.json) | Local MiroFish real outcome calibration evidence |
+| [mirofish-outcome-calibration-check.schema.json](mirofish-outcome-calibration-check.schema.json) | Local MiroFish outcome calibration check output |
 | [loop-policy-manifest.schema.json](loop-policy-manifest.schema.json) | Autoloop policy, mutation surface, benchmark binding, rollback, and promotion gates |
 | [swarm-contribution-packet.schema.json](swarm-contribution-packet.schema.json) | `swarm/contribution_packet.json` |
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
@@ -154,3 +156,8 @@ provider calls. Manifests must keep network calls and live credentials disabled,
 require per-judge/per-persona rows plus prompt hashes, and forbid real virality,
 calibrated reliability, and network absorption claims until outcome evidence
 exists.
+The outcome-calibration schemas require real content outcome rows to include
+denominators, downstream-aware signals, qualitative review, explicit forbidden
+claims, and `network_absorbable=false`. The saved insufficient fixture is
+supposed to validate as evidence shape while its check remains `inconclusive`;
+that is the honest state before real calibration data exists.

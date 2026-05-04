@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/mirofish-outcome-calibration-evidence.schema.json",
+  "title": "MiroFish Content Outcome Calibration Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "domain",
+    "claim_boundary",
+    "network_absorbable",
+    "minimum_rows_required",
+    "forbidden_claims",
+    "rows"
+  ],
+  "properties": {
+    "schema_version": {"const": "mirofish_content.outcome_calibration_evidence.v1"},
+    "domain": {"const": "MiroFish Content Simulation"},
+    "claim_boundary": {
+      "const": "real content outcome calibration evidence; does not prove network absorption"
+    },
+    "network_absorbable": {"const": false},
+    "minimum_rows_required": {"type": "integer", "minimum": 2},
+    "forbidden_claims": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "allOf": [
+        {"contains": {"const": "real_virality_proven"}},
+        {"contains": {"const": "calibrated_provider_reliability"}},
+        {"contains": {"const": "network_absorbable"}}
+      ]
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "content_id",
+          "platform",
+          "published_at",
+          "impression_count",
+          "like_count",
+          "reply_count",
+          "repost_count",
+          "bookmark_count",
+          "click_count",
+          "follower_delta",
+          "downstream_signal",
+          "qualitative_review"
+        ],
+        "properties": {
+          "candidate_id": {"type": "string", "minLength": 1},
+          "content_id": {"type": "string", "minLength": 1},
+          "platform": {"type": "string", "minLength": 1},
+          "published_at": {"type": "string", "minLength": 1},
+          "impression_count": {"type": "integer", "minimum": 1},
+          "like_count": {"type": "integer", "minimum": 0},
+          "reply_count": {"type": "integer", "minimum": 0},
+          "repost_count": {"type": "integer", "minimum": 0},
+          "bookmark_count": {"type": "integer", "minimum": 0},
+          "click_count": {"type": "integer", "minimum": 0},
+          "follower_delta": {"type": "integer"},
+          "downstream_signal": {"enum": ["none", "weak", "strong"]},
+          "qualitative_review": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "audience_fit",
+              "reply_quality",
+              "proof_quality",
+              "novelty_quality"
+            ],
+            "properties": {
+              "audience_fit": {"enum": ["pass", "mixed", "fail"]},
+              "reply_quality": {"enum": ["pass", "mixed", "fail"]},
+              "proof_quality": {"enum": ["pass", "mixed", "fail"]},
+              "novelty_quality": {"enum": ["pass", "mixed", "fail"]}
+            }
+          },
+          "simulator_rank": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  }
+}

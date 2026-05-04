@@ -123,6 +123,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Run content multi-seed simulation | `python -m chip_labs.cli mirofish-content-multi-seed --task "<task>" --candidate "<A>" --candidate "<B>" --seed 1 --seed 2 --seed 3 --fail-on-blocked` |
 | Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |
 | Check MiroFish provider adapters | `python -m chip_labs.cli mirofish-provider-adapter-check --input docs/creator_system/examples/mirofish-content/provider-adapters.json --fail-on-blocked` |
+| Check MiroFish outcome calibration | `python -m chip_labs.cli mirofish-outcome-calibration-check --input docs/creator_system/examples/mirofish-content/outcome-calibration-insufficient.json --fail-on-blocked` |
 
 ## First Runnable Commands
 

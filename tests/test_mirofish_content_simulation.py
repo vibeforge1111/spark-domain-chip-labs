@@ -21,6 +21,9 @@ from chip_labs.mirofish.content_simulation import (
 from chip_labs.mirofish_provider_adapters import (
     check_mirofish_provider_adapters,
 )
+from chip_labs.content_outcome_calibration import (
+    check_content_outcome_calibration,
+)
 
 
 EXAMPLE_DIR = Path("docs/creator_system/examples/mirofish-content")
@@ -36,6 +39,12 @@ PROVIDER_ADAPTER_MANIFEST_SCHEMA = Path(
 )
 PROVIDER_ADAPTER_CHECK_SCHEMA = Path(
     "docs/creator_system/schemas/mirofish-provider-adapter-check.schema.json"
+)
+OUTCOME_CALIBRATION_EVIDENCE_SCHEMA = Path(
+    "docs/creator_system/schemas/mirofish-outcome-calibration-evidence.schema.json"
+)
+OUTCOME_CALIBRATION_CHECK_SCHEMA = Path(
+    "docs/creator_system/schemas/mirofish-outcome-calibration-check.schema.json"
 )
 
 
@@ -542,3 +551,105 @@ def test_cli_mirofish_provider_adapter_check_outputs_json(tmp_path: Path) -> Non
     assert result.returncode == 0
     assert payload["verdict"] == "pass"
     assert payload["allowed_for_local_simulation"] is True
+
+
+def test_mirofish_outcome_calibration_blocks_insufficient_vanity_rows() -> None:
+    evidence = json.loads(
+        (EXAMPLE_DIR / "outcome-calibration-insufficient.json").read_text(
+            encoding="utf-8"
+        )
+    )
+
+    result = check_content_outcome_calibration(evidence)
+
+    assert result["schema_version"] == "mirofish_content.outcome_calibration_check.v1"
+    assert result["verdict"] == "inconclusive"
+    assert result["calibration_supported"] is False
+    assert result["network_absorbable"] is False
+    assert "row_count" in result["blocking_checks"]
+    assert "not_vanity_only" in result["blocking_checks"]
+
+
+def test_mirofish_outcome_calibration_supports_enough_downstream_rows() -> None:
+    evidence = json.loads(
+        (EXAMPLE_DIR / "outcome-calibration-insufficient.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    evidence["minimum_rows_required"] = 4
+    evidence["rows"] = [
+        {
+            **evidence["rows"][index % 3],
+            "content_id": f"post-pass-{index}",
+            "candidate_id": "specific" if index % 2 == 0 else "operator",
+            "reply_count": 1,
+            "bookmark_count": 2,
+            "click_count": 1,
+            "downstream_signal": "weak",
+        }
+        for index in range(4)
+    ]
+
+    result = check_content_outcome_calibration(evidence)
+
+    assert result["verdict"] == "supports_calibration"
+    assert result["calibration_supported"] is True
+    assert result["blocking_checks"] == []
+
+
+def test_mirofish_outcome_calibration_schemas_validate_saved_evidence() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    evidence_schema = json.loads(
+        OUTCOME_CALIBRATION_EVIDENCE_SCHEMA.read_text(encoding="utf-8")
+    )
+    check_schema = json.loads(OUTCOME_CALIBRATION_CHECK_SCHEMA.read_text(encoding="utf-8"))
+    evidence = json.loads(
+        (EXAMPLE_DIR / "outcome-calibration-insufficient.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    result = check_content_outcome_calibration(evidence)
+
+    jsonschema.Draft202012Validator(evidence_schema).validate(evidence)
+    jsonschema.Draft202012Validator(check_schema).validate(result)
+
+    unsafe = json.loads(json.dumps(evidence))
+    unsafe["network_absorbable"] = True
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(evidence_schema).validate(unsafe)
+
+    unsafe_result = json.loads(json.dumps(result))
+    unsafe_result["verdict"] = "supports_calibration"
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(check_schema).validate(unsafe_result)
+
+
+def test_cli_mirofish_outcome_calibration_check_fails_on_inconclusive(
+    tmp_path: Path,
+) -> None:
+    output_path = tmp_path / "outcome-calibration-check.json"
+    env = {**os.environ, "PYTHONPATH": str(Path.cwd() / "src")}
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "mirofish-outcome-calibration-check",
+            "--input",
+            str(EXAMPLE_DIR / "outcome-calibration-insufficient.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "inconclusive"
+    assert payload["calibration_supported"] is False
