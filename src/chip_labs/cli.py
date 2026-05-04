@@ -1421,6 +1421,21 @@ def cmd_startup_yc_validation_suite(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_startup_yc_network_absorption_review(args: argparse.Namespace) -> None:
+    """Build a conservative Startup YC network-absorption review packet."""
+    from .startup_yc_promotion import build_startup_yc_network_absorption_review
+
+    result = build_startup_yc_network_absorption_review(
+        args.validation_plan,
+        validation_suite_path=args.validation_suite,
+        external_provenance_path=args.external_provenance,
+        requested_claim=args.requested_claim,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -2758,6 +2773,47 @@ def main() -> None:
         help="Exit with status 1 when the validation suite is blocked.",
     )
     p_startup_yc_validation_suite.set_defaults(func=cmd_startup_yc_validation_suite)
+
+    # startup-yc-network-absorption-review
+    p_startup_yc_network_absorption_review = sub.add_parser(
+        "startup-yc-network-absorption-review",
+        help="Build a conservative Startup YC network-absorption review packet.",
+    )
+    p_startup_yc_network_absorption_review.add_argument(
+        "--validation-plan",
+        type=str,
+        required=True,
+        help="Startup YC validation_plan.json path.",
+    )
+    p_startup_yc_network_absorption_review.add_argument(
+        "--validation-suite",
+        type=str,
+        default=None,
+        help="Optional saved Startup YC validation-suite JSON path.",
+    )
+    p_startup_yc_network_absorption_review.add_argument(
+        "--external-provenance",
+        type=str,
+        default=None,
+        help="Optional Startup YC external provenance packet JSON path.",
+    )
+    p_startup_yc_network_absorption_review.add_argument(
+        "--requested-claim",
+        type=str,
+        default="network_absorbable",
+        help="Requested stronger claim to review.",
+    )
+    p_startup_yc_network_absorption_review.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_startup_yc_network_absorption_review.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when network absorption review is blocked.",
+    )
+    p_startup_yc_network_absorption_review.set_defaults(
+        func=cmd_startup_yc_network_absorption_review
+    )
 
     args = parser.parse_args()
     args.func(args)

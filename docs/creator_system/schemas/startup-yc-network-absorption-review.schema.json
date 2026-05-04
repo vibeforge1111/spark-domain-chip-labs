@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-network-absorption-review.schema.json",
+  "title": "Startup YC Network Absorption Review Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "plan_path",
+    "plan_id",
+    "domain",
+    "current_claim",
+    "requested_claim",
+    "verdict",
+    "network_absorbable",
+    "claim_boundary",
+    "required_approvals",
+    "approval_status",
+    "review_inputs",
+    "blocking_checks",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.startup_yc_network_absorption_review.v1"
+    },
+    "plan_path": {"type": "string", "minLength": 1},
+    "plan_id": {"type": "string", "minLength": 1},
+    "domain": {"const": "Startup YC"},
+    "current_claim": {"const": "transfer_supported"},
+    "requested_claim": {"const": "network_absorbable"},
+    "verdict": {"enum": ["blocked", "review_ready"]},
+    "network_absorbable": {"const": false},
+    "claim_boundary": {
+      "type": "string",
+      "pattern": "does not approve network absorption"
+    },
+    "required_approvals": {
+      "type": "array",
+      "minItems": 5,
+      "items": {"type": "string", "minLength": 1},
+      "allOf": [
+        {"contains": {"const": "multi_seed_validation"}},
+        {"contains": {"const": "human_operator_calibration"}},
+        {"contains": {"const": "privacy_review"}},
+        {"contains": {"const": "rollback_review"}},
+        {"contains": {"const": "publication_approval"}}
+      ]
+    },
+    "approval_status": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gate", "passed", "evidence_ref"],
+        "properties": {
+          "gate": {"type": "string", "minLength": 1},
+          "passed": {"type": "boolean"},
+          "evidence_ref": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "review_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["validation_suite", "external_provenance"],
+      "properties": {
+        "validation_suite": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "evidence_mode",
+            "schema_version",
+            "verdict",
+            "final_promotion_ready",
+            "network_absorbable",
+            "blocking_check_count"
+          ],
+          "properties": {
+            "path": {"type": ["string", "null"]},
+            "evidence_mode": {"enum": ["saved", "fresh_run"]},
+            "schema_version": {
+              "const": "adaptive_creator_loop.startup_yc_validation_suite.v1"
+            },
+            "verdict": {"enum": ["blocked", "passed"]},
+            "final_promotion_ready": {"type": "boolean"},
+            "network_absorbable": {"const": false},
+            "blocking_check_count": {"type": "integer", "minimum": 0}
+          }
+        },
+        "external_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "required",
+            "present",
+            "schema_version",
+            "verdict",
+            "evidence_mode",
+            "network_absorbable",
+            "source_status_counts"
+          ],
+          "properties": {
+            "path": {"type": ["string", "null"]},
+            "required": {"const": true},
+            "present": {"type": "boolean"},
+            "schema_version": {
+              "type": ["string", "null"]
+            },
+            "verdict": {
+              "type": ["string", "null"]
+            },
+            "evidence_mode": {
+              "type": ["string", "null"]
+            },
+            "network_absorbable": {"const": false},
+            "source_status_counts": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "next_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"minItems": 1}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "review_ready"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"maxItems": 0},
+          "approval_status": {
+            "items": {
+              "properties": {
+                "passed": {"const": true}
+              }
+            }
+          },
+          "review_inputs": {
+            "properties": {
+              "validation_suite": {
+                "properties": {
+                  "verdict": {"const": "passed"},
+                  "final_promotion_ready": {"const": true}
+                }
+              },
+              "external_provenance": {
+                "properties": {
+                  "present": {"const": true},
+                  "verdict": {"const": "passed"},
+                  "evidence_mode": {"const": "recomputed"},
+                  "source_status_counts": {
+                    "minProperties": 1,
+                    "propertyNames": {"const": "hash_match"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

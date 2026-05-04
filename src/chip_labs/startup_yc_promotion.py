@@ -26,6 +26,9 @@ VALIDATION_SUITE_SCHEMA_VERSION = (
 VALIDATION_EVIDENCE_CHECK_SCHEMA_VERSION = (
     "adaptive_creator_loop.startup_yc_validation_evidence_check.v1"
 )
+NETWORK_ABSORPTION_REVIEW_SCHEMA_VERSION = (
+    "adaptive_creator_loop.startup_yc_network_absorption_review.v1"
+)
 VALIDATION_EVIDENCE_SCHEMA_PATH = (
     "docs/creator_system/schemas/startup-yc-validation-evidence.schema.json"
 )
@@ -524,6 +527,77 @@ def run_startup_yc_validation_suite(
         "next_actions": _validation_suite_next_actions(
             required_subchecks_passed=required_subchecks_passed,
             final_promotion_ready=final_promotion_ready,
+        ),
+    }
+
+
+def build_startup_yc_network_absorption_review(
+    validation_plan_path: str | Path,
+    *,
+    validation_suite_path: str | Path | None = None,
+    external_provenance_path: str | Path | None = None,
+    requested_claim: str = "network_absorbable",
+) -> dict[str, Any]:
+    """Build a conservative review packet for Startup YC network absorption."""
+
+    plan_path = Path(validation_plan_path)
+    plan = _load_json(plan_path)
+    suite_path = Path(validation_suite_path) if validation_suite_path else None
+    suite = (
+        _load_json(suite_path)
+        if suite_path
+        else run_startup_yc_validation_suite(
+            plan_path,
+            requested_claim=requested_claim,
+        )
+    )
+    external_path = (
+        Path(external_provenance_path) if external_provenance_path else None
+    )
+    external = _load_json(external_path) if external_path else None
+
+    required_approvals = _network_absorption_required_approvals(plan)
+    approval_status = _network_absorption_approval_status(
+        suite=suite,
+        required_approvals=required_approvals,
+    )
+    review_inputs = {
+        "validation_suite": _network_absorption_validation_suite_input(
+            suite,
+            suite_path=suite_path,
+        ),
+        "external_provenance": _network_absorption_external_provenance_input(
+            external,
+            external_path=external_path,
+        ),
+    }
+    blocking_checks = _network_absorption_blocking_checks(
+        plan=plan,
+        suite=suite,
+        external=external,
+        requested_claim=requested_claim,
+        approval_status=approval_status,
+    )
+
+    return {
+        "schema_version": NETWORK_ABSORPTION_REVIEW_SCHEMA_VERSION,
+        "plan_path": str(plan_path),
+        "plan_id": plan.get("plan_id"),
+        "domain": plan.get("domain"),
+        "current_claim": plan.get("current_claim"),
+        "requested_claim": requested_claim,
+        "verdict": "blocked" if blocking_checks else "review_ready",
+        "network_absorbable": False,
+        "claim_boundary": (
+            "review packet only; does not approve network absorption"
+        ),
+        "required_approvals": required_approvals,
+        "approval_status": approval_status,
+        "review_inputs": review_inputs,
+        "blocking_checks": blocking_checks,
+        "next_actions": _network_absorption_next_actions(
+            blocked=bool(blocking_checks),
+            required_approvals=required_approvals,
         ),
     }
 
@@ -1044,6 +1118,188 @@ def _validate_row_fields(
     return failures
 
 
+def _network_absorption_required_approvals(plan: dict[str, Any]) -> list[str]:
+    required = [
+        gate
+        for gate in _list_str(plan.get("required_promotion_gates"))
+        if gate in _REVIEW_GATE_REQUIREMENTS or gate == "multi_seed_validation"
+    ]
+    if "publication_approval" not in required:
+        required.append("publication_approval")
+    return required
+
+
+def _network_absorption_approval_status(
+    *,
+    suite: dict[str, Any],
+    required_approvals: list[str],
+) -> list[dict[str, Any]]:
+    subchecks = suite.get("subchecks") if isinstance(suite, dict) else None
+    review_gates = (
+        subchecks.get("review_gates")
+        if isinstance(subchecks, dict)
+        and isinstance(subchecks.get("review_gates"), dict)
+        else {}
+    )
+    review_gate_status = (
+        review_gates.get("gate_status") if isinstance(review_gates, dict) else None
+    )
+    multi_seed = (
+        subchecks.get("multi_seed_validation")
+        if isinstance(subchecks, dict)
+        and isinstance(subchecks.get("multi_seed_validation"), dict)
+        else {}
+    )
+    approvals: list[dict[str, Any]] = []
+    for gate in required_approvals:
+        if gate == "multi_seed_validation":
+            passed = (
+                isinstance(multi_seed, dict)
+                and multi_seed.get("verdict") == "passed"
+            )
+            evidence_ref = (
+                multi_seed.get("evidence_path")
+                if isinstance(multi_seed, dict)
+                else None
+            )
+        else:
+            passed = (
+                isinstance(review_gate_status, dict)
+                and review_gate_status.get(gate) is True
+            )
+            evidence_ref = (
+                review_gates.get("evidence_path")
+                if isinstance(review_gates, dict)
+                else None
+            )
+        approvals.append(
+            {
+                "gate": gate,
+                "passed": passed,
+                "evidence_ref": evidence_ref,
+            }
+        )
+    return approvals
+
+
+def _network_absorption_validation_suite_input(
+    suite: dict[str, Any],
+    *,
+    suite_path: Path | None,
+) -> dict[str, Any]:
+    return {
+        "path": str(suite_path) if suite_path else None,
+        "evidence_mode": "saved" if suite_path else "fresh_run",
+        "schema_version": suite.get("schema_version"),
+        "verdict": suite.get("verdict"),
+        "final_promotion_ready": suite.get("final_promotion_ready") is True,
+        "network_absorbable": suite.get("network_absorbable") is True,
+        "blocking_check_count": len(_list_str(suite.get("blocking_checks"))),
+    }
+
+
+def _network_absorption_external_provenance_input(
+    external: dict[str, Any] | None,
+    *,
+    external_path: Path | None,
+) -> dict[str, Any]:
+    if external is None:
+        return {
+            "path": str(external_path) if external_path else None,
+            "required": True,
+            "present": False,
+            "schema_version": None,
+            "verdict": None,
+            "evidence_mode": None,
+            "network_absorbable": False,
+            "source_status_counts": {},
+        }
+    source_status_counts: dict[str, int] = {}
+    source_inputs = external.get("source_inputs")
+    if isinstance(source_inputs, list):
+        for item in source_inputs:
+            if isinstance(item, dict):
+                status = str(item.get("status") or "unknown")
+                source_status_counts[status] = source_status_counts.get(status, 0) + 1
+    return {
+        "path": str(external_path) if external_path else None,
+        "required": True,
+        "present": True,
+        "schema_version": external.get("schema_version"),
+        "verdict": external.get("verdict"),
+        "evidence_mode": external.get("evidence_mode"),
+        "network_absorbable": external.get("network_absorbable") is True,
+        "source_status_counts": source_status_counts,
+    }
+
+
+def _network_absorption_blocking_checks(
+    *,
+    plan: dict[str, Any],
+    suite: dict[str, Any],
+    external: dict[str, Any] | None,
+    requested_claim: str,
+    approval_status: list[dict[str, Any]],
+) -> list[str]:
+    blocking_checks: list[str] = []
+    if requested_claim != "network_absorbable":
+        blocking_checks.append(f"unexpected_requested_claim:{requested_claim}")
+    if "network_absorbable" in set(_list_str(plan.get("prohibited_claims"))):
+        blocking_checks.append("plan_prohibits_claim:network_absorbable")
+    if _nested(plan, "publication_boundary", "network_publication_allowed") is not True:
+        blocking_checks.append("publication_boundary:network_publication_allowed")
+    if suite.get("schema_version") != VALIDATION_SUITE_SCHEMA_VERSION:
+        blocking_checks.append("validation_suite:schema_mismatch")
+    if suite.get("verdict") != "passed":
+        blocking_checks.append("validation_suite:blocked")
+    if suite.get("final_promotion_ready") is not True:
+        blocking_checks.append("validation_suite:final_promotion_not_ready")
+    if suite.get("network_absorbable") is True:
+        blocking_checks.append("validation_suite:claims_network_absorbable")
+    blocking_checks.extend(
+        f"validation_suite:{check}"
+        for check in _list_str(suite.get("blocking_checks"))
+    )
+    blocking_checks.extend(
+        f"approval_missing:{item['gate']}"
+        for item in approval_status
+        if item.get("passed") is not True
+    )
+
+    if external is None:
+        blocking_checks.append("external_provenance:missing")
+    else:
+        if external.get("schema_version") != (
+            "adaptive_creator_loop.startup_yc_external_rerun_provenance.v1"
+        ):
+            blocking_checks.append("external_provenance:schema_mismatch")
+        if external.get("verdict") != "passed":
+            blocking_checks.append("external_provenance:blocked")
+        if external.get("evidence_mode") != "recomputed":
+            blocking_checks.append("external_provenance:not_recomputed")
+        if external.get("network_absorbable") is True:
+            blocking_checks.append("external_provenance:claims_network_absorbable")
+        source_inputs = external.get("source_inputs")
+        if not isinstance(source_inputs, list) or not source_inputs:
+            blocking_checks.append("external_provenance:missing_source_inputs")
+        else:
+            for item in source_inputs:
+                if not isinstance(item, dict):
+                    blocking_checks.append("external_provenance:invalid_source_input")
+                    continue
+                status = item.get("status")
+                if status != "hash_match":
+                    reference = item.get("reference") or "unknown"
+                    blocking_checks.append(
+                        f"external_provenance:{reference}:{status}"
+                    )
+        blocking_checks.extend(
+            f"external_provenance:{check}"
+            for check in _list_str(external.get("blockers"))
+        )
+    return _dedupe(blocking_checks)
+
+
 def _next_actions(missing_gates: list[str], requested_claim: str) -> list[str]:
     actions = [
         "Keep Startup YC at transfer_supported until promotion gates pass.",
@@ -1153,6 +1409,23 @@ def _validation_suite_next_actions(
         "Repair blocked validation subchecks before final promotion review.",
         "Run the individual Startup YC gate commands to regenerate fresh evidence.",
         "Keep Startup YC at transfer_supported while suite blockers remain.",
+    ]
+
+
+def _network_absorption_next_actions(
+    *,
+    blocked: bool,
+    required_approvals: list[str],
+) -> list[str]:
+    if not blocked:
+        return [
+            "Treat this packet as ready for human network-absorption review only.",
+            "Do not publish until the operator records the final external approval outside this review artifact.",
+        ]
+    return [
+        "Keep Startup YC at transfer_supported; this packet does not approve network absorption.",
+        "Resolve every validation-suite and external provenance blocker before requesting publication.",
+        "Required approval gates: " + ", ".join(required_approvals) + ".",
     ]
 
 

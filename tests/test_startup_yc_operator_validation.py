@@ -9,6 +9,7 @@ from pathlib import Path
 import pytest
 
 from chip_labs.startup_yc_promotion import (
+    build_startup_yc_network_absorption_review,
     check_startup_yc_heldout_validation,
     check_startup_yc_multi_seed_validation,
     check_startup_yc_promotion_evidence,
@@ -36,12 +37,16 @@ VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA = Path(
 VALIDATION_SUITE_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-validation-suite.schema.json"
 )
+NETWORK_ABSORPTION_REVIEW_SCHEMA = Path(
+    "docs/creator_system/schemas/startup-yc-network-absorption-review.schema.json"
+)
 STARTUP_YC_SCHEMAS = (
     VALIDATION_PLAN_SCHEMA,
     VALIDATION_EVIDENCE_SCHEMA,
     VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA,
     GATE_CHECK_SCHEMA,
     VALIDATION_SUITE_SCHEMA,
+    NETWORK_ABSORPTION_REVIEW_SCHEMA,
 )
 
 
@@ -768,6 +773,56 @@ def test_startup_yc_validation_suite_schema_blocks_network_absorption() -> None:
     assert list(validator.iter_errors(malformed_subcheck))
 
 
+def test_startup_yc_network_absorption_review_stays_blocked() -> None:
+    result = build_startup_yc_network_absorption_review(
+        FIXTURE_DIR / "validation_plan.json",
+        validation_suite_path=FIXTURE_DIR / "validation_suite_blocked.json",
+    )
+
+    assert result["schema_version"] == (
+        "adaptive_creator_loop.startup_yc_network_absorption_review.v1"
+    )
+    assert result["verdict"] == "blocked"
+    assert result["network_absorbable"] is False
+    assert result["claim_boundary"].endswith("does not approve network absorption")
+    assert result["required_approvals"] == [
+        "multi_seed_validation",
+        "human_operator_calibration",
+        "privacy_review",
+        "rollback_review",
+        "publication_approval",
+    ]
+    assert "validation_suite:blocked" in result["blocking_checks"]
+    assert "external_provenance:missing" in result["blocking_checks"]
+    assert "approval_missing:multi_seed_validation" in result["blocking_checks"]
+    assert result["review_inputs"]["validation_suite"]["evidence_mode"] == "saved"
+    assert result["review_inputs"]["external_provenance"]["present"] is False
+
+
+def test_startup_yc_network_absorption_review_schema_blocks_claims() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(NETWORK_ABSORPTION_REVIEW_SCHEMA.read_text(encoding="utf-8"))
+    result = build_startup_yc_network_absorption_review(
+        FIXTURE_DIR / "validation_plan.json",
+        validation_suite_path=FIXTURE_DIR / "validation_suite_blocked.json",
+    )
+    validator = jsonschema.Draft202012Validator(schema)
+
+    validator.validate(result)
+
+    unsafe = json.loads(json.dumps(result))
+    unsafe["network_absorbable"] = True
+    assert list(validator.iter_errors(unsafe))
+
+    unsafe_input = json.loads(json.dumps(result))
+    unsafe_input["review_inputs"]["validation_suite"]["network_absorbable"] = True
+    assert list(validator.iter_errors(unsafe_input))
+
+    incoherent_ready = json.loads(json.dumps(result))
+    incoherent_ready["verdict"] = "review_ready"
+    assert list(validator.iter_errors(incoherent_ready))
+
+
 def test_startup_yc_gate_check_schema_blocks_network_absorption(
     tmp_path: Path,
 ) -> None:
@@ -1468,6 +1523,41 @@ def test_cli_startup_yc_validation_suite_fails_on_blocked(tmp_path: Path) -> Non
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
     jsonschema.Draft202012Validator(schema, registry=registry).validate(payload)
+
+
+def test_cli_startup_yc_network_absorption_review_fails_on_blocked(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(NETWORK_ABSORPTION_REVIEW_SCHEMA.read_text(encoding="utf-8"))
+    output_path = tmp_path / "startup-yc-network-absorption-review.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-network-absorption-review",
+            "--validation-plan",
+            str(FIXTURE_DIR / "validation_plan.json"),
+            "--validation-suite",
+            str(FIXTURE_DIR / "validation_suite_blocked.json"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "blocked"
+    assert payload["network_absorbable"] is False
+    assert "external_provenance:missing" in payload["blocking_checks"]
+    jsonschema.Draft202012Validator(schema).validate(payload)
 
 
 def _load_plan() -> dict[str, object]:

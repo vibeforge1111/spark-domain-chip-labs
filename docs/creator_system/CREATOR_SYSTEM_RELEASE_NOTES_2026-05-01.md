@@ -429,6 +429,11 @@
 - The external provenance packet schema now rejects forged `passed` packets
   that hide missing, stale, or unpinned source inputs behind an empty blocker
   list.
+- `startup-yc-network-absorption-review` now emits a conservative review packet
+  that combines the validation suite, required approval gates, and external
+  provenance state while keeping `network_absorbable=false`.
+- `startup-yc-network-absorption-review.schema.json` rejects premature network
+  absorption claims and incoherent `review_ready` packets with visible blockers.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -475,4 +480,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `245 passed`.
+Latest focused creator-system suite result before CI push: `248 passed`.

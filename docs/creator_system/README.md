@@ -118,6 +118,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Check Startup YC review gates | `python -m chip_labs.cli startup-yc-review-gates-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC promotion evidence bundle | `python -m chip_labs.cli startup-yc-promotion-evidence-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Run Startup YC validation suite | `python -m chip_labs.cli startup-yc-validation-suite --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
+| Build Startup YC network-absorption review packet | `python -m chip_labs.cli startup-yc-network-absorption-review --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --validation-suite docs/creator_system/examples/startup-yc-operator-validation/validation_suite_blocked.json --fail-on-blocked` |
 | Simulate content candidates | `python -m chip_labs.cli mirofish-content-simulate --task "<task>" --candidate "<A>" --candidate "<B>"` |
 | Run content multi-seed simulation | `python -m chip_labs.cli mirofish-content-multi-seed --task "<task>" --candidate "<A>" --candidate "<B>" --seed 1 --seed 2 --seed 3 --fail-on-blocked` |
 | Route content simulation | `python -m chip_labs.cli mirofish-content-route --task "<task>" --candidate "<A>" --candidate "<B>" --no-simulation` |

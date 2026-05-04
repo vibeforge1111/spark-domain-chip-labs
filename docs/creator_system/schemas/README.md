@@ -47,6 +47,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [startup-yc-gate-check-result.schema.json](startup-yc-gate-check-result.schema.json) | Startup YC individual gate-check outputs |
 | [startup-yc-validation-suite.schema.json](startup-yc-validation-suite.schema.json) | Startup YC validation-suite output |
 | [startup-yc-external-rerun-provenance.schema.json](startup-yc-external-rerun-provenance.schema.json) | Startup YC external recompute provenance packet |
+| [startup-yc-network-absorption-review.schema.json](startup-yc-network-absorption-review.schema.json) | Startup YC network-absorption review packet |
 | [generated-multi-seed-summary.schema.json](generated-multi-seed-summary.schema.json) | Generated multi-domain multi-seed summary output |
 | [generated-multi-seed-summary-check.schema.json](generated-multi-seed-summary-check.schema.json) | Recomputed generated multi-seed summary check output |
 
@@ -96,6 +97,11 @@ The external rerun provenance schema anchors a standalone packet for Startup YC
 recompute runs. It requires recomputed smoke linkage, source input paths,
 source hashes, `network_absorbable=false`, and visible blockers when any
 external source is missing, stale, or present without a hash.
+The network-absorption review schema combines the validation-suite state,
+required approval gates, and optional external provenance packet into a single
+review artifact. It still requires `network_absorbable=false`; a
+`review_ready` packet only means blockers are absent for human review, not that
+Spark may publish or network-absorb Startup YC.
 
 The generated multi-seed summary schemas anchor the generic domain-generator
 matrix separately from the Startup YC promotion gate. They require recomputed

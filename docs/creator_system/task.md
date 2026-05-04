@@ -494,6 +494,7 @@ Deliverables:
 - [x] Add release-note summary for Startup YC external provenance packets.
 - [x] Add release-note summary for pinned Startup YC transfer source hashes.
 - [x] Add release-note summary for external provenance schema anti-forgery.
+- [x] Add release-note summary for Startup YC network absorption review packets.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -819,4 +820,4 @@ Completed product PR verification:
 - Real content outcome calibration.
 - Product wiring for Builder, Telegram, Spawner UI, Canvas, and Kanban.
 - Public `spark-creator` repo decision.
-- Network absorption review packet.
+- [x] Network absorption review packet.
