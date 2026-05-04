@@ -38,6 +38,7 @@ Expected result:
 - repo/user beta readiness: `100`
 - production-grade creator-system standard readiness: `100`
 - network absorption publication: `blocked`
+- release evidence includes `production_readiness_summary`
 
 ## What This Beta Can Do
 

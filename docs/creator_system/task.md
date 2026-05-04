@@ -880,6 +880,10 @@ Completed documentation/verification:
   packet, asserts generated and product phases pass while Startup YC network
   absorption stays blocked, and uploads `creator-system-production-readiness`
   as a workflow artifact.
+- `creator-system-release-evidence` now requires and summarizes
+  production-readiness evidence too, so a clean release packet cannot pass
+  unless repo/user beta and creator-system standard readiness are both `100`
+  while network absorption remains blocked.
 
 Completed product PR verification:
 

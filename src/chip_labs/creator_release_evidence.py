@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+import json
 import subprocess
 from pathlib import Path
 from typing import Any
 
 from .creator_beta_readiness import build_creator_system_beta_check
+from .creator_production_readiness import build_creator_system_production_readiness
 from .creator_run import repo_root
 
 
@@ -24,6 +26,7 @@ RELEASE_COMMANDS = [
     "python -m ruff check src/chip_labs tests",
     "python -m pytest tests/test_creator_beta_readiness.py tests/test_creator_release_gate.py tests/test_creator_system_docs.py tests/test_startup_yc_operator_validation.py -q",
     "chip-labs creator-system-beta-check --fail-on-blocked",
+    "chip-labs creator-system-production-readiness --fail-on-blocked",
     "chip-labs creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn",
 ]
 
@@ -36,8 +39,10 @@ def build_creator_system_release_evidence(
     validation_plan_path: str | Path | None = None,
     generated_summary_path: str | Path | None = None,
     product_runtime_review_path: str | Path | None = None,
+    production_readiness_path: str | Path | None = None,
     git_info: dict[str, Any] | None = None,
     beta_check: dict[str, Any] | None = None,
+    production_readiness: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a machine-readable release evidence packet without approving publication."""
 
@@ -49,8 +54,18 @@ def build_creator_system_release_evidence(
         generated_summary_path=generated_summary_path,
         product_runtime_review_path=product_runtime_review_path,
     )
+    production = production_readiness or _load_production_readiness(
+        production_readiness_path
+    )
+    if production is None:
+        production = build_creator_system_production_readiness(
+            startup_run_dir=startup_run_dir,
+            validation_plan_path=validation_plan_path,
+            generated_summary_path=generated_summary_path,
+            product_runtime_review_path=product_runtime_review_path,
+        )
 
-    blocking_checks = _release_blockers(repo, beta)
+    blocking_checks = _release_blockers(repo, beta, production)
     return {
         "schema_version": SCHEMA_VERSION,
         "release_id": release_id,
@@ -65,6 +80,7 @@ def build_creator_system_release_evidence(
         ),
         "repo": repo,
         "beta_check_summary": _summarize_beta_check(beta),
+        "production_readiness_summary": _summarize_production_readiness(production),
         "required_commands": RELEASE_COMMANDS,
         "evidence_refs": _evidence_refs(),
         "promotion_boundary": {
@@ -115,12 +131,76 @@ def _summarize_beta_check(beta_check: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _release_blockers(repo: dict[str, Any], beta_check: dict[str, Any]) -> list[str]:
+def _summarize_production_readiness(readiness: dict[str, Any]) -> dict[str, Any]:
+    tracks = {
+        str(track.get("name")): track
+        for track in readiness.get("readiness_tracks", [])
+        if isinstance(track, dict) and track.get("name")
+    }
+    return {
+        "schema_version": readiness.get("schema_version"),
+        "verdict": readiness.get("verdict"),
+        "network_absorbable": readiness.get("network_absorbable"),
+        "track_scores": {
+            name: track.get("score")
+            for name, track in tracks.items()
+        },
+        "track_verdicts": {
+            name: track.get("verdict")
+            for name, track in tracks.items()
+        },
+        "release_gate_verdict": (
+            readiness.get("release_gate_summary", {}).get("verdict")
+            if isinstance(readiness.get("release_gate_summary"), dict)
+            else None
+        ),
+        "blocking_checks": list(readiness.get("blocking_checks") or []),
+    }
+
+
+def _release_blockers(
+    repo: dict[str, Any],
+    beta_check: dict[str, Any],
+    production_readiness: dict[str, Any],
+) -> list[str]:
     blockers: list[str] = []
     if beta_check.get("verdict") != "pass":
         blockers.append(f"beta_check:{beta_check.get('verdict')}")
     if beta_check.get("network_absorbable") is not False:
         blockers.append("beta_check:claimed_network_absorbable")
+    if production_readiness.get("verdict") != "pass":
+        blockers.append(f"production_readiness:{production_readiness.get('verdict')}")
+    if production_readiness.get("network_absorbable") is not False:
+        blockers.append("production_readiness:claimed_network_absorbable")
+    tracks = {
+        str(track.get("name")): track
+        for track in production_readiness.get("readiness_tracks", [])
+        if isinstance(track, dict) and track.get("name")
+    }
+    expected_pass_tracks = (
+        "repo_user_beta_readiness",
+        "production_grade_creator_system_standard",
+    )
+    for track_name in expected_pass_tracks:
+        track = tracks.get(track_name)
+        if not track:
+            blockers.append(f"production_readiness:missing_track:{track_name}")
+            continue
+        if track.get("verdict") != "pass":
+            blockers.append(
+                f"production_readiness:{track_name}:{track.get('verdict')}"
+            )
+        if track.get("score") != 100:
+            blockers.append(
+                f"production_readiness:{track_name}:score:{track.get('score')}"
+            )
+    network_track = tracks.get("network_absorption_publication")
+    if not network_track:
+        blockers.append("production_readiness:missing_track:network_absorption_publication")
+    elif network_track.get("verdict") != "blocked":
+        blockers.append(
+            "production_readiness:network_absorption_publication_not_blocked"
+        )
     if repo.get("worktree_clean") is not True:
         blockers.append("repo:worktree_dirty")
     if not repo.get("commit"):
@@ -146,7 +226,21 @@ def _evidence_refs() -> list[dict[str, str]]:
             "label": "release_evidence_schema",
             "path": "docs/creator_system/schemas/creator-system-release-evidence.schema.json",
         },
+        {
+            "label": "production_readiness_schema",
+            "path": "docs/creator_system/schemas/creator-system-production-readiness.schema.json",
+        },
     ]
+
+
+def _load_production_readiness(path_value: str | Path | None) -> dict[str, Any] | None:
+    if path_value is None:
+        return None
+    path = Path(path_value)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"{path} must contain a JSON object")
+    return data
 
 
 def _next_actions(blocking_checks: list[str]) -> list[str]:

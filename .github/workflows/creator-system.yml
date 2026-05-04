@@ -182,22 +182,6 @@ jobs:
           assert payload["network_absorbable"] is False
           assert not payload["blocking_checks"]
           PY
-          python -m chip_labs.cli creator-system-release-evidence --output /tmp/creator-system-release-evidence.json --fail-on-blocked
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          import jsonschema
-
-          schema = json.loads(Path("docs/creator_system/schemas/creator-system-release-evidence.schema.json").read_text())
-          payload = json.loads(Path("/tmp/creator-system-release-evidence.json").read_text())
-          jsonschema.Draft202012Validator(schema).validate(payload)
-          assert payload["verdict"] == "pass"
-          assert payload["release_ready"] is True
-          assert payload["network_absorbable"] is False
-          assert payload["repo"]["worktree_clean"] is True
-          assert payload["beta_check_summary"]["verdict"] == "pass"
-          PY
           python -m chip_labs.cli creator-system-production-readiness --workspace-dir /tmp/creator-system-production-readiness --output /tmp/creator-system-production-readiness.json --fail-on-blocked
           python - <<'PY'
           import json
@@ -217,6 +201,26 @@ jobs:
           assert payload["release_gate_summary"]["generated_phase_passed"] is True
           assert payload["release_gate_summary"]["product_phase_passed"] is True
           assert payload["release_gate_summary"]["startup_phase_passed"] is False
+          PY
+          python -m chip_labs.cli creator-system-release-evidence --production-readiness /tmp/creator-system-production-readiness.json --output /tmp/creator-system-release-evidence.json --fail-on-blocked
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          import jsonschema
+
+          schema = json.loads(Path("docs/creator_system/schemas/creator-system-release-evidence.schema.json").read_text())
+          payload = json.loads(Path("/tmp/creator-system-release-evidence.json").read_text())
+          jsonschema.Draft202012Validator(schema).validate(payload)
+          assert payload["verdict"] == "pass"
+          assert payload["release_ready"] is True
+          assert payload["network_absorbable"] is False
+          assert payload["repo"]["worktree_clean"] is True
+          assert payload["beta_check_summary"]["verdict"] == "pass"
+          assert payload["production_readiness_summary"]["verdict"] == "pass"
+          assert payload["production_readiness_summary"]["track_scores"]["repo_user_beta_readiness"] == 100
+          assert payload["production_readiness_summary"]["track_scores"]["production_grade_creator_system_standard"] == 100
+          assert payload["production_readiness_summary"]["track_verdicts"]["network_absorption_publication"] == "blocked"
           PY
           mkdir -p /tmp/creator-system-release-evidence-artifact
           cp /tmp/creator-system-release-evidence.json /tmp/creator-system-release-evidence-artifact/creator-system-release-evidence.json

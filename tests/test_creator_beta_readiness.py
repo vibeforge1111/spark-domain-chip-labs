@@ -182,9 +182,11 @@ def test_cli_creator_system_beta_check_fails_on_blocked(tmp_path: Path) -> None:
 
 def test_creator_system_release_evidence_passes_for_clean_beta_packet() -> None:
     beta = build_creator_system_beta_check()
+    production = build_creator_system_production_readiness()
     result = build_creator_system_release_evidence(
         git_info=_git_info(clean=True),
         beta_check=beta,
+        production_readiness=production,
     )
 
     _validate_release_evidence_schema(result)
@@ -192,6 +194,16 @@ def test_creator_system_release_evidence_passes_for_clean_beta_packet() -> None:
     assert result["release_ready"] is True
     assert result["network_absorbable"] is False
     assert result["beta_check_summary"]["verdict"] == "pass"
+    assert result["production_readiness_summary"]["verdict"] == "pass"
+    assert result["production_readiness_summary"]["track_scores"][
+        "repo_user_beta_readiness"
+    ] == 100
+    assert result["production_readiness_summary"]["track_scores"][
+        "production_grade_creator_system_standard"
+    ] == 100
+    assert result["production_readiness_summary"]["track_verdicts"][
+        "network_absorption_publication"
+    ] == "blocked"
     assert result["repo"]["worktree_clean"] is True
     assert result["promotion_boundary"]["blocked_claim"] == "network_absorbable"
     assert "publication_approval" in result["promotion_boundary"]["required_before_upgrade"]
@@ -199,9 +211,11 @@ def test_creator_system_release_evidence_passes_for_clean_beta_packet() -> None:
 
 def test_creator_system_release_evidence_blocks_dirty_worktree() -> None:
     beta = build_creator_system_beta_check()
+    production = build_creator_system_production_readiness()
     result = build_creator_system_release_evidence(
         git_info=_git_info(clean=False),
         beta_check=beta,
+        production_readiness=production,
     )
 
     _validate_release_evidence_schema(result)
@@ -211,11 +225,31 @@ def test_creator_system_release_evidence_blocks_dirty_worktree() -> None:
     assert "repo:worktree_dirty" in result["blocking_checks"]
 
 
+def test_creator_system_release_evidence_blocks_failed_production_readiness() -> None:
+    beta = build_creator_system_beta_check()
+    production = build_creator_system_production_readiness()
+    production["readiness_tracks"][1]["score"] = 60
+    result = build_creator_system_release_evidence(
+        git_info=_git_info(clean=True),
+        beta_check=beta,
+        production_readiness=production,
+    )
+
+    _validate_release_evidence_schema(result)
+    assert result["verdict"] == "blocked"
+    assert result["release_ready"] is False
+    assert (
+        "production_readiness:production_grade_creator_system_standard:score:60"
+        in result["blocking_checks"]
+    )
+
+
 def test_creator_system_release_evidence_schema_rejects_absorbable_claim() -> None:
     jsonschema = pytest.importorskip("jsonschema")
     result = build_creator_system_release_evidence(
         git_info=_git_info(clean=True),
         beta_check=build_creator_system_beta_check(),
+        production_readiness=build_creator_system_production_readiness(),
     )
     schema = json.loads(RELEASE_EVIDENCE_SCHEMA.read_text(encoding="utf-8"))
 
@@ -227,6 +261,9 @@ def test_creator_system_release_evidence_schema_rejects_absorbable_claim() -> No
 
 def test_cli_creator_system_release_evidence_writes_packet(tmp_path: Path) -> None:
     output_path = tmp_path / "release-evidence.json"
+    production_path = tmp_path / "production-readiness.json"
+    production = build_creator_system_production_readiness()
+    production_path.write_text(json.dumps(production, indent=2) + "\n", encoding="utf-8")
 
     result = subprocess.run(
         [
@@ -236,6 +273,8 @@ def test_cli_creator_system_release_evidence_writes_packet(tmp_path: Path) -> No
             "creator-system-release-evidence",
             "--output",
             str(output_path),
+            "--production-readiness",
+            str(production_path),
         ],
         cwd=Path.cwd(),
         capture_output=True,
@@ -248,6 +287,7 @@ def test_cli_creator_system_release_evidence_writes_packet(tmp_path: Path) -> No
     _validate_release_evidence_schema(payload)
     assert payload["network_absorbable"] is False
     assert payload["beta_check_summary"]["verdict"] == "pass"
+    assert payload["production_readiness_summary"]["verdict"] == "pass"
 
 
 def test_creator_system_production_readiness_tracks_honest_100s(

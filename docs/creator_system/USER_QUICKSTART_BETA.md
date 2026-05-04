@@ -55,9 +55,12 @@ chip-labs creator-system-release-evidence --fail-on-blocked --output /tmp/creato
 ```
 
 Expected result: `verdict` is `pass`, `release_ready` is `true`, and
-`network_absorbable` remains `false`. If the checkout has local edits, this
-packet blocks with `repo:worktree_dirty` so release evidence cannot silently
-include uncommitted work.
+`network_absorbable` remains `false`. The packet also includes
+`production_readiness_summary`, which should show repo/user beta readiness and
+the production-grade creator-system standard at `100`, while
+`network_absorption_publication` remains `blocked`. If the checkout has local
+edits, this packet blocks with `repo:worktree_dirty` so release evidence cannot
+silently include uncommitted work.
 
 On pushed commits, Creator System CI also uploads this JSON as the
 `creator-system-release-evidence` workflow artifact.

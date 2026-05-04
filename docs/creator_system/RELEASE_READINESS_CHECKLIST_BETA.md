@@ -19,7 +19,7 @@ or handing it to Spark agents as a repo-local creator workflow.
 - [x] `chip-labs creator-run-template-check --fail-on-blocked` passes.
 - [x] `chip-labs creator-system-beta-check --fail-on-blocked` passes.
 - [x] `chip-labs creator-system-release-evidence --fail-on-blocked` exists for
-  clean-checkout release evidence packets.
+  clean-checkout release evidence packets and includes the production-readiness summary.
 - [x] `chip-labs creator-system-production-readiness --fail-on-blocked` exists
   for the honest 100% repo/user beta and creator-system standard readiness
   packet, while the network publication track remains blocked.

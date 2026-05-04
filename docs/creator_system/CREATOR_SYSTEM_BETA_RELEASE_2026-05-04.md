@@ -41,6 +41,9 @@ This is the release artifact for the creator-system technical beta.
   (`100`) and production-grade creator-system standard track (`100`), while
   `network_absorption_publication` remains `blocked` (`0`) with
   `network_absorbable=false`.
+- Machine-readable release evidence now includes the
+  `production_readiness_summary` so the clean-checkout release packet cannot
+  pass without both 100% tracks and the still-blocked network-publication track.
 - Strict Startup YC smoke: `ready_for_swarm_packet`,
   `transfer_supported`, `101 pass / 0 warn / 0 fail`.
 - Saved Startup YC network-absorption review fixture:

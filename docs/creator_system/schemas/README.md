@@ -133,9 +133,13 @@ workbench rehearsal, and stronger-release blockers in one packet while still
 keeping `network_absorbable=false`.
 The creator-system release-evidence schema wraps that beta check with repo
 branch, commit, remote, clean-worktree status, required rerun commands, release
-docs, and the explicit promotion boundary. A passing packet requires a clean
-checkout and a passing beta check; dirty release evidence blocks without
-changing `network_absorbable=false`.
+docs, the production-readiness summary, and the explicit promotion boundary. A
+passing packet requires a clean checkout, a passing beta check, a passing
+production-readiness packet for the repo/user beta and creator-system standard
+tracks, and a still-blocked network-publication track; dirty release evidence
+blocks without changing `network_absorbable=false`.
+In short: dirty release evidence blocks, and missing or weakened
+production-readiness evidence blocks too.
 The creator-system production-readiness schema reports the two 100% targets
 separately from network publication: repo/user beta readiness and the
 production-grade creator-system standard may pass when generated multi-seed

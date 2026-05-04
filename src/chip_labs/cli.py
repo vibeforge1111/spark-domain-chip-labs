@@ -1389,6 +1389,7 @@ def cmd_creator_system_release_evidence(args: argparse.Namespace) -> None:
         validation_plan_path=args.validation_plan,
         generated_summary_path=args.generated_summary,
         product_runtime_review_path=args.product_runtime_review,
+        production_readiness_path=args.production_readiness,
     )
     _write_output(args.output, result)
     if args.fail_on_blocked and result["verdict"] == "blocked":
@@ -2852,6 +2853,12 @@ def main() -> None:
         type=str,
         default=None,
         help="Optional product runtime review JSON path.",
+    )
+    p_creator_system_release_evidence.add_argument(
+        "--production-readiness",
+        type=str,
+        default=None,
+        help="Optional creator-system-production-readiness JSON path.",
     )
     p_creator_system_release_evidence.add_argument(
         "--output", type=str, default=None, help="Output JSON file path."

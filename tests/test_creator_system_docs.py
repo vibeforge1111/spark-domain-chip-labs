@@ -158,6 +158,7 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "Release tag selected: `creator-system-beta-2026-05-04`",
         "chip-labs creator-system-beta-check --fail-on-blocked",
         "creator-system-release-evidence --fail-on-blocked",
+        "production-readiness summary",
         "creator-system-production-readiness --fail-on-blocked",
         "creator-system-release-evidence` as a workflow",
         "creator-system-production-readiness` as a workflow",
@@ -424,8 +425,9 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert 'assert payload["network_absorbable"] is False' in text
     assert "--output /tmp/creator-release-gate.json" in text
     assert "creator-release-gate.schema.json" in text
-    assert "creator-system-release-evidence --output /tmp/creator-system-release-evidence.json --fail-on-blocked" in text
+    assert "creator-system-release-evidence --production-readiness /tmp/creator-system-production-readiness.json --output /tmp/creator-system-release-evidence.json --fail-on-blocked" in text
     assert "creator-system-release-evidence.schema.json" in text
+    assert 'payload["production_readiness_summary"]["verdict"] == "pass"' in text
     assert "creator-system-production-readiness --workspace-dir /tmp/creator-system-production-readiness --output /tmp/creator-system-production-readiness.json --fail-on-blocked" in text
     assert "creator-system-production-readiness.schema.json" in text
     assert "creator-system-production-readiness-artifact" in text
@@ -624,6 +626,7 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "Machine-readable technical beta release evidence packet",
         "Local creator-system beta readiness aggregate",
         "Honest repo/user beta and creator-system standard readiness tracks",
+        "production-readiness summary",
         "product-runtime-review-packet.schema.json",
         "product-runtime-review-check.schema.json",
         "doctor-adversarial-sweep-manifest.schema.json",
