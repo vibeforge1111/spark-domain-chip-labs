@@ -505,6 +505,13 @@
   matrix path also emits `/tmp/generated-release-gate.json`, proving the
   generated multi-seed phase can pass while product runtime and Startup YC
   network-absorption blockers remain visible.
+- `creator-system-beta-check` now gives users and CI a one-command local beta
+  readiness packet. It aggregates template validation, strict Startup YC smoke,
+  raw validation-evidence shape, network-absorption boundary checks, and the
+  stronger-release gate while preserving `network_absorbable=false`.
+- `creator-system-beta-check.schema.json` anchors that packet so a future beta
+  handoff cannot hide broken local workflows or accidentally convert blocked
+  release evidence into publication approval.
 - `product-runtime-review-template` and `product-runtime-review-check` now
   define the product runtime review evidence packet for Builder, Telegram,
   Spawner, Canvas, and Kanban. The check requires reviewer evidence,

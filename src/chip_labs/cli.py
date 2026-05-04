@@ -1363,6 +1363,21 @@ def cmd_creator_release_gate(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_creator_system_beta_check(args: argparse.Namespace) -> None:
+    """Aggregate local beta readiness checks without approving publication."""
+    from .creator_beta_readiness import build_creator_system_beta_check
+
+    result = build_creator_system_beta_check(
+        startup_run_dir=args.startup_run_dir,
+        validation_plan_path=args.validation_plan,
+        generated_summary_path=args.generated_summary,
+        product_runtime_review_path=args.product_runtime_review,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_creator_mission_status(args: argparse.Namespace) -> None:
     """Build a read-only creator mission status for product surfaces."""
     from .creator_mission_adapter import build_creator_mission_status, load_json_packet
@@ -2698,6 +2713,45 @@ def main() -> None:
         help="Exit with status 1 when the release gate is blocked.",
     )
     p_creator_release_gate.set_defaults(func=cmd_creator_release_gate)
+
+    # creator-system-beta-check
+    p_creator_system_beta_check = sub.add_parser(
+        "creator-system-beta-check",
+        help="Aggregate local creator-system beta readiness without approving publication.",
+    )
+    p_creator_system_beta_check.add_argument(
+        "--startup-run-dir",
+        type=str,
+        default=None,
+        help="Optional Startup YC creator-run fixture path.",
+    )
+    p_creator_system_beta_check.add_argument(
+        "--validation-plan",
+        type=str,
+        default=None,
+        help="Optional Startup YC validation_plan.json path.",
+    )
+    p_creator_system_beta_check.add_argument(
+        "--generated-summary",
+        type=str,
+        default=None,
+        help="Optional generated multi-seed summary JSON path.",
+    )
+    p_creator_system_beta_check.add_argument(
+        "--product-runtime-review",
+        type=str,
+        default=None,
+        help="Optional product runtime review JSON path.",
+    )
+    p_creator_system_beta_check.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_creator_system_beta_check.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when beta readiness is blocked.",
+    )
+    p_creator_system_beta_check.set_defaults(func=cmd_creator_system_beta_check)
 
     # creator-mission-status
     p_creator_mission_status = sub.add_parser(

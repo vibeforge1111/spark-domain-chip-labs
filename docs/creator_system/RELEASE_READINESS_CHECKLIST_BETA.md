@@ -17,6 +17,7 @@ or handing it to Spark agents as a repo-local creator workflow.
 - [x] `python -m pip install -e .` succeeds.
 - [x] `chip-labs --help` shows the console entrypoint.
 - [x] `chip-labs creator-run-template-check --fail-on-blocked` passes.
+- [x] `chip-labs creator-system-beta-check --fail-on-blocked` passes.
 - [x] Strict Startup YC saved-evidence smoke passes.
 
 Verified on 2026-05-04 from a clean temp checkout at
@@ -42,6 +43,8 @@ Verified on 2026-05-04 from a clean temp checkout at
 - [x] Startup YC external provenance packets pin source hashes.
 - [x] Startup YC network-absorption review has a saved blocked fixture and CI
   recomputes it before any stronger release claim.
+- [x] Local beta readiness aggregate proves usable local creator workflows while
+  keeping stronger release gates blocked.
 - [x] Broad-transfer aggregate counts are checked against row deltas.
 - [x] Tool-operation checks block protected commands, missing postconditions,
   unsafe secrets, and rollback-less failures.
@@ -75,6 +78,7 @@ Verified on 2026-05-04 from a clean temp checkout at
 python -m ruff check src/chip_labs tests
 python -m pytest tests/test_creator_mission_adapter.py tests/test_creator_system_docs.py tests/test_startup_yc_operator_validation.py tests/test_tool_operation.py tests/test_artifact_quality.py tests/test_mirofish_content_simulation.py tests/test_operator_review.py tests/test_creator_generator_acceptance.py tests/test_creator_run.py tests/test_creator_run_examples.py tests/test_retrieval_memory.py -q
 chip-labs creator-run-template-check --fail-on-blocked
+chip-labs creator-system-beta-check --fail-on-blocked
 chip-labs creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn
 ```
 

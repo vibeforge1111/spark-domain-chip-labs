@@ -825,6 +825,14 @@ Completed documentation/verification:
   `/tmp/generated-release-gate.json`, validates it against
   `creator-release-gate.schema.json`, and asserts the generated multi-seed
   phase passes without hiding Startup YC or product runtime blockers.
+- `creator-system-beta-check` now gives users, Spark agents, and CI a
+  one-command local beta readiness packet. It aggregates template validation,
+  strict Startup YC smoke, raw validation-evidence shape, network-absorption
+  boundary checks, and the stronger-release gate while preserving
+  `network_absorbable=false`.
+- `creator-system-beta-check.schema.json` anchors that aggregate packet so beta
+  handoffs cannot hide broken local workflows or accidentally treat blocked
+  release evidence as publication approval.
 - `product-runtime-review-template` and `product-runtime-review-check` now
   define the product-review evidence shape for Builder, Telegram, Spawner,
   Canvas, and Kanban. Passing review evidence must preserve read-only adapters,

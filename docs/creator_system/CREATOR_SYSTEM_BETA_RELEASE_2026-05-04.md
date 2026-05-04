@@ -16,6 +16,8 @@ This is the release artifact for the creator-system technical beta.
 - Run `chip-labs` as a console command after installation.
 - Validate creator-run templates with
   `chip-labs creator-run-template-check --fail-on-blocked`.
+- Run the aggregate local beta check with
+  `chip-labs creator-system-beta-check --fail-on-blocked`.
 - Create local creator-run scaffolds with `chip-labs creator-run-init`.
 - Smoke and repair creator runs with `creator-run-smoke` and
   `creator-run-doctor`.
@@ -27,6 +29,8 @@ This is the release artifact for the creator-system technical beta.
 
 - Fresh clone install: passed on 2026-05-04.
 - Template check: `57 pass / 0 warn / 0 fail`.
+- Local beta readiness check: `pass`, with `network_absorbable=false` and
+  stronger release gates still blocked.
 - Strict Startup YC smoke: `ready_for_swarm_packet`,
   `transfer_supported`, `101 pass / 0 warn / 0 fail`.
 - Saved Startup YC network-absorption review fixture:

@@ -22,6 +22,7 @@ on:
       - "tests/test_mirofish_content_simulation.py"
       - "tests/test_operator_review.py"
       - "tests/test_product_runtime_review.py"
+      - "tests/test_creator_beta_readiness.py"
       - "tests/test_retrieval_memory.py"
       - "tests/test_startup_yc_operator_validation.py"
       - "tests/test_tool_operation.py"
@@ -36,6 +37,7 @@ on:
       - "tests/test_mirofish_content_simulation.py"
       - "tests/test_operator_review.py"
       - "tests/test_product_runtime_review.py"
+      - "tests/test_creator_beta_readiness.py"
       - "tests/test_retrieval_memory.py"
       - "tests/test_startup_yc_operator_validation.py"
       - "tests/test_tool_operation.py"
@@ -73,6 +75,7 @@ jobs:
             tests/test_mirofish_content_simulation.py \
             tests/test_operator_review.py \
             tests/test_product_runtime_review.py \
+            tests/test_creator_beta_readiness.py \
             tests/test_creator_generator_acceptance.py \
             tests/test_creator_run.py \
             tests/test_creator_run_examples.py \
@@ -154,6 +157,20 @@ jobs:
               blocker.startswith("startup_yc_network_absorption_review:")
               for blocker in release_payload["blocking_checks"]
           )
+          PY
+          python -m chip_labs.cli creator-system-beta-check --output /tmp/creator-system-beta-check.json --fail-on-blocked
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          import jsonschema
+
+          schema = json.loads(Path("docs/creator_system/schemas/creator-system-beta-check.schema.json").read_text())
+          payload = json.loads(Path("/tmp/creator-system-beta-check.json").read_text())
+          jsonschema.Draft202012Validator(schema).validate(payload)
+          assert payload["verdict"] == "pass"
+          assert payload["network_absorbable"] is False
+          assert not payload["blocking_checks"]
           PY
           python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 

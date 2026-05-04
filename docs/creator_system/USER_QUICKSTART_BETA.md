@@ -37,6 +37,15 @@ chip-labs creator-run-template-check --fail-on-blocked
 
 Expected result: `verdict` is `pass`, with `57` passing checks.
 
+Run the aggregate beta readiness check:
+
+```bash
+chip-labs creator-system-beta-check --fail-on-blocked
+```
+
+Expected result: `verdict` is `pass`, while `network_absorbable` remains
+`false` and stronger network/product release claims stay blocked.
+
 ## Create A Creator Run
 
 ```bash

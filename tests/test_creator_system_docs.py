@@ -78,6 +78,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "generated-multi-seed-summary-check",
         "creator-mission-status",
         "creator-release-gate",
+        "creator-system-beta-check",
         "startup-yc-promotion-gate-check",
         "startup-yc-validation-evidence-check",
         "startup-yc-multi-seed-check",
@@ -99,6 +100,7 @@ def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
 
     assert "## Creator-System Beta Quickstart" in text
     assert "chip-labs creator-run-template-check --fail-on-blocked" in text
+    assert "chip-labs creator-system-beta-check --fail-on-blocked" in text
     assert "docs/creator_system/USER_QUICKSTART_BETA.md" in text
     assert "docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md" in text
     assert "docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md" in text
@@ -118,6 +120,7 @@ def test_creator_system_beta_quickstart_is_user_runnable() -> None:
     for phrase in (
         "python -m pip install -e .",
         "chip-labs creator-run-template-check --fail-on-blocked",
+        "chip-labs creator-system-beta-check --fail-on-blocked",
         "chip-labs creator-run-init",
         "chip-labs creator-run-smoke",
         "chip-labs creator-run-doctor",
@@ -140,6 +143,7 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "chip-labs --help",
         "Strict Startup YC saved-evidence smoke passes",
         "Release tag selected: `creator-system-beta-2026-05-04`",
+        "chip-labs creator-system-beta-check --fail-on-blocked",
         "saved blocked fixture",
         "recomputes it before any stronger release claim",
         "Manual generated multi-seed matrix workflow dispatch passed",
@@ -161,6 +165,7 @@ def test_creator_system_beta_release_artifact_preserves_production_boundary() ->
         "not a Spark Swarm network-publication approval",
         "Fresh clone install: passed on 2026-05-04",
         "Template check: `57 pass / 0 warn / 0 fail`",
+        "Local beta readiness check: `pass`",
         "Strict Startup YC smoke",
         "`transfer_supported`",
         "network_absorption_review_blocked.json",
@@ -259,6 +264,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "Creator System CI now runs `creator-release-gate`" in text
     assert "creator-release-gate.schema.json" in text
     assert "/tmp/generated-release-gate.json" in text
+    assert "creator-system-beta-check" in text
+    assert "creator-system-beta-check.schema.json" in text
     assert "generated-multi-domain-briefs.json" in text
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
@@ -323,6 +330,10 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert 'assert payload["network_absorbable"] is False' in text
     assert "--output /tmp/creator-release-gate.json" in text
     assert "creator-release-gate.schema.json" in text
+    assert "tests/test_creator_beta_readiness.py" in text
+    assert "creator-system-beta-check --output /tmp/creator-system-beta-check.json --fail-on-blocked" in text
+    assert "creator-system-beta-check.schema.json" in text
+    assert 'assert payload["verdict"] == "pass"' in text
     assert 'assert release_payload["verdict"] == "blocked"' in text
     assert 'assert release_payload["network_absorbable"] is False' in text
     assert "generated_multi_seed_validation:missing_generated_multi_seed_summary" in text
@@ -500,6 +511,8 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "operator-review-packet.schema.json",
         "operator-review-check.schema.json",
         "creator-release-gate.schema.json",
+        "creator-system-beta-check.schema.json",
+        "Local creator-system beta readiness aggregate",
         "product-runtime-review-packet.schema.json",
         "product-runtime-review-check.schema.json",
         "doctor-adversarial-sweep-manifest.schema.json",
@@ -530,6 +543,7 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "human/operator calibration",
         "review evidence only",
         "stronger-release evidence",
+        "technical beta",
         "disabled creator controls",
     ):
         assert phrase in text

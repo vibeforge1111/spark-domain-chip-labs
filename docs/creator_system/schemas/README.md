@@ -39,6 +39,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [template-check-result.schema.json](template-check-result.schema.json) | `creator-run-template-check` output |
 | [creator-mission-status.schema.json](creator-mission-status.schema.json) | Read-only product surface adapter packet |
 | [creator-release-gate.schema.json](creator-release-gate.schema.json) | Stronger-release gate aggregate for multi-seed, Startup YC review, and product runtime review evidence |
+| [creator-system-beta-check.schema.json](creator-system-beta-check.schema.json) | Local creator-system beta readiness aggregate |
 | [operator-review-packet.schema.json](operator-review-packet.schema.json) | Generic generated-domain human/operator review packet |
 | [operator-review-check.schema.json](operator-review-check.schema.json) | Generic generated-domain human/operator review check output |
 | [product-runtime-review-packet.schema.json](product-runtime-review-packet.schema.json) | Product runtime review packet for Builder, Telegram, Spawner, Canvas, and Kanban |
@@ -116,6 +117,10 @@ generated multi-seed matrix, Startup YC network-absorption review, and product
 runtime integration review. It also records source hashes for supplied inputs
 and keeps `network_absorbable=false` even when a future packet reaches
 `review_ready`.
+The creator-system beta check schema is the user/operator-facing aggregate for
+this technical beta. It proves templates, strict Startup YC smoke, raw evidence
+shape, network-absorption blockers, and stronger-release blockers in one packet
+while still keeping `network_absorbable=false`.
 The product-runtime review schemas define the evidence packet that can satisfy
 the release gate's product phase. They require Builder, Telegram, Spawner,
 Canvas, and Kanban to preserve read-only adapters, blocked-state visibility,
