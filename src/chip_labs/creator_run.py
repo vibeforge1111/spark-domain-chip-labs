@@ -55,6 +55,7 @@ LOCAL_CREATOR_ARTIFACT_TIERS = (
 
 EVIDENCE_TIER_RANK = {tier: index for index, tier in enumerate(EVIDENCE_TIERS)}
 
+CREATOR_INTENT_SCHEMA_VERSION = "adaptive_creator_loop.creator_intent.v1"
 EVIDENCE_LADDER_PATH = "reports/evidence_ladder.md"
 ARTIFACT_MANIFEST_PATH = "created-artifact-manifest.json"
 ARTIFACT_MANIFEST_SCHEMA_VERSION = "adaptive_creator_loop.created_artifact_manifest.v1"
@@ -607,9 +608,9 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
     )
 
     if intent:
-        _check_schema_prefix(
+        _check_schema_version(
             intent,
-            "adaptive_creator_loop.creator_intent.",
+            CREATOR_INTENT_SCHEMA_VERSION,
             "creator_intent_schema",
             checks,
         )
@@ -1245,6 +1246,25 @@ def _check_schema_prefix(
                 name,
                 "fail",
                 f"Schema version must start with {expected_prefix}; got {schema_version or 'missing'}.",
+            )
+        )
+
+
+def _check_schema_version(
+    data: dict[str, Any],
+    expected_version: str,
+    name: str,
+    checks: list[SmokeCheck],
+) -> None:
+    schema_version = str(data.get("schema_version") or "")
+    if schema_version == expected_version:
+        checks.append(SmokeCheck(name, "pass", f"Schema version is {schema_version}."))
+    else:
+        checks.append(
+            SmokeCheck(
+                name,
+                "fail",
+                f"Schema version must be {expected_version}; got {schema_version or 'missing'}.",
             )
         )
 

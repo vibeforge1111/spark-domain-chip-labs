@@ -488,6 +488,29 @@ def test_creator_run_blocks_unknown_evidence_tier(tmp_path: Path) -> None:
     )
 
 
+def test_creator_run_blocks_wrong_creator_intent_schema_version(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test creator intent schema boundary.",
+    )
+    intent_path = run_dir / "creator-intent.json"
+    intent = json.loads(intent_path.read_text(encoding="utf-8"))
+    intent["schema_version"] = "adaptive_creator_loop.creator_intent.v2"
+    intent_path.write_text(json.dumps(intent), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "creator_intent_schema" and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_creator_run_blocks_network_tiers_in_local_artifacts(tmp_path: Path) -> None:
     run_dir = tmp_path / "creator-run"
     init_creator_run(run_dir, domain="Startup YC", goal="Test local tier ceiling.")
