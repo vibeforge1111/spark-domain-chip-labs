@@ -198,7 +198,17 @@ jobs:
           assert payload["repo"]["worktree_clean"] is True
           assert payload["beta_check_summary"]["verdict"] == "pass"
           PY
+          mkdir -p /tmp/creator-system-release-evidence-artifact
+          cp /tmp/creator-system-release-evidence.json /tmp/creator-system-release-evidence-artifact/creator-system-release-evidence.json
           python -m chip_labs.cli creator-run-template-check --fail-on-blocked
+
+      - name: Upload creator-system release evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: creator-system-release-evidence
+          path: /tmp/creator-system-release-evidence-artifact/creator-system-release-evidence.json
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Run manual generated multi-seed matrix
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_generated_multi_seed == 'true')

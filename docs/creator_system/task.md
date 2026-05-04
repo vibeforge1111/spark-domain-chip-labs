@@ -866,6 +866,10 @@ Completed documentation/verification:
   summary, required rerun commands, release docs, and the explicit
   `network_absorbable=false` promotion boundary. Dirty checkouts block release
   evidence instead of silently passing.
+- Creator System CI now uploads the clean-checkout
+  `creator-system-release-evidence` JSON as a workflow artifact, giving users
+  and Spark agents a downloadable release packet instead of requiring them to
+  scrape job logs.
 
 Completed product PR verification:
 

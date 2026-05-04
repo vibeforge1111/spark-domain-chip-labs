@@ -20,6 +20,8 @@ or handing it to Spark agents as a repo-local creator workflow.
 - [x] `chip-labs creator-system-beta-check --fail-on-blocked` passes.
 - [x] `chip-labs creator-system-release-evidence --fail-on-blocked` exists for
   clean-checkout release evidence packets.
+- [x] Creator System CI uploads `creator-system-release-evidence` as a workflow
+  artifact for clean pushed commits.
 - [x] Strict Startup YC saved-evidence smoke passes.
 
 Verified on 2026-05-04 from clean temp checkouts at

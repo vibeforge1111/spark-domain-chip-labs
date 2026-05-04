@@ -59,6 +59,9 @@ Expected result: `verdict` is `pass`, `release_ready` is `true`, and
 packet blocks with `repo:worktree_dirty` so release evidence cannot silently
 include uncommitted work.
 
+On pushed commits, Creator System CI also uploads this JSON as the
+`creator-system-release-evidence` workflow artifact.
+
 ## Create A Creator Run
 
 ```bash

@@ -155,6 +155,7 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "Release tag selected: `creator-system-beta-2026-05-04`",
         "chip-labs creator-system-beta-check --fail-on-blocked",
         "creator-system-release-evidence --fail-on-blocked",
+        "creator-system-release-evidence` as a workflow",
         "spark-domain-chip-labs-beta-check-20260504190038",
         "spark-domain-chip-labs-beta-fresh-20260504223056",
         "Startup YC production-gate workbench beta subcheck",
@@ -326,6 +327,8 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "machine-readable technical beta" in text
     assert "clean-worktree status" in text
     assert "Dirty checkouts block release" in text
+    assert "uploads the clean-checkout" in text
+    assert "workflow artifact" in text
     assert "generated-multi-domain-briefs.json" in text
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
@@ -402,6 +405,11 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "creator-release-gate.schema.json" in text
     assert "creator-system-release-evidence --output /tmp/creator-system-release-evidence.json --fail-on-blocked" in text
     assert "creator-system-release-evidence.schema.json" in text
+    assert "actions/upload-artifact@v7" in text
+    assert "creator-system-release-evidence-artifact" in text
+    assert "creator-system-release-evidence.json" in text
+    assert "if-no-files-found: error" in text
+    assert "retention-days: 30" in text
     assert 'assert payload["release_ready"] is True' in text
     assert 'assert payload["repo"]["worktree_clean"] is True' in text
     assert "tests/test_creator_beta_readiness.py" in text
