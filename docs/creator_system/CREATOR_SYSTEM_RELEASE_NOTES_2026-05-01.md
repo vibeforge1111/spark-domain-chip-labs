@@ -381,6 +381,9 @@
 - `creator-run-smoke` now rejects unknown created-artifact `kind` values at
   runtime while still allowing optional schema kinds such as `report`,
   `absorption_bundle`, and `standard_change`.
+- `creator-run-smoke` now requires the created-artifact manifest's exact
+  `adaptive_creator_loop.created_artifact_manifest.v1` schema version instead
+  of accepting future-looking prefix matches.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -427,4 +430,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `219 passed`.
+Latest focused creator-system suite result before CI push: `220 passed`.

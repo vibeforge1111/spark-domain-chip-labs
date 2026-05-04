@@ -57,6 +57,7 @@ EVIDENCE_TIER_RANK = {tier: index for index, tier in enumerate(EVIDENCE_TIERS)}
 
 EVIDENCE_LADDER_PATH = "reports/evidence_ladder.md"
 ARTIFACT_MANIFEST_PATH = "created-artifact-manifest.json"
+ARTIFACT_MANIFEST_SCHEMA_VERSION = "adaptive_creator_loop.created_artifact_manifest.v1"
 ARTIFACT_MANIFEST_STATUSES = {
     "planned",
     "created",
@@ -1316,12 +1317,23 @@ def _check_artifact_manifest(
     intent: dict[str, Any] | None,
     checks: list[SmokeCheck],
 ) -> None:
-    _check_schema_prefix(
-        artifact_manifest,
-        "adaptive_creator_loop.created_artifact_manifest.",
-        "created_artifact_manifest_schema",
-        checks,
-    )
+    schema_version = str(artifact_manifest.get("schema_version") or "")
+    if schema_version == ARTIFACT_MANIFEST_SCHEMA_VERSION:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_schema",
+                "pass",
+                f"Schema version is {schema_version}.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "created_artifact_manifest_schema",
+                "fail",
+                f"Schema version must be {ARTIFACT_MANIFEST_SCHEMA_VERSION}; got {schema_version or 'missing'}.",
+            )
+        )
 
     manifest_run_id = str(artifact_manifest.get("creator_run_id") or "")
     intent_run_id = str((intent or {}).get("run_id") or "")
