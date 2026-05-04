@@ -48,10 +48,20 @@ Verified on 2026-05-04 from a clean temp checkout at
 
 - [x] Root README points users to the creator-system beta quickstart.
 - [x] Creator-system README lists executable commands.
+- [x] Release artifact states tag, evidence, workspace handling, non-goals, and
+  next production gates.
 - [x] User quickstart explains install, first run, smoke, doctor, generator
   matrix, Startup YC validation, and evidence tiers.
 - [x] Public repo split decision is documented.
 - [x] Known non-goals are visible.
+
+## Release Handling
+
+- [x] Release tag selected: `creator-system-beta-2026-05-04`.
+- [x] Tag target is the clean pushed `main` commit after CI, not the dirty local
+  working tree.
+- [x] Unrelated modified and untracked research files remain untouched and
+  unstaged.
 
 ## Pre-Release Commands
 
@@ -64,7 +74,9 @@ chip-labs creator-run-smoke docs/creator_system/examples/startup-yc-creator-run 
 
 ## Remaining Before A Stronger Release
 
-- Decide how to handle unrelated local/untracked research files before tagging.
-- Add a stable release tag after CI passes on the release commit.
 - Do not upgrade claims to `network_absorbable` without the full promotion gate
   bundle.
+- Decide whether to extract a separate public `spark-creator` repo after schema,
+  provenance, transfer evidence, and product read-only contracts stabilize.
+- Review live product runtime wiring separately before exposing creator controls
+  in Builder, Telegram, Spawner, Canvas, or Kanban.

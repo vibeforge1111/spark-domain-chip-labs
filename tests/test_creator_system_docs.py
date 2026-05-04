@@ -23,6 +23,7 @@ ROOT_README = Path("README.md")
 PYPROJECT = Path("pyproject.toml")
 USER_QUICKSTART = Path("docs/creator_system/USER_QUICKSTART_BETA.md")
 RELEASE_CHECKLIST = Path("docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md")
+BETA_RELEASE = Path("docs/creator_system/CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md")
 
 
 def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
@@ -30,6 +31,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
 
     assert "## Current Claim Levels" in text
     assert "CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md" in text
+    assert "CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
     assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
     assert "BENCHMARK_GENERATION_HONESTY_STANDARD.md" in text
@@ -134,8 +136,35 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "python -m pip install -e .",
         "chip-labs --help",
         "Strict Startup YC saved-evidence smoke passes",
+        "Release tag selected: `creator-system-beta-2026-05-04`",
+        "dirty local",
+        "unstaged",
         "MiroFish outcome calibration blocks insufficient or vanity-only",
         "Do not upgrade claims to `network_absorbable`",
+    ):
+        assert phrase in text
+
+
+def test_creator_system_beta_release_artifact_preserves_production_boundary() -> None:
+    text = BETA_RELEASE.read_text(encoding="utf-8")
+
+    for phrase in (
+        "creator-system-beta-2026-05-04",
+        "technical beta for local and repo-based creator-run workflows",
+        "not a Spark Swarm network-publication approval",
+        "Fresh clone install: passed on 2026-05-04",
+        "Template check: `57 pass / 0 warn / 0 fail`",
+        "Strict Startup YC smoke",
+        "`transfer_supported`",
+        "Broader local creator-system suite before release: `261 passed`",
+        "left untouched and unstaged",
+        "does not approve `network_absorbable`",
+        "does not wire live Builder, Telegram, Spawner, Canvas, or Kanban",
+        "Multi-seed validation",
+        "Human/operator calibration",
+        "Privacy review",
+        "Rollback review",
+        "Publication approval",
     ):
         assert phrase in text
 
