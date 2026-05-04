@@ -18,6 +18,11 @@
     "selector_report": "specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json",
     "evidence_doc": "specialization-path-startup-yc/docs/STARTUP_YC_FRESH_VALIDATION_SUITE_2026-05-01.md"
   },
+  "source_artifact_hashes": {
+    "startup-bench/examples/startup_yc_fresh_validation_suite.json": "c7d8617e6675aee2f031d7523eda76858354185dbffb47a4c464e6a0ddcc4033",
+    "specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json": "5beca25b9ba3f70c829289d4ec2d5556ffb6da8b67b14d92e70516ccd03d62ef",
+    "specialization-path-startup-yc/docs/STARTUP_YC_FRESH_VALIDATION_SUITE_2026-05-01.md": "e6cc9e50fa664ccc2a0ae55fe8e9896f7f6afd277b8c01a9cca2e89eef1b5fa8"
+  },
   "interpretation": "Startup YC adapters won 12/12 fresh-validation scenarios across GTM, Finance, Product, People, Board, and Scale, beating the resilient baseline with mean scenario delta +0.0560 and no skips.",
   "limits": [
     "This is a fresh validation suite, not a reviewed public network-absorption decision.",

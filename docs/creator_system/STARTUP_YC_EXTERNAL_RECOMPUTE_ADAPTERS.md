@@ -44,6 +44,8 @@ Supported today:
 - `startup-yc-external-provenance-packet`, which emits a standalone
   recompute provenance packet with linked smoke status, external source hashes,
   and visible blockers for missing, stale, or unpinned source inputs.
+- Startup YC `reports/transfer_summary.json` now pins hashes for its external
+  Startup Bench suite, selector report, and evidence doc.
 
 Not supported yet:
 
@@ -55,7 +57,7 @@ Not supported yet:
 
 | Adapter | Source Evidence | Required Fresh Output | Fixture Values Checked |
 | --- | --- | --- | --- |
-| Startup Bench transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/transfer_summary.json` plus scenario rows | implemented for scenario count, baseline score, transfer score, mean delta, min delta, max delta, and constraints |
+| Startup Bench transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/transfer_summary.json` plus scenario rows and source hashes | implemented for scenario count, baseline score, transfer score, mean delta, min delta, max delta, constraints, and pinned source artifact hashes |
 | Specialization-path absorption adapter | `specialization-path-startup-yc/reports/absorption-proof-2026-04-30/proof_report.json` | `reports/baseline.json`, `reports/candidate.json`, `reports/absorption_summary.json` | implemented for baseline mean/pass rate/case count, candidate mean/delta/pass rate/case buckets, absorption delta, trap count, and mode integrity |
 | Broad transfer adapter | `specialization-path-startup-yc/reports/startup-yc-fresh-validation-suite-v2/adapter_selector_report.json` | `reports/broad_transfer_probe.json` with per-scenario rows | implemented for aggregate scores, scenario buckets, constraints, and row-level scenario results |
 | Swarm packet regeneration adapter | Fresh baseline, candidate, absorption, and transfer reports | `swarm/contribution_packet.json` | implemented for packet evidence scores/deltas, transfer fields, report paths, and network-publication blocker |
