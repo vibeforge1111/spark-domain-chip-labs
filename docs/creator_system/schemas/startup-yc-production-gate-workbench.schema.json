@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-yc-production-gate-workbench.schema.json",
+  "title": "Startup YC Production Gate Workbench",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "workspace_dir",
+    "validation_plan",
+    "requested_claim",
+    "verdict",
+    "network_absorbable",
+    "workspace_was_clean",
+    "output_paths",
+    "gate_verdicts",
+    "gate_passed",
+    "required_subchecks_passed",
+    "final_promotion_ready",
+    "blocking_checks",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.startup_yc_production_gate_workbench.v1"
+    },
+    "workspace_dir": {"type": "string", "minLength": 1},
+    "validation_plan": {"type": "string", "minLength": 1},
+    "requested_claim": {"type": "string", "minLength": 1},
+    "verdict": {"enum": ["blocked", "review_ready"]},
+    "network_absorbable": {"const": false},
+    "workspace_was_clean": {"type": "boolean"},
+    "output_paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "multi_seed_validation",
+        "held_out_founder_advice_pass",
+        "review_gates",
+        "promotion_evidence_bundle",
+        "promotion_evidence_check",
+        "validation_suite",
+        "network_absorption_review"
+      ],
+      "properties": {
+        "multi_seed_validation": {"type": "string", "minLength": 1},
+        "held_out_founder_advice_pass": {"type": "string", "minLength": 1},
+        "review_gates": {"type": "string", "minLength": 1},
+        "promotion_evidence_bundle": {"type": "string", "minLength": 1},
+        "promotion_evidence_check": {"type": "string", "minLength": 1},
+        "validation_suite": {"type": "string", "minLength": 1},
+        "network_absorption_review": {"type": "string", "minLength": 1}
+      }
+    },
+    "gate_verdicts": {
+      "type": "object",
+      "additionalProperties": {"type": "string"},
+      "required": [
+        "multi_seed_validation",
+        "held_out_founder_advice_pass",
+        "review_gates",
+        "promotion_evidence_check",
+        "validation_suite",
+        "network_absorption_review"
+      ]
+    },
+    "gate_passed": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"},
+      "required": [
+        "multi_seed_validation",
+        "held_out_founder_advice_pass",
+        "review_gates"
+      ]
+    },
+    "required_subchecks_passed": {"type": "boolean"},
+    "final_promotion_ready": {"type": "boolean"},
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "next_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {"blocking_checks": {"minItems": 1}}
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "review_ready"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {"blocking_checks": {"maxItems": 0}}
+      }
+    }
+  ]
+}

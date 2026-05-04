@@ -35,6 +35,9 @@ VALIDATION_EVIDENCE_SCHEMA_PATH = (
 VALIDATION_EVIDENCE_CHECK_RESULT_SCHEMA_PATH = (
     "docs/creator_system/schemas/startup-yc-validation-evidence-check-result.schema.json"
 )
+PRODUCTION_GATE_WORKBENCH_SCHEMA_VERSION = (
+    "adaptive_creator_loop.startup_yc_production_gate_workbench.v1"
+)
 
 _REVIEW_GATE_REQUIREMENTS = {
     "human_operator_calibration": ("reviewer", "evidence_ref", "calibration_notes"),
@@ -599,6 +602,130 @@ def build_startup_yc_network_absorption_review(
             blocked=bool(blocking_checks),
             required_approvals=required_approvals,
         ),
+    }
+
+
+def run_startup_yc_production_gate_workbench(
+    validation_plan_path: str | Path,
+    workspace_dir: str | Path,
+    *,
+    multi_seed_evidence_path: str | Path | None = None,
+    heldout_evidence_path: str | Path | None = None,
+    review_gate_evidence_path: str | Path | None = None,
+    external_provenance_path: str | Path | None = None,
+    requested_claim: str = "network_absorbable",
+) -> dict[str, Any]:
+    """Write a full Startup YC production-gate rehearsal into one workspace."""
+
+    plan_path = Path(validation_plan_path)
+    output_dir = Path(workspace_dir)
+    workspace_was_clean = not output_dir.exists() or not any(output_dir.iterdir())
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    output_paths = {
+        "multi_seed_validation": output_dir / "startup-yc-multi-seed-check.json",
+        "held_out_founder_advice_pass": output_dir / "startup-yc-heldout-check.json",
+        "review_gates": output_dir / "startup-yc-review-gates-check.json",
+        "promotion_evidence_bundle": output_dir / "promotion-evidence-bundle.json",
+        "promotion_evidence_check": output_dir
+        / "startup-yc-promotion-evidence-check.json",
+        "validation_suite": output_dir / "startup-yc-validation-suite.json",
+        "network_absorption_review": output_dir
+        / "startup-yc-network-absorption-review.json",
+    }
+
+    multi_seed = check_startup_yc_multi_seed_validation(
+        plan_path,
+        evidence_path=multi_seed_evidence_path,
+    )
+    heldout = check_startup_yc_heldout_validation(
+        plan_path,
+        evidence_path=heldout_evidence_path,
+    )
+    review_gates = check_startup_yc_review_gates(
+        plan_path,
+        evidence_path=review_gate_evidence_path,
+    )
+    _write_json(output_paths["multi_seed_validation"], multi_seed)
+    _write_json(output_paths["held_out_founder_advice_pass"], heldout)
+    _write_json(output_paths["review_gates"], review_gates)
+
+    bundle = {
+        "checks": {
+            "multi_seed_validation": str(output_paths["multi_seed_validation"]),
+            "held_out_founder_advice_pass": str(
+                output_paths["held_out_founder_advice_pass"]
+            ),
+            "review_gates": str(output_paths["review_gates"]),
+        }
+    }
+    _write_json(output_paths["promotion_evidence_bundle"], bundle)
+
+    promotion_evidence = check_startup_yc_promotion_evidence(
+        plan_path,
+        evidence_bundle_path=output_paths["promotion_evidence_bundle"],
+    )
+    _write_json(output_paths["promotion_evidence_check"], promotion_evidence)
+
+    validation_suite = run_startup_yc_validation_suite(
+        plan_path,
+        multi_seed_evidence_path=multi_seed_evidence_path,
+        heldout_evidence_path=heldout_evidence_path,
+        review_gate_evidence_path=review_gate_evidence_path,
+        promotion_evidence_bundle_path=output_paths["promotion_evidence_bundle"],
+        requested_claim=requested_claim,
+    )
+    _write_json(output_paths["validation_suite"], validation_suite)
+
+    network_review = build_startup_yc_network_absorption_review(
+        plan_path,
+        validation_suite_path=output_paths["validation_suite"],
+        external_provenance_path=external_provenance_path,
+        requested_claim=requested_claim,
+    )
+    if not workspace_was_clean:
+        network_review["verdict"] = "blocked"
+        network_review["blocking_checks"] = _dedupe(
+            [
+                *network_review["blocking_checks"],
+                "workbench_workspace:not_clean_before_run",
+            ]
+        )
+        network_review["next_actions"] = [
+            *network_review["next_actions"],
+            "Rerun the production-gate workbench in an empty workspace before using the evidence bundle.",
+        ]
+    _write_json(output_paths["network_absorption_review"], network_review)
+
+    gate_outputs = {
+        "multi_seed_validation": multi_seed,
+        "held_out_founder_advice_pass": heldout,
+        "review_gates": review_gates,
+        "promotion_evidence_check": promotion_evidence,
+        "validation_suite": validation_suite,
+        "network_absorption_review": network_review,
+    }
+    return {
+        "schema_version": PRODUCTION_GATE_WORKBENCH_SCHEMA_VERSION,
+        "workspace_dir": str(output_dir),
+        "validation_plan": str(plan_path),
+        "requested_claim": requested_claim,
+        "verdict": network_review["verdict"],
+        "network_absorbable": False,
+        "workspace_was_clean": workspace_was_clean,
+        "output_paths": {key: str(path) for key, path in output_paths.items()},
+        "gate_verdicts": {
+            key: output.get("verdict") for key, output in gate_outputs.items()
+        },
+        "gate_passed": {
+            key: output.get("gate_passed")
+            for key, output in gate_outputs.items()
+            if "gate_passed" in output
+        },
+        "required_subchecks_passed": validation_suite["required_subchecks_passed"],
+        "final_promotion_ready": validation_suite["final_promotion_ready"],
+        "blocking_checks": network_review["blocking_checks"],
+        "next_actions": network_review["next_actions"],
     }
 
 
@@ -1434,6 +1561,11 @@ def _load_json(path: Path) -> dict[str, Any]:
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
+
+
+def _write_json(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
 def _input_provenance(path: Path | None, display_path: str | None) -> dict[str, Any]:

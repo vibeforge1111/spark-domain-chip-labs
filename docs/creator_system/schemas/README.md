@@ -56,6 +56,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [startup-yc-validation-suite.schema.json](startup-yc-validation-suite.schema.json) | Startup YC validation-suite output |
 | [startup-yc-external-rerun-provenance.schema.json](startup-yc-external-rerun-provenance.schema.json) | Startup YC external recompute provenance packet |
 | [startup-yc-network-absorption-review.schema.json](startup-yc-network-absorption-review.schema.json) | Startup YC network-absorption review packet |
+| [startup-yc-production-gate-workbench.schema.json](startup-yc-production-gate-workbench.schema.json) | Startup YC production-gate rehearsal summary |
 | [generated-multi-seed-summary.schema.json](generated-multi-seed-summary.schema.json) | Generated multi-domain multi-seed summary output |
 | [generated-multi-seed-summary-check.schema.json](generated-multi-seed-summary-check.schema.json) | Recomputed generated multi-seed summary check output |
 
@@ -110,6 +111,12 @@ required approval gates, and optional external provenance packet into a single
 review artifact. It still requires `network_absorbable=false`; a
 `review_ready` packet only means blockers are absent for human review, not that
 Spark may publish or network-absorb Startup YC.
+The production-gate workbench schema anchors the end-to-end rehearsal command
+that writes the individual Startup YC gate outputs, promotion bundle,
+validation suite, and network-absorption review into a clean workspace. Its
+summary records whether the workspace was clean before outputs were written,
+is intentionally a rehearsal packet, and keeps `network_absorbable=false` even
+when supplied gate evidence lets subchecks pass.
 
 The creator-release-gate schema aggregates stronger-release evidence without
 turning it into publication approval. It requires visible phase rows for the

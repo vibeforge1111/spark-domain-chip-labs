@@ -16,6 +16,7 @@ from chip_labs.startup_yc_promotion import (
     check_startup_yc_promotion_gates,
     check_startup_yc_review_gates,
     check_startup_yc_validation_evidence_shape,
+    run_startup_yc_production_gate_workbench,
     run_startup_yc_validation_suite,
 )
 
@@ -40,6 +41,9 @@ VALIDATION_SUITE_SCHEMA = Path(
 NETWORK_ABSORPTION_REVIEW_SCHEMA = Path(
     "docs/creator_system/schemas/startup-yc-network-absorption-review.schema.json"
 )
+PRODUCTION_GATE_WORKBENCH_SCHEMA = Path(
+    "docs/creator_system/schemas/startup-yc-production-gate-workbench.schema.json"
+)
 NETWORK_ABSORPTION_REVIEW_BLOCKED = (
     FIXTURE_DIR / "network_absorption_review_blocked.json"
 )
@@ -50,6 +54,7 @@ STARTUP_YC_SCHEMAS = (
     GATE_CHECK_SCHEMA,
     VALIDATION_SUITE_SCHEMA,
     NETWORK_ABSORPTION_REVIEW_SCHEMA,
+    PRODUCTION_GATE_WORKBENCH_SCHEMA,
 )
 
 
@@ -1580,6 +1585,128 @@ def test_cli_startup_yc_network_absorption_review_fails_on_blocked(
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
     assert "external_provenance:missing" in payload["blocking_checks"]
+    jsonschema.Draft202012Validator(schema).validate(payload)
+
+
+def test_startup_yc_production_gate_workbench_writes_blocked_rehearsal(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(PRODUCTION_GATE_WORKBENCH_SCHEMA.read_text(encoding="utf-8"))
+    workspace = tmp_path / "startup-yc-workbench"
+
+    result = run_startup_yc_production_gate_workbench(
+        FIXTURE_DIR / "validation_plan.json",
+        workspace,
+    )
+
+    jsonschema.Draft202012Validator(schema).validate(result)
+    assert result["verdict"] == "blocked"
+    assert result["network_absorbable"] is False
+    assert result["workspace_was_clean"] is True
+    assert result["gate_verdicts"]["held_out_founder_advice_pass"] == "passed"
+    assert result["gate_verdicts"]["multi_seed_validation"] == "blocked"
+    assert result["gate_verdicts"]["review_gates"] == "blocked"
+    assert result["required_subchecks_passed"] is False
+    assert "external_provenance:missing" in result["blocking_checks"]
+    assert all(Path(path).exists() for path in result["output_paths"].values())
+
+    suite = json.loads(
+        Path(result["output_paths"]["validation_suite"]).read_text(encoding="utf-8")
+    )
+    review = json.loads(
+        Path(result["output_paths"]["network_absorption_review"]).read_text(
+            encoding="utf-8"
+        )
+    )
+    assert suite["verdict"] == "blocked"
+    assert review["verdict"] == "blocked"
+    assert review["network_absorbable"] is False
+
+
+def test_startup_yc_production_gate_workbench_keeps_boundary_after_gate_evidence(
+    tmp_path: Path,
+) -> None:
+    (
+        multi_seed_evidence_path,
+        heldout_evidence_path,
+        review_gate_evidence_path,
+    ) = _write_raw_validation_evidence(tmp_path)
+    workspace = tmp_path / "startup-yc-workbench"
+
+    result = run_startup_yc_production_gate_workbench(
+        FIXTURE_DIR / "validation_plan.json",
+        workspace,
+        multi_seed_evidence_path=multi_seed_evidence_path,
+        heldout_evidence_path=heldout_evidence_path,
+        review_gate_evidence_path=review_gate_evidence_path,
+    )
+
+    assert result["verdict"] == "blocked"
+    assert result["network_absorbable"] is False
+    assert result["workspace_was_clean"] is True
+    assert result["required_subchecks_passed"] is True
+    assert result["final_promotion_ready"] is False
+    assert result["gate_verdicts"]["promotion_evidence_check"] == "passed"
+    assert result["gate_verdicts"]["validation_suite"] == "blocked"
+    assert result["gate_passed"] == {
+        "multi_seed_validation": True,
+        "held_out_founder_advice_pass": True,
+        "review_gates": True,
+    }
+    assert "plan_prohibits_claim:network_absorbable" in result["blocking_checks"]
+    assert "external_provenance:missing" in result["blocking_checks"]
+
+
+def test_startup_yc_production_gate_workbench_blocks_dirty_workspace(
+    tmp_path: Path,
+) -> None:
+    workspace = tmp_path / "startup-yc-workbench"
+    workspace.mkdir()
+    (workspace / "old-output.json").write_text("{}", encoding="utf-8")
+
+    result = run_startup_yc_production_gate_workbench(
+        FIXTURE_DIR / "validation_plan.json",
+        workspace,
+    )
+
+    assert result["verdict"] == "blocked"
+    assert result["workspace_was_clean"] is False
+    assert "workbench_workspace:not_clean_before_run" in result["blocking_checks"]
+
+
+def test_cli_startup_yc_production_gate_workbench_fails_on_blocked(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(PRODUCTION_GATE_WORKBENCH_SCHEMA.read_text(encoding="utf-8"))
+    workspace = tmp_path / "startup-yc-workbench"
+    output_path = tmp_path / "startup-yc-production-gate-workbench.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "startup-yc-production-gate-workbench",
+            "--validation-plan",
+            str(FIXTURE_DIR / "validation_plan.json"),
+            "--workspace-dir",
+            str(workspace),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert result.returncode == 1
+    assert payload["verdict"] == "blocked"
+    assert payload["network_absorbable"] is False
     jsonschema.Draft202012Validator(schema).validate(payload)
 
 

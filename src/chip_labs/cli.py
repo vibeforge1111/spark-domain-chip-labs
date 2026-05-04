@@ -1521,6 +1521,24 @@ def cmd_startup_yc_network_absorption_review(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_startup_yc_production_gate_workbench(args: argparse.Namespace) -> None:
+    """Run the Startup YC production-gate rehearsal into a workspace."""
+    from .startup_yc_promotion import run_startup_yc_production_gate_workbench
+
+    result = run_startup_yc_production_gate_workbench(
+        args.validation_plan,
+        args.workspace_dir,
+        multi_seed_evidence_path=args.multi_seed_evidence,
+        heldout_evidence_path=args.heldout_evidence,
+        review_gate_evidence_path=args.review_gate_evidence,
+        external_provenance_path=args.external_provenance,
+        requested_claim=args.requested_claim,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 # ---------------------------------------------------------------------------
 # CLI parser
 # ---------------------------------------------------------------------------
@@ -3070,6 +3088,65 @@ def main() -> None:
     )
     p_startup_yc_network_absorption_review.set_defaults(
         func=cmd_startup_yc_network_absorption_review
+    )
+
+    # startup-yc-production-gate-workbench
+    p_startup_yc_production_gate_workbench = sub.add_parser(
+        "startup-yc-production-gate-workbench",
+        help="Write Startup YC gate outputs, bundle, suite, and review into a workspace.",
+    )
+    p_startup_yc_production_gate_workbench.add_argument(
+        "--validation-plan",
+        type=str,
+        required=True,
+        help="Startup YC validation_plan.json path.",
+    )
+    p_startup_yc_production_gate_workbench.add_argument(
+        "--workspace-dir",
+        type=str,
+        required=True,
+        help="Clean directory for generated gate evidence outputs.",
+    )
+    p_startup_yc_production_gate_workbench.add_argument(
+        "--multi-seed-evidence",
+        type=str,
+        default=None,
+        help="Optional multi-seed evidence JSON or JSONL path.",
+    )
+    p_startup_yc_production_gate_workbench.add_argument(
+        "--heldout-evidence",
+        type=str,
+        default=None,
+        help="Optional held-out evidence JSON or JSONL path.",
+    )
+    p_startup_yc_production_gate_workbench.add_argument(
+        "--review-gate-evidence",
+        type=str,
+        default=None,
+        help="Optional review gate evidence JSON or JSONL path.",
+    )
+    p_startup_yc_production_gate_workbench.add_argument(
+        "--external-provenance",
+        type=str,
+        default=None,
+        help="Optional Startup YC external provenance packet JSON path.",
+    )
+    p_startup_yc_production_gate_workbench.add_argument(
+        "--requested-claim",
+        type=str,
+        default="network_absorbable",
+        help="Requested stronger claim to review.",
+    )
+    p_startup_yc_production_gate_workbench.add_argument(
+        "--output", type=str, default=None, help="Summary JSON output path."
+    )
+    p_startup_yc_production_gate_workbench.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when the production-gate rehearsal is blocked.",
+    )
+    p_startup_yc_production_gate_workbench.set_defaults(
+        func=cmd_startup_yc_production_gate_workbench
     )
 
     args = parser.parse_args()

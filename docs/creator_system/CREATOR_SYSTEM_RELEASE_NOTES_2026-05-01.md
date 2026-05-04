@@ -525,6 +525,12 @@
 - Extended generated-domain validation now has a recorded 54-row local run:
   three seeds across the six proof-domain families, recompute check `pass`,
   and `network_absorbable=false`.
+- `startup-yc-production-gate-workbench` now runs the Startup YC production
+  gate rehearsal end to end in a chosen workspace. It writes the individual
+  gate outputs, promotion evidence bundle, validation suite, and
+  network-absorption review packet together, then emits a schema-anchored
+  summary that records clean-workspace status and preserves
+  `network_absorbable=false`.
 
 ## Current Claim Boundary
 

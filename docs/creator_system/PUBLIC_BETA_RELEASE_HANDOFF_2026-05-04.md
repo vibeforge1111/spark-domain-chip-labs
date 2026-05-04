@@ -91,3 +91,15 @@ Before any stronger release claim, require:
 
 Even when these packets pass, `network_absorbable` must remain false until the
 publication authority explicitly approves that claim.
+
+Production rehearsal command:
+
+```bash
+chip-labs startup-yc-production-gate-workbench \
+  --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json \
+  --workspace-dir /tmp/startup-yc-production-gate-workbench \
+  --output /tmp/startup-yc-production-gate-workbench/summary.json
+```
+
+Run it in an empty workspace. The expected beta-state result is still
+`verdict=blocked` and `network_absorbable=false`.

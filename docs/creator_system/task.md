@@ -846,6 +846,12 @@ Completed documentation/verification:
 - Extended generated-domain validation now has a recorded 54-row local run:
   three seeds across the six proof-domain families, recompute check `pass`, and
   `network_absorbable=false`.
+- `startup-yc-production-gate-workbench` now writes a full Startup YC
+  production-gate rehearsal into a clean workspace: individual multi-seed,
+  held-out, and review-gate outputs, a promotion evidence bundle, a validation
+  suite, and a network-absorption review packet. It is deliberately a rehearsal
+  command, records whether the workspace was clean before the run, and keeps
+  `network_absorbable=false`.
 - Full `src/chip_labs` and `tests` ruff cleanup is now committed, and
   Creator-system CI enforces `python -m ruff check src/chip_labs tests`
   instead of only linting a narrow creator-system file list.
