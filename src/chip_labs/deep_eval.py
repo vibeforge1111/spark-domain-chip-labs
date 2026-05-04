@@ -10,7 +10,6 @@ Zero external dependencies.  All statistical utilities are implemented inline.
 from __future__ import annotations
 
 import json
-import math
 import os
 import re
 from dataclasses import dataclass, field
@@ -193,10 +192,10 @@ def _causal_density(text: str) -> float:
 
 def _boundary_specificity(text: str) -> float:
     """Fraction of non-empty lines containing boundary markers."""
-    lines = [l.strip() for l in text.splitlines() if l.strip()]
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
     if not lines:
         return 0.0
-    count = sum(1 for l in lines if _BOUNDARY_MARKERS.search(l))
+    count = sum(1 for line in lines if _BOUNDARY_MARKERS.search(line))
     return count / len(lines)
 
 
@@ -964,7 +963,6 @@ def check_flywheel_health(chip_path: Path) -> DimensionResult:
     # 5 pts: Delta per iteration
     if len(scores_list) >= 3:
         # Rolling window deltas
-        window = min(10, len(scores_list))
         deltas: list[float] = []
         for i in range(1, len(scores_list)):
             deltas.append(scores_list[i] - scores_list[i - 1])

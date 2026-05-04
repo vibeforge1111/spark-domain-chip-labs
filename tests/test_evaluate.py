@@ -1,6 +1,5 @@
 """Tests for the meta-evaluator module."""
 
-import pytest
 
 from chip_labs.evaluate import evaluate
 

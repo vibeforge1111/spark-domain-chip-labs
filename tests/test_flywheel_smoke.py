@@ -252,8 +252,11 @@ class TestContradictionHandling:
             p = chip_path / subpath
             if p.exists():
                 content = p.read_text(encoding="utf-8", errors="ignore")
-                lines = [l for l in content.split("\n") if l.strip() and not l.startswith("#")]
-                text_len = sum(len(l) for l in lines)
+                lines = [
+                    line for line in content.split("\n")
+                    if line.strip() and not line.startswith("#")
+                ]
+                text_len = sum(len(line) for line in lines)
                 if text_len < 50:
                     pytest.xfail(f"{chip_path.name}: CONTRADICTIONS.md has only {text_len} chars of content")
                 assert text_len >= 50

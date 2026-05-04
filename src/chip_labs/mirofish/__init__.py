@@ -1,4 +1,5 @@
 """MiroFish-inspired trend prediction engine for domain chip R&D."""
+# ruff: noqa: F401
 
 from .graph import DomainGraph, build_graph_from_opportunities
 from .personas import (

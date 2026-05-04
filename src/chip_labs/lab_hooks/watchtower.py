@@ -18,7 +18,6 @@ def generate_watchtower_pages(mutations: dict[str, str],
 
     Returns a list of page specs with path and content.
     """
-    vault = Path(vault_dir) if vault_dir else Path("obsidian-vault")
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     pages: list[dict[str, Any]] = []
 

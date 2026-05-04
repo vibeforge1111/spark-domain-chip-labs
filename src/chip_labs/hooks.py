@@ -436,7 +436,11 @@ def handle_session_start(input_data: dict[str, Any]) -> dict[str, Any]:
     # Short domain hints (e.g. "startup") fail Jaccard against large chip texts,
     # so we also do substring matching on chip_name and domain fields.
     try:
-        from .intelligence_serving.chip_context_injector import select_chips_for_task
+        from .intelligence_serving.chip_context_injector import (
+            select_chips_for_task as _select_chips_for_task,
+        )
+        if _select_chips_for_task is None:
+            raise ImportError("select_chips_for_task unavailable")
         selected = _select_session_chips(query, portfolio)
     except (ImportError, Exception):
         selected = portfolio[:MAX_CHIPS_SESSION]

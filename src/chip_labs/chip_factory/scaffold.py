@@ -378,8 +378,6 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the one-loop specification.
 
 def _gen_cli(brief: dict[str, Any]) -> str:
     """Generate cli.py (100% boilerplate hook routing)."""
-    module = _sanitize_module_name(brief["domain_id"])
-
     return f'''"""CLI entry point for domain-chip-{brief["domain_id"]}.
 
 Implements the four spark-hook-io.v1 hooks:

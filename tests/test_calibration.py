@@ -1,6 +1,5 @@
 """Tests for mirofish calibration and outcome contracts."""
 
-import pytest
 
 from chip_labs.mirofish.calibration import (
     create_outcome_contract,

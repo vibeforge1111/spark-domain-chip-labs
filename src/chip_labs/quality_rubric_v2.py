@@ -7,7 +7,6 @@ Backward compatible with v1 via ``score_chip(path, version="v2")``.
 from __future__ import annotations
 
 import json
-import os
 import re
 from pathlib import Path
 from typing import Any
@@ -543,8 +542,8 @@ def _check_flywheel_intelligence(chip_path: Path) -> dict[str, bool]:
             text = contradictions_path.read_text(encoding="utf-8", errors="ignore")
             # Strip headers (lines starting with #) and whitespace
             content_lines = [
-                l for l in text.splitlines()
-                if l.strip() and not l.strip().startswith("#")
+                line for line in text.splitlines()
+                if line.strip() and not line.strip().startswith("#")
             ]
             real_content = "\n".join(content_lines).strip()
             has_contradictions = len(real_content) > 50

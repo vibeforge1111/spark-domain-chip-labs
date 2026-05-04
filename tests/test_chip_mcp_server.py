@@ -8,12 +8,10 @@ from pathlib import Path
 from typing import Any
 from unittest.mock import patch
 
-import pytest
 
 from chip_labs.chip_mcp_server import (
     PROTOCOL_VERSION,
     SERVER_NAME,
-    SERVER_VERSION,
     TOOLS,
     ChipMCPServer,
 )

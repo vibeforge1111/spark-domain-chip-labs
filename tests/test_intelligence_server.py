@@ -3,7 +3,6 @@
 import json
 from pathlib import Path
 
-import pytest
 
 from chip_labs.intelligence_server import (
     ChipIntelligence,

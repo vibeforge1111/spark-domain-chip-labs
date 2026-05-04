@@ -869,8 +869,6 @@ def run_ensemble(
         min_runs: Minimum runs before convergence check.
         bootstrap_resamples: Number of bootstrap resamples for confidence intervals.
     """
-    import hashlib as _hashlib
-
     n_runs = max(min_runs, n_runs)
     domains = domain_ids or [
         n["id"] for n in graph.nodes.values() if n["type"] == "domain"
@@ -939,8 +937,6 @@ def run_ensemble(
     for d_id in domains:
         rates = sorted(adoption_runs[d_id])
         adv_rates = sorted(advocacy_runs[d_id])
-        churn_rates_sorted = sorted(churn_runs[d_id])
-        trial_rates_sorted = sorted(trial_runs[d_id])
         tips = [t for t in tipping_runs[d_id] if t is not None]
 
         n = len(rates)

@@ -850,7 +850,7 @@ class RecursiveLoopController:
         record = IterationRecord(
             iteration=self._iteration,
             action_type="skill_regeneration",
-            action_detail=f"Regenerated intelligence delivery artifacts",
+            action_detail="Regenerated intelligence delivery artifacts",
             score_before=self._current_score,
             score_after=self._current_score,
             delta=0,
@@ -903,7 +903,11 @@ class RecursiveLoopController:
 
         # Strategy 1: Re-run structural fixes
         if self._config.structural_fix_enabled:
-            result = improve_chip(chip_path, target_score=self._config.target_score, max_iterations=5)
+            improve_chip(
+                chip_path,
+                target_score=self._config.target_score,
+                max_iterations=5,
+            )
             rescore = score_chip(chip_path)
             if rescore["total_score"] > score_before:
                 self._current_score = rescore["total_score"]

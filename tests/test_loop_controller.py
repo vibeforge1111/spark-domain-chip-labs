@@ -506,7 +506,7 @@ class TestTelemetryRecording:
             telemetry_enabled=True,
         )
         ctrl = RecursiveLoopController(config)
-        result = ctrl.run_on_chip(chip_dir)
+        ctrl.run_on_chip(chip_dir)
 
         telemetry = ctrl.get_telemetry()
         assert telemetry.start_time != ""
@@ -762,7 +762,7 @@ class TestResearchSeedingIntegration:
             max_stall_iterations=3,
         )
         ctrl = RecursiveLoopController(config)
-        result = ctrl.run_on_chip(chip_dir)
+        ctrl.run_on_chip(chip_dir)
 
         # Should not create evidence lane directories under research/
         # (unless they already existed from mock creation)

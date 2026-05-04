@@ -1,13 +1,11 @@
 """End-to-end tests for the MiroFish trend prediction pipeline."""
 
-import pytest
 
 from chip_labs.trend_scanner import (
     simulate_opportunities,
-    rank_opportunities,
     SEED_OPPORTUNITIES,
 )
-from chip_labs.mirofish.report import generate_prediction_report, format_report_markdown
+from chip_labs.mirofish.report import format_report_markdown
 
 
 class TestEndToEnd:

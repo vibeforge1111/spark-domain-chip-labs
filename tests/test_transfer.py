@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import pytest
 
 from chip_labs.transfer import (
     PATTERN_TYPES,
@@ -979,7 +978,7 @@ class TestPortfolioTransfer:
 
     def test_only_targets_weak_chips(self, tmp_path: Path) -> None:
         strong = _create_mature_chip(tmp_path, "domain-chip-strong")
-        weak = _create_weak_chip(tmp_path, "domain-chip-needs-help")
+        _create_weak_chip(tmp_path, "domain-chip-needs-help")
 
         strong_score = score_chip(strong)["total_score"]
         results = portfolio_transfer(tmp_path, target_score=strong_score)
@@ -1105,7 +1104,7 @@ class TestExtractPortfolioPatterns:
 
     def test_only_extracts_from_mature_chips(self, tmp_path: Path) -> None:
         _create_mature_chip(tmp_path, "domain-chip-good")
-        weak = _create_weak_chip(tmp_path, "domain-chip-poor")
+        _create_weak_chip(tmp_path, "domain-chip-poor")
         registry = extract_portfolio_patterns(tmp_path)
         # All patterns should come from the mature chip
         for p in registry.patterns:

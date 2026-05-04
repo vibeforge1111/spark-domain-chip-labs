@@ -8,22 +8,17 @@ Desktop chips required.
 from __future__ import annotations
 
 import json
-import os
 import textwrap
 from pathlib import Path
-from typing import Any
 
 import pytest
 
 from chip_labs.deep_eval import (
     DeepEvalResult,
-    DimensionResult,
     _boundary_specificity,
     _causal_density,
     _content_density_words,
     _extract_doctrines,
-    _extract_scores_from_runs,
-    _extract_timestamps,
     _gini_coefficient,
     _jaccard_distance,
     _load_all_runs,

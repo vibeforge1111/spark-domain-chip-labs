@@ -1,6 +1,5 @@
 """Tests for mirofish domain knowledge graph."""
 
-import pytest
 
 from chip_labs.mirofish.graph import (
     DomainGraph,

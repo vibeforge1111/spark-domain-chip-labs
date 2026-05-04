@@ -1144,11 +1144,11 @@ def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -
 
     _ensure_file(
         vault_dir / "Leaderboard.md",
-        f"# Leaderboard\n\n"
-        f"## Top Candidates\n\n"
-        f"| Rank | Candidate | Score | Evidence Lane |\n"
-        f"|------|-----------|-------|---------------|\n"
-        f"| 1    | Baseline  | 50    | benchmark_grounded |\n",
+        "# Leaderboard\n\n"
+        "## Top Candidates\n\n"
+        "| Rank | Candidate | Score | Evidence Lane |\n"
+        "|------|-----------|-------|---------------|\n"
+        "| 1    | Baseline  | 50    | benchmark_grounded |\n",
     )
 
     return True

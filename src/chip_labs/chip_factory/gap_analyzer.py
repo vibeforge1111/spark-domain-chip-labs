@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import json
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable
 
@@ -586,8 +586,11 @@ def _fix_contradiction_handling(chip_path: Path) -> bool:
     if contra_path.exists():
         content = contra_path.read_text(encoding="utf-8", errors="ignore")
         # Only skip if already has real substance (>50 chars beyond header)
-        lines = [l for l in content.split("\n") if l.strip() and not l.startswith("#")]
-        if sum(len(l) for l in lines) > 50:
+        lines = [
+            line for line in content.split("\n")
+            if line.strip() and not line.startswith("#")
+        ]
+        if sum(len(line) for line in lines) > 50:
             return True
 
     domain = chip_path.name.replace("domain-chip-", "")

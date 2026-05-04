@@ -18,18 +18,14 @@ Covers:
 from __future__ import annotations
 
 import json
-import os
-import tempfile
 from pathlib import Path
 
 import pytest
 
 from chip_labs.scoring_engine import (
     MutationScoringEngine,
-    PairBonus,
     ScoringConfig,
     ScoringConfigBuilder,
-    ScoringResult,
     SystemBonus,
     from_brief,
     from_manifest,

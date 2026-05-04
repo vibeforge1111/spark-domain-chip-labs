@@ -1,6 +1,5 @@
 """Tests for live signal ingestion from X/Twitter and other platforms."""
 
-import pytest
 
 from chip_labs.mirofish.live_signals import (
     signals_from_twitter_search,

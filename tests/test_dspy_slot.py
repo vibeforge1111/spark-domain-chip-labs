@@ -236,7 +236,7 @@ class TestGenerateTrainingData:
 
     def test_valid_jsonl(self, config_with_fields):
         data = generate_training_data_template(config_with_fields)
-        lines = [l for l in data.strip().split("\n") if l.strip()]
+        lines = [line for line in data.strip().split("\n") if line.strip()]
         for line in lines:
             parsed = json.loads(line)
             assert isinstance(parsed, dict)
@@ -244,20 +244,20 @@ class TestGenerateTrainingData:
     def test_fields_match_config(self, config_with_fields):
         data = generate_training_data_template(config_with_fields)
         expected_keys = set(config_with_fields.input_fields) | set(config_with_fields.output_fields)
-        lines = [l for l in data.strip().split("\n") if l.strip()]
+        lines = [line for line in data.strip().split("\n") if line.strip()]
         for line in lines:
             parsed = json.loads(line)
             assert set(parsed.keys()) == expected_keys
 
     def test_has_three_examples(self, config_with_fields):
         data = generate_training_data_template(config_with_fields)
-        lines = [l for l in data.strip().split("\n") if l.strip()]
+        lines = [line for line in data.strip().split("\n") if line.strip()]
         assert len(lines) == 3
 
     def test_empty_fields_produces_empty_objects(self):
         cfg = DSpySlotConfig(slot_name="empty")
         data = generate_training_data_template(cfg)
-        lines = [l for l in data.strip().split("\n") if l.strip()]
+        lines = [line for line in data.strip().split("\n") if line.strip()]
         assert len(lines) == 3
         for line in lines:
             parsed = json.loads(line)
@@ -384,7 +384,7 @@ class TestScaffoldDspySlot:
         src.mkdir(parents=True)
         (src / "__init__.py").write_text('"""test chip"""')
         (chip / "pyproject.toml").write_text(
-            textwrap.dedent(f"""\
+            textwrap.dedent("""\
                 [project]
                 name = "domain-chip-test"
                 version = "0.1.0"
@@ -448,7 +448,7 @@ class TestScaffoldDspySlot:
         chip = self._make_chip(tmp_path)
         result = scaffold_dspy_slot(chip, "packet_extractor")
         data = result["training_data"].read_text(encoding="utf-8")
-        lines = [l for l in data.strip().split("\n") if l.strip()]
+        lines = [line for line in data.strip().split("\n") if line.strip()]
         assert len(lines) == 3
         for line in lines:
             json.loads(line)  # Must not raise

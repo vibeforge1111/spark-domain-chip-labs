@@ -1,6 +1,5 @@
 """Tests for decision driver summary generation."""
 
-import pytest
 
 from chip_labs.mirofish.report import generate_driver_summary, format_driver_summary
 

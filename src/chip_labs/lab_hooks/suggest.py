@@ -7,7 +7,7 @@ from typing import Any
 
 from ..quality_rubric import score_chip
 from ..registry import discover_chips
-from ..trend_scanner import SEED_OPPORTUNITIES, rank_opportunities
+from ..trend_scanner import rank_opportunities
 
 
 def suggest(recent_mutations: list[dict[str, str]] | None = None,
@@ -139,7 +139,6 @@ def _simulation_backed_suggestions(
         count_per_type=2,
     )
 
-    chip_names = {c["name"] for c in chips}
     # Also match by domain_id pattern (domain-chip-X -> X)
     chip_domains = set()
     for c in chips:

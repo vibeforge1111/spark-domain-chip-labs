@@ -2,13 +2,11 @@
 
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 from unittest.mock import patch
 
-import pytest
 
 from chip_labs.chip_context_injector import (
     _estimate_tokens,

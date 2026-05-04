@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from ..quality_rubric import score_chip, score_portfolio
+from ..quality_rubric import score_portfolio
 from ..registry import discover_chips
 
 

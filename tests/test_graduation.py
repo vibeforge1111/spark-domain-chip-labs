@@ -2,7 +2,6 @@
 
 from pathlib import Path
 
-import pytest
 
 from chip_labs.graduation import assess_graduation, GRADUATION_CRITERIA
 

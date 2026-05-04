@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 from typing import Any
 
-import pytest
 
 from chip_labs.quality_rubric_v2 import (
     RUBRIC_DIMENSIONS_V2,

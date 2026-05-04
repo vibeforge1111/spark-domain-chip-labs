@@ -31,7 +31,6 @@ def generate_prediction_report(
     is_dual = "comparison" in simulation_results
     if is_dual:
         builder_domains = simulation_results.get("builder_community", {}).get("domains", {})
-        enterprise_domains = simulation_results.get("enterprise_market", {}).get("domains", {})
         comparison = simulation_results.get("comparison", {})
         primary_domains = builder_domains
     else:
