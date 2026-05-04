@@ -547,6 +547,37 @@ def test_creator_run_blocks_published_artifact_manifest_status(
     )
 
 
+def test_creator_run_blocks_unknown_artifact_manifest_kind(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test local artifact kind boundary.",
+    )
+
+    manifest_path = run_dir / "created-artifact-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["artifacts"].append(
+        {
+            "kind": "network_publication",
+            "path": "reports/network-publication.json",
+            "status": "created",
+        }
+    )
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "created_artifact_manifest_entries"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_creator_run_blocks_missing_intent(tmp_path: Path) -> None:
     run_dir = tmp_path / "creator-run"
     init_creator_run(run_dir, domain="Startup YC", goal="Test missing intent.")

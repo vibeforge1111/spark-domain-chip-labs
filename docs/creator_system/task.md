@@ -469,6 +469,7 @@ Deliverables:
 - [x] Add release-note summary for runtime smoke local-tier ceiling checks.
 - [x] Add release-note summary for runtime smoke local publication-boundary checks.
 - [x] Add release-note summary for runtime smoke local artifact-status checks.
+- [x] Add release-note summary for runtime smoke local artifact-kind checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:

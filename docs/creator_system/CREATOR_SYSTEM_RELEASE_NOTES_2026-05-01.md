@@ -378,6 +378,9 @@
 - `creator-run-smoke` now rejects `published` created-artifact statuses at
   runtime, matching the schema boundary that local creator-run artifacts are
   only `planned`, `created`, `validated`, or `blocked`.
+- `creator-run-smoke` now rejects unknown created-artifact `kind` values at
+  runtime while still allowing optional schema kinds such as `report`,
+  `absorption_bundle`, and `standard_change`.
 
 ## Current Claim Boundary
 
@@ -399,4 +402,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `206 passed`.
+Latest focused creator-system suite result before CI push: `207 passed`.

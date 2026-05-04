@@ -63,6 +63,16 @@ ARTIFACT_MANIFEST_STATUSES = {
     "validated",
     "blocked",
 }
+ARTIFACT_MANIFEST_ALLOWED_KINDS = {
+    "domain_chip",
+    "specialization_path",
+    "benchmark_pack",
+    "autoloop_policy",
+    "absorption_bundle",
+    "swarm_packet",
+    "report",
+    "standard_change",
+}
 ARTIFACT_MANIFEST_KINDS = {
     "domain_chip",
     "specialization_path",
@@ -1388,7 +1398,12 @@ def _check_artifact_manifest(
         status = str(artifact.get("status") or "")
         if kind:
             seen_kinds.add(kind)
-        if not kind or not path or status not in ARTIFACT_MANIFEST_STATUSES:
+        if (
+            not kind
+            or kind not in ARTIFACT_MANIFEST_ALLOWED_KINDS
+            or not path
+            or status not in ARTIFACT_MANIFEST_STATUSES
+        ):
             invalid_entries.append(
                 f"artifact[{index}] must include kind, path, and valid status"
             )
@@ -1411,7 +1426,7 @@ def _check_artifact_manifest(
             SmokeCheck(
                 "created_artifact_manifest_entries",
                 "pass",
-                "Artifact manifest entries include kind, path, and valid status.",
+                "Artifact manifest entries include valid kind, path, and status.",
             )
         )
 
