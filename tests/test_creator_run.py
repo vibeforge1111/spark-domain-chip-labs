@@ -1148,6 +1148,25 @@ def test_candidate_review_blocks_swarm_packet_report_score_mismatch(
     )
 
 
+def test_candidate_review_blocks_missing_swarm_packet_report_path(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path)
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    packet["evidence"]["report_paths"].append("reports/missing.json")
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "swarm_packet_report_paths_exist"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_candidate_review_blocks_missing_trap_coverage(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path)
     absorption_path = run_dir / "reports" / "absorption_summary.json"
@@ -1690,12 +1709,16 @@ def _write_complete_swarm_packet_evidence(run_dir: Path) -> None:
                 "constraints_passed": transfer["constraints_passed"],
             },
             "report_paths": [
-                "reports/baseline.json",
-                "reports/candidate.json",
-                "reports/absorption_summary.json",
-                "reports/evidence_ladder.md",
-                "reports/transfer_summary.json",
-                "reports/broad_transfer_probe.json",
+                relative_path
+                for relative_path in (
+                    "reports/baseline.json",
+                    "reports/candidate.json",
+                    "reports/absorption_summary.json",
+                    "reports/evidence_ladder.md",
+                    "reports/transfer_summary.json",
+                    "reports/broad_transfer_probe.json",
+                )
+                if (run_dir / relative_path).exists()
             ],
         }
     )

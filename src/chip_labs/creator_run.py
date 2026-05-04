@@ -1692,6 +1692,7 @@ def _check_autoloop_policy(
 def _check_swarm_packet(
     packet: dict[str, Any],
     intent: dict[str, Any] | None,
+    run_path: Path,
     checks: list[SmokeCheck],
 ) -> None:
     _check_schema_version(
@@ -1763,6 +1764,26 @@ def _check_swarm_packet(
                 "Swarm packet evidence names report paths.",
             )
         )
+        missing_report_paths = [
+            path for path in report_paths if not (run_path / path).exists()
+        ]
+        if missing_report_paths:
+            checks.append(
+                SmokeCheck(
+                    "swarm_packet_report_paths_exist",
+                    "fail",
+                    "Swarm packet evidence.report_paths includes missing path(s): "
+                    + ", ".join(missing_report_paths),
+                )
+            )
+        else:
+            checks.append(
+                SmokeCheck(
+                    "swarm_packet_report_paths_exist",
+                    "pass",
+                    "Swarm packet evidence.report_paths exist in the run.",
+                )
+            )
     else:
         checks.append(
             SmokeCheck(
@@ -1846,7 +1867,7 @@ def _check_elevated_evidence(
     if not all((baseline, candidate, absorption, packet)):
         return
 
-    _check_swarm_packet(packet, intent, checks)
+    _check_swarm_packet(packet, intent, run_path, checks)
 
     baseline_score = _coerce_number(baseline.get("mean_score"))
     candidate_score = _coerce_number(candidate.get("mean_score"))
