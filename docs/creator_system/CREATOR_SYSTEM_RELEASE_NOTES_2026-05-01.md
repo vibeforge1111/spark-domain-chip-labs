@@ -384,6 +384,9 @@
 - `creator-run-smoke` now requires the created-artifact manifest's exact
   `adaptive_creator_loop.created_artifact_manifest.v1` schema version instead
   of accepting future-looking prefix matches.
+- `creator-run-smoke` now validates created-artifact manifest `repo` provenance
+  metadata shape when present, blocking non-object repo blocks and non-string
+  `path`, `remote`, `branch`, or `commit` fields.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -430,4 +433,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `220 passed`.
+Latest focused creator-system suite result before CI push: `222 passed`.

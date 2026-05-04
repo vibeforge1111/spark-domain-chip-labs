@@ -603,6 +603,56 @@ def test_creator_run_blocks_wrong_artifact_manifest_schema_version(
     )
 
 
+def test_creator_run_blocks_non_object_artifact_manifest_repo(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test local artifact manifest repo boundary.",
+    )
+
+    manifest_path = run_dir / "created-artifact-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["repo"] = "spark-domain-chip-labs"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "created_artifact_manifest_repo"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_creator_run_blocks_invalid_artifact_manifest_repo_fields(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test local artifact manifest repo field boundary.",
+    )
+
+    manifest_path = run_dir / "created-artifact-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["repo"]["branch"] = 123
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "created_artifact_manifest_repo"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_creator_run_blocks_missing_intent(tmp_path: Path) -> None:
     run_dir = tmp_path / "creator-run"
     init_creator_run(run_dir, domain="Startup YC", goal="Test missing intent.")

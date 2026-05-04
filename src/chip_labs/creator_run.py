@@ -74,6 +74,7 @@ ARTIFACT_MANIFEST_ALLOWED_KINDS = {
     "report",
     "standard_change",
 }
+ARTIFACT_MANIFEST_REPO_FIELDS = {"path", "remote", "branch", "commit"}
 ARTIFACT_MANIFEST_KINDS = {
     "domain_chip",
     "specialization_path",
@@ -1334,6 +1335,40 @@ def _check_artifact_manifest(
                 f"Schema version must be {ARTIFACT_MANIFEST_SCHEMA_VERSION}; got {schema_version or 'missing'}.",
             )
         )
+
+    repo = artifact_manifest.get("repo")
+    if repo is not None:
+        if not isinstance(repo, dict):
+            checks.append(
+                SmokeCheck(
+                    "created_artifact_manifest_repo",
+                    "fail",
+                    "created-artifact-manifest.json repo must be an object.",
+                )
+            )
+        else:
+            non_string_fields = sorted(
+                field
+                for field in ARTIFACT_MANIFEST_REPO_FIELDS
+                if field in repo and not isinstance(repo[field], str)
+            )
+            if non_string_fields:
+                checks.append(
+                    SmokeCheck(
+                        "created_artifact_manifest_repo",
+                        "fail",
+                        "created-artifact-manifest.json repo field(s) must be strings: "
+                        + ", ".join(non_string_fields),
+                    )
+                )
+            else:
+                checks.append(
+                    SmokeCheck(
+                        "created_artifact_manifest_repo",
+                        "pass",
+                        "created-artifact-manifest.json repo metadata is shaped.",
+                    )
+                )
 
     manifest_run_id = str(artifact_manifest.get("creator_run_id") or "")
     intent_run_id = str((intent or {}).get("run_id") or "")
