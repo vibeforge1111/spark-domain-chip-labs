@@ -13,6 +13,15 @@ import json
 CLAIM_BOUNDARY = "artifact_quality local review only"
 PROVENANCE_SOURCE = "artifact_quality_v1"
 MANIFEST_PATH = "benchmark/artifact_quality_manifest.json"
+ARTIFACT_QUALITY_MANIFEST_SCHEMA_VERSION = "artifact_quality.benchmark_manifest.v1"
+ARTIFACT_QUALITY_MANIFEST_FIELDS = {
+    "schema_version",
+    "baseline_artifact",
+    "candidate_artifact",
+    "trap_artifacts",
+    "case_expectations",
+    "reviewer_calibration_cases",
+}
 CASE_EXPECTATION_ROLES = {"baseline", "candidate", "traps"}
 CASE_EXPECTATION_FIELDS = {
     "verdict",
@@ -346,6 +355,15 @@ def _load_manifest(path: Path) -> dict[str, Any]:
         raise ValueError(f"{path} is not valid JSON: {exc}") from exc
     if not isinstance(manifest, dict):
         raise ValueError(f"{path} must contain a JSON object")
+    unknown_fields = sorted(set(manifest) - ARTIFACT_QUALITY_MANIFEST_FIELDS)
+    if unknown_fields:
+        raise ValueError(
+            f"{path} has unknown top-level field(s): " + ", ".join(unknown_fields)
+        )
+    if manifest.get("schema_version") != ARTIFACT_QUALITY_MANIFEST_SCHEMA_VERSION:
+        raise ValueError(
+            f"{path} schema_version must be {ARTIFACT_QUALITY_MANIFEST_SCHEMA_VERSION}"
+        )
     for key in ("baseline_artifact", "candidate_artifact"):
         if not str(manifest.get(key, "")).strip():
             raise ValueError(f"{path} must include {key}")

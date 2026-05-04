@@ -477,6 +477,7 @@ Deliverables:
 - [x] Add release-note summary for artifact-quality calibration-verdict checks.
 - [x] Add release-note summary for artifact-quality expectation-shape checks.
 - [x] Add release-note summary for artifact-quality calibration-shape checks.
+- [x] Add release-note summary for artifact-quality top-level schema checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:

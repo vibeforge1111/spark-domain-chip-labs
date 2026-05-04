@@ -318,6 +318,28 @@ def test_artifact_quality_benchmark_blocks_failed_case_expectations(
     )
 
 
+def test_artifact_quality_benchmark_rejects_invalid_manifest_schema_version(
+    tmp_path: Path,
+) -> None:
+    manifest = _benchmark_manifest()
+    manifest["schema_version"] = "artifact_quality.benchmark_manifest.v2"
+    run_dir = _artifact_run(tmp_path, manifest)
+
+    with pytest.raises(ValueError, match="schema_version"):
+        run_artifact_quality_benchmark(run_dir)
+
+
+def test_artifact_quality_benchmark_rejects_unknown_manifest_field(
+    tmp_path: Path,
+) -> None:
+    manifest = _benchmark_manifest()
+    manifest["benchmark_notes"] = "operator-only context"
+    run_dir = _artifact_run(tmp_path, manifest)
+
+    with pytest.raises(ValueError, match="unknown top-level field"):
+        run_artifact_quality_benchmark(run_dir)
+
+
 def test_artifact_quality_benchmark_rejects_unknown_case_expectation_role(
     tmp_path: Path,
 ) -> None:

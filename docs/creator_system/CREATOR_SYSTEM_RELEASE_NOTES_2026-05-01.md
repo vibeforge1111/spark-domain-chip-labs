@@ -403,6 +403,9 @@
 - Artifact-quality benchmark manifests now validate reviewer calibration score
   bounds plus trap-flag and missing-check list shapes at parse time, keeping
   human/operator calibration rows schema-coherent before reports are generated.
+- Artifact-quality benchmark manifests now reject invalid `schema_version`
+  values and unknown top-level fields at runtime, matching the strict
+  `additionalProperties: false` schema boundary.
 
 ## Current Claim Boundary
 
@@ -424,4 +427,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `217 passed`.
+Latest focused creator-system suite result before CI push: `219 passed`.
