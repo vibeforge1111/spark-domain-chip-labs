@@ -1378,6 +1378,23 @@ def cmd_creator_system_beta_check(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_creator_system_release_evidence(args: argparse.Namespace) -> None:
+    """Emit machine-readable creator-system beta release evidence."""
+    from .creator_release_evidence import build_creator_system_release_evidence
+
+    result = build_creator_system_release_evidence(
+        release_id=args.release_id,
+        repo_path=args.repo_path,
+        startup_run_dir=args.startup_run_dir,
+        validation_plan_path=args.validation_plan,
+        generated_summary_path=args.generated_summary,
+        product_runtime_review_path=args.product_runtime_review,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_creator_mission_status(args: argparse.Namespace) -> None:
     """Build a read-only creator mission status for product surfaces."""
     from .creator_mission_adapter import build_creator_mission_status, load_json_packet
@@ -2770,6 +2787,59 @@ def main() -> None:
         help="Exit with status 1 when beta readiness is blocked.",
     )
     p_creator_system_beta_check.set_defaults(func=cmd_creator_system_beta_check)
+
+    # creator-system-release-evidence
+    p_creator_system_release_evidence = sub.add_parser(
+        "creator-system-release-evidence",
+        help="Emit machine-readable creator-system beta release evidence.",
+    )
+    p_creator_system_release_evidence.add_argument(
+        "--release-id",
+        type=str,
+        default="creator-system-beta-2026-05-04",
+        help="Release identifier to include in the evidence packet.",
+    )
+    p_creator_system_release_evidence.add_argument(
+        "--repo-path",
+        type=str,
+        default=None,
+        help="Optional repo path for git provenance. Defaults to this checkout.",
+    )
+    p_creator_system_release_evidence.add_argument(
+        "--startup-run-dir",
+        type=str,
+        default=None,
+        help="Optional Startup YC creator-run fixture path.",
+    )
+    p_creator_system_release_evidence.add_argument(
+        "--validation-plan",
+        type=str,
+        default=None,
+        help="Optional Startup YC validation_plan.json path.",
+    )
+    p_creator_system_release_evidence.add_argument(
+        "--generated-summary",
+        type=str,
+        default=None,
+        help="Optional generated multi-seed summary JSON path.",
+    )
+    p_creator_system_release_evidence.add_argument(
+        "--product-runtime-review",
+        type=str,
+        default=None,
+        help="Optional product runtime review JSON path.",
+    )
+    p_creator_system_release_evidence.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_creator_system_release_evidence.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when release evidence is blocked.",
+    )
+    p_creator_system_release_evidence.set_defaults(
+        func=cmd_creator_system_release_evidence
+    )
 
     # creator-mission-status
     p_creator_mission_status = sub.add_parser(

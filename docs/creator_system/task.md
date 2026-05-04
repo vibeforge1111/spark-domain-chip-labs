@@ -861,6 +861,11 @@ Completed documentation/verification:
 - Full `src/chip_labs` and `tests` ruff cleanup is now committed, and
   Creator-system CI enforces `python -m ruff check src/chip_labs tests`
   instead of only linting a narrow creator-system file list.
+- `creator-system-release-evidence` now emits a machine-readable technical beta
+  release packet with repo branch, commit, clean-worktree state, beta-check
+  summary, required rerun commands, release docs, and the explicit
+  `network_absorbable=false` promotion boundary. Dirty checkouts block release
+  evidence instead of silently passing.
 
 Completed product PR verification:
 

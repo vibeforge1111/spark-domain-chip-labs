@@ -84,6 +84,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "creator-mission-status",
         "creator-release-gate",
         "creator-system-beta-check",
+        "creator-system-release-evidence",
         "startup-yc-promotion-gate-check",
         "startup-yc-validation-evidence-check",
         "startup-yc-multi-seed-check",
@@ -127,6 +128,7 @@ def test_creator_system_beta_quickstart_is_user_runnable() -> None:
         "python -m pip install -e .",
         "chip-labs creator-run-template-check --fail-on-blocked",
         "chip-labs creator-system-beta-check --fail-on-blocked",
+        "chip-labs creator-system-release-evidence",
         "chip-labs creator-run-init",
         "chip-labs creator-run-smoke",
         "chip-labs creator-run-doctor",
@@ -152,6 +154,7 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "Strict Startup YC saved-evidence smoke passes",
         "Release tag selected: `creator-system-beta-2026-05-04`",
         "chip-labs creator-system-beta-check --fail-on-blocked",
+        "creator-system-release-evidence --fail-on-blocked",
         "spark-domain-chip-labs-beta-check-20260504190038",
         "spark-domain-chip-labs-beta-fresh-20260504223056",
         "Startup YC production-gate workbench beta subcheck",
@@ -319,6 +322,10 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "fresh Startup YC production-gate" in text
     assert "expected blocked" in text
     assert "rehearsal state before returning `pass`" in text
+    assert "creator-system-release-evidence" in text
+    assert "machine-readable technical beta" in text
+    assert "clean-worktree status" in text
+    assert "Dirty checkouts block release" in text
     assert "generated-multi-domain-briefs.json" in text
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
@@ -393,6 +400,10 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert 'assert payload["network_absorbable"] is False' in text
     assert "--output /tmp/creator-release-gate.json" in text
     assert "creator-release-gate.schema.json" in text
+    assert "creator-system-release-evidence --output /tmp/creator-system-release-evidence.json --fail-on-blocked" in text
+    assert "creator-system-release-evidence.schema.json" in text
+    assert 'assert payload["release_ready"] is True' in text
+    assert 'assert payload["repo"]["worktree_clean"] is True' in text
     assert "tests/test_creator_beta_readiness.py" in text
     assert "creator-system-beta-check --output /tmp/creator-system-beta-check.json --fail-on-blocked" in text
     assert "creator-system-beta-check.schema.json" in text
@@ -575,6 +586,8 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "operator-review-check.schema.json",
         "creator-release-gate.schema.json",
         "creator-system-beta-check.schema.json",
+        "creator-system-release-evidence.schema.json",
+        "Machine-readable technical beta release evidence packet",
         "Local creator-system beta readiness aggregate",
         "product-runtime-review-packet.schema.json",
         "product-runtime-review-check.schema.json",
@@ -607,6 +620,7 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "review evidence only",
         "stronger-release evidence",
         "technical beta",
+        "dirty release evidence blocks",
         "disabled creator controls",
     ):
         assert phrase in text

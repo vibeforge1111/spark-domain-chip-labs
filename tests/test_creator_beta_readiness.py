@@ -9,9 +9,13 @@ import pytest
 
 from chip_labs.creator_beta_readiness import build_creator_system_beta_check
 from chip_labs.creator_generator import run_multi_seed_generator_validation
+from chip_labs.creator_release_evidence import build_creator_system_release_evidence
 
 
 SCHEMA = Path("docs/creator_system/schemas/creator-system-beta-check.schema.json")
+RELEASE_EVIDENCE_SCHEMA = Path(
+    "docs/creator_system/schemas/creator-system-release-evidence.schema.json"
+)
 PRODUCT_READ_ONLY_REVIEW = Path(
     "docs/creator_system/examples/product-runtime-review/review-complete-read-only.json"
 )
@@ -23,6 +27,12 @@ def _validate_schema(payload: dict[str, object]) -> None:
     jsonschema.Draft202012Validator(schema).validate(payload)
 
 
+def _validate_release_evidence_schema(payload: dict[str, object]) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(RELEASE_EVIDENCE_SCHEMA.read_text(encoding="utf-8"))
+    jsonschema.Draft202012Validator(schema).validate(payload)
+
+
 def _brief() -> dict[str, object]:
     return {
         "domain_id": "beta-readiness-demo",
@@ -30,6 +40,19 @@ def _brief() -> dict[str, object]:
         "goal": "Prove beta readiness can use generated evidence without publication.",
         "known_limits": ["Generated evidence is local candidate review only."],
         "unsafe_claims": ["Treat beta readiness as network absorption."],
+    }
+
+
+def _git_info(*, clean: bool) -> dict[str, object]:
+    dirty_files = [] if clean else ["M docs/creator_system/task.md"]
+    return {
+        "path": str(Path.cwd()),
+        "branch": "main",
+        "commit": "a" * 40,
+        "remote_url": "https://github.com/vibeforge1111/spark-domain-chip-labs.git",
+        "worktree_clean": clean,
+        "dirty_file_count": len(dirty_files),
+        "dirty_files_sample": dirty_files,
     }
 
 
@@ -143,3 +166,73 @@ def test_cli_creator_system_beta_check_fails_on_blocked(tmp_path: Path) -> None:
     _validate_schema(payload)
     assert payload["verdict"] == "blocked"
     assert payload["network_absorbable"] is False
+
+
+def test_creator_system_release_evidence_passes_for_clean_beta_packet() -> None:
+    beta = build_creator_system_beta_check()
+    result = build_creator_system_release_evidence(
+        git_info=_git_info(clean=True),
+        beta_check=beta,
+    )
+
+    _validate_release_evidence_schema(result)
+    assert result["verdict"] == "pass"
+    assert result["release_ready"] is True
+    assert result["network_absorbable"] is False
+    assert result["beta_check_summary"]["verdict"] == "pass"
+    assert result["repo"]["worktree_clean"] is True
+    assert result["promotion_boundary"]["blocked_claim"] == "network_absorbable"
+    assert "publication_approval" in result["promotion_boundary"]["required_before_upgrade"]
+
+
+def test_creator_system_release_evidence_blocks_dirty_worktree() -> None:
+    beta = build_creator_system_beta_check()
+    result = build_creator_system_release_evidence(
+        git_info=_git_info(clean=False),
+        beta_check=beta,
+    )
+
+    _validate_release_evidence_schema(result)
+    assert result["verdict"] == "blocked"
+    assert result["release_ready"] is False
+    assert result["network_absorbable"] is False
+    assert "repo:worktree_dirty" in result["blocking_checks"]
+
+
+def test_creator_system_release_evidence_schema_rejects_absorbable_claim() -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    result = build_creator_system_release_evidence(
+        git_info=_git_info(clean=True),
+        beta_check=build_creator_system_beta_check(),
+    )
+    schema = json.loads(RELEASE_EVIDENCE_SCHEMA.read_text(encoding="utf-8"))
+
+    _validate_release_evidence_schema(result)
+    unsafe = json.loads(json.dumps(result))
+    unsafe["network_absorbable"] = True
+    assert list(jsonschema.Draft202012Validator(schema).iter_errors(unsafe))
+
+
+def test_cli_creator_system_release_evidence_writes_packet(tmp_path: Path) -> None:
+    output_path = tmp_path / "release-evidence.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "creator-system-release-evidence",
+            "--output",
+            str(output_path),
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    _validate_release_evidence_schema(payload)
+    assert payload["network_absorbable"] is False
+    assert payload["beta_check_summary"]["verdict"] == "pass"

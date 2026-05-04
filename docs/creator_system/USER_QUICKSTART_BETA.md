@@ -48,6 +48,17 @@ Expected result: `verdict` is `pass`, while `network_absorbable` remains
 the expected blocked rehearsal state, and stronger network/product release
 claims stay blocked.
 
+For a machine-readable release evidence packet from a clean checkout:
+
+```bash
+chip-labs creator-system-release-evidence --fail-on-blocked --output /tmp/creator-system-release-evidence.json
+```
+
+Expected result: `verdict` is `pass`, `release_ready` is `true`, and
+`network_absorbable` remains `false`. If the checkout has local edits, this
+packet blocks with `repo:worktree_dirty` so release evidence cannot silently
+include uncommitted work.
+
 ## Create A Creator Run
 
 ```bash

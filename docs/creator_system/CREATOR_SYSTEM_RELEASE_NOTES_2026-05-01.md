@@ -538,6 +538,11 @@
 - `creator-system-beta-check` now also runs the fresh Startup YC production-gate
   workbench in a temporary clean workspace and requires the expected blocked
   rehearsal state before returning `pass`.
+- `creator-system-release-evidence` now emits a machine-readable technical beta
+  release packet with repo branch, commit, clean-worktree status, beta-check
+  summary, required rerun commands, release docs, and the explicit
+  `network_absorbable=false` promotion boundary. Dirty checkouts block release
+  evidence instead of silently passing as release-ready.
 
 ## Current Claim Boundary
 

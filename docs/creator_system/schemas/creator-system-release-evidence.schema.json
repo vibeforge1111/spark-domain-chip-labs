@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/creator-system-release-evidence.schema.json",
+  "title": "Adaptive Creator Loop Release Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "release_type",
+    "verdict",
+    "release_ready",
+    "network_absorbable",
+    "claim_boundary",
+    "repo",
+    "beta_check_summary",
+    "required_commands",
+    "evidence_refs",
+    "promotion_boundary",
+    "blocking_checks",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.creator_system_release_evidence.v1"
+    },
+    "release_id": {"type": "string", "minLength": 1},
+    "release_type": {"const": "technical_beta"},
+    "verdict": {"enum": ["pass", "blocked"]},
+    "release_ready": {"type": "boolean"},
+    "network_absorbable": {"const": false},
+    "claim_boundary": {
+      "type": "string",
+      "pattern": "does not approve network absorption"
+    },
+    "repo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "branch",
+        "commit",
+        "remote_url",
+        "worktree_clean",
+        "dirty_file_count",
+        "dirty_files_sample"
+      ],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "branch": {"type": ["string", "null"]},
+        "commit": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "remote_url": {"type": ["string", "null"]},
+        "worktree_clean": {"type": "boolean"},
+        "dirty_file_count": {"type": "integer", "minimum": 0},
+        "dirty_files_sample": {
+          "type": "array",
+          "maxItems": 25,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "beta_check_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "verdict",
+        "network_absorbable",
+        "check_count",
+        "passing_check_count",
+        "check_names",
+        "blocking_checks"
+      ],
+      "properties": {
+        "schema_version": {"type": ["string", "null"]},
+        "verdict": {"type": ["string", "null"]},
+        "network_absorbable": {"const": false},
+        "check_count": {"type": "integer", "minimum": 0},
+        "passing_check_count": {"type": "integer", "minimum": 0},
+        "check_names": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "blocking_checks": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "required_commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "path"],
+        "properties": {
+          "label": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "promotion_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blocked_claim", "required_before_upgrade"],
+      "properties": {
+        "blocked_claim": {"const": "network_absorbable"},
+        "required_before_upgrade": {
+          "type": "array",
+          "minItems": 6,
+          "items": {"type": "string", "minLength": 1},
+          "contains": {"const": "publication_approval"}
+        }
+      }
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "next_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "pass"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "release_ready": {"const": true},
+          "blocking_checks": {"maxItems": 0},
+          "repo": {
+            "properties": {
+              "worktree_clean": {"const": true},
+              "dirty_file_count": {"const": 0},
+              "dirty_files_sample": {"maxItems": 0}
+            }
+          },
+          "beta_check_summary": {
+            "properties": {
+              "verdict": {"const": "pass"},
+              "blocking_checks": {"maxItems": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "release_ready": {"const": false},
+          "blocking_checks": {"minItems": 1}
+        }
+      }
+    }
+  ]
+}
