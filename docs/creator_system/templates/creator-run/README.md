@@ -2,6 +2,9 @@
 
 These templates instantiate the Adaptive Creator Loop Standard. Copy this folder into a new creator run workspace, fill the fields, and keep the generated reports with the repo or mission that produced them.
 
+For the full user and agent operating path, read
+`../../CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md` before filling templates.
+
 Minimum order:
 
 1. Fill `creator-intent.template.json`.

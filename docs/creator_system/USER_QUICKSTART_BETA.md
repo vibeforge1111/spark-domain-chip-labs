@@ -21,6 +21,18 @@ and Swarm contribution packets from a repo checkout.
   creator controls.
 - It does not prove live provider-judge calibration or real content virality.
 
+## Where To Start
+
+If you are new to this system, read
+`CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md` before creating a run. It explains
+how users get value from each part of the system and how Spark agents should
+move through intent, adapter map, domain chip, benchmark pack, specialization
+path, autoloop policy, evidence ladder, local Swarm packet, mission status, and
+release evidence.
+
+Use this quickstart for commands. Use the onboarding guide for the step-by-step
+operating model.
+
 ## Install From A Fresh Clone
 
 ```bash

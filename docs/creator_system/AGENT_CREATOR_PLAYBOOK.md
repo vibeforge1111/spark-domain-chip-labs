@@ -11,6 +11,7 @@ The playbook is intentionally concrete. It is meant to be loaded by an agent bef
 When you enter this repo cold, do this before creating artifacts:
 
 1. Load `docs/creator_system/README.md`, `USER_QUICKSTART_BETA.md`,
+   `CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md`,
    `CREATOR_RUN_GOLDEN_PATH_V1.md`, and this playbook.
 2. Run `git status --short` and do not stage or overwrite unrelated dirty or
    untracked files.
@@ -31,6 +32,12 @@ When you enter this repo cold, do this before creating artifacts:
 This beta is designed so agents can understand the repo by following executable
 contracts instead of reading every historical design note. If a doc and a CLI
 result disagree, trust the CLI result and update the doc.
+
+For the complete user value path, read
+`CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md`. It is the canonical map for how
+users and agents move through intent, adapter map, domain chip, benchmark pack,
+specialization path, autoloop policy, evidence ladder, local Swarm packet,
+mission status, and release evidence.
 
 ## Creator Modes
 

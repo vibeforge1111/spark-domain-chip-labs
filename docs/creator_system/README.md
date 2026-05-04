@@ -10,6 +10,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | --- | --- |
 | [CREATOR_SYSTEM_COMMUNITY_HANDOFF_2026-05-01.md](CREATOR_SYSTEM_COMMUNITY_HANDOFF_2026-05-01.md) | Current comprehensive handoff: completed work, diagrams, connection systems, planning status, gaps, and community publishing path. |
 | [CREATOR_SYSTEM_PRD_V1.md](CREATOR_SYSTEM_PRD_V1.md) | Comprehensive PRD for the creator system, including users, artifact contracts, benchmark architecture, trust lanes, requirements, and phased roadmap. |
+| [CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md](CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md) | Canonical onboarding guide for first-time users and fresh Spark agents: step-by-step value path through intent, adapter map, domain chip, benchmark, specialization path, autoloop, evidence ladder, Swarm packet, mission status, and release evidence. |
 | [USER_QUICKSTART_BETA.md](USER_QUICKSTART_BETA.md) | Technical beta quickstart for installing the repo, creating a creator run, running smoke/doctor, proving the generator matrix, and reading evidence tiers. |
 | [RELEASE_READINESS_CHECKLIST_BETA.md](RELEASE_READINESS_CHECKLIST_BETA.md) | Release checklist for fresh-clone install, command verification, claim boundaries, docs, and pre-release gates. |
 | [CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md](CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md) | Concise release artifact for the creator-system technical beta, including tag, evidence, workspace handling, non-goals, and next production gates. |
@@ -83,6 +84,10 @@ Domain Chip Creator should not own Autoloop Creator. It should emit chip-specifi
 
 When an agent is asked to create or improve a Spark creator system, load this folder first, then load repo-specific implementation docs only as needed:
 
+- `spark-domain-chip-labs/docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md`
+- `spark-domain-chip-labs/docs/creator_system/USER_QUICKSTART_BETA.md`
+- `spark-domain-chip-labs/docs/creator_system/AGENT_CREATOR_PLAYBOOK.md`
+- `spark-domain-chip-labs/docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md`
 - `spark-domain-chip-labs/docs/creator_system/CREATOR_SYSTEM_PRD_V1.md`
 - `spark-domain-chip-labs/docs/creator_system/ADAPTIVE_CREATOR_LOOP_STANDARD.md`
 - `spark-domain-chip-labs/docs/creator_system/PROMOTION_GATES_AND_EVIDENCE_TIERS.md`

@@ -23,6 +23,9 @@ ROOT_README = Path("README.md")
 PYPROJECT = Path("pyproject.toml")
 USER_QUICKSTART = Path("docs/creator_system/USER_QUICKSTART_BETA.md")
 AGENT_CREATOR_PLAYBOOK = Path("docs/creator_system/AGENT_CREATOR_PLAYBOOK.md")
+USER_AND_AGENT_ONBOARDING = Path(
+    "docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md"
+)
 RELEASE_CHECKLIST = Path("docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md")
 BETA_RELEASE = Path("docs/creator_system/CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md")
 PUBLIC_BETA_HANDOFF = Path(
@@ -37,6 +40,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_RELEASE_NOTES_2026-05-01.md" in text
     assert "CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md" in text
     assert "PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md" in text
+    assert "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
     assert "examples/product-runtime-review/" in text
     assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
@@ -110,6 +114,7 @@ def test_agent_creator_playbook_keeps_fresh_agent_boot_path_safe() -> None:
 
     for phrase in (
         "## Fresh Agent Boot Sequence",
+        "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md",
         "git status --short",
         "creator-run-template-check --fail-on-blocked",
         "creator-system-beta-check --fail-on-blocked",
@@ -123,6 +128,60 @@ def test_agent_creator_playbook_keeps_fresh_agent_boot_path_safe() -> None:
         "trust the CLI result",
     ):
         assert phrase in text
+
+
+def test_user_and_agent_onboarding_covers_complete_creator_value_path() -> None:
+    text = USER_AND_AGENT_ONBOARDING.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Creator System User And Agent Onboarding",
+        "## User Value By System Part",
+        "## Step-By-Step User Flow",
+        "## Spark Agent Operating Contract",
+        "## Proof-Domain Examples",
+        "## Documentation Map",
+        "Creator intent",
+        "Adapter map",
+        "Domain chip",
+        "Benchmark pack",
+        "Specialization path",
+        "Autoloop policy",
+        "Evidence ladder",
+        "Swarm packet",
+        "Mission status",
+        "Release evidence",
+        "python -m chip_labs.cli creator-run-init",
+        "python -m chip_labs.cli creator-run-smoke runs/<run-name> --recompute --fail-on-blocked",
+        "creator-mission-status",
+        "`publication.network_absorbable=false`",
+        "network_absorbable` stays `false`",
+        "Artifact quality",
+        "Tool operation",
+        "MiroFish content simulation",
+        "Doctor security",
+        "Startup YC founder advice",
+        "Retrieval memory",
+        "what artifacts were created or updated",
+        "the weakest evidence tier",
+    ):
+        assert phrase in text
+
+
+def test_onboarding_is_linked_from_first_read_docs() -> None:
+    docs = {
+        README: "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md",
+        USER_QUICKSTART: "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md",
+        AGENT_CREATOR_PLAYBOOK: "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md",
+        Path("docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md"): (
+            "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md"
+        ),
+        Path("docs/creator_system/templates/creator-run/README.md"): (
+            "../../CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md"
+        ),
+    }
+
+    for path, phrase in docs.items():
+        assert phrase in path.read_text(encoding="utf-8")
 
 
 def test_root_readme_points_to_creator_system_beta_quickstart() -> None:

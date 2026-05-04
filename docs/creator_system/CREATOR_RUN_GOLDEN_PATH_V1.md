@@ -4,6 +4,11 @@ This is the first complete local path for turning a user goal into a benchmarked
 
 The path is intentionally CLI-first. Builder, Telegram, Spawner UI, Canvas, and Kanban can call the same commands later, but V1 proves the contract in a repo before product wiring hardens.
 
+For first-time users and fresh agents, start with
+`CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md`. This golden path is the compact
+command route; the onboarding guide explains how users get value from each
+artifact and how agents should behave at each step.
+
 ## Goal
 
 A Spark agent should be able to:
