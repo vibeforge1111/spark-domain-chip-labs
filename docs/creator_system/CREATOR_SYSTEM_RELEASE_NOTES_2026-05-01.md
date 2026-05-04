@@ -323,6 +323,13 @@
 - `SPARK_CREATOR_PUBLIC_REPO_DECISION.md` now records that public
   `spark-creator` extraction stays deferred until schema compatibility,
   provenance, transfer evidence, and product read-only contracts stabilize.
+- The root README now points technical users to the creator-system beta
+  quickstart, release checklist, and golden path.
+- `USER_QUICKSTART_BETA.md` and `RELEASE_READINESS_CHECKLIST_BETA.md` now make
+  install, first commands, evidence tiers, non-goals, fresh-clone verification,
+  and pre-release gates explicit.
+- The package now exposes a `chip-labs` console entrypoint for fresh-clone
+  users in addition to `python -m chip_labs.cli`.
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.

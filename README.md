@@ -25,6 +25,32 @@ python -m chip_labs.cli packets --input packets_input.json --output packets_outp
 python -m chip_labs.cli watchtower --input wt_input.json --output wt_output.json
 ```
 
+## Creator-System Beta Quickstart
+
+This repo now includes a technical beta for Spark creator systems: local
+workflows that create domain chips, benchmark packs, specialization paths,
+autoloop policies, and Swarm contribution packets from user goals.
+
+Install from a fresh clone:
+
+```bash
+git clone https://github.com/vibeforge1111/spark-domain-chip-labs.git
+cd spark-domain-chip-labs
+python -m pip install -e .
+chip-labs creator-run-template-check --fail-on-blocked
+```
+
+Start with:
+
+- [docs/creator_system/USER_QUICKSTART_BETA.md](docs/creator_system/USER_QUICKSTART_BETA.md)
+- [docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md](docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md)
+- [docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md](docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md)
+
+Release boundary: this beta is for local and repo-based creator-run workflows.
+It does not approve `network_absorbable`, publish to Spark Swarm
+automatically, or wire Builder, Telegram, Spawner, Canvas, or Kanban runtime
+creator controls.
+
 ## With spark-researcher
 
 ```bash

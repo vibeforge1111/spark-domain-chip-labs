@@ -19,6 +19,10 @@ STARTUP_YC_EXTERNAL_RECOMPUTE = Path(
     "docs/creator_system/STARTUP_YC_EXTERNAL_RECOMPUTE_ADAPTERS.md"
 )
 SCHEMA_README = Path("docs/creator_system/schemas/README.md")
+ROOT_README = Path("README.md")
+PYPROJECT = Path("pyproject.toml")
+USER_QUICKSTART = Path("docs/creator_system/USER_QUICKSTART_BETA.md")
+RELEASE_CHECKLIST = Path("docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md")
 
 
 def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
@@ -83,6 +87,57 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "mirofish-outcome-calibration-check",
     ):
         assert command in text
+
+
+def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
+    text = ROOT_README.read_text(encoding="utf-8")
+
+    assert "## Creator-System Beta Quickstart" in text
+    assert "chip-labs creator-run-template-check --fail-on-blocked" in text
+    assert "docs/creator_system/USER_QUICKSTART_BETA.md" in text
+    assert "docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md" in text
+    assert "docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md" in text
+    assert "does not approve `network_absorbable`" in text
+
+
+def test_pyproject_exposes_chip_labs_console_entrypoint() -> None:
+    text = PYPROJECT.read_text(encoding="utf-8")
+
+    assert "[project.scripts]" in text
+    assert 'chip-labs = "chip_labs.cli:main"' in text
+
+
+def test_creator_system_beta_quickstart_is_user_runnable() -> None:
+    text = USER_QUICKSTART.read_text(encoding="utf-8")
+
+    for phrase in (
+        "python -m pip install -e .",
+        "chip-labs creator-run-template-check --fail-on-blocked",
+        "chip-labs creator-run-init",
+        "chip-labs creator-run-smoke",
+        "chip-labs creator-run-doctor",
+        "generated-multi-seed-run",
+        "Startup YC",
+        "`network_absorbable`",
+        "does not publish to Spark Swarm automatically",
+    ):
+        assert phrase in text
+
+
+def test_release_readiness_checklist_preserves_beta_boundary() -> None:
+    text = RELEASE_CHECKLIST.read_text(encoding="utf-8")
+
+    for phrase in (
+        "technical beta, not network publication",
+        "`network_absorbable` remains blocked",
+        "Fresh clone succeeds",
+        "python -m pip install -e .",
+        "chip-labs --help",
+        "Strict Startup YC saved-evidence smoke passes",
+        "MiroFish outcome calibration blocks insufficient or vanity-only",
+        "Do not upgrade claims to `network_absorbable`",
+    ):
+        assert phrase in text
 
 
 def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
@@ -166,6 +221,9 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "mirofish-outcome-calibration-evidence.schema.json" in text
     assert "mirofish-outcome-calibration-check.schema.json" in text
     assert "SPARK_CREATOR_PUBLIC_REPO_DECISION.md" in text
+    assert "USER_QUICKSTART_BETA.md" in text
+    assert "RELEASE_READINESS_CHECKLIST_BETA.md" in text
+    assert "`chip-labs` console entrypoint" in text
     assert "Latest focused creator-system suite result before CI push: `256 passed`." in text
     assert "case_expectations" in text
     assert "calibration_verdict" in text

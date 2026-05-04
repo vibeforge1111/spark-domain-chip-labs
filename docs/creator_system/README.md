@@ -10,6 +10,8 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | --- | --- |
 | [CREATOR_SYSTEM_COMMUNITY_HANDOFF_2026-05-01.md](CREATOR_SYSTEM_COMMUNITY_HANDOFF_2026-05-01.md) | Current comprehensive handoff: completed work, diagrams, connection systems, planning status, gaps, and community publishing path. |
 | [CREATOR_SYSTEM_PRD_V1.md](CREATOR_SYSTEM_PRD_V1.md) | Comprehensive PRD for the creator system, including users, artifact contracts, benchmark architecture, trust lanes, requirements, and phased roadmap. |
+| [USER_QUICKSTART_BETA.md](USER_QUICKSTART_BETA.md) | Technical beta quickstart for installing the repo, creating a creator run, running smoke/doctor, proving the generator matrix, and reading evidence tiers. |
+| [RELEASE_READINESS_CHECKLIST_BETA.md](RELEASE_READINESS_CHECKLIST_BETA.md) | Release checklist for fresh-clone install, command verification, claim boundaries, docs, and pre-release gates. |
 | [CREATOR_SYSTEM_FLOWCHARTS.md](CREATOR_SYSTEM_FLOWCHARTS.md) | Mermaid diagram source for lifecycle, repo ownership, evidence ladder, benchmark tiers, autoloop gates, and Startup YC reference flow. |
 | [CREATOR_SYSTEM_RESEARCH_LEDGER.md](CREATOR_SYSTEM_RESEARCH_LEDGER.md) | Practical research ledger from Startup YC, Startup Bench, agentic simulator, Founder Arena, Builder, Spawner, Telegram, and Spark Swarm. |
 | [ADAPTIVE_CREATOR_LOOP_STANDARD.md](ADAPTIVE_CREATOR_LOOP_STANDARD.md) | The adaptive loop standard: domain-specific adapters, reusable evidence gates, recursive standard evolution, and the first runnable creator-run contract. |
