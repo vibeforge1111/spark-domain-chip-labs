@@ -60,6 +60,22 @@ and the release evidence reported `release_ready=true`,
 `repo.worktree_clean=true`, `repo_user_beta_readiness=100`,
 `production_grade_creator_system_standard=100`,
 `network_absorption_publication=blocked`, and `network_absorbable=false`.
+Hardening 5 public prerelease verification passed on 2026-05-05 for
+`creator-system-beta-2026-05-05-hardening-5`. It packages the creator-system
+user/agent onboarding entrypoint work at commit
+`0fc3087e36b275d8ca94d2b78ce79e3723d1a992`. Creator System CI push run
+`25346693023` passed, and manual generated multi-seed workflow dispatch
+`25346723797` passed with `verdict=candidate_review`, `passed=36/36`,
+`mission_run_count=36`, `release_gate=blocked`, and
+`network_absorbable=false`. The public release assets uploaded to GitHub
+Releases have digests `creator-system-release-evidence.json`
+`sha256:f212b4055d64d43f04fca273c693b3f107e51b29c3a2fc8589a6cba4f7207faa`
+and `creator-system-production-readiness.json`
+`sha256:abc01895015136c1cc34143d5892b6c7a62e9aa812d9b08e0bd2b5db696745ea`;
+the release evidence reported `release_ready=true`,
+`repo.worktree_clean=true`, `repo_user_beta_readiness=100`,
+`production_grade_creator_system_standard=100`,
+`network_absorption_publication=blocked`, and `network_absorbable=false`.
 
 ## Creator-Run Proof
 
@@ -98,6 +114,8 @@ and the release evidence reported `release_ready=true`,
 ## Documentation
 
 - [x] Root README points users to the creator-system beta quickstart.
+- [x] Root README and repo-local `AGENTS.md` point users and fresh agents to
+  `CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md`.
 - [x] Creator-system README lists executable commands.
 - [x] Release artifact states tag, evidence, workspace handling, non-goals, and
   next production gates.

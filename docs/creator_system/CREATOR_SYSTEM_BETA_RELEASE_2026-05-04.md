@@ -5,13 +5,15 @@ This is the release artifact for the creator-system technical beta.
 ## Release Identity
 
 - Release tag: `creator-system-beta-2026-05-04`
-- Latest verified hardening baseline: `a2420c4`
-- Latest hardening tag: `creator-system-beta-2026-05-05-hardening-4`
+- Latest verified hardening baseline: `0fc3087`
+- Latest hardening tag: `creator-system-beta-2026-05-05-hardening-5`
 - Latest hardening prerelease:
-  `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-05-hardening-4`
+  `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-05-hardening-5`
 - Release type: technical beta for local and repo-based creator-run workflows.
 - Release boundary: not a Spark Swarm network-publication approval.
 - Primary quickstart: [USER_QUICKSTART_BETA.md](USER_QUICKSTART_BETA.md)
+- User and agent onboarding:
+  [CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md](CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md)
 - Readiness checklist: [RELEASE_READINESS_CHECKLIST_BETA.md](RELEASE_READINESS_CHECKLIST_BETA.md)
 
 ## What Users Can Do
@@ -162,6 +164,30 @@ This is the release artifact for the creator-system technical beta.
   evidence reported `verdict=pass`, `release_ready=true`,
   `repo.worktree_clean=true`, repo commit
   `a2420c4291700301524d3540ea2dce81a0503889`,
+  `production_readiness_summary.verdict=pass`,
+  `repo_user_beta_readiness=100`,
+  `production_grade_creator_system_standard=100`,
+  `network_absorption_publication=blocked`, and
+  `network_absorbable=false`.
+- Creator System CI passed on 2026-05-05 for creator onboarding entrypoint
+  commit `0fc3087e36b275d8ca94d2b78ce79e3723d1a992` as push run
+  `25346693023`, including uploaded `creator-system-release-evidence` and
+  `creator-system-production-readiness` artifacts.
+- Manual `Creator System` workflow dispatch with
+  `run_generated_multi_seed=true` passed on 2026-05-05 for the same commit as
+  run `25346723797`. The generated matrix reported
+  `verdict=candidate_review`, `passed=36/36`, `mission_run_count=36`,
+  `release_gate=blocked`, and `network_absorbable=false`.
+- Pushed hardening tag `creator-system-beta-2026-05-05-hardening-5` points to
+  commit `0fc3087e36b275d8ca94d2b78ce79e3723d1a992`.
+- GitHub prerelease `Spark Creator System Beta Hardening 5` is published for
+  the hardening tag and includes `creator-system-release-evidence.json` with
+  digest
+  `sha256:f212b4055d64d43f04fca273c693b3f107e51b29c3a2fc8589a6cba4f7207faa`
+  and `creator-system-production-readiness.json` with digest
+  `sha256:abc01895015136c1cc34143d5892b6c7a62e9aa812d9b08e0bd2b5db696745ea`.
+  The release-evidence packet reported `verdict=pass`,
+  `release_ready=true`, `repo.worktree_clean=true`,
   `production_readiness_summary.verdict=pass`,
   `repo_user_beta_readiness=100`,
   `production_grade_creator_system_standard=100`,

@@ -10,12 +10,14 @@ contribution packets from a repo checkout.
 - Repo: `https://github.com/vibeforge1111/spark-domain-chip-labs`
 - Branch: `main`
 - Recommended tag: `creator-system-beta-2026-05-04`
-- Latest verified hardening baseline: `a2420c4`
-- Latest hardening tag: `creator-system-beta-2026-05-05-hardening-4`
+- Latest verified hardening baseline: `0fc3087`
+- Latest hardening tag: `creator-system-beta-2026-05-05-hardening-5`
 - Latest hardening prerelease:
-  `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-05-hardening-4`
+  `https://github.com/vibeforge1111/spark-domain-chip-labs/releases/tag/creator-system-beta-2026-05-05-hardening-5`
 - Release type: local creator-system technical beta
 - Network claim: not `network_absorbable`
+- First user/agent map:
+  `docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md`
 
 ## First Commands
 
@@ -157,6 +159,26 @@ Expected result:
   evidence reported `verdict=pass`, `release_ready=true`,
   `repo.worktree_clean=true`,
   `production_readiness_summary.verdict=pass`,
+  `repo_user_beta_readiness=100`,
+  `production_grade_creator_system_standard=100`,
+  `network_absorption_publication=blocked`, and `network_absorbable=false`.
+- Creator System CI for creator onboarding entrypoint commit
+  `0fc3087e36b275d8ca94d2b78ce79e3723d1a992`: passed as push run
+  `25346693023`, including uploaded `creator-system-release-evidence` and
+  `creator-system-production-readiness` artifacts.
+- Manual generated multi-seed workflow dispatch for the same commit passed as
+  run `25346723797` with `verdict=candidate_review`, `passed=36/36`,
+  `mission_run_count=36`, `release_gate=blocked`, and
+  `network_absorbable=false`.
+- Pushed hardening tag `creator-system-beta-2026-05-05-hardening-5` points to
+  commit `0fc3087e36b275d8ca94d2b78ce79e3723d1a992`.
+- GitHub prerelease `Spark Creator System Beta Hardening 5` is published with
+  `creator-system-release-evidence.json` digest
+  `sha256:f212b4055d64d43f04fca273c693b3f107e51b29c3a2fc8589a6cba4f7207faa`
+  and `creator-system-production-readiness.json` digest
+  `sha256:abc01895015136c1cc34143d5892b6c7a62e9aa812d9b08e0bd2b5db696745ea`.
+  The release evidence reported `release_ready=true`,
+  `repo.worktree_clean=true`, `production_readiness_summary.verdict=pass`,
   `repo_user_beta_readiness=100`,
   `production_grade_creator_system_standard=100`,
   `network_absorption_publication=blocked`, and `network_absorbable=false`.
