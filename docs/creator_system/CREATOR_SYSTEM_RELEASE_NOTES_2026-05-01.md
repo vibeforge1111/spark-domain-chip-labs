@@ -414,6 +414,9 @@
 - `creator-run-smoke` now cross-checks Swarm packet transfer result fields
   against `reports/transfer_summary.json`, blocking packet-level transfer
   claims that drift away from the saved transfer report.
+- `creator-run-smoke` now checks broad-transfer `scenario_results` against
+  top-level `min_delta` and `negative_scenarios`, blocking aggregate summaries
+  that no longer match row-level saved evidence.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -460,4 +463,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `240 passed`.
+Latest focused creator-system suite result before CI push: `241 passed`.

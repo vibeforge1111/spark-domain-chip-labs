@@ -1273,6 +1273,29 @@ def test_transfer_supported_warns_on_mixed_positive_broad_probe(
     )
 
 
+def test_transfer_supported_blocks_broad_transfer_row_mismatch(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path, evidence_tier="transfer_supported")
+    _write_transfer_report(run_dir)
+    _write_broad_transfer_probe(
+        run_dir, delta=0.03, min_delta=-0.01, negative_scenarios=1
+    )
+    probe_path = run_dir / "reports" / "broad_transfer_probe.json"
+    probe = json.loads(probe_path.read_text(encoding="utf-8"))
+    probe["negative_scenarios"] = 0
+    probe_path.write_text(json.dumps(probe), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "broad_transfer_row_negative_count"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_recompute_checks_external_startup_yc_transfer_source(
     tmp_path: Path,
 ) -> None:
@@ -1883,11 +1906,17 @@ def _write_broad_transfer_probe(
     baseline_score = 0.62
     transfer_score = baseline_score + delta
     resolved_min_delta = delta if min_delta is None else min_delta
-    resolved_negative_scenarios = (
-        0 if negative_scenarios is None and resolved_min_delta > 0 else negative_scenarios
-    )
+    resolved_negative_scenarios = negative_scenarios
+    if resolved_negative_scenarios is None and resolved_min_delta > 0:
+        resolved_negative_scenarios = 0
+    if resolved_negative_scenarios is None and delta < 0:
+        resolved_negative_scenarios = scenario_count
     if resolved_negative_scenarios is None:
         resolved_negative_scenarios = 1
+    row_deltas = [
+        resolved_min_delta if index < resolved_negative_scenarios else delta
+        for index in range(scenario_count)
+    ]
     (run_dir / "reports" / "broad_transfer_probe.json").write_text(
         json.dumps(
             {
@@ -1906,9 +1935,9 @@ def _write_broad_transfer_probe(
                     {
                         "scenario_id": f"case_{index}",
                         "track": "gtm",
-                        "startup_yc_score": baseline_score + resolved_min_delta,
+                        "startup_yc_score": baseline_score + row_deltas[index],
                         "baseline_score": baseline_score,
-                        "delta": resolved_min_delta,
+                        "delta": row_deltas[index],
                         "startup_yc_pass_rate": 1,
                         "baseline_pass_rate": 1,
                     }

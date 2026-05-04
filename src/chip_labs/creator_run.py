@@ -2611,6 +2611,59 @@ def _check_broad_transfer_row_consistency(
                     f"Broad transfer scenario_results covers {len(scenario_results)} row(s).",
                 )
             )
+        row_deltas = [
+            _coerce_number(row.get("delta"))
+            for row in scenario_results
+            if isinstance(row, dict)
+        ]
+        if len(row_deltas) != len(scenario_results) or any(
+            delta is None for delta in row_deltas
+        ):
+            checks.append(
+                SmokeCheck(
+                    "broad_transfer_row_deltas",
+                    "fail",
+                    "Broad transfer scenario_results rows must include numeric delta values.",
+                )
+            )
+        else:
+            numeric_deltas = [delta for delta in row_deltas if delta is not None]
+            row_min_delta = min(numeric_deltas) if numeric_deltas else None
+            row_negative_count = sum(1 for delta in numeric_deltas if delta < 0)
+            if min_delta is not None and row_min_delta is not None:
+                if abs(row_min_delta - min_delta) <= 0.0001:
+                    checks.append(
+                        SmokeCheck(
+                            "broad_transfer_row_min_delta",
+                            "pass",
+                            "Broad transfer row deltas match min_delta.",
+                        )
+                    )
+                else:
+                    checks.append(
+                        SmokeCheck(
+                            "broad_transfer_row_min_delta",
+                            "fail",
+                            f"Broad transfer min_delta {min_delta:.4f} does not match row minimum {row_min_delta:.4f}.",
+                        )
+                    )
+            if negative_scenarios is not None:
+                if row_negative_count == int(negative_scenarios):
+                    checks.append(
+                        SmokeCheck(
+                            "broad_transfer_row_negative_count",
+                            "pass",
+                            "Broad transfer negative_scenarios matches scenario rows.",
+                        )
+                    )
+                else:
+                    checks.append(
+                        SmokeCheck(
+                            "broad_transfer_row_negative_count",
+                            "fail",
+                            f"Broad transfer negative_scenarios {int(negative_scenarios)} does not match {row_negative_count} negative row(s).",
+                        )
+                    )
     else:
         checks.append(
             SmokeCheck(
