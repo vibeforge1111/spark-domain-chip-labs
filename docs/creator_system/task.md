@@ -480,6 +480,7 @@ Deliverables:
 - [x] Add release-note summary for artifact-quality top-level schema checks.
 - [x] Add release-note summary for created-artifact exact schema-version checks.
 - [x] Add release-note summary for created-artifact repo metadata checks.
+- [x] Add release-note summary for created-artifact string-type checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:

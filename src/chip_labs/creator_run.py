@@ -1370,7 +1370,12 @@ def _check_artifact_manifest(
                     )
                 )
 
-    manifest_run_id = str(artifact_manifest.get("creator_run_id") or "")
+    manifest_run_id_value = artifact_manifest.get("creator_run_id")
+    manifest_run_id = (
+        manifest_run_id_value.strip()
+        if isinstance(manifest_run_id_value, str)
+        else ""
+    )
     intent_run_id = str((intent or {}).get("run_id") or "")
     if not manifest_run_id:
         checks.append(
@@ -1397,7 +1402,12 @@ def _check_artifact_manifest(
             )
         )
 
-    publication_boundary = str(artifact_manifest.get("publication_boundary") or "")
+    publication_boundary_value = artifact_manifest.get("publication_boundary")
+    publication_boundary = (
+        publication_boundary_value.strip()
+        if isinstance(publication_boundary_value, str)
+        else ""
+    )
     if publication_boundary == "local_only":
         checks.append(
             SmokeCheck(
@@ -1440,9 +1450,12 @@ def _check_artifact_manifest(
         if not isinstance(artifact, dict):
             invalid_entries.append(f"artifact[{index}] is not an object")
             continue
-        kind = str(artifact.get("kind") or "")
-        path = str(artifact.get("path") or "")
-        status = str(artifact.get("status") or "")
+        kind_value = artifact.get("kind")
+        path_value = artifact.get("path")
+        status_value = artifact.get("status")
+        kind = kind_value.strip() if isinstance(kind_value, str) else ""
+        path = path_value.strip() if isinstance(path_value, str) else ""
+        status = status_value.strip() if isinstance(status_value, str) else ""
         if kind:
             seen_kinds.add(kind)
         if (
@@ -1454,7 +1467,20 @@ def _check_artifact_manifest(
             invalid_entries.append(
                 f"artifact[{index}] must include kind, path, and valid status"
             )
-        tier = str(artifact.get("evidence_tier") or "")
+        for optional_field in ("schema_version", "notes"):
+            if optional_field in artifact and not isinstance(
+                artifact[optional_field],
+                str,
+            ):
+                invalid_entries.append(
+                    f"artifact[{index}] {optional_field} must be a string"
+                )
+        tier_value = artifact.get("evidence_tier")
+        tier = tier_value.strip() if isinstance(tier_value, str) else ""
+        if tier_value is not None and not isinstance(tier_value, str):
+            invalid_entries.append(
+                f"artifact[{index}] evidence_tier must stay at or below transfer_supported"
+            )
         if tier and tier not in LOCAL_CREATOR_ARTIFACT_TIERS:
             invalid_entries.append(
                 f"artifact[{index}] evidence_tier must stay at or below transfer_supported"
