@@ -137,6 +137,8 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "chip-labs --help",
         "Strict Startup YC saved-evidence smoke passes",
         "Release tag selected: `creator-system-beta-2026-05-04`",
+        "saved blocked fixture",
+        "recomputes it before any stronger release claim",
         "dirty local",
         "unstaged",
         "MiroFish outcome calibration blocks insufficient or vanity-only",

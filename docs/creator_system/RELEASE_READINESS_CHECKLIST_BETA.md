@@ -36,6 +36,8 @@ Verified on 2026-05-04 from a clean temp checkout at
 
 - [x] Saved evidence is separated from recomputed evidence.
 - [x] Startup YC external provenance packets pin source hashes.
+- [x] Startup YC network-absorption review has a saved blocked fixture and CI
+  recomputes it before any stronger release claim.
 - [x] Broad-transfer aggregate counts are checked against row deltas.
 - [x] Tool-operation checks block protected commands, missing postconditions,
   unsafe secrets, and rollback-less failures.
