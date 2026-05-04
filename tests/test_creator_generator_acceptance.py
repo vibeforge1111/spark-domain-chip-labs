@@ -937,8 +937,13 @@ def test_creator_run_recompute_blocks_stale_saved_evidence(tmp_path: Path) -> No
     saved_only = validate_creator_run(generated.run_dir)
     recomputed = validate_creator_run(generated.run_dir, recompute=True)
 
-    assert saved_only.verdict == "ready_for_swarm_packet"
+    assert saved_only.verdict == "blocked"
     assert recomputed.verdict == "blocked"
+    assert any(
+        check.name == "swarm_packet_candidate_score_matches_report"
+        and check.status == "fail"
+        for check in saved_only.checks
+    )
     assert any(
         check.name == "recompute_candidate_score" and check.status == "fail"
         for check in recomputed.checks
@@ -1349,8 +1354,13 @@ def test_artifact_quality_recompute_blocks_stale_saved_evidence(tmp_path: Path) 
     stale_saved_only = validate_creator_run(generated.run_dir)
     stale_recomputed = validate_creator_run(generated.run_dir, recompute=True)
 
-    assert stale_saved_only.verdict == "ready_for_swarm_packet"
+    assert stale_saved_only.verdict == "blocked"
     assert stale_recomputed.verdict == "blocked"
+    assert any(
+        check.name == "swarm_packet_candidate_score_matches_report"
+        and check.status == "fail"
+        for check in stale_saved_only.checks
+    )
     assert any(
         check.name == "recompute_candidate_score" and check.status == "fail"
         for check in stale_recomputed.checks

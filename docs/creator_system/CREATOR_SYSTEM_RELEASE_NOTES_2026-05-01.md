@@ -406,6 +406,9 @@
   packet schema, creator-run lineage, disabled network publication, report-path
   evidence, and numeric packet baseline/candidate scores before accepting
   elevated saved evidence.
+- `creator-run-smoke` now cross-checks Swarm packet baseline/candidate scores
+  against the saved benchmark reports, blocking coherent-looking packet scores
+  that no longer match the run evidence bundle.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -452,4 +455,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `237 passed`.
+Latest focused creator-system suite result before CI push: `238 passed`.

@@ -1129,6 +1129,25 @@ def test_candidate_review_blocks_swarm_packet_network_publication(
     )
 
 
+def test_candidate_review_blocks_swarm_packet_report_score_mismatch(
+    tmp_path: Path,
+) -> None:
+    run_dir = _write_candidate_review_run(tmp_path)
+    packet_path = run_dir / "swarm" / "contribution_packet.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    packet["evidence"]["candidate_score"] = 0.99
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "swarm_packet_candidate_score_matches_report"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_candidate_review_blocks_missing_trap_coverage(tmp_path: Path) -> None:
     run_dir = _write_candidate_review_run(tmp_path)
     absorption_path = run_dir / "reports" / "absorption_summary.json"

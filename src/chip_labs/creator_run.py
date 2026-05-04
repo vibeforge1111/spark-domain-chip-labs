@@ -1790,6 +1790,40 @@ def _check_swarm_packet(
             )
 
 
+def _check_swarm_packet_report_score(
+    packet: dict[str, Any],
+    field_name: str,
+    expected: float,
+    checks: list[SmokeCheck],
+) -> None:
+    actual = _coerce_number(_nested(packet, "evidence", field_name))
+    check_name = f"swarm_packet_{field_name}_matches_report"
+    if actual is None:
+        checks.append(
+            SmokeCheck(
+                check_name,
+                "fail",
+                f"Swarm packet evidence.{field_name} must be numeric.",
+            )
+        )
+    elif abs(actual - expected) <= 0.0001:
+        checks.append(
+            SmokeCheck(
+                check_name,
+                "pass",
+                f"Swarm packet evidence.{field_name} matches saved report.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                check_name,
+                "fail",
+                f"Swarm packet evidence.{field_name} {actual:.4f} does not match saved report {expected:.4f}.",
+            )
+        )
+
+
 def _check_elevated_evidence(
     run_path: Path,
     evidence_tier: str,
@@ -1915,6 +1949,20 @@ def _check_elevated_evidence(
                 "pass",
                 f"Candidate exceeds baseline by {(candidate_score - baseline_score):.4f}.",
             )
+        )
+    if baseline_score is not None:
+        _check_swarm_packet_report_score(
+            packet,
+            "baseline_score",
+            baseline_score,
+            checks,
+        )
+    if candidate_score is not None:
+        _check_swarm_packet_report_score(
+            packet,
+            "candidate_score",
+            candidate_score,
+            checks,
         )
 
     _check_bool(
