@@ -396,6 +396,9 @@
 - `creator-run-smoke` now validates autoloop policy schema version, required
   loop fields, lineage requirement, and `network_publication_allowed=false`
   before treating saved loop policy evidence as coherent.
+- `creator-run-smoke` now validates creator-intent required source/domain/privacy
+  fields and `network_publication_allowed=false`, blocking local intent packets
+  that try to behave like publication approvals.
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
@@ -442,4 +445,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `229 passed`.
+Latest focused creator-system suite result before CI push: `231 passed`.

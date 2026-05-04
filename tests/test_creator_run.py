@@ -511,6 +511,54 @@ def test_creator_run_blocks_wrong_creator_intent_schema_version(
     )
 
 
+def test_creator_run_blocks_missing_creator_intent_required_field(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test creator intent required fields.",
+    )
+    intent_path = run_dir / "creator-intent.json"
+    intent = json.loads(intent_path.read_text(encoding="utf-8"))
+    intent["domain"]["short_slug"] = ""
+    intent_path.write_text(json.dumps(intent), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "creator_intent_required_fields"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
+def test_creator_run_blocks_creator_intent_network_publication(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "creator-run"
+    init_creator_run(
+        run_dir,
+        domain="Startup YC",
+        goal="Test creator intent network boundary.",
+    )
+    intent_path = run_dir / "creator-intent.json"
+    intent = json.loads(intent_path.read_text(encoding="utf-8"))
+    intent["constraints"]["network_publication_allowed"] = True
+    intent_path.write_text(json.dumps(intent), encoding="utf-8")
+
+    smoke = validate_creator_run(run_dir)
+
+    assert smoke.verdict == "blocked"
+    assert any(
+        check.name == "creator_intent_network_publication_allowed"
+        and check.status == "fail"
+        for check in smoke.checks
+    )
+
+
 def test_creator_run_blocks_network_tiers_in_local_artifacts(tmp_path: Path) -> None:
     run_dir = tmp_path / "creator-run"
     init_creator_run(run_dir, domain="Startup YC", goal="Test local tier ceiling.")

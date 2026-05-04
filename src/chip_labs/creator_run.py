@@ -65,6 +65,12 @@ AUTOLOOP_POLICY_REQUIRED_STRING_FIELDS = (
     "rollback_condition",
     "promotion_condition",
 )
+CREATOR_INTENT_REQUIRED_PATHS = (
+    "source_channel",
+    "domain.name",
+    "domain.short_slug",
+    "constraints.privacy_boundary",
+)
 EVIDENCE_LADDER_PATH = "reports/evidence_ladder.md"
 ARTIFACT_MANIFEST_PATH = "created-artifact-manifest.json"
 ARTIFACT_MANIFEST_SCHEMA_VERSION = "adaptive_creator_loop.created_artifact_manifest.v1"
@@ -617,31 +623,7 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
     )
 
     if intent:
-        _check_schema_version(
-            intent,
-            CREATOR_INTENT_SCHEMA_VERSION,
-            "creator_intent_schema",
-            checks,
-        )
-        _check_non_empty(
-            intent.get("run_id"),
-            "creator_intent_run_id",
-            "creator-intent.json has a run_id.",
-            checks,
-        )
-        _check_non_empty(
-            _nested(intent, "goal", "plain_language_goal"),
-            "creator_intent_goal",
-            "creator-intent.json names the user goal.",
-            checks,
-        )
-        _check_local_creator_artifact_tier(
-            _nested(intent, "success_criteria", "minimum_evidence_tier"),
-            "creator_intent_minimum_evidence_tier",
-            "creator-intent.json success_criteria.minimum_evidence_tier",
-            checks,
-            required=True,
-        )
+        _check_creator_intent(intent, checks)
 
     if adapter_map:
         _check_schema_prefix(
@@ -1545,6 +1527,72 @@ def _check_artifact_manifest(
                 "Artifact manifest includes the required creator artifact kinds.",
             )
         )
+
+
+def _check_creator_intent(intent: dict[str, Any], checks: list[SmokeCheck]) -> None:
+    _check_schema_version(
+        intent,
+        CREATOR_INTENT_SCHEMA_VERSION,
+        "creator_intent_schema",
+        checks,
+    )
+    _check_non_empty(
+        intent.get("run_id"),
+        "creator_intent_run_id",
+        "creator-intent.json has a run_id.",
+        checks,
+    )
+    _check_non_empty(
+        _nested(intent, "goal", "plain_language_goal"),
+        "creator_intent_goal",
+        "creator-intent.json names the user goal.",
+        checks,
+    )
+    missing_paths = []
+    for path in CREATOR_INTENT_REQUIRED_PATHS:
+        value = _nested_path(intent, path)
+        if not isinstance(value, str) or not value.strip():
+            missing_paths.append(path)
+    if missing_paths:
+        checks.append(
+            SmokeCheck(
+                "creator_intent_required_fields",
+                "fail",
+                "creator-intent.json is missing or mis-shaping required field(s): "
+                + ", ".join(missing_paths),
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "creator_intent_required_fields",
+                "pass",
+                "creator-intent.json required fields are shaped.",
+            )
+        )
+    if _nested(intent, "constraints", "network_publication_allowed") is False:
+        checks.append(
+            SmokeCheck(
+                "creator_intent_network_publication_allowed",
+                "pass",
+                "creator-intent.json keeps network publication disabled.",
+            )
+        )
+    else:
+        checks.append(
+            SmokeCheck(
+                "creator_intent_network_publication_allowed",
+                "fail",
+                "creator-intent.json constraints.network_publication_allowed must be false.",
+            )
+        )
+    _check_local_creator_artifact_tier(
+        _nested(intent, "success_criteria", "minimum_evidence_tier"),
+        "creator_intent_minimum_evidence_tier",
+        "creator-intent.json success_criteria.minimum_evidence_tier",
+        checks,
+        required=True,
+    )
 
 
 def _check_autoloop_policy(
