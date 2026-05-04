@@ -320,6 +320,9 @@
   `mirofish-outcome-calibration-check.schema.json` now anchor denominator,
   downstream-signal, qualitative-review, forbidden-claim, and
   `network_absorbable=false` requirements for real outcome calibration.
+- `SPARK_CREATOR_PUBLIC_REPO_DECISION.md` now records that public
+  `spark-creator` extraction stays deferred until schema compatibility,
+  provenance, transfer evidence, and product read-only contracts stabilize.
 - Tool-operation checks now require successful parsed operations to declare
   `expected_postconditions`; stdout and plausible success packets are not
   enough for mission-control state updates.

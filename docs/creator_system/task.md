@@ -497,6 +497,7 @@ Deliverables:
 - [x] Add release-note summary for Startup YC network absorption review packets.
 - [x] Add release-note summary for MiroFish provider-adapter manifest checks.
 - [x] Add release-note summary for MiroFish outcome calibration checks.
+- [x] Add release-note summary for public `spark-creator` repo decision.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:
@@ -821,5 +822,5 @@ Completed product PR verification:
 - [x] Multi-RLM provider adapter manifest/check for content simulation.
 - [x] Real content outcome calibration evidence/check shape.
 - Product wiring for Builder, Telegram, Spawner UI, Canvas, and Kanban.
-- Public `spark-creator` repo decision.
+- [x] Public `spark-creator` repo decision.
 - [x] Network absorption review packet.

@@ -165,6 +165,7 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "mirofish-outcome-calibration-check" in text
     assert "mirofish-outcome-calibration-evidence.schema.json" in text
     assert "mirofish-outcome-calibration-check.schema.json" in text
+    assert "SPARK_CREATOR_PUBLIC_REPO_DECISION.md" in text
     assert "Latest focused creator-system suite result before CI push: `256 passed`." in text
     assert "case_expectations" in text
     assert "calibration_verdict" in text
