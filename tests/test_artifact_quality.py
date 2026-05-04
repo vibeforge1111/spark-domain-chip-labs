@@ -333,6 +333,19 @@ def test_artifact_quality_benchmark_rejects_unknown_case_expectation_role(
         run_artifact_quality_benchmark(run_dir)
 
 
+def test_artifact_quality_benchmark_rejects_unknown_case_expectation_field(
+    tmp_path: Path,
+) -> None:
+    manifest = _benchmark_manifest()
+    assert isinstance(manifest["case_expectations"], dict)
+    assert isinstance(manifest["case_expectations"]["candidate"], dict)
+    manifest["case_expectations"]["candidate"]["minimum_score"] = 0.95
+    run_dir = _artifact_run(tmp_path, manifest)
+
+    with pytest.raises(ValueError, match="unknown field"):
+        run_artifact_quality_benchmark(run_dir)
+
+
 def test_artifact_quality_benchmark_blocks_failed_reviewer_calibration(
     tmp_path: Path,
 ) -> None:

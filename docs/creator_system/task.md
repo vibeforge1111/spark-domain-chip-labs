@@ -471,6 +471,7 @@ Deliverables:
 - [x] Add release-note summary for runtime smoke local artifact-status checks.
 - [x] Add release-note summary for runtime smoke local artifact-kind checks.
 - [x] Add release-note summary for artifact-quality expectation-role checks.
+- [x] Add release-note summary for artifact-quality expectation-field checks.
 - [ ] Continue adding release-note summaries after future committed slices.
 
 Quality gates:

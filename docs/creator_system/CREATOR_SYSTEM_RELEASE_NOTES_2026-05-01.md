@@ -384,6 +384,9 @@
 - Artifact-quality benchmark manifests now reject unknown `case_expectations`
   roles at runtime, so misspelled or hallucinated benchmark lanes cannot be
   silently ignored while producing a passing report.
+- Artifact-quality benchmark manifests now also reject unknown fields inside
+  known `case_expectations` roles, blocking typos like `minimum_score` from
+  being silently skipped.
 
 ## Current Claim Boundary
 
@@ -405,4 +408,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `208 passed`.
+Latest focused creator-system suite result before CI push: `209 passed`.

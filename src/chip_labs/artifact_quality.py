@@ -14,6 +14,12 @@ CLAIM_BOUNDARY = "artifact_quality local review only"
 PROVENANCE_SOURCE = "artifact_quality_v1"
 MANIFEST_PATH = "benchmark/artifact_quality_manifest.json"
 CASE_EXPECTATION_ROLES = {"baseline", "candidate", "traps"}
+CASE_EXPECTATION_FIELDS = {
+    "verdict",
+    "min_score",
+    "max_score",
+    "required_trap_flags",
+}
 
 CHECKS = (
     {
@@ -342,6 +348,17 @@ def _load_manifest(path: Path) -> dict[str, Any]:
                 f"{path} case_expectations has unknown role(s): "
                 + ", ".join(unknown_roles)
             )
+        for role, expectation in manifest["case_expectations"].items():
+            if not isinstance(expectation, dict):
+                raise ValueError(
+                    f"{path} case_expectations.{role} must be an object"
+                )
+            unknown_fields = sorted(set(expectation) - CASE_EXPECTATION_FIELDS)
+            if unknown_fields:
+                raise ValueError(
+                    f"{path} case_expectations.{role} has unknown field(s): "
+                    + ", ".join(unknown_fields)
+                )
     if manifest.get("reviewer_calibration_cases") is not None and not isinstance(
         manifest["reviewer_calibration_cases"],
         list,
