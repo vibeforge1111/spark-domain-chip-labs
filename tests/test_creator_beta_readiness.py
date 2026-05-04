@@ -9,12 +9,18 @@ import pytest
 
 from chip_labs.creator_beta_readiness import build_creator_system_beta_check
 from chip_labs.creator_generator import run_multi_seed_generator_validation
+from chip_labs.creator_production_readiness import (
+    build_creator_system_production_readiness,
+)
 from chip_labs.creator_release_evidence import build_creator_system_release_evidence
 
 
 SCHEMA = Path("docs/creator_system/schemas/creator-system-beta-check.schema.json")
 RELEASE_EVIDENCE_SCHEMA = Path(
     "docs/creator_system/schemas/creator-system-release-evidence.schema.json"
+)
+PRODUCTION_READINESS_SCHEMA = Path(
+    "docs/creator_system/schemas/creator-system-production-readiness.schema.json"
 )
 PRODUCT_READ_ONLY_REVIEW = Path(
     "docs/creator_system/examples/product-runtime-review/review-complete-read-only.json"
@@ -30,6 +36,12 @@ def _validate_schema(payload: dict[str, object]) -> None:
 def _validate_release_evidence_schema(payload: dict[str, object]) -> None:
     jsonschema = pytest.importorskip("jsonschema")
     schema = json.loads(RELEASE_EVIDENCE_SCHEMA.read_text(encoding="utf-8"))
+    jsonschema.Draft202012Validator(schema).validate(payload)
+
+
+def _validate_production_readiness_schema(payload: dict[str, object]) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    schema = json.loads(PRODUCTION_READINESS_SCHEMA.read_text(encoding="utf-8"))
     jsonschema.Draft202012Validator(schema).validate(payload)
 
 
@@ -236,3 +248,87 @@ def test_cli_creator_system_release_evidence_writes_packet(tmp_path: Path) -> No
     _validate_release_evidence_schema(payload)
     assert payload["network_absorbable"] is False
     assert payload["beta_check_summary"]["verdict"] == "pass"
+
+
+def test_creator_system_production_readiness_tracks_honest_100s(
+    tmp_path: Path,
+) -> None:
+    result = build_creator_system_production_readiness(workspace_dir=tmp_path / "clean")
+
+    _validate_production_readiness_schema(result)
+    assert result["verdict"] == "pass"
+    assert result["network_absorbable"] is False
+    tracks = {track["name"]: track for track in result["readiness_tracks"]}
+    assert tracks["repo_user_beta_readiness"]["verdict"] == "pass"
+    assert tracks["repo_user_beta_readiness"]["score"] == 100
+    standard = tracks["production_grade_creator_system_standard"]
+    assert standard["verdict"] == "pass"
+    assert standard["score"] == 100
+    assert standard["detail"]["generated_phase_passed"] is True
+    assert standard["detail"]["product_phase_passed"] is True
+    assert standard["detail"]["startup_network_absorption_blocked"] is True
+    network = tracks["network_absorption_publication"]
+    assert network["verdict"] == "blocked"
+    assert network["score"] == 0
+    assert "publication_approval" in network["detail"]["required_before_upgrade"]
+    assert result["release_gate_summary"]["verdict"] == "blocked"
+    assert result["release_gate_summary"]["generated_phase_passed"] is True
+    assert result["release_gate_summary"]["product_phase_passed"] is True
+    assert result["release_gate_summary"]["startup_phase_passed"] is False
+
+
+def test_creator_system_production_readiness_blocks_dirty_workspace(
+    tmp_path: Path,
+) -> None:
+    workspace = tmp_path / "dirty"
+    workspace.mkdir()
+    (workspace / "existing.txt").write_text("not clean\n", encoding="utf-8")
+
+    result = build_creator_system_production_readiness(workspace_dir=workspace)
+
+    _validate_production_readiness_schema(result)
+    assert result["verdict"] == "blocked"
+    assert "production_grade_creator_system_standard:workspace_dir_not_clean" in result[
+        "blocking_checks"
+    ]
+
+
+def test_creator_system_production_readiness_schema_rejects_absorbable_claim(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    result = build_creator_system_production_readiness(workspace_dir=tmp_path / "clean")
+    schema = json.loads(PRODUCTION_READINESS_SCHEMA.read_text(encoding="utf-8"))
+
+    _validate_production_readiness_schema(result)
+    unsafe = json.loads(json.dumps(result))
+    unsafe["network_absorbable"] = True
+    assert list(jsonschema.Draft202012Validator(schema).iter_errors(unsafe))
+
+
+def test_cli_creator_system_production_readiness_writes_packet(tmp_path: Path) -> None:
+    output_path = tmp_path / "production-readiness.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "creator-system-production-readiness",
+            "--workspace-dir",
+            str(tmp_path / "clean"),
+            "--output",
+            str(output_path),
+            "--fail-on-blocked",
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    _validate_production_readiness_schema(payload)
+    assert payload["verdict"] == "pass"
+    assert payload["network_absorbable"] is False

@@ -1395,6 +1395,30 @@ def cmd_creator_system_release_evidence(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_creator_system_production_readiness(args: argparse.Namespace) -> None:
+    """Emit honest beta and production-standard readiness tracks."""
+    from .creator_production_readiness import (
+        build_creator_system_production_readiness,
+    )
+
+    seeds = tuple(int(item.strip()) for item in args.seeds.split(",") if item.strip())
+    if not seeds:
+        raise SystemExit("--seeds must include at least one integer seed")
+    result = build_creator_system_production_readiness(
+        workspace_dir=args.workspace_dir,
+        startup_run_dir=args.startup_run_dir,
+        validation_plan_path=args.validation_plan,
+        generated_briefs_path=args.generated_briefs,
+        generated_summary_path=args.generated_summary,
+        product_runtime_review_path=args.product_runtime_review,
+        seeds=seeds,
+        variants_per_domain=args.variants_per_domain,
+    )
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result["verdict"] == "blocked":
+        raise SystemExit(1)
+
+
 def cmd_creator_mission_status(args: argparse.Namespace) -> None:
     """Build a read-only creator mission status for product surfaces."""
     from .creator_mission_adapter import build_creator_mission_status, load_json_packet
@@ -2839,6 +2863,71 @@ def main() -> None:
     )
     p_creator_system_release_evidence.set_defaults(
         func=cmd_creator_system_release_evidence
+    )
+
+    # creator-system-production-readiness
+    p_creator_system_production_readiness = sub.add_parser(
+        "creator-system-production-readiness",
+        help="Emit honest repo/user beta and creator-system standard readiness tracks.",
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--workspace-dir",
+        type=str,
+        default=None,
+        help="Optional clean workspace for generated proof. Defaults to a timestamped temp dir.",
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--startup-run-dir",
+        type=str,
+        default=None,
+        help="Optional Startup YC creator-run fixture path.",
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--validation-plan",
+        type=str,
+        default=None,
+        help="Optional Startup YC validation_plan.json path.",
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--generated-briefs",
+        type=str,
+        default=None,
+        help="Optional generated multi-domain briefs JSON path.",
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--generated-summary",
+        type=str,
+        default=None,
+        help="Optional precomputed generated multi-seed summary JSON path.",
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--product-runtime-review",
+        type=str,
+        default=None,
+        help="Optional product runtime review JSON path.",
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--seeds",
+        type=str,
+        default="1",
+        help="Comma-separated generator seeds for default generated proof. Defaults to 1.",
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--variants-per-domain",
+        type=int,
+        default=1,
+        help="Generated variants per domain for default generated proof. Defaults to 1.",
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_creator_system_production_readiness.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when beta or production-standard readiness is blocked.",
+    )
+    p_creator_system_production_readiness.set_defaults(
+        func=cmd_creator_system_production_readiness
     )
 
     # creator-mission-status

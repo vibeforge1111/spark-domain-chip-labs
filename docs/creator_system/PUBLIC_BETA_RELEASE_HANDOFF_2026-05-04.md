@@ -24,6 +24,7 @@ git clone https://github.com/vibeforge1111/spark-domain-chip-labs.git
 cd spark-domain-chip-labs
 python -m pip install -e .
 chip-labs creator-system-beta-check --fail-on-blocked
+chip-labs creator-system-production-readiness --fail-on-blocked
 ```
 
 Expected result:
@@ -34,6 +35,9 @@ Expected result:
 - Startup YC strict smoke: `101` pass, `0` warn, `0` fail
 - Startup YC evidence tier: `transfer_supported`
 - stronger-release gate: still blocked
+- repo/user beta readiness: `100`
+- production-grade creator-system standard readiness: `100`
+- network absorption publication: `blocked`
 
 ## What This Beta Can Do
 
@@ -85,6 +89,12 @@ Expected result:
   the hardening tag and includes `creator-system-release-evidence.json` as a
   release asset with digest
   `sha256:b7fb79142196c70b06b21689ae5ffffd7dca9d1a317b3581428d2341baac210c`.
+- Local production-readiness rehearsal on 2026-05-05 reported
+  `repo_user_beta_readiness=pass:100`,
+  `production_grade_creator_system_standard=pass:100`,
+  `network_absorption_publication=blocked:0`, `release_gate=blocked`,
+  generated and product phases passing, Startup YC network absorption blocked,
+  and `network_absorbable=false`.
 
 ## Release Shape Decision
 

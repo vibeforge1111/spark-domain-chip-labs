@@ -41,6 +41,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [creator-release-gate.schema.json](creator-release-gate.schema.json) | Stronger-release gate aggregate for multi-seed, Startup YC review, and product runtime review evidence |
 | [creator-system-beta-check.schema.json](creator-system-beta-check.schema.json) | Local creator-system beta readiness aggregate |
 | [creator-system-release-evidence.schema.json](creator-system-release-evidence.schema.json) | Machine-readable technical beta release evidence packet |
+| [creator-system-production-readiness.schema.json](creator-system-production-readiness.schema.json) | Honest repo/user beta and creator-system standard readiness tracks |
 | [operator-review-packet.schema.json](operator-review-packet.schema.json) | Generic generated-domain human/operator review packet |
 | [operator-review-check.schema.json](operator-review-check.schema.json) | Generic generated-domain human/operator review check output |
 | [product-runtime-review-packet.schema.json](product-runtime-review-packet.schema.json) | Product runtime review packet for Builder, Telegram, Spawner, Canvas, and Kanban |
@@ -135,6 +136,12 @@ branch, commit, remote, clean-worktree status, required rerun commands, release
 docs, and the explicit promotion boundary. A passing packet requires a clean
 checkout and a passing beta check; dirty release evidence blocks without
 changing `network_absorbable=false`.
+The creator-system production-readiness schema reports the two 100% targets
+separately from network publication: repo/user beta readiness and the
+production-grade creator-system standard may pass when generated multi-seed
+proof and read-only product runtime review evidence are present, while the
+network-absorption publication track remains visibly blocked at
+`network_absorbable=false`.
 The product-runtime review schemas define the evidence packet that can satisfy
 the release gate's product phase. They require Builder, Telegram, Spawner,
 Canvas, and Kanban to preserve read-only adapters, blocked-state visibility,

@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/creator-system-production-readiness.schema.json",
+  "title": "Adaptive Creator Loop Production Readiness",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "verdict",
+    "network_absorbable",
+    "claim_boundary",
+    "readiness_tracks",
+    "blocking_checks",
+    "release_gate_summary",
+    "input_provenance",
+    "next_actions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.creator_system_production_readiness.v1"
+    },
+    "verdict": {"enum": ["pass", "blocked"]},
+    "network_absorbable": {"const": false},
+    "claim_boundary": {
+      "type": "string",
+      "pattern": "does not approve network_absorbable"
+    },
+    "readiness_tracks": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "verdict", "score", "blocking_checks", "detail"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "verdict": {"enum": ["pass", "blocked"]},
+          "score": {"type": "integer", "minimum": 0, "maximum": 100},
+          "blocking_checks": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "detail": {"type": "object"}
+        }
+      },
+      "allOf": [
+        {"contains": {"properties": {"name": {"const": "repo_user_beta_readiness"}}}},
+        {"contains": {"properties": {"name": {"const": "production_grade_creator_system_standard"}}}},
+        {"contains": {"properties": {"name": {"const": "network_absorption_publication"}}}}
+      ]
+    },
+    "blocking_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "release_gate_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verdict",
+        "network_absorbable",
+        "generated_phase_passed",
+        "startup_phase_passed",
+        "product_phase_passed",
+        "blocking_checks"
+      ],
+      "properties": {
+        "verdict": {"enum": ["blocked", "review_ready"]},
+        "network_absorbable": {"const": false},
+        "generated_phase_passed": {"type": "boolean"},
+        "startup_phase_passed": {"type": "boolean"},
+        "product_phase_passed": {"type": "boolean"},
+        "blocking_checks": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "input_provenance": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "path", "present", "sha256"],
+        "properties": {
+          "label": {"type": "string", "minLength": 1},
+          "path": {"type": ["string", "null"]},
+          "present": {"type": "boolean"},
+          "sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "next_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"verdict": {"const": "pass"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"maxItems": 0},
+          "readiness_tracks": {
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "name": {"const": "repo_user_beta_readiness"},
+                    "verdict": {"const": "pass"},
+                    "score": {"const": 100},
+                    "blocking_checks": {"maxItems": 0}
+                  }
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {"const": "production_grade_creator_system_standard"},
+                    "verdict": {"const": "pass"},
+                    "score": {"const": 100},
+                    "blocking_checks": {"maxItems": 0}
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"verdict": {"const": "blocked"}},
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "blocking_checks": {"minItems": 1}
+        }
+      }
+    }
+  ]
+}

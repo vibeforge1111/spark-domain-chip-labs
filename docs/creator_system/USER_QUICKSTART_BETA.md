@@ -62,6 +62,20 @@ include uncommitted work.
 On pushed commits, Creator System CI also uploads this JSON as the
 `creator-system-release-evidence` workflow artifact.
 
+To check the two 100% readiness targets without approving network absorption:
+
+```bash
+chip-labs creator-system-production-readiness --fail-on-blocked --output /tmp/creator-system-production-readiness.json
+```
+
+Expected result: top-level `verdict` is `pass`,
+`repo_user_beta_readiness.score` is `100`,
+`production_grade_creator_system_standard.score` is `100`, and
+`network_absorption_publication` remains `blocked` with
+`network_absorbable=false`. This command creates generated proof in a clean
+temporary workspace and attaches the read-only product runtime review fixture;
+it does not wire product controls.
+
 ## Create A Creator Run
 
 ```bash

@@ -129,6 +129,9 @@ def test_creator_system_beta_quickstart_is_user_runnable() -> None:
         "chip-labs creator-run-template-check --fail-on-blocked",
         "chip-labs creator-system-beta-check --fail-on-blocked",
         "chip-labs creator-system-release-evidence",
+        "chip-labs creator-system-production-readiness --fail-on-blocked",
+        "production_grade_creator_system_standard.score",
+        "network_absorption_publication",
         "chip-labs creator-run-init",
         "chip-labs creator-run-smoke",
         "chip-labs creator-run-doctor",
@@ -155,7 +158,9 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "Release tag selected: `creator-system-beta-2026-05-04`",
         "chip-labs creator-system-beta-check --fail-on-blocked",
         "creator-system-release-evidence --fail-on-blocked",
+        "creator-system-production-readiness --fail-on-blocked",
         "creator-system-release-evidence` as a workflow",
+        "creator-system-production-readiness` as a workflow",
         "spark-domain-chip-labs-beta-check-20260504190038",
         "spark-domain-chip-labs-beta-fresh-20260504223056",
         "Startup YC production-gate workbench beta subcheck",
@@ -421,6 +426,10 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "creator-release-gate.schema.json" in text
     assert "creator-system-release-evidence --output /tmp/creator-system-release-evidence.json --fail-on-blocked" in text
     assert "creator-system-release-evidence.schema.json" in text
+    assert "creator-system-production-readiness --workspace-dir /tmp/creator-system-production-readiness --output /tmp/creator-system-production-readiness.json --fail-on-blocked" in text
+    assert "creator-system-production-readiness.schema.json" in text
+    assert "creator-system-production-readiness-artifact" in text
+    assert "creator-system-production-readiness.json" in text
     assert "actions/upload-artifact@v7" in text
     assert "creator-system-release-evidence-artifact" in text
     assert "creator-system-release-evidence.json" in text
@@ -611,8 +620,10 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "creator-release-gate.schema.json",
         "creator-system-beta-check.schema.json",
         "creator-system-release-evidence.schema.json",
+        "creator-system-production-readiness.schema.json",
         "Machine-readable technical beta release evidence packet",
         "Local creator-system beta readiness aggregate",
+        "Honest repo/user beta and creator-system standard readiness tracks",
         "product-runtime-review-packet.schema.json",
         "product-runtime-review-check.schema.json",
         "doctor-adversarial-sweep-manifest.schema.json",
@@ -645,6 +656,7 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "stronger-release evidence",
         "technical beta",
         "dirty release evidence blocks",
+        "production-grade creator-system standard",
         "disabled creator controls",
     ):
         assert phrase in text

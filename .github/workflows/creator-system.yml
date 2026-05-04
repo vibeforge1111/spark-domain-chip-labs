@@ -198,8 +198,30 @@ jobs:
           assert payload["repo"]["worktree_clean"] is True
           assert payload["beta_check_summary"]["verdict"] == "pass"
           PY
+          python -m chip_labs.cli creator-system-production-readiness --workspace-dir /tmp/creator-system-production-readiness --output /tmp/creator-system-production-readiness.json --fail-on-blocked
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          import jsonschema
+
+          schema = json.loads(Path("docs/creator_system/schemas/creator-system-production-readiness.schema.json").read_text())
+          payload = json.loads(Path("/tmp/creator-system-production-readiness.json").read_text())
+          jsonschema.Draft202012Validator(schema).validate(payload)
+          assert payload["verdict"] == "pass"
+          assert payload["network_absorbable"] is False
+          tracks = {track["name"]: track for track in payload["readiness_tracks"]}
+          assert tracks["repo_user_beta_readiness"]["score"] == 100
+          assert tracks["production_grade_creator_system_standard"]["score"] == 100
+          assert tracks["network_absorption_publication"]["verdict"] == "blocked"
+          assert payload["release_gate_summary"]["generated_phase_passed"] is True
+          assert payload["release_gate_summary"]["product_phase_passed"] is True
+          assert payload["release_gate_summary"]["startup_phase_passed"] is False
+          PY
           mkdir -p /tmp/creator-system-release-evidence-artifact
           cp /tmp/creator-system-release-evidence.json /tmp/creator-system-release-evidence-artifact/creator-system-release-evidence.json
+          mkdir -p /tmp/creator-system-production-readiness-artifact
+          cp /tmp/creator-system-production-readiness.json /tmp/creator-system-production-readiness-artifact/creator-system-production-readiness.json
           python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 
       - name: Upload creator-system release evidence
@@ -207,6 +229,14 @@ jobs:
         with:
           name: creator-system-release-evidence
           path: /tmp/creator-system-release-evidence-artifact/creator-system-release-evidence.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload creator-system production readiness
+        uses: actions/upload-artifact@v7
+        with:
+          name: creator-system-production-readiness
+          path: /tmp/creator-system-production-readiness-artifact/creator-system-production-readiness.json
           if-no-files-found: error
           retention-days: 30
 

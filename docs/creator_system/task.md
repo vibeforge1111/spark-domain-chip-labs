@@ -870,6 +870,16 @@ Completed documentation/verification:
   `creator-system-release-evidence` JSON as a workflow artifact, giving users
   and Spark agents a downloadable release packet instead of requiring them to
   scrape job logs.
+- `creator-system-production-readiness` now emits the honest readiness split:
+  repo/user beta readiness can pass at `100`, the production-grade
+  creator-system standard can pass at `100` when generated multi-seed and
+  read-only product runtime evidence are present, and
+  `network_absorption_publication` remains `blocked` at `0` with
+  `network_absorbable=false`.
+- Creator System CI now runs and schema-validates that production-readiness
+  packet, asserts generated and product phases pass while Startup YC network
+  absorption stays blocked, and uploads `creator-system-production-readiness`
+  as a workflow artifact.
 
 Completed product PR verification:
 

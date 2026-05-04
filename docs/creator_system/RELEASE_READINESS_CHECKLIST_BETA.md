@@ -20,7 +20,12 @@ or handing it to Spark agents as a repo-local creator workflow.
 - [x] `chip-labs creator-system-beta-check --fail-on-blocked` passes.
 - [x] `chip-labs creator-system-release-evidence --fail-on-blocked` exists for
   clean-checkout release evidence packets.
+- [x] `chip-labs creator-system-production-readiness --fail-on-blocked` exists
+  for the honest 100% repo/user beta and creator-system standard readiness
+  packet, while the network publication track remains blocked.
 - [x] Creator System CI uploads `creator-system-release-evidence` as a workflow
+  artifact for clean pushed commits.
+- [x] Creator System CI uploads `creator-system-production-readiness` as a workflow
   artifact for clean pushed commits.
 - [x] Strict Startup YC saved-evidence smoke passes.
 
@@ -96,6 +101,7 @@ python -m pytest tests/test_creator_mission_adapter.py tests/test_creator_system
 chip-labs creator-run-template-check --fail-on-blocked
 chip-labs creator-system-beta-check --fail-on-blocked
 chip-labs creator-system-release-evidence --fail-on-blocked --output /tmp/creator-system-release-evidence.json
+chip-labs creator-system-production-readiness --fail-on-blocked --output /tmp/creator-system-production-readiness.json
 chip-labs creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn
 ```
 

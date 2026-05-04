@@ -121,6 +121,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --generated-multi-seed reports/multi_seed_validation_summary.json --output reports/creator-mission-status.json` |
 | Check local beta readiness, including Startup YC production rehearsal | `python -m chip_labs.cli creator-system-beta-check --fail-on-blocked` |
 | Emit clean-checkout release evidence | `python -m chip_labs.cli creator-system-release-evidence --fail-on-blocked --output /tmp/creator-system-release-evidence.json` |
+| Check honest 100% repo/user beta and creator-system standard readiness | `python -m chip_labs.cli creator-system-production-readiness --fail-on-blocked --output /tmp/creator-system-production-readiness.json` |
 | Check stronger-release gates | `python -m chip_labs.cli creator-release-gate --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC promotion gates | `python -m chip_labs.cli startup-yc-promotion-gate-check --validation-plan docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json --fail-on-blocked` |
 | Check Startup YC raw validation evidence | `python -m chip_labs.cli startup-yc-validation-evidence-check --evidence <evidence.json> --evidence-kind multi_seed --fail-on-blocked` |
