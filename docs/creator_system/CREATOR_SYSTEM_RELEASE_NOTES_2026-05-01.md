@@ -499,6 +499,12 @@
   review, and product runtime integration review evidence. Missing phase
   evidence is a blocker, supplied inputs are hashed, and the schema keeps
   `network_absorbable=false`.
+- Creator System CI now runs `creator-release-gate` in the strict Startup YC
+  path and validates the blocked packet against
+  `creator-release-gate.schema.json`. The manual and scheduled generated
+  matrix path also emits `/tmp/generated-release-gate.json`, proving the
+  generated multi-seed phase can pass while product runtime and Startup YC
+  network-absorption blockers remain visible.
 - `product-runtime-review-template` and `product-runtime-review-check` now
   define the product runtime review evidence packet for Builder, Telegram,
   Spawner, Canvas, and Kanban. The check requires reviewer evidence,

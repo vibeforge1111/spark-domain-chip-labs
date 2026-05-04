@@ -817,6 +817,14 @@ Completed documentation/verification:
   product runtime integration review. Missing generated summary or product
   runtime review evidence remains a blocker, and the packet cannot claim
   `network_absorbable`.
+- The strict Startup YC CI path now runs `creator-release-gate`, schema-validates
+  `/tmp/creator-release-gate.json`, and asserts the stronger-release verdict
+  stays blocked while generated multi-seed and product runtime evidence are
+  absent.
+- The manual and scheduled generated-matrix CI path now emits
+  `/tmp/generated-release-gate.json`, validates it against
+  `creator-release-gate.schema.json`, and asserts the generated multi-seed
+  phase passes without hiding Startup YC or product runtime blockers.
 - `product-runtime-review-template` and `product-runtime-review-check` now
   define the product-review evidence shape for Builder, Telegram, Spawner,
   Canvas, and Kanban. Passing review evidence must preserve read-only adapters,

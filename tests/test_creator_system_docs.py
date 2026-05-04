@@ -256,6 +256,9 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "python -m ruff check src/chip_labs tests" in text
     assert "workflow_dispatch" in text
     assert "run_generated_multi_seed" in text
+    assert "Creator System CI now runs `creator-release-gate`" in text
+    assert "creator-release-gate.schema.json" in text
+    assert "/tmp/generated-release-gate.json" in text
     assert "generated-multi-domain-briefs.json" in text
     assert "tests/test_creator_mission_adapter.py" in text
     assert "tests/test_operator_review.py" in text
@@ -318,6 +321,12 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "startup-yc-network-absorption-review.schema.json" in text
     assert "network_absorption_review_blocked.json" in text
     assert 'assert payload["network_absorbable"] is False' in text
+    assert "--output /tmp/creator-release-gate.json" in text
+    assert "creator-release-gate.schema.json" in text
+    assert 'assert release_payload["verdict"] == "blocked"' in text
+    assert 'assert release_payload["network_absorbable"] is False' in text
+    assert "generated_multi_seed_validation:missing_generated_multi_seed_summary" in text
+    assert "product_runtime_integration_review:missing_product_runtime_review" in text
     assert "validator.validate(payload)" in text
     assert "schedule:" in text
     assert "17 3 * * 1" in text
@@ -332,7 +341,12 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "creator-mission-status" in text
     assert "generated-mission-status.json" in text
     assert "creator-mission-status.schema.json" in text
+    assert "--output /tmp/generated-release-gate.json" in text
+    assert 'assert generated_phase["passed"] is True' in text
+    assert 'assert product_phase["passed"] is False' in text
+    assert "missing_product_runtime_review" in text
     assert "Generated matrix:" in text
+    assert "release_gate" in text
     assert "mission_run_count" in text
     assert "tests/test_startup_yc_operator_validation.py" in text
     assert "tests/test_operator_review.py" in text
