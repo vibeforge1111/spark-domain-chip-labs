@@ -37,6 +37,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md" in text
     assert "PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
+    assert "examples/product-runtime-review/" in text
     assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
     assert "BENCHMARK_GENERATION_HONESTY_STANDARD.md" in text
     assert "| Startup YC reference fixture | `transfer_supported` |" in text
@@ -332,6 +333,9 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "held_out_founder_advice_evidence.json" in text
     assert "held-out gate can pass locally" in text
     assert "weekly scheduled generated-matrix run" in text
+    assert "Saved product runtime review fixtures" in text
+    assert "read-only review-complete packet" in text
+    assert "product runtime phase of `creator-release-gate`" in text
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:

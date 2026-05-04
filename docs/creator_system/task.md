@@ -838,6 +838,11 @@ Completed documentation/verification:
   Canvas, and Kanban. Passing review evidence must preserve read-only adapters,
   blocked states, `evidence_mode`, rollback refs, and disabled creator controls
   in this methodology repo.
+- Saved product runtime review fixtures now cover both an open blocked review
+  and a read-only review-complete packet. The complete packet can satisfy only
+  the product runtime phase of `creator-release-gate`; generated multi-seed,
+  Startup YC network-absorption, publication, and `network_absorbable` remain
+  blocked.
 - Full `src/chip_labs` and `tests` ruff cleanup is now committed, and
   Creator-system CI enforces `python -m ruff check src/chip_labs tests`
   instead of only linting a narrow creator-system file list.

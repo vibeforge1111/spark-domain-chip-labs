@@ -36,6 +36,7 @@ The goal is not to make one large creator repo do everything. The goal is to giv
 | [schemas/](schemas/) | JSON Schema anchors for creator intent, adapter map, smoke, doctor, template-check, Swarm packet, mission-status, generated multi-seed summaries, and Startup YC validation plan, evidence, shape-check, gate-check, and suite outputs. |
 | [templates/creator-run/](templates/creator-run/) | Fill-in templates for intent packets, adapter maps, creator run reports, Swarm packets, and standard-change proposals. |
 | [examples/generated-multi-domain-briefs.json](examples/generated-multi-domain-briefs.json) | Manual CI input for the generated multi-domain, multi-seed matrix across artifact quality, tool operation, MiroFish content simulation, doctor/security, Startup YC operator, and retrieval/memory. |
+| [examples/product-runtime-review/](examples/product-runtime-review/) | Saved open and read-only product runtime review packets for Builder, Telegram, Spawner, Canvas, and Kanban release-gate evidence. |
 | [examples/startup-yc-creator-run/](examples/startup-yc-creator-run/) | Real Startup YC fixture that maps the existing domain chip, specialization path, benchmark, autoloop, absorption reports, and Swarm packet into the creator-run contract. |
 | [examples/startup-yc-operator-validation/](examples/startup-yc-operator-validation/) | Startup YC held-out founder-advice cases, calibration checklist, privacy review, rollback review, publication gate plan, and shape-only raw evidence CI fixture. |
 

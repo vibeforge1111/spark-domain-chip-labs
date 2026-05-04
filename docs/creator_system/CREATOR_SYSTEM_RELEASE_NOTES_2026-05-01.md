@@ -517,6 +517,11 @@
   Spawner, Canvas, and Kanban. The check requires reviewer evidence,
   blocked-state visibility, `evidence_mode` preservation, rollback refs, and
   disabled creator controls in this methodology repo.
+- Saved product runtime review fixtures now include an open blocked review and
+  a read-only review-complete packet. The complete packet satisfies only the
+  product runtime phase of `creator-release-gate`; generated multi-seed,
+  Startup YC network-absorption, publication, and `network_absorbable` gates
+  remain blocked.
 
 ## Current Claim Boundary
 

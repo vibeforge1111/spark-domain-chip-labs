@@ -11,6 +11,7 @@ from chip_labs.product_runtime_review import (
     REQUIRED_SURFACES,
     build_open_product_runtime_review_packet,
     check_product_runtime_review_packet,
+    load_product_runtime_review_packet,
 )
 
 
@@ -19,6 +20,10 @@ PACKET_SCHEMA = Path(
 )
 CHECK_SCHEMA = Path(
     "docs/creator_system/schemas/product-runtime-review-check.schema.json"
+)
+OPEN_REVIEW = Path("docs/creator_system/examples/product-runtime-review/open-review.json")
+READ_ONLY_REVIEW = Path(
+    "docs/creator_system/examples/product-runtime-review/review-complete-read-only.json"
 )
 
 
@@ -58,6 +63,32 @@ def test_product_runtime_review_template_blocks_every_surface() -> None:
     assert checked["network_absorbable"] is False
     assert set(checked["missing_surfaces"]) == set(REQUIRED_SURFACES)
     assert "surface_failure:builder:not_passed" in checked["blocking_checks"]
+
+
+def test_saved_product_runtime_open_review_blocks_every_surface() -> None:
+    packet = load_product_runtime_review_packet(OPEN_REVIEW)
+
+    _validate(PACKET_SCHEMA, packet)
+    checked = check_product_runtime_review_packet(packet)
+    _validate(CHECK_SCHEMA, checked)
+    assert checked["verdict"] == "blocked"
+    assert checked["network_absorbable"] is False
+    assert set(checked["missing_surfaces"]) == set(REQUIRED_SURFACES)
+
+
+def test_saved_product_runtime_read_only_review_passes_review_phase_only() -> None:
+    packet = load_product_runtime_review_packet(READ_ONLY_REVIEW)
+
+    _validate(PACKET_SCHEMA, packet)
+    checked = check_product_runtime_review_packet(packet)
+    _validate(CHECK_SCHEMA, checked)
+    assert checked["verdict"] == "pass"
+    assert checked["network_absorbable"] is False
+    assert packet["product_runtime_controls_wired"] is False
+    assert all(
+        surface["creator_controls_enabled"] is False
+        for surface in packet["surfaces"].values()
+    )
 
 
 def test_product_runtime_review_passes_complete_review_without_absorption() -> None:

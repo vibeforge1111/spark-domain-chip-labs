@@ -19,6 +19,9 @@ SCHEMA = Path("docs/creator_system/schemas/creator-release-gate.schema.json")
 VALIDATION_PLAN = Path(
     "docs/creator_system/examples/startup-yc-operator-validation/validation_plan.json"
 )
+PRODUCT_READ_ONLY_REVIEW = Path(
+    "docs/creator_system/examples/product-runtime-review/review-complete-read-only.json"
+)
 
 
 def _brief() -> dict[str, object]:
@@ -133,6 +136,31 @@ def test_creator_release_gate_accepts_complete_product_review_as_one_phase(
     assert product_phase["detail"]["network_absorbable"] is False
     assert gate["verdict"] == "blocked"
     assert gate["network_absorbable"] is False
+
+
+def test_creator_release_gate_accepts_saved_product_review_but_keeps_release_blocked() -> None:
+    gate = build_creator_release_gate(
+        validation_plan_path=VALIDATION_PLAN,
+        product_runtime_review_path=PRODUCT_READ_ONLY_REVIEW,
+    )
+
+    _validate_schema(gate)
+    product_phase = next(
+        phase
+        for phase in gate["phase_status"]
+        if phase["phase"] == "product_runtime_integration_review"
+    )
+    assert product_phase["passed"] is True
+    assert gate["verdict"] == "blocked"
+    assert gate["network_absorbable"] is False
+    assert any(
+        blocker.startswith("generated_multi_seed_validation:")
+        for blocker in gate["blocking_checks"]
+    )
+    assert any(
+        blocker.startswith("startup_yc_network_absorption_review:")
+        for blocker in gate["blocking_checks"]
+    )
 
 
 def test_creator_release_gate_schema_rejects_absorbable_claim() -> None:
