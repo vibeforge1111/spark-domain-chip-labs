@@ -20,6 +20,16 @@ CASE_EXPECTATION_FIELDS = {
     "max_score",
     "required_trap_flags",
 }
+REVIEWER_CALIBRATION_FIELDS = {
+    "case_id",
+    "artifact_path",
+    "artifact_kind",
+    "reviewer_verdict",
+    "min_score",
+    "max_score",
+    "required_trap_flags",
+    "required_missing_checks",
+}
 
 CHECKS = (
     {
@@ -364,6 +374,18 @@ def _load_manifest(path: Path) -> dict[str, Any]:
         list,
     ):
         raise ValueError(f"{path} reviewer_calibration_cases must be a list")
+    if isinstance(manifest.get("reviewer_calibration_cases"), list):
+        for index, case in enumerate(manifest["reviewer_calibration_cases"], start=1):
+            if not isinstance(case, dict):
+                raise ValueError(
+                    f"{path} reviewer_calibration_cases[{index}] must be an object"
+                )
+            unknown_fields = sorted(set(case) - REVIEWER_CALIBRATION_FIELDS)
+            if unknown_fields:
+                raise ValueError(
+                    f"{path} reviewer_calibration_cases[{index}] has unknown field(s): "
+                    + ", ".join(unknown_fields)
+                )
     return manifest
 
 

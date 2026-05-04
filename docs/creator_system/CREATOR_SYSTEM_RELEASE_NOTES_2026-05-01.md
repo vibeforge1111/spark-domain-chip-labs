@@ -387,6 +387,9 @@
 - Artifact-quality benchmark manifests now also reject unknown fields inside
   known `case_expectations` roles, blocking typos like `minimum_score` from
   being silently skipped.
+- Artifact-quality benchmark manifests now reject unknown fields inside
+  `reviewer_calibration_cases`, so human/operator calibration rows cannot hide
+  misspelled expectation keys.
 
 ## Current Claim Boundary
 
@@ -408,4 +411,4 @@ python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-y
 python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 ```
 
-Latest focused creator-system suite result before CI push: `209 passed`.
+Latest focused creator-system suite result before CI push: `210 passed`.
