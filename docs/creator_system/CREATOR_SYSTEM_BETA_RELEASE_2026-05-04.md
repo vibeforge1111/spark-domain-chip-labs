@@ -28,6 +28,8 @@ This is the release artifact for the creator-system technical beta.
 ## Evidence At Release
 
 - Fresh clone install: passed on 2026-05-04.
+- Fresh clone plus isolated venv beta check: passed on 2026-05-04 from
+  `C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-beta-check-20260504190038`.
 - Template check: `57 pass / 0 warn / 0 fail`.
 - Local beta readiness check: `pass`, with `network_absorbable=false` and
   stronger release gates still blocked.

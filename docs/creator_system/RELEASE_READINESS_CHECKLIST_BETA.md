@@ -20,8 +20,12 @@ or handing it to Spark agents as a repo-local creator workflow.
 - [x] `chip-labs creator-system-beta-check --fail-on-blocked` passes.
 - [x] Strict Startup YC saved-evidence smoke passes.
 
-Verified on 2026-05-04 from a clean temp checkout at
-`C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-release-smoke-20260504162044`.
+Verified on 2026-05-04 from clean temp checkouts at
+`C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-release-smoke-20260504162044`
+and
+`C:\Users\USER\AppData\Local\Temp\spark-domain-chip-labs-beta-check-20260504190038`.
+The second checkout used an isolated virtual environment and passed
+`chip-labs creator-system-beta-check --fail-on-blocked`.
 
 ## Creator-Run Proof
 
