@@ -132,6 +132,7 @@ When an agent is asked to create or improve a Spark creator system, load this fo
 | Run generated multi-seed matrix | `python -m chip_labs.cli generated-multi-seed-run --briefs docs/creator_system/examples/generated-multi-domain-briefs.json --workspace-dir /tmp/generated-creator-matrix --fail-on-blocked` |
 | Recompute-check generated multi-seed summary | `python -m chip_labs.cli generated-multi-seed-summary-check --summary /tmp/generated-creator-matrix/multi_seed_validation_summary.json --fail-on-blocked` |
 | Build product-safe mission status | `python -m chip_labs.cli creator-mission-status --smoke reports/smoke.json --generated-multi-seed /tmp/generated-creator-matrix/multi_seed_validation_summary.json --output reports/creator-mission-status.json` |
+| Build Spark Swarm Collective dry-run payload | `python -m chip_labs.cli creator-swarm-collective-dry-run runs/<run-name> --workspace-id <workspace-id> --agent-id <agent-id> --output reports/creator-swarm-collective-dry-run.json` |
 | Package a local Swarm review bundle | Read `SWARM_REUSABLE_CREATOR_PATH.md`, then attach `swarm/contribution_packet.json`, smoke/doctor/recompute outputs, mission status, and rollback notes to review. |
 | Check local beta readiness, including Startup YC production rehearsal | `python -m chip_labs.cli creator-system-beta-check --fail-on-blocked` |
 | Emit clean-checkout release evidence | `python -m chip_labs.cli creator-system-release-evidence --fail-on-blocked --output /tmp/creator-system-release-evidence.json` |

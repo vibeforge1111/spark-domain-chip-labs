@@ -179,7 +179,7 @@ Commit target:
 
 ## P3 Dry-Run Collective Payload Mapper
 
-Status: planned.
+Status: initial dry-run mapper complete.
 
 Purpose:
 
@@ -192,6 +192,17 @@ Build outputs:
   favors command exposure.
 - Example dry-run output for Startup YC.
 - Unit tests that verify payload shape and privacy boundaries.
+
+Implementation status:
+
+- [x] `src/chip_labs/creator_swarm_collective.py` builds a
+  `SparkResearcherCollectiveSyncPayload`-shaped dry-run payload from a creator
+  run.
+- [x] `creator-swarm-collective-dry-run` emits the local payload without sync or
+  publication.
+- [x] Unit tests verify thin artifact refs, private `shareScope`, isolated
+  memory policy, deferred mastery review, no raw Windows paths, and no network
+  approval tokens.
 
 Payload requirements:
 
@@ -219,7 +230,7 @@ Guardrails:
 Verification:
 
 ```powershell
-python -m pytest tests/test_creator_swarm_collective_mapper.py -q
+python -m pytest tests/test_creator_swarm_collective.py -q
 python -m ruff check src/chip_labs tests
 ```
 

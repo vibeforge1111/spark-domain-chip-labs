@@ -1453,6 +1453,20 @@ def cmd_creator_mission_status(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def cmd_creator_swarm_collective_dry_run(args: argparse.Namespace) -> None:
+    """Build a Spark Swarm Collective payload without syncing or publishing."""
+    from .creator_swarm_collective import build_creator_swarm_collective_payload
+
+    result = build_creator_swarm_collective_payload(
+        args.run_dir,
+        workspace_id=args.workspace_id,
+        agent_id=args.agent_id,
+        repo_id=args.repo_id,
+        repo_label=args.repo_label,
+    )
+    _write_output(args.output, result)
+
+
 def cmd_startup_yc_promotion_gate_check(args: argparse.Namespace) -> None:
     """Check Startup YC promotion gates without granting stronger claims."""
     from .startup_yc_promotion import check_startup_yc_promotion_gates
@@ -2987,6 +3001,39 @@ def main() -> None:
         help="Exit with status 1 when the mission status has blockers.",
     )
     p_creator_mission_status.set_defaults(func=cmd_creator_mission_status)
+
+    # creator-swarm-collective-dry-run
+    p_creator_swarm_collective_dry_run = sub.add_parser(
+        "creator-swarm-collective-dry-run",
+        help="Build a local Spark Swarm Collective dry-run payload without syncing.",
+    )
+    p_creator_swarm_collective_dry_run.add_argument(
+        "run_dir", type=str, help="Creator-run directory."
+    )
+    p_creator_swarm_collective_dry_run.add_argument(
+        "--workspace-id",
+        type=str,
+        required=True,
+        help="Private Spark Swarm workspace id for the dry-run payload.",
+    )
+    p_creator_swarm_collective_dry_run.add_argument(
+        "--agent-id",
+        type=str,
+        required=True,
+        help="Spark Swarm agent id for the dry-run payload.",
+    )
+    p_creator_swarm_collective_dry_run.add_argument(
+        "--repo-id", type=str, default=None, help="Optional Spark Swarm repo id."
+    )
+    p_creator_swarm_collective_dry_run.add_argument(
+        "--repo-label", type=str, default=None, help="Optional repo label."
+    )
+    p_creator_swarm_collective_dry_run.add_argument(
+        "--output", type=str, default=None, help="Output JSON file path."
+    )
+    p_creator_swarm_collective_dry_run.set_defaults(
+        func=cmd_creator_swarm_collective_dry_run
+    )
 
     # startup-yc-promotion-gate-check
     p_startup_yc_promotion_gate_check = sub.add_parser(

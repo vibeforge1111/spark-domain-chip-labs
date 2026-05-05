@@ -130,6 +130,7 @@ def test_creator_system_readme_keeps_command_index_visible() -> None:
         "generated-multi-seed-run",
         "generated-multi-seed-summary-check",
         "creator-mission-status",
+        "creator-swarm-collective-dry-run",
         "creator-release-gate",
         "creator-system-beta-check",
         "creator-system-release-evidence",
