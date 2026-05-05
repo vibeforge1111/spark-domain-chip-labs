@@ -31,11 +31,11 @@ Swarm-reusable does not mean:
 | ID | Task | Why It Matters | Reusable Output | Status |
 | --- | --- | --- | --- | --- |
 | SR-01 | Upload generated matrix JSON from manual and scheduled CI. | Reviewers need packets, not log scraping. | `generated-creator-matrix-evidence` workflow artifact. | Done in `f70c166`. |
-| SR-02 | Add a Swarm reusable creator path. | Outside contributors need one path from domain idea to review bundle. | `SWARM_REUSABLE_CREATOR_PATH.md`. | In progress. |
-| SR-03 | Add contributor guidance for new creator-system domains. | New domains should follow the same evidence ladder and packet boundary. | Contributor doc linked from first-read docs. | Pending. |
-| SR-04 | Define a review bundle checklist for local Swarm packets. | Swarm reviewers need required packet, evidence, provenance, and rollback fields. | Checklist in the reusable path doc. | In progress. |
-| SR-05 | Add an example review bundle for a generated proof domain. | Contributors learn faster from one concrete bundle. | Example under `docs/creator_system/examples/`. | Pending. |
-| SR-06 | Add a lightweight bundle shape check if examples start drifting. | Reuse should be executable, not only prose. | Focused test or CLI check for bundle docs/examples. | Pending. |
+| SR-02 | Add a Swarm reusable creator path. | Outside contributors need one path from domain idea to review bundle. | `SWARM_REUSABLE_CREATOR_PATH.md`. | Done in `100f015`. |
+| SR-03 | Add contributor guidance for new creator-system domains. | New domains should follow the same evidence ladder and packet boundary. | `CONTRIBUTING_CREATOR_DOMAINS.md` linked from first-read docs. | Done. |
+| SR-04 | Define a review bundle checklist for local Swarm packets. | Swarm reviewers need required packet, evidence, provenance, and rollback fields. | Checklist in the reusable path doc. | Done in `100f015`. |
+| SR-05 | Add an example review bundle for a generated proof domain. | Contributors learn faster from one concrete bundle. | `examples/swarm-review-bundles/startup-yc-transfer-supported/`. | Done. |
+| SR-06 | Add a lightweight bundle shape check if examples start drifting. | Reuse should be executable, not only prose. | `swarm-review-bundle.schema.json` plus focused docs tests. | Done. |
 | SR-07 | Run fresh-clone verification after the next packaging change. | Public users need install proof independent from local dirty state. | Fresh-clone evidence note and clean output packet paths. | Pending. |
 | SR-08 | Decide whether generated matrix JSON should become release assets. | Release consumers may need stable downloadable evidence outside CI retention. | Release asset policy, only after a new public hardening tag. | Pending. |
 | SR-09 | Review unrelated docs/research/viz files as a separate slice. | Research residue should not silently become creator-system doctrine. | Curated commit, archive decision, or explicit defer note. | Pending. |

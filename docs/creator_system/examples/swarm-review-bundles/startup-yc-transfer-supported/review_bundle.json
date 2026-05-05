@@ -1,0 +1,64 @@
+{
+  "schema_version": "adaptive_creator_loop.swarm_review_bundle.v1",
+  "bundle_id": "swarm-review-bundle-2026-05-05-startup-yc-transfer-supported",
+  "creator_run_dir": "docs/creator_system/examples/startup-yc-creator-run",
+  "purpose": "Package the Startup YC transfer-supported creator-run fixture for local Spark Swarm review and replay.",
+  "evidence_tier": "transfer_supported",
+  "network_absorbable": false,
+  "network_publication_allowed": false,
+  "bundle_paths": {
+    "creator_intent": {
+      "path": "creator-intent.json",
+      "required_for_review": true
+    },
+    "adapter_map": {
+      "path": "adapter-map.json",
+      "required_for_review": true
+    },
+    "artifact_manifest": {
+      "path": "created-artifact-manifest.json",
+      "required_for_review": true
+    },
+    "evidence_ladder": {
+      "path": "reports/evidence_ladder.md",
+      "required_for_review": true
+    },
+    "swarm_packet": {
+      "path": "swarm/contribution_packet.json",
+      "required_for_review": true
+    },
+    "mission_status": {
+      "path": null,
+      "required_for_review": false,
+      "absent_reason": "Historical fixture predates saved creator-mission-status output; generate one for product-surface review instead of treating this absence as network approval."
+    }
+  },
+  "review_commands": [
+    "python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked",
+    "python -m chip_labs.cli creator-run-doctor docs/creator_system/examples/startup-yc-creator-run",
+    "python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn"
+  ],
+  "known_limits": [
+    "Network publication remains disabled.",
+    "Mission status should be regenerated for product runtime review.",
+    "External recompute requires sibling Startup YC source reports when available.",
+    "Human/operator calibration and publication approval are still required before network absorption."
+  ],
+  "promotion_boundary": {
+    "forbidden_claims": [
+      "network_absorbable",
+      "automatic_swarm_publication",
+      "product_runtime_creator_controls"
+    ],
+    "required_before_network_absorption": [
+      "multi_seed_validation",
+      "human_operator_calibration",
+      "privacy_review",
+      "rollback_review",
+      "publication_approval",
+      "product_runtime_review",
+      "publication_authority"
+    ],
+    "product_runtime_controls": "read_only"
+  }
+}

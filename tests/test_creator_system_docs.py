@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
+
+import jsonschema
 
 
 README = Path("docs/creator_system/README.md")
@@ -36,6 +39,18 @@ SWARM_REUSABILITY_TASKS = Path(
     "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md"
 )
 SWARM_REUSABLE_PATH = Path("docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md")
+CONTRIBUTING_CREATOR_DOMAINS = Path(
+    "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md"
+)
+SWARM_REVIEW_BUNDLE_SCHEMA = Path(
+    "docs/creator_system/schemas/swarm-review-bundle.schema.json"
+)
+SWARM_CONTRIBUTION_SCHEMA = Path(
+    "docs/creator_system/schemas/swarm-contribution-packet.schema.json"
+)
+STARTUP_YC_SWARM_REVIEW_BUNDLE = Path(
+    "docs/creator_system/examples/swarm-review-bundles/startup-yc-transfer-supported/review_bundle.json"
+)
 
 
 def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
@@ -46,10 +61,12 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md" in text
     assert "PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md" in text
     assert "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md" in text
+    assert "CONTRIBUTING_CREATOR_DOMAINS.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
     assert "examples/product-runtime-review/" in text
+    assert "examples/swarm-review-bundles/" in text
     assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
     assert "BENCHMARK_GENERATION_HONESTY_STANDARD.md" in text
     assert "| Startup YC reference fixture | `transfer_supported` |" in text
@@ -130,6 +147,7 @@ def test_agent_creator_playbook_keeps_fresh_agent_boot_path_safe() -> None:
         "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
         "SWARM_REUSABLE_CREATOR_PATH.md",
         "local review bundle",
+        "CONTRIBUTING_CREATOR_DOMAINS.md",
         "network_publication_allowed\": false",
         "read-only mission-status packet",
         "product wiring stays deferred",
@@ -167,6 +185,7 @@ def test_user_and_agent_onboarding_covers_complete_creator_value_path() -> None:
         "network_absorbable` stays `false`",
         "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
         "SWARM_REUSABLE_CREATOR_PATH.md",
+        "CONTRIBUTING_CREATOR_DOMAINS.md",
         "Artifact quality",
         "Tool operation",
         "MiroFish content simulation",
@@ -206,6 +225,7 @@ def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
     assert "chip-labs creator-system-beta-check --fail-on-blocked" in text
     assert "docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md" in text
     assert "docs/creator_system/USER_QUICKSTART_BETA.md" in text
+    assert "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md" in text
     assert "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md" in text
@@ -258,6 +278,7 @@ def test_creator_system_beta_quickstart_is_user_runnable() -> None:
         "generated-creator-matrix-evidence",
         "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
         "SWARM_REUSABLE_CREATOR_PATH.md",
+        "CONTRIBUTING_CREATOR_DOMAINS.md",
         "Startup YC",
         "`network_absorbable`",
         "Startup YC production-gate workbench subcheck",
@@ -607,6 +628,9 @@ def test_swarm_reusable_creator_path_keeps_review_bundle_local() -> None:
         "Swarm-reusable means",
         "generated-creator-matrix-evidence",
         "SWARM_REUSABLE_CREATOR_PATH.md",
+        "CONTRIBUTING_CREATOR_DOMAINS.md",
+        "swarm-review-bundle.schema.json",
+        "examples/swarm-review-bundles/startup-yc-transfer-supported/",
         "No task in this ledger may change `network_absorbable` to `true`.",
         "multi-seed validation",
         "product runtime review",
@@ -629,6 +653,55 @@ def test_swarm_reusable_creator_path_keeps_review_bundle_local() -> None:
         "publication authority",
     ):
         assert phrase in path
+
+
+def test_creator_domain_contributor_guide_preserves_review_boundaries() -> None:
+    text = CONTRIBUTING_CREATOR_DOMAINS.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Contributing Creator-System Domains",
+        "outside users and fresh Spark agents",
+        "`candidate_review`",
+        "`transfer_supported`",
+        "`network_absorbable=true`",
+        "SWARM_REUSABLE_CREATOR_PATH.md",
+        "creator-run-smoke <run-dir> --fail-on-blocked --fail-on-warn",
+        "creator-run-smoke <run-dir> --recompute --fail-on-blocked",
+        "local Swarm packet path",
+        "network_absorbable=false",
+        "network_publication_allowed=true",
+        "ready_for_swarm_packet",
+        "full promotion bundle passes",
+    ):
+        assert phrase in text
+
+
+def test_swarm_review_bundle_example_is_schema_valid_and_local_only() -> None:
+    schema = json.loads(SWARM_REVIEW_BUNDLE_SCHEMA.read_text(encoding="utf-8"))
+    bundle = json.loads(STARTUP_YC_SWARM_REVIEW_BUNDLE.read_text(encoding="utf-8"))
+    jsonschema.Draft202012Validator(schema).validate(bundle)
+
+    assert bundle["evidence_tier"] == "transfer_supported"
+    assert bundle["network_absorbable"] is False
+    assert bundle["network_publication_allowed"] is False
+    assert bundle["promotion_boundary"]["product_runtime_controls"] == "read_only"
+    assert "network_absorbable" in bundle["promotion_boundary"]["forbidden_claims"]
+
+    run_dir = Path(bundle["creator_run_dir"])
+    assert run_dir.is_dir()
+    for record in bundle["bundle_paths"].values():
+        path = record["path"]
+        if path is None:
+            assert "absent_reason" in record
+            continue
+        assert (run_dir / path).exists()
+
+    contribution_schema = json.loads(SWARM_CONTRIBUTION_SCHEMA.read_text(encoding="utf-8"))
+    swarm_path = run_dir / bundle["bundle_paths"]["swarm_packet"]["path"]
+    swarm_packet = json.loads(swarm_path.read_text(encoding="utf-8"))
+    jsonschema.Draft202012Validator(contribution_schema).validate(swarm_packet)
+    assert swarm_packet["evidence"]["tier"] == bundle["evidence_tier"]
+    assert swarm_packet["governance"]["network_publication_allowed"] is False
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
@@ -863,6 +936,8 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "stale underlying run reports",
         "operator-review-packet.schema.json",
         "operator-review-check.schema.json",
+        "swarm-review-bundle.schema.json",
+        "Local Spark Swarm review bundle manifest",
         "creator-release-gate.schema.json",
         "creator-system-beta-check.schema.json",
         "creator-system-release-evidence.schema.json",
@@ -898,6 +973,7 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "local design-doc and PR evidence reviewer",
         "local content-routing and simulator",
         "mission-control safety boundary",
+        "local review packages",
         "human/operator calibration",
         "review evidence only",
         "stronger-release evidence",

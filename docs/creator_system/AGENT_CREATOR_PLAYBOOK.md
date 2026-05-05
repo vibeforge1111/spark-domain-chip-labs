@@ -44,6 +44,9 @@ When the user wants the result to be reusable by Spark Swarm, read
 `SWARM_REUSABLE_CREATOR_PATH.md`. Build a local review bundle with the Swarm
 packet, mission status, replay commands, rollback notes, and explicit
 `network_absorbable=false` boundary. Do not publish or network-absorb it.
+When the user is contributing a new creator-system domain, also read
+`CONTRIBUTING_CREATOR_DOMAINS.md` and keep the pull request checklist aligned
+with the weakest passing evidence tier.
 
 ## Creator Modes
 

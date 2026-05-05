@@ -283,6 +283,7 @@ Use the docs by job:
 | Job | Read |
 | --- | --- |
 | Install and first run | `USER_QUICKSTART_BETA.md` |
+| Contribute a new creator domain | `CONTRIBUTING_CREATOR_DOMAINS.md` |
 | Agent procedure | `AGENT_CREATOR_PLAYBOOK.md` |
 | End-to-end CLI flow | `CREATOR_RUN_GOLDEN_PATH_V1.md` |
 | Swarm reuse task ledger | `CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md` |

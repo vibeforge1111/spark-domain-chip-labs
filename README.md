@@ -47,6 +47,7 @@ Start with:
 
 - [docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md](docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md)
 - [docs/creator_system/USER_QUICKSTART_BETA.md](docs/creator_system/USER_QUICKSTART_BETA.md)
+- [docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md](docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md)
 - [docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md](docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md)
 - [docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md](docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md)
 - [docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md](docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md)

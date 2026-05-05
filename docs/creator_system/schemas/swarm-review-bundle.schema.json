@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/swarm-review-bundle.schema.json",
+  "title": "Adaptive Creator Loop Swarm Review Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "creator_run_dir",
+    "purpose",
+    "evidence_tier",
+    "network_absorbable",
+    "network_publication_allowed",
+    "bundle_paths",
+    "review_commands",
+    "known_limits",
+    "promotion_boundary"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.swarm_review_bundle.v1"
+    },
+    "bundle_id": {"type": "string", "minLength": 1},
+    "creator_run_dir": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "evidence_tier": {
+      "enum": ["local_only", "candidate_review", "transfer_supported"]
+    },
+    "network_absorbable": {"const": false},
+    "network_publication_allowed": {"const": false},
+    "bundle_paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creator_intent",
+        "adapter_map",
+        "artifact_manifest",
+        "evidence_ladder",
+        "swarm_packet",
+        "mission_status"
+      ],
+      "properties": {
+        "creator_intent": {"$ref": "#/$defs/pathRecord"},
+        "adapter_map": {"$ref": "#/$defs/pathRecord"},
+        "artifact_manifest": {"$ref": "#/$defs/pathRecord"},
+        "evidence_ladder": {"$ref": "#/$defs/pathRecord"},
+        "swarm_packet": {"$ref": "#/$defs/pathRecord"},
+        "mission_status": {"$ref": "#/$defs/pathRecord"}
+      }
+    },
+    "review_commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "known_limits": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "contains": {
+        "type": "string",
+        "pattern": "network|publication|runtime|recompute|calibration"
+      }
+    },
+    "promotion_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "forbidden_claims",
+        "required_before_network_absorption",
+        "product_runtime_controls"
+      ],
+      "properties": {
+        "forbidden_claims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1},
+          "contains": {"const": "network_absorbable"}
+        },
+        "required_before_network_absorption": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "product_runtime_controls": {"const": "read_only"}
+      }
+    }
+  },
+  "$defs": {
+    "pathRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "required_for_review"],
+      "properties": {
+        "path": {"type": ["string", "null"]},
+        "required_for_review": {"type": "boolean"},
+        "absent_reason": {"type": "string"}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"path": {"type": "null"}},
+            "required": ["path"]
+          },
+          "then": {"required": ["absent_reason"]}
+        }
+      ]
+    }
+  }
+}

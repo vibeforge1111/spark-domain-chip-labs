@@ -32,6 +32,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [mirofish-outcome-calibration-check.schema.json](mirofish-outcome-calibration-check.schema.json) | Local MiroFish outcome calibration check output |
 | [loop-policy-manifest.schema.json](loop-policy-manifest.schema.json) | Autoloop policy, mutation surface, benchmark binding, rollback, and promotion gates |
 | [swarm-contribution-packet.schema.json](swarm-contribution-packet.schema.json) | `swarm/contribution_packet.json` |
+| [swarm-review-bundle.schema.json](swarm-review-bundle.schema.json) | Local Spark Swarm review bundle manifest |
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
 | [doctor-result.schema.json](doctor-result.schema.json) | `creator-run-doctor` output |
 | [doctor-adversarial-sweep-manifest.schema.json](doctor-adversarial-sweep-manifest.schema.json) | `creator-run-doctor-adversarial-sweep` mutation manifest |
@@ -81,12 +82,20 @@ These schemas cover the shared packet layer called for by the creator master pla
 - loop policy: `loop-policy-manifest.schema.json`
 - autoloop simulation: `autoloop-simulation-result.schema.json`
 - Swarm promotion packet: `swarm-contribution-packet.schema.json`
+- local Swarm review bundle: `swarm-review-bundle.schema.json`
 
 Product surfaces should pass these shapes around, then use `creator-run-smoke`
 and `creator-run-doctor` for the stricter evidence verdict. The
 `creator-mission-status` packet is the read-only bridge for Builder, Telegram,
 Spawner, Canvas, and Kanban; it must not replace the underlying canonical
 packets.
+
+The Swarm review-bundle schema anchors local review packages that point to a
+creator run, local Swarm packet, evidence ladder, replay commands, known limits,
+and promotion boundary. It requires `network_absorbable=false`,
+`network_publication_allowed=false`, and read-only product runtime controls.
+This makes Spark Swarm reuse reviewable without turning review bundles into
+network publication.
 
 The Startup YC validation-plan, validation-evidence, validation-evidence-check,
 gate-check, and validation-suite schemas anchor the blocked promotion workflow.

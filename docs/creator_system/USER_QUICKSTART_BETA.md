@@ -37,6 +37,8 @@ If your goal is to make a creator-system domain reusable by Spark Swarm
 reviewers, also read `CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md` and
 `SWARM_REUSABLE_CREATOR_PATH.md`. Those docs describe the local review bundle,
 required packets, and replay commands while keeping `network_absorbable=false`.
+If you are proposing a new domain, read `CONTRIBUTING_CREATOR_DOMAINS.md`
+before opening a review request.
 
 ## Install From A Fresh Clone
 
