@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/creator-swarm-lane-taxonomy.schema.json",
+  "title": "Adaptive Creator Loop Spark Swarm Lane Taxonomy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "lane_packet_id",
+    "creator_run_id",
+    "creator_evidence_tier",
+    "creator_artifact_verdict",
+    "swarm_lane_state",
+    "share_scope",
+    "network_absorbable",
+    "network_publication_allowed",
+    "lane_mapping",
+    "privacy",
+    "proposal_review",
+    "stop_ship"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.creator_swarm_lane_taxonomy.v1"
+    },
+    "lane_packet_id": {"type": "string", "minLength": 1},
+    "creator_run_id": {"type": "string", "minLength": 1},
+    "creator_evidence_tier": {
+      "enum": ["local_only", "candidate_review", "transfer_supported"]
+    },
+    "creator_artifact_verdict": {
+      "enum": ["prototype", "ready_for_baseline", "ready_for_swarm_packet", "blocked"]
+    },
+    "swarm_lane_state": {
+      "enum": [
+        "private_draft",
+        "workspace_validated",
+        "pr_submitted",
+        "reviewed_candidate",
+        "blocked_network_absorption"
+      ]
+    },
+    "share_scope": {"enum": ["private", "selective", "network"]},
+    "network_absorbable": {"const": false},
+    "network_publication_allowed": {"const": false},
+    "lane_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creator_lane",
+        "swarm_lane",
+        "allowed_next_actions",
+        "forbidden_transitions"
+      ],
+      "properties": {
+        "creator_lane": {
+          "enum": ["local_only", "candidate_review", "transfer_supported"]
+        },
+        "swarm_lane": {
+          "enum": [
+            "private_draft",
+            "workspace_validated",
+            "pr_submitted",
+            "reviewed_candidate",
+            "blocked_network_absorption"
+          ]
+        },
+        "allowed_next_actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "forbidden_transitions": {
+          "type": "array",
+          "minItems": 3,
+          "items": {"type": "string", "minLength": 1},
+          "allOf": [
+            {"contains": {"const": "ready_for_swarm_packet_to_network_absorbable"}},
+            {"contains": {"const": "workspace_sync_to_network_absorbable"}},
+            {"contains": {"const": "generated_matrix_to_publication_approval"}}
+          ]
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["share_class", "redaction_status", "allowed_lane"],
+      "properties": {
+        "share_class": {
+          "enum": [
+            "private",
+            "workspace",
+            "proposal_redacted",
+            "network_candidate",
+            "forbidden"
+          ]
+        },
+        "redaction_status": {
+          "enum": ["not_needed", "pending", "redacted", "blocked"]
+        },
+        "allowed_lane": {
+          "enum": [
+            "private_draft",
+            "workspace_validated",
+            "pr_submitted",
+            "reviewed_candidate",
+            "blocked_network_absorption"
+          ]
+        }
+      }
+    },
+    "proposal_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "status",
+        "verified_repo_pr_proof",
+        "publication_approval"
+      ],
+      "properties": {
+        "required": {"type": "boolean"},
+        "status": {"enum": ["not_requested", "blocked", "pending", "reviewed"]},
+        "verified_repo_pr_proof": {
+          "enum": ["absent", "placeholder", "submitted", "verified"]
+        },
+        "publication_approval": {"const": "not_approved"}
+      }
+    },
+    "stop_ship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blocked_reasons", "no_automatic_publish"],
+      "properties": {
+        "blocked_reasons": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "no_automatic_publish": {"const": true}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"share_scope": {"const": "network"}},
+        "required": ["share_scope"]
+      },
+      "then": {
+        "properties": {
+          "proposal_review": {
+            "properties": {"required": {"const": true}},
+            "required": ["required"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "privacy": {
+            "properties": {"share_class": {"const": "private"}},
+            "required": ["share_class"]
+          }
+        },
+        "required": ["privacy"]
+      },
+      "then": {
+        "properties": {
+          "swarm_lane_state": {
+            "enum": ["private_draft", "workspace_validated"]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "adaptive_creator_loop.creator_swarm_lane_taxonomy.v1",
+  "lane_packet_id": "creator-swarm-lane-startup-yc-private-workspace",
+  "creator_run_id": "startup-yc-creator-run",
+  "creator_evidence_tier": "transfer_supported",
+  "creator_artifact_verdict": "ready_for_swarm_packet",
+  "swarm_lane_state": "workspace_validated",
+  "share_scope": "private",
+  "network_absorbable": false,
+  "network_publication_allowed": false,
+  "lane_mapping": {
+    "creator_lane": "transfer_supported",
+    "swarm_lane": "workspace_validated",
+    "allowed_next_actions": [
+      "sync_private_workspace_summary",
+      "prepare_local_review_bundle",
+      "prepare_blocked_network_proposal"
+    ],
+    "forbidden_transitions": [
+      "ready_for_swarm_packet_to_network_absorbable",
+      "workspace_sync_to_network_absorbable",
+      "generated_matrix_to_publication_approval"
+    ]
+  },
+  "privacy": {
+    "share_class": "private",
+    "redaction_status": "not_needed",
+    "allowed_lane": "workspace_validated"
+  },
+  "proposal_review": {
+    "required": false,
+    "status": "not_requested",
+    "verified_repo_pr_proof": "absent",
+    "publication_approval": "not_approved"
+  },
+  "stop_ship": {
+    "blocked_reasons": [],
+    "no_automatic_publish": true
+  }
+}

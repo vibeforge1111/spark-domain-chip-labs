@@ -33,6 +33,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [loop-policy-manifest.schema.json](loop-policy-manifest.schema.json) | Autoloop policy, mutation surface, benchmark binding, rollback, and promotion gates |
 | [swarm-contribution-packet.schema.json](swarm-contribution-packet.schema.json) | `swarm/contribution_packet.json` |
 | [swarm-review-bundle.schema.json](swarm-review-bundle.schema.json) | Local Spark Swarm review bundle manifest |
+| [creator-swarm-lane-taxonomy.schema.json](creator-swarm-lane-taxonomy.schema.json) | Creator-to-Spark-Swarm private workspace, proposal, reviewed-candidate, and blocked network-absorption lane mapping |
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
 | [doctor-result.schema.json](doctor-result.schema.json) | `creator-run-doctor` output |
 | [doctor-adversarial-sweep-manifest.schema.json](doctor-adversarial-sweep-manifest.schema.json) | `creator-run-doctor-adversarial-sweep` mutation manifest |

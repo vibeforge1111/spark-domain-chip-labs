@@ -62,7 +62,7 @@ Commit target:
 
 ## P1 Lane Taxonomy Contract
 
-Status: next.
+Status: initial contract complete.
 
 Purpose:
 
@@ -75,6 +75,14 @@ Build outputs:
 - `docs/creator_system/examples/swarm-lane-taxonomy/startup-yc-private-workspace.json`
 - `docs/creator_system/examples/swarm-lane-taxonomy/startup-yc-network-proposal-blocked.json`
 - Tests that validate both examples and reject forbidden upgrades.
+
+Implementation status:
+
+- [x] Schema added.
+- [x] Private workspace example added.
+- [x] Blocked network proposal example added.
+- [x] Unit tests reject network publication, private-to-reviewed jumps,
+  missing proposal review, and missing forbidden-transition markers.
 
 Required states:
 
@@ -405,4 +413,3 @@ Start with P1:
 2. Add one private workspace example and one blocked network proposal example.
 3. Add unit/docs tests for valid examples and forbidden transitions.
 4. Commit the slice.
-

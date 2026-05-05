@@ -1,0 +1,45 @@
+{
+  "schema_version": "adaptive_creator_loop.creator_swarm_lane_taxonomy.v1",
+  "lane_packet_id": "creator-swarm-lane-startup-yc-network-proposal-blocked",
+  "creator_run_id": "startup-yc-creator-run",
+  "creator_evidence_tier": "transfer_supported",
+  "creator_artifact_verdict": "ready_for_swarm_packet",
+  "swarm_lane_state": "blocked_network_absorption",
+  "share_scope": "network",
+  "network_absorbable": false,
+  "network_publication_allowed": false,
+  "lane_mapping": {
+    "creator_lane": "transfer_supported",
+    "swarm_lane": "blocked_network_absorption",
+    "allowed_next_actions": [
+      "attach_replay_commands",
+      "attach_redaction_review",
+      "attach_verified_repo_pr_proof",
+      "request_human_publication_review"
+    ],
+    "forbidden_transitions": [
+      "ready_for_swarm_packet_to_network_absorbable",
+      "workspace_sync_to_network_absorbable",
+      "generated_matrix_to_publication_approval"
+    ]
+  },
+  "privacy": {
+    "share_class": "proposal_redacted",
+    "redaction_status": "pending",
+    "allowed_lane": "blocked_network_absorption"
+  },
+  "proposal_review": {
+    "required": true,
+    "status": "blocked",
+    "verified_repo_pr_proof": "placeholder",
+    "publication_approval": "not_approved"
+  },
+  "stop_ship": {
+    "blocked_reasons": [
+      "privacy_redaction_pending",
+      "verified_repo_pr_proof_missing",
+      "publication_approval_missing"
+    ],
+    "no_automatic_publish": true
+  }
+}
