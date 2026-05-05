@@ -53,6 +53,9 @@ SPARK_SWARM_PHASED_BUILD_PLAN = Path(
 SPARK_SWARM_LAUNCH_REHEARSAL = Path(
     "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_LAUNCH_REHEARSAL_2026-05-05.md"
 )
+SPARK_SWARM_POST_P8_CLEAN_CLONE_REHEARSAL = Path(
+    "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_POST_P8_CLEAN_CLONE_REHEARSAL_2026-05-05.md"
+)
 SPARK_SWARM_LAUNCH_HARDENING = Path(
     "docs/creator_system/SPARK_SWARM_LAUNCH_HARDENING_CHECKLIST.md"
 )
@@ -88,6 +91,10 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md" in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md" in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_LAUNCH_REHEARSAL_2026-05-05.md" in text
+    assert (
+        "CREATOR_SYSTEM_SPARK_SWARM_POST_P8_CLEAN_CLONE_REHEARSAL_2026-05-05.md"
+        in text
+    )
     assert "SPARK_SWARM_LAUNCH_HARDENING_CHECKLIST.md" in text
     assert "SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
@@ -872,6 +879,33 @@ def test_spark_swarm_launch_rehearsal_records_blocked_private_path() -> None:
         "It does not approve network absorption.",
         "It does not change `network_absorbable=false`.",
         "verified-repo PR proof placeholder",
+    ):
+        assert phrase in text
+
+
+def test_spark_swarm_post_p8_clean_clone_rehearsal_records_portable_path() -> None:
+    text = SPARK_SWARM_POST_P8_CLEAN_CLONE_REHEARSAL.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Creator System Spark Swarm Post-P8 Clean-Clone Rehearsal 2026-05-05",
+        "Rehearsal status: `pass`",
+        "Verified commit: `ece3c55`",
+        "Clean before: yes",
+        "Clean after: yes",
+        "Network absorption: `network_absorbable=false`",
+        "no automatic publish",
+        "49 passed",
+        "ready_for_swarm_packet",
+        "transfer_supported",
+        "workspace-private-clean-clone",
+        "shareScope",
+        "private",
+        "reviewDecision",
+        "defer",
+        "canonical text hashing",
+        "reproducible across normal text checkouts",
+        "no hosted Spark Swarm UI consumption proof yet",
+        "no signed publication manifest authority",
     ):
         assert phrase in text
 

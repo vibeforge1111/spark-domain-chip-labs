@@ -110,9 +110,9 @@ Startup YC creator run
 
 Before Spark Swarm launch claims get stronger:
 
-- run the same rehearsal from a clean clone after P8 hardening
+- read `CREATOR_SYSTEM_SPARK_SWARM_POST_P8_CLEAN_CLONE_REHEARSAL_2026-05-05.md`
+  for the clean-clone rehearsal after P8 hardening
 - mirror the proposal bundle template into `spark-swarm`
 - open a verified-repo PR proof placeholder in the real launch repo flow
 - record UI rendering of private, workspace-validated, proposal-blocked,
   proposal-submitted, and reviewed-candidate states
-
