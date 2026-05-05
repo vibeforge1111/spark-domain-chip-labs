@@ -44,6 +44,9 @@ SWARM_REUSE_E2E_PLAN = Path(
 SWARM_REUSE_EXECUTION_EVIDENCE = Path(
     "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md"
 )
+SPARK_SWARM_ALIGNMENT_TASKS = Path(
+    "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md"
+)
 SWARM_REUSABLE_PATH = Path("docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md")
 CONTRIBUTING_CREATOR_DOMAINS = Path(
     "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md"
@@ -70,6 +73,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CONTRIBUTING_CREATOR_DOMAINS.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md" in text
+    assert "CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
@@ -193,6 +197,7 @@ def test_user_and_agent_onboarding_covers_complete_creator_value_path() -> None:
         "network_absorbable` stays `false`",
         "CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md",
         "CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md",
+        "CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md",
         "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
         "SWARM_REUSABLE_CREATOR_PATH.md",
         "CONTRIBUTING_CREATOR_DOMAINS.md",
@@ -237,6 +242,7 @@ def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
     assert "docs/creator_system/USER_QUICKSTART_BETA.md" in text
     assert "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md" in text
     assert "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md" in text
+    assert "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md" in text
     assert "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md" in text
@@ -734,6 +740,34 @@ def test_swarm_reuse_execution_evidence_records_artifacts_and_blockers() -> None
         "25 passed",
         "creator-system-production-readiness --fail-on-blocked",
         "network absorption publication blocked",
+    ):
+        assert phrase in text
+
+
+def test_spark_swarm_alignment_tasks_connect_private_and_public_lanes() -> None:
+    text = SPARK_SWARM_ALIGNMENT_TASKS.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Creator System Spark Swarm Alignment And Launch Tasks",
+        "SPARK_SWARM_WORKSPACE_VS_NETWORK_CONTRIBUTION.md",
+        "SPARK_SWARM_INSIGHT_PUBLICATION_SECURITY_OVERVIEW.md",
+        "OWASP Top 10 for LLM Applications",
+        "NIST AI Risk Management Framework",
+        "GitHub App installation-token scoping",
+        "private workspace lane",
+        "network proposal bundle",
+        "verified-repo GitHub PR proof",
+        "private_draft",
+        "workspace_validated",
+        "reviewed_candidate",
+        "`network_absorbable=false`",
+        "SparkResearcherCollectiveSyncPayload",
+        "share_class",
+        "CSS-01",
+        "CSS-12",
+        "Stop-Ship Gates",
+        "Launch Readiness Definition",
+        "no automatic publish",
     ):
         assert phrase in text
 
