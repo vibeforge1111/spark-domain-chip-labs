@@ -375,12 +375,23 @@ Commit target:
 
 ## P7 Startup YC Launch Rehearsal
 
-Status: planned.
+Status: initial rehearsal complete.
 
 Purpose:
 
 Use the strongest proof domain to rehearse the full path before any launch
 claim changes.
+
+Implementation status:
+
+- [x] `CREATOR_SYSTEM_SPARK_SWARM_LAUNCH_REHEARSAL_2026-05-05.md` records the
+  Startup YC smoke, doctor, Collective dry-run payload, and blocked contract
+  test evidence.
+- [x] Rehearsal keeps `shareScope=private`, review decision `defer`,
+  `network_absorbable=false`, and no automatic publish.
+- [x] Remaining P7 work is explicitly scoped to clean-clone rehearsal,
+  Spark Swarm template mirroring, verified-repo PR proof placeholder, and UI
+  state rendering.
 
 Rehearsal path:
 

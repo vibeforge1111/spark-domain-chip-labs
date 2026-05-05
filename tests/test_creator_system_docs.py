@@ -50,6 +50,9 @@ SPARK_SWARM_ALIGNMENT_TASKS = Path(
 SPARK_SWARM_PHASED_BUILD_PLAN = Path(
     "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md"
 )
+SPARK_SWARM_LAUNCH_REHEARSAL = Path(
+    "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_LAUNCH_REHEARSAL_2026-05-05.md"
+)
 SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF = Path(
     "docs/creator_system/SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF.md"
 )
@@ -81,6 +84,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md" in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md" in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md" in text
+    assert "CREATOR_SYSTEM_SPARK_SWARM_LAUNCH_REHEARSAL_2026-05-05.md" in text
     assert "SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "SWARM_REUSABLE_CREATOR_PATH.md" in text
@@ -840,6 +844,30 @@ def test_spark_swarm_proposal_status_ux_handoff_preserves_claim_boundaries() -> 
         "Stop-Ship Copy Checks",
         "Do not reach this state from this repo today.",
         "future approved publication manifest",
+    ):
+        assert phrase in text
+
+
+def test_spark_swarm_launch_rehearsal_records_blocked_private_path() -> None:
+    text = SPARK_SWARM_LAUNCH_REHEARSAL.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Creator System Spark Swarm Launch Rehearsal 2026-05-05",
+        "Rehearsal status: `pass`",
+        "Creator artifact verdict: `ready_for_swarm_packet`",
+        "Evidence tier: `transfer_supported`",
+        "Mastery share scope: `private`",
+        "Review decision: `defer`",
+        "Network absorption: `network_absorbable=false`",
+        "no automatic publish",
+        "creator-swarm-collective-dry-run",
+        "SparkResearcherCollectiveSyncPayload-shaped dry-run payload",
+        "blocked network proposal bundle contract",
+        "19 passed",
+        "It does not publish to Spark Swarm.",
+        "It does not approve network absorption.",
+        "It does not change `network_absorbable=false`.",
+        "verified-repo PR proof placeholder",
     ):
         assert phrase in text
 
