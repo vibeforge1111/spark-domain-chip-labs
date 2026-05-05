@@ -1,0 +1,69 @@
+{
+  "schema_version": "adaptive_creator_loop.creator_network_proposal_bundle.v1",
+  "proposal_id": "creator-network-proposal-startup-yc-blocked",
+  "source_creator_run_id": "startup-yc-creator-run",
+  "evidence_tier": "transfer_supported",
+  "lane_state": "blocked_network_absorption",
+  "network_absorbable": false,
+  "network_publication_allowed": false,
+  "artifact_refs": [
+    {
+      "name": "swarm_contribution_packet",
+      "path": "docs/creator_system/examples/startup-yc-creator-run/swarm/contribution_packet.json",
+      "sha256": "6d28a55cc2a51ebf9e953460a11165bae6b49d76bd45f99fed06ac7642db0031",
+      "share_class": "proposal_redacted",
+      "redaction_status": "pending",
+      "allowed_lane": "blocked_network_absorption"
+    },
+    {
+      "name": "mission_status",
+      "path": "docs/creator_system/examples/product-surface-readonly/startup-yc-mission-status.json",
+      "sha256": "59c3b6baf4f277ae5aa429850ee77dc3ebed1f709f3756bd073cfdf39ea69302",
+      "share_class": "workspace",
+      "redaction_status": "pending",
+      "allowed_lane": "blocked_network_absorption"
+    }
+  ],
+  "replay_commands": [
+    "python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --recompute --fail-on-blocked",
+    "python -m chip_labs.cli creator-run-doctor docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked"
+  ],
+  "privacy_review": {
+    "status": "pending",
+    "reviewer": null,
+    "evidence": "docs/creator_system/examples/startup-yc-operator-validation/privacy_rollback_publication_review.md",
+    "blocked_reasons": ["privacy_redaction_pending"]
+  },
+  "rollback_review": {
+    "status": "pending",
+    "reviewer": null,
+    "evidence": "docs/creator_system/examples/startup-yc-operator-validation/privacy_rollback_publication_review.md",
+    "blocked_reasons": ["rollback_review_pending"]
+  },
+  "verified_repo_pr_proof": {
+    "status": "placeholder",
+    "repo": "vibeforge1111/spark-domain-chip-labs",
+    "base_branch": "main",
+    "head_sha": null,
+    "pull_request_url": null,
+    "required_checks": [
+      "creator-system-docs",
+      "creator-system-production-readiness",
+      "secret-scan"
+    ]
+  },
+  "publication_approval": {
+    "status": "not_approved",
+    "approver": null,
+    "approved_claim": null
+  },
+  "stop_ship": {
+    "blocked_reasons": [
+      "privacy_redaction_pending",
+      "rollback_review_pending",
+      "verified_repo_pr_proof_missing",
+      "publication_approval_missing"
+    ],
+    "no_automatic_publish": true
+  }
+}

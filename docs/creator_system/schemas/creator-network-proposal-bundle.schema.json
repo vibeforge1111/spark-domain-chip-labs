@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/creator-network-proposal-bundle.schema.json",
+  "title": "Adaptive Creator Loop Spark Swarm Network Proposal Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "proposal_id",
+    "source_creator_run_id",
+    "evidence_tier",
+    "lane_state",
+    "network_absorbable",
+    "network_publication_allowed",
+    "artifact_refs",
+    "replay_commands",
+    "privacy_review",
+    "rollback_review",
+    "verified_repo_pr_proof",
+    "publication_approval",
+    "stop_ship"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.creator_network_proposal_bundle.v1"
+    },
+    "proposal_id": {"type": "string", "minLength": 1},
+    "source_creator_run_id": {"type": "string", "minLength": 1},
+    "evidence_tier": {"enum": ["candidate_review", "transfer_supported"]},
+    "lane_state": {"enum": ["blocked_network_absorption", "pr_submitted", "reviewed_candidate"]},
+    "network_absorbable": {"const": false},
+    "network_publication_allowed": {"const": false},
+    "artifact_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/artifactRef"}
+    },
+    "replay_commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "privacy_review": {"$ref": "#/$defs/reviewBlock"},
+    "rollback_review": {"$ref": "#/$defs/reviewBlock"},
+    "verified_repo_pr_proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "repo", "base_branch", "head_sha", "required_checks"],
+      "properties": {
+        "status": {"enum": ["placeholder", "submitted", "verified"]},
+        "repo": {"type": "string", "minLength": 1},
+        "base_branch": {"type": "string", "minLength": 1},
+        "head_sha": {"type": ["string", "null"]},
+        "pull_request_url": {"type": ["string", "null"]},
+        "required_checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "publication_approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "approver", "approved_claim"],
+      "properties": {
+        "status": {"const": "not_approved"},
+        "approver": {"type": ["string", "null"]},
+        "approved_claim": {"const": null}
+      }
+    },
+    "stop_ship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blocked_reasons", "no_automatic_publish"],
+      "properties": {
+        "blocked_reasons": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "no_automatic_publish": {"const": true}
+      }
+    }
+  },
+  "$defs": {
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "path",
+        "sha256",
+        "share_class",
+        "redaction_status",
+        "allowed_lane"
+      ],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "not": {"pattern": "^[A-Za-z]:\\\\"}
+        },
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "share_class": {
+          "enum": ["workspace", "proposal_redacted", "network_candidate"]
+        },
+        "redaction_status": {"enum": ["redacted", "pending"]},
+        "allowed_lane": {
+          "enum": ["blocked_network_absorption", "pr_submitted", "reviewed_candidate"]
+        }
+      }
+    },
+    "reviewBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewer", "evidence", "blocked_reasons"],
+      "properties": {
+        "status": {"enum": ["pending", "blocked", "passed"]},
+        "reviewer": {"type": ["string", "null"]},
+        "evidence": {"type": "string", "minLength": 1},
+        "blocked_reasons": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"lane_state": {"const": "reviewed_candidate"}},
+        "required": ["lane_state"]
+      },
+      "then": {
+        "properties": {
+          "verified_repo_pr_proof": {
+            "properties": {"status": {"const": "verified"}},
+            "required": ["status"]
+          },
+          "privacy_review": {
+            "properties": {"status": {"const": "passed"}},
+            "required": ["status"]
+          },
+          "rollback_review": {
+            "properties": {"status": {"const": "passed"}},
+            "required": ["status"]
+          }
+        }
+      }
+    }
+  ]
+}

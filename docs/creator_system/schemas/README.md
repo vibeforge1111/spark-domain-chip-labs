@@ -34,6 +34,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [swarm-contribution-packet.schema.json](swarm-contribution-packet.schema.json) | `swarm/contribution_packet.json` |
 | [swarm-review-bundle.schema.json](swarm-review-bundle.schema.json) | Local Spark Swarm review bundle manifest |
 | [creator-swarm-lane-taxonomy.schema.json](creator-swarm-lane-taxonomy.schema.json) | Creator-to-Spark-Swarm private workspace, proposal, reviewed-candidate, and blocked network-absorption lane mapping |
+| [creator-network-proposal-bundle.schema.json](creator-network-proposal-bundle.schema.json) | Blocked Spark Swarm network proposal bundle with artifact hashes, replay commands, privacy review, rollback review, verified-repo PR proof, and publication approval placeholders |
 | [smoke-result.schema.json](smoke-result.schema.json) | `creator-run-smoke` output |
 | [doctor-result.schema.json](doctor-result.schema.json) | `creator-run-doctor` output |
 | [doctor-adversarial-sweep-manifest.schema.json](doctor-adversarial-sweep-manifest.schema.json) | `creator-run-doctor-adversarial-sweep` mutation manifest |

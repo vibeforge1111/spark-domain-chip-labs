@@ -118,7 +118,7 @@ Commit target:
 
 ## P2 Network Proposal Bundle Contract
 
-Status: planned.
+Status: initial contract complete.
 
 Purpose:
 
@@ -131,6 +131,14 @@ Build outputs:
 - `docs/creator_system/examples/network-proposal-bundles/startup-yc-blocked-proposal.json`
 - Schema README entry.
 - Tests that validate the example and reject unsafe proposal packets.
+
+Implementation status:
+
+- [x] Schema added.
+- [x] Blocked Startup YC proposal example added.
+- [x] Unit tests reject network absorption claims, missing replay commands,
+  malformed hashes, raw Windows paths, and reviewed-candidate promotion without
+  verified PR proof and passed reviews.
 
 Required fields:
 
