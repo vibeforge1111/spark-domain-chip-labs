@@ -240,7 +240,7 @@ Commit target:
 
 ## P4 Privacy Classification And Redaction Gates
 
-Status: planned.
+Status: initial privacy gates complete.
 
 Purpose:
 
@@ -253,6 +253,15 @@ Build outputs:
 - allowed lane field.
 - redaction status field.
 - validator checks for forbidden network proposal inputs.
+
+Implementation status:
+
+- [x] Local Swarm review-bundle path records now require `share_class`,
+  `redaction_status`, and `allowed_lane`.
+- [x] Startup YC review-bundle fixture classifies private workspace artifacts
+  separately from proposal-redacted artifacts.
+- [x] Unit tests reject missing privacy classification, private paths entering
+  network-absorption lanes, and forbidden paths without blocked redaction.
 
 Allowed share classes:
 

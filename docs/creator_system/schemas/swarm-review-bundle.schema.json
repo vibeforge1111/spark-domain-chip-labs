@@ -91,10 +91,25 @@
     "pathRecord": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["path", "required_for_review"],
+      "required": [
+        "path",
+        "required_for_review",
+        "share_class",
+        "redaction_status",
+        "allowed_lane"
+      ],
       "properties": {
         "path": {"type": ["string", "null"]},
         "required_for_review": {"type": "boolean"},
+        "share_class": {
+          "enum": ["private", "workspace", "proposal_redacted", "forbidden"]
+        },
+        "redaction_status": {
+          "enum": ["not_needed", "pending", "redacted", "blocked"]
+        },
+        "allowed_lane": {
+          "enum": ["private_draft", "workspace_validated", "blocked_network_absorption"]
+        },
         "absent_reason": {"type": "string"}
       },
       "allOf": [
@@ -104,6 +119,29 @@
             "required": ["path"]
           },
           "then": {"required": ["absent_reason"]}
+        },
+        {
+          "if": {
+            "properties": {"share_class": {"const": "private"}},
+            "required": ["share_class"]
+          },
+          "then": {
+            "properties": {
+              "allowed_lane": {"enum": ["private_draft", "workspace_validated"]}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"share_class": {"const": "forbidden"}},
+            "required": ["share_class"]
+          },
+          "then": {
+            "properties": {
+              "redaction_status": {"const": "blocked"},
+              "allowed_lane": {"const": "blocked_network_absorption"}
+            }
+          }
         }
       ]
     }

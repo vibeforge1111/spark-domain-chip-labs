@@ -825,10 +825,18 @@ def test_swarm_review_bundle_example_is_schema_valid_and_local_only() -> None:
     assert bundle["network_publication_allowed"] is False
     assert bundle["promotion_boundary"]["product_runtime_controls"] == "read_only"
     assert "network_absorbable" in bundle["promotion_boundary"]["forbidden_claims"]
+    assert bundle["bundle_paths"]["creator_intent"]["share_class"] == "private"
+    assert bundle["bundle_paths"]["swarm_packet"]["share_class"] == "proposal_redacted"
+    assert bundle["bundle_paths"]["swarm_packet"]["allowed_lane"] == (
+        "blocked_network_absorption"
+    )
 
     run_dir = Path(bundle["creator_run_dir"])
     assert run_dir.is_dir()
     for record in bundle["bundle_paths"].values():
+        assert "share_class" in record
+        assert "redaction_status" in record
+        assert "allowed_lane" in record
         path = record["path"]
         if path is None:
             assert "absent_reason" in record

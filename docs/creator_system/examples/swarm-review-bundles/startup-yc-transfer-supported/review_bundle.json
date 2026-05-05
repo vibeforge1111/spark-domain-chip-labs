@@ -9,27 +9,45 @@
   "bundle_paths": {
     "creator_intent": {
       "path": "creator-intent.json",
-      "required_for_review": true
+      "required_for_review": true,
+      "share_class": "private",
+      "redaction_status": "not_needed",
+      "allowed_lane": "workspace_validated"
     },
     "adapter_map": {
       "path": "adapter-map.json",
-      "required_for_review": true
+      "required_for_review": true,
+      "share_class": "workspace",
+      "redaction_status": "not_needed",
+      "allowed_lane": "workspace_validated"
     },
     "artifact_manifest": {
       "path": "created-artifact-manifest.json",
-      "required_for_review": true
+      "required_for_review": true,
+      "share_class": "workspace",
+      "redaction_status": "not_needed",
+      "allowed_lane": "workspace_validated"
     },
     "evidence_ladder": {
       "path": "reports/evidence_ladder.md",
-      "required_for_review": true
+      "required_for_review": true,
+      "share_class": "proposal_redacted",
+      "redaction_status": "pending",
+      "allowed_lane": "blocked_network_absorption"
     },
     "swarm_packet": {
       "path": "swarm/contribution_packet.json",
-      "required_for_review": true
+      "required_for_review": true,
+      "share_class": "proposal_redacted",
+      "redaction_status": "pending",
+      "allowed_lane": "blocked_network_absorption"
     },
     "mission_status": {
       "path": null,
       "required_for_review": false,
+      "share_class": "workspace",
+      "redaction_status": "not_needed",
+      "allowed_lane": "workspace_validated",
       "absent_reason": "Historical fixture predates saved creator-mission-status output; generate one for product-surface review instead of treating this absence as network approval."
     }
   },
