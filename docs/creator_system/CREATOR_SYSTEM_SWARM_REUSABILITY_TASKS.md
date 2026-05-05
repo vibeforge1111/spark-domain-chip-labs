@@ -75,7 +75,9 @@ belongs in the launch bridge:
 - record hosted Spark Swarm UI consumption of private, workspace-validated,
   proposal-blocked, proposal-submitted, and reviewed-candidate states
 - define signed publication manifest authority before any stronger public
-  claim
+  claim; placeholder authority contract done in Spark Swarm commit `6a61b9e`
+  at
+  `templates/creator-system-network-proposal/signed-publication-manifest-authority.placeholder.json`
 
 ## Promotion Rule
 

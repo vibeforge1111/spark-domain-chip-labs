@@ -496,7 +496,12 @@ evidence. The next slice is the Spark Swarm launch bridge:
 4. Record hosted Spark Swarm UI consumption of private, workspace-validated,
    proposal-blocked, proposal-submitted, and reviewed-candidate states.
 5. Define signed publication manifest authority before any stronger network
-   claim.
+   claim. Placeholder authority contract done in Spark Swarm commit `6a61b9e`
+   at
+   `templates/creator-system-network-proposal/signed-publication-manifest-authority.placeholder.json`;
+   it remains `not_configured` and keeps `network_absorbable=false` until a
+   signed manifest, signature, signing key id, protected-branch keyring
+   reference, and reviewed artifact paths exist.
 
 Still blocked:
 
