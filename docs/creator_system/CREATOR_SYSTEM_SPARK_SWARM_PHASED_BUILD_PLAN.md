@@ -489,6 +489,10 @@ evidence. The next slice is the Spark Swarm launch bridge:
    Spark Swarm commit `d487e18` via
    `templates/creator-system-network-proposal/creator-network-proposal-bundle.template.json`.
 3. Open a verified-repo PR proof placeholder in the real launch repo flow.
+   Done in Spark Swarm commit `cd68cf7` with
+   `templates/creator-system-network-proposal/verified-repo-pr-proof.placeholder.json`;
+   Spark Swarm keeps placeholder and incomplete approved proofs blocked until
+   repo, PR URL, head SHA, base branch, and required checks are present.
 4. Record hosted Spark Swarm UI consumption of private, workspace-validated,
    proposal-blocked, proposal-submitted, and reviewed-candidate states.
 5. Define signed publication manifest authority before any stronger network

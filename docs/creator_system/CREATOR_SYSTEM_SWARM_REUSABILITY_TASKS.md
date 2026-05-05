@@ -69,7 +69,9 @@ belongs in the launch bridge:
 - mirror the proposal bundle template into `spark-swarm`; done in
   Spark Swarm commit `d487e18` at
   `templates/creator-system-network-proposal/creator-network-proposal-bundle.template.json`
-- open a verified-repo PR proof placeholder in the real launch repo flow
+- open a verified-repo PR proof placeholder in the real launch repo flow; done
+  in Spark Swarm commit `cd68cf7` at
+  `templates/creator-system-network-proposal/verified-repo-pr-proof.placeholder.json`
 - record hosted Spark Swarm UI consumption of private, workspace-validated,
   proposal-blocked, proposal-submitted, and reviewed-candidate states
 - define signed publication manifest authority before any stronger public
