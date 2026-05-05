@@ -28,6 +28,7 @@ AGENTS = Path("AGENTS.md")
 PYPROJECT = Path("pyproject.toml")
 WORKFLOWS_DIR = Path(".github/workflows")
 CODEOWNERS = Path(".github/CODEOWNERS")
+SCORECARD_WORKFLOW = Path(".github/workflows/scorecard.yml")
 USER_QUICKSTART = Path("docs/creator_system/USER_QUICKSTART_BETA.md")
 AGENT_CREATOR_PLAYBOOK = Path("docs/creator_system/AGENT_CREATOR_PLAYBOOK.md")
 USER_AND_AGENT_ONBOARDING = Path(
@@ -1030,6 +1031,8 @@ def test_spark_swarm_launch_hardening_checklist_covers_security_and_scale() -> N
         "CODEOWNERS or GitHub rulesets",
         "Secret scanning",
         "OpenSSF Scorecard",
+        "pinned read-only OpenSSF Scorecard workflow",
+        "uploads a JSON review artifact",
         "Verified-repo PR proof",
         "Signed publication manifest",
         "share_class",
@@ -1205,6 +1208,31 @@ def test_creator_system_workflows_avoid_privileged_untrusted_pr_patterns() -> No
         assert "pull_request_target:" not in text, workflow_path
         assert "contents: write" not in text, workflow_path
         assert "id-token: write" not in text, workflow_path
+
+
+def test_creator_system_scorecard_workflow_records_supply_chain_review() -> None:
+    text = SCORECARD_WORKFLOW.read_text(encoding="utf-8")
+    action_refs = re.findall(r"uses:\s+([^@\s]+)@([0-9a-f]{40})(?:\s+#\s+\S+)?", text)
+    uses_lines = [line.strip() for line in text.splitlines() if line.strip().startswith("uses:")]
+
+    assert "permissions:" in text
+    assert "contents: read" in text
+    assert "security-events: write" not in text
+    assert "id-token: write" not in text
+    assert "publish_results: false" in text
+    assert "results_file: /tmp/scorecard-results.json" in text
+    assert "results_format: json" in text
+    assert "openssf-scorecard-results" in text
+    assert len(action_refs) == len(uses_lines)
+    assert ("actions/checkout", "34e114876b0b11c390a56381ad16ebd13914f8d5") in action_refs
+    assert (
+        "ossf/scorecard-action",
+        "4eaacf0543bb3f2c246792bd56e8cdeffafb205a",
+    ) in action_refs
+    assert (
+        "actions/upload-artifact",
+        "ea165f8d65b6e75b540449e92b4886f43607fa02",
+    ) in action_refs
 
 
 def test_creator_system_codeowners_covers_workflow_and_launch_gate_changes() -> None:

@@ -20,7 +20,7 @@ change.
 | Actions hardening | Workflows that produce proposal evidence must set explicit read-only default `GITHUB_TOKEN` permissions, avoid untrusted script injection, and pin third-party actions to full-length commit SHAs or an approved internal allowlist. | Required before launch |
 | Workflow change governance | Changes to `.github/workflows/**` must require protected-branch review through CODEOWNERS or GitHub rulesets before proposal evidence is trusted. | Required before launch |
 | Secret scanning | Proposal bundles must be scanned for tokens, private keys, emails, phone numbers, internal URLs, and raw local absolute paths. | Required before launch |
-| Dependency posture | Launch checklist must include dependency audit and OpenSSF Scorecard review or documented equivalent. | Required before launch |
+| Dependency posture | Launch checklist must include dependency audit and a pinned read-only OpenSSF Scorecard workflow that uploads a JSON review artifact, or documented equivalent. | Required before launch |
 | Verified-repo PR proof | Network-visible proposal review must reference protected/default branch, head SHA, required checks, and PR URL. | Required before reviewed candidate |
 | Signed publication manifest | Future network absorption must require a signed publication manifest or explicit publication authority record. | Required before network absorption |
 
