@@ -701,6 +701,9 @@ def test_swarm_reuse_end_to_end_plan_preserves_blocked_boundaries() -> None:
         "Repo/user beta readiness remains at `100`",
         "Creator-system standard readiness remains at `100`",
         "## Blocked By Design",
+        "## Completion Log",
+        "E2E-07",
+        "Final local gates passed on 2026-05-05",
         "product runtime creator controls",
         "publication authority",
     ):
@@ -727,6 +730,10 @@ def test_swarm_reuse_execution_evidence_records_artifacts_and_blockers() -> None
         "Publication approval",
         "No automatic Spark Swarm publish path from this repo.",
         "Until that promotion bundle exists and passes, the correct state is blocked.",
+        "Final Local Gates",
+        "25 passed",
+        "creator-system-production-readiness --fail-on-blocked",
+        "network absorption publication blocked",
     ):
         assert phrase in text
 

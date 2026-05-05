@@ -125,3 +125,19 @@ showing:
 
 Until that promotion bundle exists and passes, the correct state is blocked.
 
+## Final Local Gates
+
+Final local gates passed on 2026-05-05 from
+`C:\Users\USER\Desktop\spark-domain-chip-labs`.
+
+| Command | Result |
+| --- | --- |
+| `python -m pytest tests/test_creator_system_docs.py -q` | Passed: 25 passed. |
+| `python -m ruff check src/chip_labs tests` | Passed. |
+| `python -m chip_labs.cli creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn` | Passed: `ready_for_swarm_packet`, `transfer_supported`, 101 pass, 0 warn, 0 fail. |
+| `python -m chip_labs.cli creator-run-template-check --fail-on-blocked` | Passed: 57 pass, 0 warn, 0 fail. |
+| `python -m chip_labs.cli creator-system-beta-check --fail-on-blocked` | Passed with `network_absorbable=false`. |
+| `python -m chip_labs.cli creator-system-production-readiness --fail-on-blocked` | Passed: repo/user beta readiness `100`, creator-system standard readiness `100`, network absorption publication blocked. |
+
+The final gate result keeps the reusable Spark Swarm path local-reviewable and
+does not change the blocked network absorption boundary.
