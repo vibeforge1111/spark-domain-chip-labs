@@ -478,11 +478,15 @@ The plan is launch-ready only when:
 P1 through P8 are complete from this repo's side and have post-P8 clean-clone
 evidence. The next slice is the Spark Swarm launch bridge:
 
-1. Mirror the proposal bundle template into `spark-swarm`.
-2. Open a verified-repo PR proof placeholder in the real launch repo flow.
-3. Record hosted Spark Swarm UI consumption of private, workspace-validated,
+1. Attach creator-system proposal bundles in `spark-swarm`. Done in
+   Spark Swarm commit `c225fcf`, which adds `--creator-proposal-bundle` and
+   keeps creator-system proposals blocked on `creatorVerifiedRepoPrProof` and
+   `creatorPublicationApproval`.
+2. Mirror the proposal bundle template into `spark-swarm`.
+3. Open a verified-repo PR proof placeholder in the real launch repo flow.
+4. Record hosted Spark Swarm UI consumption of private, workspace-validated,
    proposal-blocked, proposal-submitted, and reviewed-candidate states.
-4. Define signed publication manifest authority before any stronger network
+5. Define signed publication manifest authority before any stronger network
    claim.
 
 Still blocked:

@@ -62,6 +62,9 @@ The reusable creator path is now ready for Spark Swarm private workspace and
 proposal-template integration, but not for network absorption. Remaining work
 belongs in the launch bridge:
 
+- attach creator-system proposal bundles in `spark-swarm`; first bridge gate
+  landed in Spark Swarm commit `c225fcf` with `--creator-proposal-bundle`,
+  `creatorVerifiedRepoPrProof`, and `creatorPublicationApproval`
 - mirror the proposal bundle template into `spark-swarm`
 - open a verified-repo PR proof placeholder in the real launch repo flow
 - record hosted Spark Swarm UI consumption of private, workspace-validated,
