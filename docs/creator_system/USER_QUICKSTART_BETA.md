@@ -33,6 +33,11 @@ release evidence.
 Use this quickstart for commands. Use the onboarding guide for the step-by-step
 operating model.
 
+If your goal is to make a creator-system domain reusable by Spark Swarm
+reviewers, also read `CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md` and
+`SWARM_REUSABLE_CREATOR_PATH.md`. Those docs describe the local review bundle,
+required packets, and replay commands while keeping `network_absorbable=false`.
+
 ## Install From A Fresh Clone
 
 ```bash
@@ -188,3 +193,6 @@ chip-labs creator-run-doctor <run-dir>
 ```
 
 Do not claim stronger evidence than the weakest passing gate supports.
+For Spark Swarm review, package the result with `SWARM_REUSABLE_CREATOR_PATH.md`
+so another agent can replay the evidence without treating the packet as network
+approval.

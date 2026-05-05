@@ -39,6 +39,12 @@ users and agents move through intent, adapter map, domain chip, benchmark pack,
 specialization path, autoloop policy, evidence ladder, local Swarm packet,
 mission status, and release evidence.
 
+When the user wants the result to be reusable by Spark Swarm, read
+`CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md` and
+`SWARM_REUSABLE_CREATOR_PATH.md`. Build a local review bundle with the Swarm
+packet, mission status, replay commands, rollback notes, and explicit
+`network_absorbable=false` boundary. Do not publish or network-absorb it.
+
 ## Creator Modes
 
 | User intent | Creator mode | Primary owner |

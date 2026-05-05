@@ -285,6 +285,8 @@ Use the docs by job:
 | Install and first run | `USER_QUICKSTART_BETA.md` |
 | Agent procedure | `AGENT_CREATOR_PLAYBOOK.md` |
 | End-to-end CLI flow | `CREATOR_RUN_GOLDEN_PATH_V1.md` |
+| Swarm reuse task ledger | `CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md` |
+| Package a local Swarm review bundle | `SWARM_REUSABLE_CREATOR_PATH.md` |
 | Evidence tier meaning | `PROMOTION_GATES_AND_EVIDENCE_TIERS.md` |
 | Benchmark and autoloop design | `BENCHMARK_AND_AUTOLOOP_PROTOCOL.md` |
 | Benchmark honesty | `BENCHMARK_GENERATION_HONESTY_STANDARD.md` |

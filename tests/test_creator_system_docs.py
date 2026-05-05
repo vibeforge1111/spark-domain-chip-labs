@@ -32,6 +32,10 @@ BETA_RELEASE = Path("docs/creator_system/CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.
 PUBLIC_BETA_HANDOFF = Path(
     "docs/creator_system/PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md"
 )
+SWARM_REUSABILITY_TASKS = Path(
+    "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md"
+)
+SWARM_REUSABLE_PATH = Path("docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md")
 
 
 def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
@@ -42,6 +46,8 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_BETA_RELEASE_2026-05-04.md" in text
     assert "PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md" in text
     assert "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md" in text
+    assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
+    assert "SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
     assert "examples/product-runtime-review/" in text
     assert "CREATOR_SYSTEM_MULTI_DOMAIN_VALIDATION_PLAN.md" in text
@@ -121,6 +127,9 @@ def test_agent_creator_playbook_keeps_fresh_agent_boot_path_safe() -> None:
         "creator-system-beta-check --fail-on-blocked",
         "creator-system-production-readiness --fail-on-blocked",
         "adaptive_creator_loop.creator_intent.v1",
+        "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
+        "SWARM_REUSABLE_CREATOR_PATH.md",
+        "local review bundle",
         "network_publication_allowed\": false",
         "read-only mission-status packet",
         "product wiring stays deferred",
@@ -156,6 +165,8 @@ def test_user_and_agent_onboarding_covers_complete_creator_value_path() -> None:
         "creator-mission-status",
         "`publication.network_absorbable=false`",
         "network_absorbable` stays `false`",
+        "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
+        "SWARM_REUSABLE_CREATOR_PATH.md",
         "Artifact quality",
         "Tool operation",
         "MiroFish content simulation",
@@ -195,6 +206,8 @@ def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
     assert "chip-labs creator-system-beta-check --fail-on-blocked" in text
     assert "docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md" in text
     assert "docs/creator_system/USER_QUICKSTART_BETA.md" in text
+    assert "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
+    assert "docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md" in text
     assert "docs/creator_system/PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md" in text
     assert "docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md" in text
@@ -243,6 +256,8 @@ def test_creator_system_beta_quickstart_is_user_runnable() -> None:
         "chip-labs creator-run-doctor",
         "generated-multi-seed-run",
         "generated-creator-matrix-evidence",
+        "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
+        "SWARM_REUSABLE_CREATOR_PATH.md",
         "Startup YC",
         "`network_absorbable`",
         "Startup YC production-gate workbench subcheck",
@@ -582,6 +597,38 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "read-only review-complete packet" in text
     assert "product runtime phase of `creator-release-gate`" in text
     assert "Extended generated-domain validation now has a recorded 54-row local run" in text
+
+
+def test_swarm_reusable_creator_path_keeps_review_bundle_local() -> None:
+    tasks = SWARM_REUSABILITY_TASKS.read_text(encoding="utf-8")
+    path = SWARM_REUSABLE_PATH.read_text(encoding="utf-8")
+
+    for phrase in (
+        "Swarm-reusable means",
+        "generated-creator-matrix-evidence",
+        "SWARM_REUSABLE_CREATOR_PATH.md",
+        "No task in this ledger may change `network_absorbable` to `true`.",
+        "multi-seed validation",
+        "product runtime review",
+        "publication authority",
+    ):
+        assert phrase in tasks
+
+    for phrase in (
+        "# Swarm Reusable Creator Path",
+        "local review bundle",
+        "governance.network_publication_allowed=false",
+        "publication.network_absorbable=false",
+        "swarm/contribution_packet.json",
+        "creator-run-smoke <run-dir> --recompute --fail-on-blocked",
+        "generated-creator-matrix-evidence",
+        "docs/creator_system/schemas/swarm-contribution-packet.schema.json",
+        "anti_drift.known_limits",
+        "It is not network absorption.",
+        "product runtime review",
+        "publication authority",
+    ):
+        assert phrase in path
 
 
 def test_creator_system_workflow_validates_raw_evidence_check_result_schema() -> None:
