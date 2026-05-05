@@ -36,8 +36,8 @@ Swarm-reusable does not mean:
 | SR-04 | Define a review bundle checklist for local Swarm packets. | Swarm reviewers need required packet, evidence, provenance, and rollback fields. | Checklist in the reusable path doc. | Done in `100f015`. |
 | SR-05 | Add an example review bundle for a generated proof domain. | Contributors learn faster from one concrete bundle. | `examples/swarm-review-bundles/startup-yc-transfer-supported/`. | Done. |
 | SR-06 | Add a lightweight bundle shape check if examples start drifting. | Reuse should be executable, not only prose. | `swarm-review-bundle.schema.json` plus focused docs tests. | Done. |
-| SR-07 | Run fresh-clone verification after the next packaging change. | Public users need install proof independent from local dirty state. | Fresh-clone evidence note and clean output packet paths. | Pending. |
-| SR-08 | Decide whether generated matrix JSON should become release assets. | Release consumers may need stable downloadable evidence outside CI retention. | Release asset policy, only after a new public hardening tag. | Pending. |
+| SR-07 | Run fresh-clone verification after the next packaging change. | Public users need install proof independent from local dirty state. | Fresh-clone evidence note and clean output packet paths. | Done in `97397ea` via the post-P8 clean-clone rehearsal. |
+| SR-08 | Decide whether generated matrix JSON should become release assets. | Release consumers may need stable downloadable evidence outside CI retention. | Release asset policy, only after a new public hardening tag. | Done: CI artifacts remain default; release assets require a future hardening tag with fresh evidence. |
 | SR-09 | Review unrelated docs/research/viz files as a separate slice. | Research residue should not silently become creator-system doctrine. | Curated commit, archive decision, or explicit defer note. | Pending. |
 | SR-10 | Continue proof-domain improvements through executable gates only. | Swarm reuse must be earned by tests, smoke, doctor, and provenance checks. | More passing proof-domain gates and blocked unsafe claims. | Ongoing. |
 | SR-11 | Keep product runtime creator controls deferred. | Builder, Telegram, Spawner, Canvas, and Kanban must not mutate creator runs yet. | Read-only mission-status consumers only. | Ongoing boundary. |
@@ -45,12 +45,29 @@ Swarm-reusable does not mean:
 
 ## Build Order
 
-1. Make the local review bundle path explicit.
-2. Add contributor guidance for new creator domains.
-3. Add one example bundle from an existing generated proof domain.
-4. Add the smallest executable check that prevents bundle drift.
-5. Run fresh-clone verification before a new hardening package.
-6. Only then decide whether the bundle artifacts belong on a public release.
+1. Make the local review bundle path explicit. Done.
+2. Add contributor guidance for new creator domains. Done.
+3. Add one example bundle from an existing generated proof domain. Done.
+4. Add the smallest executable check that prevents bundle drift. Done.
+5. Run fresh-clone verification before a new hardening package. Done for the
+   post-P8 clean-clone rehearsal.
+6. Decide whether the bundle artifacts belong on a public release. Done:
+   keep generated matrix JSON as `generated-creator-matrix-evidence` CI
+   artifacts by default; attach them to GitHub Releases only for a future
+   explicitly tagged hardening prerelease with fresh evidence and release notes.
+
+## Remaining Launch Bridge
+
+The reusable creator path is now ready for Spark Swarm private workspace and
+proposal-template integration, but not for network absorption. Remaining work
+belongs in the launch bridge:
+
+- mirror the proposal bundle template into `spark-swarm`
+- open a verified-repo PR proof placeholder in the real launch repo flow
+- record hosted Spark Swarm UI consumption of private, workspace-validated,
+  proposal-blocked, proposal-submitted, and reviewed-candidate states
+- define signed publication manifest authority before any stronger public
+  claim
 
 ## Promotion Rule
 

@@ -37,7 +37,7 @@ into executable phases with tests, artifacts, commits, and stop-ship gates.
 
 ## P0 Planning And Guardrails
 
-Status: in progress.
+Status: complete.
 
 Tasks:
 
@@ -46,8 +46,8 @@ Tasks:
 - [x] Align creator-system launch work with OWASP LLM, NIST AI RMF, GitHub
   token scoping, GitHub Actions hardening, and OpenSSF Scorecard references.
 - [x] Add alignment task ledger with CSS-01 through CSS-12.
-- [ ] Add this phase plan to first-read documentation.
-- [ ] Add docs unit tests for phase coverage and blocked network boundaries.
+- [x] Add this phase plan to first-read documentation.
+- [x] Add docs unit tests for phase coverage and blocked network boundaries.
 
 Verification:
 
@@ -475,9 +475,18 @@ The plan is launch-ready only when:
 
 ## Current Next Build Slice
 
-Start with P1:
+P1 through P8 are complete from this repo's side and have post-P8 clean-clone
+evidence. The next slice is the Spark Swarm launch bridge:
 
-1. Add the lane taxonomy schema.
-2. Add one private workspace example and one blocked network proposal example.
-3. Add unit/docs tests for valid examples and forbidden transitions.
-4. Commit the slice.
+1. Mirror the proposal bundle template into `spark-swarm`.
+2. Open a verified-repo PR proof placeholder in the real launch repo flow.
+3. Record hosted Spark Swarm UI consumption of private, workspace-validated,
+   proposal-blocked, proposal-submitted, and reviewed-candidate states.
+4. Define signed publication manifest authority before any stronger network
+   claim.
+
+Still blocked:
+
+- `network_absorbable=true`
+- automatic Spark Swarm publish
+- product runtime creator controls

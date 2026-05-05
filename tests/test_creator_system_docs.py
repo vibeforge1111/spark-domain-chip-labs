@@ -674,6 +674,15 @@ def test_swarm_reusable_creator_path_keeps_review_bundle_local() -> None:
         "CONTRIBUTING_CREATOR_DOMAINS.md",
         "swarm-review-bundle.schema.json",
         "examples/swarm-review-bundles/startup-yc-transfer-supported/",
+        "SR-07",
+        "Done in `97397ea` via the post-P8 clean-clone rehearsal.",
+        "SR-08",
+        "CI artifacts remain default",
+        "release assets require a future hardening tag with fresh evidence",
+        "Remaining Launch Bridge",
+        "verified-repo PR proof placeholder",
+        "hosted Spark Swarm UI consumption",
+        "signed publication manifest authority",
         "No task in this ledger may change `network_absorbable` to `true`.",
         "multi-seed validation",
         "product runtime review",
@@ -828,9 +837,15 @@ def test_spark_swarm_phased_build_plan_is_executable_and_blocked() -> None:
         "no automatic publish",
         "Cross-Phase Done Definition",
         "Current Next Build Slice",
+        "P1 through P8 are complete from this repo's side",
+        "Spark Swarm launch bridge",
+        "verified-repo PR proof placeholder",
+        "hosted Spark Swarm UI consumption",
+        "signed publication manifest authority",
     ):
         assert phrase in text
 
+    assert "Start with P1" not in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md" in alignment
 
 
