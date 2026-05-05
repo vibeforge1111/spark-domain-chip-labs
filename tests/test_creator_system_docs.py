@@ -41,6 +41,9 @@ SWARM_REUSABILITY_TASKS = Path(
 SWARM_REUSE_E2E_PLAN = Path(
     "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md"
 )
+SWARM_REUSE_EXECUTION_EVIDENCE = Path(
+    "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md"
+)
 SWARM_REUSABLE_PATH = Path("docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md")
 CONTRIBUTING_CREATOR_DOMAINS = Path(
     "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md"
@@ -66,6 +69,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md" in text
     assert "CONTRIBUTING_CREATOR_DOMAINS.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md" in text
+    assert "CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
@@ -188,6 +192,7 @@ def test_user_and_agent_onboarding_covers_complete_creator_value_path() -> None:
         "`publication.network_absorbable=false`",
         "network_absorbable` stays `false`",
         "CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md",
+        "CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md",
         "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
         "SWARM_REUSABLE_CREATOR_PATH.md",
         "CONTRIBUTING_CREATOR_DOMAINS.md",
@@ -698,6 +703,30 @@ def test_swarm_reuse_end_to_end_plan_preserves_blocked_boundaries() -> None:
         "## Blocked By Design",
         "product runtime creator controls",
         "publication authority",
+    ):
+        assert phrase in text
+
+
+def test_swarm_reuse_execution_evidence_records_artifacts_and_blockers() -> None:
+    text = SWARM_REUSE_EXECUTION_EVIDENCE.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Creator System Swarm Reuse Execution Evidence 2026-05-05",
+        "`network_absorbable=false`",
+        "`network_publication_allowed=false`",
+        "Fresh-Clone Verification",
+        "c22d6f19ad519c5120b4c6b5883b7db7e78bbbff",
+        "Generated Matrix JSON Release-Asset Policy",
+        "generated-creator-matrix-evidence",
+        "Do not retroactively mutate the Hardening 5 prerelease assets",
+        "Inventory Report",
+        "`PROJECT.md`; `src/chip_labs/mirofish/personas.py`",
+        "`nul`",
+        "Future Promotion Bundle Plan",
+        "Human/operator calibration",
+        "Publication approval",
+        "No automatic Spark Swarm publish path from this repo.",
+        "Until that promotion bundle exists and passes, the correct state is blocked.",
     ):
         assert phrase in text
 

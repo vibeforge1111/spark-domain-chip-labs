@@ -27,6 +27,12 @@ with humans and agents, but they do not grant network publication authority.
 | Generated matrix CI artifacts | `f70c166` | Scheduled and manual generated-matrix runs upload `generated-creator-matrix-evidence` with summary, summary-check, mission-status, and release-gate JSON. |
 | Swarm reusable path | `100f015` | Added the local Swarm reuse ledger and review path without claiming network absorption. |
 | Contributor review-bundle path | `53f7335` | Added outside-domain contributor guidance, a local review-bundle schema, and a Startup YC review-bundle example. |
+| End-to-end plan | `c22d6f1` | Added this active plan and linked it from first-read docs. |
+
+## Execution Evidence
+
+Current execution evidence is recorded in
+`CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md`.
 
 ## Remaining End-To-End Tasks
 
@@ -73,4 +79,3 @@ These are intentionally not part of this end-to-end pass:
 - treating `ready_for_swarm_packet` as network approval
 - converting local Generated matrix JSON evidence into live network memory
 - granting publication authority from CI artifacts alone
-
