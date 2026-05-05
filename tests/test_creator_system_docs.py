@@ -53,6 +53,9 @@ SPARK_SWARM_PHASED_BUILD_PLAN = Path(
 SPARK_SWARM_LAUNCH_REHEARSAL = Path(
     "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_LAUNCH_REHEARSAL_2026-05-05.md"
 )
+SPARK_SWARM_LAUNCH_HARDENING = Path(
+    "docs/creator_system/SPARK_SWARM_LAUNCH_HARDENING_CHECKLIST.md"
+)
 SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF = Path(
     "docs/creator_system/SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF.md"
 )
@@ -85,6 +88,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md" in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md" in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_LAUNCH_REHEARSAL_2026-05-05.md" in text
+    assert "SPARK_SWARM_LAUNCH_HARDENING_CHECKLIST.md" in text
     assert "SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "SWARM_REUSABLE_CREATOR_PATH.md" in text
@@ -868,6 +872,36 @@ def test_spark_swarm_launch_rehearsal_records_blocked_private_path() -> None:
         "It does not approve network absorption.",
         "It does not change `network_absorbable=false`.",
         "verified-repo PR proof placeholder",
+    ):
+        assert phrase in text
+
+
+def test_spark_swarm_launch_hardening_checklist_covers_security_and_scale() -> None:
+    text = SPARK_SWARM_LAUNCH_HARDENING.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Spark Swarm Launch Hardening Checklist",
+        "`network_absorbable=false`",
+        "`network_publication_allowed=false`",
+        "no automatic publish",
+        "Least-privilege GitHub tokens",
+        "GitHub App installation tokens",
+        "Actions hardening",
+        "Secret scanning",
+        "OpenSSF Scorecard",
+        "Verified-repo PR proof",
+        "Signed publication manifest",
+        "share_class",
+        "redaction_status",
+        "allowed_lane",
+        "full creator-run trees",
+        "raw benchmark case corpora",
+        "Collective dry-run payload",
+        "<= 128 KB target",
+        "Proposal bundle",
+        "<= 256 KB target",
+        "clean clone",
+        "not network absorbable",
     ):
         assert phrase in text
 

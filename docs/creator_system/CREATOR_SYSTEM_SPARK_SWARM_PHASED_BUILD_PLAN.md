@@ -419,7 +419,7 @@ Commit target:
 
 ## P8 Supply-Chain And Scalability Hardening
 
-Status: planned.
+Status: initial hardening checklist complete.
 
 Purpose:
 
@@ -433,6 +433,16 @@ Build outputs:
 - OpenSSF Scorecard posture notes
 - payload size and artifact reference rules
 - pagination/snapshot guidance for Spark Swarm hot routes
+
+Implementation status:
+
+- [x] `SPARK_SWARM_LAUNCH_HARDENING_CHECKLIST.md` records supply-chain,
+  privacy, scalability, UX, payload-budget, and launch-rehearsal gates.
+- [x] Checklist requires least-privilege GitHub App installation tokens,
+  GitHub Actions hardening, secret scanning, dependency/Scorecard posture,
+  verified-repo PR proof, and future signed publication authority.
+- [x] Checklist blocks hot routes from consuming full creator-run trees or raw
+  private workspace paths.
 
 Scalability rules:
 
