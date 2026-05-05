@@ -523,6 +523,12 @@ evidence. The next slice is the Spark Swarm launch bridge:
    secrets, and full creator-run trees, and requires verified PR proof,
    publication approval, signed manifest authority, privacy review, rollback
    review, and revocation coverage before activation.
+8. Define hosted runtime UI proof before touching dirty web runtime files. Proof
+   template done in Spark Swarm commit `4951c64` at
+   `templates/creator-system-network-proposal/hosted-runtime-ui-proof.template.json`;
+   it is `template_only`, requires desktop/mobile screenshots and interactive
+   assertions, and does not prove hosted runtime behavior until a future UI run
+   verifies no active network absorption badges or publish controls.
 
 Still blocked:
 

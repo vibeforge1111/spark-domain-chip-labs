@@ -92,6 +92,11 @@ belongs in the launch bridge:
   still `placeholder_blocked` and requiring verified PR proof, publication
   approval, signed manifest authority, privacy review, rollback review, and
   revocation coverage before activation
+- define hosted runtime UI proof before touching dirty web runtime files; proof
+  template done in Spark Swarm commit `4951c64` at
+  `templates/creator-system-network-proposal/hosted-runtime-ui-proof.template.json`,
+  still `template_only` and requiring desktop/mobile screenshots plus
+  interaction assertions before hosted runtime proof can be claimed
 
 ## Promotion Rule
 
