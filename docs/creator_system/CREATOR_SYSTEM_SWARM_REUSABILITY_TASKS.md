@@ -66,7 +66,9 @@ belongs in the launch bridge:
   landed in Spark Swarm commit `c225fcf` with `--creator-proposal-bundle`,
   `creatorVerifiedRepoPrProof`, and `creatorPublicationApproval`;
   bundle policy hardening landed in Spark Swarm commit `2185f3f`
-- mirror the proposal bundle template into `spark-swarm`
+- mirror the proposal bundle template into `spark-swarm`; done in
+  Spark Swarm commit `d487e18` at
+  `templates/creator-system-network-proposal/creator-network-proposal-bundle.template.json`
 - open a verified-repo PR proof placeholder in the real launch repo flow
 - record hosted Spark Swarm UI consumption of private, workspace-validated,
   proposal-blocked, proposal-submitted, and reviewed-candidate states
