@@ -515,6 +515,14 @@ evidence. The next slice is the Spark Swarm launch bridge:
    `network_launch_stage=blocked_by_design`, and remaining gates for hosted
    runtime UI proof, verified-repo PR proof, publication approval, signed
    publication manifest authority, and scoped absorption policy.
+7. Define scoped absorption policy before any network-memory movement. Placeholder
+   policy done in Spark Swarm commit `8a8efe7` at
+   `templates/creator-system-network-proposal/scoped-absorption-policy.placeholder.json`;
+   it remains `placeholder_blocked`, keeps `network_absorbable=false`, forbids
+   private/workspace artifacts, runtime creator controls, raw private paths,
+   secrets, and full creator-run trees, and requires verified PR proof,
+   publication approval, signed manifest authority, privacy review, rollback
+   review, and revocation coverage before activation.
 
 Still blocked:
 

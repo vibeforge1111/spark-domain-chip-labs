@@ -86,6 +86,12 @@ belongs in the launch bridge:
   `templates/creator-system-network-proposal/creator-system-launch-readiness.template.json`,
   with `overall_stage=workspace_and_proposal_contract_ready` and
   `network_launch_stage=blocked_by_design`
+- define scoped absorption policy before any network-memory movement; placeholder
+  policy done in Spark Swarm commit `8a8efe7` at
+  `templates/creator-system-network-proposal/scoped-absorption-policy.placeholder.json`,
+  still `placeholder_blocked` and requiring verified PR proof, publication
+  approval, signed manifest authority, privacy review, rollback review, and
+  revocation coverage before activation
 
 ## Promotion Rule
 
