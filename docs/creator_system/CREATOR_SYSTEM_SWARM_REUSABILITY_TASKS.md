@@ -102,6 +102,11 @@ belongs in the launch bridge:
   `templates/creator-system-network-proposal/hosted-runtime-ui-proof.template.json`,
   still `template_only` and requiring desktop/mobile screenshots plus
   interaction assertions before hosted runtime proof can be claimed
+- define a hosted UI state-by-state assertion matrix before any visual proof
+  claim; assertion matrix template done in Spark Swarm commit `5e90b4e` at
+  `templates/creator-system-network-proposal/hosted-runtime-ui-assertion-matrix.template.json`,
+  covering desktop/mobile viewports, forbidden public-approval copy, forbidden
+  publish/promote/absorb controls, and disabled future network-absorbable state
 - define user sharing preference as data before runtime creator controls; sharing
   preference template done in Spark Swarm commit `00fa489` at
   `templates/creator-system-network-proposal/sharing-preference.template.json`,

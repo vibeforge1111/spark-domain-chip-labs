@@ -535,7 +535,13 @@ evidence. The next slice is the Spark Swarm launch bridge:
    it is `template_only`, requires desktop/mobile screenshots and interactive
    assertions, and does not prove hosted runtime behavior until a future UI run
    verifies no active network absorption badges or publish controls.
-9. Define user sharing preference as data before runtime creator controls.
+9. Define hosted UI state-by-state assertions before any visual proof claim.
+   Assertion matrix template done in Spark Swarm commit `5e90b4e` at
+   `templates/creator-system-network-proposal/hosted-runtime-ui-assertion-matrix.template.json`;
+   it covers desktop/mobile viewports, forbidden public-approval copy,
+   forbidden publish/promote/absorb controls, and disabled future
+   network-absorbable state.
+10. Define user sharing preference as data before runtime creator controls.
    Sharing preference template done in Spark Swarm commit `00fa489` at
    `templates/creator-system-network-proposal/sharing-preference.template.json`;
    it supports `private_only`, `review_everything`, `trusted_auto_propose`, and
