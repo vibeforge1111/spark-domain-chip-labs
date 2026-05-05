@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import jsonschema
@@ -1021,6 +1022,7 @@ def test_spark_swarm_launch_hardening_checklist_covers_security_and_scale() -> N
         "GitHub App installation tokens",
         "Actions hardening",
         "explicit read-only default `GITHUB_TOKEN` permissions",
+        "full-length commit SHAs",
         "Secret scanning",
         "OpenSSF Scorecard",
         "Verified-repo PR proof",
@@ -1114,7 +1116,10 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "creator-system-production-readiness.schema.json" in text
     assert "creator-system-production-readiness-artifact" in text
     assert "creator-system-production-readiness.json" in text
-    assert "actions/upload-artifact@v7" in text
+    assert (
+        "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7"
+        in text
+    )
     assert "creator-system-release-evidence-artifact" in text
     assert "creator-system-release-evidence.json" in text
     assert "if-no-files-found: error" in text
@@ -1161,8 +1166,28 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "tests/test_startup_yc_operator_validation.py" in text
     assert "tests/test_operator_review.py" in text
     assert "python -m ruff check src/chip_labs tests" in text
-    assert "actions/checkout@v6" in text
-    assert "actions/setup-python@v6" in text
+
+
+def test_creator_system_workflow_pins_third_party_actions_to_commit_shas() -> None:
+    text = CREATOR_SYSTEM_WORKFLOW.read_text(encoding="utf-8")
+    action_refs = re.findall(r"uses:\s+([^@\s]+)@([0-9a-f]{40})(?:\s+#\s+\S+)?", text)
+    uses_lines = [line.strip() for line in text.splitlines() if line.strip().startswith("uses:")]
+
+    assert len(action_refs) == len(uses_lines)
+    assert ("actions/checkout", "de0fac2e4500dabe0009e67214ff5f5447ce83dd") in action_refs
+    assert (
+        "actions/setup-python",
+        "a309ff8b426b58ec0e2a45f0f869d46889d02405",
+    ) in action_refs
+    assert (
+        "actions/upload-artifact",
+        "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+    ) in action_refs
+    assert "actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6" in text
+    assert (
+        "actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6"
+        in text
+    )
     assert "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24" not in text
 
 

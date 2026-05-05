@@ -51,10 +51,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: "3.11"
 
@@ -232,7 +232,7 @@ jobs:
           python -m chip_labs.cli creator-run-template-check --fail-on-blocked
 
       - name: Upload creator-system release evidence
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: creator-system-release-evidence
           path: /tmp/creator-system-release-evidence-artifact/creator-system-release-evidence.json
@@ -240,7 +240,7 @@ jobs:
           retention-days: 30
 
       - name: Upload creator-system production readiness
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: creator-system-production-readiness
           path: /tmp/creator-system-production-readiness-artifact/creator-system-production-readiness.json
@@ -372,7 +372,7 @@ jobs:
 
       - name: Upload generated creator matrix evidence
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_generated_multi_seed == 'true')
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: generated-creator-matrix-evidence
           path: /tmp/generated-creator-matrix-artifact/*.json
