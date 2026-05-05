@@ -50,6 +50,9 @@ SPARK_SWARM_ALIGNMENT_TASKS = Path(
 SPARK_SWARM_PHASED_BUILD_PLAN = Path(
     "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md"
 )
+SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF = Path(
+    "docs/creator_system/SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF.md"
+)
 SWARM_REUSABLE_PATH = Path("docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md")
 CONTRIBUTING_CREATOR_DOMAINS = Path(
     "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md"
@@ -78,6 +81,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md" in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md" in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md" in text
+    assert "SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
@@ -813,6 +817,31 @@ def test_spark_swarm_phased_build_plan_is_executable_and_blocked() -> None:
         assert phrase in text
 
     assert "CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md" in alignment
+
+
+def test_spark_swarm_proposal_status_ux_handoff_preserves_claim_boundaries() -> None:
+    text = SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Spark Swarm Proposal Status UX Handoff",
+        "`private`",
+        "`workspace_validated`",
+        "`proposal_blocked`",
+        "`proposal_submitted`",
+        "`reviewed_candidate`",
+        "`network_absorbable`",
+        "ready for review without being ready for network absorption",
+        "share_class",
+        "redaction_status",
+        "allowed_lane",
+        "verified_repo_pr_proof.status",
+        "publication_approval.status",
+        "network absorption is not approved",
+        "Stop-Ship Copy Checks",
+        "Do not reach this state from this repo today.",
+        "future approved publication manifest",
+    ):
+        assert phrase in text
 
 
 def test_swarm_review_bundle_example_is_schema_valid_and_local_only() -> None:

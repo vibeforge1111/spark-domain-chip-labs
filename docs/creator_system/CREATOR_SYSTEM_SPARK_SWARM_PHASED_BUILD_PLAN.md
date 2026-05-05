@@ -328,7 +328,7 @@ Commit target:
 
 ## P6 Proposal UX And Spark Swarm Templates
 
-Status: planned.
+Status: initial UX handoff complete.
 
 Purpose:
 
@@ -340,6 +340,14 @@ Build outputs:
 - Proposal-status copy states.
 - Spark Swarm PR template handoff notes.
 - Review checklist for verified-repo proof.
+
+Implementation status:
+
+- [x] `SPARK_SWARM_PROPOSAL_STATUS_UX_HANDOFF.md` defines private,
+  workspace-validated, proposal-blocked, proposal-submitted,
+  reviewed-candidate, and future network-absorbable display states.
+- [x] Handoff copy separates ready-for-review wording from publication approval.
+- [x] Docs tests guard required status fields and stop-ship copy checks.
 
 Required user-visible states:
 
