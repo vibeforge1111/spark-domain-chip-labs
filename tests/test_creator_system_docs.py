@@ -1020,6 +1020,7 @@ def test_spark_swarm_launch_hardening_checklist_covers_security_and_scale() -> N
         "Least-privilege GitHub tokens",
         "GitHub App installation tokens",
         "Actions hardening",
+        "explicit read-only default `GITHUB_TOKEN` permissions",
         "Secret scanning",
         "OpenSSF Scorecard",
         "Verified-repo PR proof",
@@ -1155,6 +1156,8 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "generated-multi-seed-summary-check.json" in text
     assert "generated-mission-status.json" in text
     assert "generated-release-gate.json" in text
+    assert "permissions:" in text
+    assert "contents: read" in text
     assert "tests/test_startup_yc_operator_validation.py" in text
     assert "tests/test_operator_review.py" in text
     assert "python -m ruff check src/chip_labs tests" in text

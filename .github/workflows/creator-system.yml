@@ -43,6 +43,9 @@ on:
       - "tests/test_tool_operation.py"
       - ".github/workflows/creator-system.yml"
 
+permissions:
+  contents: read
+
 jobs:
   creator-system:
     runs-on: ubuntu-latest

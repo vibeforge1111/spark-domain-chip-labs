@@ -17,7 +17,7 @@ change.
 | Gate | Requirement | Launch State |
 | --- | --- | --- |
 | Least-privilege GitHub tokens | GitHub App installation tokens must be scoped to the specific repo and minimum permissions needed for proposal PR proof. | Required before launch |
-| Actions hardening | Workflows that produce proposal evidence must avoid untrusted script injection and pin or approve third-party actions. | Required before launch |
+| Actions hardening | Workflows that produce proposal evidence must set explicit read-only default `GITHUB_TOKEN` permissions, avoid untrusted script injection, and pin or approve third-party actions. | Required before launch |
 | Secret scanning | Proposal bundles must be scanned for tokens, private keys, emails, phone numbers, internal URLs, and raw local absolute paths. | Required before launch |
 | Dependency posture | Launch checklist must include dependency audit and OpenSSF Scorecard review or documented equivalent. | Required before launch |
 | Verified-repo PR proof | Network-visible proposal review must reference protected/default branch, head SHA, required checks, and PR URL. | Required before reviewed candidate |
@@ -110,4 +110,3 @@ Until these are complete, the correct claim is:
 creator-system artifacts are reusable for private workspace sync and proposal
 review rehearsal; they are not network absorbable.
 ```
-
