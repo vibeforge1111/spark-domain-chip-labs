@@ -481,7 +481,10 @@ evidence. The next slice is the Spark Swarm launch bridge:
 1. Attach creator-system proposal bundles in `spark-swarm`. Done in
    Spark Swarm commit `c225fcf`, which adds `--creator-proposal-bundle` and
    keeps creator-system proposals blocked on `creatorVerifiedRepoPrProof` and
-   `creatorPublicationApproval`.
+   `creatorPublicationApproval`. Spark Swarm commit `2185f3f` adds bundle
+   policy validation for schema version, replay commands, artifact refs, raw
+   Windows paths, `no_automatic_publish`, and unexpected public absorption
+   claims.
 2. Mirror the proposal bundle template into `spark-swarm`.
 3. Open a verified-repo PR proof placeholder in the real launch repo flow.
 4. Record hosted Spark Swarm UI consumption of private, workspace-validated,

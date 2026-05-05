@@ -64,7 +64,8 @@ belongs in the launch bridge:
 
 - attach creator-system proposal bundles in `spark-swarm`; first bridge gate
   landed in Spark Swarm commit `c225fcf` with `--creator-proposal-bundle`,
-  `creatorVerifiedRepoPrProof`, and `creatorPublicationApproval`
+  `creatorVerifiedRepoPrProof`, and `creatorPublicationApproval`;
+  bundle policy hardening landed in Spark Swarm commit `2185f3f`
 - mirror the proposal bundle template into `spark-swarm`
 - open a verified-repo PR proof placeholder in the real launch repo flow
 - record hosted Spark Swarm UI consumption of private, workspace-validated,
