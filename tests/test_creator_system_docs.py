@@ -47,6 +47,9 @@ SWARM_REUSE_EXECUTION_EVIDENCE = Path(
 SPARK_SWARM_ALIGNMENT_TASKS = Path(
     "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md"
 )
+SPARK_SWARM_PHASED_BUILD_PLAN = Path(
+    "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md"
+)
 SWARM_REUSABLE_PATH = Path("docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md")
 CONTRIBUTING_CREATOR_DOMAINS = Path(
     "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md"
@@ -74,6 +77,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md" in text
     assert "CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md" in text
+    assert "CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
@@ -198,6 +202,7 @@ def test_user_and_agent_onboarding_covers_complete_creator_value_path() -> None:
         "CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md",
         "CREATOR_SYSTEM_SWARM_REUSE_EXECUTION_EVIDENCE_2026-05-05.md",
         "CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md",
+        "CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md",
         "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
         "SWARM_REUSABLE_CREATOR_PATH.md",
         "CONTRIBUTING_CREATOR_DOMAINS.md",
@@ -243,6 +248,7 @@ def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
     assert "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md" in text
     assert "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md" in text
     assert "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_ALIGNMENT_AND_LAUNCH_TASKS.md" in text
+    assert "docs/creator_system/CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md" in text
     assert "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md" in text
@@ -770,6 +776,42 @@ def test_spark_swarm_alignment_tasks_connect_private_and_public_lanes() -> None:
         "no automatic publish",
     ):
         assert phrase in text
+
+
+def test_spark_swarm_phased_build_plan_is_executable_and_blocked() -> None:
+    text = SPARK_SWARM_PHASED_BUILD_PLAN.read_text(encoding="utf-8")
+    alignment = SPARK_SWARM_ALIGNMENT_TASKS.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Creator System Spark Swarm Phased Build Plan",
+        "Commit coherent slices often.",
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8",
+        "creator-swarm-lane-taxonomy.schema.json",
+        "creator-network-proposal-bundle.schema.json",
+        "SparkResearcherCollectiveSyncPayload",
+        "share_class",
+        "private_draft",
+        "workspace_validated",
+        "pr_submitted",
+        "reviewed_candidate",
+        "blocked_network_absorption",
+        "`network_absorbable=false`",
+        "`ready_for_swarm_packet` as artifact readiness only",
+        "no automatic publish",
+        "Cross-Phase Done Definition",
+        "Current Next Build Slice",
+    ):
+        assert phrase in text
+
+    assert "CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md" in alignment
 
 
 def test_swarm_review_bundle_example_is_schema_valid_and_local_only() -> None:

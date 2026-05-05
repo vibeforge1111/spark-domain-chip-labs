@@ -123,6 +123,9 @@ Every creator-system integration with Spark Swarm must preserve these intents:
 
 ## First Implementation Order
 
+The phase-by-phase execution board lives in
+`CREATOR_SYSTEM_SPARK_SWARM_PHASED_BUILD_PLAN.md`.
+
 1. Add the creator-to-Swarm lane taxonomy and proposal bundle schema.
 2. Build dry-run payload mapping locally in `spark-domain-chip-labs`.
 3. Add privacy classification and redaction gates to review bundles.
