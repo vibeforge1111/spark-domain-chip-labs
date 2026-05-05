@@ -26,6 +26,7 @@ SCHEMA_README = Path("docs/creator_system/schemas/README.md")
 ROOT_README = Path("README.md")
 AGENTS = Path("AGENTS.md")
 PYPROJECT = Path("pyproject.toml")
+WORKFLOWS_DIR = Path(".github/workflows")
 USER_QUICKSTART = Path("docs/creator_system/USER_QUICKSTART_BETA.md")
 AGENT_CREATOR_PLAYBOOK = Path("docs/creator_system/AGENT_CREATOR_PLAYBOOK.md")
 USER_AND_AGENT_ONBOARDING = Path(
@@ -1192,6 +1193,17 @@ def test_creator_system_workflow_pins_third_party_actions_to_commit_shas() -> No
         in text
     )
     assert "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24" not in text
+
+
+def test_creator_system_workflows_avoid_privileged_untrusted_pr_patterns() -> None:
+    workflow_paths = sorted(WORKFLOWS_DIR.glob("*.yml")) + sorted(WORKFLOWS_DIR.glob("*.yaml"))
+
+    assert workflow_paths
+    for workflow_path in workflow_paths:
+        text = workflow_path.read_text(encoding="utf-8")
+        assert "pull_request_target:" not in text, workflow_path
+        assert "contents: write" not in text, workflow_path
+        assert "id-token: write" not in text, workflow_path
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:
