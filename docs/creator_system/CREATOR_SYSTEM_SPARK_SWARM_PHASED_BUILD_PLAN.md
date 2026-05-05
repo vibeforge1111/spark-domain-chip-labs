@@ -553,6 +553,13 @@ evidence. The next slice is the Spark Swarm launch bridge:
    `public_by_policy`, but broad sharing creates proposal candidates only and
    cannot bypass redaction, verified PR proof, publication approval, signed
    manifest authority, rollback, or revocation.
+12. Define artifact attestation readiness before public release/proposal bundles
+    become launch assets. Readiness template done in Spark Swarm commit `f47019c` at
+    `templates/creator-system-network-proposal/artifact-attestation-readiness.template.json`;
+    it remains `template_only`, uses `actions/attest` as the future pinned
+    provenance action, keeps `id-token: write` isolated to protected workflows,
+    and states that attestations are provenance/integrity evidence rather than
+    privacy review, content safety, publication approval, or network absorption approval.
 
 Still blocked:
 

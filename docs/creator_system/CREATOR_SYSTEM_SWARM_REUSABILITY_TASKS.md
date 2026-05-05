@@ -120,6 +120,13 @@ belongs in the launch bridge:
   `share_everything` bypasses, and requiring redaction, verified PR proof,
   publication approval, signed manifest authority, rollback, and revocation
   before public network movement
+- define artifact attestation readiness before public release/proposal bundles
+  become launch assets; readiness template done in Spark Swarm commit `f47019c` at
+  `templates/creator-system-network-proposal/artifact-attestation-readiness.template.json`,
+  keeping the gate `template_only`, using `actions/attest` as the future
+  pinned provenance action, isolating `id-token: write` to protected workflows,
+  and stating that attestations are provenance/integrity evidence, not privacy
+  review, content safety, publication approval, or network absorption approval
 
 ## Promotion Rule
 
