@@ -1,0 +1,3 @@
+# Security-sensitive creator-system workflow and launch-gate changes.
+.github/workflows/** @vibeforge1111
+docs/creator_system/SPARK_SWARM_LAUNCH_HARDENING_CHECKLIST.md @vibeforge1111

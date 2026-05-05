@@ -27,6 +27,7 @@ ROOT_README = Path("README.md")
 AGENTS = Path("AGENTS.md")
 PYPROJECT = Path("pyproject.toml")
 WORKFLOWS_DIR = Path(".github/workflows")
+CODEOWNERS = Path(".github/CODEOWNERS")
 USER_QUICKSTART = Path("docs/creator_system/USER_QUICKSTART_BETA.md")
 AGENT_CREATOR_PLAYBOOK = Path("docs/creator_system/AGENT_CREATOR_PLAYBOOK.md")
 USER_AND_AGENT_ONBOARDING = Path(
@@ -1204,6 +1205,16 @@ def test_creator_system_workflows_avoid_privileged_untrusted_pr_patterns() -> No
         assert "pull_request_target:" not in text, workflow_path
         assert "contents: write" not in text, workflow_path
         assert "id-token: write" not in text, workflow_path
+
+
+def test_creator_system_codeowners_covers_workflow_and_launch_gate_changes() -> None:
+    text = CODEOWNERS.read_text(encoding="utf-8")
+
+    for phrase in (
+        ".github/workflows/** @vibeforge1111",
+        "docs/creator_system/SPARK_SWARM_LAUNCH_HARDENING_CHECKLIST.md @vibeforge1111",
+    ):
+        assert phrase in text
 
 
 def test_product_flow_docs_use_creator_mission_status_as_read_only_bridge() -> None:
