@@ -465,6 +465,18 @@ def test_generated_path_and_autoloop_contract_schemas_validate(
 
     jsonschema.Draft202012Validator(path_schema).validate(path_manifest)
     jsonschema.Draft202012Validator(path_schema).validate(startup_yc_path)
+    compatibility = path_manifest["spark_swarm_compatibility"]
+    assert compatibility["runtime_core"] == "spark-researcher"
+    assert compatibility["collective_payload"] == (
+        "SparkResearcherCollectiveSyncPayload"
+    )
+    assert compatibility["path_specific_logic_owner"] == "specialization-path-*"
+    assert set(compatibility["forbidden_ownership"]) == {
+        "identity",
+        "channel_auth",
+        "provider_secrets",
+        "global_tool_authority",
+    }
     jsonschema.Draft202012Validator(autoloop_schema).validate(
         generated.autoloop_simulation
     )
@@ -499,6 +511,44 @@ def test_generated_path_and_autoloop_contract_schemas_reject_unsafe_shapes(
         jsonschema.Draft202012Validator(autoloop_schema).validate(
             autoloop_simulation
         )
+
+
+def test_specialization_path_schema_rejects_runtime_authority_drift(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    path_manifest = json.loads(
+        (generated.run_dir / "specialization-path" / "path.manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    path_schema = json.loads(SPECIALIZATION_PATH_SCHEMA.read_text(encoding="utf-8"))
+
+    path_manifest["spark_swarm_compatibility"]["runtime_core"] = "custom-runtime"
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(path_schema).validate(path_manifest)
+
+
+def test_specialization_path_schema_rejects_missing_forbidden_ownership(
+    tmp_path: Path,
+) -> None:
+    jsonschema = pytest.importorskip("jsonschema")
+    generated = generate_creator_system_from_brief(tmp_path, _brief())
+    path_manifest = json.loads(
+        (generated.run_dir / "specialization-path" / "path.manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    path_schema = json.loads(SPECIALIZATION_PATH_SCHEMA.read_text(encoding="utf-8"))
+
+    path_manifest["spark_swarm_compatibility"]["forbidden_ownership"].remove(
+        "provider_secrets"
+    )
+
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.Draft202012Validator(path_schema).validate(path_manifest)
 
 
 def test_generated_report_contract_schemas_validate_saved_evidence(

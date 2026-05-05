@@ -454,6 +454,19 @@ def create_specialization_path(run_dir: str | Path, brief: dict[str, Any]) -> No
             "stages": ["scaffold", "baseline", "candidate_review"],
             "benchmark_gate": "candidate_review",
             "absorption_bundle": "specialization-path/absorption_bundle.md",
+            "spark_swarm_compatibility": {
+                "registry_entry_required": True,
+                "runtime_core": "spark-researcher",
+                "collective_payload": "SparkResearcherCollectiveSyncPayload",
+                "runtime_context_contract": "spark-specialization-path-runtime-context",
+                "path_specific_logic_owner": "specialization-path-*",
+                "forbidden_ownership": [
+                    "identity",
+                    "channel_auth",
+                    "provider_secrets",
+                    "global_tool_authority",
+                ],
+            },
         },
     )
     (path_dir / "absorption_bundle.md").write_text(

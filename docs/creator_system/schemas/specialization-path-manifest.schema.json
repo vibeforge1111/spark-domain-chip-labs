@@ -41,6 +41,38 @@
     "absorption_bundle": {
       "type": "string",
       "minLength": 1
+    },
+    "spark_swarm_compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry_entry_required",
+        "runtime_core",
+        "collective_payload",
+        "runtime_context_contract",
+        "path_specific_logic_owner",
+        "forbidden_ownership"
+      ],
+      "properties": {
+        "registry_entry_required": {"const": true},
+        "runtime_core": {"const": "spark-researcher"},
+        "collective_payload": {"const": "SparkResearcherCollectiveSyncPayload"},
+        "runtime_context_contract": {
+          "const": "spark-specialization-path-runtime-context"
+        },
+        "path_specific_logic_owner": {"const": "specialization-path-*"},
+        "forbidden_ownership": {
+          "type": "array",
+          "minItems": 4,
+          "items": {"type": "string", "minLength": 1},
+          "allOf": [
+            {"contains": {"const": "identity"}},
+            {"contains": {"const": "channel_auth"}},
+            {"contains": {"const": "provider_secrets"}},
+            {"contains": {"const": "global_tool_authority"}}
+          ]
+        }
+      }
     }
   },
   "anyOf": [
@@ -51,7 +83,8 @@
         "domain_family",
         "stages",
         "benchmark_gate",
-        "absorption_bundle"
+        "absorption_bundle",
+        "spark_swarm_compatibility"
       ],
       "properties": {
         "schema_version": {"const": "adaptive_creator_loop.specialization_path.v1"},
@@ -60,7 +93,13 @@
       }
     },
     {
-      "required": ["path_name", "source_repo", "source_files", "role"],
+      "required": [
+        "path_name",
+        "source_repo",
+        "source_files",
+        "role",
+        "spark_swarm_compatibility"
+      ],
       "properties": {
         "schema_version": {
           "const": "adaptive_creator_loop.specialization_path_manifest.v1"

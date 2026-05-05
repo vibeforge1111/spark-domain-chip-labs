@@ -283,7 +283,7 @@ Commit target:
 
 ## P5 Specialization Path Compatibility
 
-Status: planned.
+Status: initial compatibility fields complete.
 
 Purpose:
 
@@ -297,6 +297,17 @@ Build outputs:
 - Compatibility fields in generated path manifests if needed.
 - Tests that prove Startup YC path output names replay, benchmark, rollback,
   and scope requirements.
+
+Implementation status:
+
+- [x] `specialization-path-manifest.schema.json` now requires
+  `spark_swarm_compatibility`.
+- [x] Generated and Startup YC path manifests name Spark Researcher as the
+  runtime core, `SparkResearcherCollectiveSyncPayload` as the payload shape,
+  the runtime-context contract, external path ownership, and forbidden ownership
+  of identity, channel auth, provider secrets, and global tool authority.
+- [x] Unit tests reject runtime-core drift and missing forbidden-ownership
+  boundaries.
 
 Guardrails:
 
