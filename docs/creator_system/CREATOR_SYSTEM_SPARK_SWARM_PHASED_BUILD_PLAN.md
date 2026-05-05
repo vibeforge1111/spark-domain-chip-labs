@@ -541,7 +541,12 @@ evidence. The next slice is the Spark Swarm launch bridge:
    it covers desktop/mobile viewports, forbidden public-approval copy,
    forbidden publish/promote/absorb controls, and disabled future
    network-absorbable state.
-10. Define user sharing preference as data before runtime creator controls.
+10. Define GitHub branch/ruleset review as data before trusting proposal proof.
+    Ruleset review template done in Spark Swarm commit `d4d5f84` at
+    `templates/creator-system-network-proposal/github-ruleset-review.template.json`;
+    it requires CODEOWNER review, required checks, direct-push blocking, and
+    sensitive path evidence before proposal evidence is trusted.
+11. Define user sharing preference as data before runtime creator controls.
    Sharing preference template done in Spark Swarm commit `00fa489` at
    `templates/creator-system-network-proposal/sharing-preference.template.json`;
    it supports `private_only`, `review_everything`, `trusted_auto_propose`, and

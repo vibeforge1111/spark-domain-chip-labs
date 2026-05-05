@@ -107,6 +107,11 @@ belongs in the launch bridge:
   `templates/creator-system-network-proposal/hosted-runtime-ui-assertion-matrix.template.json`,
   covering desktop/mobile viewports, forbidden public-approval copy, forbidden
   publish/promote/absorb controls, and disabled future network-absorbable state
+- define GitHub branch/ruleset review as data before trusting proposal proof;
+  ruleset review template done in Spark Swarm commit `d4d5f84` at
+  `templates/creator-system-network-proposal/github-ruleset-review.template.json`,
+  requiring CODEOWNER review, required checks, direct-push blocking, and
+  sensitive path evidence before proposal evidence is trusted
 - define user sharing preference as data before runtime creator controls; sharing
   preference template done in Spark Swarm commit `00fa489` at
   `templates/creator-system-network-proposal/sharing-preference.template.json`,
