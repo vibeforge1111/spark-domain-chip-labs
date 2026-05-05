@@ -102,6 +102,14 @@ belongs in the launch bridge:
   `templates/creator-system-network-proposal/hosted-runtime-ui-proof.template.json`,
   still `template_only` and requiring desktop/mobile screenshots plus
   interaction assertions before hosted runtime proof can be claimed
+- define user sharing preference as data before runtime creator controls; sharing
+  preference template done in Spark Swarm commit `00fa489` at
+  `templates/creator-system-network-proposal/sharing-preference.template.json`,
+  supporting `private_only`, `review_everything`, `trusted_auto_propose`, and
+  `public_by_policy` while keeping `network_absorbable=false`, forbidding
+  `share_everything` bypasses, and requiring redaction, verified PR proof,
+  publication approval, signed manifest authority, rollback, and revocation
+  before public network movement
 
 ## Promotion Rule
 

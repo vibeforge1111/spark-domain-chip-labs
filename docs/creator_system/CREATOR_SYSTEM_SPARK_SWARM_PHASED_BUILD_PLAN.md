@@ -535,6 +535,13 @@ evidence. The next slice is the Spark Swarm launch bridge:
    it is `template_only`, requires desktop/mobile screenshots and interactive
    assertions, and does not prove hosted runtime behavior until a future UI run
    verifies no active network absorption badges or publish controls.
+9. Define user sharing preference as data before runtime creator controls.
+   Sharing preference template done in Spark Swarm commit `00fa489` at
+   `templates/creator-system-network-proposal/sharing-preference.template.json`;
+   it supports `private_only`, `review_everything`, `trusted_auto_propose`, and
+   `public_by_policy`, but broad sharing creates proposal candidates only and
+   cannot bypass redaction, verified PR proof, publication approval, signed
+   manifest authority, rollback, or revocation.
 
 Still blocked:
 
