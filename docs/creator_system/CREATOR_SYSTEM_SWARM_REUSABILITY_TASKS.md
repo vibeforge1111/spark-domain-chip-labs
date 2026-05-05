@@ -73,7 +73,10 @@ belongs in the launch bridge:
   in Spark Swarm commit `cd68cf7` at
   `templates/creator-system-network-proposal/verified-repo-pr-proof.placeholder.json`
 - record hosted Spark Swarm UI consumption of private, workspace-validated,
-  proposal-blocked, proposal-submitted, and reviewed-candidate states
+  proposal-blocked, proposal-submitted, and reviewed-candidate states; UI state
+  contract fixture done in Spark Swarm commit `83cb10f` at
+  `templates/creator-system-network-proposal/creator-system-proposal-status.ui-fixture.json`,
+  with hosted runtime UI proof still pending
 - define signed publication manifest authority before any stronger public
   claim; placeholder authority contract done in Spark Swarm commit `6a61b9e`
   at

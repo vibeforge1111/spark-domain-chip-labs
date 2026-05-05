@@ -494,7 +494,13 @@ evidence. The next slice is the Spark Swarm launch bridge:
    Spark Swarm keeps placeholder and incomplete approved proofs blocked until
    repo, PR URL, head SHA, base branch, and required checks are present.
 4. Record hosted Spark Swarm UI consumption of private, workspace-validated,
-   proposal-blocked, proposal-submitted, and reviewed-candidate states.
+   proposal-blocked, proposal-submitted, and reviewed-candidate states. UI
+   state contract fixture done in Spark Swarm commit `83cb10f` at
+   `templates/creator-system-network-proposal/creator-system-proposal-status.ui-fixture.json`;
+   it is a display-only contract that keeps every current state
+   `network_absorbable=false` and `automatic_publish=false`. Hosted runtime UI
+   proof remains pending because this slice did not touch the dirty web runtime
+   files.
 5. Define signed publication manifest authority before any stronger network
    claim. Placeholder authority contract done in Spark Swarm commit `6a61b9e`
    at
