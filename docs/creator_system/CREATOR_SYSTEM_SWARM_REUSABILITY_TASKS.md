@@ -127,6 +127,13 @@ belongs in the launch bridge:
   pinned provenance action, isolating `id-token: write` to protected workflows,
   and stating that attestations are provenance/integrity evidence, not privacy
   review, content safety, publication approval, or network absorption approval
+- record the live GitHub branch/ruleset review instead of assuming it passed;
+  blocked evidence done in Spark Swarm commit `6834f81` at
+  `templates/creator-system-network-proposal/github-ruleset-review.current.json`,
+  with `status=blocked_unprotected` because `origin/main` was not
+  branch-protected and no repository rulesets were returned by the GitHub API.
+  Proposal evidence remains blocked until branch protection or rulesets enforce
+  PR review, CODEOWNER review, direct-push blocking, and required checks.
 
 ## Promotion Rule
 

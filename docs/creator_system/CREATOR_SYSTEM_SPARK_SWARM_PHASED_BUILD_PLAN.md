@@ -560,6 +560,14 @@ evidence. The next slice is the Spark Swarm launch bridge:
     provenance action, keeps `id-token: write` isolated to protected workflows,
     and states that attestations are provenance/integrity evidence rather than
     privacy review, content safety, publication approval, or network absorption approval.
+13. Record live GitHub branch/ruleset review evidence. Blocked evidence done
+    in Spark Swarm commit `6834f81` at
+    `templates/creator-system-network-proposal/github-ruleset-review.current.json`;
+    it records `status=blocked_unprotected` because the GitHub API reported
+    `origin/main` as not branch-protected and returned no repository rulesets.
+    Proposal evidence remains blocked until branch protection or rulesets
+    enforce PR review, CODEOWNER review, direct-push blocking, and required
+    checks.
 
 Still blocked:
 
