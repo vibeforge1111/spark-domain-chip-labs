@@ -18,7 +18,7 @@
     {
       "name": "mission_status",
       "path": "docs/creator_system/examples/product-surface-readonly/startup-yc-mission-status.json",
-      "sha256": "59c3b6baf4f277ae5aa429850ee77dc3ebed1f709f3756bd073cfdf39ea69302",
+      "sha256": "54c510afa3a0aede783c4b691981afa680af6713a059d35ddea33c676f2606b9",
       "share_class": "workspace",
       "redaction_status": "pending",
       "allowed_lane": "blocked_network_absorption"

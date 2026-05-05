@@ -46,7 +46,8 @@ def test_network_proposal_artifact_hashes_match_local_refs(
 
     for artifact_ref in payload["artifact_refs"]:
         artifact_path = Path(artifact_ref["path"])
-        digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+        content = artifact_path.read_text(encoding="utf-8")
+        digest = hashlib.sha256(content.encode("utf-8")).hexdigest()
         assert digest == artifact_ref["sha256"]
 
 
