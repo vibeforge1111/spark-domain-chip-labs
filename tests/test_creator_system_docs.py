@@ -38,6 +38,9 @@ PUBLIC_BETA_HANDOFF = Path(
 SWARM_REUSABILITY_TASKS = Path(
     "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md"
 )
+SWARM_REUSE_E2E_PLAN = Path(
+    "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md"
+)
 SWARM_REUSABLE_PATH = Path("docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md")
 CONTRIBUTING_CREATOR_DOMAINS = Path(
     "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md"
@@ -62,6 +65,7 @@ def test_creator_system_readme_keeps_claim_boundaries_visible() -> None:
     assert "PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md" in text
     assert "CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md" in text
     assert "CONTRIBUTING_CREATOR_DOMAINS.md" in text
+    assert "CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md" in text
     assert "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "PRODUCT_SURFACE_READ_ONLY_ADAPTERS.md" in text
@@ -183,6 +187,7 @@ def test_user_and_agent_onboarding_covers_complete_creator_value_path() -> None:
         "creator-mission-status",
         "`publication.network_absorbable=false`",
         "network_absorbable` stays `false`",
+        "CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md",
         "CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md",
         "SWARM_REUSABLE_CREATOR_PATH.md",
         "CONTRIBUTING_CREATOR_DOMAINS.md",
@@ -226,6 +231,7 @@ def test_root_readme_points_to_creator_system_beta_quickstart() -> None:
     assert "docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md" in text
     assert "docs/creator_system/USER_QUICKSTART_BETA.md" in text
     assert "docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md" in text
+    assert "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md" in text
     assert "docs/creator_system/CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md" in text
     assert "docs/creator_system/SWARM_REUSABLE_CREATOR_PATH.md" in text
     assert "docs/creator_system/RELEASE_READINESS_CHECKLIST_BETA.md" in text
@@ -672,6 +678,26 @@ def test_creator_domain_contributor_guide_preserves_review_boundaries() -> None:
         "network_publication_allowed=true",
         "ready_for_swarm_packet",
         "full promotion bundle passes",
+    ):
+        assert phrase in text
+
+
+def test_swarm_reuse_end_to_end_plan_preserves_blocked_boundaries() -> None:
+    text = SWARM_REUSE_E2E_PLAN.read_text(encoding="utf-8")
+
+    for phrase in (
+        "# Creator System Swarm Reuse End-To-End Plan",
+        "`network_absorbable=false`",
+        "`network_publication_allowed=false`",
+        "fresh-clone verification",
+        "Generated matrix JSON",
+        "Inventory report",
+        "future promotion bundle plan",
+        "Repo/user beta readiness remains at `100`",
+        "Creator-system standard readiness remains at `100`",
+        "## Blocked By Design",
+        "product runtime creator controls",
+        "publication authority",
     ):
         assert phrase in text
 

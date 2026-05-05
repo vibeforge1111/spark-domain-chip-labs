@@ -286,6 +286,7 @@ Use the docs by job:
 | Contribute a new creator domain | `CONTRIBUTING_CREATOR_DOMAINS.md` |
 | Agent procedure | `AGENT_CREATOR_PLAYBOOK.md` |
 | End-to-end CLI flow | `CREATOR_RUN_GOLDEN_PATH_V1.md` |
+| Finish the reusable Swarm path | `CREATOR_SYSTEM_SWARM_REUSE_END_TO_END_PLAN.md` |
 | Swarm reuse task ledger | `CREATOR_SYSTEM_SWARM_REUSABILITY_TASKS.md` |
 | Package a local Swarm review bundle | `SWARM_REUSABLE_CREATOR_PATH.md` |
 | Evidence tier meaning | `PROMOTION_GATES_AND_EVIDENCE_TIERS.md` |
