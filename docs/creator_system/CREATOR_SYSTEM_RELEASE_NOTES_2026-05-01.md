@@ -277,6 +277,11 @@
 - Manual generated-matrix workflow logs now include a compact verdict,
   passed-run count, mission-status run count, and `network_absorbable=false`
   readout for operators.
+- Manual and scheduled generated-matrix workflow runs now upload
+  `generated-creator-matrix-evidence`, containing the generated summary,
+  summary-check, mission-status, and release-gate JSON packets. This makes the
+  matrix evidence downloadable while preserving `candidate_review` and
+  `network_absorbable=false`.
 - Artifact-quality benchmark manifests now support `case_expectations` for
   baseline, candidate, and trap artifacts. Benchmark reports emit expectation
   checks plus `calibration_verdict`, and failed expectations force `revert`
@@ -547,6 +552,10 @@
   `creator-system-release-evidence` JSON as a workflow artifact, giving users
   and Spark agents a downloadable release packet instead of requiring job-log
   scraping.
+- Creator System CI also uploads `creator-system-production-readiness` and, on
+  manual or scheduled generated-matrix runs, `generated-creator-matrix-evidence`
+  so release, readiness, and generated-matrix packets each have a first-class
+  artifact channel.
 
 ## Current Claim Boundary
 

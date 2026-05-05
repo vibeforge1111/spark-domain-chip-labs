@@ -361,3 +361,17 @@ jobs:
               f"network_absorbable={str(summary['network_absorbable']).lower()}"
           )
           PY
+          mkdir -p /tmp/generated-creator-matrix-artifact
+          cp /tmp/generated-multi-seed-summary.json /tmp/generated-creator-matrix-artifact/generated-multi-seed-summary.json
+          cp /tmp/generated-multi-seed-summary-check.json /tmp/generated-creator-matrix-artifact/generated-multi-seed-summary-check.json
+          cp /tmp/generated-mission-status.json /tmp/generated-creator-matrix-artifact/generated-mission-status.json
+          cp /tmp/generated-release-gate.json /tmp/generated-creator-matrix-artifact/generated-release-gate.json
+
+      - name: Upload generated creator matrix evidence
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_generated_multi_seed == 'true')
+        uses: actions/upload-artifact@v7
+        with:
+          name: generated-creator-matrix-evidence
+          path: /tmp/generated-creator-matrix-artifact/*.json
+          if-no-files-found: error
+          retention-days: 30

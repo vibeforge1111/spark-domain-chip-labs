@@ -170,6 +170,11 @@ Expected result:
   run `25346723797` with `verdict=candidate_review`, `passed=36/36`,
   `mission_run_count=36`, `release_gate=blocked`, and
   `network_absorbable=false`.
+- Follow-up Creator System CI now uploads
+  `generated-creator-matrix-evidence` for manual or scheduled generated-matrix
+  runs. It packages the generated summary, summary-check, mission-status, and
+  release-gate JSON packets as downloadable review evidence without approving
+  network absorption.
 - Pushed hardening tag `creator-system-beta-2026-05-05-hardening-5` points to
   commit `0fc3087e36b275d8ca94d2b78ce79e3723d1a992`.
 - GitHub prerelease `Spark Creator System Beta Hardening 5` is published with

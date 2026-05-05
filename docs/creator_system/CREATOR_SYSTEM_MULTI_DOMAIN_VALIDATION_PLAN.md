@@ -354,6 +354,11 @@ Manual or scheduled CI:
 - The same manual path also emits a generated matrix mission-status packet from
   `creator-mission-status --generated-multi-seed` and validates it against the
   product-safe mission-status schema.
+- Manual and scheduled generated-matrix runs upload
+  `generated-creator-matrix-evidence` with the generated summary,
+  summary-check, mission-status, and release-gate JSON packets. This makes the
+  matrix reviewable without scraping logs, but keeps the evidence tier at
+  `candidate_review` and `network_absorbable=false`.
 - Normal push CI now also runs `startup-yc-production-gate-workbench` in a
   clean `/tmp` workspace, validates its summary schema, and asserts the
   expected beta-state blockers remain visible.

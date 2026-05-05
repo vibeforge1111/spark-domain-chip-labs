@@ -138,6 +138,13 @@ chip-labs generated-multi-seed-summary-check \
   --fail-on-blocked
 ```
 
+On scheduled or manually dispatched Creator System CI runs with
+`run_generated_multi_seed=true`, the workflow uploads
+`generated-creator-matrix-evidence` with the generated summary, summary-check,
+mission-status, and release-gate JSON packets. These artifacts are downloadable
+evidence for review; they do not change the `network_absorbable=false`
+boundary.
+
 ## Validate The Startup YC Reference
 
 Strict saved-evidence smoke:

@@ -27,6 +27,9 @@ or handing it to Spark agents as a repo-local creator workflow.
   artifact for clean pushed commits.
 - [x] Creator System CI uploads `creator-system-production-readiness` as a workflow
   artifact for clean pushed commits.
+- [x] Manual and scheduled Creator System CI generated-matrix runs upload
+  `generated-creator-matrix-evidence` with summary, summary-check,
+  mission-status, and release-gate JSON packets.
 - [x] Strict Startup YC saved-evidence smoke passes.
 
 Verified on 2026-05-04 from clean temp checkouts at

@@ -242,6 +242,7 @@ def test_creator_system_beta_quickstart_is_user_runnable() -> None:
         "chip-labs creator-run-smoke",
         "chip-labs creator-run-doctor",
         "generated-multi-seed-run",
+        "generated-creator-matrix-evidence",
         "Startup YC",
         "`network_absorbable`",
         "Startup YC production-gate workbench subcheck",
@@ -290,6 +291,8 @@ def test_release_readiness_checklist_preserves_beta_boundary() -> None:
         "`36/36`",
         "Extended local generated matrix passed on 2026-05-04",
         "`54/54`",
+        "generated-creator-matrix-evidence",
+        "summary-check",
         "dirty local",
         "unstaged",
         "MiroFish outcome calibration blocks insufficient or vanity-only",
@@ -365,6 +368,8 @@ def test_creator_system_beta_release_artifact_preserves_production_boundary() ->
         "Extended local generated matrix passed on 2026-05-04",
         "`passed=54/54`",
         "`row_count=54`",
+        "generated-creator-matrix-evidence",
+        "summary-check",
         "left untouched and unstaged",
         "does not approve `network_absorbable`",
         "does not wire live Builder, Telegram, Spawner, Canvas, or Kanban",
@@ -434,6 +439,8 @@ def test_public_beta_handoff_preserves_release_shape_and_boundaries() -> None:
         "`mission_run_count=36`",
         "`verdict=pass`",
         "`repo.worktree_clean=true`",
+        "generated-creator-matrix-evidence",
+        "summary-check",
         "Keep this beta inside `spark-domain-chip-labs` for now",
         "Do not extract a separate `spark-creator` repo",
         "Product runtime review evidence",
@@ -511,6 +518,9 @@ def test_creator_system_release_notes_keep_network_boundary_visible() -> None:
     assert "run_generated_multi_seed=true" in text
     assert "`passed=36/36`" in text
     assert "`mission_run_count=36`" in text
+    assert "generated-creator-matrix-evidence" in text
+    assert "generated summary" in text
+    assert "summary-check" in text
     assert "CLI coverage now generates gate outputs" in text
     assert "validates each saved subcheck" in text
     assert "Full `src/chip_labs` and `tests` ruff cleanup is now committed" in text
@@ -648,6 +658,12 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "Generated matrix:" in text
     assert "release_gate" in text
     assert "mission_run_count" in text
+    assert "generated-creator-matrix-artifact" in text
+    assert "generated-creator-matrix-evidence" in text
+    assert "generated-multi-seed-summary.json" in text
+    assert "generated-multi-seed-summary-check.json" in text
+    assert "generated-mission-status.json" in text
+    assert "generated-release-gate.json" in text
     assert "tests/test_startup_yc_operator_validation.py" in text
     assert "tests/test_operator_review.py" in text
     assert "python -m ruff check src/chip_labs tests" in text
@@ -758,6 +774,7 @@ def test_multi_domain_validation_plan_tracks_benchmark_maturity() -> None:
         "generated-multi-seed-summary-check --fail-on-blocked",
         "creator-mission-status --generated-multi-seed",
         "generated matrix mission-status packet",
+        "generated-creator-matrix-evidence",
         "failed seed IDs",
         "operator-review-check",
         "operator-review-packet.schema.json",

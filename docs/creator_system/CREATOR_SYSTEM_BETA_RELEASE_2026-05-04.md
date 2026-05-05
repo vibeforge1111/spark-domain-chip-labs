@@ -178,6 +178,11 @@ This is the release artifact for the creator-system technical beta.
   run `25346723797`. The generated matrix reported
   `verdict=candidate_review`, `passed=36/36`, `mission_run_count=36`,
   `release_gate=blocked`, and `network_absorbable=false`.
+- Follow-up Creator System CI now uploads
+  `generated-creator-matrix-evidence` for manual or scheduled generated-matrix
+  runs. The artifact contains the generated summary, summary-check,
+  mission-status, and release-gate JSON packets for review, while the evidence
+  remains `candidate_review` and `network_absorbable=false`.
 - Pushed hardening tag `creator-system-beta-2026-05-05-hardening-5` points to
   commit `0fc3087e36b275d8ca94d2b78ce79e3723d1a992`.
 - GitHub prerelease `Spark Creator System Beta Hardening 5` is published for
