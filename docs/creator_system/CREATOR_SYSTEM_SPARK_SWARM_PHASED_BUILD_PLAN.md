@@ -508,6 +508,13 @@ evidence. The next slice is the Spark Swarm launch bridge:
    it remains `not_configured` and keeps `network_absorbable=false` until a
    signed manifest, signature, signing key id, protected-branch keyring
    reference, and reviewed artifact paths exist.
+6. Maintain a machine-readable launch readiness report for agents and
+   reviewers. Done in Spark Swarm commit `4b160d8` at
+   `templates/creator-system-network-proposal/creator-system-launch-readiness.template.json`;
+   it reports `overall_stage=workspace_and_proposal_contract_ready`,
+   `network_launch_stage=blocked_by_design`, and remaining gates for hosted
+   runtime UI proof, verified-repo PR proof, publication approval, signed
+   publication manifest authority, and scoped absorption policy.
 
 Still blocked:
 

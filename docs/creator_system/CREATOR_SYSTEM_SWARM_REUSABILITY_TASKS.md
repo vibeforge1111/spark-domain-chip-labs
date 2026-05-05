@@ -81,6 +81,11 @@ belongs in the launch bridge:
   claim; placeholder authority contract done in Spark Swarm commit `6a61b9e`
   at
   `templates/creator-system-network-proposal/signed-publication-manifest-authority.placeholder.json`
+- maintain a machine-readable launch readiness template for agents and
+  reviewers; done in Spark Swarm commit `4b160d8` at
+  `templates/creator-system-network-proposal/creator-system-launch-readiness.template.json`,
+  with `overall_stage=workspace_and_proposal_contract_ready` and
+  `network_launch_stage=blocked_by_design`
 
 ## Promotion Rule
 
