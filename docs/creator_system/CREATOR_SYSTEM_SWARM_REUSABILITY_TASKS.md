@@ -72,6 +72,11 @@ belongs in the launch bridge:
 - open a verified-repo PR proof placeholder in the real launch repo flow; done
   in Spark Swarm commit `cd68cf7` at
   `templates/creator-system-network-proposal/verified-repo-pr-proof.placeholder.json`
+- define explicit publication approval as a standalone blocked authority; done
+  in Spark Swarm commit `0783c7d` at
+  `templates/creator-system-network-proposal/publication-approval.placeholder.json`,
+  still `not_approved` and rejecting private workspace sync,
+  `ready_for_swarm_packet`, generated matrix JSON, and runtime creator controls as approval inputs
 - record hosted Spark Swarm UI consumption of private, workspace-validated,
   proposal-blocked, proposal-submitted, and reviewed-candidate states; UI state
   contract fixture done in Spark Swarm commit `83cb10f` at

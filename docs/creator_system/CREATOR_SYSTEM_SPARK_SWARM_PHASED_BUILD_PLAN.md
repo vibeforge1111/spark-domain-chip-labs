@@ -493,6 +493,12 @@ evidence. The next slice is the Spark Swarm launch bridge:
    `templates/creator-system-network-proposal/verified-repo-pr-proof.placeholder.json`;
    Spark Swarm keeps placeholder and incomplete approved proofs blocked until
    repo, PR URL, head SHA, base branch, and required checks are present.
+3a. Define explicit publication approval as a standalone blocked authority.
+    Done in Spark Swarm commit `0783c7d` at
+    `templates/creator-system-network-proposal/publication-approval.placeholder.json`;
+    it remains `not_approved`, keeps `network_absorbable=false`, and rejects
+    private workspace sync, `ready_for_swarm_packet`, generated matrix JSON, and
+    runtime creator controls as approval inputs.
 4. Record hosted Spark Swarm UI consumption of private, workspace-validated,
    proposal-blocked, proposal-submitted, and reviewed-candidate states. UI
    state contract fixture done in Spark Swarm commit `83cb10f` at
