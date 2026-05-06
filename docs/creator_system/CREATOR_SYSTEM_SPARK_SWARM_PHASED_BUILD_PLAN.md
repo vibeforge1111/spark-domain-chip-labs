@@ -568,6 +568,11 @@ evidence. The next slice is the Spark Swarm launch bridge:
     Proposal evidence remains blocked until branch protection or rulesets
     enforce PR review, CODEOWNER review, direct-push blocking, and required
     checks.
+14. Split live Spark Swarm branch checks from verified-repo publication checks.
+    Done in Spark Swarm commit `0e1ebce`; the Spark Swarm root repo should
+    require `Quality`, `Secret Scan`, and `Scorecard`, while
+    `spark-insight-schema`, `spark-insight-secrets`, and `spark-insight-policy`
+    remain verified-repo publication-template checks.
 
 Still blocked:
 

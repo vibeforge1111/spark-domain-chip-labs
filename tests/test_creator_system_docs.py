@@ -699,6 +699,7 @@ def test_swarm_reusable_creator_path_keeps_review_bundle_local() -> None:
         "Spark Swarm commit `00fa489`",
         "Spark Swarm commit `f47019c`",
         "Spark Swarm commit `6834f81`",
+        "Spark Swarm commit `0e1ebce`",
         "--creator-proposal-bundle",
         "bundle policy hardening",
         "creator-network-proposal-bundle.template.json",
@@ -754,6 +755,10 @@ def test_swarm_reusable_creator_path_keeps_review_bundle_local() -> None:
         "origin/main",
         "no repository rulesets",
         "Proposal evidence remains blocked",
+        "split Spark Swarm root-repo ruleset checks",
+        "Quality`, `Secret Scan`, and `Scorecard",
+        "spark-insight-schema",
+        "verified-repo publication-template checks",
         "No task in this ledger may change `network_absorbable` to `true`.",
         "multi-seed validation",
         "product runtime review",
@@ -925,6 +930,7 @@ def test_spark_swarm_phased_build_plan_is_executable_and_blocked() -> None:
         "Spark Swarm commit `00fa489`",
         "Spark Swarm commit `f47019c`",
         "Spark Swarm commit `6834f81`",
+        "Spark Swarm commit `0e1ebce`",
         "--creator-proposal-bundle",
         "creator-network-proposal-bundle.template.json",
         "verified-repo-pr-proof.placeholder.json",
@@ -990,6 +996,10 @@ def test_spark_swarm_phased_build_plan_is_executable_and_blocked() -> None:
         "not branch-protected",
         "no repository rulesets",
         "Proposal evidence remains blocked",
+        "Split live Spark Swarm branch checks",
+        "Quality`, `Secret Scan`, and `Scorecard",
+        "spark-insight-policy",
+        "verified-repo publication-template checks",
     ):
         assert phrase in text
 
