@@ -119,11 +119,15 @@ def build_creator_swarm_collective_payload(
         "workspaceId": workspace_id,
         "agentId": agent_id,
         "runtimeSource": {
-            "kind": "specialization_path",
+            "kind": "spark_researcher",
             "version": "creator-system-dry-run.v1",
             "loopKind": "benchmark",
-            "sourceInstanceId": str(swarm_packet.get("packet_id") or intent.get("run_id")),
-            "sourceRunId": str(swarm_packet.get("creator_run_id") or intent.get("run_id")),
+            "sourceInstanceId": agent_id,
+            "sourceRunId": (
+                "spark-researcher:creator-system-dry-run:"
+                f"{swarm_packet.get('creator_run_id') or intent.get('run_id')}"
+            ),
+            "sourcePacketId": str(swarm_packet.get("packet_id") or ""),
             "chipKey": domain_slug,
             "chipLabel": domain_name,
         },

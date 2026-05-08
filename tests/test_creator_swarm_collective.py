@@ -22,8 +22,11 @@ def test_creator_swarm_collective_dry_run_payload_is_private_and_thin() -> None:
 
     assert payload["workspaceId"] == "workspace-private-1"
     assert payload["agentId"] == "agent-creator-1"
-    assert payload["runtimeSource"]["kind"] == "specialization_path"
+    assert payload["runtimeSource"]["kind"] == "spark_researcher"
     assert payload["runtimeSource"]["loopKind"] == "benchmark"
+    assert payload["runtimeSource"]["sourceInstanceId"] == "agent-creator-1"
+    assert payload["runtimeSource"]["sourceRunId"].startswith("spark-researcher:creator-system-dry-run:")
+    assert payload["runtimeSource"]["sourcePacketId"] == "swarm-packet-2026-05-01-startup-yc"
     assert payload["specialization"]["memoryPolicy"] == "isolated"
     assert payload["runtimePulse"]["runtimeState"] == "idle"
     assert payload["runtimePulse"]["stageKey"] == "ready_for_swarm_packet"
