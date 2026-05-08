@@ -46,6 +46,10 @@ Keep these boundaries clear:
   `.spark-swarm/` payloads, credentials, tokens, and any repo-specific secrets
 - blocked by default: `network_absorbable`, automatic Spark Swarm publication,
   and any claim that a generated chip/path is official network doctrine
+- not public yet: Spark Swarm runtime, Spawner UI creator controls, Telegram
+  runtime control, and other connected Spark systems are not required for this
+  public beta and should not be presented as downloadable public dependencies
+  until their own launch docs say they are live
 
 Before sharing generated output, run the smoke and doctor gates and remove any
 private repo evidence that was not intentionally prepared for review.
@@ -64,6 +68,7 @@ chip-labs creator-system-beta-check --fail-on-blocked
 
 Start with:
 
+- [docs/SPARK_SYSTEM_MAP.md](docs/SPARK_SYSTEM_MAP.md)
 - [docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md](docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md)
 - [docs/creator_system/USER_QUICKSTART_BETA.md](docs/creator_system/USER_QUICKSTART_BETA.md)
 - [docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md](docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md)
@@ -81,7 +86,16 @@ It does not approve `network_absorbable`, publish to Spark Swarm
 automatically, or wire Builder, Telegram, Spawner, Canvas, or Kanban runtime
 creator controls.
 
-## With spark-researcher
+## Optional Spark Runtime Integrations
+
+The public beta does not require Spark Swarm, Spawner UI, Telegram runtime
+control, or Spark Researcher to be installed. Those systems are connected in the
+broader Spark ecosystem, but they are not the public download path for this repo
+yet.
+
+Use the local `chip-labs` commands first. Treat the commands below as advanced
+internal/operator examples for environments where the relevant Spark modules are
+already installed.
 
 ```bash
 # Run a single evaluation pass
@@ -170,9 +184,17 @@ Full documentation: **[docs/MIROFISH_PREDICTION_ENGINE.md](docs/MIROFISH_PREDICT
 
 ## Connected Systems
 
-- **spark-researcher** -- Autoloop runtime (the lab runs as a chip)
-- **spark-swarm** -- Collective intelligence platform (the lab emits insights)
-- **Domain chips** -- The subjects of the lab's research
+- **spark-domain-chip-labs** -- Public creator-system standards and local gates
+- **spark-researcher** -- Optional/internal autoloop runtime for installed Spark environments
+- **spark-swarm** -- Private/not-yet-public Workspace and collective intelligence runtime
+- **spawner-ui** -- Private/not-yet-public Mission Control, Canvas, and Kanban runtime
+- **spark-telegram-bot** -- Public code, private runtime control layer
+- **Domain chips** -- The subjects and outputs of the lab's research
+
+The public cross-system ownership map is maintained in
+[docs/SPARK_SYSTEM_MAP.md](docs/SPARK_SYSTEM_MAP.md). Use that document when a
+human or Spark agent needs to answer "which repo owns this part of the
+creator/recursive system?"
 
 ## Product Layers
 
