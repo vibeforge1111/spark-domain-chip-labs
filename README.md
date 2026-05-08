@@ -31,6 +31,25 @@ This repo now includes a technical beta for Spark creator systems: local
 workflows that create domain chips, benchmark packs, specialization paths,
 autoloop policies, and Swarm contribution packets from user goals.
 
+## Public Experiment Boundary
+
+Spark Domain Chip Labs is safe to use as a public local experiment repo. It is
+licensed under AGPL-3.0-only and does not require API keys for the creator-system
+beta checks, templates, schemas, or local smoke tests.
+
+Keep these boundaries clear:
+
+- public/local: domain chip templates, creator-run standards, benchmark pack
+  schemas, specialization path contracts, autoloop policies, smoke/doctor gates,
+  and local Swarm review packets
+- private/user-owned: generated runs, local workspaces, unpublished evidence,
+  `.spark-swarm/` payloads, credentials, tokens, and any repo-specific secrets
+- blocked by default: `network_absorbable`, automatic Spark Swarm publication,
+  and any claim that a generated chip/path is official network doctrine
+
+Before sharing generated output, run the smoke and doctor gates and remove any
+private repo evidence that was not intentionally prepared for review.
+
 Install from a fresh clone:
 
 ```bash
@@ -201,4 +220,4 @@ That means the lab can already scaffold, score, transfer, and serve intelligence
 
 ## License
 
-Private -- Spark ecosystem internal.
+AGPL-3.0-only. See [LICENSE](LICENSE).
