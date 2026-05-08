@@ -1,60 +1,35 @@
 # Spark Domain Chip Labs
 
-The recursive improvement engine for the Spark domain chip ecosystem.
+Public creator standards for Spark domain chips, benchmark packs, specialization paths, autoloop policies, and review packets.
 
-## What This Is
+This repo is the place where Spark learns how to create specialist systems properly. It is not the live Spark Swarm runtime, not a hosted workspace, and not an automatic network-publishing surface.
 
-A research lab that runs as a **meta-chip** -- it follows the same `spark-chip.v1` contract as every domain chip, but its domain is *chip research itself*. The lab evaluates other chips, improves chip-building methodology, discovers new domain opportunities, and studies how domain specialization contributes to collective intelligence.
+## What You Can Do Here
 
-## Quick Start
+- Design a domain chip for a field such as QA, security questionnaires, startup advising, crypto trading, content, or research.
+- Create the matching benchmark pack so the chip can be scored instead of only sounding good.
+- Define a specialization path that tells Spark how the chip should improve over time.
+- Define an autoloop policy with mutation limits, stop conditions, rollback notes, and evidence gates.
+- Package local evidence for future review without claiming it is official Spark Swarm doctrine.
 
-```bash
-cd spark-domain-chip-labs
-pip install -e .
+The default lane is local and private. Generated runs, workspace payloads, private repo evidence, secrets, transcripts, and unpublished benchmark data stay with the user unless they are intentionally prepared for review.
 
-# Run the meta-evaluator against a chip
-python -m chip_labs.cli evaluate --input eval_input.json --output eval_output.json
+## Current Public Status
 
-# Get research direction suggestions
-python -m chip_labs.cli suggest --input suggest_input.json --output suggest_output.json
+| Surface | Status | Notes |
+| --- | --- | --- |
+| Creator standards | Public now | Schemas, templates, examples, docs, and local gates. |
+| `chip-labs` CLI | Public now | Local creator-run init, smoke, doctor, template, beta, and release checks. |
+| Domain chip examples | Mixed | Some are public, local, private, or generated workspaces. Check each repo. |
+| Telegram recursive Builder chip loops | Public local path | Runs through the Spark Telegram starter stack without Spark Swarm. |
+| Spark Swarm Workspace and network submission | Private/upcoming | Do not require public users to install Spark Swarm yet. |
+| Spawner UI creator controls | Private/upcoming | Connected internally, not required for this public beta. |
 
-# Generate methodology and quality packets
-python -m chip_labs.cli packets --input packets_input.json --output packets_output.json
-
-# Build lab observatory pages
-python -m chip_labs.cli watchtower --input wt_input.json --output wt_output.json
-```
+Network absorption remains blocked by default. A local creator run can become a review candidate only after benchmark proof, privacy review, rollback review, and explicit human/operator approval.
 
 ## Creator-System Beta Quickstart
 
-This repo now includes a technical beta for Spark creator systems: local
-workflows that create domain chips, benchmark packs, specialization paths,
-autoloop policies, and Swarm contribution packets from user goals.
-
-## Public Experiment Boundary
-
-Spark Domain Chip Labs is safe to use as a public local experiment repo. It is
-licensed under AGPL-3.0-only and does not require API keys for the creator-system
-beta checks, templates, schemas, or local smoke tests.
-
-Keep these boundaries clear:
-
-- public/local: domain chip templates, creator-run standards, benchmark pack
-  schemas, specialization path contracts, autoloop policies, smoke/doctor gates,
-  and local Swarm review packets
-- private/user-owned: generated runs, local workspaces, unpublished evidence,
-  `.spark-swarm/` payloads, credentials, tokens, and any repo-specific secrets
-- blocked by default: `network_absorbable`, automatic Spark Swarm publication,
-  and any claim that a generated chip/path is official network doctrine
-- not public yet: Spark Swarm runtime, Spawner UI creator controls, Telegram
-  runtime control, and other connected Spark systems are not required for this
-  public beta and should not be presented as downloadable public dependencies
-  until their own launch docs say they are live
-
-Before sharing generated output, run the smoke and doctor gates and remove any
-private repo evidence that was not intentionally prepared for review.
-
-Install from a fresh clone:
+This beta is for local and repo-based creator-run workflows. It does not approve `network_absorbable`, publish to Spark Swarm automatically, or make a generated system official network doctrine.
 
 ```bash
 git clone https://github.com/vibeforge1111/spark-domain-chip-labs.git
@@ -62,13 +37,32 @@ cd spark-domain-chip-labs
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 python -m pip install -e .
+
 chip-labs creator-run-template-check --fail-on-blocked
 chip-labs creator-system-beta-check --fail-on-blocked
 ```
 
-Start with:
+Create a local creator run:
 
-- [docs/SPARK_SYSTEM_MAP.md](docs/SPARK_SYSTEM_MAP.md)
+```bash
+chip-labs creator-run-init \
+  --output-dir runs/qa-operator-demo \
+  --domain "QA Operator" \
+  --goal "Create a Spark QA specialist that tests Telegram, Workspace sync, creator missions, and readable reports" \
+  --source-channel local
+
+chip-labs creator-run-smoke runs/qa-operator-demo
+chip-labs creator-run-doctor runs/qa-operator-demo
+```
+
+Expected shape:
+
+- Smoke tells you what is present, missing, or blocked.
+- Doctor gives the next repair steps.
+- Publication/network sharing stays blocked unless review gates pass.
+
+Compatibility links for current agents and CI:
+
 - [docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md](docs/creator_system/CREATOR_SYSTEM_USER_AND_AGENT_ONBOARDING.md)
 - [docs/creator_system/USER_QUICKSTART_BETA.md](docs/creator_system/USER_QUICKSTART_BETA.md)
 - [docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md](docs/creator_system/CONTRIBUTING_CREATOR_DOMAINS.md)
@@ -81,164 +75,87 @@ Start with:
 - [docs/creator_system/PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md](docs/creator_system/PUBLIC_BETA_RELEASE_HANDOFF_2026-05-04.md)
 - [docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md](docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md)
 
-Release boundary: this beta is for local and repo-based creator-run workflows.
-It does not approve `network_absorbable`, publish to Spark Swarm
-automatically, or wire Builder, Telegram, Spawner, Canvas, or Kanban runtime
-creator controls.
+## What Each Artifact Means
 
-## Optional Spark Runtime Integrations
+| Artifact | Purpose |
+| --- | --- |
+| Domain chip | The domain doctrine, examples, traps, hooks, and scoring helpers. |
+| Benchmark pack | Cases and rubrics that prove whether the chip actually helps. |
+| Specialization path | The improvement lane Spark should follow over multiple runs. |
+| Autoloop policy | Mutation limits, stop rules, rollback rules, and evidence gates. |
+| Tool integration | Optional adapters that let a chip use product or repo tools safely. |
+| Review packet | A local proposal bundle that can be inspected before any network sharing. |
 
-The public beta does not require Spark Swarm, Spawner UI, Telegram runtime
-control, or Spark Researcher to be installed. Those systems are connected in the
-broader Spark ecosystem, but they are not the public download path for this repo
-yet.
+## Where To Start Reading
 
-Use the local `chip-labs` commands first. Treat the commands below as advanced
-internal/operator examples for environments where the relevant Spark modules are
-already installed.
+- [System map](docs/SPARK_SYSTEM_MAP.md)
+- [Creator system overview](docs/creator_system/README.md)
+- [User quickstart beta](docs/creator_system/USER_QUICKSTART_BETA.md)
+- [Agent creator playbook](docs/creator_system/AGENT_CREATOR_PLAYBOOK.md)
+- [Golden path](docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md)
+- [Benchmark and autoloop protocol](docs/creator_system/BENCHMARK_AND_AUTOLOOP_PROTOCOL.md)
+- [Promotion gates and evidence tiers](docs/creator_system/PROMOTION_GATES_AND_EVIDENCE_TIERS.md)
+- [Public experiment handoff](docs/PUBLIC_EXPERIMENT_HANDOFF_2026-05-09.md)
+
+## Connected Spark Repos
+
+| Repo | Current role |
+| --- | --- |
+| `spark-cli` | Public installer and operator CLI for the starter stack. |
+| `spark-telegram-bot` | Public Telegram gateway code; live runtime is operator-managed. |
+| `spark-intelligence-builder` | Builder runtime and local recursive Builder chip loop owner. |
+| `domain-chip-memory` | Starter memory/domain-chip substrate. |
+| `spark-character` | Spark voice, persona, overlays, and conversation quality scoring. |
+| `spark-personality-chip-labs` | Portable personality chip schemas and experiments. |
+| `spark-voice-comms` | Public voice communication chip hooks. |
+| `spark-swarm` | Private/upcoming Workspace and collective intelligence runtime. |
+
+Do not confuse `spark-voice-comms` with the older `spark-voice-engine` work. The public voice lab is `spark-voice-comms`.
+
+## CLI Index
+
+| Purpose | Command |
+| --- | --- |
+| Initialize a creator run | `chip-labs creator-run-init --output-dir runs/<run> --domain "<domain>" --goal "<goal>"` |
+| Smoke-check a run | `chip-labs creator-run-smoke runs/<run>` |
+| Strict smoke | `chip-labs creator-run-smoke runs/<run> --fail-on-blocked --fail-on-warn` |
+| Diagnose repair work | `chip-labs creator-run-doctor runs/<run>` |
+| Validate templates | `chip-labs creator-run-template-check --fail-on-blocked` |
+| Check beta readiness | `chip-labs creator-system-beta-check --fail-on-blocked` |
+| Emit release evidence | `chip-labs creator-system-release-evidence --fail-on-blocked --output /tmp/creator-system-release-evidence.json` |
+
+More commands live in [docs/creator_system/README.md](docs/creator_system/README.md).
+
+## Trust Boundaries
+
+Public and safe to share:
+
+- Source code, schemas, templates, public docs, tests, and example fixtures in this repo.
+- Local smoke/doctor results after reviewing them for private paths or source text.
+- Review packets that explicitly keep network publication disabled.
+
+Private or review before sharing:
+
+- `.spark-swarm/` folders.
+- Generated local runs with private source material.
+- Local workspace payloads.
+- Provider keys, Telegram tokens, access tokens, refresh tokens, `sscli_...` tokens, cookies, or private key material.
+- Benchmark cases copied from private repos or private customer/user content.
+
+Blocked by default:
+
+- `network_absorbable`.
+- Automatic Spark Swarm publication.
+- Claims that a generated chip/path is official network doctrine.
+- Any public claim that skips benchmark proof and review gates.
+
+## Tests
 
 ```bash
-# Run a single evaluation pass
-spark-researcher run --command research --config spark-researcher.project.json
-
-# Run all candidate trials
-spark-researcher loop --command research --config spark-researcher.project.json
-
-# Run bounded autonomous improvement
-spark-researcher autoloop --command research --rounds 2 --config spark-researcher.project.json
+python -m pytest -q
+chip-labs creator-run-template-check --fail-on-blocked
+chip-labs creator-system-beta-check --fail-on-blocked
 ```
-
-## Agent Research Team
-
-Seven specialized workstreams within one governing flywheel:
-
-| Agent | Focus | Trigger |
-|-------|-------|---------|
-| Frontier Scout | New domain discovery | portfolio_coverage_gap |
-| Methodology Researcher | Improve chip-building methodology | methodology_gap |
-| Chip Architect | Design new chip manifests | domain_brief reaches research_grounded |
-| Benchmark Engineer | Quality benchmarks | periodic + regression |
-| Integration Specialist | spark-researcher/swarm compat | integration_gap |
-| Growth Analyst | Ecosystem adoption tracking | growth_signal_gap |
-| AGI Theorist | Recursive self-improvement research | every 15 passes + transfer events |
-
-## Quality Rubric (100 points)
-
-The lab evaluates chips on six dimensions:
-
-| Dimension | Points | What It Measures |
-|-----------|--------|-----------------|
-| Manifest Validity | 15 | Schema, hooks, frontier definition |
-| Evidence Separation | 20 | Four evidence lanes kept distinct |
-| Evaluation Depth | 20 | Scoring dimensions, benchmark bridge |
-| Memory & Knowledge | 15 | Source registry, packet quality, watchtower |
-| Integration Health | 15 | spark-researcher/swarm compatibility |
-| Documentation | 15 | Mission, architecture, graduation criteria |
-
-## Chip Portfolio
-
-Currently tracking 10+ domain chips:
-
-- **startup-yc** (Production v0.3.0) -- YC startup factor research
-- **trading-crypto** (Beta v0.1.0) -- Crypto trading doctrine + strategy
-- **agentic-marketing** (Beta v0.2.0) -- Growth loop systems
-- **web-designer** (Beta v0.1.0) -- Award-level web design
-- **roblox-development** (Beta v0.1.0) -- Viral game systems
-- **pokemon-red** (Beta v0.1.0) -- Speedrun automation
-- **xcontent** (Alpha v0.1.0) -- X/Twitter content
-- **content** (Alpha v0.1.0) -- Content mechanisms
-- **vibe-incubator** (Beta v0.1.0) -- Venture incubation
-- **predictive-worlds-lab** (Exploratory) -- Prediction markets
-
-## MiroFish Prediction Engine
-
-A zero-dependency multi-agent simulation engine for predicting adoption dynamics. Runs 1000 stakeholder personas through a 20-round adoption simulation with Monte Carlo ensemble for confidence intervals.
-
-```bash
-# Run the full prediction pipeline (1000 agents, 32 domains, ensemble + sensitivity)
-python scripts/predict_1000_agents.py
-
-# View the interactive knowledge graph visualization
-cd viz && python -m http.server 8888
-# Open http://localhost:8888/mirofish-graph.html
-```
-
-**What it predicts**: Which domains/products/technologies will gain adoption, with confidence intervals, sensitivity analysis, and calibration scoring.
-
-**How to adapt it**: Define your own domains, inject signals, run the ensemble. Works for product roadmaps, market entry analysis, technology bets, content strategy, investment thesis -- anything where you're predicting adoption.
-
-Full documentation: **[docs/MIROFISH_PREDICTION_ENGINE.md](docs/MIROFISH_PREDICTION_ENGINE.md)**
-
-### Latest Predictions (March 2026)
-
-| Rank | Domain | Ensemble Mean | Confidence | Status |
-|------|--------|--------------|------------|--------|
-| 1 | prompt-engineer | 67.8% | HIGH (68%-69%) | New candidate |
-| 2 | indie-hacker | 67.8% | HIGH (68%-69%) | New candidate |
-| 3 | security-audit | 67.8% | HIGH (68%-69%) | New candidate |
-| 4 | solana-dev | 66.8% | HIGH (66%-68%) | New candidate |
-| 5 | ai-agent-builder | 65.9% | HIGH (65%-68%) | New candidate |
-| 6 | agentic-marketing | 61.3% | HIGH (60%-62%) | Existing (beta) |
-| 7 | defi-architect | 58.4% | HIGH (57%-60%) | New candidate |
-| 8 | game-balance | 54.0% | HIGH (54%-55%) | New candidate |
-
-## Connected Systems
-
-- **spark-domain-chip-labs** -- Public creator-system standards and local gates
-- **spark-researcher** -- Optional/internal autoloop runtime for installed Spark environments
-- **spark-swarm** -- Private/not-yet-public Workspace and collective intelligence runtime
-- **spawner-ui** -- Private/not-yet-public Mission Control, Canvas, and Kanban runtime
-- **spark-telegram-bot** -- Public code, private runtime control layer
-- **Domain chips** -- The subjects and outputs of the lab's research
-
-The public cross-system ownership map is maintained in
-[docs/SPARK_SYSTEM_MAP.md](docs/SPARK_SYSTEM_MAP.md). Use that document when a
-human or Spark agent needs to answer "which repo owns this part of the
-creator/recursive system?"
-
-## Product Layers
-
-This repo currently contains four distinct surfaces. Treating them as one undifferentiated product is where a lot of drift starts.
-
-| Layer | What It Does | Current Status |
-|-------|---------------|----------------|
-| Meta-chip hooks | `evaluate`, `suggest`, `packets`, `watchtower` for the lab itself | Shipped and rubric-validated |
-| Chip factory | scaffolding, gap analysis, loop control, creation helpers | Working, but still packaged as internal factory infrastructure |
-| Transfer and recursive improvement | cross-chip transfer, promotion logic, bounded self-edit support | Working under guardrails; still needs more repeated real wins |
-| Intelligence serving | runtime, MCP server, advisory and hook delivery surfaces | Integrated, but still maturing as a product boundary |
-
-The canonical status breakdown is tracked in **[docs/REPO_SURFACES_AND_STATUS.md](docs/REPO_SURFACES_AND_STATUS.md)** so contributors can tell which claims are shipped, which are experimental, and which are still aspirational.
-
-Packaging decision for now: keep one repo/package with internal subpackages. The split criteria and future triggers are tracked in **[docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md](docs/PACKAGE_BOUNDARY_MIGRATION_PLAN.md)**.
-
-## Key Principles
-
-1. **Meta-chip, not framework** -- follows spark-chip.v1, not a custom system
-2. **Agent roles = workstreams** -- routing within one flywheel, not separate processes
-3. **Quality rubric = fixed evaluator** -- consistent with Spark's architecture
-4. **Selective memory** -- shares methodology, absorbs chip masteries, keeps raw research private
-5. **Graduation = real-world eval** -- success metric is: do graduated chips actually work?
-6. **Prove before abstracting** -- no methodology chip until 2+ successful graduations
-
-## Known Gaps
-
-The repo is stronger structurally than it is operationally. The main deficits today are:
-
-- the lab has not yet accumulated a long, dense self-improvement run history inside the repo
-- doctrine and contradiction handling were documented across broad design docs, but not yet normalized into durable belief artifacts
-- evidence lanes existed in concept, but the repo under-produced lane-specific packets about its own evolution
-- the repo still combines four surfaces in one package: meta-chip hooks, chip factory logic, transfer systems, and intelligence serving
-
-The repo no longer has a contract-ambiguity problem across runtime and rubrics, but it still has a packaging-and-positioning problem: some surfaces are proven internal infrastructure, while others are still emerging products.
-
-That means the lab can already scaffold, score, transfer, and serve intelligence, but it still needs a cleaner internal flywheel and more earned artifacts before its strongest claims are fully defended by its own history.
-
-## Near-Term Roadmap
-
-1. Align every scorer and runtime on the same manifest contract.
-2. Keep generating lab-owned runs, packets, and contradiction logs under versioned research artifacts.
-3. Separate shipped behavior from speculative behavior in status docs.
-4. Raise graduation confidence by proving methodology changes across multiple real chips rather than one-off local wins.
 
 ## License
 

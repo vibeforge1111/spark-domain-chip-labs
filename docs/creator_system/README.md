@@ -1,8 +1,23 @@
 # Spark Creator System
 
-This folder is the agent-readable methodology hub for creating Spark domain chips, benchmarks, specialization paths, autoloops, and Swarm-publishable mastery loops.
+This folder is the agent-readable methodology hub for creating Spark domain chips, benchmarks, specialization paths, autoloops, tool integrations, and local review packets.
 
-The goal is not to make one large creator repo do everything. The goal is to give Spark agents a stable set of contracts so a user can say what they want from Telegram, Builder, Spawner UI, Canvas, or a local repo, and Spark can produce a high-quality, benchmarked, Swarm-compatible system without guessing.
+The goal is not to make one large creator repo do everything. The goal is to give Spark agents a stable set of contracts so a user can describe what they want and Spark can produce a high-quality, benchmarked specialist system without guessing.
+
+## Current Public Boundary
+
+Use this folder publicly for local creator-system work:
+
+- create domain chips
+- create benchmark packs
+- create specialization paths
+- create autoloop policies
+- run smoke and doctor gates
+- package local review evidence
+
+Do not present Spark Swarm, Spawner UI creator controls, Canvas/Kanban runtime controls, or hosted Workspace review as public dependencies yet. They are connected internal/upcoming product surfaces. This repo can prepare compatible packets, but it does not publish anything to the Spark Swarm network or mark a result as official doctrine.
+
+Natural-language Telegram control is the product direction, but this repo remains the local standard and validation source. Long slash commands and replay commands are operator/internal details, not the desired public user experience.
 
 ## Documents
 
@@ -59,23 +74,24 @@ Keep the creator systems separate, but contract-bound:
 
 ```mermaid
 flowchart LR
-  U["User intent"] --> T["spark-telegram-bot"]
-  T --> B["spark-intelligence-builder"]
-  B --> C["Domain Chip Creator"]
-  B --> P["Specialization Path Creator"]
-  B --> E["Benchmark Creator"]
-  B --> L["Autoloop Creator"]
-  T --> S["spawner-ui"]
-  S --> V["Canvas / Kanban"]
-  C --> R["Repo artifacts"]
+  U["User intent"] --> C["Creator contract"]
+  C --> D["Domain chip"]
+  C --> B["Benchmark pack"]
+  C --> P["Specialization path"]
+  C --> L["Autoloop policy"]
+  D --> R["Local repo artifacts"]
+  B --> R
   P --> R
-  E --> R
   L --> R
-  R --> Q["Validation gates"]
-  Q --> W["Spark Swarm collective payload"]
+  R --> Q["Smoke / doctor / release gates"]
+  Q --> K["Keep private by default"]
+  Q --> V["Optional review packet"]
+  V --> W["Future Spark Swarm review"]
 ```
 
 Domain Chip Creator should not own Autoloop Creator. It should emit chip-specific loop metadata and hook contracts. Autoloop Creator owns loop governance, mutation windows, benchmark gates, evidence lineage, and stopping rules across all domains.
+
+The public contract today stops at local validation and optional review packaging. A future Spark Swarm flow may consume the review packet after privacy, rollback, benchmark, and publication gates pass.
 
 ## Current Claim Levels
 
