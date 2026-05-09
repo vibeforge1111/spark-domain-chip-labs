@@ -116,6 +116,15 @@ Context rules:
 - Do not trigger recursive controls from a generic follow-up unless the nearby chat is actually about recursive runs, Workspace recursions, benchmarks, scores, traces, or review decisions.
 - Keep slash commands as the fallback when intent is ambiguous.
 
+The same rule applies to creator-system setup. If the chat has clearly been about a capability, users should be able to say:
+
+| User says | Spark does |
+| --- | --- |
+| `make this better with benchmarks and autoloops` | Uses the recent capability context to plan a creator mission. |
+| `turn this into a benchmark pack and specialization path` | Creates a creator-system plan from the recent working context. |
+
+If there is no clear recent capability context, Spark should not create a vague mission from `this` or `it`.
+
 ## What Spark Builds
 
 ```mermaid
