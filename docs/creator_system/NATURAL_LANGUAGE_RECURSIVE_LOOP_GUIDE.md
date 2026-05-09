@@ -88,6 +88,8 @@ Direct target examples:
 | --- | --- |
 | `show me the QA tester report` | Reports on `path:spark-qa-operator`. |
 | `trace Startup YC` | Shows the Startup YC trace. |
+| `show the prompt benchmark report` | Resolves the matching Workspace recursion and reports it. |
+| `show me the proof for the frontier benchmark` | Resolves the matching Workspace recursion and shows its trace. |
 | `run the QA operator for 3 rounds` | Starts three QA Operator rounds. |
 
 Contextual follow-up examples after the chat has been about Spark QA Operator:
@@ -105,6 +107,14 @@ Contextual follow-up examples after the chat has been about Spark QA Operator:
 | `keep going` | Continues the current loop for one safe round. |
 
 The resolver should stay conservative: context may choose the active loop, but it must not invent a target, publish a packet, or claim improvement without benchmark evidence. If the active loop is unclear, Spark should ask for the lane or show `/recursive sessions`.
+
+Context rules:
+
+- Look at roughly the last 10-15 Telegram messages, not old long-term memory.
+- Prefer the loop currently being discussed over older loops.
+- Resolve dynamic names from Workspace sessions when a loop is already visible there.
+- Do not trigger recursive controls from a generic follow-up unless the nearby chat is actually about recursive runs, Workspace recursions, benchmarks, scores, traces, or review decisions.
+- Keep slash commands as the fallback when intent is ambiguous.
 
 ## What Spark Builds
 
