@@ -95,9 +95,13 @@ Contextual follow-up examples after the chat has been about Spark QA Operator:
 | User says | Spark does |
 | --- | --- |
 | `give me the readout` | Reports on the active QA Operator path. |
+| `where did we land?` | Reports on the active QA Operator path. |
 | `show the receipts` | Shows the trace and evidence trail. |
+| `show me proof` | Shows the trace and evidence trail. |
 | `what needs my call?` | Shows review decisions. |
+| `do I need to approve anything?` | Shows review decisions. |
 | `run another round` | Starts one more recursive round. |
+| `give it another pass` | Starts one more recursive round. |
 | `keep going` | Continues the current loop for one safe round. |
 
 The resolver should stay conservative: context may choose the active loop, but it must not invent a target, publish a packet, or claim improvement without benchmark evidence. If the active loop is unclear, Spark should ask for the lane or show `/recursive sessions`.
