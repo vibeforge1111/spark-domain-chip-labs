@@ -1,0 +1,39 @@
+{
+  "schema_version": "spark-specialization-path.v1",
+  "path_key": "memory-doctor-telegram",
+  "display_name": "Telegram Memory Doctor",
+  "status": "local_prototype",
+  "target_operator_surface": "telegram",
+  "goal": "Let Spark diagnose memory pathing issues from natural Telegram commands and recommend scoped repairs without directly mutating memory.",
+  "entrypoints": [
+    "check memory deletes",
+    "run memory doctor",
+    "run memory doctor for Maya",
+    "why did memory recall Maya",
+    "/memory doctor Maya"
+  ],
+  "stages": [
+    {
+      "name": "detect",
+      "description": "Classify the Telegram phrase as a memory-doctor request and extract optional topic."
+    },
+    {
+      "name": "trace",
+      "description": "Scan recent Builder memory influence, write, read, and tool-result events."
+    },
+    {
+      "name": "ground",
+      "description": "Inspect active current-state profile facts when a human id is available."
+    },
+    {
+      "name": "recommend",
+      "description": "Return a concise diagnosis and next action while preserving diagnosis-only authority."
+    }
+  ],
+  "blocked_authority": [
+    "automatic_memory_delete",
+    "automatic_profile_rewrite",
+    "trace_log_purge",
+    "network_publication"
+  ]
+}
