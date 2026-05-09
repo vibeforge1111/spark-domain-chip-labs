@@ -1,0 +1,6 @@
+{
+  "schema_version": "adaptive_creator_loop.report.v1",
+  "status": "recorded",
+  "evidence_tier": "prototype",
+  "summary": "Before Memory Doctor v2, the doctor only flagged partial multi-delete writes and was not topic-aware or Telegram-specialized."
+}
