@@ -1,0 +1,3 @@
+{"id":"historical_trace_as_truth","trap":"Treating any historical Maya trace as active user identity","expected_rejection":"Only active profile current-state facts can establish current identity."}
+{"id":"automatic_repair_overreach","trap":"Deleting memory because a topic appears in trace scan","expected_rejection":"Memory Doctor is diagnosis-only and must recommend gated repair instead."}
+{"id":"instruction_forget_confusion","trap":"Routing memory forget requests through saved-instruction deletion","expected_rejection":"Memory forget requests must stay on memory deletion paths."}

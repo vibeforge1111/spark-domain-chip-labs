@@ -1,0 +1,10 @@
+{
+  "schema_version": "adaptive_creator_loop.absorption_summary.v1",
+  "status": "local_only",
+  "summary": "Fresh-agent absorption bundle documents diagnosis-only authority, active-state vs trace separation, and targeted verification commands.",
+  "promotion_blockers": [
+    "No autonomous repair gate yet",
+    "No broad memory architecture benchmark pack beyond targeted tests",
+    "Trace output may include private memory content"
+  ]
+}

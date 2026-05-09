@@ -1,0 +1,61 @@
+{
+  "schema_version": "adaptive_creator_loop.swarm_contribution_packet.v1",
+  "packet_id": "swarm-packet-2026-05-09-memory-doctor-telegram",
+  "creator_run_id": "creator-run-2026-05-09-spark-memory-doctor",
+  "source": {
+    "repo": "C:\\Users\\USER\\Desktop\\spark-domain-chip-labs",
+    "branch": "local-workspace",
+    "commit": "local-uncommitted-prototype",
+    "artifact_paths": [
+      "runs/memory-doctor-telegram-specialization/domain-chip/chip.manifest.json",
+      "runs/memory-doctor-telegram-specialization/specialization-path/path.manifest.json",
+      "runs/memory-doctor-telegram-specialization/benchmark/manifest.json",
+      "runs/memory-doctor-telegram-specialization/autoloop/policy.json",
+      "runs/memory-doctor-telegram-specialization/reports/creator_run_summary.md"
+    ]
+  },
+  "contribution": {
+    "type": "specialization_path",
+    "title": "Telegram Memory Doctor",
+    "summary": "Read-only local specialization path for diagnosing Spark memory delete integrity, active profile state, topic traces, dashboard summaries, and bounded repair recommendations.",
+    "domain": "spark-memory-diagnostics",
+    "intended_consumers": [
+      "Spark operator",
+      "Spark Intelligence Builder",
+      "future memory-specialized agents"
+    ]
+  },
+  "evidence": {
+    "tier": "prototype",
+    "baseline_score": null,
+    "candidate_score": null,
+    "mean_delta": null,
+    "trap_regressions": null,
+    "fresh_agent_absorption_delta": null,
+    "simulator_or_arena_result": null,
+    "report_paths": [
+      "reports/baseline.json",
+      "reports/candidate.json",
+      "reports/absorption_summary.json",
+      "reports/creator_run_summary.md"
+    ]
+  },
+  "governance": {
+    "review_state": "local_only",
+    "reviewers": [],
+    "rollback_or_deprecation_rule": "Disable Telegram natural-language Memory Doctor routing and keep CLI-only diagnosis if the route produces unsafe repair advice.",
+    "privacy_boundary": "workspace_only",
+    "network_publication_allowed": false
+  },
+  "anti_drift": {
+    "lineage_summary": "Created from the Cem/Maya Telegram memory incident and verified with targeted Builder tests plus live local doctor probes.",
+    "ghost_improvement_check": "Does not claim autonomous repair; only reports local prototype diagnostic readiness.",
+    "complexity_delta": "Adds a small read-only doctor report and Telegram command routing; no new memory mutation authority.",
+    "known_limits": [
+      "No automatic repair gate",
+      "No full context-capsule blankness panel yet",
+      "No multi-seed or transfer-supported evidence",
+      "Private memory traces keep this local_only"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "spark-autoloop-policy.v1",
+  "loop_key": "memory-doctor-telegram-diagnosis-loop",
+  "path_key": "memory-doctor-telegram",
+  "target_capability": "telegram_memory_diagnosis",
+  "benchmark_manifest": "benchmark/manifest.json",
+  "max_rounds": 3,
+  "lineage_required": true,
+  "network_publication_allowed": false,
+  "mutation_surface": [
+    "natural_language_command_patterns",
+    "doctor_report_sections",
+    "recommendation_wording",
+    "topic_trace_sampling"
+  ],
+  "frozen_surfaces": [
+    "automatic_repair_authority",
+    "benchmark_expected_outcomes",
+    "publication_boundary",
+    "memory_write_permission"
+  ],
+  "keep_condition": "Keep only mutations that improve benchmark clarity or diagnosis accuracy without adding automatic memory mutation.",
+  "keep_rule": "Keep only mutations that improve benchmark clarity or diagnosis accuracy without adding automatic memory mutation.",
+  "promotion_condition": "All targeted Builder tests pass, creator-run-smoke passes, and repair authority remains diagnosis-only.",
+  "reject_rule": "Reject mutations that purge traces, rewrite active profile facts, or widen Telegram authority without a separate gate.",
+  "rollback_condition": "Any regression in memory_doctor or gateway memory_doctor tests."
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "spark-domain-chip.scoring_hooks.v1",
+  "chip_key": "memory-doctor-telegram",
+  "dimensions": [
+    {
+      "name": "delete_integrity",
+      "description": "Flags partial multi-delete writes with request id, expected count, requested count, and accepted count.",
+      "pass_condition": "Every detected multi-delete turn has requested and accepted delete counts greater than or equal to expected deletions."
+    },
+    {
+      "name": "active_state_grounding",
+      "description": "Reports preferred_name, current_owner, and cofounder through current-state lookup when human id is available.",
+      "pass_condition": "Doctor distinguishes active profile facts from historical mentions."
+    },
+    {
+      "name": "telegram_actionability",
+      "description": "Telegram output gives a concise status, topic, active profile summary, problem, and next step.",
+      "pass_condition": "Natural commands route to Memory Doctor and return a bounded reply."
+    }
+  ]
+}

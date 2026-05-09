@@ -1,0 +1,54 @@
+{
+  "schema_version": "adaptive_creator_loop.created_artifact_manifest.v1",
+  "creator_run_id": "creator-run-2026-05-09-spark-memory-doctor",
+  "repo": {
+    "path": "runs\\memory-doctor-telegram-specialization",
+    "remote": "",
+    "branch": "",
+    "commit": ""
+  },
+  "artifacts": [
+    {
+      "kind": "domain_chip",
+      "path": "domain-chip/",
+      "status": "planned",
+      "schema_version": "",
+      "evidence_tier": "prototype",
+      "notes": "Create chip manifest, doctrine, scoring hooks, source registry, and hook smoke tests."
+    },
+    {
+      "kind": "specialization_path",
+      "path": "specialization-path/",
+      "status": "planned",
+      "schema_version": "",
+      "evidence_tier": "prototype",
+      "notes": "Create path manifest, absorption bundle, mastery ladder, operator guide, and Swarm boundary."
+    },
+    {
+      "kind": "benchmark_pack",
+      "path": "benchmark/",
+      "status": "planned",
+      "schema_version": "adaptive_creator_loop.benchmark_pack_manifest.v1",
+      "evidence_tier": "benchmark_signal",
+      "notes": "Create manifest, cases, rubric, traps, calibration examples, and baseline report."
+    },
+    {
+      "kind": "autoloop_policy",
+      "path": "autoloop/",
+      "status": "planned",
+      "schema_version": "spark-autoloop-policy.v1",
+      "evidence_tier": "benchmark_signal",
+      "notes": "Define mutation surface, frozen surfaces, stop conditions, rollback, and promotion policy."
+    },
+    {
+      "kind": "swarm_packet",
+      "path": "swarm/contribution_packet.json",
+      "status": "planned",
+      "schema_version": "adaptive_creator_loop.swarm_contribution_packet.v1",
+      "evidence_tier": "prototype",
+      "notes": "Do not publish until smoke passes and publication boundary is reviewed."
+    }
+  ],
+  "publication_boundary": "local_only",
+  "next_action": "Fill core artifacts, then run creator-run-smoke."
+}
