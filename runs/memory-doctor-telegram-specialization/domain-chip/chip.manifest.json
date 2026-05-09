@@ -1,0 +1,35 @@
+{
+  "schema_version": "spark-domain-chip.manifest.v1",
+  "chip_key": "memory-doctor-telegram",
+  "display_name": "Memory Doctor Telegram",
+  "domain": "spark-memory-diagnostics",
+  "status": "local_prototype",
+  "publication_boundary": "local_only",
+  "purpose": "Diagnose Spark memory pathing failures from Telegram and Builder without automatic repair authority.",
+  "surfaces": [
+    "telegram",
+    "spark-intelligence-builder-cli",
+    "memory-dashboard"
+  ],
+  "capabilities": [
+    "delete_integrity_scan",
+    "topic_trace_scan",
+    "active_profile_current_state_lookup",
+    "watchtower_memory_shadow_summary",
+    "recommendation_generation"
+  ],
+  "authority": {
+    "can_read_traces": true,
+    "can_read_active_profile": true,
+    "can_write_memory": false,
+    "can_delete_memory": false,
+    "can_repair_automatically": false
+  },
+  "verification": {
+    "builder_tests": [
+      "python -m pytest tests/test_telegram_generic_memory.py -q -k \"memory_doctor or multiple_generic_deletions\"",
+      "python -m pytest tests/test_gateway_ask_telegram.py -q -k \"memory_doctor\""
+    ],
+    "live_probe": "python -m spark_intelligence.cli memory doctor --home C:\\Users\\USER\\.spark\\state\\spark-intelligence --human-id human:telegram:8319079055 --topic Maya"
+  }
+}
