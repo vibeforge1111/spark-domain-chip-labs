@@ -1,0 +1,6 @@
+{
+  "schema_version": "adaptive_creator_loop.report.v1",
+  "status": "recorded",
+  "evidence_tier": "prototype",
+  "summary": "Candidate Memory Doctor v2 adds Telegram routing, topic traces, active profile lookup, dashboard summary, path traces, and recommendations."
+}
