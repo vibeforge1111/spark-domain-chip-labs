@@ -91,6 +91,7 @@ Compatibility links for current agents and CI:
 - [System map](docs/SPARK_SYSTEM_MAP.md)
 - [Creator system overview](docs/creator_system/README.md)
 - [User quickstart beta](docs/creator_system/USER_QUICKSTART_BETA.md)
+- [Natural-language recursive loop guide](docs/creator_system/NATURAL_LANGUAGE_RECURSIVE_LOOP_GUIDE.md)
 - [Agent creator playbook](docs/creator_system/AGENT_CREATOR_PLAYBOOK.md)
 - [Golden path](docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md)
 - [Benchmark and autoloop protocol](docs/creator_system/BENCHMARK_AND_AUTOLOOP_PROTOCOL.md)
