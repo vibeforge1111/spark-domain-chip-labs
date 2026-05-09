@@ -1,0 +1,72 @@
+{
+  "schema_version": "adaptive_creator_loop.creator_intent.v1",
+  "run_id": "creator-run-2026-05-09-spark-memory-doctor",
+  "created_at": "2026-05-09",
+  "requested_by": "",
+  "source_channel": "telegram",
+  "domain": {
+    "name": "Spark memory doctor",
+    "short_slug": "spark-memory-doctor",
+    "why_this_domain_matters": "Spark needs a read-only diagnostic path that can explain why memory recall, deletion, or active profile state went wrong without turning historical trace residue into new truth.",
+    "target_operator": "Spark operator using Telegram or Builder",
+    "target_agent": "Spark AGI runtime and future memory-specialized agents"
+  },
+  "goal": {
+    "plain_language_goal": "Build a Telegram-callable Memory Doctor specialization path that diagnoses memory pathing, active profile state, dashboard traces, deletion integrity, and improvement recommendations without automatic repair authority.",
+    "capability_to_improve": "Memory incident diagnosis across Telegram turns, active current-state memory, dashboard traces, and delete/write lineage.",
+    "expected_user_value": "When Spark recalls the wrong thing or goes blank after a memory correction, the operator can ask from Telegram what happened and get a concrete, bounded next action.",
+    "non_goals": [
+      "automatic memory deletion",
+      "automatic active profile rewrites",
+      "trace-log purging",
+      "network publication of private memory traces"
+    ]
+  },
+  "constraints": {
+    "privacy_boundary": "workspace_only",
+    "network_publication_allowed": false,
+    "auth_or_secret_requirements": [],
+    "forbidden_mutations": [
+      "benchmark_weights_without_benchmark_governance",
+      "success_metric_redefinition_inside_capability_loop"
+    ],
+    "human_review_required": true
+  },
+  "success_criteria": {
+    "minimum_evidence_tier": "prototype",
+    "benchmark_target": "Targeted Builder tests cover multi-delete integrity, topic-aware diagnosis, and Telegram natural-language routing.",
+    "absorption_target": "Fresh agents preserve the diagnosis-only boundary and the active-state-versus-historical-trace distinction.",
+    "trap_regression_policy": "no_new_trap_regressions",
+    "stop_ship_conditions": [
+      "Memory Doctor mutates memory without an explicit repair gate",
+      "Historical trace mentions are treated as active identity",
+      "Telegram output hides a failing delete integrity finding",
+      "Private memory traces are prepared for network publication"
+    ]
+  },
+  "known_inputs": {
+    "source_repos": [
+      "C:\\Users\\USER\\Desktop\\spark-intelligence-builder",
+      "C:\\Users\\USER\\Desktop\\spark-domain-chip-labs"
+    ],
+    "docs_to_load": [
+      "docs/creator_system/CREATOR_RUN_GOLDEN_PATH_V1.md",
+      "docs/creator_system/CREATOR_RUN_PRODUCTION_READINESS_V1.md",
+      "docs/creator_system/PROMOTION_GATES_AND_EVIDENCE_TIERS.md",
+      "docs/creator_system/AGENT_CREATOR_PLAYBOOK.md"
+    ],
+    "existing_benchmarks": [
+      "tests/test_telegram_generic_memory.py -k memory_doctor or multiple_generic_deletions",
+      "tests/test_gateway_ask_telegram.py -k memory_doctor"
+    ],
+    "existing_simulators_or_arenas": [],
+    "existing_domain_chips": [
+      "domain-chip-memory"
+    ]
+  },
+  "open_questions": [
+    "What evidence gate should authorize automatic repair, if any?",
+    "Should context-capsule blankness be measured by a separate doctor panel or folded into Memory Doctor?",
+    "How much historical trace detail is safe to show in Telegram versus CLI JSON?"
+  ]
+}
