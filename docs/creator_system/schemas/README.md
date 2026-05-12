@@ -49,6 +49,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [operator-review-check.schema.json](operator-review-check.schema.json) | Generic generated-domain human/operator review check output |
 | [product-runtime-review-packet.schema.json](product-runtime-review-packet.schema.json) | Product runtime review packet for Builder, Telegram, Spawner, Canvas, and Kanban |
 | [product-runtime-review-check.schema.json](product-runtime-review-check.schema.json) | Product runtime review check output |
+| [spark-os-labs-review-packet.schema.json](spark-os-labs-review-packet.schema.json) | Spark OS metadata-only Labs review candidate for trace-family proof artifacts |
 | [retrieval-memory-packet.schema.json](retrieval-memory-packet.schema.json) | Local retrieval-memory packet input |
 | [retrieval-memory-check.schema.json](retrieval-memory-check.schema.json) | Local retrieval-memory check output |
 | [tool-operation-manifest.schema.json](tool-operation-manifest.schema.json) | Local safe tool-operation manifest |
@@ -185,6 +186,14 @@ publication approval, known limits, forbidden claims, and
 requested claim under review, but never the packet's own evidence tier. A
 passing operator-review check is review evidence only; it does not replace
 multi-seed validation or the full promotion bundle.
+
+The Spark OS Labs review packet schema anchors trace-family candidates emitted
+from Builder, Telegram, and Spawner proof paths. It accepts only metadata:
+redacted request/trace references, source owner, event counts, authority verdict
+metadata, privacy status, benchmark placeholder, rollback route, and a human
+next action. It explicitly forbids network absorption, network publication,
+memory promotion, raw prompts, provider output, chat/user ids, memory bodies,
+audio/transcript bodies, secret values, and artifact bodies.
 
 The retrieval-memory schemas anchor the local memory-lane contract while the
 production memory runtime remains deferred. Packet inputs require explicit
