@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/spark-os-labs-review-packet.schema.json",
+  "title": "Spark OS Labs Review Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "packet_id",
+    "trace_ref",
+    "request_id",
+    "source_repo",
+    "ownership",
+    "source_artifact_metadata",
+    "authority_verdict_ref",
+    "privacy_status",
+    "benchmark",
+    "rollback_route",
+    "human_review_required",
+    "network_absorbable",
+    "network_publication_allowed",
+    "memory_promotion_allowed",
+    "payload_export_policy",
+    "next_action"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.spark_os_labs_review_packet.v1"
+    },
+    "packet_id": {"type": "string", "minLength": 1},
+    "trace_ref": {"$ref": "#/$defs/redactedReference"},
+    "request_id": {"$ref": "#/$defs/redactedReference"},
+    "source_repo": {"enum": ["spawner-ui", "spark-intelligence-builder", "spark-telegram-bot"]},
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_owner_repo",
+        "contract_scope",
+        "source_owner_repo",
+        "labs_may_promote_memory",
+        "labs_may_wire_product_runtime",
+        "labs_may_publish_network"
+      ],
+      "properties": {
+        "contract_owner_repo": {"const": "spark-domain-chip-labs"},
+        "contract_scope": {"const": "metadata_schema_review_only"},
+        "source_owner_repo": {
+          "enum": ["spawner-ui", "spark-intelligence-builder", "spark-telegram-bot"]
+        },
+        "labs_may_promote_memory": {"const": false},
+        "labs_may_wire_product_runtime": {"const": false},
+        "labs_may_publish_network": {"const": false}
+      }
+    },
+    "source_artifact_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_surface",
+        "artifact_body_exported",
+        "event_counts",
+        "file_count",
+        "task_count"
+      ],
+      "properties": {
+        "source_surface": {"type": "string", "minLength": 1},
+        "artifact_body_exported": {"const": false},
+        "event_counts": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "file_count": {"type": ["integer", "null"], "minimum": 0},
+        "task_count": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "authority_verdict_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "verdict",
+        "action_family",
+        "source_policy",
+        "source_repo"
+      ],
+      "properties": {
+        "schema_version": {"const": "spark.authority_verdict.v1"},
+        "verdict": {"enum": ["allowed", "blocked", "needs_confirmation", "unknown"]},
+        "action_family": {"type": "string", "minLength": 1},
+        "source_policy": {"type": "string", "minLength": 1},
+        "source_repo": {"type": "string", "minLength": 1},
+        "reason_code": {"type": "string"}
+      }
+    },
+    "privacy_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "raw_prompt_exported",
+        "provider_output_exported",
+        "chat_or_user_id_exported",
+        "memory_body_exported",
+        "artifact_body_exported"
+      ],
+      "properties": {
+        "status": {"enum": ["metadata_only", "blocked"]},
+        "raw_prompt_exported": {"const": false},
+        "provider_output_exported": {"const": false},
+        "chat_or_user_id_exported": {"const": false},
+        "memory_body_exported": {"const": false},
+        "artifact_body_exported": {"const": false}
+      }
+    },
+    "benchmark": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "placeholder", "required_before_promotion"],
+      "properties": {
+        "status": {"enum": ["placeholder", "missing", "passed", "failed"]},
+        "placeholder": {"type": "string", "minLength": 1},
+        "required_before_promotion": {"const": true}
+      }
+    },
+    "rollback_route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "route", "owner_repo"],
+      "properties": {
+        "status": {"enum": ["review_required", "ready"]},
+        "route": {"type": "string", "minLength": 1},
+        "owner_repo": {"type": "string", "minLength": 1}
+      }
+    },
+    "human_review_required": {"const": true},
+    "network_absorbable": {"const": false},
+    "network_publication_allowed": {"const": false},
+    "memory_promotion_allowed": {"const": false},
+    "payload_export_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "allowed_fields_only", "forbidden_payloads"],
+      "properties": {
+        "mode": {"const": "metadata_only"},
+        "allowed_fields_only": {"const": true},
+        "forbidden_payloads": {
+          "type": "array",
+          "minItems": 1,
+          "contains": {"const": "raw_prompt"},
+          "items": {
+            "enum": [
+              "raw_prompt",
+              "provider_output",
+              "chat_id",
+              "user_id",
+              "memory_body",
+              "transcript_body",
+              "audio_body",
+              "secret_value",
+              "artifact_body"
+            ]
+          }
+        }
+      }
+    },
+    "next_action": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "redactedReference": {
+      "type": ["string", "null"],
+      "pattern": "^(request_id|trace_ref):redacted:[a-f0-9]{12}$"
+    }
+  }
+}
