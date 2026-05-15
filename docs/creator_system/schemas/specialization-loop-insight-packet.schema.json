@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/specialization-loop-insight-packet.schema.json",
+  "title": "Adaptive Creator Loop Local/Private Specialization Insight Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "packet_id",
+    "packet_kind",
+    "loop_id",
+    "source_status",
+    "share_state",
+    "evidence_tier",
+    "insight",
+    "proof_refs",
+    "privacy",
+    "promotion",
+    "claim_boundary",
+    "next_actions",
+    "updated_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.specialization_loop_insight_packet.v1"
+    },
+    "packet_id": {"type": "string", "minLength": 1},
+    "packet_kind": {"const": "local_private_specialization_insight"},
+    "loop_id": {"type": "string", "minLength": 1},
+    "source_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "artifact_ref",
+        "sha256",
+        "decision",
+        "improved_claim_allowed"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "adaptive_creator_loop.specialization_loop_status.v1"
+        },
+        "artifact_ref": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "decision": {
+          "enum": ["improved", "held_steady", "regressed", "unproven"]
+        },
+        "improved_claim_allowed": {"type": "boolean"}
+      }
+    },
+    "share_state": {
+      "enum": ["local_only", "private_workspace", "review_candidate"]
+    },
+    "evidence_tier": {
+      "enum": [
+        "prototype",
+        "benchmark_signal",
+        "focused_pattern",
+        "candidate_review",
+        "transfer_supported"
+      ]
+    },
+    "insight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "summary",
+        "reusable_lesson",
+        "applies_to",
+        "does_not_apply_to"
+      ],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "summary": {"type": "string", "minLength": 1},
+        "reusable_lesson": {"type": "string", "minLength": 1},
+        "applies_to": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "does_not_apply_to": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "proof_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/proof_ref"}
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewed",
+        "raw_prompt_exported",
+        "provider_output_exported",
+        "chat_or_user_id_exported",
+        "memory_body_exported",
+        "artifact_body_exported",
+        "secret_value_exported"
+      ],
+      "properties": {
+        "reviewed": {"type": "boolean"},
+        "raw_prompt_exported": {"const": false},
+        "provider_output_exported": {"const": false},
+        "chat_or_user_id_exported": {"const": false},
+        "memory_body_exported": {"const": false},
+        "artifact_body_exported": {"const": false},
+        "secret_value_exported": {"const": false}
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_absorbable",
+        "network_publication_allowed",
+        "memory_promotion_allowed",
+        "product_runtime_wiring_allowed",
+        "allowed_next_lanes",
+        "forbidden_claims",
+        "required_before_network_absorption"
+      ],
+      "properties": {
+        "network_absorbable": {"const": false},
+        "network_publication_allowed": {"const": false},
+        "memory_promotion_allowed": {"const": false},
+        "product_runtime_wiring_allowed": {"const": false},
+        "allowed_next_lanes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": ["local_only", "private_workspace", "review_candidate"]
+          }
+        },
+        "forbidden_claims": {
+          "type": "array",
+          "minItems": 1,
+          "contains": {"const": "network_absorbable"},
+          "items": {"type": "string", "minLength": 1}
+        },
+        "required_before_network_absorption": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1},
+          "contains": {
+            "type": "string",
+            "pattern": "privacy|rollback|publication|product runtime|authority|multi-seed|calibration"
+          }
+        }
+      }
+    },
+    "claim_boundary": {
+      "type": "string",
+      "pattern": "Local/private|local/private|network absorption|publication"
+    },
+    "next_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "updated_at": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "proof_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "evidence_role", "artifact_ref", "sha256"],
+      "properties": {
+        "label": {"type": "string", "minLength": 1},
+        "evidence_role": {
+          "enum": [
+            "baseline",
+            "candidate",
+            "comparison",
+            "held_out",
+            "trap",
+            "absorption",
+            "review",
+            "status"
+          ]
+        },
+        "artifact_ref": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "source_status": {
+            "properties": {"decision": {"const": "improved"}},
+            "required": ["decision"]
+          }
+        },
+        "required": ["source_status"]
+      },
+      "then": {
+        "properties": {
+          "source_status": {
+            "properties": {
+              "improved_claim_allowed": {"const": true}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"share_state": {"const": "review_candidate"}},
+        "required": ["share_state"]
+      },
+      "then": {
+        "properties": {
+          "privacy": {
+            "properties": {
+              "reviewed": {"const": true}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

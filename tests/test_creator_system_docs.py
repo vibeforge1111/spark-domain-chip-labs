@@ -1290,7 +1290,9 @@ def test_creator_system_scorecard_workflow_records_supply_chain_review() -> None
     assert "security-events: write" not in text
     assert "id-token: write" not in text
     assert "publish_results: false" in text
-    assert "results_file: /tmp/scorecard-results.json" in text
+    assert "mkdir -p tmp" in text
+    assert "results_file: tmp/scorecard-results.json" in text
+    assert "path: tmp/scorecard-results.json" in text
     assert "results_format: json" in text
     assert "openssf-scorecard-results" in text
     assert len(action_refs) == len(uses_lines)
@@ -1451,6 +1453,10 @@ def test_schema_readme_lists_generated_multi_seed_schema_anchors() -> None:
         "absorption-summary.schema.json",
         "benchmark-case.schema.json",
         "specialization-path-manifest.schema.json",
+        "specialization-loop-status.schema.json",
+        "specialization-loop-insight-packet.schema.json",
+        "Local/private specialization insight packet",
+        "saved status packet hash",
         "autoloop-simulation-result.schema.json",
         "Generated keep/revert autoloop simulation output",
         "`network_absorbable=false`",

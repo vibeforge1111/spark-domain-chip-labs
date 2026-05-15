@@ -23,10 +23,13 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Prepare Scorecard output directory
+        run: mkdir -p tmp
+
       - name: Run OpenSSF Scorecard
         uses: ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a # v2.4.3
         with:
-          results_file: /tmp/scorecard-results.json
+          results_file: tmp/scorecard-results.json
           results_format: json
           publish_results: false
 
@@ -34,6 +37,6 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: openssf-scorecard-results
-          path: /tmp/scorecard-results.json
+          path: tmp/scorecard-results.json
           if-no-files-found: error
           retention-days: 30

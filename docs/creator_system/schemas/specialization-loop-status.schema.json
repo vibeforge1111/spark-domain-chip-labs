@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/specialization-loop-status.schema.json",
+  "title": "Adaptive Creator Loop Specialization Loop Status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "loop_id",
+    "path",
+    "domain_chip",
+    "benchmark_pack",
+    "stage",
+    "status",
+    "evidence_state",
+    "baseline",
+    "candidate",
+    "comparison",
+    "held_out",
+    "trap",
+    "decision",
+    "claim_boundary",
+    "next_move",
+    "workspace_links",
+    "raw_artifact_refs",
+    "updated_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "adaptive_creator_loop.specialization_loop_status.v1"
+    },
+    "loop_id": {"type": "string", "minLength": 1},
+    "path": {"$ref": "#/$defs/path_ref"},
+    "domain_chip": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chip_id",
+        "name",
+        "owner_repo",
+        "ownership_scope",
+        "manifest_ref"
+      ],
+      "properties": {
+        "chip_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "owner_repo": {"const": "spark-domain-chip-labs"},
+        "ownership_scope": {"const": "specialization_loop_status_contract"},
+        "manifest_ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "benchmark_pack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pack_id", "manifest_ref", "version"],
+      "properties": {
+        "pack_id": {"type": "string", "minLength": 1},
+        "manifest_ref": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1}
+      }
+    },
+    "stage": {
+      "enum": [
+        "intake",
+        "baseline",
+        "candidate",
+        "comparison",
+        "held_out",
+        "trap",
+        "decision",
+        "handoff"
+      ]
+    },
+    "status": {
+      "enum": ["running", "blocked", "ready_for_review", "complete", "superseded"]
+    },
+    "evidence_state": {"enum": ["missing", "partial", "complete"]},
+    "baseline": {"$ref": "#/$defs/proof_ref"},
+    "candidate": {"$ref": "#/$defs/proof_ref"},
+    "comparison": {"$ref": "#/$defs/proof_ref"},
+    "held_out": {"$ref": "#/$defs/proof_ref"},
+    "trap": {"$ref": "#/$defs/proof_ref"},
+    "decision": {"enum": ["improved", "held_steady", "regressed", "unproven"]},
+    "claim_boundary": {
+      "type": "string",
+      "pattern": "improved requires|missing proof"
+    },
+    "next_move": {"type": "string", "minLength": 1},
+    "workspace_links": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/workspace_link"}
+    },
+    "raw_artifact_refs": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/artifact_ref"}
+    },
+    "updated_at": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "path_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path_id", "manifest_ref"],
+      "properties": {
+        "path_id": {"type": "string", "minLength": 1},
+        "manifest_ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "proof_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "artifact_ref", "summary"],
+      "properties": {
+        "status": {
+          "enum": ["present", "pass", "fail", "missing", "not_required"]
+        },
+        "artifact_ref": {"type": ["string", "null"], "minLength": 1},
+        "summary": {"type": "string", "minLength": 1},
+        "sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "delta": {"type": ["number", "null"]},
+        "metrics": {"type": "object"}
+      }
+    },
+    "artifact_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "path"],
+      "properties": {
+        "label": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "workspace_link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "href"],
+      "properties": {
+        "label": {"type": "string", "minLength": 1},
+        "href": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"decision": {"const": "improved"}},
+        "required": ["decision"]
+      },
+      "then": {
+        "properties": {
+          "evidence_state": {"const": "complete"},
+          "baseline": {
+            "properties": {
+              "status": {"enum": ["present", "pass"]},
+              "artifact_ref": {"type": "string", "minLength": 1}
+            }
+          },
+          "candidate": {
+            "properties": {
+              "status": {"enum": ["present", "pass"]},
+              "artifact_ref": {"type": "string", "minLength": 1}
+            }
+          },
+          "comparison": {
+            "properties": {
+              "status": {"const": "pass"},
+              "artifact_ref": {"type": "string", "minLength": 1}
+            }
+          },
+          "held_out": {
+            "allOf": [
+              {
+                "properties": {
+                  "status": {"enum": ["pass", "not_required"]}
+                }
+              },
+              {
+                "if": {
+                  "properties": {"status": {"const": "pass"}},
+                  "required": ["status"]
+                },
+                "then": {
+                  "properties": {
+                    "artifact_ref": {"type": "string", "minLength": 1}
+                  }
+                }
+              }
+            ]
+          },
+          "trap": {
+            "allOf": [
+              {
+                "properties": {
+                  "status": {"enum": ["pass", "not_required"]}
+                }
+              },
+              {
+                "if": {
+                  "properties": {"status": {"const": "pass"}},
+                  "required": ["status"]
+                },
+                "then": {
+                  "properties": {
+                    "artifact_ref": {"type": "string", "minLength": 1}
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
