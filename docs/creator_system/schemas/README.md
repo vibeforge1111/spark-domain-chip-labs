@@ -19,6 +19,8 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [benchmark-report.schema.json](benchmark-report.schema.json) | Generated and source-linked baseline/candidate benchmark reports |
 | [absorption-summary.schema.json](absorption-summary.schema.json) | Generated and source-linked absorption summary reports |
 | [specialization-path-manifest.schema.json](specialization-path-manifest.schema.json) | `specialization-path/path.manifest.json` |
+| [specialization-loop-status.schema.json](specialization-loop-status.schema.json) | Canonical Domain Chip Labs-owned status packet for a Spark specialization loop |
+| [specialization-loop-insight-packet.schema.json](specialization-loop-insight-packet.schema.json) | Local/private specialization insight packet derived from a canonical status packet |
 | [autoloop-simulation-result.schema.json](autoloop-simulation-result.schema.json) | Generated keep/revert autoloop simulation output |
 | [artifact-quality-report.schema.json](artifact-quality-report.schema.json) | Local artifact-quality score report |
 | [artifact-quality-benchmark-manifest.schema.json](artifact-quality-benchmark-manifest.schema.json) | Artifact-quality benchmark manifest |
@@ -82,6 +84,8 @@ These schemas cover the shared packet layer called for by the creator master pla
 - benchmark reports: `benchmark-report.schema.json`
 - absorption summary: `absorption-summary.schema.json`
 - specialization path: `specialization-path-manifest.schema.json`
+- specialization loop status: `specialization-loop-status.schema.json`
+- local/private specialization insight: `specialization-loop-insight-packet.schema.json`
 - loop policy: `loop-policy-manifest.schema.json`
 - autoloop simulation: `autoloop-simulation-result.schema.json`
 - Swarm promotion packet: `swarm-contribution-packet.schema.json`
@@ -165,6 +169,23 @@ Canvas, and Kanban to preserve read-only adapters, blocked-state visibility,
 controls in this methodology repo. In short: disabled creator controls remain
 part of the product review evidence until product repos pass separate runtime
 reviews.
+
+The specialization-loop status schema anchors the canonical Spark
+specialization-loop packet owned by Domain Chip Labs. It covers loop, path,
+domain chip, benchmark pack, stage, status, proof refs, decision, claim
+boundary, workspace links, raw artifacts, and update time. The `improved`
+decision is only shape-valid when baseline, candidate, and comparison proof are
+present, comparison passes, and held-out plus trap proof either pass with saved
+artifact refs or are explicitly `not_required`; otherwise the helper check
+treats the claim as `unproven`.
+
+The specialization-loop insight packet schema is the local/private companion to
+that canonical status packet. It uses a saved status packet hash, carries only
+proof references and bounded insight text, requires
+privacy-safe export flags, and keeps `network_absorbable`,
+`network_publication_allowed`, memory promotion, and product runtime wiring
+false. A packet may become a private review candidate only after privacy review;
+it is still not network absorption or publication approval.
 
 The generated multi-seed summary schemas anchor the generic domain-generator
 matrix separately from the Startup YC promotion gate. They require recomputed
