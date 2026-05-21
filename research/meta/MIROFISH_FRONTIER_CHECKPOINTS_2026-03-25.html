@@ -400,12 +400,17 @@
     }
 
     main().catch((error) => {
-      document.getElementById("checkpoints").innerHTML = `
-        <div class="card">
-          <h2>Load Failed</h2>
-          <p class="muted">${error.message}</p>
-        </div>
-      `;
+      const container = document.getElementById("checkpoints");
+      const errorCard = document.createElement("div");
+      errorCard.className = "card";
+      const heading = document.createElement("h2");
+      heading.textContent = "Load Failed";
+      const message = document.createElement("p");
+      message.className = "muted";
+      message.textContent = error.message;
+      errorCard.appendChild(heading);
+      errorCard.appendChild(message);
+      container.appendChild(errorCard);
     });
   </script>
 </body>
