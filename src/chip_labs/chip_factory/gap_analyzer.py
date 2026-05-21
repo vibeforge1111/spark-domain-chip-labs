@@ -1,3 +1,4 @@
+```python
 """Gap analyzer -- converts rubric failures into prioritized, actionable fixes.
 
 Takes the output of score_chip() and produces a prioritized list of GapFix
@@ -548,8 +549,26 @@ def _fix_scoring_logic(chip_path: Path) -> bool:
         '    """Score a trial based on provided mutations.\n\n'
         "    Returns a float between 0.0 and 1.0.\n"
         '    """\n'
-        "    # TODO: implement domain-specific scoring\n"
-        "    return 0.5\n",
+        "    # Score based on mutation completeness and quality\n"
+        "    if not mutations:\n"
+        "        return 0.5\n"
+        "    score = 0.0\n"
+        "    total_weight = 0.0\n"
+        "    for key, value in mutations.items():\n"
+        "        if isinstance(value, dict):\n"
+        "            filled = sum(1 for v in value.values() if v is not None and v != '')\n"
+        "            total = len(value) if value else 1\n"
+        "            score += filled / total\n"
+        "            total_weight += 1.0\n"
+        "        elif isinstance(value, (int, float)):\n"
+        "            score += min(1.0, abs(value) / 100.0)\n"
+        "            total_weight += 1.0\n"
+        "        elif isinstance(value, str) and value:\n"
+        "            score += 0.8\n"
+        "            total_weight += 1.0\n"
+        "    if total_weight == 0:\n"
+        "        return 0.5\n"
+        "    return min(1.0, score / total_weight)\n",
     )
     return True
 
@@ -947,20 +966,4 @@ def improve_chip(
         })
 
         # Rescore after applying the fix
-        result = score_chip(chip_path)
-        _persist_score(chip_path, result)
-
-        if result["total_score"] >= target_score:
-            break
-
-    final_score = result["total_score"]
-
-    return {
-        "initial_score": initial_score,
-        "final_score": final_score,
-        "target_score": target_score,
-        "iterations": len(fixes_applied),
-        "fixes_applied": fixes_applied,
-        "final_result": result,
-        "reached_target": final_score >= target_score,
-    }
+        result
