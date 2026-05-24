@@ -213,13 +213,31 @@ def _find_current_workspace_chip(start: Path | None = None) -> Path | None:
     return None
 
 
+_SAFE_HOOK_EXECUTABLES = frozenset({
+    "python", "python3", "node", "npx", "bash", "sh",
+})
+
+
+def _validate_hook_command(cmd: list[str] | str) -> None:
+    """Reject hook commands whose executable is not in the safe allowlist."""
+    executable = cmd[0] if isinstance(cmd, list) else cmd
+    base = Path(executable).name
+    if base not in _SAFE_HOOK_EXECUTABLES:
+        raise PermissionError(
+            f"Chip hook executable '{base}' is not in the safe allowlist "
+            f"({_SAFE_HOOK_EXECUTABLES}). Add it to _SAFE_HOOK_EXECUTABLES if "
+            f"this executable is intentionally supported."
+        )
+
+
 def _execute_subprocess(
     chip: ChipHandle,
     hook_name: str,
-    mutations: dict[str, Any] | None,
+    mutations: dict[str, Any] | None = None,
 ) -> HookResult:
     """Run the hook as a subprocess and capture JSON output."""
     cmd = chip.commands[hook_name]
+    _validate_hook_command(cmd)
 
     try:
         with tempfile.TemporaryDirectory(prefix="chip-hook-") as tmpdir:
