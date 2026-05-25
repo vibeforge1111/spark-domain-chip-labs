@@ -27,12 +27,12 @@ def _find_chip(explicit_path: str | None = None) -> Path:
         if p.exists():
             return p
         raise SystemExit(f"Chip path does not exist: {p}")
-    desktop = Path(os.path.expanduser("~")) / "Desktop"
-    candidate = desktop / "domain-chip-startup-yc"
+    spark_home = Path(os.path.expanduser("~")) / ".spark"
+    candidate = spark_home / "domain-chip-startup-yc"
     if candidate.exists():
         return candidate
     raise SystemExit(
-        "Could not find domain-chip-startup-yc on Desktop. "
+        "Could not find domain-chip-startup-yc in ~/.spark. "
         "Pass --chip-path explicitly."
     )
 

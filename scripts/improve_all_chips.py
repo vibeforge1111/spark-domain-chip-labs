@@ -26,9 +26,9 @@ from pathlib import Path
 
 
 def _discover_chips(only: str | None = None) -> list[Path]:
-    desktop = Path(os.path.expanduser("~")) / "Desktop"
+    spark_home = Path(os.path.expanduser("~")) / ".spark"
     chips = sorted(
-        p for p in desktop.iterdir()
+        p for p in spark_home.iterdir()
         if p.is_dir() and p.name.startswith("domain-chip-")
         and (p / "spark-chip.json").exists()
     )
