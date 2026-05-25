@@ -17,13 +17,13 @@ import pytest
 # ---------------------------------------------------------------------------
 
 def _discover_desktop_chips() -> list[Path]:
-    """Find all domain-chip-* directories on the Desktop."""
-    desktop = Path(os.path.expanduser("~")) / "Desktop"
-    if not desktop.exists():
+    """Find all domain-chip-* directories in ~/.spark."""
+    spark_home = Path(os.path.expanduser("~")) / ".spark"
+    if not spark_home.exists():
         return []
     chips = sorted(
         p
-        for p in desktop.iterdir()
+        for p in spark_home.iterdir()
         if p.is_dir()
         and p.name.startswith("domain-chip-")
         and (p / "spark-chip.json").exists()
@@ -46,7 +46,7 @@ def pytest_configure(config: pytest.Config) -> None:
     )
     config.addinivalue_line(
         "markers",
-        "real_chips: marks tests that require real chips on Desktop",
+        "real_chips: marks tests that require real chips in ~/.spark",
     )
 
 
@@ -56,7 +56,7 @@ def pytest_configure(config: pytest.Config) -> None:
 
 @pytest.fixture(scope="session")
 def desktop_chips() -> list[Path]:
-    """All discovered domain chip directories on Desktop."""
+    """All discovered domain chip directories in ~/.spark."""
     return list(_DESKTOP_CHIPS)
 
 
@@ -76,13 +76,13 @@ def startup_yc_path() -> Path:
     for chip in _DESKTOP_CHIPS:
         if chip.name == "domain-chip-startup-yc":
             return chip
-    pytest.skip("domain-chip-startup-yc not found on Desktop")
+    pytest.skip("domain-chip-startup-yc not found in ~/.spark")
 
 
 def _skip_if_no_chips() -> None:
     """Skip helper for environments without real chips."""
     if not _DESKTOP_CHIPS:
-        pytest.skip("No real domain chips found on Desktop")
+        pytest.skip("No real domain chips found in ~/.spark")
 
 
 @pytest.fixture(autouse=False)
