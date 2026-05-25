@@ -1429,7 +1429,7 @@ def score_portfolio_v3(
 ) -> dict[str, Any]:
     """Score all discovered chips and produce a portfolio report."""
     if search_dir is None:
-        search_dir = Path(os.path.expanduser("~")) / "Desktop"
+        search_dir = Path(os.path.expanduser("~")) / ".spark"
     else:
         search_dir = Path(search_dir)
 
