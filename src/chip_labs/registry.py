@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 
-DEFAULT_SEARCH_DIR = Path(os.path.expanduser("~")) / "Desktop"
+DEFAULT_SEARCH_DIR = Path(os.path.expanduser("~")) / "Desktop" if (Path(os.path.expanduser("~")) / "Desktop").exists() else Path(os.path.expanduser("~")) / ".spark" / "chip_labs"
 
 KNOWN_CHIP_PREFIXES = ("domain-chip-",)
 
