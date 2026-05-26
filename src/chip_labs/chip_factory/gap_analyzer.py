@@ -669,7 +669,7 @@ def _fix_has_skill_file(chip_path: Path) -> bool:
         from ..intelligence_serving.intelligence_server import build_skill
         build_skill(chip_path)
         return True
-    except Exception:
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as _exc:
         # Fallback: create a minimal skill file
         domain = chip_path.name.replace("domain-chip-", "")
         skill_path.write_text(
@@ -931,7 +931,7 @@ def improve_chip(
         gap = fixable[0]
         try:
             succeeded = gap.fix_fn(chip_path)
-        except Exception:
+        except (OSError, ValueError, KeyError, TypeError, AttributeError) as _exc:
             succeeded = False
 
         gap.applied = True

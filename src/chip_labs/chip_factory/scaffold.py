@@ -1073,7 +1073,7 @@ def scaffold_chip(
         slot_type = brief.get("dspy_slot_type", "packet_extractor")
         try:
             scaffold_dspy_slot(chip_dir, slot_type)
-        except Exception:
+        except (OSError, ValueError, KeyError, TypeError, AttributeError) as _exc:
             pass  # Non-fatal: DSPy slot is optional enhancement
 
     return chip_dir
