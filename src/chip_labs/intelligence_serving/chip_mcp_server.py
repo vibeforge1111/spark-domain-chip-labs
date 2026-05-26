@@ -404,7 +404,7 @@ class ChipMCPServer:
                     "suggestions": chip_suggestions,
                     "focus": focus,
                 })
-            except Exception:
+            except (OSError, ValueError, KeyError, TypeError, AttributeError) as _exc:
                 pass
 
         return {"suggestions": suggestions}

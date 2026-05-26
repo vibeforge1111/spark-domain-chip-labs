@@ -195,7 +195,7 @@ class MutationScoringEngine:
                         "label": sb.label,
                         "bonus": sb.bonus,
                     })
-            except Exception:
+            except (OSError, ValueError, KeyError, TypeError, AttributeError) as _exc:
                 # Defensive: a broken condition must never crash scoring.
                 pass
         running += sys_total
