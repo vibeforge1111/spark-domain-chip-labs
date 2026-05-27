@@ -257,7 +257,7 @@ class MutationScoringEngine:
                 if mutations.get(dim) == val:
                     return lane
 
-        return "exploratory_frontier"
+        return self._config.default_evidence_lane
 
 
 # ---------------------------------------------------------------------------
