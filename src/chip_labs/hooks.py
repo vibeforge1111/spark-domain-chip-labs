@@ -243,7 +243,7 @@ def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
                         "current_score": getattr(intel_obj, "current_score", 0),
                         "verdict": getattr(intel_obj, "verdict", ""),
                     }
-            except Exception:
+            except AttributeError:
                 pass
             entries.append({
                 "chip_path": str(chip.chip_path),
@@ -260,7 +260,7 @@ def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
                        indent=2, default=str),
             encoding="utf-8",
         )
-    except (OSError, Exception):
+    except OSError:
         pass
 
 
