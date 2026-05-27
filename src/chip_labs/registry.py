@@ -8,7 +8,16 @@ from pathlib import Path
 from typing import Any
 
 
-DEFAULT_SEARCH_DIR = Path(os.path.expanduser("~")) / "Desktop"
+def default_search_dir() -> Path:
+    """Return the default chip search directory for this host."""
+    home = Path(os.path.expanduser("~"))
+    desktop = home / "Desktop"
+    if desktop.exists():
+        return desktop
+    return home / ".spark" / "chip_labs"
+
+
+DEFAULT_SEARCH_DIR = default_search_dir()
 
 KNOWN_CHIP_PREFIXES = ("domain-chip-",)
 
@@ -18,7 +27,7 @@ def discover_chips(search_dir: str | Path | None = None) -> list[dict[str, Any]]
 
     Returns a list of chip descriptors with name, path, version, and manifest status.
     """
-    search_dir = Path(search_dir) if search_dir else DEFAULT_SEARCH_DIR
+    search_dir = Path(search_dir) if search_dir else default_search_dir()
     chips: list[dict[str, Any]] = []
 
     if not search_dir.exists():
