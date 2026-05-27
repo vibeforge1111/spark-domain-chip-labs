@@ -173,7 +173,7 @@ def _simulation_backed_suggestions(
 
         mutation = {
             "research_focus": "domain_discovery",
-            "simulation_domain": domain_id,
+            "simulation_scenario": domain_id,
         }
         if frozenset(mutation.items()) not in recent_set:
             suggestions.append({
