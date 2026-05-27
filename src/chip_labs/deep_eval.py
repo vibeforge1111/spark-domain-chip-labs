@@ -10,12 +10,13 @@ Zero external dependencies.  All statistical utilities are implemented inline.
 from __future__ import annotations
 
 import json
-import os
 import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+from .registry import default_search_dir
 
 
 # ---------------------------------------------------------------------------
@@ -1429,7 +1430,7 @@ def score_portfolio_v3(
 ) -> dict[str, Any]:
     """Score all discovered chips and produce a portfolio report."""
     if search_dir is None:
-        search_dir = Path(os.path.expanduser("~")) / "Desktop"
+        search_dir = default_search_dir()
     else:
         search_dir = Path(search_dir)
 
