@@ -355,8 +355,12 @@ class TestInjectContext:
         assert "No chips" in result
 
     def test_no_portfolio_loads_default(self) -> None:
-        # Without a real portfolio, should return graceful message
-        result = inject_context_for_task("test", portfolio=None)
+        # Do not scan the real host portfolio during unit tests.
+        with patch(
+            "chip_labs.intelligence_serving.chip_runtime.load_portfolio",
+            return_value=[],
+        ):
+            result = inject_context_for_task("test", portfolio=None)
         # Will either load real chips or return fallback message
         assert isinstance(result, str)
         assert len(result) > 0
