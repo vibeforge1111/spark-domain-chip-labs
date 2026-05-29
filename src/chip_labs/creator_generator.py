@@ -705,6 +705,14 @@ def _compute_reports(run_path: Path) -> dict[str, Any]:
         if case.get("trap") is True and candidate < baseline:
             trap_regressions += 1
             lane_result["trap_regressions"] += 1
+    if not baseline_scores:
+        return {
+            "case_count": 0,
+            "trap_regressions": 0,
+            "baseline": {"mean_score": 0.0},
+            "candidate": {"mean_score": 0.0, "mean_delta": 0.0, "lane_results": {}},
+            "absorption": {"mean_validated_pack_delta": 0.0, "trap_band_case_count": 0, "lane_results": {}},
+        }
     baseline_mean = sum(baseline_scores) / len(baseline_scores)
     candidate_mean = sum(candidate_scores) / len(candidate_scores)
     mean_delta = candidate_mean - baseline_mean
@@ -1117,6 +1125,15 @@ def _lane_results(lane_scores: dict[str, dict[str, Any]]) -> dict[str, dict[str,
     for lane, scores in sorted(lane_scores.items()):
         baseline_scores = scores["baseline_scores"]
         candidate_scores = scores["candidate_scores"]
+        if not baseline_scores:
+            results[lane] = {
+                "case_count": 0,
+                "baseline_mean": 0.0,
+                "candidate_mean": 0.0,
+                "mean_delta": 0.0,
+                "trap_regressions": scores["trap_regressions"],
+            }
+            continue
         baseline_mean = sum(baseline_scores) / len(baseline_scores)
         candidate_mean = sum(candidate_scores) / len(candidate_scores)
         results[lane] = {
