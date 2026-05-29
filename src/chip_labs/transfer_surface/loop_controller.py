@@ -242,6 +242,13 @@ def _seed_research_sources(chip_path: Path, brief: dict[str, Any]) -> int:
     return len(source_types)
 
 
+def _is_synthetic_json(path: Path) -> bool:
+    "Return True if a JSON file is marked as a synthetic scaffold placeholder."
+    try:
+        return bool(json.loads(path.read_text(encoding="utf-8")).get("synthetic", False))
+    except Exception:
+        return False
+
 def _seed_benchmark_baseline(chip_path: Path) -> bool:
     """Create a baseline benchmark result document.
 
@@ -257,15 +264,20 @@ def _seed_benchmark_baseline(chip_path: Path) -> bool:
 
     baseline = {
         "benchmark_id": "baseline-v1",
-        "description": "Baseline benchmark with empty mutations",
+        "synthetic": True,
+        "description": "Synthetic scaffold placeholder — no real benchmark has run yet.",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "mutations": {},
         "result": {
-            "score": 50,
+            "score": None,
             "evidence_lane": "benchmark_grounded",
-            "verdict": "defer",
+            "verdict": None,
         },
-        "notes": "Auto-generated baseline by loop controller research seeder.",
+        "notes": (
+            "Synthetic placeholder (synthetic=true). "
+            "Run a real benchmark to replace this file. "
+            "Scoring must not consume score or verdict from synthetic files."
+        ),
     }
 
     baseline_path.write_text(
@@ -779,7 +791,8 @@ class RecursiveLoopController:
             lane_dir.mkdir(parents=True, exist_ok=True)
 
             # Count existing files
-            existing = list(lane_dir.glob("*.md")) + list(lane_dir.glob("*.json"))
+            existing_json = [p for p in lane_dir.glob("*.json") if not _is_synthetic_json(p)]
+            existing = list(lane_dir.glob("*.md")) + existing_json
             if len(existing) < 2:
                 # Create an evidence note
                 note_path = lane_dir / f"evidence_note_{self._iteration:03d}.md"
