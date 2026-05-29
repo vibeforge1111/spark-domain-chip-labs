@@ -4,8 +4,10 @@ import copy
 import json
 from pathlib import Path
 
-import jsonschema
 import pytest
+
+
+jsonschema = pytest.importorskip("jsonschema")
 
 
 SWARM_REVIEW_BUNDLE_SCHEMA = Path(
