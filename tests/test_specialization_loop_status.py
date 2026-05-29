@@ -4,7 +4,6 @@ import copy
 import json
 from pathlib import Path
 
-import jsonschema
 import pytest
 
 from chip_labs.specialization_loop_status import (
@@ -18,6 +17,9 @@ from chip_labs.specialization_loop_status import (
     check_specialization_loop_status,
     improvement_proof_blockers,
 )
+
+
+jsonschema = pytest.importorskip("jsonschema")
 
 
 SCHEMA_PATH = Path("docs/creator_system/schemas/specialization-loop-status.schema.json")
