@@ -90,7 +90,8 @@ class TestSanitization:
         # 4 dots + 4 slashes + 1 dot in .evil = 9 unsafe chars → 9 underscores
         assert _sanitize("../../../etc/evil") == "_________etc_evil"
         assert _sanitize("../foo") == "___foo"
-        assert _sanitize("foo/../bar") == "foo____bar"  # 1 slash + 3 dots = 4 underscores
+        # foo/../bar: / + .. + / = 4 unsafe chars → 4 underscores
+        assert _sanitize("foo/../bar") == "foo____bar"
 
     def test_dot_only_replaced(self) -> None:
         assert _sanitize(".") == "_"
