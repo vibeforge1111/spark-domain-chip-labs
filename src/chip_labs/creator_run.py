@@ -3260,6 +3260,14 @@ def _recompute_creator_generator_reports(
             trap_regressions += 1
             lane_result["trap_regressions"] += 1
 
+    if not baseline_scores:
+        checks.append(
+            SmokeCheck("recompute_inputs", "skip", "No benchmark cases found."),
+        )
+        return {
+            "baseline": {"mean_score": 0.0},
+            "candidate": {"mean_score": 0.0, "mean_delta": 0.0, "trap_regressions": 0, "lane_results": {}},
+        }
     baseline_mean = sum(baseline_scores) / len(baseline_scores)
     candidate_mean = sum(candidate_scores) / len(candidate_scores)
     candidate_delta = candidate_mean - baseline_mean
@@ -3429,6 +3437,15 @@ def _generated_lane_results(
     for lane, scores in sorted(lane_scores.items()):
         baseline_scores = scores["baseline_scores"]
         candidate_scores = scores["candidate_scores"]
+        if not baseline_scores:
+            results[lane] = {
+                "case_count": 0,
+                "baseline_mean": 0.0,
+                "candidate_mean": 0.0,
+                "mean_delta": 0.0,
+                "trap_regressions": scores["trap_regressions"],
+            }
+            continue
         baseline_mean = sum(baseline_scores) / len(baseline_scores)
         candidate_mean = sum(candidate_scores) / len(candidate_scores)
         results[lane] = {
