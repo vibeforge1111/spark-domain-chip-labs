@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "spark-startup-bench-promotion-dossier.v1",
+  "schema_version": "spark-startup-bench-promotion-dossier.v1",
+  "status": "bundle_refresh_required",
+  "dossierId": "startup-bench-proof-stale-refresh-required",
+  "createdAt": "2026-05-30T10:20:00Z",
+  "generatedAt": "2026-05-30T10:20:00Z",
+  "runIdentity": {
+    "runId": "telegram-20260530t1020000",
+    "baselineId": "heuristic_resilient_operator",
+    "startupBenchRepo": "/repo/startup-bench",
+    "startupOperatorRepo": "/repo/specialization-path-startup-operator",
+    "scenarioPath": "/repo/specialization-path-startup-operator/benchmarks/scenarios/minimal_0to1_scenario.json",
+    "scenarioSha256": "2d9ef641c738fede38b3f18c060fbb2713721c794333ae914b262d9d63cc0e8a",
+    "toolCallsPath": "/repo/specialization-path-startup-operator/benchmarks/startup-operator.tool_calls.json",
+    "toolCallsSha256": "5178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a",
+    "seeds": [1],
+    "maxTurns": 6
+  },
+  "proofIdentity": {
+    "proofReportPath": "/repo/.spark-swarm/autoloop/runs/telegram-20260530t1020000/startup_bench_proof_report.json",
+    "proofReportSha256": "f5689e266af96386cfce1725496358d370ef51d24891f4ef9d54fe2d1ea2e6d6",
+    "privateScoreSummarySha256": "9e0457f6b61d847310cc684dc19b727c7cc00b48f27391e33342c6afd0ceafeb",
+    "runSignatureDigest": "573f2bad7e77311a97fc2d0ed8bf98fd1730e999d5f068afea6507ed0bf46b0e",
+    "proofGateBundleId": "startup-bench-proof-stale-refresh-required"
+  },
+  "candidateLock": {
+    "lockState": "refresh_required",
+    "targetKind": "startup_operator_tool_calls",
+    "targetPath": "/repo/specialization-path-startup-operator/benchmarks/startup-operator.tool_calls.json",
+    "targetSha256": "5178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a",
+    "scenarioPath": "/repo/specialization-path-startup-operator/benchmarks/scenarios/minimal_0to1_scenario.json",
+    "scenarioSha256": "2d9ef641c738fede38b3f18c060fbb2713721c794333ae914b262d9d63cc0e8a",
+    "artifactRef": ".spark-swarm/startup-bench-gates/latest/startup_bench_proof_gates.json",
+    "artifactSha256": "b073bdbb2a48e4b00a6986df0c5ed1462e1627a6393d212b3fafb100d785db63",
+    "createdBeforeEvaluation": false
+  },
+  "proofBinding": {
+    "schemaVersion": "spark-startup-bench-proof-binding.v1",
+    "proofReportPath": "/repo/.spark-swarm/autoloop/runs/telegram-20260530t1020000/startup_bench_proof_report.json",
+    "proofReportSha256": "f5689e266af96386cfce1725496358d370ef51d24891f4ef9d54fe2d1ea2e6d6",
+    "privateScoreSummarySha256": "9e0457f6b61d847310cc684dc19b727c7cc00b48f27391e33342c6afd0ceafeb",
+    "runSignature": {
+      "schemaVersion": "spark-startup-bench-run-signature.v1",
+      "digest": "573f2bad7e77311a97fc2d0ed8bf98fd1730e999d5f068afea6507ed0bf46b0e",
+      "payload": {"baselineId": "heuristic_resilient_operator", "toolCallsSha256": "5178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a"}
+    }
+  },
+  "proofGateBundle": {
+    "schemaVersion": "spark-startup-bench-proof-gate-bundle.v1",
+    "bundleId": "startup-bench-proof-stale-refresh-required",
+    "bundlePath": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-stale-refresh-required",
+    "manifestPath": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-stale-refresh-required/startup_bench_proof_gates.json",
+    "gateBundleSha256": "a0b9ffbee1af0a91c0e7815e82f2e33c7f93db1c6990276ea2ae48c0fe55c005",
+    "status": "bundle_refresh_required"
+  },
+  "privateScoreSummary": {
+    "baseline": {"scenarioScore": 0.6408, "outcomeScore": 0.6408, "constraintScore": 1.0, "pass": true, "runCount": 1, "violationCount": 0},
+    "candidate": {"scenarioScore": 0.8657, "outcomeScore": 0.8657, "constraintScore": 1.0, "pass": true, "runCount": 1, "violationCount": 0},
+    "comparison": {"candidateBeatsBaseline": true, "candidateMinusBaseline": 0.2249, "metric": "scenario_score"},
+    "scoreClaimAllowed": false
+  },
+  "proofGates": {
+    "hiddenHeldout": {"status": "blocked", "pass": false, "blockers": ["proof_gate_bundle_binding_mismatch:proofReportSha256"], "scoreClaimAllowed": false},
+    "wrapperRaw": {"status": "blocked", "pass": false, "blockers": ["proof_gate_bundle_binding_mismatch:runSignature"], "scoreClaimAllowed": false},
+    "sidecarReview": {"status": "blocked", "pass": false, "blockers": ["bundle_refresh_required"], "scoreClaimAllowed": false},
+    "repeatedStability": {"status": "blocked", "pass": false, "blockers": ["bundle_refresh_required"], "scoreClaimAllowed": false},
+    "wallClockStability": {"status": "blocked", "pass": false, "blockers": ["bundle_refresh_required"], "scoreClaimAllowed": false},
+    "scoreReconciliation": {"status": "blocked", "pass": false, "blockers": ["bundle_refresh_required"], "scoreClaimAllowed": false}
+  },
+  "promotionDossier": {
+    "status": "bundle_refresh_required",
+    "scoreClaimAllowed": false,
+    "improvementClaimAllowed": false,
+    "public_ready": false,
+    "network_absorbable": false,
+    "blockers": [
+      "proof_gate_bundle_binding_mismatch:proofReportSha256",
+      "proof_gate_bundle_binding_mismatch:runSignature"
+    ],
+    "nextGate": "refresh_startup_bench_proof_gate_bundle"
+  },
+  "scoreClaimAllowed": false,
+  "score_claim_allowed": false,
+  "improvementClaimAllowed": false,
+  "improvement_claim_allowed": false,
+  "public_ready": false,
+  "publicReady": false,
+  "network_absorbable": false,
+  "networkAbsorbable": false,
+  "blockers": [
+    "proof_gate_bundle_binding_mismatch:proofReportSha256",
+    "proof_gate_bundle_binding_mismatch:runSignature"
+  ],
+  "nextGate": "refresh_startup_bench_proof_gate_bundle",
+  "nextAction": "Regenerate the immutable proof gate bundle for this proof report before reading any promotion state.",
+  "artifactManifest": {
+    "schemaVersion": "spark-startup-bench-promotion-dossier-artifact-manifest.v1",
+    "artifactCount": 1,
+    "artifacts": [
+      {
+        "artifactType": "latest_pointer",
+        "path": ".spark-swarm/startup-bench-gates/latest/startup_bench_proof_gates.json",
+        "sha256": "b073bdbb2a48e4b00a6986df0c5ed1462e1627a6393d212b3fafb100d785db63",
+        "bytes": 2525
+      }
+    ]
+  },
+  "claimBoundary": "A stale or mismatched proof bundle blocks every score and improvement claim even when the private score moved upward."
+}
