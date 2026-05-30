@@ -81,6 +81,11 @@ def check_product_runtime_review_packet(packet: dict[str, Any]) -> dict[str, Any
     if not isinstance(surfaces, dict):
         surfaces = {}
         blocking_checks.append("surfaces_missing")
+    else:
+        unknown_surfaces = sorted(set(surfaces) - set(REQUIRED_SURFACES))
+        blocking_checks.extend(
+            f"unknown_surface:{surface}" for surface in unknown_surfaces
+        )
 
     surface_status: dict[str, bool] = {}
     for surface in REQUIRED_SURFACES:
