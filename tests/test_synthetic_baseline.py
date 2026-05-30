@@ -1,39 +1,28 @@
 import json
 import pytest
 from pathlib import Path
-from chip_labs.transfer_surface.loop_controller import _is_synthetic_json
+from chip_labs.transfer_surface.loop_controller import _is_synthetic_json, _seed_benchmark_baseline
 
 
-def _get_controller(tmp_path):
-    import chip_labs.transfer_surface.loop_controller as lc
-    ctrl = object.__new__(lc.LoopController)
-    return ctrl
+def _baseline_path(chip_path: Path) -> Path:
+    return chip_path / "research" / "benchmark_grounded" / "baseline_benchmark.json"
 
 
 def test_baseline_has_synthetic_true(tmp_path):
-    ctrl = _get_controller(tmp_path)
-    bench_dir = tmp_path / "benchmark"
-    bench_dir.mkdir()
-    ctrl._seed_benchmark_baseline(bench_dir)
-    data = json.loads((bench_dir / "baseline_benchmark.json").read_text(encoding="utf-8"))
+    _seed_benchmark_baseline(tmp_path)
+    data = json.loads(_baseline_path(tmp_path).read_text(encoding="utf-8"))
     assert data.get("synthetic") is True
 
 
 def test_baseline_score_is_none(tmp_path):
-    ctrl = _get_controller(tmp_path)
-    bench_dir = tmp_path / "benchmark"
-    bench_dir.mkdir()
-    ctrl._seed_benchmark_baseline(bench_dir)
-    data = json.loads((bench_dir / "baseline_benchmark.json").read_text(encoding="utf-8"))
+    _seed_benchmark_baseline(tmp_path)
+    data = json.loads(_baseline_path(tmp_path).read_text(encoding="utf-8"))
     assert data["result"]["score"] is None
 
 
 def test_baseline_verdict_is_none(tmp_path):
-    ctrl = _get_controller(tmp_path)
-    bench_dir = tmp_path / "benchmark"
-    bench_dir.mkdir()
-    ctrl._seed_benchmark_baseline(bench_dir)
-    data = json.loads((bench_dir / "baseline_benchmark.json").read_text(encoding="utf-8"))
+    _seed_benchmark_baseline(tmp_path)
+    data = json.loads(_baseline_path(tmp_path).read_text(encoding="utf-8"))
     assert data["result"]["verdict"] is None
 
 
