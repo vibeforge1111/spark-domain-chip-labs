@@ -185,7 +185,7 @@
       "provenance": {
         "source": "startup_yc_operator_validation_v1",
         "input_hashes": {
-          "held_out_founder_advice_evidence.json": "f8ed655cd10d0d44884a2a9b5c6112c60a95154f4abcb3691f54e15b9c5256e2"
+          "held_out_founder_advice_evidence.json": "813993dcafef8d753e09703990765e4b0d3a4cd029ddcb054fd8ff7ec8fb92c6"
         },
         "missing_inputs": []
       },
