@@ -4,7 +4,10 @@ import json
 import re
 from pathlib import Path
 
-import jsonschema
+import pytest
+
+
+jsonschema = pytest.importorskip("jsonschema")
 
 
 README = Path("docs/creator_system/README.md")
