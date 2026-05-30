@@ -525,37 +525,4 @@ NETWORK EFFECTS:
     export = {
         "meta": {
             "title": "MiroFish Viral Domain Prediction",
-            "domain_count": len(VIRAL_DOMAINS),
-            "agent_count": len(personas),
-            "ensemble_runs": 20,
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        },
-        "results": [{
-            "domain_id": r["domain_id"],
-            "label": r["label"],
-            "ensemble_mean": r["ens_mean"],
-            "ensemble_p10": r["ens_p10"],
-            "ensemble_p90": r["ens_p90"],
-            "builder_adoption": r["builder"],
-            "enterprise_adoption": r["enterprise"],
-            "advocacy_rate": r["advocacy"],
-            "tipping_point": r["tipping"],
-            "static_score": r["static"],
-            "most_sensitive_factor": r["most_sensitive"],
-        } for r in results],
-        "clusters": {name: {
-            "members": members,
-            "avg_adoption": sum(result_map[m]["ens_mean"] for m in members if m in result_map) / len(members),
-        } for name, members in clusters.items()},
-    }
-
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    output_path = os.path.join(script_dir, "..", "viz", "viral_predictions.json")
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, "w") as f:
-        json.dump(export, f, indent=2)
-    print(f"Exported to {output_path}")
-
-
-if __name__ == "__main__":
-    main()
+            "domain_count": len
