@@ -4,8 +4,10 @@ import copy
 import json
 from pathlib import Path
 
-import jsonschema
 import pytest
+
+
+jsonschema = pytest.importorskip("jsonschema")
 
 
 SCHEMA_PATH = Path("docs/creator_system/schemas/spark-os-labs-review-packet.schema.json")
