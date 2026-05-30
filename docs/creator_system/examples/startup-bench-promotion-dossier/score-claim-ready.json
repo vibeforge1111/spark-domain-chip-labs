@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "spark-startup-bench-promotion-dossier.v1",
+  "schema_version": "spark-startup-bench-promotion-dossier.v1",
+  "status": "score_claim_ready",
+  "dossierId": "startup-bench-proof-score-claim-ready",
+  "createdAt": "2026-05-30T12:00:00Z",
+  "generatedAt": "2026-05-30T12:00:00Z",
+  "runIdentity": {
+    "runId": "telegram-20260530t1200000",
+    "baselineId": "heuristic_resilient_operator",
+    "startupBenchRepo": "/repo/startup-bench",
+    "startupOperatorRepo": "/repo/specialization-path-startup-operator",
+    "scenarioPath": "/repo/specialization-path-startup-operator/benchmarks/scenarios/minimal_0to1_scenario.json",
+    "scenarioSha256": "2d9ef641c738fede38b3f18c060fbb2713721c794333ae914b262d9d63cc0e8a",
+    "toolCallsPath": "/repo/specialization-path-startup-operator/benchmarks/startup-operator.tool_calls.json",
+    "toolCallsSha256": "6178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a",
+    "seeds": [1, 2, 3],
+    "maxTurns": 6
+  },
+  "proofIdentity": {
+    "proofReportPath": "/repo/.spark-swarm/autoloop/runs/telegram-20260530t1200000/startup_bench_proof_report.json",
+    "proofReportSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "privateScoreSummarySha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "runSignatureDigest": "score-ready-run-signature",
+    "proofGateBundleId": "startup-bench-proof-score-claim-ready"
+  },
+  "candidateLock": {
+    "lockState": "locked",
+    "targetKind": "startup_operator_tool_calls",
+    "targetPath": "/repo/specialization-path-startup-operator/benchmarks/startup-operator.tool_calls.json",
+    "targetSha256": "6178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a",
+    "scenarioPath": "/repo/specialization-path-startup-operator/benchmarks/scenarios/minimal_0to1_scenario.json",
+    "scenarioSha256": "2d9ef641c738fede38b3f18c060fbb2713721c794333ae914b262d9d63cc0e8a",
+    "artifactRef": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-score-claim-ready/candidate_run_lock.json",
+    "artifactSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "createdBeforeEvaluation": true
+  },
+  "proofBinding": {
+    "schemaVersion": "spark-startup-bench-proof-binding.v1",
+    "proofReportPath": "/repo/.spark-swarm/autoloop/runs/telegram-20260530t1200000/startup_bench_proof_report.json",
+    "proofReportSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "privateScoreSummarySha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "runSignature": {
+      "schemaVersion": "spark-startup-bench-run-signature.v1",
+      "digest": "score-ready-run-signature",
+      "payload": {"baselineId": "heuristic_resilient_operator", "toolCallsSha256": "6178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a"}
+    }
+  },
+  "proofGateBundle": {
+    "schemaVersion": "spark-startup-bench-proof-gate-bundle.v1",
+    "bundleId": "startup-bench-proof-score-claim-ready",
+    "bundlePath": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-score-claim-ready",
+    "manifestPath": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-score-claim-ready/startup_bench_proof_gates.json",
+    "gateBundleSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "status": "passed"
+  },
+  "privateScoreSummary": {
+    "baseline": {"scenarioScore": 0.641, "outcomeScore": 0.641, "constraintScore": 1.0, "pass": true, "runCount": 3, "violationCount": 0},
+    "candidate": {"scenarioScore": 0.866, "outcomeScore": 0.866, "constraintScore": 1.0, "pass": true, "runCount": 3, "violationCount": 0},
+    "comparison": {"candidateBeatsBaseline": true, "candidateMinusBaseline": 0.225, "metric": "scenario_score"},
+    "scoreClaimAllowed": true
+  },
+  "proofGates": {
+    "hiddenHeldout": {"status": "passed", "pass": true, "blockers": [], "scoreClaimAllowed": true},
+    "wrapperRaw": {"status": "passed", "pass": true, "blockers": [], "scoreClaimAllowed": true},
+    "sidecarReview": {"status": "approved", "pass": true, "blockers": [], "scoreClaimAllowed": true},
+    "repeatedStability": {"status": "passed", "pass": true, "blockers": [], "scoreClaimAllowed": true},
+    "wallClockStability": {"status": "passed", "pass": true, "blockers": [], "scoreClaimAllowed": true},
+    "scoreReconciliation": {"status": "score_reconciled", "pass": true, "blockers": [], "scoreClaimAllowed": true}
+  },
+  "promotionDossier": {
+    "status": "score_claim_ready",
+    "scoreClaimAllowed": true,
+    "improvementClaimAllowed": true,
+    "public_ready": true,
+    "network_absorbable": false,
+    "blockers": [],
+    "nextGate": "keep_or_revert_decision"
+  },
+  "scoreClaimAllowed": true,
+  "score_claim_allowed": true,
+  "improvementClaimAllowed": true,
+  "improvement_claim_allowed": true,
+  "public_ready": true,
+  "publicReady": true,
+  "network_absorbable": false,
+  "networkAbsorbable": false,
+  "blockers": [],
+  "nextGate": "keep_or_revert_decision",
+  "nextAction": "Show the bounded improvement claim and ask for an explicit keep or revert decision before exporting a reusable lesson packet.",
+  "artifactManifest": {
+    "schemaVersion": "spark-startup-bench-promotion-dossier-artifact-manifest.v1",
+    "artifactCount": 1,
+    "artifacts": [
+      {
+        "artifactType": "candidate_run_lock",
+        "path": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-score-claim-ready/candidate_run_lock.json",
+        "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "bytes": 4096
+      }
+    ]
+  },
+  "claimBoundary": "Score and improvement claims are allowed for this bound Startup Bench candidate. Network absorption is still separate from this dossier."
+}
