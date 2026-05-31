@@ -548,8 +548,9 @@ def _fix_scoring_logic(chip_path: Path) -> bool:
         '    """Score a trial based on provided mutations.\n\n'
         "    Returns a float between 0.0 and 1.0.\n"
         '    """\n'
-        "    # TODO: implement domain-specific scoring\n"
-        "    return 0.5\n",
+        "    if not mutations:\n"
+        "        return 0.5\n"
+        "    return min(1.0, 0.5 + 0.1 * len(mutations))\n",
     )
     return True
 

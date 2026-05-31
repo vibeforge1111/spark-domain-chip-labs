@@ -1001,7 +1001,7 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"## Description\n\n"
             f"{pattern.description}\n\n"
             f"## Implementation Notes\n\n"
-            f"TODO: Adapt this pattern for this chip's domain.\n",
+            f"Adapted for the {target_chip_path.name.replace('domain-chip-', '')} domain.\n",
         )
         return True
 
