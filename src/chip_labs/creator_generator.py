@@ -705,8 +705,8 @@ def _compute_reports(run_path: Path) -> dict[str, Any]:
         if case.get("trap") is True and candidate < baseline:
             trap_regressions += 1
             lane_result["trap_regressions"] += 1
-    baseline_mean = sum(baseline_scores) / len(baseline_scores)
-    candidate_mean = sum(candidate_scores) / len(candidate_scores)
+    baseline_mean = sum(baseline_scores) / len(baseline_scores) if baseline_scores else 0.0
+    candidate_mean = sum(candidate_scores) / len(candidate_scores) if candidate_scores else 0.0
     mean_delta = candidate_mean - baseline_mean
     trap_count = sum(1 for case in cases if case.get("trap") is True)
     lane_results = _lane_results(lane_scores)
@@ -1117,8 +1117,8 @@ def _lane_results(lane_scores: dict[str, dict[str, Any]]) -> dict[str, dict[str,
     for lane, scores in sorted(lane_scores.items()):
         baseline_scores = scores["baseline_scores"]
         candidate_scores = scores["candidate_scores"]
-        baseline_mean = sum(baseline_scores) / len(baseline_scores)
-        candidate_mean = sum(candidate_scores) / len(candidate_scores)
+        baseline_mean = sum(baseline_scores) / len(baseline_scores) if baseline_scores else 0.0
+        candidate_mean = sum(candidate_scores) / len(candidate_scores) if candidate_scores else 0.0
         results[lane] = {
             "case_count": scores["case_count"],
             "baseline_mean": round(baseline_mean, 4),
