@@ -54,6 +54,23 @@ def _write_text_output(output_path: str | None, content: str) -> None:
         print(content)
 
 
+def _positive_int(value: str) -> int:
+    """argparse type for an int that must be > 0.
+
+    Used by --max-iterations on `doctor` and `autoloop`, where a zero or
+    negative value would either skip improvement entirely (doctor) or
+    crash inside the loop config (autoloop) with a less actionable
+    error than the argparse failure surfaced here.
+    """
+    try:
+        parsed = int(value)
+    except (TypeError, ValueError):
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {value!r}")
+    if parsed <= 0:
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {parsed}")
+    return parsed
+
+
 def _get_chip_search_dir() -> str | None:
     """Get the chip search directory from environment or default."""
     return os.environ.get("SPARK_CHIP_SEARCH_DIR", None)
@@ -1678,7 +1695,7 @@ def main() -> None:
     p_doctor = sub.add_parser("doctor", help="Run gap analysis and auto-fix on a chip.")
     p_doctor.add_argument("chip_path", type=str, help="Path to chip directory.")
     p_doctor.add_argument("--target-score", type=int, default=60, help="Target quality score.")
-    p_doctor.add_argument("--max-iterations", type=int, default=20, help="Max fix iterations.")
+    p_doctor.add_argument("--max-iterations", type=_positive_int, default=20, help="Max fix iterations.")
     p_doctor.set_defaults(func=cmd_doctor)
 
     # score
@@ -1693,7 +1710,7 @@ def main() -> None:
     p_loop.add_argument("--brief", type=str, default=None, help="Domain brief to scaffold from.")
     p_loop.add_argument("--output-dir", type=str, default=None, help="Output dir for scaffold.")
     p_loop.add_argument("--target-score", type=int, default=80, help="Target quality score.")
-    p_loop.add_argument("--max-iterations", type=int, default=50, help="Max loop iterations.")
+    p_loop.add_argument("--max-iterations", type=_positive_int, default=50, help="Max loop iterations.")
     p_loop.set_defaults(func=cmd_autoloop)
 
     # transfer
