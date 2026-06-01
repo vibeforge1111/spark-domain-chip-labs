@@ -1599,6 +1599,17 @@ def cmd_startup_yc_production_gate_workbench(args: argparse.Namespace) -> None:
 # CLI parser
 # ---------------------------------------------------------------------------
 
+def _positive_int(value: str) -> int:
+    """argparse helper: accept only strictly positive integers."""
+    try:
+        ivalue = int(value)
+    except (TypeError, ValueError):
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {value!r}")
+    if ivalue <= 0:
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {ivalue}")
+    return ivalue
+
+
 def main() -> None:
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -1738,7 +1749,7 @@ def main() -> None:
     p_si = sub.add_parser("serve-intelligence", help="Inject chip intelligence context for a task.")
     p_si.add_argument("task", type=str, help="Task description to match against chips.")
     p_si.add_argument("--style", choices=["concise", "detailed", "guardrails_only"], default="concise")
-    p_si.add_argument("--max-chips", type=int, default=2)
+    p_si.add_argument("--max-chips", type=_positive_int, default=2, help="Maximum number of relevant chips to include (must be a positive integer)")
     p_si.add_argument("--output", type=str, default=None)
     p_si.set_defaults(func=cmd_serve_intelligence)
 
