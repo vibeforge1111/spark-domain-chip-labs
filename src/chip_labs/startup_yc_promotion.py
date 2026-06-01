@@ -755,11 +755,14 @@ def _evidence_paths(plan_path: Path, plan: dict[str, Any]) -> list[dict[str, Any
 
 def _load_rows(path: Path) -> list[dict[str, Any]]:
     if path.suffix == ".jsonl":
-        rows = [
-            json.loads(line)
-            for line in path.read_text(encoding="utf-8").splitlines()
-            if line.strip()
-        ]
+        rows = []
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                rows.append(json.loads(line))
+            except (json.JSONDecodeError, ValueError):
+                continue
     else:
         data = json.loads(path.read_text(encoding="utf-8"))
         if isinstance(data, dict):
