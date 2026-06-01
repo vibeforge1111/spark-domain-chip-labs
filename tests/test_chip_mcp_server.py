@@ -226,6 +226,55 @@ class TestFindChip:
         chip = server._find_chip("nonexistent-chip")
         assert chip is None
 
+    def test_match_is_case_insensitive(self) -> None:
+        # Pre-fix: chip.chip_name == chip_name was byte-exact, so 'Test-Chip'
+        # (mixed case) returned None even though the chip exists. The
+        # callers report 'Chip not found' to the operator, hiding the typo.
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        chip = server._find_chip("Test-Chip")
+        assert chip is not None
+        assert chip.chip_name == "test-chip"
+
+    def test_match_tolerates_surrounding_whitespace(self) -> None:
+        # Copy-paste MCP arguments often carry stray whitespace; the
+        # lookup should canonicalize before comparing.
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        chip = server._find_chip("  test-chip  ")
+        assert chip is not None
+        assert chip.chip_name == "test-chip"
+
+    def test_whitespace_only_input_returns_none(self) -> None:
+        # A whitespace-only chip_name is not a real lookup; return None
+        # straight away rather than walking the portfolio looking for "".
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        assert server._find_chip("   ") is None
+        assert server._find_chip("") is None
+
+    def test_partial_match_with_prefix_is_case_insensitive(self) -> None:
+        # The 'domain-chip-' prefix stripping path should also tolerate
+        # casing: 'Domain-Chip-Startup-YC' resolves to 'startup-yc' chip.
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        chip = server._find_chip("Domain-Chip-Startup-YC")
+        assert chip is not None
+        assert chip.chip_name == "startup-yc"
+
+    def test_non_string_input_returns_none(self) -> None:
+        # MCP tool arguments arrive as a dict; if the caller passes a
+        # non-string (e.g. None from args.get without default), the
+        # lookup should fail closed instead of raising AttributeError.
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        assert server._find_chip(None) is None  # type: ignore[arg-type]
+
 
 # ---------------------------------------------------------------------------
 # TestChipDoctrines

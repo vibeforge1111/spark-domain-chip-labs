@@ -156,16 +156,32 @@ class ChipMCPServer:
         self._last_load = now
 
     def _find_chip(self, chip_name: str) -> Any | None:
-        """Find a chip by name in the portfolio."""
+        """Find a chip by name in the portfolio.
+
+        The lookup is case-insensitive and tolerates surrounding whitespace
+        because chip_name typically arrives from operator-typed MCP tool
+        arguments (e.g. an LLM-rendered field). Canonical-spelling input
+        (`startup-yc`, `domain-chip-startup-yc`) is matched the same way as
+        before; only mixed-case (`Startup-YC`) and whitespace-padded
+        (`  startup-yc `) inputs now find the chip they meant instead of
+        returning None and surfacing a misleading 'Chip not found' error.
+        """
         self._ensure_portfolio()
-        # Try exact match first
+        if not isinstance(chip_name, str):
+            return None
+        # Normalize once: strip surrounding whitespace and casefold for a
+        # locale-stable case-insensitive compare.
+        needle = chip_name.strip().casefold()
+        if not needle:
+            return None
+        # Try exact (normalized) match first.
         for chip in self._portfolio:
-            if chip.chip_name == chip_name:
+            if chip.chip_name.casefold() == needle:
                 return chip
-        # Try partial match (domain-chip- prefix stripped)
-        clean = chip_name.replace("domain-chip-", "")
+        # Try partial match (domain-chip- prefix stripped) on both sides.
+        clean = needle.replace("domain-chip-", "")
         for chip in self._portfolio:
-            if chip.chip_name.replace("domain-chip-", "") == clean:
+            if chip.chip_name.casefold().replace("domain-chip-", "") == clean:
                 return chip
         return None
 
