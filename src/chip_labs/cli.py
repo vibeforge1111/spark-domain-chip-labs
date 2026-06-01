@@ -1599,6 +1599,18 @@ def cmd_startup_yc_production_gate_workbench(args: argparse.Namespace) -> None:
 # CLI parser
 # ---------------------------------------------------------------------------
 
+
+def _positive_int(value: str) -> int:
+    """argparse helper: accept only strictly positive integers."""
+    try:
+        ivalue = int(value)
+    except (TypeError, ValueError):
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {value!r}")
+    if ivalue <= 0:
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {ivalue}")
+    return ivalue
+
+
 def main() -> None:
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -2038,21 +2050,21 @@ def main() -> None:
     p_mirofish_portfolio_run.add_argument("--rounds", type=int, default=20, help="Simulation rounds.")
     p_mirofish_portfolio_run.add_argument(
         "--flagship-count-per-type",
-        type=int,
+        type=_positive_int,
         default=50,
-        help="Personas per type for the flagship run.",
+        help="Personas per type for the flagship run (must be a positive integer).",
     )
     p_mirofish_portfolio_run.add_argument(
         "--ensemble-runs",
-        type=int,
+        type=_positive_int,
         default=30,
-        help="Monte Carlo runs for the ensemble.",
+        help="Monte Carlo runs for the ensemble (must be a positive integer).",
     )
     p_mirofish_portfolio_run.add_argument(
         "--ensemble-count-per-type",
-        type=int,
+        type=_positive_int,
         default=15,
-        help="Personas per type per ensemble run.",
+        help="Personas per type per ensemble run (must be a positive integer).",
     )
     p_mirofish_portfolio_run.add_argument(
         "--convergence-threshold",
@@ -2062,15 +2074,15 @@ def main() -> None:
     )
     p_mirofish_portfolio_run.add_argument(
         "--min-runs",
-        type=int,
+        type=_positive_int,
         default=15,
-        help="Minimum ensemble runs before convergence checks.",
+        help="Minimum ensemble runs before convergence checks (must be a positive integer).",
     )
     p_mirofish_portfolio_run.add_argument(
         "--bootstrap-resamples",
-        type=int,
+        type=_positive_int,
         default=1000,
-        help="Bootstrap resamples for ensemble confidence intervals.",
+        help="Bootstrap resamples for ensemble confidence intervals (must be a positive integer).",
     )
     p_mirofish_portfolio_run.set_defaults(func=cmd_mirofish_portfolio_run)
 
