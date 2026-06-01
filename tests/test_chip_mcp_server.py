@@ -226,6 +226,43 @@ class TestFindChip:
         chip = server._find_chip("nonexistent-chip")
         assert chip is None
 
+    def test_match_is_case_insensitive(self) -> None:
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        chip = server._find_chip("Test-Chip")
+        assert chip is not None
+        assert chip.chip_name == "test-chip"
+
+    def test_match_tolerates_surrounding_whitespace(self) -> None:
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        chip = server._find_chip("  test-chip  ")
+        assert chip is not None
+        assert chip.chip_name == "test-chip"
+
+    def test_empty_chip_name_returns_none(self) -> None:
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        assert server._find_chip("") is None
+        assert server._find_chip("   ") is None
+
+    def test_partial_match_with_prefix_is_case_insensitive(self) -> None:
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        chip = server._find_chip("Domain-Chip-Startup-YC")
+        assert chip is not None
+        assert chip.chip_name == "startup-yc"
+
+    def test_non_string_input_returns_none(self) -> None:
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        assert server._find_chip(None) is None  # type: ignore[arg-type]
+
 
 # ---------------------------------------------------------------------------
 # TestChipDoctrines
