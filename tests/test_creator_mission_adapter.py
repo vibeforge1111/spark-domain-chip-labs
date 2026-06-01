@@ -379,6 +379,74 @@ def test_cli_creator_mission_status_outputs_read_only_packet(tmp_path: Path) -> 
     ]["telegram"]["text"]
 
 
+def test_cli_creator_mission_status_bounds_malformed_packet_errors(
+    tmp_path: Path,
+) -> None:
+    smoke_path = tmp_path / "smoke.json"
+    output_path = tmp_path / "mission.json"
+    smoke_path.write_text("{not-json", encoding="utf-8")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "creator-mission-status",
+            "--smoke",
+            str(smoke_path),
+            "--output",
+            str(output_path),
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 1
+    assert (
+        "creator-mission-status: smoke must be a readable JSON object packet."
+        in result.stderr
+    )
+    assert "Traceback" not in result.stderr
+    assert str(smoke_path) not in result.stderr
+    assert not output_path.exists()
+
+
+def test_cli_creator_mission_status_bounds_non_object_packet_errors(
+    tmp_path: Path,
+) -> None:
+    smoke_path = tmp_path / "smoke.json"
+    output_path = tmp_path / "mission.json"
+    smoke_path.write_text("[]", encoding="utf-8")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "chip_labs.cli",
+            "creator-mission-status",
+            "--smoke",
+            str(smoke_path),
+            "--output",
+            str(output_path),
+        ],
+        cwd=Path.cwd(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 1
+    assert (
+        "creator-mission-status: smoke must be a readable JSON object packet."
+        in result.stderr
+    )
+    assert "Traceback" not in result.stderr
+    assert str(smoke_path) not in result.stderr
+    assert not output_path.exists()
+
+
 def test_product_surface_fixture_matches_current_adapter_output() -> None:
     smoke = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-smoke.json").read_text(encoding="utf-8"))
     doctor = json.loads((PRODUCT_SURFACE_FIXTURE / "startup-yc-doctor.json").read_text(encoding="utf-8"))

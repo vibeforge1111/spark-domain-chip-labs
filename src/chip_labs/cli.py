@@ -1424,28 +1424,30 @@ def cmd_creator_mission_status(args: argparse.Namespace) -> None:
     """Build a read-only creator mission status for product surfaces."""
     from .creator_mission_adapter import build_creator_mission_status, load_json_packet
 
+    def load_packet_arg(label: str, path: str | None) -> dict[str, Any] | None:
+        if not path:
+            return None
+        try:
+            return load_json_packet(path)
+        except (OSError, UnicodeError, ValueError):
+            raise SystemExit(
+                f"creator-mission-status: {label} must be a readable JSON object packet."
+            ) from None
+
     result = build_creator_mission_status(
         mission_id=args.mission_id,
         publish_mode=args.publish_mode,
-        smoke=load_json_packet(args.smoke),
-        doctor=load_json_packet(args.doctor) if args.doctor else None,
-        tool_operation=(
-            load_json_packet(args.tool_operation) if args.tool_operation else None
+        smoke=load_packet_arg("smoke", args.smoke),
+        doctor=load_packet_arg("doctor", args.doctor),
+        tool_operation=load_packet_arg("tool-operation", args.tool_operation),
+        artifact_quality=load_packet_arg("artifact-quality", args.artifact_quality),
+        content_route=load_packet_arg("content-route", args.content_route),
+        retrieval_memory=load_packet_arg("retrieval-memory", args.retrieval_memory),
+        startup_validation=load_packet_arg(
+            "startup-validation", args.startup_validation
         ),
-        artifact_quality=(
-            load_json_packet(args.artifact_quality) if args.artifact_quality else None
-        ),
-        content_route=load_json_packet(args.content_route) if args.content_route else None,
-        retrieval_memory=(
-            load_json_packet(args.retrieval_memory) if args.retrieval_memory else None
-        ),
-        startup_validation=(
-            load_json_packet(args.startup_validation) if args.startup_validation else None
-        ),
-        generated_multi_seed=(
-            load_json_packet(args.generated_multi_seed)
-            if args.generated_multi_seed
-            else None
+        generated_multi_seed=load_packet_arg(
+            "generated-multi-seed", args.generated_multi_seed
         ),
     )
     _write_output(args.output, result)
