@@ -54,6 +54,17 @@ def _write_text_output(output_path: str | None, content: str) -> None:
         print(content)
 
 
+def _positive_int(value: str) -> int:
+    """argparse type for integer flags that must be greater than zero."""
+    try:
+        parsed = int(value)
+    except (TypeError, ValueError) as error:
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {value!r}") from error
+    if parsed <= 0:
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {parsed}")
+    return parsed
+
+
 def _get_chip_search_dir() -> str | None:
     """Get the chip search directory from environment or default."""
     return os.environ.get("SPARK_CHIP_SEARCH_DIR", None)
@@ -1680,7 +1691,7 @@ def main() -> None:
     p_doctor = sub.add_parser("doctor", help="Run gap analysis and auto-fix on a chip.")
     p_doctor.add_argument("chip_path", type=str, help="Path to chip directory.")
     p_doctor.add_argument("--target-score", type=int, default=60, help="Target quality score.")
-    p_doctor.add_argument("--max-iterations", type=int, default=20, help="Max fix iterations.")
+    p_doctor.add_argument("--max-iterations", type=_positive_int, default=20, help="Max fix iterations.")
     p_doctor.set_defaults(func=cmd_doctor)
 
     # score
@@ -1695,7 +1706,7 @@ def main() -> None:
     p_loop.add_argument("--brief", type=str, default=None, help="Domain brief to scaffold from.")
     p_loop.add_argument("--output-dir", type=str, default=None, help="Output dir for scaffold.")
     p_loop.add_argument("--target-score", type=int, default=80, help="Target quality score.")
-    p_loop.add_argument("--max-iterations", type=int, default=50, help="Max loop iterations.")
+    p_loop.add_argument("--max-iterations", type=_positive_int, default=50, help="Max loop iterations.")
     p_loop.set_defaults(func=cmd_autoloop)
 
     # transfer
@@ -1740,7 +1751,12 @@ def main() -> None:
     p_si = sub.add_parser("serve-intelligence", help="Inject chip intelligence context for a task.")
     p_si.add_argument("task", type=str, help="Task description to match against chips.")
     p_si.add_argument("--style", choices=["concise", "detailed", "guardrails_only"], default="concise")
-    p_si.add_argument("--max-chips", type=int, default=2)
+    p_si.add_argument(
+        "--max-chips",
+        type=_positive_int,
+        default=2,
+        help="Maximum number of relevant chips to include (must be a positive integer).",
+    )
     p_si.add_argument("--output", type=str, default=None)
     p_si.set_defaults(func=cmd_serve_intelligence)
 
@@ -1963,7 +1979,12 @@ def main() -> None:
         default=None,
         help="Comma-separated discovered domain_ids to treat as provisional benchmark members in the spec.",
     )
-    p_mirofish_hybrid.add_argument("--rounds", type=int, default=20, help="Simulation rounds for the hybrid harness.")
+    p_mirofish_hybrid.add_argument(
+        "--rounds",
+        type=_positive_int,
+        default=20,
+        help="Simulation rounds for the hybrid harness (must be a positive integer).",
+    )
     p_mirofish_hybrid.add_argument(
         "--flagship-count-per-type",
         type=int,
@@ -2037,24 +2058,29 @@ def main() -> None:
     )
     p_mirofish_portfolio_run.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_portfolio_run.add_argument("--seed", type=int, default=42, help="Base seed for the run.")
-    p_mirofish_portfolio_run.add_argument("--rounds", type=int, default=20, help="Simulation rounds.")
+    p_mirofish_portfolio_run.add_argument(
+        "--rounds",
+        type=_positive_int,
+        default=20,
+        help="Simulation rounds (must be a positive integer).",
+    )
     p_mirofish_portfolio_run.add_argument(
         "--flagship-count-per-type",
-        type=int,
+        type=_positive_int,
         default=50,
-        help="Personas per type for the flagship run.",
+        help="Personas per type for the flagship run (must be a positive integer).",
     )
     p_mirofish_portfolio_run.add_argument(
         "--ensemble-runs",
-        type=int,
+        type=_positive_int,
         default=30,
-        help="Monte Carlo runs for the ensemble.",
+        help="Monte Carlo runs for the ensemble (must be a positive integer).",
     )
     p_mirofish_portfolio_run.add_argument(
         "--ensemble-count-per-type",
-        type=int,
+        type=_positive_int,
         default=15,
-        help="Personas per type per ensemble run.",
+        help="Personas per type per ensemble run (must be a positive integer).",
     )
     p_mirofish_portfolio_run.add_argument(
         "--convergence-threshold",
@@ -2064,15 +2090,15 @@ def main() -> None:
     )
     p_mirofish_portfolio_run.add_argument(
         "--min-runs",
-        type=int,
+        type=_positive_int,
         default=15,
-        help="Minimum ensemble runs before convergence checks.",
+        help="Minimum ensemble runs before convergence checks (must be a positive integer).",
     )
     p_mirofish_portfolio_run.add_argument(
         "--bootstrap-resamples",
-        type=int,
+        type=_positive_int,
         default=1000,
-        help="Bootstrap resamples for ensemble confidence intervals.",
+        help="Bootstrap resamples for ensemble confidence intervals (must be a positive integer).",
     )
     p_mirofish_portfolio_run.set_defaults(func=cmd_mirofish_portfolio_run)
 
@@ -2083,13 +2109,23 @@ def main() -> None:
     )
     p_mirofish_portfolio_readout.add_argument("--input", type=str, required=True, help="Input portfolio run path.")
     p_mirofish_portfolio_readout.add_argument("--output", type=str, default=None, help="Output JSON file path.")
-    p_mirofish_portfolio_readout.add_argument("--top-n", type=int, default=30, help="Number of overall domains to include.")
-    p_mirofish_portfolio_readout.add_argument("--enterprise-n", type=int, default=15, help="Number of enterprise domains to include.")
+    p_mirofish_portfolio_readout.add_argument(
+        "--top-n",
+        type=_positive_int,
+        default=30,
+        help="Number of overall domains to include (must be a positive integer).",
+    )
+    p_mirofish_portfolio_readout.add_argument(
+        "--enterprise-n",
+        type=_positive_int,
+        default=15,
+        help="Number of enterprise domains to include (must be a positive integer).",
+    )
     p_mirofish_portfolio_readout.add_argument(
         "--newly-discovered-n",
-        type=int,
+        type=_positive_int,
         default=15,
-        help="Number of v4 / newly added domains to include.",
+        help="Number of v4 / newly added domains to include (must be a positive integer).",
     )
     p_mirofish_portfolio_readout.set_defaults(func=cmd_mirofish_portfolio_readout)
 
@@ -2115,18 +2151,23 @@ def main() -> None:
     )
     p_mirofish_frontier_readout.add_argument("--input", type=str, required=True, help="Input frontier run path.")
     p_mirofish_frontier_readout.add_argument("--output", type=str, default=None, help="Output JSON file path.")
-    p_mirofish_frontier_readout.add_argument("--top-n", type=int, default=25, help="Number of overall domains to include.")
+    p_mirofish_frontier_readout.add_argument(
+        "--top-n",
+        type=_positive_int,
+        default=25,
+        help="Number of overall domains to include (must be a positive integer).",
+    )
     p_mirofish_frontier_readout.add_argument(
         "--watchlist-n",
-        type=int,
+        type=_positive_int,
         default=15,
-        help="Number of watchlist domains to include.",
+        help="Number of watchlist domains to include (must be a positive integer).",
     )
     p_mirofish_frontier_readout.add_argument(
         "--benchmark-n",
-        type=int,
+        type=_positive_int,
         default=5,
-        help="Number of above-benchmark domains to include.",
+        help="Number of above-benchmark domains to include (must be a positive integer).",
     )
     p_mirofish_frontier_readout.set_defaults(func=cmd_mirofish_frontier_readout)
 
@@ -2173,9 +2214,24 @@ def main() -> None:
     )
     p_mirofish_frontier_shortlist.add_argument("--input", type=str, required=True, help="Input frontier readout path.")
     p_mirofish_frontier_shortlist.add_argument("--output", type=str, default=None, help="Output JSON file path.")
-    p_mirofish_frontier_shortlist.add_argument("--winner-n", type=int, default=10, help="Number of winner domains to include.")
-    p_mirofish_frontier_shortlist.add_argument("--breakout-n", type=int, default=8, help="Number of breakout domains to include.")
-    p_mirofish_frontier_shortlist.add_argument("--speculative-n", type=int, default=8, help="Number of speculative domains to include.")
+    p_mirofish_frontier_shortlist.add_argument(
+        "--winner-n",
+        type=_positive_int,
+        default=10,
+        help="Number of winner domains to include (must be a positive integer).",
+    )
+    p_mirofish_frontier_shortlist.add_argument(
+        "--breakout-n",
+        type=_positive_int,
+        default=8,
+        help="Number of breakout domains to include (must be a positive integer).",
+    )
+    p_mirofish_frontier_shortlist.add_argument(
+        "--speculative-n",
+        type=_positive_int,
+        default=8,
+        help="Number of speculative domains to include (must be a positive integer).",
+    )
     p_mirofish_frontier_shortlist.set_defaults(func=cmd_mirofish_frontier_shortlist)
 
     # mirofish-frontier-shortlist-export
