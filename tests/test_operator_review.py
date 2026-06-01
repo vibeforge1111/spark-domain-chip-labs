@@ -11,6 +11,7 @@ from chip_labs.creator_generator import generate_creator_system_from_brief
 from chip_labs.operator_review import (
     build_operator_review_packet,
     check_operator_review_packet,
+    load_operator_review_packet,
 )
 
 
@@ -61,6 +62,14 @@ def test_generated_creator_run_includes_open_operator_review_packet(
         "rollback_review",
         "publication_approval",
     }
+
+
+def test_load_operator_review_packet_reports_malformed_json(tmp_path: Path) -> None:
+    packet_path = tmp_path / "operator-review.json"
+    packet_path.write_text("{not json", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="Failed to parse operator review packet"):
+        load_operator_review_packet(packet_path)
 
 
 def test_operator_review_check_passes_complete_review_without_absorption() -> None:
