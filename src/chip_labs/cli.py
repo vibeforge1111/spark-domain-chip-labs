@@ -1599,6 +1599,18 @@ def cmd_startup_yc_production_gate_workbench(args: argparse.Namespace) -> None:
 # CLI parser
 # ---------------------------------------------------------------------------
 
+
+def _positive_int(value: str) -> int:
+    """argparse helper: accept only strictly positive integers."""
+    try:
+        ivalue = int(value)
+    except (TypeError, ValueError):
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {value!r}")
+    if ivalue <= 0:
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {ivalue}")
+    return ivalue
+
+
 def main() -> None:
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -2113,18 +2125,18 @@ def main() -> None:
     )
     p_mirofish_frontier_readout.add_argument("--input", type=str, required=True, help="Input frontier run path.")
     p_mirofish_frontier_readout.add_argument("--output", type=str, default=None, help="Output JSON file path.")
-    p_mirofish_frontier_readout.add_argument("--top-n", type=int, default=25, help="Number of overall domains to include.")
+    p_mirofish_frontier_readout.add_argument("--top-n", type=_positive_int, default=25, help="Number of overall domains to include (must be a positive integer).")
     p_mirofish_frontier_readout.add_argument(
         "--watchlist-n",
-        type=int,
+        type=_positive_int,
         default=15,
-        help="Number of watchlist domains to include.",
+        help="Number of watchlist domains to include (must be a positive integer).",
     )
     p_mirofish_frontier_readout.add_argument(
         "--benchmark-n",
-        type=int,
+        type=_positive_int,
         default=5,
-        help="Number of above-benchmark domains to include.",
+        help="Number of above-benchmark domains to include (must be a positive integer).",
     )
     p_mirofish_frontier_readout.set_defaults(func=cmd_mirofish_frontier_readout)
 
