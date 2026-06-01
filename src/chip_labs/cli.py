@@ -1599,6 +1599,18 @@ def cmd_startup_yc_production_gate_workbench(args: argparse.Namespace) -> None:
 # CLI parser
 # ---------------------------------------------------------------------------
 
+
+def _positive_int(value: str) -> int:
+    """argparse helper: accept only strictly positive integers."""
+    try:
+        ivalue = int(value)
+    except (TypeError, ValueError):
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {value!r}")
+    if ivalue <= 0:
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {ivalue}")
+    return ivalue
+
+
 def main() -> None:
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -1961,7 +1973,7 @@ def main() -> None:
         default=None,
         help="Comma-separated discovered domain_ids to treat as provisional benchmark members in the spec.",
     )
-    p_mirofish_hybrid.add_argument("--rounds", type=int, default=20, help="Simulation rounds for the hybrid harness.")
+    p_mirofish_hybrid.add_argument("--rounds", type=_positive_int, default=20, help="Simulation rounds for the hybrid harness (must be a positive integer).")
     p_mirofish_hybrid.add_argument(
         "--flagship-count-per-type",
         type=int,
@@ -2035,7 +2047,7 @@ def main() -> None:
     )
     p_mirofish_portfolio_run.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_mirofish_portfolio_run.add_argument("--seed", type=int, default=42, help="Base seed for the run.")
-    p_mirofish_portfolio_run.add_argument("--rounds", type=int, default=20, help="Simulation rounds.")
+    p_mirofish_portfolio_run.add_argument("--rounds", type=_positive_int, default=20, help="Simulation rounds (must be a positive integer).")
     p_mirofish_portfolio_run.add_argument(
         "--flagship-count-per-type",
         type=int,
