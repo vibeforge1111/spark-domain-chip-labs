@@ -30,6 +30,14 @@ def test_retrieval_memory_accepts_correct_prior_decision() -> None:
     assert result["blocking_checks"] == []
 
 
+def test_load_retrieval_memory_packet_reports_malformed_json(tmp_path: Path) -> None:
+    packet_path = tmp_path / "retrieval-memory.json"
+    packet_path.write_text("{not json", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="Failed to parse retrieval memory packet"):
+        load_retrieval_memory_packet(packet_path)
+
+
 def test_saved_correct_prior_decision_check_matches_current_checker() -> None:
     saved = json.loads(
         (FIXTURE_DIR / "correct_prior_decision.check.json").read_text(encoding="utf-8")
