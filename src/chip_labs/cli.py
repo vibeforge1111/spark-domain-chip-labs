@@ -1599,6 +1599,18 @@ def cmd_startup_yc_production_gate_workbench(args: argparse.Namespace) -> None:
 # CLI parser
 # ---------------------------------------------------------------------------
 
+
+def _positive_int(value: str) -> int:
+    """argparse helper: accept only strictly positive integers."""
+    try:
+        ivalue = int(value)
+    except (TypeError, ValueError):
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {value!r}")
+    if ivalue <= 0:
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got {ivalue}")
+    return ivalue
+
+
 def main() -> None:
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -2171,9 +2183,9 @@ def main() -> None:
     )
     p_mirofish_frontier_shortlist.add_argument("--input", type=str, required=True, help="Input frontier readout path.")
     p_mirofish_frontier_shortlist.add_argument("--output", type=str, default=None, help="Output JSON file path.")
-    p_mirofish_frontier_shortlist.add_argument("--winner-n", type=int, default=10, help="Number of winner domains to include.")
-    p_mirofish_frontier_shortlist.add_argument("--breakout-n", type=int, default=8, help="Number of breakout domains to include.")
-    p_mirofish_frontier_shortlist.add_argument("--speculative-n", type=int, default=8, help="Number of speculative domains to include.")
+    p_mirofish_frontier_shortlist.add_argument("--winner-n", type=_positive_int, default=10, help="Number of winner domains to include (must be a positive integer).")
+    p_mirofish_frontier_shortlist.add_argument("--breakout-n", type=_positive_int, default=8, help="Number of breakout domains to include (must be a positive integer).")
+    p_mirofish_frontier_shortlist.add_argument("--speculative-n", type=_positive_int, default=8, help="Number of speculative domains to include (must be a positive integer).")
     p_mirofish_frontier_shortlist.set_defaults(func=cmd_mirofish_frontier_shortlist)
 
     # mirofish-frontier-shortlist-export
