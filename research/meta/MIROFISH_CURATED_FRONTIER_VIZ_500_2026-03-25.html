@@ -895,9 +895,9 @@ function showTooltip(mx, my, node) {
     tt.querySelector('.tt-type').textContent = `PERSONA TYPE (${node.count} agents)`;
 
     body += `<div class="tt-section">Values</div>`;
-    body += `<div style="font-size:10px;color:${node.color};">${node.values.join(', ')}</div>`;
+    body += `<div style="font-size:10px;color:${node.color};">${escapeHTML(node.values.join(', '))}</div>`;
     body += `<div class="tt-section">Pain Points</div>`;
-    body += `<div style="font-size:10px;color:rgba(255,255,255,0.4);">${node.pain_points.join(', ')}</div>`;
+    body += `<div style="font-size:10px;color:rgba(255,255,255,0.4);">${escapeHTML(node.pain_points.join(', '))}</div>`;
 
     body += `<div class="tt-row" style="margin-top:6px;color:rgba(255,255,255,0.35);">`;
     body += `Influence ${node.influence.toFixed(2)} | Threshold ${node.threshold.toFixed(2)} | Risk ${node.risk.toFixed(2)}`;
@@ -917,7 +917,7 @@ function showTooltip(mx, my, node) {
         const pct = (d.rate * 100).toFixed(1);
         const barW = Math.max(2, d.rate * 120);
         body += `<div class="tt-row">
-          <span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${d.label}</span>
+          <span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escapeHTML(d.label)}</span>
           <div class="tt-bar" style="width:${barW}px;background:${node.color};"></div>
           <span class="tt-val" style="color:${node.color};">${pct}%</span>
         </div>`;
@@ -953,9 +953,9 @@ function showTooltip(mx, my, node) {
       breakdown.forEach(b => {
         const pct = (b.rate * 100).toFixed(1);
         const barW = Math.max(2, b.rate * 120);
-        const matchStr = b.matched.length > 0 ? `<span class="tt-matched">[${b.matched.join(', ')}]</span>` : '';
+        const matchStr = b.matched.length > 0 ? `<span class="tt-matched">[${escapeHTML(b.matched.join(', '))}]</span>` : '';
         body += `<div class="tt-row">
-          <span style="color:${b.color};min-width:80px;">${b.label}</span>
+          <span style="color:${b.color};min-width:80px;">${escapeHTML(b.label)}</span>
           <div class="tt-bar" style="width:${barW}px;background:${b.color};"></div>
           <span class="tt-val" style="color:${b.color};">${pct}%</span>
           ${matchStr}
@@ -964,7 +964,7 @@ function showTooltip(mx, my, node) {
     }
 
     if (d.domain_tags && d.domain_tags.length > 0) {
-      body += `<div class="tt-tags">Tags: ${d.domain_tags.join(', ')}</div>`;
+      body += `<div class="tt-tags">Tags: ${escapeHTML(d.domain_tags.join(', '))}</div>`;
     }
 
     // v4 metrics row
@@ -1077,7 +1077,7 @@ function buildLegend() {
     const pd = PERSONA_DATA[ptype];
     html += `<div class="legend-item">
       <div class="legend-dot" style="background:${pd.color};"></div>
-      <span>${pd.label}</span>
+      <span>${escapeHTML(pd.label)}</span>
     </div>`;
   });
   html += '<div class="legend-title" style="margin-top:6px;">Domains</div>';
@@ -1106,9 +1106,9 @@ function updateRankingList() {
   sorted.forEach((d, i) => {
     const adoption = getAdoptionAtRound(d, currentRound);
     const color = DOMAIN_COLORS[d.category] || DOMAIN_COLORS.candidate;
-    html += `<div class="rank-item" data-domain="${d.domain_id}" onclick="selectDomainById('${d.domain_id}')" style="opacity:${adoption > 0.005 ? 1 : 0.35}">
+    html += `<div class="rank-item" data-domain="${escapeHTML(d.domain_id)}" onclick="selectDomainById('${escapeHTML(d.domain_id)}')" style="opacity:${adoption > 0.005 ? 1 : 0.35}">
       <div class="rank-pos ${i < 3 ? 'top3' : i < 10 ? 'top10' : ''}">${i + 1}</div>
-      <div class="rank-name" title="${d.label || d.domain_id}">${d.domain_id}</div>
+      <div class="rank-name" title="${escapeHTML(d.label || d.domain_id)}">${escapeHTML(d.domain_id)}</div>
       <div class="rank-bar"><div class="rank-bar-fill" style="width:${Math.min(100, adoption * 100)}%;background:${color};"></div></div>
       <div class="rank-pct" style="color:${color};">${(adoption * 100).toFixed(1)}%</div>
     </div>`;
@@ -1304,8 +1304,8 @@ function updateShockList() {
     html += `<div class="shock-item" style="opacity:${active ? 1 : 0.3};">
       <div class="shock-dot" style="background:${color};"></div>
       <div class="shock-round">R${s.inject_at_round}</div>
-      <div class="shock-label">${s.label}</div>
-      <div class="shock-effect" style="color:${color};">${s.effect}</div>
+      <div class="shock-label">${escapeHTML(s.label)}</div>
+      <div class="shock-effect" style="color:${color};">${escapeHTML(s.effect)}</div>
     </div>`;
   });
   container.innerHTML = html;
@@ -1352,26 +1352,26 @@ function generateFeedForRound(round) {
     if (prev) {
       const delta = snap.adoption_rate - prev.adoption_rate;
       if (delta > 0.04) {
-        addFeedItem(`<span class="feed-hl">${d.domain_id}</span> +${(delta * 100).toFixed(1)}% adoption to ${(snap.adoption_rate * 100).toFixed(1)}%`);
+        addFeedItem(`<span class="feed-hl">${escapeHTML(d.domain_id)}</span> +${(delta * 100).toFixed(1)}% adoption to ${(snap.adoption_rate * 100).toFixed(1)}%`);
       }
       // v4: churn events
       const prevChurn = (prev.stage_distribution || {}).churned || 0;
       const curChurn = (snap.stage_distribution || {}).churned || 0;
       if (curChurn > prevChurn) {
-        addFeedItem(`<span class="feed-warn">${d.domain_id}</span> +${curChurn - prevChurn} churned`);
+        addFeedItem(`<span class="feed-warn">${escapeHTML(d.domain_id)}</span> +${curChurn - prevChurn} churned`);
       }
       // v4: committed events
       const prevCommit = (prev.stage_distribution || {}).committed || 0;
       const curCommit = (snap.stage_distribution || {}).committed || 0;
       if (curCommit > prevCommit + 1) {
-        addFeedItem(`<span class="feed-hl">${d.domain_id}</span> +${curCommit - prevCommit} committed users`);
+        addFeedItem(`<span class="feed-hl">${escapeHTML(d.domain_id)}</span> +${curCommit - prevCommit} committed users`);
       }
     }
   });
   if (DATA.shocks) {
     DATA.shocks.forEach(s => {
       if (s.inject_at_round === round) {
-        addFeedItem(`<span class="feed-warn">${s.label}</span> hits ${s.affects_domains.slice(0, 3).join(', ')}`);
+        addFeedItem(`<span class="feed-warn">${escapeHTML(s.label)}</span> hits ${escapeHTML(s.affects_domains.slice(0, 3).join(', '))}`);
       }
     });
   }
