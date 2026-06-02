@@ -237,7 +237,10 @@ def _load_production_readiness(path_value: str | Path | None) -> dict[str, Any] 
     if path_value is None:
         return None
     path = Path(path_value)
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        data = {}
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
