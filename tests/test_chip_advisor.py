@@ -16,6 +16,7 @@ from chip_labs.chip_advisor import (
     DoctrineGuidance,
     _classify_guidance,
     _compute_effective_confidence,
+    _get_intel,
     advise_post_action,
     advise_pre_action,
     doctrine_check,
@@ -130,6 +131,74 @@ class TestComputeEffectiveConfidence:
         doc = {"confidence": "high"}
         score = _compute_effective_confidence(doc)
         assert score == pytest.approx(0.75 * 0.5)
+
+
+# ---------------------------------------------------------------------------
+# TestGetIntel
+# ---------------------------------------------------------------------------
+
+class TestGetIntelNarrowsException:
+    def test_returns_intelligence_when_property_is_set(self) -> None:
+        intel = _make_intel()
+        chip = MockChipHandle(intelligence=intel)
+
+        assert _get_intel(chip) is intel
+
+    def test_falls_through_to_extract_when_property_is_missing(self) -> None:
+        @dataclass
+        class MinimalChipHandle:
+            chip_path: Path
+
+        intel = _make_intel()
+        with patch("chip_labs.chip_advisor.extract_intelligence", return_value=intel):
+            assert _get_intel(MinimalChipHandle(Path("/mock"))) is intel  # type: ignore[arg-type]
+
+    def test_non_attribute_error_from_property_propagates(self) -> None:
+        class BrokenChipHandle:
+            chip_path = Path("/mock")
+
+            @property
+            def intelligence(self) -> ChipIntelligence | None:
+                raise RuntimeError("property bug")
+
+        with pytest.raises(RuntimeError, match="property bug"):
+            _get_intel(BrokenChipHandle())  # type: ignore[arg-type]
+
+
+# ---------------------------------------------------------------------------
+# TestLoadPortfolioFallbacks
+# ---------------------------------------------------------------------------
+
+class TestLoadPortfolioImportNarrows:
+    def test_pre_action_returns_proceed_when_load_portfolio_raises_oserror(self) -> None:
+        request = AdvisoryRequest(action_description="test")
+
+        with patch(
+            "chip_labs.intelligence_serving.chip_runtime.load_portfolio",
+            side_effect=OSError("search dir unavailable"),
+        ):
+            response = advise_pre_action(request, portfolio=None)
+
+        assert response.verdict == "proceed"
+        assert response.guidance == []
+
+    def test_pre_action_propagates_non_oserror_non_importerror(self) -> None:
+        request = AdvisoryRequest(action_description="test")
+
+        with patch(
+            "chip_labs.intelligence_serving.chip_runtime.load_portfolio",
+            side_effect=RuntimeError("runtime bug"),
+        ):
+            with pytest.raises(RuntimeError, match="runtime bug"):
+                advise_pre_action(request, portfolio=None)
+
+    def test_doctrine_check_propagates_non_oserror_non_importerror(self) -> None:
+        with patch(
+            "chip_labs.intelligence_serving.chip_runtime.load_portfolio",
+            side_effect=ValueError("portfolio bug"),
+        ):
+            with pytest.raises(ValueError, match="portfolio bug"):
+                doctrine_check("test", portfolio=None)
 
 
 # ---------------------------------------------------------------------------

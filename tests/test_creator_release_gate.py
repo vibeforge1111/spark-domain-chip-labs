@@ -163,6 +163,62 @@ def test_creator_release_gate_accepts_saved_product_review_but_keeps_release_blo
     )
 
 
+def test_creator_release_gate_blocks_malformed_startup_network_review(
+    tmp_path: Path,
+) -> None:
+    malformed_review = tmp_path / "startup-network-review.json"
+    malformed_review.write_text("{not valid json", encoding="utf-8")
+
+    gate = build_creator_release_gate(
+        validation_plan_path=VALIDATION_PLAN,
+        startup_network_review_path=malformed_review,
+    )
+
+    _validate_schema(gate)
+    startup_phase = next(
+        phase
+        for phase in gate["phase_status"]
+        if phase["phase"] == "startup_yc_network_absorption_review"
+    )
+    assert startup_phase["passed"] is False
+    assert startup_phase["evidence_mode"] == "malformed"
+    assert startup_phase["blocking_checks"] == ["malformed_startup_network_review"]
+    assert (
+        "startup_yc_network_absorption_review:malformed_startup_network_review"
+        in gate["blocking_checks"]
+    )
+    assert gate["verdict"] == "blocked"
+    assert gate["network_absorbable"] is False
+
+
+def test_creator_release_gate_blocks_malformed_product_runtime_review(
+    tmp_path: Path,
+) -> None:
+    malformed_review = tmp_path / "product-runtime-review.json"
+    malformed_review.write_text("{not valid json", encoding="utf-8")
+
+    gate = build_creator_release_gate(
+        validation_plan_path=VALIDATION_PLAN,
+        product_runtime_review_path=malformed_review,
+    )
+
+    _validate_schema(gate)
+    product_phase = next(
+        phase
+        for phase in gate["phase_status"]
+        if phase["phase"] == "product_runtime_integration_review"
+    )
+    assert product_phase["passed"] is False
+    assert product_phase["evidence_mode"] == "malformed"
+    assert product_phase["blocking_checks"] == ["malformed_product_runtime_review"]
+    assert (
+        "product_runtime_integration_review:malformed_product_runtime_review"
+        in gate["blocking_checks"]
+    )
+    assert gate["verdict"] == "blocked"
+    assert gate["network_absorbable"] is False
+
+
 def test_creator_release_gate_schema_rejects_absorbable_claim() -> None:
     jsonschema = pytest.importorskip("jsonschema")
     gate = build_creator_release_gate(validation_plan_path=VALIDATION_PLAN)

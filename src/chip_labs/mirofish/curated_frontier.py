@@ -697,7 +697,10 @@ def _round_robin_select(cluster_candidates: list[list[dict[str, Any]]], target_c
 def build_curated_frontier_packet(target_count: int = 500, profile: str = "hot_now") -> dict[str, Any]:
     """Build a hand-curated frontier source packet with real idea diversity."""
     if profile != "hot_now":
-        raise ValueError(f"Unsupported curated frontier profile: {profile}")
+        raise ValueError(
+            f"Unsupported curated frontier profile: {profile!r}. "
+            "Supported profiles: hot_now."
+        )
 
     _validate_curated_source(_CURATED_CLUSTER_SPECS)
     cluster_candidates = [
