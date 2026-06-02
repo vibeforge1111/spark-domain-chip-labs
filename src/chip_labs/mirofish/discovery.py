@@ -720,7 +720,12 @@ def format_discovery_program_markdown(
     elif packet_kind == "mirofish_discovery_program":
         lines.extend(_format_discovery_result_markdown(packet))
     else:
-        raise ValueError(f"Unsupported discovery packet_kind for markdown export: {packet_kind}")
+        raise ValueError(
+            f"Unsupported discovery packet_kind for markdown export: {packet_kind!r}. "
+            "Supported packet_kinds: mirofish_discovery_program_scaffold, "
+            "mirofish_discovery_program_input, mirofish_discovery_program_cluster_packets, "
+            "mirofish_discovery_program."
+        )
 
     return "\n".join(lines).rstrip() + "\n"
 
