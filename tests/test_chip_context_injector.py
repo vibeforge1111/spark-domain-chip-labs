@@ -7,12 +7,14 @@ from pathlib import Path
 from typing import Any
 from unittest.mock import patch
 
+import pytest
 
 from chip_labs.chip_context_injector import (
     _estimate_tokens,
     _format_contradiction,
     _format_doctrine_concise,
     _format_doctrine_detailed,
+    _ensure_intel,
     _sort_doctrines_by_confidence,
     build_guardrails_block,
     build_system_prompt_section,
@@ -104,6 +106,35 @@ class TestSortDoctrines:
         ]
         result = _sort_doctrines_by_confidence(docs)
         assert result[0]["claim"] == "high"
+
+
+# ---------------------------------------------------------------------------
+# TestEnsureIntel
+# ---------------------------------------------------------------------------
+
+class TestEnsureIntelNarrowsException:
+    def test_returns_existing_intelligence_when_set(self) -> None:
+        intel = _make_intel()
+        chip = MockChipHandle(intelligence=intel)
+
+        assert _ensure_intel(chip) is intel
+
+    def test_returns_none_when_chip_path_attribute_missing(self) -> None:
+        @dataclass
+        class MinimalChipHandle:
+            intelligence: ChipIntelligence | None = None
+
+        assert _ensure_intel(MinimalChipHandle()) is None  # type: ignore[arg-type]
+
+    def test_non_attribute_error_from_extract_propagates(self) -> None:
+        chip = MockChipHandle(intelligence=None)
+
+        with patch(
+            "chip_labs.chip_context_injector.extract_intelligence",
+            side_effect=RuntimeError("extract bug"),
+        ):
+            with pytest.raises(RuntimeError, match="extract bug"):
+                _ensure_intel(chip)
 
 
 # ---------------------------------------------------------------------------
