@@ -10,6 +10,7 @@ until a target score is reached or max iterations are exhausted.
 
 from __future__ import annotations
 
+import fcntl
 import json
 import time
 from dataclasses import dataclass
@@ -574,7 +575,11 @@ def _fix_has_run_history(chip_path: Path) -> bool:
         "failed_count": len(result.get("failed_checks", [])),
     }
     with open(ledger, "a", encoding="utf-8") as f:
-        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+        try:
+            fcntl.lockf(f, fcntl.LOCK_EX)
+            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+        finally:
+            fcntl.lockf(f, fcntl.LOCK_UN)
     return True
 
 
