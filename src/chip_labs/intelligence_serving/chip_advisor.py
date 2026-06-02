@@ -149,11 +149,11 @@ def _get_intel(chip: "ChipHandle") -> ChipIntelligence | None:
         intel = chip.intelligence
         if intel is not None:
             return intel
-    except Exception:
+    except AttributeError:
         pass
     try:
         return extract_intelligence(chip.chip_path)
-    except Exception:
+    except AttributeError:
         return None
 
 
