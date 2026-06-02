@@ -788,6 +788,9 @@ def _apply_doctor_sweep_case(run_path: Path, case: dict[str, Any]) -> list[str]:
             errors.append("operation path is required")
             continue
         target = run_path / relative_path
+        if not target.resolve().is_relative_to(run_path.resolve()):
+            errors.append(f"{relative_path}: path traversal detected")
+            continue
         try:
             _apply_doctor_sweep_operation(target, operation)
         except (KeyError, TypeError, ValueError, FileNotFoundError) as exc:
