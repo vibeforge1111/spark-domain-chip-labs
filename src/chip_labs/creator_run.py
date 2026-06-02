@@ -834,7 +834,10 @@ def _apply_doctor_sweep_operation(path: Path, operation: dict[str, Any]) -> None
             raise ValueError("add_to_number requires numeric target and delta")
         _set_nested(data, field_path, number + delta)
     else:
-        raise ValueError(f"unsupported operation {op}")
+        raise ValueError(
+            f"unsupported operation {op!r}. Known operations: "
+            "replace_text, replace_line_prefix, set_nested, delete_nested, add_to_number."
+        )
     write_json(path, data)
 
 
