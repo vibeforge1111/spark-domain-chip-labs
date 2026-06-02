@@ -242,6 +242,20 @@ def _seed_research_sources(chip_path: Path, brief: dict[str, Any]) -> int:
     return len(source_types)
 
 
+def _is_synthetic_md(path: Path) -> bool:
+    """Return True if the Markdown file is a synthetic placeholder.
+
+    A synthetic placeholder starts with the comment <!-- synthetic: true -->.
+    Safe: returns False on any read or parse error.
+    """
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            first_bytes = f.read(26)
+        return first_bytes.lstrip().startswith("<!-- synthetic: true -->")
+    except Exception:
+        return False
+
+
 def _seed_benchmark_baseline(chip_path: Path) -> bool:
     """Create a baseline benchmark result document.
 
@@ -778,18 +792,23 @@ class RecursiveLoopController:
             lane_dir = chip_path / "research" / lane
             lane_dir.mkdir(parents=True, exist_ok=True)
 
-            # Count existing files
-            existing = list(lane_dir.glob("*.md")) + list(lane_dir.glob("*.json"))
+            # Count real (non-synthetic) files only — synthetic placeholders cannot
+            # satisfy the >=2 evidence threshold.
+            existing = [
+                p for p in lane_dir.glob("*.md") if not _is_synthetic_md(p)
+            ] + list(lane_dir.glob("*.json"))
             if len(existing) < 2:
-                # Create an evidence note
+                # Create a synthetic placeholder evidence note
                 note_path = lane_dir / f"evidence_note_{self._iteration:03d}.md"
                 if not note_path.exists():
                     note_path.write_text(
+                        f"<!-- synthetic: true -->\n"
                         f"# Evidence Note (Iteration {self._iteration})\n\n"
                         f"Lane: {lane}\n"
                         f"Generated at: {datetime.now(timezone.utc).isoformat()}\n\n"
                         f"## Findings\n\n"
-                        f"_Placeholder for {lane.replace('_', ' ')} evidence._\n",
+                        f"_Placeholder for {lane.replace('_', ' ')} evidence._\n"
+                        f"Replace with real domain research.\n",
                         encoding="utf-8",
                     )
                     evidence_count += 1
