@@ -70,6 +70,32 @@ def _get_chip_search_dir() -> str | None:
     return os.environ.get("SPARK_CHIP_SEARCH_DIR", None)
 
 
+def _parse_seed_list(raw: str | None, *, flag: str = "--seeds") -> tuple[int, ...]:
+    """Parse a comma-separated ``--seeds`` argument into a tuple of ints.
+
+    A bare ``int(token)`` raises ``ValueError`` on any non-numeric token
+    such as ``"1,foo,3"`` or a stray space-separated value, which would
+    crash the entire CLI subcommand before it could emit a friendly hint.
+    This helper collects the non-numeric tokens and emits a single
+    actionable ``SystemExit`` listing the bad inputs so the operator can
+    correct the typo without parsing a Python traceback.
+    """
+    tokens = [item.strip() for item in (raw or "").split(",") if item.strip()]
+    seeds: list[int] = []
+    invalid: list[str] = []
+    for token in tokens:
+        try:
+            seeds.append(int(token))
+        except (TypeError, ValueError):
+            invalid.append(token)
+    if invalid:
+        raise SystemExit(
+            f"{flag} expects a comma-separated list of integer seeds; "
+            f"non-numeric token(s) rejected: {', '.join(repr(t) for t in invalid)}"
+        )
+    return tuple(seeds)
+
+
 def _write_watchtower_pages(vault_dir: str | Path, pages: list[dict[str, Any]]) -> None:
     """Write generated watchtower pages to the target vault directory."""
     vault_path = Path(vault_dir)
@@ -1340,11 +1366,7 @@ def cmd_generated_multi_seed_run(args: argparse.Namespace) -> None:
     briefs = briefs_payload.get("briefs") if isinstance(briefs_payload, dict) else briefs_payload
     if not isinstance(briefs, list) or not briefs:
         raise SystemExit("--briefs must contain a non-empty JSON list or {'briefs': [...]}")
-    seeds = tuple(
-        int(item.strip())
-        for item in args.seeds.split(",")
-        if item.strip()
-    )
+    seeds = _parse_seed_list(args.seeds)
     if not seeds:
         raise SystemExit("--seeds must include at least one integer seed")
     result = run_multi_seed_generator_validation(
@@ -1413,7 +1435,7 @@ def cmd_creator_system_production_readiness(args: argparse.Namespace) -> None:
         build_creator_system_production_readiness,
     )
 
-    seeds = tuple(int(item.strip()) for item in args.seeds.split(",") if item.strip())
+    seeds = _parse_seed_list(args.seeds)
     if not seeds:
         raise SystemExit("--seeds must include at least one integer seed")
     result = build_creator_system_production_readiness(
