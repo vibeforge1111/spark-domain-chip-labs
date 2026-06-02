@@ -336,6 +336,8 @@ def init_creator_run(
     for template_name, output_name in TEMPLATE_FILENAMES.items():
         source_file = source_dir / template_name
         target_file = output_path / output_name
+        if not source_file.exists():
+            raise FileNotFoundError(f"Template not found: {source_file}")
         shutil.copyfile(source_file, target_file)
         written.append(str(target_file))
 
