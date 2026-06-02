@@ -138,7 +138,16 @@ def _startup_network_review_phase(
                 evidence_mode="missing",
                 blocking_checks=["startup_network_review_not_found"],
             )
-        review = _load_json(path)
+        try:
+            review = _load_json(path)
+        except json.JSONDecodeError:
+            return _phase(
+                phase,
+                passed=False,
+                evidence_ref=evidence_ref,
+                evidence_mode="malformed",
+                blocking_checks=["malformed_startup_network_review"],
+            )
         evidence_mode = "saved"
 
     blocking_checks = list(review.get("blocking_checks") or [])
@@ -184,7 +193,16 @@ def _product_runtime_phase(
             blocking_checks=["product_runtime_review_not_found"],
         )
 
-    packet = _load_json(path)
+    try:
+        packet = _load_json(path)
+    except json.JSONDecodeError:
+        return _phase(
+            phase,
+            passed=False,
+            evidence_ref=str(path),
+            evidence_mode="malformed",
+            blocking_checks=["malformed_product_runtime_review"],
+        )
     check = check_product_runtime_review_packet(packet)
     blocking_checks = list(check.get("blocking_checks") or [])
     if check.get("verdict") != "pass":

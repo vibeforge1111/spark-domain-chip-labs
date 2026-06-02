@@ -11,6 +11,7 @@ import pytest
 from chip_labs.artifact_quality import (
     CLAIM_BOUNDARY,
     MANIFEST_PATH,
+    _validate_expectation_shape,
     format_artifact_quality_markdown,
     run_artifact_quality_benchmark,
     score_artifact_quality_file,
@@ -381,6 +382,19 @@ def test_artifact_quality_benchmark_rejects_invalid_case_expectation_score(
         run_artifact_quality_benchmark(run_dir)
 
 
+def test_artifact_quality_case_expectation_invalid_verdict_lists_allowed_values() -> None:
+    with pytest.raises(ValueError) as error:
+        _validate_expectation_shape(
+            Path("manifest.json"),
+            "case_expectations.candidate",
+            {"verdict": "pasing"},
+        )
+
+    message = str(error.value)
+    assert "case_expectations.candidate.verdict is invalid: 'pasing'" in message
+    assert "Allowed verdicts: blocked, needs_revision, review_ready." in message
+
+
 def test_artifact_quality_benchmark_rejects_invalid_case_expectation_list(
     tmp_path: Path,
 ) -> None:
@@ -426,8 +440,11 @@ def test_artifact_quality_benchmark_rejects_invalid_reviewer_calibration_verdict
     manifest["reviewer_calibration_cases"][0]["reviewer_verdict"] = "approved"
     run_dir = _artifact_run(tmp_path, manifest)
 
-    with pytest.raises(ValueError, match="invalid reviewer_verdict"):
+    with pytest.raises(ValueError) as error:
         run_artifact_quality_benchmark(run_dir)
+    message = str(error.value)
+    assert "invalid reviewer_verdict: 'approved'" in message
+    assert "Allowed verdicts: blocked, needs_revision, review_ready." in message
 
 
 def test_artifact_quality_benchmark_rejects_invalid_reviewer_calibration_score(
