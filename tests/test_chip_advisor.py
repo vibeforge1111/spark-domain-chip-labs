@@ -327,3 +327,36 @@ class TestDoctrineCheck:
         results = doctrine_check("test deploy", portfolio=portfolio)
         if len(results) >= 2:
             assert results[0].relevance >= results[-1].relevance
+
+
+# ---------------------------------------------------------------------------
+# TestLoadPortfolioImportNarrows
+# ---------------------------------------------------------------------------
+
+
+class TestLoadPortfolioImportNarrows:
+    """The three `from .chip_runtime import load_portfolio` sites in
+    advise_pre_action / advise_post_action / doctrine_check catch
+    `(ImportError, Exception)` -- which was equivalent to a bare `Exception`
+    catch and folded any unrelated programmer bug into the documented
+    'no portfolio' empty response. The narrowed `(ImportError, OSError)`
+    tuple keeps the documented ImportError (missing chip_runtime module)
+    and OSError (search_dir cannot be iterated) absorption intact and
+    lets programmer bugs from a chip_runtime refactor propagate."""
+
+    def test_pre_action_returns_proceed_when_load_portfolio_raises_oserror(self) -> None:
+        with patch("chip_labs.chip_runtime.load_portfolio", side_effect=OSError("disk gone")):
+            request = AdvisoryRequest(action_description="x")
+            response = advise_pre_action(request)
+            assert response.verdict == "proceed"
+
+    def test_pre_action_propagates_non_oserror_non_importerror(self) -> None:
+        with patch("chip_labs.chip_runtime.load_portfolio", side_effect=RuntimeError("intentional refactor regression")):
+            request = AdvisoryRequest(action_description="x")
+            with pytest.raises(RuntimeError, match="intentional refactor regression"):
+                advise_pre_action(request)
+
+    def test_doctrine_check_propagates_non_oserror_non_importerror(self) -> None:
+        with patch("chip_labs.chip_runtime.load_portfolio", side_effect=ValueError("intentional refactor regression")):
+            with pytest.raises(ValueError, match="intentional refactor regression"):
+                doctrine_check("x")
