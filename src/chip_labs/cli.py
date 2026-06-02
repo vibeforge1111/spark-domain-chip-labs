@@ -16,6 +16,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from . import __version__
 from .lab_hooks import (
     generate_packets,
     generate_watchtower_pages,
@@ -1618,6 +1619,7 @@ def main() -> None:
         prog="chip-labs",
         description="Spark Domain Chip Labs -- meta-research chip for domain chip R&D.",
     )
+    parser.add_argument("--version", action="version", version=f"chip-labs {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
     # evaluate
