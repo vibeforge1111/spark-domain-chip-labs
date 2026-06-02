@@ -1110,7 +1110,8 @@ def test_generated_multi_domain_briefs_file_is_operator_matrix_input() -> None:
         "startup_founder_advice",
         "retrieval_memory",
     }
-    assert all("network_absorbable" not in brief.get("goal", "") for brief in briefs)
+    assert all("goal" in brief for brief in briefs)
+    assert all("network_absorbable" not in brief["goal"] for brief in briefs)
     assert all(brief["mutation_axes"] for brief in briefs)
     assert all(
         any(case.get("trap") is True for case in brief["benchmark_cases"])
