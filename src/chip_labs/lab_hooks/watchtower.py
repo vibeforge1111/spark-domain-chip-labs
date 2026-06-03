@@ -170,7 +170,10 @@ The page below is sourced from the latest saved MiroFish portfolio export artifa
     if readout_path is not None:
         from ..mirofish.portfolio import format_portfolio_readout_markdown
 
+        try:
         readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"Watchtower readout corrupt {readout_path}: {exc}") from exc
         export_body = format_portfolio_readout_markdown(
             readout_packet,
             title="MiroFish Portfolio Readout",
@@ -300,7 +303,10 @@ The page below is sourced from the latest saved MiroFish frontier export artifac
     if readout_path is not None:
         from ..mirofish.hybrid import format_frontier_readout_markdown
 
+        try:
         readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"Watchtower readout corrupt {readout_path}: {exc}") from exc
         export_body = format_frontier_readout_markdown(
             readout_packet,
             title="MiroFish Frontier Readout",
