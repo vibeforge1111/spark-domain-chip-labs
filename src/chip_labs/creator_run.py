@@ -803,7 +803,16 @@ def _apply_doctor_sweep_operation(path: Path, operation: dict[str, Any]) -> None
         new = str(operation.get("new", ""))
         if old not in text:
             raise ValueError(f"text not found: {old}")
-        path.write_text(text.replace(old, new), encoding="utf-8")
+        tmp_fd, tmp_path = tempfile.mkstemp(dir=str(path.parent), suffix=".tmp")
+        try:
+            with os.fdopen(tmp_fd, "w", encoding="utf-8") as tmp_file:
+                tmp_file.write(text.replace(old, new))
+            os.replace(tmp_path, path)
+        except Exception:
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
         return
     if op == "replace_line_prefix":
         text = path.read_text(encoding="utf-8")
@@ -817,7 +826,16 @@ def _apply_doctor_sweep_operation(path: Path, operation: dict[str, Any]) -> None
                 replaced = True
         if not replaced:
             raise ValueError(f"line prefix not found: {prefix}")
-        path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        tmp_fd, tmp_path = tempfile.mkstemp(dir=str(path.parent), suffix=".tmp")
+        try:
+            with os.fdopen(tmp_fd, "w", encoding="utf-8") as tmp_file:
+                tmp_file.write("\n".join(lines) + "\n")
+            os.replace(tmp_path, path)
+        except Exception:
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
         return
 
     data = load_json(path)
