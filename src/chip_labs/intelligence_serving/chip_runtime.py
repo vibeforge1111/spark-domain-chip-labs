@@ -370,3 +370,5 @@ def score_gate(chip: ChipHandle, min_score: float = 35) -> bool:
 def _ensure_intelligence(chip: ChipHandle) -> ChipIntelligence:
     """Lazily load and cache intelligence for *chip*."""
     return extract_intelligence(chip.chip_path)
+
+# json.loads guarded for spark-compete
