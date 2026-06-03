@@ -1,5 +1,6 @@
 """Cross-chip intelligence transfer system.
 
+import logging
 Enables mature chips to teach struggling chips by extracting proven
 patterns and applying them structurally.  Currently each chip is a
 complete silo -- this module bridges the gap so that patterns discovered
@@ -171,6 +172,7 @@ def _collect_text(chip_path: Path, globs: list[str]) -> str:
             try:
                 parts.append(fp.read_text(encoding="utf-8", errors="ignore"))
             except OSError:
+                logging.warning("Silent error caught: %s", exc)
                 pass
     return "\n".join(parts).lower()
 

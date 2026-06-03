@@ -1,5 +1,6 @@
 """Chip portfolio registry -- discovers and tracks domain chips."""
 
+import logging
 from __future__ import annotations
 
 import json
@@ -58,6 +59,7 @@ def discover_chips(search_dir: str | Path | None = None) -> list[dict[str, Any]]
                 chip_info["domain"] = manifest.get("domain")
                 chip_info["capabilities"] = manifest.get("capabilities", [])
             except (json.JSONDecodeError, OSError):
+                logging.warning("Silent error caught: %s", exc)
                 pass
 
         project_path = entry / "spark-researcher.project.json"

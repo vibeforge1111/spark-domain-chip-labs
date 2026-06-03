@@ -1,5 +1,6 @@
 """Chip quality rubric -- the lab's fixed evaluator.
 
+import logging
 Scores domain chips on a 100-point scale across six dimensions.
 This is the meta-chip's primary evaluation surface.
 """
@@ -129,6 +130,7 @@ def _check_evidence_separation(chip_path: Path) -> dict[str, bool]:
             try:
                 all_text += fp.read_text(encoding="utf-8", errors="ignore").lower()
             except OSError:
+                logging.warning("Silent error caught: %s", exc)
                 pass
 
     results["has_research_grounded"] = "research_grounded" in all_text or "research-grounded" in all_text or "source" in all_text
@@ -170,6 +172,7 @@ def _check_evaluation_depth(chip_path: Path) -> dict[str, bool]:
                     has_scoring = True
                     break
             except OSError:
+                logging.warning("Silent error caught: %s", exc)
                 pass
     results["scoring_logic"] = has_scoring
 
@@ -191,6 +194,7 @@ def _check_memory_knowledge(chip_path: Path) -> dict[str, bool]:
                     has_sources = True
                     break
             except OSError:
+                logging.warning("Silent error caught: %s", exc)
                 pass
     results["source_registry"] = has_sources
 
@@ -202,6 +206,7 @@ def _check_memory_knowledge(chip_path: Path) -> dict[str, bool]:
             try:
                 all_py += py.read_text(encoding="utf-8", errors="ignore").lower()
             except OSError:
+                logging.warning("Silent error caught: %s", exc)
                 pass
     results["packet_schema"] = "packet" in all_py
 
@@ -279,6 +284,7 @@ def _check_documentation(chip_path: Path) -> dict[str, bool]:
             if "mission" in readme_text or "what this is" in readme_text:
                 has_mission = True
         except OSError:
+            logging.warning("Silent error caught: %s", exc)
             pass
 
     results["mission_docs"] = has_mission
