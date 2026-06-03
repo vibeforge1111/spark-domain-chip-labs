@@ -162,6 +162,9 @@ def compare_results(result_small, result_large, label_small, label_large):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Compare agent counts for 100 domains")
+    args = parser.parse_args()
     print("Building graph for 100 domains...")
     graph = build_graph(ALL_100_DOMAINS, RELATIONSHIPS)
     domain_ids = [d["domain_id"] for d in ALL_100_DOMAINS]
