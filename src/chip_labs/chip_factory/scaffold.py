@@ -417,7 +417,10 @@ def _write_output(output_path: str | None, data: Any) -> None:
     output_json = json.dumps(data, indent=2, default=str)
     if output_path:
         Path(output_path).parent.mkdir(parents=True, exist_ok=True)
-        Path(output_path).write_text(output_json, encoding="utf-8")
+        import os
+        _tmp = Path(output_path).with_suffix(".tmp")
+        _tmp.write_text(output_json, encoding="utf-8")
+        os.replace(_tmp, Path(output_path))
     else:
         print(output_json)
 
@@ -455,7 +458,10 @@ def cmd_watchtower(args: argparse.Namespace) -> None:
     for page in pages:
         page_path = vault_path / page["path"]
         page_path.parent.mkdir(parents=True, exist_ok=True)
-        page_path.write_text(page["content"], encoding="utf-8")
+        import os as _os
+        _ptmp = page_path.with_suffix(page_path.suffix + ".tmp")
+        _ptmp.write_text(page["content"], encoding="utf-8")
+        _os.replace(_ptmp, page_path)
     _write_output(args.output, {{"pages": [p["path"] for p in pages], "count": len(pages)}})
 
 
