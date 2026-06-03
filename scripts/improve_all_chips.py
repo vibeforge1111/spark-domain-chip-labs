@@ -37,6 +37,16 @@ def _discover_chips(only: str | None = None) -> list[Path]:
     return chips
 
 
+def _read_chip_manifest(manifest_path: Path) -> dict:
+    """Read spark-chip.json, naming the manifest path on JSON-decode failure."""
+    try:
+        return json.loads(manifest_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(
+            f"Could not parse chip manifest at {manifest_path}: {exc.msg}"
+        ) from exc
+
+
 # ---------------------------------------------------------------------------
 # 1. score_history.jsonl
 # ---------------------------------------------------------------------------
@@ -148,7 +158,7 @@ def _bridge_research_grounded(chip: Path) -> int:
     if count == 0:
         manifest_path = chip / "spark-chip.json"
         if manifest_path.exists():
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest = _read_chip_manifest(manifest_path)
             domain = manifest.get("domain", chip.name)
             content = (
                 f"# Research Grounding: {domain}\n\n"
@@ -289,7 +299,7 @@ def _bridge_exploratory_frontier(chip: Path) -> int:
         manifest_path = chip / "spark-chip.json"
         frontier_config = {}
         if manifest_path.exists():
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest = _read_chip_manifest(manifest_path)
             frontier_config = manifest.get("frontier", {})
 
         content = {
@@ -346,7 +356,7 @@ def _bridge_contradictions(chip: Path) -> bool:
     manifest_path = chip / "spark-chip.json"
     domain = chip.name.replace("domain-chip-", "")
     if manifest_path.exists():
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest = _read_chip_manifest(manifest_path)
         domain = manifest.get("domain", domain)
 
     lines = [
@@ -476,7 +486,7 @@ def _bridge_packets(chip: Path) -> int:
     if count == 0:
         manifest_path = chip / "spark-chip.json"
         if manifest_path.exists():
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest = _read_chip_manifest(manifest_path)
             domain = manifest.get("domain", "unknown")
             packet = {
                 "claim": f"The {domain} domain chip follows spark-chip.v1 contract",
@@ -507,7 +517,7 @@ def _bridge_skill_file(chip: Path) -> bool:
     manifest_path = chip / "spark-chip.json"
     manifest = {}
     if manifest_path.exists():
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest = _read_chip_manifest(manifest_path)
 
     domain = manifest.get("domain", chip.name.replace("domain-chip-", ""))
     version = manifest.get("version", "0.1.0")
@@ -592,7 +602,7 @@ def _bridge_dspy_config(chip: Path) -> bool:
     manifest_path = chip / "spark-chip.json"
     domain = chip.name.replace("domain-chip-", "")
     if manifest_path.exists():
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest = _read_chip_manifest(manifest_path)
         domain = manifest.get("domain", domain)
 
     config = {
