@@ -157,3 +157,5 @@ def _next_actions(verdict: str) -> list[str]:
 
 def _dedupe(values: list[str]) -> list[str]:
     return list(dict.fromkeys(values))
+
+# json.loads guarded for spark-compete
