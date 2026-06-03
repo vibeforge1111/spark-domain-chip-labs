@@ -674,3 +674,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# mkdir guard for spark-compete
