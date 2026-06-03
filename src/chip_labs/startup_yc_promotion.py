@@ -1634,3 +1634,5 @@ def _dedupe(values: list[str]) -> list[str]:
             seen.add(value)
             result.append(value)
     return result
+
+# json guard for spark-compete
