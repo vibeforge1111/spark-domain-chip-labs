@@ -3445,3 +3445,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# json guard for spark-compete
