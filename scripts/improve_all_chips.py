@@ -148,7 +148,10 @@ def _bridge_research_grounded(chip: Path) -> int:
     if count == 0:
         manifest_path = chip / "spark-chip.json"
         if manifest_path.exists():
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                manifest = {}
             domain = manifest.get("domain", chip.name)
             content = (
                 f"# Research Grounding: {domain}\n\n"
