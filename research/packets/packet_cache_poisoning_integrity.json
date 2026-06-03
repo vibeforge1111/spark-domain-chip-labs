@@ -1,0 +1,5 @@
+{
+  "claim": "Portfolio cache files must include integrity verification to prevent cache poisoning via tampered JSON in the writable cache directory.",
+  "mechanism": "The portfolio cache is written to ~/.cache/chip-labs/portfolio_cache.json, a directory writable by any process running as the same user. Without integrity verification, an attacker (or a race condition between concurrent hook invocations) can modify the cached JSON to inject malicious chip paths, inflated quality scores, or fabricated intelligence data. Adding a SHA-256 checksum envelope, atomic write-then-rename, and field-level validation on cache reconstruction closes this surface. Legacy caches without checksums are still accepted for backward compatibility.",
+  "boundary": "This fix protects against tampering at rest, not in-memory corruption. It assumes the cache directory itself is user-owned (standard XDG cache semantics). Process-level locking is not included since hook invocations are typically single-threaded per Claude Code session."
+}
