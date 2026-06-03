@@ -348,7 +348,10 @@ def _normalize(text: str) -> str:
 
 def _load_manifest(path: Path) -> dict[str, Any]:
     try:
-        manifest = json.loads(path.read_text(encoding="utf-8"))
+        try:
+            manifest = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(f"artifact_quality manifest parse failed at {path}: {exc}") from exc
     except FileNotFoundError:
         raise FileNotFoundError(f"{path} is required for artifact-quality benchmark") from None
     except json.JSONDecodeError as exc:
