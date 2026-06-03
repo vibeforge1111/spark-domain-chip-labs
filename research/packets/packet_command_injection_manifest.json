@@ -1,0 +1,5 @@
+{
+  "claim": "Chip manifest commands must be validated against an executable allowlist to prevent command injection via spark-chip.json.",
+  "mechanism": "A malicious or compromised spark-chip.json can specify arbitrary executables in its commands field. Since _execute_subprocess passes cmd directly to subprocess.run without validating cmd[0], any binary on the system PATH can be invoked. Adding an allowlist of safe executables (python, python3, node) and rejecting unknown binaries before subprocess.run closes this injection surface while preserving the existing hook execution contract.",
+  "boundary": "This fix only gates the executable name, not arguments. Argument-level sanitization is handled separately by the subprocess contract (--input/--output file-based I/O). The allowlist is intentionally narrow; chips requiring other runtimes should request inclusion explicitly."
+}

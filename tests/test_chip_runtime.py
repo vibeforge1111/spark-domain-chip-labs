@@ -266,3 +266,60 @@ class TestHookResult:
         assert hr.confidence == 0.0
         assert hr.execution_mode == "unknown"
         assert hr.duration_ms == 0
+
+
+# ---------------------------------------------------------------------------
+# TestCommandInjectionAllowlist
+# ---------------------------------------------------------------------------
+
+class TestCommandInjectionAllowlist:
+    """Verify that _execute_subprocess rejects unknown executables."""
+
+    def _make_chip_with_command(self, tmp_path: Path, cmd: list[str]) -> ChipHandle:
+        """Create a ChipHandle with a specific command for testing."""
+        return ChipHandle(
+            chip_path=tmp_path,
+            chip_name="test-chip",
+            domain="testing",
+            version="0.1",
+            quality_score=60.0,
+            commands={"evaluate": cmd},
+        )
+
+    def test_rejects_unknown_executable(self, tmp_path: Path) -> None:
+        chip = self._make_chip_with_command(tmp_path, ["rm", "-rf", "/"])
+        result = execute_hook(chip, "evaluate")
+        assert result.success is False
+        assert "not in allowlist" in result.result["error"]
+
+    def test_rejects_curl_executable(self, tmp_path: Path) -> None:
+        chip = self._make_chip_with_command(tmp_path, ["curl", "http://evil.com"])
+        result = execute_hook(chip, "evaluate")
+        assert result.success is False
+        assert "not in allowlist" in result.result["error"]
+
+    def test_rejects_bash_executable(self, tmp_path: Path) -> None:
+        chip = self._make_chip_with_command(tmp_path, ["bash", "-c", "echo pwned"])
+        result = execute_hook(chip, "evaluate")
+        assert result.success is False
+        assert "not in allowlist" in result.result["error"]
+
+    def test_allowed_executable_passes_validation(self, tmp_path: Path) -> None:
+        """python should pass allowlist check (subprocess may still fail)."""
+        chip = self._make_chip_with_command(tmp_path, ["python", "nonexistent.py"])
+        result = execute_hook(chip, "evaluate")
+        # Should NOT fail with allowlist error (may fail for other reasons)
+        if not result.success:
+            assert "not in allowlist" not in result.result.get("error", "")
+
+    def test_empty_command_list_rejected(self, tmp_path: Path) -> None:
+        chip = self._make_chip_with_command(tmp_path, [])
+        result = execute_hook(chip, "evaluate")
+        assert result.success is False
+        assert "empty command" in result.result["error"]
+
+    def test_error_includes_allowed_list(self, tmp_path: Path) -> None:
+        chip = self._make_chip_with_command(tmp_path, ["malware"])
+        result = execute_hook(chip, "evaluate")
+        assert "allowed" in result.result
+        assert isinstance(result.result["allowed"], list)

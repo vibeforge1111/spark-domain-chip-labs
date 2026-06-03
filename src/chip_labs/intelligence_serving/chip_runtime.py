@@ -28,6 +28,19 @@ from chip_labs.registry import discover_chips
 
 
 # ---------------------------------------------------------------------------
+# Security: allowlist of executables permitted in chip manifest commands
+# ---------------------------------------------------------------------------
+_ALLOWED_EXECUTABLES: set[str] = {
+    "python",
+    "python3",
+    "python3.exe",
+    "python.exe",
+    "node",
+    "node.exe",
+}
+
+
+# ---------------------------------------------------------------------------
 # Data structures
 # ---------------------------------------------------------------------------
 
@@ -220,6 +233,30 @@ def _execute_subprocess(
 ) -> HookResult:
     """Run the hook as a subprocess and capture JSON output."""
     cmd = chip.commands[hook_name]
+
+    # Security: validate that cmd[0] is an allowed executable
+    if not cmd:
+        return HookResult(
+            hook_name=hook_name,
+            chip_name=chip.chip_name,
+            success=False,
+            result={"error": "empty command in chip manifest"},
+            confidence=0.0,
+            execution_mode="subprocess",
+        )
+    executable = Path(cmd[0]).name
+    if executable not in _ALLOWED_EXECUTABLES:
+        return HookResult(
+            hook_name=hook_name,
+            chip_name=chip.chip_name,
+            success=False,
+            result={
+                "error": f"executable '{executable}' not in allowlist",
+                "allowed": sorted(_ALLOWED_EXECUTABLES),
+            },
+            confidence=0.0,
+            execution_mode="subprocess",
+        )
 
     try:
         with tempfile.TemporaryDirectory(prefix="chip-hook-") as tmpdir:
