@@ -122,7 +122,10 @@ def _check_criterion(criterion_id: str, chip_path: Path, quality_score: int) -> 
         if not manifest_path.exists():
             return False
         try:
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                raise RuntimeError(f"graduation manifest parse failed at {manifest_path}: {exc}") from exc
             caps = set(manifest.get("capabilities", []))
             return {"evaluate", "suggest", "packets", "watchtower"}.issubset(caps)
         except (json.JSONDecodeError, OSError):
@@ -163,7 +166,10 @@ def _check_criterion(criterion_id: str, chip_path: Path, quality_score: int) -> 
         if not project_path.exists():
             return False
         try:
-            project = json.loads(project_path.read_text(encoding="utf-8"))
+            try:
+                project = json.loads(project_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                raise RuntimeError(f"graduation project parse failed at {project_path}: {exc}") from exc
             trials = project.get("candidate_trials", [])
             return len(trials) >= 3
         except (json.JSONDecodeError, OSError):
