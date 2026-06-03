@@ -63,6 +63,11 @@ def build_graph(domains, relationships):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Export viz data for 100 domains")
+    parser.add_argument("--output", default=os.path.join(script_dir, "..", "viz", "mirofish_data.json"),
+                        help="Output JSON file path")
+    args = parser.parse_args()
     t0 = time.time()
     print(f"Building graph for {len(ALL_100_DOMAINS)} domains...")
 
@@ -277,7 +282,7 @@ def main():
     }
 
     # Write to file
-    output_path = os.path.join(script_dir, "..", "viz", "mirofish_data.json")
+    output_path = args.output
     with open(output_path, "w") as f:
         json.dump(export, f, indent=2)
     size = os.path.getsize(output_path)
