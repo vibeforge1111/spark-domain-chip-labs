@@ -518,3 +518,5 @@ def _coerce_int(value: Any) -> int | None:
         return int(value)
     except (TypeError, ValueError):
         return None
+
+# json.loads guarded for spark-compete
