@@ -171,9 +171,12 @@ def _write_session_domain(selected_chips: list[Any], query: str) -> None:
             "domains": list({c.domain for c in selected_chips}),
             "ts": datetime.now(timezone.utc).isoformat(),
         }
-        _SESSION_DOMAIN_FILE.write_text(
-            json.dumps(data, indent=2), encoding="utf-8",
-        )
+        tmp = _SESSION_DOMAIN_FILE.with_suffix(_SESSION_DOMAIN_FILE.suffix + ".tmp")
+        try:
+            tmp.write_text(json.dumps(data, indent=2), encoding="utf-8")
+            tmp.replace(_SESSION_DOMAIN_FILE)
+        finally:
+            tmp.unlink(missing_ok=True)
     except OSError:
         pass
 
@@ -255,11 +258,16 @@ def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
                 "quality_verdict": chip.quality_verdict,
                 "intelligence": intel,
             })
-        cache_file.write_text(
-            json.dumps({"portfolio": entries, "ts": datetime.now(timezone.utc).isoformat()},
-                       indent=2, default=str),
-            encoding="utf-8",
-        )
+        tmp = cache_file.with_suffix(cache_file.suffix + ".tmp")
+        try:
+            tmp.write_text(
+                json.dumps({"portfolio": entries, "ts": datetime.now(timezone.utc).isoformat()},
+                           indent=2, default=str),
+                encoding="utf-8",
+            )
+            tmp.replace(cache_file)
+        finally:
+            tmp.unlink(missing_ok=True)
     except OSError:
         pass
 
