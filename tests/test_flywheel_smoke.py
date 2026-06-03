@@ -85,7 +85,7 @@ def _flywheel_checks(chip_path: Path) -> dict[str, bool]:
         "has_dspy_integration",
         "has_skill_file",
     ]
-    passed = set(result.get("passed_checks", []))
+    passed = set(result["passed_checks"])
     return {cid: cid in passed for cid in flywheel_check_ids}
 
 
@@ -212,7 +212,7 @@ class TestMetricTrajectory:
         entries = _read_jsonl(history_path)
         scores = []
         for e in entries:
-            s = e.get("total_score") or e.get("startup_score") or e.get("score", 0)
+            s = e.get("total_score", e.get("startup_score", e.get("score", 0)))
             if isinstance(s, (int, float)):
                 scores.append(s)
         ascending = sum(1 for i in range(1, len(scores)) if scores[i] > scores[i - 1])
@@ -308,7 +308,7 @@ class TestPacketQuality:
             for pf in d.glob("*.json"):
                 try:
                     data = json.loads(pf.read_text(encoding="utf-8"))
-                    content = data.get("content", data)
+                    content = data["content"]
                     if isinstance(content, dict):
                         if "claim" in content and "mechanism" in content:
                             assert True
@@ -434,7 +434,7 @@ class TestFlywheelSummary:
         if not desktop_chips:
             pytest.skip("No chips")
         scores = {chip.name: _flywheel_score(chip) for chip in desktop_chips}
-        yc = scores.get("domain-chip-startup-yc", 0)
+        yc = scores["domain-chip-startup-yc"]
         for name, s in scores.items():
             if name != "domain-chip-startup-yc":
                 assert yc >= s, f"startup-yc ({yc}) doesn't lead: {name} has {s}"
