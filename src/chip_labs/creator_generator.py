@@ -1161,7 +1161,10 @@ def _default_failure_mode(trap: bool) -> str:
 def _seeded_brief_variant(
     brief: dict[str, Any], *, variant_index: int, seed: int
 ) -> dict[str, Any]:
+    try:
     seeded = json.loads(json.dumps(brief))
+except json.JSONDecodeError as exc:
+    raise RuntimeError(f"Creator generator: failed to serialize/deserialize brief: {exc}") from exc
     base_domain_id = _slugify(str(seeded.get("domain_id") or seeded["domain_name"]))
     base_domain_name = str(seeded["domain_name"])
     seeded["domain_id"] = f"{base_domain_id}-v{variant_index}-seed-{seed}"
