@@ -291,6 +291,11 @@ VIRAL_SHOCKS = [
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="MiroFish Viral Domain Prediction")
+    parser.add_argument("--output", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "viz", "viral_predictions.json"),
+                        help="Output JSON file path")
+    args = parser.parse_args()
     print("=" * 80)
     print("MIROFISH VIRAL DOMAIN PREDICTION")
     print("Which 20 new domain chips will make Spark Swarm go viral?")
@@ -549,8 +554,7 @@ NETWORK EFFECTS:
         } for name, members in clusters.items()},
     }
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    output_path = os.path.join(script_dir, "..", "viz", "viral_predictions.json")
+    output_path = args.output
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, "w") as f:
         json.dump(export, f, indent=2)
