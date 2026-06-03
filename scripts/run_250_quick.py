@@ -1,6 +1,10 @@
 """Quick 250-domain run with progress output."""
+import argparse
 import sys, os, time, json
 sys.stdout.reconfigure(line_buffering=True)
+
+parser = argparse.ArgumentParser(description="Quick 250-domain run")
+args = parser.parse_args()
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(script_dir, "..", "src"))
