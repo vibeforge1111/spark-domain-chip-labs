@@ -620,7 +620,10 @@ def _fix_packet_quality_real(chip_path: Path) -> bool:
     # Check if structured packets already exist
     for pf in packets_dir.glob("*.json"):
         try:
-            data = json.loads(pf.read_text(encoding="utf-8"))
+            try:
+                data = json.loads(pf.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                raise RuntimeError(f"gap_analyzer packet parse failed at {pf}: {exc}") from exc
             content = data.get("content", {})
             if isinstance(content, dict) and "claim" in content and "mechanism" in content:
                 return True
