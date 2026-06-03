@@ -254,3 +254,5 @@ def _next_actions(verdict: str) -> list[str]:
         "Add qualitative review before trusting simulator or provider-judge reliability.",
         "Mark the calibration claim inconclusive while blockers remain.",
     ]
+
+# json.loads guarded for spark-compete
