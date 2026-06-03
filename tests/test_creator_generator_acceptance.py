@@ -953,8 +953,8 @@ def test_generator_acceptance_covers_multiple_spark_useful_domain_families(
         "telegram"
     ]["text"]
     assert any(
-        node.get("id") == "creator_mission"
-        and node.get("evidence_mode") == "recomputed"
+        node["id"] == "creator_mission"
+        and node["evidence_mode"] == "recomputed"
         for node in mission_status["surface_adapters"]["canvas"]["nodes"]
     )
     kanban_cards = [
@@ -1114,7 +1114,7 @@ def test_generated_multi_domain_briefs_file_is_operator_matrix_input() -> None:
     assert all("network_absorbable" not in brief["goal"] for brief in briefs)
     assert all(brief["mutation_axes"] for brief in briefs)
     assert all(
-        any(case.get("trap") is True for case in brief["benchmark_cases"])
+        any(case["trap"] is True for case in brief["benchmark_cases"])
         for brief in briefs
     )
 
