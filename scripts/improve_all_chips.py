@@ -100,7 +100,18 @@ def _bridge_score_history(chip: Path) -> int:
                  "total_score": v1_score, "created_at": now, "verdict": "improved",
                  "candidate": f"Current v1 score: {v1_score}/100"},
             ]
-        except Exception:
+        except Exception as exc:
+            # Defensive: a broken score_chip call must never crash the
+            # script's per-chip improve loop, but the operator needs a
+            # diagnostic trail. Without this warning the script silently
+            # writes the generic bootstrap entry and the real failure
+            # (broken rubric / missing dependency / chip schema drift)
+            # is invisible across the entire chip sweep.
+            print(
+                f"  WARN: score_chip({chip}) raised {type(exc).__name__}: "
+                f"{exc}; falling back to bootstrap entry",
+                file=sys.stderr,
+            )
             entries = [
                 {"run_id": "bootstrap", "score": 0.5, "total_score": 50,
                  "created_at": datetime.now(timezone.utc).isoformat(),
@@ -229,7 +240,17 @@ def _bridge_benchmark_grounded(chip: Path) -> int:
                 "dimensions": {d["name"]: d["score"] for d in v1.get("dimensions", [])},
                 "generated_at": datetime.now(timezone.utc).isoformat(),
             }
-        except Exception:
+        except Exception as exc:
+            # Defensive: a broken score_chip call must never crash the
+            # benchmark-bridging step, but the operator needs a diagnostic
+            # trail. Without this warning the benchmark_summary silently
+            # records "initial_baseline" with no signal that v1 scoring
+            # was attempted and failed.
+            print(
+                f"  WARN: score_chip({chip}) raised {type(exc).__name__}: "
+                f"{exc}; falling back to initial_baseline summary",
+                file=sys.stderr,
+            )
             summary = {
                 "benchmark_type": "initial_baseline",
                 "note": "No run data available; baseline from chip scaffold",
