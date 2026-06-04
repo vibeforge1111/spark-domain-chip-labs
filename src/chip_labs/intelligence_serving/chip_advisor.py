@@ -9,6 +9,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -37,6 +38,65 @@ _LANE_WEIGHTS = {
     "research_grounded": 0.6,
     "exploratory_frontier": 0.3,
 }
+
+
+# ---------------------------------------------------------------------------
+# Prompt-injection sanitizer for user-supplied content
+# ---------------------------------------------------------------------------
+# Patterns that should never appear in content written to the RAG pipeline.
+# They are stripped / neutralised to prevent stored prompt-injection attacks
+# via advise_post_action feedback packets.
+_INJECTION_PATTERNS: list[re.Pattern[str]] = [
+    re.compile(r"\[?INST\]?\s*:", re.IGNORECASE),
+    re.compile(r"<<SYS>>", re.IGNORECASE),
+    re.compile(r"###\s*System\s*:", re.IGNORECASE),
+    re.compile(r"###\s*Human\s*:", re.IGNORECASE),
+    re.compile(r"###\s*Assistant\s*:", re.IGNORECASE),
+    re.compile(r"<\|im_start\|>", re.IGNORECASE),
+    re.compile(r"<\|im_end\|>", re.IGNORECASE),
+    re.compile(r"<\|system\|>", re.IGNORECASE),
+    re.compile(r"<\|user\|>", re.IGNORECASE),
+    re.compile(r"<\|assistant\|>", re.IGNORECASE),
+    re.compile(r"---+\s*end\s+(of\s+)?prompt\s*---+", re.IGNORECASE),
+    re.compile(r"ignore\s+(all\s+)?previous\s+instructions?", re.IGNORECASE),
+    re.compile(r"you\s+are\s+now\s+", re.IGNORECASE),
+    re.compile(r"system\s*prompt\s*:", re.IGNORECASE),
+    re.compile(r"<system>", re.IGNORECASE),
+    re.compile(r"</system>", re.IGNORECASE),
+    re.compile(r"<指令>", re.IGNORECASE),
+    re.compile(r"<\/指令>", re.IGNORECASE),
+]
+
+_MAX_FEEDBACK_FIELD_LEN = 4096
+
+
+def _sanitize_feedback_text(text: str) -> str:
+    """Strip known prompt-injection patterns from *text*.
+
+    Returns the cleaned string (truncated to ``_MAX_FEEDBACK_FIELD_LEN``).
+    Each matched pattern is replaced with a neutral ``[redacted]`` marker so
+    that the overall record remains inspectable while neutralising the attack.
+    """
+    if not text:
+        return text
+    for pat in _INJECTION_PATTERNS:
+        text = pat.sub("[redacted]", text)
+    if len(text) > _MAX_FEEDBACK_FIELD_LEN:
+        text = text[:_MAX_FEEDBACK_FIELD_LEN]
+    return text
+
+
+def _sanitize_dict_values(d: dict[str, Any]) -> dict[str, Any]:
+    """Recursively sanitize string values in a dictionary."""
+    sanitized = {}
+    for key, value in d.items():
+        if isinstance(value, str):
+            sanitized[key] = _sanitize_feedback_text(value)
+        elif isinstance(value, dict):
+            sanitized[key] = _sanitize_dict_values(value)
+        else:
+            sanitized[key] = value
+    return sanitized
 
 
 @dataclass
@@ -350,9 +410,9 @@ def advise_post_action(
     packet = {
         "packet_kind": "realworld_feedback",
         "evidence_lane": "realworld_validated",
-        "action": request.action_description,
+        "action": _sanitize_feedback_text(request.action_description),
         "action_type": request.action_type,
-        "outcome": outcome,
+        "outcome": _sanitize_dict_values(outcome),
         "timestamp": timestamp.isoformat(),
         "source": "chip_advisor_post_action",
     }
