@@ -18,12 +18,15 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 from ..quality_rubric import score_chip
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -1186,6 +1189,17 @@ def apply_pattern(target_chip_path: Path, pattern: TransferPattern) -> bool:
             pattern.times_successful += 1
         return result
     except Exception:
+        # Defensive: a broken pattern applier must never crash the transfer
+        # pipeline, but the operator needs a diagnostic trail. Without this
+        # log a failing applier is silently counted as an attempted-but-not-
+        # successful transfer with no signal that it raised, which can hide
+        # regressions across many cross-chip transfers.
+        logger.warning(
+            "Pattern applier for %r on chip %s raised; counting as failed transfer",
+            pattern.pattern_type,
+            target_chip_path,
+            exc_info=True,
+        )
         pattern.times_applied += 1
         return False
 
