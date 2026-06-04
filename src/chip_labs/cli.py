@@ -29,12 +29,17 @@ from .quality_rubric import score_chip
 
 def _load_input(input_path: str | None) -> dict[str, Any]:
     """Load input JSON from file path or return empty dict."""
-    if not input_path or not Path(input_path).exists():
+    if not input_path:
         return {}
+    path = Path(input_path)
+    if not path.exists():
+        raise FileNotFoundError(f"Input file not found: {input_path}")
     try:
-        return json.loads(Path(input_path).read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return {}
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"Invalid JSON in input file {input_path}: {exc}") from exc
+    except OSError as exc:
+        raise SystemExit(f"Failed to read input file {input_path}: {exc}") from exc
 
 
 def _write_output(output_path: str | None, data: Any) -> None:
