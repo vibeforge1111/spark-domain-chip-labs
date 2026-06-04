@@ -111,8 +111,7 @@ def _write_discovery_cluster_materialization(
     """Write per-cluster discovery packet files plus an operator-facing index."""
     from .mirofish.discovery import format_discovery_program_markdown
 
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+    output_path = _validate_vault_dir(output_dir)
     cluster_packets = list(cluster_bundle.get("cluster_packets", []))
     written_files: list[str] = []
 
