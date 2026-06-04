@@ -247,25 +247,28 @@ def _execute_subprocess(
                 cwd=str(chip.chip_path),
             )
 
-        if proc.returncode == 0:
-            output = _parse_hook_output(output_path, proc.stdout)
-            return HookResult(
-                hook_name=hook_name,
-                chip_name=chip.chip_name,
-                success=True,
-                result=output,
-                confidence=chip.quality_score / 100.0,
-                execution_mode="subprocess",
-            )
-        else:
-            return HookResult(
-                hook_name=hook_name,
-                chip_name=chip.chip_name,
-                success=False,
-                result={"stderr": proc.stderr, "returncode": proc.returncode},
-                confidence=0.0,
-                execution_mode="subprocess",
-            )
+            if proc.returncode == 0:
+                # Parse the output file before the tempdir context exits and
+                # deletes it. Reading after the `with` block would always miss
+                # the file-based output and silently fall back to stdout.
+                output = _parse_hook_output(output_path, proc.stdout)
+                return HookResult(
+                    hook_name=hook_name,
+                    chip_name=chip.chip_name,
+                    success=True,
+                    result=output,
+                    confidence=chip.quality_score / 100.0,
+                    execution_mode="subprocess",
+                )
+            else:
+                return HookResult(
+                    hook_name=hook_name,
+                    chip_name=chip.chip_name,
+                    success=False,
+                    result={"stderr": proc.stderr, "returncode": proc.returncode},
+                    confidence=0.0,
+                    execution_mode="subprocess",
+                )
     except (subprocess.TimeoutExpired, OSError) as exc:
         return HookResult(
             hook_name=hook_name,
