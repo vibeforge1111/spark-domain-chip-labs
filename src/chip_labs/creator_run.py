@@ -4047,20 +4047,26 @@ def _check_external_broad_transfer_recompute(
 
 def _resolve_external_artifact_path(run_path: Path, reference: str) -> Path | None:
     reference_path = Path(reference)
+    # Reject absolute paths — callers must use run-relative or repo-relative refs.
+    if reference_path.is_absolute():
+        return None
     run_base = run_path.resolve()
     candidates: list[Path] = []
-    if reference_path.is_absolute():
-        candidates.append(reference_path)
     candidates.append(run_base / reference_path)
 
     repo_root = _find_repo_root(run_base)
     if repo_root is not None:
         candidates.append(repo_root / reference_path)
-        candidates.append(repo_root.parent / reference_path)
 
     for candidate in candidates:
-        if candidate.exists():
-            return candidate
+        resolved = candidate.resolve()
+        try:
+            resolved.relative_to(run_base)
+        except ValueError:
+            # Resolved path escapes run_base — skip to prevent traversal.
+            continue
+        if resolved.exists():
+            return resolved
     return None
 
 
