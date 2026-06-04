@@ -103,6 +103,8 @@ def _check_manifest(chip_path: Path) -> dict[str, bool]:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
         return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "manifest_validity" for c in dim["checks"]}
+    if not isinstance(manifest, dict):
+        return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "manifest_validity" for c in dim["checks"]}
 
     results["schema_version"] = manifest.get("schema_version") == "spark-chip.v1"
     results["io_protocol"] = manifest.get("io_protocol") == "spark-hook-io.v1"
@@ -150,6 +152,8 @@ def _check_evaluation_depth(chip_path: Path) -> dict[str, bool]:
     try:
         project = json.loads(project_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
+        return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "evaluation_depth" for c in dim["checks"]}
+    if not isinstance(project, dict):
         return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "evaluation_depth" for c in dim["checks"]}
 
     results["primary_metric"] = bool(project.get("eval_metric"))
@@ -237,6 +241,8 @@ def _check_integration_health(chip_path: Path) -> dict[str, bool]:
     try:
         project = json.loads(project_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
+        return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "integration_health" for c in dim["checks"]}
+    if not isinstance(project, dict):
         return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "integration_health" for c in dim["checks"]}
 
     results["project_json_valid"] = bool(project.get("project_name"))
