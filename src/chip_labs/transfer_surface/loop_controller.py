@@ -16,6 +16,7 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import logging
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -32,6 +33,8 @@ from ..chip_factory import (
 )
 from ..lab_hooks import run_suggest
 from ..quality_rubric import score_chip
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -718,6 +721,15 @@ class RecursiveLoopController:
                 chip_search_dir=chip_path.parent,
             )
         except Exception:
+            # Defensive: a broken suggest hook must never crash the loop, but
+            # the operator needs a diagnostic trail. Without this log the
+            # iteration silently records zero suggestion candidates with no
+            # signal that run_suggest was tried and raised.
+            logger.warning(
+                "run_suggest for chip %s raised; treating as empty suggestion list",
+                chip_path,
+                exc_info=True,
+            )
             suggestions = []
 
         applied_count = 0
