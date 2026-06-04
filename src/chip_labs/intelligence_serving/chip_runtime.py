@@ -11,12 +11,15 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import logging
 import subprocess
 import tempfile
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 from chip_labs.deep_eval import score_chip_v3
 from .intelligence_server import (
@@ -326,8 +329,18 @@ def _parse_hook_output(output_path: Path, stdout: str) -> dict[str, Any]:
     if output_path.exists():
         try:
             return json.loads(output_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            pass
+        except (json.JSONDecodeError, OSError) as exc:
+            # Defensive: a corrupt/unreadable hook output file must never crash
+            # the runtime, but the operator needs a diagnostic trail. Without
+            # this log the runtime silently falls back to stdout parsing and
+            # the file-level failure is invisible to anyone debugging why a
+            # hook result looks empty or wrong.
+            logger.warning(
+                "Hook output file %s could not be parsed (%s); "
+                "falling back to stdout",
+                output_path,
+                exc,
+            )
 
     try:
         return json.loads(stdout)
