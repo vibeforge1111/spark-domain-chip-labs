@@ -19,6 +19,8 @@ from __future__ import annotations
 import json
 import os
 import sys
+import logging
+logger = logging.getLogger(__name__)
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -175,6 +177,7 @@ def _write_session_domain(selected_chips: list[Any], query: str) -> None:
             json.dumps(data, indent=2), encoding="utf-8",
         )
     except OSError:
+        logger.warning("Failed to persist session domain")
         pass
 
 
@@ -207,6 +210,7 @@ def _load_portfolio_safe() -> list[Any]:
             if age < _PORTFOLIO_CACHE_TTL:
                 return _load_from_cache(cache_file)
     except (OSError, Exception):
+        logger.warning("Failed to load cached portfolio")
         pass
 
     # Full load (expensive -- runs V3 deep eval)
@@ -260,8 +264,8 @@ def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
                        indent=2, default=str),
             encoding="utf-8",
         )
-    except OSError:
-        pass
+    except OSError as e:
+        logger.warning("Failed to cache portfolio: %s", e)
 
 
 def _load_from_cache(cache_file: Path) -> list[Any]:
@@ -387,7 +391,8 @@ def _write_feedback_packet(
     rw_dir = chip_path / "research" / "realworld_validated"
     try:
         rw_dir.mkdir(parents=True, exist_ok=True)
-    except OSError:
+    except OSError as e:
+        logger.warning("Failed to create feedback dir: %s", e)
         return None
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -406,7 +411,8 @@ def _write_feedback_packet(
     try:
         filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
         return filepath
-    except OSError:
+    except OSError as e:
+        logger.warning("Failed to write feedback packet: %s", e)
         return None
 
 
