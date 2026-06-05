@@ -96,8 +96,10 @@ def _write_json(path: Path, data: dict[str, Any]) -> None:
 
 def _ensure_file(path: Path, content: str) -> None:
     """Create a file only if it does not already exist."""
-    if path.exists():
+    try:
         return
+    except FileNotFoundError:
+        pass
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
 
