@@ -951,11 +951,20 @@ class RecursiveLoopController:
         if not self._config.telemetry_enabled:
             return
 
+        import os
+        import tempfile
         telemetry_path = chip_path / "loop_telemetry.json"
-        telemetry_path.write_text(
-            json.dumps(self._telemetry.to_dict(), indent=2, ensure_ascii=False) + "\n",
-            encoding="utf-8",
-        )
+        fd, tmp_path = tempfile.mkstemp(dir=str(chip_path), suffix=".tmp")
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                f.write(json.dumps(self._telemetry.to_dict(), indent=2, ensure_ascii=False) + "\n")
+            os.replace(tmp_path, str(telemetry_path))
+        except BaseException:
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
+            raise
 
 
 # ---------------------------------------------------------------------------
