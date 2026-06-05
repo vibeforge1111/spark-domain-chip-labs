@@ -449,11 +449,18 @@ def cmd_watchtower(args: argparse.Namespace) -> None:
     input_data = _load_input(args.input)
     mutations = input_data.get("mutations", {{}})
     vault_dir = input_data.get("vault_dir", "obsidian-vault")
+    vault_path = Path(vault_dir).resolve()
+    # Validate vault_dir stays within current working directory
+    cwd = Path.cwd().resolve()
+    if not str(vault_path).startswith(str(cwd)):
+        raise ValueError(f"vault_dir must be within the working directory: {vault_dir!r}")
     pages = generate_watchtower_pages(mutations, vault_dir)
-    vault_path = Path(vault_dir)
     vault_path.mkdir(parents=True, exist_ok=True)
     for page in pages:
-        page_path = vault_path / page["path"]
+        page_rel = page["path"].lstrip("/")
+        page_path = (vault_path / page_rel).resolve()
+        if not str(page_path).startswith(str(vault_path)):
+            raise ValueError(f"Page path escapes vault: {page['path']!r}")
         page_path.parent.mkdir(parents=True, exist_ok=True)
         page_path.write_text(page["content"], encoding="utf-8")
     _write_output(args.output, {{"pages": [p["path"] for p in pages], "count": len(pages)}})
