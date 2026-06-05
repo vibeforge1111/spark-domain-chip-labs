@@ -21,6 +21,8 @@ def load_brief(brief_path: str | Path) -> dict[str, Any]:
     brief_path = Path(brief_path)
     if brief_path.suffix in (".yaml", ".yml"):
         # Simple YAML-like parser (no external deps)
+        if not brief_path.exists() or brief_path.stat().st_size == 0:
+            return {}
         return _parse_simple_yaml(brief_path.read_text(encoding="utf-8"))
     return json.loads(brief_path.read_text(encoding="utf-8"))
 
