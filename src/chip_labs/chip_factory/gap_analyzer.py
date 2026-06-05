@@ -583,7 +583,7 @@ def _fix_contradiction_handling(chip_path: Path) -> bool:
     docs_dir = chip_path / "docs"
     docs_dir.mkdir(parents=True, exist_ok=True)
     contra_path = docs_dir / "CONTRADICTIONS.md"
-    if contra_path.exists():
+    try:
         content = contra_path.read_text(encoding="utf-8", errors="ignore")
         # Only skip if already has real substance (>50 chars beyond header)
         lines = [
@@ -593,6 +593,8 @@ def _fix_contradiction_handling(chip_path: Path) -> bool:
         if sum(len(line) for line in lines) > 50:
             return True
 
+    except FileNotFoundError:
+        pass
     domain = chip_path.name.replace("domain-chip-", "")
     contra_path.write_text(
         f"# Contradictions Log: {domain}\n\n"
