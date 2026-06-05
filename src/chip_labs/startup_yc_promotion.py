@@ -1560,7 +1560,10 @@ def _network_absorption_next_actions(
 
 
 def _load_json(path: Path) -> dict[str, Any]:
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        raise ValueError(f"Cannot load {path}: {exc}") from exc
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
@@ -1593,8 +1596,14 @@ def _file_sha256(path: Path) -> str:
 def _resolve_related_path(base_path: Path, related_path: str) -> Path:
     path = Path(related_path)
     if path.is_absolute():
-        return path
-    return base_path.parent / path
+        resolved = path.resolve()
+    else:
+        resolved = (base_path.parent / path).resolve()
+    # Prevent path traversal outside the base directory tree
+    base_root = base_path.parent.resolve()
+    if not str(resolved).startswith(str(base_root)):
+        raise ValueError(f"Path traversal detected: {related_path!r} resolves outside {base_root}")
+    return resolved
 
 
 def _list_str(value: Any) -> list[str]:
