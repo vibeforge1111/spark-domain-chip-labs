@@ -268,7 +268,10 @@ def _load_from_cache(cache_file: Path) -> list[Any]:
     """Reconstruct lightweight chip handles from cached JSON."""
     from dataclasses import dataclass, field
 
-    data = json.loads(cache_file.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(cache_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}  # malformed JSON, return safe default
 
     # Import ChipIntelligence for reconstruction
     try:
