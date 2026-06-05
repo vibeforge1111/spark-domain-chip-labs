@@ -11,6 +11,8 @@ from .creator_beta_readiness import build_creator_system_beta_check
 from .creator_production_readiness import build_creator_system_production_readiness
 from .creator_run import repo_root
 
+SPARK_DOMAIN_CHIP_LABS__GIT_LINES_TIMEOUT_SECONDS = 60
+
 
 SCHEMA_VERSION = "adaptive_creator_loop.creator_system_release_evidence.v1"
 DEFAULT_RELEASE_ID = "creator-system-beta-2026-05-04"
@@ -269,6 +271,8 @@ def _git_lines(repo_path: Path, *args: str) -> list[str]:
             capture_output=True,
             text=True,
             check=False,
+
+        timeout=SPARK_DOMAIN_CHIP_LABS__GIT_LINES_TIMEOUT_SECONDS,
         )
     except OSError:
         return []
