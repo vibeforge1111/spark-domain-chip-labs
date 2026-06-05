@@ -357,12 +357,14 @@ def _check_documentation_v2(chip_path: Path) -> dict[str, bool]:
 
     # readme_exists -- 200+ chars
     readme = chip_path / "README.md"
-    if readme.exists():
+    try:
         try:
             text = readme.read_text(encoding="utf-8", errors="ignore")
             results["readme_exists"] = len(text) >= 200
         except OSError:
             results["readme_exists"] = False
+    except FileNotFoundError:
+        pass
     else:
         results["readme_exists"] = False
 
