@@ -15,6 +15,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 """
 
 from __future__ import annotations
+import re
 
 import json
 import os
@@ -574,7 +575,8 @@ def _write_feedback_packet(
         "source": "claude_code_hook",
     }
 
-    filename = f"feedback_{timestamp}_{tool_name}.json"
+    safe_tool_name = re.sub(r"[^a-zA-Z0-9_-]", "_", tool_name)[:50]
+    filename = f"feedback_{timestamp}_{safe_tool_name}.json"
     filepath = rw_dir / filename
     try:
         filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
