@@ -192,7 +192,7 @@ def compute_artifact_quality_benchmark(run_dir: str | Path) -> dict[str, Any]:
     mean_delta = round(candidate["score"] - baseline["score"], 4)
     trap_regressions = sum(
         1 for trap in traps
-        if "polished_but_unproven" not in trap["trap_flags"] or trap["verdict"] != "blocked"
+        if "polished_but_unproven" not in trap["trap_flags"] and trap["verdict"] != "blocked"
     )
     calibration_passed = (
         all(check["status"] == "pass" for check in expectation_checks)
