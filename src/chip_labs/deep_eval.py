@@ -463,7 +463,9 @@ def check_manifest_structure(chip_path: Path) -> DimensionResult:
 
     # 2 pts: scoring function in src/
     scoring_re = re.compile(
-        r"def\s+(score|evaluate)\s*\(.*?\)\s*.*?:" r"[\s\S]*?" r"return\s+",
+        r"def\s+(score|evaluate)\s*\([^)]*\)\s*[^:]*?:"
+        r"[\s\S]{0,5000}?"
+        r"return\s+",
         re.MULTILINE,
     )
     src_dir = chip_path / "src"
