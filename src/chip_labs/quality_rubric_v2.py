@@ -184,7 +184,9 @@ def _check_manifest_v2(chip_path: Path) -> dict[str, bool]:
         }
 
     try:
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        # utf-8-sig transparently strips a leading BOM if a Windows editor
+        # (Notepad, some VS Code presets) wrote the chip manifest.
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     except (json.JSONDecodeError, OSError):
         return {
             c["id"]: False
