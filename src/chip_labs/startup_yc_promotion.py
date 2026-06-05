@@ -1560,6 +1560,8 @@ def _network_absorption_next_actions(
 
 
 def _load_json(path: Path) -> dict[str, Any]:
+    # NOTE: This is a read-modify-write block. A concurrent writer could lose updates.
+    # See _atomic_read_modify_write for the safe version of this pattern.
     data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
