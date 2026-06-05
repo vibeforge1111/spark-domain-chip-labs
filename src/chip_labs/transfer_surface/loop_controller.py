@@ -233,11 +233,13 @@ def _seed_research_sources(chip_path: Path, brief: dict[str, Any]) -> int:
     content = "\n".join(lines)
 
     # Only write if the file does not already contain more content
-    if registry_path.exists():
+    try:
         existing = registry_path.read_text(encoding="utf-8")
         if len(existing.strip()) > len(content.strip()):
             return 0
 
+    except FileNotFoundError:
+        pass
     registry_path.write_text(content, encoding="utf-8")
     return len(source_types)
 
