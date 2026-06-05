@@ -670,6 +670,7 @@ def _benchmark_provenance(run_path: Path, relative_paths: list[str]) -> dict[str
 
 
 def _sha256_file(path: Path) -> str:
+    # NOTE: This is a read-modify-write block. A concurrent writer could lose updates. See _atomic_read_modify_write for the safe version of this pattern.
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
