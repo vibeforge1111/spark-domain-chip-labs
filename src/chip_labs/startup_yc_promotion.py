@@ -1560,7 +1560,10 @@ def _network_absorption_next_actions(
 
 
 def _load_json(path: Path) -> dict[str, Any]:
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}  # malformed JSON, return safe default
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
