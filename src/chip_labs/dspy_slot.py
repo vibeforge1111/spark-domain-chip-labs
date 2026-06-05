@@ -253,7 +253,10 @@ def generate_slot_script(config: DSpySlotConfig) -> str:
     parts.append("            line = line.strip()")
     parts.append("            if not line:")
     parts.append("                continue")
-    parts.append("            data = json.loads(line)")
+    try:
+        parts.append("            data = json.loads(line)")
+    except json.JSONDecodeError:
+        return {}  # malformed JSON, return safe default
     parts.append(f"            examples.append(dspy.Example(**data).with_inputs({with_inputs_arg}))")
     parts.append("    return examples")
     parts.append("")
