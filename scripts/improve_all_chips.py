@@ -476,7 +476,10 @@ def _bridge_packets(chip: Path) -> int:
     if count == 0:
         manifest_path = chip / "spark-chip.json"
         if manifest_path.exists():
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                return {}  # malformed JSON, return safe default
             domain = manifest.get("domain", "unknown")
             packet = {
                 "claim": f"The {domain} domain chip follows spark-chip.v1 contract",
