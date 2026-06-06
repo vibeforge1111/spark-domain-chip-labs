@@ -47,9 +47,6 @@ def _parse_simple_yaml(text: str) -> dict[str, Any]:
             continue
 
         indent = len(line) - len(line.lstrip())
-        if indent > 0 and ":" in stripped:
-            i += 1
-            continue
 
         if ":" in stripped:
             key, _, value = stripped.partition(":")
