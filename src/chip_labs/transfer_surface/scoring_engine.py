@@ -21,12 +21,9 @@ Zero external dependencies.  Uses only stdlib dataclasses + json + pathlib.
 from __future__ import annotations
 
 import json
-import logging
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable
-
-logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -198,13 +195,9 @@ class MutationScoringEngine:
                         "label": sb.label,
                         "bonus": sb.bonus,
                     })
-            except Exception:
+            except (OSError, ValueError, KeyError, TypeError, AttributeError) as _exc:
                 # Defensive: a broken condition must never crash scoring.
-                logger.warning(
-                    "System bonus condition %r raised an exception; skipping bonus",
-                    sb.label,
-                    exc_info=True,
-                )
+                pass
         running += sys_total
 
         # 4. Clamp
