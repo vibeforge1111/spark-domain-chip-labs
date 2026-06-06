@@ -410,7 +410,7 @@ class ChipMCPServer:
                     "suggestions": chip_suggestions,
                     "focus": focus,
                 })
-            except Exception:
+            except (OSError, RuntimeError, ValueError):
                 pass
 
         return {"suggestions": suggestions}
@@ -476,7 +476,7 @@ class ChipMCPServer:
                         "isError": "error" in result,
                     },
                 }
-            except Exception as exc:
+            except (OSError, RuntimeError, ValueError) as exc:
                 return {
                     "jsonrpc": "2.0",
                     "id": req_id,
