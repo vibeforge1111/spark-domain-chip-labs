@@ -131,7 +131,26 @@ TOOLS = [
 class ChipMCPServer:
     """MCP server exposing domain chip intelligence as callable tools."""
 
-    def __init__(self, search_dir: Path | None = None) -> None:
+    
+    def _check_auth(self, method: str) -> bool:
+        """Check if request is authenticated."""
+        if method in ("initialize", "notifications/initialized", "auth"):
+            return True
+        token = os.environ.get(AUTH_TOKEN_ENV, "")
+        if not token:
+            return True  # No token configured = open access
+        return getattr(self, "_authenticated", False)
+
+    def _handle_auth(self, params: dict) -> bool:
+        """Validate auth token."""
+        token = params.get("token", "")
+        expected = os.environ.get(AUTH_TOKEN_ENV, "")
+        if expected and hmac.compare_digest(token, expected):
+            self._authenticated = True
+            return True
+        return False
+
+def __init__(self, search_dir: Path | None = None) -> None:
         self._search_dir = search_dir
         self._portfolio: list[Any] = []
         self._last_load: float = 0
@@ -387,6 +406,10 @@ class ChipMCPServer:
             try:
                 from .intelligence_server import extract_intelligence
                 intel = extract_intelligence(chip.chip_path)
+
+AUTH_TOKEN_ENV = "CHIP_MCP_AUTH_TOKEN"
+AUTH_METHODS = {"tools/call", "tools/list", "resources/read", "resources/list", "prompts/get", "prompts/list"}
+
                 # Build suggestions from gaps in evidence
                 chip_suggestions: list[str] = []
                 if intel.evidence_summary.get("realworld_validated", 0) == 0:
