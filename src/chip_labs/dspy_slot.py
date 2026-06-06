@@ -141,13 +141,13 @@ def generate_slot_script(config: DSpySlotConfig) -> str:
     input_field_lines = []
     for fname, fdesc in config.input_fields.items():
         input_field_lines.append(
-            f'    {fname}: str = dspy.InputField(desc="{fdesc}")'
+            f'    {fname}: str = dspy.InputField(desc={json.dumps(fdesc)})'
         )
 
     output_field_lines = []
     for fname, fdesc in config.output_fields.items():
         output_field_lines.append(
-            f'    {fname}: str = dspy.OutputField(desc="{fdesc}")'
+            f'    {fname}: str = dspy.OutputField(desc={json.dumps(fdesc)})'
         )
 
     input_block = "\n".join(input_field_lines) if input_field_lines else "    pass"
@@ -163,7 +163,7 @@ def generate_slot_script(config: DSpySlotConfig) -> str:
     run_arg_lines = []
     for k in input_keys:
         run_arg_lines.append(
-            f'    run_parser.add_argument("--{k}", required=True, help="{config.input_fields[k]}")'
+            f'    run_parser.add_argument("--{k}", required=True, help={json.dumps(config.input_fields[k])})'
         )
     run_args_block = "\n".join(run_arg_lines) if run_arg_lines else "    pass  # no input fields"
 
