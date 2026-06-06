@@ -125,6 +125,7 @@ def _write_discovery_cluster_materialization(
 
     for index, cluster_packet in enumerate(cluster_packets, start=1):
         cluster_id = str(cluster_packet.get("cluster_id", f"cluster-{index:02d}"))
+        cluster_id = cluster_id.replace("/", "_").replace("\\", "_").replace("..", "_")
         file_path = output_path / f"{index:02d}_{cluster_id}.json"
         file_path.write_text(json.dumps(cluster_packet, indent=2, default=str), encoding="utf-8")
         written_files.append(str(file_path))
