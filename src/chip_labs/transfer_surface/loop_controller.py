@@ -671,7 +671,7 @@ class RecursiveLoopController:
             gap = fixable[0]
             try:
                 succeeded = gap.fix_fn(chip_path)
-            except Exception:
+            except (OSError, RuntimeError, ValueError):
                 succeeded = False
 
             if succeeded:
@@ -717,7 +717,7 @@ class RecursiveLoopController:
                 recent_mutations=None,
                 chip_search_dir=chip_path.parent,
             )
-        except Exception:
+        except (OSError, RuntimeError, ValueError):
             suggestions = []
 
         applied_count = 0
@@ -841,7 +841,7 @@ class RecursiveLoopController:
                 f"Skill regeneration: Built intelligence artifacts "
                 f"({doctrine_count} doctrines, {evidence_files} evidence files)"
             )
-        except Exception:
+        except (OSError, RuntimeError, ValueError):
             # Non-fatal: intelligence_server may not be available
             pass
 
