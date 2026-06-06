@@ -671,7 +671,7 @@ class RecursiveLoopController:
             gap = fixable[0]
             try:
                 succeeded = gap.fix_fn(chip_path)
-            except Exception:
+            except (ConnectionError, TimeoutError, OSError):
                 succeeded = False
 
             if succeeded:

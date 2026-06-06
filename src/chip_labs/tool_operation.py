@@ -203,7 +203,10 @@ def check_tool_operation(packet: dict[str, Any]) -> dict[str, Any]:
 def load_tool_operation_packet(path: str | Path) -> dict[str, Any]:
     """Load a tool-operation packet from JSON."""
 
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    try:
+        data = json.loads(Path(path).read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Invalid JSON in {path}: {e}")
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data

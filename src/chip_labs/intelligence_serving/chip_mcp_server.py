@@ -410,7 +410,7 @@ class ChipMCPServer:
                     "suggestions": chip_suggestions,
                     "focus": focus,
                 })
-            except Exception:
+            except (ConnectionError, TimeoutError, OSError):
                 pass
 
         return {"suggestions": suggestions}
