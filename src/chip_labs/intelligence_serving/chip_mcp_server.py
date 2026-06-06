@@ -339,6 +339,20 @@ class ChipMCPServer:
         if not chip:
             return {"error": f"Chip '{chip_name}' not found"}
 
+        # Path traversal guard: ensure chip_path stays within the allowed root
+        resolved_chip_path = chip.chip_path.resolve()
+        if self._search_dir is not None:
+            allowed_root = self._search_dir.resolve()
+            try:
+                resolved_chip_path.relative_to(allowed_root)
+            except ValueError:
+                return {
+                    "error": (
+                        f"Path traversal blocked: chip path {resolved_chip_path} "
+                        f"is outside allowed root {allowed_root}"
+                    )
+                }
+
         # Write feedback packet to realworld_validated
         rw_dir = chip.chip_path / "research" / "realworld_validated"
         try:
