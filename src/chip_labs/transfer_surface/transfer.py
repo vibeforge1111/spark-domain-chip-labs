@@ -542,6 +542,13 @@ def _extract_research_pipeline_patterns(
     if manifest:
         frontier = manifest.get("frontier", {})
         mutations = frontier.get("allowed_mutations", {})
+        # ``allowed_mutations`` is a sanctioned dual shape: a dict mapping axis
+        # name -> values, or a plain list of axis names (the doctor auto-fix in
+        # gap_analyzer._fix_frontier_enabled writes ``["research_focus"]``, and
+        # quality_rubric_v2 accepts a list). Normalise the list form to a dict
+        # with empty value lists so the dict-only lookups below stay valid.
+        if isinstance(mutations, list):
+            mutations = {name: [] for name in mutations}
         if mutations:
             impl: dict[str, Any] = {
                 "mutation_axes": list(mutations.keys()),

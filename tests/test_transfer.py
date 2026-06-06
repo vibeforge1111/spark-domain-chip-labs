@@ -269,6 +269,58 @@ class TestExtractPatterns:
 
 
 # ---------------------------------------------------------------------------
+# TestExtractListShapedMutations -- regression for list-shaped
+# frontier.allowed_mutations (sanctioned dual shape; doctor auto-fix writes a
+# list). list(mutations.keys()) used to crash with AttributeError.
+# ---------------------------------------------------------------------------
+
+class TestExtractListShapedMutations:
+    """Regression: list-shaped allowed_mutations must not crash extraction."""
+
+    def _create_list_shape_chip(
+        self, tmp_path: Path, name: str = "domain-chip-listshape"
+    ) -> Path:
+        chip_dir = tmp_path / name
+        chip_dir.mkdir()
+        # allowed_mutations as a plain LIST of axis names -- the shape the
+        # doctor auto-fix (gap_analyzer._fix_frontier_enabled) writes and that
+        # quality_rubric_v2._has_closed_mutation_space accepts.
+        manifest = {
+            "schema_version": "spark-chip.v1",
+            "io_protocol": "spark-hook-io.v1",
+            "capabilities": ["evaluate", "suggest"],
+            "frontier": {
+                "enabled": True,
+                "allowed_mutations": ["research_focus", "regime"],
+            },
+        }
+        (chip_dir / "spark-chip.json").write_text(
+            json.dumps(manifest), encoding="utf-8"
+        )
+        return chip_dir
+
+    def test_extract_does_not_crash_on_list_mutations(self, tmp_path: Path) -> None:
+        chip = self._create_list_shape_chip(tmp_path)
+        # Must not raise AttributeError: 'list' object has no attribute 'keys'.
+        patterns = extract_patterns(chip)
+        assert isinstance(patterns, list)
+
+    def test_extract_list_mutations_yields_research_pipeline(
+        self, tmp_path: Path
+    ) -> None:
+        chip = self._create_list_shape_chip(tmp_path)
+        patterns = extract_patterns(chip)
+        pipeline = [p for p in patterns if p.pattern_type == "research_pipeline"]
+        assert len(pipeline) >= 1
+        impl = pipeline[0].implementation
+        # List entries are treated as axis names with empty value lists.
+        assert impl["axis_count"] == 2
+        assert set(impl["mutation_axes"]) == {"research_focus", "regime"}
+        # research_focus is present as an axis but carries no values.
+        assert impl.get("research_areas") == []
+
+
+# ---------------------------------------------------------------------------
 # TestFindApplicablePatterns
 # ---------------------------------------------------------------------------
 

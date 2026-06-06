@@ -479,6 +479,14 @@ def from_manifest(manifest_path: str | Path) -> ScoringConfig:
     frontier = manifest.get("frontier", {})
     allowed_mutations = frontier.get("allowed_mutations", {})
 
+    # ``allowed_mutations`` is a sanctioned dual shape: a dict mapping a
+    # dimension name to its values, or a plain list of dimension names (the
+    # doctor auto-fix writes the list form). Normalise the list form to a dict
+    # with empty value lists so the ``.items()`` iteration below stays valid;
+    # list-only entries carry no deltas and so add no dimensions.
+    if isinstance(allowed_mutations, list):
+        allowed_mutations = {name: [] for name in allowed_mutations}
+
     builder = ScoringConfigBuilder()
 
     for dim_name, values in allowed_mutations.items():
