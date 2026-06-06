@@ -88,11 +88,14 @@ def get_portfolio_summary(search_dir: str | Path | None = None) -> dict[str, Any
         total_vault_docs += chip.get("vault_doc_count", 0)
 
         version = chip.get("version", "")
-        if version and version.startswith("0.3"):
+        # Coerce to str so an unquoted numeric manifest version (e.g. 0.3)
+        # is still detected by prefix rather than crashing on .startswith.
+        vstr = str(version) if version is not None else ""
+        if vstr.startswith("0.3"):
             maturity_counts["production"] += 1
-        elif version and version.startswith("0.2"):
+        elif vstr.startswith("0.2"):
             maturity_counts["beta"] += 1
-        elif version and version.startswith("0.1"):
+        elif vstr.startswith("0.1"):
             maturity_counts["alpha"] += 1
         else:
             maturity_counts["scaffold"] += 1
