@@ -269,6 +269,7 @@ def _git_lines(repo_path: Path, *args: str) -> list[str]:
             capture_output=True,
             text=True,
             check=False,
+            timeout=60,
         )
     except OSError:
         return []
