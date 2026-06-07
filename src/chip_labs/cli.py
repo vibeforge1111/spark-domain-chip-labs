@@ -92,12 +92,36 @@ def _parse_seed_list(raw: str | None, *, flag: str = "--seeds") -> tuple[int, ..
     return tuple(seeds)
 
 
+
+def _sanitize_page_path(raw_path: str) -> str:
+    """Sanitize a watchtower page path to prevent directory traversal.
+
+    Normalizes the path, strips leading separators, and ensures the
+    resulting path cannot escape the intended vault directory.
+    """
+    # Normalize the path to resolve . and .. components
+    normalized = os.path.normpath(raw_path)
+    # Strip leading path separators to force relative path
+    sanitized = normalized.lstrip("/").lstrip(os.sep)
+    # Reject paths that contain traversal after normalization
+    # (indicates the path tries to escape the vault directory)
+    if ".." in sanitized.split(os.sep) or ".." in sanitized.split("/"):
+        raise ValueError(
+            f"Page path contains directory traversal components: {raw_path!r}"
+        )
+    # Reject empty or dot-only paths
+    if not sanitized or sanitized == ".":
+        raise ValueError(
+            f"Page path must not be empty: {raw_path!r}"
+        )
+    return sanitized
+
 def _write_watchtower_pages(vault_dir: str | Path, pages: list[dict[str, Any]]) -> None:
     """Write generated watchtower pages to the target vault directory."""
     vault_path = Path(vault_dir)
     vault_path.mkdir(parents=True, exist_ok=True)
     for page in pages:
-        page_path = vault_path / page["path"]
+        page_path = vault_path / _sanitize_page_path(page["path"])
         page_path.parent.mkdir(parents=True, exist_ok=True)
         page_path.write_text(page["content"], encoding="utf-8")
 
