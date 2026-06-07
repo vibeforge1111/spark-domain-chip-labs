@@ -266,7 +266,10 @@ def _load_all_runs(chip_path: Path) -> list[dict[str, Any]]:
                 if not line:
                     continue
                 try:
-                    entry = json.loads(line)
+                    try:
+                        entry = json.loads(line)
+                    except json.JSONDecodeError as exc:
+                        raise ValueError("Invalid JSON (deep_eval.py)") from exc
                     rid = entry.get("run_id", "")
                     if rid and rid not in runs:
                         runs[rid] = entry
