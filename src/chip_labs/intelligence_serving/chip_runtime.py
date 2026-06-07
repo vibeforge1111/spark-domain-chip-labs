@@ -11,6 +11,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import logging
 import subprocess
 import tempfile
 import time
@@ -26,6 +27,8 @@ from .intelligence_server import (
 )
 from chip_labs.registry import discover_chips
 
+
+_logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
 # Data structures
@@ -258,11 +261,15 @@ def _execute_subprocess(
                 execution_mode="subprocess",
             )
         else:
+            _logger.warning(
+                "chip subprocess %s hook %s failed (rc=%s): %s",
+                chip.chip_name, hook_name, proc.returncode, proc.stderr,
+            )
             return HookResult(
                 hook_name=hook_name,
                 chip_name=chip.chip_name,
                 success=False,
-                result={"stderr": proc.stderr, "returncode": proc.returncode},
+                result={"returncode": proc.returncode},
                 confidence=0.0,
                 execution_mode="subprocess",
             )
