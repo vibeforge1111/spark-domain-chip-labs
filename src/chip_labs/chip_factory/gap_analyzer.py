@@ -258,7 +258,8 @@ def _fix_commands_defined(chip_path: Path) -> bool:
     if project is None:
         project = {}
     commands = project.get("commands", {})
-    has_eval = any(c.get("kind") == "chip-evaluate" for c in commands.values())
+    cmd_iter = commands.values() if isinstance(commands, dict) else commands
+    has_eval = any(c.get("kind") == "chip-evaluate" for c in cmd_iter)
     if has_eval:
         return True
     commands["evaluate"] = {"kind": "chip-evaluate"}
