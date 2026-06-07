@@ -9,13 +9,16 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
+import shutil
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 from typing import Any
-
 from .creator_run import init_creator_run, load_json, validate_creator_run, write_json
 from .operator_review import build_operator_review_packet
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -212,35 +215,44 @@ def generate_creator_system_from_brief(
     domain_slug = _slugify(str(brief.get("domain_id") or domain_name))
     run_dir = workspace_path / f"{domain_slug}-creator-run"
 
-    init_result = init_creator_run(
-        run_dir,
-        domain=domain_name,
-        goal=str(brief["goal"]),
-        requested_by=str(brief.get("requested_by", "generator-acceptance-test")),
-        source_channel="local",
-    )
+    try:
+        init_result = init_creator_run(
+            run_dir,
+            domain=domain_name,
+            goal=str(brief["goal"]),
+            requested_by=str(brief.get("requested_by", "generator-acceptance-test")),
+            source_channel="local",
+        )
 
-    create_domain_chip_from_brief(run_dir, brief)
-    hook_smoke = run_domain_chip_hook_smoke(run_dir)
-    create_benchmark_pack(run_dir, brief)
-    run_benchmark_baseline(run_dir)
-    create_specialization_path(run_dir, brief)
-    create_autoloop_policy(run_dir, brief)
-    autoloop_simulation = run_keep_revert_simulation(run_dir)
-    create_swarm_contribution_packet_from_reports(run_dir, brief)
-    create_operator_review_packet(run_dir, brief)
+        create_domain_chip_from_brief(run_dir, brief)
+        hook_smoke = run_domain_chip_hook_smoke(run_dir)
+        create_benchmark_pack(run_dir, brief)
+        run_benchmark_baseline(run_dir)
+        create_specialization_path(run_dir, brief)
+        create_autoloop_policy(run_dir, brief)
+        autoloop_simulation = run_keep_revert_simulation(run_dir)
+        create_swarm_contribution_packet_from_reports(run_dir, brief)
+        create_operator_review_packet(run_dir, brief)
 
-    smoke = validate_creator_run(run_dir).to_dict()
-    recompute_smoke = validate_creator_run(run_dir, recompute=True).to_dict()
-    return GeneratedCreatorSystem(
-        run_dir=run_dir,
-        run_id=str(init_result["run_id"]),
-        domain_slug=domain_slug,
-        hook_smoke=hook_smoke,
-        autoloop_simulation=autoloop_simulation,
-        smoke=smoke,
-        recompute_smoke=recompute_smoke,
-    )
+        smoke = validate_creator_run(run_dir).to_dict()
+        recompute_smoke = validate_creator_run(run_dir, recompute=True).to_dict()
+        return GeneratedCreatorSystem(
+            run_dir=run_dir,
+            run_id=str(init_result["run_id"]),
+            domain_slug=domain_slug,
+            hook_smoke=hook_smoke,
+            autoloop_simulation=autoloop_simulation,
+            smoke=smoke,
+            recompute_smoke=recompute_smoke,
+        )
+    except Exception:
+        logger.exception(
+            "generate_creator_system_from_brief failed; cleaning up run_dir=%s",
+            run_dir,
+        )
+        if run_dir.exists():
+            shutil.rmtree(run_dir)
+        raise
 
 
 def create_domain_chip_from_brief(run_dir: str | Path, brief: dict[str, Any]) -> None:
