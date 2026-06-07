@@ -1,0 +1,100 @@
+{
+  "schema": "spark-compete-hotfix-v1",
+  "event": "spark-compete-first-event",
+  "submission_mode": "public_repo_pr",
+  "submission_target_url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/362",
+  "team": {
+    "name": "drophub_sir",
+    "members": [
+      "drophub_sir",
+      "esc1200",
+      "hermes-agent"
+    ],
+    "llm_device_holder": "esc1200",
+    "device_holder_github": "https://github.com/Esc1200",
+    "github_accounts": [
+      "Esc1200"
+    ]
+  },
+  "target_repo": {
+    "id": "vibeforge1111/spark-domain-chip-labs",
+    "source": "https://github.com/vibeforge1111/spark-domain-chip-labs",
+    "owner_surface": "domain-chip-labs"
+  },
+  "issue": {
+    "type": "bug",
+    "severity": "medium",
+    "title": "_default_workspace() leaks temp directories on every call without explicit workspace_dir",
+    "actual_behavior": "_default_workspace() (line 270-271 of creator_production_readiness.py) returns Path(tempfile.mkdtemp(prefix='creator-system-production-readiness-')). This temp directory is never cleaned up — there is no shutil.rmtree(), no TemporaryDirectory context manager, and no finally block. Every call to build_creator_system_production_readiness() without an explicit workspace_dir leaks an entire temp directory tree into the OS temp directory, accumulating indefinitely.",
+    "expected_behavior": "When no explicit workspace_dir is provided, the auto-created temp directory should be cleaned up after build_creator_system_production_readiness() completes. Temp directories created internally for scratch work should not persist after the function returns.",
+    "repro_steps": [
+      "Open src/chip_labs/creator_production_readiness.py and examine _default_workspace() at lines 270-271.",
+      "Note it calls tempfile.mkdtemp() which creates a real OS temp directory.",
+      "Trace the call site in build_creator_system_production_readiness() at line 39 — when workspace_dir is None, _default_workspace() is called.",
+      "Search the entire function for shutil.rmtree, TemporaryDirectory, or finally — none exist.",
+      "Each invocation without workspace_dir leaks a directory tree under the OS temp path (e.g., /tmp/creator-system-production-readiness-XXXXXX/)."
+    ],
+    "affected_workflow": "Any long-running or repeated caller of build_creator_system_production_readiness() without workspace_dir will accumulate temp directories, consuming disk space indefinitely"
+  },
+  "evidence": {
+    "safe_links_only": true,
+    "before_after_proof": "Before (line 40-106): workspace = Path(workspace_dir) if workspace_dir else _default_workspace() followed by direct usage with no cleanup. After: added workspace_is_temp = workspace_dir is None flag, wrapped all workspace usage in try/finally block, added if workspace_is_temp and workspace.exists(): shutil.rmtree(workspace) in finally. User-provided workspace_dir paths are untouched.",
+    "links": [
+      "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/362"
+    ],
+    "forbidden": [
+      "pdf",
+      "zip",
+      "exe",
+      "unknown downloads",
+      "shortened links",
+      "archives",
+      "binaries",
+      "tokens",
+      "browser cookies",
+      "wallet material",
+      "raw logs",
+      "raw conversations",
+      "raw memory",
+      "raw patches",
+      "private repo maps",
+      "private scoring details"
+    ]
+  },
+  "proposed_fix": {
+    "approach": "Add import shutil. Wrap the workspace usage block in build_creator_system_production_readiness() with try/finally. Track workspace_is_temp = workspace_dir is None. In the finally block, call shutil.rmtree(workspace) only when the workspace was auto-created. User-provided workspace_dir paths are preserved as before.",
+    "files_expected": [
+      "src/chip_labs/creator_production_readiness.py"
+    ],
+    "tests_or_smoke": "12 of 15 existing tests pass. 3 pre-existing failures are unrelated (Windows path-length issue in mirofish content simulation, same failures on main). All tests that provide explicit workspace_dir are unaffected. The fix only changes cleanup behavior for the auto-created temp directory path."
+  },
+  "pr": {
+    "url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/362",
+    "branch": "esc1200/fix/production-readiness-temp-leak",
+    "title_prefix": "[spark-compete]",
+    "author_github": "Esc1200",
+    "body_must_include": [
+      "packet",
+      "team",
+      "pr_author",
+      "repo",
+      "actual_behavior",
+      "expected_behavior",
+      "repro_steps",
+      "before_after_proof",
+      "tests_or_smoke",
+      "duplicate_notes",
+      "risk_notes",
+      "review_claim"
+    ]
+  },
+  "review_claim": {
+    "impact_claim": "medium",
+    "evidence_types": [
+      "redacted_terminal_excerpt"
+    ],
+    "duplicate_notes": "No existing PR addresses this temp directory leak in _default_workspace(). Other PRs fix different bugs in different modules.",
+    "risk_notes": "Low risk. The change adds a try/finally wrapper around existing code — no logic changes inside the try block. The shutil.rmtree() only runs when workspace was auto-created (workspace_dir is None). User-provided workspace directories are never touched. The return value is computed before cleanup runs, so the returned dict is identical.",
+    "review_state_requested": "pr_review"
+  }
+}
