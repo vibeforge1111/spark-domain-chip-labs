@@ -1,0 +1,61 @@
+{
+  "schema": "spark-compete-hotfix-v1",
+  "event": "spark-compete-first-event",
+  "submission_mode": "public_repo_pr",
+  "submission_target_url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/329",
+  "team": {
+    "name": "drophub_sir",
+    "members": ["esc1200", "drophub-sir", "agent-hermes"],
+    "llm_device_holder": "esc1200",
+    "device_holder_github": "https://github.com/Esc1200",
+    "github_accounts": ["Esc1200"]
+  },
+  "target_repo": {
+    "id": "vibeforge1111/spark-domain-chip-labs",
+    "source": "https://github.com/vibeforge1111/spark-domain-chip-labs",
+    "owner_surface": "domain-chip-labs"
+  },
+  "issue": {
+    "type": "bug",
+    "title": "MCP tool dispatch error handler loses error type — all exceptions look like plain strings",
+    "severity": "high",
+    "actual_behavior": "In chip_mcp_server.py lines 479-487, the tools/call exception handler catches all exceptions and returns only str(exc) inside a result.content blob. No error code, no exception type, no structured data. A ValueError is indistinguishable from a KeyError or RuntimeError to the MCP client. The response also uses the non-standard result field instead of the JSON-RPC error field.",
+    "expected_behavior": "The error response should use the JSON-RPC error field (matching the format used for unknown methods at code -32601) and include the exception type name so clients can programmatically distinguish error kinds.",
+    "repro_steps": [
+      "Inspect chip_mcp_server.py lines 479-487: the except Exception handler returns {result: {content: [{text: {error: str(exc)}}], isError: true}}.",
+      "Trigger any exception during tool dispatch (e.g., pass invalid arguments that cause a ValueError).",
+      "Observe the response has no error code, no error_type field, and uses result instead of the standard JSON-RPC error object."
+    ],
+    "affected_workflow": "MCP clients cannot distinguish exception types when tool dispatch fails. Programming errors (TypeError, AttributeError) look identical to input validation errors (ValueError), making debugging and retry logic impossible."
+  },
+  "evidence": {
+    "safe_links_only": true,
+    "before_after_proof": "Before: except block returns {result: {content: [{text: json.dumps({error: str(exc)})}], isError: true}} — no error code, no error type. After: returns {error: {code: -32000, message: 'ValueError: bad input', data: {error_type: 'ValueError', detail: 'bad input'}}} — structured JSON-RPC error with exception type.",
+    "links": [
+      "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/329/files"
+    ],
+    "forbidden": ["pdf", "zip", "exe", "unknown downloads", "shortened links", "archives", "binaries", "tokens", "browser cookies", "wallet material", "raw logs", "raw conversations", "raw memory", "raw patches", "private repo maps", "private scoring details"]
+  },
+  "proposed_fix": {
+    "approach": "Replace the catch-all except handler to use the standard JSON-RPC error field with code -32000, include the exception class name in both message and data.error_type, and keep the original error detail in data.detail. This matches the error format used elsewhere in the same file (unknown method returns code -32601).",
+    "files_expected": [
+      "src/chip_labs/intelligence_serving/chip_mcp_server.py",
+      "tests/test_chip_mcp_server.py"
+    ],
+    "tests_or_smoke": "Two new tests added: (1) test_tools_call_error_includes_error_type — verifies error code -32000, message contains 'ValueError', data.error_type is 'ValueError', data.detail matches. (2) test_tools_call_error_distinguishes_exception_types — verifies KeyError produces error_type 'KeyError', confirming different exception types are distinguishable."
+  },
+  "review_claim": {
+    "impact_claim": "high",
+    "evidence_types": ["passing_test", "redacted_terminal_excerpt"],
+    "duplicate_notes": "Searched open and closed PRs in spark-domain-chip-labs for MCP error handling fixes; none found. This targets the specific tools/call exception handler that was using non-standard error format.",
+    "risk_notes": "Only changes the error response shape for exception cases. Happy path and non-exception error paths (unknown tool returns {error: ...} in result) are untouched. The -32000 code is the standard JSON-RPC server-defined error range. No secrets, CI, dependencies, or external surfaces affected.",
+    "review_state_requested": "pr_review"
+  },
+  "pr": {
+    "url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/329",
+    "branch": "Esc1200:esc1200/fix/mcp-jsonrpc-error-structure",
+    "title_prefix": "[spark-compete]",
+    "author_github": "https://github.com/Esc1200",
+    "body_must_include": ["packet", "team", "pr_author", "repo", "actual_behavior", "expected_behavior", "repro_steps", "before_after_proof", "tests_or_smoke", "duplicate_notes", "risk_notes", "review_claim"]
+  }
+}
