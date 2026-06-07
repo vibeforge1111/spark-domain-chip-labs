@@ -169,7 +169,7 @@ def _fix_frontier_enabled(chip_path: Path) -> bool:
         frontier["enabled"] = True
         changed = True
     if not frontier.get("allowed_mutations"):
-        frontier["allowed_mutations"] = ["research_focus"]
+        frontier["allowed_mutations"] = {"research_focus": []}
         changed = True
     if changed:
         manifest["frontier"] = frontier
