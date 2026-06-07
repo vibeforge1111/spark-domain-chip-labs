@@ -300,7 +300,10 @@ The page below is sourced from the latest saved MiroFish frontier export artifac
     if readout_path is not None:
         from ..mirofish.hybrid import format_frontier_readout_markdown
 
-        readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        try:
+            readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise ValueError("Invalid JSON (watchtower.py)") from exc
         export_body = format_frontier_readout_markdown(
             readout_packet,
             title="MiroFish Frontier Readout",
