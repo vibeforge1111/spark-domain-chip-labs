@@ -1,0 +1,80 @@
+{
+  "schema": "spark-compete-hotfix-v1",
+  "event": "spark-compete-first-event",
+  "submission_mode": "public_repo_pr",
+  "submission_target_url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/367",
+  "team": {
+    "name": "drophub_sir",
+    "members": [
+      "drophub_sir",
+      "esc1200",
+      "hermes-agent"
+    ],
+    "llm_device_holder": "esc1200",
+    "device_holder_github": "https://github.com/Esc1200",
+    "github_accounts": [
+      "Esc1200"
+    ]
+  },
+  "target_repo": {
+    "id": "vibeforge1111/spark-domain-chip-labs",
+    "source": "https://github.com/vibeforge1111/spark-domain-chip-labs",
+    "owner_surface": "domain-chip-labs"
+  },
+  "issue": {
+    "type": "bug",
+    "severity": "high",
+    "title": "loop_controller.py bare except Exception: pass silently swallows ALL errors during skill regeneration",
+    "actual_behavior": "In src/chip_labs/transfer_surface/loop_controller.py lines 844-846, a bare except Exception: pass silently swallows ALL exceptions during skill regeneration. The comment says intelligence_server may not be available but the catch-all eats TypeError, KeyError, OSError, and every other exception with zero logging or observability.",
+    "expected_behavior": "Skill regeneration exceptions should be logged at debug level with full traceback (exc_info=True) so failures are observable during debugging without affecting normal operation.",
+    "repro_steps": [
+      "Open src/chip_labs/transfer_surface/loop_controller.py and examine lines 844-846.",
+      "Note the bare except Exception: pass with comment Non-fatal: intelligence_server may not be available.",
+      "This catches ALL exceptions, not just the intended connection/integration errors.",
+      "If refresh_skill() raises TypeError, KeyError, or OSError, it is silently swallowed.",
+      "No log entry, no debug output, no way to diagnose skill regeneration failures."
+    ],
+    "affected_workflow": "Domain chip skill regeneration in the recursive loop controller. Any exception during intelligence artifact building is silently lost, making it impossible to diagnose why skills are not regenerating properly."
+  },
+  "evidence": {
+    "safe_links_only": true,
+    "before_after_proof": "Before (lines 844-846): except Exception: pass with comment Non-fatal: intelligence_server may not be available. After: except Exception: logger.debug(Skill regeneration failed, exc_info=True) with comment Non-fatal: intelligence_server may be unavailable. Added import logging and logger = logging.getLogger(__name__) at module level.",
+    "links": [
+      "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/367"
+    ],
+    "forbidden": [
+      "pdf", "zip", "exe", "unknown downloads", "shortened links",
+      "archives", "binaries", "tokens", "browser cookies",
+      "wallet material", "raw logs", "raw conversations",
+      "raw memory", "raw patches", "private repo maps", "private scoring details"
+    ]
+  },
+  "proposed_fix": {
+    "approach": "Add import logging and logger = logging.getLogger(__name__) at module level. Replace bare except Exception: pass with except Exception: logger.debug(Skill regeneration failed (intelligence_server may be unavailable), exc_info=True). The exception is still caught (non-fatal) but now logged at DEBUG level with full traceback.",
+    "files_expected": [
+      "src/chip_labs/transfer_surface/loop_controller.py"
+    ],
+    "tests_or_smoke": "Existing tests pass unchanged. The fix only adds logging to an exception handler that previously did pass. Normal operation is identical. The only difference is that debug-level logging now captures the traceback."
+  },
+  "pr": {
+    "url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/367",
+    "branch": "esc1200/fix/loop-controller-regen-silent-failure",
+    "title_prefix": "[spark-compete]",
+    "author_github": "Esc1200",
+    "body_must_include": [
+      "packet", "team", "pr_author", "repo",
+      "actual_behavior", "expected_behavior", "repro_steps",
+      "before_after_proof", "tests_or_smoke",
+      "duplicate_notes", "risk_notes", "review_claim"
+    ]
+  },
+  "review_claim": {
+    "impact_claim": "high",
+    "evidence_types": [
+      "redacted_terminal_excerpt"
+    ],
+    "duplicate_notes": "No existing PR addresses the silent exception swallowing in loop_controller.py skill regeneration. The fix targets lines 844-846 specifically and is independent of other loop_controller changes.",
+    "risk_notes": "Minimal risk. The change adds logging.debug() to an exception handler that previously did pass. The exception is still caught. Skill regeneration remains non-fatal. No behavioral change for normal operation. Standard library logging module, no new dependencies.",
+    "review_state_requested": "pr_review"
+  }
+}
