@@ -198,7 +198,7 @@ class MutationScoringEngine:
                         "label": sb.label,
                         "bonus": sb.bonus,
                     })
-            except Exception:
+            except (TypeError, ValueError, KeyError, AttributeError):
                 # Defensive: a broken condition must never crash scoring.
                 logger.warning(
                     "System bonus condition %r raised an exception; skipping bonus",
