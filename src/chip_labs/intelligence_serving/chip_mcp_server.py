@@ -477,12 +477,17 @@ class ChipMCPServer:
                     },
                 }
             except Exception as exc:
+                error_type = type(exc).__name__
                 return {
                     "jsonrpc": "2.0",
                     "id": req_id,
-                    "result": {
-                        "content": [{"type": "text", "text": json.dumps({"error": str(exc)})}],
-                        "isError": True,
+                    "error": {
+                        "code": -32000,
+                        "message": f"{error_type}: {exc}",
+                        "data": {
+                            "error_type": error_type,
+                            "detail": str(exc),
+                        },
                     },
                 }
 
