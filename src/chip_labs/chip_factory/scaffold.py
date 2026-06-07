@@ -77,7 +77,7 @@ def _parse_simple_yaml(text: str) -> dict[str, Any]:
                     if next_stripped.startswith("- "):
                         item_text = next_stripped[2:].strip().strip('"').strip("'")
                         # Check if it's a dict item (- name: value)
-                        if ":" in item_text and not item_text.startswith("http"):
+                        if ":" in item_text and not re.match(r'https?://|ftp://', item_text):
                             item_dict = {}
                             dk, _, dv = item_text.partition(":")
                             item_dict[dk.strip()] = dv.strip().strip('"').strip("'")
