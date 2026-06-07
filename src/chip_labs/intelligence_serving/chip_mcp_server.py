@@ -338,7 +338,7 @@ class ChipMCPServer:
         try:
             rw_dir.mkdir(parents=True, exist_ok=True)
         except OSError as exc:
-            return {"error": f"Cannot create directory: {exc}"}
+            return {"error": "Cannot create feedback directory"}
 
         timestamp = datetime.now(timezone.utc)
         packet = {
