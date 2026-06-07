@@ -12,6 +12,7 @@ Run from anywhere:
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import shutil
@@ -412,11 +413,26 @@ def bridge_structured_packets(chip: Path) -> int:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    chip_path_arg = None
-    if "--chip-path" in sys.argv:
-        idx = sys.argv.index("--chip-path")
-        if idx + 1 < len(sys.argv):
-            chip_path_arg = sys.argv[idx + 1]
+    parser = argparse.ArgumentParser(
+        prog="bridge_startup_yc_evidence",
+        description=(
+            "One-time migration: map startup-yc chip artifacts (runs.jsonl, "
+            "research packets, beliefs, DSPy configs) into the directory layout "
+            "expected by quality_rubric_v2. Idempotent: existing targets are skipped."
+        ),
+    )
+    parser.add_argument(
+        "--chip-path",
+        type=str,
+        default=None,
+        metavar="PATH",
+        help=(
+            "Path to the domain-chip-startup-yc directory. "
+            "Default: ~/Desktop/domain-chip-startup-yc."
+        ),
+    )
+    args = parser.parse_args()
+    chip_path_arg = args.chip_path
 
     chip = _find_chip(chip_path_arg)
     print(f"Bridging evidence for: {chip.name}")
