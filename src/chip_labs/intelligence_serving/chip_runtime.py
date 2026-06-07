@@ -262,7 +262,7 @@ def _execute_subprocess(
                 hook_name=hook_name,
                 chip_name=chip.chip_name,
                 success=False,
-                result={"stderr": proc.stderr, "returncode": proc.returncode},
+                result={"returncode": proc.returncode, "stderr_present": bool(proc.stderr)},
                 confidence=0.0,
                 execution_mode="subprocess",
             )
