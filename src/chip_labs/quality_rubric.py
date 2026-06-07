@@ -119,22 +119,58 @@ def _check_manifest(chip_path: Path) -> dict[str, bool]:
 
 
 def _check_evidence_separation(chip_path: Path) -> dict[str, bool]:
-    """Check for evidence lane separation indicators."""
+    """Check for evidence lane separation indicators.
+
+    Each evidence lane must have a corresponding directory under ``evidence/``
+    that contains at least one file, preventing trivial keyword-only gaming.
+    The check also accepts ``evidence-lane/`` as an alternative root so that
+    both naming conventions are supported.
+
+    Backwards-compatible: if the ``evidence/`` directory does not exist, the
+    check falls back to the previous keyword-in-text heuristic so that legacy
+    chips that document their lanes inline are not penalized for existing
+    before this enforcement was introduced.
+    """
     results: dict[str, bool] = {}
 
-    # Check across docs, src, and obsidian-vault for evidence lane references
-    all_text = ""
-    for pattern in ["docs/**/*.md", "src/**/*.py", "obsidian-vault/**/*.md", "README.md"]:
-        for fp in chip_path.glob(pattern):
-            try:
-                all_text += fp.read_text(encoding="utf-8", errors="ignore").lower()
-            except OSError:
-                pass
+    # ---- Primary check: actual evidence-lane directories ----
+    evidence_dir = chip_path / "evidence"
+    alt_evidence_dir = chip_path / "evidence-lane"
 
-    results["has_research_grounded"] = "research_grounded" in all_text or "research-grounded" in all_text or "source" in all_text
-    results["has_benchmark_grounded"] = "benchmark_grounded" in all_text or "benchmark-grounded" in all_text or "benchmark" in all_text
-    results["has_exploratory_frontier"] = "exploratory_frontier" in all_text or "exploratory" in all_text or "frontier" in all_text
-    results["has_realworld_validated"] = "realworld_validated" in all_text or "real-world" in all_text or "realworld" in all_text
+    if evidence_dir.is_dir():
+        evidence_root = evidence_dir
+    elif alt_evidence_dir.is_dir():
+        evidence_root = alt_evidence_dir
+    else:
+        evidence_root = None
+
+    lane_dirs: dict[str, str] = {
+        "has_research_grounded": "research_grounded",
+        "has_benchmark_grounded": "benchmark_grounded",
+        "has_exploratory_frontier": "exploratory_frontier",
+        "has_realworld_validated": "realworld_validated",
+    }
+
+    if evidence_root is not None:
+        for check_id, lane_name in lane_dirs.items():
+            lane_path = evidence_root / lane_name
+            results[check_id] = (
+                lane_path.is_dir() and any(lane_path.iterdir())
+            )
+    else:
+        # ---- Fallback: keyword heuristic for legacy chips ----
+        all_text = ""
+        for pattern in ["docs/**/*.md", "src/**/*.py", "obsidian-vault/**/*.md", "README.md"]:
+            for fp in chip_path.glob(pattern):
+                try:
+                    all_text += fp.read_text(encoding="utf-8", errors="ignore").lower()
+                except OSError:
+                    pass
+
+        results["has_research_grounded"] = "research_grounded" in all_text or "research-grounded" in all_text
+        results["has_benchmark_grounded"] = "benchmark_grounded" in all_text or "benchmark-grounded" in all_text
+        results["has_exploratory_frontier"] = "exploratory_frontier" in all_text or "exploratory" in all_text
+        results["has_realworld_validated"] = "realworld_validated" in all_text or "real-world" in all_text
 
     return results
 
