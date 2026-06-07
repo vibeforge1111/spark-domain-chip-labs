@@ -16,11 +16,14 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import logging
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 from ..chip_factory import (
@@ -672,6 +675,12 @@ class RecursiveLoopController:
             try:
                 succeeded = gap.fix_fn(chip_path)
             except Exception:
+                logger.warning(
+                    "Auto-fix function '%s' raised an exception for chip '%s'",
+                    gap.fix_description,
+                    chip_path,
+                    exc_info=True,
+                )
                 succeeded = False
 
             if succeeded:
