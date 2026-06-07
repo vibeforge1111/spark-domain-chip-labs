@@ -668,7 +668,7 @@ def main() -> None:
     input_data = _read_stdin()
     result = handler(input_data)
 
-    if result:
+    if result is not None:
         _write_stdout(result)
 
 
