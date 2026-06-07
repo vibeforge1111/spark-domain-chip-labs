@@ -510,8 +510,11 @@ class ChipMCPServer:
 
             response = self._handle_request(request)
             if response:
-                sys.stdout.write(json.dumps(response) + "\n")
-                sys.stdout.flush()
+                try:
+                    sys.stdout.write(json.dumps(response) + "\n")
+                    sys.stdout.flush()
+                except BrokenPipeError:
+                    break
 
 
 # ---------------------------------------------------------------------------
