@@ -163,7 +163,10 @@ def _check_criterion(criterion_id: str, chip_path: Path, quality_score: int) -> 
         if not project_path.exists():
             return False
         try:
-            project = json.loads(project_path.read_text(encoding="utf-8"))
+            try:
+                project = json.loads(project_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                raise ValueError("Invalid JSON (graduation.py)") from exc
             trials = project.get("candidate_trials", [])
             return len(trials) >= 3
         except (json.JSONDecodeError, OSError):
