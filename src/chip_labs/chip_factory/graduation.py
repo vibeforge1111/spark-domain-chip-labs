@@ -81,7 +81,7 @@ def assess_graduation(chip_path: str | Path) -> dict[str, Any]:
     quality_score = quality_result["total_score"]
 
     for criterion in GRADUATION_CRITERIA:
-        passed = _check_criterion(criterion["id"], chip_path, quality_score)
+        passed = _check_criterion(criterion["id"], chip_path, quality_result)
         score = 1.0 if passed else 0.0
         weighted_score += score * criterion["weight"]
         total_weight += criterion["weight"]
@@ -115,7 +115,7 @@ def assess_graduation(chip_path: str | Path) -> dict[str, Any]:
     }
 
 
-def _check_criterion(criterion_id: str, chip_path: Path, quality_score: int) -> bool:
+def _check_criterion(criterion_id: str, chip_path: Path, quality_result: dict[str, Any]) -> bool:
     """Check a single graduation criterion."""
     if criterion_id == "working_cli":
         manifest_path = chip_path / "spark-chip.json"
@@ -147,12 +147,11 @@ def _check_criterion(criterion_id: str, chip_path: Path, quality_score: int) -> 
         return False
 
     elif criterion_id == "quality_score":
-        return quality_score >= 60
+        return quality_result["total_score"] >= 60
 
     elif criterion_id == "evidence_separation":
-        # Check quality rubric evidence dimension
-        result = score_chip(chip_path)
-        for dim in result.get("dimensions", []):
+        # Check quality rubric evidence dimension (reuse already-computed result)
+        for dim in quality_result.get("dimensions", []):
             if dim["name"] == "evidence_separation":
                 passed_count = sum(1 for c in dim["checks"] if c["passed"])
                 return passed_count >= 3
