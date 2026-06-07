@@ -281,7 +281,10 @@ def load_json(path: Path) -> dict[str, Any]:
     """Load a JSON object from disk."""
 
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise ValueError("Invalid JSON (creator_run.py)") from exc
     except FileNotFoundError:
         raise
     except json.JSONDecodeError as exc:
@@ -834,7 +837,8 @@ def _apply_doctor_sweep_operation(path: Path, operation: dict[str, Any]) -> None
             raise ValueError("add_to_number requires numeric target and delta")
         _set_nested(data, field_path, number + delta)
     else:
-        raise ValueError(f"unsupported operation {op}")
+        known_operations = "replace_text, replace_line_prefix, set_nested, delete_nested, add_to_number"
+        raise ValueError(f"unsupported operation {op!r}. Known operations: {known_operations}.")
     write_json(path, data)
 
 
