@@ -348,7 +348,10 @@ def _normalize(text: str) -> str:
 
 def _load_manifest(path: Path) -> dict[str, Any]:
     try:
-        manifest = json.loads(path.read_text(encoding="utf-8"))
+        try:
+            manifest = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise ValueError("Invalid JSON (artifact_quality.py)") from exc
     except FileNotFoundError:
         raise FileNotFoundError(f"{path} is required for artifact-quality benchmark") from None
     except json.JSONDecodeError as exc:
@@ -427,9 +430,11 @@ def _load_manifest(path: Path) -> dict[str, Any]:
                     + ", ".join(missing_fields)
                 )
             if str(case["reviewer_verdict"]) not in ARTIFACT_QUALITY_VERDICTS:
+                allowed = ", ".join(sorted(ARTIFACT_QUALITY_VERDICTS))
                 raise ValueError(
                     f"{path} reviewer_calibration_cases[{index}] has invalid "
-                    "reviewer_verdict"
+                    f"reviewer_verdict: {case['reviewer_verdict']!r}. "
+                    f"Allowed verdicts: {allowed}."
                 )
             _validate_expectation_shape(
                 path,
@@ -457,7 +462,11 @@ def _validate_expectation_shape(
 ) -> None:
     verdict = expectation.get("verdict")
     if verdict is not None and str(verdict) not in ARTIFACT_QUALITY_VERDICTS:
-        raise ValueError(f"{path} {label}.verdict is invalid")
+        allowed = ", ".join(sorted(ARTIFACT_QUALITY_VERDICTS))
+        raise ValueError(
+            f"{path} {label}.verdict is invalid: {verdict!r}. "
+            f"Allowed verdicts: {allowed}."
+        )
     for score_field in ("min_score", "max_score"):
         if score_field in expectation and not _is_unit_score(expectation[score_field]):
             raise ValueError(f"{path} {label}.{score_field} must be a number from 0 to 1")
