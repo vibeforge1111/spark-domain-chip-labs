@@ -171,9 +171,17 @@ def _write_session_domain(selected_chips: list[Any], query: str) -> None:
             "domains": list({c.domain for c in selected_chips}),
             "ts": datetime.now(timezone.utc).isoformat(),
         }
-        _SESSION_DOMAIN_FILE.write_text(
-            json.dumps(data, indent=2), encoding="utf-8",
-        )
+        # Atomic write: write to temp file then os.replace() to avoid
+        # partial JSON on crash (original write_text was not atomic).
+        tmp = _SESSION_DOMAIN_FILE.with_suffix(".tmp")
+        try:
+            tmp.write_text(
+                json.dumps(data, indent=2), encoding="utf-8",
+            )
+            os.replace(str(tmp), str(_SESSION_DOMAIN_FILE))
+        except BaseException:
+            tmp.unlink(missing_ok=True)
+            raise
     except OSError:
         pass
 
