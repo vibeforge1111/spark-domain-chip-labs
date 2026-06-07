@@ -16,11 +16,14 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import logging
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 from ..chip_factory import (
@@ -842,8 +845,8 @@ class RecursiveLoopController:
                 f"({doctrine_count} doctrines, {evidence_files} evidence files)"
             )
         except Exception:
-            # Non-fatal: intelligence_server may not be available
-            pass
+            # Non-fatal: intelligence_server may be unavailable
+            logger.debug("Skill regeneration failed (intelligence_server may be unavailable)", exc_info=True)
 
         t_end = _now_ms()
 
