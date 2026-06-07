@@ -358,7 +358,7 @@ class ChipMCPServer:
         try:
             filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
         except OSError as exc:
-            return {"error": f"Cannot write feedback: {exc}"}
+            return {"error": "Cannot write feedback packet"}
 
         return {
             "success": True,
