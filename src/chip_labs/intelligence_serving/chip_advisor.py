@@ -9,6 +9,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -171,9 +172,15 @@ def _classify_guidance(action: str, claim: str) -> str:
     action_lower = action.lower()
     claim_lower = claim.lower()
 
-    # Simple heuristic: keyword overlap hints at relevance
-    action_words = set(action_lower.split())
-    claim_words = set(claim_lower.split())
+    # Simple heuristic: keyword overlap hints at relevance.
+    # Tokenize on whitespace AND punctuation so a claim like
+    # "Avoid: leaking provider headers" still surfaces "avoid"
+    # instead of "avoid:", which would skip the warn classification.
+    def _tokens(text: str) -> set[str]:
+        return {token for token in re.split(r"[\s\W]+", text) if token}
+
+    action_words = _tokens(action_lower)
+    claim_words = _tokens(claim_lower)
     overlap = len(action_words & claim_words)
 
     # Look for warning-ish keywords in the claim
