@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -37,73 +38,78 @@ def build_creator_system_production_readiness(
     startup_review = _default_startup_network_review(root)
 
     workspace = Path(workspace_dir) if workspace_dir else _default_workspace()
-    workspace_clean_before = not workspace.exists() or not any(workspace.iterdir())
-    workspace.mkdir(parents=True, exist_ok=True)
+    workspace_is_temp = workspace_dir is None
+    try:
+        workspace_clean_before = not workspace.exists() or not any(workspace.iterdir())
+        workspace.mkdir(parents=True, exist_ok=True)
 
-    generation_blockers: list[str] = []
-    generated_summary_ref: Path | None = Path(generated_summary_path) if generated_summary_path else None
-    generated_matrix: dict[str, Any] | None = None
-    if generated_summary_ref is None:
-        if not workspace_clean_before:
-            generation_blockers.append("workspace_dir_not_clean")
-        else:
-            briefs = _load_briefs(generated_briefs)
-            generated_matrix = run_multi_seed_generator_validation(
-                workspace / "generated-multi-seed",
-                briefs,
-                seeds=seeds,
-                variants_per_domain=variants_per_domain,
-            )
-            generated_summary_ref = workspace / "generated-multi-seed" / "multi_seed_validation_summary.json"
+        generation_blockers: list[str] = []
+        generated_summary_ref: Path | None = Path(generated_summary_path) if generated_summary_path else None
+        generated_matrix: dict[str, Any] | None = None
+        if generated_summary_ref is None:
+            if not workspace_clean_before:
+                generation_blockers.append("workspace_dir_not_clean")
+            else:
+                briefs = _load_briefs(generated_briefs)
+                generated_matrix = run_multi_seed_generator_validation(
+                    workspace / "generated-multi-seed",
+                    briefs,
+                    seeds=seeds,
+                    variants_per_domain=variants_per_domain,
+                )
+                generated_summary_ref = workspace / "generated-multi-seed" / "multi_seed_validation_summary.json"
 
-    beta = build_creator_system_beta_check(
-        startup_run_dir=startup_run_dir,
-        validation_plan_path=validation_plan,
-        generated_summary_path=generated_summary_ref,
-        product_runtime_review_path=product_review,
-    )
-    release_gate = build_creator_release_gate(
-        validation_plan_path=validation_plan,
-        generated_summary_path=generated_summary_ref,
-        startup_network_review_path=startup_review,
-        product_runtime_review_path=product_review,
-        requested_release="production_standard_rehearsal",
-    )
-    tracks = _tracks(
-        beta=beta,
-        release_gate=release_gate,
-        generated_matrix=generated_matrix,
-        generation_blockers=generation_blockers,
-    )
-    blocking_checks = [
-        f"{track['name']}:{blocker}"
-        for track in tracks
-        if track["verdict"] != "pass"
-        and track["name"] != "network_absorption_publication"
-        for blocker in track["blocking_checks"]
-    ]
-    return {
-        "schema_version": SCHEMA_VERSION,
-        "verdict": "pass" if not blocking_checks else "blocked",
-        "network_absorbable": False,
-        "claim_boundary": (
-            "This packet can approve repo/user beta readiness and creator-system "
-            "standard readiness only; it does not approve network_absorbable or "
-            "product runtime publication."
-        ),
-        "readiness_tracks": tracks,
-        "blocking_checks": blocking_checks,
-        "release_gate_summary": _release_gate_summary(release_gate),
-        "input_provenance": [
-            _provenance("workspace_dir", workspace),
-            _provenance("validation_plan", validation_plan),
-            _provenance("generated_briefs", generated_briefs),
-            _provenance("generated_summary", generated_summary_ref),
-            _provenance("startup_network_review", startup_review),
-            _provenance("product_runtime_review", product_review),
-        ],
-        "next_actions": _next_actions(blocking_checks),
-    }
+        beta = build_creator_system_beta_check(
+            startup_run_dir=startup_run_dir,
+            validation_plan_path=validation_plan,
+            generated_summary_path=generated_summary_ref,
+            product_runtime_review_path=product_review,
+        )
+        release_gate = build_creator_release_gate(
+            validation_plan_path=validation_plan,
+            generated_summary_path=generated_summary_ref,
+            startup_network_review_path=startup_review,
+            product_runtime_review_path=product_review,
+            requested_release="production_standard_rehearsal",
+        )
+        tracks = _tracks(
+            beta=beta,
+            release_gate=release_gate,
+            generated_matrix=generated_matrix,
+            generation_blockers=generation_blockers,
+        )
+        blocking_checks = [
+            f"{track['name']}:{blocker}"
+            for track in tracks
+            if track["verdict"] != "pass"
+            and track["name"] != "network_absorption_publication"
+            for blocker in track["blocking_checks"]
+        ]
+        return {
+            "schema_version": SCHEMA_VERSION,
+            "verdict": "pass" if not blocking_checks else "blocked",
+            "network_absorbable": False,
+            "claim_boundary": (
+                "This packet can approve repo/user beta readiness and creator-system "
+                "standard readiness only; it does not approve network_absorbable or "
+                "product runtime publication."
+            ),
+            "readiness_tracks": tracks,
+            "blocking_checks": blocking_checks,
+            "release_gate_summary": _release_gate_summary(release_gate),
+            "input_provenance": [
+                _provenance("workspace_dir", workspace),
+                _provenance("validation_plan", validation_plan),
+                _provenance("generated_briefs", generated_briefs),
+                _provenance("generated_summary", generated_summary_ref),
+                _provenance("startup_network_review", startup_review),
+                _provenance("product_runtime_review", product_review),
+            ],
+            "next_actions": _next_actions(blocking_checks),
+        }
+    finally:
+        if workspace_is_temp and workspace.exists():
+            shutil.rmtree(workspace)
 
 
 def _tracks(
