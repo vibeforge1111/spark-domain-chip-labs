@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import tempfile
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -82,6 +83,12 @@ def build_creator_system_production_readiness(
         and track["name"] != "network_absorption_publication"
         for blocker in track["blocking_checks"]
     ]
+n    # Clean up temp workspace if we created one
+    if workspace_dir is None and workspace.exists():
+        try:
+            shutil.rmtree(workspace)
+        except OSError:
+            pass
     return {
         "schema_version": SCHEMA_VERSION,
         "verdict": "pass" if not blocking_checks else "blocked",
