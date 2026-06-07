@@ -258,10 +258,16 @@ def _extract_all_doctrines(chip_path: Path) -> list[dict[str, Any]]:
         chip_path / "obsidian-vault",
     ]
 
+    # Limit file count to prevent DoS via unbounded rglob
+    MAX_FILES = 1_000
     for search_dir in search_dirs:
         if not search_dir.exists():
             continue
+        file_count = 0
         for json_file in search_dir.rglob("*.json"):
+            if file_count >= MAX_FILES:
+                break
+            file_count += 1
             doctrines.extend(_extract_doctrines_from_json(json_file))
 
     # Search markdown files for doctrine patterns
@@ -274,7 +280,12 @@ def _extract_all_doctrines(chip_path: Path) -> list[dict[str, Any]]:
     for search_dir in md_search_dirs:
         if not search_dir.exists():
             continue
+        # Limit file count to prevent DoS via unbounded rglob
+        file_count = 0
         for md_file in search_dir.rglob("*.md"):
+            if file_count >= MAX_FILES:
+                break
+            file_count += 1
             text_lower = _read_text_safe(md_file).lower()
             if any(kw in text_lower for kw in ("doctrine", "belief", "claim")):
                 doctrines.extend(_extract_doctrines_from_markdown(md_file))
@@ -420,11 +431,17 @@ def _count_evidence_files(chip_path: Path) -> dict[str, int]:
         "exploratory_frontier",
         "realworld_validated",
     ]
+    MAX_FILES = 1_000
     summary: dict[str, int] = {}
     for lane in lanes:
         lane_dir = research_dir / lane
         if lane_dir.exists():
-            count = sum(1 for _ in lane_dir.rglob("*") if _.is_file())
+            count = 0
+            for _ in lane_dir.rglob("*"):
+                if _.is_file():
+                    count += 1
+                    if count >= MAX_FILES:
+                        break
             summary[lane] = count
         else:
             summary[lane] = 0
@@ -438,7 +455,12 @@ def _extract_benchmarks(chip_path: Path) -> list[dict[str, Any]]:
     if not bench_dir.exists():
         return benchmarks
 
+    MAX_FILES = 1_000
+    file_count = 0
     for fp in bench_dir.rglob("*.json"):
+        if file_count >= MAX_FILES:
+            break
+        file_count += 1
         data = _load_json_safe(fp)
         if isinstance(data, dict):
             benchmarks.append({
@@ -447,7 +469,11 @@ def _extract_benchmarks(chip_path: Path) -> list[dict[str, Any]]:
                 "date": data.get("date") or data.get("timestamp") or "",
             })
 
+    file_count = 0
     for fp in bench_dir.rglob("*.md"):
+        if file_count >= MAX_FILES:
+            break
+        file_count += 1
         text = _read_text_safe(fp)
         # Look for score patterns like "Score: 85" in markdown
         score_match = re.search(r"(?i)score[:\s]+(\d+(?:\.\d+)?)", text)
@@ -509,7 +535,14 @@ def _count_packets(chip_path: Path) -> int:
     packets_dir = chip_path / "research" / "packets"
     if not packets_dir.exists():
         return 0
-    return sum(1 for f in packets_dir.rglob("*") if f.is_file())
+    MAX_FILES = 1_000
+    count = 0
+    for f in packets_dir.rglob("*"):
+        if f.is_file():
+            count += 1
+            if count >= MAX_FILES:
+                break
+    return count
 
 
 def _detect_dspy(chip_path: Path) -> bool:
@@ -521,7 +554,12 @@ def _detect_dspy(chip_path: Path) -> bool:
     # Check for "import dspy" in src/
     src_dir = chip_path / "src"
     if src_dir.exists():
+        MAX_FILES = 1_000
+        file_count = 0
         for py_file in src_dir.rglob("*.py"):
+            if file_count >= MAX_FILES:
+                break
+            file_count += 1
             text = _read_text_safe(py_file)
             if "import dspy" in text:
                 return True
