@@ -236,7 +236,7 @@ def advise_pre_action(
         try:
             from .chip_runtime import load_portfolio
             portfolio = load_portfolio(min_score=35)
-        except (ImportError, OSError):
+        except (ImportError, OSError, ValueError, KeyError):
             return AdvisoryResponse(verdict="proceed")
 
     if not portfolio:
@@ -325,7 +325,7 @@ def advise_post_action(
         try:
             from .chip_runtime import load_portfolio
             portfolio = load_portfolio(min_score=35)
-        except (ImportError, OSError):
+        except (ImportError, OSError, ValueError, KeyError):
             return {"feedback_written": False, "reason": "no portfolio"}
 
     if not portfolio:
@@ -384,7 +384,7 @@ def doctrine_check(
         try:
             from .chip_runtime import load_portfolio
             portfolio = load_portfolio(min_score=35)
-        except (ImportError, OSError):
+        except (ImportError, OSError, ValueError, KeyError):
             return []
 
     if not portfolio:
