@@ -26,6 +26,19 @@ from .intelligence_server import (
 )
 from chip_labs.registry import discover_chips
 
+# Executables permitted in chip manifest `commands` entries.
+# Any command whose first token resolves outside this set is rejected before
+# subprocess execution to prevent arbitrary binary execution via untrusted
+# manifests.
+_ALLOWED_EXECUTABLES: frozenset[str] = frozenset({
+    "python", "python3",
+    "node", "npx", "npm",
+    "bash", "sh",
+    "uv", "uvx",
+    "chip", "chip-cli",
+    "spark-chip",
+})
+
 
 # ---------------------------------------------------------------------------
 # Data structures
@@ -213,6 +226,23 @@ def _find_current_workspace_chip(start: Path | None = None) -> Path | None:
     return None
 
 
+def _validate_command_executable(cmd: list[str] | str) -> None:
+    """Raise ValueError if the command's executable is not in the allowlist.
+
+    Extracts the basename of the first token so that absolute or relative paths
+    like ``/usr/bin/python3`` and ``./python3`` are both checked against the
+    stem rather than the full path, closing the bypass where an attacker
+    prefixes a forbidden binary with a directory component.
+    """
+    first = cmd if isinstance(cmd, str) else (cmd[0] if cmd else "")
+    stem = Path(first).name if first else ""
+    if stem not in _ALLOWED_EXECUTABLES:
+        raise ValueError(
+            f"Chip manifest command executable '{stem}' is not in the "
+            f"permitted allowlist. Allowed: {sorted(_ALLOWED_EXECUTABLES)}"
+        )
+
+
 def _execute_subprocess(
     chip: ChipHandle,
     hook_name: str,
@@ -220,6 +250,17 @@ def _execute_subprocess(
 ) -> HookResult:
     """Run the hook as a subprocess and capture JSON output."""
     cmd = chip.commands[hook_name]
+    try:
+        _validate_command_executable(cmd)
+    except ValueError as exc:
+        return HookResult(
+            hook_name=hook_name,
+            chip_name=chip.chip_name,
+            success=False,
+            result={"error": str(exc)},
+            confidence=0.0,
+            execution_mode="subprocess",
+        )
 
     try:
         with tempfile.TemporaryDirectory(prefix="chip-hook-") as tmpdir:
