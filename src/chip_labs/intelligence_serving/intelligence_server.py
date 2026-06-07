@@ -441,9 +441,10 @@ def _extract_benchmarks(chip_path: Path) -> list[dict[str, Any]]:
     for fp in bench_dir.rglob("*.json"):
         data = _load_json_safe(fp)
         if isinstance(data, dict):
+            score_val = data.get("score")
             benchmarks.append({
                 "name": data.get("name") or data.get("title") or fp.stem,
-                "score": data.get("score") or data.get("result", 0),
+                "score": score_val if score_val is not None else data.get("result", 0),
                 "date": data.get("date") or data.get("timestamp") or "",
             })
 
