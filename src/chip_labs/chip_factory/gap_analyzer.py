@@ -507,6 +507,48 @@ def _fix_primary_metric(chip_path: Path) -> bool:
     return True
 
 
+def _fix_candidate_trials(chip_path: Path) -> bool:
+    """Ensure at least 3 candidate trials are defined."""
+    project_path = chip_path / "spark-researcher.project.json"
+    project = _read_json(project_path)
+    if project is None:
+        project = {}
+    trials = project.get("candidate_trials", [])
+    if len(trials) >= 3:
+        return True
+    defaults = [
+        {"name": "baseline", "mutations": {}},
+        {"name": "variation-a", "mutations": {"temperature": 0.7}},
+        {"name": "variation-b", "mutations": {"temperature": 0.3}},
+    ]
+    existing_names = {t.get("name") for t in trials}
+    for d in defaults:
+        if d["name"] not in existing_names and len(trials) < 3:
+            trials.append(d)
+    project["candidate_trials"] = trials
+    _write_json(project_path, project)
+    return True
+
+
+def _fix_multiple_metrics(chip_path: Path) -> bool:
+    """Ensure at least 3 metrics are defined."""
+    project_path = chip_path / "spark-researcher.project.json"
+    project = _read_json(project_path)
+    if project is None:
+        project = {}
+    metrics = project.get("metrics", [])
+    if len(metrics) >= 3:
+        return True
+    defaults = ["quality_score", "relevance", "consistency"]
+    existing = set(metrics)
+    for m in defaults:
+        if m not in existing and len(metrics) < 3:
+            metrics.append(m)
+    project["metrics"] = metrics
+    _write_json(project_path, project)
+    return True
+
+
 def _fix_baseline_trial(chip_path: Path) -> bool:
     """Ensure candidate_trials includes a baseline with empty mutations."""
     project_path = chip_path / "spark-researcher.project.json"
@@ -777,6 +819,14 @@ _FIX_REGISTRY: dict[str, tuple[Callable[[Path], bool], str]] = {
     "primary_metric": (
         _fix_primary_metric,
         "Set eval_metric in spark-researcher.project.json",
+    ),
+    "candidate_trials": (
+        _fix_candidate_trials,
+        "Ensure at least 3 candidate trials are defined",
+    ),
+    "multiple_metrics": (
+        _fix_multiple_metrics,
+        "Ensure at least 3 metrics are defined",
     ),
     "baseline_trial": (
         _fix_baseline_trial,
