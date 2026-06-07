@@ -717,7 +717,7 @@ class RecursiveLoopController:
                 recent_mutations=None,
                 chip_search_dir=chip_path.parent,
             )
-        except Exception:
+        except Exception as _e:
             suggestions = []
 
         applied_count = 0
