@@ -841,7 +841,7 @@ class RecursiveLoopController:
                 f"Skill regeneration: Built intelligence artifacts "
                 f"({doctrine_count} doctrines, {evidence_files} evidence files)"
             )
-        except Exception:
+        except Exception as _e:
             # Non-fatal: intelligence_server may not be available
             pass
 
