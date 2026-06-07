@@ -18,6 +18,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -1186,6 +1189,12 @@ def apply_pattern(target_chip_path: Path, pattern: TransferPattern) -> bool:
             pattern.times_successful += 1
         return result
     except Exception:
+        logger.warning(
+            "Pattern application failed for %s on %s",
+            pattern.pattern_type,
+            target_chip_path,
+            exc_info=True,
+        )
         pattern.times_applied += 1
         return False
 
