@@ -102,7 +102,7 @@ def _portfolio_dashboard_page(timestamp: str, chip_search_dir: str | Path | None
 
     rows = ""
     for chip in sorted(portfolio["chips"], key=lambda x: x["total_score"], reverse=True):
-        rows += f"| {chip['chip_name']} | {chip['total_score']}/100 | {chip['verdict']} |\n"
+        rows += f"| {_escape_md_cell(chip['chip_name'])} | {chip['total_score']}/100 | {_escape_md_cell(chip['verdict'])} |\n"
 
     content = f"""# Portfolio Dashboard
 
@@ -447,6 +447,11 @@ def _trend_predictions_page(timestamp: str) -> dict[str, Any]:
 - [[MiroFish Frontier]]
 """
     return {"path": "Trend Predictions.md", "content": content}
+
+
+def _escape_md_cell(text: str) -> str:
+    """Escape pipe characters and HTML tags for safe markdown table cells."""
+    return text.replace("|", "\|").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def _repo_root() -> Path:
