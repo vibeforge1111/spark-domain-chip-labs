@@ -11,6 +11,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import tempfile
 import time
@@ -25,6 +26,61 @@ from .intelligence_server import (
     serve_context,
 )
 from chip_labs.registry import discover_chips
+
+import shlex
+
+# ---------------------------------------------------------------------------
+# Command validation -- allowlist of known-safe binaries for chip hooks.
+# ---------------------------------------------------------------------------
+
+_SAFE_BINARIES: frozenset[str] = frozenset({
+    "python", "python3", "pip", "pip3",
+    "node", "npm", "npx", "yarn",
+    "make", "cmake", "cargo", "rustc", "gcc", "g++",
+    "jq", "grep", "find", "sort", "cat", "head", "tail", "wc",
+    "tee", "cut", "sed", "awk", "tr", "xargs", "env", "bash", "sh",
+    "sqlite3", "curl", "wget",
+})
+
+_DANGEROUS_PATTERNS: tuple = (
+    re.compile(r"[;&|`$()]"),
+    re.compile(r">|<"),
+    re.compile(r"\\x[0-9a-fA-F]"),
+    re.compile(r"#"),
+)
+
+
+def _validate_hook_command(cmd):
+    """Validate that a hook command uses only allowed binaries.
+
+    Raises ValueError if the command contains an unapproved binary,
+    shell injection patterns, or other dangerous constructs.
+    """
+    if isinstance(cmd, str):
+        parts = shlex.split(cmd)
+    else:
+        parts = [str(p) for p in cmd]
+
+    if not parts:
+        raise ValueError("Hook command is empty")
+
+    binary = parts[0].split("/")[-1]
+
+    if binary not in _SAFE_BINARIES:
+        raise ValueError(
+            "Command binary '{}' is not in the allowlist of "
+            "safe hook commands. Allowed: {}".format(
+                binary, sorted(_SAFE_BINARIES))
+        )
+
+    for part in parts:
+        for pattern in _DANGEROUS_PATTERNS:
+            if pattern.search(part):
+                raise ValueError(
+                    "Hook command argument '{}' contains a dangerous "
+                    "pattern that may indicate shell injection".format(part)
+                )
+
 
 
 # ---------------------------------------------------------------------------
@@ -158,7 +214,17 @@ def execute_hook(
     start_ns = time.perf_counter_ns()
 
     if hook_name in chip.commands:
-        result = _execute_subprocess(chip, hook_name, mutations)
+        try:
+            result = _execute_subprocess(chip, hook_name, mutations)
+        except ValueError as exc:
+            result = HookResult(
+                hook_name=hook_name,
+                chip_name=chip.chip_name,
+                success=False,
+                result={"error": str(exc)},
+                confidence=0.0,
+                execution_mode="validation_rejected",
+            )
     else:
         result = _execute_intelligence_fallback(chip, hook_name, mutations)
 
@@ -237,6 +303,9 @@ def _execute_subprocess(
                 input_path,
                 output_path,
             )
+
+            # Validate command against allowlist before execution
+            _validate_hook_command(resolved_cmd)
 
             proc = subprocess.run(
                 resolved_cmd,
