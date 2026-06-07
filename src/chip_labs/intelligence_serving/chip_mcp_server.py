@@ -410,8 +410,8 @@ class ChipMCPServer:
                     "suggestions": chip_suggestions,
                     "focus": focus,
                 })
-            except Exception:
-                pass
+            except Exception as _e:
+                import logging as _log; _log.getLogger(__name__).warning("Suppressed: %s", _e, exc_info=True)
 
         return {"suggestions": suggestions}
 
