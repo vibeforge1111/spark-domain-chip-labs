@@ -363,7 +363,7 @@ class ChipMCPServer:
         return {
             "success": True,
             "chip_name": chip.chip_name,
-            "feedback_path": str(filepath),
+            "feedback_written": True,
             "doctrine_confirmed_count": len(confirmed),
             "doctrine_contradicted_count": len(contradicted),
         }
