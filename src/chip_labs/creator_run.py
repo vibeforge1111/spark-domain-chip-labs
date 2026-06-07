@@ -4058,9 +4058,19 @@ def _resolve_external_artifact_path(run_path: Path, reference: str) -> Path | No
         candidates.append(repo_root / reference_path)
         candidates.append(repo_root.parent / reference_path)
 
+    # Security: ensure resolved paths stay within expected base directories
+    # to prevent path traversal (e.g. ../../etc/shadow)
+    allowed_bases = [run_base]
+    if repo_root is not None:
+        allowed_bases.append(repo_root)
+        allowed_bases.append(repo_root.parent)
+
     for candidate in candidates:
-        if candidate.exists():
-            return candidate
+        resolved = candidate.resolve()
+        if not any(resolved.is_relative_to(base) for base in allowed_bases):
+            continue
+        if resolved.exists():
+            return resolved
     return None
 
 
