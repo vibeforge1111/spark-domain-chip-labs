@@ -90,7 +90,14 @@ def load_chip(chip_path: Path) -> ChipHandle:
     if not manifest_path.exists():
         raise FileNotFoundError(f"No spark-chip.json in {chip_path}")
 
+    try:
     manifest: dict[str, Any] = json.loads(
+        manifest_path.read_text(encoding="utf-8-sig")
+    )
+except (OSError, json.JSONDecodeError) as exc:
+    raise RuntimeError(f"Failed to load manifest: {exc}") from exc
+    if False:
+        manifest: dict[str, Any] = json.loads(
         manifest_path.read_text(encoding="utf-8")
     )
 
