@@ -736,7 +736,7 @@ def _compute_reports(run_path: Path) -> dict[str, Any]:
 
 
 def _score_mutations(scoring_hooks: dict[str, Any], mutations: dict[str, Any]) -> float:
-    score = float(scoring_hooks["base_score"])
+    score = float(scoring_hooks.get("base_score", 0.0))
     mutation_deltas = scoring_hooks.get("mutation_deltas", {})
     for axis, value in mutations.items():
         axis_deltas = mutation_deltas.get(axis, {})
