@@ -26,6 +26,7 @@ on:
       - "tests/test_retrieval_memory.py"
       - "tests/test_startup_yc_operator_validation.py"
       - "tests/test_tool_operation.py"
+      - "scripts/check_no_personal_identifiers.py"
       - ".github/workflows/creator-system.yml"
   push:
     branches: ["main"]
@@ -41,6 +42,7 @@ on:
       - "tests/test_retrieval_memory.py"
       - "tests/test_startup_yc_operator_validation.py"
       - "tests/test_tool_operation.py"
+      - "scripts/check_no_personal_identifiers.py"
       - ".github/workflows/creator-system.yml"
 
 permissions:
@@ -62,6 +64,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e . pytest ruff jsonschema
+
+      - name: Personal-identifier leak check
+        run: |
+          python scripts/check_no_personal_identifiers.py
 
       - name: Lint chip-labs package and tests
         run: |

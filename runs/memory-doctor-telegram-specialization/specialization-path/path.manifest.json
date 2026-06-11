@@ -8,9 +8,9 @@
   "entrypoints": [
     "check memory deletes",
     "run memory doctor",
-    "run memory doctor for Maya",
-    "why did memory recall Maya",
-    "/memory doctor Maya"
+    "run memory doctor for <operator>",
+    "why did memory recall <operator>",
+    "/memory doctor <operator>"
   ],
   "stages": [
     {

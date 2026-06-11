@@ -14,7 +14,7 @@ Memory Doctor is a diagnostic specialization, not a repair agent. It should make
 
 - Instruction forgetting captures a memory-forget request and deletes unrelated saved instructions.
 - A multi-delete turn only writes the first deletion.
-- Historical test residue such as "Maya" is treated as the user's active name.
+- Historical test residue such as "<operator>" is treated as the user's active name.
 - The context capsule drops the immediately previous user correction.
 - A dashboard count says memory is healthy while per-request lineage shows a partial write.
 

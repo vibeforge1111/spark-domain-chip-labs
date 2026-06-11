@@ -27,14 +27,14 @@ Verdict: local-only
 - Baseline command or protocol: targeted Builder tests plus live local Memory Doctor probes.
 - Baseline score: multi-delete and basic topic checks passed, but close-turn context loss was only visible by manual DB/log inspection.
 - Baseline failure pattern: gateway had recent same-session Telegram messages while provider context capsules reported `recent_conversation=0`.
-- Trap status: historical Maya traces are not treated as active truth; active current state remains `preferred_name=Cem`.
+- Trap status: historical <operator> traces are not treated as active truth; active current state remains `preferred_name=<operator>`.
 
 ## Candidate Mutation
 
 - Mutation surface: Memory Doctor diagnostics and Telegram-readable reporting.
 - Frozen surfaces: memory storage semantics, deletion authority, network publication, and domain-chip authority boundaries.
 - Candidate mechanism: add full current-state scanning, context-capsule source-ledger audit, gateway-to-capsule lineage comparison, movement map, Memory Doctor Brain coverage scoring, compact non-authoritative brain snapshots, SDK/wiki/dashboard-movement senses, LLM wiki health sensing, and a Builder recent-conversation fallback from redacted gateway/outbound traces when Builder event transcript is absent.
-- Lineage failures: Maya active/current-state confusion; partial multi-delete risk; close-turn blankness after Telegram turns were processed.
+- Lineage failures: <operator> active/current-state confusion; partial multi-delete risk; close-turn blankness after Telegram turns were processed.
 - Rollback condition: remove Memory Doctor movement-map fields and gateway-trace checks if they produce false failure claims in targeted tests or live probes.
 
 ## Evaluation
@@ -53,7 +53,7 @@ Verdict: local-only
 
 ## Weak-Case Diagnosis
 
-- Weak cases that improved: entity-scoped `Maya owns launch checklist`, context capsule with no recent conversation, gateway trace present but capsule missing close turns, outbound-audit-only close-turn continuity.
+- Weak cases that improved: entity-scoped `<operator> owns launch checklist`, context capsule with no recent conversation, gateway trace present but capsule missing close turns, outbound-audit-only close-turn continuity.
 - Weak cases still open: broader benchmark scoring, cross-session/cross-channel movement maps, historical score trend dashboards for brain coverage, automated repair previews, and dashboard aggregate degradation explanation beyond the repaired incident path.
 - Suspected cause now repaired for the covered path: recent Telegram transcript extraction only read `telegram_runtime` Builder events, so provider capsules could miss close turns that were still visible in gateway/outbound traces.
 - Next focused patch: add dashboard trend views for non-authoritative doctor-brain snapshots, add benchmark-signal scoring for close-turn continuity, and add a dashboard explanation layer that separates incident health from global lane hygiene state.

@@ -3,7 +3,7 @@
 Fresh agents working on Memory Doctor should preserve three boundaries:
 
 1. Diagnose before repair. A doctor report can recommend a forget command, but it should not mutate memory.
-2. Separate active truth from historical trace. "Maya appears in traces" and "Maya is active preferred_name" are different findings.
+2. Separate active truth from historical trace. "<operator> appears in traces" and "<operator> is active preferred_name" are different findings.
 3. Preserve Telegram usefulness. The natural-language path should return a short answer; CLI JSON can hold full traces.
 
 ## Minimal Probe
@@ -18,7 +18,7 @@ python -m pytest tests/test_gateway_ask_telegram.py -q -k "memory_doctor"
 Then run a live local check:
 
 ```bash
-python -m spark_intelligence.cli memory doctor --home C:\Users\USER\.spark\state\spark-intelligence --human-id human:telegram:8319079055 --topic Maya
+python -m spark_intelligence.cli memory doctor --home C:\Users\<operator>\.spark\state\spark-intelligence --human-id human:telegram:0000000000 --topic <operator>
 ```
 
-Expected behavior: partial delete integrity failures should be explicit; active profile should show Cem as preferred_name; Maya trace mentions should not override active profile.
+Expected behavior: partial delete integrity failures should be explicit; active profile should show Cem as preferred_name; <operator> trace mentions should not override active profile.

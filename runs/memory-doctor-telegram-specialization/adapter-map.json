@@ -20,7 +20,7 @@
     "known_failure_modes": [
       "multi-delete turn writes only the first delete",
       "instruction-forget path captures a memory-forget request",
-      "historical Maya test residue overrides active preferred name",
+      "historical <operator> test residue overrides active preferred name",
       "context capsule drops the immediately previous correction",
       "dashboard aggregate health hides per-request lineage failure"
     ],
@@ -31,7 +31,7 @@
       "prototype evidence proves broad memory architecture quality"
     ],
     "baseline_examples": [
-      "Maya appears in traces but active preferred_name is Cem",
+      "<operator> appears in traces but active preferred_name is Cem",
       "multi-delete expected 3 writes but only 1 was accepted",
       "check memory deletes returns a concise Telegram diagnosis"
     ]
@@ -107,7 +107,7 @@
       "domain-chip/doctrine.md",
       "benchmark/traps.jsonl"
     ],
-    "fresh_agent_protocol": "Load the absorption bundle, then explain why a Maya trace mention is not equal to active preferred_name and why repair remains gated.",
+    "fresh_agent_protocol": "Load the absorption bundle, then explain why a <operator> trace mention is not equal to active preferred_name and why repair remains gated.",
     "held_out_cases": "Future held-out cases should include context-capsule blankness, stale current_owner, and conflicting pronunciation/name corrections.",
     "expected_behavior_change": "Fresh agents preserve active-state grounding and do not recommend trace purges for ordinary historical residue.",
     "score_delta_threshold": 0,

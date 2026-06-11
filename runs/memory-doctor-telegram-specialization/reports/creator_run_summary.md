@@ -11,7 +11,7 @@ Implemented in Builder:
 Evidence:
 
 - Targeted Builder tests pass for Memory Doctor and Telegram routing.
-- Live local run shows active preferred_name is Cem and Maya appears only in recent trace matches, while the historical multi-delete bug remains visible as a delete-integrity failure.
+- Live local run shows active preferred_name is Cem and <operator> appears only in recent trace matches, while the historical multi-delete bug remains visible as a delete-integrity failure.
 
 Boundary:
 
