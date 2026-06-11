@@ -1207,7 +1207,8 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "retention-days: 30" in text
     assert 'assert payload["release_ready"] is True' in text
     assert 'assert payload["repo"]["worktree_clean"] is True' in text
-    assert "tests/test_creator_beta_readiness.py" in text
+    assert '"tests/**"' in text
+    assert "python -m pytest -q --maxfail=1 -p no:cacheprovider" in text
     assert "creator-system-beta-check --output /tmp/creator-system-beta-check.json --fail-on-blocked" in text
     assert "creator-system-beta-check.schema.json" in text
     assert 'assert payload["verdict"] == "pass"' in text
@@ -1244,8 +1245,7 @@ def test_creator_system_workflow_validates_raw_evidence_check_result_schema() ->
     assert "generated-release-gate.json" in text
     assert "permissions:" in text
     assert "contents: read" in text
-    assert "tests/test_startup_yc_operator_validation.py" in text
-    assert "tests/test_operator_review.py" in text
+    assert '"tests/**"' in text
     assert "python -m ruff check src/chip_labs tests" in text
 
 
