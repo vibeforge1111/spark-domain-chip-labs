@@ -16,6 +16,7 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import re
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -722,12 +723,20 @@ class RecursiveLoopController:
 
         applied_count = 0
         for s in suggestions[:3]:  # Limit to top 3 suggestions
-            candidate_id = s.get("candidate_id", "unknown")
+            raw_id = str(s.get("candidate_id") or "unknown")
+            # Sanitize candidate_id: allow only alphanumeric, hyphens, underscores.
+            # An unsanitized id (e.g. "../../etc/evil") would traverse outside research_dir.
+            candidate_id = re.sub(r"[^a-zA-Z0-9_-]", "_", raw_id) or "unknown"
             # Write suggestion as a research note
             research_dir = chip_path / "research" / "exploratory_frontier"
             research_dir.mkdir(parents=True, exist_ok=True)
 
             suggestion_path = research_dir / f"suggestion_{candidate_id}.json"
+            # Guard: ensure resolved path stays inside research_dir
+            try:
+                suggestion_path.resolve().relative_to(research_dir.resolve())
+            except ValueError:
+                continue
             if not suggestion_path.exists():
                 suggestion_path.write_text(
                     json.dumps(s, indent=2, ensure_ascii=False) + "\n",
