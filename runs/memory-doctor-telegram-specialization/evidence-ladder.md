@@ -14,7 +14,7 @@ The run has intent, adapters, artifacts, smoke validation, targeted Builder test
 - Memory Doctor Brain tests pass for degraded-visibility coverage and connected SDK/wiki/movement/LLM-wiki senses.
 - Memory Doctor Brain writes compact `memory_doctor_brain_evaluated` observability snapshots that are explicitly non-authoritative.
 - Wider contract slices pass for LLM wiki status/query/answer/candidate-scan, self-awareness memory cognition/wiki context, and memory orchestrator wiki/movement behavior.
-- Live local probes show active `preferred_name=Cem`, Maya as historical trace only, and repaired delete integrity.
+- Live local probes show active `preferred_name=<operator>`, <operator> as historical trace only, and repaired delete integrity.
 - Live local probes first identified a gateway-to-context-capsule movement gap: Telegram gateway had same-session messages while the latest provider capsule had `recent_conversation=0`.
 - Live local repair probe now verifies the covered path: fresh provider capsules for `sim:1778310547880688` include `recent_conversation=6`, and Memory Doctor reports movement gaps=0.
 

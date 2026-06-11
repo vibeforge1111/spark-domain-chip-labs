@@ -48,7 +48,7 @@
     "network_publication_allowed": false
   },
   "anti_drift": {
-    "lineage_summary": "Created from the Cem/Maya Telegram memory incident and verified with targeted Builder tests plus live local doctor probes.",
+    "lineage_summary": "Created from the Cem/<operator> Telegram memory incident and verified with targeted Builder tests plus live local doctor probes.",
     "ghost_improvement_check": "Does not claim autonomous repair; only reports local prototype diagnostic readiness.",
     "complexity_delta": "Adds a small read-only doctor report and Telegram command routing; no new memory mutation authority.",
     "known_limits": [

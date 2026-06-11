@@ -17,7 +17,7 @@ Creator-system diagnostic artifacts should include a movement map and proactive 
 
 ## Lineage
 
-1. Maya was historically present in memory traces and sometimes overtook active profile behavior.
+1. <operator> was historically present in memory traces and sometimes overtook active profile behavior.
 2. A multi-delete Telegram turn initially deleted only one of several requested fields.
 3. Spark later went blank because provider context capsules omitted recent same-session conversation despite gateway traces having earlier messages.
 
