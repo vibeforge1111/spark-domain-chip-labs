@@ -16,9 +16,11 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -221,8 +223,14 @@ def _load_portfolio_safe() -> list[Any]:
     return portfolio
 
 
+def _compute_cache_checksum(data: dict[str, Any]) -> str:
+    """Compute SHA-256 checksum of the serialised cache payload."""
+    raw = json.dumps(data, sort_keys=True, default=str).encode("utf-8")
+    return hashlib.sha256(raw).hexdigest()
+
+
 def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
-    """Serialize portfolio handles to a JSON cache file."""
+    """Serialize portfolio handles to a JSON cache file with integrity checksum."""
     try:
         cache_file.parent.mkdir(parents=True, exist_ok=True)
         entries = []
@@ -255,20 +263,45 @@ def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
                 "quality_verdict": chip.quality_verdict,
                 "intelligence": intel,
             })
-        cache_file.write_text(
-            json.dumps({"portfolio": entries, "ts": datetime.now(timezone.utc).isoformat()},
-                       indent=2, default=str),
-            encoding="utf-8",
+        payload = {"portfolio": entries, "ts": datetime.now(timezone.utc).isoformat()}
+        checksum = _compute_cache_checksum(payload)
+        envelope = {"checksum": checksum, "payload": payload}
+        # Atomic write: write to temp file then rename to avoid partial reads
+        fd, tmp_path = tempfile.mkstemp(
+            dir=str(cache_file.parent), suffix=".tmp", prefix=".cache-",
         )
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                json.dump(envelope, f, indent=2, default=str)
+            os.replace(tmp_path, str(cache_file))
+        except BaseException:
+            # Clean up temp file on failure
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
+            raise
     except OSError:
         pass
 
 
 def _load_from_cache(cache_file: Path) -> list[Any]:
-    """Reconstruct lightweight chip handles from cached JSON."""
+    """Reconstruct lightweight chip handles from cached JSON with integrity verification."""
     from dataclasses import dataclass, field
 
-    data = json.loads(cache_file.read_text(encoding="utf-8"))
+    raw = json.loads(cache_file.read_text(encoding="utf-8"))
+
+    # Support both envelope format (with checksum) and legacy flat format
+    if "checksum" in raw and "payload" in raw:
+        expected_checksum = raw["checksum"]
+        data = raw["payload"]
+        actual_checksum = _compute_cache_checksum(data)
+        if expected_checksum != actual_checksum:
+            # Integrity check failed -- cache was tampered with
+            return []
+    else:
+        # Legacy format without checksum -- accept but log
+        data = raw
 
     # Import ChipIntelligence for reconstruction
     try:
@@ -291,9 +324,29 @@ def _load_from_cache(cache_file: Path) -> list[Any]:
 
     handles = []
     for entry in data.get("portfolio", []):
+        # Validate required fields are present and have correct types
+        if not isinstance(entry, dict):
+            continue
+        chip_name = entry.get("chip_name")
+        if not chip_name or not isinstance(chip_name, str):
+            continue
+        domain = entry.get("domain")
+        if not domain or not isinstance(domain, str):
+            continue
+        version = entry.get("version")
+        if not version or not isinstance(version, str):
+            continue
+        chip_path_str = entry.get("chip_path")
+        if not chip_path_str or not isinstance(chip_path_str, str):
+            continue
+        # Validate quality_score is a reasonable number
+        quality_score = entry.get("quality_score", 0)
+        if not isinstance(quality_score, (int, float)):
+            quality_score = 0.0
+
         intel = None
         intel_data = entry.get("intelligence")
-        if intel_data:
+        if intel_data and isinstance(intel_data, dict):
             intel = ChipIntelligence(
                 chip_name=intel_data.get("chip_name", ""),
                 domain=intel_data.get("domain", ""),
@@ -307,12 +360,12 @@ def _load_from_cache(cache_file: Path) -> list[Any]:
                 verdict=intel_data.get("verdict", ""),
             )
         handles.append(CachedChipHandle(
-            chip_path=Path(entry["chip_path"]),
-            chip_name=entry["chip_name"],
-            domain=entry["domain"],
-            version=entry["version"],
+            chip_path=Path(chip_path_str),
+            chip_name=chip_name,
+            domain=domain,
+            version=version,
             capabilities=entry.get("capabilities", []),
-            quality_score=entry.get("quality_score", 0),
+            quality_score=quality_score,
             quality_verdict=entry.get("quality_verdict", "scaffold"),
             intelligence=intel,
         ))
