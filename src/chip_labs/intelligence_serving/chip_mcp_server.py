@@ -343,8 +343,8 @@ class ChipMCPServer:
         rw_dir = chip.chip_path / "research" / "realworld_validated"
         try:
             rw_dir.mkdir(parents=True, exist_ok=True)
-        except OSError as exc:
-            return {"error": f"Cannot create directory: {exc}"}
+        except OSError:
+            return {"error": "Cannot create feedback directory"}
 
         timestamp = datetime.now(timezone.utc)
         packet = {
@@ -363,13 +363,13 @@ class ChipMCPServer:
 
         try:
             filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
-        except OSError as exc:
-            return {"error": f"Cannot write feedback: {exc}"}
+        except OSError:
+            return {"error": "Cannot write feedback packet"}
 
         return {
             "success": True,
             "chip_name": chip.chip_name,
-            "feedback_path": str(filepath),
+            "feedback_written": True,
             "doctrine_confirmed_count": len(confirmed),
             "doctrine_contradicted_count": len(contradicted),
         }

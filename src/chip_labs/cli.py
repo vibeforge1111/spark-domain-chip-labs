@@ -23,6 +23,7 @@ from .lab_hooks import (
     run_evaluate,
     run_suggest,
 )
+from .lab_hooks.watchtower import resolve_watchtower_page_path
 from .quality_rubric import score_chip
 
 
@@ -97,7 +98,7 @@ def _write_watchtower_pages(vault_dir: str | Path, pages: list[dict[str, Any]]) 
     vault_path = Path(vault_dir)
     vault_path.mkdir(parents=True, exist_ok=True)
     for page in pages:
-        page_path = vault_path / page["path"]
+        page_path = resolve_watchtower_page_path(vault_path, page["path"])
         page_path.parent.mkdir(parents=True, exist_ok=True)
         page_path.write_text(page["content"], encoding="utf-8")
 

@@ -11,6 +11,18 @@ from ..quality_rubric import score_portfolio
 from ..registry import discover_chips, get_portfolio_summary
 
 
+def resolve_watchtower_page_path(vault_dir: str | Path, page_path: str | Path) -> Path:
+    """Resolve a generated page path while containing it to the vault."""
+    vault_root = Path(vault_dir).resolve()
+    raw_path = Path(page_path)
+    resolved = raw_path.resolve() if raw_path.is_absolute() else (vault_root / raw_path).resolve()
+    if not resolved.is_relative_to(vault_root):
+        raise ValueError("watchtower page path escapes the vault directory")
+    if resolved == vault_root:
+        raise ValueError("watchtower page path must name a file")
+    return resolved
+
+
 def generate_watchtower_pages(mutations: dict[str, str],
                               chip_search_dir: str | Path | None = None,
                               vault_dir: str | Path | None = None) -> list[dict[str, Any]]:
