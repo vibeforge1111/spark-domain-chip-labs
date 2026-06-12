@@ -16,6 +16,7 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import logging
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -32,6 +33,8 @@ from ..chip_factory import (
 )
 from ..lab_hooks import run_suggest
 from ..quality_rubric import score_chip
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -672,6 +675,16 @@ class RecursiveLoopController:
             try:
                 succeeded = gap.fix_fn(chip_path)
             except Exception:
+                # Defensive: a broken gap fixer must never crash the loop, but
+                # the operator needs a diagnostic trail. Without this log, the
+                # iteration silently records "applied 0 fixable gaps" with no
+                # signal that a fixer was tried and raised.
+                logger.warning(
+                    "Gap fixer for %r on chip %s raised; recording as failed",
+                    gap.fix_description,
+                    chip_path,
+                    exc_info=True,
+                )
                 succeeded = False
 
             if succeeded:
