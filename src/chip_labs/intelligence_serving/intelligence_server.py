@@ -757,7 +757,9 @@ Current: {intel.current_score}/100 ({intel.verdict})
 """
 
     output_path = chip_path / "chip_skill.md"
-    output_path.write_text(skill_content, encoding="utf-8")
+    output_tmp_path = output_path.with_suffix(output_path.suffix + ".tmp")
+    output_tmp_path.write_text(skill_content, encoding="utf-8")
+    output_tmp_path.replace(output_path)
     return output_path
 
 
@@ -779,9 +781,11 @@ def build_context(chip_path: Path) -> Path:
     data = asdict(intel)
 
     output_path = chip_path / "chip_context.json"
-    output_path.write_text(
+    output_tmp_path = output_path.with_suffix(output_path.suffix + ".tmp")
+    output_tmp_path.write_text(
         json.dumps(data, indent=2, default=str), encoding="utf-8"
     )
+    output_tmp_path.replace(output_path)
     return output_path
 
 
@@ -816,7 +820,9 @@ def build_doctrine_digest(chip_path: Path) -> Path:
         content += "No doctrines extracted yet. Run the researcher loop to accumulate intelligence.\n"
 
     output_path = chip_path / "chip_doctrine_digest.md"
-    output_path.write_text(content, encoding="utf-8")
+    output_tmp_path = output_path.with_suffix(output_path.suffix + ".tmp")
+    output_tmp_path.write_text(content, encoding="utf-8")
+    output_tmp_path.replace(output_path)
     return output_path
 
 
