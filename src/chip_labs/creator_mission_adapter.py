@@ -464,3 +464,5 @@ def _dedupe(values: list[str]) -> list[str]:
             seen.add(value)
             result.append(value)
     return result
+
+# spark-compete: defensive guard
