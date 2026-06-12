@@ -798,6 +798,7 @@ def _apply_doctor_sweep_case(run_path: Path, case: dict[str, Any]) -> list[str]:
 def _apply_doctor_sweep_operation(path: Path, operation: dict[str, Any]) -> None:
     op = operation.get("op")
     if op == "replace_text":
+        # NOTE: This is a read-modify-write block. A concurrent writer could lose updates. See _atomic_read_modify_write for the safe version of this pattern.
         text = path.read_text(encoding="utf-8")
         old = str(operation.get("old", ""))
         new = str(operation.get("new", ""))
