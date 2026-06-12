@@ -1,0 +1,70 @@
+{
+  "schema": "spark-compete-hotfix-v1",
+  "event": "spark-compete-first-event",
+  "submission_mode": "public_repo_pr",
+  "submission_target_url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/346",
+  "team": {
+    "name": "drophub_sir",
+    "members": ["drophub_sir", "esc1200", "hermes-agent"],
+    "llm_device_holder": "esc1200",
+    "device_holder_github": "https://github.com/Esc1200",
+    "github_accounts": ["Esc1200"]
+  },
+  "target_repo": {
+    "id": "vibeforge1111/spark-domain-chip-labs",
+    "source": "https://github.com/vibeforge1111/spark-domain-chip-labs",
+    "owner_surface": "domain-chip-labs"
+  },
+  "issue": {
+    "type": "bug",
+    "severity": "medium",
+    "title": "Non-atomic portfolio cache write causes json.JSONDecodeError under concurrent hooks",
+    "actual_behavior": "_write_cache() in src/chip_labs/hooks.py (lines 224-264) uses direct cache_file.write_text() which is not atomic. Concurrent SessionStart and PreToolUse hooks can read a partially-written JSON cache file, triggering json.JSONDecodeError and falling back to the expensive full V3 deep eval load (~3s per chip). The same non-atomic pattern exists in _write_session_domain() (lines 164-178).",
+    "expected_behavior": "Cache writes should be atomic so concurrent readers always see either the complete old file or the complete new file, never a partial/corrupt write. The _write_session_domain() function should also use atomic writes.",
+    "repro_steps": [
+      "Open src/chip_labs/hooks.py and examine _write_cache() around lines 224-264.",
+      "Note that cache_file.write_text() performs a non-atomic open+write+close sequence.",
+      "When a SessionStart hook is writing the cache and a PreToolUse hook reads it concurrently, the reader can observe partial JSON.",
+      "This triggers json.JSONDecodeError in _load_from_cache(), causing an expensive fallback to full portfolio load.",
+      "The same pattern exists in _write_session_domain() at lines 164-178."
+    ],
+    "affected_workflow": "Portfolio cache read/write during concurrent hook invocations"
+  },
+  "evidence": {
+    "safe_links_only": true,
+    "before_after_proof": "Before: _write_cache() uses cache_file.write_text(json.dumps(...)) directly (non-atomic). _write_session_domain() uses _SESSION_DOMAIN_FILE.write_text(json.dumps(...)) directly (non-atomic). After: Both functions call _atomic_write_json() which uses tempfile.mkstemp() + os.fdopen() + os.replace() for atomic rename. Temp file is cleaned up on any failure. Both functions maintain identical serialization logic and error handling.",
+    "links": [
+      "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/346"
+    ],
+    "forbidden": [
+      "pdf", "zip", "exe", "unknown downloads", "shortened links",
+      "archives", "binaries", "tokens", "browser cookies",
+      "wallet material", "raw logs", "raw conversations", "raw memory",
+      "raw patches", "private repo maps", "private scoring details"
+    ]
+  },
+  "proposed_fix": {
+    "approach": "Add a _atomic_write_json() helper that writes JSON to a tempfile via tempfile.mkstemp() then atomically renames it to the target via os.replace(). Update _write_cache() and _write_session_domain() to use this helper instead of direct write_text(). Temp file cleanup is guaranteed on failure via BaseException handler.",
+    "files_expected": ["src/chip_labs/hooks.py"],
+    "tests_or_smoke": "Existing tests pass unchanged. The fix only changes the write mechanism (atomic vs non-atomic). The serialized content and error handling are identical. os.replace() is atomic on POSIX and effectively atomic on Windows."
+  },
+  "pr": {
+    "url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/346",
+    "branch": "esc1200/fix/portfolio-cache-atomic-write",
+    "title_prefix": "[spark-compete]",
+    "author_github": "Esc1200",
+    "body_must_include": [
+      "packet", "team", "pr_author", "repo",
+      "actual_behavior", "expected_behavior", "repro_steps",
+      "before_after_proof", "tests_or_smoke",
+      "duplicate_notes", "risk_notes", "review_claim"
+    ]
+  },
+  "review_claim": {
+    "impact_claim": "medium",
+    "evidence_types": ["redacted_terminal_excerpt"],
+    "duplicate_notes": "No existing PR addresses atomic cache writes in hooks.py. Other PRs in the repo address different bugs (KeyError, score-or-chain, code injection, partial state, etc.). The fix/gap-analyzer-atomic-write branch addresses atomic writes in a different file (gap_analyzer), not in hooks.py.",
+    "risk_notes": "Low risk. The fix only changes the write mechanism. Serialized content is identical. os.replace() is a well-established atomic write pattern. Temp file cleanup is guaranteed. No behavioral change on the happy path.",
+    "review_state_requested": "pr_review"
+  }
+}

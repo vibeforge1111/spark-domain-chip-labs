@@ -161,6 +161,32 @@ _SESSION_DOMAIN_FILE = _PORTFOLIO_CACHE_DIR / "session_domain.json"
 _SESSION_DOMAIN_TTL = 3600  # 1 hour (typical session length)
 
 
+def _atomic_write_json(
+    target: Path, data: dict[str, Any], **json_kwargs: Any,
+) -> None:
+    """Write JSON to *target* atomically via temp-file + os.replace().
+
+    Prevents concurrent readers from seeing a partially-written file.
+    ``json_kwargs`` are forwarded to ``json.dumps`` (e.g. ``default=str``).
+    """
+    import tempfile
+
+    fd, tmp_path = tempfile.mkstemp(
+        dir=target.parent, suffix=".tmp", prefix=".cache_",
+    )
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(json.dumps(data, indent=2, **json_kwargs))
+        os.replace(tmp_path, target)
+    except BaseException:
+        # Clean up temp file on failure (covers OSError *and* KeyboardInterrupt)
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        raise
+
+
 def _write_session_domain(selected_chips: list[Any], query: str) -> None:
     """Persist session domain context for Pre/PostToolUse hooks."""
     try:
@@ -171,9 +197,7 @@ def _write_session_domain(selected_chips: list[Any], query: str) -> None:
             "domains": list({c.domain for c in selected_chips}),
             "ts": datetime.now(timezone.utc).isoformat(),
         }
-        _SESSION_DOMAIN_FILE.write_text(
-            json.dumps(data, indent=2), encoding="utf-8",
-        )
+        _atomic_write_json(_SESSION_DOMAIN_FILE, data)
     except OSError:
         pass
 
@@ -255,10 +279,10 @@ def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
                 "quality_verdict": chip.quality_verdict,
                 "intelligence": intel,
             })
-        cache_file.write_text(
-            json.dumps({"portfolio": entries, "ts": datetime.now(timezone.utc).isoformat()},
-                       indent=2, default=str),
-            encoding="utf-8",
+        _atomic_write_json(
+            cache_file,
+            {"portfolio": entries, "ts": datetime.now(timezone.utc).isoformat()},
+            default=str,
         )
     except OSError:
         pass
