@@ -4366,7 +4366,10 @@ def _load_jsonl(path: Path) -> list[dict[str, Any]]:
         if not stripped:
             continue
         try:
-            row = json.loads(stripped)
+            try:
+                row = json.loads(stripped)
+            except json.JSONDecodeError as exc:
+                raise ValueError("Invalid JSON (creator_run.py)") from exc
         except json.JSONDecodeError as exc:
             raise ValueError(f"{path} line {line_number} is not valid JSON: {exc}") from exc
         if not isinstance(row, dict):
