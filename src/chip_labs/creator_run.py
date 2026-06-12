@@ -281,7 +281,10 @@ def load_json(path: Path) -> dict[str, Any]:
     """Load a JSON object from disk."""
 
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise ValueError("Invalid JSON (creator_run.py)") from exc
     except FileNotFoundError:
         raise
     except json.JSONDecodeError as exc:
