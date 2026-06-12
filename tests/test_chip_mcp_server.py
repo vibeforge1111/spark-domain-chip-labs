@@ -136,6 +136,36 @@ class TestMCPProtocol:
         assert "error" in resp
         assert resp["error"]["code"] == -32601
 
+    def test_tools_call_error_includes_error_type(self) -> None:
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        with patch.object(server, "_dispatch_tool", side_effect=ValueError("bad input")):
+            resp = server._handle_request({
+                "jsonrpc": "2.0",
+                "id": 99,
+                "method": "tools/call",
+                "params": {"name": "chip_portfolio", "arguments": {}},
+            })
+        assert "error" in resp
+        assert resp["error"]["code"] == -32000
+        assert "ValueError" in resp["error"]["message"]
+        assert resp["error"]["data"]["error_type"] == "ValueError"
+        assert resp["error"]["data"]["detail"] == "bad input"
+
+    def test_tools_call_error_distinguishes_exception_types(self) -> None:
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+        with patch.object(server, "_dispatch_tool", side_effect=KeyError("missing_key")):
+            resp = server._handle_request({
+                "jsonrpc": "2.0",
+                "id": 100,
+                "method": "tools/call",
+                "params": {"name": "chip_portfolio", "arguments": {}},
+            })
+        assert resp["error"]["data"]["error_type"] == "KeyError"
+
     def test_notification_returns_empty(self) -> None:
         server = ChipMCPServer()
         resp = server._handle_request({
