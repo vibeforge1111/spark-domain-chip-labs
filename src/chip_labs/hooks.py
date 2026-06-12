@@ -135,10 +135,13 @@ def _should_skip_action(tool_name: str, tool_input: dict[str, Any]) -> bool:
 # Helpers
 # ---------------------------------------------------------------------------
 
+_MAX_STDIN_BYTES = 1_048_576  # 1 MiB
+
+
 def _read_stdin() -> dict[str, Any]:
     """Read JSON from stdin (Claude Code hook protocol)."""
     try:
-        raw = sys.stdin.read()
+        raw = sys.stdin.read(_MAX_STDIN_BYTES)
         if raw.strip():
             return json.loads(raw)
     except (json.JSONDecodeError, OSError):
