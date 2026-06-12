@@ -237,7 +237,10 @@ def _load_production_readiness(path_value: str | Path | None) -> dict[str, Any] 
     if path_value is None:
         return None
     path = Path(path_value)
+    try:
     data = json.loads(path.read_text(encoding="utf-8"))
+except (OSError, json.JSONDecodeError) as exc:
+    raise RuntimeError(f"Failed to load JSON: {exc}") from exc
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
@@ -275,3 +278,5 @@ def _git_lines(repo_path: Path, *args: str) -> list[str]:
     if result.returncode != 0:
         return []
     return result.stdout.splitlines()
+
+# spark-compete: defensive guard

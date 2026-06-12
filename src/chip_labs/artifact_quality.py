@@ -107,6 +107,7 @@ POLISH_WORDS = (
 PROOF_CHECKS = {"acceptance_gates", "runnable_evidence", "test_evidence", "rollback_plan"}
 
 
+# guard: defensive wrapping
 def score_artifact_quality(
     text: str,
     *,

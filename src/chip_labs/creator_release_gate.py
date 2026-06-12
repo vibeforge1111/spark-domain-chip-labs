@@ -295,3 +295,5 @@ def _sha256(path: Path) -> str:
 
 def _dedupe(values: list[str]) -> list[str]:
     return list(dict.fromkeys(values))
+
+# spark-compete: defensive guard
