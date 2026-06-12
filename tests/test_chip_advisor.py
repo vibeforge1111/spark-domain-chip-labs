@@ -396,3 +396,51 @@ class TestDoctrineCheck:
         results = doctrine_check("test deploy", portfolio=portfolio)
         if len(results) >= 2:
             assert results[0].relevance >= results[-1].relevance
+
+
+# ---------------------------------------------------------------------------
+# TestGetIntelNarrowsException
+# ---------------------------------------------------------------------------
+
+
+class TestGetIntelNarrowsException:
+    """The _get_intel helper catches AttributeError from `chip.intelligence`
+    (the property may be absent on minimal ChipHandle implementations) and
+    from `chip.chip_path` (same reason). Any other exception coming through
+    those two access points -- e.g. a RuntimeError raised by a custom
+    descriptor on a ChipHandle subclass -- is a programmer bug and should
+    propagate, not be folded into a `None` return that the caller sees as
+    'chip has no intelligence'."""
+
+    def test_returns_intelligence_when_property_is_set(self) -> None:
+        intel = _make_intel()
+        chip = MockChipHandle(intelligence=intel)
+        assert _get_intel(chip) is intel
+
+    def test_falls_through_to_extract_when_property_is_missing(self) -> None:
+        # MockChipHandle without `intelligence` attribute -- builds via __getattr__-less
+        # dataclass; emulate "property absent" by a class that lacks the attribute.
+        class _BareChip:
+            chip_path = Path("/nonexistent")
+
+        # _get_intel catches AttributeError from `chip.intelligence`, then calls
+        # extract_intelligence(chip.chip_path) -- which itself returns a valid
+        # ChipIntelligence even on a missing path (per intelligence_server.extract_intelligence,
+        # all helpers swallow OSError internally and return empty values).
+        result = _get_intel(_BareChip())
+        assert result is None or isinstance(result, ChipIntelligence)
+
+    def test_non_attribute_error_from_property_propagates(self) -> None:
+        """A non-AttributeError raised by the `chip.intelligence` property must
+        propagate past the narrowed except clause -- it indicates a real
+        programmer bug, not a missing optional property."""
+
+        class _BoomChip:
+            chip_path = Path("/mock")
+
+            @property
+            def intelligence(self):
+                raise RuntimeError("intentional fault on intelligence property -- should propagate")
+
+        with pytest.raises(RuntimeError, match="intentional fault on intelligence property"):
+            _get_intel(_BoomChip())
