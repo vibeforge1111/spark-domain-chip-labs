@@ -655,7 +655,12 @@ HANDLERS = {
 def main() -> None:
     """CLI entry point: dispatch to the appropriate hook handler."""
     if len(sys.argv) < 2:
-        print(json.dumps({"error": "Usage: python -m chip_labs.hooks <hook_name>"}), file=sys.stderr)
+        print(
+            json.dumps({
+                "error": f"Usage: python -m chip_labs.hooks <hook_name>. Available: {list(HANDLERS.keys())}"
+            }),
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     hook_name = sys.argv[1]
