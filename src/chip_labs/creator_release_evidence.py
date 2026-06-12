@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+EVIDENCE_GIT_TIMEOUT_SECONDS = 20
+
 import json
 import subprocess
 from pathlib import Path
@@ -269,8 +271,9 @@ def _git_lines(repo_path: Path, *args: str) -> list[str]:
             capture_output=True,
             text=True,
             check=False,
+            timeout=EVIDENCE_GIT_TIMEOUT_SECONDS,
         )
-    except OSError:
+    except (OSError, subprocess.TimeoutExpired):
         return []
     if result.returncode != 0:
         return []
