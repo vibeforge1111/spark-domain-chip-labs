@@ -412,11 +412,11 @@ def bridge_structured_packets(chip: Path) -> int:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    chip_path_arg = None
-    if "--chip-path" in sys.argv:
-        idx = sys.argv.index("--chip-path")
-        if idx + 1 < len(sys.argv):
-            chip_path_arg = sys.argv[idx + 1]
+    import argparse
+    parser = argparse.ArgumentParser(description="Bridge startup YC evidence")
+    parser.add_argument("--chip-path", help="Path to chip file")
+    args = parser.parse_args()
+    chip_path_arg = args.chip_path
 
     chip = _find_chip(chip_path_arg)
     print(f"Bridging evidence for: {chip.name}")
