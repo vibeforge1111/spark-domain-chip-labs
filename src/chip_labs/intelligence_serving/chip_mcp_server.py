@@ -507,6 +507,8 @@ class ChipMCPServer:
                 request = json.loads(line)
             except json.JSONDecodeError:
                 continue
+            if not isinstance(request, dict):
+                continue
 
             response = self._handle_request(request)
             if response:
