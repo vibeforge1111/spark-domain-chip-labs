@@ -283,7 +283,10 @@ def _provenance(label: str, path_value: str | Path | None) -> dict[str, Any]:
 
 
 def _load_json(path: Path) -> dict[str, Any]:
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}  # malformed JSON, return safe default
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
