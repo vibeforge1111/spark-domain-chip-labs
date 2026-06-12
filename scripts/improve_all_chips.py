@@ -507,7 +507,10 @@ def _bridge_skill_file(chip: Path) -> bool:
     manifest_path = chip / "spark-chip.json"
     manifest = {}
     if manifest_path.exists():
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return {}  # malformed JSON, return safe default
 
     domain = manifest.get("domain", chip.name.replace("domain-chip-", ""))
     version = manifest.get("version", "0.1.0")
