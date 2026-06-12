@@ -862,7 +862,7 @@ def _build_alias_map(canonical_candidates: list[dict[str, Any]]) -> dict[str, st
         domain_id = candidate["domain_id"]
         label_slug = slugify_domain_label(candidate.get("label", ""))
         if domain_id in seen_domain_ids and domain_id not in alias_map:
-            alias_map[domain_id] = domain_id
+            pass  # Skip self-referencing alias; duplicate is already tracked in seen_domain_ids
         for alias in candidate.get("duplicate_aliases", []):
             alias_slug = slugify_domain_label(alias)
             if alias_slug in label_map:
