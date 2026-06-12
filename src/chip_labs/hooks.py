@@ -186,9 +186,10 @@ def _read_session_domain() -> dict[str, Any] | None:
         age = datetime.now(timezone.utc).timestamp() - _SESSION_DOMAIN_FILE.stat().st_mtime
         if age > _SESSION_DOMAIN_TTL:
             return None
-        return json.loads(_SESSION_DOMAIN_FILE.read_text(encoding="utf-8"))
+        payload = json.loads(_SESSION_DOMAIN_FILE.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return None
+    return payload if isinstance(payload, dict) else None
 
 
 def _load_portfolio_safe() -> list[Any]:
