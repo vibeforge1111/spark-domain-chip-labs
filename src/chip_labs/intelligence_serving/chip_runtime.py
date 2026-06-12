@@ -131,7 +131,7 @@ def load_portfolio(
         chip_dir = Path(desc["path"])
         try:
             handle = load_chip(chip_dir)
-        except (FileNotFoundError, json.JSONDecodeError, OSError):
+        except (FileNotFoundError, json.JSONDecodeError, OSError, AttributeError, TypeError):
             continue
         if handle.quality_score >= min_score:
             handles.append(handle)
