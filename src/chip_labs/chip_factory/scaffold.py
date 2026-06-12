@@ -142,6 +142,29 @@ def validate_brief(brief: dict[str, Any]) -> list[str]:
 # File generators
 # ---------------------------------------------------------------------------
 
+def _validate_safe_relative_path(path_str: str, label: str = "path") -> None:
+    """Raise ValueError if *path_str* is not a safe relative directory name.
+
+    A safe relative path must:
+    - Not be empty
+    - Not be an absolute path (no leading ``/``, ``\\``, or drive letter)
+    - Not contain ``..`` components (no parent-directory traversal)
+    """
+    if not path_str or not path_str.strip():
+        raise ValueError(f"{label} must not be empty")
+    # Reject POSIX-absolute and Windows-absolute paths
+    if path_str.startswith("/") or path_str.startswith("\\"):
+        raise ValueError(f"{label} must be a relative path, got absolute: {path_str!r}")
+    if re.match(r"^[a-zA-Z]:", path_str):
+        raise ValueError(f"{label} must be a relative path, got drive path: {path_str!r}")
+    # Reject any '..' traversal component on either POSIX or Windows separators
+    for part in re.split(r"[/\\]", path_str):
+        if part == "..":
+            raise ValueError(
+                f"{label} must not contain '..' traversal components: {path_str!r}"
+            )
+
+
 def _sanitize_module_name(domain_id: str) -> str:
     """Convert domain-id to valid Python module name."""
     return re.sub(r"[^a-z0-9_]", "_", domain_id.lower().replace("-", "_"))
@@ -449,6 +472,7 @@ def cmd_watchtower(args: argparse.Namespace) -> None:
     input_data = _load_input(args.input)
     mutations = input_data.get("mutations", {{}})
     vault_dir = input_data.get("vault_dir", "obsidian-vault")
+    _validate_safe_relative_path(vault_dir, label="vault_dir")
     pages = generate_watchtower_pages(mutations, vault_dir)
     vault_path = Path(vault_dir)
     vault_path.mkdir(parents=True, exist_ok=True)
