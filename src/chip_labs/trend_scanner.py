@@ -136,7 +136,7 @@ def rank_opportunities(opportunities: list[dict[str, Any]] | None = None) -> lis
     for opp in opps:
         composite = score_opportunity(opp)
         ranked.append({**opp, "composite_score": composite})
-    ranked.sort(key=lambda x: x["composite_score"], reverse=True)
+    ranked.sort(key=lambda x: (-float(x["composite_score"]), str(x.get("domain_id") or "")))
     return ranked
 
 
