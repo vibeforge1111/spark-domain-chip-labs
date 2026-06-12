@@ -493,7 +493,7 @@ def handle_pre_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
         return {}
 
     tool_name = input_data.get("tool_name", "")
-    tool_input = input_data.get("tool_input", {})
+    tool_input = input_data.get("tool_input") or {}
 
     # Layer 1: Fast pre-filter -- skip clearly irrelevant actions
     if _should_skip_action(tool_name, tool_input):
@@ -562,7 +562,7 @@ def handle_post_tool_use(input_data: dict[str, Any]) -> dict[str, Any]:
         return {}
 
     tool_name = input_data.get("tool_name", "")
-    tool_input = input_data.get("tool_input", {})
+    tool_input = input_data.get("tool_input") or {}
     tool_output = input_data.get("tool_output", "")
 
     # Only capture significant tool outcomes
