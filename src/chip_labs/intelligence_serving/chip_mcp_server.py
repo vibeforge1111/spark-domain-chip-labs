@@ -13,6 +13,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import logging
 import sys
 import time
 from datetime import datetime, timezone
@@ -30,6 +31,8 @@ PROTOCOL_VERSION = "2024-11-05"
 
 MIN_QUALITY_SCORE = 35
 PORTFOLIO_TTL_SECONDS = 300  # 5 min cache
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -410,8 +413,8 @@ class ChipMCPServer:
                     "suggestions": chip_suggestions,
                     "focus": focus,
                 })
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.warning('Failed to extract intelligence for chip %s: %s', chip.chip_name, exc, exc_info=True)
 
         return {"suggestions": suggestions}
 
