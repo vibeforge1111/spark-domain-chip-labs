@@ -1,0 +1,9 @@
+{
+  "schema_version": "adaptive_creator_loop.benchmark_pack_manifest.v1",
+  "benchmark_key": "memory-doctor-telegram-v1",
+  "target_path": "memory-doctor-telegram",
+  "minimum_evidence_tier": "prototype",
+  "case_file": "cases.jsonl",
+  "trap_file": "traps.jsonl",
+  "rubric_file": "scoring_rubric.md"
+}
