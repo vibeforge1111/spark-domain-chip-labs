@@ -358,12 +358,14 @@ def _validate_hook_command(cmd: list[str], *, chip_path: Path | None = None) -> 
 
 def _parse_hook_output(output_path: Path, stdout: str) -> dict[str, Any]:
     """Read hook output from file first, then fall back to stdout parsing."""
-    if output_path.exists():
+    try:
         try:
             return json.loads(output_path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
             pass
 
+    except FileNotFoundError:
+        pass
     try:
         return json.loads(stdout)
     except json.JSONDecodeError:
