@@ -214,12 +214,14 @@ def _check_memory_knowledge(chip_path: Path) -> dict[str, bool]:
 
     # Memory backend
     project_path = chip_path / "spark-researcher.project.json"
-    if project_path.exists():
+    try:
         try:
             project = json.loads(project_path.read_text(encoding="utf-8"))
             results["memory_backend"] = bool(project.get("memory", {}).get("backend"))
         except (json.JSONDecodeError, OSError):
             results["memory_backend"] = False
+    except FileNotFoundError:
+        pass
     else:
         results["memory_backend"] = False
 
