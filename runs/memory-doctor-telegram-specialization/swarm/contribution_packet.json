@@ -1,0 +1,15 @@
+{
+  "schema_version": "adaptive_creator_loop.swarm_contribution_packet.v1",
+  "contribution_key": "memory-doctor-telegram-local-prototype",
+  "review_state": "local_only",
+  "evidence_tier": "prototype",
+  "summary": "Telegram-callable Memory Doctor specialization path for diagnosing Spark memory delete integrity, topic traces, active profile facts, and dashboard memory shadow counts.",
+  "transfer_claim": "Useful as a local diagnostic pattern for Spark memory systems; not a network-level repair doctrine.",
+  "evidence": [
+    "Builder tests: tests/test_telegram_generic_memory.py -k memory_doctor or multiple_generic_deletions",
+    "Builder tests: tests/test_gateway_ask_telegram.py -k memory_doctor",
+    "Live local doctor run against Maya/Cem traces"
+  ],
+  "privacy_boundary": "local_only; reports may contain user memory traces and should not be published raw.",
+  "rollback": "Disable Telegram natural-language Memory Doctor route and use CLI-only doctor."
+}
