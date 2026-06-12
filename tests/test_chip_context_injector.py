@@ -9,7 +9,10 @@ from unittest.mock import patch
 
 import pytest
 
+import pytest
+
 from chip_labs.chip_context_injector import (
+    _ensure_intel,
     _estimate_tokens,
     _format_contradiction,
     _format_doctrine_concise,
@@ -485,3 +488,58 @@ class TestRelevanceThreshold:
         )
         result = inject_context_for_task("xyzzy foobar baz", portfolio=[chip])
         assert "No relevant chips" in result or "<!--" in result
+
+
+# ---------------------------------------------------------------------------
+# TestEnsureIntelNarrowsException
+# ---------------------------------------------------------------------------
+
+
+class TestEnsureIntelNarrowsException:
+    """The _ensure_intel helper catches AttributeError from `chip.intelligence`
+    and `chip.chip_path` access (a minimal ChipHandle subclass may not
+    implement those attributes). Any other exception coming through those
+    access points or through extract_intelligence -- e.g. a RuntimeError
+    raised by a custom descriptor on a ChipHandle subclass -- is a programmer
+    bug and should propagate, not be folded into a `None` return that the
+    caller sees as 'chip has no intelligence'."""
+
+    def test_returns_existing_intelligence_when_set(self) -> None:
+        intel = _make_intel()
+        chip = MockChipHandle(intelligence=intel)
+        assert _ensure_intel(chip) is intel
+
+    def test_returns_none_when_chip_path_attribute_missing(self) -> None:
+        """A minimal ChipHandle without the chip_path attribute triggers
+        AttributeError inside the try block, which the narrowed except
+        catches and converts to None -- the documented behavior."""
+
+        class _MinimalChip:
+            intelligence = None  # property present but unset
+
+        result = _ensure_intel(_MinimalChip())
+        assert result is None
+
+    def test_non_attribute_error_from_extract_propagates(self) -> None:
+        """A non-AttributeError raised by extract_intelligence (e.g. a
+        RuntimeError from a programmer bug in a future refactor) must
+        propagate past the narrowed except clause -- it indicates a real
+        bug, not a missing optional attribute."""
+
+        chip = MockChipHandle()
+        chip.intelligence = None  # force the extract path
+
+        def _boom(_path):
+            raise RuntimeError(
+                "intentional fault in extract_intelligence -- should propagate"
+            )
+
+        from chip_labs import chip_context_injector as cci
+
+        original = cci.extract_intelligence
+        cci.extract_intelligence = _boom
+        try:
+            with pytest.raises(RuntimeError, match="intentional fault"):
+                _ensure_intel(chip)
+        finally:
+            cci.extract_intelligence = original
