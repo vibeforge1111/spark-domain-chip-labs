@@ -472,7 +472,10 @@ NEW_V4_RELATIONSHIPS: list[dict[str, Any]] = [
 ]
 
 
-if __name__ == "__main__":
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Domain v4 stats")
+    args = parser.parse_args()
     print(f"Total new v4 domains: {len(NEW_250_V4_DOMAINS)}")
     categories = {
         "AI Survival": len(AI_SURVIVAL_DOMAINS),
@@ -502,3 +505,7 @@ if __name__ == "__main__":
         print(f"\nDUPLICATES: {set(dupes)}")
     else:
         print(f"\nNo duplicate IDs. {len(ids)} unique domains.")
+
+
+if __name__ == "__main__":
+    main()
