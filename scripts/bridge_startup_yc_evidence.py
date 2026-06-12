@@ -47,12 +47,18 @@ def bridge_score_history(chip: Path) -> int:
     Returns the number of entries written.
     """
     runs_path = chip / "artifacts" / "ledger" / "runs.jsonl"
-    if not runs_path.exists():
+    # EAFP: a single read with try/except is atomic; an exists()-then-read
+    # pattern opens a race window where the chip runtime can rotate or
+    # delete runs.jsonl between the check and the read, raising
+    # FileNotFoundError out of the helper instead of the documented SKIP.
+    try:
+        raw = runs_path.read_text(encoding="utf-8", errors="ignore")
+    except FileNotFoundError:
         print(f"  SKIP: {runs_path} not found")
         return 0
 
     entries: list[dict] = []
-    for line in runs_path.read_text(encoding="utf-8", errors="ignore").splitlines():
+    for line in raw.splitlines():
         line = line.strip()
         if not line:
             continue
@@ -100,7 +106,12 @@ def bridge_research_grounded(chip: Path) -> int:
     Returns number of files copied.
     """
     src = chip / "docs" / "research-packets"
-    if not src.exists():
+    # EAFP: see bridge_score_history above. iterdir() raises
+    # FileNotFoundError if the directory is removed between exists() and
+    # iterdir(); fold the check into the same try.
+    try:
+        candidates = sorted(src.iterdir())
+    except FileNotFoundError:
         print(f"  SKIP: {src} not found")
         return 0
 
@@ -108,7 +119,7 @@ def bridge_research_grounded(chip: Path) -> int:
     dst.mkdir(parents=True, exist_ok=True)
 
     count = 0
-    for md in sorted(src.iterdir()):
+    for md in candidates:
         if not md.is_file() or md.suffix != ".md":
             continue
         if md.name == "README.md":
@@ -135,7 +146,12 @@ def bridge_benchmark_grounded(chip: Path) -> int:
     dst.mkdir(parents=True, exist_ok=True)
 
     runs_path = chip / "artifacts" / "ledger" / "runs.jsonl"
-    if not runs_path.exists():
+    # EAFP: see bridge_score_history above. The chip runtime appends to
+    # runs.jsonl during training and may rotate it between exists() and
+    # the read.
+    try:
+        raw = runs_path.read_text(encoding="utf-8", errors="ignore")
+    except FileNotFoundError:
         print(f"  SKIP: {runs_path} not found")
         return 0
 
@@ -143,7 +159,7 @@ def bridge_benchmark_grounded(chip: Path) -> int:
     best_by_verdict: dict[str, dict] = {}
     all_scores: list[float] = []
 
-    for line in runs_path.read_text(encoding="utf-8", errors="ignore").splitlines():
+    for line in raw.splitlines():
         line = line.strip()
         if not line:
             continue
