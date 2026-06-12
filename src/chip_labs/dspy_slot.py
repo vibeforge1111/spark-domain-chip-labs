@@ -445,7 +445,10 @@ def detect_dspy_integration(chip_path: Path) -> dict[str, Any]:
         result["config_path"] = str(config_path)
         # Try to extract slot names from config
         try:
+            try:
             config_data = json.loads(config_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise RuntimeError(f"dspy config corrupt {config_path}: {exc}") from exc
             if isinstance(config_data, dict) and "slot_name" in config_data:
                 result["slots"].append(config_data["slot_name"])
             elif isinstance(config_data, list):
