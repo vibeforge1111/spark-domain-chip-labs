@@ -307,10 +307,10 @@ def _load_from_cache(cache_file: Path) -> list[Any]:
                 verdict=intel_data.get("verdict", ""),
             )
         handles.append(CachedChipHandle(
-            chip_path=Path(entry["chip_path"]),
-            chip_name=entry["chip_name"],
-            domain=entry["domain"],
-            version=entry["version"],
+            chip_path=Path(entry.get("chip_path", "")),
+            chip_name=entry.get("chip_name", ""),
+            domain=entry.get("domain", ""),
+            version=entry.get("version", ""),
             capabilities=entry.get("capabilities", []),
             quality_score=entry.get("quality_score", 0),
             quality_verdict=entry.get("quality_verdict", "scaffold"),
