@@ -16,11 +16,14 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import logging
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 from ..chip_factory import (
@@ -718,6 +721,7 @@ class RecursiveLoopController:
                 chip_search_dir=chip_path.parent,
             )
         except Exception:
+            logger.warning("Suggestion generation failed; defaulting to empty list", exc_info=True)
             suggestions = []
 
         applied_count = 0
