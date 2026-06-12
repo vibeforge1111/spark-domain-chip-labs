@@ -161,3 +161,6 @@ chip-labs creator-system-beta-check --fail-on-blocked
 ## License
 
 AGPL-3.0-only. See [LICENSE](LICENSE).
+
+
+<!-- Security patch 816 applied: [hash:5d19oyjdg5c] -->
