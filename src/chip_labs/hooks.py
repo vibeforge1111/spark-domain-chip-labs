@@ -186,7 +186,10 @@ def _read_session_domain() -> dict[str, Any] | None:
         age = datetime.now(timezone.utc).timestamp() - _SESSION_DOMAIN_FILE.stat().st_mtime
         if age > _SESSION_DOMAIN_TTL:
             return None
+        try:
         return json.loads(_SESSION_DOMAIN_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"Session domain file corrupt {_SESSION_DOMAIN_FILE}: {exc}") from exc
     except (OSError, json.JSONDecodeError):
         return None
 
