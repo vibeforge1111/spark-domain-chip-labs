@@ -327,6 +327,16 @@ class ChipMCPServer:
             "chips": chips_info,
         }
 
+    @staticmethod
+    def _is_within_directory(filepath: Path, directory: Path) -> bool:
+        """Return True if *filepath* resolves inside *directory* (prevents path traversal)."""
+        try:
+            resolved = filepath.resolve()
+            parent = directory.resolve()
+            return resolved == parent or parent in resolved.parents
+        except (OSError, ValueError):
+            return False
+
     def _handle_chip_feedback(self, args: dict[str, Any]) -> dict[str, Any]:
         """Feed outcomes back into chip intelligence."""
         chip_name = args.get("chip_name", "")
@@ -340,7 +350,21 @@ class ChipMCPServer:
             return {"error": f"Chip '{chip_name}' not found"}
 
         # Write feedback packet to realworld_validated
-        rw_dir = chip.chip_path / "research" / "realworld_validated"
+        # Validate chip_path itself stays within the search root to prevent
+        # path-traversal via crafted chip paths (symlinks, ".." segments).
+        chip_root = chip.chip_path.resolve()
+        if self._search_dir is not None:
+            search_root = self._search_dir.resolve()
+            if not self._is_within_directory(chip_root, search_root):
+                return {"error": "Chip path is outside the allowed search directory"}
+
+        rw_dir = chip_root / "research" / "realworld_validated"
+
+        # Guard against path-traversal: ensure the target directory and
+        # resulting file resolve inside the chip's own directory tree.
+        if not self._is_within_directory(rw_dir, chip_root):
+            return {"error": "Feedback directory escapes chip root"}
+
         try:
             rw_dir.mkdir(parents=True, exist_ok=True)
         except OSError:
@@ -360,6 +384,10 @@ class ChipMCPServer:
 
         filename = f"feedback_{timestamp.strftime('%Y%m%dT%H%M%SZ')}.json"
         filepath = rw_dir / filename
+
+        # Final safety check on the resolved write target.
+        if not self._is_within_directory(filepath, chip_root):
+            return {"error": "Feedback path escapes chip root"}
 
         try:
             filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
