@@ -105,7 +105,7 @@ def _clamp01(value: float) -> float:
 
 
 @lru_cache(maxsize=8)
-def _cached_lab_state(repo_root_str: str, chip_search_dir_str: str) -> dict[str, Any]:
+def _cached_lab_state(repo_root_str: str, chip_search_dir_str: str, state_key: str) -> dict[str, Any]:
     repo_root = Path(repo_root_str)
     chip_search_dir: str | Path | None = chip_search_dir_str or None
     v3 = score_chip_v3(repo_root)
@@ -125,7 +125,29 @@ def _cached_lab_state(repo_root_str: str, chip_search_dir_str: str) -> dict[str,
 
 
 def _lab_state(repo_root: Path, chip_search_dir: str | Path | None = None) -> dict[str, Any]:
-    return _cached_lab_state(str(repo_root.resolve()), str(chip_search_dir or ""))
+    # Derive a cheap state_key from the mtimes of the source paths the cache
+    # snapshots (runs jsonl files + packets dir). When the operator adds a new
+    # packet or run, the directory or file mtime changes so the cache key
+    # changes and the next call recomputes instead of returning the snapshot
+    # captured the first time _cached_lab_state ran for this repo_root.
+    sources = [
+        repo_root / "research" / "packets",
+        repo_root / "research" / "meta" / "runs.jsonl",
+        repo_root / "artifacts" / "ledger" / "runs.jsonl",
+        repo_root / "score_history.jsonl",
+    ]
+    parts: list[str] = []
+    for source in sources:
+        try:
+            parts.append(f"{source.name}:{int(source.stat().st_mtime_ns)}")
+        except OSError:
+            parts.append(f"{source.name}:0")
+    state_key = "|".join(parts)
+    return _cached_lab_state(
+        str(repo_root.resolve()),
+        str(chip_search_dir or ""),
+        state_key,
+    )
 
 
 _METHODOLOGY_AREA_CONFIG: dict[str, dict[str, Any]] = {
