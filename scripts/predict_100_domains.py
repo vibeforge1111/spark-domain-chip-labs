@@ -766,6 +766,9 @@ RELATIONSHIPS = [
 # MAIN
 # =============================================================================
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="MiroFish 100-Domain Prediction Run")
+    args = parser.parse_args()
     t0 = time.time()
     n = len(ALL_100_DOMAINS)
     domain_ids_set = {d["domain_id"] for d in ALL_100_DOMAINS}
