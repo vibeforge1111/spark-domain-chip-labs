@@ -125,7 +125,7 @@ def _check_criterion(criterion_id: str, chip_path: Path, quality_score: int) -> 
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             caps = set(manifest.get("capabilities", []))
             return {"evaluate", "suggest", "packets", "watchtower"}.issubset(caps)
-        except (json.JSONDecodeError, OSError):
+        except (json.JSONDecodeError, OSError, AttributeError, TypeError):
             return False
 
     elif criterion_id == "benchmark_pack":
@@ -166,7 +166,7 @@ def _check_criterion(criterion_id: str, chip_path: Path, quality_score: int) -> 
             project = json.loads(project_path.read_text(encoding="utf-8"))
             trials = project.get("candidate_trials", [])
             return len(trials) >= 3
-        except (json.JSONDecodeError, OSError):
+        except (json.JSONDecodeError, OSError, AttributeError, TypeError):
             return False
 
     elif criterion_id == "human_approval":
