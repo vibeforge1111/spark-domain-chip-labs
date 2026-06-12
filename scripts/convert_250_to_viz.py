@@ -65,6 +65,11 @@ def generate_stage_distribution(adoption_rate, advocacy_rate, interest_rate):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Convert 250-domain data to visualization format")
+    parser.add_argument("--output", default=os.path.join(script_dir, "..", "viz", "mirofish_250_data.json"),
+                        help="Output JSON file path")
+    args = parser.parse_args()
     t0 = time.time()
 
     # Load the existing prediction results
@@ -301,7 +306,7 @@ def main():
     # Sort domains by builder_adoption for ranking
     export["domains"].sort(key=lambda x: x["builder_adoption"], reverse=True)
 
-    output_path = os.path.join(script_dir, "..", "viz", "mirofish_250_data.json")
+    output_path = args.output
     with open(output_path, "w") as f:
         json.dump(export, f, indent=2)
 
