@@ -584,6 +584,8 @@ def _fix_contradiction_handling(chip_path: Path) -> bool:
     docs_dir.mkdir(parents=True, exist_ok=True)
     contra_path = docs_dir / "CONTRADICTIONS.md"
     if contra_path.exists():
+        # NOTE: This is a read-modify-write block. A concurrent writer could lose updates.
+        # See _atomic_read_modify_write for the safe version of this pattern.
         content = contra_path.read_text(encoding="utf-8", errors="ignore")
         # Only skip if already has real substance (>50 chars beyond header)
         lines = [
