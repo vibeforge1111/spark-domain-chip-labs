@@ -134,10 +134,12 @@ def _read_json(path: Path) -> dict[str, Any] | None:
 def _write_json(path: Path, data: dict[str, Any]) -> None:
     """Write a JSON file with consistent formatting."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    tmp_path.write_text(
         json.dumps(data, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
+    tmp_path.replace(path)
 
 
 def _ensure_file(path: Path, content: str) -> None:
@@ -145,7 +147,9 @@ def _ensure_file(path: Path, content: str) -> None:
     if path.exists():
         return
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content, encoding="utf-8")
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    tmp_path.write_text(content, encoding="utf-8")
+    tmp_path.replace(path)
 
 
 def _ensure_key(data: dict, key: str, default: Any) -> bool:
@@ -882,7 +886,9 @@ def _apply_scoring_model(target_chip_path: Path, pattern: TransferPattern) -> bo
 
     if len(additions) > 1:  # More than just the marker
         new_content = existing + "\n" + "\n".join(additions)
-        eval_file.write_text(new_content, encoding="utf-8")
+        eval_tmp_file = eval_file.with_suffix(eval_file.suffix + ".tmp")
+        eval_tmp_file.write_text(new_content, encoding="utf-8")
+        eval_tmp_file.replace(eval_file)
 
     return True
 
