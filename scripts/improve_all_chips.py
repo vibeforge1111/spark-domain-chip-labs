@@ -289,7 +289,10 @@ def _bridge_exploratory_frontier(chip: Path) -> int:
         manifest_path = chip / "spark-chip.json"
         frontier_config = {}
         if manifest_path.exists():
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                return {}  # malformed JSON, return safe default
             frontier_config = manifest.get("frontier", {})
 
         content = {
