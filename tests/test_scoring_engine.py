@@ -561,6 +561,28 @@ class TestFromManifest:
         result = engine.score({"quality": "high"})
         assert result.total == 52  # 50 + 2 (first value delta)
 
+    def test_from_manifest_list_shaped_mutations(self, tmp_path: Path) -> None:
+        # allowed_mutations as a plain LIST of axis names is a sanctioned shape
+        # (the doctor auto-fix writes it). It must not crash with
+        # AttributeError: 'list' object has no attribute 'items'.
+        manifest = {
+            "schema_version": "spark-chip.v1",
+            "frontier": {
+                "enabled": True,
+                "allowed_mutations": ["research_focus", "regime"],
+            },
+        }
+        manifest_path = tmp_path / "spark-chip.json"
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+        config = from_manifest(manifest_path)
+        # List entries carry no value deltas, so they add no dimensions, but the
+        # config is still well-formed and scorable.
+        assert config.dimensions == {}
+        assert config.base_score == 50
+        engine = MutationScoringEngine(config)
+        assert engine.score({}).total == 50
+
 
 # ===================================================================
 # 10. Bulk scoring and leaderboard
