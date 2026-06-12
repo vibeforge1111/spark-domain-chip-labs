@@ -4,8 +4,11 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 import json
+import logging
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 from ..quality_rubric import score_portfolio
 from ..registry import discover_chips, get_portfolio_summary
@@ -182,7 +185,11 @@ The page below is sourced from the latest saved MiroFish portfolio export artifa
     if readout_path is not None:
         from ..mirofish.portfolio import format_portfolio_readout_markdown
 
-        readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        try:
+            readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            logger.warning("Invalid JSON in %s: %s", readout_path, e)
+            return {"path": "MiroFish Portfolio.md", "content": f"# MiroFish Portfolio\n> *Readout at {readout_path} was corrupt.*"}
         export_body = format_portfolio_readout_markdown(
             readout_packet,
             title="MiroFish Portfolio Readout",

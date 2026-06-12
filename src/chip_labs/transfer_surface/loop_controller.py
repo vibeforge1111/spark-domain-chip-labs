@@ -16,6 +16,7 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import logging
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -671,7 +672,7 @@ class RecursiveLoopController:
             gap = fixable[0]
             try:
                 succeeded = gap.fix_fn(chip_path)
-            except Exception:
+            except (ConnectionError, TimeoutError, OSError):
                 succeeded = False
 
             if succeeded:
@@ -718,6 +719,7 @@ class RecursiveLoopController:
                 chip_search_dir=chip_path.parent,
             )
         except Exception:
+            logging.exception("Failed to run improve suggestions; skipping")
             suggestions = []
 
         applied_count = 0
@@ -843,7 +845,7 @@ class RecursiveLoopController:
             )
         except Exception:
             # Non-fatal: intelligence_server may not be available
-            pass
+            logging.exception("Failed to build intelligence artifacts; skipping")
 
         t_end = _now_ms()
 

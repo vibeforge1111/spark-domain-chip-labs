@@ -28,7 +28,10 @@ NETWORK_REQUIRED_GATES = (
 
 def load_json_packet(path: str | Path) -> dict[str, Any]:
     packet_path = Path(path)
-    data = json.loads(packet_path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(packet_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Invalid JSON in {packet_path}: {e}")
     if not isinstance(data, dict):
         raise ValueError(f"{packet_path} must contain a JSON object")
     return data
