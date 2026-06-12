@@ -106,7 +106,7 @@ def _should_skip_action(tool_name: str, tool_input: dict[str, Any]) -> bool:
         if not command:
             return True
         # Extract first token (the executable)
-        first_token = command.split()[0]
+        first_token = command.split()[0] if command.split() else ""
         # Handle path prefixes:  /usr/bin/git -> git,  C:\...\git.exe -> git
         base = first_token.rsplit("/", 1)[-1].rsplit("\\", 1)[-1]
         # Strip .exe / .cmd / .bat / .ps1 suffixes (Windows)
