@@ -764,7 +764,10 @@ def _load_rows(path: Path) -> list[dict[str, Any]]:
             except (json.JSONDecodeError, ValueError):
                 continue
     else:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise RuntimeError(f"Failed to load startup YC promotion data {path}: {exc}") from exc
         if isinstance(data, dict):
             rows = data.get("rows", [])
         else:
