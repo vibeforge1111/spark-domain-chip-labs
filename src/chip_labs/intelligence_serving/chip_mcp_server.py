@@ -311,8 +311,8 @@ class ChipMCPServer:
                 "capabilities": chip.capabilities,
             })
 
-        # Sort by quality score descending
-        chips_info.sort(key=lambda c: c["quality_score"], reverse=True)
+        # Sort by quality score descending, breaking ties by chip_name for stability
+        chips_info.sort(key=lambda c: (-float(c["quality_score"]), str(c["chip_name"])))
 
         avg_score = sum(c["quality_score"] for c in chips_info) / len(chips_info) if chips_info else 0
         verdicts: dict[str, int] = {}
