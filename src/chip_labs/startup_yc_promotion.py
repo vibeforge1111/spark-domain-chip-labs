@@ -783,7 +783,10 @@ def _load_multi_seed_rows(path: Path) -> list[dict[str, Any]]:
 def _load_review_gate_rows(path: Path) -> list[dict[str, Any]]:
     if path.suffix == ".jsonl":
         return _load_rows(path)
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError("Invalid JSON (startup_yc_promotion.py)") from exc
     if isinstance(data, dict) and isinstance(data.get("gates"), dict):
         return [
             {"gate": gate, **details}
