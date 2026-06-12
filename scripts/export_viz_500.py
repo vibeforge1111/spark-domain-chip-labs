@@ -106,6 +106,11 @@ def build_graph(domains, relationships):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Export viz data for 500 domains")
+    parser.add_argument("--output", default=os.path.join(script_dir, "..", "viz", "mirofish_500_data.json"),
+                        help="Output JSON file path")
+    args = parser.parse_args()
     t0 = time.time()
 
     # Enrich v3 domains
@@ -314,7 +319,7 @@ def main():
         "macro_events": macro_events_data,
     }
 
-    output_path = os.path.join(script_dir, "..", "viz", "mirofish_500_data.json")
+    output_path = args.output
     with open(output_path, "w") as f:
         json.dump(export, f, indent=2)
     size = os.path.getsize(output_path)
