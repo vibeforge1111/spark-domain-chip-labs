@@ -11,6 +11,7 @@ until a target score is reached or max iterations are exhausted.
 from __future__ import annotations
 
 import json
+import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -561,8 +562,11 @@ def _fix_scoring_logic(chip_path: Path) -> bool:
 def _fix_has_run_history(chip_path: Path) -> bool:
     """Create a score_history.jsonl with at least one entry by scoring the chip."""
     ledger = chip_path / "score_history.jsonl"
-    if ledger.exists() and ledger.stat().st_size > 10:
-        return True
+    try:
+        if ledger.stat().st_size > 10:
+            return True
+    except FileNotFoundError:
+        pass
     # Score the chip and persist the result to create run history
     from ..quality_rubric import score_chip as score_chip_v1
     result = score_chip_v1(chip_path)
@@ -573,8 +577,15 @@ def _fix_has_run_history(chip_path: Path) -> bool:
         "passed_count": len(result.get("passed_checks", [])),
         "failed_count": len(result.get("failed_checks", [])),
     }
-    with open(ledger, "a", encoding="utf-8") as f:
-        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    line = json.dumps(entry, ensure_ascii=False) + "\n"
+    # Use os.open with O_CREAT|O_APPEND for atomic append (POSIX guarantees
+    # that O_APPEND writes are serialized, eliminating TOCTOU + partial-write
+    # issues that existed with the previous exists()-then-open('a') pattern).
+    fd = os.open(str(ledger), os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o644)
+    try:
+        os.write(fd, line.encode("utf-8"))
+    finally:
+        os.close(fd)
     return True
 
 
