@@ -50,7 +50,7 @@ def discover_chips(search_dir: str | Path | None = None) -> list[dict[str, Any]]
         }
 
         manifest_path = entry / "spark-chip.json"
-        if manifest_path.exists():
+        try:
             try:
                 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
                 chip_info["has_manifest"] = True
@@ -60,6 +60,8 @@ def discover_chips(search_dir: str | Path | None = None) -> list[dict[str, Any]]
             except (json.JSONDecodeError, OSError):
                 pass
 
+        except FileNotFoundError:
+            pass
         project_path = entry / "spark-researcher.project.json"
         if project_path.exists():
             chip_info["has_project"] = True
