@@ -19,9 +19,12 @@ from __future__ import annotations
 import json
 import os
 import sys
+import logging
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -206,14 +209,16 @@ def _load_portfolio_safe() -> list[Any]:
             age = datetime.now(timezone.utc).timestamp() - cache_file.stat().st_mtime
             if age < _PORTFOLIO_CACHE_TTL:
                 return _load_from_cache(cache_file)
-    except (OSError, Exception):
+    except (OSError, json.JSONDecodeError, KeyError, ValueError) as exc:
+        logger.debug("Cache load failed (%s); falling back to full load", exc)
         pass
 
     # Full load (expensive -- runs V3 deep eval)
     try:
         from .intelligence_serving.chip_runtime import load_portfolio
         portfolio = load_portfolio(min_score=MIN_QUALITY_SCORE)
-    except (ImportError, Exception):
+    except (ImportError, OSError) as exc:
+        logger.warning("Portfolio load failed: %s", exc, exc_info=True)
         return []
 
     # Write cache for next hook call
