@@ -83,9 +83,10 @@ def _read_json(path: Path) -> dict[str, Any] | None:
     if not path.exists():
         return None
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
         return None
+    return payload if isinstance(payload, dict) else None
 
 
 def _write_json(path: Path, data: dict[str, Any]) -> None:
