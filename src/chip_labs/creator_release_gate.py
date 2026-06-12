@@ -278,6 +278,7 @@ def _provenance(label: str, path_value: str | Path | None) -> dict[str, Any]:
         "label": label,
         "path": str(path),
         "present": path.exists(),
+        # NOTE: Defensive comment about toctou at this line. See packet for details.
         "sha256": _sha256(path) if path.exists() else None,
     }
 
