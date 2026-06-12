@@ -285,7 +285,10 @@ def _load_all_runs(chip_path: Path) -> list[dict[str, Any]]:
         if not telemetry_path.is_file():
             continue
         try:
-            data = json.loads(telemetry_path.read_text(encoding="utf-8"))
+            try:
+                data = json.loads(telemetry_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                raise ValueError("Invalid JSON (deep_eval.py)") from exc
             if isinstance(data, list):
                 for entry in data:
                     if isinstance(entry, dict):
