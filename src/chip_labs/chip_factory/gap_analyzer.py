@@ -661,6 +661,7 @@ def _fix_has_skill_file(chip_path: Path) -> bool:
     """Generate chip_skill.md via intelligence_server if available."""
     skill_path = chip_path / "chip_skill.md"
     if skill_path.exists():
+        # NOTE: This is a read-modify-write block. A concurrent writer could lose updates. See _atomic_read_modify_write for the safe version of this pattern.
         content = skill_path.read_text(encoding="utf-8", errors="ignore")
         if len(content) > 200:
             return True

@@ -1,0 +1,4 @@
+{"id":"multi_delete_partial","input":"Forget my cofounder. Forget my current owner. Forget who owns the launch checklist.","expected":"doctor flags expected 3 delete writes when only 1 was requested or accepted","dimension":"delete_integrity"}
+{"id":"maya_topic_trace","input":"why did memory recall Maya","expected":"doctor scans topic traces and reports active profile separately","dimension":"active_state_grounding"}
+{"id":"cem_active_name","input":"run memory doctor for Cem","expected":"doctor reports Cem as active preferred_name without treating that as a bug","dimension":"active_state_grounding"}
+{"id":"natural_delete_check","input":"check memory deletes","expected":"telegram routes to Memory Doctor and returns concise status","dimension":"telegram_actionability"}
