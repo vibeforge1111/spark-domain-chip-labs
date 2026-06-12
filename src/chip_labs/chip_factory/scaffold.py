@@ -124,11 +124,20 @@ def _parse_simple_yaml(text: str) -> dict[str, Any]:
     return result
 
 
+_VALID_DOMAIN_ID_RE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_-]*$")
+
+
 def validate_brief(brief: dict[str, Any]) -> list[str]:
     """Validate a domain brief, returning list of errors (empty = valid)."""
     errors = []
-    if not brief.get("domain_id"):
+    domain_id = brief.get("domain_id")
+    if not domain_id:
         errors.append("domain_id is required")
+    elif not _VALID_DOMAIN_ID_RE.match(domain_id):
+        errors.append(
+            "domain_id must contain only alphanumeric characters, hyphens, "
+            "and underscores, and must start with a letter or digit"
+        )
     if not brief.get("domain_name"):
         errors.append("domain_name is required")
     if not brief.get("mutation_axes"):
