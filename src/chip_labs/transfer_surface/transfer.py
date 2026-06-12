@@ -1186,7 +1186,6 @@ def apply_pattern(target_chip_path: Path, pattern: TransferPattern) -> bool:
             pattern.times_successful += 1
         return result
     except Exception:
-        pattern.times_applied += 1
         return False
 
 
