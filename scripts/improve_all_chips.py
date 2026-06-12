@@ -17,6 +17,7 @@ Run:
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import shutil
@@ -652,11 +653,26 @@ def improve_chip(chip: Path) -> dict:
 
 
 def main() -> None:
-    only = None
-    if "--chip" in sys.argv:
-        idx = sys.argv.index("--chip")
-        if idx + 1 < len(sys.argv):
-            only = sys.argv[idx + 1]
+    parser = argparse.ArgumentParser(
+        prog="improve_all_chips",
+        description=(
+            "Bridge evidence for one or all discovered chips on ~/Desktop/domain-chip-* "
+            "to lift v2 quality scores. Idempotent: existing artifacts are skipped."
+        ),
+    )
+    parser.add_argument(
+        "--chip",
+        type=str,
+        default=None,
+        metavar="NAME",
+        help=(
+            "Limit to a single chip; accepts either the short suffix (e.g. 'startup-yc') "
+            "or the full directory name (e.g. 'domain-chip-startup-yc'). "
+            "Default: improve every discovered chip except domain-chip-startup-yc."
+        ),
+    )
+    args = parser.parse_args()
+    only = args.chip
 
     chips = _discover_chips(only)
     if not chips:
