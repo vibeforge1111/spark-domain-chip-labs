@@ -995,6 +995,20 @@ def scaffold_chip(
 
     chip_dir = output_dir / f"domain-chip-{domain_id}"
     chip_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        _scaffold_chip_files(chip_dir=chip_dir, brief=brief, module=module)
+    except Exception:
+        import shutil
+        shutil.rmtree(chip_dir, ignore_errors=True)
+        raise
+
+
+def _scaffold_chip_files(*, chip_dir: Path, brief: dict, module: str) -> None:
+    """Write the full chip directory tree.
+
+    Wrapped by scaffold_chip() so a mid-scaffold failure rolls back the chip_dir
+    instead of leaving a half-populated directory behind for a confused re-run.
+    """
 
     # 1. spark-chip.json (manifest)
     manifest = _gen_manifest(brief)
