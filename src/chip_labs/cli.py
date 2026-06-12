@@ -32,7 +32,10 @@ def _load_input(input_path: str | None) -> dict[str, Any]:
     if not input_path or not Path(input_path).exists():
         return {}
     try:
-        return json.loads(Path(input_path).read_text(encoding="utf-8"))
+        try:
+            return json.loads(Path(input_path).read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise ValueError("Invalid JSON (cli.py)") from exc
     except (json.JSONDecodeError, OSError):
         return {}
 
