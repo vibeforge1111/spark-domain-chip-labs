@@ -285,3 +285,5 @@ def _default_product_review(root: Path) -> Path:
 
 def _default_startup_network_review(root: Path) -> Path:
     return root / "docs" / "creator_system" / "examples" / "startup-yc-operator-validation" / "network_absorption_review_blocked.json"
+
+# spark-compete: defensive guard
