@@ -8,6 +8,7 @@ the curated Startup YC fixture.
 from __future__ import annotations
 
 import hashlib
+import copy
 import json
 from dataclasses import dataclass
 from datetime import date
