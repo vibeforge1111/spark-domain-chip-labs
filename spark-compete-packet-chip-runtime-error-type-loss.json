@@ -1,0 +1,99 @@
+{
+  "schema": "spark-compete-hotfix-v1",
+  "event": "spark-compete-first-event",
+  "submission_mode": "public_repo_pr",
+  "submission_target_url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/363",
+  "team": {
+    "name": "drophub_sir",
+    "members": [
+      "drophub_sir",
+      "esc1200",
+      "hermes-agent"
+    ],
+    "llm_device_holder": "esc1200",
+    "device_holder_github": "https://github.com/Esc1200",
+    "github_accounts": [
+      "Esc1200"
+    ]
+  },
+  "target_repo": {
+    "id": "vibeforge1111/spark-domain-chip-labs",
+    "source": "https://github.com/vibeforge1111/spark-domain-chip-labs",
+    "owner_surface": "domain-chip-labs"
+  },
+  "issue": {
+    "type": "bug",
+    "severity": "medium",
+    "title": "chip_runtime HookResult loses exception type on subprocess failures",
+    "actual_behavior": "In chip_runtime.py around line 274, the except (subprocess.TimeoutExpired, OSError) handler converts the exception to a string via str(exc) when building the HookResult: result={\"error\": str(exc)}. This loses the exception type. A TimeoutExpired produces a message like \"Command '...' timed out after 30 seconds\" and an OSError produces \"Permission denied: ...\", but callers only see the string and cannot programmatically distinguish a timeout from a filesystem permission error. This matters for retry logic, alerting, and diagnostics.",
+    "expected_behavior": "The HookResult for subprocess failures should include the exception class name so callers can branch on failure kind without parsing human-readable error strings. result should contain both error (the message) and error_type (the class name), e.g. {\"error\": \"...\", \"error_type\": \"TimeoutExpired\"}.",
+    "repro_steps": [
+      "Open src/chip_labs/intelligence_serving/chip_runtime.py and find the except (subprocess.TimeoutExpired, OSError) block around line 269-277.",
+      "Note that result={\"error\": str(exc)} is the only error payload — no exception type is included.",
+      "A caller receiving this HookResult sees {\"error\": \"Command 'foo' timed out after 30 seconds\"} but cannot tell if it was a TimeoutExpired or an OSError without regex parsing.",
+      "The intelligence_fallback handler (line 354-362) has the same pattern — this fix targets only the subprocess handler per scope."
+    ],
+    "affected_workflow": "Subprocess hook error handling — callers cannot distinguish timeout errors from filesystem permission errors, breaking retry logic and error classification"
+  },
+  "evidence": {
+    "safe_links_only": true,
+    "before_after_proof": "Before (line 274): result={\"error\": str(exc)}, → {\"error\": \"Command 'run_chip.sh' timed out after 30 seconds\"} — no type info. After (line 274): result={\"error\": str(exc), \"error_type\": type(exc).__name__}, → {\"error\": \"Command 'run_chip.sh' timed out after 30 seconds\", \"error_type\": \"TimeoutExpired\"} — callers can branch on error_type.",
+    "links": [
+      "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/363"
+    ],
+    "forbidden": [
+      "pdf",
+      "zip",
+      "exe",
+      "unknown downloads",
+      "shortened links",
+      "archives",
+      "binaries",
+      "tokens",
+      "browser cookies",
+      "wallet material",
+      "raw logs",
+      "raw conversations",
+      "raw memory",
+      "raw patches",
+      "private repo maps",
+      "private scoring details"
+    ]
+  },
+  "proposed_fix": {
+    "approach": "Add error_type field to the HookResult result dict in the subprocess exception handler (line 274). Change result={\"error\": str(exc)} to result={\"error\": str(exc), \"error_type\": type(exc).__name__}. This preserves the exception class name so callers can programmatically distinguish TimeoutExpired from OSError without parsing error message strings.",
+    "files_expected": [
+      "src/chip_labs/intelligence_serving/chip_runtime.py"
+    ],
+    "tests_or_smoke": "Existing tests pass unchanged. The fix adds one key to an existing dict literal on the error path. No function signatures, control flow, or return types are modified. type(exc).__name__ is a safe standard Python idiom requiring no imports."
+  },
+  "pr": {
+    "url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/363",
+    "branch": "esc1200/fix/chip-runtime-error-type-loss",
+    "title_prefix": "[spark-compete]",
+    "author_github": "Esc1200",
+    "body_must_include": [
+      "packet",
+      "team",
+      "pr_author",
+      "repo",
+      "actual_behavior",
+      "expected_behavior",
+      "repro_steps",
+      "before_after_proof",
+      "tests_or_smoke",
+      "duplicate_notes",
+      "risk_notes",
+      "review_claim"
+    ]
+  },
+  "review_claim": {
+    "impact_claim": "medium",
+    "evidence_types": [
+      "redacted_terminal_excerpt"
+    ],
+    "duplicate_notes": "No existing PR addresses the subprocess HookResult error_type loss in chip_runtime.py. This is a targeted single-line change in the subprocess execution path only.",
+    "risk_notes": "Minimal risk. One dict key added to an error-path-only code path. No happy-path behavior changes. No new dependencies. type(exc).__name__ is a standard Python idiom that works for all exception types.",
+    "review_state_requested": "pr_review"
+  }
+}
