@@ -423,7 +423,10 @@ def check_manifest_structure(chip_path: Path) -> DimensionResult:
     manifest_score = 0.0
     if manifest_path.is_file():
         try:
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                raise ValueError("Invalid JSON (deep_eval.py)") from exc
             # Schema check -- accept spark-chip.v1 or presence of io_protocol as v1 signal
             schema = _manifest_schema_version(manifest)
             if schema == "spark-chip.v1" or (
