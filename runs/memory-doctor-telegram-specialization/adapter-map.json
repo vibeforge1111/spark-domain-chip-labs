@@ -1,0 +1,127 @@
+{
+  "schema_version": "adaptive_creator_loop.adapter_map.v1",
+  "run_id": "creator-run-2026-05-09-spark-memory-doctor",
+  "domain_adapter": {
+    "domain_name": "Spark memory doctor",
+    "target_user_or_agent": "Spark operator diagnosing memory failures from Telegram or Builder",
+    "capabilities": [
+      "delete_integrity_scan",
+      "topic_trace_scan",
+      "active_profile_lookup",
+      "watchtower_memory_shadow_summary",
+      "bounded_recommendations"
+    ],
+    "doctrine_or_operating_principles": [
+      "active current-state memory outranks historical trace mentions",
+      "diagnosis must precede repair",
+      "memory trace evidence must not be silently promoted into runtime truth",
+      "Telegram replies stay concise while CLI JSON carries full detail"
+    ],
+    "known_failure_modes": [
+      "multi-delete turn writes only the first delete",
+      "instruction-forget path captures a memory-forget request",
+      "historical Maya test residue overrides active preferred name",
+      "context capsule drops the immediately previous correction",
+      "dashboard aggregate health hides per-request lineage failure"
+    ],
+    "unsafe_or_out_of_scope_claims": [
+      "Memory Doctor can automatically repair all memory problems",
+      "historical traces can be safely purged whenever a topic is wrong",
+      "ready_for_swarm_packet means network_absorbable",
+      "prototype evidence proves broad memory architecture quality"
+    ],
+    "baseline_examples": [
+      "Maya appears in traces but active preferred_name is Cem",
+      "multi-delete expected 3 writes but only 1 was accepted",
+      "check memory deletes returns a concise Telegram diagnosis"
+    ]
+  },
+  "benchmark_adapter": {
+    "benchmark_family": "targeted Builder memory regression tests",
+    "case_manifest": "benchmark/cases.jsonl",
+    "scoring_dimensions": [
+      "delete_integrity",
+      "active_state_grounding",
+      "telegram_actionability",
+      "authority_boundary"
+    ],
+    "baseline_command_or_protocol": "Before Memory Doctor v2: run existing memory tests and observe no topic-aware active-profile diagnosis.",
+    "candidate_command_or_protocol": "python -m pytest tests/test_telegram_generic_memory.py -q -k \"memory_doctor or multiple_generic_deletions\" && python -m pytest tests/test_gateway_ask_telegram.py -q -k \"memory_doctor\"",
+    "trap_cases": "benchmark/traps.jsonl",
+    "calibration_notes": "A passing run may claim prototype/local diagnostic readiness only. It may not claim autonomous repair or network absorption.",
+    "minimum_evidence_tier": "prototype"
+  },
+  "tool_adapter": {
+    "allowed_tools": [
+      "Builder StateDB read",
+      "watchtower snapshot read",
+      "current-state memory lookup",
+      "Telegram runtime command routing",
+      "CLI JSON/text report rendering"
+    ],
+    "protected_tools": [
+      "memory write",
+      "memory delete",
+      "trace purge",
+      "network publication"
+    ],
+    "auth_boundary": "local Spark home and paired Telegram operator only; private memory traces stay local",
+    "local_vs_network_mode": "local",
+    "dry_run_mode": true,
+    "verification_command": "python -m chip_labs.cli creator-run-smoke runs/memory-doctor-telegram-specialization --fail-on-blocked --fail-on-warn",
+    "human_review_required_for": [
+      "enabling automatic repair",
+      "publishing any Swarm packet beyond local_only",
+      "showing raw memory traces outside local CLI JSON"
+    ]
+  },
+  "autoloop_adapter": {
+    "mutation_surface": [
+      "natural-language command aliases",
+      "doctor report sections",
+      "recommendation wording",
+      "topic trace sampling",
+      "read-only dashboard panel selection"
+    ],
+    "frozen_surfaces": [
+      "benchmark_weights",
+      "success_metrics",
+      "trap_case_expected_outcomes"
+    ],
+    "candidate_generator": "Generate one bounded diagnostic improvement at a time, then run targeted Builder tests and creator-run smoke.",
+    "keep_rule": "Keep only changes that improve diagnostic accuracy or operator actionability without widening repair authority.",
+    "reject_rule": "Reject changes that mutate memory, hide failing lineage, treat traces as active truth, or overclaim evidence tier.",
+    "max_rounds": 3,
+    "stop_conditions": [
+      "targeted Builder test regression",
+      "creator-run smoke blocker",
+      "automatic repair introduced",
+      "Telegram reply becomes too long to act on"
+    ],
+    "rollback_condition": "Revert the diagnostic mutation if Memory Doctor or Telegram routing tests regress.",
+    "lineage_log": "reports/creator_run_summary.md"
+  },
+  "absorption_adapter": {
+    "bundle_inputs": [
+      "specialization-path/absorption_bundle.md",
+      "domain-chip/doctrine.md",
+      "benchmark/traps.jsonl"
+    ],
+    "fresh_agent_protocol": "Load the absorption bundle, then explain why a Maya trace mention is not equal to active preferred_name and why repair remains gated.",
+    "held_out_cases": "Future held-out cases should include context-capsule blankness, stale current_owner, and conflicting pronunciation/name corrections.",
+    "expected_behavior_change": "Fresh agents preserve active-state grounding and do not recommend trace purges for ordinary historical residue.",
+    "score_delta_threshold": 0,
+    "trap_regression_policy": "block_promotion",
+    "failure_summary_template": "Report whether the failure was trace-vs-active confusion, delete lineage failure, context capsule loss, or authority overreach."
+  },
+  "swarm_adapter": {
+    "contribution_type": "specialization_path",
+    "source_repo": "C:\\Users\\USER\\Desktop\\spark-domain-chip-labs",
+    "commit_or_artifact_hash": "local-uncommitted-prototype",
+    "evidence_tier": "prototype",
+    "review_state": "local_only",
+    "proposed_packet": "swarm/contribution_packet.json",
+    "rollback_or_deprecation_rule": "Disable Telegram natural-language Memory Doctor route and keep CLI-only doctor if the route produces unsafe repair advice.",
+    "privacy_and_security_notes": "Doctor output can include private memory trace metadata; network publication is disabled."
+  }
+}
