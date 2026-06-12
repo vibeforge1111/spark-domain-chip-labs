@@ -22,7 +22,16 @@ def main() -> None:
     parser.add_argument("--output", type=str, default=None, help="Optional output JSON file.")
     args = parser.parse_args()
 
-    result = validate_creator_run(args.run_dir).to_dict()
+    run_path = Path(args.run_dir).expanduser()
+    if not run_path.exists():
+        print(f"creator_run_smoke: run_dir not found: {run_path}", file=sys.stderr)
+        print("  Hint: pass the path to a directory created by `chip-labs creator-run-init`.", file=sys.stderr)
+        sys.exit(2)
+    if not run_path.is_dir():
+        print(f"creator_run_smoke: run_dir is not a directory: {run_path}", file=sys.stderr)
+        sys.exit(2)
+
+    result = validate_creator_run(run_path).to_dict()
     output = json.dumps(result, indent=2)
     if args.output:
         output_path = Path(args.output)
