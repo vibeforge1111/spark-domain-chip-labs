@@ -32,6 +32,8 @@ def _load_input(input_path: str | None) -> dict[str, Any]:
     if not input_path or not Path(input_path).exists():
         return {}
     try:
+        # NOTE: This is a read-modify-write block. A concurrent writer could lose updates.
+        # See _atomic_read_modify_write for the safe version of this pattern.
         return json.loads(Path(input_path).read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
         return {}
