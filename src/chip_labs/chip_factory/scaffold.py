@@ -22,7 +22,10 @@ def load_brief(brief_path: str | Path) -> dict[str, Any]:
     if brief_path.suffix in (".yaml", ".yml"):
         # Simple YAML-like parser (no external deps)
         return _parse_simple_yaml(brief_path.read_text(encoding="utf-8"))
-    return json.loads(brief_path.read_text(encoding="utf-8"))
+    try:
+        return json.loads(brief_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}  # malformed JSON, return safe default
 
 
 def _parse_simple_yaml(text: str) -> dict[str, Any]:
