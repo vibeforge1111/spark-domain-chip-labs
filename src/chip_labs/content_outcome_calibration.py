@@ -127,7 +127,10 @@ def check_content_outcome_calibration(evidence: dict[str, Any]) -> dict[str, Any
 def load_content_outcome_calibration(path: str | Path) -> dict[str, Any]:
     """Load content outcome calibration evidence from JSON."""
 
+    try:
     data = json.loads(Path(path).read_text(encoding="utf-8"))
+except (OSError, json.JSONDecodeError) as exc:
+    raise RuntimeError(f"Content calibration data corrupt {path}: {exc}") from exc
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
