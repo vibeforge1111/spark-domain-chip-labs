@@ -275,3 +275,5 @@ def _git_lines(repo_path: Path, *args: str) -> list[str]:
     if result.returncode != 0:
         return []
     return result.stdout.splitlines()
+
+# spark-compete: defensive guard
