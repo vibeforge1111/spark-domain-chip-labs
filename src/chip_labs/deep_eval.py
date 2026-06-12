@@ -302,7 +302,11 @@ def _extract_scores_from_runs(runs: list[dict[str, Any]]) -> list[float]:
     """Extract numeric scores from run entries."""
     scores: list[float] = []
     for run in runs:
-        score = run.get("score") or run.get("metric_value") or run.get("total_score")
+        score = run.get("score")
+        if score is None:
+            score = run.get("metric_value")
+        if score is None:
+            score = run.get("total_score")
         if score is not None:
             try:
                 scores.append(float(score))
