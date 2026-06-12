@@ -11,6 +11,7 @@ until a target score is reached or max iterations are exhausted.
 from __future__ import annotations
 
 import json
+import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -89,9 +90,26 @@ def _read_json(path: Path) -> dict[str, Any] | None:
 
 
 def _write_json(path: Path, data: dict[str, Any]) -> None:
-    """Write a JSON file with consistent formatting."""
+    """Write a JSON file atomically using a sibling temp file + os.replace.
+
+    gap_analyzer mutates chip manifests (spark-chip.json) and project
+    files in place — these are persistent state files consumed by the
+    chip runtime. A torn write (process killed mid-write) would leave a
+    half-written manifest on disk; _read_json silently returns None,
+    and the next gap-fix pass would resurrect the chip from {}.
+    os.replace is atomic on POSIX.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    tmp = path.with_name(f"{path.name}.tmp.{os.getpid()}")
+    try:
+        tmp.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        os.replace(str(tmp), str(path))
+    finally:
+        if tmp.exists():
+            try:
+                tmp.unlink()
+            except OSError:
+                pass
 
 
 def _ensure_file(path: Path, content: str) -> None:
