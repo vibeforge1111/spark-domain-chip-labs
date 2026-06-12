@@ -269,8 +269,11 @@ def _git_lines(repo_path: Path, *args: str) -> list[str]:
             capture_output=True,
             text=True,
             check=False,
+            timeout=30,
         )
     except OSError:
+        return []
+    except subprocess.TimeoutExpired:
         return []
     if result.returncode != 0:
         return []

@@ -1,0 +1,43 @@
+{
+  "schema": "spark-compete-hotfix-v1",
+  "event": "spark-compete-first-event",
+  "submission_mode": "public_repo_pr",
+  "submission_target_url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/331",
+  "team": {
+    "members": ["drophub_sir", "esc1200", "hermes-agent"],
+    "github_accounts": ["Esc1200"]
+  },
+  "target_repo": {
+    "id": "spark-domain-chip-labs",
+    "url": "https://github.com/vibeforge1111/spark-domain-chip-labs"
+  },
+  "issue": {
+    "title": "Code injection via unescaped f-string interpolation in dspy_slot.py",
+    "description": "dspy_slot.py lines 202-203 interpolate config.model and config.training_data_path into generated Python source code via f-strings without escaping. If these values come from untrusted input, they could inject arbitrary Python code into the generated script. slot_name is sanitized via _sanitize_name() but model and training_data_path are not.",
+    "severity": "MEDIUM",
+    "affected_files": ["src/chip_labs/dspy_slot.py"]
+  },
+  "evidence": {
+    "safe_links_only": true,
+    "before_after_proof": "Before: lines 202-203 use f-string interpolation with raw double-quote wrapping: f'...\"{config.model}\"...' and f'...\"{config.training_data_path}\"...'. A malicious model value like '\" + __import__(\"os\").system(\"rm -rf /\") + \"' would break out of the string literal and execute arbitrary code. After: using !r format spec applies repr() which escapes special characters and wraps in appropriate quotes, preventing injection.",
+    "links": ["https://github.com/vibeforge1111/spark-domain-chip-labs/pull/331"],
+    "forbidden": "Do not claim network_absorbable. Do not modify contracts outside this repo."
+  },
+  "proposed_fix": {
+    "description": "Replace raw f-string interpolation of config.model and config.training_data_path with !r format spec (repr()) to safely escape values before embedding in generated Python source code.",
+    "diff_summary": "2 lines changed in src/chip_labs/dspy_slot.py: replaced \"{config.model}\" with {config.model!r} and \"{config.training_data_path}\" with {config.training_data_path!r}",
+    "tests_or_smoke": "Existing tests should still pass as repr() of normal strings produces valid Python string literals. The fix only affects code generation safety, not runtime behavior for well-formed inputs."
+  },
+  "pr": {
+    "url": "https://github.com/vibeforge1111/spark-domain-chip-labs/pull/331",
+    "number": 331,
+    "title": "fix(dspy_slot): use repr() for model/training_data_path in code generation",
+    "branch": "esc1200/fix/dspy-slot-code-injection",
+    "body_must_include": ["repr", "injection", "code generation"]
+  },
+  "review_claim": {
+    "duplicate_notes": "No existing PR addresses this specific code injection vector in dspy_slot.py. Other fixes in the repo address different issues (KeyError, score-or-chain, etc.).",
+    "risk_notes": "Low risk change. repr() of normal strings produces equivalent output. Only edge case: if someone relied on the exact string format of generated code with unescaped special characters, which would be a bug itself.",
+    "evidence_types": ["code_diff", "before_after_proof"]
+  }
+}
