@@ -30,10 +30,12 @@ def discover_chips(search_dir: str | Path | None = None) -> list[dict[str, Any]]
     search_dir = Path(search_dir) if search_dir else default_search_dir()
     chips: list[dict[str, Any]] = []
 
-    if not search_dir.exists():
+    try:
+        entries = list(search_dir.iterdir())
+    except OSError:
         return chips
 
-    for entry in sorted(search_dir.iterdir()):
+    for entry in sorted(entries):
         if not entry.is_dir():
             continue
         if not any(entry.name.startswith(prefix) for prefix in KNOWN_CHIP_PREFIXES):
