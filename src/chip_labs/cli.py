@@ -473,8 +473,21 @@ def cmd_score(args: argparse.Namespace) -> None:
 # ---------------------------------------------------------------------------
 
 def cmd_autoloop(args: argparse.Namespace) -> None:
-    """Run recursive improvement loop on a chip."""
+    """Run the STRUCTURAL scaffolding loop on a chip.
+
+    Scope warning: this builds and scores chip repo *structure* (dirs, stub files,
+    evidence-lane scaffolding) against a file-shape rubric. It is NOT a capability
+    loop and its score gains are NOT evidence of domain quality. For a measured
+    self-improving loop, use the creator-run flow (creator-run-init / -smoke /
+    -doctor) and BENCHMARK_AND_AUTOLOOP_PROTOCOL.md.
+    """
     from .transfer_surface import RecursiveLoopController, LoopConfig
+
+    print(
+        "[scope] autoloop = structural scaffolding only; its score is a file-shape "
+        "metric, not capability evidence. See CORE.md rule 5.",
+        file=sys.stderr,
+    )
 
     config = LoopConfig(
         target_score=args.target_score,
@@ -1721,7 +1734,7 @@ def main() -> None:
     p_score.set_defaults(func=cmd_score)
 
     # autoloop
-    p_loop = sub.add_parser("autoloop", help="Run recursive improvement loop on a chip.")
+    p_loop = sub.add_parser("autoloop", help="Structural scaffolding loop (file-shape score, NOT capability evidence; see CORE.md).")
     p_loop.add_argument("chip_path", type=str, nargs="?", default=None, help="Path to chip directory.")
     p_loop.add_argument("--brief", type=str, default=None, help="Domain brief to scaffold from.")
     p_loop.add_argument("--output-dir", type=str, default=None, help="Output dir for scaffold.")

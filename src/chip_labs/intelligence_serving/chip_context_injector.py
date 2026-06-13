@@ -9,6 +9,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -115,6 +116,21 @@ def select_chips_for_task(
 
 _CONFIDENCE_PRIORITY = {"very high": 0, "high": 1, "medium": 2, "low": 3}
 
+# A claim is only worth injecting if it carries an actual word.  Heading/bullet
+# extraction occasionally yields degenerate claims like "s" or "" that render as
+# noise ("[medium] s") in every advisory.  Require at least one alphabetic run of
+# length >= 3 so genuine one-word doctrines ("Contradictions") survive while junk
+# ("s") is dropped.
+_MEANINGFUL_CLAIM = re.compile(r"[A-Za-z]{3,}")
+
+
+def _meaningful_doctrines(doctrines: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Drop doctrines whose claim has no real word (e.g. "s", "", "-")."""
+    return [
+        d for d in doctrines
+        if _MEANINGFUL_CLAIM.search(str(d.get("claim", "")).strip())
+    ]
+
 
 def _sort_doctrines_by_confidence(
     doctrines: list[dict[str, Any]],
@@ -204,7 +220,7 @@ def build_system_prompt_section(
         sections.append(f"### {intel.chip_name} ({intel.domain}) -- Quality: {quality_tag}\n")
 
         # Doctrines
-        sorted_docs = _sort_doctrines_by_confidence(intel.doctrines)
+        sorted_docs = _sort_doctrines_by_confidence(_meaningful_doctrines(intel.doctrines))
 
         if style == "concise":
             top_docs = sorted_docs[:5]
@@ -271,7 +287,7 @@ def build_guardrails_block(
         chip_label = f"[{intel.chip_name}]"
 
         # High/very-high confidence doctrines -> MUST/SHOULD
-        for doc in intel.doctrines:
+        for doc in _meaningful_doctrines(intel.doctrines):
             conf = str(doc.get("confidence", "low")).lower()
             conf_level = _CONFIDENCE_PRIORITY.get(conf, 3)
 

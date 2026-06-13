@@ -4,6 +4,8 @@ Public creator standards for Spark domain chips, benchmark packs, specialization
 
 This repo is the place where Spark learns how to create specialist systems properly. It is not the live Spark Swarm runtime, not a hosted workspace, and not an automatic network-publishing surface.
 
+> **New here? Read [CORE.md](CORE.md).** The CLI has 70+ subcommands; you need eight. CORE.md is the whole contract on one page. The rest is lab research you can ignore until you need it.
+
 ## What You Can Do Here
 
 - Design a domain chip for a field such as QA, security questionnaires, startup advising, crypto trading, content, or research.
@@ -160,4 +162,4 @@ chip-labs creator-system-beta-check --fail-on-blocked
 
 ## License
 
-AGPL-3.0-only. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

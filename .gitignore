@@ -1,4 +1,5 @@
 artifacts/
+runs/
 obsidian-vault/
 __pycache__/
 *.egg-info/
