@@ -8,6 +8,8 @@ version = "0.1.0"
 description = "Meta-research lab for domain chip R&D, methodology improvement, and recursive self-improvement."
 readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
+classifiers = ["License :: OSI Approved :: MIT License"]
 dependencies = []
 
 [project.scripts]
