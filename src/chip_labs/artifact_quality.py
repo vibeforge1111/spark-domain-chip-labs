@@ -152,9 +152,51 @@ def score_artifact_quality(
 def score_artifact_quality_file(path: str | Path, *, artifact_kind: str = "design_doc") -> dict[str, Any]:
     """Read and score an artifact-quality input file."""
 
+    if path is None:
+        raise ValueError("score_artifact_quality_file requires a path to an existing artifact file")
     source = Path(path)
+    if not source.is_file():
+        return {
+            "packet_kind": "artifact_quality_report",
+            "artifact_id": source.stem or "",
+            "artifact_kind": artifact_kind,
+            "source_path": source.as_posix(),
+            "verdict": "blocked",
+            "score": 0.0,
+            "status_counts": {"pass": 0, "fail": 0},
+            "checks": [],
+            "trap_flags": [],
+            "polish_hits": [],
+            "missing_checks": [],
+            "repair_actions": [f"Provide an existing artifact file path (got {source.as_posix()!r})."],
+            "claim_boundary": CLAIM_BOUNDARY,
+            "safe_claim": "This artifact is locally reviewable for evidence completeness.",
+            "unsafe_claim": "This artifact quality score does not prove product correctness or replace human review.",
+            "error": f"artifact file not found: {source.as_posix()}",
+        }
+    try:
+        text = source.read_text(encoding="utf-8")
+    except OSError as exc:
+        return {
+            "packet_kind": "artifact_quality_report",
+            "artifact_id": source.stem,
+            "artifact_kind": artifact_kind,
+            "source_path": source.as_posix(),
+            "verdict": "blocked",
+            "score": 0.0,
+            "status_counts": {"pass": 0, "fail": 0},
+            "checks": [],
+            "trap_flags": [],
+            "polish_hits": [],
+            "missing_checks": [],
+            "repair_actions": [f"Make {source.as_posix()!r} readable and retry."],
+            "claim_boundary": CLAIM_BOUNDARY,
+            "safe_claim": "This artifact is locally reviewable for evidence completeness.",
+            "unsafe_claim": "This artifact quality score does not prove product correctness or replace human review.",
+            "error": f"failed to read artifact file: {exc}",
+        }
     return score_artifact_quality(
-        source.read_text(encoding="utf-8"),
+        text,
         artifact_id=source.stem,
         artifact_kind=artifact_kind,
         source_path=source.as_posix(),
