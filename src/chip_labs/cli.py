@@ -469,6 +469,20 @@ def cmd_score(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: conformance
+# ---------------------------------------------------------------------------
+
+def cmd_conformance(args: argparse.Namespace) -> None:
+    """Run read-only spark-chip.v2 conformance checks on a chip."""
+    from .chip_conformance import validate_chip_conformance
+
+    result = validate_chip_conformance(args.chip_path)
+    _write_output(args.output, result)
+    if args.fail_on_blocked and result.get("verdict") == "blocked":
+        sys.exit(1)
+
+
+# ---------------------------------------------------------------------------
 # Command: autoloop
 # ---------------------------------------------------------------------------
 
@@ -1732,6 +1746,17 @@ def main() -> None:
     p_score.add_argument("chip_path", type=str, help="Path to chip directory.")
     p_score.add_argument("--output", type=str, default=None, help="Output JSON file path.")
     p_score.set_defaults(func=cmd_score)
+
+    # conformance
+    p_conformance = sub.add_parser("conformance", help="Run read-only spark-chip.v2 conformance checks on a chip.")
+    p_conformance.add_argument("chip_path", type=str, help="Path to chip directory.")
+    p_conformance.add_argument("--output", type=str, default=None, help="Output JSON file path.")
+    p_conformance.add_argument(
+        "--fail-on-blocked",
+        action="store_true",
+        help="Exit with status 1 when conformance is blocked.",
+    )
+    p_conformance.set_defaults(func=cmd_conformance)
 
     # autoloop
     p_loop = sub.add_parser("autoloop", help="Structural scaffolding loop (file-shape score, NOT capability evidence; see CORE.md).")

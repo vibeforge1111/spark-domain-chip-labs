@@ -124,6 +124,7 @@ Do not confuse `spark-voice-comms` with the older `spark-voice-engine` work. The
 | Strict smoke | `chip-labs creator-run-smoke runs/<run> --fail-on-blocked --fail-on-warn` |
 | Diagnose repair work | `chip-labs creator-run-doctor runs/<run>` |
 | Validate templates | `chip-labs creator-run-template-check --fail-on-blocked` |
+| Check a scaffolded chip | `chip-labs conformance path/to/domain-chip --fail-on-blocked` |
 | Check beta readiness | `chip-labs creator-system-beta-check --fail-on-blocked` |
 | Emit release evidence | `chip-labs creator-system-release-evidence --fail-on-blocked --output /tmp/creator-system-release-evidence.json` |
 
