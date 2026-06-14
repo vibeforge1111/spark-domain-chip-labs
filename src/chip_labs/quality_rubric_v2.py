@@ -24,7 +24,7 @@ RUBRIC_DIMENSIONS_V2: list[dict[str, Any]] = [
         "label": "Manifest Validity",
         "max_points": 15,
         "checks": [
-            {"id": "schema_version", "points": 3, "description": "spark-chip.v1 schema declared"},
+            {"id": "schema_version", "points": 3, "description": "spark-chip.v1 or spark-chip.v2 schema declared"},
             {"id": "io_protocol", "points": 2, "description": "spark-hook-io.v1 protocol declared"},
             {"id": "all_four_hooks", "points": 4, "description": "evaluate, suggest, packets, watchtower all present"},
             {"id": "frontier_enabled", "points": 3, "description": "Frontier section with allowed_mutations defined"},
@@ -194,7 +194,7 @@ def _check_manifest_v2(chip_path: Path) -> dict[str, bool]:
         }
 
     results: dict[str, bool] = {}
-    results["schema_version"] = manifest.get("schema_version") == "spark-chip.v1"
+    results["schema_version"] = manifest.get("schema_version") in {"spark-chip.v1", "spark-chip.v2"}
     results["io_protocol"] = manifest.get("io_protocol") == "spark-hook-io.v1"
 
     caps = set(manifest.get("capabilities", []))

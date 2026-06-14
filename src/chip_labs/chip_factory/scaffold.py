@@ -147,10 +147,36 @@ def _sanitize_module_name(domain_id: str) -> str:
     return re.sub(r"[^a-z0-9_]", "_", domain_id.lower().replace("-", "_"))
 
 
+def _sanitize_chip_name(domain_id: str) -> str:
+    """Convert domain-id to the spark-chip v2 chip_name shape."""
+    candidate = re.sub(r"[^a-z0-9-]", "-", domain_id.lower()).strip("-")
+    if not candidate or not candidate[0].isalpha():
+        candidate = f"chip-{candidate}" if candidate else "chip-generated"
+    return candidate[:64]
+
+
+def _router_tokens(*values: str) -> list[str]:
+    """Return stable router tokens from brief strings."""
+    tokens: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        for raw in re.findall(r"[a-z0-9]+", value.lower()):
+            if len(raw) < 2:
+                continue
+            token = raw.replace("-", "_")
+            if token not in seen:
+                tokens.append(token)
+                seen.add(token)
+    return tokens
+
+
 def _gen_manifest(brief: dict[str, Any]) -> dict[str, Any]:
     """Generate spark-chip.json from brief."""
     module = _sanitize_module_name(brief["domain_id"])
     domain_id = brief["domain_id"]
+    chip_name = _sanitize_chip_name(domain_id)
+    domain_name = brief.get("domain_name", domain_id)
+    description = brief.get("description", f"Domain chip for {domain_name}")
 
     # Build allowed_mutations
     allowed_mutations = {}
@@ -168,20 +194,29 @@ def _gen_manifest(brief: dict[str, Any]) -> dict[str, Any]:
             pattern = "^(" + "|".join(re.escape(v) for v in values) + ")$"
             field_patterns[axis_name] = pattern
 
+    task_topics = _router_tokens(domain_id, domain_name, brief.get("category", "general"))
+    task_keywords = _router_tokens(domain_name, description, brief.get("primary_metric", "domain_score"))
+
     return {
-        "schema_version": "spark-chip.v1",
+        "manifest_version": 2,
+        "schema_version": "spark-chip.v2",
         "io_protocol": "spark-hook-io.v1",
-        "name": brief.get("domain_name", domain_id),
+        "chip_name": chip_name,
         "version": "0.0.1",
         "domain": brief.get("category", "general"),
-        "description": brief.get("description", f"Domain chip for {brief.get('domain_name', domain_id)}"),
+        "description": description,
+        "requires_runtime": {
+            "spark-intelligence-builder": ">=0.1.0",
+        },
         "capabilities": ["evaluate", "suggest", "packets", "watchtower"],
         "commands": {
-            "evaluate": f"python -m {module} evaluate --input {{input}} --output {{output}}",
-            "suggest": f"python -m {module} suggest --input {{input}} --output {{output}}",
-            "packets": f"python -m {module} packets --input {{input}} --output {{output}}",
-            "watchtower": f"python -m {module} watchtower --input {{input}} --output {{output}}",
+            "evaluate": ["python", "-m", module, "evaluate", "--input", "{input}", "--output", "{output}"],
+            "suggest": ["python", "-m", module, "suggest", "--input", "{input}", "--output", "{output}"],
+            "packets": ["python", "-m", module, "packets", "--input", "{input}", "--output", "{output}"],
+            "watchtower": ["python", "-m", module, "watchtower", "--input", "{input}", "--output", "{output}"],
         },
+        "task_topics": task_topics or [module],
+        "task_keywords": task_keywords or [domain_name],
         "frontier": {
             "enabled": True,
             "web_search": True,
@@ -327,7 +362,7 @@ def _gen_readme(brief: dict[str, Any]) -> str:
 
 ## Mission
 
-What this is: A domain chip following the `spark-chip.v1` contract for {name}.
+What this is: A domain chip following the `spark-chip.v2` contract for {name}.
 
 This chip uses mutation-based exploration to build domain intelligence through
 recursive evaluation loops.
@@ -369,7 +404,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the one-loop specification.
 
 ## Contract
 
-- Schema: `spark-chip.v1`
+- Schema: `spark-chip.v2`
 - Protocol: `spark-hook-io.v1`
 - Hooks: evaluate, suggest, packets, watchtower
 - Dependencies: Zero external dependencies

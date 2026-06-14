@@ -8,6 +8,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 
 | Schema | Artifact |
 | --- | --- |
+| [spark-chip.v2.schema.json](spark-chip.v2.schema.json) | `spark-chip.json` runtime chip manifests |
 | [creator-intent.schema.json](creator-intent.schema.json) | `creator-intent.json` |
 | [adapter-map.schema.json](adapter-map.schema.json) | `adapter-map.json` |
 | [created-artifact-manifest.schema.json](created-artifact-manifest.schema.json) | Shared manifest of generated chip/path/benchmark/loop/packet artifacts |

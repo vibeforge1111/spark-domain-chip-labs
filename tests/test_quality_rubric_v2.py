@@ -345,13 +345,13 @@ class TestManifestV2:
         result = score_chip_v2(chip)
         assert "all_four_hooks" in result["failed_checks"]
 
-    def test_schema_version_must_be_spark_chip_v1(self, tmp_path: Path) -> None:
+    def test_schema_version_accepts_spark_chip_v2(self, tmp_path: Path) -> None:
         chip = _build_test_chip(tmp_path)
         manifest = json.loads((chip / "spark-chip.json").read_text(encoding="utf-8"))
         manifest["schema_version"] = "spark-chip.v2"
         (chip / "spark-chip.json").write_text(json.dumps(manifest), encoding="utf-8")
         result = score_chip_v2(chip)
-        assert "schema_version" in result["failed_checks"]
+        assert "schema_version" in result["passed_checks"]
 
 
 # ====================================================================
