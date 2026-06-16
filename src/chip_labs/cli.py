@@ -2007,21 +2007,21 @@ def main() -> None:
     )
     p_mirofish_hybrid.add_argument(
         "--flagship-count-per-type",
-        type=int,
+        type=_positive_int,
         default=30,
-        help="Personas per type for the flagship hybrid harness.",
+        help="Personas per type for the flagship hybrid harness (must be a positive integer).",
     )
     p_mirofish_hybrid.add_argument(
         "--ensemble-runs",
-        type=int,
+        type=_positive_int,
         default=15,
-        help="Monte Carlo runs for the hybrid harness.",
+        help="Monte Carlo runs for the hybrid harness (must be a positive integer).",
     )
     p_mirofish_hybrid.add_argument(
         "--ensemble-count-per-type",
-        type=int,
+        type=_positive_int,
         default=15,
-        help="Personas per type per ensemble run.",
+        help="Personas per type per ensemble run (must be a positive integer).",
     )
     p_mirofish_hybrid.add_argument(
         "--scenario-label",
