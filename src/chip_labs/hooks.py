@@ -19,9 +19,103 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tempfile
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+
+# ---------------------------------------------------------------------------
+# File locking (cross-platform)
+# ---------------------------------------------------------------------------
+
+try:
+    import fcntl  # type: ignore[import-not-found]  # Unix / macOS
+    _HAS_FCNTL = True
+except ImportError:
+    _HAS_FCNTL = False
+
+
+@contextmanager
+def _locked_file(path: Path, mode: str = "r+", timeout: float = 5.0):
+    """Open *path* under an advisory lock held on a sibling ``.lock`` file.
+
+    The lock is taken on ``<path>.lock`` (via ``fcntl.flock`` on POSIX, or a
+    best-effort ``.lock`` file elsewhere), while the yielded handle reads and
+    writes the *data* file at *path* itself.  Keeping the lock fd separate
+    from the data fd lets the caller serialize concurrent hook invocations
+    without truncating the cache: the data file is opened with *mode*
+    (``"r+"``/``"w+"``) so it is not clobbered on open.
+
+    Yields the open data-file handle, or ``None`` if *path* cannot be opened
+    (e.g. it does not yet exist for an ``"r+"`` read).  The lock is released
+    and both handles closed when the context exits.
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lock_path = Path(str(path) + ".lock")
+
+    if _HAS_FCNTL:
+        lock_fd = os.open(str(lock_path), os.O_CREAT | os.O_RDWR, 0o600)
+        try:
+            fcntl.flock(lock_fd, fcntl.LOCK_EX)
+            try:
+                fh = open(path, mode, encoding="utf-8")
+            except OSError:
+                yield None
+            else:
+                try:
+                    yield fh
+                finally:
+                    fh.close()
+        finally:
+            try:
+                fcntl.flock(lock_fd, fcntl.LOCK_UN)
+            except OSError:
+                pass
+            try:
+                os.close(lock_fd)
+            except OSError:
+                pass
+    else:
+        # Fallback: cooperative .lock file, best-effort.
+        try:
+            with open(lock_path, "w", encoding="utf-8") as lock_fh:
+                lock_fh.write(str(os.getpid()))
+                lock_fh.flush()
+                try:
+                    fh = open(path, mode, encoding="utf-8")
+                except OSError:
+                    yield None
+                else:
+                    try:
+                        yield fh
+                    finally:
+                        fh.close()
+        except OSError:
+            yield None
+
+
+def _atomic_write(target: Path, data: str) -> None:
+    """Write *data* to *target* atomically using a temp-file + rename.
+
+    This prevents readers from seeing a half-written file if the process
+    is interrupted mid-write.
+    """
+    target.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp_path = tempfile.mkstemp(
+        dir=str(target.parent), suffix=".tmp", prefix=target.stem,
+    )
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(data)
+        os.replace(tmp_path, str(target))
+    except BaseException:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        raise
 
 
 # ---------------------------------------------------------------------------
@@ -171,9 +265,7 @@ def _write_session_domain(selected_chips: list[Any], query: str) -> None:
             "domains": list({c.domain for c in selected_chips}),
             "ts": datetime.now(timezone.utc).isoformat(),
         }
-        _SESSION_DOMAIN_FILE.write_text(
-            json.dumps(data, indent=2), encoding="utf-8",
-        )
+        _atomic_write(_SESSION_DOMAIN_FILE, json.dumps(data, indent=2))
     except OSError:
         pass
 
@@ -197,15 +289,28 @@ def _load_portfolio_safe() -> list[Any]:
     V3 deep eval is expensive (~3s per chip).  We cache serialized portfolio
     metadata to a JSON file and reconstruct lightweight handles from it.
     The cache refreshes every ``_PORTFOLIO_CACHE_TTL`` seconds.
+
+    Cache reads/writes are protected by an advisory file lock
+    (``fcntl.flock`` on POSIX, ``.lock``-file fallback elsewhere) so that
+    concurrent hook invocations cannot corrupt the JSON cache.
     """
     cache_file = _PORTFOLIO_CACHE_DIR / "portfolio_cache.json"
 
-    # Try loading from cache first
+    # Try loading from cache first (under lock; the locked handle reads the
+    # cache file itself, not the sibling .lock file).
     try:
         if cache_file.exists():
-            age = datetime.now(timezone.utc).timestamp() - cache_file.stat().st_mtime
-            if age < _PORTFOLIO_CACHE_TTL:
-                return _load_from_cache(cache_file)
+            with _locked_file(cache_file, "r") as fh:
+                if fh is not None:
+                    age = (
+                        datetime.now(timezone.utc).timestamp()
+                        - os.fstat(fh.fileno()).st_mtime
+                    )
+                    if age < _PORTFOLIO_CACHE_TTL:
+                        try:
+                            return _load_from_cache_fh(fh)
+                        except (json.JSONDecodeError, OSError):
+                            pass
     except OSError:
         pass
 
@@ -222,7 +327,11 @@ def _load_portfolio_safe() -> list[Any]:
 
 
 def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
-    """Serialize portfolio handles to a JSON cache file."""
+    """Serialize portfolio handles to a JSON cache file.
+
+    Uses atomic writes (temp-file + rename) to prevent corruption when
+    multiple hook invocations run concurrently.
+    """
     try:
         cache_file.parent.mkdir(parents=True, exist_ok=True)
         entries = []
@@ -255,17 +364,81 @@ def _write_cache(cache_file: Path, portfolio: list[Any]) -> None:
                 "quality_verdict": chip.quality_verdict,
                 "intelligence": intel,
             })
-        cache_file.write_text(
-            json.dumps({"portfolio": entries, "ts": datetime.now(timezone.utc).isoformat()},
-                       indent=2, default=str),
-            encoding="utf-8",
+        payload = json.dumps(
+            {"portfolio": entries, "ts": datetime.now(timezone.utc).isoformat()},
+            indent=2, default=str,
         )
+        _atomic_write(cache_file, payload)
     except OSError:
         pass
 
 
+def _load_from_cache_fh(fh: Any) -> list[Any]:
+    """Reconstruct lightweight chip handles from an already-opened cache handle.
+
+    *fh* must be a readable handle positioned on the *cache data file* (not
+    the sibling ``.lock`` file); the caller holds the advisory lock.
+    """
+    from dataclasses import dataclass, field
+
+    fh.seek(0)
+    data = json.loads(fh.read())
+
+    # Import ChipIntelligence for reconstruction
+    try:
+        from .intelligence_serving.intelligence_server import ChipIntelligence
+    except ImportError:
+        return []
+
+    @dataclass
+    class CachedChipHandle:
+        chip_path: Path
+        chip_name: str
+        domain: str
+        version: str
+        capabilities: list[str] = field(default_factory=list)
+        commands: dict[str, list[str]] = field(default_factory=dict)
+        frontier: dict[str, Any] = field(default_factory=dict)
+        quality_score: float = 0.0
+        quality_verdict: str = "scaffold"
+        intelligence: ChipIntelligence | None = None
+
+    handles = []
+    for entry in data.get("portfolio", []):
+        intel = None
+        intel_data = entry.get("intelligence")
+        if intel_data:
+            intel = ChipIntelligence(
+                chip_name=intel_data.get("chip_name", ""),
+                domain=intel_data.get("domain", ""),
+                version=intel_data.get("version", ""),
+                mission=intel_data.get("mission", ""),
+                doctrines=intel_data.get("doctrines", []),
+                contradictions=intel_data.get("contradictions", []),
+                evidence_summary=intel_data.get("evidence_summary", {}),
+                score_trajectory=intel_data.get("score_trajectory", []),
+                current_score=intel_data.get("current_score", 0),
+                verdict=intel_data.get("verdict", ""),
+            )
+        handles.append(CachedChipHandle(
+            chip_path=Path(entry["chip_path"]),
+            chip_name=entry["chip_name"],
+            domain=entry["domain"],
+            version=entry["version"],
+            capabilities=entry.get("capabilities", []),
+            quality_score=entry.get("quality_score", 0),
+            quality_verdict=entry.get("quality_verdict", "scaffold"),
+            intelligence=intel,
+        ))
+    return handles
+
+
 def _load_from_cache(cache_file: Path) -> list[Any]:
-    """Reconstruct lightweight chip handles from cached JSON."""
+    """Reconstruct lightweight chip handles from cached JSON.
+
+    This is kept for backward compatibility; prefer ``_load_from_cache_fh``
+    when the caller already holds a locked file handle.
+    """
     from dataclasses import dataclass, field
 
     data = json.loads(cache_file.read_text(encoding="utf-8"))
