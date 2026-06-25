@@ -206,7 +206,7 @@ def _load_portfolio_safe() -> list[Any]:
             age = datetime.now(timezone.utc).timestamp() - cache_file.stat().st_mtime
             if age < _PORTFOLIO_CACHE_TTL:
                 return _load_from_cache(cache_file)
-    except (OSError, Exception):
+    except OSError:
         pass
 
     # Full load (expensive -- runs V3 deep eval)
