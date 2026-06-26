@@ -953,8 +953,8 @@ def test_generator_acceptance_covers_multiple_spark_useful_domain_families(
         "telegram"
     ]["text"]
     assert any(
-        node.get("id") == "creator_mission"
-        and node.get("evidence_mode") == "recomputed"
+        node["id"] == "creator_mission"
+        and node["evidence_mode"] == "recomputed"
         for node in mission_status["surface_adapters"]["canvas"]["nodes"]
     )
     kanban_cards = [
