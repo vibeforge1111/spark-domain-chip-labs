@@ -834,7 +834,8 @@ def _apply_doctor_sweep_operation(path: Path, operation: dict[str, Any]) -> None
             raise ValueError("add_to_number requires numeric target and delta")
         _set_nested(data, field_path, number + delta)
     else:
-        raise ValueError(f"unsupported operation {op}")
+        known_operations = "replace_text, replace_line_prefix, set_nested, delete_nested, add_to_number"
+        raise ValueError(f"unsupported operation {op!r}. Known operations: {known_operations}.")
     write_json(path, data)
 
 
@@ -4047,20 +4048,15 @@ def _check_external_broad_transfer_recompute(
 def _resolve_external_artifact_path(run_path: Path, reference: str) -> Path | None:
     reference_path = Path(reference)
     run_base = run_path.resolve()
-    candidates: list[Path] = []
     if reference_path.is_absolute():
-        candidates.append(reference_path)
-    candidates.append(run_base / reference_path)
-
-    repo_root = _find_repo_root(run_base)
-    if repo_root is not None:
-        candidates.append(repo_root / reference_path)
-        candidates.append(repo_root.parent / reference_path)
-
-    for candidate in candidates:
-        if candidate.exists():
-            return candidate
-    return None
+        resolved = reference_path.resolve()
+        allowed_root = run_base.parent
+    else:
+        resolved = (run_base / reference_path).resolve()
+        allowed_root = run_base
+    if not resolved.is_relative_to(allowed_root):
+        raise ValueError("external artifact path escapes the run directory")
+    return resolved if resolved.exists() else None
 
 
 def _find_repo_root(start: Path) -> Path | None:

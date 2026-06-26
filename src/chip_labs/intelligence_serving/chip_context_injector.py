@@ -53,7 +53,7 @@ def _ensure_intel(chip: "ChipHandle") -> ChipIntelligence | None:
     try:
         chip.intelligence = extract_intelligence(chip.chip_path)
         return chip.intelligence
-    except Exception:
+    except AttributeError:
         return None
 
 
