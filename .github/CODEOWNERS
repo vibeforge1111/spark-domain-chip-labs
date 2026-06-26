@@ -1,3 +1,7 @@
 # Security-sensitive creator-system workflow and launch-gate changes.
 .github/workflows/** @vibeforge1111
 docs/creator_system/SPARK_SWARM_LAUNCH_HARDENING_CHECKLIST.md @vibeforge1111
+/src/chip_labs/intelligence_serving/chip_runtime.py @vibeforge1111
+/src/chip_labs/registry.py @vibeforge1111
+/src/chip_labs/creator_run.py @vibeforge1111
+/src/chip_labs/lab_hooks/watchtower.py @vibeforge1111
