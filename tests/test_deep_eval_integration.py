@@ -214,7 +214,7 @@ class TestGenuineVsScaffolded:
         assert velocity.depth_level in ("deep", "expert"), (
             f"startup-yc velocity should be deep/expert, got {velocity.depth_level}"
         )
-        assert velocity.details.get("run_count", 0) >= 500
+        assert velocity.details["run_count"] >= 500
 
     def test_startup_yc_watchtower_is_expert(self, desktop_chips: list[Path]) -> None:
         """startup-yc has 276 Obsidian pages -- should be expert-level watchtower."""
@@ -232,7 +232,7 @@ class TestGenuineVsScaffolded:
             pytest.skip("pokemon-red not found")
         pr = results["domain-chip-pokemon-red"]
         velocity = next(d for d in pr.dimensions if d.name == "empirical_velocity")
-        assert velocity.details.get("run_count", 0) >= 500
+        assert velocity.details["run_count"] >= 500
 
     def test_scaffolded_chips_have_lower_velocity(self, desktop_chips: list[Path]) -> None:
         """Chips without genuine run data should score lower on velocity."""
