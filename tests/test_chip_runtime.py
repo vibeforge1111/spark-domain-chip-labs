@@ -15,6 +15,7 @@ from chip_labs.chip_runtime import (
     load_chip,
     load_portfolio,
     score_gate,
+    _prepare_hook_command,
 )
 
 
@@ -92,6 +93,74 @@ class TestLoadChip:
         with patch("chip_labs.chip_runtime.score_chip_v3", return_value=FakeEvalResult()):
             handle = load_chip(chip_dir)
         assert handle.commands["evaluate"] == ["python", "eval.py"]
+
+    def test_rejects_shell_hook_command_from_manifest(self, tmp_path: Path) -> None:
+        chip_dir = tmp_path / "domain-chip-cmd"
+        chip_dir.mkdir()
+        input_path = tmp_path / "input.json"
+        output_path = tmp_path / "output.json"
+
+        with pytest.raises(ValueError, match="python or python3"):
+            _prepare_hook_command(
+                "cmd.exe /c calc",
+                "evaluate",
+                input_path,
+                output_path,
+                chip_path=chip_dir,
+            )
+
+    def test_rejects_hook_script_outside_chip_dir(self, tmp_path: Path) -> None:
+        chip_dir = tmp_path / "domain-chip-cmd"
+        chip_dir.mkdir()
+        outside = tmp_path / "outside.py"
+        outside.write_text("print('outside')\n", encoding="utf-8")
+
+        with pytest.raises(ValueError, match="inside the chip directory"):
+            _prepare_hook_command(
+                ["python", str(outside)],
+                "evaluate",
+                tmp_path / "input.json",
+                tmp_path / "output.json",
+                chip_path=chip_dir,
+            )
+
+    def test_accepts_local_python_hook_command(self, tmp_path: Path) -> None:
+        chip_dir = tmp_path / "domain-chip-cmd"
+        chip_dir.mkdir()
+
+        resolved, use_stdin = _prepare_hook_command(
+            ["python", "eval.py"],
+            "evaluate",
+            tmp_path / "input.json",
+            tmp_path / "output.json",
+            chip_path=chip_dir,
+        )
+
+        assert resolved[:2] == ["python", "eval.py"]
+        assert use_stdin is True
+
+    def test_failed_hook_result_does_not_expose_raw_stderr(self, tmp_path: Path) -> None:
+        chip_dir = tmp_path / "domain-chip-cmd"
+        chip_dir.mkdir()
+        (chip_dir / "fail.py").write_text(
+            "import sys\nsys.stderr.write('sensitive path /private/keyfile')\nraise SystemExit(7)\n",
+            encoding="utf-8",
+        )
+        chip = ChipHandle(
+            chip_path=chip_dir,
+            chip_name="domain-chip-cmd",
+            domain="testing",
+            version="1.0.0",
+            commands={"evaluate": ["python", "fail.py"]},
+        )
+
+        result = execute_hook(chip, "evaluate", {})
+
+        assert result.success is False
+        assert result.result["returncode"] == 7
+        assert result.result["stderr_present"] is True
+        assert "stderr" not in result.result
+        assert "keyfile" not in json.dumps(result.result)
 
 
 # ---------------------------------------------------------------------------
