@@ -16,12 +16,14 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from . import __version__
 from .lab_hooks import (
     generate_packets,
     generate_watchtower_pages,
     run_evaluate,
     run_suggest,
 )
+from .lab_hooks.watchtower import resolve_watchtower_page_path
 from .quality_rubric import score_chip
 
 
@@ -70,12 +72,33 @@ def _get_chip_search_dir() -> str | None:
     return os.environ.get("SPARK_CHIP_SEARCH_DIR", None)
 
 
+def _parse_seed_list(raw: str | None, *, flag: str = "--seeds") -> tuple[int, ...]:
+    """Parse a comma-separated seed list while preserving actionable CLI errors."""
+    seeds: list[int] = []
+    invalid_tokens: list[str] = []
+    for item in (raw or "").split(","):
+        token = item.strip()
+        if not token:
+            continue
+        try:
+            seeds.append(int(token))
+        except (TypeError, ValueError):
+            invalid_tokens.append(token)
+    if invalid_tokens:
+        rejected = ", ".join(repr(token) for token in invalid_tokens)
+        raise SystemExit(
+            f"{flag} expects a comma-separated list of integer seeds; "
+            f"non-numeric token(s) rejected: {rejected}"
+        )
+    return tuple(seeds)
+
+
 def _write_watchtower_pages(vault_dir: str | Path, pages: list[dict[str, Any]]) -> None:
     """Write generated watchtower pages to the target vault directory."""
     vault_path = Path(vault_dir)
     vault_path.mkdir(parents=True, exist_ok=True)
     for page in pages:
-        page_path = vault_path / page["path"]
+        page_path = resolve_watchtower_page_path(vault_path, page["path"])
         page_path.parent.mkdir(parents=True, exist_ok=True)
         page_path.write_text(page["content"], encoding="utf-8")
 
@@ -1340,11 +1363,7 @@ def cmd_generated_multi_seed_run(args: argparse.Namespace) -> None:
     briefs = briefs_payload.get("briefs") if isinstance(briefs_payload, dict) else briefs_payload
     if not isinstance(briefs, list) or not briefs:
         raise SystemExit("--briefs must contain a non-empty JSON list or {'briefs': [...]}")
-    seeds = tuple(
-        int(item.strip())
-        for item in args.seeds.split(",")
-        if item.strip()
-    )
+    seeds = _parse_seed_list(args.seeds)
     if not seeds:
         raise SystemExit("--seeds must include at least one integer seed")
     result = run_multi_seed_generator_validation(
@@ -1413,7 +1432,7 @@ def cmd_creator_system_production_readiness(args: argparse.Namespace) -> None:
         build_creator_system_production_readiness,
     )
 
-    seeds = tuple(int(item.strip()) for item in args.seeds.split(",") if item.strip())
+    seeds = _parse_seed_list(args.seeds)
     if not seeds:
         raise SystemExit("--seeds must include at least one integer seed")
     result = build_creator_system_production_readiness(
@@ -1618,6 +1637,7 @@ def main() -> None:
         prog="chip-labs",
         description="Spark Domain Chip Labs -- meta-research chip for domain chip R&D.",
     )
+    parser.add_argument("--version", action="version", version=f"chip-labs {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
     # evaluate

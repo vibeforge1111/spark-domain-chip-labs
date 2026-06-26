@@ -44,7 +44,7 @@
           "phase": {"type": "string", "minLength": 1},
           "passed": {"type": "boolean"},
           "evidence_ref": {"type": ["string", "null"]},
-          "evidence_mode": {"enum": ["missing", "saved", "fresh_run", "recomputed"]},
+          "evidence_mode": {"enum": ["missing", "saved", "fresh_run", "recomputed", "malformed"]},
           "blocking_checks": {
             "type": "array",
             "items": {"type": "string", "minLength": 1}

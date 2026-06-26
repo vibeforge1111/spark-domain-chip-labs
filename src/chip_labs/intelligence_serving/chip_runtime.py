@@ -11,6 +11,8 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import re
+import shlex
 import subprocess
 import tempfile
 import time
@@ -25,6 +27,9 @@ from .intelligence_server import (
     serve_context,
 )
 from chip_labs.registry import discover_chips
+
+_PYTHON_EXECUTABLES = {"python", "python.exe", "python3", "python3.exe"}
+_PYTHON_MODULE_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_.]*$")
 
 
 # ---------------------------------------------------------------------------
@@ -236,6 +241,7 @@ def _execute_subprocess(
                 hook_name,
                 input_path,
                 output_path,
+                chip_path=chip.chip_path,
             )
 
             proc = subprocess.run(
@@ -262,11 +268,11 @@ def _execute_subprocess(
                 hook_name=hook_name,
                 chip_name=chip.chip_name,
                 success=False,
-                result={"stderr": proc.stderr, "returncode": proc.returncode},
+                result={"returncode": proc.returncode, "stderr_present": bool(proc.stderr)},
                 confidence=0.0,
                 execution_mode="subprocess",
             )
-    except (subprocess.TimeoutExpired, OSError) as exc:
+    except (subprocess.TimeoutExpired, OSError, ValueError) as exc:
         return HookResult(
             hook_name=hook_name,
             chip_name=chip.chip_name,
@@ -282,6 +288,8 @@ def _prepare_hook_command(
     hook_name: str,
     input_path: Path,
     output_path: Path,
+    *,
+    chip_path: Path | None = None,
 ) -> tuple[list[str], bool]:
     """Prepare a hook command for execution.
 
@@ -291,9 +299,10 @@ def _prepare_hook_command(
     behavior.
     """
     if isinstance(cmd, str):
-        normalized = [cmd]
+        normalized = shlex.split(cmd, posix=False)
     else:
         normalized = [str(part) for part in cmd]
+    _validate_hook_command(normalized, chip_path=chip_path)
 
     has_input_flag = any(part == "--input" or "{input}" in part for part in normalized)
     has_output_flag = any(part == "--output" or "{output}" in part for part in normalized)
@@ -319,6 +328,32 @@ def _prepare_hook_command(
         return resolved, False
 
     return resolved, True
+
+
+def _validate_hook_command(cmd: list[str], *, chip_path: Path | None = None) -> None:
+    if not cmd:
+        raise ValueError("Hook command is empty")
+    executable = Path(cmd[0]).name.lower()
+    if executable not in _PYTHON_EXECUTABLES:
+        raise ValueError("Hook command must start with python or python3")
+    if len(cmd) < 2:
+        raise ValueError("Hook command must name a Python module or script")
+    target = cmd[1]
+    if target == "-m":
+        if len(cmd) < 3 or not _PYTHON_MODULE_RE.fullmatch(cmd[2]):
+            raise ValueError("Hook command python -m target is not a safe module name")
+        return
+    if target.startswith("-"):
+        raise ValueError("Hook command must use python -m <module> or python <script>")
+    if Path(target).suffix != ".py":
+        raise ValueError("Hook script must be a .py file")
+    if chip_path is None:
+        return
+    base = chip_path.resolve()
+    script_path = Path(target)
+    resolved = (base / script_path).resolve() if not script_path.is_absolute() else script_path.resolve()
+    if not resolved.is_relative_to(base):
+        raise ValueError("Hook script must resolve inside the chip directory")
 
 
 def _parse_hook_output(output_path: Path, stdout: str) -> dict[str, Any]:
