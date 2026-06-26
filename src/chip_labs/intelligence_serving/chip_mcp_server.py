@@ -177,14 +177,20 @@ def __init__(self, search_dir: Path | None = None) -> None:
     def _find_chip(self, chip_name: str) -> Any | None:
         """Find a chip by name in the portfolio."""
         self._ensure_portfolio()
+        if not isinstance(chip_name, str):
+            return None
+        needle = chip_name.strip().casefold()
+        if not needle:
+            return None
+
         # Try exact match first
         for chip in self._portfolio:
-            if chip.chip_name == chip_name:
+            if chip.chip_name.casefold() == needle:
                 return chip
         # Try partial match (domain-chip- prefix stripped)
-        clean = chip_name.replace("domain-chip-", "")
+        clean = needle.replace("domain-chip-", "")
         for chip in self._portfolio:
-            if chip.chip_name.replace("domain-chip-", "") == clean:
+            if chip.chip_name.casefold().replace("domain-chip-", "") == clean:
                 return chip
         return None
 
@@ -356,8 +362,8 @@ def __init__(self, search_dir: Path | None = None) -> None:
         rw_dir = chip.chip_path / "research" / "realworld_validated"
         try:
             rw_dir.mkdir(parents=True, exist_ok=True)
-        except OSError as exc:
-            return {"error": f"Cannot create directory: {exc}"}
+        except OSError:
+            return {"error": "Cannot create feedback directory"}
 
         timestamp = datetime.now(timezone.utc)
         packet = {
@@ -376,13 +382,13 @@ def __init__(self, search_dir: Path | None = None) -> None:
 
         try:
             filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
-        except OSError as exc:
-            return {"error": f"Cannot write feedback: {exc}"}
+        except OSError:
+            return {"error": "Cannot write feedback packet"}
 
         return {
             "success": True,
             "chip_name": chip.chip_name,
-            "feedback_path": str(filepath),
+            "feedback_written": True,
             "doctrine_confirmed_count": len(confirmed),
             "doctrine_contradicted_count": len(contradicted),
         }

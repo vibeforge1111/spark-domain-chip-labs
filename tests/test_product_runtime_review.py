@@ -103,6 +103,28 @@ def test_product_runtime_review_passes_complete_review_without_absorption() -> N
     assert checked["network_absorbable"] is False
 
 
+def test_product_runtime_review_blocks_unknown_surfaces() -> None:
+    packet = _complete_packet()
+    packet["surfaces"]["admin"] = {
+        "status": "passed",
+        "reviewer": "admin-reviewer",
+        "evidence_ref": "product-runtime/admin.md",
+        "runtime_wiring_reviewed": True,
+        "read_only_adapter_preserved": True,
+        "blocked_states_visible": True,
+        "evidence_mode_preserved": True,
+        "creator_controls_enabled": False,
+        "network_publication_allowed": True,
+        "rollback_plan_ref": "rollback/admin.md",
+    }
+
+    checked = check_product_runtime_review_packet(packet)
+
+    assert checked["verdict"] == "blocked"
+    assert "unknown_surface:admin" in checked["blocking_checks"]
+    assert checked["network_absorbable"] is False
+
+
 def test_product_runtime_review_blocks_controls_wired_in_methodology_repo() -> None:
     packet = _complete_packet()
     packet["product_runtime_controls_wired"] = True

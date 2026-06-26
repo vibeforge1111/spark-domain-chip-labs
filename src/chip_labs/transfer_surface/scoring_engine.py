@@ -21,9 +21,12 @@ Zero external dependencies.  Uses only stdlib dataclasses + json + pathlib.
 from __future__ import annotations
 
 import json
+import logging
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -197,7 +200,11 @@ class MutationScoringEngine:
                     })
             except Exception:
                 # Defensive: a broken condition must never crash scoring.
-                pass
+                logger.warning(
+                    "System bonus condition %r raised an exception; skipping bonus",
+                    sb.label,
+                    exc_info=True,
+                )
         running += sys_total
 
         # 4. Clamp
@@ -468,7 +475,10 @@ def from_manifest(manifest_path: str | Path) -> ScoringConfig:
     if not manifest_path.exists():
         raise FileNotFoundError(f"Manifest not found: {manifest_path}")
 
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"Failed to load scoring manifest from {manifest_path}: {exc}") from exc
     frontier = manifest.get("frontier", {})
     allowed_mutations = frontier.get("allowed_mutations", {})
 
