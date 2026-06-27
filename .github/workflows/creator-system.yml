@@ -17,15 +17,7 @@ on:
     paths:
       - "docs/creator_system/**"
       - "src/chip_labs/**"
-      - "tests/test_creator_*.py"
-      - "tests/test_artifact_quality.py"
-      - "tests/test_mirofish_content_simulation.py"
-      - "tests/test_operator_review.py"
-      - "tests/test_product_runtime_review.py"
-      - "tests/test_creator_beta_readiness.py"
-      - "tests/test_retrieval_memory.py"
-      - "tests/test_startup_yc_operator_validation.py"
-      - "tests/test_tool_operation.py"
+      - "tests/**"
       - "scripts/check_no_personal_identifiers.py"
       - ".github/workflows/creator-system.yml"
   push:
@@ -33,15 +25,7 @@ on:
     paths:
       - "docs/creator_system/**"
       - "src/chip_labs/**"
-      - "tests/test_creator_*.py"
-      - "tests/test_artifact_quality.py"
-      - "tests/test_mirofish_content_simulation.py"
-      - "tests/test_operator_review.py"
-      - "tests/test_product_runtime_review.py"
-      - "tests/test_creator_beta_readiness.py"
-      - "tests/test_retrieval_memory.py"
-      - "tests/test_startup_yc_operator_validation.py"
-      - "tests/test_tool_operation.py"
+      - "tests/**"
       - "scripts/check_no_personal_identifiers.py"
       - ".github/workflows/creator-system.yml"
 
@@ -73,23 +57,10 @@ jobs:
         run: |
           python -m ruff check src/chip_labs tests
 
-      - name: Run creator-system tests
+      - name: Run full test suite
+        timeout-minutes: 25
         run: |
-          python -m pytest \
-            tests/test_creator_mission_adapter.py \
-            tests/test_creator_system_docs.py \
-            tests/test_startup_yc_operator_validation.py \
-            tests/test_tool_operation.py \
-            tests/test_artifact_quality.py \
-            tests/test_mirofish_content_simulation.py \
-            tests/test_operator_review.py \
-            tests/test_product_runtime_review.py \
-            tests/test_creator_beta_readiness.py \
-            tests/test_creator_generator_acceptance.py \
-            tests/test_creator_run.py \
-            tests/test_creator_run_examples.py \
-            tests/test_retrieval_memory.py \
-            -q
+          python -m pytest -q --maxfail=1 -p no:cacheprovider
 
       - name: Run strict Startup YC fixture checks
         run: |
