@@ -110,6 +110,24 @@ def _class_name(name: str) -> str:
     return "".join(p.capitalize() for p in parts if p)
 
 
+def _safe_identifier(name: str) -> str:
+    """Sanitize a field name to a safe Python identifier for code generation."""
+    safe = re.sub(r"[^a-zA-Z0-9_]", "_", name)
+    # Ensure it starts with a letter or underscore
+    if safe and safe[0].isdigit():
+        safe = "_" + safe
+    return safe or "_field"
+
+
+def _safe_string(value: str) -> str:
+    """Escape a string value for safe interpolation into generated Python code."""
+    result = value
+    result = result.replace(chr(92), chr(92) + chr(92))  # backslash
+    result = result.replace('"', chr(92) + '"')  # double quote
+    result = result.replace(chr(10), chr(92) + "n")  # newline
+    return result
+
+
 # ---------------------------------------------------------------------------
 # Script generation
 # ---------------------------------------------------------------------------
@@ -140,14 +158,18 @@ def generate_slot_script(config: DSpySlotConfig) -> str:
     # Build signature field lines (already at class-body indent level)
     input_field_lines = []
     for fname, fdesc in config.input_fields.items():
+        safe_fname = _safe_identifier(fname)
+        safe_fdesc = _safe_string(fdesc)
         input_field_lines.append(
-            f'    {fname}: str = dspy.InputField(desc="{fdesc}")'
+            f'    {safe_fname}: str = dspy.InputField(desc="{safe_fdesc}")'
         )
 
     output_field_lines = []
     for fname, fdesc in config.output_fields.items():
+        safe_fname = _safe_identifier(fname)
+        safe_fdesc = _safe_string(fdesc)
         output_field_lines.append(
-            f'    {fname}: str = dspy.OutputField(desc="{fdesc}")'
+            f'    {safe_fname}: str = dspy.OutputField(desc="{safe_fdesc}")'
         )
 
     input_block = "\n".join(input_field_lines) if input_field_lines else "    pass"
@@ -162,8 +184,10 @@ def generate_slot_script(config: DSpySlotConfig) -> str:
     # Build argparse arguments for the run subcommand (at function-body indent)
     run_arg_lines = []
     for k in input_keys:
+        safe_k = _safe_identifier(k)
+        safe_help = _safe_string(config.input_fields[k])
         run_arg_lines.append(
-            f'    run_parser.add_argument("--{k}", required=True, help="{config.input_fields[k]}")'
+            f'    run_parser.add_argument("--{safe_k}", required=True, help="{safe_help}")'
         )
     run_args_block = "\n".join(run_arg_lines) if run_arg_lines else "    pass  # no input fields"
 
