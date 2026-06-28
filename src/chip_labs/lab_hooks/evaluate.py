@@ -441,7 +441,7 @@ def evaluate(mutations: dict[str, str], chip_search_dir: str | Path | None = Non
 
     elif research_focus == "trend_simulation":
         # Run MiroFish trend simulation and return prediction quality metrics
-        from .trend_scanner import simulate_opportunities, SEED_OPPORTUNITIES
+        from ..trend_scanner import simulate_opportunities, SEED_OPPORTUNITIES
         sim = simulate_opportunities(SEED_OPPORTUNITIES, seed=42)
         report = sim.get("simulation_report", {})
         cal = sim.get("calibration", {})
