@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -104,7 +103,6 @@ def _clamp01(value: float) -> float:
     return max(0.0, min(1.0, value))
 
 
-@lru_cache(maxsize=8)
 def _cached_lab_state(repo_root_str: str, chip_search_dir_str: str) -> dict[str, Any]:
     repo_root = Path(repo_root_str)
     chip_search_dir: str | Path | None = chip_search_dir_str or None
