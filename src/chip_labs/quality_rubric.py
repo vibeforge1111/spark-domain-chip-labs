@@ -131,7 +131,7 @@ def _check_evidence_separation(chip_path: Path) -> dict[str, bool]:
             except OSError:
                 pass
 
-    results["has_research_grounded"] = "research_grounded" in all_text or "research-grounded" in all_text or "source" in all_text
+    results["has_research_grounded"] = "research_grounded" in all_text or "research-grounded" in all_text
     results["has_benchmark_grounded"] = "benchmark_grounded" in all_text or "benchmark-grounded" in all_text or "benchmark" in all_text
     results["has_exploratory_frontier"] = "exploratory_frontier" in all_text or "exploratory" in all_text or "frontier" in all_text
     results["has_realworld_validated"] = "realworld_validated" in all_text or "real-world" in all_text or "realworld" in all_text
