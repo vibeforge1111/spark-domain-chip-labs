@@ -127,7 +127,13 @@ def check_content_outcome_calibration(evidence: dict[str, Any]) -> dict[str, Any
 def load_content_outcome_calibration(path: str | Path) -> dict[str, Any]:
     """Load content outcome calibration evidence from JSON."""
 
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    try:
+
+        data = json.loads(Path(path)
+
+    except (json.JSONDecodeError, OSError) as exc:
+
+        raise RuntimeError(f"Failed to parse JSON: {exc}") from exc.read_text(encoding="utf-8"))
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
