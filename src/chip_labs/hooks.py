@@ -441,7 +441,10 @@ def _load_from_cache(cache_file: Path) -> list[Any]:
     """
     from dataclasses import dataclass, field
 
-    data = json.loads(cache_file.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(cache_file.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return []
 
     # Import ChipIntelligence for reconstruction
     try:
