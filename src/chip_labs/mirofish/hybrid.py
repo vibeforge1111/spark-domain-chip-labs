@@ -1475,8 +1475,8 @@ def discovery_candidate_to_opportunity(candidate: dict[str, Any]) -> dict[str, A
     """Convert a canonical discovery candidate into a conservative MiroFish opportunity."""
     scores = infer_discovery_scores(candidate)
     return {
-        "domain_id": candidate["domain_id"],
-        "label": candidate["label"],
+        "domain_id": candidate.get("domain_id", ""),
+        "label": candidate.get("label", ""),
         "description": candidate.get("description", ""),
         "scores": scores,
         "composite_score": score_opportunity({"scores": scores}),
