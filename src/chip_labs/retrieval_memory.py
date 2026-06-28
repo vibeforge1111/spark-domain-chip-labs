@@ -28,7 +28,10 @@ RESIDUE_SOURCE_KINDS = {
 
 def load_retrieval_memory_packet(path: str | Path) -> dict[str, Any]:
     packet_path = Path(path)
-    data = json.loads(packet_path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(packet_path.read_text(encoding="utf-8")
+    except (json.JSONDecodeError, OSError) as exc:
+        raise RuntimeError(f"Failed to parse JSON: {exc}") from exc)
     if not isinstance(data, dict):
         raise ValueError(f"{packet_path} must contain a JSON object")
     return data
