@@ -25,6 +25,79 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+# ---------------------------------------------------------------------------
+# File locking (cross-platform)
+# ---------------------------------------------------------------------------
+
+try:
+    import fcntl  # type: ignore[import-not-found]  # Unix / macOS
+    _HAS_FCNTL = True
+except ImportError:
+    _HAS_FCNTL = False
+
+
+@contextmanager
+def _locked_file(path: Path, mode: str = "r+", timeout: float = 5.0):
+    """Context manager that opens *path* and holds an advisory flock.
+
+    *mode* should be ``"r+"`` or ``"w+"`` so the fd is writable.
+    On non-POSIX platforms (no fcntl), this degrades to a best-effort
+    cooperative lock via a sibling ``.lock`` file -- still far better
+    than the status quo of no locking at all.
+
+    The lock is released (and the file closed) when the context exits.
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lock_path = Path(str(path) + ".lock")
+
+    if _HAS_FCNTL:
+        fd = os.open(str(lock_path), os.O_CREAT | os.O_RDWR, 0o600)
+        try:
+            fcntl.flock(fd, fcntl.LOCK_EX)
+            with os.fdopen(fd, mode, encoding="utf-8") as fh:
+                yield fh
+        finally:
+            try:
+                fcntl.flock(fd, fcntl.LOCK_UN)
+            except OSError:
+                pass
+            try:
+                os.close(fd)
+            except OSError:
+                pass
+    else:
+        # Fallback: open .lock file, best-effort
+        try:
+            with open(lock_path, "w", encoding="utf-8") as lock_fh:
+                lock_fh.write(str(os.getpid()))
+                lock_fh.flush()
+                with open(path, mode, encoding="utf-8") as fh:
+                    yield fh
+        except OSError:
+            yield None
+
+
+def _atomic_write(target: Path, data: str) -> None:
+    """Write *data* to *target* atomically using a temp-file + rename.
+
+    This prevents readers from seeing a half-written file if the process
+    is interrupted mid-write.
+    """
+    target.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp_path = tempfile.mkstemp(
+        dir=str(target.parent), suffix=".tmp", prefix=target.stem,
+    )
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(data)
+        os.replace(tmp_path, str(target))
+    except BaseException:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        raise
+
 
 # ---------------------------------------------------------------------------
 # File locking (cross-platform)
@@ -321,7 +394,7 @@ def _load_portfolio_safe() -> list[Any]:
     except (ImportError, Exception):
         return []
 
-    # Write cache for next hook call
+    # Write cache for next hook call (atomic + locked)
     _write_cache(cache_file, portfolio)
     return portfolio
 
@@ -823,7 +896,6 @@ HANDLERS = {
     "pre_tool_use": handle_pre_tool_use,
     "post_tool_use": handle_post_tool_use,
 }
-
 
 def main() -> None:
     """CLI entry point: dispatch to the appropriate hook handler."""
