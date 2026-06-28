@@ -498,9 +498,18 @@ class ChipMCPServer:
     def run(self) -> None:
         """Main stdio loop implementing MCP protocol."""
         # MCP uses newline-delimited JSON over stdio
+        MAX_REQUEST_BYTES = 1 << 20  # 1 MB limit per request
         for line in sys.stdin:
             line = line.strip()
             if not line:
+                continue
+
+            # Reject oversized requests to prevent OOM
+            if len(line.encode("utf-8")) > MAX_REQUEST_BYTES:
+                sys.stderr.write(
+                    f"chip_mcp_server: rejecting oversized request "
+                    f"({len(line.encode('utf-8'))} bytes > {MAX_REQUEST_BYTES})\n"
+                )
                 continue
 
             try:
