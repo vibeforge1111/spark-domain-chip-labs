@@ -239,8 +239,8 @@ def _check_evaluation_depth_v2(chip_path: Path) -> dict[str, bool]:
 
     # Hardened: regex for real scoring function
     scoring_re = re.compile(
-        r"def\s+(score|evaluate)\s*\(.*?\)\s*.*?:"
-        r"[\s\S]*?"
+        r"def\s+(score|evaluate)\s*\([^)]*\)\s*[^:]*?:"
+        r"[\s\S]{0,5000}?"
         r"return\s+",
         re.MULTILINE,
     )
