@@ -5,6 +5,7 @@ that can feed the existing MiroFish graph, signal, and simulation layers.
 """
 
 from __future__ import annotations
+import html
 
 from copy import deepcopy
 from datetime import datetime, timezone
@@ -1186,10 +1187,11 @@ def render_frontier_viz_html(
 
     rendered = template_html.replace(
         "<title>MiroFish v4 - 500 Domain Knowledge Graph</title>",
-        f"<title>{title}</title>",
+        f"<title>{html.escape(title)}</title>",
         1,
     )
-    rendered = rendered.replace("fetch('mirofish_500_data.json')", f"fetch('{data_filename}')", 1)
+    _safe_fn = re.sub(r"[^a-zA-Z0-9_.-]", "", data_filename)
+    rendered = rendered.replace("fetch('mirofish_500_data.json')", f"fetch('{_safe_fn}')", 1)
     rendered = re.sub(
         r"DATA = await resp\.json\(\);",
         "DATA = await resp.json();\n    hydratePersonaDataFromPacket();",
