@@ -364,7 +364,8 @@ def _score_or_none(value: Any) -> float | None:
 
 
 def _score_or_zero(value: Any) -> float:
-    return _score_or_none(value) or 0.0
+    result = _score_or_none(value)
+    return 0.0 if result is None else result
 
 
 def _slug(value: str) -> str:
