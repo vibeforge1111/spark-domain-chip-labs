@@ -1106,17 +1106,8 @@ def _apply_research_pipeline(target_chip_path: Path, pattern: TransferPattern) -
             project["candidate_trials"] = trials
             changed = True
 
-    # Ensure minimum 3 trials
-    trials = project.get("candidate_trials", [])
-    while len(trials) < 3:
-        trials.append({
-            "candidate_id": f"variant-{len(trials)}",
-            "candidate_summary": f"Variant {len(trials)}",
-            "mutations": {},
-        })
-        changed = True
-    if changed:
-        project["candidate_trials"] = trials
+    # Skip padding with empty-mutation variants; they are functionally
+    # identical to the baseline and defeat the purpose of distinct candidates.
 
     if changed:
         _write_json(project_path, project)
