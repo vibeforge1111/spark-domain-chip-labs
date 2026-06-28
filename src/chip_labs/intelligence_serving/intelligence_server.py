@@ -757,6 +757,9 @@ Current: {intel.current_score}/100 ({intel.verdict})
 """
 
     output_path = chip_path / "chip_skill.md"
+    resolved = output_path.resolve()
+    if not resolved.is_relative_to(chip_path.parent.resolve()):
+        raise ValueError(f"Chip path escapes expected directory: {chip_path}")
     output_path.write_text(skill_content, encoding="utf-8")
     return output_path
 
@@ -816,6 +819,9 @@ def build_doctrine_digest(chip_path: Path) -> Path:
         content += "No doctrines extracted yet. Run the researcher loop to accumulate intelligence.\n"
 
     output_path = chip_path / "chip_doctrine_digest.md"
+    resolved = output_path.resolve()
+    if not resolved.is_relative_to(chip_path.parent.resolve()):
+        raise ValueError(f"Chip path escapes expected directory: {chip_path}")
     output_path.write_text(content, encoding="utf-8")
     return output_path
 
