@@ -468,7 +468,13 @@ def from_manifest(manifest_path: str | Path) -> ScoringConfig:
     if not manifest_path.exists():
         raise FileNotFoundError(f"Manifest not found: {manifest_path}")
 
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    try:
+
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8")
+
+    except (json.JSONDecodeError, OSError) as exc:
+
+        raise RuntimeError(f"Failed to parse JSON: {exc}") from exc)
     frontier = manifest.get("frontier", {})
     allowed_mutations = frontier.get("allowed_mutations", {})
 
