@@ -651,10 +651,12 @@ def _expectation_check(
 
 
 def _resolve_run_path(run_path: Path, relative_path: str) -> Path:
-    path = run_path / relative_path
-    if not path.exists():
+    resolved = (run_path / relative_path).resolve()
+    if not resolved.is_relative_to(run_path.resolve()):
+        raise ValueError(f"Path traversal detected: {relative_path!r} escapes the run directory")
+    if not resolved.exists():
         raise FileNotFoundError(f"{relative_path} does not exist in {run_path}")
-    return path
+    return resolved
 
 
 def _benchmark_provenance(run_path: Path, relative_paths: list[str]) -> dict[str, Any]:
