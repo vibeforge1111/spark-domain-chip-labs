@@ -859,7 +859,7 @@ def _apply_scoring_model(target_chip_path: Path, pattern: TransferPattern) -> bo
 
     transfer_marker = f"# Transfer: scoring_model from {pattern.source_chip}"
     if transfer_marker in existing:
-        return True  # Already applied
+        return False  # Already applied — no changes made
 
     # Add pair bonus / system bonus templates if missing
     additions: list[str] = [f"\n{transfer_marker}\n"]
@@ -924,7 +924,7 @@ def _apply_loop_design(target_chip_path: Path, pattern: TransferPattern) -> bool
         project["guardrails"] = guardrails
         _write_json(project_path, project)
 
-    return True
+    return changed
 
 
 def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -937,8 +937,10 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
         docs_dir = target_chip_path / "docs"
         docs_dir.mkdir(parents=True, exist_ok=True)
         domain = target_chip_path.name.replace("domain-chip-", "")
+        target_file = docs_dir / "source_registry.md"
+        already_exists = target_file.exists()
         _ensure_file(
-            docs_dir / "source_registry.md",
+            target_file,
             f"# Source Registry\n\n"
             f"Primary source map for the **{domain}** domain.\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
@@ -947,7 +949,7 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"|--------|------|-----|-------|\n"
             f"| (add sources here) | research | - | - |\n",
         )
-        return True
+        return not already_exists
 
     # Evidence lanes pattern
     if "lanes" in impl:
@@ -956,8 +958,10 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
         docs_dir.mkdir(parents=True, exist_ok=True)
         lanes = impl.get("lanes", [])
         lane_text = "\n".join(f"- **{lane}**" for lane in lanes)
+        target_file = docs_dir / "evidence_lanes.md"
+        already_exists = target_file.exists()
         _ensure_file(
-            docs_dir / "evidence_lanes.md",
+            target_file,
             f"# Evidence Lanes\n\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
             f"## Active Lanes\n\n{lane_text}\n\n"
@@ -966,14 +970,16 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"- research_grounded -> benchmark_grounded (when quantitatively validated)\n"
             f"- benchmark_grounded -> realworld_validated (when field-tested)\n",
         )
-        return True
+        return not already_exists
 
     # Walk-forward validation pattern
     if pat == "walk_forward_validation":
         docs_dir = target_chip_path / "docs"
         docs_dir.mkdir(parents=True, exist_ok=True)
+        target_file = docs_dir / "walk_forward_validation.md"
+        already_exists = target_file.exists()
         _ensure_file(
-            docs_dir / "walk_forward_validation.md",
+            target_file,
             f"# Walk-Forward Validation\n\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
             f"## Methodology\n\n"
@@ -984,7 +990,7 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"4. Aggregate prediction accuracy\n\n"
             f"This prevents look-ahead bias in evaluation.\n",
         )
-        return True
+        return not already_exists
 
     # Category-specific patterns -- add as docs
     if pat in (
@@ -994,8 +1000,10 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
     ):
         docs_dir = target_chip_path / "docs"
         docs_dir.mkdir(parents=True, exist_ok=True)
+        target_file = docs_dir / f"{pat}.md"
+        already_exists = target_file.exists()
         _ensure_file(
-            docs_dir / f"{pat}.md",
+            target_file,
             f"# {pat.replace('_', ' ').title()}\n\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
             f"## Description\n\n"
@@ -1003,9 +1011,9 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"## Implementation Notes\n\n"
             f"TODO: Adapt this pattern for this chip's domain.\n",
         )
-        return True
+        return not already_exists
 
-    return True
+    return False
 
 
 def _apply_promotion_gate(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1037,7 +1045,7 @@ def _apply_promotion_gate(target_chip_path: Path, pattern: TransferPattern) -> b
         project["guardrails"] = guardrails
         _write_json(project_path, project)
 
-    return True
+    return changed
 
 
 def _apply_contradiction_detection(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1072,7 +1080,7 @@ def _apply_contradiction_detection(target_chip_path: Path, pattern: TransferPatt
         f"            triggered.append(tag)\n"
         f"    return triggered\n",
     )
-    return True
+    return not (src_dir / "contradiction_detector.py").exists()
 
 
 def _apply_research_pipeline(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1121,7 +1129,7 @@ def _apply_research_pipeline(target_chip_path: Path, pattern: TransferPattern) -
     if changed:
         _write_json(project_path, project)
 
-    return True
+    return changed
 
 
 def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1130,6 +1138,9 @@ def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -
     vault_dir.mkdir(parents=True, exist_ok=True)
 
     domain = target_chip_path.name.replace("domain-chip-", "")
+
+    index_existed = (vault_dir / "index.md").exists()
+    leaderboard_existed = (vault_dir / "Leaderboard.md").exists()
 
     _ensure_file(
         vault_dir / "index.md",
@@ -1151,7 +1162,7 @@ def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -
         "| 1    | Baseline  | 50    | benchmark_grounded |\n",
     )
 
-    return True
+    return not index_existed or not leaderboard_existed
 
 
 # Dispatch table for pattern application
