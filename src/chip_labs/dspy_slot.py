@@ -110,6 +110,20 @@ def _class_name(name: str) -> str:
     return "".join(p.capitalize() for p in parts if p)
 
 
+def _safe_identifier(name: str) -> str:
+    """Sanitize a field name to a safe Python identifier for code generation."""
+    safe = re.sub(r"[^a-zA-Z0-9_]", "_", name)
+    # Ensure it starts with a letter or underscore
+    if safe and safe[0].isdigit():
+        safe = "_" + safe
+    return safe or "_field"
+
+
+def _safe_string(value: str) -> str:
+    """Escape a string value for safe interpolation into generated Python code."""
+    return value.replace("\", "\\").replace('"', '\"').replace("\n", "\\n")
+
+
 # ---------------------------------------------------------------------------
 # Script generation
 # ---------------------------------------------------------------------------
