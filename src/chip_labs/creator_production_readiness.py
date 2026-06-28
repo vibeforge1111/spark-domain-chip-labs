@@ -225,7 +225,10 @@ def _generated_run_count(
 
 
 def _load_briefs(path: Path) -> list[dict[str, Any]]:
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8")
+    except (json.JSONDecodeError, OSError) as exc:
+        raise RuntimeError(f"Failed to parse JSON: {exc}") from exc)
     briefs = data.get("briefs") if isinstance(data, dict) else data
     if not isinstance(briefs, list) or not briefs:
         raise ValueError(f"{path} must contain a non-empty JSON list or {{'briefs': [...]}}")
