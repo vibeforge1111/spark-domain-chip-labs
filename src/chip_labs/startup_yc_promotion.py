@@ -761,7 +761,10 @@ def _load_rows(path: Path) -> list[dict[str, Any]]:
             if line.strip()
         ]
     else:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        try:
+            data = json.loads(path.read_text(encoding="utf-8")
+        except (json.JSONDecodeError, OSError) as exc:
+            raise RuntimeError(f"Failed to parse JSON: {exc}") from exc)
         if isinstance(data, dict):
             rows = data.get("rows", [])
         else:
