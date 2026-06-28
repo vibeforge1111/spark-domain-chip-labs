@@ -121,7 +121,11 @@ def _safe_identifier(name: str) -> str:
 
 def _safe_string(value: str) -> str:
     """Escape a string value for safe interpolation into generated Python code."""
-    return value.replace("\", "\\").replace('"', '\"').replace("\n", "\\n")
+    result = value
+    result = result.replace(chr(92), chr(92) + chr(92))  # backslash
+    result = result.replace('"', chr(92) + '"')  # double quote
+    result = result.replace(chr(10), chr(92) + "n")  # newline
+    return result
 
 
 # ---------------------------------------------------------------------------
