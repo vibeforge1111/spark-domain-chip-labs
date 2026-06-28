@@ -13,6 +13,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import os
 import sys
 import time
 from datetime import datetime, timezone
@@ -27,6 +28,11 @@ from typing import Any
 SERVER_NAME = "domain-chip-intelligence"
 SERVER_VERSION = "1.0.0"
 PROTOCOL_VERSION = "2024-11-05"
+
+# Authentication
+AUTH_TOKEN_ENV="CHIP_MCP_AUTH_TOKEN"
+AUTH_METHOD="auth"
+
 
 MIN_QUALITY_SCORE = 35
 PORTFOLIO_TTL_SECONDS = 300  # 5 min cache
@@ -136,6 +142,7 @@ class ChipMCPServer:
         self._portfolio: list[Any] = []
         self._last_load: float = 0
         self._initialized = False
+        self._authenticated = False
 
     # -- Portfolio management -----------------------------------------------
 
@@ -415,6 +422,21 @@ class ChipMCPServer:
 
         return {"suggestions": suggestions}
 
+        # -- Authentication -------------------------------------------------------
+
+    def _handle_auth(self, token: str) -> dict[str, Any]:
+        """Validate authentication token against environment variable."""
+        expected = os.environ.get(AUTH_TOKEN_ENV)
+        if not expected:
+            return {"error": "Server not configured for authentication (set CHIP_MCP_AUTH_TOKEN)"}
+        if not token:
+            return {"error": "Missing authentication token"}
+        import hmac
+        if not hmac.compare_digest(token, expected):
+            return {"error": "Invalid authentication token"}
+        self._authenticated = True
+        return {"authenticated": True, "message": "Authentication successful"}
+
     # -- MCP protocol -------------------------------------------------------
 
     def _dispatch_tool(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
@@ -453,6 +475,26 @@ class ChipMCPServer:
 
         if method == "notifications/initialized":
             return {}  # No response needed for notifications
+
+        # Require authentication for all other methods
+        if method == AUTH_METHOD:
+            auth_token = params.get("token", "")
+            result = self._handle_auth(auth_token)
+            return {
+                "jsonrpc": "2.0",
+                "id": req_id,
+                "result": {"content": [{"type": "text", "text": json.dumps(result)}]},
+                "isError": "error" in result,
+            }
+
+        if not self._authenticated:
+            expected = os.environ.get(AUTH_TOKEN_ENV)
+            if expected:
+                return {
+                    "jsonrpc": "2.0",
+                    "id": req_id,
+                    "error": {"code": -32001, "message": "Not authenticated. Send an auth method with your token first."},
+                }
 
         if method == "tools/list":
             return {
@@ -520,6 +562,11 @@ class ChipMCPServer:
 
 def main() -> None:
     """Start the MCP server."""
+    if not os.environ.get(AUTH_TOKEN_ENV):
+        print(
+            f"WARNING: {AUTH_TOKEN_ENV} not set. The server will accept unauthenticated connections. ",
+            file=sys.stderr,
+        )
     server = ChipMCPServer()
     server.run()
 
