@@ -861,7 +861,6 @@ def _build_alias_map(canonical_candidates: list[dict[str, Any]]) -> dict[str, st
     for candidate in canonical_candidates:
         domain_id = candidate["domain_id"]
         label_slug = slugify_domain_label(candidate.get("label", ""))
-        if domain_id in seen_domain_ids and domain_id not in alias_map:
         for alias in candidate.get("duplicate_aliases", []):
             alias_slug = slugify_domain_label(alias)
             if alias_slug in label_map:
