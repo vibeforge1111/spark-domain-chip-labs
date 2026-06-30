@@ -1234,7 +1234,7 @@ def _nested_path(data: dict[str, Any], path: str) -> Any:
 
 
 def _has_template_value(value: Any) -> bool:
-    return value is not None and value != "" and value != 0
+    return value is not None
 
 
 def _check_schema_prefix(
