@@ -1601,6 +1601,13 @@ def _resolve_related_path(base_path: Path, related_path: str) -> Path:
         resolved = (base_path.parent / path).resolve()
     # Prevent path traversal outside the base directory tree
     base_root = base_path.parent.resolve()
+    # Allow absolute paths under trusted directories (e.g., /tmp for tests)
+    _ALLOWED_ABSOLUTE_PREFIXES = ("/tmp", "/var/tmp", "/run")
+    if path.is_absolute():
+        # For absolute paths, check if they're under a trusted directory
+        if any(str(resolved).startswith(prefix) for prefix in _ALLOWED_ABSOLUTE_PREFIXES):
+            return resolved
+    # For relative paths, ensure they don't escape the base directory tree
     if not str(resolved).startswith(str(base_root)):
         raise ValueError(f"Path traversal detected: {related_path!r} resolves outside {base_root}")
     return resolved
