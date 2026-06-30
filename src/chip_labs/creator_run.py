@@ -7,6 +7,7 @@ enough structure and saved evidence to move to the next gate.
 
 from __future__ import annotations
 
+import os
 import json
 import re
 import shutil
