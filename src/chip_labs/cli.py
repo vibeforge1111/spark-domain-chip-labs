@@ -93,6 +93,29 @@ def _parse_seed_list(raw: str | None, *, flag: str = "--seeds") -> tuple[int, ..
     return tuple(seeds)
 
 
+def _validate_vault_dir(output_dir: str | Path) -> Path:
+    """Validate and create an output directory, preventing path traversal.
+
+    Resolves the path to absolute and ensures it stays within the repository
+    root before creating the directory.
+
+    Returns:
+        The validated, absolute Path of the created directory.
+
+    Raises:
+        ValueError: If the resolved path escapes the repository root.
+    """
+    repo_root = Path(__file__).resolve().parents[2]
+    resolved = Path(output_dir).resolve()
+    if not resolved.is_relative_to(repo_root):
+        raise ValueError(
+            f"output directory escapes the repository root: {output_dir!r} "
+            f"resolves to {resolved}"
+        )
+    resolved.mkdir(parents=True, exist_ok=True)
+    return resolved
+
+
 def _write_watchtower_pages(vault_dir: str | Path, pages: list[dict[str, Any]]) -> None:
     """Write generated watchtower pages to the target vault directory."""
     vault_path = Path(vault_dir)
