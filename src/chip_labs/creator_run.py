@@ -332,9 +332,9 @@ def init_creator_run(
 
     output_path.mkdir(parents=True, exist_ok=True)
 
-        # Re-check emptiness after mkdir to prevent TOCTOU race
-        if output_path.exists() and any(output_path.iterdir()) and not force:
-            raise FileExistsError(f"Output directory {output_path} is not empty (created between check and write)")
+    # Re-check emptiness after mkdir to prevent TOCTOU race
+    if output_path.exists() and any(output_path.iterdir()) and not force:
+        raise FileExistsError(f"Output directory {output_path} is not empty (created between check and write)")
 
     written: list[str] = []
     for template_name, output_name in TEMPLATE_FILENAMES.items():
