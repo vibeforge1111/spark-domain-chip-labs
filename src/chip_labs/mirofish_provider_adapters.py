@@ -128,7 +128,10 @@ def check_mirofish_provider_adapters(manifest: dict[str, Any]) -> dict[str, Any]
 def load_mirofish_provider_adapter_manifest(path: str | Path) -> dict[str, Any]:
     """Load a provider-adapter manifest from JSON."""
 
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    try:
+        data = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"could not load provider-adapter manifest {path}: {exc}") from exc
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
