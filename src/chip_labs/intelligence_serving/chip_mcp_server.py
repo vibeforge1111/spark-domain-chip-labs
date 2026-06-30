@@ -18,6 +18,8 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+import hmac
+import os
 
 
 # ---------------------------------------------------------------------------
@@ -30,6 +32,8 @@ PROTOCOL_VERSION = "2024-11-05"
 
 MIN_QUALITY_SCORE = 35
 PORTFOLIO_TTL_SECONDS = 300  # 5 min cache
+AUTH_TOKEN_ENV = "CHIP_MCP_AUTH_TOKEN"
+AUTH_METHODS = {"tools/call", "tools/list", "resources/read", "resources/list", "prompts/get", "prompts/list"}
 
 
 # ---------------------------------------------------------------------------
@@ -150,7 +154,7 @@ class ChipMCPServer:
             return True
         return False
 
-def __init__(self, search_dir: Path | None = None) -> None:
+    def __init__(self, search_dir: Path | None = None) -> None:
         self._search_dir = search_dir
         self._portfolio: list[Any] = []
         self._last_load: float = 0
@@ -413,8 +417,6 @@ def __init__(self, search_dir: Path | None = None) -> None:
                 from .intelligence_server import extract_intelligence
                 intel = extract_intelligence(chip.chip_path)
 
-AUTH_TOKEN_ENV = "CHIP_MCP_AUTH_TOKEN"
-AUTH_METHODS = {"tools/call", "tools/list", "resources/read", "resources/list", "prompts/get", "prompts/list"}
 
                 # Build suggestions from gaps in evidence
                 chip_suggestions: list[str] = []
