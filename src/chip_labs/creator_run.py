@@ -294,7 +294,7 @@ def load_json(path: Path) -> dict[str, Any]:
 
 def _atomic_write(path, content):
     """Write atomically via temp file + rename."""
-    import tempfile, os
+    import os
     tmp = path.with_suffix(path.suffix + ".tmp")
     try:
         tmp.write_text(content, encoding="utf-8")
