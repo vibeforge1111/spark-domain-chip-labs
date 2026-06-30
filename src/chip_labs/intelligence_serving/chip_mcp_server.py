@@ -13,6 +13,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import re
 import sys
 import time
 from datetime import datetime, timezone
@@ -30,6 +31,58 @@ PROTOCOL_VERSION = "2024-11-05"
 
 MIN_QUALITY_SCORE = 35
 PORTFOLIO_TTL_SECONDS = 300  # 5 min cache
+
+
+# ---------------------------------------------------------------------------
+# Prompt-injection sanitizer for user-supplied feedback text
+# ---------------------------------------------------------------------------
+# Patterns that should never appear in content written to the RAG pipeline.
+# They are stripped / neutralised to prevent prompt-injection attacks via the
+# chip_feedback MCP tool.
+_INJECTION_PATTERNS: list[re.Pattern[str]] = [
+    re.compile(r"\[?INST\]?\s*:", re.IGNORECASE),
+    re.compile(r"<<SYS>>", re.IGNORECASE),
+    re.compile(r"###\s*System\s*:", re.IGNORECASE),
+    re.compile(r"###\s*Human\s*:", re.IGNORECASE),
+    re.compile(r"###\s*Assistant\s*:", re.IGNORECASE),
+    re.compile(r"<\|im_start\|>", re.IGNORECASE),
+    re.compile(r"<\|im_end\|>", re.IGNORECASE),
+    re.compile(r"<\|system\|>", re.IGNORECASE),
+    re.compile(r"<\|user\|>", re.IGNORECASE),
+    re.compile(r"<\|assistant\|>", re.IGNORECASE),
+    re.compile(r"---+\s*end\s+(of\s+)?prompt\s*---+", re.IGNORECASE),
+    re.compile(r"ignore\s+(all\s+)?previous\s+instructions?", re.IGNORECASE),
+    re.compile(r"you\s+are\s+now\s+", re.IGNORECASE),
+    re.compile(r"system\s*prompt\s*:", re.IGNORECASE),
+    re.compile(r"<system>", re.IGNORECASE),
+    re.compile(r"</system>", re.IGNORECASE),
+    re.compile(r"<指令>", re.IGNORECASE),
+    re.compile(r"<\/指令>", re.IGNORECASE),
+]
+
+# Maximum length for any single feedback text field (prevents storage abuse).
+_MAX_FEEDBACK_FIELD_LEN = 4096
+
+
+def _sanitize_feedback_text(text: str) -> str:
+    """Strip known prompt-injection patterns from *text*.
+
+    Returns the cleaned string (truncated to ``_MAX_FEEDBACK_FIELD_LEN``).
+    Each matched pattern is replaced with a neutral ``[redacted]`` marker so
+    that the overall record remains inspectable while neutralising the attack.
+    """
+    if not text:
+        return text
+    for pat in _INJECTION_PATTERNS:
+        text = pat.sub("[redacted]", text)
+    if len(text) > _MAX_FEEDBACK_FIELD_LEN:
+        text = text[:_MAX_FEEDBACK_FIELD_LEN]
+    return text
+
+
+def _sanitize_feedback_list(items: list[str]) -> list[str]:
+    """Run ``_sanitize_feedback_text`` over every item in *items*."""
+    return [_sanitize_feedback_text(i) for i in items]
 
 
 # ---------------------------------------------------------------------------
@@ -334,6 +387,13 @@ class ChipMCPServer:
         outcome = args.get("outcome", "")
         confirmed = args.get("doctrine_confirmed", [])
         contradicted = args.get("doctrine_contradicted", [])
+
+        # Sanitize user-supplied text to prevent prompt-injection attacks
+        # that could poison the RAG pipeline via realworld_validated files.
+        action_desc = _sanitize_feedback_text(action_desc)
+        outcome = _sanitize_feedback_text(outcome)
+        confirmed = _sanitize_feedback_list(confirmed)
+        contradicted = _sanitize_feedback_list(contradicted)
 
         chip = self._find_chip(chip_name)
         if not chip:
