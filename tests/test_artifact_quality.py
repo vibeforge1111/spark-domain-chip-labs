@@ -588,3 +588,48 @@ def test_artifact_quality_schemas_reject_unsafe_shapes(tmp_path: Path) -> None:
         jsonschema.Draft202012Validator(report_schema).validate(report)
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.Draft202012Validator(benchmark_schema, registry=registry).validate(result)
+
+
+def test_score_artifact_quality_file_missing_path_returns_blocked_report(tmp_path: Path) -> None:
+    missing = tmp_path / "definitely_not_here.md"
+    report = score_artifact_quality_file(missing)
+
+    assert report["packet_kind"] == "artifact_quality_report"
+    assert report["verdict"] == "blocked"
+    assert report["score"] == 0.0
+    assert report["source_path"] == missing.as_posix()
+    assert report["artifact_id"] == "definitely_not_here"
+    assert report["status_counts"] == {"pass": 0, "fail": 0}
+    assert report["checks"] == []
+    assert "not found" in report["error"].lower()
+    assert any("existing artifact file path" in action.lower() for action in report["repair_actions"])
+
+
+def test_score_artifact_quality_file_directory_returns_blocked_report(tmp_path: Path) -> None:
+    report = score_artifact_quality_file(tmp_path)
+
+    assert report["verdict"] == "blocked"
+    assert report["source_path"] == tmp_path.as_posix()
+    assert report["score"] == 0.0
+    assert "not found" in report["error"].lower()
+
+
+def test_score_artifact_quality_file_none_raises_value_error() -> None:
+    with pytest.raises(ValueError, match="requires a path"):
+        score_artifact_quality_file(None)
+
+
+def test_score_artifact_quality_file_oserror_returns_blocked_report(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    blocked = tmp_path / "blocked.md"
+    blocked.write_text("dummy", encoding="utf-8")
+
+    def _raise_oserror(_self: Path, *_args: object, **_kwargs: object) -> str:
+        raise OSError("simulated permission denied")
+
+    monkeypatch.setattr(Path, "read_text", _raise_oserror)
+
+    report = score_artifact_quality_file(blocked)
+    assert report["verdict"] == "blocked"
+    assert report["score"] == 0.0
+    assert "simulated permission denied" in report["error"]
+    assert any("readable" in action.lower() for action in report["repair_actions"])
