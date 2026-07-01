@@ -104,6 +104,23 @@ def _sanitize_name(name: str) -> str:
     return re.sub(r"[^a-z0-9_]", "_", name.lower().replace("-", "_"))
 
 
+def _sanitize_field_name(name: str) -> str:
+    """Sanitize a field name to a safe Python identifier.
+
+    Only allows alphanumeric characters and underscores, replacing everything
+    else with underscores to prevent code injection through field names.
+    """
+    return re.sub(r"[^a-zA-Z0-9_]", "_", name)
+
+
+def _escape_field_desc(desc: str) -> str:
+    """Escape a field description for safe embedding in a generated string literal.
+
+    Prevents breaking out of string delimiters in generated DSPy scripts.
+    """
+    return desc.replace("\\", "\\\\").replace('"', '\\"').replace("\n", " ")
+
+
 def _class_name(name: str) -> str:
     """Convert a slot name to PascalCase class name."""
     parts = re.split(r"[_\-\s]+", name)
@@ -140,14 +157,18 @@ def generate_slot_script(config: DSpySlotConfig) -> str:
     # Build signature field lines (already at class-body indent level)
     input_field_lines = []
     for fname, fdesc in config.input_fields.items():
+        safe_fname = _sanitize_field_name(fname)
+        safe_fdesc = _escape_field_desc(fdesc)
         input_field_lines.append(
-            f'    {fname}: str = dspy.InputField(desc="{fdesc}")'
+            f'    {safe_fname}: str = dspy.InputField(desc="{safe_fdesc}")'
         )
 
     output_field_lines = []
     for fname, fdesc in config.output_fields.items():
+        safe_fname = _sanitize_field_name(fname)
+        safe_fdesc = _escape_field_desc(fdesc)
         output_field_lines.append(
-            f'    {fname}: str = dspy.OutputField(desc="{fdesc}")'
+            f'    {safe_fname}: str = dspy.OutputField(desc="{safe_fdesc}")'
         )
 
     input_block = "\n".join(input_field_lines) if input_field_lines else "    pass"
@@ -155,23 +176,27 @@ def generate_slot_script(config: DSpySlotConfig) -> str:
 
     # Build example loading keys
     input_keys = list(config.input_fields.keys())
+    safe_input_keys = [_sanitize_field_name(k) for k in input_keys]
 
     # Build the run() keyword args
-    run_kwargs = ", ".join(f'{k}=args.{k}' for k in input_keys) if input_keys else ""
+    run_kwargs = ", ".join(f'{k}=args.{k}' for k in safe_input_keys) if safe_input_keys else ""
 
     # Build argparse arguments for the run subcommand (at function-body indent)
     run_arg_lines = []
     for k in input_keys:
+        safe_k = _sanitize_field_name(k)
+        safe_help = _escape_field_desc(config.input_fields[k])
         run_arg_lines.append(
-            f'    run_parser.add_argument("--{k}", required=True, help="{config.input_fields[k]}")'
+            f'    run_parser.add_argument("--{safe_k}", required=True, help="{safe_help}")'
         )
     run_args_block = "\n".join(run_arg_lines) if run_arg_lines else "    pass  # no input fields"
 
     # Build metric comparison
     output_keys = list(config.output_fields.keys())
     if output_keys:
+        safe_output_keys = [_sanitize_field_name(k) for k in output_keys]
         metric_checks = " and ".join(
-            f"pred.{k} == example.{k}" for k in output_keys
+            f"pred.{k} == example.{k}" for k in safe_output_keys
         )
     else:
         metric_checks = "True"
