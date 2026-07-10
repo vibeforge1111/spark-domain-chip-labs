@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "spark-startup-bench-promotion-dossier.v1",
+  "schema_version": "spark-startup-bench-promotion-dossier.v1",
+  "status": "runner_proof_ready",
+  "dossierId": "startup-bench-proof-f5689e266af9-473f2bad7e77",
+  "createdAt": "2026-05-30T10:08:27Z",
+  "generatedAt": "2026-05-30T10:08:27Z",
+  "runIdentity": {
+    "runId": "telegram-20260530t1008274",
+    "baselineId": "heuristic_resilient_operator",
+    "startupBenchRepo": "/Users/alchemistab/Documents/Codex/2026-05-09/does-this-spark-update-look-good/pr-work/startup-bench",
+    "startupOperatorRepo": "/Users/alchemistab/Documents/Codex/2026-05-09/does-this-spark-update-look-good/pr-work/specialization-path-startup-operator",
+    "scenarioPath": "/Users/alchemistab/Documents/Codex/2026-05-09/does-this-spark-update-look-good/pr-work/specialization-path-startup-operator/benchmarks/scenarios/minimal_0to1_scenario.json",
+    "scenarioSha256": "2d9ef641c738fede38b3f18c060fbb2713721c794333ae914b262d9d63cc0e8a",
+    "toolCallsPath": "/Users/alchemistab/Documents/Codex/2026-05-09/does-this-spark-update-look-good/pr-work/specialization-path-startup-operator/benchmarks/startup-operator.tool_calls.json",
+    "toolCallsSha256": "4178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a",
+    "seeds": [1],
+    "maxTurns": 6
+  },
+  "proofIdentity": {
+    "proofReportPath": "/Users/alchemistab/Documents/Codex/2026-05-09/does-this-spark-update-look-good/pr-work/specialization-path-spark-qa-operator/.spark-swarm/autoloop/runs/telegram-20260530t1008274/startup_bench_proof_report.json",
+    "proofReportSha256": "f5689e266af96386cfce1725496358d370ef51d24891f4ef9d54fe2d1ea2e6d6",
+    "privateScoreSummarySha256": "9e0457f6b61d847310cc684dc19b727c7cc00b48f27391e33342c6afd0ceafeb",
+    "runSignatureDigest": "473f2bad7e77311a97fc2d0ed8bf98fd1730e999d5f068afea6507ed0bf46b0e",
+    "proofGateBundleId": "startup-bench-proof-f5689e266af9-473f2bad7e77"
+  },
+  "candidateLock": {
+    "lockState": "locked",
+    "targetKind": "startup_operator_tool_calls",
+    "targetPath": "/Users/alchemistab/Documents/Codex/2026-05-09/does-this-spark-update-look-good/pr-work/specialization-path-startup-operator/benchmarks/startup-operator.tool_calls.json",
+    "targetSha256": "4178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a",
+    "scenarioPath": "/Users/alchemistab/Documents/Codex/2026-05-09/does-this-spark-update-look-good/pr-work/specialization-path-startup-operator/benchmarks/scenarios/minimal_0to1_scenario.json",
+    "scenarioSha256": "2d9ef641c738fede38b3f18c060fbb2713721c794333ae914b262d9d63cc0e8a",
+    "artifactRef": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-f5689e266af9-473f2bad7e77/candidate_run_lock.json",
+    "artifactSha256": "de62e226de657bc2e6c8e8b7a4bef968198d4b9e709cfc398eb10cb3b8b651de",
+    "createdBeforeEvaluation": true
+  },
+  "proofBinding": {
+    "schemaVersion": "spark-startup-bench-proof-binding.v1",
+    "proofReportPath": "/Users/alchemistab/Documents/Codex/2026-05-09/does-this-spark-update-look-good/pr-work/specialization-path-spark-qa-operator/.spark-swarm/autoloop/runs/telegram-20260530t1008274/startup_bench_proof_report.json",
+    "proofReportSha256": "f5689e266af96386cfce1725496358d370ef51d24891f4ef9d54fe2d1ea2e6d6",
+    "privateScoreSummarySha256": "9e0457f6b61d847310cc684dc19b727c7cc00b48f27391e33342c6afd0ceafeb",
+    "runSignature": {
+      "schemaVersion": "spark-startup-bench-run-signature.v1",
+      "digest": "473f2bad7e77311a97fc2d0ed8bf98fd1730e999d5f068afea6507ed0bf46b0e",
+      "payload": {
+        "baselineId": "heuristic_resilient_operator",
+        "maxTurns": 6,
+        "seeds": [1],
+        "toolCallsSha256": "4178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a"
+      }
+    }
+  },
+  "proofGateBundle": {
+    "schemaVersion": "spark-startup-bench-proof-gate-bundle.v1",
+    "bundleId": "startup-bench-proof-f5689e266af9-473f2bad7e77",
+    "bundlePath": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-f5689e266af9-473f2bad7e77",
+    "manifestPath": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-f5689e266af9-473f2bad7e77/startup_bench_proof_gates.json",
+    "gateBundleSha256": "a0b9ffbee1af0a91c0e7815e82f2e33c7f93db1c6990276ea2ae48c0fe55c005",
+    "status": "blocked"
+  },
+  "privateScoreSummary": {
+    "baseline": {
+      "constraintScore": 1.0,
+      "outcomeScore": 0.6408,
+      "pass": true,
+      "runCount": 1,
+      "runIds": ["baseline-201c984e-9347-407c-880f-5848689a9859"],
+      "scenarioScore": 0.6408,
+      "violationCount": 0
+    },
+    "candidate": {
+      "constraintScore": 1.0,
+      "outcomeScore": 0.8657,
+      "pass": true,
+      "runCount": 1,
+      "runIds": ["script-97ae9db2-c0da-4e8a-9c1e-6dcb18b1ea91"],
+      "scenarioScore": 0.8657,
+      "violationCount": 0
+    },
+    "comparison": {
+      "candidateBeatsBaseline": true,
+      "candidateMinusBaseline": 0.2249,
+      "metric": "scenario_score"
+    },
+    "scoreClaimAllowed": false
+  },
+  "proofGates": {
+    "hiddenHeldout": {"status": "passed", "pass": true, "blockers": [], "scoreClaimAllowed": false},
+    "wrapperRaw": {"status": "passed", "pass": true, "blockers": [], "scoreClaimAllowed": false},
+    "sidecarReview": {"status": "blocked", "pass": false, "blockers": ["sidecar_review_pending"], "scoreClaimAllowed": false},
+    "repeatedStability": {"status": "single_seed_only", "pass": false, "blockers": ["repeated_stability_missing"], "scoreClaimAllowed": false},
+    "wallClockStability": {"status": "waiting", "pass": false, "blockers": ["wall_clock_stability_window_missing"], "scoreClaimAllowed": false},
+    "scoreReconciliation": {"status": "blocked", "pass": false, "blockers": ["score_reconciliation_missing"], "scoreClaimAllowed": false}
+  },
+  "promotionDossier": {
+    "status": "blocked",
+    "scoreClaimAllowed": false,
+    "improvementClaimAllowed": false,
+    "public_ready": false,
+    "network_absorbable": false,
+    "blockers": [
+      "sidecar_review_pending",
+      "repeated_stability_missing",
+      "wall_clock_stability_window_missing",
+      "score_reconciliation_missing"
+    ],
+    "nextGate": "clear_startup_bench_proof_blockers"
+  },
+  "scoreClaimAllowed": false,
+  "score_claim_allowed": false,
+  "improvementClaimAllowed": false,
+  "improvement_claim_allowed": false,
+  "public_ready": false,
+  "publicReady": false,
+  "network_absorbable": false,
+  "networkAbsorbable": false,
+  "blockers": [
+    "sidecar_review_pending",
+    "repeated_stability_missing",
+    "wall_clock_stability_window_missing",
+    "score_reconciliation_missing"
+  ],
+  "nextGate": "clear_startup_bench_proof_blockers",
+  "nextAction": "Complete sidecar review, repeated stability, wall-clock stability, and score reconciliation before claiming improvement.",
+  "artifacts": [
+    {
+      "artifactType": "candidate_run_lock",
+      "path": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-f5689e266af9-473f2bad7e77/candidate_run_lock.json",
+      "sha256": "de62e226de657bc2e6c8e8b7a4bef968198d4b9e709cfc398eb10cb3b8b651de",
+      "bytes": 6099
+    }
+  ],
+  "artifactManifest": {
+    "schemaVersion": "spark-startup-bench-promotion-dossier-artifact-manifest.v1",
+    "artifactCount": 1,
+    "artifacts": [
+      {
+        "artifactType": "candidate_run_lock",
+        "path": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-f5689e266af9-473f2bad7e77/candidate_run_lock.json",
+        "sha256": "de62e226de657bc2e6c8e8b7a4bef968198d4b9e709cfc398eb10cb3b8b651de",
+        "bytes": 6099
+      }
+    ]
+  },
+  "claimBoundary": "Positive private Startup Bench movement is visible, but score and improvement claims remain blocked until sidecar review, repeated stability, wall-clock stability, and score reconciliation pass inside the bound proof bundle."
+}
