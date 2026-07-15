@@ -65,6 +65,70 @@ def test_invalid_candidate_ids_are_rejected_instead_of_rewritten_to_aliases(
     assert '"canonical"' in written[0].read_text(encoding="utf-8")
 
 
+def test_research_directory_symlink_cannot_redirect_candidate_write(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    chip_path = tmp_path / "chip"
+    research_parent = chip_path / "research"
+    research_parent.mkdir(parents=True)
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    try:
+        (research_parent / "exploratory_frontier").symlink_to(outside, target_is_directory=True)
+    except OSError as exc:
+        pytest.skip(f"symlinks unavailable: {exc}")
+
+    improvements = _run_suggestions(
+        monkeypatch,
+        chip_path,
+        [{"candidate_id": "valid", "hypothesis": "redirect"}],
+    )
+
+    assert not (outside / "suggestion_valid.json").exists()
+    assert improvements == []
+
+
+def test_broken_leaf_symlink_cannot_redirect_candidate_write(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    chip_path = tmp_path / "chip"
+    research_dir = chip_path / "research" / "exploratory_frontier"
+    research_dir.mkdir(parents=True)
+    outside = tmp_path / "outside.json"
+    try:
+        (research_dir / "suggestion_valid.json").symlink_to(outside)
+    except OSError as exc:
+        pytest.skip(f"symlinks unavailable: {exc}")
+
+    improvements = _run_suggestions(
+        monkeypatch,
+        chip_path,
+        [{"candidate_id": "valid", "hypothesis": "redirect"}],
+    )
+
+    assert not outside.exists()
+    assert improvements == []
+
+
+def test_malformed_suggestion_is_skipped_without_blocking_valid_write(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    chip_path = tmp_path / "chip"
+    suggestions: list[dict[str, object]] = [
+        "not-a-suggestion",  # type: ignore[list-item]
+        {"candidate_id": "valid", "hypothesis": "safe"},
+    ]
+
+    improvements = _run_suggestions(monkeypatch, chip_path, suggestions)
+
+    written = chip_path / "research" / "exploratory_frontier" / "suggestion_valid.json"
+    assert written.is_file()
+    assert improvements == ["Suggestions: Recorded 1 mutation candidates"]
+
+
 @pytest.mark.parametrize(
     "candidate_id",
     [None, True, 7, "", "   ", ".", "a" * 129],

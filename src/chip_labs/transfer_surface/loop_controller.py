@@ -16,6 +16,7 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import re
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -155,6 +156,15 @@ EVIDENCE_LANES = [
     "exploratory_frontier",
     "realworld_validated",
 ]
+
+_CANDIDATE_ID_RE = re.compile(r"[A-Za-z0-9_-]{1,128}")
+
+
+def _candidate_id_for_filename(value: object) -> str | None:
+    """Return an exact, bounded candidate id or reject it without aliasing."""
+    if not isinstance(value, str) or _CANDIDATE_ID_RE.fullmatch(value) is None:
+        return None
+    return value
 
 
 def _seed_evidence_stubs(chip_path: Path) -> int:
@@ -720,20 +730,30 @@ class RecursiveLoopController:
         except Exception:
             suggestions = []
 
+        research_dir = chip_path / "research" / "exploratory_frontier"
+        try:
+            research_dir.mkdir(parents=True, exist_ok=True)
+            research_root = research_dir.resolve()
+            research_root.relative_to(chip_path.resolve())
+        except (OSError, ValueError):
+            research_root = None
+
         applied_count = 0
         for s in suggestions[:3]:  # Limit to top 3 suggestions
-            candidate_id = s.get("candidate_id", "unknown")
-            # Write suggestion as a research note
-            research_dir = chip_path / "research" / "exploratory_frontier"
-            research_dir.mkdir(parents=True, exist_ok=True)
+            if not isinstance(s, dict) or research_root is None:
+                continue
+            candidate_id = _candidate_id_for_filename(s.get("candidate_id"))
+            if candidate_id is None:
+                continue
 
-            suggestion_path = research_dir / f"suggestion_{candidate_id}.json"
-            if not suggestion_path.exists():
-                suggestion_path.write_text(
-                    json.dumps(s, indent=2, ensure_ascii=False) + "\n",
-                    encoding="utf-8",
-                )
+            suggestion_path = research_root / f"suggestion_{candidate_id}.json"
+            try:
+                with suggestion_path.open("x", encoding="utf-8") as handle:
+                    json.dump(s, handle, indent=2, ensure_ascii=False)
+                    handle.write("\n")
                 applied_count += 1
+            except OSError:
+                continue
 
         if applied_count:
             improvements.append(
