@@ -109,6 +109,27 @@ class TestLoadChip:
                 chip_path=chip_dir,
             )
 
+    @pytest.mark.parametrize(
+        "executable",
+        ["/tmp/python", "./python3", r"C:\\untrusted\\python.exe"],
+    )
+    def test_rejects_path_prefixed_python_executable_from_manifest(
+        self,
+        tmp_path: Path,
+        executable: str,
+    ) -> None:
+        chip_dir = tmp_path / "domain-chip-cmd"
+        chip_dir.mkdir()
+
+        with pytest.raises(ValueError, match="bare python executable"):
+            _prepare_hook_command(
+                [executable, "eval.py"],
+                "evaluate",
+                tmp_path / "input.json",
+                tmp_path / "output.json",
+                chip_path=chip_dir,
+            )
+
     def test_rejects_hook_script_outside_chip_dir(self, tmp_path: Path) -> None:
         chip_dir = tmp_path / "domain-chip-cmd"
         chip_dir.mkdir()
