@@ -67,9 +67,28 @@ def test_input_field_names_must_be_unambiguous_python_identifiers(
         generate_slot_script(config)
 
 
+def test_output_field_name_must_be_an_unambiguous_python_identifier() -> None:
+    config = DSpySlotConfig(
+        slot_name="safe",
+        input_fields={"question": "description"},
+        output_fields={"answer; import os": "description"},
+    )
+
+    with pytest.raises(ValueError, match="output field.*valid Python identifier"):
+        generate_slot_script(config)
+
+
 @pytest.mark.parametrize("metric_name", ["score; import os", "lambda", "9score", ""])
 def test_metric_name_must_be_a_python_identifier(metric_name: str) -> None:
     config = DSpySlotConfig(slot_name="safe", metric_name=metric_name)
 
     with pytest.raises(ValueError, match="metric name.*valid Python identifier"):
+        generate_slot_script(config)
+
+
+@pytest.mark.parametrize("value", ['0; import os', -1, True, 1.5])
+def test_max_bootstrapped_demos_must_be_a_non_negative_integer(value: object) -> None:
+    config = DSpySlotConfig(slot_name="safe", max_bootstrapped_demos=value)  # type: ignore[arg-type]
+
+    with pytest.raises(ValueError, match="non-negative integer"):
         generate_slot_script(config)
