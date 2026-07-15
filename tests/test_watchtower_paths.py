@@ -64,3 +64,52 @@ def test_creator_external_artifact_rejects_absolute_path_outside_run_dir(tmp_pat
             _resolve_external_artifact_path(run_dir, str(outside))
     finally:
         outside.unlink(missing_ok=True)
+
+
+def test_creator_external_artifact_allows_absolute_sibling_run_artifact(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "current-run"
+    run_dir.mkdir()
+    sibling_report = tmp_path / "source-run" / "reports" / "summary.json"
+    sibling_report.parent.mkdir(parents=True)
+    sibling_report.write_text("{}", encoding="utf-8")
+
+    assert (
+        _resolve_external_artifact_path(run_dir, str(sibling_report))
+        == sibling_report.resolve()
+    )
+
+
+def test_creator_external_artifact_rejects_relative_symlink_escape(tmp_path: Path) -> None:
+    run_dir = tmp_path / "run"
+    run_dir.mkdir()
+    outside = tmp_path / "outside.json"
+    outside.write_text("{}", encoding="utf-8")
+    link = run_dir / "linked.json"
+    try:
+        link.symlink_to(outside)
+    except OSError as exc:
+        pytest.skip(f"symlinks unavailable: {exc}")
+
+    with pytest.raises(ValueError, match="escapes the run directory"):
+        _resolve_external_artifact_path(run_dir, "linked.json")
+
+
+def test_creator_external_artifact_rejects_absolute_sibling_symlink_escape(
+    tmp_path: Path,
+) -> None:
+    run_dir = tmp_path / "run"
+    run_dir.mkdir()
+    outside = tmp_path.parent / f"{tmp_path.name}-external.json"
+    outside.write_text("{}", encoding="utf-8")
+    link = tmp_path / "source-run.json"
+    try:
+        link.symlink_to(outside)
+        with pytest.raises(ValueError, match="escapes the run directory"):
+            _resolve_external_artifact_path(run_dir, str(link))
+    except OSError as exc:
+        pytest.skip(f"symlinks unavailable: {exc}")
+    finally:
+        link.unlink(missing_ok=True)
+        outside.unlink(missing_ok=True)
