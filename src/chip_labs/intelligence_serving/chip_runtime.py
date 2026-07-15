@@ -333,7 +333,10 @@ def _prepare_hook_command(
 def _validate_hook_command(cmd: list[str], *, chip_path: Path | None = None) -> None:
     if not cmd:
         raise ValueError("Hook command is empty")
-    executable = Path(cmd[0]).name.lower()
+    raw_executable = cmd[0]
+    executable = raw_executable.replace("\\", "/").rsplit("/", 1)[-1].lower()
+    if executable in _PYTHON_EXECUTABLES and raw_executable.lower() != executable:
+        raise ValueError("Hook command must use a bare python executable name")
     if executable not in _PYTHON_EXECUTABLES:
         raise ValueError("Hook command must start with python or python3")
     if len(cmd) < 2:
