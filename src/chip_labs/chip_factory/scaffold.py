@@ -391,7 +391,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 from ..lab_hooks import (
@@ -422,6 +422,45 @@ def _write_output(output_path: str | None, data: Any) -> None:
         print(output_json)
 
 
+def _resolve_vault_path(value: object) -> Path:
+    """Resolve a generated chip's vault beneath its working directory."""
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("invalid vault directory")
+    raw_path = Path(value)
+    windows_path = PureWindowsPath(value)
+    if (
+        raw_path.is_absolute()
+        or windows_path.is_absolute()
+        or windows_path.drive
+        or ".." in windows_path.parts
+    ):
+        raise ValueError("invalid vault directory")
+    root = Path.cwd().resolve()
+    resolved = (root / raw_path).resolve()
+    if resolved == root or not resolved.is_relative_to(root):
+        raise ValueError("invalid vault directory")
+    return resolved
+
+
+def _resolve_vault_page_path(vault_root: Path, value: object) -> Path:
+    """Resolve one generated page beneath the selected vault."""
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("invalid watchtower page path")
+    raw_path = Path(value)
+    windows_path = PureWindowsPath(value)
+    if (
+        raw_path.is_absolute()
+        or windows_path.is_absolute()
+        or windows_path.drive
+        or ".." in windows_path.parts
+    ):
+        raise ValueError("invalid watchtower page path")
+    resolved = (vault_root / raw_path).resolve()
+    if resolved == vault_root or not resolved.is_relative_to(vault_root):
+        raise ValueError("invalid watchtower page path")
+    return resolved
+
+
 def cmd_evaluate(args: argparse.Namespace) -> None:
     input_data = _load_input(args.input)
     mutations = input_data.get("mutations", {{}})
@@ -448,12 +487,11 @@ def cmd_packets(args: argparse.Namespace) -> None:
 def cmd_watchtower(args: argparse.Namespace) -> None:
     input_data = _load_input(args.input)
     mutations = input_data.get("mutations", {{}})
-    vault_dir = input_data.get("vault_dir", "obsidian-vault")
-    pages = generate_watchtower_pages(mutations, vault_dir)
-    vault_path = Path(vault_dir)
+    vault_path = _resolve_vault_path(input_data.get("vault_dir", "obsidian-vault"))
+    pages = generate_watchtower_pages(mutations, vault_dir=vault_path)
     vault_path.mkdir(parents=True, exist_ok=True)
     for page in pages:
-        page_path = vault_path / page["path"]
+        page_path = _resolve_vault_page_path(vault_path, page.get("path"))
         page_path.parent.mkdir(parents=True, exist_ok=True)
         page_path.write_text(page["content"], encoding="utf-8")
     _write_output(args.output, {{"pages": [p["path"] for p in pages], "count": len(pages)}})
