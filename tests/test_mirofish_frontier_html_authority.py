@@ -74,7 +74,8 @@ def test_render_frontier_viz_html_rejects_invalid_filename_without_reflection(
     with pytest.raises(ValueError, match=r"^invalid data filename$") as caught:
         _render(data_filename)
 
-    assert str(data_filename) not in str(caught.value)
+    if str(data_filename):
+        assert str(data_filename) not in str(caught.value)
 
 
 @pytest.mark.parametrize("title", [None, 7, "", "   ", "frontier\n", "x" * 513])
@@ -82,4 +83,5 @@ def test_render_frontier_viz_html_rejects_invalid_title_without_reflection(title
     with pytest.raises(ValueError, match=r"^invalid title$") as caught:
         _render("frontier.json", title)
 
-    assert str(title) not in str(caught.value)
+    if str(title):
+        assert str(title) not in str(caught.value)

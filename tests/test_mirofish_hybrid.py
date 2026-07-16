@@ -465,6 +465,6 @@ def test_render_frontier_viz_html_rewrites_template_fetch_and_title() -> None:
     )
 
     assert "<title>MiroFish Frontier 500 Graph</title>" in html
-    assert "fetch('MIROFISH_FRONTIER_VIZ_500_2026-03-25.json')" in html
+    assert 'fetch("MIROFISH_FRONTIER_VIZ_500_2026-03-25.json")' in html
     assert "hydratePersonaDataFromPacket" in html
     assert "DATA = await resp.json();\n    hydratePersonaDataFromPacket();" in html
