@@ -45,6 +45,7 @@ def test_file_walk_does_not_follow_directory_or_leaf_symlinks(tmp_path: Path) ->
     found = list(iter_bounded_files([root], suffixes={".py"}))
 
     assert found == [root / "safe.py"]
+    assert list(iter_bounded_files([root / "linked-dir"], suffixes={".py"})) == []
 
 
 def test_text_reads_share_a_cumulative_byte_budget(tmp_path: Path) -> None:

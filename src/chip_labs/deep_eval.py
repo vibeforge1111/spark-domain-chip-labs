@@ -16,6 +16,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from .source_analysis import has_scoring_function
+
 from .registry import default_search_dir
 
 
@@ -462,21 +464,8 @@ def check_manifest_structure(chip_path: Path) -> DimensionResult:
     score += min(project_score, 3.0)
 
     # 2 pts: scoring function in src/
-    scoring_re = re.compile(
-        r"def\s+(score|evaluate)\s*\(.*?\)\s*.*?:" r"[\s\S]*?" r"return\s+",
-        re.MULTILINE,
-    )
     src_dir = chip_path / "src"
-    has_scoring = False
-    if src_dir.is_dir():
-        for py in src_dir.rglob("*.py"):
-            try:
-                content = py.read_text(encoding="utf-8", errors="ignore")
-                if scoring_re.search(content):
-                    has_scoring = True
-                    break
-            except OSError:
-                pass
+    has_scoring = src_dir.is_dir() and has_scoring_function(src_dir)
     if has_scoring:
         score += 2.0
     details["has_scoring_function"] = has_scoring

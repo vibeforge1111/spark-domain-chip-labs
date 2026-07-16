@@ -16,6 +16,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from ..file_scan import ScanBudget, iter_bounded_files, read_text_bounded
+
 
 # ---------------------------------------------------------------------------
 # Data model
@@ -67,18 +69,17 @@ def _confidence_sort_key(doctrine: dict[str, Any]) -> int:
 # Extraction helpers
 # ---------------------------------------------------------------------------
 
-def _read_text_safe(path: Path) -> str:
+def _read_text_safe(path: Path, *, budget: ScanBudget | None = None) -> str:
     """Read a file's text content, returning empty string on failure."""
-    try:
-        return path.read_text(encoding="utf-8", errors="ignore")
-    except OSError:
-        return ""
+    return read_text_bounded(path, budget=budget)
 
 
-def _load_json_safe(path: Path) -> dict[str, Any] | list[Any] | None:
+def _load_json_safe(
+    path: Path, *, budget: ScanBudget | None = None
+) -> dict[str, Any] | list[Any] | None:
     """Load a JSON file, returning None on failure."""
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(_read_text_safe(path, budget=budget))
     except (json.JSONDecodeError, OSError):
         return None
 
@@ -119,9 +120,11 @@ def _extract_mission(chip_path: Path) -> str:
     return "No mission documentation found."
 
 
-def _extract_doctrines_from_json(file_path: Path) -> list[dict[str, Any]]:
+def _extract_doctrines_from_json(
+    file_path: Path, *, budget: ScanBudget | None = None
+) -> list[dict[str, Any]]:
     """Extract doctrines from a JSON packet file."""
-    data = _load_json_safe(file_path)
+    data = _load_json_safe(file_path, budget=budget)
     if not data or not isinstance(data, dict):
         return []
 
@@ -158,9 +161,11 @@ def _extract_doctrines_from_json(file_path: Path) -> list[dict[str, Any]]:
     return doctrines
 
 
-def _extract_doctrines_from_markdown(file_path: Path) -> list[dict[str, Any]]:
+def _extract_doctrines_from_markdown(
+    file_path: Path, *, budget: ScanBudget | None = None
+) -> list[dict[str, Any]]:
     """Extract doctrines from a markdown file looking for doctrine/claim patterns."""
-    text = _read_text_safe(file_path)
+    text = _read_text_safe(file_path, budget=budget)
     if not text:
         return []
 
@@ -258,11 +263,11 @@ def _extract_all_doctrines(chip_path: Path) -> list[dict[str, Any]]:
         chip_path / "obsidian-vault",
     ]
 
-    for search_dir in search_dirs:
-        if not search_dir.exists():
-            continue
-        for json_file in search_dir.rglob("*.json"):
-            doctrines.extend(_extract_doctrines_from_json(json_file))
+    budget = ScanBudget()
+    for json_file in iter_bounded_files(
+        search_dirs, suffixes={".json"}, budget=budget
+    ):
+        doctrines.extend(_extract_doctrines_from_json(json_file, budget=budget))
 
     # Search markdown files for doctrine patterns
     md_search_dirs = [
@@ -271,13 +276,14 @@ def _extract_all_doctrines(chip_path: Path) -> list[dict[str, Any]]:
         chip_path / "obsidian-vault",
     ]
 
-    for search_dir in md_search_dirs:
-        if not search_dir.exists():
-            continue
-        for md_file in search_dir.rglob("*.md"):
-            text_lower = _read_text_safe(md_file).lower()
-            if any(kw in text_lower for kw in ("doctrine", "belief", "claim")):
-                doctrines.extend(_extract_doctrines_from_markdown(md_file))
+    for md_file in iter_bounded_files(
+        md_search_dirs, suffixes={".md"}, budget=budget
+    ):
+        text_lower = _read_text_safe(md_file, budget=budget).lower()
+        if any(kw in text_lower for kw in ("doctrine", "belief", "claim")):
+            doctrines.extend(
+                _extract_doctrines_from_markdown(md_file, budget=budget)
+            )
 
     # De-duplicate by claim text
     seen_claims: set[str] = set()
@@ -421,11 +427,13 @@ def _count_evidence_files(chip_path: Path) -> dict[str, int]:
         "realworld_validated",
     ]
     summary: dict[str, int] = {}
+    budget = ScanBudget()
     for lane in lanes:
         lane_dir = research_dir / lane
         if lane_dir.exists():
-            count = sum(1 for _ in lane_dir.rglob("*") if _.is_file())
-            summary[lane] = count
+            summary[lane] = sum(
+                1 for _ in iter_bounded_files([lane_dir], budget=budget)
+            )
         else:
             summary[lane] = 0
     return summary
@@ -438,8 +446,9 @@ def _extract_benchmarks(chip_path: Path) -> list[dict[str, Any]]:
     if not bench_dir.exists():
         return benchmarks
 
-    for fp in bench_dir.rglob("*.json"):
-        data = _load_json_safe(fp)
+    budget = ScanBudget()
+    for fp in iter_bounded_files([bench_dir], suffixes={".json"}, budget=budget):
+        data = _load_json_safe(fp, budget=budget)
         if isinstance(data, dict):
             benchmarks.append({
                 "name": data.get("name") or data.get("title") or fp.stem,
@@ -447,8 +456,8 @@ def _extract_benchmarks(chip_path: Path) -> list[dict[str, Any]]:
                 "date": data.get("date") or data.get("timestamp") or "",
             })
 
-    for fp in bench_dir.rglob("*.md"):
-        text = _read_text_safe(fp)
+    for fp in iter_bounded_files([bench_dir], suffixes={".md"}, budget=budget):
+        text = _read_text_safe(fp, budget=budget)
         # Look for score patterns like "Score: 85" in markdown
         score_match = re.search(r"(?i)score[:\s]+(\d+(?:\.\d+)?)", text)
         if score_match:
@@ -509,7 +518,7 @@ def _count_packets(chip_path: Path) -> int:
     packets_dir = chip_path / "research" / "packets"
     if not packets_dir.exists():
         return 0
-    return sum(1 for f in packets_dir.rglob("*") if f.is_file())
+    return sum(1 for _ in iter_bounded_files([packets_dir]))
 
 
 def _detect_dspy(chip_path: Path) -> bool:
@@ -521,8 +530,11 @@ def _detect_dspy(chip_path: Path) -> bool:
     # Check for "import dspy" in src/
     src_dir = chip_path / "src"
     if src_dir.exists():
-        for py_file in src_dir.rglob("*.py"):
-            text = _read_text_safe(py_file)
+        budget = ScanBudget()
+        for py_file in iter_bounded_files(
+            [src_dir], suffixes={".py"}, budget=budget
+        ):
+            text = _read_text_safe(py_file, budget=budget)
             if "import dspy" in text:
                 return True
 

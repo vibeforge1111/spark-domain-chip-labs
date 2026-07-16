@@ -11,6 +11,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from .source_analysis import has_scoring_function
+
 from chip_labs.quality_rubric import score_chip as _score_chip_v1
 
 # ---------------------------------------------------------------------------
@@ -237,25 +239,8 @@ def _check_evaluation_depth_v2(chip_path: Path) -> dict[str, bool]:
         for t in trials
     )
 
-    # Hardened: regex for real scoring function
-    scoring_re = re.compile(
-        r"def\s+(score|evaluate)\s*\(.*?\)\s*.*?:"
-        r"[\s\S]*?"
-        r"return\s+",
-        re.MULTILINE,
-    )
     src_dir = chip_path / "src"
-    has_scoring = False
-    if src_dir.exists():
-        for py in src_dir.rglob("*.py"):
-            try:
-                content = py.read_text(encoding="utf-8", errors="ignore")
-                if scoring_re.search(content):
-                    has_scoring = True
-                    break
-            except OSError:
-                pass
-    results["scoring_function"] = has_scoring
+    results["scoring_function"] = src_dir.exists() and has_scoring_function(src_dir)
 
     return results
 
