@@ -25,6 +25,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from .filename_identity import derived_filename_component
+
 
 # ---------------------------------------------------------------------------
 # File locking (cross-platform)
@@ -557,10 +559,17 @@ def _write_feedback_packet(
     result_summary: str,
 ) -> Path | None:
     """Write a feedback packet to chip's realworld_validated directory."""
-    rw_dir = chip_path / "research" / "realworld_validated"
+    try:
+        chip_root = Path(chip_path).resolve(strict=True)
+    except (OSError, RuntimeError):
+        return None
+    rw_dir = chip_root / "research" / "realworld_validated"
     try:
         rw_dir.mkdir(parents=True, exist_ok=True)
+        rw_root = rw_dir.resolve(strict=True)
     except OSError:
+        return None
+    if not rw_root.is_relative_to(chip_root):
         return None
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -574,8 +583,11 @@ def _write_feedback_packet(
         "source": "claude_code_hook",
     }
 
-    filename = f"feedback_{timestamp}_{tool_name}.json"
-    filepath = rw_dir / filename
+    tool_component = derived_filename_component(tool_name, fallback="tool")
+    filename = f"feedback_{timestamp}_{tool_component}.json"
+    filepath = rw_root / filename
+    if filepath.is_symlink() or not filepath.resolve(strict=False).is_relative_to(rw_root):
+        return None
     try:
         filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
         return filepath

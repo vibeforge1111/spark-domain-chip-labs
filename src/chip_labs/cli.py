@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 from . import __version__
+from .filename_identity import derived_filename_component
 from .lab_hooks import (
     generate_packets,
     generate_watchtower_pages,
@@ -113,10 +114,11 @@ def _write_discovery_cluster_materialization(
 
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
+    output_root = output_path.resolve(strict=True)
     cluster_packets = list(cluster_bundle.get("cluster_packets", []))
     written_files: list[str] = []
 
-    readme_path = output_path / "README.md"
+    readme_path = _materialization_output_path(output_root, "README.md")
     readme_path.write_text(
         format_discovery_program_markdown(cluster_bundle, title=index_title),
         encoding="utf-8",
@@ -124,8 +126,12 @@ def _write_discovery_cluster_materialization(
     written_files.append(str(readme_path))
 
     for index, cluster_packet in enumerate(cluster_packets, start=1):
-        cluster_id = str(cluster_packet.get("cluster_id", f"cluster-{index:02d}"))
-        file_path = output_path / f"{index:02d}_{cluster_id}.json"
+        cluster_id = cluster_packet.get("cluster_id", f"cluster-{index:02d}")
+        cluster_component = derived_filename_component(cluster_id, fallback="cluster")
+        file_path = _materialization_output_path(
+            output_root,
+            f"{index:02d}_{cluster_component}.json",
+        )
         file_path.write_text(json.dumps(cluster_packet, indent=2, default=str), encoding="utf-8")
         written_files.append(str(file_path))
 
@@ -134,6 +140,16 @@ def _write_discovery_cluster_materialization(
         "file_count": len(written_files),
         "files": written_files,
     }
+
+
+def _materialization_output_path(output_root: Path, filename: str) -> Path:
+    candidate = output_root / filename
+    if candidate.is_symlink():
+        raise ValueError("invalid materialization output path")
+    resolved = candidate.resolve(strict=False)
+    if resolved == output_root or not resolved.is_relative_to(output_root):
+        raise ValueError("invalid materialization output path")
+    return resolved
 
 
 def _summarize_discovery_cluster_directory(directory: str | Path) -> dict[str, Any]:
