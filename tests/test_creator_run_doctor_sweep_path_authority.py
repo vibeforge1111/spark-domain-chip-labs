@@ -97,7 +97,10 @@ def test_doctor_sweep_rejects_symlink_escape(tmp_path: Path) -> None:
     assert _score(outside) == 1
 
 
-@pytest.mark.parametrize("relative_path", [None, 7, {}, [], "", "   ", "."])
+@pytest.mark.parametrize(
+    "relative_path",
+    [None, 7, {}, [], "", "   ", ".", "line\nbreak.json", "\x1b[31mfile.json"],
+)
 def test_doctor_sweep_rejects_non_identity_paths(
     tmp_path: Path,
     relative_path: object,
