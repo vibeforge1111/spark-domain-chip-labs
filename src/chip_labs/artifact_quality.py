@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import re
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 from datetime import date
 import hashlib
 import json
+import unicodedata
 
 
 CLAIM_BOUNDARY = "artifact_quality local review only"
@@ -650,11 +651,27 @@ def _expectation_check(
     }
 
 
-def _resolve_run_path(run_path: Path, relative_path: str) -> Path:
-    path = run_path / relative_path
-    if not path.exists():
-        raise FileNotFoundError(f"{relative_path} does not exist in {run_path}")
-    return path
+def _resolve_run_path(run_path: Path, relative_path: object) -> Path:
+    if (
+        not isinstance(relative_path, str)
+        or not relative_path.strip()
+        or len(relative_path) > 1024
+        or any(unicodedata.category(character) == "Cc" for character in relative_path)
+    ):
+        raise ValueError("invalid run artifact path")
+
+    path = Path(relative_path)
+    windows_path = PureWindowsPath(relative_path)
+    if path.is_absolute() or windows_path.drive or windows_path.root or ".." in path.parts:
+        raise ValueError("invalid run artifact path")
+
+    root = Path(run_path).resolve()
+    resolved = (root / path).resolve()
+    if resolved == root or not resolved.is_relative_to(root):
+        raise ValueError("invalid run artifact path")
+    if not resolved.is_file():
+        raise FileNotFoundError("run artifact does not exist")
+    return resolved
 
 
 def _benchmark_provenance(run_path: Path, relative_paths: list[str]) -> dict[str, Any]:

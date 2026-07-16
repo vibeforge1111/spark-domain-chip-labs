@@ -130,3 +130,19 @@ def test_build_doctrine_digest_rejects_leaf_symlink_escape(tmp_path: Path) -> No
         intelligence_server.build_doctrine_digest(chip_path)
 
     assert outside.read_text(encoding="utf-8") == "do not replace"
+
+
+def test_build_context_rejects_leaf_symlink_escape(
+    tmp_path: Path,
+    minimal_intelligence: None,
+) -> None:
+    chip_path = tmp_path / "chip"
+    outside = tmp_path / "outside.json"
+    chip_path.mkdir()
+    outside.write_text('{"keep": true}', encoding="utf-8")
+    (chip_path / "chip_context.json").symlink_to(outside)
+
+    with pytest.raises(ValueError, match=r"^invalid chip output path$"):
+        intelligence_server.build_context(chip_path)
+
+    assert outside.read_text(encoding="utf-8") == '{"keep": true}'

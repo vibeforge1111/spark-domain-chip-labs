@@ -642,6 +642,25 @@ def _score_relevance(query: str, text: str) -> float:
 # Build skill (Markdown deliverable)
 # ---------------------------------------------------------------------------
 
+def _resolve_chip_output_path(chip_path: Path, filename: str) -> Path:
+    try:
+        root = Path(chip_path).resolve(strict=True)
+    except (OSError, RuntimeError) as exc:
+        raise ValueError("invalid chip output path") from exc
+    if not root.is_dir():
+        raise ValueError("invalid chip output path")
+
+    candidate = root / filename
+    if candidate.is_symlink():
+        raise ValueError("invalid chip output path")
+    try:
+        resolved = candidate.resolve(strict=False)
+    except (OSError, RuntimeError) as exc:
+        raise ValueError("invalid chip output path") from exc
+    if resolved == root or not resolved.is_relative_to(root):
+        raise ValueError("invalid chip output path")
+    return resolved
+
 def build_skill(chip_path: Path) -> Path:
     """Generate chip_skill.md following the skill template.
 
@@ -756,7 +775,7 @@ These are the dimensions the chip explores during research:
 Current: {intel.current_score}/100 ({intel.verdict})
 """
 
-    output_path = chip_path / "chip_skill.md"
+    output_path = _resolve_chip_output_path(chip_path, "chip_skill.md")
     output_path.write_text(skill_content, encoding="utf-8")
     return output_path
 
@@ -778,7 +797,7 @@ def build_context(chip_path: Path) -> Path:
     intel = extract_intelligence(chip_path)
     data = asdict(intel)
 
-    output_path = chip_path / "chip_context.json"
+    output_path = _resolve_chip_output_path(chip_path, "chip_context.json")
     output_path.write_text(
         json.dumps(data, indent=2, default=str), encoding="utf-8"
     )
@@ -815,7 +834,7 @@ def build_doctrine_digest(chip_path: Path) -> Path:
     else:
         content += "No doctrines extracted yet. Run the researcher loop to accumulate intelligence.\n"
 
-    output_path = chip_path / "chip_doctrine_digest.md"
+    output_path = _resolve_chip_output_path(chip_path, "chip_doctrine_digest.md")
     output_path.write_text(content, encoding="utf-8")
     return output_path
 
