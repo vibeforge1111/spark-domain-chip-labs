@@ -29,6 +29,7 @@ RELEASE_COMMANDS = [
     "chip-labs creator-system-production-readiness --fail-on-blocked",
     "chip-labs creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn",
 ]
+GIT_COMMAND_TIMEOUT_SECONDS = 30
 
 
 def build_creator_system_release_evidence(
@@ -269,8 +270,9 @@ def _git_lines(repo_path: Path, *args: str) -> list[str]:
             capture_output=True,
             text=True,
             check=False,
+            timeout=GIT_COMMAND_TIMEOUT_SECONDS,
         )
-    except OSError:
+    except (OSError, subprocess.TimeoutExpired):
         return []
     if result.returncode != 0:
         return []
