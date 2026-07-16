@@ -28,7 +28,18 @@ def _brief(**overrides: Any) -> dict[str, Any]:
 
 @pytest.mark.parametrize(
     "domain_id",
-    [None, 7, "", "../escape", "9starts-with-digit", "class", "a.b", "-dash", "a" * 65],
+    [
+        None,
+        7,
+        "",
+        "../escape",
+        "9starts-with-digit",
+        "class",
+        "con",
+        "a.b",
+        "-dash",
+        "a" * 65,
+    ],
 )
 def test_scaffold_rejects_nonportable_domain_identity_before_writing(
     tmp_path: Path,
@@ -70,13 +81,14 @@ def test_scaffold_rejects_non_text_source_shapes(
 
 
 def test_scaffold_encodes_adversarial_text_as_data_in_every_output_context(
+    monkeypatch: pytest.MonkeyPatch,
     tmp_path: Path,
 ) -> None:
     marker = tmp_path / "executed.txt"
+    monkeypatch.chdir(tmp_path)
     payload = (
-        '"""\n__import__("pathlib").Path('
-        + repr(str(marker))
-        + ').write_text("owned")\n# <script>alert(1)</script> `code`'
+        '"""\n__import__("pathlib").Path("executed.txt").write_text("owned")'
+        "\n# <script>alert(1)</script> `code`"
     )
     brief = _brief(
         domain_name=payload,
@@ -91,7 +103,11 @@ def test_scaffold_encodes_adversarial_text_as_data_in_every_output_context(
     python_sources = sorted(chip_dir.rglob("*.py"))
     assert python_sources
     for path in python_sources:
-        ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        ast.parse(
+            path.read_text(encoding="utf-8"),
+            filename=str(path),
+            feature_version=(3, 10),
+        )
     tomllib.loads((chip_dir / "pyproject.toml").read_text(encoding="utf-8"))
 
     evaluate_namespace: dict[str, Any] = {}
