@@ -108,7 +108,10 @@ def test_scaffold_encodes_adversarial_text_as_data_in_every_output_context(
             filename=str(path),
             feature_version=(3, 10),
         )
-    tomllib.loads((chip_dir / "pyproject.toml").read_text(encoding="utf-8"))
+    project = tomllib.loads(
+        (chip_dir / "pyproject.toml").read_text(encoding="utf-8")
+    )
+    assert project["build-system"]["build-backend"] == "setuptools.build_meta"
 
     evaluate_namespace: dict[str, Any] = {}
     exec(

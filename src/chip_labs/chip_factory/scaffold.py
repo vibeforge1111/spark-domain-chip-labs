@@ -353,7 +353,7 @@ def _gen_pyproject(brief: dict[str, Any]) -> str:
 
     return f'''[build-system]
 requires = ["setuptools>=68"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "domain-chip-{domain_id}"
