@@ -16,6 +16,7 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import logging
 import re
 import time
 from dataclasses import dataclass, field
@@ -33,6 +34,8 @@ from ..chip_factory import (
 )
 from ..lab_hooks import run_suggest
 from ..quality_rubric import score_chip
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -746,7 +749,11 @@ class RecursiveLoopController:
                 recent_mutations=None,
                 chip_search_dir=chip_path.parent,
             )
-        except Exception:
+        except Exception as exc:
+            logger.warning(
+                "Suggestion generation failed (%s)",
+                type(exc).__name__,
+            )
             suggestions = []
 
         research_dir = chip_path / "research" / "exploratory_frontier"

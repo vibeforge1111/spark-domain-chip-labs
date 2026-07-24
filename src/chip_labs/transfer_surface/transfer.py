@@ -183,15 +183,14 @@ def _extract_scoring_model_patterns(
     chip_path: Path,
     chip_name: str,
     evidence_strength: float,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Scan src/ for additive scoring model patterns."""
     patterns: list[TransferPattern] = []
-    src_text = _collect_text(chip_path, ["src/**/*.py"])
-
     # Detect dimension dicts  -- e.g.  DIMENSIONS = { "axis": { "val": score } }
-    if "dimensions" in src_text or "dim_values" in src_text or "dimension" in src_text:
-        has_pair = "pair_bonus" in src_text or "pair_bonuses" in src_text
-        has_system = "system_bonus" in src_text or "system_bonuses" in src_text
+    if "dimensions" in all_text or "dim_values" in all_text or "dimension" in all_text:
+        has_pair = "pair_bonus" in all_text or "pair_bonuses" in all_text
+        has_system = "system_bonus" in all_text or "system_bonuses" in all_text
         impl: dict[str, Any] = {
             "has_dimensions": True,
             "has_pair_bonuses": has_pair,
@@ -223,6 +222,7 @@ def _extract_loop_design_patterns(
     chip_name: str,
     evidence_strength: float,
     project: dict[str, Any] | None,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Extract loop design patterns from project.json."""
     patterns: list[TransferPattern] = []
@@ -255,7 +255,6 @@ def _extract_loop_design_patterns(
             ))
 
     # Agent cooldown / retirement patterns (startup-yc specific but universal)
-    all_text = _collect_text(chip_path, ["src/**/*.py", "docs/**/*.md"])
     if "cooldown" in all_text or "retirement" in all_text:
         patterns.append(TransferPattern(
             pattern_id=_pattern_id(chip_name, "loop_design", "cooldown"),
@@ -293,13 +292,10 @@ def _extract_evidence_strategy_patterns(
     chip_path: Path,
     chip_name: str,
     evidence_strength: float,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Extract evidence lane configuration patterns."""
     patterns: list[TransferPattern] = []
-    all_text = _collect_text(chip_path, [
-        "src/**/*.py", "docs/**/*.md", "README.md", "obsidian-vault/**/*.md",
-    ])
-
     lanes_found: list[str] = []
     for lane in ("research_grounded", "benchmark_grounded", "exploratory_frontier", "realworld_validated"):
         if lane in all_text or lane.replace("_", "-") in all_text:
@@ -461,11 +457,10 @@ def _extract_promotion_gate_patterns(
     chip_name: str,
     evidence_strength: float,
     project: dict[str, Any] | None,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Extract promotion threshold / gate configuration."""
     patterns: list[TransferPattern] = []
-    all_text = _collect_text(chip_path, ["src/**/*.py", "docs/**/*.md"])
-
     # Look for promotion thresholds in code or config
     if "promot" in all_text or "graduat" in all_text or "threshold" in all_text:
         impl: dict[str, Any] = {"pattern": "promotion_gate"}
@@ -505,11 +500,10 @@ def _extract_contradiction_detection_patterns(
     chip_path: Path,
     chip_name: str,
     evidence_strength: float,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Extract contradiction detection patterns."""
     patterns: list[TransferPattern] = []
-    all_text = _collect_text(chip_path, ["src/**/*.py", "docs/**/*.md"])
-
     if "contradiction" in all_text:
         has_tags = "tag" in all_text and "contradiction" in all_text
         patterns.append(TransferPattern(
@@ -645,21 +639,44 @@ def extract_patterns(chip_path: Path) -> list[TransferPattern]:
     project = _read_json(chip_path / "spark-researcher.project.json")
 
     # Extract all pattern types
+    all_text = _collect_text(chip_path, [
+        "src/**/*.py",
+        "docs/**/*.md",
+        "README.md",
+        "obsidian-vault/**/*.md",
+    ])
     all_patterns: list[TransferPattern] = []
     all_patterns.extend(
-        _extract_scoring_model_patterns(chip_path, chip_name, evidence_strength)
+        _extract_scoring_model_patterns(chip_path, chip_name, evidence_strength, all_text)
     )
     all_patterns.extend(
-        _extract_loop_design_patterns(chip_path, chip_name, evidence_strength, project)
+        _extract_loop_design_patterns(
+            chip_path,
+            chip_name,
+            evidence_strength,
+            project,
+            all_text,
+        )
     )
     all_patterns.extend(
-        _extract_evidence_strategy_patterns(chip_path, chip_name, evidence_strength)
+        _extract_evidence_strategy_patterns(chip_path, chip_name, evidence_strength, all_text)
     )
     all_patterns.extend(
-        _extract_promotion_gate_patterns(chip_path, chip_name, evidence_strength, project)
+        _extract_promotion_gate_patterns(
+            chip_path,
+            chip_name,
+            evidence_strength,
+            project,
+            all_text,
+        )
     )
     all_patterns.extend(
-        _extract_contradiction_detection_patterns(chip_path, chip_name, evidence_strength)
+        _extract_contradiction_detection_patterns(
+            chip_path,
+            chip_name,
+            evidence_strength,
+            all_text,
+        )
     )
     all_patterns.extend(
         _extract_research_pipeline_patterns(

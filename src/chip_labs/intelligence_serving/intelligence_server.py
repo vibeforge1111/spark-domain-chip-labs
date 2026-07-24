@@ -450,9 +450,12 @@ def _extract_benchmarks(chip_path: Path) -> list[dict[str, Any]]:
     for fp in iter_bounded_files([bench_dir], suffixes={".json"}, budget=budget):
         data = _load_json_safe(fp, budget=budget)
         if isinstance(data, dict):
+            score = data.get("score")
+            if score is None:
+                score = data.get("result", 0)
             benchmarks.append({
                 "name": data.get("name") or data.get("title") or fp.stem,
-                "score": data.get("score") or data.get("result", 0),
+                "score": score,
                 "date": data.get("date") or data.get("timestamp") or "",
             })
 

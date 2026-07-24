@@ -13,11 +13,14 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import logging
 import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -441,6 +444,11 @@ class ChipMCPServer:
                     "focus": focus,
                 })
             except Exception as exc:
+                logger.warning(
+                    "Chip advice failed for %s (%s)",
+                    getattr(chip, "chip_name", "unknown"),
+                    type(exc).__name__,
+                )
                 failures.append({
                     "chip_name": getattr(chip, "chip_name", "unknown"),
                     "error_type": type(exc).__name__,

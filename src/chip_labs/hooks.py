@@ -318,14 +318,18 @@ def _load_portfolio_safe() -> list[Any]:
                             return _load_from_cache_fh(fh)
                         except (json.JSONDecodeError, OSError):
                             pass
-    except OSError as exc:
-        logger.warning("Failed to cache portfolio: %s", exc)
+    except (OSError, json.JSONDecodeError, KeyError, ValueError) as exc:
+        logger.debug(
+            "Cache load failed (%s); falling back to full load",
+            type(exc).__name__,
+        )
 
     # Full load (expensive -- runs V3 deep eval)
     try:
         from .intelligence_serving.chip_runtime import load_portfolio
         portfolio = load_portfolio(min_score=MIN_QUALITY_SCORE)
-    except (ImportError, Exception):
+    except (ImportError, OSError) as exc:
+        logger.warning("Portfolio load failed (%s)", type(exc).__name__)
         return []
 
     # Write cache for next hook call
@@ -860,7 +864,7 @@ def main() -> None:
     input_data = _read_stdin()
     result = handler(input_data)
 
-    if result:
+    if result is not None:
         _write_stdout(result)
 
 
