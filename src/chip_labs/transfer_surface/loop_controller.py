@@ -252,6 +252,24 @@ def _seed_research_sources(chip_path: Path, brief: dict[str, Any]) -> int:
     return len(source_types)
 
 
+def _is_synthetic_json(path: Path) -> bool:
+    """Return whether a JSON evidence file explicitly marks itself synthetic."""
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        return isinstance(payload, dict) and payload.get("synthetic") is True
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return False
+
+
+def _is_synthetic_markdown(path: Path) -> bool:
+    """Return whether a Markdown evidence file starts with the synthetic marker."""
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            return handle.read(64).lstrip().startswith("<!-- synthetic: true -->")
+    except (OSError, UnicodeError):
+        return False
+
+
 def _seed_benchmark_baseline(chip_path: Path) -> bool:
     """Create a baseline benchmark result document.
 
@@ -267,15 +285,16 @@ def _seed_benchmark_baseline(chip_path: Path) -> bool:
 
     baseline = {
         "benchmark_id": "baseline-v1",
-        "description": "Baseline benchmark with empty mutations",
+        "synthetic": True,
+        "description": "Synthetic scaffold placeholder; no benchmark has run yet.",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "mutations": {},
         "result": {
-            "score": 50,
+            "score": None,
             "evidence_lane": "benchmark_grounded",
-            "verdict": "defer",
+            "verdict": None,
         },
-        "notes": "Auto-generated baseline by loop controller research seeder.",
+        "notes": "Replace this synthetic placeholder with a real benchmark result.",
     }
 
     baseline_path.write_text(
@@ -798,18 +817,27 @@ class RecursiveLoopController:
             lane_dir = chip_path / "research" / lane
             lane_dir.mkdir(parents=True, exist_ok=True)
 
-            # Count existing files
-            existing = list(lane_dir.glob("*.md")) + list(lane_dir.glob("*.json"))
+            # Synthetic scaffolds keep the lane visible but do not count as evidence.
+            existing = [
+                path
+                for path in lane_dir.glob("*.md")
+                if not _is_synthetic_markdown(path)
+            ] + [
+                path
+                for path in lane_dir.glob("*.json")
+                if not _is_synthetic_json(path)
+            ]
             if len(existing) < 2:
-                # Create an evidence note
-                note_path = lane_dir / f"evidence_note_{self._iteration:03d}.md"
+                # Keep one idempotent placeholder until real evidence replaces it.
+                note_path = lane_dir / "evidence_note_synthetic.md"
                 if not note_path.exists():
                     note_path.write_text(
+                        "<!-- synthetic: true -->\n"
                         f"# Evidence Note (Iteration {self._iteration})\n\n"
                         f"Lane: {lane}\n"
                         f"Generated at: {datetime.now(timezone.utc).isoformat()}\n\n"
                         f"## Findings\n\n"
-                        f"_Placeholder for {lane.replace('_', ' ')} evidence._\n",
+                        f"_Placeholder for {lane.replace('_', ' ')} evidence. Replace with real domain research._\n",
                         encoding="utf-8",
                     )
                     evidence_count += 1
