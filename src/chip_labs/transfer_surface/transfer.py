@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import os
 import tempfile
 from dataclasses import dataclass, field
@@ -26,6 +27,8 @@ from pathlib import Path
 from typing import Any
 
 from ..quality_rubric import score_chip
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -1205,8 +1208,12 @@ def apply_pattern(target_chip_path: Path, pattern: TransferPattern) -> bool:
         if result:
             pattern.times_successful += 1
         return result
-    except (OSError, RuntimeError, ValueError):
-        pattern.times_applied += 1
+    except (OSError, RuntimeError, ValueError) as exc:
+        logger.warning(
+            "Pattern application failed for %s (%s)",
+            pattern.pattern_type,
+            type(exc).__name__,
+        )
         return False
 
 

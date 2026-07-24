@@ -703,7 +703,12 @@ class RecursiveLoopController:
             gap = fixable[0]
             try:
                 succeeded = gap.fix_fn(chip_path)
-            except Exception:
+            except Exception as exc:
+                logger.warning(
+                    "Auto-fix failed for %s (%s)",
+                    gap.fix_description,
+                    type(exc).__name__,
+                )
                 succeeded = False
 
             if succeeded:
@@ -896,9 +901,11 @@ class RecursiveLoopController:
                 f"Skill regeneration: Built intelligence artifacts "
                 f"({doctrine_count} doctrines, {evidence_files} evidence files)"
             )
-        except Exception:
-            # Non-fatal: intelligence_server may not be available
-            pass
+        except Exception as exc:
+            logger.debug(
+                "Skill regeneration unavailable (%s)",
+                type(exc).__name__,
+            )
 
         t_end = _now_ms()
 
