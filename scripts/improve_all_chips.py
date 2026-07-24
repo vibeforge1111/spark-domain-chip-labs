@@ -652,11 +652,11 @@ def improve_chip(chip: Path) -> dict:
 
 
 def main() -> None:
-    only = None
-    if "--chip" in sys.argv:
-        idx = sys.argv.index("--chip")
-        if idx + 1 < len(sys.argv):
-            only = sys.argv[idx + 1]
+    import argparse
+    parser = argparse.ArgumentParser(description="Improve discovered domain chips")
+    parser.add_argument("--chip", help="Only improve the named chip")
+    args = parser.parse_args()
+    only = args.chip
 
     chips = _discover_chips(only)
     if not chips:
