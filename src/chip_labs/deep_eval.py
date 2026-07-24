@@ -325,6 +325,8 @@ def _extract_timestamps(runs: list[dict[str, Any]]) -> list[datetime]:
                 # Try ISO format
                 ts = ts.replace("Z", "+00:00")
                 dt = datetime.fromisoformat(ts)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
                 timestamps.append(dt)
         except (ValueError, TypeError):
             pass
