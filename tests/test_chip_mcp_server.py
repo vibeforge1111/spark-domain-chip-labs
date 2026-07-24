@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import io
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -397,6 +398,15 @@ class TestChipSuggest:
             "error_type": "RuntimeError",
         }]
         assert "secret filesystem detail" not in json.dumps(result)
+
+
+def test_stdio_loop_ignores_non_object_json_requests() -> None:
+    server = ChipMCPServer()
+    stdout = io.StringIO()
+    server.run(stdin=io.BytesIO(b"[]\n{\"method\":\"tools/list\",\"id\":1}\n"), stdout=stdout)
+    rows = stdout.getvalue().splitlines()
+    assert len(rows) == 1
+    assert json.loads(rows[0])["id"] == 1
 
 
 # ---------------------------------------------------------------------------

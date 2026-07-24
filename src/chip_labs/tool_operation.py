@@ -203,9 +203,15 @@ def check_tool_operation(packet: dict[str, Any]) -> dict[str, Any]:
 def load_tool_operation_packet(path: str | Path) -> dict[str, Any]:
     """Load a tool-operation packet from JSON."""
 
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    packet_path = Path(path)
+    try:
+        data = json.loads(packet_path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise ValueError(f"Tool-operation packet not found: {packet_path}") from exc
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Failed to parse tool-operation packet at {packet_path}") from exc
     if not isinstance(data, dict):
-        raise ValueError(f"{path} must contain a JSON object")
+        raise ValueError(f"{packet_path} must contain a JSON object")
     return data
 
 

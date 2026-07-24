@@ -294,7 +294,7 @@ def _load_all_runs(chip_path: Path) -> list[dict[str, Any]]:
                         rid = entry.get("run_id", f"_telem_{len(runs)}")
                         if rid not in runs:
                             runs[rid] = entry
-        except (json.JSONDecodeError, OSError):
+        except (json.JSONDecodeError, OSError, AttributeError):
             pass
 
     return list(runs.values())
@@ -441,7 +441,7 @@ def check_manifest_structure(chip_path: Path) -> DimensionResult:
             frontier = manifest.get("frontier", {})
             if frontier.get("allowed_mutations") and manifest_score < 5.0:
                 manifest_score = min(manifest_score + 1.0, 5.0)
-        except (json.JSONDecodeError, OSError):
+        except (json.JSONDecodeError, OSError, AttributeError):
             pass
     details["manifest_score"] = manifest_score
     score += min(manifest_score, 5.0)
