@@ -234,7 +234,9 @@ def _should_skip_action(tool_name: str, tool_input: dict[str, Any]) -> bool:
 def _read_stdin() -> dict[str, Any]:
     """Read JSON from stdin (Claude Code hook protocol)."""
     try:
-        raw = sys.stdin.read()
+        raw = sys.stdin.read(1_048_577)
+        if len(raw) > 1_048_576:
+            return {}
         if raw.strip():
             return json.loads(raw)
     except (json.JSONDecodeError, OSError):
@@ -280,9 +282,10 @@ def _read_session_domain() -> dict[str, Any] | None:
         age = datetime.now(timezone.utc).timestamp() - _SESSION_DOMAIN_FILE.stat().st_mtime
         if age > _SESSION_DOMAIN_TTL:
             return None
-        return json.loads(_SESSION_DOMAIN_FILE.read_text(encoding="utf-8"))
+        payload = json.loads(_SESSION_DOMAIN_FILE.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return None
+    return payload if isinstance(payload, dict) else None
 
 
 def _load_portfolio_safe() -> list[Any]:
