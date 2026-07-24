@@ -662,13 +662,16 @@ def cmd_portfolio_v3(args: argparse.Namespace) -> None:
     print()
 
     ranking = summary.get("ranking", [])
-    print("Ranking:")
-    for i, (name, score) in enumerate(ranking, 1):
-        chip_data = report["chips"].get(name, {})
-        verdict = chip_data.get("verdict", "?")
-        flags = chip_data.get("anti_gaming_flags", [])
-        flag_str = f" [!{','.join(flags)}]" if flags else ""
-        print(f"  {i:2d}. {name}: {score}/100 ({verdict}){flag_str}")
+    if ranking:
+        print("Ranking:")
+        for i, (name, score) in enumerate(ranking, 1):
+            chip_data = report["chips"].get(name, {})
+            verdict = chip_data.get("verdict", "?")
+            flags = chip_data.get("anti_gaming_flags", [])
+            flag_str = f" [!{','.join(flags)}]" if flags else ""
+            print(f"  {i:2d}. {name}: {score}/100 ({verdict}){flag_str}")
+    else:
+        print("Ranking: no domain chips discovered")
 
     _write_output(args.output, report)
 
