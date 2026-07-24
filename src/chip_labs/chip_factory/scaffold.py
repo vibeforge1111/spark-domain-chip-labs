@@ -117,7 +117,34 @@ def _parse_simple_yaml(text: str) -> dict[str, Any]:
                         nv = nv.strip().strip('"').strip("'")
                         if nv.startswith("[") and nv.endswith("]"):
                             nv = [x.strip().strip('"').strip("'") for x in nv[1:-1].split(",")]
-                        nested[nk.strip()] = nv
+                            nested[nk.strip()] = nv
+                        elif not nv:
+                            sub: dict[str, Any] = {}
+                            k = j + 1
+                            while k < len(lines):
+                                sub_line = lines[k]
+                                sub_stripped = sub_line.strip()
+                                sub_indent = len(sub_line) - len(sub_line.lstrip())
+                                if not sub_stripped or sub_stripped.startswith("#"):
+                                    k += 1
+                                    continue
+                                if sub_indent <= next_indent:
+                                    break
+                                if ":" in sub_stripped:
+                                    sk, _, sv = sub_stripped.partition(":")
+                                    sv = sv.strip().strip('"').strip("'")
+                                    if sv.startswith("[") and sv.endswith("]"):
+                                        sv = [
+                                            item.strip().strip('"').strip("'")
+                                            for item in sv[1:-1].split(",")
+                                        ]
+                                    sub[sk.strip()] = sv
+                                k += 1
+                            nested[nk.strip()] = sub
+                            j = k
+                            continue
+                        else:
+                            nested[nk.strip()] = nv
                     j += 1
 
                 if items:
