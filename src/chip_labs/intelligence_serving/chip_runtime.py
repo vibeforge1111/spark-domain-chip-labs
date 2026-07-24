@@ -276,7 +276,10 @@ def _execute_subprocess(
             hook_name=hook_name,
             chip_name=chip.chip_name,
             success=False,
-            result={"error": str(exc)},
+            result={
+                "error": "hook_execution_failed",
+                "error_type": type(exc).__name__,
+            },
             confidence=0.0,
             execution_mode="subprocess",
         )
