@@ -17,6 +17,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import logging
 import os
 import sys
 import tempfile
@@ -27,6 +28,7 @@ from typing import Any
 
 from .filename_identity import derived_filename_component
 
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
 # File locking (cross-platform)
@@ -271,7 +273,7 @@ def _write_session_domain(selected_chips: list[Any], query: str) -> None:
         }
         _atomic_write(_SESSION_DOMAIN_FILE, json.dumps(data, indent=2))
     except OSError:
-        pass
+        logger.warning("Failed to persist session domain")
 
 
 def _read_session_domain() -> dict[str, Any] | None:
@@ -316,8 +318,8 @@ def _load_portfolio_safe() -> list[Any]:
                             return _load_from_cache_fh(fh)
                         except (json.JSONDecodeError, OSError):
                             pass
-    except OSError:
-        pass
+    except OSError as exc:
+        logger.warning("Failed to cache portfolio: %s", exc)
 
     # Full load (expensive -- runs V3 deep eval)
     try:
@@ -570,7 +572,8 @@ def _write_feedback_packet(
     try:
         rw_dir.mkdir(parents=True, exist_ok=True)
         rw_root = rw_dir.resolve(strict=True)
-    except OSError:
+    except OSError as exc:
+        logger.warning("Failed to create feedback directory: %s", exc)
         return None
     if not rw_root.is_relative_to(chip_root):
         return None
@@ -594,7 +597,8 @@ def _write_feedback_packet(
     try:
         filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
         return filepath
-    except OSError:
+    except OSError as exc:
+        logger.warning("Failed to write feedback packet: %s", exc)
         return None
 
 
