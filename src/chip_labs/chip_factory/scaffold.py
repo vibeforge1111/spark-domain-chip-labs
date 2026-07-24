@@ -10,6 +10,7 @@ import html
 import json
 import keyword
 import re
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -1114,7 +1115,19 @@ def scaffold_chip(
     output_dir = Path(output_dir)
 
     chip_dir = output_dir / f"domain-chip-{domain_id}"
+    created_here = not chip_dir.exists()
     chip_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        return _scaffold_chip_files(chip_dir=chip_dir, brief=brief, module=module)
+    except Exception:
+        if created_here:
+            shutil.rmtree(chip_dir, ignore_errors=True)
+        raise
+
+
+def _scaffold_chip_files(*, chip_dir: Path, brief: dict[str, Any], module: str) -> Path:
+    """Write a validated chip tree; the caller owns rollback for new directories."""
+    domain_id = brief["domain_id"]
 
     # 1. spark-chip.json (manifest)
     manifest = _gen_manifest(brief)
