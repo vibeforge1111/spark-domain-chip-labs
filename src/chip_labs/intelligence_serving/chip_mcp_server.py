@@ -418,6 +418,7 @@ class ChipMCPServer:
             chips = self._portfolio
 
         suggestions: list[dict[str, Any]] = []
+        failures: list[dict[str, str]] = []
         for chip in chips[:5]:
             try:
                 from .intelligence_server import extract_intelligence
@@ -439,10 +440,16 @@ class ChipMCPServer:
                     "suggestions": chip_suggestions,
                     "focus": focus,
                 })
-            except Exception:
-                pass
+            except Exception as exc:
+                failures.append({
+                    "chip_name": getattr(chip, "chip_name", "unknown"),
+                    "error_type": type(exc).__name__,
+                })
 
-        return {"suggestions": suggestions}
+        result: dict[str, Any] = {"suggestions": suggestions}
+        if failures:
+            result["failed_chips"] = failures
+        return result
 
     # -- MCP protocol -------------------------------------------------------
 

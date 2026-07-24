@@ -380,6 +380,24 @@ class TestChipSuggest:
             result = server._handle_chip_suggest({})
             assert len(result["suggestions"]) == 2
 
+    def test_reports_partial_failure_without_exception_message(self) -> None:
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+
+        with patch(
+            "chip_labs.intelligence_server.extract_intelligence",
+            side_effect=RuntimeError("secret filesystem detail"),
+        ):
+            result = server._handle_chip_suggest({"chip_name": "test-chip"})
+
+        assert result["suggestions"] == []
+        assert result["failed_chips"] == [{
+            "chip_name": "test-chip",
+            "error_type": "RuntimeError",
+        }]
+        assert "secret filesystem detail" not in json.dumps(result)
+
 
 # ---------------------------------------------------------------------------
 # TestChipQuery
