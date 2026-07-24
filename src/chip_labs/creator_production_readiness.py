@@ -30,13 +30,28 @@ def build_creator_system_production_readiness(
 ) -> dict[str, Any]:
     """Build a user-beta and standard-readiness packet without publication claims."""
 
+    if workspace_dir is None:
+        with tempfile.TemporaryDirectory(
+            prefix="creator-system-production-readiness-"
+        ) as temporary_workspace:
+            return build_creator_system_production_readiness(
+                workspace_dir=temporary_workspace,
+                startup_run_dir=startup_run_dir,
+                validation_plan_path=validation_plan_path,
+                generated_briefs_path=generated_briefs_path,
+                generated_summary_path=generated_summary_path,
+                product_runtime_review_path=product_runtime_review_path,
+                seeds=seeds,
+                variants_per_domain=variants_per_domain,
+            )
+
     root = repo_root()
     validation_plan = Path(validation_plan_path) if validation_plan_path else _default_validation_plan(root)
     generated_briefs = Path(generated_briefs_path) if generated_briefs_path else _default_generated_briefs(root)
     product_review = Path(product_runtime_review_path) if product_runtime_review_path else _default_product_review(root)
     startup_review = _default_startup_network_review(root)
 
-    workspace = Path(workspace_dir) if workspace_dir else _default_workspace()
+    workspace = Path(workspace_dir)
     workspace_clean_before = not workspace.exists() or not any(workspace.iterdir())
     workspace.mkdir(parents=True, exist_ok=True)
 
