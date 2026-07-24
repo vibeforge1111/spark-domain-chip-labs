@@ -258,8 +258,23 @@ def _fix_commands_defined(chip_path: Path) -> bool:
     project = _read_json(project_path)
     if project is None:
         project = {}
-    commands = project.get("commands", {})
-    has_eval = any(c.get("kind") == "chip-evaluate" for c in commands.values())
+    raw_commands = project.get("commands", {})
+    if isinstance(raw_commands, dict):
+        commands = raw_commands
+    elif isinstance(raw_commands, list):
+        commands = {
+            str(command.get("name") or command.get("kind") or f"command_{index}"): command
+            for index, command in enumerate(raw_commands)
+            if isinstance(command, dict)
+        }
+    else:
+        commands = {}
+    has_eval = any(
+        key == "evaluate"
+        or (isinstance(command, dict) and command.get("kind") == "chip-evaluate")
+        or (isinstance(command, str) and "evaluate" in command)
+        for key, command in commands.items()
+    )
     if has_eval:
         return True
     commands["evaluate"] = {"kind": "chip-evaluate"}

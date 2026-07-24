@@ -599,8 +599,11 @@ class ChipMCPServer:
 
             response = self._handle_request(request)
             if response:
-                output_stream.write(json.dumps(response) + "\n")
-                output_stream.flush()
+                try:
+                    output_stream.write(json.dumps(response) + "\n")
+                    output_stream.flush()
+                except BrokenPipeError:
+                    break
 
 
 # ---------------------------------------------------------------------------

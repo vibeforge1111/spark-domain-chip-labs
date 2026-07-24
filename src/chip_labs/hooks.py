@@ -626,7 +626,7 @@ def handle_session_start(input_data: dict[str, Any]) -> dict[str, Any]:
     # Use CWD or domain hint for chip selection
     cwd = input_data.get("cwd", "")
     domain_hint = os.environ.get(DOMAIN_HINT_ENV, "")
-    query = domain_hint or Path(cwd).name if cwd else ""
+    query = domain_hint or (Path(cwd).name if cwd else "")
 
     # For SessionStart, select chips with domain-aware matching.
     # Short domain hints (e.g. "startup") fail Jaccard against large chip texts,
