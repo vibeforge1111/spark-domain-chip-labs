@@ -10,13 +10,32 @@ Zero external dependencies (stdlib only).
 from __future__ import annotations
 
 import json
+import os
 import re
+import tempfile
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 from ..file_scan import ScanBudget, iter_bounded_files, read_text_bounded
+
+
+def _atomic_write_text(path: Path, content: str) -> None:
+    """Replace an intelligence deliverable without exposing partial content."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(content)
+        os.replace(temp_name, path)
+    except BaseException:
+        try:
+            os.unlink(temp_name)
+        except OSError:
+            pass
+        raise
 
 
 # ---------------------------------------------------------------------------
@@ -791,7 +810,7 @@ Current: {intel.current_score}/100 ({intel.verdict})
 """
 
     output_path = _resolve_chip_output_path(chip_path, "chip_skill.md")
-    output_path.write_text(skill_content, encoding="utf-8")
+    _atomic_write_text(output_path, skill_content)
     return output_path
 
 
@@ -813,9 +832,7 @@ def build_context(chip_path: Path) -> Path:
     data = asdict(intel)
 
     output_path = _resolve_chip_output_path(chip_path, "chip_context.json")
-    output_path.write_text(
-        json.dumps(data, indent=2, default=str), encoding="utf-8"
-    )
+    _atomic_write_text(output_path, json.dumps(data, indent=2, default=str))
     return output_path
 
 
@@ -850,7 +867,7 @@ def build_doctrine_digest(chip_path: Path) -> Path:
         content += "No doctrines extracted yet. Run the researcher loop to accumulate intelligence.\n"
 
     output_path = _resolve_chip_output_path(chip_path, "chip_doctrine_digest.md")
-    output_path.write_text(content, encoding="utf-8")
+    _atomic_write_text(output_path, content)
     return output_path
 
 
