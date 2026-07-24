@@ -182,7 +182,12 @@ The page below is sourced from the latest saved MiroFish portfolio export artifa
     if readout_path is not None:
         from ..mirofish.portfolio import format_portfolio_readout_markdown
 
-        readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        try:
+            readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"Invalid MiroFish portfolio readout JSON: {readout_path}") from exc
+        if not isinstance(readout_packet, dict):
+            raise ValueError(f"{readout_path} must contain a JSON object")
         export_body = format_portfolio_readout_markdown(
             readout_packet,
             title="MiroFish Portfolio Readout",
@@ -312,7 +317,12 @@ The page below is sourced from the latest saved MiroFish frontier export artifac
     if readout_path is not None:
         from ..mirofish.hybrid import format_frontier_readout_markdown
 
-        readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        try:
+            readout_packet = json.loads(readout_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"Invalid MiroFish frontier readout JSON: {readout_path}") from exc
+        if not isinstance(readout_packet, dict):
+            raise ValueError(f"{readout_path} must contain a JSON object")
         export_body = format_frontier_readout_markdown(
             readout_packet,
             title="MiroFish Frontier Readout",

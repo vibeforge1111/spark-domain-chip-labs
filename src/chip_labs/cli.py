@@ -1375,7 +1375,13 @@ def cmd_generated_multi_seed_run(args: argparse.Namespace) -> None:
     """Run generated multi-domain multi-seed validation from a briefs file."""
     from .creator_generator import run_multi_seed_generator_validation
 
-    briefs_payload = json.loads(Path(args.briefs).read_text(encoding="utf-8"))
+    briefs_path = Path(args.briefs)
+    try:
+        briefs_payload = json.loads(briefs_path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise SystemExit(f"--briefs file not found: {briefs_path}") from exc
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"--briefs is not valid JSON: {briefs_path}") from exc
     briefs = briefs_payload.get("briefs") if isinstance(briefs_payload, dict) else briefs_payload
     if not isinstance(briefs, list) or not briefs:
         raise SystemExit("--briefs must contain a non-empty JSON list or {'briefs': [...]}")
