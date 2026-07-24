@@ -206,6 +206,19 @@ class TestChipPortfolio:
         scores = [c["quality_score"] for c in result["chips"]]
         assert scores == sorted(scores, reverse=True)
 
+    def test_tied_quality_is_sorted_by_chip_name(self) -> None:
+        server = ChipMCPServer()
+        portfolio = _make_portfolio()
+        for chip in portfolio:
+            chip.quality_score = 65.0
+        server._portfolio = list(reversed(portfolio))
+        server._last_load = 9999999999
+        result = server._handle_chip_portfolio({})
+        assert [chip["chip_name"] for chip in result["chips"]] == [
+            "startup-yc",
+            "test-chip",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # TestFindChip

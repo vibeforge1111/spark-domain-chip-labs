@@ -186,7 +186,7 @@ def _check_manifest_v2(chip_path: Path) -> dict[str, bool]:
         }
 
     try:
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     except (json.JSONDecodeError, OSError):
         return {
             c["id"]: False

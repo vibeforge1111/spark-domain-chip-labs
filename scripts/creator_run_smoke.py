@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from chip_labs.creator_run import validate_creator_run
 
 
-def main() -> None:
+def main() -> int:
     parser = argparse.ArgumentParser(description="Smoke-check an adaptive creator-run workspace.")
     parser.add_argument("run_dir", type=str, help="Creator-run directory.")
     parser.add_argument("--output", type=str, default=None, help="Optional output JSON file.")
@@ -30,8 +30,14 @@ def main() -> None:
         output_path.write_text(output + "\n", encoding="utf-8")
     else:
         print(output)
+    automation = result.get("automation") if isinstance(result, dict) else None
+    if isinstance(automation, dict):
+        try:
+            return int(automation.get("ci_exit_code", 0))
+        except (TypeError, ValueError):
+            return 0
+    return 0
 
 
 if __name__ == "__main__":
-    main()
-
+    sys.exit(main())
