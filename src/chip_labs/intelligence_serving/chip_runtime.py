@@ -253,17 +253,16 @@ def _execute_subprocess(
                 cwd=str(chip.chip_path),
             )
 
-        if proc.returncode == 0:
-            output = _parse_hook_output(output_path, proc.stdout)
-            return HookResult(
-                hook_name=hook_name,
-                chip_name=chip.chip_name,
-                success=True,
-                result=output,
-                confidence=chip.quality_score / 100.0,
-                execution_mode="subprocess",
-            )
-        else:
+            if proc.returncode == 0:
+                output = _parse_hook_output(output_path, proc.stdout)
+                return HookResult(
+                    hook_name=hook_name,
+                    chip_name=chip.chip_name,
+                    success=True,
+                    result=output,
+                    confidence=chip.quality_score / 100.0,
+                    execution_mode="subprocess",
+                )
             return HookResult(
                 hook_name=hook_name,
                 chip_name=chip.chip_name,
