@@ -240,7 +240,11 @@ def _has_all(value: Any, required: tuple[str, ...]) -> bool:
 def _int_value(value: Any, *, default: int) -> int:
     if isinstance(value, bool):
         return default
-    return value if isinstance(value, int) else default
+    if isinstance(value, int):
+        return value
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    return default
 
 
 def _next_actions(verdict: str) -> list[str]:
