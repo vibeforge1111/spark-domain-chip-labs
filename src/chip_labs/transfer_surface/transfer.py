@@ -18,6 +18,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import tempfile
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -133,19 +135,35 @@ def _read_json(path: Path) -> dict[str, Any] | None:
 
 def _write_json(path: Path, data: dict[str, Any]) -> None:
     """Write a JSON file with consistent formatting."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
+    _atomic_write_text(
+        path,
         json.dumps(data, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
     )
 
 
-def _ensure_file(path: Path, content: str) -> None:
+def _atomic_write_text(path: Path, content: str) -> None:
+    """Replace a text file atomically without sharing a fixed temp path."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(content)
+        os.replace(temp_name, path)
+    except BaseException:
+        try:
+            os.unlink(temp_name)
+        except OSError:
+            pass
+        raise
+
+
+def _ensure_file(path: Path, content: str) -> bool:
     """Create a file only if it does not already exist."""
     if path.exists():
-        return
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content, encoding="utf-8")
+        return False
+    _atomic_write_text(path, content)
+    return True
 
 
 def _ensure_key(data: dict, key: str, default: Any) -> bool:
@@ -876,7 +894,7 @@ def _apply_scoring_model(target_chip_path: Path, pattern: TransferPattern) -> bo
 
     transfer_marker = f"# Transfer: scoring_model from {pattern.source_chip}"
     if transfer_marker in existing:
-        return True  # Already applied
+        return False
 
     # Add pair bonus / system bonus templates if missing
     additions: list[str] = [f"\n{transfer_marker}\n"]
@@ -899,9 +917,10 @@ def _apply_scoring_model(target_chip_path: Path, pattern: TransferPattern) -> bo
 
     if len(additions) > 1:  # More than just the marker
         new_content = existing + "\n" + "\n".join(additions)
-        eval_file.write_text(new_content, encoding="utf-8")
+        _atomic_write_text(eval_file, new_content)
+        return True
 
-    return True
+    return False
 
 
 def _apply_loop_design(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -941,7 +960,7 @@ def _apply_loop_design(target_chip_path: Path, pattern: TransferPattern) -> bool
         project["guardrails"] = guardrails
         _write_json(project_path, project)
 
-    return True
+    return changed
 
 
 def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -954,7 +973,7 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
         docs_dir = target_chip_path / "docs"
         docs_dir.mkdir(parents=True, exist_ok=True)
         domain = target_chip_path.name.replace("domain-chip-", "")
-        _ensure_file(
+        return _ensure_file(
             docs_dir / "source_registry.md",
             f"# Source Registry\n\n"
             f"Primary source map for the **{domain}** domain.\n"
@@ -964,7 +983,6 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"|--------|------|-----|-------|\n"
             f"| (add sources here) | research | - | - |\n",
         )
-        return True
 
     # Evidence lanes pattern
     if "lanes" in impl:
@@ -973,7 +991,7 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
         docs_dir.mkdir(parents=True, exist_ok=True)
         lanes = impl.get("lanes", [])
         lane_text = "\n".join(f"- **{lane}**" for lane in lanes)
-        _ensure_file(
+        return _ensure_file(
             docs_dir / "evidence_lanes.md",
             f"# Evidence Lanes\n\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
@@ -983,13 +1001,12 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"- research_grounded -> benchmark_grounded (when quantitatively validated)\n"
             f"- benchmark_grounded -> realworld_validated (when field-tested)\n",
         )
-        return True
 
     # Walk-forward validation pattern
     if pat == "walk_forward_validation":
         docs_dir = target_chip_path / "docs"
         docs_dir.mkdir(parents=True, exist_ok=True)
-        _ensure_file(
+        return _ensure_file(
             docs_dir / "walk_forward_validation.md",
             f"# Walk-Forward Validation\n\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
@@ -1001,7 +1018,6 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"4. Aggregate prediction accuracy\n\n"
             f"This prevents look-ahead bias in evaluation.\n",
         )
-        return True
 
     # Category-specific patterns -- add as docs
     if pat in (
@@ -1011,7 +1027,7 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
     ):
         docs_dir = target_chip_path / "docs"
         docs_dir.mkdir(parents=True, exist_ok=True)
-        _ensure_file(
+        return _ensure_file(
             docs_dir / f"{pat}.md",
             f"# {pat.replace('_', ' ').title()}\n\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
@@ -1020,9 +1036,8 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"## Implementation Notes\n\n"
             f"TODO: Adapt this pattern for this chip's domain.\n",
         )
-        return True
 
-    return True
+    return False
 
 
 def _apply_promotion_gate(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1054,7 +1069,7 @@ def _apply_promotion_gate(target_chip_path: Path, pattern: TransferPattern) -> b
         project["guardrails"] = guardrails
         _write_json(project_path, project)
 
-    return True
+    return changed
 
 
 def _apply_contradiction_detection(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1062,7 +1077,7 @@ def _apply_contradiction_detection(target_chip_path: Path, pattern: TransferPatt
     src_dir = target_chip_path / "src"
     src_dir.mkdir(parents=True, exist_ok=True)
 
-    _ensure_file(
+    created = _ensure_file(
         src_dir / "contradiction_detector.py",
         f'"""Contradiction detection stub.\n\n'
         f"Pattern transferred from {pattern.source_chip}.\n"
@@ -1089,7 +1104,7 @@ def _apply_contradiction_detection(target_chip_path: Path, pattern: TransferPatt
         f"            triggered.append(tag)\n"
         f"    return triggered\n",
     )
-    return True
+    return created
 
 
 def _apply_research_pipeline(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1123,22 +1138,10 @@ def _apply_research_pipeline(target_chip_path: Path, pattern: TransferPattern) -
             project["candidate_trials"] = trials
             changed = True
 
-    # Ensure minimum 3 trials
-    trials = project.get("candidate_trials", [])
-    while len(trials) < 3:
-        trials.append({
-            "candidate_id": f"variant-{len(trials)}",
-            "candidate_summary": f"Variant {len(trials)}",
-            "mutations": {},
-        })
-        changed = True
-    if changed:
-        project["candidate_trials"] = trials
-
     if changed:
         _write_json(project_path, project)
 
-    return True
+    return changed
 
 
 def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1148,7 +1151,7 @@ def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -
 
     domain = target_chip_path.name.replace("domain-chip-", "")
 
-    _ensure_file(
+    index_created = _ensure_file(
         vault_dir / "index.md",
         f"# {domain} Knowledge Vault\n\n"
         f"Watchtower-generated pages for the {domain} domain.\n"
@@ -1159,7 +1162,7 @@ def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -
         f"- [[Research Log]] -- Evidence gathering history\n",
     )
 
-    _ensure_file(
+    leaderboard_created = _ensure_file(
         vault_dir / "Leaderboard.md",
         "# Leaderboard\n\n"
         "## Top Candidates\n\n"
@@ -1168,7 +1171,7 @@ def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -
         "| 1    | Baseline  | 50    | benchmark_grounded |\n",
     )
 
-    return True
+    return index_created or leaderboard_created
 
 
 # Dispatch table for pattern application
