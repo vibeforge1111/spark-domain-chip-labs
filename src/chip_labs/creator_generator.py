@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -211,6 +212,29 @@ def generate_creator_system_from_brief(
     domain_name = str(brief["domain_name"])
     domain_slug = _slugify(str(brief.get("domain_id") or domain_name))
     run_dir = workspace_path / f"{domain_slug}-creator-run"
+    created_here = not run_dir.exists()
+
+    try:
+        return _generate_creator_system(
+            run_dir=run_dir,
+            domain_name=domain_name,
+            domain_slug=domain_slug,
+            brief=brief,
+        )
+    except Exception:
+        if created_here:
+            shutil.rmtree(run_dir, ignore_errors=True)
+        raise
+
+
+def _generate_creator_system(
+    *,
+    run_dir: Path,
+    domain_name: str,
+    domain_slug: str,
+    brief: dict[str, Any],
+) -> GeneratedCreatorSystem:
+    """Build a creator run after its cleanup boundary has been established."""
 
     init_result = init_creator_run(
         run_dir,
@@ -219,7 +243,6 @@ def generate_creator_system_from_brief(
         requested_by=str(brief.get("requested_by", "generator-acceptance-test")),
         source_channel="local",
     )
-
     create_domain_chip_from_brief(run_dir, brief)
     hook_smoke = run_domain_chip_hook_smoke(run_dir)
     create_benchmark_pack(run_dir, brief)
@@ -736,7 +759,7 @@ def _compute_reports(run_path: Path) -> dict[str, Any]:
 
 
 def _score_mutations(scoring_hooks: dict[str, Any], mutations: dict[str, Any]) -> float:
-    score = float(scoring_hooks["base_score"])
+    score = float(scoring_hooks.get("base_score", 0.0))
     mutation_deltas = scoring_hooks.get("mutation_deltas", {})
     for axis, value in mutations.items():
         axis_deltas = mutation_deltas.get(axis, {})

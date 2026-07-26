@@ -8,10 +8,13 @@ from __future__ import annotations
 
 from copy import deepcopy
 from datetime import datetime, timezone
+import html
+import json
 import math
 from pathlib import Path
 import re
 from typing import Any
+import unicodedata
 
 from ..trend_scanner import SEED_OPPORTUNITIES, rank_opportunities, score_opportunity
 from .graph import build_graph_from_opportunities
@@ -1174,22 +1177,59 @@ def build_frontier_viz_packet(
     }
 
 
+def _validated_render_text(value: object, *, label: str, max_length: int) -> str:
+    if (
+        not isinstance(value, str)
+        or not value.strip()
+        or len(value) > max_length
+        or any(unicodedata.category(character) == "Cc" for character in value)
+    ):
+        raise ValueError(f"invalid {label}")
+    return value
+
+
+def _html_safe_javascript_string(value: str) -> str:
+    encoded = json.dumps(value, ensure_ascii=False)
+    return (
+        encoded.replace("<", r"\u003c")
+        .replace(">", r"\u003e")
+        .replace("&", r"\u0026")
+        .replace("\u2028", r"\u2028")
+        .replace("\u2029", r"\u2029")
+    )
+
+
 def render_frontier_viz_html(
     data_filename: str,
     title: str = "MiroFish Frontier 500 Graph",
     template_html: str | None = None,
 ) -> str:
     """Render a viz-style HTML page for a saved frontier graph packet."""
+    safe_data_filename = _validated_render_text(
+        data_filename,
+        label="data filename",
+        max_length=2048,
+    )
+    safe_title = html.escape(
+        _validated_render_text(title, label="title", max_length=512),
+        quote=False,
+    )
+    data_filename_literal = _html_safe_javascript_string(safe_data_filename)
+
     if template_html is None:
         repo_root = Path(__file__).resolve().parents[3]
         template_html = (repo_root / "viz" / "mirofish-500-graph.html").read_text(encoding="utf-8")
 
     rendered = template_html.replace(
         "<title>MiroFish v4 - 500 Domain Knowledge Graph</title>",
-        f"<title>{title}</title>",
+        f"<title>{safe_title}</title>",
         1,
     )
-    rendered = rendered.replace("fetch('mirofish_500_data.json')", f"fetch('{data_filename}')", 1)
+    rendered = rendered.replace(
+        "fetch('mirofish_500_data.json')",
+        f"fetch({data_filename_literal})",
+        1,
+    )
     rendered = re.sub(
         r"DATA = await resp\.json\(\);",
         "DATA = await resp.json();\n    hydratePersonaDataFromPacket();",

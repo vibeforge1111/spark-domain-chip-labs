@@ -16,6 +16,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from .source_analysis import has_scoring_function
+
 from .registry import default_search_dir
 
 
@@ -292,7 +294,7 @@ def _load_all_runs(chip_path: Path) -> list[dict[str, Any]]:
                         rid = entry.get("run_id", f"_telem_{len(runs)}")
                         if rid not in runs:
                             runs[rid] = entry
-        except (json.JSONDecodeError, OSError):
+        except (json.JSONDecodeError, OSError, AttributeError):
             pass
 
     return list(runs.values())
@@ -302,7 +304,11 @@ def _extract_scores_from_runs(runs: list[dict[str, Any]]) -> list[float]:
     """Extract numeric scores from run entries."""
     scores: list[float] = []
     for run in runs:
-        score = run.get("score") or run.get("metric_value") or run.get("total_score")
+        score = run.get("score")
+        if score is None:
+            score = run.get("metric_value")
+        if score is None:
+            score = run.get("total_score")
         if score is not None:
             try:
                 scores.append(float(score))
@@ -323,6 +329,8 @@ def _extract_timestamps(runs: list[dict[str, Any]]) -> list[datetime]:
                 # Try ISO format
                 ts = ts.replace("Z", "+00:00")
                 dt = datetime.fromisoformat(ts)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
                 timestamps.append(dt)
         except (ValueError, TypeError):
             pass
@@ -439,7 +447,7 @@ def check_manifest_structure(chip_path: Path) -> DimensionResult:
             frontier = manifest.get("frontier", {})
             if frontier.get("allowed_mutations") and manifest_score < 5.0:
                 manifest_score = min(manifest_score + 1.0, 5.0)
-        except (json.JSONDecodeError, OSError):
+        except (json.JSONDecodeError, OSError, AttributeError):
             pass
     details["manifest_score"] = manifest_score
     score += min(manifest_score, 5.0)
@@ -462,21 +470,8 @@ def check_manifest_structure(chip_path: Path) -> DimensionResult:
     score += min(project_score, 3.0)
 
     # 2 pts: scoring function in src/
-    scoring_re = re.compile(
-        r"def\s+(score|evaluate)\s*\(.*?\)\s*.*?:" r"[\s\S]*?" r"return\s+",
-        re.MULTILINE,
-    )
     src_dir = chip_path / "src"
-    has_scoring = False
-    if src_dir.is_dir():
-        for py in src_dir.rglob("*.py"):
-            try:
-                content = py.read_text(encoding="utf-8", errors="ignore")
-                if scoring_re.search(content):
-                    has_scoring = True
-                    break
-            except OSError:
-                pass
+    has_scoring = src_dir.is_dir() and has_scoring_function(src_dir)
     if has_scoring:
         score += 2.0
     details["has_scoring_function"] = has_scoring

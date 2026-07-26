@@ -18,12 +18,17 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
+import os
+import tempfile
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 from ..quality_rubric import score_chip
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -133,19 +138,35 @@ def _read_json(path: Path) -> dict[str, Any] | None:
 
 def _write_json(path: Path, data: dict[str, Any]) -> None:
     """Write a JSON file with consistent formatting."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
+    _atomic_write_text(
+        path,
         json.dumps(data, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
     )
 
 
-def _ensure_file(path: Path, content: str) -> None:
+def _atomic_write_text(path: Path, content: str) -> None:
+    """Replace a text file atomically without sharing a fixed temp path."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(content)
+        os.replace(temp_name, path)
+    except BaseException:
+        try:
+            os.unlink(temp_name)
+        except OSError:
+            pass
+        raise
+
+
+def _ensure_file(path: Path, content: str) -> bool:
     """Create a file only if it does not already exist."""
     if path.exists():
-        return
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content, encoding="utf-8")
+        return False
+    _atomic_write_text(path, content)
+    return True
 
 
 def _ensure_key(data: dict, key: str, default: Any) -> bool:
@@ -183,15 +204,14 @@ def _extract_scoring_model_patterns(
     chip_path: Path,
     chip_name: str,
     evidence_strength: float,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Scan src/ for additive scoring model patterns."""
     patterns: list[TransferPattern] = []
-    src_text = _collect_text(chip_path, ["src/**/*.py"])
-
     # Detect dimension dicts  -- e.g.  DIMENSIONS = { "axis": { "val": score } }
-    if "dimensions" in src_text or "dim_values" in src_text or "dimension" in src_text:
-        has_pair = "pair_bonus" in src_text or "pair_bonuses" in src_text
-        has_system = "system_bonus" in src_text or "system_bonuses" in src_text
+    if "dimensions" in all_text or "dim_values" in all_text or "dimension" in all_text:
+        has_pair = "pair_bonus" in all_text or "pair_bonuses" in all_text
+        has_system = "system_bonus" in all_text or "system_bonuses" in all_text
         impl: dict[str, Any] = {
             "has_dimensions": True,
             "has_pair_bonuses": has_pair,
@@ -223,6 +243,7 @@ def _extract_loop_design_patterns(
     chip_name: str,
     evidence_strength: float,
     project: dict[str, Any] | None,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Extract loop design patterns from project.json."""
     patterns: list[TransferPattern] = []
@@ -255,7 +276,6 @@ def _extract_loop_design_patterns(
             ))
 
     # Agent cooldown / retirement patterns (startup-yc specific but universal)
-    all_text = _collect_text(chip_path, ["src/**/*.py", "docs/**/*.md"])
     if "cooldown" in all_text or "retirement" in all_text:
         patterns.append(TransferPattern(
             pattern_id=_pattern_id(chip_name, "loop_design", "cooldown"),
@@ -293,13 +313,10 @@ def _extract_evidence_strategy_patterns(
     chip_path: Path,
     chip_name: str,
     evidence_strength: float,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Extract evidence lane configuration patterns."""
     patterns: list[TransferPattern] = []
-    all_text = _collect_text(chip_path, [
-        "src/**/*.py", "docs/**/*.md", "README.md", "obsidian-vault/**/*.md",
-    ])
-
     lanes_found: list[str] = []
     for lane in ("research_grounded", "benchmark_grounded", "exploratory_frontier", "realworld_validated"):
         if lane in all_text or lane.replace("_", "-") in all_text:
@@ -461,11 +478,10 @@ def _extract_promotion_gate_patterns(
     chip_name: str,
     evidence_strength: float,
     project: dict[str, Any] | None,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Extract promotion threshold / gate configuration."""
     patterns: list[TransferPattern] = []
-    all_text = _collect_text(chip_path, ["src/**/*.py", "docs/**/*.md"])
-
     # Look for promotion thresholds in code or config
     if "promot" in all_text or "graduat" in all_text or "threshold" in all_text:
         impl: dict[str, Any] = {"pattern": "promotion_gate"}
@@ -505,11 +521,10 @@ def _extract_contradiction_detection_patterns(
     chip_path: Path,
     chip_name: str,
     evidence_strength: float,
+    all_text: str,
 ) -> list[TransferPattern]:
     """Extract contradiction detection patterns."""
     patterns: list[TransferPattern] = []
-    all_text = _collect_text(chip_path, ["src/**/*.py", "docs/**/*.md"])
-
     if "contradiction" in all_text:
         has_tags = "tag" in all_text and "contradiction" in all_text
         patterns.append(TransferPattern(
@@ -645,21 +660,44 @@ def extract_patterns(chip_path: Path) -> list[TransferPattern]:
     project = _read_json(chip_path / "spark-researcher.project.json")
 
     # Extract all pattern types
+    all_text = _collect_text(chip_path, [
+        "src/**/*.py",
+        "docs/**/*.md",
+        "README.md",
+        "obsidian-vault/**/*.md",
+    ])
     all_patterns: list[TransferPattern] = []
     all_patterns.extend(
-        _extract_scoring_model_patterns(chip_path, chip_name, evidence_strength)
+        _extract_scoring_model_patterns(chip_path, chip_name, evidence_strength, all_text)
     )
     all_patterns.extend(
-        _extract_loop_design_patterns(chip_path, chip_name, evidence_strength, project)
+        _extract_loop_design_patterns(
+            chip_path,
+            chip_name,
+            evidence_strength,
+            project,
+            all_text,
+        )
     )
     all_patterns.extend(
-        _extract_evidence_strategy_patterns(chip_path, chip_name, evidence_strength)
+        _extract_evidence_strategy_patterns(chip_path, chip_name, evidence_strength, all_text)
     )
     all_patterns.extend(
-        _extract_promotion_gate_patterns(chip_path, chip_name, evidence_strength, project)
+        _extract_promotion_gate_patterns(
+            chip_path,
+            chip_name,
+            evidence_strength,
+            project,
+            all_text,
+        )
     )
     all_patterns.extend(
-        _extract_contradiction_detection_patterns(chip_path, chip_name, evidence_strength)
+        _extract_contradiction_detection_patterns(
+            chip_path,
+            chip_name,
+            evidence_strength,
+            all_text,
+        )
     )
     all_patterns.extend(
         _extract_research_pipeline_patterns(
@@ -859,7 +897,7 @@ def _apply_scoring_model(target_chip_path: Path, pattern: TransferPattern) -> bo
 
     transfer_marker = f"# Transfer: scoring_model from {pattern.source_chip}"
     if transfer_marker in existing:
-        return True  # Already applied
+        return False
 
     # Add pair bonus / system bonus templates if missing
     additions: list[str] = [f"\n{transfer_marker}\n"]
@@ -882,9 +920,10 @@ def _apply_scoring_model(target_chip_path: Path, pattern: TransferPattern) -> bo
 
     if len(additions) > 1:  # More than just the marker
         new_content = existing + "\n" + "\n".join(additions)
-        eval_file.write_text(new_content, encoding="utf-8")
+        _atomic_write_text(eval_file, new_content)
+        return True
 
-    return True
+    return False
 
 
 def _apply_loop_design(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -924,7 +963,7 @@ def _apply_loop_design(target_chip_path: Path, pattern: TransferPattern) -> bool
         project["guardrails"] = guardrails
         _write_json(project_path, project)
 
-    return True
+    return changed
 
 
 def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -937,7 +976,7 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
         docs_dir = target_chip_path / "docs"
         docs_dir.mkdir(parents=True, exist_ok=True)
         domain = target_chip_path.name.replace("domain-chip-", "")
-        _ensure_file(
+        return _ensure_file(
             docs_dir / "source_registry.md",
             f"# Source Registry\n\n"
             f"Primary source map for the **{domain}** domain.\n"
@@ -947,7 +986,6 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"|--------|------|-----|-------|\n"
             f"| (add sources here) | research | - | - |\n",
         )
-        return True
 
     # Evidence lanes pattern
     if "lanes" in impl:
@@ -956,7 +994,7 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
         docs_dir.mkdir(parents=True, exist_ok=True)
         lanes = impl.get("lanes", [])
         lane_text = "\n".join(f"- **{lane}**" for lane in lanes)
-        _ensure_file(
+        return _ensure_file(
             docs_dir / "evidence_lanes.md",
             f"# Evidence Lanes\n\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
@@ -966,13 +1004,12 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"- research_grounded -> benchmark_grounded (when quantitatively validated)\n"
             f"- benchmark_grounded -> realworld_validated (when field-tested)\n",
         )
-        return True
 
     # Walk-forward validation pattern
     if pat == "walk_forward_validation":
         docs_dir = target_chip_path / "docs"
         docs_dir.mkdir(parents=True, exist_ok=True)
-        _ensure_file(
+        return _ensure_file(
             docs_dir / "walk_forward_validation.md",
             f"# Walk-Forward Validation\n\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
@@ -984,7 +1021,6 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"4. Aggregate prediction accuracy\n\n"
             f"This prevents look-ahead bias in evaluation.\n",
         )
-        return True
 
     # Category-specific patterns -- add as docs
     if pat in (
@@ -994,7 +1030,7 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
     ):
         docs_dir = target_chip_path / "docs"
         docs_dir.mkdir(parents=True, exist_ok=True)
-        _ensure_file(
+        return _ensure_file(
             docs_dir / f"{pat}.md",
             f"# {pat.replace('_', ' ').title()}\n\n"
             f"(Pattern transferred from {pattern.source_chip})\n\n"
@@ -1003,9 +1039,8 @@ def _apply_evidence_strategy(target_chip_path: Path, pattern: TransferPattern) -
             f"## Implementation Notes\n\n"
             f"TODO: Adapt this pattern for this chip's domain.\n",
         )
-        return True
 
-    return True
+    return False
 
 
 def _apply_promotion_gate(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1037,7 +1072,7 @@ def _apply_promotion_gate(target_chip_path: Path, pattern: TransferPattern) -> b
         project["guardrails"] = guardrails
         _write_json(project_path, project)
 
-    return True
+    return changed
 
 
 def _apply_contradiction_detection(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1045,7 +1080,7 @@ def _apply_contradiction_detection(target_chip_path: Path, pattern: TransferPatt
     src_dir = target_chip_path / "src"
     src_dir.mkdir(parents=True, exist_ok=True)
 
-    _ensure_file(
+    created = _ensure_file(
         src_dir / "contradiction_detector.py",
         f'"""Contradiction detection stub.\n\n'
         f"Pattern transferred from {pattern.source_chip}.\n"
@@ -1072,7 +1107,7 @@ def _apply_contradiction_detection(target_chip_path: Path, pattern: TransferPatt
         f"            triggered.append(tag)\n"
         f"    return triggered\n",
     )
-    return True
+    return created
 
 
 def _apply_research_pipeline(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1106,22 +1141,10 @@ def _apply_research_pipeline(target_chip_path: Path, pattern: TransferPattern) -
             project["candidate_trials"] = trials
             changed = True
 
-    # Ensure minimum 3 trials
-    trials = project.get("candidate_trials", [])
-    while len(trials) < 3:
-        trials.append({
-            "candidate_id": f"variant-{len(trials)}",
-            "candidate_summary": f"Variant {len(trials)}",
-            "mutations": {},
-        })
-        changed = True
-    if changed:
-        project["candidate_trials"] = trials
-
     if changed:
         _write_json(project_path, project)
 
-    return True
+    return changed
 
 
 def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -> bool:
@@ -1131,7 +1154,7 @@ def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -
 
     domain = target_chip_path.name.replace("domain-chip-", "")
 
-    _ensure_file(
+    index_created = _ensure_file(
         vault_dir / "index.md",
         f"# {domain} Knowledge Vault\n\n"
         f"Watchtower-generated pages for the {domain} domain.\n"
@@ -1142,7 +1165,7 @@ def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -
         f"- [[Research Log]] -- Evidence gathering history\n",
     )
 
-    _ensure_file(
+    leaderboard_created = _ensure_file(
         vault_dir / "Leaderboard.md",
         "# Leaderboard\n\n"
         "## Top Candidates\n\n"
@@ -1151,7 +1174,7 @@ def _apply_watchtower_design(target_chip_path: Path, pattern: TransferPattern) -
         "| 1    | Baseline  | 50    | benchmark_grounded |\n",
     )
 
-    return True
+    return index_created or leaderboard_created
 
 
 # Dispatch table for pattern application
@@ -1185,8 +1208,12 @@ def apply_pattern(target_chip_path: Path, pattern: TransferPattern) -> bool:
         if result:
             pattern.times_successful += 1
         return result
-    except Exception:
-        pattern.times_applied += 1
+    except (OSError, RuntimeError, ValueError) as exc:
+        logger.warning(
+            "Pattern application failed for %s (%s)",
+            pattern.pattern_type,
+            type(exc).__name__,
+        )
         return False
 
 

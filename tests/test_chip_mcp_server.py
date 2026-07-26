@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import io
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -205,6 +206,19 @@ class TestChipPortfolio:
         scores = [c["quality_score"] for c in result["chips"]]
         assert scores == sorted(scores, reverse=True)
 
+    def test_tied_quality_is_sorted_by_chip_name(self) -> None:
+        server = ChipMCPServer()
+        portfolio = _make_portfolio()
+        for chip in portfolio:
+            chip.quality_score = 65.0
+        server._portfolio = list(reversed(portfolio))
+        server._last_load = 9999999999
+        result = server._handle_chip_portfolio({})
+        assert [chip["chip_name"] for chip in result["chips"]] == [
+            "startup-yc",
+            "test-chip",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # TestFindChip
@@ -379,6 +393,33 @@ class TestChipSuggest:
             mock_extract.return_value = _make_intel()
             result = server._handle_chip_suggest({})
             assert len(result["suggestions"]) == 2
+
+    def test_reports_partial_failure_without_exception_message(self) -> None:
+        server = ChipMCPServer()
+        server._portfolio = _make_portfolio()
+        server._last_load = 9999999999
+
+        with patch(
+            "chip_labs.intelligence_server.extract_intelligence",
+            side_effect=RuntimeError("secret filesystem detail"),
+        ):
+            result = server._handle_chip_suggest({"chip_name": "test-chip"})
+
+        assert result["suggestions"] == []
+        assert result["failed_chips"] == [{
+            "chip_name": "test-chip",
+            "error_type": "RuntimeError",
+        }]
+        assert "secret filesystem detail" not in json.dumps(result)
+
+
+def test_stdio_loop_ignores_non_object_json_requests() -> None:
+    server = ChipMCPServer()
+    stdout = io.StringIO()
+    server.run(stdin=io.BytesIO(b"[]\n{\"method\":\"tools/list\",\"id\":1}\n"), stdout=stdout)
+    rows = stdout.getvalue().splitlines()
+    assert len(rows) == 1
+    assert json.loads(rows[0])["id"] == 1
 
 
 # ---------------------------------------------------------------------------

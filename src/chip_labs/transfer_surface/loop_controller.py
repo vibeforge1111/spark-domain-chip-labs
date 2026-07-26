@@ -16,6 +16,8 @@ Zero external dependencies.
 from __future__ import annotations
 
 import json
+import logging
+import re
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -32,6 +34,8 @@ from ..chip_factory import (
 )
 from ..lab_hooks import run_suggest
 from ..quality_rubric import score_chip
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -156,6 +160,15 @@ EVIDENCE_LANES = [
     "realworld_validated",
 ]
 
+_CANDIDATE_ID_RE = re.compile(r"[A-Za-z0-9_-]{1,128}")
+
+
+def _candidate_id_for_filename(value: object) -> str | None:
+    """Return an exact, bounded candidate id or reject it without aliasing."""
+    if not isinstance(value, str) or _CANDIDATE_ID_RE.fullmatch(value) is None:
+        return None
+    return value
+
 
 def _seed_evidence_stubs(chip_path: Path) -> int:
     """Create minimal evidence documents in each lane.
@@ -242,6 +255,24 @@ def _seed_research_sources(chip_path: Path, brief: dict[str, Any]) -> int:
     return len(source_types)
 
 
+def _is_synthetic_json(path: Path) -> bool:
+    """Return whether a JSON evidence file explicitly marks itself synthetic."""
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        return isinstance(payload, dict) and payload.get("synthetic") is True
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return False
+
+
+def _is_synthetic_markdown(path: Path) -> bool:
+    """Return whether a Markdown evidence file starts with the synthetic marker."""
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            return handle.read(64).lstrip().startswith("<!-- synthetic: true -->")
+    except (OSError, UnicodeError):
+        return False
+
+
 def _seed_benchmark_baseline(chip_path: Path) -> bool:
     """Create a baseline benchmark result document.
 
@@ -257,15 +288,16 @@ def _seed_benchmark_baseline(chip_path: Path) -> bool:
 
     baseline = {
         "benchmark_id": "baseline-v1",
-        "description": "Baseline benchmark with empty mutations",
+        "synthetic": True,
+        "description": "Synthetic scaffold placeholder; no benchmark has run yet.",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "mutations": {},
         "result": {
-            "score": 50,
+            "score": None,
             "evidence_lane": "benchmark_grounded",
-            "verdict": "defer",
+            "verdict": None,
         },
-        "notes": "Auto-generated baseline by loop controller research seeder.",
+        "notes": "Replace this synthetic placeholder with a real benchmark result.",
     }
 
     baseline_path.write_text(
@@ -671,7 +703,12 @@ class RecursiveLoopController:
             gap = fixable[0]
             try:
                 succeeded = gap.fix_fn(chip_path)
-            except Exception:
+            except Exception as exc:
+                logger.warning(
+                    "Auto-fix failed for %s (%s)",
+                    gap.fix_description,
+                    type(exc).__name__,
+                )
                 succeeded = False
 
             if succeeded:
@@ -717,23 +754,37 @@ class RecursiveLoopController:
                 recent_mutations=None,
                 chip_search_dir=chip_path.parent,
             )
-        except Exception:
+        except Exception as exc:
+            logger.warning(
+                "Suggestion generation failed (%s)",
+                type(exc).__name__,
+            )
             suggestions = []
+
+        research_dir = chip_path / "research" / "exploratory_frontier"
+        try:
+            research_dir.mkdir(parents=True, exist_ok=True)
+            research_root = research_dir.resolve()
+            research_root.relative_to(chip_path.resolve())
+        except (OSError, ValueError):
+            research_root = None
 
         applied_count = 0
         for s in suggestions[:3]:  # Limit to top 3 suggestions
-            candidate_id = s.get("candidate_id", "unknown")
-            # Write suggestion as a research note
-            research_dir = chip_path / "research" / "exploratory_frontier"
-            research_dir.mkdir(parents=True, exist_ok=True)
+            if not isinstance(s, dict) or research_root is None:
+                continue
+            candidate_id = _candidate_id_for_filename(s.get("candidate_id"))
+            if candidate_id is None:
+                continue
 
-            suggestion_path = research_dir / f"suggestion_{candidate_id}.json"
-            if not suggestion_path.exists():
-                suggestion_path.write_text(
-                    json.dumps(s, indent=2, ensure_ascii=False) + "\n",
-                    encoding="utf-8",
-                )
+            suggestion_path = research_root / f"suggestion_{candidate_id}.json"
+            try:
+                with suggestion_path.open("x", encoding="utf-8") as handle:
+                    json.dump(s, handle, indent=2, ensure_ascii=False)
+                    handle.write("\n")
                 applied_count += 1
+            except OSError:
+                continue
 
         if applied_count:
             improvements.append(
@@ -778,18 +829,27 @@ class RecursiveLoopController:
             lane_dir = chip_path / "research" / lane
             lane_dir.mkdir(parents=True, exist_ok=True)
 
-            # Count existing files
-            existing = list(lane_dir.glob("*.md")) + list(lane_dir.glob("*.json"))
+            # Synthetic scaffolds keep the lane visible but do not count as evidence.
+            existing = [
+                path
+                for path in lane_dir.glob("*.md")
+                if not _is_synthetic_markdown(path)
+            ] + [
+                path
+                for path in lane_dir.glob("*.json")
+                if not _is_synthetic_json(path)
+            ]
             if len(existing) < 2:
-                # Create an evidence note
-                note_path = lane_dir / f"evidence_note_{self._iteration:03d}.md"
+                # Keep one idempotent placeholder until real evidence replaces it.
+                note_path = lane_dir / "evidence_note_synthetic.md"
                 if not note_path.exists():
                     note_path.write_text(
+                        "<!-- synthetic: true -->\n"
                         f"# Evidence Note (Iteration {self._iteration})\n\n"
                         f"Lane: {lane}\n"
                         f"Generated at: {datetime.now(timezone.utc).isoformat()}\n\n"
                         f"## Findings\n\n"
-                        f"_Placeholder for {lane.replace('_', ' ')} evidence._\n",
+                        f"_Placeholder for {lane.replace('_', ' ')} evidence. Replace with real domain research._\n",
                         encoding="utf-8",
                     )
                     evidence_count += 1
@@ -841,9 +901,11 @@ class RecursiveLoopController:
                 f"Skill regeneration: Built intelligence artifacts "
                 f"({doctrine_count} doctrines, {evidence_files} evidence files)"
             )
-        except Exception:
-            # Non-fatal: intelligence_server may not be available
-            pass
+        except Exception as exc:
+            logger.debug(
+                "Skill regeneration unavailable (%s)",
+                type(exc).__name__,
+            )
 
         t_end = _now_ms()
 

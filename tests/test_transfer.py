@@ -706,7 +706,13 @@ class TestApplyPatternResearchPipeline:
             (chip / "spark-researcher.project.json").read_text(encoding="utf-8")
         )
         trials = project.get("candidate_trials", [])
-        assert len(trials) >= 3
+        assert trials == [
+            {
+                "candidate_id": "global-baseline",
+                "candidate_summary": "Baseline (no mutations)",
+                "mutations": {},
+            }
+        ]
         # Should have a baseline trial
         baselines = [
             t for t in trials

@@ -17,6 +17,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import logging
 import os
 import sys
 import tempfile
@@ -25,6 +26,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from .filename_identity import derived_filename_component
+
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
 # File locking (cross-platform)
@@ -232,7 +236,9 @@ def _should_skip_action(tool_name: str, tool_input: dict[str, Any]) -> bool:
 def _read_stdin() -> dict[str, Any]:
     """Read JSON from stdin (Claude Code hook protocol)."""
     try:
-        raw = sys.stdin.read()
+        raw = sys.stdin.read(1_048_577)
+        if len(raw) > 1_048_576:
+            return {}
         if raw.strip():
             return json.loads(raw)
     except (json.JSONDecodeError, OSError):
@@ -267,7 +273,7 @@ def _write_session_domain(selected_chips: list[Any], query: str) -> None:
         }
         _atomic_write(_SESSION_DOMAIN_FILE, json.dumps(data, indent=2))
     except OSError:
-        pass
+        logger.warning("Failed to persist session domain")
 
 
 def _read_session_domain() -> dict[str, Any] | None:
@@ -278,9 +284,10 @@ def _read_session_domain() -> dict[str, Any] | None:
         age = datetime.now(timezone.utc).timestamp() - _SESSION_DOMAIN_FILE.stat().st_mtime
         if age > _SESSION_DOMAIN_TTL:
             return None
-        return json.loads(_SESSION_DOMAIN_FILE.read_text(encoding="utf-8"))
+        payload = json.loads(_SESSION_DOMAIN_FILE.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return None
+    return payload if isinstance(payload, dict) else None
 
 
 def _load_portfolio_safe() -> list[Any]:
@@ -311,14 +318,18 @@ def _load_portfolio_safe() -> list[Any]:
                             return _load_from_cache_fh(fh)
                         except (json.JSONDecodeError, OSError):
                             pass
-    except OSError:
-        pass
+    except (OSError, json.JSONDecodeError, KeyError, ValueError) as exc:
+        logger.debug(
+            "Cache load failed (%s); falling back to full load",
+            type(exc).__name__,
+        )
 
     # Full load (expensive -- runs V3 deep eval)
     try:
         from .intelligence_serving.chip_runtime import load_portfolio
         portfolio = load_portfolio(min_score=MIN_QUALITY_SCORE)
-    except (ImportError, Exception):
+    except (ImportError, OSError) as exc:
+        logger.warning("Portfolio load failed (%s)", type(exc).__name__)
         return []
 
     # Write cache for next hook call
@@ -557,10 +568,18 @@ def _write_feedback_packet(
     result_summary: str,
 ) -> Path | None:
     """Write a feedback packet to chip's realworld_validated directory."""
-    rw_dir = chip_path / "research" / "realworld_validated"
+    try:
+        chip_root = Path(chip_path).resolve(strict=True)
+    except (OSError, RuntimeError):
+        return None
+    rw_dir = chip_root / "research" / "realworld_validated"
     try:
         rw_dir.mkdir(parents=True, exist_ok=True)
-    except OSError:
+        rw_root = rw_dir.resolve(strict=True)
+    except OSError as exc:
+        logger.warning("Failed to create feedback directory: %s", exc)
+        return None
+    if not rw_root.is_relative_to(chip_root):
         return None
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -574,12 +593,16 @@ def _write_feedback_packet(
         "source": "claude_code_hook",
     }
 
-    filename = f"feedback_{timestamp}_{tool_name}.json"
-    filepath = rw_dir / filename
+    tool_component = derived_filename_component(tool_name, fallback="tool")
+    filename = f"feedback_{timestamp}_{tool_component}.json"
+    filepath = rw_root / filename
+    if filepath.is_symlink() or not filepath.resolve(strict=False).is_relative_to(rw_root):
+        return None
     try:
         filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
         return filepath
-    except OSError:
+    except OSError as exc:
+        logger.warning("Failed to write feedback packet: %s", exc)
         return None
 
 
@@ -603,7 +626,7 @@ def handle_session_start(input_data: dict[str, Any]) -> dict[str, Any]:
     # Use CWD or domain hint for chip selection
     cwd = input_data.get("cwd", "")
     domain_hint = os.environ.get(DOMAIN_HINT_ENV, "")
-    query = domain_hint or Path(cwd).name if cwd else ""
+    query = domain_hint or (Path(cwd).name if cwd else "")
 
     # For SessionStart, select chips with domain-aware matching.
     # Short domain hints (e.g. "startup") fail Jaccard against large chip texts,
@@ -841,7 +864,7 @@ def main() -> None:
     input_data = _read_stdin()
     result = handler(input_data)
 
-    if result:
+    if result is not None:
         _write_stdout(result)
 
 

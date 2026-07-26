@@ -10,11 +10,32 @@ Zero external dependencies (stdlib only).
 from __future__ import annotations
 
 import json
+import os
 import re
+import tempfile
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+from ..file_scan import ScanBudget, iter_bounded_files, read_text_bounded
+
+
+def _atomic_write_text(path: Path, content: str) -> None:
+    """Replace an intelligence deliverable without exposing partial content."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(content)
+        os.replace(temp_name, path)
+    except BaseException:
+        try:
+            os.unlink(temp_name)
+        except OSError:
+            pass
+        raise
 
 
 # ---------------------------------------------------------------------------
@@ -67,18 +88,17 @@ def _confidence_sort_key(doctrine: dict[str, Any]) -> int:
 # Extraction helpers
 # ---------------------------------------------------------------------------
 
-def _read_text_safe(path: Path) -> str:
+def _read_text_safe(path: Path, *, budget: ScanBudget | None = None) -> str:
     """Read a file's text content, returning empty string on failure."""
-    try:
-        return path.read_text(encoding="utf-8", errors="ignore")
-    except OSError:
-        return ""
+    return read_text_bounded(path, budget=budget)
 
 
-def _load_json_safe(path: Path) -> dict[str, Any] | list[Any] | None:
+def _load_json_safe(
+    path: Path, *, budget: ScanBudget | None = None
+) -> dict[str, Any] | list[Any] | None:
     """Load a JSON file, returning None on failure."""
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(_read_text_safe(path, budget=budget))
     except (json.JSONDecodeError, OSError):
         return None
 
@@ -119,9 +139,11 @@ def _extract_mission(chip_path: Path) -> str:
     return "No mission documentation found."
 
 
-def _extract_doctrines_from_json(file_path: Path) -> list[dict[str, Any]]:
+def _extract_doctrines_from_json(
+    file_path: Path, *, budget: ScanBudget | None = None
+) -> list[dict[str, Any]]:
     """Extract doctrines from a JSON packet file."""
-    data = _load_json_safe(file_path)
+    data = _load_json_safe(file_path, budget=budget)
     if not data or not isinstance(data, dict):
         return []
 
@@ -158,9 +180,11 @@ def _extract_doctrines_from_json(file_path: Path) -> list[dict[str, Any]]:
     return doctrines
 
 
-def _extract_doctrines_from_markdown(file_path: Path) -> list[dict[str, Any]]:
+def _extract_doctrines_from_markdown(
+    file_path: Path, *, budget: ScanBudget | None = None
+) -> list[dict[str, Any]]:
     """Extract doctrines from a markdown file looking for doctrine/claim patterns."""
-    text = _read_text_safe(file_path)
+    text = _read_text_safe(file_path, budget=budget)
     if not text:
         return []
 
@@ -258,11 +282,11 @@ def _extract_all_doctrines(chip_path: Path) -> list[dict[str, Any]]:
         chip_path / "obsidian-vault",
     ]
 
-    for search_dir in search_dirs:
-        if not search_dir.exists():
-            continue
-        for json_file in search_dir.rglob("*.json"):
-            doctrines.extend(_extract_doctrines_from_json(json_file))
+    budget = ScanBudget()
+    for json_file in iter_bounded_files(
+        search_dirs, suffixes={".json"}, budget=budget
+    ):
+        doctrines.extend(_extract_doctrines_from_json(json_file, budget=budget))
 
     # Search markdown files for doctrine patterns
     md_search_dirs = [
@@ -271,13 +295,14 @@ def _extract_all_doctrines(chip_path: Path) -> list[dict[str, Any]]:
         chip_path / "obsidian-vault",
     ]
 
-    for search_dir in md_search_dirs:
-        if not search_dir.exists():
-            continue
-        for md_file in search_dir.rglob("*.md"):
-            text_lower = _read_text_safe(md_file).lower()
-            if any(kw in text_lower for kw in ("doctrine", "belief", "claim")):
-                doctrines.extend(_extract_doctrines_from_markdown(md_file))
+    for md_file in iter_bounded_files(
+        md_search_dirs, suffixes={".md"}, budget=budget
+    ):
+        text_lower = _read_text_safe(md_file, budget=budget).lower()
+        if any(kw in text_lower for kw in ("doctrine", "belief", "claim")):
+            doctrines.extend(
+                _extract_doctrines_from_markdown(md_file, budget=budget)
+            )
 
     # De-duplicate by claim text
     seen_claims: set[str] = set()
@@ -421,11 +446,13 @@ def _count_evidence_files(chip_path: Path) -> dict[str, int]:
         "realworld_validated",
     ]
     summary: dict[str, int] = {}
+    budget = ScanBudget()
     for lane in lanes:
         lane_dir = research_dir / lane
         if lane_dir.exists():
-            count = sum(1 for _ in lane_dir.rglob("*") if _.is_file())
-            summary[lane] = count
+            summary[lane] = sum(
+                1 for _ in iter_bounded_files([lane_dir], budget=budget)
+            )
         else:
             summary[lane] = 0
     return summary
@@ -438,17 +465,21 @@ def _extract_benchmarks(chip_path: Path) -> list[dict[str, Any]]:
     if not bench_dir.exists():
         return benchmarks
 
-    for fp in bench_dir.rglob("*.json"):
-        data = _load_json_safe(fp)
+    budget = ScanBudget()
+    for fp in iter_bounded_files([bench_dir], suffixes={".json"}, budget=budget):
+        data = _load_json_safe(fp, budget=budget)
         if isinstance(data, dict):
+            score = data.get("score")
+            if score is None:
+                score = data.get("result", 0)
             benchmarks.append({
                 "name": data.get("name") or data.get("title") or fp.stem,
-                "score": data.get("score") or data.get("result", 0),
+                "score": score,
                 "date": data.get("date") or data.get("timestamp") or "",
             })
 
-    for fp in bench_dir.rglob("*.md"):
-        text = _read_text_safe(fp)
+    for fp in iter_bounded_files([bench_dir], suffixes={".md"}, budget=budget):
+        text = _read_text_safe(fp, budget=budget)
         # Look for score patterns like "Score: 85" in markdown
         score_match = re.search(r"(?i)score[:\s]+(\d+(?:\.\d+)?)", text)
         if score_match:
@@ -509,7 +540,7 @@ def _count_packets(chip_path: Path) -> int:
     packets_dir = chip_path / "research" / "packets"
     if not packets_dir.exists():
         return 0
-    return sum(1 for f in packets_dir.rglob("*") if f.is_file())
+    return sum(1 for _ in iter_bounded_files([packets_dir]))
 
 
 def _detect_dspy(chip_path: Path) -> bool:
@@ -521,8 +552,11 @@ def _detect_dspy(chip_path: Path) -> bool:
     # Check for "import dspy" in src/
     src_dir = chip_path / "src"
     if src_dir.exists():
-        for py_file in src_dir.rglob("*.py"):
-            text = _read_text_safe(py_file)
+        budget = ScanBudget()
+        for py_file in iter_bounded_files(
+            [src_dir], suffixes={".py"}, budget=budget
+        ):
+            text = _read_text_safe(py_file, budget=budget)
             if "import dspy" in text:
                 return True
 
@@ -642,6 +676,25 @@ def _score_relevance(query: str, text: str) -> float:
 # Build skill (Markdown deliverable)
 # ---------------------------------------------------------------------------
 
+def _resolve_chip_output_path(chip_path: Path, filename: str) -> Path:
+    try:
+        root = Path(chip_path).resolve(strict=True)
+    except (OSError, RuntimeError) as exc:
+        raise ValueError("invalid chip output path") from exc
+    if not root.is_dir():
+        raise ValueError("invalid chip output path")
+
+    candidate = root / filename
+    if candidate.is_symlink():
+        raise ValueError("invalid chip output path")
+    try:
+        resolved = candidate.resolve(strict=False)
+    except (OSError, RuntimeError) as exc:
+        raise ValueError("invalid chip output path") from exc
+    if resolved == root or not resolved.is_relative_to(root):
+        raise ValueError("invalid chip output path")
+    return resolved
+
 def build_skill(chip_path: Path) -> Path:
     """Generate chip_skill.md following the skill template.
 
@@ -756,8 +809,8 @@ These are the dimensions the chip explores during research:
 Current: {intel.current_score}/100 ({intel.verdict})
 """
 
-    output_path = chip_path / "chip_skill.md"
-    output_path.write_text(skill_content, encoding="utf-8")
+    output_path = _resolve_chip_output_path(chip_path, "chip_skill.md")
+    _atomic_write_text(output_path, skill_content)
     return output_path
 
 
@@ -778,10 +831,8 @@ def build_context(chip_path: Path) -> Path:
     intel = extract_intelligence(chip_path)
     data = asdict(intel)
 
-    output_path = chip_path / "chip_context.json"
-    output_path.write_text(
-        json.dumps(data, indent=2, default=str), encoding="utf-8"
-    )
+    output_path = _resolve_chip_output_path(chip_path, "chip_context.json")
+    _atomic_write_text(output_path, json.dumps(data, indent=2, default=str))
     return output_path
 
 
@@ -815,8 +866,8 @@ def build_doctrine_digest(chip_path: Path) -> Path:
     else:
         content += "No doctrines extracted yet. Run the researcher loop to accumulate intelligence.\n"
 
-    output_path = chip_path / "chip_doctrine_digest.md"
-    output_path.write_text(content, encoding="utf-8")
+    output_path = _resolve_chip_output_path(chip_path, "chip_doctrine_digest.md")
+    _atomic_write_text(output_path, content)
     return output_path
 
 

@@ -16,6 +16,8 @@ from chip_labs.loop_controller import (
     LoopTelemetry,
     RecursiveLoopController,
     _create_initial_packets,
+    _is_synthetic_json,
+    _is_synthetic_markdown,
     _seed_benchmark_baseline,
     _seed_evidence_stubs,
     _seed_research_sources,
@@ -371,7 +373,9 @@ class TestSeedBenchmarkBaseline:
         assert baseline_path.exists()
         data = json.loads(baseline_path.read_text(encoding="utf-8"))
         assert data["benchmark_id"] == "baseline-v1"
-        assert data["result"]["score"] == 50
+        assert data["synthetic"] is True
+        assert data["result"]["score"] is None
+        assert data["result"]["verdict"] is None
 
     def test_idempotent(self, tmp_path: Path) -> None:
         chip_dir = tmp_path / "chip"
@@ -380,6 +384,23 @@ class TestSeedBenchmarkBaseline:
         second = _seed_benchmark_baseline(chip_dir)
         assert first is True
         assert second is False
+
+    def test_synthetic_evidence_detection_is_explicit_and_fail_safe(self, tmp_path: Path) -> None:
+        synthetic_json = tmp_path / "synthetic.json"
+        synthetic_json.write_text('{"synthetic": true}', encoding="utf-8")
+        real_json = tmp_path / "real.json"
+        real_json.write_text('{"score": 0}', encoding="utf-8")
+        synthetic_markdown = tmp_path / "synthetic.md"
+        synthetic_markdown.write_text(
+            "\n<!-- synthetic: true -->\n# Placeholder\n",
+            encoding="utf-8",
+        )
+
+        assert _is_synthetic_json(synthetic_json) is True
+        assert _is_synthetic_json(real_json) is False
+        assert _is_synthetic_json(tmp_path / "missing.json") is False
+        assert _is_synthetic_markdown(synthetic_markdown) is True
+        assert _is_synthetic_markdown(tmp_path / "missing.md") is False
 
 
 class TestCreateInitialPackets:

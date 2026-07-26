@@ -14,7 +14,7 @@ import hashlib
 import tempfile
 from dataclasses import dataclass
 from datetime import date
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any, Iterable
 
 EVIDENCE_TIERS = (
@@ -777,21 +777,54 @@ def _load_doctor_sweep_manifest(manifest_path: str | Path | None) -> dict[str, A
     return manifest
 
 
+def _resolve_doctor_sweep_path(run_path: Path, value: object) -> Path:
+    """Resolve one exact relative operation path beneath a creator run."""
+    if (
+        not isinstance(value, str)
+        or not value
+        or value != value.strip()
+        or any(ord(character) < 32 or ord(character) == 127 for character in value)
+    ):
+        raise ValueError("invalid operation path")
+    relative_path = Path(value)
+    windows_path = PureWindowsPath(value)
+    if (
+        relative_path.is_absolute()
+        or windows_path.is_absolute()
+        or windows_path.drive
+        or windows_path.root
+        or ".." in relative_path.parts
+        or ".." in windows_path.parts
+    ):
+        raise ValueError("invalid operation path")
+    try:
+        root = run_path.resolve()
+        target = (root / relative_path).resolve()
+    except (OSError, RuntimeError) as exc:
+        raise ValueError("invalid operation path") from exc
+    if target == root or not target.is_relative_to(root):
+        raise ValueError("invalid operation path")
+    return target
+
+
 def _apply_doctor_sweep_case(run_path: Path, case: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     for operation in case.get("operations", []):
         if not isinstance(operation, dict):
             errors.append("operation must be an object")
             continue
-        relative_path = str(operation.get("path") or case.get("path") or "").strip()
-        if not relative_path:
-            errors.append("operation path is required")
+        path_value = operation.get("path")
+        if path_value is None:
+            path_value = case.get("path")
+        try:
+            target = _resolve_doctor_sweep_path(run_path, path_value)
+        except ValueError:
+            errors.append("invalid operation path")
             continue
-        target = run_path / relative_path
         try:
             _apply_doctor_sweep_operation(target, operation)
         except (KeyError, TypeError, ValueError, FileNotFoundError) as exc:
-            errors.append(f"{relative_path}: {exc}")
+            errors.append(f"{path_value}: {exc}")
     return errors
 
 

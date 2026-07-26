@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import io
 import json
 import os
 from dataclasses import dataclass, field
@@ -12,6 +13,7 @@ from unittest.mock import patch
 import pytest
 
 from chip_labs.hooks import (
+    _read_stdin,
     _should_skip_action,
     _write_feedback_packet,
     _write_session_domain,
@@ -91,6 +93,11 @@ class TestWriteFeedbackPacket:
         result = _write_feedback_packet(chip_path, "action", "Bash", long_result)
         data = json.loads(result.read_text())
         assert len(data["result_summary"]) <= 500
+
+
+def test_read_stdin_rejects_oversized_payload() -> None:
+    with patch("sys.stdin", io.StringIO("x" * 1_048_577)):
+        assert _read_stdin() == {}
 
 
 # ---------------------------------------------------------------------------

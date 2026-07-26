@@ -83,9 +83,10 @@ def _read_json(path: Path) -> dict[str, Any] | None:
     if not path.exists():
         return None
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
         return None
+    return payload if isinstance(payload, dict) else None
 
 
 def _write_json(path: Path, data: dict[str, Any]) -> None:
@@ -257,8 +258,23 @@ def _fix_commands_defined(chip_path: Path) -> bool:
     project = _read_json(project_path)
     if project is None:
         project = {}
-    commands = project.get("commands", {})
-    has_eval = any(c.get("kind") == "chip-evaluate" for c in commands.values())
+    raw_commands = project.get("commands", {})
+    if isinstance(raw_commands, dict):
+        commands = raw_commands
+    elif isinstance(raw_commands, list):
+        commands = {
+            str(command.get("name") or command.get("kind") or f"command_{index}"): command
+            for index, command in enumerate(raw_commands)
+            if isinstance(command, dict)
+        }
+    else:
+        commands = {}
+    has_eval = any(
+        key == "evaluate"
+        or (isinstance(command, dict) and command.get("kind") == "chip-evaluate")
+        or (isinstance(command, str) and "evaluate" in command)
+        for key, command in commands.items()
+    )
     if has_eval:
         return True
     commands["evaluate"] = {"kind": "chip-evaluate"}
@@ -503,6 +519,80 @@ def _fix_primary_metric(chip_path: Path) -> bool:
     if project.get("eval_metric"):
         return True
     project["eval_metric"] = "quality_score"
+    _write_json(project_path, project)
+    return True
+
+
+def _fix_candidate_trials(chip_path: Path) -> bool:
+    """Add distinct trials only from mutation values declared by the chip."""
+
+    project_path = chip_path / "spark-researcher.project.json"
+    project = _read_json(project_path) or {}
+    raw_trials = project.get("candidate_trials", [])
+    trials = list(raw_trials) if isinstance(raw_trials, list) else []
+    if len(trials) >= 3:
+        return True
+
+    manifest = _read_json(chip_path / "spark-chip.json") or {}
+    frontier = manifest.get("frontier", {})
+    allowed = frontier.get("allowed_mutations", {}) if isinstance(frontier, dict) else {}
+    if not isinstance(allowed, dict):
+        return False
+
+    existing_mutations = {
+        json.dumps(trial.get("mutations", {}), sort_keys=True)
+        for trial in trials
+        if isinstance(trial, dict)
+    }
+    for axis, values in allowed.items():
+        if not isinstance(values, list):
+            continue
+        for value in values:
+            mutations = {str(axis): value}
+            key = json.dumps(mutations, sort_keys=True)
+            if key in existing_mutations:
+                continue
+            trials.append(
+                {
+                    "name": f"{axis}-{value}",
+                    "mutations": mutations,
+                }
+            )
+            existing_mutations.add(key)
+            if len(trials) >= 3:
+                project["candidate_trials"] = trials
+                _write_json(project_path, project)
+                return True
+    return False
+
+
+def _fix_multiple_metrics(chip_path: Path) -> bool:
+    """Add general evaluation metrics while preserving list or mapping shape."""
+
+    project_path = chip_path / "spark-researcher.project.json"
+    project = _read_json(project_path) or {}
+    raw_metrics = project.get("metrics", {})
+    defaults = ("quality_score", "relevance", "consistency")
+    if isinstance(raw_metrics, dict):
+        if len(raw_metrics) >= 3:
+            return True
+        metrics = dict(raw_metrics)
+        for metric in defaults:
+            metrics.setdefault(metric, {})
+            if len(metrics) >= 3:
+                break
+    elif isinstance(raw_metrics, list):
+        if len(raw_metrics) >= 3:
+            return True
+        metrics = list(raw_metrics)
+        for metric in defaults:
+            if metric not in metrics:
+                metrics.append(metric)
+            if len(metrics) >= 3:
+                break
+    else:
+        metrics = {metric: {} for metric in defaults}
+    project["metrics"] = metrics
     _write_json(project_path, project)
     return True
 
@@ -777,6 +867,14 @@ _FIX_REGISTRY: dict[str, tuple[Callable[[Path], bool], str]] = {
     "primary_metric": (
         _fix_primary_metric,
         "Set eval_metric in spark-researcher.project.json",
+    ),
+    "candidate_trials": (
+        _fix_candidate_trials,
+        "Add distinct candidate trials from declared mutation values",
+    ),
+    "multiple_metrics": (
+        _fix_multiple_metrics,
+        "Ensure at least three evaluation metrics are defined",
     ),
     "baseline_trial": (
         _fix_baseline_trial,

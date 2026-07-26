@@ -138,6 +138,7 @@ def test_scaffold_chip_surfaces_unexpected_dspy_errors(monkeypatch, tmp_path: Pa
 
     with pytest.raises(RuntimeError, match="dspy bug"):
         scaffold_chip(_valid_brief(dspy_enabled=True), output_dir=tmp_path)
+    assert not (tmp_path / "domain-chip-test-domain").exists()
 
 
 @dataclass

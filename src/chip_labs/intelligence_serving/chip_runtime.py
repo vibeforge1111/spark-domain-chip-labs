@@ -131,7 +131,7 @@ def load_portfolio(
         chip_dir = Path(desc["path"])
         try:
             handle = load_chip(chip_dir)
-        except (FileNotFoundError, json.JSONDecodeError, OSError):
+        except (FileNotFoundError, json.JSONDecodeError, OSError, AttributeError, TypeError):
             continue
         if handle.quality_score >= min_score:
             handles.append(handle)
@@ -253,17 +253,16 @@ def _execute_subprocess(
                 cwd=str(chip.chip_path),
             )
 
-        if proc.returncode == 0:
-            output = _parse_hook_output(output_path, proc.stdout)
-            return HookResult(
-                hook_name=hook_name,
-                chip_name=chip.chip_name,
-                success=True,
-                result=output,
-                confidence=chip.quality_score / 100.0,
-                execution_mode="subprocess",
-            )
-        else:
+            if proc.returncode == 0:
+                output = _parse_hook_output(output_path, proc.stdout)
+                return HookResult(
+                    hook_name=hook_name,
+                    chip_name=chip.chip_name,
+                    success=True,
+                    result=output,
+                    confidence=chip.quality_score / 100.0,
+                    execution_mode="subprocess",
+                )
             return HookResult(
                 hook_name=hook_name,
                 chip_name=chip.chip_name,
@@ -277,7 +276,10 @@ def _execute_subprocess(
             hook_name=hook_name,
             chip_name=chip.chip_name,
             success=False,
-            result={"error": str(exc)},
+            result={
+                "error": "hook_execution_failed",
+                "error_type": type(exc).__name__,
+            },
             confidence=0.0,
             execution_mode="subprocess",
         )
@@ -333,7 +335,10 @@ def _prepare_hook_command(
 def _validate_hook_command(cmd: list[str], *, chip_path: Path | None = None) -> None:
     if not cmd:
         raise ValueError("Hook command is empty")
-    executable = Path(cmd[0]).name.lower()
+    raw_executable = cmd[0]
+    executable = raw_executable.replace("\\", "/").rsplit("/", 1)[-1].lower()
+    if executable in _PYTHON_EXECUTABLES and raw_executable.lower() != executable:
+        raise ValueError("Hook command must use a bare python executable name")
     if executable not in _PYTHON_EXECUTABLES:
         raise ValueError("Hook command must start with python or python3")
     if len(cmd) < 2:

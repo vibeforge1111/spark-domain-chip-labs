@@ -13,11 +13,14 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import logging
 import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -30,6 +33,7 @@ PROTOCOL_VERSION = "2024-11-05"
 
 MIN_QUALITY_SCORE = 35
 PORTFOLIO_TTL_SECONDS = 300  # 5 min cache
+MAX_REQUEST_BYTES = 1 << 20
 
 
 # ---------------------------------------------------------------------------
@@ -311,8 +315,8 @@ class ChipMCPServer:
                 "capabilities": chip.capabilities,
             })
 
-        # Sort by quality score descending
-        chips_info.sort(key=lambda c: c["quality_score"], reverse=True)
+        # Stable ordering keeps tied scores deterministic across discovery order.
+        chips_info.sort(key=lambda c: (-float(c["quality_score"]), str(c["chip_name"])))
 
         avg_score = sum(c["quality_score"] for c in chips_info) / len(chips_info) if chips_info else 0
         verdicts: dict[str, int] = {}
@@ -339,12 +343,29 @@ class ChipMCPServer:
         if not chip:
             return {"error": f"Chip '{chip_name}' not found"}
 
-        # Write feedback packet to realworld_validated
-        rw_dir = chip.chip_path / "research" / "realworld_validated"
+        try:
+            chip_root = Path(chip.chip_path).resolve()
+            if self._search_dir is not None:
+                search_root = self._search_dir.resolve()
+                if not self._is_within(chip_root, search_root):
+                    return {"error": "Chip feedback path is not authorized"}
+            rw_dir = chip_root / "research" / "realworld_validated"
+            if not self._is_within(rw_dir.resolve(), chip_root):
+                return {"error": "Chip feedback path is not authorized"}
+        except (OSError, RuntimeError, ValueError):
+            return {"error": "Chip feedback path is not authorized"}
+
         try:
             rw_dir.mkdir(parents=True, exist_ok=True)
         except OSError:
             return {"error": "Cannot create feedback directory"}
+
+        try:
+            resolved_feedback_dir = rw_dir.resolve(strict=True)
+            if not self._is_within(resolved_feedback_dir, chip_root):
+                return {"error": "Chip feedback path is not authorized"}
+        except (OSError, RuntimeError, ValueError):
+            return {"error": "Chip feedback path is not authorized"}
 
         timestamp = datetime.now(timezone.utc)
         packet = {
@@ -359,7 +380,13 @@ class ChipMCPServer:
         }
 
         filename = f"feedback_{timestamp.strftime('%Y%m%dT%H%M%SZ')}.json"
-        filepath = rw_dir / filename
+        filepath = resolved_feedback_dir / filename
+
+        try:
+            if not self._is_within(filepath.resolve(), chip_root):
+                return {"error": "Chip feedback path is not authorized"}
+        except (OSError, RuntimeError, ValueError):
+            return {"error": "Chip feedback path is not authorized"}
 
         try:
             filepath.write_text(json.dumps(packet, indent=2), encoding="utf-8")
@@ -373,6 +400,11 @@ class ChipMCPServer:
             "doctrine_confirmed_count": len(confirmed),
             "doctrine_contradicted_count": len(contradicted),
         }
+
+    @staticmethod
+    def _is_within(candidate: Path, root: Path) -> bool:
+        """Return whether a resolved candidate is at or below a resolved root."""
+        return candidate == root or candidate.is_relative_to(root)
 
     def _handle_chip_suggest(self, args: dict[str, Any]) -> dict[str, Any]:
         """Get research suggestions."""
@@ -389,6 +421,7 @@ class ChipMCPServer:
             chips = self._portfolio
 
         suggestions: list[dict[str, Any]] = []
+        failures: list[dict[str, str]] = []
         for chip in chips[:5]:
             try:
                 from .intelligence_server import extract_intelligence
@@ -410,10 +443,21 @@ class ChipMCPServer:
                     "suggestions": chip_suggestions,
                     "focus": focus,
                 })
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.warning(
+                    "Chip advice failed for %s (%s)",
+                    getattr(chip, "chip_name", "unknown"),
+                    type(exc).__name__,
+                )
+                failures.append({
+                    "chip_name": getattr(chip, "chip_name", "unknown"),
+                    "error_type": type(exc).__name__,
+                })
 
-        return {"suggestions": suggestions}
+        result: dict[str, Any] = {"suggestions": suggestions}
+        if failures:
+            result["failed_chips"] = failures
+        return result
 
     # -- MCP protocol -------------------------------------------------------
 
@@ -495,10 +539,53 @@ class ChipMCPServer:
             }
         return {}
 
-    def run(self) -> None:
+    @staticmethod
+    def _read_bounded_line(input_stream: Any) -> tuple[str | None, bool]:
+        """Read and, when needed, drain one line without unbounded allocation."""
+        chunk = input_stream.readline(MAX_REQUEST_BYTES + 1)
+        if chunk in (b"", ""):
+            return None, False
+
+        newline = b"\n" if isinstance(chunk, bytes) else "\n"
+        byte_count = len(chunk) if isinstance(chunk, bytes) else len(chunk.encode("utf-8"))
+        oversized = byte_count > MAX_REQUEST_BYTES
+
+        if oversized:
+            while not chunk.endswith(newline):
+                chunk = input_stream.readline(MAX_REQUEST_BYTES + 1)
+                if chunk in (b"", ""):
+                    break
+            return "", True
+
+        if isinstance(chunk, bytes):
+            try:
+                return chunk.decode("utf-8"), False
+            except UnicodeDecodeError:
+                return "", False
+        return chunk, False
+
+    def run(
+        self,
+        *,
+        stdin: Any | None = None,
+        stdout: Any | None = None,
+        stderr: Any | None = None,
+    ) -> None:
         """Main stdio loop implementing MCP protocol."""
-        # MCP uses newline-delimited JSON over stdio
-        for line in sys.stdin:
+        input_stream = stdin
+        if input_stream is None:
+            input_stream = getattr(sys.stdin, "buffer", sys.stdin)
+        output_stream = stdout if stdout is not None else sys.stdout
+        error_stream = stderr if stderr is not None else sys.stderr
+
+        while True:
+            line, oversized = self._read_bounded_line(input_stream)
+            if line is None:
+                break
+            if oversized:
+                error_stream.write("chip_mcp_server: oversized request rejected\n")
+                error_stream.flush()
+                continue
             line = line.strip()
             if not line:
                 continue
@@ -507,11 +594,16 @@ class ChipMCPServer:
                 request = json.loads(line)
             except json.JSONDecodeError:
                 continue
+            if not isinstance(request, dict):
+                continue
 
             response = self._handle_request(request)
             if response:
-                sys.stdout.write(json.dumps(response) + "\n")
-                sys.stdout.flush()
+                try:
+                    output_stream.write(json.dumps(response) + "\n")
+                    output_stream.flush()
+                except BrokenPipeError:
+                    break
 
 
 # ---------------------------------------------------------------------------

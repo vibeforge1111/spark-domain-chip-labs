@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import textwrap
+from datetime import timezone
 from pathlib import Path
 
 import pytest
@@ -19,6 +20,7 @@ from chip_labs.deep_eval import (
     _causal_density,
     _content_density_words,
     _extract_doctrines,
+    _extract_timestamps,
     _gini_coefficient,
     _jaccard_distance,
     _load_all_runs,
@@ -34,6 +36,11 @@ from chip_labs.deep_eval import (
     check_watchtower_depth,
     score_chip_v3,
 )
+
+
+def test_naive_run_timestamps_are_normalized_to_utc() -> None:
+    timestamps = _extract_timestamps([{"created_at": "2026-07-24T12:00:00"}])
+    assert timestamps[0].tzinfo is timezone.utc
 
 
 # ---------------------------------------------------------------------------

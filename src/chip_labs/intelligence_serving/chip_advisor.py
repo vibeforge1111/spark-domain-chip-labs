@@ -9,6 +9,7 @@ Zero external dependencies (stdlib + chip_labs siblings only).
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -171,9 +172,9 @@ def _classify_guidance(action: str, claim: str) -> str:
     action_lower = action.lower()
     claim_lower = claim.lower()
 
-    # Simple heuristic: keyword overlap hints at relevance
-    action_words = set(action_lower.split())
-    claim_words = set(claim_lower.split())
+    # Normalize adjacent punctuation so "avoid:" remains a warning signal.
+    action_words = {token for token in re.split(r"[\s\W]+", action_lower) if token}
+    claim_words = {token for token in re.split(r"[\s\W]+", claim_lower) if token}
     overlap = len(action_words & claim_words)
 
     # Look for warning-ish keywords in the claim

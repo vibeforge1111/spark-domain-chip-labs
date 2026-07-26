@@ -1,0 +1,485 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparkswarm.ai/schemas/adaptive_creator_loop/startup-bench-promotion-dossier.schema.json",
+  "title": "Spark Startup Bench Promotion Dossier",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "status",
+    "dossierId",
+    "createdAt",
+    "generatedAt",
+    "runIdentity",
+    "proofIdentity",
+    "candidateLock",
+    "proofBinding",
+    "proofGateBundle",
+    "privateScoreSummary",
+    "proofGates",
+    "promotionDossier",
+    "scoreClaimAllowed",
+    "improvementClaimAllowed",
+    "public_ready",
+    "network_absorbable",
+    "blockers",
+    "nextAction",
+    "artifactManifest",
+    "claimBoundary"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "spark-startup-bench-promotion-dossier.v1"},
+    "schema_version": {"const": "spark-startup-bench-promotion-dossier.v1"},
+    "status": {
+      "enum": [
+        "runner_proof_ready",
+        "bundle_refresh_required",
+        "score_claim_ready",
+        "reverted",
+        "abandoned_stale_candidate"
+      ]
+    },
+    "dossierId": {"type": "string", "minLength": 1},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "generatedAt": {"type": "string", "format": "date-time"},
+    "runIdentity": {"$ref": "#/$defs/runIdentity"},
+    "proofIdentity": {"$ref": "#/$defs/proofIdentity"},
+    "candidateLock": {"$ref": "#/$defs/candidateLock"},
+    "proofBinding": {"$ref": "#/$defs/proofBinding"},
+    "proofGateBundle": {"$ref": "#/$defs/proofGateBundle"},
+    "privateScoreSummary": {"$ref": "#/$defs/privateScoreSummary"},
+    "proofGates": {"$ref": "#/$defs/proofGates"},
+    "promotionDossier": {"$ref": "#/$defs/promotionDossier"},
+    "scoreClaimAllowed": {"type": "boolean"},
+    "score_claim_allowed": {"type": "boolean"},
+    "improvementClaimAllowed": {"type": "boolean"},
+    "improvement_claim_allowed": {"type": "boolean"},
+    "public_ready": {"type": "boolean"},
+    "publicReady": {"type": "boolean"},
+    "network_absorbable": {"type": "boolean"},
+    "networkAbsorbable": {"type": "boolean"},
+    "blockers": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "nextGate": {"type": "string", "minLength": 1},
+    "nextAction": {"type": "string", "minLength": 1},
+    "artifacts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/artifactRef"}
+    },
+    "artifactManifest": {"$ref": "#/$defs/artifactManifest"},
+    "claimBoundary": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "runIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runId", "baselineId", "seeds", "maxTurns"],
+      "properties": {
+        "runId": {"type": "string", "minLength": 1},
+        "baselineId": {"type": "string", "minLength": 1},
+        "startupBenchRepo": {"type": "string", "minLength": 1},
+        "startupOperatorRepo": {"type": "string", "minLength": 1},
+        "scenarioPath": {"type": "string", "minLength": 1},
+        "scenarioSha256": {"$ref": "#/$defs/sha256"},
+        "toolCallsPath": {"type": "string", "minLength": 1},
+        "toolCallsSha256": {"$ref": "#/$defs/sha256"},
+        "seeds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "integer"}
+        },
+        "maxTurns": {"type": "integer", "minimum": 1}
+      }
+    },
+    "proofIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proofReportSha256",
+        "privateScoreSummarySha256",
+        "runSignatureDigest",
+        "proofGateBundleId"
+      ],
+      "properties": {
+        "proofReportPath": {"type": "string", "minLength": 1},
+        "proofReportSha256": {"$ref": "#/$defs/sha256"},
+        "privateScoreSummarySha256": {"$ref": "#/$defs/sha256"},
+        "runSignatureDigest": {"type": "string", "minLength": 1},
+        "proofGateBundleId": {"type": "string", "minLength": 1}
+      }
+    },
+    "candidateLock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lockState",
+        "targetKind",
+        "targetPath",
+        "targetSha256",
+        "scenarioSha256",
+        "createdBeforeEvaluation"
+      ],
+      "properties": {
+        "lockState": {
+          "enum": ["locked", "refresh_required", "reverted", "abandoned_stale_candidate"]
+        },
+        "targetKind": {"enum": ["startup_operator_tool_calls", "startup_operator_repo", "unknown"]},
+        "targetPath": {"type": "string", "minLength": 1},
+        "targetSha256": {"$ref": "#/$defs/sha256"},
+        "scenarioPath": {"type": "string", "minLength": 1},
+        "scenarioSha256": {"$ref": "#/$defs/sha256"},
+        "artifactRef": {"type": ["string", "null"], "minLength": 1},
+        "artifactSha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "createdBeforeEvaluation": {"type": "boolean"}
+      }
+    },
+    "proofBinding": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schemaVersion",
+        "proofReportSha256",
+        "privateScoreSummarySha256",
+        "runSignature"
+      ],
+      "properties": {
+        "schemaVersion": {"type": "string", "minLength": 1},
+        "proofReportPath": {"type": "string", "minLength": 1},
+        "proofReportSha256": {"$ref": "#/$defs/sha256"},
+        "privateScoreSummarySha256": {"$ref": "#/$defs/sha256"},
+        "runSignature": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["digest", "payload"],
+          "properties": {
+            "schemaVersion": {"type": "string", "minLength": 1},
+            "digest": {"type": "string", "minLength": 1},
+            "payload": {"type": "object", "additionalProperties": true}
+          }
+        }
+      }
+    },
+    "proofGateBundle": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["schemaVersion", "bundleId", "manifestPath", "gateBundleSha256", "status"],
+      "properties": {
+        "schemaVersion": {"type": "string", "minLength": 1},
+        "bundleId": {"type": "string", "minLength": 1},
+        "bundlePath": {"type": "string", "minLength": 1},
+        "manifestPath": {"type": "string", "minLength": 1},
+        "gateBundleSha256": {"$ref": "#/$defs/sha256"},
+        "status": {"enum": ["passed", "blocked", "bundle_refresh_required", "reverted", "abandoned_stale_candidate"]}
+      }
+    },
+    "privateScoreSummary": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["baseline", "candidate", "comparison"],
+      "properties": {
+        "baseline": {"$ref": "#/$defs/scoreSummary"},
+        "candidate": {"$ref": "#/$defs/scoreSummary"},
+        "comparison": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["candidateMinusBaseline", "candidateBeatsBaseline", "metric"],
+          "properties": {
+            "candidateMinusBaseline": {"type": "number"},
+            "candidateBeatsBaseline": {"type": "boolean"},
+            "metric": {"type": "string", "minLength": 1}
+          }
+        },
+        "scoreClaimAllowed": {"type": "boolean"}
+      }
+    },
+    "scoreSummary": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["scenarioScore", "pass"],
+      "properties": {
+        "scenarioScore": {"type": "number"},
+        "outcomeScore": {"type": "number"},
+        "constraintScore": {"type": "number"},
+        "pass": {"type": "boolean"},
+        "runCount": {"type": "integer", "minimum": 0},
+        "violationCount": {"type": "integer", "minimum": 0}
+      }
+    },
+    "proofGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hiddenHeldout",
+        "wrapperRaw",
+        "sidecarReview",
+        "repeatedStability",
+        "wallClockStability",
+        "scoreReconciliation"
+      ],
+      "properties": {
+        "hiddenHeldout": {"$ref": "#/$defs/gateState"},
+        "wrapperRaw": {"$ref": "#/$defs/gateState"},
+        "sidecarReview": {"$ref": "#/$defs/gateState"},
+        "repeatedStability": {"$ref": "#/$defs/gateState"},
+        "wallClockStability": {"$ref": "#/$defs/gateState"},
+        "scoreReconciliation": {"$ref": "#/$defs/gateState"}
+      }
+    },
+    "gateState": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["status", "pass", "blockers"],
+      "properties": {
+        "status": {"type": "string", "minLength": 1},
+        "pass": {"type": "boolean"},
+        "blockers": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "scoreClaimAllowed": {"type": "boolean"}
+      }
+    },
+    "promotionDossier": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "status",
+        "scoreClaimAllowed",
+        "improvementClaimAllowed",
+        "public_ready",
+        "network_absorbable",
+        "blockers"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["blocked", "score_claim_ready", "bundle_refresh_required", "reverted", "abandoned_stale_candidate", "kept"]
+        },
+        "scoreClaimAllowed": {"type": "boolean"},
+        "improvementClaimAllowed": {"type": "boolean"},
+        "public_ready": {"type": "boolean"},
+        "network_absorbable": {"type": "boolean"},
+        "blockers": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "nextGate": {"type": "string", "minLength": 1},
+        "nextAction": {"type": "string", "minLength": 1},
+        "keepRevertDecision": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["decision", "reason"],
+          "properties": {
+            "decision": {"enum": ["keep", "revert", "abandon_stale_candidate", "pending"]},
+            "reason": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "artifactManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "artifactCount", "artifacts"],
+      "properties": {
+        "schemaVersion": {"const": "spark-startup-bench-promotion-dossier-artifact-manifest.v1"},
+        "artifactCount": {"type": "integer", "minimum": 1},
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/artifactRef"}
+        }
+      }
+    },
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["artifactType", "path", "sha256"],
+      "properties": {
+        "artifactType": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "bytes": {"type": "integer", "minimum": 0}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"score_claim_allowed": {"const": true}}, "required": ["score_claim_allowed"]},
+      "then": {"properties": {"scoreClaimAllowed": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"scoreClaimAllowed": {"const": true}}, "required": ["scoreClaimAllowed"]},
+      "then": {"properties": {"score_claim_allowed": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"improvement_claim_allowed": {"const": true}}, "required": ["improvement_claim_allowed"]},
+      "then": {"properties": {"improvementClaimAllowed": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"improvementClaimAllowed": {"const": true}}, "required": ["improvementClaimAllowed"]},
+      "then": {"properties": {"improvement_claim_allowed": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"publicReady": {"const": true}}, "required": ["publicReady"]},
+      "then": {"properties": {"public_ready": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"public_ready": {"const": true}}, "required": ["public_ready"]},
+      "then": {"properties": {"publicReady": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"networkAbsorbable": {"const": true}}, "required": ["networkAbsorbable"]},
+      "then": {"properties": {"network_absorbable": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"network_absorbable": {"const": true}}, "required": ["network_absorbable"]},
+      "then": {"properties": {"networkAbsorbable": {"const": true}}}
+    },
+    {
+      "if": {
+        "properties": {"blockers": {"minItems": 1}},
+        "required": ["blockers"]
+      },
+      "then": {
+        "properties": {
+          "scoreClaimAllowed": {"const": false},
+          "improvementClaimAllowed": {"const": false},
+          "public_ready": {"const": false},
+          "network_absorbable": {"const": false},
+          "promotionDossier": {
+            "properties": {
+              "scoreClaimAllowed": {"const": false},
+              "improvementClaimAllowed": {"const": false},
+              "public_ready": {"const": false},
+              "network_absorbable": {"const": false}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"scoreClaimAllowed": {"const": true}},
+        "required": ["scoreClaimAllowed"]
+      },
+      "then": {
+        "properties": {
+          "status": {"const": "score_claim_ready"},
+          "blockers": {"maxItems": 0},
+          "proofGateBundle": {
+            "properties": {"status": {"const": "passed"}}
+          },
+          "proofGates": {
+            "properties": {
+              "hiddenHeldout": {"properties": {"pass": {"const": true}}},
+              "wrapperRaw": {"properties": {"pass": {"const": true}}},
+              "sidecarReview": {"properties": {"pass": {"const": true}}},
+              "repeatedStability": {"properties": {"pass": {"const": true}}},
+              "wallClockStability": {"properties": {"pass": {"const": true}}},
+              "scoreReconciliation": {"properties": {"pass": {"const": true}}}
+            }
+          },
+          "promotionDossier": {
+            "properties": {
+              "status": {"const": "score_claim_ready"},
+              "scoreClaimAllowed": {"const": true},
+              "blockers": {"maxItems": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"improvementClaimAllowed": {"const": true}},
+        "required": ["improvementClaimAllowed"]
+      },
+      "then": {
+        "properties": {
+          "scoreClaimAllowed": {"const": true},
+          "privateScoreSummary": {
+            "properties": {
+              "comparison": {
+                "properties": {
+                  "candidateBeatsBaseline": {"const": true},
+                  "candidateMinusBaseline": {"exclusiveMinimum": 0}
+                }
+              }
+            }
+          },
+          "promotionDossier": {
+            "properties": {
+              "improvementClaimAllowed": {"const": true}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"network_absorbable": {"const": true}},
+        "required": ["network_absorbable"]
+      },
+      "then": {
+        "properties": {
+          "improvementClaimAllowed": {"const": true},
+          "promotionDossier": {
+            "properties": {
+              "network_absorbable": {"const": true},
+              "keepRevertDecision": {
+                "properties": {"decision": {"const": "keep"}}
+              }
+            },
+            "required": ["keepRevertDecision"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"status": {"const": "bundle_refresh_required"}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "scoreClaimAllowed": {"const": false},
+          "improvementClaimAllowed": {"const": false},
+          "promotionDossier": {
+            "properties": {
+              "status": {"const": "bundle_refresh_required"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"status": {"enum": ["reverted", "abandoned_stale_candidate"]}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "scoreClaimAllowed": {"const": false},
+          "improvementClaimAllowed": {"const": false},
+          "public_ready": {"const": false},
+          "network_absorbable": {"const": false},
+          "promotionDossier": {
+            "required": ["keepRevertDecision"],
+            "properties": {
+              "scoreClaimAllowed": {"const": false},
+              "improvementClaimAllowed": {"const": false}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

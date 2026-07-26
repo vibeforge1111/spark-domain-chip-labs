@@ -1011,6 +1011,9 @@ ALL_RELATIONSHIPS = RELATIONSHIPS + NEW_RELATIONSHIPS
 # MAIN
 # =============================================================================
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Run the MiroFish 250-domain prediction")
+    parser.parse_args()
     t0 = time.time()
     n = len(ALL_250_DOMAINS)
     domain_ids_set = {d["domain_id"] for d in ALL_250_DOMAINS}

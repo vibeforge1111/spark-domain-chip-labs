@@ -128,9 +128,15 @@ def check_mirofish_provider_adapters(manifest: dict[str, Any]) -> dict[str, Any]
 def load_mirofish_provider_adapter_manifest(path: str | Path) -> dict[str, Any]:
     """Load a provider-adapter manifest from JSON."""
 
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    manifest_path = Path(path)
+    try:
+        data = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise ValueError(f"Provider-adapter manifest not found: {manifest_path}") from exc
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Provider-adapter manifest is not valid JSON: {manifest_path}") from exc
     if not isinstance(data, dict):
-        raise ValueError(f"{path} must contain a JSON object")
+        raise ValueError(f"{manifest_path} must contain a JSON object")
     return data
 
 

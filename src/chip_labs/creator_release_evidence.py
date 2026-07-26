@@ -29,6 +29,7 @@ RELEASE_COMMANDS = [
     "chip-labs creator-system-production-readiness --fail-on-blocked",
     "chip-labs creator-run-smoke docs/creator_system/examples/startup-yc-creator-run --fail-on-blocked --fail-on-warn",
 ]
+GIT_COMMAND_TIMEOUT_SECONDS = 30
 
 
 def build_creator_system_release_evidence(
@@ -237,7 +238,12 @@ def _load_production_readiness(path_value: str | Path | None) -> dict[str, Any] 
     if path_value is None:
         return None
     path = Path(path_value)
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return None
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Production readiness packet at {path} is not valid JSON") from exc
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
@@ -269,8 +275,9 @@ def _git_lines(repo_path: Path, *args: str) -> list[str]:
             capture_output=True,
             text=True,
             check=False,
+            timeout=GIT_COMMAND_TIMEOUT_SECONDS,
         )
-    except OSError:
+    except (OSError, subprocess.TimeoutExpired):
         return []
     if result.returncode != 0:
         return []

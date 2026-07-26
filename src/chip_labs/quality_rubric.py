@@ -103,6 +103,8 @@ def _check_manifest(chip_path: Path) -> dict[str, bool]:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
         return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "manifest_validity" for c in dim["checks"]}
+    if not isinstance(manifest, dict):
+        return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "manifest_validity" for c in dim["checks"]}
 
     results["schema_version"] = manifest.get("schema_version") == "spark-chip.v1"
     results["io_protocol"] = manifest.get("io_protocol") == "spark-hook-io.v1"
@@ -119,10 +121,38 @@ def _check_manifest(chip_path: Path) -> dict[str, bool]:
 
 
 def _check_evidence_separation(chip_path: Path) -> dict[str, bool]:
-    """Check for evidence lane separation indicators."""
+    """Prefer concrete non-empty evidence lanes over keyword-only claims."""
     results: dict[str, bool] = {}
 
-    # Check across docs, src, and obsidian-vault for evidence lane references
+    lane_names = {
+        "has_research_grounded": "research_grounded",
+        "has_benchmark_grounded": "benchmark_grounded",
+        "has_exploratory_frontier": "exploratory_frontier",
+        "has_realworld_validated": "realworld_validated",
+    }
+    evidence_root = next(
+        (
+            root
+            for root in (
+                chip_path / "research",
+                chip_path / "evidence",
+                chip_path / "evidence-lane",
+            )
+            if root.is_dir()
+            and any((root / lane).is_dir() for lane in lane_names.values())
+        ),
+        None,
+    )
+    if evidence_root is not None:
+        for check_id, lane_name in lane_names.items():
+            lane_path = evidence_root / lane_name
+            try:
+                results[check_id] = lane_path.is_dir() and any(lane_path.iterdir())
+            except OSError:
+                results[check_id] = False
+        return results
+
+    # Legacy chips remain readable, but only explicit lane names count.
     all_text = ""
     for pattern in ["docs/**/*.md", "src/**/*.py", "obsidian-vault/**/*.md", "README.md"]:
         for fp in chip_path.glob(pattern):
@@ -131,10 +161,10 @@ def _check_evidence_separation(chip_path: Path) -> dict[str, bool]:
             except OSError:
                 pass
 
-    results["has_research_grounded"] = "research_grounded" in all_text or "research-grounded" in all_text or "source" in all_text
-    results["has_benchmark_grounded"] = "benchmark_grounded" in all_text or "benchmark-grounded" in all_text or "benchmark" in all_text
-    results["has_exploratory_frontier"] = "exploratory_frontier" in all_text or "exploratory" in all_text or "frontier" in all_text
-    results["has_realworld_validated"] = "realworld_validated" in all_text or "real-world" in all_text or "realworld" in all_text
+    results["has_research_grounded"] = "research_grounded" in all_text or "research-grounded" in all_text
+    results["has_benchmark_grounded"] = "benchmark_grounded" in all_text or "benchmark-grounded" in all_text
+    results["has_exploratory_frontier"] = "exploratory_frontier" in all_text
+    results["has_realworld_validated"] = "realworld_validated" in all_text or "real-world validated" in all_text
 
     return results
 
@@ -150,6 +180,8 @@ def _check_evaluation_depth(chip_path: Path) -> dict[str, bool]:
     try:
         project = json.loads(project_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
+        return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "evaluation_depth" for c in dim["checks"]}
+    if not isinstance(project, dict):
         return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "evaluation_depth" for c in dim["checks"]}
 
     results["primary_metric"] = bool(project.get("eval_metric"))
@@ -237,6 +269,8 @@ def _check_integration_health(chip_path: Path) -> dict[str, bool]:
     try:
         project = json.loads(project_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
+        return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "integration_health" for c in dim["checks"]}
+    if not isinstance(project, dict):
         return {c["id"]: False for dim in RUBRIC_DIMENSIONS if dim["name"] == "integration_health" for c in dim["checks"]}
 
     results["project_json_valid"] = bool(project.get("project_name"))

@@ -341,6 +341,9 @@ ALL_DOMAINS = EXISTING_CHIPS + NEW_CANDIDATES
 # ============================================================================
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Run the 1000-agent MiroFish prediction")
+    parser.parse_args()
     print("=" * 80)
     print("MIROFISH 1000-AGENT TREND PREDICTION")
     print(f"Domains: {len(EXISTING_CHIPS)} existing + {len(NEW_CANDIDATES)} new = {len(ALL_DOMAINS)} total")

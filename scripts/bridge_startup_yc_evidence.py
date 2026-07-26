@@ -47,12 +47,14 @@ def bridge_score_history(chip: Path) -> int:
     Returns the number of entries written.
     """
     runs_path = chip / "artifacts" / "ledger" / "runs.jsonl"
-    if not runs_path.exists():
+    try:
+        raw = runs_path.read_text(encoding="utf-8", errors="ignore")
+    except FileNotFoundError:
         print(f"  SKIP: {runs_path} not found")
         return 0
 
     entries: list[dict] = []
-    for line in runs_path.read_text(encoding="utf-8", errors="ignore").splitlines():
+    for line in raw.splitlines():
         line = line.strip()
         if not line:
             continue
@@ -100,7 +102,9 @@ def bridge_research_grounded(chip: Path) -> int:
     Returns number of files copied.
     """
     src = chip / "docs" / "research-packets"
-    if not src.exists():
+    try:
+        candidates = sorted(src.iterdir())
+    except FileNotFoundError:
         print(f"  SKIP: {src} not found")
         return 0
 
@@ -108,7 +112,7 @@ def bridge_research_grounded(chip: Path) -> int:
     dst.mkdir(parents=True, exist_ok=True)
 
     count = 0
-    for md in sorted(src.iterdir()):
+    for md in candidates:
         if not md.is_file() or md.suffix != ".md":
             continue
         if md.name == "README.md":
@@ -135,7 +139,9 @@ def bridge_benchmark_grounded(chip: Path) -> int:
     dst.mkdir(parents=True, exist_ok=True)
 
     runs_path = chip / "artifacts" / "ledger" / "runs.jsonl"
-    if not runs_path.exists():
+    try:
+        raw = runs_path.read_text(encoding="utf-8", errors="ignore")
+    except FileNotFoundError:
         print(f"  SKIP: {runs_path} not found")
         return 0
 
@@ -143,7 +149,7 @@ def bridge_benchmark_grounded(chip: Path) -> int:
     best_by_verdict: dict[str, dict] = {}
     all_scores: list[float] = []
 
-    for line in runs_path.read_text(encoding="utf-8", errors="ignore").splitlines():
+    for line in raw.splitlines():
         line = line.strip()
         if not line:
             continue
@@ -412,11 +418,11 @@ def bridge_structured_packets(chip: Path) -> int:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    chip_path_arg = None
-    if "--chip-path" in sys.argv:
-        idx = sys.argv.index("--chip-path")
-        if idx + 1 < len(sys.argv):
-            chip_path_arg = sys.argv[idx + 1]
+    import argparse
+    parser = argparse.ArgumentParser(description="Bridge Startup YC evidence")
+    parser.add_argument("--chip-path", help="Path to the Startup YC chip")
+    args = parser.parse_args()
+    chip_path_arg = args.chip_path
 
     chip = _find_chip(chip_path_arg)
     print(f"Bridging evidence for: {chip.name}")

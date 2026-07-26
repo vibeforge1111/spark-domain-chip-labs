@@ -21,6 +21,7 @@ They are intentionally pragmatic rather than exhaustive. Their job is to keep ag
 | [specialization-path-manifest.schema.json](specialization-path-manifest.schema.json) | `specialization-path/path.manifest.json` |
 | [specialization-loop-status.schema.json](specialization-loop-status.schema.json) | Canonical Domain Chip Labs-owned status packet for a Spark specialization loop |
 | [specialization-loop-insight-packet.schema.json](specialization-loop-insight-packet.schema.json) | Local/private specialization insight packet derived from a canonical status packet |
+| [startup-bench-promotion-dossier.schema.json](startup-bench-promotion-dossier.schema.json) | Canonical bound Startup Bench promotion dossier for Spark startup self-improvement proof |
 | [autoloop-simulation-result.schema.json](autoloop-simulation-result.schema.json) | Generated keep/revert autoloop simulation output |
 | [artifact-quality-report.schema.json](artifact-quality-report.schema.json) | Local artifact-quality score report |
 | [artifact-quality-benchmark-manifest.schema.json](artifact-quality-benchmark-manifest.schema.json) | Artifact-quality benchmark manifest |
@@ -186,6 +187,16 @@ privacy-safe export flags, and keeps `network_absorbable`,
 `network_publication_allowed`, memory promotion, and product runtime wiring
 false. A packet may become a private review candidate only after privacy review;
 it is still not network absorption or publication approval.
+
+The Startup Bench promotion dossier schema anchors the startup
+self-improvement proof boundary. It maps Spark QA Operator's bound proof report
+into one shared contract with candidate lock identity, immutable proof-bundle
+identity, private score movement, proof gates, promotion dossier state, artifact
+manifest, and explicit claim booleans. Positive private movement can validate
+as a blocked dossier, but it cannot validate as `improvementClaimAllowed=true`
+until hidden heldout, wrapper raw, sidecar review, repeated stability,
+wall-clock stability, and score reconciliation all pass inside the bound proof
+bundle.
 
 The generated multi-seed summary schemas anchor the generic domain-generator
 matrix separately from the Startup YC promotion gate. They require recomputed

@@ -109,6 +109,27 @@ class TestLoadChip:
                 chip_path=chip_dir,
             )
 
+    @pytest.mark.parametrize(
+        "executable",
+        ["/tmp/python", "./python3", r"C:\\untrusted\\python.exe"],
+    )
+    def test_rejects_path_prefixed_python_executable_from_manifest(
+        self,
+        tmp_path: Path,
+        executable: str,
+    ) -> None:
+        chip_dir = tmp_path / "domain-chip-cmd"
+        chip_dir.mkdir()
+
+        with pytest.raises(ValueError, match="bare python executable"):
+            _prepare_hook_command(
+                [executable, "eval.py"],
+                "evaluate",
+                tmp_path / "input.json",
+                tmp_path / "output.json",
+                chip_path=chip_dir,
+            )
+
     def test_rejects_hook_script_outside_chip_dir(self, tmp_path: Path) -> None:
         chip_dir = tmp_path / "domain-chip-cmd"
         chip_dir.mkdir()
@@ -151,7 +172,7 @@ class TestLoadChip:
             chip_name="domain-chip-cmd",
             domain="testing",
             version="1.0.0",
-            commands={"evaluate": ["python", "fail.py"]},
+            commands={"evaluate": ["python3", "fail.py"]},
         )
 
         result = execute_hook(chip, "evaluate", {})
@@ -161,6 +182,41 @@ class TestLoadChip:
         assert result.result["stderr_present"] is True
         assert "stderr" not in result.result
         assert "keyfile" not in json.dumps(result.result)
+
+    def test_reads_file_hook_output_before_temporary_directory_cleanup(self, tmp_path: Path) -> None:
+        chip_dir = tmp_path / "domain-chip-cmd"
+        chip_dir.mkdir()
+        (chip_dir / "file_output.py").write_text(
+            "import argparse, json\n"
+            "parser = argparse.ArgumentParser()\n"
+            "parser.add_argument('--input')\n"
+            "parser.add_argument('--output')\n"
+            "args = parser.parse_args()\n"
+            "with open(args.output, 'w', encoding='utf-8') as handle:\n"
+            "    json.dump({'source': 'file', 'ok': True}, handle)\n",
+            encoding="utf-8",
+        )
+        chip = ChipHandle(
+            chip_path=chip_dir,
+            chip_name="domain-chip-cmd",
+            domain="testing",
+            version="1.0.0",
+            commands={
+                "evaluate": [
+                    "python3",
+                    "file_output.py",
+                    "--input",
+                    "{input}",
+                    "--output",
+                    "{output}",
+                ]
+            },
+        )
+
+        result = execute_hook(chip, "evaluate", {})
+
+        assert result.success is True
+        assert result.result == {"source": "file", "ok": True}
 
 
 # ---------------------------------------------------------------------------

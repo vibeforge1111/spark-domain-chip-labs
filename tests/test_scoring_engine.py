@@ -242,7 +242,7 @@ class TestSystemBonuses:
                 SystemBonus(
                     label="broken",
                     bonus=99,
-                    condition=lambda m: 1 / 0,  # always raises
+                    condition=lambda _m: (_ for _ in ()).throw(RuntimeError("expected failure")),
                 ),
             ],
         )
@@ -250,6 +250,20 @@ class TestSystemBonuses:
         result = engine.score({})
         assert result.total == 50
         assert result.system_bonus_total == 0
+
+    def test_programmer_error_in_condition_propagates(self) -> None:
+        config = ScoringConfig(
+            base_score=50,
+            system_bonuses=[
+                SystemBonus(
+                    label="broken-contract",
+                    bonus=99,
+                    condition=lambda _m: 1 / 0,
+                ),
+            ],
+        )
+        with pytest.raises(ZeroDivisionError):
+            MutationScoringEngine(config).score({})
 
 
 # ===================================================================

@@ -6,8 +6,11 @@ targeting a quality rubric score of 45-50 out of 100 immediately.
 
 from __future__ import annotations
 
+import html
 import json
+import keyword
 import re
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -22,7 +25,13 @@ def load_brief(brief_path: str | Path) -> dict[str, Any]:
     if brief_path.suffix in (".yaml", ".yml"):
         # Simple YAML-like parser (no external deps)
         return _parse_simple_yaml(brief_path.read_text(encoding="utf-8"))
-    return json.loads(brief_path.read_text(encoding="utf-8"))
+    try:
+        brief = json.loads(brief_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid brief JSON: {brief_path}") from exc
+    if not isinstance(brief, dict):
+        raise ValueError(f"{brief_path} must contain a JSON object")
+    return brief
 
 
 def _parse_simple_yaml(text: str) -> dict[str, Any]:
@@ -108,7 +117,34 @@ def _parse_simple_yaml(text: str) -> dict[str, Any]:
                         nv = nv.strip().strip('"').strip("'")
                         if nv.startswith("[") and nv.endswith("]"):
                             nv = [x.strip().strip('"').strip("'") for x in nv[1:-1].split(",")]
-                        nested[nk.strip()] = nv
+                            nested[nk.strip()] = nv
+                        elif not nv:
+                            sub: dict[str, Any] = {}
+                            k = j + 1
+                            while k < len(lines):
+                                sub_line = lines[k]
+                                sub_stripped = sub_line.strip()
+                                sub_indent = len(sub_line) - len(sub_line.lstrip())
+                                if not sub_stripped or sub_stripped.startswith("#"):
+                                    k += 1
+                                    continue
+                                if sub_indent <= next_indent:
+                                    break
+                                if ":" in sub_stripped:
+                                    sk, _, sv = sub_stripped.partition(":")
+                                    sv = sv.strip().strip('"').strip("'")
+                                    if sv.startswith("[") and sv.endswith("]"):
+                                        sv = [
+                                            item.strip().strip('"').strip("'")
+                                            for item in sv[1:-1].split(",")
+                                        ]
+                                    sub[sk.strip()] = sv
+                                k += 1
+                            nested[nk.strip()] = sub
+                            j = k
+                            continue
+                        else:
+                            nested[nk.strip()] = nv
                     j += 1
 
                 if items:
@@ -124,17 +160,79 @@ def _parse_simple_yaml(text: str) -> dict[str, Any]:
     return result
 
 
+_DOMAIN_ID_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_-]{0,63}$")
+_WINDOWS_RESERVED_NAMES = {
+    "con",
+    "prn",
+    "aux",
+    "nul",
+    *(f"com{index}" for index in range(1, 10)),
+    *(f"lpt{index}" for index in range(1, 10)),
+}
+
+
+def _bounded_text(value: object, *, maximum: int, allow_empty: bool = False) -> bool:
+    if not isinstance(value, str) or len(value) > maximum or "\x00" in value:
+        return False
+    if not allow_empty and not value.strip():
+        return False
+    return not any(
+        ord(character) < 32 and character not in {"\n", "\r", "\t"}
+        for character in value
+    )
+
+
+def _markdown_text(value: object) -> str:
+    """Encode one brief value as single-paragraph Markdown data."""
+    text = " ".join(str(value).replace("\r", "\n").splitlines())
+    escaped = html.escape(text, quote=False)
+    return re.sub(r"([\\`*_\[\]#|])", r"\\\1", escaped)
+
+
 def validate_brief(brief: dict[str, Any]) -> list[str]:
     """Validate a domain brief, returning list of errors (empty = valid)."""
     errors = []
-    if not brief.get("domain_id"):
-        errors.append("domain_id is required")
-    if not brief.get("domain_name"):
-        errors.append("domain_name is required")
-    if not brief.get("mutation_axes"):
-        errors.append("mutation_axes is required (list of {name, values})")
-    if not brief.get("primary_metric"):
-        errors.append("primary_metric is required")
+    domain_id = brief.get("domain_id")
+    if not isinstance(domain_id, str) or not _DOMAIN_ID_RE.fullmatch(domain_id):
+        errors.append("domain_id must be a portable generated-package identity")
+    elif domain_id.lower() in _WINDOWS_RESERVED_NAMES:
+        errors.append("domain_id must not be a reserved filesystem identity")
+    elif keyword.iskeyword(_sanitize_module_name(domain_id)):
+        errors.append("domain_id must not generate a Python keyword")
+
+    if not _bounded_text(brief.get("domain_name"), maximum=200):
+        errors.append("domain_name must be bounded text")
+    if not _bounded_text(brief.get("primary_metric"), maximum=128):
+        errors.append("primary_metric must be bounded text")
+    for field in ("description", "category"):
+        if field in brief and not _bounded_text(
+            brief[field],
+            maximum=2000 if field == "description" else 128,
+            allow_empty=True,
+        ):
+            errors.append(f"{field} must be bounded text")
+
+    axes = brief.get("mutation_axes")
+    if not isinstance(axes, list) or not axes or len(axes) > 32:
+        errors.append("mutation_axes must be a non-empty bounded list")
+    else:
+        for axis in axes:
+            if isinstance(axis, str):
+                if not _bounded_text(axis, maximum=128):
+                    errors.append("mutation axis names must be bounded text")
+                continue
+            if not isinstance(axis, dict) or not _bounded_text(
+                axis.get("name"), maximum=128
+            ):
+                errors.append("mutation axes must contain bounded names")
+                continue
+            values = axis.get("values", [])
+            if (
+                not isinstance(values, list)
+                or len(values) > 128
+                or any(not _bounded_text(value, maximum=256) for value in values)
+            ):
+                errors.append("mutation axis values must be bounded text lists")
     return errors
 
 
@@ -285,15 +383,16 @@ def _gen_pyproject(brief: dict[str, Any]) -> str:
     domain_id = brief["domain_id"]
     module = _sanitize_module_name(domain_id)
     name = brief.get("domain_name", domain_id)
+    name_literal = json.dumps(str(name), ensure_ascii=False)
 
     return f'''[build-system]
 requires = ["setuptools>=68"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "domain-chip-{domain_id}"
 version = "0.0.1"
-description = "Domain chip for {name}"
+description = {name_literal}
 requires-python = ">= 3.10"
 dependencies = []
 
@@ -311,15 +410,21 @@ where = ["src"]
 def _gen_readme(brief: dict[str, Any]) -> str:
     """Generate README.md."""
     domain_id = brief["domain_id"]
-    name = brief.get("domain_name", domain_id)
-    desc = brief.get("description", f"Domain intelligence chip for {name}")
-    primary_metric = brief.get("primary_metric", "domain_score")
+    raw_name = str(brief.get("domain_name", domain_id))
+    name = _markdown_text(raw_name)
+    desc = _markdown_text(
+        brief.get("description", f"Domain intelligence chip for {raw_name}")
+    )
+    primary_metric = _markdown_text(brief.get("primary_metric", "domain_score"))
 
     axes_text = ""
     for axis in brief.get("mutation_axes", []):
-        aname = axis["name"] if isinstance(axis, dict) else axis
+        aname = _markdown_text(axis["name"] if isinstance(axis, dict) else axis)
         values = axis.get("values", []) if isinstance(axis, dict) else []
-        axes_text += f"- **{aname}**: {', '.join(values[:5])}\n"
+        rendered_values = ", ".join(
+            _markdown_text(value) for value in values[:5]
+        )
+        axes_text += f"- **{aname}**: {rendered_values}\n"
 
     return f'''# domain-chip-{domain_id}
 
@@ -378,6 +483,12 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the one-loop specification.
 
 def _gen_cli(brief: dict[str, Any]) -> str:
     """Generate cli.py (100% boilerplate hook routing)."""
+    primary_metric = str(brief.get("primary_metric", "domain_score"))
+    primary_metric_literal = repr(primary_metric)
+    program_literal = repr(str(brief["domain_id"]))
+    description_literal = repr(
+        f"Domain chip for {brief.get('domain_name', brief['domain_id'])}."
+    )
     return f'''"""CLI entry point for domain-chip-{brief["domain_id"]}.
 
 Implements the four spark-hook-io.v1 hooks:
@@ -391,7 +502,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 from ..lab_hooks import (
@@ -422,12 +533,52 @@ def _write_output(output_path: str | None, data: Any) -> None:
         print(output_json)
 
 
+def _resolve_vault_path(value: object) -> Path:
+    """Resolve a generated chip's vault beneath its working directory."""
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("invalid vault directory")
+    raw_path = Path(value)
+    windows_path = PureWindowsPath(value)
+    if (
+        raw_path.is_absolute()
+        or windows_path.is_absolute()
+        or windows_path.drive
+        or ".." in windows_path.parts
+    ):
+        raise ValueError("invalid vault directory")
+    root = Path.cwd().resolve()
+    resolved = (root / raw_path).resolve()
+    if resolved == root or not resolved.is_relative_to(root):
+        raise ValueError("invalid vault directory")
+    return resolved
+
+
+def _resolve_vault_page_path(vault_root: Path, value: object) -> Path:
+    """Resolve one generated page beneath the selected vault."""
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("invalid watchtower page path")
+    raw_path = Path(value)
+    windows_path = PureWindowsPath(value)
+    if (
+        raw_path.is_absolute()
+        or windows_path.is_absolute()
+        or windows_path.drive
+        or ".." in windows_path.parts
+    ):
+        raise ValueError("invalid watchtower page path")
+    resolved = (vault_root / raw_path).resolve()
+    if resolved == vault_root or not resolved.is_relative_to(vault_root):
+        raise ValueError("invalid watchtower page path")
+    return resolved
+
+
 def cmd_evaluate(args: argparse.Namespace) -> None:
     input_data = _load_input(args.input)
     mutations = input_data.get("mutations", {{}})
     result = run_evaluate(mutations)
-    metric = result.get("metrics", {{}}).get("{brief.get("primary_metric", "domain_score")}", 0)
-    print(f"{brief.get("primary_metric", "domain_score")}: {{metric}}")
+    metric_name = {primary_metric_literal}
+    metric = result.get("metrics", {{}}).get(metric_name, 0)
+    print(f"{{metric_name}}: {{metric}}")
     _write_output(args.output, result)
 
 
@@ -448,12 +599,11 @@ def cmd_packets(args: argparse.Namespace) -> None:
 def cmd_watchtower(args: argparse.Namespace) -> None:
     input_data = _load_input(args.input)
     mutations = input_data.get("mutations", {{}})
-    vault_dir = input_data.get("vault_dir", "obsidian-vault")
-    pages = generate_watchtower_pages(mutations, vault_dir)
-    vault_path = Path(vault_dir)
+    vault_path = _resolve_vault_path(input_data.get("vault_dir", "obsidian-vault"))
+    pages = generate_watchtower_pages(mutations, vault_dir=vault_path)
     vault_path.mkdir(parents=True, exist_ok=True)
     for page in pages:
-        page_path = vault_path / page["path"]
+        page_path = _resolve_vault_page_path(vault_path, page.get("path"))
         page_path.parent.mkdir(parents=True, exist_ok=True)
         page_path.write_text(page["content"], encoding="utf-8")
     _write_output(args.output, {{"pages": [p["path"] for p in pages], "count": len(pages)}})
@@ -461,8 +611,8 @@ def cmd_watchtower(args: argparse.Namespace) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        prog="{brief["domain_id"]}",
-        description="Domain chip for {brief.get("domain_name", brief["domain_id"])}.",
+        prog={program_literal},
+        description={description_literal},
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -492,8 +642,8 @@ def _gen_evaluate(brief: dict[str, Any]) -> str:
     for axis in axes:
         name = axis["name"] if isinstance(axis, dict) else axis
         values = axis.get("values", []) if isinstance(axis, dict) else []
-        entries = ", ".join(f'"{v}": {(i + 1) * 2}' for i, v in enumerate(values[:5]))
-        dim_lines.append(f'    "{name}": {{{entries}}},')
+        entries = ", ".join(f'{v!r}: {(i + 1) * 2}' for i, v in enumerate(values[:5]))
+        dim_lines.append(f'    {name!r}: {{{entries}}},')
 
     dims_str = "\n".join(dim_lines) if dim_lines else '    # Add dimension scoring here'
 
@@ -567,7 +717,7 @@ def evaluate(mutations: dict[str, Any]) -> dict[str, Any]:
         "stdout": "",
         "stderr": "",
         "metrics": {{
-            "{primary_metric}": result["score"],
+            {primary_metric!r}: result["score"],
             "evidence_quality": 0.5,
             "coverage_breadth": 0.3,
         }},
@@ -591,7 +741,7 @@ def _gen_suggest(brief: dict[str, Any]) -> str:
     for a in axes:
         name = a["name"] if isinstance(a, dict) else a
         values = a.get("values", []) if isinstance(a, dict) else []
-        axis_lines.append(f'    "{name}": {json.dumps(values)},')
+        axis_lines.append(f'    {name!r}: {values!r},')
     axis_block = "\n".join(axis_lines)
 
     return f'''"""Suggest hook for domain-chip-{brief["domain_id"]}.
@@ -730,7 +880,7 @@ def generate_packets(mutations: dict[str, Any]) -> list[dict[str, Any]]:
 
 def _gen_watchtower(brief: dict[str, Any]) -> str:
     """Generate watchtower.py with Obsidian page templates."""
-    name = brief.get("domain_name", brief["domain_id"])
+    name = _markdown_text(brief.get("domain_name", brief["domain_id"]))
 
     return f'''"""Watchtower hook for domain-chip-{brief["domain_id"]}.
 
@@ -740,6 +890,9 @@ Generates Obsidian pages for domain observatory.
 from __future__ import annotations
 
 from typing import Any
+
+
+DOMAIN_NAME = {name!r}
 
 
 def generate_watchtower_pages(
@@ -752,10 +905,10 @@ def generate_watchtower_pages(
     # Home page
     pages.append({{
         "path": "Home.md",
-        "content": """# {name} Observatory
+        "content": f"""# {{DOMAIN_NAME}} Observatory
 
 ## Overview
-Domain intelligence chip for {name}.
+Domain intelligence chip for {{DOMAIN_NAME}}.
 
 ## Evidence Lanes
 - **research_grounded**: Primary source research
@@ -809,6 +962,7 @@ def _gen_tests(brief: dict[str, Any]) -> dict[str, str]:
 
     tests = {}
 
+    primary_metric = str(brief.get("primary_metric", "domain_score"))
     tests["test_evaluate.py"] = f'''"""Smoke tests for evaluate hook."""
 
 import json
@@ -818,7 +972,7 @@ from {module}.evaluate import evaluate, score_candidate
 def test_evaluate_empty_mutations():
     result = evaluate({{}})
     assert result["returncode"] == 0
-    assert "{brief.get("primary_metric", "domain_score")}" in result["metrics"]
+    assert {primary_metric!r} in result["metrics"]
     assert result["result"]["verdict"] in ("approve", "defer", "reject")
     assert result["result"]["evidence_lane"] in (
         "research_grounded", "benchmark_grounded",
@@ -901,8 +1055,8 @@ def test_watchtower_generates_pages():
 
 def _gen_docs(brief: dict[str, Any]) -> dict[str, str]:
     """Generate docs/ directory content."""
-    name = brief.get("domain_name", brief["domain_id"])
-    primary_metric = brief.get("primary_metric", "domain_score")
+    name = _markdown_text(brief.get("domain_name", brief["domain_id"]))
+    primary_metric = _markdown_text(brief.get("primary_metric", "domain_score"))
 
     docs = {}
 
@@ -994,7 +1148,19 @@ def scaffold_chip(
     output_dir = Path(output_dir)
 
     chip_dir = output_dir / f"domain-chip-{domain_id}"
+    created_here = not chip_dir.exists()
     chip_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        return _scaffold_chip_files(chip_dir=chip_dir, brief=brief, module=module)
+    except Exception:
+        if created_here:
+            shutil.rmtree(chip_dir, ignore_errors=True)
+        raise
+
+
+def _scaffold_chip_files(*, chip_dir: Path, brief: dict[str, Any], module: str) -> Path:
+    """Write a validated chip tree; the caller owns rollback for new directories."""
+    domain_id = brief["domain_id"]
 
     # 1. spark-chip.json (manifest)
     manifest = _gen_manifest(brief)
@@ -1021,8 +1187,9 @@ def scaffold_chip(
     # 5. src/{module}/ with all hooks
     src_dir = chip_dir / "src" / module
     src_dir.mkdir(parents=True, exist_ok=True)
+    module_doc = f"Domain chip: {brief.get('domain_name', domain_id)}."
     (src_dir / "__init__.py").write_text(
-        f'"""Domain chip: {brief.get("domain_name", domain_id)}."""\n',
+        f"__doc__ = {module_doc!r}\n",
         encoding="utf-8",
     )
     (src_dir / "cli.py").write_text(_gen_cli(brief), encoding="utf-8")
@@ -1048,7 +1215,7 @@ def scaffold_chip(
     vault_dir = chip_dir / "obsidian-vault"
     vault_dir.mkdir(parents=True, exist_ok=True)
     (vault_dir / "README.md").write_text(
-        f"# {brief.get('domain_name', domain_id)} Observatory\n\nGenerated by chip scaffold.\n",
+        f"# {_markdown_text(brief.get('domain_name', domain_id))} Observatory\n\nGenerated by chip scaffold.\n",
         encoding="utf-8",
     )
 

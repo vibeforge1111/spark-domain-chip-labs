@@ -105,7 +105,11 @@ def _clamp01(value: float) -> float:
 
 
 @lru_cache(maxsize=8)
-def _cached_lab_state(repo_root_str: str, chip_search_dir_str: str) -> dict[str, Any]:
+def _cached_lab_state(
+    repo_root_str: str,
+    chip_search_dir_str: str,
+    state_key: str,
+) -> dict[str, Any]:
     repo_root = Path(repo_root_str)
     chip_search_dir: str | Path | None = chip_search_dir_str or None
     v3 = score_chip_v3(repo_root)
@@ -125,7 +129,23 @@ def _cached_lab_state(repo_root_str: str, chip_search_dir_str: str) -> dict[str,
 
 
 def _lab_state(repo_root: Path, chip_search_dir: str | Path | None = None) -> dict[str, Any]:
-    return _cached_lab_state(str(repo_root.resolve()), str(chip_search_dir or ""))
+    sources = (
+        repo_root / "research" / "packets",
+        repo_root / "research" / "meta" / "runs.jsonl",
+        repo_root / "artifacts" / "ledger" / "runs.jsonl",
+        repo_root / "score_history.jsonl",
+    )
+    state_parts: list[str] = []
+    for source in sources:
+        try:
+            state_parts.append(f"{source}:{source.stat().st_mtime_ns}")
+        except OSError:
+            state_parts.append(f"{source}:0")
+    return _cached_lab_state(
+        str(repo_root.resolve()),
+        str(chip_search_dir or ""),
+        "|".join(state_parts),
+    )
 
 
 _METHODOLOGY_AREA_CONFIG: dict[str, dict[str, Any]] = {
@@ -441,7 +461,7 @@ def evaluate(mutations: dict[str, str], chip_search_dir: str | Path | None = Non
 
     elif research_focus == "trend_simulation":
         # Run MiroFish trend simulation and return prediction quality metrics
-        from .trend_scanner import simulate_opportunities, SEED_OPPORTUNITIES
+        from ..trend_scanner import simulate_opportunities, SEED_OPPORTUNITIES
         sim = simulate_opportunities(SEED_OPPORTUNITIES, seed=42)
         report = sim.get("simulation_report", {})
         cal = sim.get("calibration", {})

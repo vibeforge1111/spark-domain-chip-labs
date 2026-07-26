@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "spark-startup-bench-promotion-dossier.v1",
+  "schema_version": "spark-startup-bench-promotion-dossier.v1",
+  "status": "abandoned_stale_candidate",
+  "dossierId": "startup-bench-proof-abandoned-stale-candidate",
+  "createdAt": "2026-05-30T13:00:00Z",
+  "generatedAt": "2026-05-30T13:00:00Z",
+  "runIdentity": {
+    "runId": "telegram-20260530t1300000",
+    "baselineId": "heuristic_resilient_operator",
+    "startupBenchRepo": "/repo/startup-bench",
+    "startupOperatorRepo": "/repo/specialization-path-startup-operator",
+    "scenarioPath": "/repo/specialization-path-startup-operator/benchmarks/scenarios/minimal_0to1_scenario.json",
+    "scenarioSha256": "2d9ef641c738fede38b3f18c060fbb2713721c794333ae914b262d9d63cc0e8a",
+    "toolCallsPath": "/repo/specialization-path-startup-operator/benchmarks/startup-operator.tool_calls.json",
+    "toolCallsSha256": "7178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a",
+    "seeds": [1],
+    "maxTurns": 6
+  },
+  "proofIdentity": {
+    "proofReportPath": "/repo/.spark-swarm/autoloop/runs/telegram-20260530t1300000/startup_bench_proof_report.json",
+    "proofReportSha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "privateScoreSummarySha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "runSignatureDigest": "abandoned-stale-run-signature",
+    "proofGateBundleId": "startup-bench-proof-abandoned-stale-candidate"
+  },
+  "candidateLock": {
+    "lockState": "abandoned_stale_candidate",
+    "targetKind": "startup_operator_tool_calls",
+    "targetPath": "/repo/specialization-path-startup-operator/benchmarks/startup-operator.tool_calls.json",
+    "targetSha256": "7178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a",
+    "scenarioPath": "/repo/specialization-path-startup-operator/benchmarks/scenarios/minimal_0to1_scenario.json",
+    "scenarioSha256": "2d9ef641c738fede38b3f18c060fbb2713721c794333ae914b262d9d63cc0e8a",
+    "artifactRef": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-abandoned-stale-candidate/candidate_run_lock.json",
+    "artifactSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "createdBeforeEvaluation": true
+  },
+  "proofBinding": {
+    "schemaVersion": "spark-startup-bench-proof-binding.v1",
+    "proofReportPath": "/repo/.spark-swarm/autoloop/runs/telegram-20260530t1300000/startup_bench_proof_report.json",
+    "proofReportSha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "privateScoreSummarySha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "runSignature": {
+      "schemaVersion": "spark-startup-bench-run-signature.v1",
+      "digest": "abandoned-stale-run-signature",
+      "payload": {"baselineId": "heuristic_resilient_operator", "toolCallsSha256": "7178d71b56aec576a2c0702761109217444d32af71a6673c83a098ae652feb6a"}
+    }
+  },
+  "proofGateBundle": {
+    "schemaVersion": "spark-startup-bench-proof-gate-bundle.v1",
+    "bundleId": "startup-bench-proof-abandoned-stale-candidate",
+    "bundlePath": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-abandoned-stale-candidate",
+    "manifestPath": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-abandoned-stale-candidate/startup_bench_proof_gates.json",
+    "gateBundleSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "status": "abandoned_stale_candidate"
+  },
+  "privateScoreSummary": {
+    "baseline": {"scenarioScore": 0.6408, "outcomeScore": 0.6408, "constraintScore": 1.0, "pass": true, "runCount": 1, "violationCount": 0},
+    "candidate": {"scenarioScore": 0.8201, "outcomeScore": 0.8201, "constraintScore": 1.0, "pass": true, "runCount": 1, "violationCount": 0},
+    "comparison": {"candidateBeatsBaseline": true, "candidateMinusBaseline": 0.1793, "metric": "scenario_score"},
+    "scoreClaimAllowed": false
+  },
+  "proofGates": {
+    "hiddenHeldout": {"status": "passed", "pass": true, "blockers": [], "scoreClaimAllowed": false},
+    "wrapperRaw": {"status": "passed", "pass": true, "blockers": [], "scoreClaimAllowed": false},
+    "sidecarReview": {"status": "abandoned", "pass": false, "blockers": ["candidate_abandoned_stale"], "scoreClaimAllowed": false},
+    "repeatedStability": {"status": "abandoned", "pass": false, "blockers": ["candidate_abandoned_stale"], "scoreClaimAllowed": false},
+    "wallClockStability": {"status": "abandoned", "pass": false, "blockers": ["candidate_abandoned_stale"], "scoreClaimAllowed": false},
+    "scoreReconciliation": {"status": "abandoned", "pass": false, "blockers": ["candidate_abandoned_stale"], "scoreClaimAllowed": false}
+  },
+  "promotionDossier": {
+    "status": "abandoned_stale_candidate",
+    "scoreClaimAllowed": false,
+    "improvementClaimAllowed": false,
+    "public_ready": false,
+    "network_absorbable": false,
+    "blockers": ["candidate_abandoned_stale"],
+    "nextGate": "start_fresh_candidate_lock",
+    "keepRevertDecision": {
+      "decision": "abandon_stale_candidate",
+      "reason": "The candidate lock no longer matches the source target; park this dossier and start from a fresh candidate lock."
+    }
+  },
+  "scoreClaimAllowed": false,
+  "score_claim_allowed": false,
+  "improvementClaimAllowed": false,
+  "improvement_claim_allowed": false,
+  "public_ready": false,
+  "publicReady": false,
+  "network_absorbable": false,
+  "networkAbsorbable": false,
+  "blockers": ["candidate_abandoned_stale"],
+  "nextGate": "start_fresh_candidate_lock",
+  "nextAction": "Do not reuse this private movement. Create a new candidate lock and proof bundle before evaluating again.",
+  "artifactManifest": {
+    "schemaVersion": "spark-startup-bench-promotion-dossier-artifact-manifest.v1",
+    "artifactCount": 1,
+    "artifacts": [
+      {
+        "artifactType": "candidate_run_lock",
+        "path": ".spark-swarm/startup-bench-gates/bundles/startup-bench-proof-abandoned-stale-candidate/candidate_run_lock.json",
+        "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "bytes": 4096
+      }
+    ]
+  },
+  "claimBoundary": "Abandoned or stale candidates cannot carry a score or improvement claim, even if their private score had moved upward."
+}

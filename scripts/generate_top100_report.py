@@ -1,11 +1,24 @@
 """Generate markdown report from existing 100-domain MiroFish predictions."""
 
+import argparse
 import json
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-data_path = os.path.join(script_dir, "..", "viz", "100_domain_predictions.json")
-output_path = os.path.join(script_dir, "..", "docs", "MIROFISH_TOP_100_RESEARCH.md")
+parser = argparse.ArgumentParser(description="Generate the MiroFish top-100 report")
+parser.add_argument(
+    "--data-path",
+    default=os.path.join(script_dir, "..", "viz", "100_domain_predictions.json"),
+    help="Input predictions JSON file",
+)
+parser.add_argument(
+    "--output-path",
+    default=os.path.join(script_dir, "..", "docs", "MIROFISH_TOP_100_RESEARCH.md"),
+    help="Output Markdown file",
+)
+args = parser.parse_args()
+data_path = args.data_path
+output_path = args.output_path
 
 with open(data_path) as f:
     data = json.load(f)

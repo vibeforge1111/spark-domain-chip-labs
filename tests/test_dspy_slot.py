@@ -144,6 +144,11 @@ class TestGenerateSlotScript:
         assert '"evaluate"' in code
         assert '"run"' in code
 
+    def test_run_output_adapts_to_terminal_or_pipeline(self, basic_config):
+        code = generate_slot_script(basic_config)
+        assert 'getattr(sys.stdout, "isatty"' in code
+        assert 'separators=(",", ":")' in code
+
     def test_contains_chain_of_thought(self, basic_config):
         code = generate_slot_script(basic_config)
         assert "ChainOfThought" in code

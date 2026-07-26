@@ -140,7 +140,7 @@ def _startup_network_review_phase(
             )
         try:
             review = _load_json(path)
-        except json.JSONDecodeError:
+        except ValueError:
             return _phase(
                 phase,
                 passed=False,
@@ -195,7 +195,7 @@ def _product_runtime_phase(
 
     try:
         packet = _load_json(path)
-    except json.JSONDecodeError:
+    except ValueError:
         return _phase(
             phase,
             passed=False,
@@ -283,7 +283,10 @@ def _provenance(label: str, path_value: str | Path | None) -> dict[str, Any]:
 
 
 def _load_json(path: Path) -> dict[str, Any]:
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"{path} contains invalid JSON") from exc
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data

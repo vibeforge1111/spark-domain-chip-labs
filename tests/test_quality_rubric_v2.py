@@ -337,6 +337,17 @@ class TestManifestV2:
         dim = next(d for d in result["dimensions"] if d["name"] == "manifest_validity")
         assert dim["score"] == 0
 
+    def test_bom_prefixed_manifest_remains_valid(self, tmp_path: Path) -> None:
+        chip = _build_test_chip(tmp_path)
+        manifest_path = chip / "spark-chip.json"
+        manifest_path.write_text(
+            "\ufeff" + manifest_path.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+        result = score_chip_v2(chip)
+        dim = next(d for d in result["dimensions"] if d["name"] == "manifest_validity")
+        assert dim["score"] == 15
+
     def test_missing_capabilities_loses_hooks_points(self, tmp_path: Path) -> None:
         chip = _build_test_chip(tmp_path)
         manifest = json.loads((chip / "spark-chip.json").read_text(encoding="utf-8"))

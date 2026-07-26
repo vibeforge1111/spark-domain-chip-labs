@@ -108,6 +108,9 @@ V4_SHOCKS = [
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Run the MiroFish 500-domain prediction")
+    parser.parse_args()
     t0 = time.time()
 
     # Enrich v3 domains with v4 fields

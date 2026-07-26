@@ -9,8 +9,9 @@ from __future__ import annotations
 
 import hashlib
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
+import unicodedata
 
 
 SCHEMA_VERSION = "adaptive_creator_loop.startup_yc_promotion_gate_check.v1"
@@ -191,7 +192,11 @@ def check_startup_yc_multi_seed_validation(
     if not isinstance(evidence_reference, str) or not evidence_reference.strip():
         blocking_checks.append("missing_evidence_path:multi_seed_evidence_path")
     else:
-        evidence_file = _resolve_related_path(plan_path, evidence_reference)
+        evidence_file = _resolve_related_path(
+            plan_path,
+            evidence_reference,
+            allow_absolute=evidence_path is not None,
+        )
         evidence_present = evidence_file.exists()
         if not evidence_present:
             blocking_checks.append(f"missing_evidence:{evidence_reference}")
@@ -283,7 +288,11 @@ def check_startup_yc_heldout_validation(
     if not isinstance(evidence_reference, str) or not evidence_reference.strip():
         blocking_checks.append("missing_evidence_path:held_out_evidence_path")
     else:
-        evidence_file = _resolve_related_path(plan_path, evidence_reference)
+        evidence_file = _resolve_related_path(
+            plan_path,
+            evidence_reference,
+            allow_absolute=evidence_path is not None,
+        )
         evidence_present = evidence_file.exists()
         if not evidence_present:
             blocking_checks.append(f"missing_evidence:{evidence_reference}")
@@ -359,7 +368,11 @@ def check_startup_yc_review_gates(
     if not isinstance(evidence_reference, str) or not evidence_reference.strip():
         blocking_checks.append("missing_evidence_path:review_gate_evidence_path")
     else:
-        evidence_file = _resolve_related_path(plan_path, evidence_reference)
+        evidence_file = _resolve_related_path(
+            plan_path,
+            evidence_reference,
+            allow_absolute=evidence_path is not None,
+        )
         evidence_present = evidence_file.exists()
         if not evidence_present:
             blocking_checks.append(f"missing_evidence:{evidence_reference}")
@@ -420,11 +433,16 @@ def check_startup_yc_promotion_evidence(
     bundle_file: Path | None = None
     bundle: dict[str, Any] = {}
     bundle_display_path = bundle_reference if isinstance(bundle_reference, str) else None
+    explicit_bundle = evidence_bundle_path is not None
 
     if not isinstance(bundle_reference, str) or not bundle_reference.strip():
         blocking_checks.append("missing_evidence_path:promotion_evidence_bundle_path")
     else:
-        bundle_file = _resolve_related_path(plan_path, bundle_reference)
+        bundle_file = _resolve_related_path(
+            plan_path,
+            bundle_reference,
+            allow_absolute=explicit_bundle,
+        )
         bundle_present = bundle_file.exists()
         if not bundle_present:
             blocking_checks.append(f"missing_evidence:{bundle_reference}")
@@ -436,6 +454,7 @@ def check_startup_yc_promotion_evidence(
         bundle,
         required_gates,
         blocking_checks,
+        allow_absolute=explicit_bundle,
     )
     blocking_checks = _dedupe(blocking_checks)
     all_supported = bool(required_gates) and all(
@@ -935,6 +954,8 @@ def _evaluate_promotion_evidence_bundle(
     bundle: dict[str, Any],
     required_gates: list[str],
     blocking_checks: list[str],
+    *,
+    allow_absolute: bool = False,
 ) -> tuple[dict[str, bool], list[dict[str, Any]]]:
     gate_support = {gate: False for gate in required_gates}
     evidence_checks: list[dict[str, Any]] = []
@@ -943,33 +964,51 @@ def _evaluate_promotion_evidence_bundle(
         blocking_checks.append("missing_bundle_checks")
         return gate_support, evidence_checks
 
-    multi_seed = _load_bundle_check(plan_path, checks, "multi_seed_validation")
+    multi_seed = _load_bundle_check(
+        plan_path,
+        checks,
+        "multi_seed_validation",
+        allow_absolute=allow_absolute,
+    )
     evidence_checks.append(multi_seed)
     if _check_output_passes(
         multi_seed,
         expected_schema=MULTI_SEED_SCHEMA_VERSION,
         plan_path=plan_path,
         blocking_checks=blocking_checks,
+        allow_absolute=allow_absolute,
     ):
         gate_support["multi_seed_validation"] = True
 
-    heldout = _load_bundle_check(plan_path, checks, "held_out_founder_advice_pass")
+    heldout = _load_bundle_check(
+        plan_path,
+        checks,
+        "held_out_founder_advice_pass",
+        allow_absolute=allow_absolute,
+    )
     evidence_checks.append(heldout)
     if _check_output_passes(
         heldout,
         expected_schema=HELDOUT_SCHEMA_VERSION,
         plan_path=plan_path,
         blocking_checks=blocking_checks,
+        allow_absolute=allow_absolute,
     ):
         gate_support["held_out_founder_advice_pass"] = True
 
-    review = _load_bundle_check(plan_path, checks, "review_gates")
+    review = _load_bundle_check(
+        plan_path,
+        checks,
+        "review_gates",
+        allow_absolute=allow_absolute,
+    )
     evidence_checks.append(review)
     if _check_output_passes(
         review,
         expected_schema=REVIEW_GATES_SCHEMA_VERSION,
         plan_path=plan_path,
         blocking_checks=blocking_checks,
+        allow_absolute=allow_absolute,
     ):
         output = review.get("output")
         gate_status = output.get("gate_status") if isinstance(output, dict) else None
@@ -999,6 +1038,8 @@ def _load_bundle_check(
     plan_path: Path,
     checks: dict[str, Any],
     key: str,
+    *,
+    allow_absolute: bool = False,
 ) -> dict[str, Any]:
     reference = checks.get(key)
     result: dict[str, Any] = {
@@ -1012,7 +1053,11 @@ def _load_bundle_check(
     if not isinstance(reference, str) or not reference.strip():
         result["error"] = "missing_check_path"
         return result
-    output_path = _resolve_related_path(plan_path, reference)
+    output_path = _resolve_related_path(
+        plan_path,
+        reference,
+        allow_absolute=allow_absolute,
+    )
     result["present"] = output_path.exists()
     if not result["present"]:
         result["error"] = "missing_check_output"
@@ -1028,6 +1073,7 @@ def _check_output_passes(
     expected_schema: str,
     plan_path: Path,
     blocking_checks: list[str],
+    allow_absolute: bool = False,
 ) -> bool:
     key = str(check.get("key"))
     if check.get("present") is not True:
@@ -1045,6 +1091,7 @@ def _check_output_passes(
         key=key,
         plan_path=plan_path,
         blocking_checks=blocking_checks,
+        allow_absolute=allow_absolute,
     )
     check["schema_ok"] = schema_ok
     check["plan_match"] = plan_match
@@ -1065,6 +1112,7 @@ def _check_output_provenance(
     key: str,
     plan_path: Path,
     blocking_checks: list[str],
+    allow_absolute: bool = False,
 ) -> bool:
     provenance = output.get("provenance")
     if not isinstance(provenance, dict):
@@ -1081,7 +1129,11 @@ def _check_output_provenance(
             blocking_checks.append(f"invalid_provenance_hash:{key}")
             provenance_ok = False
             continue
-        input_path = _resolve_related_path(plan_path, reference)
+        input_path = _resolve_related_path(
+            plan_path,
+            reference,
+            allow_absolute=allow_absolute,
+        )
         if not input_path.exists():
             blocking_checks.append(f"missing_provenance_input:{key}")
             provenance_ok = False
@@ -1560,7 +1612,10 @@ def _network_absorption_next_actions(
 
 
 def _load_json(path: Path) -> dict[str, Any]:
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid JSON in {path}") from exc
     if not isinstance(data, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return data
@@ -1590,11 +1645,34 @@ def _file_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def _resolve_related_path(base_path: Path, related_path: str) -> Path:
+def _resolve_related_path(
+    base_path: Path,
+    related_path: object,
+    *,
+    allow_absolute: bool = False,
+) -> Path:
+    if (
+        not isinstance(related_path, str)
+        or not related_path.strip()
+        or len(related_path) > 2048
+        or any(unicodedata.category(character) == "Cc" for character in related_path)
+    ):
+        raise ValueError("invalid related path")
+
     path = Path(related_path)
+    windows_path = PureWindowsPath(related_path)
     if path.is_absolute():
-        return path
-    return base_path.parent / path
+        if not allow_absolute:
+            raise ValueError("invalid related path")
+        return path.resolve()
+    if windows_path.drive or windows_path.root or ".." in path.parts:
+        raise ValueError("invalid related path")
+
+    root = Path(base_path).parent.resolve()
+    resolved = (root / path).resolve()
+    if resolved == root or not resolved.is_relative_to(root):
+        raise ValueError("invalid related path")
+    return resolved
 
 
 def _list_str(value: Any) -> list[str]:
