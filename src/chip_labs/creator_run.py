@@ -653,7 +653,6 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
                 )
             )
         elif str(evidence_tier_value) not in EVIDENCE_TIERS:
-            evidence_tier = str(evidence_tier_value)
             checks.append(
                 SmokeCheck(
                     "evidence_tier",
