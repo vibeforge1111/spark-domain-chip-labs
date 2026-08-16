@@ -740,11 +740,11 @@ def validate_creator_run(run_dir: str | Path, *, recompute: bool = False) -> Smo
 def _load_required_json(
     path: Path, name: str, checks: list[SmokeCheck]
 ) -> dict[str, Any] | None:
-    if not path.exists():
-        checks.append(SmokeCheck(name, "fail", f"Missing {path.name}."))
-        return None
     try:
         data = load_json(path)
+    except FileNotFoundError:
+        checks.append(SmokeCheck(name, "fail", f"Missing {path.name}."))
+        return None
     except ValueError as exc:
         checks.append(SmokeCheck(name, "fail", str(exc)))
         return None
@@ -755,10 +755,10 @@ def _load_required_json(
 def _load_optional_json(
     path: Path, name: str, checks: list[SmokeCheck]
 ) -> dict[str, Any] | None:
-    if not path.exists():
-        return None
     try:
         data = load_json(path)
+    except FileNotFoundError:
+        return None
     except ValueError as exc:
         checks.append(SmokeCheck(name, "fail", str(exc)))
         return None
@@ -1253,10 +1253,10 @@ def _doctor_summary(smoke: SmokeResult) -> str:
 def _load_optional_template_json(
     path: Path, template_name: str, checks: list[SmokeCheck]
 ) -> dict[str, Any] | None:
-    if not path.exists():
-        return None
     try:
         return load_json(path)
+    except FileNotFoundError:
+        return None
     except ValueError as exc:
         checks.append(SmokeCheck(f"template_json:{template_name}", "fail", str(exc)))
         return None
@@ -3086,11 +3086,9 @@ def _collect_startup_yc_external_source_inputs(
 
 
 def _load_json_if_present(path: Path) -> dict[str, Any] | None:
-    if not path.exists():
-        return None
     try:
         payload = load_json(path)
-    except ValueError:
+    except (ValueError, FileNotFoundError):
         return None
     return payload if isinstance(payload, dict) else None
 
